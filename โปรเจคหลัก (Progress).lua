@@ -59,7 +59,7 @@ local function GetEventBoost()
     local Boost = ""
     for i, v in game:GetService("Players").GCshopSeventeen.PlayerGui.MainGui.HUD.MultFrames.Multipliers.Multipliers:GetChildren() do
         if v.ClassName == "Frame" then
-            print(v.ItemFrame.ItemImage.Image .." ".. v.ItemFrame.ItemAmount.Text)
+            print(v.MultName.Text .." ".. v.MultValue.Text)
         end
     end
     return Boost
@@ -93,9 +93,9 @@ print(GetEventInv())
 
 local function GetEventQuestTask() --หาตัวแปลงไม่เจอ
     local QuestTask = ""
-    for i, v in game:GetService("Players").GCshopSeventeen.PlayerGui.MainGui.Windows.DailyTasks:GetChildren() do
+    for i, v in game:GetService("Players").GCshopSeventeen.PlayerGui.MainGui.Windows.DailyTasks.Main:GetChildren() do
         if v.ClassName == "Frame" then
-            print(v.RefreshTimer.RefreshTimer.Text .." ".. v.DailyQuota.Progress.Text)
+            print("Daily Tasks" .." ".. v.RefreshTimer.Text)
         end
     end
     return QuestTask
