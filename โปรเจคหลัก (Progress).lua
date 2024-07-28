@@ -12,6 +12,7 @@
 -- game:GetService("Players").GCshopSeventeen.PlayerGui.MainGui.Windows.SeasonPass.Pass (Pass)  
    -- game:GetService("Players").GCshopSeventeen.PlayerGui.MainGui.Windows.SeasonPass.Pass.Header (HearderPass)
    -- game:GetService("Players").GCshopSeventeen.PlayerGui.MainGui.Windows.SeasonPass.Pass.Extra (LevelPass)
+-- game:GetService("Players").GCshopSeventeen.PlayerGui.MainGui.Windows.PassiveMachine.AutoRerollMenu (Quirk)
 
    local Emoji = { --แอด emoji
    ["rbxassetid://14839716736"] = "<:Blessed:1237372494281965580>",
