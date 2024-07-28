@@ -215,3 +215,126 @@ local function GetEventQuest()
 end
 
 print(GetEventQuest())
+
+local function GetGameData()
+    local player = game:GetService("Players").GCshopSeventeen
+    local playerGui = player.PlayerGui
+    local raidCompleteGui = playerGui:FindFirstChild("RaidCompleteGui")
+    local raidCompleteOverlay = raidCompleteGui and raidCompleteGui:FindFirstChild("RaidCompleteOverlay")
+
+    if not raidCompleteOverlay then
+        return "RaidCompleteOverlay not found"
+    end
+
+    local data = {}
+
+    -- ดึงค่าจาก TimerDisplay
+    local timerDisplay = raidCompleteOverlay:FindFirstChild("TimerDisplay")
+    if timerDisplay then
+        local timerValue = timerDisplay:FindFirstChild("TimerValue")
+        if timerValue and timerValue:IsA("TextLabel") then
+            data.TimerValue = timerValue.Text
+        else
+            data.TimerValue = "TimerValue not found or not a TextLabel"
+        end
+    else
+        data.TimerDisplay = "TimerDisplay not found"
+    end
+
+    -- ดึงค่าจาก RaidStats
+    local raidStats = raidCompleteOverlay:FindFirstChild("RaidStats")
+    if raidStats then
+        -- EnemiesDefeated
+        local enemiesDefeated = raidStats:FindFirstChild("EnemiesDefeated")
+        if enemiesDefeated then
+            local title = enemiesDefeated:FindFirstChild("Fade"):FindFirstChild("Title")
+            local countValue = enemiesDefeated:FindFirstChild("CountFrame"):FindFirstChild("CountValue")
+            if title and countValue then
+                data.EnemiesDefeatedTitle = title.Text
+                data.EnemiesDefeatedCount = countValue.Text
+            else
+                data.EnemiesDefeated = "Title or CountValue not found"
+            end
+        else
+            data.RaidStatsEnemiesDefeated = "EnemiesDefeated not found"
+        end
+
+        -- DamageDealt
+        local damageDealt = raidStats:FindFirstChild("DamageDealt")
+        if damageDealt then
+            local title = damageDealt:FindFirstChild("Fade"):FindFirstChild("TimerValue")
+            local countValue = damageDealt:FindFirstChild("CountFrame"):FindFirstChild("CountValue")
+            if title and countValue then
+                data.DamageDealtTitle = title.Text
+                data.DamageDealtCount = countValue.Text
+            else
+                data.DamageDealt = "Title or CountValue not found"
+            end
+        else
+            data.RaidStatsDamageDealt = "DamageDealt not found"
+        end
+
+        -- YenEarned
+        local yenEarned = raidStats:FindFirstChild("YenEarned")
+        if yenEarned then
+            local title = yenEarned:FindFirstChild("Fade"):FindFirstChild("Title")
+            local countValue = yenEarned:FindFirstChild("CountFrame"):FindFirstChild("CountValue")
+            if title and countValue then
+                data.YenEarnedTitle = title.Text
+                data.YenEarnedCount = countValue.Text
+            else
+                data.YenEarned = "Title or CountValue not found"
+            end
+        else
+            data.RaidStatsYenEarned = "YenEarned not found"
+        end
+    else
+        data.RaidStats = "RaidStats not found"
+    end
+
+    -- ดึงค่าจาก DropRewards.DropItems
+    local dropRewards = raidCompleteOverlay:FindFirstChild("DropRewards")
+    if dropRewards then
+        local dropItems = dropRewards:FindFirstChild("DropItems")
+        if dropItems then
+            local itemBoxes = {}
+            for _, itemBox in ipairs(dropItems:GetChildren()) do
+                if itemBox:IsA("Frame") and itemBox:FindFirstChild("ItemFrame") then
+                    local itemFrame = itemBox:FindFirstChild("ItemFrame")
+                    local itemImage = itemFrame:FindFirstChild("ItemImage")
+                    local itemAmount = itemFrame:FindFirstChild("ItemAmount")
+                    local itemData = {}
+                    if itemImage and itemAmount then
+                        itemData.Image = itemImage.Image
+                        itemData.Amount = itemAmount.Text
+                    else
+                        itemData.Error = "ItemImage or ItemAmount not found"
+                    end
+                    table.insert(itemBoxes, itemData)
+                end
+            end
+            data.ItemBoxes = itemBoxes
+        else
+            data.DropRewardsDropItems = "DropItems not found"
+        end
+    else
+        data.DropRewards = "DropRewards not found"
+    end
+
+    return data
+end
+
+-- เรียกใช้ฟังก์ชันและพิมพ์ผลลัพธ์
+local gameData = GetGameData()
+for key, value in pairs(gameData) do
+    if type(value) == "table" then
+        print(key .. ":")
+        for _, item in ipairs(value) do
+            for subKey, subValue in pairs(item) do
+                print("  " .. subKey .. ": " .. tostring(subValue))
+            end
+        end
+    else
+        print(key .. ": " .. tostring(value))
+    end
+end
