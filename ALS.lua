@@ -9,7 +9,7 @@ elseif tableFind(PlaceId, game.PlaceId) then
 end
 
 local var,err = pcall(function ()
-    loadstring(game:HttpGet("https://raw.githubusercontent.com/Sendo-cmd/test/main/" .. GameLoad .. ".lua"))()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Sendo-cmd/GCS/main/" .. GameLoad .. ".lua"))()
 end)
 
 if var == false  then
