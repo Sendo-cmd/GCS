@@ -2,13 +2,11 @@ local GameLoad = nil
 local PlaceId = {
 	12886143095,18583778121,12900046592
 }
-if game.PlaceId == 6299805723 then
-    GameLoad = "Banana"
-elseif table.find(PlaceId,game.PlaceId) then
+if tableFind(PlaceId, game.PlaceId) then
     GameLoad = "Kaitunlist"
-elseif table.find(PlaceId,game.PlaceId) then
+elseif tableFind(PlaceId, game.PlaceId) then
     GameLoad = "Reroll"
-end    
+end
 
 local var,err = pcall(function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Sendo-cmd/test/main/" .. GameLoad .. ".lua"))()
