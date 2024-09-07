@@ -1,5 +1,3 @@
-repeat task.wait() until game:IsLoaded()
-
 getgenv().Config = {
     Accounts = {
         { ID = 1194518892, script = 1 },
