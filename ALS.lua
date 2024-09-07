@@ -1,5 +1,3 @@
-repeat task.wait() until game:IsLoaded()
-
 local GameLoad = nil
 local PlaceId = {
 	12886143095,18583778121,12900046592
