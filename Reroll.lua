@@ -11,6 +11,8 @@ local HttpService = game:GetService("HttpService")
 
 local cooldown = 0
 
+print("Modules Loaded")
+
 function RGBtoInt(r, g, b)
     local a = a or 255
     
