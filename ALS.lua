@@ -4,10 +4,10 @@ local PlaceId = {
 }
 if game.PlaceId == 6299805723 then
     GameLoad = "Banana"
-elseif tableFind(PlaceId, game.PlaceId) then
-    GameLoad = "Kaitunlist"
-elseif tableFind(PlaceId, game.PlaceId) then
-    GameLoad = "Reroll"
+elseif table.find(PlaceId,game.PlaceId) then
+    GameLoad = "Kaitunlist"    
+elseif table.find(PlaceId,game.PlaceId) then
+    GameLoad = "Reroll"    
 end
 
 local var,err = pcall(function ()
