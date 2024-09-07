@@ -1,5 +1,3 @@
-repeat task.wait(5) until game:IsLoaded()
-
 RerollsNotificationEvery = {
     ["Minutes"] = 300, -- นาที
     ["Webhook"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le"
