@@ -6,7 +6,7 @@ if game.PlaceId == 6299805723 then
     GameLoad = "Banana"
 elseif table.find(PlaceId,game.PlaceId) then
     GameLoad = "Kaitunlist"    
-elseif table.find(PlaceId,game.PlaceId) then
+elseif game.PlaceId == 18583778121 or game.PlaceId == 12886143095 or game.PlaceId == 12900046592 then
     GameLoad = "Reroll"    
 end
 

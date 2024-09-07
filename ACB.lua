@@ -1,10 +1,10 @@
 local GameLoad = nil
 local PlaceId = {
-	12886143095,18583778121,12900046592
+	18138547215,18583778121,12900046592
 }
 if game.PlaceId == 18138547215 then
     GameLoad = "Banana"
-elseif game.PlaceId == 18138547215 then
+elseif table.find(PlaceId,game.PlaceId) then
     GameLoad = "CustomACB"    
 end    
 
