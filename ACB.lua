@@ -2,9 +2,9 @@ local GameLoad = nil
 local PlaceId = {
 	12886143095,18583778121,12900046592
 }
-if game.PlaceId == 6299805723 then
+if game.PlaceId == 18138547215 then
     GameLoad = "Banana"
-elseif game.PlaceId == 6299805723 then
+elseif game.PlaceId == 18138547215 then
     GameLoad = "CustomACB"    
 end    
 
