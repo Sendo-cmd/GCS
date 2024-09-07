@@ -3,7 +3,9 @@ local PlaceId = {
 	12886143095,18583778121,12900046592
 }
 if tableFind(PlaceId, game.PlaceId) then
-    GameLoad = "Kaitunlist"
+    GameLoad = "Kaitunlists"
+elseif tableFind(PlaceId, game.PlaceId) then
+    GameLoad = "Kaitunlist"	
 elseif tableFind(PlaceId, game.PlaceId) then
     GameLoad = "Reroll"
 end
