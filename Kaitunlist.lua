@@ -16,7 +16,6 @@ getgenv().Config = {
     },
     Scripts = { 
         -- Please make it a raw link 
-        ["Script 0"] = "https://raw.githubusercontent.com/Sendo-cmd/test/main/Reroll.lua",
         ["Script 1"] = "https://raw.githubusercontent.com/Sendo-cmd/test/main/KaDoAll.lua",
         ["Script 2"] = "https://raw.githubusercontent.com/Sendo-cmd/test/main/KaTrueRoll.lua",
         ["Script 3"] = "https://raw.githubusercontent.com/Sendo-cmd/test/main/KaTrueSummon.lua",
