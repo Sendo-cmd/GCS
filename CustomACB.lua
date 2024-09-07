@@ -5,7 +5,7 @@ getgenv().Config = {
         { ID = 5473666340, script = 3 },
         { ID = 868913579, script = 4 },
         { ID = 7155984741, script = 5 },
-        { ID = 5103882210, script = 6 },
+        { ID = 4052631418, script = 6 },
         { ID = 4023594624, script = 7 },
         { ID = 0, script = 8 }
 
