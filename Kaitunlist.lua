@@ -1,11 +1,9 @@
 getgenv().Config = {
     Accounts = {
         { ID = 1189955017, script = 4 },
-        { ID = 1189955017, script = 5 },
         { ID = 73027822, script = 1 },
         { ID = 5527417984, script = 4 },
         { ID = 2504537777, script = 4 },
-        { ID = 2504537777, script = 7 },
         { ID = 5176905367, script = 4 },
         { ID = 3263955746, script = 4 },
         { ID = 1212833284, script = 4 }
