@@ -3,7 +3,10 @@ repeat task.wait(20) until game:IsLoaded()
 ACBCardNotification = {
     ["Chance"] = 500000,
     ["Webhook"] = {
-        ["USERNAME"] = "https://discord.com/api/webhooks/1279971994846101555/ANeo5MkMXZaJ8-0vxYEme5VDhGJhV1Lucs-8w7JfCYJ0FNWojec5K6_IWgq9mIDdPK55",
+        ["Monooliaa_TH"] = "https://discord.com/api/webhooks/1279971994846101555/ANeo5MkMXZaJ8-0vxYEme5VDhGJhV1Lucs-8w7JfCYJ0FNWojec5K6_IWgq9mIDdPK55",
+        ["Krv_kai43"] = "https://discord.com/api/webhooks/1281841266216276039/_nRzrWKIVEvuqRS9pp0MMHxKCcQCxCaStOlGu0_uhOHMdNUHAiqfc1YrsV7cuaN66rl8",
+        ["Puggtopro"] = "https://discord.com/api/webhooks/1281991050835263520/IAgXcVnYeuRc0_DK_PpXZZbz3VinaVqnQ6ZLUCwAat2x79-0U1jyRVk45BG9slx-qcno",
+        ["mbhl67679"] = "https://discord.com/api/webhooks/1282049202985373756/BJ1exJVnT7ve45-WxIhVW9ZtPwtCMAJ0pklZH2P2Vq4VPWhZRoZSnJwVfEcLXW-ED4d7",
     }
 }
 
@@ -15,7 +18,7 @@ local plr = game.Players.LocalPlayer
 
 local Modules = game:GetService("ReplicatedStorage"):WaitForChild("Modules")
 
-print("Modules Loaded")
+print("Modules Loaded ACB")
 
 local HelpfulModule = require(Modules.HelpfulModule)
 
