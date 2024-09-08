@@ -2,7 +2,7 @@ local GameLoad = nil
 local PlaceId = {
 	12886143095,18583778121,12900046592
 }
-if tableFind(PlaceId, game.PlaceId) then
+if game.PlaceId == 12886143095 or game.PlaceId = 18583778121 or game.PlaceId == 12900046592 then
     GameLoad = "Reroll"    
 end
 
