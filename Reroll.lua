@@ -11,7 +11,7 @@ local plr = game.Players.LocalPlayer
 
 local HttpService = game:GetService("HttpService")
 
-local cooldown = 0
+local cooldown = isfile("RerollCheck.txt") and readfile("RerollCheck.txt") or 0
 
 print("Modules Loaded")
 
