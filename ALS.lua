@@ -6,6 +6,7 @@ if game.PlaceId == 12886143095 then
     GameLoad = "Kaitunlist"
 elseif table.find(PlaceId,game.PlaceId) then
     GameLoad = "Kaitunlist"
+end
 
 local var,err = pcall(function ()
     loadstring(game:HttpGet("https://raw.githubusercontent.com/Sendo-cmd/GCS/main/" .. GameLoad .. ".lua"))()
