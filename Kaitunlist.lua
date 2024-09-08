@@ -17,8 +17,6 @@ getgenv().Config = {
         ["Script 3"] = "https://raw.githubusercontent.com/Sendo-cmd/test/main/KaTrueSummon.lua",
         ["Script 4"] = "https://raw.githubusercontent.com/Sendo-cmd/test/main/ALL.lua",
         ["Script 5"] = "https://raw.githubusercontent.com/Sendo-cmd/aaa/main/ALS_Reroll.lua",
-        ["Script 6"] = "https://raw.githubusercontent.com/Sendo-cmd/aaa/main/ALS_Reroll2.lua",
-        ["Script 7"] = "https://raw.githubusercontent.com/Sendo-cmd/aaa/main/ALS_Reroll3.lua",
     }
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Sendo-cmd/test/main/MultiUserExecute.lua"))()
