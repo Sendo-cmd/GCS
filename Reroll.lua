@@ -13,6 +13,8 @@ local HttpService = game:GetService("HttpService")
 
 local cooldown = isfile("RerollCheck.txt") and readfile("RerollCheck.txt") or 0
 
+cooldown = tonumber(cooldown) or 0
+
 print("Modules Loaded RerollsNotificationEvery")
 
 function RGBtoInt(r, g, b)
@@ -45,52 +47,58 @@ function GetAvatarThumbnail(userId)
     return nil
 end
 
-while true do
-    local success, err = pcall(function()
-        if cooldown - tick() < 0 then
+task.spawn(function()
+    while true do
+        local success, err = pcall(function()
+            if cooldown - tick() < 0 then
 
-            plrData = game.ReplicatedStorage.Remotes.GetPlayerData:InvokeServer()
-            
-            local data = {
-                ["content"] = "",
-                ["embeds"] = {
-                    {
-                        ["title"] = "Anime Last Stands",
-                        ["description"] = `<:Icons:1047821411110105088>Username: ||{plr.Name}||\n Total Technique: {plrData.Rerolls}<:RerollShardPack:1279804156412166155>`,
-                        ["thumbnail"] = {
-                            url = GetAvatarThumbnail(plr.UserId)
-                        },
-                        ["color"] = RGBtoInt(255, 255, 255),
-                        ["image"] = {
-                            ["url"] = "https://media.discordapp.net/attachments/774011709358080021/1267843051997630535/hpfk2.1.png?ex=66dbb29a&is=66da611a&hm=6085a6699c2f332eca878e6fc64167c3c1065708c0ed32401e675a3eee11f9a1&=&format=webp&quality=lossless&width=490&height=488",
-                        },
-                        ["author"] = {
-                            ["name"] = " Gaming Champion Shop ",
-                            ["icon_url"] = "https://media.discordapp.net/attachments/774011709358080021/1267843051997630535/hpfk2.1.png?ex=66dbb29a&is=66da611a&hm=6085a6699c2f332eca878e6fc64167c3c1065708c0ed32401e675a3eee11f9a1&=&format=webp&quality=lossless&width=490&height=488"
-                        },
-                        ["footer"] = {
-                            ["text"] = "Gaming Champion Shop ",
-                            ["icon_url"] = "https://media.discordapp.net/attachments/774011709358080021/1267843051997630535/hpfk2.1.png?ex=66dbb29a&is=66da611a&hm=6085a6699c2f332eca878e6fc64167c3c1065708c0ed32401e675a3eee11f9a1&=&format=webp&quality=lossless&width=490&height=488"
-                        },     
-                        ["timestamp"] = DateTime.now():ToIsoDate()
-                    }
-                },
-            }
-
-            local response = request({
-                ["Url"] = Setting["Webhook"],
-                ["Method"] = "POST",
-                ["Body"] = game.HttpService:JSONEncode(data),
-                ["Headers"] = {
-                    ["content-type"] = "application/json"
+                plrData = game.ReplicatedStorage.Remotes.GetPlayerData:InvokeServer()
+                
+                local data = {
+                    ["content"] = "",
+                    ["embeds"] = {
+                        {
+                            ["title"] = "Anime Last Stands",
+                            ["description"] = `<:Icons:1047821411110105088>Username: ||{plr.Name}||\n Total Technique: {plrData.Rerolls}<:RerollShardPack:1279804156412166155>`,
+                            ["thumbnail"] = {
+                                url = GetAvatarThumbnail(plr.UserId)
+                            },
+                            ["color"] = RGBtoInt(255, 255, 255),
+                            ["image"] = {
+                                ["url"] = "https://media.discordapp.net/attachments/774011709358080021/1267843051997630535/hpfk2.1.png?ex=66dbb29a&is=66da611a&hm=6085a6699c2f332eca878e6fc64167c3c1065708c0ed32401e675a3eee11f9a1&=&format=webp&quality=lossless&width=490&height=488",
+                            },
+                            ["author"] = {
+                                ["name"] = " Gaming Champion Shop ",
+                                ["icon_url"] = "https://media.discordapp.net/attachments/774011709358080021/1267843051997630535/hpfk2.1.png?ex=66dbb29a&is=66da611a&hm=6085a6699c2f332eca878e6fc64167c3c1065708c0ed32401e675a3eee11f9a1&=&format=webp&quality=lossless&width=490&height=488"
+                            },
+                            ["footer"] = {
+                                ["text"] = "Gaming Champion Shop ",
+                                ["icon_url"] = "https://media.discordapp.net/attachments/774011709358080021/1267843051997630535/hpfk2.1.png?ex=66dbb29a&is=66da611a&hm=6085a6699c2f332eca878e6fc64167c3c1065708c0ed32401e675a3eee11f9a1&=&format=webp&quality=lossless&width=490&height=488"
+                            },     
+                            ["timestamp"] = DateTime.now():ToIsoDate()
+                        }
+                    },
                 }
-            })
 
-            if response.StatusCode < 300 then
-                cooldown = tick() + Setting["Minutes"] * 60
-                writefile("RerollCheck.txt", cooldown)
+                local response = request({
+                    ["Url"] = Setting["Webhook"],
+                    ["Method"] = "POST",
+                    ["Body"] = game.HttpService:JSONEncode(data),
+                    ["Headers"] = {
+                        ["content-type"] = "application/json"
+                    }
+                })
+
+                if response.StatusCode < 300 then
+                    cooldown = tick() + Setting["Minutes"] * 60
+                    writefile("RerollCheck.txt", tostring(cooldown))
+                end
             end
+        end)
+
+        if not success then
+            print("error:", err)
         end
-    end)
-    wait()
-end
+        wait()
+    end
+end)
