@@ -13,7 +13,7 @@ local HttpService = game:GetService("HttpService")
 
 local cooldown = isfile("RerollCheck.txt") and readfile("RerollCheck.txt") or 0
 
-print("Modules Loaded")
+print("Modules Loaded RerollsNotificationEvery")
 
 function RGBtoInt(r, g, b)
     local a = a or 255
