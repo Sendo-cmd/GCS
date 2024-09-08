@@ -3,7 +3,7 @@ local PlaceId = {
 	18138547215,18583778121,12900046592
 }
 if game.PlaceId == 18138547215 then
-    GameLoad = "CustomACB"
+    GameLoad = "ACB_Card"
 end    
 
 local var,err = pcall(function ()
