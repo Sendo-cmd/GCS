@@ -2,7 +2,7 @@ local GameLoad = nil
 local PlaceId = {
 	12886143095,18583778121,12900046592
 }
-if able.find(PlaceId,game.PlaceId) then
+if tableFind(PlaceId, game.PlaceId) then
     GameLoad = "Reroll"    
 end
 
