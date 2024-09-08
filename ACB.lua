@@ -4,8 +4,6 @@ local PlaceId = {
 }
 if game.PlaceId == 18138547215 then
     GameLoad = "Banana"
-elseif table.find(PlaceId,game.PlaceId) then
-    GameLoad = "CustomACB"    
 end    
 
 local var,err = pcall(function ()
