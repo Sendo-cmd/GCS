@@ -2,7 +2,7 @@ local GameLoad = nil
 local PlaceId = {
 	18138547215,18583778121,12900046592
 }
-if game.PlaceId == 18138547215 then
+if game.PlaceId == 12886143095 then
     GameLoad = "Reroll"
 end    
 
