@@ -3,7 +3,7 @@ local PlaceId = {
 	18138547215,18583778121,12900046592
 }
 if game.PlaceId == 12886143095 then
-    GameLoad = "Reroll"
+    GameLoad = "ALS_Reroll"
 elseif table.find(PlaceId,game.PlaceId) then
     GameLoad = "Reroll"
 end    
