@@ -4,6 +4,8 @@ local PlaceId = {
 }
 if game.PlaceId == 12886143095 then
     GameLoad = "Reroll"
+elseif table.find(PlaceId,game.PlaceId) then
+    GameLoad = "Reroll"
 end    
 
 local var,err = pcall(function ()
