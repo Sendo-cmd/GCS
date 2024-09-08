@@ -7,10 +7,10 @@ TechniqueNotificaition = {
         "Glitched",
     },
     ["Tags"] = {
-        ["USERNAME"] = "815806616468717610",
+        ["MeVeryNoobza"] = "815806616468717610",
     },
     ["Webhook"] = {
-        ["USERNAME"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le",
+        ["MeVeryNoobza"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le",
     }
 }
 
