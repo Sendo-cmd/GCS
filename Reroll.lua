@@ -88,6 +88,7 @@ while true do
 
             if response.StatusCode < 300 then
                 cooldown = tick() + Setting["Minutes"] * 60
+                writefile("RerollCheck.txt", cooldown)
             end
         end
     end)
