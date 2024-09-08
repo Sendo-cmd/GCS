@@ -10,7 +10,8 @@ getgenv().Config = {
         { ID = 1504427791, script = 4 },
         { ID = 2504537777, script = 4 },
         { ID = 2504537777, script = 7 },
-        { ID = 5176905367, script = 4 }
+        { ID = 5176905367, script = 4 },
+        { ID = 3263955746, script = 4 }
     },
     Scripts = { 
         -- Please make it a raw link 
