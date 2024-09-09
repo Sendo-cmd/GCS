@@ -1,6 +1,6 @@
 
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1282640420446404608/1282640862320263291/chap1.json?ex=66e017e3&is=66dec663&hm=e46ac10427e9a6d9e066418a698c66fdef55201b9aa89c6208a910c91a20ca48&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1282774939019116564/Igrisfarm.json?ex=66e094c2&is=66df4342&hm=97836621c54317e28a76d96b51b9b6419d2db910b971f3d6259060dda1e054ea&"
 getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "Igrisfarm",
