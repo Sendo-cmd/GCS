@@ -3,9 +3,9 @@ local PlaceId = {
 	12886143095,18583778121,12900046592
 }
 if game.PlaceId == 12886143095 then
-    GameLoad = "Kaitunlist"
+    GameLoad = "ALS_ACC"
 elseif table.find(PlaceId,game.PlaceId) then
-    GameLoad = "Kaitunlist"
+    GameLoad = "ALS_ACC"
 end
 
 local var,err = pcall(function ()
