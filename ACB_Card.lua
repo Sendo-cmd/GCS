@@ -8,6 +8,7 @@ ACBCardNotification = {
         ["Krv_kai43"] = "https://discord.com/api/webhooks/1281841266216276039/_nRzrWKIVEvuqRS9pp0MMHxKCcQCxCaStOlGu0_uhOHMdNUHAiqfc1YrsV7cuaN66rl8",
         ["Puggtopro"] = "https://discord.com/api/webhooks/1281991050835263520/IAgXcVnYeuRc0_DK_PpXZZbz3VinaVqnQ6ZLUCwAat2x79-0U1jyRVk45BG9slx-qcno",
         ["mbhl67679"] = "https://discord.com/api/webhooks/1282049202985373756/BJ1exJVnT7ve45-WxIhVW9ZtPwtCMAJ0pklZH2P2Vq4VPWhZRoZSnJwVfEcLXW-ED4d7",
+        ["mbhl67679"] = "https://discord.com/api/webhooks/1282758144778571847/Ul2FrDgY9A2CuKCcOwCXkipyNQXo94EhTjAPUjyPJW-vmY4yFsEqtPfL75pNR1nmrG2q",
     }
 }
 
