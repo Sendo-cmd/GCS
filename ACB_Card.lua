@@ -1,7 +1,7 @@
 repeat task.wait(20) until game:IsLoaded()
 
 ACBCardNotification = {
-    ["Chance"] = 500000,
+    ["Chance"] = 10000,
     ["Webhook"] = {
         ["Monooliaa_TH"] = "https://discord.com/api/webhooks/1279971994846101555/ANeo5MkMXZaJ8-0vxYEme5VDhGJhV1Lucs-8w7JfCYJ0FNWojec5K6_IWgq9mIDdPK55",
         ["Krv_kai43"] = "https://discord.com/api/webhooks/1281841266216276039/_nRzrWKIVEvuqRS9pp0MMHxKCcQCxCaStOlGu0_uhOHMdNUHAiqfc1YrsV7cuaN66rl8",
