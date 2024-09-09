@@ -1,5 +1,5 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1282774939019116564/Igrisfarm.json?ex=66e094c2&is=66df4342&hm=97836621c54317e28a76d96b51b9b6419d2db910b971f3d6259060dda1e054ea&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1282792802576502784/NarutoEvo.json?ex=66e0a565&is=66df53e5&hm=9b385aea370f372587e29c32be9d235ab5d2bf1a0f3240aa29d5572531a72748&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Webhook"] = {
