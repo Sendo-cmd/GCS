@@ -16,6 +16,8 @@ local Setting = ACBCardNotification
 local HttpService = game:GetService("HttpService")
 
 local plr = game.Players.LocalPlayer
+local CardInfo;
+local HelpfulModule;
 
 local Modules = game:GetService("ReplicatedStorage"):WaitForChild("Modules")
 
@@ -66,12 +68,12 @@ local RarityColor = {
     Universal = {50, 255, 215}
 }
 
-game:GetService("ReplicatedStorage").Remotes.ClientEffects.OnClientEvent:Connect(function(...)
+game:GetService("ReplicatedStorage"):WaitForChild("Remotes"):WaitForChild("ClientEffects").OnClientEvent:Connect(function(...)
     local args = {...}
 
-    local HelpfulModule = require(Modules.HelpfulModule)
+    HelpfulModule = require(Modules.HelpfulModule)
 
-    local CardInfo = require(Modules.CardInfo).CardInfo
+    CardInfo = require(Modules.CardInfo).CardInfo
 
     if args[1] == "OpenQuickPack" then
         local CardChance = args[2].CardChance
