@@ -21,11 +21,6 @@ local Modules = game:GetService("ReplicatedStorage"):WaitForChild("Modules")
 
 print("Modules Loaded ACB")
 
-local HelpfulModule = require(Modules.HelpfulModule)
-
-local CardInfo = require(Modules.CardInfo).CardInfo
-local CardEffects = require(Modules.CardEffects)
-
 function GetCardImage(Card)
     local AssetId = CardInfo[Card].Image:match("%d+")
     local url = "https://thumbnails.roblox.com/v1/assets?assetIds=" .. AssetId .. "&returnPolicy=PlaceHolder&size=700x700&format=Png&isCircular=false"
@@ -73,6 +68,11 @@ local RarityColor = {
 
 game:GetService("ReplicatedStorage").Remotes.ClientEffects.OnClientEvent:Connect(function(...)
     local args = {...}
+
+    local HelpfulModule = require(Modules.HelpfulModule)
+
+    local CardInfo = require(Modules.CardInfo).CardInfo
+
     if args[1] == "OpenQuickPack" then
         local CardChance = args[2].CardChance
         local CardName = args[2].CardName
@@ -125,4 +125,4 @@ game:GetService("ReplicatedStorage").Remotes.ClientEffects.OnClientEvent:Connect
     end
 end)
 
-print("Loaded ACB")
+print("Loaded")
