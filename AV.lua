@@ -25,5 +25,5 @@ getgenv().Config = {
 		["Ignore Macro Timing"] = true
 	}
 }
-getgenv().Key = ""
+getgenv().Key = "abfc3740a466190850e6bd048c08c76a81df3d2cdd80c373a9c137c1ad7c6481"
 loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()
