@@ -14,8 +14,8 @@ Games = {
         [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Obita.lua",
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
         [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS.lua",
-        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS2.lua",
-        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS3.lua",
+        [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS2.lua",
+        [8] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS3.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
@@ -83,7 +83,7 @@ Accounts = {
         9,
     },
     ["dmhcheer5774"] = {
-        9,
+        8,
     },
 
 }
