@@ -35,7 +35,7 @@ Accounts = {
         2,
     },
     ["zxasd2519k"] = {
-        1,
+        6,
     },
     ["xdyrdgyrdfg"] = {
         1,
