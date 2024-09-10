@@ -15,10 +15,6 @@ getgenv().Config = {
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
-	["Legend Stage Joiner"] = {
-		["Stage"] = "Sand Village",
-		["Act"] = "Act3"
-	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
