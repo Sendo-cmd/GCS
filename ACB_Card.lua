@@ -7,8 +7,8 @@ ACBCardNotification = {
         ["Monooliaa_TH"] = "https://discord.com/api/webhooks/1279971994846101555/ANeo5MkMXZaJ8-0vxYEme5VDhGJhV1Lucs-8w7JfCYJ0FNWojec5K6_IWgq9mIDdPK55",
         ["Krv_kai43"] = "https://discord.com/api/webhooks/1281841266216276039/_nRzrWKIVEvuqRS9pp0MMHxKCcQCxCaStOlGu0_uhOHMdNUHAiqfc1YrsV7cuaN66rl8",
         ["Puggtopro"] = "https://discord.com/api/webhooks/1281991050835263520/IAgXcVnYeuRc0_DK_PpXZZbz3VinaVqnQ6ZLUCwAat2x79-0U1jyRVk45BG9slx-qcno",
-        ["mbhl67679"] = "https://discord.com/api/webhooks/1282049202985373756/BJ1exJVnT7ve45-WxIhVW9ZtPwtCMAJ0pklZH2P2Vq4VPWhZRoZSnJwVfEcLXW-ED4d7",
-        ["mbhl67679"] = "https://discord.com/api/webhooks/1282758144778571847/Ul2FrDgY9A2CuKCcOwCXkipyNQXo94EhTjAPUjyPJW-vmY4yFsEqtPfL75pNR1nmrG2q",
+        ["Somrum11"] = "https://discord.com/api/webhooks/1282758144778571847/Ul2FrDgY9A2CuKCcOwCXkipyNQXo94EhTjAPUjyPJW-vmY4yFsEqtPfL75pNR1nmrG2q",
+        ["mbhl67679"] = "https://discord.com/api/webhooks/1282991717234249758/UE83hA16uohNcW5LUUmJVM00jyavhL9VmqODb87OuMG-wdPbfQvPOW71TPwf6jh6X-7F",
     }
 }
 
