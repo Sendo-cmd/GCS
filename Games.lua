@@ -91,7 +91,9 @@ repeat task.wait() until game:IsLoaded()
 local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
 for i,v in pairs(Accounts[plr.Name]) do
+    print(i, v)
     local ScriptUrl = Scripts[v];
+    print(ScriptUrl)
 
     local Functions = loadstring(game:HttpGet(ScriptUrl))
 
