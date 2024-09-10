@@ -1,5 +1,5 @@
 Games = {
-    [12886143095] = { --Anime-Last-Stand
+    [4509896324] = { --Anime-Last-Stand
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaDoAll.lua",
         [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaTrueRoll.lua",
         [3] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaTrueSummon.lua",
@@ -7,7 +7,7 @@ Games = {
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
     },
-    [16146832113] = { --Anime-Vanguards
+    [5578556129] = { --Anime-Vanguards
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
         [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM2.lua",
         [3] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS.lua",
@@ -15,7 +15,7 @@ Games = {
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Obita.lua",
         [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
     },
-    [18138547215] = { --Anime-Card-Battle
+    [6149138290] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
         [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
     }
