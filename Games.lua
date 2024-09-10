@@ -25,7 +25,7 @@ Games = {
 
 Accounts = {
     ["FireBlackDevilZ"] = {
-        5,
+        7,
     },
     ["MeVeryNoobza"] = {
         4,
