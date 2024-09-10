@@ -24,5 +24,5 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	}
 }
-getgenv().Key = "abfc3740a466190850e6bd048c08c76a81df3d2cdd80c373a9c137c1ad7c6481"
+getgenv().Key = ""
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden
