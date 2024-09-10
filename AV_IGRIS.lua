@@ -1,6 +1,6 @@
 
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1283049040765915206/1283049041034477618/hatdog.json?ex=66e19409&is=66e04289&hm=484c6fdda161e45ed61c82e3090b8863c2d7210e65f0a035b790735c937c80ec&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283058514591486084/hatdog.json?ex=66e19cdb&is=66e04b5b&hm=6cdcf00f3b2091ed46f6b0870c51142b20e6180f84dbacfdcfda524d4dc1a089&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
