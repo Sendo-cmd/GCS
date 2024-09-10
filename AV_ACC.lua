@@ -15,7 +15,7 @@ getgenv().Config = {
         ["Script 3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS.lua",
         ["Script 4"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_NARUTO.lua",
         ["Script 5"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Obita.lua",
-        ["Script 5"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
+        ["Script 6"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
     }
 }
 loadstring(game:HttpGet("https://raw.githubusercontent.com/Sendo-cmd/test/main/MultiUserExecute.lua"))()
