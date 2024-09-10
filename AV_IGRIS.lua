@@ -15,6 +15,10 @@ getgenv().Config = {
 		["Auto Join"] = true,
 		["Act"] = "Act3"
 	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true
+	},
 	["Auto Skip Wave"] = true,
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
