@@ -1,5 +1,5 @@
 Games = {
-    [18138547215] = { --Anime-Card-Battle
+    [12886143095] = { --Anime-Last-Stand
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaDoAll.lua",
         [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaTrueRoll.lua",
         [3] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaTrueSummon.lua",
@@ -15,7 +15,7 @@ Games = {
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Obita.lua",
         [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
     },
-    [12886143095] = { --Anime-Last-Stand
+    [18138547215] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
         [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
     }
