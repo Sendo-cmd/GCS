@@ -19,6 +19,10 @@ getgenv().Config = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
 	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true
+	},
 	["Macros"] = {
 		["Macro"] = "chap1",
 		["Play"] = true,
