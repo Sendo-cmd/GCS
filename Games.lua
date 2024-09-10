@@ -10,10 +10,12 @@ Games = {
     [5578556129] = { --Anime-Vanguards
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
         [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM2.lua",
-        [3] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS.lua",
-        [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_NARUTO.lua",
-        [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Obita.lua",
-        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
+        [3] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_NARUTO.lua",
+        [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Obita.lua",
+        [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
+        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS.lua",
+        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS2.lua",
+        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS3.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
