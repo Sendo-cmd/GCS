@@ -1,4 +1,3 @@
-
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283058514591486084/hatdog.json?ex=66e19cdb&is=66e04b5b&hm=6cdcf00f3b2091ed46f6b0870c51142b20e6180f84dbacfdcfda524d4dc1a089&"
 getgenv().Config = {
