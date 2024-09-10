@@ -19,6 +19,10 @@ getgenv().Config = {
 		["Macro"] = "NarutoEvo",
 		["Play"] = true
 	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true
+	},
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
 		["Auto Replay"] = true
