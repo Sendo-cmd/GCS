@@ -12,7 +12,7 @@ TechniqueNotificaition = {
     },
     ["Webhook"] = {
         ["MeVeryNoobza"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le",
-        ["Dxw2pz"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le",
+        ["Dxw2pz"] = "https://discord.com/api/webhooks/1283296291199385620/q-o8ec8YLpKN2ipvrBWEd5cPz7qzS8MTiFssuRv8lwbFiEYx_yYoD74fOxrQyvlUqtsx",
     }
 }
 
