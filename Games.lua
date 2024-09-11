@@ -19,6 +19,7 @@ Games = {
         [9] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS4.lua",
         [10] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS5.lua",
         [11] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS6.lua",
+        [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
@@ -90,6 +91,12 @@ Accounts = {
     },
     ["FestaKMT"] = {
         10,
+    },
+    ["FPS1000zH25"] = {
+        12,
+    },
+    ["EAzxc013"] = {
+        12,
     },
 
 }
