@@ -6,6 +6,7 @@ Games = {
         [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
+        [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyALS.lua",
     },
     [5578556129] = { --Anime-Vanguards
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
@@ -17,6 +18,7 @@ Games = {
         [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS2.lua",
         [8] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS3.lua",
         [9] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS4.lua",
+        [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
