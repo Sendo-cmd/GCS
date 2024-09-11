@@ -20,7 +20,7 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "hatdog",
+		["Macro"] = "hatdognoevo",
 		["Play"] = true
 	}
 }
