@@ -1,3 +1,5 @@
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1282979017955217428/ObitaEvo.json?ex=66e152d2&is=66e00152&hm=11053f94869d57ee97aca37f289e0052a789fd8300028922dc8123ad73c37c00&"
 getgenv().Config = {

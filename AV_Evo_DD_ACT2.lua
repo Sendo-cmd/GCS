@@ -1,3 +1,5 @@
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283530749886332939/Evo_DD_ACT2.json?ex=66e354a9&is=66e20329&hm=98482f17636486a685dcb2ed63e7a66b498adeae608b4f1a357bb3e5cbaacf73&"
 getgenv().Config = {

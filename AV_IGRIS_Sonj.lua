@@ -1,3 +1,5 @@
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522079211393074/LSDD3_Sonj.json?ex=66e34c96&is=66e1fb16&hm=7660b51e4c0ae2201264e0cc948c05e7094cc93de96c6fae4d90c71dee2fea7e&"
 getgenv().Config = {

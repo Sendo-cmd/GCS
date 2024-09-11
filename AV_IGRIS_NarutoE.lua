@@ -1,3 +1,5 @@
+game:GetService("RunService"):Set3dRenderingEnabled(false)
+
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522081266602025/LSDD3_NarutoE.json?ex=66e34c96&is=66e1fb16&hm=17e2641f3acc54a20f32642feea779237f3f4486c88a31aa5a4bd08b2a89d191&"
 getgenv().Config = {
