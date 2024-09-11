@@ -1,5 +1,5 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283147768881352724/hatdogNoro.json?ex=66e1effb&is=66e09e7b&hm=f145fc3f328246e5d0c91befb003e0116bbe0e15820cab4548ce80164facd951&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522470774833204/LSDD3LD.json?ex=66e34cf3&is=66e1fb73&hm=327a6d12bdd2d6d71ae4d03ac538915c584024135eedebdff98c1957478f71e2&"
 getgenv().Config = {
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Double Dungeon",
