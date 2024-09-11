@@ -1,10 +1,10 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283148946067161219/legendsIGRIS.json?ex=66e1f114&is=66e09f94&hm=3345af99bd65b258d733fa3d66036e701985c3d218a8e3ceeb7a433ca468094c&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522081266602025/LSDD3_NarutoE.json?ex=66e34c96&is=66e1fb16&hm=17e2641f3acc54a20f32642feea779237f3f4486c88a31aa5a4bd08b2a89d191&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
-		["Auto Join"] = true,
 		["Stage"] = "Double Dungeon",
+		["Auto Join"] = true,
 		["Act"] = "Act3"
 	},
 	["Failsafe"] = {
@@ -20,9 +20,8 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "legendsIGRIS",
-		["Play"] = true,
-    ["Ignore Macro Timing"] = true
+		["Macro"] = "LSDD3_NarutoE",
+		["Play"] = true
 	}
 }
 getgenv().Key = "991de35c3d962501b5befd2a8d6428b3a245c052ff43f2d37d44bffec7154938"

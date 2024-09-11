@@ -1,5 +1,5 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283305951977275425/hatdognoki.json?ex=66e2834d&is=66e131cd&hm=5607dab143773f824663fcc5cf0afc399cd77a9ee65e1ddbae8e35c594e22a0d&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522080075415593/LSDD3_Chain.json?ex=66e34c96&is=66e1fb16&hm=d3c4952feb50db4b63c7ba049869326fcd99d5794fe893cf2360de00e6359d20&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
@@ -20,7 +20,7 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "hatdognoki",
+		["Macro"] = "LSDD3_Chain",
 		["Play"] = true
 	}
 }

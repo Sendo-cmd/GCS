@@ -1,10 +1,10 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283390576514961479/hatdognoevo.json?ex=66e2d21d&is=66e1809d&hm=3b241882891626ee5f351337854e8043c55fdb4bf7757ab1d894d1f31a9bc701&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522081631375381/LSDD3_Obita.json?ex=66e34c96&is=66e1fb16&hm=8e6b7c5e2c294b09d964c0215b134f9d5aaf3ee72d8a5988b7f78d46b01edbc3&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
-		["Auto Join"] = true,
 		["Stage"] = "Double Dungeon",
+		["Auto Join"] = true,
 		["Act"] = "Act3"
 	},
 	["Failsafe"] = {
@@ -20,7 +20,7 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "hatdognoevo",
+		["Macro"] = "LSDD3_Obita",
 		["Play"] = true
 	}
 }
