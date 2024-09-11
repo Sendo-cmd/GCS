@@ -25,9 +25,9 @@ Games = {
         [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT1.lua",
         [16] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT1_2.lua",
         [17] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT2.lua",
-        [18] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT1.lua",
-        [19] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT2.lua",
-        [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT3.lua",
+        [18] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT1.lua",
+        [19] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT2.lua",
+        [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT3.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
