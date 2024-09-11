@@ -1,5 +1,5 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283269074914119733/VogitanDDNoevo.txt?ex=66e260f5&is=66e10f75&hm=cf9cff83e5f118b053c7cae9949306ed970cfa6f0779240aed362b7162419dad&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283270741122486304/VogitanDDNoevo.json?ex=66e26282&is=66e11102&hm=727607090ca94d08693a8e2fb1a7c3c8e958cfca8802800d6aa81004c9717ec5&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
@@ -20,7 +20,7 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "hatdogNoro",
+		["Macro"] = "VogitanDDNoevo",
 		["Play"] = true,
     ["Ignore Macro Timing"] = true
 	}
