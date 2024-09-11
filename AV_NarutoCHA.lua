@@ -10,7 +10,10 @@ getgenv().Config = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
 	},
-	["AutoSave"] = true,
+	["Macros"] = {
+		["Macro"] = "NarutoEvoCh",
+		["Play"] = true
+	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
@@ -18,10 +21,6 @@ getgenv().Config = {
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
 		["Auto Replay"] = true
-	},
-	["Macros"] = {
-		["Macro"] = "NarutoEvoCh",
-		["Play"] = true
 	}
 }
 getgenv().Key = "991de35c3d962501b5befd2a8d6428b3a245c052ff43f2d37d44bffec7154938"
