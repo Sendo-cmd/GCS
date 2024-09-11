@@ -20,12 +20,14 @@ Games = {
         [10] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SasukeE.lua",
         [11] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj.lua",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
-        [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_LD.lua",
-        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DDACT1.lua",
-        [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DDACT2.lua",
-        [16] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT1.lua",
-        [17] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT2.lua",
-        [18] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT3.lua",
+        [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj2.lua",
+        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_LD.lua",
+        [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DDACT1.lua",
+        [16] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DDACT1_2.lua",
+        [17] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DDACT2.lua",
+        [18] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT1.lua",
+        [19] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT2.lua",
+        [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT3.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
@@ -79,7 +81,7 @@ Accounts = {
         2,
     },
     ["Puggtopro"] = {
-        14,
+        15,
     },
     ["MakarlokXD"] = {
         1,
@@ -88,7 +90,7 @@ Accounts = {
         1,
     },
     ["Etaa_xm"] = {
-        6,
+        1,
     },
     ["iPram0"] = {
         1,
@@ -97,20 +99,36 @@ Accounts = {
         9,
     },
     ["FestaKMT"] = {
-        10,
+        13,
     },
     ["FPS1000zH25"] = {
-        15,
+        16,
     },
     ["EAzxc013"] = {
-        13,
+        11,
     },
     ["Gailuck_0062"] = {
         1,
     },
     ["essono1"] = {
+        14,
+    },
+    ["fonaujang191"] = {
         8,
     },
+    ["goddam_002"] = {
+        1,
+    },
+    ["offj_0383"] = {
+        11,
+    },
+    ["PunnSoCool"] = {
+        1,
+    },
+    ["wexd45"] = {
+        11,
+    },
+
 }
 
 repeat task.wait() until game:IsLoaded()

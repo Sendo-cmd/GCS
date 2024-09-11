@@ -1,11 +1,11 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283542125098565743/LSDD3_ChainE.json?ex=66e35f41&is=66e20dc1&hm=3f4f833d48f65188ec2d0cc5e76bcdbf430e80e4c4e329bf2a4c24e2b6187c6b&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283537970695114836/Evo_DD_ACT1_2.json?ex=66e35b63&is=66e209e3&hm=4c34d2387961ee8f70862c27187f77037f35389f07caae85393953da6f567ad8&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
-		["Auto Join"] = true,
 		["Stage"] = "Double Dungeon",
-		["Act"] = "Act3"
+		["Auto Join"] = true,
+		["Act"] = "Act1"
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
@@ -20,7 +20,7 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "LSDD3_ChainE",
+		["Macro"] = "Evo_DD_ACT1_2",
 		["Play"] = true
 	}
 }
