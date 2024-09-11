@@ -99,7 +99,9 @@ Accounts = {
     ["EAzxc013"] = {
         13,
     },
-
+    ["Gailuck_0062"] = {
+        1,
+    },
 }
 
 repeat task.wait() until game:IsLoaded()
