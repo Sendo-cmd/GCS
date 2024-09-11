@@ -1,5 +1,5 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283058514591486084/hatdog.json?ex=66e19cdb&is=66e04b5b&hm=6cdcf00f3b2091ed46f6b0870c51142b20e6180f84dbacfdcfda524d4dc1a089&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522078879907960/LSDD3_SasukeE.json?ex=66e34c96&is=66e1fb16&hm=b18bea2261ba84d4ede4ac059329cb195b131064ec3dc97e6484e2921338591d&"
 getgenv().Config = {
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Double Dungeon",
@@ -12,7 +12,7 @@ getgenv().Config = {
 	},
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Macro"] = "LSDD3",
+		["Macro"] = "LSDD3_SasukeE",
 		["Ignore Macro Timing"] = true,
 		["Play"] = true
 	},
