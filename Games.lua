@@ -73,7 +73,7 @@ Accounts = {
         1,
         2,
     },
-    ["puggtopro"] = {
+    ["Puggtopro"] = {
         14,
     },
     ["MakarlokXD"] = {
