@@ -21,7 +21,7 @@ Games = {
         [11] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS6.lua",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CHAIN.lua",
         [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS7.lua",
-        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_NARUTOCH.lua",
+        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_NarutoCHA.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
