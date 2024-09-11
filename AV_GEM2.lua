@@ -1,5 +1,5 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1282909806738538517/520Namak.txt?ex=66e1125d&is=66dfc0dd&hm=0dce0a5e239e7e733c45c17a6d8d3c200365f93073d60682d35795bfdf80997d&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1282909806738538517/520Namak.txt?ex=66e1bb1d&is=66e0699d&hm=d5efc3b0288008434a847cd00ae979e78ff2ddd097ac601b47757cea51a3146f&"
 getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "520Namak",
