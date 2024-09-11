@@ -20,7 +20,7 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "hatdogNoro",
+		["Macro"] = "legendsIGRIS",
 		["Play"] = true,
     ["Ignore Macro Timing"] = true
 	}
