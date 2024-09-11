@@ -1,5 +1,5 @@
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283341385994600480/chap1.json?ex=66e2a44d&is=66e152cd&hm=53d42b4547346882367dbe698bfc1f6c950a19766f1c5fbdf823efeb07e009f4&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283534595534618737/GEM.json?ex=66e3583e&is=66e206be&hm=f9ea81851e4002d86db9646f7ba61644df3b168e55f9f96cf375143ee5757682&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Stage Joiner"] = {
@@ -20,7 +20,7 @@ getgenv().Config = {
 		["Boost FPS"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "chap1",
+		["Macro"] = "GEM",
 		["Play"] = true,
 		["Ignore Macro Timing"] = true
 	}

@@ -21,9 +21,11 @@ Games = {
         [11] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj.lua",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
         [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_LD.lua",
-        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_.lua",
-        [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_.lua",
-        
+        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DDACT1.lua",
+        [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DDACT2.lua",
+        [16] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT1.lua",
+        [17] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT2.lua",
+        [18] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SVACT3.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
@@ -77,7 +79,7 @@ Accounts = {
         2,
     },
     ["Puggtopro"] = {
-        15,
+        14,
     },
     ["MakarlokXD"] = {
         1,
