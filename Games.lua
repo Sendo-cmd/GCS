@@ -29,11 +29,13 @@ Games = {
 Accounts = {
     ["FireBlackDevilZ"] = {
         7,
+        99,
     },
     ["MeVeryNoobza"] = {
         4,
         5,
         6,
+        99,
     },
     ["Nelida5865"] = {
         1,
@@ -41,15 +43,19 @@ Accounts = {
     },
     ["zxasd2519k"] = {
         5,
+        99,
     },
     ["xdyrdgyrdfg"] = {
         1,
+        99,
     },
     ["N2w22"] = {
         1,
+        99,
     },
     ["xOFubukiOx"] = {
         1,
+        99,
     },
     ["Somrum11"] = {
         1,
@@ -58,6 +64,7 @@ Accounts = {
         4,
         5,
         6,
+        99,
     },
     ["mbhl67679"] = {
         1,
@@ -65,6 +72,7 @@ Accounts = {
     },
     ["noon2222220000000000"] = {
         1,
+        99,
     },
     ["OcP9XrO"] = {
         1,
@@ -72,24 +80,31 @@ Accounts = {
     },
     ["puggtopro"] = {
         8,
+        99,
     },
     ["MakarlokXD"] = {
         1,
+        99,
     },
     ["Demonx_Hunt"] = {
         2,
+        99,
     },
     ["Etaa_xm"] = {
         6,
+        99,
     },
     ["iPram0"] = {
         9,
+        99,
     },
     ["dmhcheer5774"] = {
         9,
+        99,
     },
     ["FestaKMT"] = {
         9,
+        99,
     },
 
 }
