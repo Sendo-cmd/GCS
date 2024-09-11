@@ -18,6 +18,7 @@ Games = {
         [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS2.lua",
         [8] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS3.lua",
         [9] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS4.lua",
+        [10] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS5.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
     },
     [6149138290] = { --Anime-Card-Battle
