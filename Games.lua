@@ -80,7 +80,7 @@ Accounts = {
         1,
     },
     ["Demonx_Hunt"] = {
-        2,
+        1,
     },
     ["Etaa_xm"] = {
         6,
