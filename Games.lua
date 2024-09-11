@@ -34,7 +34,7 @@ Games = {
 
 Accounts = {
     ["FireBlackDevilZ"] = {
-        7,
+        6,
     },
     ["MeVeryNoobza"] = {
         4,
@@ -46,7 +46,7 @@ Accounts = {
         2,
     },
     ["zxasd2519k"] = {
-        11,
+        14,
     },
     ["xdyrdgyrdfg"] = {
         1,
@@ -77,7 +77,7 @@ Accounts = {
         2,
     },
     ["Puggtopro"] = {
-        14,
+        15,
     },
     ["MakarlokXD"] = {
         1,
@@ -98,7 +98,7 @@ Accounts = {
         10,
     },
     ["FPS1000zH25"] = {
-        12,
+        15,
     },
     ["EAzxc013"] = {
         13,
