@@ -1,3 +1,4 @@
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 script_key="MLThvpDsrBEwPsfMmXmZLfbVnBBULRFl";

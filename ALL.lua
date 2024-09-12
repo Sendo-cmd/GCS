@@ -1,4 +1,5 @@
 repeat task.wait() until game:IsLoaded()
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().Key = "MARU-E718N-RO0S-GMW2H-36D2-2XEPG"
