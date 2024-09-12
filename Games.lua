@@ -50,7 +50,7 @@ Accounts = {
         2,
     },
     ["zxasd2519k"] = {
-        14,
+        8,
     },
     ["xdyrdgyrdfg"] = {
         12,
