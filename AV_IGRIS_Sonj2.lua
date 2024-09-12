@@ -15,7 +15,6 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
 		["Macro"] = "LSDD3_Sonj2",
-		["Ignore Macro Timing"] = true,
 		["Play"] = true
 	},
 	["Auto Skip Wave"] = true,

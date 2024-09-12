@@ -24,7 +24,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "ObitaEvo",
 		["Play"] = true,
-		["Ignore Macro Timing"] = true
 	},
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
