@@ -16,6 +16,10 @@ getgenv().Config = {
 		["Macro"] = "NarutoEvoCh",
 		["Play"] = true
 	},
+	["Claimer"] = {
+		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Quest"] = true
+	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
