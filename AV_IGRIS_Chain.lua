@@ -21,6 +21,10 @@ getgenv().Config = {
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
+	["Claimer"] = {
+		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Quest"] = true
+	},
 	["Macros"] = {
 		["Macro"] = "LSDD3_Chain",
 		["Play"] = true

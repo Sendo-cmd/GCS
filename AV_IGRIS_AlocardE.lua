@@ -1,13 +1,13 @@
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283530749542273045/Evo_DD_ACT1.json?ex=66e354a9&is=66e20329&hm=08427ffa89444dc03edf67ca06138d207e3ddb8b29e5632222bd03eb75fabce8&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283725548635422824/LSDD3_AlocardE.json?ex=66e40a15&is=66e2b895&hm=5db6c110d009ca53f9c60d6692aa44c41785890e4c95156cb799969787c566c9&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Double Dungeon",
 		["Auto Join"] = true,
-		["Act"] = "Act1"
+		["Act"] = "Act3"
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
@@ -26,7 +26,7 @@ getgenv().Config = {
 		["Auto Claim Quest"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "Evo_DD_ACT1",
+		["Macro"] = "LSDD3_AlocardE",
 		["Play"] = true
 	}
 }
