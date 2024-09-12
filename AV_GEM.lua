@@ -21,6 +21,10 @@ getgenv().Config = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
 	},
+	["Claimer"] = {
+		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Quest"] = true
+	},
 	["Macros"] = {
 		["Macro"] = "GEM",
 		["Play"] = true,
