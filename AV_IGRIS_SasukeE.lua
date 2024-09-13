@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283522078879907960/LSDD3_SasukeE.json?ex=66e34c96&is=66e1fb16&hm=b18bea2261ba84d4ede4ac059329cb195b131064ec3dc97e6484e2921338591d&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284223986968039524/LSDD3_SasukeE.json?ex=66e5da4a&is=66e488ca&hm=75bf53b77123d7928571f485b11e17330d9502246de54a07f571822fc33b86ef&"
 getgenv().Config = {
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Double Dungeon",
