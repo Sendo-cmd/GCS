@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1283530749542273045/Evo_DD_ACT1.json?ex=66e354a9&is=66e20329&hm=08427ffa89444dc03edf67ca06138d207e3ddb8b29e5632222bd03eb75fabce8&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284224165095805082/1284224165448122430/Evo_DD_ACT1.json?ex=66e5da74&is=66e488f4&hm=a81aed37ec0d4228049c62947f584dc1821a935a0971ee7e60b38fe21fb3e639&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
