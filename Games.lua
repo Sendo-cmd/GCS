@@ -21,13 +21,15 @@ Games = {
         [11] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj.lua",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
         [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj2.lua",
-        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_LD.lua",
-        [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT1.lua",
-        [16] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT12.lua",
-        [17] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT2.lua",
-        [18] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT1.lua",
-        [19] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT2.lua",
-        [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT3.lua",
+        [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Vegeta.lua",
+        [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_VegetaE.lua",
+        [16] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_LD.lua",
+        [17] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT1.lua",
+        [18] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT12.lua",
+        [19] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_DD_ACT2.lua",
+        [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT1.lua",
+        [21] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT2.lua",
+        [22] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT3.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
@@ -84,7 +86,7 @@ Accounts = {
         2,
     },
     ["Puggtopro"] = {
-        17,
+        18,
     },
     ["MakarlokXD"] = {
         1,
