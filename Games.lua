@@ -86,7 +86,7 @@ Accounts = {
     ["Puggtopro"] = {
         18,
     },
-    ["MakarlokXD"] = {
+    ["Realboomisgod"] = {
         1,
     },
     ["Demonx_Hunt"] = {
