@@ -24,7 +24,10 @@ getgenv().Config = {
 	},
 	["Claimer"] = {
 		["Auto Claim Battle Pass"] = true,
-		["Auto Claim Quest"] = true
+		["Auto Claim Quest"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Daily Reward"] = true
 	},
 	["Macros"] = {
 		["Macro"] = "LSDD3_Vegeta",
