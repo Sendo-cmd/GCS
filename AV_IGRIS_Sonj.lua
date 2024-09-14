@@ -34,7 +34,11 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Macro"] = "LSDD3_Sonj",
-		["Play"] = true,
+		["Stage Macro"] = {
+
+		},
+		["Ignore Macro Timing"] = true,
+		["Play"] = true
 	}
 }
 getgenv().Key = "f8c7bbe45c7e83156da82c462c877eceb9fe818f3765b22d0763da346311a3e5"
