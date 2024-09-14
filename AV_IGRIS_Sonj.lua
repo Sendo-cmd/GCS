@@ -34,10 +34,6 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Macro"] = "LSDD3_Sonj",
-		["Stage Macro"] = {
-
-		},
-		["Ignore Macro Timing"] = true,
 		["Play"] = true
 	}
 }
