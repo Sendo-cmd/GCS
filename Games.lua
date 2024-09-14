@@ -61,7 +61,7 @@ Accounts = {
     ["Thai_WilYuLaw"] = {
         12,
     },
-    ["Maxirokiriteo"] = {
+    ["MaxiroKiriteo"] = {
         11,
     },
     ["Somrum11"] = {
