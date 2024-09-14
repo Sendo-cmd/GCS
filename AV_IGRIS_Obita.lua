@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284223985466347591/LSDD3_Obita.json?ex=66e5da49&is=66e488c9&hm=0fb5d1b371d55d2f3f05d7276525b8e75844f980240769352db42b3e76779a3e&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284458639289090149/LSDD3_Obita.json?ex=66e6b4d3&is=66e56353&hm=15a8299000b40ba87761122fa0f301261e909ac35be2d2ae873347742a7ff0c8&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
