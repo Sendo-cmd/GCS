@@ -32,6 +32,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "LSDD3_Sasuke",
 		["Play"] = true,
+		["Ignore Macro Timing"] = true
 	}
 }
 getgenv().Key = "f8c7bbe45c7e83156da82c462c877eceb9fe818f3765b22d0763da346311a3e5"
