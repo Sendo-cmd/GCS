@@ -45,10 +45,8 @@ Accounts = {
     ["Champandbank147"] = {
         11,
     },
-    ["MeVeryNoobza"] = {
-        4,
-        5,
-        6,
+    ["ASKINGZ12_43"] = {
+        1,
     },
     ["Nelida5865"] = {
         1,
@@ -60,11 +58,11 @@ Accounts = {
     ["xdyrdgyrdfg"] = {
         12,
     },
-    ["N2w22"] = {
-        1,
+    ["Thai_WilYuLaw"] = {
+        12,
     },
-    ["xOFubukiOx"] = {
-        1,
+    ["Maxirokiriteo"] = {
+        11,
     },
     ["Somrum11"] = {
         1,
