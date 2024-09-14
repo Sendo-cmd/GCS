@@ -3,7 +3,7 @@ repeat task.wait(20) until game:IsLoaded()
 ACBCardNotification = {
     ["Chance"] = 100000,
     ["Webhook"] = {
-        ["Nelida5865"] = "https://discord.com/api/webhooks/1282367730988613726/ZgvFAVVTjJ1UlQDN_pUfzTzKmZmZZqPY3DylZ6pgOKdHuQTWDXcb3Q_yrEWX7wzOObFM",
+        ["Nelida5865"] = "https://discord.com/api/webhooks/1284369121655525518/2VE5iJ5LLo6I6IZ3H2ojWRTRrXKe6Nh90VxtbFgOp2hKVoPAQzEKsicsQv2mU90txxL3",
         ["Mongkuyraikrub"] = "https://discord.com/api/webhooks/1283796639370186844/9LrYkkHHoUwDukholGGSlC_drYwkuW-RSP0UWgJ84QbiXpuaN-_dQD2MWcxh_0vBZ0OU",
         ["OcP9XrO"] = "https://discord.com/api/webhooks/1283796746169745452/i1xDxB8AKn692rizAZDey9LM1lAyZNLwW_DzRSi4KovEn6v1hLwjTREPmnO0B276yoI3",
         ["Puggtopro"] = "https://discord.com/api/webhooks/1281991050835263520/IAgXcVnYeuRc0_DK_PpXZZbz3VinaVqnQ6ZLUCwAat2x79-0U1jyRVk45BG9slx-qcno",
