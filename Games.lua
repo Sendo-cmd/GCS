@@ -110,8 +110,8 @@ Accounts = {
     ["Gailuck_0062"] = {
         1,
     },
-    ["essono1"] = {
-        14,
+    ["Nx_blacklazy"] = {
+        6,
     },
     ["fonaujang191"] = {
         8,
