@@ -95,7 +95,7 @@ Accounts = {
     ["Etaa_xm"] = {
         1,
     },
-    ["iPram0"] = {
+    ["Realboomisgod"] = {
         1,
     },
     ["dmhcheer5774"] = {
