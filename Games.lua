@@ -86,16 +86,13 @@ Accounts = {
     ["Puggtopro"] = {
         18,
     },
-    ["MakarlokXD"] = {
+    ["Realboomisgod"] = {
         1,
     },
     ["Demonx_Hunt"] = {
         1,
     },
     ["Etaa_xm"] = {
-        1,
-    },
-    ["iPram0"] = {
         1,
     },
     ["dmhcheer5774"] = {
