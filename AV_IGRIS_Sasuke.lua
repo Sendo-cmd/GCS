@@ -1,6 +1,7 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
+getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284458639704457236/LSDD3_Sasuke.json?ex=66e80653&is=66e6b4d3&hm=85ab710bfd36b1ca05f6b9eb244cd5ebf4e2b0c9ea13f22b9536c9b6cefdc0ef&"
 getgenv().Config = {
