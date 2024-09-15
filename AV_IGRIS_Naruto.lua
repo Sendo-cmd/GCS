@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284458638903087168/LSDD3_Naruto.json?ex=66e6b4d3&is=66e56353&hm=8951a562967de6ed5ea4ee60d911e05209ac1ebad47dfaf18e93a469a08998f2&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284458638903087168/LSDD3_Naruto.json?ex=66e80653&is=66e6b4d3&hm=5729a2f7d62f3ef84cee0c496f31612a6c3b40e10f689528d765d34187d790f2&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
