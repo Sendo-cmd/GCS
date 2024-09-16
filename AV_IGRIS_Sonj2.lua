@@ -25,6 +25,47 @@ getgenv().Config = {
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
+	getgenv().Config = {
+	["AutoSave"] = true,
+	["Legend Stage Joiner"] = {
+		["Stage"] = "Double Dungeon",
+		["Auto Join"] = true,
+		["Act"] = "Act3"
+	},
+	["Claimer"] = {
+		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Quest"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Daily Reward"] = true
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true,
+		["Teleport Lobby if Player"] = true
+	},
+	["Match Finished"] = {
+		["Auto Replay"] = true
+	},
+	["Macros"] = {
+		["Macro"] = "LSDD3_Sonj",
+		["Play"] = true,
+		["Walk Around"] = true
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true
+	},
+	["Gameplay"] = {
+		["Auto Skip Wave"] = true,
+		["Auto Sell"] = {
+			["Wave"] = 1
+		}
+	},
+	["Webhook"] = {
+		["Stage Finished"] = true,
+		["URL"] = "https://discord.com/api/webhooks/1016102161689612338/sjdnR-tIozI-JO_gFSy9nZ7G2PV51hJdH7jn4sK4chO7sM4Ab5igib97uQZ6azN1WyX2"
+	}
+}
 	["Claimer"] = {
 		["Auto Claim Battle Pass"] = true,
 		["Auto Claim Quest"] = true,
