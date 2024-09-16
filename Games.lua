@@ -113,6 +113,12 @@ Accounts = {
     ["Gailuck_0062"] = {
         1,
     },
+    ["okun474"] = {
+        1,
+    },
+    ["notyuio111"] = {
+        1,
+    },
     ["Nx_BlackLazy"] = {
         6,
     },
