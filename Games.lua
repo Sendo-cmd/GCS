@@ -31,6 +31,7 @@ Games = {
         [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT1.lua",
         [21] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT2.lua",
         [22] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT3.lua",
+        [23] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM3.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
@@ -160,7 +161,7 @@ Accounts = {
         12,
     },
     ["RiceBing"] = {
-        3,
+        23,
     },
 
 }
