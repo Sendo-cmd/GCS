@@ -87,7 +87,7 @@ Accounts = {
         2,
     },
     ["Puggtopro"] = {
-        3,
+        1,
     },
     ["Realboomisgod"] = {
         1,
