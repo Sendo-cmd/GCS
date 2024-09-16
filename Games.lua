@@ -59,7 +59,7 @@ Accounts = {
         8,
     },
     ["xdyrdgyrdfg"] = {
-        12,
+        1,
     },
     ["Thai_WilYuLaw"] = {
         12,
