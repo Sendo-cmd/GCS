@@ -1,6 +1,7 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
+getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66e8ffb3&is=66e7ae33&hm=ebca13baf66a3c9e1afe01aeee0ed9cdbae512517c29c479921cfb730958e9eb&"

@@ -1,6 +1,7 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game:GetService("RunService"):Set3dRenderingEnabled(false)
 
+getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/774011709358080021/1282792802576502784/NarutoEvo.json?ex=66e0a565&is=66df53e5&hm=9b385aea370f372587e29c32be9d235ab5d2bf1a0f3240aa29d5572531a72748&"
