@@ -33,6 +33,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "LSDD3_Vegeta",
 		["Play"] = true,
+		["Walk Around"] = true,
 		["Ignore Macro Timing"] = false
 	}
 }

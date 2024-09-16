@@ -8,7 +8,8 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "GEM2",
 		["Play"] = true,
-		["Ignore Macro Timing"] = true
+		["Ignore Macro Timing"] = true,
+		["Walk Around"] = true
 	},
 	["AutoSave"] = true,
 	["Stage Joiner"] = {

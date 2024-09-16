@@ -17,7 +17,8 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Macro"] = "NarutoEvo",
-		["Play"] = true
+		["Play"] = true,
+		["Walk Around"] = true
 	},
 	["Claimer"] = {
 		["Auto Claim Battle Pass"] = true,

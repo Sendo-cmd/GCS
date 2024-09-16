@@ -17,7 +17,8 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
 		["Macro"] = "LSDD3_Sonj2",
-		["Play"] = true
+		["Play"] = true,
+		["Walk Around"] = true
 	},
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
