@@ -23,7 +23,7 @@ getgenv().Config = {
 	},
 	["Webhook"] = {
 		["Stage Finished"] = false,
-		["URL"] = ""
+		["URL"] = "https://discord.com/api/webhooks/1016102161689612338/sjdnR-tIozI-JO_gFSy9nZ7G2PV51hJdH7jn4sK4chO7sM4Ab5igib97uQZ6azN1WyX2"
 	},
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
