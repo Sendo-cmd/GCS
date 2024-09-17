@@ -18,6 +18,10 @@ getgenv().Config = {
 		["Act"] = "Act1",
 		["Stage"] = "Planet Namak"
 	},
+	["Webhook"] = {
+		["Stage Finished"] = true,
+		["URL"] = "https://discord.com/api/webhooks/1016102161689612338/sjdnR-tIozI-JO_gFSy9nZ7G2PV51hJdH7jn4sK4chO7sM4Ab5igib97uQZ6azN1WyX2"
+	},
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
