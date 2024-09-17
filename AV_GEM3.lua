@@ -7,7 +7,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223416110415964/1285244706502213632/GEM3.json?ex=66ea39a8&is=66e8e828&hm=01ff41855d4b8cec655f46e1e3a281890378102a95ed8fb54b92d6556b9f3d86&"
 getgenv().Config = {
 	["Macros"] = {
-		["Macro"] = "GEM2",
+		["Macro"] = "GEM3",
 		["Play"] = true,
 		["Ignore Macro Timing"] = true,
 		["Walk Around"] = true
