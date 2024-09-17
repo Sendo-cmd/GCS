@@ -4,7 +4,7 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284458639704457236/LSDD3_Sasuke.json?ex=66e957d3&is=66e80653&hm=11ee7dd02982068bcdd3f983d98b59bd5970fca80aeea9b675da7d3bac22325d&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284458639704457236/LSDD3_Sasuke.json?ex=66ea0093&is=66e8af13&hm=33e5150c4370a76b0d4a4785ed296eb542380f082e7882eb3211b10fcee1d3fc&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
