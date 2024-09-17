@@ -6,7 +6,7 @@ Games = {
         [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
-        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_X.lua",
+        [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_X.lua",
     },
     [5578556129] = { --Anime-Vanguards
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
