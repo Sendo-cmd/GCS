@@ -28,6 +28,7 @@ getgenv().Config = {
 		["Auto Claim Collection"] = true,
 		["Auto Claim Daily Reward"] = true
 	},
+	["Joiner Cooldown"] = 5,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
