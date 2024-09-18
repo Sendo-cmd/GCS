@@ -37,5 +37,5 @@ getgenv().Config = {
 		["Boost FPS"] = true
 	}
 }
-getgenv().Key = "a7d5f4649b92e5bbc5833146793b40c220c845c8487fc9b643ae5d4f3cc679c4"
+getgenv().Key = "k517c79e9160307a9b87210d"
 repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden
