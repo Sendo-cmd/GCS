@@ -4,7 +4,7 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284223984140947589/LSDD3_ChainE.json?ex=66e9cec9&is=66e87d49&hm=030448ff1aa22177693858c6cf32ef6b8a8e7007020e6d6d978fc0c1726887bf&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284223984140947589/LSDD3_ChainE.json?ex=66eb2049&is=66e9cec9&hm=ee1f208d6d0855aff61ebefd6bd9fbd95bd69afb721169900a2ec0fc34c1bab3&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
