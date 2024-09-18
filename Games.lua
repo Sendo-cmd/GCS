@@ -21,7 +21,7 @@ Games = {
         [10] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SasukeE.lua",
         [11] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj.lua",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
-        [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj2.lua",
+        [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Chain2.lua",
         [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Vegeta.lua",
         [15] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_VegetaE.lua",
         [16] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_LD.lua",
@@ -164,7 +164,7 @@ Accounts = {
         1,
     },
     ["B1za12345"] = {
-        3,
+        13,
     },
     ["UMH_x7"] = {
         1,
