@@ -21,7 +21,6 @@ getgenv().Config = {
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
-	["Auto Skip Wave"] = true,
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
