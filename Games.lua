@@ -32,6 +32,8 @@ Games = {
         [21] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT2.lua",
         [22] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EVO_SV_ACT3.lua",
         [23] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM3.lua",
+        [24] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_GEM.lua",
+        [25] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_IGRIS.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
@@ -47,7 +49,7 @@ Accounts = {
         4,
     },
     ["Champandbank147"] = {
-        12,
+        25,
     },
     ["ASKINGZ12_43"] = {
         1,
