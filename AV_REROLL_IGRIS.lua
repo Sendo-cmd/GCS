@@ -41,7 +41,7 @@ getgenv().Config = {
 			["Double Dungeon"] = "C_Namke",
 			["Sand Village"] = "C_Sand"
 		},
-		["Macro"] = "GEM",
+		["Macro"] = "LSDD3_SonjE",
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true
 	},
