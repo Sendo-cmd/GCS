@@ -35,18 +35,42 @@ getgenv().Config = {
 		["Stage Finished"] = true,
 		["URL"] = "https://discord.com/api/webhooks/1285656259604774912/2m06zwdD_zylzlJ6iZ7F167cgEd8Vbg8leUk1obYgKVjXMctXsaxPIoB2FTpmkntDGnj"
 	},
+	["Macros"] = {
+		["Challenge Macro"] = {
+			["Planet Namak"] = "C_Namke",
+			["Double Dungeon"] = "C_Namke",
+			["Sand Village"] = "C_Sand"
+		},
+		["Macro"] = "GEM",
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true
+	},
 	["Claimer"] = {
 		["Auto Claim Battle Pass"] = true,
 		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
+		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
-		["Auto Claim Daily Reward"] = true
+		["Auto Claim Achievement"] = true
 	},
-	["Macros"] = {
-		["Macro"] = "LSDD3_SonjE",
-		["Play"] = true,
-		["Ignore Macro Timing"] = true,
-		["Walk Around"] = true
+	["Gameplay"] = {
+		["Auto Skip Wave"] = true,
+		["Auto Sell"] = {
+			["Wave"] = 1
+		}
+	},
+	["Daily Challenge Joiner"] = {
+		["Ignore Difficulty"] = {
+			["Revitalize"] = true,
+			["Exploding"] = true,
+			["Fast"] = true
+		},
+		["Ignore Act"] = {
+			["[Double Dungeon] Act6"] = true
+		},
+		["Auto Join"] = true,
+		["Reward"] = {
+			["TraitRerolls"] = true
+		}
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
