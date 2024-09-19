@@ -34,6 +34,21 @@ getgenv().Config = {
 		["Stage Finished"] = true,
 		["URL"] = "https://discord.com/api/webhooks/1285656259604774912/2m06zwdD_zylzlJ6iZ7F167cgEd8Vbg8leUk1obYgKVjXMctXsaxPIoB2FTpmkntDGnj"
 	},
+	["HalfHourly Challenge Joiner"] = {
+		["Ignore Act"] = {
+			["[Double Dungeon] Act6"] = true
+		},
+		["Auto Join"] = true,
+		["Ignore Difficulty"] = {
+			["Revitalize"] = true,
+			["Exploding"] = true,
+			["Fast"] = true
+		},
+		["Teleport Lobby new Challenge"] = true,
+		["Reward"] = {
+			["TraitRerolls"] = true
+		}
+	},
 	["Secure"] = {
 		["Walk Around"] = true
 	},
