@@ -12,10 +12,11 @@ getgenv().ImportMacro = {
 }
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Stage Joiner"] = {
-		["Act"] = "Act1",
-		["Stage"] = "Planet Namak",
-		["Auto Join"] = true
+	["Joiner Cooldown"] = 5,
+	["Legend Stage Joiner"] = {
+		["Auto Join"] = true,
+		["Stage"] = "Double Dungeon",
+		["Act"] = "Act3"
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true
