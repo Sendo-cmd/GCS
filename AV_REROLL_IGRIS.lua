@@ -8,7 +8,7 @@ getgenv().ImportMacro = {
     "https://cdn.discordapp.com/attachments/1286348626259611658/1286574002604867676/C_Dung.json?ex=66ee66e9&is=66ed1569&hm=c2b875923992bad4cca013652fbf393e49ec5a415d8f1e2410889b52beeb6ded&",
     "https://cdn.discordapp.com/attachments/1286348626259611658/1286348627085889637/C_Namke.json?ex=66ee3dc3&is=66ecec43&hm=c5dc0fbc3d7c4a536d3ae8b186812703da6a98fe37ed7c710317435dc4c58c86&",
     "https://cdn.discordapp.com/attachments/1286348626259611658/1286348627437944842/C_Sand.json?ex=66ee3dc3&is=66ecec43&hm=17f6cf3ba1dc4a5e493d20576e7d66a2f9659935b8a0e77a7c7ce3eb1b8ee04c&",
-    "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66ecf433&is=66eba2b3&hm=d859b10afe306444f397c583a4038bfff7a1591abb794c2f2afdcd678bf95128&",
+    "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66ee45b3&is=66ecf433&hm=82929868f63ca18c87b33603a07db12c08026f63559db37242cfbfb2754ac814&",
 }
 getgenv().Config = {
 	["AutoSave"] = true,
