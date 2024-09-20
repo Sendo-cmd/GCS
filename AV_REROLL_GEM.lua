@@ -36,7 +36,7 @@ getgenv().Config = {
 		["Auto Join"] = true,
 		["Ignore Difficulty"] = {
 			["Revitalize"] = true,
-			["Exploding"] = true,
+			["Exploding"] = false,
 			["Fast"] = true
 		},
 		["Teleport Lobby new Challenge"] = true,
