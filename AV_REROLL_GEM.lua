@@ -77,6 +77,7 @@ getgenv().Config = {
 	["Daily Challenge Joiner"] = {
 		["Ignore Difficulty"] = {
 			["Revitalize"] = true,
+			["Exploding"] = true,
 			["Fast"] = true
 		},
 		["Ignore Act"] = {
