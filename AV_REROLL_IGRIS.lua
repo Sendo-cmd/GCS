@@ -11,24 +11,13 @@ getgenv().ImportMacro = {
     "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66ee45b3&is=66ecf433&hm=82929868f63ca18c87b33603a07db12c08026f63559db37242cfbfb2754ac814&",
 }
 getgenv().Config = {
-	["AutoSave"] = true,
-	["Joiner Cooldown"] = 5,
-	["Legend Stage Joiner"] = {
-		["Auto Join"] = true,
-		["Stage"] = "Double Dungeon",
-		["Act"] = "Act3"
-	},
-	["Match Finished"] = {
-		["Auto Replay"] = true
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = true
-	},
 	["Joiner Cooldown"] = 5,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
+	},
+	["Match Finished"] = {
+		["Auto Replay"] = true
 	},
 	["Webhook"] = {
 		["Stage Finished"] = true,
@@ -41,7 +30,6 @@ getgenv().Config = {
 		["Auto Join"] = true,
 		["Ignore Difficulty"] = {
 			["Revitalize"] = true,
-			["Exploding"] = false,
 			["Fast"] = true
 		},
 		["Teleport Lobby new Challenge"] = true,
@@ -49,19 +37,19 @@ getgenv().Config = {
 			["TraitRerolls"] = true
 		}
 	},
+	["Legend Stage Joiner"] = {
+		["Stage"] = "Double Dungeon",
+		["Auto Join"] = true,
+		["Act"] = "Act3"
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true,
+		["Teleport Lobby if Player"] = true
+	},
 	["Secure"] = {
 		["Walk Around"] = true
 	},
-	["Macros"] = {
-		["Challenge Macro"] = {
-			["Planet Namak"] = "C_Namke",
-			["Double Dungeon"] = "C_Dung",
-			["Sand Village"] = "C_Sand"
-		},
-		["Macro"] = "LSDD3_SonjE",
-		["Play"] = true,
-		["No Ignore Sell Timing"] = true
-	},
+	["AutoSave"] = true,
 	["Claimer"] = {
 		["Auto Claim Battle Pass"] = true,
 		["Auto Claim Quest"] = true,
@@ -78,7 +66,6 @@ getgenv().Config = {
 	["Daily Challenge Joiner"] = {
 		["Ignore Difficulty"] = {
 			["Revitalize"] = true,
-			["Exploding"] = false,
 			["Fast"] = true
 		},
 		["Ignore Act"] = {
@@ -86,8 +73,27 @@ getgenv().Config = {
 		},
 		["Auto Join"] = true,
 		["Reward"] = {
-			["TraitRerolls"] = true
+			["Blue Essence Stone"] = true,
+			["Red Essence Stone"] = true,
+			["Yellow Essence Stone"] = true,
+			["Purple Essence Stone"] = true,
+			["Pink Essence Stone"] = true,
+			["Stat Chip"] = true,
+			["Green Essence Stone"] = true,
+			["TraitRerolls"] = true,
+			["Super Stat Chip"] = true,
+			["Rainbow Essence Stone"] = true
 		}
+	},
+	["Macros"] = {
+		["Challenge Macro"] = {
+			["Planet Namak"] = "C_Namke",
+			["Double Dungeon"] = "C_Dung",
+			["Sand Village"] = "C_Sand"
+		},
+		["Macro"] = "LSDD3_SonjE",
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
