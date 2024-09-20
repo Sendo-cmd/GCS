@@ -41,7 +41,7 @@ getgenv().Config = {
 		["Auto Join"] = true,
 		["Ignore Difficulty"] = {
 			["Revitalize"] = true,
-			["Exploding"] = true,
+			["Exploding"] = false,
 			["Fast"] = true
 		},
 		["Teleport Lobby new Challenge"] = true,
@@ -78,6 +78,7 @@ getgenv().Config = {
 	["Daily Challenge Joiner"] = {
 		["Ignore Difficulty"] = {
 			["Revitalize"] = true,
+			["Exploding"] = false,
 			["Fast"] = true
 		},
 		["Ignore Act"] = {
