@@ -85,16 +85,7 @@ getgenv().Config = {
 		},
 		["Auto Join"] = true,
 		["Reward"] = {
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true,
-			["Pink Essence Stone"] = true,
-			["Stat Chip"] = true,
-			["Green Essence Stone"] = true,
-			["TraitRerolls"] = true,
-			["Super Stat Chip"] = true,
-			["Rainbow Essence Stone"] = true
+			["TraitRerolls"] = true
 		}
 	}
 }
