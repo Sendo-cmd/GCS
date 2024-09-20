@@ -186,6 +186,9 @@ Accounts = {
     ["reeidteerasak_10"] = {
         2,
     },
+    ["FalconWave21"] = {
+        1,
+    },
     ["RiceBing"] = {
         3,
     },
