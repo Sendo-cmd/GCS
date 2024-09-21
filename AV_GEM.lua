@@ -26,7 +26,7 @@ getgenv().Config = {
 		["Boost FPS"] = true
 	},
 	["Webhook"] = {
-		["Stage Finished"] = true,
+		["Stage Finished"] = false,
 		["URL"] = "https://discord.com/api/webhooks/1285656259604774912/2m06zwdD_zylzlJ6iZ7F167cgEd8Vbg8leUk1obYgKVjXMctXsaxPIoB2FTpmkntDGnj"
 	},
 	["Claimer"] = {
