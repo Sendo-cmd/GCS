@@ -34,6 +34,7 @@ Games = {
         [23] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM3.lua",
         [24] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_GEM.lua",
         [25] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_IGRIS.lua",
+        [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
