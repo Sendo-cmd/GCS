@@ -8,7 +8,7 @@ getgenv().ImportMacro = {
     "https://cdn.discordapp.com/attachments/1286348626259611658/1286574002604867676/C_Dung.json?ex=66ef0fa9&is=66edbe29&hm=05fe7d24943d921d5e65fac0eeaad330b654f9a7076d34096cbb5402000d9eea&",
     "https://cdn.discordapp.com/attachments/1286348626259611658/1286348627085889637/C_Namke.json?ex=66ef8f43&is=66ee3dc3&hm=ce06f046be77d3051568df11d965317068a0caf483bb1df55084927c26dc13c9&",
     "https://cdn.discordapp.com/attachments/1286348626259611658/1286348627437944842/C_Sand.json?ex=66ef8f43&is=66ee3dc3&hm=d4024a8188b45bd4ccee698af4958cf24bb5890d5c5905e1ad5067c7d57c503a&",
-    "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66ee45b3&is=66ecf433&hm=82929868f63ca18c87b33603a07db12c08026f63559db37242cfbfb2754ac814&",
+    "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66ef9733&is=66ee45b3&hm=56994b1c0272e88011db7ee8ba205326d8d01240289e36bf5017b77d14648a0e&",
 }
 getgenv().Config = {
 	["Joiner Cooldown"] = 5,
