@@ -54,7 +54,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Challenge Macro"] = {
 			["Planet Namak"] = "C_Namke",
-			["Double Dungeon"] = "C_Namke",
+			["Double Dungeon"] = "C_Dung",
 			["Sand Village"] = "C_Sand"
 		},
 		["Macro"] = "GEM",
