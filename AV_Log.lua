@@ -74,7 +74,9 @@ if IsMain then
             ["Items"] = InventoryHandler:GetInventory(),
             ["Username"] = plr.Name,
             ["Battlepass"] = BattlepassHandler:GetPlayerData(),
-            ["PlayerData"] = PlayerData
+            ["PlayerData"] = PlayerData,
+            ["GuildId"] = "467359347744309248",
+            ["DataKey"] = "GamingChampionShopOsGay",
         })
     })
 elseif IsMatch then
@@ -125,7 +127,9 @@ elseif IsMatch then
                 ["Units"] = EquippedUnits,
                 ["Results"] = Results,
                 ["Username"] = plr.Name,
-                ["PlayerData"] = PlayerData
+                ["PlayerData"] = PlayerData,
+                ["GuildId"] = "467359347744309248",
+                ["DataKey"] = "GamingChampionShopOsGay",
             })
         })
     end)
