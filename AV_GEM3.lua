@@ -4,7 +4,7 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223416110415964/1285244706502213632/GEM3.json?ex=66ef7fa8&is=66ee2e28&hm=936cc14fde8260bf956f22d5b47e2a615c292fc03d017c8263f08e3f723779d5&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223416110415964/1285244706502213632/GEM3.json?ex=66f0d128&is=66ef7fa8&hm=ecf16e7a33f5c464d75d77d0439e70e4f3a86bda7f7d95eef2b0d647b655d8c4&"
 getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "GEM3",
