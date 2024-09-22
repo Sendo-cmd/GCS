@@ -16,7 +16,7 @@ getgenv().Config = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
 	},
-	["Joiner Cooldown"] = 5,
+	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true

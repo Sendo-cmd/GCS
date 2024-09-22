@@ -11,7 +11,7 @@ getgenv().ImportMacro = {
     "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66f0e8b3&is=66ef9733&hm=7a1311239b16ecc3c9fde495e93f43e420bab9ebddd22f2cdea1f979b9c623cd&",
 }
 getgenv().Config = {
-	["Joiner Cooldown"] = 5,
+	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
