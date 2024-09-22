@@ -30,7 +30,7 @@ getgenv().Config = {
 		["Auto Join"] = true,
 		["Ignore Difficulty"] = {
 			["Revitalize"] = true,
-			["Fast"] = true
+			["Fast"] = false
 		},
 		["Teleport Lobby new Challenge"] = true,
 		["Reward"] = {
