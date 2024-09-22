@@ -239,7 +239,7 @@ Accounts = {
         99,
     },
     ["SoulMossBats"] = {
-        4,
+        13,
         99,
     },
     ["RiceBing"] = {
