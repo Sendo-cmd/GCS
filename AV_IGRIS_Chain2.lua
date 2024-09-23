@@ -19,7 +19,9 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "LSDD3_Chain2",
 		["Play"] = true,
-		["Walk Around"] = true
+		["Walk Around"] = true,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
 	},
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
