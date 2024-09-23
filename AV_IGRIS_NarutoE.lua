@@ -4,7 +4,7 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284223984971546655/LSDD3_NarutoE.json?ex=66f06649&is=66ef14c9&hm=d42ad06c700c6d1b07a183cbccfb1365905f0b2c871df729d0021e495fd5efe2&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284223984971546655/LSDD3_NarutoE.json?ex=66f26089&is=66f10f09&hm=9e92312f7afb1cb012fb8d62ff182f681e5c0a83924e3ad8ce8a9fe9de5ea3c7&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {
