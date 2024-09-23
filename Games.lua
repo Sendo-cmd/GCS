@@ -48,7 +48,7 @@ Accounts = {
         4,
     },
     ["Champandbank147"] = {
-        26,
+        20,
         99,
     },
     ["Nelida5865"] = {
@@ -115,8 +115,8 @@ Accounts = {
         14,
         99,
     },
-    ["1accox"] = {
-        1,
+    ["Somrum11"] = {
+        19,
         99,
     },
     ["Demonx_Hunt"] = {
