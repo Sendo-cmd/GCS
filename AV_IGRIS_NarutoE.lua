@@ -39,7 +39,9 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "LSDD3_NarutoE",
 		["Play"] = true,
-		["Walk Around"] = true
+		["Walk Around"] = true,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
