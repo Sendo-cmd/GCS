@@ -4,7 +4,7 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287739683538735215/Raid_Igris.json?ex=66f2a489&is=66f15309&hm=5488baff2db72b0c2c68d7a1a390af800790bfddeec207e1b82da3b8441e18be&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287862500867444836/Raid_Igris.json?ex=66f316eb&is=66f1c56b&hm=281e2d0fa82b9f5fbaf1645c3b0f38f5ad795c9da70f851bf1604bcda705c5b7&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 10,
