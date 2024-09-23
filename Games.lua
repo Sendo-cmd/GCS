@@ -157,6 +157,10 @@ Accounts = {
     ["seuatiger9353"] = {
         99,
     },
+    ["xOFubukiOx"] = {
+        26,
+        99,
+    },
     ["Demonx_Hunt"] = {
         23,
         99,
