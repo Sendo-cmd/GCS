@@ -1,6 +1,6 @@
 --
 local Players = game:GetService("Players")
-print("starting")
+
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
 local CollectionService = game:GetService("CollectionService")
@@ -24,6 +24,18 @@ repeat task.wait() until SettingsHandler.SettingsLoaded
 local IsMain = workspace:FindFirstChild("MainLobby")
 local IsMatch = plr:FindFirstChild("StageInfo")
 
+local Utilities = Modules:WaitForChild("Utilities")
+
+local Shared = Modules:WaitForChild("Shared")
+
+local MultiplierHandler = require(Shared.MultiplierHandler)
+
+local NumberUtils = require(Utilities.NumberUtils)
+local TableUtils = require(Utilities.TableUtils)
+
+local IsMain = workspace:FindFirstChild("MainLobby")
+local IsMatch = plr:FindFirstChild("StageInfo")
+
 local url = "http://champions.thddns.net:3031/logs"
 
 if IsMain then
@@ -31,12 +43,24 @@ if IsMain then
     local InventoryHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.InventoryHandler)
     local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
 
+    repeat task.wait() until UnitWindowHandler.AreUnitsLoaded;
+
     local EquippedUnits = {}
 
     for i,v in pairs(UnitWindowHandler.EquippedUnits) do
         if i == "None" then continue end
-        EquippedUnits[i] = UnitWindowHandler._Cache[i]
+
+        EquippedUnits[i] = TableUtils.DeepCopy(UnitWindowHandler._Cache[i])
+        EquippedUnits[i].Name = EquippedUnits[i].UnitData.Name
+
+        EquippedUnits[i].UnitData = nil
     end
+
+    local PlayerData = {
+        ["Gold"] = plr:GetAttribute("Gold"),
+        ["Gems"] = plr:GetAttribute("Gems"),
+        ["TraitRerolls"] = plr:GetAttribute("TraitRerolls"),
+    }
 
     local response = request({
         ["Url"] = url,
@@ -49,9 +73,10 @@ if IsMain then
             ["Units"] = EquippedUnits,
             ["Items"] = InventoryHandler:GetInventory(),
             ["Username"] = plr.Name,
+            ["Battlepass"] = BattlepassHandler:GetPlayerData(),
+            ["PlayerData"] = PlayerData,
             ["GuildId"] = "467359347744309248",
             ["DataKey"] = "GamingChampionShopOsGay",
-            ["Battlepass"] = BattlepassHandler:GetPlayerData()
         })
     })
 elseif IsMatch then
@@ -70,7 +95,9 @@ elseif IsMatch then
         local EquippedUnits = {}
         for i,v in pairs(UnitsHUD._Cache) do
             if v == "None" then continue end
-            EquippedUnits[v.UniqueIdentifier] = v
+            EquippedUnits[v.UniqueIdentifier] = TableUtils.DeepCopy(v)
+
+            EquippedUnits[v.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v.Identifier).Name
         end
         
         local GameData = GameHandler.GameData
@@ -82,6 +109,12 @@ elseif IsMatch then
         if BattlePassXp > 0 then
             Results.Rewards["Pass Xp"] = { ["Amount"] = BattlePassXp }
         end
+
+        local PlayerData = {
+            ["Gold"] = plr:GetAttribute("Gold"),
+            ["Gems"] = plr:GetAttribute("Gems"),
+            ["TraitRerolls"] = plr:GetAttribute("TraitRerolls"),
+        }
         
         local response = request({
             ["Url"] = url,
@@ -94,8 +127,9 @@ elseif IsMatch then
                 ["Units"] = EquippedUnits,
                 ["Results"] = Results,
                 ["Username"] = plr.Name,
+                ["PlayerData"] = PlayerData,
                 ["GuildId"] = "467359347744309248",
-                ["DataKey"] = "GamingChampionShopOsGay"
+                ["DataKey"] = "GamingChampionShopOsGay",
             })
         })
     end)

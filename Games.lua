@@ -34,6 +34,7 @@ Games = {
         [23] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM3.lua",
         [24] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_GEM.lua",
         [25] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_IGRIS.lua",
+        [26] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
 
     },
@@ -50,7 +51,7 @@ Accounts = {
         4,
     },
     ["Champandbank147"] = {
-        25,
+        26,
         99,
     },
     ["ASKINGZ12_43"] = {
@@ -171,7 +172,7 @@ Accounts = {
         2,
     },
     ["aamlop1"] = {
-        24,
+        25,
         99,
     },
     ["MakarlokXD"] = {
@@ -240,6 +241,18 @@ Accounts = {
     },
     ["SoulMossBats"] = {
         13,
+        99,
+    },
+    ["TKP_POT4X8"] = {
+        1,
+        99,
+    },
+    ["HJRETAP"] = {
+        23,
+        99,
+    },
+    ["1accox"] = {
+        1,
         99,
     },
     ["RiceBing"] = {
