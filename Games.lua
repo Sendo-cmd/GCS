@@ -130,7 +130,7 @@ Accounts = {
         20,
         99,
     },
-    ["wexd45"] = {
+    ["GorgeousKeita"] = {
         20,
         99,
     },
