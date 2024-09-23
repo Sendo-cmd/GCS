@@ -31,6 +31,7 @@ Games = {
         [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch.lua",
         [21] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Solar.lua",
         [22] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Ten.lua",
+        [23] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
 
     },
@@ -118,8 +119,8 @@ Accounts = {
         1,
         99,
     },
-    ["RiceBing"] = {
-        3,
+    ["Demonx_Hunt"] = {
+        23,
         99,
     },
 
