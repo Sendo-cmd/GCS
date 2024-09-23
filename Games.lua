@@ -134,7 +134,7 @@ Accounts = {
         99,
     },
     ["XDGGZTheGod"] = {
-        24,
+        1,
         99,
     },
     ["AFKFARMID"] = {
