@@ -59,6 +59,7 @@ getgenv().Config = {
 		},
 		["Macro"] = "GEM",
 		["Play"] = true,
+		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	},
 	["Claimer"] = {
