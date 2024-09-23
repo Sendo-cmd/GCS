@@ -33,6 +33,7 @@ Games = {
         [22] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Ten.lua",
         [23] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
         [24] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM4.lua",
+        [25] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch2.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
 
     },
@@ -65,7 +66,7 @@ Accounts = {
         99,
     },
     ["Puggtopro"] = {
-        1,
+        25,
         99,
     },
     ["Etaa_xm"] = {
@@ -134,6 +135,10 @@ Accounts = {
     },
     ["XDGGZTheGod"] = {
         24,
+        99,
+    },
+    ["AFKFARMID"] = {
+        23,
         99,
     },
     ["Demonx_Hunt"] = {
