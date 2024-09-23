@@ -70,7 +70,7 @@ Accounts = {
         99,
     },
     ["Etaa_xm"] = {
-        1,
+        23,
         99,
     },
     ["OTeMoKungO"] = {
@@ -102,7 +102,7 @@ Accounts = {
         99,
     },
     ["Krv_kai43"] = {
-        2,
+        23,
         99,
     },
     ["FalconWave21"] = {
@@ -135,6 +135,10 @@ Accounts = {
     },
     ["XDGGZTheGod"] = {
         1,
+        99,
+    },
+    ["Xeonerct"] = {
+        23,
         99,
     },
     ["AFKFARMID"] = {
