@@ -143,15 +143,15 @@ Accounts = {
         99,
     },
     ["AFKFARMID"] = {
-        23,
+        26,
         99,
     },
     ["NonBemmy"] = {
-        23,
+        26,
         99,
     },
     ["YURIDRONEYET"] = {
-        23,
+        26,
         99,
     },
     ["seuatiger9353"] = {
