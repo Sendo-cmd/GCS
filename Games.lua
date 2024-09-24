@@ -182,7 +182,7 @@ Accounts = {
         99,
     },
     ["HJRETAP"] = {
-        1,
+        2,
         99,
     },
     ["Demonx_Hunt"] = {
