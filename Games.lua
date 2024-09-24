@@ -37,6 +37,7 @@ Games = {
         [26] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         [27] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Alocard.lua",
         [28] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE2.lua",
+        [29] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch3.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
 
     },
@@ -198,6 +199,10 @@ Accounts = {
     },
     ["GorgeousKeita"] = {
         2,
+        99,
+    },
+    ["aami1123"] = {
+        29,
         99,
     },
     ["Demonx_Hunt"] = {
