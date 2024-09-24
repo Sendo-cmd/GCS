@@ -170,6 +170,19 @@ Accounts = {
         26,
         99,
     },
+    ["tanjiroxfire"] = {
+        99,
+    },
+    ["thanwas009"] = {
+        99,
+    },
+    ["notyuio111"] = {
+        99,
+    },
+    ["HJRETAP"] = {
+        1,
+        99,
+    },
     ["Demonx_Hunt"] = {
         23,
         99,
