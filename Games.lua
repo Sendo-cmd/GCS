@@ -147,7 +147,7 @@ Accounts = {
         99,
     },
     ["AFKFARMID"] = {
-        26,
+        23,
         99,
     },
     ["NonBemmy"] = {
