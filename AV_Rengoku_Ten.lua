@@ -4,7 +4,7 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287728146438684742/Raid_Ten.json?ex=66f299ca&is=66f1484a&hm=9660c412d1f831c06c13bef0c97f072d3b5c1496e1dd89aa0b675210cb0a6b76&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287728146438684742/Raid_Ten.json?ex=66f3428a&is=66f1f10a&hm=6c810a65b51126fd75e42f1ff7040b46c91286f9aae78d4a5bef363f763ff766&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 10,
