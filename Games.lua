@@ -74,7 +74,7 @@ Accounts = {
         99,
     },
     ["Etaa_xm"] = {
-        26,
+        23,
         99,
     },
     ["OTeMoKungO"] = {
@@ -86,7 +86,7 @@ Accounts = {
         99,
     },
     ["aamlop1"] = {
-        19,
+        23,
         99,
     },
     ["Mynamefirstzz"] = {
@@ -94,7 +94,7 @@ Accounts = {
         99,
     },
     ["B1za12345"] = {
-        13,
+        23,
         99,
     },
     ["UMH_x7"] = {
@@ -142,7 +142,7 @@ Accounts = {
         99,
     },
     ["Xeonerct"] = {
-        26,
+        23,
         99,
     },
     ["TKP_POT4X8"] = {
@@ -170,7 +170,7 @@ Accounts = {
         99,
     },
     ["xMcTHx"] = {
-        26,
+        23,
         99,
     },
     ["tanjiroxfire"] = {
@@ -198,11 +198,15 @@ Accounts = {
         99,
     },
     ["GorgeousKeita"] = {
-        2,
+        3,
         99,
     },
     ["aami1123"] = {
         29,
+        99,
+    },
+    ["GymInsectDon"] = {
+        25,
         99,
     },
     ["Demonx_Hunt"] = {
