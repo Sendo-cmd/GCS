@@ -1,5 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
