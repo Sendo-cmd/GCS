@@ -35,7 +35,11 @@ getgenv().Config = {
 	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = true
+		["Boost FPS"] = true,
+		["Black Screen"] = {
+			["Enable"] = true,
+			["FPS Cap"] = 20
+		}
 	},
 	["Auto Skip Wave"] = true,
 	["Failsafe"] = {
