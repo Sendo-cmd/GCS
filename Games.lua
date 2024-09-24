@@ -192,6 +192,10 @@ Accounts = {
         2,
         99,
     },
+    ["GorgeousKeita"] = {
+        2,
+        99,
+    },
     ["Demonx_Hunt"] = {
         23,
         99,
