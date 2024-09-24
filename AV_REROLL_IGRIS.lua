@@ -1,5 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-game:GetService("RunService"):Set3dRenderingEnabled(false)
 
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
@@ -14,7 +13,11 @@ getgenv().Config = {
 	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = true
+		["Boost FPS"] = true,
+		["Black Screen"] = {
+			["Enable"] = true,
+			["FPS Cap"] = 20
+		}
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true
