@@ -56,6 +56,15 @@ if IsMain then
         EquippedUnits[i].UnitData = nil
     end
 
+    local Units = {}
+
+    for i,v in pairs(UnitWindowHandler._Cache) do
+        Units[i] = TableUtils.DeepCopy(v)
+        Units[i].Name = Units[i].UnitData.Name
+
+        Units[i].UnitData = nil
+    end
+
     local PlayerData = {
         ["Gold"] = plr:GetAttribute("Gold"),
         ["Gems"] = plr:GetAttribute("Gems"),
@@ -70,13 +79,14 @@ if IsMain then
         },
         ["Body"] = HttpService:JSONEncode({
             ["Method"] = "Update",
-            ["Units"] = EquippedUnits,
+            ["Units"] = Units,
+            ["EquippedUnits"] = EquippedUnits,
             ["Items"] = InventoryHandler:GetInventory(),
             ["Username"] = plr.Name,
             ["Battlepass"] = BattlepassHandler:GetPlayerData(),
             ["PlayerData"] = PlayerData,
             ["GuildId"] = "467359347744309248",
-            ["DataKey"] = "GamingChampionShopOsGay",
+            ["DataKey"] = "GamingChampionShopAPI",
         })
     })
 elseif IsMatch then
@@ -129,7 +139,7 @@ elseif IsMatch then
                 ["Username"] = plr.Name,
                 ["PlayerData"] = PlayerData,
                 ["GuildId"] = "467359347744309248",
-                ["DataKey"] = "GamingChampionShopOsGay",
+                ["DataKey"] = "GamingChampionShopAPI",
             })
         })
     end)
