@@ -6,7 +6,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1288226083933786173/Raid_Igris.json?ex=66f46988&is=66f31808&hm=cc788224dde6161e8805e7439ac75fda4bb80e5a206bf35ac207b82a786e89d4&"
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 10,
+	["Joiner Cooldown"] = 20,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,

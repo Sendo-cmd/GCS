@@ -6,7 +6,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1288208679660687452/Raid_Monarch_Ten.json?ex=66f45952&is=66f307d2&hm=0b9c17044d4c6e0881776894810eb4687df23cc0106730ed48970455ced05efd&"
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 10,
+	["Joiner Cooldown"] = 20,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,

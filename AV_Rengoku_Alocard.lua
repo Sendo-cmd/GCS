@@ -6,7 +6,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1288240103445106831/Raid_Alocard.json?ex=66f47697&is=66f32517&hm=d9c57df5941be98be82444060072a792d7dbf8575cf1b8802fde6dbfc32bda59&"
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 10,
+	["Joiner Cooldown"] = 20,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,

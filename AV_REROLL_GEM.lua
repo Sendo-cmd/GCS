@@ -11,7 +11,7 @@ getgenv().ImportMacro = {
 }
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 10,
+	["Joiner Cooldown"] = 20,
 	["Stage Joiner"] = {
 		["Act"] = "Act1",
 		["Stage"] = "Planet Namak",

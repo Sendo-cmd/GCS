@@ -6,7 +6,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287719592143356005/Raid_Solar_Vogita.json?ex=66f3e353&is=66f291d3&hm=7fcc8fb36a7e113daaa89c9dc12a54468ac4d73470557754e4ace3e612ba106a&"
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 10,
+	["Joiner Cooldown"] = 20,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
