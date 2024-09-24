@@ -36,6 +36,7 @@ Games = {
         [25] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch2.lua",
         [26] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         [27] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Alocard.lua",
+        [28] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE2.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
 
     },
@@ -172,6 +173,7 @@ Accounts = {
         99,
     },
     ["tanjiroxfire"] = {
+        28,
         99,
     },
     ["thanwas009"] = {
