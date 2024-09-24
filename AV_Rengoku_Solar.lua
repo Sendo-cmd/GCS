@@ -4,7 +4,7 @@ game:GetService("RunService"):Set3dRenderingEnabled(false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287719592143356005/Raid_Solar_Vogita.json?ex=66f291d3&is=66f14053&hm=45f945a3a2efa74d75ddea5abf5681edb0270240f4426fe5700c91c8cc021538&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287719592143356005/Raid_Solar_Vogita.json?ex=66f33a93&is=66f1e913&hm=47813e237ded3e83fed7a3faa8b44a377ea4342ff9d1d222bc0be974075befbc&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 10,
