@@ -19,7 +19,7 @@ getgenv().Config = {
 		["Stage Finished"] = false,
 		["URL"] = "https://discord.com/api/webhooks/1285656259604774912/2m06zwdD_zylzlJ6iZ7F167cgEd8Vbg8leUk1obYgKVjXMctXsaxPIoB2FTpmkntDGnj"
 	},
-	["Joiner Cooldown"] = 20,
+	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
@@ -46,4 +46,4 @@ getgenv().Config = {
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
-repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(7)until Joebiden
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden

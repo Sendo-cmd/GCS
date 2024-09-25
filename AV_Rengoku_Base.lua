@@ -6,7 +6,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1288101311916675123/Raid_Base.json?ex=66f49e14&is=66f34c94&hm=4b57149fdcbbbc67c4c48a27af759a29ef40438b9ca2ec4a5a58c3de88714cea&"
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 20,
+	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
@@ -52,4 +52,4 @@ getgenv().Config = {
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
-repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(7)until Joebiden
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden

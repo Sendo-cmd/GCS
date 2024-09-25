@@ -35,11 +35,11 @@ getgenv().Config = {
 		["Auto Claim Collection"] = true,
 		["Auto Claim Daily Reward"] = true
 	},
-	["Joiner Cooldown"] = 20,
+	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
-repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(7)until Joebiden
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden

@@ -6,7 +6,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287719592143356005/Raid_Solar_Vogita.json?ex=66f48c13&is=66f33a93&hm=744ae45a22d8e286b01bf1e8ccfaaf2dc619deab3d9beb648b173f1e08426c1f&"
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 20,
+	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
@@ -52,4 +52,4 @@ getgenv().Config = {
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
-repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(7)until Joebiden
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden

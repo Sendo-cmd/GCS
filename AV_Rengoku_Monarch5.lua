@@ -6,7 +6,7 @@ getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287768182618198046/Raid_Monarch_Song.json?ex=66f367d4&is=66f21654&hm=2d3629ea338782be7b68851175f7a3ffd508ba44f56b744e1e86b75b7307491e&"
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 20,
+	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
@@ -52,4 +52,4 @@ getgenv().Config = {
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
-repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(7)until Joebiden
+repeat wait()spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden
