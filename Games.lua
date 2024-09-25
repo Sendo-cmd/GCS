@@ -213,6 +213,10 @@ Accounts = {
         23,
         99,
     },
+    ["lnwterwowza"] = {
+        12,
+        99,
+    },
     ["Demonx_Hunt"] = {
         23,
         99,
