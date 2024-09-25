@@ -4,10 +4,10 @@ getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = {
-    "https://cdn.discordapp.com/attachments/1286348626259611658/1286574002604867676/C_Dung.json?ex=66f3ace9&is=66f25b69&hm=386bc1a60847a704969a4ab2eca9c43dcd26337a6a91f44241d40cdcc3ffdca8&",
-    "https://cdn.discordapp.com/attachments/1286348626259611658/1286932039211421736/C_Namke.json?ex=66f3a8dc&is=66f2575c&hm=ced414b3d19b767ed6a16aa4541d5b97711d43f1b1df4fcb3299d99ff1079d04&",
-    "https://cdn.discordapp.com/attachments/1286348626259611658/1286348627437944842/C_Sand.json?ex=66f383c3&is=66f23243&hm=78653e5f95a16b23ce3167d30fd038acc6c8b36d89543ab2c6fba2cc5e390097&",
-    "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66f43473&is=66f2e2f3&hm=bda2f7e74df2edfa7a4dca1e801c3ac6d20070723b6e88fd5e9571ba7a83d87d&",
+    "https://cdn.discordapp.com/attachments/1286348626259611658/1286574002604867676/C_Dung.json?ex=66f455a9&is=66f30429&hm=a1fbf7521e188b3c2dc187095c42cd047a7a30e42d1743ae8f7eb73f0d5e62cf&",
+    "https://cdn.discordapp.com/attachments/1286348626259611658/1286932039211421736/C_Namke.json?ex=66f4fa5c&is=66f3a8dc&hm=1b086fd9f58a636da72395c5729e01e7b9f06db9165bd6bb0d1360e00f4a1114&",
+    "https://cdn.discordapp.com/attachments/1286348626259611658/1286348627437944842/C_Sand.json?ex=66f4d543&is=66f383c3&hm=da5942b771c6ef2081c6f526e2c0149328a489a639e474a41f8300ac4c86f95c&",
+    "https://cdn.discordapp.com/attachments/1284223982782119967/1285088790662086706/LSDD3_SonjE.json?ex=66f4dd33&is=66f38bb3&hm=08d79748f06f3bf444a8191a984b8f283d03db8feddfd8bc230e49e1e8991700&",
 }
 getgenv().Config = {
 	["Joiner Cooldown"] = 20,
