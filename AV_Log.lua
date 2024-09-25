@@ -59,10 +59,14 @@ if IsMain then
     local Units = {}
 
     for i,v in pairs(UnitWindowHandler._Cache) do
-        Units[i] = TableUtils.DeepCopy(v)
-        Units[i].Name = Units[i].UnitData.Name
+        if not v.UnitData then continue end
 
-        Units[i].UnitData = nil
+        if not Units[v.UnitData.Rarity] then Units[v.UnitData.Rarity] = {} end
+
+        Units[v.UnitData.Rarity][i] = TableUtils.DeepCopy(v)
+        Units[v.UnitData.Rarity][i].Name = Units[v.UnitData.Rarity][i].UnitData.Name
+
+        Units[v.UnitData.Rarity][i].UnitData = nil
     end
 
     local PlayerData = {
