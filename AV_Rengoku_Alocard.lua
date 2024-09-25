@@ -12,7 +12,7 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = {
 			["Enable"] = true,
-			["FPS Cap"] = 20
+			["FPS Cap"] = 10
 		}
 	},
 	["Match Finished"] = {
