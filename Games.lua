@@ -54,7 +54,7 @@ Accounts = {
         4,
     },
     ["Champandbank147"] = {
-        20,
+        19,
         99,
     },
     ["Nelida5865"] = {
