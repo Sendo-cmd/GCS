@@ -47,7 +47,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Play"] = true,
 		["Macro"] = "Raid_Alocard",
-		["Ignore Macro Timing"] = false,
+		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	}
 }
