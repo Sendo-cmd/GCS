@@ -217,6 +217,18 @@ Accounts = {
         12,
         99,
     },
+    ["TONKAORIKI_NEW"] = {
+        19,
+        99,
+    },
+    ["narutoez441"] = {
+        23,
+        99,
+    },
+    ["salemam101"] = {
+        19,
+        99,
+    },
     ["Demonx_Hunt"] = {
         23,
         99,
