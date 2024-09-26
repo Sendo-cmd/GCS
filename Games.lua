@@ -39,6 +39,7 @@ Games = {
         [28] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE2.lua",
         [29] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch3.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
+        [100] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAv.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
@@ -56,6 +57,7 @@ Accounts = {
     ["Champandbank147"] = {
         19,
         99,
+        100,
     },
     ["Nelida5865"] = {
         1,
@@ -64,178 +66,222 @@ Accounts = {
     ["xdyrdgyrdfg"] = {
         26,
         99,
+        100,
     },
     ["maser080"] = {
         21,
         99,
+        100,
     },
     ["Puggtopro"] = {
         25,
         99,
+        100,
     },
     ["Etaa_xm"] = {
         23,
         99,
+        100,
     },
     ["OTeMoKungO"] = {
         11,
         99,
+        100,
     },
     ["Nx_BlackLazy"] = {
         6,
         99,
+        100,
     },
     ["aamlop1"] = {
         23,
         99,
+        100,
     },
     ["Mynamefirstzz"] = {
         14,
         99,
+        100,
     },
     ["B1za12345"] = {
         23,
         99,
+        100,
     },
     ["UMH_x7"] = {
         19,
         99,
+        100,
     },
     ["djgodzz55"] = {
         13,
         99,
+        100,
     },
     ["Krv_kai43"] = {
         23,
         99,
+        100,
     },
     ["FalconWave21"] = {
         1,
         99,
+        100,
     },
     ["comme009"] = {
         1,
         99,
+        100,
     },
     ["SoulMossBats"] = {
         14,
         99,
+        100,
     },
     ["Somrum11"] = {
         19,
         99,
+        100,
     },
     ["1accox"] = {
         1,
         99,
+        100,
     },
     ["wexd45"] = {
         20,
         99,
+        100,
     },
     ["GorgeousKeita"] = {
         20,
         99,
+        100,
     },
     ["XDGGZTheGod"] = {
         1,
         99,
+        100,
     },
     ["Xeonerct"] = {
         23,
         99,
+        100,
     },
     ["TKP_POT4X8"] = {
         1,
         99,
+        100,
     },
     ["AFKFARMID"] = {
         23,
         99,
+        100,
     },
     ["NonBemmy"] = {
         23,
         99,
+        100,
     },
     ["YURIDRONEYET"] = {
         23,
         99,
+        100,
     },
     ["seuatiger9353"] = {
         12,
         99,
+        100,
     },
     ["xOFubukiOx"] = {
         26,
         99,
+        100,
     },
     ["xMcTHx"] = {
         23,
         99,
+        100,
     },
     ["tanjiroxfire"] = {
         28,
         99,
+        100,
     },
     ["thanwas009"] = {
         27,
         99,
+        100,
     },
     ["notyuio111"] = {
         1,
         99,
+        100,
     },
     ["QAROBLOX060154"] = {
         3,
         99,
+        100,
     },
     ["okun474"] = {
         23,
         99,
+        100,
     },
     ["offj_0383"] = {
         23,
         99,
+        100,
     },
     ["HJRETAP"] = {
         3,
         99,
+        100,
     },
     ["GorgeousKeita"] = {
         3,
         99,
+        100,
     },
     ["aami1123"] = {
         29,
         99,
+        100,
     },
     ["GymInsectDon"] = {
         25,
         99,
+        100,
     },
     ["ASKINGZ12_43"] = {
         23,
         99,
+        100,
     },
     ["lnwterwowza"] = {
         12,
         99,
+        100,
     },
     ["TONKAORIKI_NEW"] = {
         19,
         99,
+        100,
     },
     ["narutoez441"] = {
         23,
         99,
+        100,
     },
     ["salemam101"] = {
         19,
         99,
+        100,
     },
     ["Demonx_Hunt"] = {
         23,
         99,
+        100,
     },
 
 }

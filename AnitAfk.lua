@@ -96,7 +96,8 @@ fpslabel.Name = "fpslabel"
 fpslabel.Parent = madebybloodofbatus
 fpslabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 fpslabel.BackgroundTransparency = 1.000
-fpslabel.Position = UDim2.new(0.724226236, 0, 0.358796299, 0)
+fpslabel.Position = UDim2.new(0.724226236, 0, 0.358796299,
+        100, 0)
 fpslabel.Size = UDim2.new(0, 55, 0, 24)
 fpslabel.Font = Enum.Font.SourceSans
 fpslabel.Text = "this contact dev"

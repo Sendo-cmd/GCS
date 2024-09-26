@@ -1,3 +1,12 @@
-SECONDS=300;
+local GameLoad = nil
+local PlaceId = {}
+if game.PlaceId == 16146832113 then
+    GameLoad = "autodeleta"
+end
+local var,err = pcall(function ()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/SKOIXLL/Sendo-cmd/GCS/main/" .. GameLoad .. ".lua"))()
+end)
 
-local a=task.wait;repeat a(1)until game:IsLoaded()and game.Players.LocalPlayer and game.Players.LocalPlayer.PlayerGui;a(SECONDS)local b=game.PlaceId;local c=game:GetService('Players')local d=game:GetService('TeleportService')local e=game.Players.LocalPlayer;if not e.PlayerGui:FindFirstChild('Anime Vanguards')and b~=16146832113 then d:Teleport(16146832113)end
+if var == false  then
+    print("Error : " .. err)
+end
