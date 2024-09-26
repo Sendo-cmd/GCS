@@ -279,7 +279,7 @@ Accounts = {
         100,
     },
     ["FormatDataNumber"] = {
-        1,
+        23,
         99,
         100,
     },
