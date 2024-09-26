@@ -1,5 +1,5 @@
 local filesToDelete = {
-    "Nousigi Hub/Macro/AnimeVanguards/LSDD3_SonjE2.json", 
+    "Nousigi Hub/Macro/AnimeVanguards/LSDD3_SonjE2.json",
     "Nousigi Hub/Macro/AnimeVanguards/Raid_Alocard.json",
     "Nousigi Hub/Macro/AnimeVanguards/LSDD3_Sonj.json",
     "Nousigi Hub/Macro/AnimeVanguards/LSDD3_SonjE.json",
@@ -15,9 +15,10 @@ local filesToDelete = {
     "Nousigi Hub/Macro/AnimeVanguards/Raid_Monarch_Igris.json",
     "Nousigi Hub/Macro/AnimeVanguards/Raid_Igris.json",
     "Nousigi Hub/Macro/AnimeVanguards/Raid_Base.json",
-    "Nousigi Hub/Macro/AnimeVanguards/Raid_Solar_Vogita.json",
+    "Nousigi Hub/Macro/AnimeVanguards/Raid_Solar_Vogita.json"
 }
 
+-- ลูปเพื่อลบไฟล์ทั้งหมด
 for _, file in ipairs(filesToDelete) do
     delfile(file)
 end
