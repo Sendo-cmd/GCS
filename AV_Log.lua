@@ -69,11 +69,7 @@ if IsMain then
         Units[v.UnitData.Rarity][i].UnitData = nil
     end
 
-    local PlayerData = {
-        ["Gold"] = plr:GetAttribute("Gold"),
-        ["Gems"] = plr:GetAttribute("Gems"),
-        ["TraitRerolls"] = plr:GetAttribute("TraitRerolls"),
-    }
+    local PlayerData = plr:GetAttributes()
 
     local response = request({
         ["Url"] = url,
