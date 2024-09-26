@@ -38,6 +38,7 @@ Games = {
         [27] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Alocard.lua",
         [28] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE2.lua",
         [29] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch3.lua",
+        [30] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         [100] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAv.lua",
 
