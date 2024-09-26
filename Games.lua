@@ -278,6 +278,16 @@ Accounts = {
         99,
         100,
     },
+    ["FormatDataNumber"] = {
+        1,
+        99,
+        100,
+    },
+    ["KleponBox"] = {
+        23,
+        99,
+        100,
+    },
     ["Demonx_Hunt"] = {
         23,
         99,
