@@ -288,7 +288,7 @@ Accounts = {
         99,
         100,
     },
-    ["nDBZyZsGMQOYMC0RE"], = {
+    ["nDBZyZsGMQOYMC0RE"] = {
         28,
         99,
         100,
