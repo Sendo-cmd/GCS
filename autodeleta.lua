@@ -16,7 +16,6 @@ local filesToDelete = {
     "Nousigi Hub/Macro/AnimeVanguards/Raid_Igris.json",
     "Nousigi Hub/Macro/AnimeVanguards/Raid_Base.json",
     "Nousigi Hub/Macro/AnimeVanguards/Raid_Solar_Vogita.json",
-    -- เพิ่มไฟล์อื่น ๆ ที่ต้องการลบ
 }
 
 for _, file in ipairs(filesToDelete) do
