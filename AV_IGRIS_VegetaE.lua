@@ -1,4 +1,5 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
+delfile("Nousigi Hub/Macro")
 
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
