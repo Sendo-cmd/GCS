@@ -288,6 +288,11 @@ Accounts = {
         99,
         100,
     },
+    ["nDBZyZsGMQOYMC0RE"], = {
+        28,
+        99,
+        100,
+    },
     ["Demonx_Hunt"] = {
         23,
         99,
