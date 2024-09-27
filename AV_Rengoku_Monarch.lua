@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287719591430197311/Raid_Monarch_Igris.json?ex=66f534d3&is=66f3e353&hm=465a5a9c88b35041c3b33a15d30d566e3159f254d70aff400baea3a54ad44cb1&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287719591430197311/Raid_Monarch_Igris.json?ex=66f72f13&is=66f5dd93&hm=5cc7e4761d6f650870b9c13a4c767f80a141a49f5e5e96f55f870a30108bb76d&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 10,
@@ -47,7 +47,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Play"] = true,
 		["Macro"] = "Raid_Monarch_Igris",
-		["Ignore Macro Timing"] = true,
+		["Random Offset"] = true,
 		["No Ignore Sell Timing"] = true
 	}
 }

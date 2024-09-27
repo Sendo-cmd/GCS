@@ -8,7 +8,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "GEM4",
 		["Play"] = true,
-		["Ignore Macro Timing"] = true,
+		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
 	["AutoSave"] = true,

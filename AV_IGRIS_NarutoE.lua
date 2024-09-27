@@ -43,7 +43,7 @@ getgenv().Config = {
 		["Macro"] = "LSDD3_NarutoE",
 		["Play"] = true,
 		["Walk Around"] = true,
-		["Ignore Macro Timing"] = true,
+		["Random Offset"] = true,
 		["No Ignore Sell Timing"] = true
 	}
 }

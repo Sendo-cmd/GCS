@@ -3,12 +3,12 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223416110415964/1285244706502213632/GEM3.json?ex=66f56e68&is=66f41ce8&hm=1d161c9c0ada88e5ea2957bf645071fa677cd9e4bba4dda7fb3e1d998c420e25&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223416110415964/1285244706502213632/GEM3.json?ex=66f768a8&is=66f61728&hm=f1ec07132547c093c7c7303b39d3f1c8fb23efa6cb89b6765cb6d489cdbe1480&"
 getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "GEM3",
 		["Play"] = true,
-		["Ignore Macro Timing"] = true,
+		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
 	["AutoSave"] = true,

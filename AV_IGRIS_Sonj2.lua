@@ -46,7 +46,7 @@ getgenv().Config = {
 		["Macro"] = "LSDD3_Sonj2",
 		["Play"] = true,
 		["Walk Around"] = true,
-		["Ignore Macro Timing"] = false
+		["Random Offset"] = false
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
