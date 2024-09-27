@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1288896840271528037/LSDD3_SonjE2.json?ex=66f782f9&is=66f63179&hm=19cd1cef58af6aa7915ba80ac8f475a0da27572806c67d2afb8adb1189dc0473&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1288896840271528037/LSDD3_SonjE2.json?ex=66f82bb9&is=66f6da39&hm=09b2e5ed94ae7d3bcaef5af867f79331e81a99993de49a843aba39115acaaa8a&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Legend Stage Joiner"] = {

@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1288974637686067282/1289145930292920320/Boss_Base.json?ex=66f7c234&is=66f670b4&hm=6598b888eb8d76e10151180fdebc33f70faab0beafcdad4fec61ced4a3146148&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1288974637686067282/1289145930292920320/Boss_Base.json?ex=66f86af4&is=66f71974&hm=fd962a50f497ab3eea0ff9177637a9f0c7dae425d09e57e50828b3ec10834e08&"
 getgenv().Config = {
 	["Joiner Cooldown"] = 10,
 	["Match Finished"] = {

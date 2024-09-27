@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287768182618198046/Raid_Monarch_Song.json?ex=66f75c54&is=66f60ad4&hm=9bcb39e89fa4f691e8c1d7929e194f03e4f20c4a5bcd1c4b644ce9d6d8eb98ba&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287768182618198046/Raid_Monarch_Song.json?ex=66f80514&is=66f6b394&hm=a508c076c0f7f3dab21c5e5f88a1668fb0a07ea72047a6bad556f200ea2d655b&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 10,
