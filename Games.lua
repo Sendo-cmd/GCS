@@ -40,7 +40,7 @@ Games = {
         [29] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch3.lua",
         [30] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
-        [100] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAv.lua",
+        [100] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
 
     },
     [6149138290] = { --Anime-Card-Battle
