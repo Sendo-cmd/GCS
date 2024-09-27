@@ -100,7 +100,7 @@ Accounts = {
         100,
     },
     ["Mynamefirstzz"] = {
-        14,
+        1,
         99,
         100,
     },
