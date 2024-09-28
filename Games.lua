@@ -320,7 +320,7 @@ Accounts = {
         100,
     },
     ["Yanawarutkanpai"] = {
-        30,
+        23,
         99,
         100,
     },
