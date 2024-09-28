@@ -18,8 +18,6 @@ Games = {
         [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_NarutoE.lua",
         [8] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Obita.lua",
         [9] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_ObitaE.lua",
-        [10] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sasuke.lua",
-        [11] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SasukeE.lua",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj.lua",
         [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
         [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Chain2.lua",
@@ -39,6 +37,8 @@ Games = {
         [28] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE2.lua",
         [29] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch3.lua",
         [30] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base.lua",
+        [31] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon.lua",
+        [32] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_TenCha.lua",
         [99] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         [100] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
 
