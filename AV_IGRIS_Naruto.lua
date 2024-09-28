@@ -44,6 +44,7 @@ getgenv().Config = {
 		["Play"] = true,
 		["Walk Around"] = true,
 		["Random Offset"] = true,
+		["Ignore Macro Timing"] = true,
 		["Walk Around"] = true
 	}
 }

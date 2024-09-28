@@ -43,7 +43,8 @@ getgenv().Config = {
 		["Macro"] = "LSDD3_Sasuke",
 		["Play"] = true,
 		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Random Offset"] = true,
+		["Ignore Macro Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

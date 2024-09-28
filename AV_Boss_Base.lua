@@ -42,6 +42,7 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Random Offset"] = true,
+		["Ignore Macro Timing"] = true,
 		["Macro"] = "Boss_Base",
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true

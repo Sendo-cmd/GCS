@@ -48,6 +48,7 @@ getgenv().Config = {
 		["Play"] = true,
 		["Macro"] = "Raid_Monarch_Ten",
 		["Random Offset"] = true,
+		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	}
 }
