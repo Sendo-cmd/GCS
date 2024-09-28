@@ -3,13 +3,14 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284223983218200657/LSDD3_AlocardE.json?ex=66e68309&is=66e53189&hm=3c7d46be762c6eeb28fba551e31f62b37d52dbc2d93b8b828810b534a9376c18&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1288974637686067282/1289500494611615848/Boss_Base_Ten.json?ex=66f90c6b&is=66f7baeb&hm=ab97193d1c1279c969de6ddcb3a42be64776cb388114613876b9069a84ed7e1f&"
 getgenv().Config = {
-	["AutoSave"] = true,
-	["Legend Stage Joiner"] = {
-		["Stage"] = "Double Dungeon",
-		["Auto Join"] = true,
-		["Act"] = "Act3"
+	["Joiner Cooldown"] = 10,
+	["Match Finished"] = {
+		["Auto Replay"] = true
+	},
+	["Boss Event Joiner"] = {
+		["Auto Join"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
@@ -23,21 +24,28 @@ getgenv().Config = {
 			["FPS Cap"] = 10
 		}
 	},
-	["Auto Skip Wave"] = true,
-	["Match Finished"] = {
-		["Auto Replay"] = true
+	["Secure"] = {
+		["Walk Around"] = true
 	},
+	["AutoSave"] = true,
 	["Claimer"] = {
-		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
+		["Auto Claim Battle Pass"] = true,
 		["Auto Claim Achievement"] = true,
 		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Daily Reward"] = true
 	},
+	["Gameplay"] = {
+		["Auto Skip Wave"] = true
+	},
 	["Macros"] = {
-		["Macro"] = "LSDD3_AlocardE",
+		["Random Offset"] = true,
+		["Ignore Macro Timing"] = true,
+		["Macro"] = "Boss_Base_Ten",
 		["Play"] = true,
-		["Walk Around"] = true
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

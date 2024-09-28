@@ -3,19 +3,19 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1284458639704457236/LSDD3_Sasuke.json?ex=66ef4693&is=66edf513&hm=5abff62a60c17e4e788cb7a6accd10730f32fb67ba74731b8b95784834e79e80&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1288974637686067282/1289145930292920320/Boss_Base.json?ex=66f86af4&is=66f71974&hm=fd962a50f497ab3eea0ff9177637a9f0c7dae425d09e57e50828b3ec10834e08&"
 getgenv().Config = {
-	["AutoSave"] = true,
-	["Legend Stage Joiner"] = {
-		["Auto Join"] = true,
-		["Stage"] = "Double Dungeon",
-		["Act"] = "Act3"
+	["Joiner Cooldown"] = 10,
+	["Match Finished"] = {
+		["Auto Replay"] = true
+	},
+	["Boss Event Joiner"] = {
+		["Auto Join"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
 	},
-	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
@@ -24,27 +24,28 @@ getgenv().Config = {
 			["FPS Cap"] = 10
 		}
 	},
-	["Auto Skip Wave"] = true,
-	["Match Finished"] = {
-		["Auto Replay"] = true
+	["Secure"] = {
+		["Walk Around"] = true
 	},
-	["Webhook"] = {
-		["Stage Finished"] = false,
-		["URL"] = "https://discord.com/api/webhooks/1285656259604774912/2m06zwdD_zylzlJ6iZ7F167cgEd8Vbg8leUk1obYgKVjXMctXsaxPIoB2FTpmkntDGnj"
-	},
+	["AutoSave"] = true,
 	["Claimer"] = {
-		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
+		["Auto Claim Battle Pass"] = true,
 		["Auto Claim Achievement"] = true,
 		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Daily Reward"] = true
 	},
+	["Gameplay"] = {
+		["Auto Skip Wave"] = true
+	},
 	["Macros"] = {
-		["Macro"] = "LSDD3_Sasuke",
-		["Play"] = true,
-		["Walk Around"] = true,
 		["Random Offset"] = true,
-		["Ignore Macro Timing"] = true
+		["Ignore Macro Timing"] = true,
+		["Macro"] = "Boss_Base_Son",
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
