@@ -140,7 +140,7 @@ Accounts = {
         "AutoDelete",
     },
     ["Somrum11"] = {
-        "BaseB",
+        "BaseR",
         "Log",
         "AutoDelete",
     },
