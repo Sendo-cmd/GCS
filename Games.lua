@@ -80,7 +80,7 @@ Accounts = {
         "AutoDelete",
     },
     ["Etaa_xm"] = {
-        23,
+        1,
         "Log",
         "AutoDelete",
     },
