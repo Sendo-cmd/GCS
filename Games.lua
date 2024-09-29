@@ -150,7 +150,7 @@ Accounts = {
         "AutoDelete",
     },
     ["wexd45"] = {
-        20,
+        "BaseB",
         "Log",
         "AutoDelete",
     },
