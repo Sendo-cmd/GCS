@@ -80,7 +80,7 @@ Accounts = {
         "AutoDelete",
     },
     ["Etaa_xm"] = {
-        1,
+        "BaseGem",
         "Log",
         "AutoDelete",
     },
@@ -300,7 +300,7 @@ Accounts = {
         "AutoDelete",
     },
     ["CAVIARHUB"] = {
-        25,
+        31,
         "Log",
         "AutoDelete",
     },
@@ -326,6 +326,11 @@ Accounts = {
     },
     ["M_Darknesss"] = {
         23,
+        "Log",
+        "AutoDelete",
+    },
+    ["bluegamer1336"] = {
+        "BaseR",
         "Log",
         "AutoDelete",
     },
