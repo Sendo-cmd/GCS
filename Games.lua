@@ -285,7 +285,7 @@ Accounts = {
         "AutoDelete",
     },
     ["FormatDataNumber"] = {
-        23,
+        31,
         "Log",
         "AutoDelete",
     },
