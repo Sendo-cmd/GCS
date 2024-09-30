@@ -10,9 +10,12 @@ local Profiles = {
     "Raid_Igris.json",
     "Boss_Base.json",
     "Boss_Base_Son.json",
-    
-    
-    
+    "Raid_Monarch_Igris.json",
+    "Raid_Monarch_Song.json",
+    "LSDD3_ChainE.json",
+    "LSDD3_Chain2.json",
+    "LSDD3_Chain.json",
+    "Raid_Base.json",
 };
 
 local PATH = "Nousigi Hub/Macro/AnimeVanguards";
