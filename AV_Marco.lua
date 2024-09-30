@@ -1,13 +1,14 @@
 local Endpoint = "https://raw.githubusercontent.com/test-macro/marco/main/"
 local Profiles = {
-    "C_Sand.json",
-    "C_Dung.json",
-    "C_Namke.json",
+    "New_ChaDD.json",
+    "New_ChaSand.json",
+    "New_ChaNamek.json",
     "GEM.json",
     "GEM2.json",
     "GEM3.json",
     "LSDD3_SonjE.json",
     "Raid_Igris.json",
+    "DDLS_Base.json",
     "Boss_Base.json",
     "Boss_Base_Son.json",
     "Raid_Monarch_Igris.json",
