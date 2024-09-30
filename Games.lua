@@ -334,6 +334,11 @@ Accounts = {
         "Log",
         "AutoDelete",
     },
+    ["KathryneU1368"] = {
+        5,
+        "Log",
+        "AutoDelete",
+    },
     ["Demonx_Hunt"] = {
         "BaseB",
         "Log",
