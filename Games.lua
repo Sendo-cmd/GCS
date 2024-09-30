@@ -21,7 +21,6 @@ Games = {
         [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Chain.lua",
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_ChainE.lua",
         [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_NarutoE.lua",
-        
         [9] = "",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj.lua",
         [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
