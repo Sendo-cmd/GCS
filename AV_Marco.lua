@@ -2,6 +2,17 @@ local Endpoint = "https://raw.githubusercontent.com/test-macro/marco/main/"
 local Profiles = {
     "C_Sand.json",
     "C_Dung.json",
+    "C_Namke.json",
+    "GEM.json",
+    "GEM2.json",
+    "GEM3.json",
+    "LSDD3_SonjE.json",
+    "Raid_Igris.json",
+    "Boss_Base.json",
+    "Boss_Base_Son.json",
+    
+    
+    
 };
 
 local PATH = "Nousigi Hub/Macro/AnimeVanguards";
