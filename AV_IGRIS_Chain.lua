@@ -49,7 +49,7 @@ getgenv().Config = {
 		["Macro"] = "LSDD3_Chain",
 		["Play"] = true,
 		["Walk Around"] = true,
-		["Random Offset"] = false
+		["Random Offset"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
