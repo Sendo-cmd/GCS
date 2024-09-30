@@ -25,6 +25,7 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = {
 			["Enable"] = true
+		}	
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = true,
