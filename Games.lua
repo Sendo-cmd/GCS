@@ -395,7 +395,7 @@ Accounts = {
         "AutoDelete",
         "Marco",
     },
-    ["as1nr"] = {
+    ["AS1NR"] = {
         "BaseB",
         "Log",
         "AutoDelete",
