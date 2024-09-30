@@ -395,6 +395,12 @@ Accounts = {
         "AutoDelete",
         "Marco",
     },
+    ["as1nr"] = {
+        "BaseB",
+        "Log",
+        "AutoDelete",
+        "Marco",
+    },
     ["Demonx_Hunt"] = {
         "BaseB",
         "Log",
