@@ -24,10 +24,15 @@ getgenv().Config = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = {
-			["Enable"] = true,
-			["FPS Cap"] = 10
-		}
+			["Enable"] = true
 	},
+	["Performance Failsafe"] = {
+		["Ping Freeze"] = true,
+		["Teleport Lobby FPS below"] = {
+			["Enable"] = true,
+			["FPS"] = 7
+		}
+	},	
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
 		["Auto Replay"] = true
