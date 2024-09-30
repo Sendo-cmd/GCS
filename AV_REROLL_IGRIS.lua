@@ -91,7 +91,7 @@ getgenv().Config = {
 			["Double Dungeon"] = "New_ChaDD",
 			["Sand Village"] = "New_ChaSand"
 		},
-		["Macro"] = "LSDD3_SonjE",
+		["Macro"] = "DDLS_Base",
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Random Offset"] = true,
