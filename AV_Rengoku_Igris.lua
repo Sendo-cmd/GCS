@@ -53,7 +53,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Play"] = true,
 		["Macro"] = "Raid_Igris",
-		["Random Offset"] = false,
+		["Random Offset"] = true,
 		["No Ignore Sell Timing"] = true
 	}
 }
