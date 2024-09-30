@@ -18,6 +18,7 @@ local Profiles = {
     "LSDD3_Chain.json",
     "Raid_Base.json",
 };
+repeat task.wait(5) until game:IsLoaded()
 
 local PATH = "Nousigi Hub/Macro/AnimeVanguards";
 
