@@ -132,7 +132,7 @@ Accounts = {
         "Marco",
     },
     ["Krv_kai43"] = {
-        31,
+        "BaseRIG",
         "Log",
         "AutoDelete",
         "Marco",
@@ -342,7 +342,7 @@ Accounts = {
         "Marco",
     },
     ["nDBZyZsGMQOYMC0RE"] = {
-        25,
+        "BaseRIG",
         "Log",
         "AutoDelete",
         "Marco",
