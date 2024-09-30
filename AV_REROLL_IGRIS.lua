@@ -87,9 +87,9 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Challenge Macro"] = {
-			["Planet Namak"] = "C_Namke",
-			["Double Dungeon"] = "C_Dung",
-			["Sand Village"] = "C_Sand"
+			["Planet Namak"] = "New_ChaNamek",
+			["Double Dungeon"] = "New_ChaDD",
+			["Sand Village"] = "New_ChaSand"
 		},
 		["Macro"] = "LSDD3_SonjE",
 		["Play"] = true,
