@@ -33,6 +33,10 @@ getgenv().Config = {
 			["Enable"] = true,
 			["FPS"] = 5
 		}
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
 	},	
 	["Webhook"] = {
 		["Stage Finished"] = false,
@@ -51,8 +55,7 @@ getgenv().Config = {
 		["Macro"] = "GEM",
 		["Play"] = true,
 		["Random Offset"] = true,
-		["Ignore Macro Timing"] = true,
-		["Walk Around"] = true
+		["Ignore Macro Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

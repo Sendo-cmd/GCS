@@ -29,7 +29,11 @@ getgenv().Config = {
 			["Enable"] = true,
 			["FPS"] = 5
 		}
-	},	
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},		
 	["Webhook"] = {
 		["Stage Finished"] = false,
 		["URL"] = ""
@@ -50,7 +54,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "LSDD3_NarutoE",
 		["Play"] = true,
-		["Walk Around"] = true,
 		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true,

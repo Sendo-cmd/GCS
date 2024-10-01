@@ -9,8 +9,7 @@ getgenv().Config = {
 		["Macro"] = "GEM3",
 		["Play"] = true,
 		["Random Offset"] = true,
-		["Ignore Macro Timing"] = true,
-		["Walk Around"] = true
+		["Ignore Macro Timing"] = true
 	},
 	["AutoSave"] = true,
 	["Stage Joiner"] = {
@@ -48,7 +47,11 @@ getgenv().Config = {
 			["Enable"] = true,
 			["FPS"] = 5
 		}
-	},	
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},		
 	["Auto Skip Wave"] = true,
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,

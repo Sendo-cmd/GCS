@@ -29,10 +29,11 @@ getgenv().Config = {
 			["Enable"] = true,
 			["FPS"] = 5
 		}
-	},	
-	["Secure"] = {
-		["Walk Around"] = true
 	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},		
 	["AutoSave"] = true,
 	["Claimer"] = {
 		["Auto Claim Milestone"] = true,

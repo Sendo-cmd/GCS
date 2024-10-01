@@ -33,7 +33,11 @@ getgenv().Config = {
 			["Enable"] = true,
 			["FPS"] = 5
 		}
-	},	
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},		
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
 		["Auto Replay"] = true
@@ -49,8 +53,7 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Macro"] = "LSDD3_ChainE",
-		["Play"] = true,
-		["Walk Around"] = true
+		["Play"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

@@ -29,7 +29,11 @@ getgenv().Config = {
 			["Enable"] = true,
 			["FPS"] = 5
 		}
-	},	
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},		
 	["Auto Skip Wave"] = true,
 	["Match Finished"] = {
 		["Auto Replay"] = true
@@ -53,7 +57,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "LSDD3_Sonj",
 		["Play"] = true,
-		["Walk Around"] = true,
 		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true

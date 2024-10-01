@@ -30,7 +30,11 @@ getgenv().Config = {
 			["Enable"] = true,
 			["FPS"] = 5
 		}
-	},	
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},		
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
@@ -56,9 +60,6 @@ getgenv().Config = {
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
-	},
-	["Secure"] = {
-		["Walk Around"] = true
 	},
 	["Macros"] = {
 		["Challenge Macro"] = {
