@@ -142,7 +142,7 @@ Accounts = {
         "Marco",
     },
     ["GorgeousKeita"] = {
-        "BaseGem",
+        3,
         "Log",
         "Marco",
     },
