@@ -7,6 +7,7 @@ local Profiles = {
     "GEM2.json",
     "GEM3.json",
     "LSDD3_SonjE.json",
+    "LSDD3_Sonj.json",
     "Raid_Igris.json",
     "DDLS_Base.json",
     "Boss_Base.json",
