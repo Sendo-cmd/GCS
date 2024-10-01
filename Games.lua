@@ -272,7 +272,7 @@ Accounts = {
         "Marco",
     },
     ["FormatDataNumber"] = {
-        31,
+        23,
         "Log",
         "Marco",
     },
