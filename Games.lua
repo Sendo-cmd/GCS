@@ -1,12 +1,7 @@
 Games = {
     [4509896324] = { --Anime-Last-Stand
-        [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaDoAll.lua",
-        [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaTrueRoll.lua",
-        [3] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/KaTrueSummon.lua",
-        [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
-        [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_X.lua",
     },
     [5578556129] = { --Anime-Vanguards
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
