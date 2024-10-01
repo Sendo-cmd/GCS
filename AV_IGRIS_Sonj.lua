@@ -56,7 +56,6 @@ getgenv().Config = {
 		["Walk Around"] = true,
 		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	}
 }
