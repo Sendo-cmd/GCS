@@ -39,11 +39,13 @@ getgenv().Config = {
 		["URL"] = ""
 	},
 	["Claimer"] = {
-		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
 		["Auto Claim Achievement"] = true,
+		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
-		["Auto Claim Daily Reward"] = true
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Battle Pass"] = true
 	},
 	["Macros"] = {
 		["Macro"] = "GEM",
