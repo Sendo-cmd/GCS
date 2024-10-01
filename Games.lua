@@ -329,7 +329,7 @@ Accounts = {
         "Marco",
     },
     ["nDBZyZsGMQOYMC0RE"] = {
-        "BaseRIG",
+        12,
         "Log",
         "AutoDelete",
         "Marco",
