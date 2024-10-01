@@ -39,7 +39,8 @@ getgenv().Config = {
 		["URL"] = ""
 	},
 	["Secure"] = {
-		["Walk Around"] = true
+		["Walk Around"] = true,
+		["Random Offset"] = true
 	},
 	["Claimer"] = {
 		["Auto Claim Milestone"] = true,
@@ -53,7 +54,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "LSDD3_SonjE2",
 		["Play"] = true,
-		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	}
