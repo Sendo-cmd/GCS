@@ -1,8 +1,4 @@
 Games = {
-    [4509896324] = { --Anime-Last-Stand
-        [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
-        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
-    },
     [5578556129] = { --Anime-Vanguards
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         ["BaseB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base.lua",
@@ -16,27 +12,23 @@ Games = {
         [4] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Chain.lua",
         [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_ChainE.lua",
         [7] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_NarutoE.lua",
-        [9] = "",
         [12] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Sonj.lua",
         [13] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
         [14] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Chain2.lua",
-        [15] = "",
-        [16] = "",
         [17] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_LD.lua",
         [20] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch.lua",
-        [21] = "",
-        [22] = "",
         [23] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
         [24] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM4.lua",
-        [25] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch2.lua",
-        [27] = "",
         [28] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE2.lua",
         [29] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch3.lua",
         [31] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon.lua",
-        [32] = "",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoDelete"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
 
+    },
+    [4509896324] = { --Anime-Last-Stand
+        [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
+        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
