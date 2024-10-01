@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
-getgenv().EquipMacroTroop = false
+getgenv().EquipMacroTroop = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223982782119967/1288833410051342417/LSDD3_SonjE.json?ex=66fb3c66&is=66f9eae6&hm=73fcec9432a4d1e1413e24491abff55f62571659118f08e6b9e818367172e7be&"
 getgenv().Config = {
 	["AutoSave"] = true,

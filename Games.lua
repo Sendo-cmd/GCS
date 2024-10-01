@@ -142,7 +142,7 @@ Accounts = {
         "Marco",
     },
     ["GorgeousKeita"] = {
-        20,
+        "BaseGem",
         "Log",
         "Marco",
     },
@@ -257,7 +257,7 @@ Accounts = {
         "Marco",
     },
     ["TONKAORIKI_NEW"] = {
-        13,
+        31,
         "Log",
         "Marco",
     },
@@ -337,7 +337,12 @@ Accounts = {
         "Marco",
     },
     ["LLAAKK122"] = {
-        13,
+        28,
+        "Log",
+        "Marco",
+    },
+    ["paopaoforgame"] = {
+        23,
         "Log",
         "Marco",
     },
