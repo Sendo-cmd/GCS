@@ -353,10 +353,20 @@ repeat task.wait() until game:IsLoaded()
 
 local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
+local Loaded = false
+local Timer = 0
 for i,v in pairs(Accounts[plr.Name]) do
     local ScriptUrl = Scripts[v];
 
-    local Functions = loadstring(game:HttpGet(ScriptUrl))
+    local ok, Functions = pcall(loadstring, game:HttpGet(ScriptUrl))
 
-    task.spawn(Functions)
+    if ok then
+        Timer, Loaded = tick(), false
+        task.spawn(function()
+            Functions()
+            Loaded = true
+        end)
+
+        repeat task.wait() until Loaded or (Timer - tick()) > 2
+    end
 end
