@@ -23,7 +23,7 @@ getgenv().Config = {
 	},
 	["Secure"] = {
 		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Random Offset"] = false
 	},		
 	["Match Finished"] = {
 		["Auto Replay"] = true
@@ -54,7 +54,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Play"] = true,
 		["Macro"] = "Raid_Igris",
-		["Random Offset"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Ignore Macro Timing"] = true
 	}
