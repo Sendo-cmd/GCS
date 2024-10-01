@@ -42,6 +42,10 @@ getgenv().Config = {
 		["Stage Finished"] = false,
 		["URL"] = ""
 	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},
 	["Claimer"] = {
 		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
