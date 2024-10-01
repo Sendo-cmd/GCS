@@ -53,7 +53,9 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Macro"] = "LSDD3_ChainE",
-		["Play"] = true
+		["Play"] = true,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
