@@ -55,7 +55,7 @@ getgenv().Config = {
 		["Auto Claim Daily Reward"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "DDLS_Base",
+		["Macro"] = "Igris_Base",
 		["Play"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true

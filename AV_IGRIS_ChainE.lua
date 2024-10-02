@@ -52,7 +52,7 @@ getgenv().Config = {
 		["Auto Claim Battle Pass"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "LSDD3_ChainE",
+		["Macro"] = "Igris_ChainE",
 		["Play"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true

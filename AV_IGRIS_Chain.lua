@@ -52,7 +52,7 @@ getgenv().Config = {
 		["Auto Claim Battle Pass"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "LSDD3_Chain",
+		["Macro"] = "Igris_Chain",
 		["Play"] = true,
 		["Random Offset"] = true
 	}

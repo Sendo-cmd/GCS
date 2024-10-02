@@ -52,7 +52,7 @@ getgenv().Config = {
 		["Auto Claim Battle Pass"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "LSDD3_SonjE",
+		["Macro"] = "Igris_SonjE",
 		["Play"] = true,
 		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,

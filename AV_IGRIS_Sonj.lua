@@ -55,7 +55,7 @@ getgenv().Config = {
 		["Auto Claim Daily Reward"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "LSDD3_Sonj",
+		["Macro"] = "Igris_Sonj",
 		["Play"] = true,
 		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,

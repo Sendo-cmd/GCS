@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287728146438684742/Raid_Ten.json?ex=66f4940a&is=66f3428a&hm=cc2a7d67c97d9d889bf0dc9509778168a82a4aedf5a16869da2feab04c3070c9&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1288490807036219403/Raid_Igris.json?ex=66fb4ed3&is=66f9fd53&hm=e4a2d9a5a9d78835afd71abba6d6997018e078a2c612805f9791b8364ac42aa4&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 10,
@@ -53,10 +53,9 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Play"] = true,
-		["Macro"] = "Raid_Ten",
-		["Random Offset"] = true,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
+		["Macro"] = "Raid_Akazo",
+		["No Ignore Sell Timing"] = true,
+		["Ignore Macro Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroTroop = true
-getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1287719592143356005/Raid_Solar_Vogita.json?ex=66f72f13&is=66f5dd93&hm=596fd46a8f1e3583ffc5a81c748061904422170a43829e3807369c6c67ef3a37&"
+getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1287719591354826847/1288490807036219403/Raid_Igris.json?ex=66fb4ed3&is=66f9fd53&hm=e4a2d9a5a9d78835afd71abba6d6997018e078a2c612805f9791b8364ac42aa4&"
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 10,
@@ -53,10 +53,9 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Play"] = true,
-		["Macro"] = "Raid_Monarch_Ten",
-		["Random Offset"] = true,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
+		["Macro"] = "Raid_Rengoku",
+		["No Ignore Sell Timing"] = true,
+		["Ignore Macro Timing"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

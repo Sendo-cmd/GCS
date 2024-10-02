@@ -16,7 +16,7 @@ getgenv().Config = {
 	},
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Macro"] = "LSDD3_Chain2",
+		["Macro"] = "Igris_Chain2",
 		["Play"] = true,
 		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,
