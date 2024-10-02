@@ -20,7 +20,7 @@ local Profiles = {
     "Raid_Monarch_Song.json",
     "Raid_Base.json",
 };
-repeat task.wait(8) until game:IsLoaded()
+repeat task.wait() until game:IsLoaded()
 
 local PATH = "Nousigi Hub/Macro/AnimeVanguards";
 
