@@ -8,6 +8,7 @@ Games = {
         ["BaseIG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Base.lua",
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         ["RIgris"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
+        ["RRengoku"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Rengoku.lua",
         ["RMon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch.lua",
         ["BaseRGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_GEM.lua",
         ["BaseRIG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_IGRIS.lua",
@@ -53,7 +54,7 @@ Accounts = {
         "Marco",
     },
     ["maser080"] = {
-        "RIgris",
+        "RRengoku",
         "Log",
         "Marco",
     },
