@@ -9,6 +9,7 @@ Games = {
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         ["RIgris"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
         ["RRengoku"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Renguko.lua",
+        ["RAkazo"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Akazo.lua",
         ["RMon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Monarch.lua",
         ["BaseRGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_GEM.lua",
         ["BaseRIG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_REROLL_IGRIS.lua",

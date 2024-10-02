@@ -15,12 +15,13 @@ local Profiles = {
     "Igris_Chain.json",
     "Boss_Base.json",
     "Boss_Base_Son.json",
+    "Raid_Base.json",
     "Raid_Igris.json",
+    "Raid_Akazo.json",
+    "Raid_Renguko.json",
     "Raid_Monarch_Igris.json",
     "Raid_Monarch_Song.json",
-    "Raid_Base.json",
 };
-repeat task.wait() until game:IsLoaded()
 
 local PATH = "Nousigi Hub/Macro/AnimeVanguards";
 
