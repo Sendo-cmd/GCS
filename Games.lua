@@ -356,6 +356,11 @@ Accounts = {
         "Log",
         "Marco",
     },
+    ["PinkheadFolk"] = {
+        3,
+        "Log",
+        "Marco",
+    },
     ["Demonx_Hunt"] = {
         "BaseB",
         "Log",
