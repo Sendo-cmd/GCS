@@ -39,7 +39,7 @@ Accounts = {
         4,
     },
     ["Champandbank147"] = {
-        "LCEV",
+        "LSEV",
         "Log",
         "Marco",
     },
