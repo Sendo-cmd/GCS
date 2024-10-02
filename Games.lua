@@ -351,6 +351,11 @@ Accounts = {
         "Log",
         "Marco",
     },
+    ["RiceBing"] = {
+        23,
+        "Log",
+        "Marco",
+    },
     ["Demonx_Hunt"] = {
         "BaseB",
         "Log",
