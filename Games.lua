@@ -23,6 +23,8 @@ Games = {
         ["LSEM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEMon.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
+        ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
+        ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
         ["AutoDelete"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
 
     },

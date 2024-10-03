@@ -1,36 +1,37 @@
 local Accounts = {
-    ["USERNAME"] = {
+    ["paopaoforgame"] = {
         ["Slayer's Cape"] = 1,
         ["Nichirin Cleavers"] = 1,
         ["Demon Beads"] = 1,
-        ["Fortune Catalyst (Slayer)"] = 20,
+        ["Fortune Catalyst (Slayer)"] = 100,
         ["TraitRerolls"] = 25
     },
-    ["USERNAME"] = {
-        ["Slayer's Cape"] = 0,
-        ["Nichirin Cleavers"] = 0,
-        ["Demon Beads"] = 0,
-        ["Fortune Catalyst (Slayer)"] = 0,
+    ["RiceBing"] = {
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["Fortune Catalyst (Slayer)"] = 100,
         ["TraitRerolls"] = 25
     },
-    ["USERNAME"] = {
-        ["Slayer's Cape"] = 0,
-        ["Nichirin Cleavers"] = 0,
-        ["Demon Beads"] = 0,
-        ["Fortune Catalyst (Slayer)"] = 0,
+    ["TONKAORIKI_NEW"] = {
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["Fortune Catalyst (Slayer)"] = 100,
         ["TraitRerolls"] = 25
     },
-    ["USERNAME"] = {
-        ["Slayer's Cape"] = 0,
-        ["Nichirin Cleavers"] = 0,
-        ["Demon Beads"] = 0,
-        ["Fortune Catalyst (Slayer)"] = 0,
+    ["GoodxABA"] = {
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["Fortune Catalyst (Slayer)"] = 100,
         ["TraitRerolls"] = 25
-    },["USERNAME"] = {
-        ["Slayer's Cape"] = 0,
-        ["Nichirin Cleavers"] = 0,
-        ["Demon Beads"] = 0,
-        ["Fortune Catalyst (Slayer)"] = 0,
+    },
+    ["Xeonerct"] = {
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["Fortune Catalyst (Slayer)"] = 100,
         ["TraitRerolls"] = 25
     }
 }
@@ -59,8 +60,8 @@ local RaidShopData = require(Modules.Data.Raids.RaidShopData)
 
 UpdateItemQuantity:FireServer()
 local Quantity = UpdateItemQuantity.OnClientEvent:Wait()
-if getgenv().UpdateQuantity then getgenv().UpdateQuantity:Disconnect() end
-getgenv().UpdateQuantity = UpdateItemQuantity.OnClientEvent:Connect(function(Table)
+if getgenv().RaidsUpdateQuantity then getgenv().RaidsUpdateQuantity:Disconnect() end
+getgenv().RaidsUpdateQuantity = UpdateItemQuantity.OnClientEvent:Connect(function(Table)
     Quantity = Table
 end)
 
@@ -68,12 +69,16 @@ local ShopData = RaidShopData:GetAllShopDataFromRaid("Stage1")
 for i,v in pairs(Quantity["Stage1"].ShopData) do
     local Item = Account[i]
     local ItemData = ShopData[i]
+    local MaxQuantity = ItemData.MaxQuantity
     
     local RedWebs = plr:GetAttribute("RedWebs")
-    if Item and Item > 0 and v > 0 and RedWebs >= ItemData["Price"] then
-        for Num = 1, Item do
+    if Item and Item > 0 and v > 0 then
+        local Bought = MaxQuantity - v
+        while Bought < Item and RedWebs >= ItemData["Price"] do
             RaidsShopEvent:FireServer("Purchase", { "Stage1", i })
             wait(0.1)
+            RedWebs = plr:GetAttribute("RedWebs")
+            Bought += 1
         end
     end
 end
