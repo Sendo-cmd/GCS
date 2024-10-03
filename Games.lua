@@ -349,8 +349,8 @@ Accounts = {
         "AutoBuyR",
         "AutoBuyBE",
     },
-    ["BIgrisSon"] = {
-        "Base",
+    ["narutoez441"] = {
+        "BIgrisSon",
         "Log",
         "Marco",
         "AutoBuyR",
