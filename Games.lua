@@ -365,6 +365,11 @@ Accounts = {
         "Log",
         "Marco",
     },
+    ["Nachosmayo"] = {
+        "Gem3",
+        "Log",
+        "Marco",
+    },
     ["Demonx_Hunt"] = {
         "BaseB",
         "Log",
