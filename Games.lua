@@ -5,6 +5,7 @@ Games = {
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
         ["Gem2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM2.lua",
         ["Gem3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM3.lua",
+        ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
         ["BaseIG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Base.lua",
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         ["RIgris"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
@@ -65,7 +66,7 @@ Accounts = {
         "Marco",
     },
     ["Etaa_xm"] = {
-        "BaseGem",
+        "BaseGemInf",
         "Log",
         "Marco",
     },
@@ -255,7 +256,7 @@ Accounts = {
         "Marco",
     },
     ["TONKAORIKI_NEW"] = {
-        "BIgrisSon",
+        "RIgris",
         "Log",
         "Marco",
     },
@@ -356,6 +357,11 @@ Accounts = {
     },
     ["PinkheadFolk"] = {
         "Gem3",
+        "Log",
+        "Marco",
+    },
+    ["GoodxABA"] = {
+        "BaseR",
         "Log",
         "Marco",
     },
