@@ -54,7 +54,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "GEM",
 		["Play"] = true,
-		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true
 	}
 }

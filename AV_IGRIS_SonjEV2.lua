@@ -52,7 +52,7 @@ getgenv().Config = {
 		["Auto Claim Battle Pass"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "Igris_SonjEV",
+		["Macro"] = "Igris_SonjEV2",
 		["Play"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true

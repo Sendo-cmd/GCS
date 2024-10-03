@@ -57,7 +57,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "Igris_SonjEMon",
 		["Play"] = true,
-		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	}

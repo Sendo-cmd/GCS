@@ -95,7 +95,6 @@ getgenv().Config = {
 		["Macro"] = "DDLS_Base",
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true,
-		["Random Offset"] = true,
 		["Ignore Macro Timing"] = true
 	}
 }
