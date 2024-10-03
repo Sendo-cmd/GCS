@@ -98,7 +98,7 @@ Accounts = {
         "AutoBuyBE",
     },
     ["aamlop1"] = {
-        "BaseGem",
+        "BaseGemInf",
         "Log",
         "Marco",
         "AutoBuyR",
