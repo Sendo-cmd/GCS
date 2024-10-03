@@ -390,13 +390,7 @@ local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
 local Loaded = false
 local Timer = 0
-local Scripts = nil
-for i,v in pairs(Accounts) do
-    if i == plr.Name or i:lower() == plr.Name:lower() then
-        Scripts = v
-    end
-end
-for i,v in pairs(Scripts) do
+for i,v in pairs(Accounts[plr.Name]) do
     local ScriptUrl = Scripts[v];
 
     local ok, Functions = pcall(loadstring, game:HttpGet(ScriptUrl))
