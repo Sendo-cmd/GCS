@@ -365,7 +365,7 @@ Accounts = {
         "Log",
         "Marco",
     },
-    ["Nachosmayo"] = {
+    ["NachosMayo"] = {
         "Gem2",
         "Log",
         "Marco",
