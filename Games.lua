@@ -94,6 +94,7 @@ Accounts = {
         "Marco",
     },
     ["B1za12345"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
@@ -129,6 +130,7 @@ Accounts = {
         "Marco",
     },
     ["Somrum11"] = {
+        "AutoBuyR",
         "BaseR",
         "Log",
         "Marco",
@@ -154,6 +156,7 @@ Accounts = {
         "Marco",
     },
     ["Xeonerct"] = {
+        "AutoBuyR",
         "BaseR",
         "Log",
         "Marco",
@@ -164,16 +167,19 @@ Accounts = {
         "Marco",
     },
     ["AFKFARMID"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
     },
     ["NonBemmy"] = {
+        "AutoBuyBE",
         "BaseB",
         "Log",
         "Marco",
     },
     ["YURIDRONEYET"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
@@ -189,6 +195,7 @@ Accounts = {
         "Marco",
     },
     ["xMcTHx"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
@@ -204,6 +211,7 @@ Accounts = {
         "Marco",
     },
     ["notyuio111"] = {
+        "AutoBuyR",
         "BaseR",
         "Log",
         "Marco",
@@ -214,16 +222,19 @@ Accounts = {
         "Marco",
     },
     ["EAzxc013"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
     },
     ["okun474"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
     },
     ["offj_0383"] = {
+        "AutoBuyBE",
         "BaseB",
         "Log",
         "Marco",
@@ -249,6 +260,7 @@ Accounts = {
         "Marco",
     },
     ["ASKINGZ12_43"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
@@ -259,6 +271,7 @@ Accounts = {
         "Marco",
     },
     ["TONKAORIKI_NEW"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
@@ -274,11 +287,13 @@ Accounts = {
         "Marco",
     },
     ["FormatDataNumber"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
     },
     ["KleponBox"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
@@ -289,11 +304,13 @@ Accounts = {
         "Marco",
     },
     ["CAVIARHUB"] = {
+        "AutoBuyBE",
         "BIgrisSon",
         "Log",
         "Marco",
     },
     ["Nonglud"] = {
+        "AutoBuyBE",
         "BaseB",
         "Log",
         "Marco",
@@ -304,21 +321,25 @@ Accounts = {
         "Marco",
     },
     ["salldre"] = {
+        "AutoBuyBE",
         "BaseB",
         "Log",
         "Marco",
     },
     ["Yanawarutkanpai"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
     },
     ["M_Darknesss"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
     },
     ["bluegamer1336"] = {
+        "AutoBuyR",
         "BaseR",
         "Log",
         "Marco",
@@ -329,6 +350,7 @@ Accounts = {
         "Marco",
     },
     ["AS1NR"] = {
+        "AutoBuyBE",
         "BIgrisSon",
         "Log",
         "Marco",
@@ -344,16 +366,19 @@ Accounts = {
         "Marco",
     },
     ["paopaoforgame"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
     },
     ["teerathornmoon"] = {
+        "AutoBuyBE",
         "BaseB",
         "Log",
         "Marco",
     },
     ["RiceBing"] = {
+        "AutoBuyR",
         "RIgris",
         "Log",
         "Marco",
@@ -364,6 +389,7 @@ Accounts = {
         "Marco",
     },
     ["GoodxABA"] = {
+        "AutoBuyR",
         "BaseR",
         "Log",
         "Marco",
@@ -374,6 +400,7 @@ Accounts = {
         "Marco",
     },
     ["dufjr32"] = {
+        "AutoBuyBE",
         "BaseB",
         "Log",
         "Marco",
