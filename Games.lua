@@ -101,7 +101,7 @@ Accounts = {
         "Marco",
     },
     ["djgodzz55"] = {
-        "Gem3",
+        "Gem2",
         "Log",
         "Marco",
     },
@@ -366,7 +366,12 @@ Accounts = {
         "Marco",
     },
     ["Nachosmayo"] = {
-        "Gem3",
+        "Gem2",
+        "Log",
+        "Marco",
+    },
+    ["dufjr32"] = {
+        "BaseB",
         "Log",
         "Marco",
     },
