@@ -69,7 +69,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "RRengoku",
+        "ESSE",
     },
     ["Puggtopro"] = {
         "Log",
