@@ -22,6 +22,7 @@ Games = {
         ["LSEV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV.lua",
         ["LSEV2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV2.lua",
         ["LSEM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEMon.lua",
+        ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
@@ -545,7 +546,7 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 2
+        repeat task.wait() until Loaded or (Timer - tick()) > 3
     end
 end
 
