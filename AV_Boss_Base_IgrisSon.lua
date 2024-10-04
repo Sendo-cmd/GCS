@@ -48,10 +48,9 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true
 	},
 	["Macros"] = {
-		["Random Offset"] = true,
-		["Ignore Macro Timing"] = true,
 		["Macro"] = "Boss_Base_Son",
 		["Play"] = true,
+		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	}
 }
