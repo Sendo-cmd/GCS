@@ -38,12 +38,16 @@ getgenv().Config = {
 		["Teleport Lobby if Player"] = true
 	},
 	["Claimer"] = {
-		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
+		["Auto Claim Achievement"] = true,
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Achievement"] = true
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Daily Reward"] = true
 	},
 	["Gameplay"] = {
 		["Auto Skip Wave"] = true,

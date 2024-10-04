@@ -49,7 +49,28 @@ getgenv().Config = {
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Battle Pass"] = true
+		["Auto Claim Battle Pass"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Daily Reward"] = true
+	},
+	["Crafter"] = {
+		["Teleport Lobby full Essence"] = true,
+		["Enable"] = true,
+		["Essence Stone"] = {
+			["Pink Essence Stone"] = true,
+			["Blue Essence Stone"] = true,
+			["Red Essence Stone"] = true,
+			["Yellow Essence Stone"] = true,
+			["Purple Essence Stone"] = true
+		},
+		["Essence Stone Limit"] = {
+			["Pink Essence Stone"] = 50,
+			["Blue Essence Stone"] = 50,
+			["Red Essence Stone"] = 50,
+			["Yellow Essence Stone"] = 50,
+			["Purple Essence Stone"] = 50
+		}
 	},
 	["Macros"] = {
 		["Macro"] = "Igris_SonjE",
