@@ -11,7 +11,7 @@ local Accounts = {
         ["Rainbow Essence Stone"] = 10,
         ["Super Stat Chip"] = 10
     },
-    ["USERNAME"] = {
+    ["paopaoforgame"] = {
         ["Blood-Red Commander"] = 1,
         ["Blue Essence Stone"] = 10,
         ["Red Essence Stone"] = 10,
