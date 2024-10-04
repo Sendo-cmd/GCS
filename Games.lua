@@ -139,7 +139,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "Gem2",
+        "LSEV2",
     },
     ["FalconWave21"] = {
         "Log",
