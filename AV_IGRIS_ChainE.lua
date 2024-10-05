@@ -65,11 +65,11 @@ getgenv().Config = {
 			["Purple Essence Stone"] = true
 		},
 		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 50,
-			["Blue Essence Stone"] = 50,
-			["Red Essence Stone"] = 50,
-			["Yellow Essence Stone"] = 50,
-			["Purple Essence Stone"] = 50
+			["Pink Essence Stone"] = 10,
+			["Blue Essence Stone"] = 10,
+			["Red Essence Stone"] = 10,
+			["Yellow Essence Stone"] = 10,
+			["Purple Essence Stone"] = 10
 		}
 	},
 	["Macros"] = {
