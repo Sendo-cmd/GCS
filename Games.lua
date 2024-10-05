@@ -400,12 +400,12 @@ Accounts = {
         "AutoBuyBE",
         "BaseB",
     },
-    ["CGGG_TYUL2"] = {
+    ["winza139"] = {
         "Log",
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "Gem2",
+        "BIgrisSon",
     },
     ["salldre"] = {
         "Log",
