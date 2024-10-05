@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
-getgenv().EquipMacroTroop = true
+getgenv().EquipMacroUnit = true
 getgenv().ImportMacro = ""
 getgenv().Config = {
 	["Joiner Cooldown"] = 10,

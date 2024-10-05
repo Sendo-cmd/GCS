@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
-getgenv().EquipMacroTroop = true
+getgenv().EquipMacroUnit = true
 getgenv().ImportMacro = "https://cdn.discordapp.com/attachments/1284223416110415964/1287770311214891058/GEM4.json?ex=66f2c10f&is=66f16f8f&hm=db9bc238541908f45d9dfd9257de356cc47afea9e2e49bd857a2c70c9fec9dba&"
 getgenv().Config = {
 	["Macros"] = {
