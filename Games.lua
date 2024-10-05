@@ -62,7 +62,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        26,
     },
     ["maser080"] = {
         "Log",
