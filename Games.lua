@@ -104,7 +104,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "BaseGemInf",
+        "BaseR",
     },
     ["Mynamefirstzz"] = {
         "Log",
@@ -132,7 +132,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "Gem2",
+        "BIgrisSon",
     },
     ["Krv_kai43"] = {
         "Log",
