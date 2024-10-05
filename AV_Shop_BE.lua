@@ -23,7 +23,7 @@ local Accounts = {
         ["Rainbow Essence Stone"] = 10,
         ["Super Stat Chip"] = 10
     },
-    ["USERNAME"] = {
+    ["djgodzz55"] = {
         ["Blood-Red Commander"] = 1,
         ["Blue Essence Stone"] = 10,
         ["Red Essence Stone"] = 10,
@@ -35,7 +35,7 @@ local Accounts = {
         ["Rainbow Essence Stone"] = 10,
         ["Super Stat Chip"] = 10
     },
-    ["USERNAME"] = {
+    ["winza139"] = {
         ["Blood-Red Commander"] = 1,
         ["Blue Essence Stone"] = 10,
         ["Red Essence Stone"] = 10,
