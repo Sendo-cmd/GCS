@@ -11,6 +11,18 @@ local Accounts = {
         ["Rainbow Essence Stone"] = 10,
         ["Super Stat Chip"] = 10
     },
+    ["Champandbank147"] = {
+        ["Blood-Red Commander"] = 0,
+        ["TraitRerolls"] = 0,
+        ["Blue Essence Stone"] = 0,
+        ["Red Essence Stone"] = 0,
+        ["Purple Essence Stone"] = 0,
+        ["Pink Essence Stone"] = 0,
+        ["Stat Chip"] = 0,
+        ["Green Essence Stone"] = 0,
+        ["Rainbow Essence Stone"] = 0,
+        ["Super Stat Chip"] = 0
+    },
     ["paopaoforgame"] = {
         ["Blood-Red Commander"] = 1,
         ["TraitRerolls"] = 50,
@@ -24,6 +36,42 @@ local Accounts = {
         ["Super Stat Chip"] = 10
     },
     ["djgodzz55"] = {
+        ["Blood-Red Commander"] = 1,
+        ["TraitRerolls"] = 50,
+        ["Blue Essence Stone"] = 10,
+        ["Red Essence Stone"] = 10,
+        ["Purple Essence Stone"] = 10,
+        ["Pink Essence Stone"] = 10,
+        ["Stat Chip"] = 10,
+        ["Green Essence Stone"] = 10,
+        ["Rainbow Essence Stone"] = 10,
+        ["Super Stat Chip"] = 10
+    },
+    ["M_Darknesss"] = {
+        ["Blood-Red Commander"] = 0,
+        ["TraitRerolls"] = 0,
+        ["Blue Essence Stone"] = 0,
+        ["Red Essence Stone"] = 0,
+        ["Purple Essence Stone"] = 0,
+        ["Pink Essence Stone"] = 0,
+        ["Stat Chip"] = 0,
+        ["Green Essence Stone"] = 0,
+        ["Rainbow Essence Stone"] = 0,
+        ["Super Stat Chip"] = 0
+    },
+    ["teerathornmoon"] = {
+        ["Blood-Red Commander"] = 1,
+        ["TraitRerolls"] = 50,
+        ["Blue Essence Stone"] = 10,
+        ["Red Essence Stone"] = 10,
+        ["Purple Essence Stone"] = 10,
+        ["Pink Essence Stone"] = 10,
+        ["Stat Chip"] = 10,
+        ["Green Essence Stone"] = 10,
+        ["Rainbow Essence Stone"] = 10,
+        ["Super Stat Chip"] = 10
+    },
+    ["Nachosmayo"] = {
         ["Blood-Red Commander"] = 1,
         ["TraitRerolls"] = 50,
         ["Blue Essence Stone"] = 10,

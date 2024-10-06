@@ -104,6 +104,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
+        19,
     },
     ["djgodzz55"] = {
         "Log",
@@ -138,6 +139,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
+        14,
     },
     ["Somrum11"] = {
         "Log",
@@ -158,6 +160,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
+        20,
     },
     ["GorgeousKeita"] = {
         "Log",
@@ -411,6 +414,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
+        5,
     },
     ["AS1NR"] = {
         "Log",
@@ -445,7 +449,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "BaseR",
+        "BaseB",
     },
     ["RiceBing"] = {
         "Log",
