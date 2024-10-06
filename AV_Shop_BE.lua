@@ -120,6 +120,10 @@ repeat task.wait() until not plr:GetAttribute("Loading")
 local PlayerModules = game:GetService("StarterPlayer"):WaitForChild("Modules")
 local Modules = game:GetService("ReplicatedStorage"):WaitForChild("Modules")
 
+local IsMain = workspace:FindFirstChild("MainLobby")
+
+if not IsMain then return end
+
 local Account = nil
 for i,v in pairs(Accounts) do
     if i == plr.Name or i:lower() == plr.Name then
