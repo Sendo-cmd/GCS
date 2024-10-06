@@ -41,11 +41,17 @@ end
 local HttpService = game:GetService("HttpService")
 
 for _, Name in pairs(Profiles) do
-    local Profile_Data = game:HttpGet(Endpoint .. Name)
+    task.spawn(function()
+        local success, Profile_Data = pcall(game.HttpGet, game, Endpoint .. Name)
 
-    local success, JSON = pcall(HttpService.JSONDecode, HttpService, Profile_Data)
+        while not success do wait(2)
+            success, Profile_Data = pcall(game.HttpGet, game, Endpoint .. Name)
+        end
 
-    if success then
-        writefile(`{PATH}/{Name}`, Profile_Data)
-    end
+        local success, JSON = pcall(HttpService.JSONDecode, HttpService, Profile_Data)
+
+        if success then
+            writefile(`{PATH}/{Name}`, Profile_Data)
+        end
+    end)
 end
