@@ -6,13 +6,6 @@ local Accounts = {
         ["Fortune Catalyst (Slayer)"] = 100,
         ["TraitRerolls"] = 25
     },
-    ["UserName"] = {
-        ["Slayer's Cape"] = 1,
-        ["Nichirin Cleavers"] = 1,
-        ["Demon Beads"] = 1,
-        ["Fortune Catalyst (Slayer)"] = 100,
-        ["TraitRerolls"] = 25
-    },
     ["TONKAORIKI_NEW"] = {
         ["Slayer's Cape"] = 1,
         ["Nichirin Cleavers"] = 1,

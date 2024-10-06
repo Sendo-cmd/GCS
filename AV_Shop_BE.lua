@@ -46,18 +46,6 @@ local Accounts = {
         ["Green Essence Stone"] = 10,
         ["Rainbow Essence Stone"] = 10,
         ["Super Stat Chip"] = 10
-    },
-    ["USERNAME"] = {
-        ["Blood-Red Commander"] = 1,
-        ["TraitRerolls"] = 50,
-        ["Blue Essence Stone"] = 10,
-        ["Red Essence Stone"] = 10,
-        ["Purple Essence Stone"] = 10,
-        ["Pink Essence Stone"] = 10,
-        ["Stat Chip"] = 10,
-        ["Green Essence Stone"] = 10,
-        ["Rainbow Essence Stone"] = 10,
-        ["Super Stat Chip"] = 10
     }
 }
 
