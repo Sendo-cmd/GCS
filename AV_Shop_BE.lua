@@ -59,6 +59,18 @@ local Accounts = {
         ["Rainbow Essence Stone"] = 0,
         ["Super Stat Chip"] = 0
     },
+    ["narutoez441"] = {
+        ["Blood-Red Commander"] = 0,
+        ["TraitRerolls"] = 0,
+        ["Blue Essence Stone"] = 0,
+        ["Red Essence Stone"] = 0,
+        ["Purple Essence Stone"] = 0,
+        ["Pink Essence Stone"] = 0,
+        ["Stat Chip"] = 0,
+        ["Green Essence Stone"] = 0,
+        ["Rainbow Essence Stone"] = 0,
+        ["Super Stat Chip"] = 0
+    },
     ["teerathornmoon"] = {
         ["Blood-Red Commander"] = 1,
         ["TraitRerolls"] = 50,

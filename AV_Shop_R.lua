@@ -27,6 +27,13 @@ local Accounts = {
         ["Fortune Catalyst (Slayer)"] = 0,
         ["TraitRerolls"] = 0
     },
+    ["narutoez441"] = {
+        ["Slayer's Cape"] = 0,
+        ["Nichirin Cleavers"] = 0,
+        ["Demon Beads"] = 0,
+        ["Fortune Catalyst (Slayer)"] = 0,
+        ["TraitRerolls"] = 0
+    },
     ["Nachosmayo"] = {
         ["Slayer's Cape"] = 0,
         ["Nichirin Cleavers"] = 0,
