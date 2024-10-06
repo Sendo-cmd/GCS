@@ -43,15 +43,14 @@ Accounts = {
     ["maser080"] = {
         "Log",
         "Marco",
+        "BIgrisSon",
         "AutoBuyR",
-        "ESSE",
     },
     ["Puggtopro"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
-        "AutoBuyBE",
         "BaseB",
+        "AutoBuyBE",
     },
     ["Etaa_xm"] = {
         "Log",
@@ -90,8 +89,8 @@ Accounts = {
     ["djgodzz55"] = {
         "Log",
         "Marco",
-        "AutoBuyBE",
         "BIgrisSon",
+        "AutoBuyBE",
     },
     ["Krv_kai43"] = {
         "Log",
@@ -116,8 +115,8 @@ Accounts = {
     ["Somrum11"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "BaseR",
+        "AutoBuyR",
     },
     ["1accox"] = {
         "Log",
@@ -142,8 +141,8 @@ Accounts = {
     ["Xeonerct"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "BaseR",
+        "AutoBuyR",
     },
     ["TKP_POT4X8"] = {
         "Log",
@@ -164,8 +163,8 @@ Accounts = {
     ["YURIDRONEYET"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "RIgris",
+        "AutoBuyR",
     },
     ["seuatiger9353"] = {
         "Log",
@@ -179,8 +178,8 @@ Accounts = {
     ["xMcTHx"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "RIgris",
+        "AutoBuyR",
     },
     ["tanjiroxfire"] = {
         "Log",
@@ -193,8 +192,8 @@ Accounts = {
     ["notyuio111"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "BaseR",
+        "AutoBuyR",
     },
     ["QAROBLOX060154"] = {
         "Log",
@@ -204,14 +203,14 @@ Accounts = {
     ["EAzxc013"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "RIgris",
+        "AutoBuyR",
     },
     ["okun474"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "RIgris",
+        "AutoBuyR",
     },
     ["offj_0383"] = {
         "Log",
@@ -283,8 +282,8 @@ Accounts = {
     ["CAVIARHUB"] = {
         "Log",
         "Marco",
-        "AutoBuyBE",
         "BIgrisSon",
+        "AutoBuyBE",
     },
     ["Nonglud"] = {
         "Log",
@@ -294,32 +293,32 @@ Accounts = {
     ["winza139"] = {
         "Log",
         "Marco",
-        "AutoBuyBE",
         "BIgrisSon",
+        "AutoBuyBE",
     },
     ["salldre"] = {
         "Log",
         "Marco",
-        "AutoBuyBE",
         "BaseB",
+        "AutoBuyBE",
     },
     ["Yanawarutkanpai"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "RIgris",
+        "AutoBuyR",
     },
     ["M_Darknesss"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "BaseR",
+        "AutoBuyR",
     },
     ["bluegamer1336"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "BaseR",
+        "AutoBuyR",
     },
     ["KathryneU1368"] = {
         "Log",
@@ -344,20 +343,20 @@ Accounts = {
     ["paopaoforgame"] = {
         "Log",
         "Marco",
-        "AutoBuyBE",
         "BaseB",
+        "AutoBuyBE",
     },
     ["teerathornmoon"] = {
         "Log",
         "Marco",
-        "AutoBuyBE",
         "BaseB",
+        "AutoBuyBE",
     },
     ["RiceBing"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
         "RIgris",
+        "AutoBuyR",
     },
     ["PinkheadFolk"] = {
         "Log",
@@ -379,6 +378,7 @@ Accounts = {
         "Log",
         "Marco",
         "RRengoku",
+        "AutoBuyR",
     },
     ["Demonx_Hunt"] = {
         "Marco",
