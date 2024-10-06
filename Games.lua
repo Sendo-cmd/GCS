@@ -41,11 +41,6 @@ Games = {
 }
 
 Accounts = {
-    ["FireBlackDevilZ"] = {
-        1,
-        2,
-        4,
-    },
     ["Champandbank147"] = {
         "Log",
         "Marco",
