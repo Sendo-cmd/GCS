@@ -25,18 +25,8 @@ Games = {
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
-        ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
-        ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
-        ["AutoDelete"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/LobbyAV.lua",
-
-    },
-    [4509896324] = { --Anime-Last-Stand
-        [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
-        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
-    },
-    [6149138290] = { --Anime-Card-Battle
-        [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
-        [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
+        ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
+        ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
     }
 }
 
@@ -47,10 +37,6 @@ Accounts = {
         "AutoBuyR",
         "AutoBuyBE",
         "ESSE",
-    },
-    ["Nelida5865"] = {
-        1,
-        2,
     },
     ["xdyrdgyrdfg"] = {
         "Log",
@@ -91,7 +77,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        6,
     },
     ["aamlop1"] = {
         "Log",
@@ -119,7 +104,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        19,
     },
     ["djgodzz55"] = {
         "Log",
@@ -154,7 +138,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        14,
     },
     ["Somrum11"] = {
         "Log",
@@ -175,7 +158,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        20,
     },
     ["GorgeousKeita"] = {
         "Log",
@@ -238,7 +220,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        26,
     },
     ["xMcTHx"] = {
         "Log",
@@ -252,14 +233,12 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        28,
     },
     ["thanwas009"] = {
         "Log",
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        27,
     },
     ["notyuio111"] = {
         "Log",
@@ -322,7 +301,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        25,
     },
     ["ASKINGZ12_43"] = {
         "Log",
@@ -357,7 +335,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        19,
     },
     ["FormatDataNumber"] = {
         "Log",
@@ -434,7 +411,6 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        5,
     },
     ["AS1NR"] = {
         "Log",
@@ -469,14 +445,14 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "BaseB",
+        "BaseR",
     },
     ["RiceBing"] = {
         "Log",
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "BIgrisSon",
+        "RIgris",
     },
     ["PinkheadFolk"] = {
         "Log",
@@ -540,6 +516,6 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 5
+        repeat task.wait() until Loaded or (Timer - tick()) > 1
     end
 end
