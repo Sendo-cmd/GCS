@@ -481,7 +481,7 @@ Accounts = {
         "Marco",
         "AutoBuyR",
         "AutoBuyBE",
-        "RIgris",
+        "BIgrisSon",
     },
     ["PinkheadFolk"] = {
         "Log",
