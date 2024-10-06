@@ -23,7 +23,7 @@ getgenv().Config = {
 	},
 	["Secure"] = {
 		["Walk Around"] = true,
-		["Random Offset"] = false
+		["Random Offset"] = true
 	},		
 	["Match Finished"] = {
 		["Auto Replay"] = true
