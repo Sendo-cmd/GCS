@@ -21,25 +21,25 @@ local Accounts = {
         ["TraitRerolls"] = 25
     },
     ["RiceBing"] = {
-        ["Slayer's Cape"] = 0,
-        ["Nichirin Cleavers"] = 0,
-        ["Demon Beads"] = 0,
-        ["Fortune Catalyst (Slayer)"] = 0,
-        ["TraitRerolls"] = 0
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["Fortune Catalyst (Slayer)"] = 100,
+        ["TraitRerolls"] = 25
     },
     ["narutoez441"] = {
-        ["Slayer's Cape"] = 0,
-        ["Nichirin Cleavers"] = 0,
-        ["Demon Beads"] = 0,
-        ["Fortune Catalyst (Slayer)"] = 0,
-        ["TraitRerolls"] = 0
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["Fortune Catalyst (Slayer)"] = 100,
+        ["TraitRerolls"] = 25
     },
     ["Nachosmayo"] = {
-        ["Slayer's Cape"] = 0,
-        ["Nichirin Cleavers"] = 0,
-        ["Demon Beads"] = 0,
-        ["Fortune Catalyst (Slayer)"] = 0,
-        ["TraitRerolls"] = 0
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["Fortune Catalyst (Slayer)"] = 100,
+        ["TraitRerolls"] = 25
     },
     ["Xeonerct"] = {
         ["Slayer's Cape"] = 1,
