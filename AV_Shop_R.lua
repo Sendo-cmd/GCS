@@ -39,7 +39,7 @@ if not IsMain then return end
 
 local Account = nil
 for i,v in pairs(Accounts) do
-    if i == plr.Name or i:lower() == plr.Name then
+    if i == plr.Name or i:lower() == plr.Name:lower() then
         Account = v
     end
 end
