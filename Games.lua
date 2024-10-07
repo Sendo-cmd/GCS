@@ -38,357 +38,40 @@ Games = {
     }
 }
 Accounts = {
-    ["FireBlacKDevilZ"] = {
-        1,
-    },
     ["Champandbank147"] = {
         "Log",
         "Marco",
         "ESSE",
     },
-    ["xdyrdgyrdfg"] = {
-        "Log",
-        "Marco",
-    },
-    ["maser080"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-        "AutoBuyR",
-    },
-    ["Puggtopro"] = {
-        "Log",
-        "Marco",
-        "BaseB",
-        "AutoBuyBE",
-    },
-    ["Etaa_xm"] = {
-        "Log",
-        "Marco",
-        "BaseGemInf",
-    },
-    ["OTeMoKungO"] = {
-        "Log",
-        "Marco",
-        "BaseGem",
-    },
-    ["Nx_BlackLazy"] = {
-        "Log",
-        "Marco",
-    },
-    ["aamlop1"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-    },
-    ["Mynamefirstzz"] = {
-        "Log",
-        "Marco",
-        "BaseGem",
-    },
-    ["B1za12345"] = {
-        "Log",
-        "Marco",
-        "RIgris",
-    },
-    ["UMH_x7"] = {
-        "Log",
-        "Marco",
-    },
-    ["djgodzz55"] = {
-        "Log",
-        "Marco",
-        "BIgrisSon",
-        "AutoBuyBE",
-    },
-    ["Krv_kai43"] = {
-        "Log",
-        "Marco",
-        "LSEV2",
-    },
-    ["FalconWave21"] = {
-        "Log",
-        "Marco",
-        "BaseGem",
-    },
-    ["comme009"] = {
-        "Log",
-        "Marco",
-        "BaseGem",
-    },
-    ["SoulMossBats"] = {
-        "Log",
-        "Marco",
-    },
-    ["Somrum11"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-        "AutoBuyR",
-    },
-    ["1accox"] = {
-        "Log",
-        "Marco",
-        "BaseGem",
-    },
-    ["wexd45"] = {
-        "Log",
-        "Marco",
-    },
-    ["GorgeousKeita"] = {
-        "Log",
-        "Marco",
-        "Gem3",
-    },
-    ["XDGGZTheGod"] = {
-        "Log",
-        "Marco",
-        "LSEV",
-    },
-    ["Xeonerct"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-        "AutoBuyR",
-    },
-    ["TKP_POT4X8"] = {
-        "Log",
-        "Marco",
-        "BaseGem",
-    },
-    ["AFKFARMID"] = {
-        "Log",
-        "Marco",
-        "RIgris",
-    },
-    ["NonBemmy"] = {
-        "Log",
-        "Marco",
-        "AutoBuyBE",
-        "BaseB",
-    },
-    ["YURIDRONEYET"] = {
-        "Log",
-        "Marco",
-        "RIgris",
-        "AutoBuyR",
-    },
-    ["seuatiger9353"] = {
-        "Log",
-        "Marco",
-        "Gem2",
-    },
-    ["xOFubukiOx"] = {
-        "Log",
-        "Marco",
-    },
-    ["xMcTHx"] = {
-        "Log",
-        "Marco",
-        "RIgris",
-        "AutoBuyR",
-    },
-    ["tanjiroxfire"] = {
-        "Log",
-        "Marco",
-    },
-    ["thanwas009"] = {
-        "Log",
-        "Marco",
-    },
-    ["notyuio111"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-        "AutoBuyR",
-    },
-    ["QAROBLOX060154"] = {
-        "Log",
-        "Marco",
-        "Gem3",
-    },
-    ["EAzxc013"] = {
-        "Log",
-        "Marco",
-        "RIgris",
-        "AutoBuyR",
-    },
-    ["okun474"] = {
-        "Log",
-        "Marco",
-        "RIgris",
-        "AutoBuyR",
-    },
-    ["offj_0383"] = {
-        "Log",
-        "Marco",
-        "AutoBuyBE",
-        "BaseB",
-    },
-    ["HJRETAP"] = {
-        "Log",
-        "Marco",
-        "Gem3",
-    },
-    ["GorgeousKeita"] = {
-        "Log",
-        "Marco",
-        "Gem3",
-    },
-    ["aami1123"] = {
-        "Log",
-        "Marco",
-    },
-    ["GymInsectDon"] = {
-        "Log",
-        "Marco",
-    },
-    ["ASKINGZ12_43"] = {
-        "Log",
-        "Marco",
-        "AutoBuyR",
-        "RIgris",
-    },
-    ["lnwterwowza"] = {
-        "Log",
-        "Marco",
-        "Gem2",
-    },
-    ["TONKAORIKI_NEW"] = {
-        "Log",
-        "Marco",
-        "AutoBuyR",
-        "RIgris",
-    },
-    ["narutoez441"] = {
-        "Log",
-        "Marco",
-        "BIgrisSon",
-    },
-    ["salemam101"] = {
-        "Log",
-        "Marco",
-    },
-    ["FormatDataNumber"] = {
-        "Log",
-        "Marco",
-        "ESSE",
-    },
-    ["KleponBox"] = {
-        "Log",
-        "Marco",
-        "AutoBuyR",
-        "RIgris",
-    },
-    ["nDBZyZsGMQOYMC0RE"] = {
-        "Log",
-        "Marco",
-        "LS",
-    },
-    ["CAVIARHUB"] = {
-        "Log",
-        "Marco",
-        "BIgrisSon",
-        "AutoBuyBE",
-    },
-    ["Nonglud"] = {
-        "Log",
-        "Marco",
-        "BaseB",
-    },
-    ["winza139"] = {
-        "Log",
-        "Marco",
-        "BIgrisSon",
-        "AutoBuyBE",
-    },
-    ["salldre"] = {
-        "Log",
-        "Marco",
-        "BaseB",
-        "AutoBuyBE",
-    },
-    ["Yanawarutkanpai"] = {
-        "Log",
-        "Marco",
-        "RIgris",
-        "AutoBuyR",
-    },
-    ["M_Darknesss"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-        "AutoBuyR",
-    },
-    ["bluegamer1336"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-        "AutoBuyR",
-    },
-    ["KathryneU1368"] = {
-        "Log",
-        "Marco",
-    },
-    ["AS1NR"] = {
-        "Log",
-        "Marco",
-        "BIgrisSon",
-    },
-    ["ruihurtbeamkozer"] = {
-        "Log",
-        "Marco",
-        "BaseIG",
-    },
-    ["LLAAKK122"] = {
-        "Log",
-        "Marco",
-        "LSE",
-    },
-    ["paopaoforgame"] = {
-        "Log",
-        "Marco",
-        "BaseB",
-        "AutoBuyBE",
-    },
-    ["teerathornmoon"] = {
-        "Log",
-        "Marco",
-        "BaseR",
-        "AutoBuyR",
-    },
     ["RiceBing"] = {
         "Log",
         "Marco",
-        "BIgrisSon",
         "AutoBuyBE",
-    },
-    ["PinkheadFolk"] = {
-        "Log",
-        "Marco",
-        "Gem3",
-    },
-    ["GoodxABA"] = {
-        "Log",
-        "Marco",
-        "AutoBuyR",
-        "BaseR",
+        "BIgrisSon",
     },
     ["Nachosmayo"] = {
         "Log",
         "Marco",
-        "RIgris",
-    },
-    ["dufjr32"] = {
-        "Log",
-        "Marco",
-        "RRengoku",
         "AutoBuyR",
+        "BaseR",
     },
-    ["Demonx_Hunt"] = {
-        "Marco",
+    ["maser080"] = {
         "Log",
-        "BaseB",
+        "Marco",
+        "AutoBuyR",
+        "BaseR",
+    },
+    ["teerathornmoon"] = {
+        "Log",
+        "Marco",
+        "AutoBuyR",
+        "BaseR",
+    },
+    ["narutoez441"] = {
+        "Log",
+        "Marco",
+        "AutoBuyBE",
+        "BIgrisSon",
     },
 
 }
