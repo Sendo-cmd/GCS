@@ -1,8 +1,8 @@
 local Accounts = {
     ["Champandbank147"] = {
-        ["Slayer's Cape"] = 10,
         ["Nichirin Cleavers"] = 1,
         ["Demon Beads"] = 1,
+        ["Slayer's Cape"] = 10,
         ["TraitRerolls"] = 25,
         ["Fortune Catalyst (Slayer)"] = 100
     },
