@@ -69,7 +69,7 @@ for i,v in pairs(Quantity["IgrosEvent"].ShopData) do
         local Bought = MaxQuantity - v
         while Bought < Item and CommanderTokens >= ItemData["Price"] do
             BossEventShop:FireServer("Purchase", i)
-            wait(0.1)
+            wait(1)
             CommanderTokens = plr:GetAttribute("CommanderTokens")
             Bought += 1
         end
