@@ -13,7 +13,7 @@ local Accounts = {
         ["Fortune Catalyst (Slayer)"] = 100,
         ["TraitRerolls"] = 25
     },
-    ["teerathornmoon"] = {
+    ["Gcshop5"] = {
         ["Slayer's Cape"] = 1,
         ["Nichirin Cleavers"] = 1,
         ["Demon Beads"] = 1,
