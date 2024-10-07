@@ -355,8 +355,8 @@ Accounts = {
     ["RiceBing"] = {
         "Log",
         "Marco",
-        "RIgris",
-        "AutoBuyR",
+        "BIgrisSon",
+        "AutoBuyBE",
     },
     ["PinkheadFolk"] = {
         "Log",
