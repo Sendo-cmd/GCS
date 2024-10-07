@@ -30,19 +30,15 @@ Games = {
     }
 }
 Accounts = {
-    ["GCshop5"] = {
+    ["Champandbank147"] = {
         "Log",
         "Marco",
         "ESSE",
-        "AutoBuyBE",
-        "AutoBuyR",
-        "RIgris",
     },
     ["RiceBing"] = {
         "Log",
         "Marco",
         "BIgrisSon",
-        "AutoBuyBE",
     },
     ["Nachosmayo"] = {
         "Log",
