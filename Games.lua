@@ -349,8 +349,8 @@ Accounts = {
     ["teerathornmoon"] = {
         "Log",
         "Marco",
-        "BaseB",
-        "AutoBuyBE",
+        "BaseR",
+        "AutoBuyR",
     },
     ["RiceBing"] = {
         "Log",
