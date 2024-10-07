@@ -3,8 +3,8 @@ local Accounts = {
         ["Slayer's Cape"] = 10,
         ["Nichirin Cleavers"] = 1,
         ["Demon Beads"] = 1,
-        ["Fortune Catalyst (Slayer)"] = 100,
-        ["TraitRerolls"] = 25
+        ["TraitRerolls"] = 25,
+        ["Fortune Catalyst (Slayer)"] = 100
     },
     ["Nachosmayo"] = {
         ["Slayer's Cape"] = 1,
