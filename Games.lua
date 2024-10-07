@@ -91,6 +91,6 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 2
+        repeat task.wait() until Loaded or (Timer - tick()) > 10
     end
 end
