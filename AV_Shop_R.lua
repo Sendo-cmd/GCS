@@ -66,7 +66,7 @@ for i,v in pairs(Quantity["Stage1"].ShopData) do
         local Bought = MaxQuantity - v
         while Bought < Item and RedWebs >= ItemData["Price"] do
             RaidsShopEvent:FireServer("Purchase", { "Stage1", i })
-            wait(0.1)
+            wait(1)
             RedWebs = plr:GetAttribute("RedWebs")
             Bought += 1
         end

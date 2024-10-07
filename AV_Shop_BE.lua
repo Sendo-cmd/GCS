@@ -70,7 +70,7 @@ for i,v in pairs(Quantity["IgrosEvent"].ShopData) do
         while Bought < Item do
             if CommanderTokens >= ItemData["Price"] then
                 BossEventShop:FireServer("Purchase", i)
-                wait(0.1)
+                wait(1)
                 CommanderTokens = plr:GetAttribute("CommanderTokens")
                 Bought += 1
             end
