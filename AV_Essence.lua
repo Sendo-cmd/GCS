@@ -8,6 +8,7 @@ getgenv().Config = {
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
+		["Delete Entities"] = true,
 		["Black Screen"] = {
 			["Enable"] = true
 		}	
@@ -42,15 +43,12 @@ getgenv().Config = {
 			["Purple Essence Stone"] = true
 		},
 		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 10,
-			["Blue Essence Stone"] = 10,
-			["Red Essence Stone"] = 10,
-			["Yellow Essence Stone"] = 10,
-			["Purple Essence Stone"] = 10
+			["Pink Essence Stone"] = 20,
+			["Blue Essence Stone"] = 20,
+			["Red Essence Stone"] = 20,
+			["Yellow Essence Stone"] = 20,
+			["Purple Essence Stone"] = 20
 		}
-	},
-	["Webhook"] = {
-		["URL"] = ""
 	},
 	["Macros"] = {
 		["Macro"] = "",
