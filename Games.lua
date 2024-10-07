@@ -94,7 +94,6 @@ Accounts = {
     ["UMH_x7"] = {
         "Log",
         "Marco",
-        19,
     },
     ["djgodzz55"] = {
         "Log",
@@ -120,7 +119,6 @@ Accounts = {
     ["SoulMossBats"] = {
         "Log",
         "Marco",
-        14,
     },
     ["Somrum11"] = {
         "Log",
@@ -136,7 +134,6 @@ Accounts = {
     ["wexd45"] = {
         "Log",
         "Marco",
-        20,
     },
     ["GorgeousKeita"] = {
         "Log",
@@ -241,7 +238,6 @@ Accounts = {
     ["aami1123"] = {
         "Log",
         "Marco",
-        29,
     },
     ["GymInsectDon"] = {
         "Log",
@@ -333,7 +329,6 @@ Accounts = {
     ["KathryneU1368"] = {
         "Log",
         "Marco",
-        5,
     },
     ["AS1NR"] = {
         "Log",
