@@ -3,12 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
-getgenv().ImportMacro = {
-    "https://cdn.discordapp.com/attachments/1286348626259611658/1286348627437944842/C_Sand.json?ex=66f82103&is=66f6cf83&hm=a7eed8cb2efa76ad8531d0d559b6d5ac758ed71aa7caff768405cba7ca3bf3f9&",
-    "https://cdn.discordapp.com/attachments/1286348626259611658/1286574002604867676/C_Dung.json?ex=66f84a29&is=66f6f8a9&hm=6fbccf3221fca8badddedf29d64fd6edbbbaebfc2b029e5c40cd07dc599a03dc&",
-    "https://cdn.discordapp.com/attachments/1286348626259611658/1286932039211421736/C_Namke.json?ex=66f8461c&is=66f6f49c&hm=67490f8b3d905a95e7b504b81b55561915112be74b4694054f89272a5ecea7f0&",
-    "https://cdn.discordapp.com/attachments/1284223982782119967/1288833410051342417/LSDD3_SonjE.json?ex=66f747e6&is=66f5f666&hm=51739b1899eccb0d1cb52b3e17a9697e4a4cad3d76a896ed621261fadb8da67d&",
-}
+getgenv().ImportMacro = ""
 getgenv().Config = {
 	["Joiner Cooldown"] = 10,
 	["Performance"] = {
