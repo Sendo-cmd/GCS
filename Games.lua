@@ -388,7 +388,7 @@ Accounts = {
 
 }
 
-repeat task.wait() until game:IsLoaded()
+repeat task.wait(2) until game:IsLoaded()
 
 local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
@@ -412,6 +412,6 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 10
+        repeat task.wait() until Loaded or (Timer - tick()) > 4
     end
 end
