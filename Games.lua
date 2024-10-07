@@ -81,15 +81,13 @@ end
 for i,v in pairs(ScriptLists) do
     local ScriptUrl = Scripts[v];
 
+    print(ScriptUrl)
     local ok, Functions = pcall(loadstring, game:HttpGet(ScriptUrl))
 
     if ok then
-        Timer, Loaded = tick(), false
-        task.spawn(function()
-            Functions()
-            Loaded = true
-        end)
-
-        repeat task.wait() until Loaded or (Timer - tick()) > 10
+       local success, err = pcall(Functions)
+       if not success then
+            warn(`{ScriptUrl}: {err}`)
+       end
     end
 end
