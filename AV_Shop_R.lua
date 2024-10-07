@@ -13,6 +13,13 @@ local Accounts = {
         ["TraitRerolls"] = 25,
         ["Fortune Catalyst (Slayer)"] = 100
     },
+    ["wave125zing"] = {
+        ["Slayer's Cape"] = 1,
+        ["Nichirin Cleavers"] = 1,
+        ["Demon Beads"] = 1,
+        ["TraitRerolls"] = 25,
+        ["Fortune Catalyst (Slayer)"] = 100
+    },
     ["RiceBing"] = {
         ["Slayer's Cape"] = 1,
         ["Nichirin Cleavers"] = 1,

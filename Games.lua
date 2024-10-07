@@ -53,7 +53,12 @@ Accounts = {
         "AutoBuyR",
         "BaseR",
     },
-    ["teerathornmoon"] = {
+    ["mooqill_754837"] = {
+        "Log",
+        "Marco",
+        "LSEV",
+    },
+    ["wave125zing"] = {
         "Log",
         "Marco",
         "AutoBuyR",
