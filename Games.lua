@@ -27,9 +27,16 @@ Games = {
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
         ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
+    },
+    [4509896324] = { --Anime-Last-Stand
+        [5] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
+        [6] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
+    },
+    [6149138290] = { --Anime-Card-Battle
+        [1] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
+        [2] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
     }
 }
-
 Accounts = {
     ["Champandbank147"] = {
         "Log",
