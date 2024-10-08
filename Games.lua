@@ -79,6 +79,10 @@ Accounts = {
         "AutoBuyBE",
         "BIgrisSon",
     },
+    ["FireBlackDevilZ"] = {
+        "LogACB",
+        "ACB",
+    },
     ["chopperaob"] = {
         "LogACB",
         "ACB",
