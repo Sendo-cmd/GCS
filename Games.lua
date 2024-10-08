@@ -93,6 +93,10 @@ Accounts = {
         "LogACB",
         "ACB",
     },
+    ["nowgodzz"] = {
+        "LogACB",
+        "ACB",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
