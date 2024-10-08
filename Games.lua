@@ -21,6 +21,7 @@ Games = {
         ["LSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjE.lua",
         ["LSEV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV.lua",
         ["LSEV2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV2.lua",
+        ["LSEV3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV3.lua",
         ["LSEM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEMon.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -78,6 +79,11 @@ Accounts = {
         "Marco",
         "AutoBuyBE",
         "BIgrisSon",
+    },
+    ["HJRETAP"] = {
+        "Log",
+        "Marco",
+        "LSEV3",
     },
     ["FireBlackDevilZ"] = {
         "LogACB",
