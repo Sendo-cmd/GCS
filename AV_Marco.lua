@@ -9,6 +9,7 @@ local Profiles = {
     "Igris_SonjE.json",
     "Igris_SonjEV.json",
     "Igris_SonjEV2.json",
+    "Igris_SonjEV3.json",
     "Igris_SonjEMon.json",
     "Igris_Base.json",
     "Igris_ChainE.json",
