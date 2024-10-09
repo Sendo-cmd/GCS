@@ -85,6 +85,12 @@ Accounts = {
         "Marco",
         "LSEV2",
     },
+    ["aamlop1"] = {
+        "Log",
+        "Marco",
+        "AutoBuyBE",
+        "BIgrisSon",
+    },
     ["FireBlackDevilZ"] = {
         "LogACB",
         "ACB",
