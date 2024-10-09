@@ -91,6 +91,12 @@ Accounts = {
         "AutoBuyBE",
         "BIgrisSon",
     },
+    ["Bossplaza123"] = {
+        "Log",
+        "Marco",
+        "AutoBuyR",
+        "BaseR",
+    },
     ["FireBlackDevilZ"] = {
         "LogACB",
         "ACB",
