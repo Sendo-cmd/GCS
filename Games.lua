@@ -110,6 +110,10 @@ Accounts = {
         "LogACB",
         "ACB",
     },
+    ["HamieKung"] = {
+        "LogACB",
+        "ACB",
+    },
     ["nowgodzz"] = {
         "LogACB",
         "ACB",
