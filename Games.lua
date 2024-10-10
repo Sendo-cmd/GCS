@@ -98,6 +98,11 @@ Accounts = {
         "AutoBuyR",
         "BaseR",
     },
+    ["xdyrdgyrdfg"] = {
+        "Log",
+        "Marco",
+        "BaseGemInf",
+    },
     ["FireBlackDevilZ"] = {
         "LogACB",
         "ACB",
