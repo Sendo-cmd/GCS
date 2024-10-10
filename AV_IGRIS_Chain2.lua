@@ -56,10 +56,13 @@ getgenv().Config = {
 			["Purple Essence Stone"] = 10
 		}
 	},
-	["Joiner Cooldown"] = 10,
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = true
+		["Boost FPS"] = true,
+		["Delete Entities"] = true,
+        ["Black Screen"] = {
+			["Enable"] = true
+		}	
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

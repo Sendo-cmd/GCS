@@ -28,7 +28,10 @@ getgenv().Config = {
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Delete Entities"] = true
+		["Delete Entities"] = true,
+        ["Black Screen"] = {
+			["Enable"] = true
+		}	
 	},
 	["Secure"] = {
 		["Random Offset"] = true,

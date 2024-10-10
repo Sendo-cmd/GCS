@@ -6,7 +6,8 @@ getgenv().Config = {
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = {
+		["Delete Entities"] = true,
+        ["Black Screen"] = {
 			["Enable"] = true
 		}	
 	},
