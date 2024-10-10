@@ -43,8 +43,7 @@ Accounts = {
     ["Champandbank147"] = {
         "Log",
         "Marco",
-        "RAkazo",
-        "AutoBuyR",
+        "PPN",
     },
     ["RiceBing"] = {
         "Log",
