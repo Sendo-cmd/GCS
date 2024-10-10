@@ -23,6 +23,7 @@ local Profiles = {
     "Raid_Renguko.json",
     "Raid_Monarch_Igris.json",
     "Raid_Monarch_Song.json",
+    "PN25_IGSON.json",
 };
 
 repeat task.wait(1) until game:IsLoaded()
