@@ -107,7 +107,7 @@ Accounts = {
         "Log",
         "Marco",
         "AutoBuyR",
-        "BaseR",
+        "RAkazo",
     },
     ["FireBlackDevilZ"] = {
         "LogACB",
