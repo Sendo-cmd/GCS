@@ -128,6 +128,10 @@ Accounts = {
         "LogACB",
         "ACB",
     },
+    ["MaxzTv"] = {
+        "LogACB",
+        "ACB",
+    },
     ["nowgodzz"] = {
         "LogACB",
         "ACB",
