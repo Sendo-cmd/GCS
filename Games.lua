@@ -108,6 +108,11 @@ Accounts = {
         "AutoBuyR",
         "RAkazo",
     },
+    ["Darknight6928"] = {
+        "Log",
+        "Marco",
+        "ESSE",
+    },
     ["moileuy113"] = {
         "Log",
         "BaseGem",
