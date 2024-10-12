@@ -11,7 +11,7 @@ local Accounts = {
         ["Rainbow Essence Stone"] = 10,
         ["Super Stat Chip"] = 10
     },
-    ["aamlop1"] = {
+    ["narutoez441"] = {
         ["Blood-Red Commander"] = 1,
         ["TraitRerolls"] = 50,
         ["Blue Essence Stone"] = 10,
