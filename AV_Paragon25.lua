@@ -12,7 +12,8 @@ getgenv().Config = {
 		["Play"] = true
 	},
 	["Match Finished"] = {
-		["Auto Next"] = true
+		["Auto Next"] = true,
+		["Auto Replay"] = true
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = true,
