@@ -110,7 +110,6 @@ Accounts = {
     },
     ["moileuy113"] = {
         "Log",
-        "Marco",
         "BaseGem",
     },
     ["FireBlackDevilZ"] = {
