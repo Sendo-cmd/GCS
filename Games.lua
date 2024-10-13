@@ -105,8 +105,7 @@ Accounts = {
     ["underhorror"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
-        "RAkazo",
+        "ESSE",
     },
     ["Darknight6928"] = {
         "Log",
