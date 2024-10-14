@@ -116,6 +116,11 @@ Accounts = {
         "Log",
         "BaseGem",
     },
+    ["yukilito001"] = {
+        "Log",
+        "Marco",
+        "BaseR",
+    },
     ["FireBlackDevilZ"] = {
         "LogACB",
         "ACB",
