@@ -119,6 +119,7 @@ Accounts = {
     ["yukilito001"] = {
         "Log",
         "Marco",
+        "AutoBuyR",
         "BaseR",
     },
     ["FireBlackDevilZ"] = {
