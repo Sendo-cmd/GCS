@@ -142,6 +142,10 @@ Accounts = {
         "LogACB",
         "ACB",
     },
+    ["Miksaza1"] = {
+        "LogACB",
+        "ACB",
+    },
     ["nowgodzz"] = {
         "LogACB",
         "ACB",
