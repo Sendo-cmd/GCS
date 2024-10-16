@@ -6,14 +6,14 @@ local Accounts = {
         ["TraitRerolls"] = 25,
         ["Fortune Catalyst (Slayer)"] = 100
     },
-    ["mooqill_754837"] = {
+    ["XDGGZTheGod"] = {
         ["Slayer's Cape"] = 1,
         ["Nichirin Cleavers"] = 1,
         ["Demon Beads"] = 1,
         ["TraitRerolls"] = 25,
         ["Fortune Catalyst (Slayer)"] = 100
     },
-    ["maser080"] = {
+    ["08n2tf"] = {
         ["Slayer's Cape"] = 1,
         ["Nichirin Cleavers"] = 1,
         ["Demon Beads"] = 1,

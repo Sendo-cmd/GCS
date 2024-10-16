@@ -91,11 +91,11 @@ Accounts = {
         "AutoBuyBE",
         "BIgrisSon",
     },
-    ["Bossplaza123"] = {
+    ["08n2tf"] = {
         "Log",
         "Marco",
         "AutoBuyR",
-        "BaseR",
+        "RIgris",
     },
     ["xdyrdgyrdfg"] = {
         "Log",
