@@ -20,7 +20,7 @@ local Setting = TechniqueNotificaition
 
 local plr = game:GetService("Players").LocalPlayer
 local HttpService = game:GetService("HttpService")
-local QuirksUI = plr.PlayerGui:WaitForChild("QuirksUI")
+local QuirksUI = plr.PlayerGui:FindFirstChild("QuirksUI")
 local Selection = QuirksUI.BG.Content.Selection
 
 local Modules = game:GetService("ReplicatedStorage"):WaitForChild("Modules")
