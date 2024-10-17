@@ -138,7 +138,6 @@ Accounts = {
         "ACB",
     },
     ["Ikatsuq"] = {
-        "Marco",
         "ALS_Reroll",
         "ALS_AReroll",
         "ALS_X",
