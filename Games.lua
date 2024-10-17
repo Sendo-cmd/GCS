@@ -138,8 +138,8 @@ Accounts = {
         "ACB",
     },
     ["Ikatsuq"] = {
-        "Xenon_ALS",
         "ALS_Reroll",
+        "Xenon_ALS",
         "ALS_AReroll",
     },
     ["MaxzTv"] = {
