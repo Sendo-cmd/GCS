@@ -33,6 +33,7 @@ Games = {
         ["ALS_X"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_X.lua",
         ["ALS_Reroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         ["ALS_AReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
+        ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Marco.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
@@ -138,6 +139,7 @@ Accounts = {
     },
     ["Ikatsuq"] = {
         "ALS_X",
+        "Marco",
         "ALS_Reroll",
         "ALS_AReroll",
     },

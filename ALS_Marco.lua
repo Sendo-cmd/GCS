@@ -5,7 +5,7 @@ local Profiles = {
 
 repeat task.wait(1) until game:IsLoaded()
 
-local PATH = "Nousigi Hub/Macro/AnimeVanguards";
+local PATH = "Xenon Hub Anime Last Stand/User";
 
 -- Process
 
