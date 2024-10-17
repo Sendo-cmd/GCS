@@ -7,11 +7,11 @@ TechniqueNotificaition = {
         "Glitched",
     },
     ["Tags"] = {
-        ["MeVeryNoobza"] = "815806616468717610",
+        ["Ikatsuq"] = "798188784025075732",
         ["Dxw2pz"] = "1153497403534614528"
     },
     ["Webhook"] = {
-        ["MeVeryNoobza"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le",
+        ["Ikatsuq"] = "https://discord.com/api/webhooks/1296399054657290250/L09Geh30FpODKKsqBU-2eRZ_CtedCIqFX4c-r36nOqzVQBr3ZQNrvcvyYhH3p4NIlMuz",
         ["Dxw2pz"] = "https://discord.com/api/webhooks/1283296291199385620/q-o8ec8YLpKN2ipvrBWEd5cPz7qzS8MTiFssuRv8lwbFiEYx_yYoD74fOxrQyvlUqtsx",
     }
 }
