@@ -30,10 +30,10 @@ Games = {
         ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
     },
     [4509896324] = { --Anime-Last-Stand
-        ["ALS_X"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_X.lua",
         ["ALS_Reroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         ["ALS_AReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Marco.lua",
+        ["Xenon_ALS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_X.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
@@ -127,7 +127,7 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "ALS_Reroll",
         "ALS_AReroll",
-        "ALS_X",
+        "Xenon_ALS",
     },
     ["chopperaob"] = {
         "LogACB",
@@ -140,7 +140,7 @@ Accounts = {
     ["Ikatsuq"] = {
         "ALS_Reroll",
         "ALS_AReroll",
-        "ALS_X",
+        "Xenon_ALS",
     },
     ["MaxzTv"] = {
         "LogACB",
