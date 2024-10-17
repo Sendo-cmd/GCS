@@ -138,9 +138,9 @@ Accounts = {
         "ACB",
     },
     ["Ikatsuq"] = {
+        "Xenon_ALS",
         "ALS_Reroll",
         "ALS_AReroll",
-        "Xenon_ALS",
     },
     ["MaxzTv"] = {
         "LogACB",
@@ -181,6 +181,6 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 5
+        repeat task.wait() until Loaded or (Timer - tick()) > 10
     end
 end
