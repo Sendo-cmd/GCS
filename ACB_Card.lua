@@ -8,7 +8,7 @@ ACBCardNotification = {
         ["a_454za"] = "https://discord.com/api/webhooks/1293369551169392722/l1NenfC_LkZmGCNAGhxwAZHeAcarDER7NLuRL-90c16E8-d5bqXZgt1bx8F1whrYdwSD",
         ["HamieKung"] = "https://discord.com/api/webhooks/1294550491816005684/oDTWEjkXSLnogJzsAtxT-490Wlp18vv_JxR83QKxYSylq8ereAQ3TTMxYPD3y7GX0rZc",
         ["MaxzTv"] = "https://discord.com/api/webhooks/1294587330337706048/m18BMlWXbW92n_dhhJUrWnF0_RPF70scfVHXDcga1iBQWAvWzRVc0g6eNDUxZakNHlv8",
-        ["Miksaza1"] = "https://discord.com/api/webhooks/1295676030635343983/aoockY3p1RVsYOrPWEmUb_2NAY9Qy4LJ9HFd6Kar6OVxNzf1HfIGB1I9zj3SsUPmRumD",
+        ["Miksaza1"] = "https://discord.com/api/webhooks/1296453433909579818/08NN5Fp0PwPuNKlEwmBPoFDTwR6Bm3JAZgIzRHqPhjZ4DlcODeKEvKsnd2KbP7eamgvy",
     }
 }
 
