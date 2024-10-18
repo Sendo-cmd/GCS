@@ -125,6 +125,7 @@ Accounts = {
         "BaseR",
     },
     ["FireBlackDevilZ"] = {
+        "Marco",
         "Xenon_ALS",
         "ALS_Reroll",
         "ALS_AReroll",
@@ -138,6 +139,7 @@ Accounts = {
         "ACB",
     },
     ["Ikatsuq"] = {
+        "Marco",
         "Xenon_ALS",
         "ALS_Reroll",
         "ALS_AReroll",

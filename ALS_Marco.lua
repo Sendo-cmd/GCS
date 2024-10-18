@@ -1,6 +1,7 @@
 local Endpoint = "https://raw.githubusercontent.com/test-macro/ALS_Marco/main/"
 local Profiles = {
     "Ikatsuq.json",
+    "FireBlackDevilZ.json",
 };
 
 repeat task.wait(1) until game:IsLoaded()
