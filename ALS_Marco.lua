@@ -6,7 +6,7 @@ local Profiles = {
 
 repeat task.wait(1) until game:IsLoaded()
 
-local PATH = "Xenon Hub Anime Last Stand/User";
+local PATH = "Xenon_Hub_Anime_Last_Stand/User";
 
 -- Process
 
