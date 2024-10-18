@@ -12,8 +12,8 @@ local PATH = "Xenon Hub Anime Last Stand/User"
 
 if not isfolder(PATH) then
     local path = ""
-    for i, v in pairs(PATH:split("/")) do
-        path = path .. v .. "/"
+    for i,v in pairs(PATH:split("/")) do
+        path ..= `{v}/`
         makefolder(path)
     end
 end
@@ -22,14 +22,10 @@ local HttpService = game:GetService("HttpService")
 
 for _, Name in pairs(Profiles) do
     local Profile_Data = game:HttpGet(Endpoint .. Name)
-    
-    local success, JSON = pcall(function()
-        return HttpService:JSONDecode(Profile_Data)
-    end)
+
+    local success, JSON = pcall(HttpService.JSONDecode, HttpService, Profile_Data)
 
     if success then
-        writefile(PATH .. "/" .. Name, Profile_Data)
-    else
-        warn("Failed to decode JSON for profile: " .. Name)
+        writefile(`{PATH}/{Name}`, Profile_Data)
     end
 end
