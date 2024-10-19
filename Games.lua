@@ -144,6 +144,12 @@ Accounts = {
         "ALS_Reroll",
         "ALS_AReroll",
     },
+    ["08n2tf"] = {
+        "Marco",
+        "Xenon_ALS",
+        "ALS_Reroll",
+        "ALS_AReroll",
+    },
     ["MaxzTv"] = {
         "LogACB",
         "ACB",
