@@ -90,8 +90,7 @@ Accounts = {
     ["XDGGZTheGod"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
-        "RIgris",
+        "PPN",
     },
     ["08n2tf"] = {
         "Log",
