@@ -46,11 +46,11 @@ Accounts = {
         "Marco",
         "BaseGem",
     },
-    ["RiceBing"] = {
+    ["spiltduc9241"] = {
         "Log",
         "Marco",
-        "BIgrisSon",
-        "AutoBuyBE",
+        "RIgris",
+        "AutoBuyR",
     },
     ["Nachosmayo"] = {
         "Log",
