@@ -3,7 +3,7 @@ getgenv().Config = {
 	["Stage Joiner"] = {
 		["Auto Join"] = true,
 		["Act"] = "Paragon",
-		["Stage"] = "Planet Namak"
+		["Stage"] = "Sand Village"
 	},
 	["Macros"] = {
 		["No Ignore Sell Timing"] = true,
