@@ -24,6 +24,7 @@ Games = {
         ["LSEM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEMon.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["PPN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25.lua",
+        ["PPS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25S.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -90,7 +91,7 @@ Accounts = {
     ["XDGGZTheGod"] = {
         "Log",
         "Marco",
-        "PPN",
+        "PPS",
     },
     ["08n2tf"] = {
         "Log",

@@ -24,6 +24,7 @@ local Profiles = {
     "Raid_Renguko.json",
     "Raid_Monarch_Igris.json",
     "Raid_Monarch_Song.json",
+    "PS25_IGSON.json",
     "PN25_IGSON.json",
 };
 
