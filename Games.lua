@@ -4,6 +4,7 @@ Games = {
         ["BIgrisSon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon.lua",
         ["BIgrisSon2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon2.lua",
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
+        ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
         ["BaseIG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Base.lua",
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
