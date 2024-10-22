@@ -15,7 +15,7 @@ local Profiles = {
     "Igris_ChainE.json",
     "Igris_Chain2.json",
     "Igris_Chain.json",
-    "Boss_Base.json",
+    "CF_Tengon.json",
     "Boss_Base_Son.json",
     "Boss_Base_Son2.json",
     "Raid_Base.json",
