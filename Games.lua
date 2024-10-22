@@ -28,6 +28,7 @@ Games = {
         ["PPS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25S.lua",
         ["CF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
         ["CF_Soj"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Soj.lua",
+        ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -124,7 +125,7 @@ Accounts = {
     ["Etaa_xm"] = {
         "Log",
         "Marco",
-        "CF",
+        "CF_Bean",
     },
     ["Darknight6928"] = {
         "Log",

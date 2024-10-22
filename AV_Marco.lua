@@ -17,6 +17,7 @@ local Profiles = {
     "Igris_Chain.json",
     "CF_Tengon.json",
     "CF_Soj.json",
+    "CF_Bean.json",
     "Boss_Base_Son.json",
     "Boss_Base_Son2.json",
     "Raid_Base.json",
