@@ -121,6 +121,11 @@ Accounts = {
         "Marco",
         "CF",
     },
+    ["Etaa_xm"] = {
+        "Log",
+        "Marco",
+        "CF",
+    },
     ["Darknight6928"] = {
         "Log",
         "Marco",
