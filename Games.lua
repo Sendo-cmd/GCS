@@ -65,8 +65,7 @@ Accounts = {
     ["maser080"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
-        "BaseR",
+        "CF_Soj",
     },
     ["mooqill_754837"] = {
         "Log",
