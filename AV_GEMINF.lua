@@ -27,7 +27,7 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
-		["Upgrade Method"] = "Randomize",
+		["Upgrade Method"] = "Nearest from Middle Position (until Max)",
 		["Place Cap"] = {
 			["1"] = 0,
 			["3"] = 0,
