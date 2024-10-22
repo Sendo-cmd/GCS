@@ -111,6 +111,11 @@ Accounts = {
         "Marco",
         "ESSE",
     },
+    ["puggtopro"] = {
+        "Log",
+        "Marco",
+        "CF",
+    },
     ["Darknight6928"] = {
         "Log",
         "Marco",
