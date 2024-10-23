@@ -21,6 +21,23 @@ getgenv().Config = {
 	["Secure"] = {
 		["Walk Around"] = true,
 		["Random Offset"] = true
+	},
+	["Gold Buyer"] = {
+		["Enable"] = true,
+		["Item"] = {
+			["Crystal"] = true,
+			["Blue Essence Stone"] = true,
+			["Red Essence Stone"] = true,
+			["Yellow Essence Stone"] = true,
+			["Purple Essence Stone"] = true,
+			["Senzu Bean"] = true,
+			["Pink Essence Stone"] = true,
+			["Ramen"] = true,
+			["Green Essence Stone"] = true,
+			["Rainbow Essence Stone"] = true,
+			["Super Stat Chip"] = true,
+			["Stat Chip"] = true
+		}
 	},		
 	["Match Finished"] = {
 		["Auto Replay"] = true
