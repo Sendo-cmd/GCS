@@ -79,11 +79,10 @@ Accounts = {
         "AutoBuyR",
         "BaseR",
     },
-    ["narutoez441"] = {
+    ["Revenge_zx7"] = {
         "Log",
         "Marco",
-        "AutoBuyBE",
-        "BIgrisSon2",
+        "CF_Soj",
     },
     ["HJRETAP"] = {
         "Log",
