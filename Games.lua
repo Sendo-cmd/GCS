@@ -50,7 +50,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "Marco",
-        "ESSE",
+        "ESSE2",
     },
     ["spiltduc9241"] = {
         "Log",
