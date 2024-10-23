@@ -71,8 +71,7 @@ Accounts = {
     ["mooqill_754837"] = {
         "Log",
         "Marco",
-        "AutoBuyR",
-        "BaseR",
+        "CF_Soj",
     },
     ["wave125zing"] = {
         "Log",
