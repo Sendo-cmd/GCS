@@ -121,6 +121,11 @@ Accounts = {
         "Marco",
         "BaseGemInf",
     },
+    ["underhorror"] = {
+        "Log",
+        "Marco",
+        "BaseGemInf",
+    },
     ["puggtopro"] = {
         "Log",
         "Marco",
