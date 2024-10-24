@@ -27,7 +27,7 @@ Games = {
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["PPN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25.lua",
         ["PPS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25S.lua",
-        ["CF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
+        ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
         ["CF_Soj"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Soj.lua",
         ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -50,7 +50,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "Marco",
-        "CF_Soj",
+        "BaseCF",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -84,6 +84,11 @@ Accounts = {
         "Log",
         "Marco",
         "CF_Soj",
+    },
+    ["Dareuioph"] = {
+        "Log",
+        "Marco",
+        "BaseGemInf",
     },
     ["euakungchannel"] = {
         "Log",
