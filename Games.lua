@@ -85,7 +85,7 @@ Accounts = {
         "Marco",
         "CF_Soj",
     },
-    ["HJRETAP"] = {
+    ["euakungchannel"] = {
         "Log",
         "Marco",
         "LSEV2",
