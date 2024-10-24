@@ -62,7 +62,7 @@ getgenv().Config = {
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Middle Position"] = {
-			["Shibuya Station"] = "-768.7183227539062, 9.356081008911133, -100.07711791992188"
+			["Shibuya Station"] = "-766.054443359375, 9.356081008911133, -118.76422119140625"
 		},
 		["Upgrade Method"] = "Nearest from Middle Position (until Max)"
 	}
