@@ -48,6 +48,10 @@ getgenv().Config = {
 		["Auto Claim Milestone"] = true
 	},
 	["Gameplay"] = {
+		["Auto Mohato"] = {
+			["Enable"] = true,
+			["Unit"] = "Gujo"
+		},
 		["Auto Sell"] = {
 			["Enable"] = true,
 			["Wave"] = 34
@@ -58,7 +62,7 @@ getgenv().Config = {
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Middle Position"] = {
-			["Shibuya Station"] = "-767.325927734375, 9.356081008911133, -118.07311248779297"
+			["Shibuya Station"] = "-768.7183227539062, 9.356081008911133, -100.07711791992188"
 		},
 		["Upgrade Method"] = "Nearest from Middle Position (until Max)"
 	}
