@@ -90,6 +90,11 @@ Accounts = {
         "Marco",
         "LSEV2",
     },
+    ["110AAE2"] = {
+        "Log",
+        "Marco",
+        "BaseGemInf",
+    },
     ["XDGGZTheGod"] = {
         "Log",
         "Marco",
