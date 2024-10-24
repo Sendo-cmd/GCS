@@ -88,7 +88,7 @@ Accounts = {
     ["euakungchannel"] = {
         "Log",
         "Marco",
-        "LSEV2",
+        "LSEV3",
     },
     ["110AAE2"] = {
         "Log",
