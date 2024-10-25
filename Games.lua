@@ -28,6 +28,7 @@ Games = {
         ["PPN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25.lua",
         ["PPS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25S.lua",
         ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
+        ["BaseCFE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_GojoE.lua",
         ["CF_Soj"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Soj.lua",
         ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -124,7 +125,7 @@ Accounts = {
     ["FormatDataNumber"] = {
         "Log",
         "Marco",
-        "CF",
+        "BaseCFE",
     },
     ["aamlop1"] = {
         "Log",
