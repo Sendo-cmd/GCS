@@ -44,12 +44,12 @@ getgenv().Config = {
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Milestone"] = true
+		["Auto Claim Milestone"] = trues
 	},
 	["Gameplay"] = {
 		["Auto Mohato"] = {
 			["Enable"] = true,
-			["Unit"] = "obita (awakened)"
+			["Unit"] = "Cha-In (Blade Dancer)"
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
