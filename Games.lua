@@ -124,7 +124,7 @@ Accounts = {
     ["FormatDataNumber"] = {
         "Log",
         "Marco",
-        "CF_Soj",
+        "CF",
     },
     ["aamlop1"] = {
         "Log",
