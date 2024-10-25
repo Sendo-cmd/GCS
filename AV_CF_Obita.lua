@@ -44,7 +44,7 @@ getgenv().Config = {
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Milestone"] = trues
+		["Auto Claim Milestone"] = true
 	},
 	["Gameplay"] = {
 		["Auto Mohato"] = {
