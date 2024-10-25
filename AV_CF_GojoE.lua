@@ -49,7 +49,7 @@ getgenv().Config = {
 	["Gameplay"] = {
 		["Auto Mohato"] = {
 			["Enable"] = true,
-			["Unit"] = "Gujo"
+			["Unit"] = "Gujo (Infinity)"
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
