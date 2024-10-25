@@ -30,6 +30,7 @@ Games = {
         ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
         ["BaseCFE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_GojoE.lua",
         ["CF_Soj"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Soj.lua",
+        ["CF_Obita"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Obita.lua",
         ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
@@ -104,7 +105,12 @@ Accounts = {
     ["XDGGZTheGod"] = {
         "Log",
         "Marco",
-        "PPS",
+        "CF_Obita",
+    },
+    ["JeremiahOsAVcK"] = {
+        "Log",
+        "Marco",
+        "ESSE",
     },
     ["08n2tf"] = {
         "Log",
@@ -146,6 +152,16 @@ Accounts = {
         "Log",
         "Marco",
         "CF_Bean",
+    },
+    ["LGDRgod"] = {
+        "Log",
+        "Marco",
+        "ESSE",
+    },
+    ["Xeonerct"] = {
+        "Log",
+        "Marco",
+        "ESSE",
     },
     ["Darknight6928"] = {
         "Log",
