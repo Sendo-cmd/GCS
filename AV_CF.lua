@@ -23,8 +23,7 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["No Ignore Sell Timing"] = true,
-		["Play"] = true,
-		["Macro"] = "CF_Tengon",
+		["Play"] = false,
 		["Ignore Macro Timing"] = true
 	},
 	["Secure"] = {
@@ -61,6 +60,15 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
+		["Place Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = 0
+		},
+		["Enable"] = true,
 		["Middle Position"] = {
 			["Shibuya Station"] = "-766.054443359375, 9.356081008911133, -118.76422119140625"
 		},
