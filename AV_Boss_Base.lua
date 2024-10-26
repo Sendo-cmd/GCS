@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Joiner Cooldown"] = 30,
+	["Joiner Cooldown"] = 60,
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},

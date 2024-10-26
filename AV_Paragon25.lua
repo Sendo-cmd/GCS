@@ -1,5 +1,5 @@
 getgenv().Config = {
-	["Joiner Cooldown"] = 30,
+	["Joiner Cooldown"] = 60,
 	["Stage Joiner"] = {
 		["Auto Join"] = true,
 		["Act"] = "Paragon",
