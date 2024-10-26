@@ -128,6 +128,11 @@ Accounts = {
         "Marco",
         "ESSE",
     },
+    ["NonBemmy"] = {
+        "Log",
+        "Marco",
+        "CF_Obita",
+    },
     ["FormatDataNumber"] = {
         "Log",
         "Marco",
