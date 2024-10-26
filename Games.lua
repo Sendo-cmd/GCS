@@ -84,7 +84,7 @@ Accounts = {
     },
     ["Revenge_zx7"] = {
         "Log",
-        "CF_Soj",
+        "BaseCF",
         "Marco",
     },
     ["Dareuioph"] = {
