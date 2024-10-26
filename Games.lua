@@ -143,6 +143,11 @@ Accounts = {
         "Marco",
         "BaseGemInf",
     },
+    ["yanawarutkanpai"] = {
+        "Log",
+        "Marco",
+        "ESSE",
+    },
     ["puggtopro"] = {
         "Log",
         "Marco",
