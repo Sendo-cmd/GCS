@@ -51,8 +51,8 @@ Games = {
 Accounts = {
     ["GCshop2"] = {
         "Log",
-        "BaseCF",
         "Marco",
+        "BaseCF",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -68,13 +68,13 @@ Accounts = {
     },
     ["maser080"] = {
         "Log",
-        "CF_Soj",
         "Marco",
+        "CF_Soj",
     },
     ["mooqill_754837"] = {
         "Log",
-        "CF_Soj",
         "Marco",
+        "CF_Soj",
     },
     ["wave125zing"] = {
         "Log",
@@ -84,33 +84,33 @@ Accounts = {
     },
     ["Revenge_zx7"] = {
         "Log",
-        "BaseCF",
         "Marco",
+        "BaseCF",
     },
     ["Dareuioph"] = {
         "Log",
-        "BaseGemInf",
         "Marco",
+        "BaseGemInf",
     },
     ["euakungchannel"] = {
         "Log",
-        "LSEV3",
         "Marco",
+        "LSEV3",
     },
     ["110AAE2"] = {
         "Log",
-        "ESSE",
         "Marco",
+        "ESSE",
     },
     ["XDGGZTheGod"] = {
         "Log",
-        "CF_Obita",
         "Marco",
+        "CF_Obita",
     },
     ["JeremiahOsAVcK"] = {
         "Log",
-        "ESSE",
         "Marco",
+        "ESSE",
     },
     ["08n2tf"] = {
         "Log",
@@ -120,53 +120,53 @@ Accounts = {
     },
     ["xdyrdgyrdfg"] = {
         "Log",
-        "ESSE",
         "Marco",
+        "ESSE",
     },
     ["djgodzz55"] = {
         "Log",
-        "ESSE",
         "Marco",
+        "ESSE",
     },
     ["FormatDataNumber"] = {
         "Log",
-        "BaseCFE",
         "Marco",
+        "BaseCFE",
     },
     ["aamlop1"] = {
         "Log",
-        "BaseGemInf",
         "Marco",
+        "BaseGemInf",
     },
     ["underhorror"] = {
         "Log",
-        "BaseGemInf",
         "Marco",
+        "BaseGemInf",
     },
     ["puggtopro"] = {
         "Log",
-        "CF",
         "Marco",
+        "CF",
     },
     ["Etaa_xm"] = {
         "Log",
-        "CF_Bean",
         "Marco",
+        "CF_Bean",
     },
     ["LGDRgod"] = {
         "Log",
-        "ESSE",
         "Marco",
+        "ESSE",
     },
     ["Xeonerct"] = {
         "Log",
-        "BaseCFE",
         "Marco",
+        "BaseCFE",
     },
     ["Darknight6928"] = {
         "Log",
-        "ESSE",
         "Marco",
+        "ESSE",
     },
     ["moileuy113"] = {
         "Log",
