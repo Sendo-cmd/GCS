@@ -16,7 +16,7 @@ getgenv().Config = {
 		["Stage Finished"] = false,
 		["URL"] = ""
 	},
-	["Joiner Cooldown"] = 10,
+	["Joiner Cooldown"] = 30,
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
