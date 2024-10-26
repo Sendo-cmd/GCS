@@ -22,9 +22,6 @@ getgenv().Config = {
 			["FPS"] = 5
 		}
 	},
-	["Webhook"] = {
-		["URL"] = ""
-	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Upgrade Method"] = "Nearest from Middle Position (until Max)",
