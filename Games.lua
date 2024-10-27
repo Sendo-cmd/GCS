@@ -112,6 +112,11 @@ Accounts = {
         "Marco",
         "ESSE",
     },
+    ["Demonx_Hunt"] = {
+        "Log",
+        "Marco",
+        "BaseCF",
+    },
     ["08n2tf"] = {
         "Log",
         "Marco",
