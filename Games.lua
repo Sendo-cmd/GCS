@@ -117,6 +117,11 @@ Accounts = {
         "Marco",
         "BaseCF",
     },
+    ["namnam12327"] = {
+        "Log",
+        "Marco",
+        "BaseCFE",
+    },
     ["08n2tf"] = {
         "Log",
         "Marco",
