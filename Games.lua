@@ -203,6 +203,11 @@ Accounts = {
         "AutoBuyR",
         "BaseR",
     },
+    ["winnoooql"] = {
+        "Log",
+        "Marco",
+        "BaseCF",
+    },
     ["FireBlackDevilZ"] = {
         "Marco",
         "Xenon_ALS",
