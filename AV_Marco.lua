@@ -1,11 +1,5 @@
 local Endpoint = "https://raw.githubusercontent.com/test-macro/marco/main/"
 local Profiles = {
-    "New_ChaDD.json",
-    "New_ChaSand.json",
-    "New_ChaNamek.json",
-    "GEM.json",
-    "GEM2.json",
-    "GEM3.json",
     "Igris_SonjE.json",
     "Igris_SonjEV.json",
     "Igris_SonjEV2.json",
@@ -15,19 +9,12 @@ local Profiles = {
     "Igris_ChainE.json",
     "Igris_Chain2.json",
     "Igris_Chain.json",
-    "CF_Tengon.json",
-    "CF_Soj.json",
-    "CF_Bean.json",
-    "Boss_Base_Son.json",
-    "Boss_Base_Son2.json",
     "Raid_Base.json",
     "Raid_Igris.json",
     "Raid_Akazo.json",
     "Raid_Renguko.json",
     "Raid_Monarch_Igris.json",
     "Raid_Monarch_Song.json",
-    "PS25_IGSON.json",
-    "PN25_IGSON.json",
 };
 
 repeat task.wait(1) until game:IsLoaded()
