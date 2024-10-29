@@ -52,6 +52,6 @@ for _, Name in pairs(Profiles) do
     local success, JSON = pcall(HttpService.JSONDecode, HttpService, Profile_Data)
 
     if success then
-        writefile(`{PATH}/{Name}`, Profile_Data)
+        writefile(`${PATH}/${Name}`, Profile_Data)
     end
 end
