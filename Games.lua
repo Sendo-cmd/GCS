@@ -175,6 +175,7 @@ Accounts = {
     },
     ["LGDRgod"] = {
         "Log",
+        "AutoBuyR"
         "BaseR",
         "Marco",
     },

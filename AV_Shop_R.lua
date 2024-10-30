@@ -1,5 +1,5 @@
 local Accounts = {
-    ["spiltduc9241"] = {
+    ["LGDRgod"] = {
         ["Nichirin Cleavers"] = 1,
         ["Demon Beads"] = 1,
         ["Slayer's Cape"] = 10,
