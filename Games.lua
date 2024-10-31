@@ -104,7 +104,7 @@ Accounts = {
     },
     ["XDGGZTheGod"] = {
         "Log",
-        "CF_Obita",
+        "BaseGemInf",
         "Marco",
     },
     ["JeremiahOsAVcK"] = {
@@ -208,6 +208,11 @@ Accounts = {
     ["winnoooql"] = {
         "Log",
         "BaseCF",
+        "Marco",
+    },
+    ["Bossplaza123"] = {
+        "Log",
+        "ESSE",
         "Marco",
     },
     ["FireBlackDevilZ"] = {
