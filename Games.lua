@@ -51,7 +51,7 @@ Games = {
 Accounts = {
     ["GCshop2"] = {
         "Log",
-        "BaseCF",
+        "ESSE2",
         "Marco",
     },
     ["spiltduc9241"] = {
