@@ -44,12 +44,18 @@ Games = {
         ["ALS_Reroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Marco.lua",
     },
+    [5750914919] = {
+        ["Fisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
+    },
     [6149138290] = { --Anime-Card-Battle
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
         ["LogACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
     }
 }
 Accounts = {
+    ["SHIFUGOD"] = {
+        "Fisch",
+    },
     ["GCshop2"] = {
         "Log",
         "ESSE2",
