@@ -57,7 +57,7 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
-		["Place and Upgrade"] = true,
+		["Place and Upgrade"] = false,
 		["Enable"] = true,
 		["Middle Position"] = {
 			["Planet Namak"] = "79.00111389160156, 7.105718612670898, 122.80880737304688",
