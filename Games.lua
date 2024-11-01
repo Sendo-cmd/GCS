@@ -220,6 +220,11 @@ Accounts = {
         "CF_RengukoE",
         "Marco",
     },
+    ["eatcatpong"] = {
+        "Log",
+        "LSEV3",
+        "Marco",
+    },
     ["FireBlackDevilZ"] = {
         "Marco",
         "Xenon_ALS",
