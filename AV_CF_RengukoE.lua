@@ -23,7 +23,7 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["No Ignore Sell Timing"] = true,
-		["Play"] = true,
+		["Play"] = false,
 		["Macro"] = "CF_Soj",
 		["Ignore Macro Timing"] = true
 	},
@@ -48,6 +48,10 @@ getgenv().Config = {
 		["Auto Claim Milestone"] = true
 	},
 	["Gameplay"] = {
+		["Auto Mohato"] = {
+			["Enable"] = true,
+			["Unit"] = "Renguko (Purgatory)"
+		},
 		["Auto Sell"] = {
 			["Enable"] = true,
 			["Wave"] = 34
@@ -57,8 +61,17 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
+		["Place Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 1,
+			["6"] = 0
+		},
+		["Enable"] = true,
 		["Middle Position"] = {
-			["Shibuya Station"] = "-767.325927734375, 9.356081008911133, -118.07311248779297"
+			["Shibuya Station"] = "-766.054443359375, 9.356081008911133, -118.76422119140625"
 		},
 		["Upgrade Method"] = "Nearest from Middle Position (until Max)"
 	}

@@ -29,7 +29,7 @@ Games = {
         ["PPS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25S.lua",
         ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
         ["BaseCFE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_GojoE.lua",
-        ["CF_Soj"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Soj.lua",
+        ["CF_RengukoE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_RengukoE.lua",
         ["CF_Obita"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Obita.lua",
         ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -213,6 +213,11 @@ Accounts = {
     ["Bossplaza123"] = {
         "Log",
         "ESSE",
+        "Marco",
+    },
+    ["gengen8855"] = {
+        "Log",
+        "CF_RengukoE",
         "Marco",
     },
     ["FireBlackDevilZ"] = {
