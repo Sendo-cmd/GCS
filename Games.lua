@@ -32,6 +32,7 @@ Games = {
         ["CF_RengukoE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_RengukoE.lua",
         ["CF_Obita"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Obita.lua",
         ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
+        ["TraitReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Trait.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -223,6 +224,11 @@ Accounts = {
     ["eatcatpong"] = {
         "Log",
         "LSEV3",
+        "Marco",
+    },
+    ["gmhgoodies"] = {
+        "Log",
+        "TraitReroll",
         "Marco",
     },
     ["FireBlackDevilZ"] = {
