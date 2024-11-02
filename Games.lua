@@ -232,6 +232,11 @@ Accounts = {
         "LSEV3",
         "Marco",
     },
+    ["pokpong4123"] = {
+        "Log",
+        "BaseCF",
+        "Marco",
+    },
     ["gmhgoodies"] = {
         "Log",
         "TraitReroll",
