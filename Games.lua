@@ -240,7 +240,7 @@ Accounts = {
     },
     ["gmhgoodies"] = {
         "Log",
-        "TraitReroll",
+        "BaseCFE",
         "Marco",
     },
     ["FireBlackDevilZ"] = {
