@@ -33,6 +33,7 @@ Games = {
         ["CF_Obita"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Obita.lua",
         ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
         ["TraitReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Trait.lua",
+        ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
