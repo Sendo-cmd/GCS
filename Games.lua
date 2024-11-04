@@ -182,7 +182,7 @@ Accounts = {
         "Marco",
     },
     ["LGDRgod"] = {
-        "Log"
+        "Log",
         "BaseCFE",
         "Marco",
     },
