@@ -47,6 +47,7 @@ Games = {
     },
     [5750914919] = {
         ["Fisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
+        ["Fischs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
@@ -55,7 +56,7 @@ Games = {
 }
 Accounts = {
     ["SHIFUGOD"] = {
-        "Fisch",
+        "Fischs",
     },
     ["GCshop2"] = {
         "Log",
