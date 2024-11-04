@@ -182,9 +182,8 @@ Accounts = {
         "Marco",
     },
     ["LGDRgod"] = {
-        "Log",
-        "AutoBuyR",
-        "BaseR",
+        "Log"
+        "BaseCFE",
         "Marco",
     },
     ["Xeonerct"] = {
