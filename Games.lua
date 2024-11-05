@@ -58,6 +58,9 @@ Accounts = {
     ["SHIFUGOD"] = {
         "Fischs",
     },
+    ["Champandbank147"] = {
+        "Fischs",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseCFE",
