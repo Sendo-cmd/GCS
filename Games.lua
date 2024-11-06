@@ -55,6 +55,15 @@ Games = {
     }
 }
 Accounts = {
+    ["SHIFUGOD"] = {
+        "Fischs",
+    },
+    ["Champandbank147"] = {
+        "Fischs",
+    },
+    ["inkkit5555"] = {
+        "Fischs",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseCFE",
@@ -277,15 +286,6 @@ Accounts = {
     ["nowgodzz"] = {
         "LogACB",
         "ACB",
-    },
-    ["inkkit5555"] = {
-        "Fischs",
-    },
-    ["SHIFUGOD"] = {
-        "Fischs",
-    },
-    ["Champandbank147"] = {
-        "Fischs",
     },
 
 }
