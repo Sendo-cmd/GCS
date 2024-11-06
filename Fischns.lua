@@ -32,7 +32,7 @@ getgenv().Config = {
 		["Ping Freeze"] = true,
 		["Rejoin Timer"] = {
 			["Enable"] = true,
-			["Minute"] = 60
+			["Minute"] = 240
 		}
 	}
 }
