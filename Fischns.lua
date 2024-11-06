@@ -5,30 +5,27 @@ getgenv().Config = {
 		["Auto Favourite"] = {
 			["Enable"] = true,
 			["Weight"] = 1000
-		},
-		["Auto Sell"] = {
-			["Enable"] = false,
-			["Delay"] = 1
 		}
-	},
-	["AutoSave"] = true,
-	["Performance"] = {
-		["Boost FPS"] = true
 	},
 	["Character"] = {
 		["Disable Swim"] = true,
 		["Water Walk"] = true
 	},
+	["Performance"] = {
+		["Boost FPS"] = true,
+		["Black Screen"] = true
+	},
+	["AutoSave"] = true,
 	["Auto Fish"] = {
 		["Fish Location"] = {
+			["Postion"] = "-1068.05383, -354.774658, -3108.94263, -0.573466957, -0.000531586353, 0.81922853, -3.90871173e-05, 0.999999821, 0.000621525047, -0.819228709, 0.00032440279, -0.573466837",
 			["Auto"] = true,
 			["Zone"] = "Desolate Deep",
-			["Height"] = 20,
-			["Postion"] = "-1068.05383, -354.774658, -3108.94263, -0.573466957, -0.000531586353, 0.81922853, -3.90871173e-05, 0.999999821, 0.000621525047, -0.819228709, 0.00032440279, -0.573466837"
+			["Height"] = 20
 		},
-		["Enable"] = true,
-		["Perfect Chance"] = 90,
 		["Cast Threshold"] = 95,
+		["Perfect Chance"] = 90,
+		["Enable"] = true,
 		["Fail Chance"] = 5
 	},
 	["Performance Failsafe"] = {
