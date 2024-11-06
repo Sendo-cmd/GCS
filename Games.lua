@@ -92,6 +92,11 @@ Accounts = {
         "CF_Soj",
         "Marco",
     },
+    ["pupu4582zxc"] = {
+        "Log",
+        "BaseGem",
+        "Marco",
+    },
     ["wave125zing"] = {
         "Log",
         "AutoBuyR",
