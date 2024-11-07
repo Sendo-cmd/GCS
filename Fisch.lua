@@ -20,7 +20,6 @@ getgenv().Config = {
 			["Rarity"] = {
 				["Event"] = true,
 				["Divine"] = true,
-				["Legendary"] = true,
 				["Mythical"] = true,
 				["Relic"] = true
 			}
