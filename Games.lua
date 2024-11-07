@@ -49,6 +49,7 @@ Games = {
         ["Fisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
         ["FischSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch.lua",
         ["FischNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns.lua",
+        ["FischBuyRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
@@ -64,6 +65,9 @@ Accounts = {
     },
     ["inkkit5555"] = {
         "FischNoSell",
+    },
+    ["Zizennpip"] = {
+        "FischBuyRod",
     },
     ["GCshop2"] = {
         "Log",
