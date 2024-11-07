@@ -38,10 +38,6 @@ getgenv().Config = {
 	["Performance"] = {
 		["Boost FPS"] = true
 	},
-	["Auto Merlin"] = {
-		["Lucky"] = false,
-		["Power"] = false
-	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = true,
 		["Rejoin Timer"] = {

@@ -30,8 +30,8 @@ getgenv().Config = {
 		["Fish Location"] = {
 			["Postion"] = "-1068.05383, -354.774658, -3108.94263, -0.573466957, -0.000531586353, 0.81922853, -3.90871173e-05, 0.999999821, 0.000621525047, -0.819228709, 0.00032440279, -0.573466837",
 			["Auto"] = true,
-			["Zone"] = "Desolate Deep",
-			["Height"] = 20
+			["Zone"] = "Isonade",
+			["Height"] = 40
 		},
 		["Cast Threshold"] = 95,
 		["Perfect Chance"] = 90,
@@ -50,7 +50,6 @@ getgenv().Config = {
 	},
 	["Auto Merlin"] = {
 		["Lucky"] = true,
-		["Power"] = true
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = true,
