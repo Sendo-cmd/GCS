@@ -13,7 +13,7 @@ getgenv().Config = {
 	},
 	["AutoSave"] = true,
 	["Webhook"] = {
-		["Mention"] = "338993710278639626",
+		["Mention"] = "3",
 		["Fish Catched"] = {
 			["Enable"] = true,
 			["Minimum Weight"] = 20000,
