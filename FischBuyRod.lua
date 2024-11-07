@@ -4,7 +4,7 @@ getgenv().Config = {
 	["Inventory"] = {
 		["Auto Favourite"] = {
 			["Weight"] = 1000,
-			["Enable"] = true
+			["Enable"] = false
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
