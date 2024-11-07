@@ -18,13 +18,12 @@ getgenv().Config = {
 			["Enable"] = true,
 			["Minimum Weight"] = 20000,
 			["Rarity"] = {
-				["Mythical"] = true,
-				["Legendary"] = true,
 				["Event"] = true,
-				["Relic"] = true,
-				["Divine"] = true
-			},
-			["Special Attribute"] = false
+				["Divine"] = true,
+				["Legendary"] = true,
+				["Mythical"] = true,
+				["Relic"] = true
+			}
 		},
 		["URL"] = "https://discord.com/api/webhooks/1016102161689612338/sjdnR-tIozI-JO_gFSy9nZ7G2PV51hJdH7jn4sK4chO7sM4Ab5igib97uQZ6azN1WyX2"
 	},
@@ -35,10 +34,13 @@ getgenv().Config = {
 			["Zone"] = "Desolate Deep",
 			["Height"] = 20
 		},
-		["Enable"] = true,
-		["Perfect Chance"] = 90,
 		["Cast Threshold"] = 95,
+		["Perfect Chance"] = 90,
+		["Enable"] = true,
 		["Fail Chance"] = 5
+	},
+	["Auto Bait"] = {
+		["Equip Random"] = true
 	},
 	["Character"] = {
 		["Disable Swim"] = true,
@@ -46,6 +48,10 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Boost FPS"] = true
+	},
+	["Auto Merlin"] = {
+		["Lucky"] = true,
+		["Power"] = true
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = true,
