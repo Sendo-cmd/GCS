@@ -11,6 +11,10 @@ getgenv().Config = {
 		["Disable Swim"] = true,
 		["Water Walk"] = true
 	},
+	["Auto Buy Rod"] = {
+		["Enable"] = true,
+		["Rod"] = "Rapid Rod"
+	},
 	["Performance"] = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true
