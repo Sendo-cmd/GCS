@@ -69,6 +69,9 @@ Accounts = {
     ["Zizennpip"] = {
         "FischBuyRod",
     },
+    ["kisakinaqua_592"] = {
+        "FischNoSell",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseCFE",
