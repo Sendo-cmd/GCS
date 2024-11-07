@@ -33,6 +33,11 @@ getgenv().Config = {
 			["Zone"] = "Isonade",
 			["Height"] = 50
 		},
+		["Shark Event"] = {
+			["Great Hammerhead Shark"] = true,
+			["Whale Shark"] = true,
+			["Great White Shark"] = true
+		},
 		["Cast Threshold"] = 95,
 		["Perfect Chance"] = 90,
 		["Enable"] = true,
@@ -46,10 +51,11 @@ getgenv().Config = {
 		["Water Walk"] = true
 	},
 	["Performance"] = {
+		["Fullbright"] = true,
 		["Boost FPS"] = true
 	},
 	["Auto Merlin"] = {
-		["Lucky"] = true,
+		["Lucky"] = true
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = true,
