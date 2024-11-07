@@ -12,7 +12,7 @@ getgenv().Config = {
 		["Water Walk"] = true
 	},
 	["Auto Buy Rod"] = {
-		["Enable"] = true,
+		["Enable"] = false,
 		["Rod"] = "Rapid Rod"
 	},
 	["Performance"] = {
