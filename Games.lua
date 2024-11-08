@@ -23,6 +23,7 @@ Games = {
         ["LSEV2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV2.lua",
         ["LSEV3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV3.lua",
         ["LSEM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEMon.lua",
+        ["MONS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Mon.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["PPN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25.lua",
@@ -79,7 +80,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "BaseCFE",
+        "MONS",
         "Marco",
     },
     ["spiltduc9241"] = {
