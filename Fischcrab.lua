@@ -39,11 +39,12 @@ getgenv().Config = {
 		["Boost FPS"] = true
 	},
 	["Performance Failsafe"] = {
-		["Ping Freeze"] = true,
 		["Rejoin Timer"] = {
 			["Enable"] = true,
 			["Minute"] = 60
-		}
+		},
+		["Ping Freeze"] = true,
+		["Auto Rejoin"] = true
 	}
 }
 getgenv().Key = "wPfsNXRRMazroqcwmxPIUwPcGvwkRZer"
