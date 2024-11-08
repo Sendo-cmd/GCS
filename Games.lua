@@ -60,10 +60,10 @@ Games = {
 }
 Accounts = {
     ["SHIFUGOD"] = {
-        "FischSell",
+        "FischCrab",
     },
     ["Champandbank147"] = {
-        "FischSell",
+        "FischCrab",
     },
     ["inkkit5555"] = {
         "FischNoSell",
