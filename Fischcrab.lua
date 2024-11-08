@@ -29,7 +29,7 @@ getgenv().Config = {
 	},
 	["Auto Cage"] = {
 		["Buy Amount"] = 500,
-		["Deploy Position"] = "-1672.18347, -212.710266, -2827.35254, 0.354278117, -0.0112234224, 0.93507266, 6.11512263e-08, 0.999927938, 0.0120019, -0.935140014, -0.00425193226, 0.354252607",
+		["Deploy Position"] = "1531.24548, -233.222305, -2884.24976, 0.291006833, 0.0113086216, -0.956654072, 7.94203903e-09, 0.999930084, 0.0118202511, 0.956720889, -0.00343976426, 0.290986508",
 		["Check Delay"] = 1,
 		["Enable"] = true,
 		["Only Deploy if no Cage"] = true
@@ -46,5 +46,6 @@ getgenv().Config = {
 		}
 	}
 }
+
 getgenv().Key = "wPfsNXRRMazroqcwmxPIUwPcGvwkRZer"
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
