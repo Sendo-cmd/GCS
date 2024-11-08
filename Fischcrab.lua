@@ -30,7 +30,7 @@ getgenv().Config = {
 	["Auto Cage"] = {
 		["Buy Amount"] = 1000,
 		["Deploy Position"] = "352.752777, 133.371765, 179.832611, 0.939435005, 0.00345680909, -0.342709512, -1.0910771e-07, 0.999949098, 0.0100859497, 0.342726946, -0.00947500113, 0.939387202",
-		["Check Delay"] = 1,
+		["Check Delay"] = 60,
 		["Enable"] = true,
 		["Only Deploy if no Cage"] = true
 	},
