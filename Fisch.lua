@@ -58,11 +58,12 @@ getgenv().Config = {
 		["Lucky"] = true
 	},
 	["Performance Failsafe"] = {
-		["Ping Freeze"] = true,
 		["Rejoin Timer"] = {
 			["Enable"] = true,
-			["Minute"] = 240
-		}
+			["Minute"] = 60
+		},
+		["Ping Freeze"] = true,
+		["Auto Rejoin"] = true
 	}
 }
 getgenv().Key = "wPfsNXRRMazroqcwmxPIUwPcGvwkRZer"
