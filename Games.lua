@@ -74,6 +74,9 @@ Accounts = {
     ["kisakinaqua_592"] = {
         "FischFarm",
     },
+    ["JOE7_U3GSQ"] = {
+        "FischFarm",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseCFE",
