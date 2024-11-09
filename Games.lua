@@ -85,6 +85,9 @@ Accounts = {
     ["WickedRock21"] = {
         "FischSell",
     },
+    ["trexefxtd"] = {
+        "FischSell",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseBS",
