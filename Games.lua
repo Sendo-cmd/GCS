@@ -218,7 +218,7 @@ Accounts = {
     },
     ["Xeonerct"] = {
         "Log",
-        "BaseCFE",
+        "BaseBS",
         "Marco",
     },
     ["YouknowZ16253"] = {
@@ -270,6 +270,11 @@ Accounts = {
     ["gmhgoodies"] = {
         "Log",
         "BaseCFE",
+        "Marco",
+    },
+    ["Nonglud"] = {
+        "Log",
+        "BaseBS",
         "Marco",
     },
     ["narutoez441"] = {
