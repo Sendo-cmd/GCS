@@ -83,7 +83,7 @@ Accounts = {
         "FischFarm",
     },
     ["WickedRock21"] = {
-        "FischSell",
+        "FischCrab",
     },
     ["trexefxtd"] = {
         "FischSell",
