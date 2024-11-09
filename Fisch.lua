@@ -31,7 +31,7 @@ getgenv().Config = {
 		["Fish Location"] = {
 			["Postion"] = "-1068.05383, -354.774658, -3108.94263, -0.573466957, -0.000531586353, 0.81922853, -3.90871173e-05, 0.999999821, 0.000621525047, -0.819228709, 0.00032440279, -0.573466837",
 			["Auto"] = true,
-			["Zone"] = "Ocean",
+			["Zone"] = "Desolate Deep",
 			["Height"] = 20
 		},
 		["Shark Event"] = {
@@ -45,7 +45,7 @@ getgenv().Config = {
 		["Fail Chance"] = 5
 	},
 	["Auto Bait"] = {
-		["Equip Random"] = true
+		["Equip Random"] = false
 	},
 	["Character"] = {
 		["Disable Swim"] = true,
@@ -54,9 +54,6 @@ getgenv().Config = {
 	["Performance"] = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true
-	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
