@@ -88,6 +88,9 @@ Accounts = {
     ["trexefxtd"] = {
         "FischSell",
     },
+    ["Aommay_TH"] = {
+        "FischFarm",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseBS",
