@@ -82,6 +82,9 @@ Accounts = {
     ["Nongnumxd"] = {
         "FischFarm",
     },
+    ["WickedRock21"] = {
+        "FischCrab",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseBS",
