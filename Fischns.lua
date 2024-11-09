@@ -3,8 +3,13 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["Inventory"] = {
 		["Auto Favourite"] = {
+			["Weight"] = 1000,
 			["Enable"] = true,
-			["Weight"] = 1000
+			["Unfavourite if unmatch"] = true
+		},
+		["Auto Sell"] = {
+			["Enable"] = true,
+			["Delay"] = 1
 		}
 	},
 	["Character"] = {
