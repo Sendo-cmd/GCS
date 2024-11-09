@@ -3,15 +3,9 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["Inventory"] = {
 		["Auto Favourite"] = {
-			["Special Attribute"] = true,
-			["Rarity"] = {
-				["Mythical"] = true,
-				["Event"] = true,
-				["Relic"] = true,
-				["Divine"] = true
-			},
 			["Weight"] = 1000,
-			["Enable"] = true
+			["Enable"] = true,
+			["Unfavourite if unmatch"] = true
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
@@ -29,7 +23,7 @@ getgenv().Config = {
 	},
 	["Auto Cage"] = {
 		["Buy Amount"] = 1000,
-		["Deploy Position"] = "352.752777, 133.371765, 179.832611, 0.939435005, 0.00345680909, -0.342709512, -1.0910771e-07, 0.999949098, 0.0100859497, 0.342726946, -0.00947500113, 0.939387202",
+		["Deploy Position"] = "-1496.96936, -233.245621, -2855.18481, 0.791740954, 0.00586142624, -0.610828757, 2.69434973e-12, 0.999953926, 0.00959547795, 0.610856831, -0.00759708602, 0.791704535",
 		["Check Delay"] = 10,
 		["Enable"] = true,
 		["Only Deploy if no Cage"] = true
