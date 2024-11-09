@@ -7,7 +7,8 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Boss Event Joiner"] = {
-		["Auto Join"] = true
+		["Auto Join"] = true,
+		["Stage"] = "SukonoEvent"
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
