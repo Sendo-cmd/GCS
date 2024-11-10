@@ -222,7 +222,7 @@ Accounts = {
     },
     ["Etaa_xm"] = {
         "Log",
-        "CF_Bean",
+        "BaseCFE",
         "Marco",
     },
     ["LGDRgod"] = {
