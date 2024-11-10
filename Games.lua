@@ -91,6 +91,9 @@ Accounts = {
     ["Aommay_TH"] = {
         "FischFarm",
     },
+    ["NingLove"] = {
+        "FischNoSell",
+    },
     ["GCshop2"] = {
         "Log",
         "BaseBS",
@@ -297,6 +300,11 @@ Accounts = {
         "Marco",
     },
     ["SADFkai1"] = {
+        "Log",
+        "BaseBS",
+        "Marco",
+    },
+    ["ZAZAM9844"] = {
         "Log",
         "BaseBS",
         "Marco",
