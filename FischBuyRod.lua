@@ -42,7 +42,7 @@ getgenv().Config = {
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
 			["Enable"] = true,
-			["Minute"] = 60
+			["Minute"] = 240
 		},
 		["Ping Freeze"] = true,
 		["Auto Rejoin"] = true
