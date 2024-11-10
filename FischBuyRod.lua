@@ -34,7 +34,7 @@ getgenv().Config = {
 	},
 	["Auto Buy Rod"] = {
 		["Enable"] = true,
-		["Rod"] = "Kings Rod"
+		["Rod"] = "Trident Rod"
 	},
 	["Performance"] = {
 		["Boost FPS"] = true

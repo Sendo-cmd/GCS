@@ -65,7 +65,7 @@ Accounts = {
         "FischCrab",
     },
     ["Champandbank147"] = {
-        "FischSell",
+        "FischBuyRod",
     },
     ["inkkit5555"] = {
         "FischNoSell",
