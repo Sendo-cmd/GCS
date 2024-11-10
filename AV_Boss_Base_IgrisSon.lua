@@ -7,7 +7,8 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Boss Event Joiner"] = {
-		["Auto Join"] = true
+		["Auto Join"] = true,
+		["Stage"] = "IgrosEvent"
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
