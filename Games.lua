@@ -102,6 +102,11 @@ Accounts = {
         "AutoBuyR",
         "Marco",
     },
+    ["OverSoulXZ"] = {
+        "Log",
+        "BaseBS",
+        "Marco",
+    },
     ["Nachosmayo"] = {
         "Log",
         "RIgris",
@@ -283,7 +288,7 @@ Accounts = {
     },
     ["Nonglud"] = {
         "Log",
-        "BaseBS",
+        "BaseB",
         "Marco",
     },
     ["narutoez441"] = {
