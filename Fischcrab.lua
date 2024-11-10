@@ -21,6 +21,10 @@ getgenv().Config = {
 		["Perfect Chance"] = 50,
 		["Fail Chance"] = 5
 	},
+	["Character"] = {
+		["Disable Swim"] = true,
+		["Water Walk"] = true
+	},
 	["Auto Merlin"] = {
 		["Lucky"] = true
 	},
