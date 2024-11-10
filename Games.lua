@@ -4,6 +4,7 @@ Games = {
         ["BaseBS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Bases.lua",
         ["BIgrisSon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon.lua",
         ["BIgrisSon2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon2.lua",
+        ["BIgrisGS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGS.lua",
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
         ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
@@ -96,7 +97,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "BaseBS",
+        "BIgrisGS",
         "Marco",
     },
     ["spiltduc9241"] = {
