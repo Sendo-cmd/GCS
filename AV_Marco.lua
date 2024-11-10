@@ -5,6 +5,8 @@ local Profiles = {
     "IgrisMon.json",
     "Boss_BaseS.json",
     "Boss_Base.json",
+    "Boss_Base_GS.json",
+    "Boss_Base_Son.json",
     "Igris_SonjE.json",
     "Igris_SonjEV.json",
     "Igris_SonjEV2.json",
