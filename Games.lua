@@ -291,6 +291,11 @@ Accounts = {
         "BaseB",
         "Marco",
     },
+    ["GODAOTT"] = {
+        "Log",
+        "BaseGem",
+        "Marco",
+    },
     ["narutoez441"] = {
         "Log",
         "BaseCF",
