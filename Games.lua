@@ -51,6 +51,7 @@ Games = {
     [5750914919] = {
         ["Fisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
         ["FischSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch.lua",
+        ["FischSellS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs.lua",
         ["FischNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns.lua",
         ["FischLock"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns2.lua",
         ["FischFarm"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischfl.lua",
@@ -88,7 +89,7 @@ Accounts = {
         "FischCrab",
     },
     ["trexefxtd"] = {
-        "FischSell",
+        "FischSellS",
     },
     ["Aommay_TH"] = {
         "FischFarm",
