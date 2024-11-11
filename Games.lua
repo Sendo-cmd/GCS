@@ -100,6 +100,9 @@ Accounts = {
     ["filmhrj"] = {
         "FischLock",
     },
+    ["qpsSXxqp"] = {
+        "FischFarm",
+    },
     ["GCshop2"] = {
         "Log",
         "BIgrisGS",
