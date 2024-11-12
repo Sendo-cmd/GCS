@@ -29,8 +29,7 @@ getgenv().Config = {
 		["Equip Random"] = true
 	},
 	["Character"] = {
-		["Disable Swim"] = true,
-		["Water Walk"] = false
+		["Disable Swim"] = true
 	},
 	["Auto Buy Rod"] = {
 		["Enable"] = true,
@@ -41,7 +40,6 @@ getgenv().Config = {
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
-			["Enable"] = false,
 			["Minute"] = 240
 		},
 		["Ping Freeze"] = false,
