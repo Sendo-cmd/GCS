@@ -9,7 +9,7 @@ getgenv().Config = {
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Delay"] = 3
+			["Delay"] = 1
 		}
 	},
 	["Character"] = {
