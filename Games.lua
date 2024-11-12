@@ -106,6 +106,9 @@ Accounts = {
     ["FocusZAZA12680"] = {
         "FischFarm",
     },
+    ["punkuyrui"] = {
+        "FischBuyRod",
+    },
     ["GCshop2"] = {
         "Log",
         "BIgrisGS",
