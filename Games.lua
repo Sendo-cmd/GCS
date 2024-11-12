@@ -240,6 +240,11 @@ Accounts = {
         "BIgrisGS",
         "Marco",
     },
+    ["M_Darknesss"] = {
+        "Log",
+        "BIgrisGS",
+        "Marco",
+    },
     ["LGDRgod"] = {
         "Log",
         "BaseCFE",
