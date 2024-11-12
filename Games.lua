@@ -237,7 +237,7 @@ Accounts = {
     },
     ["Etaa_xm"] = {
         "Log",
-        "BaseBS",
+        "BIgrisGS",
         "Marco",
     },
     ["LGDRgod"] = {
