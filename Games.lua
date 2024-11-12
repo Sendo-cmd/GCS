@@ -103,6 +103,9 @@ Accounts = {
     ["qpsSXxqp"] = {
         "FischCrab",
     },
+    ["FocusZAZA12680"] = {
+        "FischFarm",
+    },
     ["GCshop2"] = {
         "Log",
         "BIgrisGS",
