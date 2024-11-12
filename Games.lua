@@ -245,6 +245,11 @@ Accounts = {
         "BaseCFE",
         "Marco",
     },
+    ["shipperx51"] = {
+        "Log",
+        "BaseBS",
+        "Marco",
+    },
     ["Xeonerct"] = {
         "Log",
         "BaseBS",
