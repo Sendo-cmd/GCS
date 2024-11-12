@@ -98,7 +98,7 @@ Accounts = {
         "FischNoSell",
     },
     ["filmhrj"] = {
-        "FischLock",
+        "FischNoSell",
     },
     ["qpsSXxqp"] = {
         "FischCrab",
