@@ -14,7 +14,7 @@ getgenv().Config = {
 	},
 	["Character"] = {
 		["Disable Swim"] = true,
-		["Water Walk"] = true
+		["Water Walk"] = fase
 	},
 	["Auto Buy Rod"] = {
 		["Enable"] = true,

@@ -30,7 +30,7 @@ getgenv().Config = {
 	},
 	["Character"] = {
 		["Disable Swim"] = true,
-		["Water Walk"] = true
+		["Water Walk"] = false
 	},
 	["Performance"] = {
 		["Fullbright"] = true,

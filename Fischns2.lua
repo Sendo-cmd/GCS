@@ -29,7 +29,7 @@ getgenv().Config = {
 		["Equip Random"] = true
 	},
 	["Character"] = {
-		["Water Walk"] = true,
+		["Water Walk"] = false,
 		["Disable Swim"] = true
 	},
 	["Auto Buy Rod"] = {
