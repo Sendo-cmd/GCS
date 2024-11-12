@@ -245,7 +245,7 @@ Accounts = {
     },
     ["M_Darknesss"] = {
         "Log",
-        "BIgrisGS",
+        "BaseBS",
         "Marco",
     },
     ["LGDRgod"] = {
