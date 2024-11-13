@@ -22,7 +22,7 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Boost FPS"] = true,
-		["Black Screen"] = true
+		["Black Screen"] = false
 	},
 	["AutoSave"] = true,
 	["Auto Fish"] = {

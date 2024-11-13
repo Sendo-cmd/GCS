@@ -30,7 +30,7 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Performance"] = {
 		["Fullbright"] = true,
-		["Boost FPS"] = true
+		["Boost FPS"] = false
 	},
 	["Auto Treasure Map"] = true,
 	["Performance Failsafe"] = {
