@@ -53,6 +53,7 @@ Games = {
         ["FischSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch.lua",
         ["FischSellS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs.lua",
         ["FischNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns.lua",
+        ["FischChest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischTC.lua",
         ["FischLock"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns2.lua",
         ["FischFarm"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischfl.lua",
         ["FischBuyRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod.lua",
@@ -110,6 +111,9 @@ Accounts = {
         "FischNoSell",
     },
     ["kroravid"] = {
+        "FischChest",
+    },
+    ["FormatDataNumber63"] = {
         "FischNoSell",
     },
     ["GCshop2"] = {
