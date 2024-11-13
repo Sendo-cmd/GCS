@@ -45,11 +45,10 @@ getgenv().Config = {
 		["Fail Chance"] = 5
 	},
 	["Auto Bait"] = {
-		["Equip Random"] = false
+		["Equip Random"] = true
 	},
 	["Character"] = {
 		["Disable Swim"] = true,
-		["Water Walk"] = false
 	},
 	["Performance"] = {
 		["Fullbright"] = true,

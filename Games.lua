@@ -107,7 +107,7 @@ Accounts = {
         "FischFarm",
     },
     ["punkuyrui"] = {
-        "FischBuyRod",
+        "FischSell",
     },
     ["kroravid"] = {
         "FischNoSell",
