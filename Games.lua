@@ -56,6 +56,7 @@ Games = {
         ["FischChest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischTC.lua",
         ["FischLock"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns2.lua",
         ["FischFarm"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischfl.lua",
+        ["FischFarm2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab2.lua",
         ["FischBuyRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod.lua",
         ["FischCrab"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab.lua",
     },
