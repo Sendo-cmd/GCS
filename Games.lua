@@ -109,6 +109,9 @@ Accounts = {
     ["punkuyrui"] = {
         "FischBuyRod",
     },
+    ["kroravid"] = {
+        "FischNoSell",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
