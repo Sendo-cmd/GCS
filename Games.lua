@@ -115,6 +115,9 @@ Accounts = {
     ["kroravid"] = {
         "FischChest",
     },
+    ["HJRETAP"] = {
+        "FischBuyRod",
+    },
     ["FormatDataNumber63"] = {
         "FischNoSell",
     },
