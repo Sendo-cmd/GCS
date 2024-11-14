@@ -145,6 +145,11 @@ Accounts = {
         "Marco",
         "CF_Soj",
     },
+    ["joy006zx"] = {
+        "Log",
+        "Marco",
+        "BaseCFE",
+    },
     ["mooqill_754837"] = {
         "Log",
         "Marco",
