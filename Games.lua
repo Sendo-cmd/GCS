@@ -113,7 +113,7 @@ Accounts = {
         "FischNoSell",
     },
     ["kroravid"] = {
-        "FischChest",
+        "FischFarm2",
     },
     ["HJRETAP"] = {
         "FischBuyRod",
