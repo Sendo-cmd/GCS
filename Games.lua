@@ -121,6 +121,12 @@ Accounts = {
     ["FormatDataNumber63"] = {
         "FischNoSell",
     },
+    ["D_Dk05"] = {
+        "FischFarm",
+    },
+    ["good16716"] = {
+        "FischFarm",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
