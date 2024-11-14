@@ -127,6 +127,9 @@ Accounts = {
     ["good16716"] = {
         "FischFarm",
     },
+    ["Gymzolo"] = {
+        "FischNoSell",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
