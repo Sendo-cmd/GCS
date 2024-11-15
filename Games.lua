@@ -333,7 +333,7 @@ Accounts = {
     ["pokpong4123"] = {
         "Log",
         "Marco",
-        "TraitReroll",
+        "BaseGem",
     },
     ["gmhgoodies"] = {
         "Log",
