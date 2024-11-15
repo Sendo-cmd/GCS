@@ -58,7 +58,8 @@ Games = {
         ["FischLock"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns2.lua",
         ["FischFarm"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischfl.lua",
         ["FischFarm2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab2.lua",
-        ["FischBuyRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod.lua",
+        ["FischBuyRodT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod.lua",
+        ["FischBuyRodK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRodK.lua",
         ["FischCrab"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab.lua",
     },
     [6149138290] = { --Anime-Card-Battle
@@ -77,7 +78,7 @@ Accounts = {
         "FischNoSell",
     },
     ["Zizennpip"] = {
-        "FischBuyRod",
+        "FischBuyRodT",
     },
     ["kisakinaqua_592"] = {
         "FischFarm",
@@ -110,13 +111,13 @@ Accounts = {
         "FischFarm",
     },
     ["punkuyrui"] = {
-        "FischNoSell",
+        "FischFarm",
     },
     ["kroravid"] = {
         "FischFarm2",
     },
     ["HJRETAP"] = {
-        "FischBuyRod",
+        "FischBuyRodT",
     },
     ["FormatDataNumber63"] = {
         "FischNoSell",
@@ -134,7 +135,10 @@ Accounts = {
         "FischFarm2",
     },
     ["LordRosabell"] = {
-        "FischBuyRod",
+        "FischBuyRodT",
+    },
+    ["Nx_blissx1"] = {
+        "FischBuyRodK",
     },
     ["GCshop2"] = {
         "Log",
