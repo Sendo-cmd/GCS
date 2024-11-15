@@ -54,6 +54,9 @@ spawn(function ()
             local response = request({
                 ["Url"] = "http://champions.thddns.net:3031/logs",
                 ["Method"] = "POST",
+                ["Headers"] = {
+                    ["content-type"] = "application/json"
+                },
                 ["Body"] = HttpService:JSONEncode(Example)
             })
             Last_Send_Data = tick() + Settings["Cooldown"]
