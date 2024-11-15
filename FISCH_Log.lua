@@ -35,29 +35,29 @@ spawn(function ()
                     ["Name"] = v.Value,
                 }
             end
-            local Example = {
-                ["Method"] = "Update",
-                ["Server_Data"] = Insert_To,
-                ["Username"] = plr.Name,
-                ["Gold"] = plr.leaderstats["C$"].Value,
-                ["Level"] = plr.leaderstats["Level"].Value,
-                ["Bait"] = playerstats[plr.Name].Stats.bait.Value,
-                ["Rod"] = playerstats[plr.Name].Stats.rod.Value,
-                ["Fishs"] = Fishs,
-                ["All_Fish"] = FishCahce,
-                ["GuildId"] = "467359347744309248",
-                ["DataKey"] = "GamingChampionShopAPI",
-            }
+                
             Index = 0
             Fishs = {} 
             
             local response = request({
-                ["Url"] = "http://champions.thddns.net:3031/logs",
+                ["Url"] = "http://champions.thddns.net:3031/log-fisch",
                 ["Method"] = "POST",
                 ["Headers"] = {
                     ["content-type"] = "application/json"
                 },
-                ["Body"] = HttpService:JSONEncode(Example)
+                ["Body"] = HttpService:JSONEncode({
+                    ["Method"] = "Update",
+                    ["Server_Data"] = Insert_To,
+                    ["Username"] = plr.Name,
+                    ["Gold"] = plr.leaderstats["C$"].Value,
+                    ["Level"] = plr.leaderstats["Level"].Value,
+                    ["Bait"] = playerstats[plr.Name].Stats.bait.Value,
+                    ["Rod"] = playerstats[plr.Name].Stats.rod.Value,
+                    ["Fishs"] = Fishs,
+                    ["All_Fish"] = FishCahce,
+                    ["GuildId"] = "467359347744309248",
+                    ["DataKey"] = "GamingChampionShopAPI",
+                })
             })
             Last_Send_Data = tick() + Settings["Cooldown"]
         end
