@@ -130,6 +130,9 @@ Accounts = {
     ["Gymzolo"] = {
         "FischNoSell",
     },
+    ["feirune2547"] = {
+        "FischFarm2",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
