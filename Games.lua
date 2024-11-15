@@ -133,6 +133,9 @@ Accounts = {
     ["feirune2547"] = {
         "FischFarm2",
     },
+    ["LordRosabell"] = {
+        "FischBuyRod",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
@@ -163,7 +166,7 @@ Accounts = {
     ["joy006zx"] = {
         "Log",
         "Marco",
-        "BaseCFE",
+        "CF_RengukoE",
     },
     ["mooqill_754837"] = {
         "Log",
