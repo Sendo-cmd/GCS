@@ -61,6 +61,7 @@ Games = {
         ["FischBuyRodT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod.lua",
         ["FischBuyRodK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod2.lua",
         ["FischCrab"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab.lua",
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_Log.lua",
     },
     [6149138290] = { --Anime-Card-Battle
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
