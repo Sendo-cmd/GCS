@@ -30,14 +30,15 @@ spawn(function ()
             end
             local FishCahce = {}
             for i,v in pairs(playerstats[plr.Name].Inventory:GetChildren()) do
-                FishCahce[v.Name] = {
-                    ["Stack"] = v.Stack.Value,
-                    ["Name"] = v.Value,
-                }
+                if v:FindFirstChild("Stack") then
+                    FishCahce[v.Name] = {
+                        ["Stack"] = v.Stack.Value,
+                        ["Name"] = v.Value,
+                    }
+                end
             end
-            
             Index = 0
-    
+       
             local response = request({
                 ["Url"] = "http://champions.thddns.net:3031/log-fisch",
                 ["Method"] = "POST",
@@ -52,7 +53,7 @@ spawn(function ()
                     ["Level"] = playerstats[plr.Name].Stats.level.Value,
                     ["Bait"] = playerstats[plr.Name].Stats.bait.Value,
                     ["Rod"] = playerstats[plr.Name].Stats.rod.Value,
-                    ["Area"] = plr.Character and plr.Character.zone.Value or "Died",
+                    ["Area"] = plr.Character and plr.Character.zone.Value.Name or "Died",
                     ["Fishs"] = Fishs,
                     ["All_Fish"] = FishCahce,
                     ["GuildId"] = "467359347744309248",
