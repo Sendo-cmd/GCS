@@ -2,7 +2,7 @@ repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 local Settings = {
-    ["Cooldown"] = 180
+    ["Cooldown"] = 60
 }
 
 local plr = game:GetService("Players").LocalPlayer
@@ -30,11 +30,11 @@ spawn(function ()
             end
             local FishCahce = {}
             for i,v in pairs(playerstats[plr.Name].Inventory:GetChildren()) do
-                FishCahce[v.Name] = {
-                    ["Name"] = v.Value,
-                }
                 if v:FindFirstChild("Stack") then
-                    FishCahce["Stack"] = v.Stack.Value
+                    FishCahce[v.Name] = {
+                        ["Stack"] = v.Stack.Value,
+                        ["Name"] = v.Value,
+                    }
                 end
             end
             Index = 0
