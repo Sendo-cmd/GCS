@@ -2,7 +2,7 @@ repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 local Settings = {
-    ["Cooldown"] = 180
+    ["Cooldown"] = 60
 }
 
 local plr = game:GetService("Players").LocalPlayer
@@ -35,30 +35,28 @@ spawn(function ()
                     ["Name"] = v.Value,
                 }
             end
-                
+            local Example = {
+                ["Method"] = "Update",
+                ["Server_Data"] = Insert_To,
+                ["Username"] = plr.Name,
+                ["Gold"] = playerstats[plr.Name].Stats.coins.Value,
+                ["Level"] = playerstats[plr.Name].Stats.level.Value,
+                ["Bait"] = playerstats[plr.Name].Stats.bait.Value,
+                ["Rod"] = playerstats[plr.Name].Stats.rod.Value,
+                ["Area"] = plr.Character and plr.Character.zone.Value or "Died",
+                ["Fishs"] = Fishs,
+                ["All_Fish"] = FishCahce,
+                ["GuildId"] = "467359347744309248",
+                ["DataKey"] = "GamingChampionShopAPI",
+            }
             Index = 0
-            Fishs = {} 
-            
+       
             local response = request({
                 ["Url"] = "http://champions.thddns.net:3031/log-fisch",
                 ["Method"] = "POST",
-                ["Headers"] = {
-                    ["content-type"] = "application/json"
-                },
-                ["Body"] = HttpService:JSONEncode({
-                    ["Method"] = "Update",
-                    ["Server_Data"] = Insert_To,
-                    ["Username"] = plr.Name,
-                    ["Gold"] = plr.leaderstats["C$"].Value,
-                    ["Level"] = plr.leaderstats["Level"].Value,
-                    ["Bait"] = playerstats[plr.Name].Stats.bait.Value,
-                    ["Rod"] = playerstats[plr.Name].Stats.rod.Value,
-                    ["Fishs"] = Fishs,
-                    ["All_Fish"] = FishCahce,
-                    ["GuildId"] = "467359347744309248",
-                    ["DataKey"] = "GamingChampionShopAPI",
-                })
+                ["Body"] = HttpService:JSONEncode(Example)
             })
+            Fishs = {} 
             Last_Send_Data = tick() + Settings["Cooldown"]
         end
     end
