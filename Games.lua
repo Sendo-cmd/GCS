@@ -52,8 +52,10 @@ Games = {
         ["Fisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
         ["FischSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch.lua",
         ["FischSellS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs.lua",
+        ["FischSellS2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs2.lua",
         ["FischNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns.lua",
         ["FischNoSell2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns3.lua",
+        ["FischNoSell3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns4.lua",
         ["FischChest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischTC.lua",
         ["FischLock"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns2.lua",
         ["FischFarm"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischfl.lua",
@@ -148,7 +150,7 @@ Accounts = {
     },
     ["good16716"] = {
         "Log",
-        "FischFarm",
+        "FischNoSell3",
     },
     ["Gymzolo"] = {
         "Log",
@@ -173,6 +175,10 @@ Accounts = {
     ["guide552"] = {
         "Log",
         "FischBuyRodNo",
+    },
+    ["Bossplaza123"] = {
+        "Log",
+        "FischNoSell",
     },
     ["GCshop2"] = {
         "Log",
