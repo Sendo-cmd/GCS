@@ -41,7 +41,9 @@ getgenv().Config = {
 		["Rod"] = "Kings Rod"
 	},
 	["Performance"] = {
-		["Boost FPS"] = true
+		["Fullbright"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {

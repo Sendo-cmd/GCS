@@ -57,7 +57,8 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Fullbright"] = true,
-		["Boost FPS"] = true
+		["Boost FPS"] = true,
+		["Black Screen"] = true
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {

@@ -26,8 +26,9 @@ getgenv().Config = {
 		["Rod"] = "Rapid Rod"
 	},
 	["Performance"] = {
+		["Fullbright"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = false
+		["Black Screen"] = true
 	},
 	["AutoSave"] = true,
 	["Auto Fish"] = {

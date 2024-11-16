@@ -35,7 +35,8 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Performance"] = {
 		["Fullbright"] = true,
-		["Boost FPS"] = false
+		["Boost FPS"] = true,
+		["Black Screen"] = true
 	},
 	["Auto Treasure Map"] = true,
 	["Performance Failsafe"] = {
