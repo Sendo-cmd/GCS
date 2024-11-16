@@ -180,6 +180,10 @@ Accounts = {
         "Log",
         "FischNoSell",
     },
+    ["ICFWP17"] = {
+        "Log",
+        "FischNoSell",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
