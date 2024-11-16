@@ -9,7 +9,12 @@ getgenv().Config = {
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Delay"] = 5
+			["Delay"] = 5,
+			["Rarity"] = {
+				["Legendary"] = true,
+				["Event"] = true,
+				["Mythical"] = true
+			}
 		}
 	},
 	["AutoSave"] = true,
