@@ -60,6 +60,7 @@ Games = {
         ["FischFarm2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab2.lua",
         ["FischBuyRodT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod.lua",
         ["FischBuyRodK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod2.lua",
+        ["FischBuyRodNo"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod3.lua",
         ["FischCrab"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
     },
@@ -168,6 +169,10 @@ Accounts = {
     ["MatelGearTT"] = {
         "Log",
         "FischNoSell",
+    },
+    ["guide552"] = {
+        "Log",
+        "FischBuyRodNo",
     },
     ["GCshop2"] = {
         "Log",
