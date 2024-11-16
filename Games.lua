@@ -55,7 +55,7 @@ Games = {
         ["FischSellS2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs2.lua",
         ["FischNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns.lua",
         ["FischNoSell2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns3.lua",
-        ["FischNoSell3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns4.lua",
+        ["FischNoSellNew"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns4.lua",
         ["FischChest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischTC.lua",
         ["FischLock"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns2.lua",
         ["FischFarm"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischfl.lua",
@@ -118,7 +118,7 @@ Accounts = {
     },
     ["filmhrj"] = {
         "Log",
-        "FischNoSell2",
+        "FischNoSellNew",
     },
     ["qpsSXxqp"] = {
         "Log",
