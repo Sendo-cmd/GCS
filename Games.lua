@@ -141,6 +141,9 @@ Accounts = {
     ["Nx_blissx1"] = {
         "FischBuyRodK",
     },
+    ["MatelGearTT"] = {
+        "FischNoSell",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
