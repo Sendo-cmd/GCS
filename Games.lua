@@ -70,78 +70,103 @@ Games = {
 }
 Accounts = {
     ["SHIFUGOD"] = {
+        "Log",
         "FischCrab",
     },
     ["Champandbank147"] = {
+        "Log",
         "FischCrab",
     },
     ["inkkit5555"] = {
+        "Log",
         "FischNoSell",
     },
     ["Zizennpip"] = {
+        "Log",
         "FischBuyRodT",
     },
     ["kisakinaqua_592"] = {
+        "Log",
         "FischFarm",
     },
     ["JOE7_U3GSQ"] = {
+        "Log",
         "FischFarm",
     },
     ["Nongnumxd"] = {
+        "Log",
         "FischFarm",
     },
     ["WickedRock21"] = {
+        "Log",
         "FischCrab",
     },
     ["trexefxtd"] = {
+        "Log",
         "FischSellS",
     },
     ["Aommay_TH"] = {
+        "Log",
         "FischFarm",
     },
     ["NingLove"] = {
+        "Log",
         "FischNoSell",
     },
     ["filmhrj"] = {
+        "Log",
         "FischNoSell2",
     },
     ["qpsSXxqp"] = {
+        "Log",
         "FischCrab",
     },
     ["FocusZAZA12680"] = {
+        "Log",
         "FischFarm",
     },
     ["punkuyrui"] = {
+        "Log",
         "FischFarm",
     },
     ["kroravid"] = {
+        "Log",
         "FischFarm2",
     },
     ["HJRETAP"] = {
+        "Log",
         "FischBuyRodT",
     },
     ["FormatDataNumber63"] = {
+        "Log",
         "FischNoSell",
     },
     ["D_Dk05"] = {
+        "Log",
         "FischFarm",
     },
     ["good16716"] = {
+        "Log",
         "FischFarm",
     },
     ["Gymzolo"] = {
+        "Log",
         "FischNoSell",
     },
     ["feirune2547"] = {
+        "Log",
         "FischFarm2",
     },
     ["LordRosabell"] = {
+        "Log",
         "FischBuyRodT",
     },
     ["Nx_blissx1"] = {
+        "Log",
         "FischBuyRodK",
     },
     ["MatelGearTT"] = {
+        "Log",
         "FischNoSell",
     },
     ["GCshop2"] = {
