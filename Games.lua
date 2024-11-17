@@ -74,11 +74,11 @@ Games = {
 Accounts = {
     ["SHIFUGOD"] = {
         "Log",
-        "FischCrab",
+        "FischNoSellNew",
     },
     ["Champandbank147"] = {
         "Log",
-        "FischCrab",
+        "FischNoSellNew",
     },
     ["inkkit5555"] = {
         "Log",
@@ -102,7 +102,7 @@ Accounts = {
     },
     ["WickedRock21"] = {
         "Log",
-        "FischCrab",
+        "FischNoSellNew",
     },
     ["trexefxtd"] = {
         "Log",
@@ -122,7 +122,7 @@ Accounts = {
     },
     ["qpsSXxqp"] = {
         "Log",
-        "FischCrab",
+        "FischNoSellNew",
     },
     ["FocusZAZA12680"] = {
         "Log",
