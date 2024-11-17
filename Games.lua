@@ -178,7 +178,9 @@ Accounts = {
     },
     ["Bossplaza123"] = {
         "Log",
-        "FischSellS2",
+        "FischNoSell",
+        "Marco",
+        "ESSE",
     },
     ["ICFWP17"] = {
         "Log",
@@ -368,6 +370,11 @@ Accounts = {
         "Log",
         "Marco",
         "BaseCF",
+    },
+    ["Bossplaza123"] = {
+        "Log",
+        "Marco",
+        "ESSE",
     },
     ["gengen8855"] = {
         "Log",
