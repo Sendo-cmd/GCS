@@ -49,7 +49,7 @@ spawn(function ()
                     ["Method"] = "Update",
                     ["Server_Data"] = Insert_To,
                     ["Username"] = plr.Name,
-                    ["Gold"] = playerstats[plr.Name].Stats.coins.Value,
+                    ["Gold"] = math.floor(playerstats[plr.Name].Stats.coins.Value),
                     ["Level"] = playerstats[plr.Name].Stats.level.Value,
                     ["Bait"] = playerstats[plr.Name].Stats.bait.Value,
                     ["Rod"] = playerstats[plr.Name].Stats.rod.Value,
