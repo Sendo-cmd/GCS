@@ -176,6 +176,10 @@ Accounts = {
         "Log",
         "FischCrab",
     },
+    ["packky02"] = {
+        "Log",
+        "FischNoSellNew",
+    },
     ["Bossplaza123"] = {
         "Log",
         "FischNoSell",
