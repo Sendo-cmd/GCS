@@ -371,11 +371,6 @@ Accounts = {
         "Marco",
         "BaseCF",
     },
-    ["Bossplaza123"] = {
-        "Log",
-        "Marco",
-        "ESSE",
-    },
     ["gengen8855"] = {
         "Log",
         "Marco",
