@@ -174,7 +174,7 @@ Accounts = {
     },
     ["guide552"] = {
         "Log",
-        "FischCrab",
+        "FischNoSellNew,
     },
     ["packky02"] = {
         "Log",
