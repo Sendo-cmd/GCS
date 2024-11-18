@@ -8,7 +8,7 @@ getgenv().Config = {
 			["Unfavourite if unmatch"] = true
 		},
 		["Auto Sell"] = {
-			["Enable"] = false,
+			["Enable"] = true,
 			["Delay"] = 1
 		}
 	},
