@@ -30,11 +30,9 @@ spawn(function ()
             end
             local FishCahce = {}
             for i,v in pairs(playerstats[plr.Name].Inventory:GetChildren()) do
-                FishCahce[v.Name] = {
-                    ["Name"] = v.Value,
-                }
+                FishCahce[v.Value] = 1
                 if v:FindFirstChild("Stack") then
-                    FishCahce["Stack"] = v.Stack.Value
+                    FishCahce[v.Value] = FishCahce[v.Value] + v.Stack.Value
                 end
             end
             Index = 0
