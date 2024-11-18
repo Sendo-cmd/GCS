@@ -29,6 +29,9 @@ getgenv().Config = {
 		["Perfect Chance"] = 50,
 		["Fail Chance"] = 5
 	},
+	["Auto Merlin"] = {
+		["Lucky"] = true
+	},
 	["Auto Bait"] = {
 		["Buy"] = true,
 		["Equip Random"] = true

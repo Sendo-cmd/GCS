@@ -38,6 +38,9 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
+	["Auto Merlin"] = {
+		["Lucky"] = true
+	},
 	["Auto Treasure Map"] = true,
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {

@@ -20,6 +20,9 @@ getgenv().Config = {
 		["Enable"] = false,
 		["Rod"] = "Rapid Rod"
 	},
+	["Auto Merlin"] = {
+		["Lucky"] = true
+	},
 	["Performance"] = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true,

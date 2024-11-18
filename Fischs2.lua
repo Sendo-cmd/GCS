@@ -43,6 +43,9 @@ getgenv().Config = {
 		["Enable"] = true,
 		["Fail Chance"] = 5
 	},
+	["Auto Merlin"] = {
+		["Lucky"] = true
+	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
 			["Enable"] = false,
