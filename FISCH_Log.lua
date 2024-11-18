@@ -2,7 +2,7 @@ repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 local Settings = {
-    ["Cooldown"] = 60
+    ["Cooldown"] = 180
 }
 
 local plr = game:GetService("Players").LocalPlayer
