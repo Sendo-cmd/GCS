@@ -120,7 +120,7 @@ Accounts = {
     },
     ["filmhrj"] = {
         "Log",
-        "FischNoSellNew",
+        "FischChest",
     },
     ["qpsSXxqp"] = {
         "Log",
