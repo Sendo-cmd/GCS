@@ -2,7 +2,7 @@ repeat wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 local Settings = {
-    ["Cooldown"] = 120
+    ["Cooldown"] = 60
 }
 
 local plr = game:GetService("Players").LocalPlayer
@@ -36,6 +36,8 @@ spawn(function ()
                 end
             end
             Index = 0
+            local tick1 = tick() + math.random(1,10)
+            repeat task.wait() until tick() >= tick1
        
             local response = request({
                 ["Url"] = "http://champions.thddns.net:3031/log-fisch",
