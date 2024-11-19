@@ -204,6 +204,14 @@ Accounts = {
         "Log",
         "FischSellNew",
     },
+    ["KGZUX10"] = {
+        "Log",
+        "FischSellNew",
+    },
+    ["bjkob"] = {
+        "Log",
+        "FischSellNew",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
@@ -407,7 +415,7 @@ Accounts = {
     ["gmhgoodies"] = {
         "Log",
         "Marco",
-        "BaseCFE",
+        "BIgrisSon",
     },
     ["Nonglud"] = {
         "Log",
