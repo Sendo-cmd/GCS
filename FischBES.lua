@@ -21,6 +21,9 @@ getgenv().Config = {
 	["Performance"] = {
 		["Fullbright"] = true
 	},
+	["Auto Merlin"] = {
+		["Lucky"] = true
+	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
 			["Minute"] = 60
