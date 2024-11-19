@@ -109,7 +109,7 @@ Accounts = {
     },
     ["trexefxtd"] = {
         "Log",
-        "FischSellS",
+        "FischSellNew",
     },
     ["Aommay_TH"] = {
         "Log",
