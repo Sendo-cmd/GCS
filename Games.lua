@@ -158,7 +158,7 @@ Accounts = {
     },
     ["Gymzolo"] = {
         "Log",
-        "FischNoSell",
+        "FischNoSellNew",
     },
     ["feirune2547"] = {
         "Log",
