@@ -67,6 +67,7 @@ Games = {
         ["FischBuyRodNo"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod3.lua",
         ["FischCrab"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab.lua",
         ["FischBES"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBES.lua",
+        ["MyFisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/MyFisch.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
     },
     [6149138290] = { --Anime-Card-Battle
@@ -77,11 +78,11 @@ Games = {
 Accounts = {
     ["SHIFUGOD"] = {
         "Log",
-        "FischSellNew",
+        "MyFisch",
     },
     ["Champandbank147"] = {
         "Log",
-        "FischSellNew",
+        "MyFisch",
     },
     ["inkkit5555"] = {
         "Log",
@@ -149,7 +150,7 @@ Accounts = {
     },
     ["D_Dk05"] = {
         "Log",
-        "FischFarm",
+        "FischSellNew",
     },
     ["good16716"] = {
         "Log",
