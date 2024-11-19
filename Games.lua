@@ -125,7 +125,7 @@ Accounts = {
     },
     ["qpsSXxqp"] = {
         "Log",
-        "FischSellNew",
+        "FischBES",
     },
     ["FocusZAZA12680"] = {
         "Log",
