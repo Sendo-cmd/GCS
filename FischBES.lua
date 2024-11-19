@@ -19,7 +19,9 @@ getgenv().Config = {
 		["Fail Chance"] = 5
 	},
 	["Performance"] = {
-		["Fullbright"] = true
+		["Fullbright"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true
 	},
 	["Auto Merlin"] = {
 		["Lucky"] = true
