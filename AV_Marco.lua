@@ -4,6 +4,7 @@ local Profiles = {
     "Raid_Base.json",
     "IgrisMon.json",
     "Boss_BaseS.json",
+    "Boss_BaseS2.json",
     "Boss_Base.json",
     "Boss_Base_GS.json",
     "Boss_Base_Son.json",
