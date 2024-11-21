@@ -208,13 +208,17 @@ Accounts = {
     },
     ["KGZUX10"] = {
         "Log",
-        "FischSellNew",
+        "FischNoSellNew",
     },
     ["bjkob"] = {
         "Log",
         "FischSellNew",
     },
     ["luvz1ee"] = {
+        "Log",
+        "FischSellNew",
+    },
+    ["BreadWithHoney1"] = {
         "Log",
         "FischSellNew",
     },
