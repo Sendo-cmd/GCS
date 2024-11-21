@@ -42,6 +42,10 @@ getgenv().Config = {
 		["Lucky"] = true
 	},
 	["Auto Treasure Map"] = true,
+	["Auto Aurora Totem"] = {
+		["Use Sundial if Day"] = true,
+		["Enable"] = true
+	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
 			["Minute"] = 60
