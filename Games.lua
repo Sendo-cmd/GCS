@@ -2,6 +2,7 @@ Games = {
     [5578556129] = { --Anime-Vanguards
         ["BaseB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base.lua",
         ["BaseBS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Bases.lua",
+        ["BaseB2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Bases2.lua",
         ["BIgrisSon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon.lua",
         ["BIgrisSon2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base_IgrisSon2.lua",
         ["BIgrisGS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGS.lua",
