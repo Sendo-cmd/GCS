@@ -458,7 +458,7 @@ Accounts = {
     ["narutoez441"] = {
         "Log",
         "Marco",
-        "BaseCF",
+        "BaseBS",
     },
     ["FireBlackDevilZ"] = {
         "Xenon_ALS",
