@@ -231,6 +231,10 @@ Accounts = {
         "Log",
         "FischSellNew",
     },
+    ["rurrtgtthss"] = {
+        "Log",
+        "FischNoSell2",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
