@@ -79,7 +79,7 @@ Games = {
 Accounts = {
     ["SHIFUGOD"] = {
         "Log",
-        "FischChest",
+        "MyFisch",
     },
     ["Champandbank147"] = {
         "Log",
