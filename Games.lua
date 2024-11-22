@@ -111,7 +111,7 @@ Accounts = {
     },
     ["trexefxtd"] = {
         "Log",
-        "FischSellNew",
+        "FischNoSellNew",
     },
     ["Aommay_TH"] = {
         "Log",
