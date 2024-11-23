@@ -3,12 +3,6 @@ getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Dungeon Joiner"] = {
-		["Stage"] = "Mountain Shrine (Natural)",
-		["Auto Join"] = true,
-		["Act"] = "OccultHunt"
-	},
-	["Joiner Cooldown"] = 10,
 	["Macros"] = {
 		["Macro"] = "Dung_Base",
 		["Ignore Macro Timing"] = true,
@@ -20,6 +14,11 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true,
 		["Delete Entities"] = true
+	},
+	["Dungeon Joiner"] = {
+		["Stage"] = "Mountain Shrine (Natural)",
+		["Auto Join"] = true,
+		["Act"] = "OccultHunt"
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,
@@ -34,77 +33,77 @@ getgenv().Config = {
 		["Random Offset"] = true
 	},
 	["Gameplay"] = {
+		["Occult Hunt"] = {
+			["Collect Talisman"] = true,
+			["Use Talisman on Crab"] = true
+		},
+		["Auto Skip Wave"] = true,
+		["Auto Use Ability"] = true,
 		["Auto Modifier"] = {
+			["Restart Unmatch"] = {
+				["Enable"] = true,
+				["Modifier"] = "King's Burden"
+			},
 			["Prioritize"] = {
 				["Strong"] = 3,
 				["Thrice"] = 4,
-				["Warding off Evil"] = 23,
-				["Range"] = 92,
+				["Warding off Evil"] = 24,
+				["Precise Attack"] = 13,
 				["Fast"] = 1,
 				["Revitalize"] = 6,
 				["Exploding"] = 2,
 				["Dodge"] = 10,
 				["Immunity"] = 11,
-				["Quake"] = 31,
-				["Damage"] = 98,
-				["Slayer"] = 95,
-				["Champions"] = 96,
-				["Fisticuffs"] = 9,
+				["Fisticuffs"] = 25,
+				["Harvest"] = 17,
+				["Uncommon Loot"] = 98,
+				["Champions"] = 12,
+				["No Trait No Problem"] = 58,
 				["Drowsy"] = 8,
-				["Cooldown"] = 22,
-				["Precise Attack"] = 17,
+				["Cooldown"] = 19,
+				["King's Burden"] = 100,
 				["Regen"] = 7,
-				["King's Burden"] = 99,
-				["Common Loot"] = 93,
-				["No Trait No Problem"] = 20,
-				["Harvest"] = 16,
-				["Press It"] = 12,
-				["Planning Ahead"] = 24,
-				["Shielded"] = 49,
-				["Uncommon Loot"] = 94,
-				["Money Surge"] = 100
+				["Damage"] = 97,
+				["Common Loot"] = 96,
+				["Range"] = 94,
+				["Quake"] = 9,
+				["Press It"] = 93,
+				["Planning Ahead"] = 15,
+				["Shielded"] = 5,
+				["Slayer"] = 95,
+				["Money Surge"] = 99
 			},
 			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Range"] = 0,
+				["Precise Attack"] = 0,
 				["Fast"] = 0,
-				["Revitalize"] = 2,
+				["Revitalize"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
 				["Immunity"] = 0,
-				["Champions"] = 0,
-				["Damage"] = 10,
-				["Slayer"] = 10,
-				["Quake"] = 0,
 				["Fisticuffs"] = 0,
+				["Harvest"] = 0,
+				["Uncommon Loot"] = 0,
+				["Champions"] = 0,
+				["No Trait No Problem"] = 0,
 				["Drowsy"] = 0,
 				["Cooldown"] = 0,
-				["Precise Attack"] = 0,
-				["Regen"] = 0,
 				["King's Burden"] = 0,
-				["Common Loot"] = 10,
-				["No Trait No Problem"] = 0,
-				["Harvest"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Quake"] = 0,
 				["Press It"] = 0,
 				["Planning Ahead"] = 0,
 				["Shielded"] = 0,
-				["Uncommon Loot"] = 10,
+				["Slayer"] = 0,
 				["Money Surge"] = 0
 			}
-		},
-		["Occult Hunt"] = {
-			["Collect Talisman"] = true,
-			["Use All Talisman"] = {
-				["Enable"] = true,
-				["Wave"] = 50
-			},
-			["Use Talisman on Crab"] = true
-		},
-		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = true
+		}
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

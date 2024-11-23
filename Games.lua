@@ -478,6 +478,11 @@ Accounts = {
         "Marco",
         "BaseBS2",
     },
+    ["sukuna016ll"] = {
+        "Log",
+        "Marco",
+        "DungBase",
+    },
     ["FireBlackDevilZ"] = {
         "Xenon_ALS",
         "ALS_Reroll",
