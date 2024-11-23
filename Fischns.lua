@@ -11,9 +11,7 @@ getgenv().Config = {
 			["Enable"] = true,
 			["Delay"] = 3,
 			["Rarity"] = {
-				["Legendary"] = true,
-				["Event"] = true,
-				["Mythical"] = true
+				["Legendary"] = true
 			}
 		}
 	},
