@@ -23,6 +23,22 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
+	["Inventory"] = {
+		["Auto Favourite"] = {
+			["Weight"] = 1000,
+			["Enable"] = true,
+			["Unfavourite if unmatch"] = true
+		},
+		["Auto Sell"] = {
+			["Enable"] = true,
+			["Delay"] = 3,
+			["Rarity"] = {
+				["Legendary"] = true,
+				["Event"] = true,
+				["Mythical"] = true
+			}
+		}
+	},
 	["Auto Merlin"] = {
 		["Lucky"] = true
 	},
