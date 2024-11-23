@@ -229,7 +229,7 @@ Accounts = {
     },
     ["Ulian70829"] = {
         "Log",
-        "FischSellNew",
+        "FischNoSellNew",
     },
     ["rurrtgtthss"] = {
         "Log",
