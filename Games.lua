@@ -38,6 +38,7 @@ Games = {
         ["CF_Bean"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_Bean.lua",
         ["TraitReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Trait.lua",
         ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
+        ["DungBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -250,7 +251,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "Marco",
-        "BIgrisGS",
+        "DungBase",
     },
     ["spiltduc9241"] = {
         "Log",
