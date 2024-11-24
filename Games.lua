@@ -158,6 +158,10 @@ Accounts = {
         "Log",
         "FischNoSellNew",
     },
+    ["Good167162"] = {
+        "Log",
+        "FischNoSellNew",
+    },
     ["Gymzolo"] = {
         "Log",
         "FischNoSellNew",
