@@ -222,7 +222,7 @@ Accounts = {
     },
     ["BreadWithHoney1"] = {
         "Log",
-        "FischSellNew",
+        "Rod_Depths",
     },
     ["opoppoky"] = {
         "Log",
@@ -262,11 +262,7 @@ Accounts = {
     },
     ["Sureezaa"] = {
         "Log",
-        "FischSellNew",
-    },
-    ["Sureezaa"] = {
-        "Log",
-        "FischSellNew",
+        "Rod_Depths",
     },
     ["GCshop2"] = {
         "Log",
