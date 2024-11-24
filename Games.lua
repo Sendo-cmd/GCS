@@ -256,6 +256,10 @@ Accounts = {
         "Log",
         "FischChest",
     },
+    ["Punnexx2"] = {
+        "Log",
+        "FischSellNew",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
@@ -474,7 +478,7 @@ Accounts = {
     ["SADFkai1"] = {
         "Log",
         "Marco",
-        "BaseBS",
+        "DungBase",
     },
     ["ZAZAM9844"] = {
         "Log",
