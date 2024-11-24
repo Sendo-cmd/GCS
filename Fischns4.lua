@@ -9,7 +9,7 @@ getgenv().Config = {
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Delay"] = 1
+			["Delay"] = 3
 		}
 	},
 	["Character"] = {
@@ -25,9 +25,6 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
-	},
 	["AutoSave"] = true,
 	["Auto Fish"] = {
 		["Fish Location"] = {
@@ -40,6 +37,9 @@ getgenv().Config = {
 		["Perfect Chance"] = 90,
 		["Enable"] = true,
 		["Fail Chance"] = 5
+	},
+	["Auto Merlin"] = {
+		["Lucky"] = true
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
