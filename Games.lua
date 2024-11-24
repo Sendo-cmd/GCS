@@ -180,7 +180,7 @@ Accounts = {
     },
     ["guide552"] = {
         "Log",
-        "Rod_Depths",
+        "FischSellNew",
     },
     ["packky02"] = {
         "Log",
@@ -222,7 +222,7 @@ Accounts = {
     },
     ["BreadWithHoney1"] = {
         "Log",
-        "Rod_Depths",
+        "FischSellNew",
     },
     ["opoppoky"] = {
         "Log",
@@ -262,7 +262,7 @@ Accounts = {
     },
     ["Sureezaa"] = {
         "Log",
-        "Rod_Depths",
+        "FischSellNew",
     },
     ["GCshop2"] = {
         "Log",
