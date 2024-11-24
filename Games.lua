@@ -154,7 +154,7 @@ Accounts = {
         "Log",
         "FischSellNew",
     },
-    ["good16716"] = {
+    ["Good16716"] = {
         "Log",
         "FischNoSellNew",
     },
