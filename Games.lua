@@ -136,7 +136,7 @@ Accounts = {
     },
     ["punkuyrui"] = {
         "Log",
-        "FischFarm",
+        "FischBES",
     },
     ["kroravid"] = {
         "Log",
@@ -247,6 +247,14 @@ Accounts = {
     ["Himura_150266"] = {
         "Log",
         "FischNoSell",
+    },
+    ["cocohub_I"] = {
+        "Log",
+        "FischSellNew",
+    },
+    ["joshywa99"] = {
+        "Log",
+        "FischChest",
     },
     ["GCshop2"] = {
         "Log",
