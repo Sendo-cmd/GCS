@@ -20,7 +20,7 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Auto Fish"] = {
 		["Fish Location"] = {
-			["Height"] = -50
+			["Height"] = 10
 		},
 		["Cast Threshold"] = 95,
 		["Perfect Chance"] = 50,
