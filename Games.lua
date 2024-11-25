@@ -268,6 +268,10 @@ Accounts = {
         "Log",
         "FischSellNew",
     },
+    ["Zoxcinory"] = {
+        "Log",
+        "FischSellNew",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
@@ -340,6 +344,11 @@ Accounts = {
         "Log",
         "Marco",
         "BaseGemInf",
+    },
+    ["pifcbvjj"] = {
+        "Log",
+        "Marco",
+        "BaseBS",
     },
     ["JeremiahOsAVcK"] = {
         "Log",
