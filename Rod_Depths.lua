@@ -705,7 +705,10 @@ if Settings["Rod Quest"] == "New Rod" then
                         local os1 = os.time()
                         StopFarm_[os1] = false
                         spawn(Book("The Depths",os1))
-                        repeat task.wait() until playerstats.Stats.coins.Value >= 300000
+                        repeat task.wait() 
+                            print(playerstats.Stats.coins.Value ,playerstats.Stats.coins.Value >= 750000)
+                        until playerstats.Stats.coins.Value >= 300000
+                        print("OutLoop Enchant")
                         StopFarm_[os1] = true
                     end
                 else
@@ -831,7 +834,9 @@ if Settings["Rod Quest"] == "New Rod" then
                         local os1 = os.time()
                         StopFarm_[os1] = false
                         spawn(Book("The Depths",os1))
-                        repeat task.wait() until playerstats.Stats.coins.Value >= 750000 or playerstats.Rods:FindFirstChild("Rod Of The Depths")
+                        repeat task.wait()
+                            print(playerstats.Stats.coins.Value ,playerstats.Stats.coins.Value >= 750000)
+                        until playerstats.Stats.coins.Value >= 750000 or playerstats.Rods:FindFirstChild("Rod Of The Depths")
                         print("The Depths")
                         StopFarm_[os1] = true
                     end
