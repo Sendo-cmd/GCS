@@ -9,7 +9,7 @@ getgenv().Config = {
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Delay"] = 1
+			["Delay"] = 4
 		}
 	},
 	["Character"] = {
@@ -19,9 +19,6 @@ getgenv().Config = {
 	["Auto Buy Rod"] = {
 		["Enable"] = false,
 		["Rod"] = "Rapid Rod"
-	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
 	},
 	["Performance"] = {
 		["Fullbright"] = true,

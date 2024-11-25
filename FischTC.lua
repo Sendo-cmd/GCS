@@ -32,14 +32,14 @@ getgenv().Config = {
 		["Perfect Chance"] = 50,
 		["Fail Chance"] = 5
 	},
+	["Auto Merlin"] = {
+		["Lucky"] = true
+	},
 	["AutoSave"] = true,
 	["Performance"] = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true
-	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
 	},
 	["Auto Treasure Map"] = true,
 	["Auto Aurora Totem"] = {

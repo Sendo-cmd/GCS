@@ -37,9 +37,6 @@ getgenv().Config = {
 		["Disable Swim"] = true,
 		["Water Walk"] = false
 	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
-	},
 	["Performance"] = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true,

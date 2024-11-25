@@ -7,7 +7,7 @@ getgenv().Config = {
 				["Legendary"] = true,
 				["Mythical"] = true
 			},
-			["Delay"] = 5
+			["Delay"] = 2
 		}
 	},
 	["AutoSave"] = true,
@@ -36,9 +36,6 @@ getgenv().Config = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true
-	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
 	},
 	["Auto Aurora Totem"] = {
 		["Use Sundial if Day"] = true,

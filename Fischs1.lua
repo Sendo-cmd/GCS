@@ -30,9 +30,6 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
-	},
 	["AutoSave"] = true,
 	["Auto Fish"] = {
 		["Fish Location"] = {

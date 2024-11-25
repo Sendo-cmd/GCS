@@ -39,9 +39,6 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
-	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
 			["Minute"] = 60

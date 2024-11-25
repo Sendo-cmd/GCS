@@ -9,7 +9,7 @@ getgenv().Config = {
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Delay"] = 3
+			["Delay"] = 5
 		}
 	},
 	["Character"] = {
@@ -37,9 +37,6 @@ getgenv().Config = {
 		["Perfect Chance"] = 90,
 		["Enable"] = true,
 		["Fail Chance"] = 5
-	},
-	["Auto Merlin"] = {
-		["Lucky"] = true
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
