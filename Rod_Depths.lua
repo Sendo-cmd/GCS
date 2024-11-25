@@ -41,7 +41,7 @@ local Configs = {
             return workspace.zones.fishing:FindFirstChild("Isonade")
         end,
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(-133.786758, -736.863831, 1231.93494, -0.246001959, -4.0441769e-08, -0.969269335, -9.47116092e-08, 1, -1.76860322e-08, 0.969269335, 8.74502604e-08, -0.246001959),
+        ["Spot"] = CFrame.new(-116.287933, -773.175171, 1249.52307, 0.980790615, 6.64242452e-06, -0.195063397, 2.62815725e-08, 1, 3.41847881e-05, 0.195063397, -3.35332479e-05, 0.980790615),
         ["Cage Spot"] = true,
         ["Cage"] = {
             [1] = CFrame.new(-110.5623779296875, -732.562744140625, 1208.9698486328125, -0.12402346730232239, 0, 0.9922792911529541, 0, 1, -0, -0.9922792911529541, 0, -0.12402346730232239),
@@ -95,7 +95,7 @@ local Configs = {
         ["Cage Spot"] = false,
         ["Ignore"] = {},
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(936.88324, -738.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
+        ["Spot"] = CFrame.new(950.88324, -785.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
         ["Cage"] = {
         },
     },
@@ -112,7 +112,7 @@ local Configs = {
         ["Cage"] = CFrame.new(473.422729, 150.500015, 233.171906, 0.561099231, -4.96632468e-09, -0.827748537, 2.4843454e-09, 1, -4.31575531e-09, 0.827748537, 3.65153796e-10, 0.561099231),
         ["ReSize"] = CFrame.new(452.998932, 150.501007, 210.530563, 0.998719037, -6.43949605e-08, -0.0505997166, 6.92212652e-08, 1, 9.36296374e-08, 0.0505997166, -9.70122755e-08, 0.998719037),
         ["Sell"] = CFrame.new(463.181885, 151.00206, 224.907516, -0.926789343, 5.79625947e-08, -0.375581592, 5.22923678e-08, 1, 2.52903369e-08, 0.375581592, 3.79876397e-09, -0.926789343),
-        ["Money"] = CFrame.new(936.88324, -738.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
+        ["Money"] = CFrame.new(950.88324, -785.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
         ["Abyssal"] = CFrame.new(1205.94592, -716.603271, 1316.79919, -0.747035146, -1.32305598e-08, -0.664784491, -5.45847234e-09, 1, -1.37682044e-08, 0.664784491, -6.65662503e-09, -0.747035146),
         ["Hexed"] = CFrame.new(1053.6366, -633.240051, 1319.92493, -0.0151671488, 2.11938804e-08, -0.999884963, -3.35075723e-09, 1, 2.12471463e-08, 0.999884963, 3.67263042e-09, -0.0151671488),
         ["Rod Of The Depths"] = CFrame.new(1704.98462, -902.526978, 1444.8667, -0.955516875, 6.92898183e-09, 0.294936389, 2.08239772e-08, 1, 4.39711094e-08, -0.294936389, 4.81568883e-08, -0.955516875),
@@ -120,7 +120,15 @@ local Configs = {
         ["Merlin"] = CFrame.new(-930.102783, 223.7836, -987.201904, 0.0717258826, 1.02364218e-07, -0.997424364, 2.1121334e-08, 1, 1.04147404e-07, 0.997424364, -2.85369985e-08, 0.0717258826),
     }
 }
-   
+coroutine.resume(coroutine.create(function()
+    while wait() do
+        pcall(function() 
+            game:GetService("VirtualInputManager"):SendKeyEvent(true,"W",false,game) task.wait(.1)
+            game:GetService("VirtualInputManager"):SendKeyEvent(false,"W",false,game)
+            wait(1000)
+        end)
+    end
+end))
 local StopFarm_ = {}
 
 local time = tick()
@@ -141,7 +149,7 @@ local function Magnitude(Pos1,Pos2)
     local Vec1,Vec2 = Vector3.new(pos1.x,0,pos1.z),Vector3.new(pos2.x,0,pos2.z)
     return (Vec1 - Vec2).Magnitude
 end
-
+game:GetService'Players'.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
 
 local function Shake(obj)
     if obj:FindFirstChild("UICorner") then
@@ -225,8 +233,12 @@ end)
 spawn(function()
     while true do task.wait()
         local val,err = pcall(function()
+            local tuck = tick() + 1.5
             local Tool = plr.Character:FindFirstChildWhichIsA("Tool")
             if Tool and Tool:FindFirstChild("rod/client") then
+                repeat
+                    task.wait()
+                until tick() >= tuck
                 Tool["rod/client"].Enabled = false
             end
         end)
@@ -399,14 +411,21 @@ local function Book(fish,justfarm)
                                 end
                             end
                         else
-                            for i,v in pairs(Config["Cage"]) do task.wait(.2)
+                            for i,v in pairs(Config["Cage"]) do 
+                                local tick1 = tick() + .2
                                 print(v)
                                 if Check_Cage()  >= 5 then
                                     break
                                 end
                                 plr.Character.HumanoidRootPart.CFrame = v
-                                task.wait(.2)
+                                repeat
+                                    task.wait()
+                                until tick() >= tick1
                                 plr.Backpack:FindFirstChild("Crab Cage").Deploy:FireServer(v)
+                                local tick1 = tick() + .2
+                                repeat
+                                    task.wait()
+                                until tick() >= tick1
                             end
                             if Check_Cage() >= 5 then
                                 Place = tick() + 300
@@ -507,7 +526,7 @@ local function Book(fish,justfarm)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
                     elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 3 and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel")  then
-                        plr.Character.HumanoidRootPart.CFrame = Position
+                        plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
                         print("Teleport")
                     elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
                         
@@ -517,9 +536,10 @@ local function Book(fish,justfarm)
                         -- plr.Character[playerstats.Stats.rod.Value]["rod/client"].Enabled = false
                         -- print(plr.Character[playerstats.Stats.rod.Value]["rod/client"].Enabled)
                     elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                        time = tick() + 1.75
+                        time = tick() + 2.3
                         if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                             -- plr.Character.HumanoidRootPart.Anchored = false
+                            plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,30,0)
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.cast:FireServer(100,1)
                         end
@@ -812,6 +832,7 @@ if Settings["Rod Quest"] == "New Rod" then
                         StopFarm_[os1] = false
                         spawn(Book("The Depths",os1))
                         repeat task.wait() until playerstats.Stats.coins.Value >= 750000 or playerstats.Rods:FindFirstChild("Rod Of The Depths")
+                        print("The Depths")
                         StopFarm_[os1] = true
                     end
                 end
@@ -826,4 +847,3 @@ else
         Book(v)
     end
 end
-
