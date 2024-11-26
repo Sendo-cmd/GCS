@@ -19,7 +19,7 @@ getgenv().Config = {
 		["Ping Freeze"] = true,
 		["Teleport Lobby FPS below"] = {
 			["Enable"] = true,
-			["FPS"] = 5
+			["FPS"] = 4
 		}
 	},
 	["Auto Play"] = {
