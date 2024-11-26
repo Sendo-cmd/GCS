@@ -98,9 +98,9 @@ getgenv().Config = {
 		["Auto Use Ability"] = true
 	},
 	["Performance Failsafe"] = {
-		["Ping Freeze"] = true,
+		["Ping Freeze"] = false,
 		["Teleport Lobby FPS below"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["FPS"] = 4
 		}
 	}
