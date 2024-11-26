@@ -28,7 +28,7 @@ local Settings = {
     ["Rod Quest"] = "New Rod",
     ["Bestiary"] = {"Vertigo"},
     ["Method"] = "Instant", -- Hold , Instant
-    ["Fish Count"] = 30,
+    ["Fish Count"] = 5,
     ["Failed Every"] = 50,
     ["Auto Sell"] = true,
 }
@@ -234,11 +234,20 @@ spawn(function()
                 else
                     if workspace.world.npcs:FindFirstChild("Marc Merchant") then
                         local tick1 = tick() + 5
+                       
                         repeat task.wait() 
-                            TalkNpc("Marc Merchant")
+                            if plr.PlayerGui:FindFirstChild("options") then
+                                for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
+                                    for i1,v1 in pairs(getconnections(plr.PlayerGui.options.safezone["1option"].button[v2])) do
+                                        v1.Function()
+                                    end
+                                end
+                            else
+                                TalkNpc("Marc Merchant")
+                            end
                             spawn(function()
-                                pcall(function (...)
-                                    local Sell = Npc:FindFirstChild("sellall",true)
+                                pcall(function ()
+                                    local Sell = workspace.world.npcs:FindFirstChild("Marc Merchant"):FindFirstChild("sellall",true)
                                     Sell:InvokeServer()
                                 end)
                             end)
@@ -333,7 +342,7 @@ local function Book(fish,justfarm)
                 return Config["Spot"]
             else  
                 local Isonade = Config["Function"]()
-                return Isonade and Isonade.CFrame * CFrame.new(0,100,25) or Configs["Spot"]["Money"] 
+                return Isonade and Isonade.CFrame * CFrame.new(0,60,25) or Configs["Spot"]["Money"] 
             end
         else
             return Config["Spot"]
@@ -530,6 +539,7 @@ local function Book(fish,justfarm)
             cur_ = {"1","2","3"}
         end
         pcall(function()
+            print(SellTheFish)
             if plr.Character and not Crab and not SellTheFish then
                 if tick() >= time then
                     -- time = tick() + .5
@@ -740,13 +750,11 @@ if Settings["Rod Quest"] == "New Rod" then
                             else
                                 if workspace.world.npcs:FindFirstChild("Custos") then
                                     if not plr.PlayerGui:FindFirstChild("options") then
-                                        
                                         if (plr.Character.HumanoidRootPart.Position - workspace.world.npcs:FindFirstChild("Custos").HumanoidRootPart.Position).Magnitude < 5 then
                                             TalkNpc("Custos")
                                         else
                                             plr.Character.HumanoidRootPart.CFrame = workspace.world.npcs:FindFirstChild("Custos").HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
                                         end
-
                                     else
                                         if not plr.Character:FindFirstChild("The Depths Key" ) then
                                             local obj = nil
