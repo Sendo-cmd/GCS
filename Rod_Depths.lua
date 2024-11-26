@@ -236,8 +236,12 @@ spawn(function()
                         local tick1 = tick() + 5
                         repeat task.wait() 
                             TalkNpc("Marc Merchant")
-                            local Sell = Npc:FindFirstChild("sellall",true)
-                            Sell:InvokeServer()
+                            spawn(function()
+                                pcall(function (...)
+                                    local Sell = Npc:FindFirstChild("sellall",true)
+                                    Sell:InvokeServer()
+                                end)
+                            end)
                         until tick() >= tick1
                         FishCount = 0
                     end
