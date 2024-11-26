@@ -206,6 +206,8 @@ local function TalkNpc(npc)
     local Prompt = Npc:FindFirstChildWhichIsA("ProximityPrompt",true)
     workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Npc.HumanoidRootPart.Position + Vector3.new(0,0,0))
     Prompt.GamepadKeyCode = Enum.KeyCode.E
+    Prompt.RequiresLineOfSight = false
+    Prompt.MaxActivationDistance = 50
     game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
     game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
 end
