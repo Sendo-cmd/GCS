@@ -144,7 +144,7 @@ Accounts = {
     },
     ["HJRETAP"] = {
         "Log",
-        "FischBuyRodT",
+        "FischSellNew",
     },
     ["FormatDataNumber63"] = {
         "Log",
