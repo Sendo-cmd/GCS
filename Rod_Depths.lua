@@ -95,7 +95,7 @@ local Configs = {
         ["Cage Spot"] = false,
         ["Ignore"] = {},
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(950.88324, -785.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
+        ["Spot"] = CFrame.new(950.88324, -760.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
         ["Cage"] = {
         },
     },
@@ -111,13 +111,13 @@ local Configs = {
     ["Spot"] = {
         ["Cage"] = CFrame.new(473.422729, 150.500015, 233.171906, 0.561099231, -4.96632468e-09, -0.827748537, 2.4843454e-09, 1, -4.31575531e-09, 0.827748537, 3.65153796e-10, 0.561099231),
         ["ReSize"] = CFrame.new(452.998932, 150.501007, 210.530563, 0.998719037, -6.43949605e-08, -0.0505997166, 6.92212652e-08, 1, 9.36296374e-08, 0.0505997166, -9.70122755e-08, 0.998719037),
-        ["Sell"] = CFrame.new(463.181885, 151.00206, 224.907516, -0.926789343, 5.79625947e-08, -0.375581592, 5.22923678e-08, 1, 2.52903369e-08, 0.375581592, 3.79876397e-09, -0.926789343),
+        ["Sell"] = CFrame.new(466.057648, 151.002014, 221.655106, -0.99920857, 5.27215533e-08, -0.0397778861, 5.37141354e-08, 1, -2.38843398e-08, 0.0397778861, -2.60020716e-08, -0.99920857),
         ["Money"] = CFrame.new(950.88324, -785.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
         ["Abyssal"] = CFrame.new(1205.94592, -716.603271, 1316.79919, -0.747035146, -1.32305598e-08, -0.664784491, -5.45847234e-09, 1, -1.37682044e-08, 0.664784491, -6.65662503e-09, -0.747035146),
         ["Hexed"] = CFrame.new(1053.6366, -633.240051, 1319.92493, -0.0151671488, 2.11938804e-08, -0.999884963, -3.35075723e-09, 1, 2.12471463e-08, 0.999884963, 3.67263042e-09, -0.0151671488),
         ["Rod Of The Depths"] = CFrame.new(1704.98462, -902.526978, 1444.8667, -0.955516875, 6.92898183e-09, 0.294936389, 2.08239772e-08, 1, 4.39711094e-08, -0.294936389, 4.81568883e-08, -0.955516875),
         ["DepthGate"] = CFrame.new(13.6440973, -706.123718, 1224.80481, 0.209638149, -7.89109365e-08, -0.977779031, -9.93821736e-09, 1, -8.28350437e-08, 0.977779031, 2.70827663e-08, 0.209638149),
-        ["Merlin"] = CFrame.new(-930.102783, 223.7836, -987.201904, 0.0717258826, 1.02364218e-07, -0.997424364, 2.1121334e-08, 1, 1.04147404e-07, 0.997424364, -2.85369985e-08, 0.0717258826),
+        ["Merlin"] = CFrame.new(-926.218628, 223.699966, -999.468018, -0.59410423, 3.34793846e-08, 0.804388106, -6.07307555e-08, 1, -8.64754028e-08, -0.804388106, -1.00226501e-07, -0.59410423),
     }
 }
 coroutine.resume(coroutine.create(function()
@@ -150,14 +150,21 @@ local function Magnitude(Pos1,Pos2)
     return (Vec1 - Vec2).Magnitude
 end
 game:GetService'Players'.LocalPlayer.Character.Humanoid:SetStateEnabled(Enum.HumanoidStateType.Swimming,false)
-
+local KRNLONAIR = Instance.new("BodyVelocity")
+KRNLONAIR.Parent = game.Players.LocalPlayer.Character:FindFirstChild("HumanoidRootPart")
+KRNLONAIR.Name = "KRNLONAIR"
+KRNLONAIR.MaxForce = Vector3.new(100000,100000,100000)
+KRNLONAIR.Velocity = Vector3.new(0,0,0)
 local function Shake(obj)
     if obj:FindFirstChild("UICorner") then
         obj["UICorner"]:Destroy()
     end
     obj.BackgroundTransparency = 1
     obj.ImageTransparency = 1
-    obj:FindFirstChild("title"):Destroy()
+    if obj:FindFirstChild("title") then
+        obj:FindFirstChild("title"):Destroy()
+    end
+    
     local UIScale = obj:FindFirstChild("UIScale") or  Instance.new("UIScale",obj)
     UIScale.Scale = 1000
     repeat task.wait()
@@ -193,13 +200,21 @@ local function ConnectToShake(v)
     until not plr.PlayerGui:FindFirstChild(v.Name)
     ConnectTo1:Disconnect()
 end
-
+local function TalkNpc(npc)
+    plr.CameraMode = Enum.CameraMode.LockFirstPerson
+    local Npc = workspace.world.npcs:FindFirstChild(npc)
+    local Prompt = Npc:FindFirstChildWhichIsA("ProximityPrompt",true)
+    workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Npc.HumanoidRootPart.Position + Vector3.new(0,0,0))
+    Prompt.GamepadKeyCode = Enum.KeyCode.E
+    game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
+    game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
+end
 local FishCount = 0
 local SellTheFish = false
 spawn(function()
     if not Settings["Auto Sell"] then return end
     while true do task.wait()
-        local err,val = pcall(function()
+        local val,err = pcall(function()
             if FishCount >= Settings["Fish Count"] then
                 SellTheFish = true
                 if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
@@ -209,17 +224,21 @@ spawn(function()
                 if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
                     return
                 end 
+                if workspace.world.npcs:FindFirstChild("Marc Merchant") then
+                    
+                else
+                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
+                end
                 if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Sell"].Position).Magnitude >= 10  then
                     plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
                 else
                     if workspace.world.npcs:FindFirstChild("Marc Merchant") then
-                        local Npc = workspace.world.npcs["Marc Merchant"]
-                        local Sell = Npc:FindFirstChild("sellall",true)
-                        local Prompt = Npc:FindFirstChildWhichIsA("ProximityPrompt",true)
-                        fireproximityprompt(Prompt) 
-                        Sell:InvokeServer()
-                        local tick1 = tick() + 3
-                        repeat task.wait() until tick() >= tick1
+                        local tick1 = tick() + 5
+                        repeat task.wait() 
+                            TalkNpc("Marc Merchant")
+                            local Sell = Npc:FindFirstChild("sellall",true)
+                            Sell:InvokeServer()
+                        until tick() >= tick1
                         FishCount = 0
                     end
                 end
@@ -227,7 +246,9 @@ spawn(function()
                 SellTheFish = false
             end
         end)
-
+        if not val then
+            print("Sell : ",err)
+        end
     end
 end)
 spawn(function()
@@ -308,7 +329,7 @@ local function Book(fish,justfarm)
                 return Config["Spot"]
             else  
                 local Isonade = Config["Function"]()
-                return Isonade and Isonade.CFrame * CFrame.new(0,120,25) or Configs["Spot"]["Money"] 
+                return Isonade and Isonade.CFrame * CFrame.new(0,100,25) or Configs["Spot"]["Money"] 
             end
         else
             return Config["Spot"]
@@ -323,9 +344,6 @@ local function Book(fish,justfarm)
             end
         end
         connect4 = workspace.zones.fishing.ChildAdded:Connect(function(v)
-            if v:IsA("BasePart") and v.Name == "Isonade" then
-                v.CanCollide = true
-            end
             IsStage()
             Position = IsPosition()
             game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
@@ -335,11 +353,6 @@ local function Book(fish,justfarm)
             Position = IsPosition()
             game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
         end)
-        for i,v in pairs(workspace.zones.fishing:GetChildren()) do
-            if v:IsA("BasePart") and v.Name == "Isonade" then
-                v.CanCollide = true
-            end
-        end
         for i,v in pairs(playerstats.Bestiary:GetChildren()) do
             if table.find(total,v.Name) then
                 table.insert(cur_,v.Name)
@@ -525,7 +538,7 @@ local function Book(fish,justfarm)
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
-                    elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 3 and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel")  then
+                    elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 then
                         plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
                         print("Teleport")
                     elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
@@ -539,7 +552,6 @@ local function Book(fish,justfarm)
                         time = tick() + 2.3
                         if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                             -- plr.Character.HumanoidRootPart.Anchored = false
-                            plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,30,0)
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.cast:FireServer(100,1)
                         end
@@ -586,13 +598,16 @@ if Settings["Rod Quest"] == "New Rod" then
             if v.Value == "Enchant Relic" then
                 Enchants[v] = {
                     ["Mutation"] = v:FindFirstChild("Mutation") and v.Mutation.Value or "None",
-                    ["Stack"] = v.Stack and v.Stack.Value or 0
+                    ["Stack"] = v.Stack and v.Stack.Value or 1
                 }
                 if v:FindFirstChild("Mutation") and (v.Mutation.Value == "Hexed" or v.Mutation.Value == "Abyssal") then
                     continue;
                 end
-                Total = Total + 1
+                
             end
+        end
+        for i,v in pairs(Enchants) do
+            Total = Total + v["Stack"]
         end
         return Enchants , Total
     end
@@ -632,21 +647,27 @@ if Settings["Rod Quest"] == "New Rod" then
         local var,err = pcall(function()
             if playerstats["Inventory"] then
                 if not EnchantReady then
+                    print("In EnchantReady")
                     if playerstats.Stats.coins.Value >= 300000 then
                         local val,total = GetEnchants()
                         if total < 7 then
                             print("Relic")
-                            if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["Merlin"]) >= 7 then
-                                plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Merlin"]
-                            end
-                            if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["Merlin"]) < 7 then
-                                for i = 1,7 do task.wait()
-                                    workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("power"):InvokeServer()
+                            repeat task.wait()
+                                val,total = GetEnchants()
+                                if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["Merlin"]) >= 10 then
+                                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Merlin"]
+                                else
+                                    if workspace.world.npcs:FindFirstChild("Merlin") then
+                                        TalkNpc("Marc Merchant")
+                                        spawn(function()
+                                            pcall(function()
+                                                workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("power"):InvokeServer()
+                                            end)
+                                        end)
+                                    end
                                 end
-                            end
+                            until total >= 7
                         end
-                       
-                       
                         if not plr.PlayerGui.hud.safezone.backpack.inventory.Visible then
                             for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
                                 for i1,v1 in pairs(getconnections(plr.PlayerGui.hud.safezone.backpack.Open[v2])) do
@@ -657,31 +678,23 @@ if Settings["Rod Quest"] == "New Rod" then
                         plr.PlayerGui.hud.safezone.backpack.inventory.Visible = false
                         while Enchant() ~= "Fully" and playerstats.Stats.coins.Value > 449 do task.wait()
                             local Enchant_ = GetEnchant()
-                            if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["ReSize"]) >= 7 then
-                                plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["ReSize"]
-                                for i = 1,7 do task.wait()
-                                    if workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Appraiser"):FindFirstChildWhichIsA("ProximityPrompt",true) then
-                                        workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,workspace.world.npcs.Appraiser.HumanoidRootPart.Position + Vector3.new(0,0,-2))
-                                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
-                                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
-                                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
-                                    end
-                                end
-                            end
                            
+                            
                             if Enchant_ ~= "None" then
                                 repeat task.wait(.1)
-                                    plr.CameraMode = Enum.CameraMode.LockFirstPerson
-                                    if not plr.Character:FindFirstChild("Enchant Relic") then
-                                        GetItemFromGUI(Enchant_)
-                                    end
-                                    
-                                    spawn(function()
-                                        pcall(function()
-                                            workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Appraiser"):WaitForChild("appraiser"):WaitForChild("appraise"):InvokeServer()
+                                    if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["ReSize"]) >= 5 then
+                                        plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["ReSize"]
+                                    else
+                                        TalkNpc("Appraiser")
+                                        if not plr.Character:FindFirstChild("Enchant Relic") then
+                                            GetItemFromGUI(Enchant_)
+                                        end
+                                        spawn(function()
+                                            pcall(function()
+                                                workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Appraiser"):WaitForChild("appraiser"):WaitForChild("appraise"):InvokeServer()
+                                            end)
                                         end)
-                                    end)
-                                   
+                                    end
                                 until not Enchant_.Parent or Enchant() == "Fully" or playerstats.Stats.coins.Value < 450
                             else
                                 print("BREAK")
@@ -704,14 +717,18 @@ if Settings["Rod Quest"] == "New Rod" then
                     else
                         local os1 = os.time()
                         StopFarm_[os1] = false
-                        spawn(Book("The Depths",os1))
+                        spawn(function() 
+                            Book("The Depths",os1) 
+                        end)
                         repeat task.wait() 
                             print(playerstats.Stats.coins.Value ,playerstats.Stats.coins.Value >= 750000)
                         until playerstats.Stats.coins.Value >= 300000
                         print("OutLoop Enchant")
                         StopFarm_[os1] = true
                     end
+                    print("Out EnchantReady")
                 else
+                    print("In Rod")
                     if playerstats.Stats.coins.Value >= 750000 then
                         if not Door then
                             if game:GetService("ReplicatedStorage"):WaitForChild("packages"):WaitForChild("Net"):WaitForChild("RF/GetDoorState"):InvokeServer("TheDepthsGate") then
@@ -719,8 +736,13 @@ if Settings["Rod Quest"] == "New Rod" then
                             else
                                 if workspace.world.npcs:FindFirstChild("Custos") then
                                     if not plr.PlayerGui:FindFirstChild("options") then
-                                        plr.Character.HumanoidRootPart.CFrame = workspace.world.npcs:FindFirstChild("Custos"):GetPivot()
-                                        fireproximityprompt( workspace.world.npcs.Custos.dialogprompt) 
+                                        
+                                        if (plr.Character.HumanoidRootPart.Position - workspace.world.npcs:FindFirstChild("Custos").HumanoidRootPart.Position).Magnitude < 5 then
+                                            TalkNpc("Custos")
+                                        else
+                                            plr.Character.HumanoidRootPart.CFrame = workspace.world.npcs:FindFirstChild("Custos") * CFrame.new(0,0,-3)
+                                        end
+
                                     else
                                         if not plr.Character:FindFirstChild("The Depths Key" ) then
                                             local obj = nil
@@ -833,13 +855,16 @@ if Settings["Rod Quest"] == "New Rod" then
                     else
                         local os1 = os.time()
                         StopFarm_[os1] = false
-                        spawn(Book("The Depths",os1))
+                        spawn(function() 
+                            Book("The Depths",os1) 
+                        end)
                         repeat task.wait()
                             print(playerstats.Stats.coins.Value ,playerstats.Stats.coins.Value >= 750000)
                         until playerstats.Stats.coins.Value >= 750000 or playerstats.Rods:FindFirstChild("Rod Of The Depths")
                         print("The Depths")
                         StopFarm_[os1] = true
                     end
+                    print("Out Rod")
                 end
             end
         end)
@@ -852,3 +877,4 @@ else
         Book(v)
     end
 end
+

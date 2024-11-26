@@ -136,7 +136,7 @@ Accounts = {
     },
     ["punkuyrui"] = {
         "Log",
-        "FischBES",
+        "Rod_Depths",
     },
     ["kroravid"] = {
         "Log",
@@ -184,7 +184,7 @@ Accounts = {
     },
     ["guide552"] = {
         "Log",
-        "FischSellNew",
+        "Rod_Depths",
     },
     ["packky02"] = {
         "Log",
@@ -266,7 +266,7 @@ Accounts = {
     },
     ["Sureezaa"] = {
         "Log",
-        "FischSellNew",
+        "Rod_Depths",
     },
     ["Zoxcinory"] = {
         "Log",
