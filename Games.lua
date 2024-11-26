@@ -53,10 +53,9 @@ Games = {
     },
     [5750914919] = {
         ["Fisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
-        ["FischSellNew"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs1.lua",
+        ["FischSellNew"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsFischnsDepths.lua",
         ["FischSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischn2.lua",
         ["FischSell2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs.lua",
-        ["FischSellS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsFischnsDepths.lua",
         ["FischSellS2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs2FischnsDepths.lua",
         ["FischNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns.lua",
         ["FischNoSell2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns3.lua",
