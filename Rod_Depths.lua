@@ -744,7 +744,7 @@ if Settings["Rod Quest"] == "New Rod" then
                                         if (plr.Character.HumanoidRootPart.Position - workspace.world.npcs:FindFirstChild("Custos").HumanoidRootPart.Position).Magnitude < 5 then
                                             TalkNpc("Custos")
                                         else
-                                            plr.Character.HumanoidRootPart.CFrame = workspace.world.npcs:FindFirstChild("Custos") * CFrame.new(0,0,-3)
+                                            plr.Character.HumanoidRootPart.CFrame = workspace.world.npcs:FindFirstChild("Custos").HumanoidRootPart.CFrame * CFrame.new(0,0,-3)
                                         end
 
                                     else
