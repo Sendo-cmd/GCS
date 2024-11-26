@@ -27,16 +27,15 @@ getgenv().Config = {
 	},
 	["AutoSave"] = true,
 	["Auto Fish"] = {
+		["Enable"] = true,
 		["Fish Location"] = {
-			["Postion"] = "-1068.05383, -354.774658, -3108.94263, -0.573466957, -0.000531586353, 0.81922853, -3.90871173e-05, 0.999999821, 0.000621525047, -0.819228709, 0.00032440279, -0.573466837",
-			["Auto"] = true,
-			["Zone"] = "The Depths",
-			["Height"] = 10
+			["Postion"] = "991.571472, -736.508057, 1468.57776, -0.925201833, -0.0035395748, 0.379458755, 3.99578646e-08, 0.999956429, 0.00932770688, -0.379475236, 0.00862997305, -0.9251616",
+			["Manual"] = true,
+			["Height"] = -50
 		},
 		["Cast Threshold"] = 95,
-		["Perfect Chance"] = 90,
-		["Enable"] = true,
-		["Fail Chance"] = 5
+		["Perfect Chance"] = 50,
+		["Fail Chance"] = 0
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
