@@ -368,7 +368,7 @@ Accounts = {
     ["namnam12327"] = {
         "Log",
         "Marco",
-        "Dungigros",
+        "DungIgros",
     },
     ["shoGune215"] = {
         "Log",
