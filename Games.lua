@@ -330,6 +330,11 @@ Accounts = {
         "Marco",
         "ESSE",
     },
+    ["ErgKungTHX"] = {
+        "Log",
+        "Marco",
+        "ESSE",
+    },
     ["euakungchannel"] = {
         "Log",
         "Marco",
