@@ -40,6 +40,7 @@ Games = {
         ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
         ["DungBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase.lua",
         ["DungIgros"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase2.lua",
+        ["DungIgros2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase2.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -310,6 +311,11 @@ Accounts = {
         "Log",
         "Marco",
         "CF_Soj",
+    },
+    ["Thai_WilYuLaw"] = {
+        "Log",
+        "Marco",
+        "DungIgros2",
     },
     ["joy006zx"] = {
         "Log",
