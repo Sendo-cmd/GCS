@@ -50,5 +50,5 @@ getgenv().Config = {
 		["Auto Rejoin"] = false
 	}
 }
-getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
+getgenv().Key = "wPfsNXRRMazroqcwmxPIUwPcGvwkRZer"
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
