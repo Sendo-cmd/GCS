@@ -36,7 +36,7 @@ spawn(function ()
                 end
             end
             Index = 0
-            local tick1 = tick() + math.random(1,10)
+            local tick1 = tick() + math.random(1,15)
             repeat task.wait() until tick() >= tick1
        
             local response = request({
