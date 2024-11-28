@@ -4,9 +4,8 @@ getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Macro"] = "Dung_Base",
+		["Macro"] = "",
 		["Ignore Macro Timing"] = true,
-		["Play"] = true,
 		["No Ignore Sell Timing"] = true
 	},
 	["Performance"] = {
@@ -19,6 +18,22 @@ getgenv().Config = {
 		["Stage"] = "Mountain Shrine (Natural)",
 		["Auto Join"] = true,
 		["Act"] = "OccultHunt"
+	},
+	["Auto Play"] = {
+		["Auto Upgrade"] = true,
+		["Place Cap"] = {
+			["1"] = 1,
+			["3"] = 1,
+			["2"] = 1,
+			["5"] = 1,
+			["4"] = 1,
+			["6"] = 1
+		},
+		["Enable"] = true,
+		["Middle Position"] = {
+			["Mountain Shrine (Natural)"] = "340.6167297363281, 8.040106773376465, -93.39224243164062"
+		},
+		["Upgrade Method"] = "Randomize"
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,
