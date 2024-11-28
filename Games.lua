@@ -409,6 +409,11 @@ Accounts = {
         "Marco",
         "ESSE",
     },
+    ["GLDENEYE"] = {
+        "Log",
+        "Marco",
+        "DungBase",
+    },
     ["NonBemmy"] = {
         "Log",
         "Marco",
