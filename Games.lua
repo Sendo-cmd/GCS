@@ -293,6 +293,18 @@ Accounts = {
         "Log",
         "FischNoSellNew",
     },
+    ["nine639085"] = {
+        "Log",
+        "Rod_Depths",
+    },
+    ["mooqill_945775"] = {
+        "Log",
+        "FischNoSellNew",
+    },
+    ["ivysosad7"] = {
+        "Log",
+        "AuroRod",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
