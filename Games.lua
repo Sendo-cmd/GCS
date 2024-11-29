@@ -289,6 +289,10 @@ Accounts = {
         "Log",
         "FischNoSell2",
     },
+    ["thanakorn_9993"] = {
+        "Log",
+        "FischNoSellNew",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
