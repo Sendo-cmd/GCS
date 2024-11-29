@@ -31,14 +31,6 @@ getgenv().Config = {
 		["Water Walk"] = true,
 		["Disable Swim"] = true
 	},
-	["Auto Fish"] = {
-		["Fish Location"] = {
-			["Height"] = -50
-		},
-		["Cast Threshold"] = 95,
-		["Perfect Chance"] = 50,
-		["Fail Chance"] = 5
-	},
 	["Performance"] = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true
