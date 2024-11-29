@@ -67,6 +67,7 @@ Games = {
         ["FischFarm2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab2.lua",
         ["FischBuyRodK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod2.lua",
         ["FischBuyRodNo"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod3.lua",
+        ["AuroRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod4.lua",
         ["Rod_Depths"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Rod_Depths.lua",
         ["FischCrab"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab.lua",
         ["FischBES"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBES.lua",
@@ -251,7 +252,7 @@ Accounts = {
     },
     ["Himura_150266"] = {
         "Log",
-        "FischNoSell",
+        "FischNoSellNew",
     },
     ["cocohub_I"] = {
         "Log",
