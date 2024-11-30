@@ -75,5 +75,5 @@ getgenv().Config = {
 		["Upgrade Method"] = "Nearest from Middle Position (until Max)"
 	}
 }
-getgenv().Key = "k517c79e9160307a9b87210d"
+getgenv().Key = "wPfsNXRRMazroqcwmxPIUwPcGvwkRZer"
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
