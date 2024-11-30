@@ -4,43 +4,40 @@ getgenv().Config = {
 	["Inventory"] = {
 		["Auto Favourite"] = {
 			["Weight"] = 1000,
-			["Enable"] = false,
+			["Enable"] = true,
 			["Unfavourite if unmatch"] = true
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Delay"] = 3,
-			["Rarity"] = {
-				["Legendary"] = true,
-				["Event"] = true,
-				["Mythical"] = true
-			}
+			["Delay"] = 5
 		}
-	},
-	["AutoSave"] = true,
-	["Auto Fish"] = {
-		["Fish Location"] = {
-			["Postion"] = "-1068.05383, -354.774658, -3108.94263, -0.573466957, -0.000531586353, 0.81922853, -3.90871173e-05, 0.999999821, 0.000621525047, -0.819228709, 0.00032440279, -0.573466837",
-			["Auto"] = true,
-			["Zone"] = "Ocean",
-			["Height"] = 10
-		},
-		["Enable"] = true,
-		["Perfect Chance"] = 90,
-		["Cast Threshold"] = 95,
-		["Fail Chance"] = 5
-	},
-	["Auto Bait"] = {
-		["Equip Random"] = true
 	},
 	["Character"] = {
 		["Disable Swim"] = true,
 		["Water Walk"] = false
 	},
+	["Auto Buy Rod"] = {
+		["Enable"] = false,
+		["Rod"] = "Rapid Rod"
+	},
 	["Performance"] = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true
+	},
+	["AutoSave"] = true,
+	["Auto Fish"] = {
+		["Fish Location"] = {
+			["Enable"] = true,
+			["Postion"] = "-1068.05383, -354.774658, -3108.94263, -0.573466957, -0.000531586353, 0.81922853, -3.90871173e-05, 0.999999821, 0.000621525047, -0.819228709, 0.00032440279, -0.573466837",
+			["Auto"] = true,
+			["Zone"] = "Ancient Isle Ocean",
+			["Height"] = 10
+		},
+		["Cast Threshold"] = 95,
+		["Perfect Chance"] = 90,
+		["Enable"] = true,
+		["Fail Chance"] = 5
 	},
 	["Performance Failsafe"] = {
 		["Rejoin Timer"] = {
@@ -51,5 +48,5 @@ getgenv().Config = {
 		["Auto Rejoin"] = false
 	}
 }
-getgenv().Key = "wPfsNXRRMazroqcwmxPIUwPcGvwkRZer"
+getgenv().Key = "k517c79e9160307a9b87210d"
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden

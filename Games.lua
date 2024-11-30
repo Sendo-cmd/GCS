@@ -53,24 +53,21 @@ Games = {
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Marco.lua",
     },
     [5750914919] = {
-        ["Fisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALL.lua",
-        ["FischSellNew"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsFischnsDepths.lua",
-        ["FischSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischn2.lua",
-        ["FischSell2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs.lua",
-        ["FischSellS2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischs2FischnsDepths.lua",
-        ["FischNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns.lua",
-        ["FischNoSell2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsForsaken.lua",
-        ["FischNoSellNew"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsDepths.lua",
+        ["AncientASell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsAncientA.lua",
+        ["AncientISell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsAncientI.lua",
+        ["AncientIOSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsAncientIO.lua",
+        ["ForsakenSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsForsaken.lua",
+        ["DepthsSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsDepths.lua",
+        ["AncientANoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsAncientI.lua",
+        ["AncientINoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsAncientI.lua",
+        ["AncientIONoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsAncientIO.lua",
+        ["ForsakenNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsForsaken.lua",
+        ["DepthsNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsDepths.lua",
         ["FischChest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischTC.lua",
-        ["FischLock"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischns2.lua",
-        ["FischFarm"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischfl.lua",
-        ["FischFarm2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab2.lua",
         ["FischBuyRodK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod2.lua",
         ["FischBuyRodNo"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod3.lua",
         ["AuroRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod4.lua",
         ["Rod_Depths"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Rod_Depths.lua",
-        ["FischCrab"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fischcrab.lua",
-        ["FischBES"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBES.lua",
         ["MyFisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/MyFisch.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
     },
@@ -88,231 +85,25 @@ Accounts = {
         "Log",
         "MyFisch",
     },
-    ["inkkit5555"] = {
-        "Log",
-        "FischNoSell",
-    },
-    ["Zizennpip"] = {
-        "Log",
-        "FischBuyRodT",
-    },
-    ["kisakinaqua_592"] = {
-        "Log",
-        "FischFarm",
-    },
-    ["JOE7_U3GSQ"] = {
-        "Log",
-        "FischFarm",
-    },
-    ["Nongnumxd"] = {
-        "Log",
-        "FischFarm",
-    },
-    ["WickedRock21"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["trexefxtd"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["Aommay_TH"] = {
-        "Log",
-        "FischFarm",
-    },
-    ["NingLove"] = {
-        "Log",
-        "FischNoSell",
-    },
-    ["filmhrj"] = {
-        "Log",
-        "FischChest",
-    },
-    ["qpsSXxqp"] = {
-        "Log",
-        "FischBES",
-    },
-    ["FocusZAZA12680"] = {
-        "Log",
-        "FischFarm",
-    },
-    ["punkuyrui"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["kroravid"] = {
-        "Log",
-        "FischFarm2",
-    },
-    ["HJRETAP"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["FormatDataNumber63"] = {
-        "Log",
-        "FischNoSell",
-    },
-    ["D_Dk05"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["Good16716"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["Good167162"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["Gymzolo"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["feirune2547"] = {
-        "Log",
-        "FischFarm2",
-    },
-    ["LordRosabell"] = {
-        "Log",
-        "FischBuyRodT",
-    },
-    ["Nx_blissx1"] = {
-        "Log",
-        "FischBuyRodK",
-    },
-    ["MatelGearTT"] = {
-        "Log",
-        "FischNoSell",
-    },
-    ["guide552"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["packky02"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["Bossplaza123"] = {
-        "Log",
-        "FischNoSell",
-        "Marco",
-        "ESSE",
-    },
-    ["ICFWP17"] = {
-        "Log",
-        "FischNoSell",
-    },
-    ["JDBIGGAMER2134"] = {
-        "Log",
-        "FischBuyRodT",
-    },
-    ["mixkung31"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["NovaRadiantz"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["KGZUX10"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["bjkob"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["luvz1ee"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["BreadWithHoney1"] = {
-        "Log",
-        "Rod_Depths",
-    },
-    ["opoppoky"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["Ulian70829"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["rurrtgtthss"] = {
-        "Log",
-        "FischNoSell2",
-    },
-    ["KKUBB_ggg"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["supakitdunk"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["Himura_150266"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["cocohub_I"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["joshywa99"] = {
-        "Log",
-        "FischChest",
-    },
-    ["Punnexx2"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["Sureezaa"] = {
-        "Log",
-        "Rod_Depths",
-    },
-    ["Zoxcinory"] = {
-        "Log",
-        "FischSellNew",
-    },
-    ["phburcomoeniralfk98"] = {
-        "Log",
-        "FischNoSell2",
-    },
-    ["fame224488za"] = {
-        "Log",
-        "FischNoSell2",
-    },
-    ["Cgggg098l"] = {
-        "Log",
-        "FischNoSell2",
-    },
-    ["Noslots56"] = {
-        "Log",
-        "FischNoSell2",
-    },
-    ["thanakorn_9993"] = {
-        "Log",
-        "FischNoSellNew",
-    },
     ["nine639085"] = {
         "Log",
-        "Rod_Depths",
+        "AncientINoSell",
     },
     ["mooqill_945775"] = {
         "Log",
-        "FischNoSellNew",
+        "AncientINoSell",
+    },
+    ["Cgggg098l"] = {
+        "Log",
+        "AncientINoSell",
+    },
+    ["Himura_150266"] = {
+        "Log",
+        "AncientINoSell",
     },
     ["ivysosad7"] = {
         "Log",
-        "AuroRod",
-    },
-    ["AlexGEM_04"] = {
-        "Log",
-        "FischNoSellNew",
-    },
-    ["Tory_XC"] = {
-        "Log",
-        "FischNoSellNew",
+        "AncientINoSell",
     },
     ["GCshop2"] = {
         "Log",
