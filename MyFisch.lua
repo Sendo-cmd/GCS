@@ -26,7 +26,7 @@ getgenv().Config = {
 		},
 		["Cast Threshold"] = 95,
 		["Perfect Chance"] = 50,
-		["Fail Chance"] = 5
+		["Fail Chance"] = 0
 	},
 	["Character"] = {
 		["Disable Swim"] = true
