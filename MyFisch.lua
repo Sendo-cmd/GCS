@@ -3,11 +3,11 @@ getgenv().Config = {
 	["Inventory"] = {
 		["Auto Sell"] = {
 			["Enable"] = true,
+			["Delay"] = 3,
 			["Rarity"] = {
 				["Legendary"] = true,
 				["Mythical"] = true
-			},
-			["Delay"] = 2
+			}
 		}
 	},
 	["AutoSave"] = true,
@@ -39,11 +39,6 @@ getgenv().Config = {
 	["Auto Aurora Totem"] = {
 		["Use Sundial if Day"] = true,
 		["Enable"] = true
-	},
-	["Performance Failsafe"] = {
-		["Rejoin Timer"] = {
-			["Minute"] = 60
-		}
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
