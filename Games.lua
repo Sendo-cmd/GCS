@@ -71,6 +71,7 @@ Games = {
         ["FischRequest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischRequest.lua",
         ["AuroRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod4.lua",
         ["Rod_Depths"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Rod_Depths.lua",
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
         ["MyFisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/MyFisch.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
     },
@@ -94,39 +95,39 @@ Accounts = {
     },
     ["mooqill_945775"] = {
         "Log",
-        "AncientINoSell",
+        "System",
     },
     ["Cgggg098l"] = {
         "Log",
-        "AncientINoSell",
+        "System",
     },
     ["Himura_150266"] = {
         "Log",
-        "AncientINoSell",
+        "System",
     },
     ["ivysosad7"] = {
         "Log",
-        "AncientINoSell",
+        "System",
     },
     ["qpsSXxqp"] = {
         "Log",
-        "AncientIWNoSell",
+        "System",
     },
     ["RockMeepBats"] = {
         "Log",
-        "AncientIWNoSell",
+        "System",
     },
     ["KunaiZLeaf"] = {
         "Log",
-        "AncientIWNoSell",
+        "System",
     },
     ["Noslots56"] = {
         "Log",
-        "FischRequest",
+        "System",
     },
     ["supakitdunk"] = {
         "Log",
-        "AncientIWNoSell",
+        "System",
     },
     ["GCshop2"] = {
         "Log",
