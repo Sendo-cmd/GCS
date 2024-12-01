@@ -36,7 +36,7 @@ getgenv().Config = {
 	},
 	["Auto Buy Rod"] = {
 		["Enable"] = true,
-		["Rod"] = "Trident Rod"
+		["Rod"] = "	Reinforced Rod"
 	},
 	["Performance"] = {
 		["Fullbright"] = true,
