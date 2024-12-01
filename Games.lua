@@ -211,7 +211,7 @@ Accounts = {
     ["shoGune215"] = {
         "Log",
         "Marco",
-        "DungBase",
+        "BaseGemInf",
     },
     ["08n2tf"] = {
         "Log",
