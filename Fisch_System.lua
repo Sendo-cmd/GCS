@@ -29,7 +29,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Spot"] = "Ancient IsIe",
     },
-	["Cgggg098l"] = {
+	["CGGGG098L"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
@@ -148,7 +148,7 @@ local Settings = {
     ["Spot"] = "",
 }
 
-for i,v in pairs(_G.User[plr.Name:lower()]) do
+for i,v in pairs(_G.User[plr.Name]) do
     Settings[i] = v
 end
 local Configs = {
