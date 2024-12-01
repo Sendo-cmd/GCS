@@ -85,6 +85,13 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Spot"] = "Ancient IsIe",
     },
+	["nine639085"] = {
+        ["Rod Quest"] = "Rod Of The Depth", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "",
+    },
 }
 
 
