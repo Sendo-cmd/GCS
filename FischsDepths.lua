@@ -52,4 +52,4 @@ getgenv().Config = {
 	}
 }
 getgenv().Key = "wPfsNXRRMazroqcwmxPIUwPcGvwkRZer"
-repeat wait(1)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(1)until Joebiden
+repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden
