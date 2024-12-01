@@ -123,9 +123,13 @@ Accounts = {
     },
     ["Noslots56"] = {
         "Log",
-        "FischRequest",
+        "System",
     },
     ["supakitdunk"] = {
+        "Log",
+        "System",
+    },
+    ["didbdknend"] = {
         "Log",
         "System",
     },
