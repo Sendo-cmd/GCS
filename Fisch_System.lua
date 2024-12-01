@@ -93,7 +93,7 @@ _G.User = {
         ["Spot"] = "",
     },
 	["didbdknend"] = {
-        ["Rod Quest"] = "Trident Rod", 
+        ["Rod Quest"] = "Trident", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
@@ -148,8 +148,10 @@ local Settings = {
     ["Spot"] = "",
 }
 
-for i,v in pairs(_G.User[plr.Name]) do
-    Settings[i] = v
+for i,v in pairs(_G.User) do
+    if i == plr.Name or i:lower() == plr.Name:lower() then
+       Settings[i] = v
+    end
 end
 local Configs = {
     ["Vertigo"] = {
