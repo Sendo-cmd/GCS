@@ -27,7 +27,7 @@ getgenv().Config = {
 			["Great White Shark"] = true
 		},
 		["Fish Location"] = {
-			["Height"] = 5,
+			["Height"] = 20,
 			["Auto"] = true,
 			["Zone"] = "Ancient Isle Waterfall"
 		},
