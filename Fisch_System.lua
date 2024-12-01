@@ -286,7 +286,7 @@ local Configs = {
         ["Ignore"] = {},
         ["Cage Spot"] = false,
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(),
+        ["Spot"] = CFrame.new(992.88324, 99.3194733, -1223.65796, -0.910250425, -2.91566653e-06, -0.414058149, 1.7392216e-07, 1, -7.4240279e-06, 0.414058149, -6.8297386e-06, -0.910250425),
         ["Cage"] = {
         },
     },
@@ -313,16 +313,7 @@ local Configs = {
         ["Ignore"] = {},
         ["Cage Spot"] = false,
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(),
-        ["Cage"] = {
-        },
-    },
-	["Archeological Site"] = {
-        ["Type"] = "Normal",
-        ["Ignore"] = {},
-        ["Cage Spot"] = false,
-        ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(),
+        ["Spot"] = CFrame.new(2490.48682, 116.819595, -723.146484, -0.132600114, 9.9487379e-06, 0.991169631, 1.20419905e-08, 1, -1.00357611e-05, -0.991169631, -1.31880745e-06, -0.132600114),
         ["Cage"] = {
         },
     },
