@@ -218,7 +218,6 @@ local Configs = {
         ["Cage"] = {
         },
     },
-	
     ["The Depths"] = {
         ["Type"] = "Normal",
         ["Cage Spot"] = false,
@@ -233,7 +232,106 @@ local Configs = {
         ["Ignore"] = {},
         ["Cage Spot"] = false,
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(-1818.9519, -142.693146, -3379.55469, -0.697945058, 1.45717285e-10, 0.716151297, 1.34353018e-08, 1, 1.28902728e-08, -0.716151297, 1.86184117e-08, -0.697945058),
+        ["Spot"] = CFrame.new(-1831.57166, -142.693146, -3430.53662, 0.12380068, -9.88392159e-08, 0.992307127, -1.63987268e-09, 1, 9.9810066e-08, -0.992307127, -1.39838106e-08, 0.12380068),
+        ["Cage"] = {
+        },
+    },
+	["The Sunstone"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(5793.5234375, 129.99000549316406, 397.7882385253906, 0.7848547101020813, 0, -0.6196799278259277, -0, 1.0000001192092896, -0, 0.6196799278259277, 0, 0.7848547101020813),
+        ["Cage"] = {
+        },
+    },
+	["MooseWood"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Snowcap Island"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Roslit Bay"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Statue of Sovereignty"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["The Arch"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Terrapin Island"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Earmark Island"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Mushgrove Swamp"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Archeological Site"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
+        },
+    },
+	["Roslit Volcano"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(-1928.39136, 151.841339, 325.43335, 0.980352521, 1.31087319e-08, 0.197253615, -3.33541261e-09, 1, -4.98791977e-08, -0.197253615, 4.82412723e-08, 0.980352521),
         ["Cage"] = {
         },
     },
