@@ -148,10 +148,8 @@ local Settings = {
     ["Spot"] = "",
 }
 
-for i,v in pairs(_G.User) do
-    if i == plr.Name or i:lower() == plr.Name:lower() then
-       Settings[i] = v
-    end
+for i,v in pairs(_G.User[plr.Name:lower()]) do
+    Settings[i] = v
 end
 local Configs = {
     ["Vertigo"] = {
