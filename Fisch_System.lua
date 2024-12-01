@@ -93,7 +93,7 @@ _G.User = {
         ["Spot"] = "",
     },
 	["didbdknend"] = {
-        ["Rod Quest"] = "Trident", 
+        ["Rod Quest"] = "Trident Rod", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
