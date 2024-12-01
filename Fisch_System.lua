@@ -97,7 +97,7 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
-        ["Spot"] = "",
+        ["Spot"] = "Desolate Deep",
     },
 }
 
