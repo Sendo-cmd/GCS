@@ -54,11 +54,13 @@ Games = {
     },
     [5750914919] = {
         ["AncientASell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsAncientA.lua",
+        ["AncientIWSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsAncientIW.lua",
         ["AncientISell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsAncientI.lua",
         ["AncientIOSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsAncientIO.lua",
         ["ForsakenSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsForsaken.lua",
         ["DepthsSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischsDepths.lua",
         ["AncientANoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsAncientA.lua",
+        ["AncientIWNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsAncientIW.lua",
         ["AncientINoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsAncientI.lua",
         ["AncientIONoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsAncientIO.lua",
         ["ForsakenNoSell"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischnsForsaken.lua",
@@ -104,6 +106,18 @@ Accounts = {
     ["ivysosad7"] = {
         "Log",
         "AncientINoSell",
+    },
+    ["qpsSXxqp"] = {
+        "Log",
+        "AncientIWNoSell",
+    },
+    ["RockMeepBats"] = {
+        "Log",
+        "AncientIWNoSell",
+    },
+    ["KunaiZLeaf"] = {
+        "Log",
+        "AncientIWNoSell",
     },
     ["GCshop2"] = {
         "Log",
