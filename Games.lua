@@ -119,6 +119,10 @@ Accounts = {
         "Log",
         "AncientIWNoSell",
     },
+    ["Noslots56"] = {
+        "Log",
+        "AncientIWNoSell",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
