@@ -62,7 +62,7 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
-        ["Spot"] = "Ancient IsIe",
+        ["Spot"] = "The Depths",
     },
 	["KunaiZLeaf"] = {
         ["Rod Quest"] = "", 
