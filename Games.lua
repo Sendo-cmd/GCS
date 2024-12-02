@@ -133,6 +133,14 @@ Accounts = {
         "Log",
         "System",
     },
+    ["KKUBB_ggg"] = {
+        "Log",
+        "System",
+    },
+    ["uyjtyyytyuuurrhy"] = {
+        "Log",
+        "System",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
