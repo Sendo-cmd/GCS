@@ -154,10 +154,12 @@ local Settings = {
     ["Auto Sell"] = true,
     ["Spot"] = "",
 }
-
-for i,v in pairs(_G.User[plr.Name]) do
-    Settings[i] = v
+if _G.User[plr.Name] then
+    for i,v in pairs(_G.User[plr.Name]) do
+        Settings[i] = v
+    end
 end
+
 local Configs = {
     ["Vertigo"] = {
         ["Type"] = "Special",
@@ -421,7 +423,7 @@ local plr = game:GetService("Players").LocalPlayer
 local fishs = require(ReplicatedStorage.modules.library.fish)
 local function Check_Cage()
     local total = 0 
-    for i,v in pairs(workspace.active:GetChildren()) do
+    for i,v in pairs(workspace.active.crabcages:GetChildren()) do
         if v.Name == plr.Name then
             total = total + 1
         end
@@ -808,7 +810,7 @@ local function Book(fish,justfarm)
                 if tick() >= Place then
                     if Check_Cage() < Config["Cage Limit"] and not Stage then
                         if GetCageVal() < Config["Cage Limit"] then
-                            if playerstats.Stats.coins.Value >= 225 then
+                            if playerstats.Stats.coins.Value >= 300 then
                                 Crab = true
                                 if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
                                     return
@@ -839,21 +841,21 @@ local function Book(fish,justfarm)
                         else
                             for i,v in pairs(Config["Cage"]) do 
                                 local tick1 = tick() + .2
-                                print(v)
                                 if Check_Cage() >= Config["Cage Limit"] then
                                     break
                                 end
                                 plr.Character.HumanoidRootPart.CFrame = v
-                                repeat
-                                    task.wait()
-                                until tick() >= tick1
-                                plr.Backpack:FindFirstChild("Crab Cage").Deploy:FireServer(v)
+                                repeat task.wait() until tick() >= tick1
+                                if plr.Backpack:FindFirstChild("Crab Cage") then
+                                    plr.Backpack:FindFirstChild("Crab Cage").Deploy:FireServer(v)
+                                end
+                                
                                 local tick1 = tick() + .2
                                 repeat
                                     task.wait()
                                 until tick() >= tick1
                             end
-                            if Check_Cage() >= 5 then
+                            if Check_Cage() >= Config["Cage Limit"] then
                                 Place = tick() + 300
                             end
                         end
@@ -1333,9 +1335,9 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
             elseif workspace.zones.fishing:FindFirstChild("Whale Shark") then
                 return  workspace.zones.fishing:FindFirstChild("Whale Shark").CFrame
             end
-            return Configs[Settings["Spot"]]["Spot"] or Configs["Spot"]["Money"]   
+            return Configs[Settings["Spot"]] and Configs[Settings["Spot"]]["Spot"] or Configs["Spot"]["Money"]   
         else
-            return Configs[Settings["Spot"]]["Spot"] or  Configs["Spot"]["Money"]   
+            return Configs[Settings["Spot"]] and Configs[Settings["Spot"]]["Spot"] or  Configs["Spot"]["Money"]   
         end
     end
     local Position = IsPosition()  
