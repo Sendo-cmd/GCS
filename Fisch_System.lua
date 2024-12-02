@@ -99,6 +99,13 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Spot"] = "Desolate Deep",
     },
+    ["GCshopfour"] = {
+        ["Rod Quest"] = "Trident Rod", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "",
+    },
 }
 
 
