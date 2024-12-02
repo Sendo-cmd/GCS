@@ -40,7 +40,7 @@ spawn(function ()
             repeat task.wait() until tick() >= tick1
        
             local response = request({
-                ["Url"] = "http://api.championshop.date/log-fisch",
+                ["Url"] = "https//api.championshop.date/log-fisch",
                 ["Method"] = "POST",
                 ["Headers"] = {
                     ["content-type"] = "application/json"
