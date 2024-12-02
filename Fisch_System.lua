@@ -97,14 +97,21 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
-        ["Spot"] = "Desolate Deep",
+        ["Spot"] = "",
     },
-    ["GCshop5"] = {
-        ["Rod Quest"] = "Trident Rod", 
+    ["KKUBB_ggg"] = {
+        ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
-        ["Spot"] = "",
+        ["Spot"] = "Ancient IsIe",
+    },
+    ["uyjtyyytyuuurrhy"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Forsaken Shores",
     },
 }
 
