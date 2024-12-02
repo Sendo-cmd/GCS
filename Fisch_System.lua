@@ -22,6 +22,20 @@ _G.User = {
         ["WorldEvent"] = true,
         ["Spot"] = "Vertigo",
     },
+    ["SHIFUGOD"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = true,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
+    ["Champandbank147"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = true,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
     ["mooqill_945775"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
@@ -221,6 +235,15 @@ local Configs = {
             [41] = CFrame.new(-106.46041870117188, -731.931640625, 1268.187255859375, 0.27514633536338806, 0, 0.9614022970199585, -0, 1, -0, -0.961402416229248, 0, 0.2751463055610657),
             [42] = CFrame.new(-104.91275024414062, -731.931640625, 1267.408447265625, 0.9796304702758789, 0, 0.20080898702144623, -0, 1.0000001192092896, -0, -0.20080898702144623, 0, 0.9796304702758789),
             [43] = CFrame.new(-98.34042358398438, -731.931640625, 1266.2940673828125, 0.999908447265625, 0, 0.01353495940566063, -0, 1.0000001192092896, -0, -0.01353495940566063, 0, 0.999908447265625),
+        },
+    },
+    ["Template"] = {
+        ["Type"] = "Normal",
+        ["Cage Spot"] = false,
+        ["Ignore"] = {},
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(),
+        ["Cage"] = {
         },
     },
     ["Desolate Deep"] = {
@@ -1340,6 +1363,8 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                 return workspace.zones.fishing:FindFirstChild("Great White Shark").CFrame
             elseif workspace.zones.fishing:FindFirstChild("Whale Shark") then
                 return  workspace.zones.fishing:FindFirstChild("Whale Shark").CFrame
+            elseif workspace.zones.fishing:FindFirstChild("Megalodon Default") then
+                return  workspace.zones.fishing:FindFirstChild("Megalodon Default").CFrame
             end
             return Configs[Settings["Spot"]] and Configs[Settings["Spot"]]["Spot"] or Configs["Spot"]["Money"]   
         else

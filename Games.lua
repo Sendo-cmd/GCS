@@ -83,11 +83,11 @@ Games = {
 Accounts = {
     ["SHIFUGOD"] = {
         "Log",
-        "MyFisch",
+        "System",
     },
     ["Champandbank147"] = {
         "Log",
-        "MyFisch",
+        "System",
     },
     ["nine639085"] = {
         "Log",
@@ -123,7 +123,7 @@ Accounts = {
     },
     ["Noslots56"] = {
         "Log",
-        "FischRequest",
+        "System",
     },
     ["supakitdunk"] = {
         "Log",
