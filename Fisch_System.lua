@@ -26,14 +26,14 @@ _G.User = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
-        ["WorldEvent"] = false,
+        ["WorldEvent"] = true,
         ["Spot"] = "Ancient IsIe",
     },
     ["Champandbank147"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
-        ["WorldEvent"] = false,
+        ["WorldEvent"] = true,
         ["Spot"] = "Ancient IsIe",
     },
     ["mooqill_945775"] = {
