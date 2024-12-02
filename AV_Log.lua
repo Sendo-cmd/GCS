@@ -36,7 +36,7 @@ local TableUtils = require(Utilities.TableUtils)
 local IsMain = workspace:FindFirstChild("MainLobby")
 local IsMatch = plr:FindFirstChild("StageInfo")
 
-local url = "https//api.championshop.date/logs"
+local url = "https://api.championshop.date/logs"
 
 if IsMain then
     local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
