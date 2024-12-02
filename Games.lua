@@ -141,6 +141,18 @@ Accounts = {
         "Log",
         "System",
     },
+    "guide552"] = {
+        "Log",
+        "System",
+    },
+    "tungtung0wo"] = {
+        "Log",
+        "System",
+    },
+    "HMPIID"] = {
+        "Log",
+        "System",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
