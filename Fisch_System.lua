@@ -13,6 +13,7 @@ Aurora
 Trident Rod
 Rod Of The Depth
 ]]
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 
 _G.User = {
     ["SKYLOL4ND"] = {
