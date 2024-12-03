@@ -13,8 +13,6 @@ Aurora
 Trident Rod
 Rod Of The Depth
 ]]
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
-
 _G.User = {
     ["SKYLOL4ND"] = {
         ["Rod Quest"] = "", 
@@ -177,6 +175,7 @@ _G.User = {
 
 
 repeat  task.wait() until game:IsLoaded()
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
