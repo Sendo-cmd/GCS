@@ -47,7 +47,7 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
-        ["Spot"] = "Forsaken Shores",
+        ["Spot"] = "Ancient IsIe",
     },
 	["Himura_150266"] = {
         ["Rod Quest"] = "", 
