@@ -134,7 +134,7 @@ _G.User = {
         ["Spot"] = "Ancient IsIe",
     },
     ["tungtung0wo"] = {
-        ["Rod Quest"] = "", 
+        ["Rod Quest"] = "Rod Of The Depth", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
