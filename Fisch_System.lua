@@ -196,6 +196,13 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Spot"] = "Ancient IsIe",
     },
+    ["GCshop5"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = true,
+        ["Spot"] = "Ancient IsIe",
+    },
 }
 
 
