@@ -196,11 +196,46 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Spot"] = "Ancient IsIe",
     },
-    ["GCshop5"] = {
+    ["opoppoky"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = true,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
+    ["SQR019"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
+    ["qeKcaVheSiJ"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
+    ["Bestganeryoutube"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
+    ["JoonJaaneiei"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
+    ["D_Dk05"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 }

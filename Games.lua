@@ -179,6 +179,30 @@ Accounts = {
         "Log",
         "System",
     },
+    ["opoppoky"] = {
+        "Log",
+        "System",
+    },
+    ["SQR019"] = {
+        "Log",
+        "System",
+    },
+    ["qeKcaVheSiJ"] = {
+        "Log",
+        "System",
+    },
+    ["D_Dk05"] = {
+        "Log",
+        "System",
+    },
+    ["Bestganeryoutube"] = {
+        "Log",
+        "System",
+    },
+    ["JoonJaaneiei"] = {
+        "Log",
+        "System",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
