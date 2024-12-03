@@ -165,6 +165,10 @@ Accounts = {
         "Log",
         "System",
     },
+    ["RiceBing"] = {
+        "Log",
+        "System",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
