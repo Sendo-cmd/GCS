@@ -106,7 +106,7 @@ _G.User = {
         ["Spot"] = "",
     },
 	["didbdknend"] = {
-        ["Rod Quest"] = "Trident Rod", 
+        ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
@@ -174,6 +174,20 @@ _G.User = {
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
         ["Spot"] = "Forsaken Shores",
+    },
+    ["trexefxtd"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "The Depths",
+    },
+    ["Deawzar55"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
     },
 }
 

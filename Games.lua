@@ -165,7 +165,15 @@ Accounts = {
         "Log",
         "System",
     },
+    ["trexefxtd"] = {
+        "Log",
+        "System",
+    },
     ["RiceBing"] = {
+        "Log",
+        "System",
+    },
+    ["Deawzar55"] = {
         "Log",
         "System",
     },
