@@ -1435,13 +1435,13 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
     local function IsPosition()
         if Settings["WorldEvent"] then
             if workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark") then
-                return workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark").CFrame
+                return workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark").CFrame * CFrame.new(0,-40,0)
             elseif workspace.zones.fishing:FindFirstChild("Great White Shark") then
-                return workspace.zones.fishing:FindFirstChild("Great White Shark").CFrame
+                return workspace.zones.fishing:FindFirstChild("Great White Shark").CFrame * CFrame.new(0,-40,0)
             elseif workspace.zones.fishing:FindFirstChild("Whale Shark") then
-                return  workspace.zones.fishing:FindFirstChild("Whale Shark").CFrame
+                return  workspace.zones.fishing:FindFirstChild("Whale Shark").CFrame * CFrame.new(0,-40,0)
             elseif workspace.zones.fishing:FindFirstChild("Megalodon Default") then
-                return  workspace.zones.fishing:FindFirstChild("Megalodon Default").CFrame
+                return  workspace.zones.fishing:FindFirstChild("Megalodon Default").CFrame * CFrame.new(0,-40,0)
             end
             return Configs[Settings["Spot"]] and Configs[Settings["Spot"]]["Spot"] or Configs["Spot"]["Money"]   
         else
