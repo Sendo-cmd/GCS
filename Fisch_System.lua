@@ -189,6 +189,13 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Spot"] = "Ancient IsIe",
     },
+    ["The_fakemanReturn"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
 }
 
 

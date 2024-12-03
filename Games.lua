@@ -68,9 +68,7 @@ Games = {
         ["FischChest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischTC.lua",
         ["FischBuyRodK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod2.lua",
         ["FischBuyRodNo"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod3.lua",
-        ["FischRequest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischRequest.lua",
         ["AuroRod"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FischBuyRod4.lua",
-        ["Rod_Depths"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Rod_Depths.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
         ["MyFisch"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/MyFisch.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
@@ -174,6 +172,10 @@ Accounts = {
         "System",
     },
     ["Deawzar55"] = {
+        "Log",
+        "System",
+    },
+    ["The_fakemanReturn"] = {
         "Log",
         "System",
     },
