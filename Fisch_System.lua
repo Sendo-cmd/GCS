@@ -238,6 +238,13 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Spot"] = "Ancient IsIe",
     },
+    ["maanoynarak"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
 }
 
 
