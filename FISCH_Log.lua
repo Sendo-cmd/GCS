@@ -1,4 +1,5 @@
 repeat wait() until game:IsLoaded()
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 local Settings = {
