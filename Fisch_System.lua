@@ -14,18 +14,22 @@ Trident Rod
 Rod Of The Depth
 ]]
 _G.User = {
-    ["SKYLOL4ND"] = {
+    ["SKYLOLANDBABY"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = true,
-        ["Spot"] = "Vertigo",
+        ["Auto Aurora"] = true,
+        ["Auto Eclipse"] = true,
+        ["Spot"] = "The Depths",
     },
     ["SHIFUGOD"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = true,
+        ["Auto Aurora"] = true,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["Champandbank147"] = {
@@ -33,6 +37,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = true,
+        ["Auto Aurora"] = true,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["mooqill_945775"] = {
@@ -40,6 +46,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 	["CGGGG098L"] = {
@@ -47,6 +55,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 	["Himura_150266"] = {
@@ -54,6 +64,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 	["ivysosad7"] = {
@@ -61,6 +73,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 	["qpsSXxqp"] = {
@@ -68,6 +82,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 	["RockMeepBats"] = {
@@ -75,6 +91,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "The Depths",
     },
 	["KunaiZLeaf"] = {
@@ -82,6 +100,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 	["Noslots56"] = {
@@ -89,6 +109,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Brine Pool",
     },
 	["supakitdunk"] = {
@@ -96,13 +118,17 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
 	["nine639085"] = {
-        ["Rod Quest"] = "Rod Of The Depth", 
+        ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "",
     },
 	["didbdknend"] = {
@@ -110,6 +136,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "",
     },
     ["KKUBB_ggg"] = {
@@ -117,6 +145,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["uyjtyyytyuuurrhy"] = {
@@ -124,6 +154,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Forsaken Shores",
     },
     ["guide552"] = {
@@ -131,6 +163,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["tungtung0wo"] = {
@@ -138,6 +172,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["HMPIID"] = {
@@ -145,6 +181,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["UioUK16"] = {
@@ -152,6 +190,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["Newbiethreepoint00"] = {
@@ -159,6 +199,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["peppertvzas3"] = {
@@ -166,6 +208,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["RiceBing"] = {
@@ -173,6 +217,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Forsaken Shores",
     },
     ["trexefxtd"] = {
@@ -180,6 +226,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "The Depths",
     },
     ["Deawzar55"] = {
@@ -187,6 +235,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["The_fakemanReturn"] = {
@@ -194,6 +244,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["opoppoky"] = {
@@ -201,6 +253,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["SQR019"] = {
@@ -208,6 +262,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["qeKcaVheSiJ"] = {
@@ -215,6 +271,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["Bestganeryoutube"] = {
@@ -222,6 +280,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["JoonJaaneiei"] = {
@@ -229,6 +289,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["D_Dk05"] = {
@@ -236,6 +298,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["maanoynarak"] = {
@@ -243,6 +307,8 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
     ["BirdyBell11"] = {
@@ -250,16 +316,86 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "The Depths",
     },
 }
+
+if VariableIndex == nil then
+    VariableIndex = {
+        ["Stop Things"]  = false,
+		["Auto Sell"] = false,
+        ["Auto Totem 1"] = false,
+        ["Auto Totem 2"] = false,
+		["Auto Buy Luck"] = false,
+		["Auto Crab"] = false,
+        ["Auto Fish"] = false,
+    }
+end
+if VariableTable == nil then
+    VariableTable = {
+        ["Stop Things"] = 1,
+		["Auto Sell"] = 2,
+        ["Auto Totem 1"] = 3,
+        ["Auto Totem 2"] = 4,
+		["Auto Buy Luck"] = 5,
+		["Auto Crab"] = 7,
+        ["Auto Fish"] = 8,
+    }
+end 
+
+local BYfArt = function(Variable,Status,Starting)
+    local GetFirstTable = nil
+    for i,v in pairs(VariableTable) do
+        if v == 1 then
+            GetFirstTable = i
+        end
+    end
+    local Ax64x = function(args)
+        for i,v in pairs(VariableTable) do
+            if v == args and VariableIndex[i] == true then
+                return true
+            end
+        end
+        return false
+    end
+    if Status == "Get" then
+		if Variable == GetFirstTable and VariableIndex[Variable] then
+            return true
+        end 
+        if VariableIndex[GetFirstTable] then
+            return false
+        end 
+        for i = 1,VariableTable[Variable] - 1 do task.wait()
+            if Ax64x(i) == true then
+                return false
+            end
+        end
+		if VariableIndex[Variable] then
+			return true
+		else
+			return false
+		end
+    elseif Status == "Post" then
+        VariableIndex[Variable] = Starting
+	elseif Status == "Check" then
+        return VariableIndex[Variable]
+    end
+    return false 
+end
+
+
+
+
+
+
 
 
 
 
 
 repeat  task.wait() until game:IsLoaded()
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.PlayerList, false)
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -285,17 +421,56 @@ end
 print("loading")
 repeat task.wait() until game:GetService("Players").LocalPlayer:FindFirstChild("assetsloaded") and game:GetService("Players").LocalPlayer.assetsloaded.Value
 print("assetsloaded")
+local decalsyeeted = true 
+local g = game
+local w = g.Workspace
+local l = g.Lighting
+local t = w.Terrain
+t.WaterWaveSize = 0
+t.WaterWaveSpeed = 0
+t.WaterReflectance = 0
+t.WaterTransparency = 0
+l.GlobalShadows = false
+l.FogEnd = 9e9
+l.Brightness = 0
+settings().Rendering.QualityLevel = "Level01"
+for i, v in pairs(g:GetDescendants()) do
+    if v:IsA("Part") or v:IsA("Union") or v:IsA("CornerWedgePart") or v:IsA("TrussPart") then
+        v.Material = "Plastic"
+        v.Color = Color3.fromRGB(0, 0, 0)
+        v.Reflectance = 0
+    elseif v:IsA("Decal") or v:IsA("Texture") and decalsyeeted then
+        v.Transparency = 1
+    elseif v:IsA("ParticleEmitter") or v:IsA("Trail") then
+        v.Lifetime = NumberRange.new(0)
+    elseif v:IsA("Explosion") then
+        v.BlastPressure = 1
+        v.BlastRadius = 1
+    elseif v:IsA("Fire") or v:IsA("SpotLight") or v:IsA("Smoke") or v:IsA("Sparkles") then
+        v.Enabled = false
+    elseif v:IsA("MeshPart") then
+        v.Color = Color3.fromRGB(0, 0, 0)
+        v.Material = "Plastic"
+        v.Reflectance = 0
+        v.TextureID = 10385902758728957
+    end
+end
+for i, e in pairs(l:GetChildren()) do
+    if e:IsA("BlurEffect") or e:IsA("SunRaysEffect") or e:IsA("ColorCorrectionEffect") or e:IsA("BloomEffect") or e:IsA("DepthOfFieldEffect") then
+        e.Enabled = false
+    end
+end
+settings().Rendering.QualityLevel = "Level01"
 
-local AutoShake = true
-local ShakeUI = false
-local InstantFish = true
 
 local Settings = {
     ["Rod Quest"] = "", -- Aurora , Trident , Rod Of The Depth
     ["Bestiary"] = {},
     ["Method"] = "Instant", -- Hold , Instant
-    ["WorldEvent"] = true,
-    ["Auto Buy Luck"] = true,
+    ["WorldEvent"] = false,
+    ["Auto Buy Luck"] = false,
+    ["Auto Aurora"] = false,
+    ["Auto Eclipse"] = false,
     ["Fish Count"] = 20,
     ["Failed Every"] = 50,
     ["Auto Sell"] = true,
@@ -559,6 +734,8 @@ local Configs = {
         ["DepthGate"] = CFrame.new(13.6440973, -706.123718, 1224.80481, 0.209638149, -7.89109365e-08, -0.977779031, -9.93821736e-09, 1, -8.28350437e-08, 0.977779031, 2.70827663e-08, 0.209638149),
         ["Merlin"] = CFrame.new(-926.218628, 223.699966, -999.468018, -0.59410423, 3.34793846e-08, 0.804388106, -6.07307555e-08, 1, -8.64754028e-08, -0.804388106, -1.00226501e-07, -0.59410423),
         ["Trident Rod"] = CFrame.new(-1482.61572, -225.986481, -2199.30786, -0.840630472, 8.83173645e-10, 0.541609049, -1.92019201e-08, 1, -3.14339168e-08, -0.541609049, -3.68242432e-08, -0.840630472),
+        ["Aurora Totem"] = CFrame.new(-1810.09314, -136.927933, -3283.2207, -0.709088683, 1.23167743e-08, 0.705119312, 1.67145675e-08, 1, -6.58985533e-10, -0.705119312, 1.13184848e-08, -0.709088683),
+        ["Eclipse Totem"] = CFrame.new(5966.76074, 274.10849, 840.323547, 0.999997258, -7.34585548e-09, -0.00233200309, 7.34908845e-09, 1, 1.37769418e-09, 0.00233200309, -1.39482847e-09, 0.999997258),
     }
 }
 coroutine.resume(coroutine.create(function()
@@ -614,11 +791,11 @@ local function Shake(obj)
         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
     until not obj.Parent
 end
-local function ConnectToReel(v)
+local function ConnectToReel()
     if plr.PlayerGui:FindFirstChild("reel") then
         time = tick() + 2
         if Settings["Method"] == "Instant" then
-            repeat wait() 
+            repeat task.wait() 
                 ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,true)
             until not plr.PlayerGui:FindFirstChild("reel")
         else
@@ -652,62 +829,75 @@ local function TalkNpc(npc)
     game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
     game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
 end
+local function PromptN(obj)
+    plr.CameraMode = Enum.CameraMode.LockFirstPerson
+    local Prompt = obj:FindFirstChildWhichIsA("ProximityPrompt",true)
+    workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,obj.handle.Position + Vector3.new(0,0,0))
+    Prompt.GamepadKeyCode = Enum.KeyCode.E
+    Prompt.RequiresLineOfSight = false
+    Prompt.MaxActivationDistance = 50
+    game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
+    game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
+end
+
 local FishCount = 0
-local SellTheFish = false
 spawn(function()
     if not Settings["Auto Sell"] then return end
     while true do task.wait()
         local val,err = pcall(function()
             if FishCount >= Settings["Fish Count"] then
-                SellTheFish = true
-                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                    return
-                end
-                task.wait(.3)
-                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                    return
-                end 
-                if workspace.world.npcs:FindFirstChild("Marc Merchant") then
-                    
-                else
-                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
-                end
-                if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Sell"].Position).Magnitude >= 10  then
-                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
-                else
+                BYfArt("Auto Sell","Post",true)
+                if BYfArt("Auto Sell","Get") then
+                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
+                        return
+                    end
+                    task.wait(.3)
+                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
+                        return
+                    end 
                     if workspace.world.npcs:FindFirstChild("Marc Merchant") then
-                        local tick1 = tick() + 5
-                        local tick2 = tick() + .2
-                        print("loopin")
-                        repeat task.wait() 
-                            if tick() >= tick2 then
-                                if plr.PlayerGui:FindFirstChild("options") then
-                                    for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
-                                        for i1,v1 in pairs(getconnections(plr.PlayerGui.options.safezone["1option"].button[v2])) do
-                                            v1.Function()
+                        
+                    else
+                        plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
+                    end
+                    if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Sell"].Position).Magnitude >= 10  then
+                        plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
+                    else
+                        if workspace.world.npcs:FindFirstChild("Marc Merchant") then
+                            local tick1 = tick() + 5
+                            local tick2 = tick() + .2
+                            print("loopin")
+                            repeat task.wait() 
+                                if tick() >= tick2 then
+                                    if plr.PlayerGui:FindFirstChild("options") then
+                                        for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
+                                            for i1,v1 in pairs(getconnections(plr.PlayerGui.options.safezone["1option"].button[v2])) do
+                                                v1.Function()
+                                            end
                                         end
+                                    else
+                                        TalkNpc("Marc Merchant")
                                     end
-                                else
-                                    TalkNpc("Marc Merchant")
+                                    task.delay(.001,function ()
+                                        local Sell = workspace.world.npcs:FindFirstChild("Marc Merchant"):FindFirstChild("sellall",true)
+                                        Sell:InvokeServer()
+                                    end)
+                                    print("IN")
+                                    tick2 = tick() + .2
                                 end
-                                task.delay(.001,function ()
-                                    local Sell = workspace.world.npcs:FindFirstChild("Marc Merchant"):FindFirstChild("sellall",true)
-                                    Sell:InvokeServer()
-                                end)
-                                print("IN")
-                                tick2 = tick() + .2
-                            end
-                        until tick() >= tick1
-                        print("loopout")
-                        local tick1 = tick() + 2
-                        repeat task.wait() 
-                           
-                        until tick() >= tick1
-                        FishCount = 0
+                            until tick() >= tick1
+                            print("loopout")
+                            local tick1 = tick() + 2
+                            repeat task.wait() 
+                               
+                            until tick() >= tick1
+                            FishCount = 0
+                        end
                     end
                 end
+               
             else
-                SellTheFish = false
+                BYfArt("Auto Sell","Post",false)
             end
         end)
         if not val then
@@ -715,11 +905,130 @@ spawn(function()
         end
     end
 end)
-local BuyingLuck = false
-
+spawn(function()
+    if not Settings["Auto Eclipse"] then return end
+    local playerstats = ReplicatedStorage["playerstats"][plr.Name]
+    while true do task.wait()
+        local val,err = pcall(function()
+            if game:GetService("ReplicatedStorage").world.cycle.Value == "Day" and not game:GetService("ReplicatedStorage").world.weather.Value:match("Eclipse") then
+                local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:FindFirstChild("Eclipse Totem")
+                if Totem then
+                    if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                        local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                        prompt.deny.AnchorPoint = Vector2.new(.5,.5)
+                        prompt.deny.Position = UDim2.fromScale(.5,.5)
+                        prompt.deny.Size = UDim2.fromScale(999,999)
+                        task.wait(.2)
+                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                    end
+                    game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
+                        Totem.tool.Value
+                    )
+                    for i = 1,3 do task.wait()
+                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                    end
+                else
+                    if playerstats.Stats.coins.Value >= 500000 then
+                        BYfArt("Auto Totem 2","Post",true)
+                        if BYfArt("Auto Totem 2","Get") and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                            if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Eclipse Totem"].Position).Magnitude >= 5  then
+                                plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Eclipse Totem"]
+                            else
+                                local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                                if not prompt then
+                                    PromptN(workspace.world.interactables["Eclipse Totem"])
+                                else
+                                    prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                                    prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                                    prompt.confirm.Size = UDim2.fromScale(999,999)
+    
+                                    task.wait(.2)
+                                    local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                                    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                                    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                                end
+                            end
+                          
+                        end
+                    end
+                end
+            else
+                BYfArt("Auto Totem 2","Post",false)
+            end
+            -- game:GetService("ReplicatedStorage").world.weather
+        end)
+        if not val then
+            print("Eclipse : ",err)
+        end
+    end
+end)
+spawn(function()
+    if not Settings["Auto Aurora"] then return end
+    local playerstats = ReplicatedStorage["playerstats"][plr.Name]
+    while true do task.wait()
+        local val,err = pcall(function()
+            if game:GetService("ReplicatedStorage").world.cycle.Value == "Night" and not game:GetService("ReplicatedStorage").world.weather.Value:match("Aurora")then
+                local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:FindFirstChild("Aurora Totem")
+                if Totem then
+                    if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                        local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                        prompt.deny.AnchorPoint = Vector2.new(.5,.5)
+                        prompt.deny.Position = UDim2.fromScale(.5,.5)
+                        prompt.deny.Size = UDim2.fromScale(999,999)
+                        task.wait(.2)
+                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                    end
+                    game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
+                        Totem.tool.Value
+                    )
+                    for i = 1,3 do task.wait()
+                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                    end
+                else
+                    if playerstats.Stats.coins.Value >= 500000 then
+                        BYfArt("Auto Totem 1","Post",true)
+                        if BYfArt("Auto Totem 1","Get") and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                            if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Aurora Totem"].Position).Magnitude >= 5  then
+                                plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Aurora Totem"]
+                            else
+                                local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                                if not prompt then
+                                    PromptN(workspace.world.interactables["Aurora Totem"])
+                                else
+                                    prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                                    prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                                    prompt.confirm.Size = UDim2.fromScale(999,999)
+    
+                                    task.wait(.2)
+                                    local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                                    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                                    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                                end
+                            end
+                        end
+                    end
+                end
+            else
+                BYfArt("Auto Totem 1","Post",false)
+            end
+            -- game:GetService("ReplicatedStorage").world.weather
+        end)
+        if not val then
+            print("Aurora : ",err)
+        end
+    end
+end)
 spawn(function()
     if not Settings["Auto Buy Luck"] then return end
-    local tick1 = tick()
+    local tick1 = tick() + 15
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     local function LuckyC()
         for i,v in pairs(plr.PlayerGui.hud.safezone.statuses:GetChildren()) do
@@ -732,10 +1041,9 @@ spawn(function()
     while true do task.wait()
         local val,err = pcall(function()
             if tick1 >= tick() then return end
-            print("LuckyC")
             if not LuckyC() and playerstats.Stats.coins.Value >= 5000 then
-               
-                BuyingLuck = true
+                BYfArt("Auto Buy Luck","Post",true)
+
                 if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["Merlin"]) >= 10 then
                     plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Merlin"]
                 else
@@ -746,9 +1054,6 @@ spawn(function()
                     if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
                         return
                     end 
-                    if SellTheFish then
-                        return
-                    end
                     if workspace.world.npcs:FindFirstChild("Merlin") then
                         TalkNpc("Merlin")
                         spawn(function()
@@ -760,64 +1065,11 @@ spawn(function()
                 end
             else
                 tick1 = tick() + 2
-                BuyingLuck = false
+                BYfArt("Auto Buy Luck","Post",false)
             end
         end)
         if not val then
-            print("Sell : ",err)
-        end
-    end
-end)
-spawn(function()
-    if not Settings["Auto Sell"] then return end
-    while true do task.wait()
-        local val,err = pcall(function()
-            if FishCount >= Settings["Fish Count"] then
-                SellTheFish = true
-                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                    return
-                end
-                task.wait(.3)
-                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                    return
-                end 
-                if workspace.world.npcs:FindFirstChild("Marc Merchant") then
-                    
-                else
-                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
-                end
-                if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Sell"].Position).Magnitude >= 10  then
-                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Sell"]
-                else
-                    if workspace.world.npcs:FindFirstChild("Marc Merchant") then
-                        local tick1 = tick() + 5
-                       
-                        repeat task.wait() 
-                            if plr.PlayerGui:FindFirstChild("options") then
-                                for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
-                                    for i1,v1 in pairs(getconnections(plr.PlayerGui.options.safezone["1option"].button[v2])) do
-                                        v1.Function()
-                                    end
-                                end
-                            else
-                                TalkNpc("Marc Merchant")
-                            end
-                            spawn(function()
-                                pcall(function ()
-                                    local Sell = workspace.world.npcs:FindFirstChild("Marc Merchant"):FindFirstChild("sellall",true)
-                                    Sell:InvokeServer()
-                                end)
-                            end)
-                        until tick() >= tick1
-                        FishCount = 0
-                    end
-                end
-            else
-                SellTheFish = false
-            end
-        end)
-        if not val then
-            print("Sell : ",err)
+            print("Luck : ",err)
         end
     end
 end)
@@ -871,7 +1123,6 @@ local function Book(fish,justfarm)
     local AutoFish = false
     local Place = tick()
     local Position = Config["Spot"]
-    local Crab = false
     local Stage = false
     local Cahce = false
     local Take_Cage = false
@@ -959,37 +1210,36 @@ local function Book(fish,justfarm)
         end
         while true do task.wait()
             pcall(function()
-                if SellTheFish or BuyingLuck then
-                    return
-                end
                 if tick() >= Place then
                     if Check_Cage() < Config["Cage Limit"] and not Stage then
                         if GetCageVal() < Config["Cage Limit"] then
                             if playerstats.Stats.coins.Value >= 300 then
-                                Crab = true
-                                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                    return
-                                end
-                                task.wait(.3)
-                                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                    return
-                                end 
-                                if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Cage"].Position).Magnitude >= 5  then
-                                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Cage"]
-                                else
-                                    local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
-                                    if not prompt then
-                                        fireproximityprompt(workspace.world.interactables["Crab Cage"]:FindFirstChild("purchaserompt",true)) 
+                                BYfArt("Auto Crab","Post",true)
+                                if BYfArt("Auto Crab","Get") then
+                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
+                                        return
+                                    end
+                                    task.wait(.3)
+                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
+                                        return
+                                    end 
+                                    if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Cage"].Position).Magnitude >= 5  then
+                                        plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Cage"]
                                     else
-                                        prompt.amount.Text = "5"
-                                        prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
-                                        prompt.confirm.Position = UDim2.fromScale(.5,.5)
-                                        prompt.confirm.Size = UDim2.fromScale(999,999)
-
-                                        task.wait(.2)
-                                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
-                                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
-                                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                                        local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                                        if not prompt then
+                                            fireproximityprompt(workspace.world.interactables["Crab Cage"]:FindFirstChild("purchaserompt",true)) 
+                                        else
+                                            prompt.amount.Text = "5"
+                                            prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                                            prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                                            prompt.confirm.Size = UDim2.fromScale(999,999)
+    
+                                            task.wait(.2)
+                                            local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                                            VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                                            VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                                        end
                                     end
                                 end
                             end
@@ -1016,37 +1266,8 @@ local function Book(fish,justfarm)
                         end
                     else
                         if not Stage then
-                            Crab = true
-                            if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                return
-                            end
-                            task.wait(.3)
-                            if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                return
-                            end 
-                            for _ = 1,3 do task.wait()
-                                for i,v in pairs(workspace.active:GetChildren()) do
-                                    if v.Name == plr.Name then
-                                        local tick1 = tick() + 2
-                                        repeat wait()
-                                            plr.Character.HumanoidRootPart.CFrame = v:GetPivot() task.wait(.2)
-                                        until not v or v.Parent == nil or v:FindFirstChildWhichIsA("ProximityPrompt",true) or tick() >= tick1
-                                        
-                                        if v:FindFirstChildWhichIsA("ProximityPrompt",true) then
-                                            fireproximityprompt(v:FindFirstChildWhichIsA("ProximityPrompt",true)) 
-                                        else
-                                            v:Destroy()
-                                        end
-                                    end
-                                end
-                            end
-                            if Check_Cage() >= 1 then
-                                Place = tick() + 300
-                            end
-                        else
-                            if Cahce then
-                                print("Cahce")
-                                Crab = true
+                            BYfArt("Auto Crab","Post",true)
+                            if BYfArt("Auto Crab","Get") then
                                 if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
                                     return
                                 end
@@ -1069,10 +1290,42 @@ local function Book(fish,justfarm)
                                             end
                                         end
                                     end
-                                end 
-                                if Check_Cage() <= 0 then
-                                    Take_Cage = true
-                                    Place = tick() + 9999999
+                                end
+                                if Check_Cage() >= 1 then
+                                    Place = tick() + 300
+                                end
+                            end
+                        else
+                            if Cahce then
+                                BYfArt("Auto Crab","Post",true)
+                                if BYfArt("Auto Crab","Get") then
+                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
+                                        return
+                                    end
+                                    task.wait(.3)
+                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
+                                        return
+                                    end 
+                                    for _ = 1,3 do task.wait()
+                                        for i,v in pairs(workspace.active:GetChildren()) do
+                                            if v.Name == plr.Name then
+                                                local tick1 = tick() + 2
+                                                repeat wait()
+                                                    plr.Character.HumanoidRootPart.CFrame = v:GetPivot() task.wait(.2)
+                                                until not v or v.Parent == nil or v:FindFirstChildWhichIsA("ProximityPrompt",true) or tick() >= tick1
+                                                
+                                                if v:FindFirstChildWhichIsA("ProximityPrompt",true) then
+                                                    fireproximityprompt(v:FindFirstChildWhichIsA("ProximityPrompt",true)) 
+                                                else
+                                                    v:Destroy()
+                                                end
+                                            end
+                                        end
+                                    end 
+                                    if Check_Cage() <= 0 then
+                                        Take_Cage = true
+                                        Place = tick() + 9999999
+                                    end
                                 end
                             end
                             if Check_Cage() >= 1 then
@@ -1083,21 +1336,19 @@ local function Book(fish,justfarm)
                         end
                     end
                 else
-                    if Crab then
-                        Crab = false
-                    end
+                    BYfArt("Auto Crab","Post",false)
                 end
             end)
         end
     end)
+    BYfArt("Auto Fish","Post",true)
     task.wait(3)
     while #cur_ < #total or (Cahce and not Take_Cage) do task.wait()
         if justfarm and StopFarm_[justfarm] then
             cur_ = {"1","2","3"}
         end
         pcall(function()
-           
-            if plr.Character and not Crab and not SellTheFish and not BuyingLuck then
+            if plr.Character and BYfArt("Auto Fish","Get")then
                 if tick() >= time then
                     -- time = tick() + .5
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
@@ -1109,7 +1360,7 @@ local function Book(fish,justfarm)
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
-                    elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 and not SellTheFish then
+                    elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 then
                         plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
                         print("Teleport")
                     elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
@@ -1219,6 +1470,7 @@ if Settings["Rod Quest"] == "Rod Of The Depth" then
                 if not EnchantReady then
                     print("In EnchantReady")
                     if playerstats.Stats.coins.Value >= 300000 then
+                        BYfArt("Stop Things","Post",true)
                         local val,total = GetEnchants()
                         if total < 7 then
                             print("Relic")
@@ -1281,6 +1533,7 @@ if Settings["Rod Quest"] == "Rod Of The Depth" then
                                 end
                             end
                         end
+                        BYfArt("Stop Things","Post",false)
                         -- Buy Enchant And Find Abyssal , Hexed
                     else
                         local os1 = os.time()
@@ -1289,7 +1542,7 @@ if Settings["Rod Quest"] == "Rod Of The Depth" then
                             Book("The Depths",os1) 
                         end)
                         repeat task.wait() 
-                            print(playerstats.Stats.coins.Value ,playerstats.Stats.coins.Value >= 750000)
+                            
                         until playerstats.Stats.coins.Value >= 300000
                         print("OutLoop Enchant")
                         StopFarm_[os1] = true
@@ -1298,6 +1551,7 @@ if Settings["Rod Quest"] == "Rod Of The Depth" then
                 else
                     print("In Rod")
                     if playerstats.Stats.coins.Value >= 750000 then
+                        BYfArt("Stop Things","Post",true)
                         if not Door then
                             if game:GetService("ReplicatedStorage"):WaitForChild("packages"):WaitForChild("Net"):WaitForChild("RF/GetDoorState"):InvokeServer("TheDepthsGate") then
                                 Door = true
@@ -1438,12 +1692,14 @@ if Settings["Rod Quest"] == "Rod Of The Depth" then
             print("Rod Of The Depth",err)
         end
     end
+    BYfArt("Stop Things","Post",false)
 elseif Settings["Rod Quest"] == "Trident Rod" then
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     Book("Desolate Deep")
     while not playerstats.Rods:FindFirstChild("Trident Rod") do task.wait()
         local var,err = pcall(function()
             if playerstats.Stats.coins.Value >= 150000 then
+                BYfArt("Stop Things","Post",true)
                 if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Trident Rod"].Position).Magnitude >= 5  then
                     plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Trident Rod"]
                 else
@@ -1478,6 +1734,7 @@ elseif Settings["Rod Quest"] == "Trident Rod" then
             print("Trident",err)
         end
     end
+    BYfArt("Stop Things","Post",false)
 elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
    
@@ -1504,9 +1761,10 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
     workspace.zones.fishing.ChildRemoved:Connect(function()
         Position = IsPosition()
     end)
+    BYfArt("Auto Fish","Post",true)
     while true do task.wait()
         local var,err = pcall(function()
-            if plr.Character and not SellTheFish and not BuyingLuck then
+            if plr.Character and BYfArt("Auto Fish","Get") then
                 print("AUTO FARM")
                 if tick() >= time then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
@@ -1518,7 +1776,7 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
-                    elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 and not SellTheFish and not BuyingLuck  then
+                    elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 then
                         plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
                         print("Teleport")
                     elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
@@ -1526,7 +1784,7 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                         game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
                         game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
                     elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                        time = tick() + 2.3
+                        time = tick() + 1.25
                         if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.cast:FireServer(100,1)
@@ -1541,4 +1799,3 @@ else
         Book(v)
     end
 end
-
