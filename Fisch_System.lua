@@ -385,16 +385,6 @@ local BYfArt = function(Variable,Status,Starting)
     return false 
 end
 
-
-
-
-
-
-
-
-
-
-
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
@@ -795,8 +785,12 @@ local function ConnectToReel()
     if plr.PlayerGui:FindFirstChild("reel") then
         time = tick() + 2
         if Settings["Method"] == "Instant" then
+            local t1 = tick() + 1.5
             repeat task.wait() 
-                ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,true)
+                if tick() >= t1 then
+                    ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,true)
+                    t1 = tick() + .1
+                end
             until not plr.PlayerGui:FindFirstChild("reel")
         else
             plr.PlayerGui.reel.bar.playerbar.Size = UDim2.fromScale(1, 1)
@@ -954,6 +948,8 @@ spawn(function()
                             end
                           
                         end
+                    else
+                        BYfArt("Auto Totem 2","Post",false)
                     end
                 end
             else
@@ -1014,6 +1010,8 @@ spawn(function()
                                 end
                             end
                         end
+                    else
+                        BYfArt("Auto Totem 1","Post",false)
                     end
                 end
             else
@@ -1371,7 +1369,7 @@ local function Book(fish,justfarm)
                         -- plr.Character[playerstats.Stats.rod.Value]["rod/client"].Enabled = false
                         -- print(plr.Character[playerstats.Stats.rod.Value]["rod/client"].Enabled)
                     elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                        time = tick() + 2.3
+                        time = tick() + 1.5
                         if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                             -- plr.Character.HumanoidRootPart.Anchored = false
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
