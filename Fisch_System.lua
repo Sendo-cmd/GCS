@@ -917,6 +917,7 @@ spawn(function()
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
                     end
+                    workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Vector3.new(0,500,0))
                     game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
                         Totem.tool.Value
                     )
@@ -980,6 +981,7 @@ spawn(function()
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
                     end
+                    workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Vector3.new(0,500,0))
                     game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
                         Totem.tool.Value
                     )
