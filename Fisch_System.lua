@@ -311,7 +311,16 @@ _G.User = {
         ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
-    ["BirdyBell11"] = {
+    ["thanakorn_9993"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Spot"] = "The Depths",
+    },
+    ["thanakorn_9993"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
