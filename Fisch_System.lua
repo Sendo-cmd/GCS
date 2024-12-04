@@ -39,7 +39,7 @@ _G.User = {
         ["WorldEvent"] = true,
         ["Auto Aurora"] = true,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
+        ["Spot"] = "The Depths",
     },
     ["mooqill_945775"] = {
         ["Rod Quest"] = "", 
