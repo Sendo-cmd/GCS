@@ -915,9 +915,9 @@ spawn(function()
                 if Totem then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
                         local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
-                        prompt.deny.AnchorPoint = Vector2.new(.5,.5)
-                        prompt.deny.Position = UDim2.fromScale(.5,.5)
-                        prompt.deny.Size = UDim2.fromScale(999,999)
+                        prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                        prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                        prompt.confirm.Size = UDim2.fromScale(999,999)
                         task.wait(.2)
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
@@ -932,7 +932,7 @@ spawn(function()
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
                     end
                 else
-                    if playerstats.Stats.coins.Value >= 500000 then
+                    if playerstats.Stats.coins.Value >= 250000 then
                         BYfArt("Auto Totem 2","Post",true)
                         if BYfArt("Auto Totem 2","Get") and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                             if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Eclipse Totem"].Position).Magnitude >= 5  then
@@ -976,9 +976,9 @@ spawn(function()
                 if Totem then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
                         local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
-                        prompt.deny.AnchorPoint = Vector2.new(.5,.5)
-                        prompt.deny.Position = UDim2.fromScale(.5,.5)
-                        prompt.deny.Size = UDim2.fromScale(999,999)
+                        prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                        prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                        prompt.confirm.Size = UDim2.fromScale(999,999)
                         task.wait(.2)
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
