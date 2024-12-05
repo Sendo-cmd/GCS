@@ -198,6 +198,14 @@ Accounts = {
         "Log",
         "System",
     },
+    ["cocohub_I"] = {
+        "Log",
+        "System",
+    },
+    ["iu0073zx"] = {
+        "Log",
+        "System",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",

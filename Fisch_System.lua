@@ -329,6 +329,24 @@ _G.User = {
         ["Auto Eclipse"] = false,
         ["Spot"] = "The Depths",
     },
+    ["cocohub_I"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Spot"] = "The Depths",
+    },
+    ["iu0073zx"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
 }
 
 if VariableIndex == nil then
