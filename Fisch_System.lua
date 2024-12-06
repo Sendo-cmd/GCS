@@ -1848,13 +1848,15 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                 print("AUTO FARM")
                 if tick() >= time then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                        print("???")
+                        local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
                         if prompt:FindFirstChild("deny") then
-                            local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                          
                             prompt.deny.AnchorPoint = Vector2.new(.5,.5)
                             prompt.deny.Position = UDim2.fromScale(.5,.5)
                             prompt.deny.Size = UDim2.fromScale(999,999)
                         else
-                            local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                          
                             prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
                             prompt.confirm.Position = UDim2.fromScale(.5,.5)
                             prompt.confirm.Size = UDim2.fromScale(999,999)
@@ -1863,7 +1865,7 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
-                        print("???")
+                       
                     elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 then
                         plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
                         print("Teleport")
@@ -1892,4 +1894,3 @@ else
         Book(v)
     end
 end
-
