@@ -448,6 +448,16 @@ local BYfArt = function(Variable,Status,Starting)
     return false 
 end
 
+
+
+
+
+
+
+
+
+
+
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
@@ -672,7 +682,7 @@ local Configs = {
         ["Cage Spot"] = false,
         ["Ignore"] = {},
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(933.100342, -813.519775, 1534.70947, -0.82417053, -0.000225088748, 0.566341639, -5.09126075e-08, 0.99999994, 0.000397369266, -0.566341698, 0.000327471207, -0.82417047),
+        ["Spot"] = CFrame.new(950.88324, -760.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923),
         ["Cage"] = {
         },
     },
@@ -803,7 +813,6 @@ end))
 local StopFarm_ = {}
 
 local time = tick()
-local mt = getrawmetatable(game)
 local plr = game:GetService("Players").LocalPlayer
 local fishs = require(ReplicatedStorage.modules.library.fish)
 local function Check_Cage()
@@ -827,18 +836,17 @@ KRNLONAIR.Name = "KRNLONAIR"
 KRNLONAIR.MaxForce = Vector3.new(100000,100000,100000)
 KRNLONAIR.Velocity = Vector3.new(0,0,0)
 local function Shake(obj)
-    if obj:FindFirstChild("UICorner") then
-        obj["UICorner"]:Destroy()
-    end
-    obj.BackgroundTransparency = 1
-    obj.ImageTransparency = 1
-    if obj:FindFirstChild("title") then
-        obj:FindFirstChild("title"):Destroy()
-    end
-    
     local UIScale = obj:FindFirstChild("UIScale") or  Instance.new("UIScale",obj)
     UIScale.Scale = 1000
     repeat task.wait()
+        if obj:FindFirstChild("UICorner") then
+            obj["UICorner"]:Destroy()
+        end
+        obj.BackgroundTransparency = 1
+        obj.ImageTransparency = 1
+        if obj:FindFirstChild("title") then
+            obj:FindFirstChild("title"):Destroy()
+        end
         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
@@ -1831,14 +1839,22 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                 print("AUTO FARM")
                 if tick() >= time then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
-                        local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
-                        prompt.deny.AnchorPoint = Vector2.new(.5,.5)
-                        prompt.deny.Position = UDim2.fromScale(.5,.5)
-                        prompt.deny.Size = UDim2.fromScale(999,999)
+                        if prompt:FindFirstChild("deny") then
+                            local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                            prompt.deny.AnchorPoint = Vector2.new(.5,.5)
+                            prompt.deny.Position = UDim2.fromScale(.5,.5)
+                            prompt.deny.Size = UDim2.fromScale(999,999)
+                        else
+                            local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                            prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                            prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                            prompt.confirm.Size = UDim2.fromScale(999,999)
+                        end
                         task.wait(.2)
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                        print("???")
                     elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 then
                         plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
                         print("Teleport")
@@ -1846,19 +1862,25 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                         time = tick() + 1.75
                         game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
                         game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
+                        print("EquipTool")
                     elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                         time = tick() + 1.25
                         if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.cast:FireServer(100,1)
+                            print("Fished")
                         end
                     end
                 end
             end
         end)
+        if not val then
+            print("Auto Farm : ",err)
+        end
     end
 else
     for i,v in pairs(Settings["Bestiary"]) do
         Book(v)
     end
 end
+
