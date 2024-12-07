@@ -174,7 +174,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
+        ["Spot"] = "",
     },
     ["HMPIID"] = {
         ["Rod Quest"] = "", 
@@ -219,7 +219,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Forsaken Shores",
+        ["Spot"] = "Ancient IsIe",
     },
     ["trexefxtd"] = {
         ["Rod Quest"] = "", 
@@ -400,6 +400,15 @@ _G.User = {
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
+    },
+    ["Eig_Q2009"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Spot"] = "Forsaken Shores",
     },
 }
 
