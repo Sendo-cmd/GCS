@@ -1953,6 +1953,50 @@ _G.User = {
             "Ancient Fragment",
         }
     },
+    ["M_Darknesss"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Spot"] = "Ancient IsIe",
+        ["Fav"] = {
+            "Amethyst",
+            "Ruby",
+            "Opal",
+            "Lapis Lazuli",
+            "Moonstone",
+            "Driftwood",
+            "Wood",
+            "Magic Thread",
+            "Ancient Thread",
+            "Lunar Thread",
+            "Golden Sea Pearl",
+            "Meg's Fang",
+            "Meg's Spine",
+            "Magic Thread",
+            "Ancient Thread",
+            "Lunar Thread",
+            "Aurora Totem",
+            "Eclipse Totem",
+            "Meteor Totem",
+            "Smokescreen Totem",
+            "Sundial Totem",
+            "Tempest Totem",
+            "Windset Totem",
+            "Nessie",
+            "Megalodon",
+            "Ancient Depth Serpent",
+            "Ancient Megalodon",
+            "Molten Banshee",
+            "The Depths Key",
+            "Deep Sea Fragment",
+            "Solar Fragment",
+            "Earth Fragment",
+            "Ancient Fragment",
+        }
+    },
 }
 
 if VariableIndex == nil then
@@ -2500,25 +2544,32 @@ local function PromptN(obj)
     game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
     game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
 end
-local backpack = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack
-backpack.inventory.scroll.safezone.ChildAdded:Connect(function(v)
-    if v:IsA("ImageButton") then
-       v:WaitForChild("favourited") 
-       v:WaitForChild("tool")
-       if v["favourited"].Visible == false and table.find(Settings["Fav"],v["tool"].Value.Name) then
-        backpack["events"].favourite:FireServer(v.tool.Value)
-    end
-    end
-end)
-for i,v in pairs(backpack.inventory.scroll.safezone:GetChildren()) do
-    if v:IsA("ImageButton") then
-        v:WaitForChild("favourited")
-        v:WaitForChild("tool")
-        if v["favourited"].Visible == false and table.find(Settings["Fav"],v["tool"].Value.Name) then
+spawn(function()
+    local backpack = game:GetService("Players").LocalPlayer.PlayerGui.hud:WaitForChild("safezone"):WaitForChild("backpack")
+    backpack:WaitForChild("inventory")
+    backpack.inventory:WaitForChild("scroll")
+    backpack.inventory.scroll:WaitForChild("safezone")
+
+    backpack.inventory.scroll.safezone.ChildAdded:Connect(function(v)
+        if v:IsA("ImageButton") then
+           v:WaitForChild("favourited") 
+           v:WaitForChild("tool")
+           if v["favourited"].Visible == false and table.find(Settings["Fav"],v["tool"].Value.Name) then
             backpack["events"].favourite:FireServer(v.tool.Value)
         end
+        end
+    end)
+    for i,v in pairs(backpack.inventory.scroll.safezone:GetChildren()) do
+        if v:IsA("ImageButton") then
+            v:WaitForChild("favourited")
+            v:WaitForChild("tool")
+            if v["favourited"].Visible == false and table.find(Settings["Fav"],v["tool"].Value.Name) then
+                backpack["events"].favourite:FireServer(v.tool.Value)
+            end
+        end
     end
-end
+end)
+
 if #Settings["Rod"] > 4 then
     game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("equiprod"):FireServer(Settings["Rod"])
 end
@@ -3502,3 +3553,4 @@ else
         Book(v)
     end
 end
+
