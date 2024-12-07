@@ -57,7 +57,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
+        ["Spot"] = "Roslit Bay",
     },
 	["Himura_150266"] = {
         ["Rod Quest"] = "", 
@@ -392,6 +392,15 @@ _G.User = {
         ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
     },
+    ["xdyrdgyrdfg"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Spot"] = "Ancient IsIe",
+    },
     ["Eig_Q2009"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
@@ -400,15 +409,6 @@ _G.User = {
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "Forsaken Shores",
-    },
-    ["Xdyrdgyrdfg"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
     },
 }
 
