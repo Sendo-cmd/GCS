@@ -320,15 +320,6 @@ _G.User = {
         ["Auto Eclipse"] = false,
         ["Spot"] = "The Depths",
     },
-    ["thanakorn_9993"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "The Depths",
-    },
     ["cocohub_I"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
@@ -396,7 +387,7 @@ _G.User = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
+        ["WorldEvent"] = true,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
@@ -409,6 +400,15 @@ _G.User = {
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "Forsaken Shores",
+    },
+    ["Xdyrdgyrdfg"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Spot"] = "Ancient IsIe",
     },
 }
 
