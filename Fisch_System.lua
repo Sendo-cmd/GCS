@@ -57,6 +57,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
+        ["Auto Sell"] = false,
         ["Spot"] = "Roslit Bay",
     },
 	["Himura_150266"] = {
