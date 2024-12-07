@@ -352,11 +352,6 @@ Accounts = {
         "AutoBuyR",
         "RIgris",
     },
-    ["xdyrdgyrdfg"] = {
-        "Log",
-        "Marco",
-        "ESSE",
-    },
     ["djgodzz55"] = {
         "Log",
         "Marco",
