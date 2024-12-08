@@ -2241,6 +2241,16 @@ local BYfArt = function(Variable,Status,Starting)
     return false 
 end
 
+
+
+
+
+
+
+
+
+
+
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
@@ -3053,6 +3063,7 @@ local function Book(fish,justfarm)
                 return Config["Spot"]
             else  
                 local Isonade = Config["Function"]()
+                print(Isonade)
                 return Isonade and Isonade.CFrame * CFrame.new(0,60,25) or Configs["Spot"]["Money"] 
             end
         else
@@ -3094,6 +3105,9 @@ local function Book(fish,justfarm)
             end
         end)
     end
+    
+
+    
   
     plr.Character.HumanoidRootPart.CFrame = Config["Spot"]
     local tick1 = tick() + 5
@@ -3349,7 +3363,7 @@ if Settings["Rod Quest"] == "Rod Of The Depth" then
         return "None"
     end
     local function GetItemFromGUI(obj)
-        for i,v in pairs(plr.PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:GetChildren()) do
+        for i,v in pairs(plr.PlayerGui.hud.safezone.backpack.inventory.scroll:GetChildren()) do
            if v:IsA("ImageButton") and v:FindFirstChild("item") and v.item.Value == obj then
                 for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
                     for i1,v1 in pairs(getconnections(v[v2])) do
