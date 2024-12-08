@@ -333,6 +333,7 @@ _G.User = {
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
+        ["Rod"] = "Rod Of The Depth",
         ["Fav"] = {
             "Amethyst",
             "Ruby",
