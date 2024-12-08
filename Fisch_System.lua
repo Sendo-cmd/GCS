@@ -2241,16 +2241,6 @@ local BYfArt = function(Variable,Status,Starting)
     return false 
 end
 
-
-
-
-
-
-
-
-
-
-
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
@@ -2727,9 +2717,7 @@ spawn(function()
     local backpack = game:GetService("Players").LocalPlayer.PlayerGui.hud:WaitForChild("safezone"):WaitForChild("backpack")
     backpack:WaitForChild("inventory")
     backpack.inventory:WaitForChild("scroll")
-    backpack.inventory.scroll:WaitForChild("safezone")
-
-    backpack.inventory.scroll.safezone.ChildAdded:Connect(function(v)
+    backpack.inventory.scroll.ChildAdded:Connect(function(v)
         if v:IsA("ImageButton") then
            v:WaitForChild("favourited") 
            v:WaitForChild("tool")
@@ -2738,7 +2726,7 @@ spawn(function()
         end
         end
     end)
-    for i,v in pairs(backpack.inventory.scroll.safezone:GetChildren()) do
+    for i,v in pairs(backpack.inventory.scroll:GetChildren()) do
         if v:IsA("ImageButton") then
             v:WaitForChild("favourited")
             v:WaitForChild("tool")
@@ -2823,7 +2811,7 @@ spawn(function()
     while true do task.wait()
         local val,err = pcall(function()
             if game:GetService("ReplicatedStorage").world.cycle.Value == "Day" and not game:GetService("ReplicatedStorage").world.weather.Value:match("Eclipse") then
-                local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:FindFirstChild("Eclipse Totem")
+                local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll:FindFirstChild("Eclipse Totem")
                 if Totem then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
                         local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
@@ -2887,7 +2875,7 @@ spawn(function()
     while true do task.wait()
         local val,err = pcall(function()
             if game:GetService("ReplicatedStorage").world.cycle.Value == "Night" and not game:GetService("ReplicatedStorage").world.weather.Value:match("Aurora")then
-                local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:FindFirstChild("Aurora Totem")
+                local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll:FindFirstChild("Aurora Totem")
                 if Totem then
                     print("Found Totem")
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
@@ -3106,9 +3094,6 @@ local function Book(fish,justfarm)
             end
         end)
     end
-    
-
-    
   
     plr.Character.HumanoidRootPart.CFrame = Config["Spot"]
     local tick1 = tick() + 5
