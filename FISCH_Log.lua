@@ -24,7 +24,7 @@ while loading and loading.Enabled do task.wait()
 end 
 print("loading")
 repeat task.wait() until game:GetService("Players").LocalPlayer:FindFirstChild("assetsloaded") and game:GetService("Players").LocalPlayer.assetsloaded.Value
-print("Log Update")
+print("assetsloaded")
 local Settings = {
     ["Cooldown"] = 240,
     ["Item List"] = {
@@ -94,7 +94,7 @@ spawn(function ()
                     if not FishCahce[ID] then
                         FishCahce[ID] = 0
                     end
-                    FishCahce[ID] = FishCahce[v.Value] + v.Stack.Value
+                    FishCahce[ID] = FishCahce[ID] + v.Stack.Value
                 else
                     FishCahce[ID] = 1
                 end
@@ -103,7 +103,7 @@ spawn(function ()
                 table.insert(Rod_All,v.Name)
             end
             Index = 0
-            local tick1 = tick() + math.random(1,40)
+            local tick1 = tick() + math.random(1,10)
             repeat task.wait() until tick() >= tick1
        
             local response = request({
