@@ -2241,6 +2241,16 @@ local BYfArt = function(Variable,Status,Starting)
     return false 
 end
 
+
+
+
+
+
+
+
+
+
+
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
@@ -2879,6 +2889,7 @@ spawn(function()
             if game:GetService("ReplicatedStorage").world.cycle.Value == "Night" and not game:GetService("ReplicatedStorage").world.weather.Value:match("Aurora")then
                 local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll.safezone:FindFirstChild("Aurora Totem")
                 if Totem then
+                    print("Found Totem")
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
                         local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
                         prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
@@ -2900,6 +2911,7 @@ spawn(function()
                     end
                 else
                     if playerstats.Stats.coins.Value >= 500000 then
+                        print("Buying Totem")
                         BYfArt("Auto Totem 1","Post",true)
                         if BYfArt("Auto Totem 1","Get") and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                             if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Aurora Totem"].Position).Magnitude >= 5  then
@@ -2939,12 +2951,7 @@ spawn(function()
     local tick1 = tick() + 15
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     local function LuckyC()
-        for i,v in pairs(plr.PlayerGui.hud.safezone.statuses:GetChildren()) do
-            if v:IsA("Frame") and v.icon.Image == "rbxassetid://18198637843" then
-                return true
-            end
-        end
-        return false
+        return playerstats.Stats.status_luck.Value > 0
     end
     while true do task.wait()
         local val,err = pcall(function()
@@ -3673,10 +3680,8 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
     while true do task.wait()
         local var,err = pcall(function()
             if plr.Character and BYfArt("Auto Fish","Get") then
-                print("AUTO FARM")
                 if tick() >= time then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
-                        print("???")
                         local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
                         if prompt:FindFirstChild("deny") then
                           
@@ -3696,16 +3701,13 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                        
                     elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 then
                         plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
-                        print("Teleport")
                     elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
                         time = tick() + 1.75
                         game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
                         game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
-                        print("EquipTool")
                     elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
                         time = tick() + 1.25
                         if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                            print("Fished")
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
                             plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.cast:FireServer(100,1)
                         end
@@ -3722,4 +3724,3 @@ else
         Book(v)
     end
 end
-
