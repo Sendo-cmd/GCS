@@ -346,7 +346,7 @@ _G.User = {
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "Rod Of The Depth",
+        ["Rod"] = "Rod Of The Depths",
         ["Fav"] = {
             "Amethyst",
             "Ruby",
@@ -787,6 +787,7 @@ _G.User = {
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "",
+        ["Rod"] = "Rod of The Depths",
         ["Fav"] = {
             "Amethyst",
             "Ruby",
