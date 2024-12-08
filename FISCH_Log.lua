@@ -26,7 +26,7 @@ print("loading")
 repeat task.wait() until game:GetService("Players").LocalPlayer:FindFirstChild("assetsloaded") and game:GetService("Players").LocalPlayer.assetsloaded.Value
 print("assetsloaded")
 local Settings = {
-    ["Cooldown"] = 180,
+    ["Cooldown"] = 240,
     ["Item List"] = {
         "Amethyst",
         "Ruby",
