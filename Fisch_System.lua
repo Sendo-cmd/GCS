@@ -5,6 +5,19 @@ Vertigo
 The Depths
 Brine Pool
 Desolate Deep
+Roslit Volcano
+Mushgrove Swamp
+Earmark Island
+Terrapin Island
+The Arch
+Statue of Sovereignty
+Roslit Bay
+Snowcap Island
+MooseWood
+The Sunstone
+Forsaken Shores
+The Depths
+Ancient IsIe
 ]]
 
 -- Rod
