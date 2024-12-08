@@ -2949,7 +2949,7 @@ spawn(function()
     local tick1 = tick() + 15
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     local function LuckyC()
-        return playerstats.Stats.status_luck.Value > 0
+        return playerstats.Stats:FindFirstChild("status_luck")
     end
     while true do task.wait()
         local val,err = pcall(function()
