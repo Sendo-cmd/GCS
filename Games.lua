@@ -254,6 +254,10 @@ Accounts = {
         "Log",
         "System",
     },
+    ["TAEEXZENFIREGE"] = {
+        "Log",
+        "System",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
