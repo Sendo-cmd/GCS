@@ -2259,21 +2259,20 @@ if VariableTable == nil then
         ["Auto Fish"] = 8,
     }
 end 
-
+local Ax64x = function(args)
+    for i,v in pairs(VariableTable) do
+        if v == args and VariableIndex[i] == true then
+            return true
+        end
+    end
+    return false
+end
 local BYfArt = function(Variable,Status,Starting)
     local GetFirstTable = nil
     for i,v in pairs(VariableTable) do
         if v == 1 then
             GetFirstTable = i
         end
-    end
-    local Ax64x = function(args)
-        for i,v in pairs(VariableTable) do
-            if v == args and VariableIndex[i] == true then
-                return true
-            end
-        end
-        return false
     end
     if Status == "Get" then
 		if Variable == GetFirstTable and VariableIndex[Variable] then
@@ -2284,6 +2283,7 @@ local BYfArt = function(Variable,Status,Starting)
         end 
         for i = 1,VariableTable[Variable] - 1 do task.wait()
             if Ax64x(i) == true then
+                print(VariableTable[i])
                 return false
             end
         end
@@ -2479,12 +2479,12 @@ local Configs = {
             [43] = CFrame.new(-98.34042358398438, -731.931640625, 1266.2940673828125, 0.999908447265625, 0, 0.01353495940566063, -0, 1.0000001192092896, -0, -0.01353495940566063, 0, 0.999908447265625),
         },
     },
-    ["Keepers Altar"] = {
+    ["Template"] = {
         ["Type"] = "Normal",
         ["Cage Spot"] = false,
         ["Ignore"] = {},
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(1397.0293, -819.290466, -89.863205, 0.901586592, -3.90097687e-09, -0.432598621, 1.40033796e-09, 1, -6.09907369e-09, 0.432598621, 4.89305885e-09, 0.901586592),
+        ["Spot"] = CFrame.new(),
         ["Cage"] = {
         },
     },
@@ -2790,6 +2790,7 @@ spawn(function()
         if v:IsA("ImageButton") then
            v:WaitForChild("favourited") 
            v:WaitForChild("tool")
+           repeat task.wait() until v.tool.Value
            if v["favourited"].Visible == false and table.find(Settings["Fav"],v["tool"].Value.Name) then
             backpack["events"].favourite:FireServer(v.tool.Value)
         end
@@ -2799,6 +2800,7 @@ spawn(function()
         if v:IsA("ImageButton") then
             v:WaitForChild("favourited")
             v:WaitForChild("tool")
+            repeat task.wait() until v.tool.Value
             if v["favourited"].Visible == false and table.find(Settings["Fav"],v["tool"].Value.Name) then
                 backpack["events"].favourite:FireServer(v.tool.Value)
             end
@@ -3149,6 +3151,7 @@ local function Book(fish,justfarm)
         end)
         for i,v in pairs(playerstats.Bestiary:GetChildren()) do
             if table.find(total,v.Name) then
+                print(IsStage())
                 table.insert(cur_,v.Name)
                 IsStage()
                 Position = IsPosition()
@@ -3157,6 +3160,7 @@ local function Book(fish,justfarm)
         end
         connect3 = playerstats.Bestiary.ChildAdded:Connect(function(v)
             if table.find(total,v.Name) and not table.find(cur_,v.Name) then
+                print(IsStage())
                 table.insert(cur_,v.Name)
                 IsStage()
                 Position = IsPosition()
@@ -3182,7 +3186,7 @@ local function Book(fish,justfarm)
             return 0 
         end
         while true do task.wait()
-            pcall(function()
+            local var,err = pcall(function()
                 if tick() >= Place then
                     if Check_Cage() < Config["Cage Limit"] and not Stage then
                         if GetCageVal() < Config["Cage Limit"] then
@@ -3312,6 +3316,9 @@ local function Book(fish,justfarm)
                     BYfArt("Auto Crab","Post",false)
                 end
             end)
+            if not var then
+                print("Crab ",err)
+            end
         end
     end)
     BYfArt("Auto Fish","Post",true)
@@ -3320,7 +3327,7 @@ local function Book(fish,justfarm)
         if justfarm and StopFarm_[justfarm] then
             cur_ = {"1","2","3"}
         end
-        pcall(function()
+        local var,err = pcall(function()
             if plr.Character and BYfArt("Auto Fish","Get")then
                 if tick() >= time then
                     -- time = tick() + .5
@@ -3354,6 +3361,9 @@ local function Book(fish,justfarm)
                 end
             end
         end)
+        if not var then
+            print("Booking ",err)
+        end
     end
     if connect3 then
         connect3:Disconnect()
