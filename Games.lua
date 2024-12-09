@@ -250,6 +250,10 @@ Accounts = {
         "Log",
         "System",
     },
+    ["CAVIARHUB"] = {
+        "Log",
+        "System",
+    },
     ["GCshop2"] = {
         "Log",
         "Marco",
