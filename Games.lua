@@ -41,6 +41,7 @@ Games = {
         ["DungBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase.lua",
         ["DungIgros"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase2.lua",
         ["DungIgros2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase3.lua",
+        ["DioBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dio_Base.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -261,7 +262,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "Marco",
-        "DungBase",
+        "DioBase",
     },
     ["spiltduc9241"] = {
         "Log",
