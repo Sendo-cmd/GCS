@@ -510,7 +510,7 @@ Accounts = {
     ["narutoez441"] = {
         "Log",
         "Marco",
-        "DungBase",
+        "DioBase",
     },
     ["sukuna016ll"] = {
         "Log",
