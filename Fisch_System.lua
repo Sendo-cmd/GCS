@@ -478,7 +478,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Brine Pool",
+        ["Spot"] = "Ancient IsIe",
         ["Fav"] = {
             "Amethyst",
             "Ruby",
