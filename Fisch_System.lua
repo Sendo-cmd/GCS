@@ -604,7 +604,7 @@ _G.User = {
         }
     },
 	["didbdknend"] = {
-        ["Rod Quest"] = "", 
+        ["Rod Quest"] = "Rod Of The Depth", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
