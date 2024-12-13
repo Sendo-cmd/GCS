@@ -196,6 +196,10 @@ Accounts = {
         "Log",
         "System",
     },
+    ["Birdyyy2011"] = {
+        "Log",
+        "System",
+    },
     ["thanakorn_9993"] = {
         "Log",
         "System",
