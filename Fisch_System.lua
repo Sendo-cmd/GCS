@@ -2416,7 +2416,7 @@ _G.User = {
             "Ancient Fragment",
         }
     },
-    ["good16716"] = {
+    ["oiotumoio123"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
