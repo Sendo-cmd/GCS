@@ -351,6 +351,11 @@ Accounts = {
         "Marco",
         "BaseGemInf",
     },
+    ["Zacherycttp"] = {
+        "Log",
+        "Marco",
+        "DungBase",
+    },
     ["XDGGZTheGod"] = {
         "Log",
         "Marco",
