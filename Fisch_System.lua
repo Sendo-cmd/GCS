@@ -18,6 +18,7 @@ The Sunstone
 Forsaken Shores
 The Depths
 Ancient IsIe
+Winter Villager
 ]]
 
 -- Rod
@@ -1752,7 +1753,7 @@ _G.User = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
+        ["WorldEvent"] = true,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Spot"] = "Ancient IsIe",
@@ -2152,7 +2153,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "The Depths",
+        ["Spot"] = "Winter Villager",
         ["Rod"] = "",
         ["Fav"] = {
             "Amethyst",
@@ -2694,12 +2695,12 @@ local Configs = {
             [43] = CFrame.new(-98.34042358398438, -731.931640625, 1266.2940673828125, 0.999908447265625, 0, 0.01353495940566063, -0, 1.0000001192092896, -0, -0.01353495940566063, 0, 0.999908447265625),
         },
     },
-    ["Template"] = {
+    ["Winter Villager"] = {
         ["Type"] = "Normal",
         ["Cage Spot"] = false,
         ["Ignore"] = {},
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(),
+        ["Spot"] = CFrame.new(-4.45510769, 265.726746, -9888.03418, 0.0872758627, 0.970722973, 0.223785296, 0.220643312, -0.237899587, 0.945896566, 0.971441925, -0.0331772082, -0.234946415),
         ["Cage"] = {
         },
     },
