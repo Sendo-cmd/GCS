@@ -2153,7 +2153,7 @@ _G.User = {
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Winter Villager",
+        ["Spot"] = "Ancient IsIe",
         ["Rod"] = "",
         ["Fav"] = {
             "Amethyst",
