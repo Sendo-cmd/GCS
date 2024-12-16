@@ -91,7 +91,7 @@ getgenv().Config = {
 				["Money Surge"] = 0
 			},
 			["Amount"] = {
-				["Strong"] = 6,
+				["Strong"] = 2,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
 				["Precise Attack"] = 0,
