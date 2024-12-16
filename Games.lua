@@ -277,7 +277,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "Marco",
-        "DioBase",
+        "DungBase",
     },
     ["spiltduc9241"] = {
         "Log",
