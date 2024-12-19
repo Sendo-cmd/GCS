@@ -18,7 +18,6 @@ The Sunstone
 Forsaken Shores
 The Depths
 Ancient IsIe
-Winter Villager
 ]]
 
 -- Rod
@@ -26,2874 +25,124 @@ Winter Villager
 Aurora
 Trident Rod
 Rod Of The Depth
+Resourceful Rod
+Rod Of The Forgotten Fang
+Krampus's Rod
+Precision Rod
+Celestial Rod
+The Lost Rod
+Voyager Rod
+Seasons Rod
+Rod Of The Eternal King
+Riptide Rod
+Wisdom Rod
 ]]
 _G.User = {
     ["SKYLOLANDBABY"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
+        ["WorldEvent"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Auto Totem Meteor"] = false,
+        ["Spot"] = "EXP",
+        ["Recipe"] = {"Voyager Rod"},
+        ["Rod"] = "",
+    },
+    ["PAShop53539"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = true,
         ["WorldEvent"] = true,
-        ["Auto Aurora"] = true,
-        ["Auto Eclipse"] = true,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
         ["Spot"] = "The Depths",
-        ["Rod"] = "Rod Of The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
+        ["Rod"] = "",
+        
     },
     ["SHIFUGOD"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = true,
+        ["Auto Treasure"] = false,
         ["Auto Aurora"] = true,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
+        ["Auto Totem Meteor"] = true,
+        ["Spot"] = "EXP",
+        ["Recipe"] = {
+            "Krampus's Rod",
+            "Precision Rod",
+            "Celestial Rod",
+            "The Lost Rod",
+            "Voyager Rod",
+            "Seasons Rod",
+            "Rod Of The Eternal King",
+            "Riptide Rod",
+            "Wisdom Rod"
+        },
+        ["Rod"] = "Rod Of The Forgotten Fang",
     },
     ["Champandbank147"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = true,
         ["WorldEvent"] = true,
+        ["Auto Treasure"] = false,
         ["Auto Aurora"] = true,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-        
+        ["Auto Totem Meteor"] = true,
+        ["Spot"] = "EXP",
+        ["Recipe"] = {
+            "Rod Of The Forgotten Fang",
+            "Krampus's Rod",
+            "Precision Rod",
+            "Celestial Rod",
+            "The Lost Rod",
+            "Voyager Rod",
+            "Seasons Rod",
+            "Rod Of The Eternal King",
+            "Riptide Rod",
+            "Wisdom Rod"
+        },
+        ["Rod"] = "Rod Of The Forgotten Fang",
     },
-    ["mooqill_945775"] = {
+    ["good16716"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
+        ["Auto Totem Meteor"] = false,
+        ["Spot"] = "EXP",
+        ["Recipe"] = {"Wisdom Rod"},
+        ["Rod"] = "Wisdom Rod",
     },
-	["CGGGG098L"] = {
+    ["good16716"] = {
         ["Rod Quest"] = "", 
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
-        ["Auto Sell"] = false,
-        ["Spot"] = "Roslit Bay",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["Himura_150266"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["ivysosad7"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["qpsSXxqp"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = true,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "Rod Of The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["RockMeepBats"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["KunaiZLeaf"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = true,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["Noslots56"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["supakitdunk"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["nine639085"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-	["didbdknend"] = {
-        ["Rod Quest"] = "Rod Of The Depth", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["KKUBB_ggg"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Forsaken Shores",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["uyjtyyytyuuurrhy"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Forsaken Shores",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["guide552"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["tungtung0wo"] = {
-        ["Rod Quest"] = "Rod Of The Depth", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = true,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "",
-        ["Rod"] = "Rod of The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["HMPIID"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["UioUK16"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Newbiethreepoint00"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["peppertvzas3"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["RiceBing"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["trexefxtd"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Winter Villager",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Deawzar55"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["The_fakemanReturn"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["opoppoky"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Forsaken Shores",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["SQR019"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["qeKcaVheSiJ"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Bestganeryoutube"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["JoonJaaneiei"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["D_Dk05"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = true,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["maanoynarak"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["thanakorn_9993"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["cocohub_I"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["iu0073zx"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Ulian70829"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Forsaken Shores",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["JJKungll"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["bombayzaza1234"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["PieRoseApple"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = true,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Blackno01"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["MatelGearTT"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = true,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["xdyrdgyrdfg"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Eig_Q2009"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Forsaken Shores",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["M_Darknesss"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["maser080"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["mixkung31"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = true,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "The Depths",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["meak4826"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = true,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "Rod Of The Depth",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Chophee019"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["CAVIARHUB"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["TAEEXZENFIREGE"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Birdyyy2011"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Birdyyy2011"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["BirdyBell11"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["oiotumoio123"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Gifigo_59397"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["Yeuueudjdj5"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Winter Villager",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
-    },
-    ["GCshopfour"] = {
-        ["Rod Quest"] = "", 
-        ["Bestiary"] = {},
-        ["Auto Buy Luck"] = false,
-        ["WorldEvent"] = false,
-        ["Auto Aurora"] = false,
-        ["Auto Eclipse"] = false,
-        ["Spot"] = "Ancient IsIe",
-        ["Rod"] = "",
-        ["Fav"] = {
-            "Amethyst",
-            "Ruby",
-            "Opal",
-            "Lapis Lazuli",
-            "Moonstone",
-            "Driftwood",
-            "Wood",
-            "Void Wood",
-            "Ancient Wood",
-            "Moon Wood",
-            "Inferno Wood",
-            "Icicle",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Golden Sea Pearl",
-            "Meg's Fang",
-            "Meg's Spine",
-            "Magic Thread",
-            "Ancient Thread",
-            "Lunar Thread",
-            "Aurora Totem",
-            "Eclipse Totem",
-            "Meteor Totem",
-            "Smokescreen Totem",
-            "Sundial Totem",
-            "Tempest Totem",
-            "Windset Totem",
-            "Nessie",
-            "Megalodon",
-            "Ancient Depth Serpent",
-            "Ancient Megalodon",
-            "Molten Banshee",
-            "The Depths Key",
-            "Deep Sea Fragment",
-            "Solar Fragment",
-            "Earth Fragment",
-            "Ancient Fragment",
-        }
+        ["Auto Totem Meteor"] = false,
+        ["Spot"] = "EXP",
+        ["Recipe"] = {"Wisdom Rod"},
+        ["Rod"] = "Wisdom Rod",
     },
 }
 
 if VariableIndex == nil then
     VariableIndex = {
         ["Stop Things"]  = false,
+        ["Auto Meteor"] = false,
+        ["Auto Treasure"] = false,
 		["Auto Sell"] = false,
         ["Auto Totem 1"] = false,
         ["Auto Totem 2"] = false,
+        ["Auto Totem 3"] = false,
 		["Auto Buy Luck"] = false,
 		["Auto Crab"] = false,
         ["Auto Fish"] = false,
@@ -2902,14 +151,22 @@ end
 if VariableTable == nil then
     VariableTable = {
         ["Stop Things"] = 1,
-		["Auto Sell"] = 2,
-        ["Auto Totem 1"] = 3,
-        ["Auto Totem 2"] = 4,
-		["Auto Buy Luck"] = 5,
-		["Auto Crab"] = 7,
-        ["Auto Fish"] = 8,
+        ["Auto Meteor"] = 2,
+        ["Auto Treasure"] = 3,
+		["Auto Sell"] = 4,
+        ["Auto Totem 1"] = 5,
+        ["Auto Totem 2"] = 6,
+        ["Auto Totem 3"] = 7,
+		["Auto Buy Luck"] = 8,
+		["Auto Crab"] = 9,
+        ["Auto Fish"] = 10,
     }
 end 
+_G.Dump1 = function()
+    for i,v in pairs(VariableIndex) do
+        warn(i,v)
+    end
+end
 local Ax64x = function(args)
     for i,v in pairs(VariableTable) do
         if v == args and VariableIndex[i] == true then
@@ -2934,7 +191,7 @@ local BYfArt = function(Variable,Status,Starting)
         end 
         for i = 1,VariableTable[Variable] - 1 do task.wait()
             if Ax64x(i) == true then
-                print(VariableTable[i])
+                print("Index",VariableTable[i])
                 return false
             end
         end
@@ -2950,6 +207,16 @@ local BYfArt = function(Variable,Status,Starting)
     end
     return false 
 end
+
+
+
+
+
+
+
+
+
+
 
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
@@ -3021,13 +288,17 @@ settings().Rendering.QualityLevel = "Level01"
 
 local Settings = {
     ["Rod Quest"] = "", -- Aurora , Trident , Rod Of The Depth
+    ["Auto Totem Meteor"] = false,
+    ["Auto Meteor"] = true,
+    ["Auto Treasure"] = true,
     ["Bestiary"] = {},
+    ["Recipe"] = {},
     ["Method"] = "Instant", -- Hold , Instant
     ["WorldEvent"] = false,
     ["Auto Buy Luck"] = false,
     ["Auto Aurora"] = false,
     ["Auto Eclipse"] = false,
-    ["Fish Count"] = 20,
+    ["Fish Count"] = 25,
     ["Failed Every"] = 50,
     ["Auto Sell"] = true,
     ["Spot"] = "",
@@ -3040,6 +311,10 @@ local Settings = {
         "Moonstone",
         "Driftwood",
         "Wood",
+        "Ancient Wood",
+        "Void Wood",
+        "Inferno Wood",
+        "Moon Wood",
         "Magic Thread",
         "Ancient Thread",
         "Lunar Thread",
@@ -3056,14 +331,42 @@ local Settings = {
         "Sundial Totem",
         "Tempest Totem",
         "Windset Totem",
-    },
+        "Nessie",
+        "Megalodon",
+        "Ancient Depth Serpent",
+        "Ancient Megalodon",
+        "Molten Banshee",
+        "The Depths Key",
+        "Deep Sea Fragment",
+        "Solar Fragment",
+        "Earth Fragment",
+        "Ancient Fragment",
+    }
 }
+
 if _G.User[plr.Name] then
     for i,v in pairs(_G.User[plr.Name]) do
         Settings[i] = v
     end
 end
-
+-- local pos = {
+--     ["Drift Wood"] = CFrame.new(5859.06494, 104.494919, 412.9646, 0.501003683, -5.7265559e-05, 0.865445137, -1.65918436e-07, 1, 6.62649545e-05, -0.865445137, -3.33425814e-05, 0.501003683),
+--     ["Amethyst"] = CFrame.new(หาจาก Meteors),
+--     ["Ruby"] = CFrame.new(หาจาก Meteors),
+--     ["Opal"] = CFrame.new(หาจาก Meteors),
+--     ["Lapis Lazuli"] = CFrame.new(หาจาก Meteors),
+--     ["Moonstone"] = CFrame.new(หาจาก Meteors),
+--     ["Void Wood"] = CFrame.new(1423.28601, -837.145203, -139.561844, -0.732493877, -1.20579124e-09, -0.680773616, -1.44833631e-10, 1, -1.61537028e-09, 0.680773616, -1.08464993e-09, -0.732493877),
+--     ["Ancient Wood"] = CFrame.new(5793.5234375, 129.99000549316406, 397.7882385253906, 0.7848547101020813, 0, -0.6196799278259277, -0, 1.0000001192092896, -0, 0.6196799278259277, 0, 0.7848547101020813),
+--     ["Moon Wood"] = CFrame.new(2856.61206, 110.609444, 2627.62231, -0.966820002, -8.82622544e-07, 0.255458504, 2.90028055e-07, 1, 4.55270583e-06, -0.255458504, 4.47573757e-06, -0.966820002),
+--     ["Inferno Wood"] = CFrame.new(-1928.39136, 151.841339, 325.43335, 0.980352521, 1.31087319e-08, 0.197253615, -3.33541261e-09, 1, -4.98791977e-08, -0.197253615, 4.82412723e-08, 0.980352521),
+--     ["Magic Thread"] = CFrame.new(หาจาก Treasure Chests),
+--     ["Ancient Thread"] = CFrame.new(หาจาก Treasure Chests),
+--     ["Lunar Thread"] = CFrame.new(หาจาก Treasure Chests),
+--     ["Meg's Fang"] = CFrame.new(5859.06494, 104.494919, 412.9646, 0.501003683, -5.7265559e-05, 0.865445137, -1.65918436e-07, 1, 6.62649545e-05, -0.865445137, -3.33425814e-05, 0.501003683),
+--     ["Meg's Spine"] = CFrame.new(5859.06494, 104.494919, 412.9646, 0.501003683, -5.7265559e-05, 0.865445137, -1.65918436e-07, 1, 6.62649545e-05, -0.865445137, -3.33425814e-05, 0.501003683),
+--     ["Golden Sea Pearl"] = CFrame.new(-1526.93994, 112.73819, 592.267212, 0.999723256, 1.76769584e-06, -0.0235235505, -2.11808739e-07, 1, 6.61441663e-05, 0.0235235505, -6.61208833e-05, 0.999723256)
+--   }
 local Configs = {
     ["Vertigo"] = {
         ["Type"] = "Special",
@@ -3120,12 +423,12 @@ local Configs = {
             [43] = CFrame.new(-98.34042358398438, -731.931640625, 1266.2940673828125, 0.999908447265625, 0, 0.01353495940566063, -0, 1.0000001192092896, -0, -0.01353495940566063, 0, 0.999908447265625),
         },
     },
-    ["Winter Villager"] = {
+    ["Template"] = {
         ["Type"] = "Normal",
         ["Cage Spot"] = false,
         ["Ignore"] = {},
         ["Cage Limit"] = 5,
-        ["Spot"] = CFrame.new(-4.45510769, 265.726746, -9888.03418, 0.0872758627, 0.970722973, 0.223785296, 0.220643312, -0.237899587, 0.945896566, 0.971441925, -0.0331772082, -0.234946415),
+        ["Spot"] = CFrame.new(),
         ["Cage"] = {
         },
     },
@@ -3304,7 +607,15 @@ local Configs = {
         ["Cage"] = {
         },
     },
-    
+    ["EXP"] = {
+        ["Type"] = "Normal",
+        ["Ignore"] = {},
+        ["Cage Spot"] = false,
+        ["Cage Limit"] = 5,
+        ["Spot"] = CFrame.new(-2694.26294, 164.750031, 1730.9209, -0.996771753, -3.16393738e-08, -0.0802875459, -3.605507e-08, 1, 5.35488027e-08, 0.0802875459, 5.62707072e-08, -0.996771753),
+        ["Cage"] = {
+        },
+    },
     ["Spot"] = {
         ["Cage"] = CFrame.new(473.422729, 150.500015, 233.171906, 0.561099231, -4.96632468e-09, -0.827748537, 2.4843454e-09, 1, -4.31575531e-09, 0.827748537, 3.65153796e-10, 0.561099231),
         ["ReSize"] = CFrame.new(452.998932, 150.501007, 210.530563, 0.998719037, -6.43949605e-08, -0.0505997166, 6.92212652e-08, 1, 9.36296374e-08, 0.0505997166, -9.70122755e-08, 0.998719037),
@@ -3318,6 +629,9 @@ local Configs = {
         ["Trident Rod"] = CFrame.new(-1482.61572, -225.986481, -2199.30786, -0.840630472, 8.83173645e-10, 0.541609049, -1.92019201e-08, 1, -3.14339168e-08, -0.541609049, -3.68242432e-08, -0.840630472),
         ["Aurora Totem"] = CFrame.new(-1810.09314, -136.927933, -3283.2207, -0.709088683, 1.23167743e-08, 0.705119312, 1.67145675e-08, 1, -6.58985533e-10, -0.705119312, 1.13184848e-08, -0.709088683),
         ["Eclipse Totem"] = CFrame.new(5966.76074, 274.10849, 840.323547, 0.999997258, -7.34585548e-09, -0.00233200309, 7.34908845e-09, 1, 1.37769418e-09, 0.00233200309, -1.39482847e-09, 0.999997258),
+        ["Meteor Totem"] = CFrame.new(-1950.90283, 275.35675, 227.693359, -0.699127614, 3.69663198e-08, -0.714996874, -7.46495488e-09, 1, 5.90006408e-08, 0.714996874, 4.6586397e-08, -0.699127614),
+        ["Farm EXP"] = CFrame.new(-2694.26294, 164.750031, 1730.9209, -0.996771753, -3.16393738e-08, -0.0802875459, -3.605507e-08, 1, 5.35488027e-08, 0.0802875459, 5.62707072e-08, -0.996771753),
+        ["Re Map"] = CFrame.new(-2824.15796, 214.198303, 1520.13745, 0.582980812, 4.7547605e-08, 0.812485933, 1.09674474e-08, 1, -6.63905837e-08, -0.812485933, 4.76153339e-08, 0.582980812),
     }
 }
 coroutine.resume(coroutine.create(function()
@@ -3334,6 +648,7 @@ local StopFarm_ = {}
 local time = tick()
 local plr = game:GetService("Players").LocalPlayer
 local fishs = require(ReplicatedStorage.modules.library.fish)
+local recipes = require(ReplicatedStorage.modules.library.recipes)
 local function Check_Cage()
     local total = 0 
     for i,v in pairs(workspace.active.crabcages:GetChildren()) do
@@ -3423,6 +738,17 @@ local function PromptN(obj)
     game:service('VirtualInputManager'):SendKeyEvent(true, "E", false, game)
     game:service('VirtualInputManager'):SendKeyEvent(false, "E", false, game)
 end
+local function IsFishing()
+    local IsRod = plr.Character:FindFirstChildWhichIsA("Tool")
+    local bobber = nil
+    if IsRod and IsRod:FindFirstChild("values") then
+        bobber = IsRod:FindFirstChild("bobber")
+    end
+
+    repeat task.wait()
+        bobber = IsRod and IsRod:FindFirstChild("bobber")
+    until not IsRod or (not bobber and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel")) 
+end
 spawn(function()
     local backpack = game:GetService("Players").LocalPlayer.PlayerGui.hud:WaitForChild("safezone"):WaitForChild("backpack")
     backpack:WaitForChild("inventory")
@@ -3460,13 +786,7 @@ spawn(function()
             if FishCount >= Settings["Fish Count"] then
                 BYfArt("Auto Sell","Post",true)
                 if BYfArt("Auto Sell","Get") then
-                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                        return
-                    end
-                    task.wait(.3)
-                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                        return
-                    end 
+                    IsFishing()
                     if workspace.world.npcs:FindFirstChild("Marc Merchant") then
                         
                     else
@@ -3494,7 +814,7 @@ spawn(function()
                                         local Sell = workspace.world.npcs:FindFirstChild("Marc Merchant"):FindFirstChild("sellall",true)
                                         Sell:InvokeServer()
                                     end)
-                                    print("IN")
+                                    
                                     tick2 = tick() + .2
                                 end
                             until tick() >= tick1
@@ -3535,14 +855,19 @@ spawn(function()
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
                     end
-                    workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Vector3.new(0,500,0))
-                    game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
-                        Totem.tool.Value
-                    )
-                    for i = 1,3 do task.wait()
+                    if not plr.Character:FindFirstChild("Eclipse Totem") then
+                        local tloading = tick() + 1
+                        game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
+                            Totem.tool.Value
+                        )
+                        repeat task.wait() until plr.Character:FindFirstChild("Eclipse Totem") or tick() >= tloading
+                    else
+                        local tloading = tick() + .2
+                        workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Vector3.new(0,500,0))
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                        repeat task.wait() until tick() >= tloading
                     end
                 else
                     if playerstats.Stats.coins.Value >= 250000 then
@@ -3601,13 +926,19 @@ spawn(function()
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
                     end
                     workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Vector3.new(0,500,0))
-                    game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
-                        Totem.tool.Value
-                    )
-                    for i = 1,3 do task.wait()
+                    if not plr.Character:FindFirstChild("Aurora Totem") then
+                        local tloading = tick() + 1
+                        game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
+                            Totem.tool.Value
+                        )
+                        repeat task.wait() until plr.Character:FindFirstChild("Aurora Totem") or tick() >= tloading
+                    else
+                        local tloading = tick() + .2
+                        workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Vector3.new(0,500,0))
                         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
                         VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                        repeat task.wait() until tick() >= tloading
                     end
                 else
                     if playerstats.Stats.coins.Value >= 500000 then
@@ -3647,6 +978,75 @@ spawn(function()
     end
 end)
 spawn(function()
+    if not Settings["Auto Totem Meteor"] then return end
+    local playerstats = ReplicatedStorage["playerstats"][plr.Name]
+    while true do task.wait()
+        local val,err = pcall(function()
+            if not game:GetService("ReplicatedStorage").world.meteor_active.Value then
+                local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll:FindFirstChild("Meteor Totem")
+                if Totem then
+                    if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                        local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                        prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                        prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                        prompt.confirm.Size = UDim2.fromScale(999,999)
+                        task.wait(.2)
+                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                    end
+                    if not plr.Character:FindFirstChild("Meteor Totem") then
+                        local tloading = tick() + 1
+                        game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.events.equip:FireServer(
+                            Totem.tool.Value
+                        )
+                        repeat task.wait() until plr.Character:FindFirstChild("Meteor Totem") or tick() >= tloading
+                    else
+                        local tloading = tick() + .2
+                        workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,Vector3.new(0,500,0))
+                        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                        repeat task.wait() until tick() >= tloading
+                    end
+                else
+                    if playerstats.Stats.coins.Value >= 75000 then
+                        print("Buying Totem")
+                        BYfArt("Auto Totem 3","Post",true)
+                        if BYfArt("Auto Totem 3","Get") and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                            if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Meteor Totem"].Position).Magnitude >= 5  then
+                                plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Meteor Totem"]
+                            else
+                                local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                                if not prompt then
+                                    PromptN(workspace.world.interactables["Meteor Totem"])
+                                else
+                                    prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                                    prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                                    prompt.confirm.Size = UDim2.fromScale(999,999)
+    
+                                    task.wait(.2)
+                                    local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                                    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                                    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                                end
+                            end
+                        end
+                    else
+                        BYfArt("Auto Totem 3","Post",false)
+                    end
+                end
+            else
+                BYfArt("Auto Totem 3","Post",false)
+            end
+            -- game:GetService("ReplicatedStorage").world.weather
+        end)
+        if not val then
+            print("Aurora : ",err)
+        end
+    end
+end)
+spawn(function()
     if not Settings["Auto Buy Luck"] then return end
     local tick1 = tick() + 15
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
@@ -3658,24 +1058,19 @@ spawn(function()
             if tick1 >= tick() then return end
             if not LuckyC() and playerstats.Stats.coins.Value >= 5000 then
                 BYfArt("Auto Buy Luck","Post",true)
-
+                IsFishing()
                 if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["Merlin"]) >= 10 then
                     plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Merlin"]
                 else
-                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                        return
-                    end
-                    task.wait(.3)
-                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                        return
-                    end 
                     if workspace.world.npcs:FindFirstChild("Merlin") then
                         TalkNpc("Merlin")
-                        spawn(function()
-                            pcall(function()
+                        
+                        delay(.0001,function()
+                            if not playerstats.Stats:FindFirstChild("status_luck") then
                                 workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Merlin"):WaitForChild("Merlin"):WaitForChild("luck"):InvokeServer()
-                            end)
+                            end
                         end)
+                        tick1 = tick() + 2
                     end
                 end
             else
@@ -3688,6 +1083,160 @@ spawn(function()
         end
     end
 end)
+
+spawn(function()
+    if not Settings["Auto Treasure"] then return end
+    local playerstats = ReplicatedStorage["playerstats"][plr.Name]
+    local backpack = game:GetService("Players").LocalPlayer.PlayerGui.hud:WaitForChild("safezone"):WaitForChild("backpack")
+    backpack:WaitForChild("inventory")
+    backpack.inventory:WaitForChild("scroll")
+    local function Equip_Item(Id)
+        if plr.Character:FindFirstChildWhichIsA("Tool") then
+            backpack["events"].equip:FireServer(plr.Character:FindFirstChildWhichIsA("Tool"))
+        end
+        for i,v in pairs(plr["Backpack"]:GetChildren()) do
+            if v:FindFirstChild("link") and v["link"]["Value"] == Id then
+                backpack["events"].equip:FireServer(v)
+            end
+        end
+    end
+    local function GetPlayerData()
+        return playerstats.Inventory
+    end
+    local function Get_All_Treasure()
+        local Treasure = {}
+        for i,v in pairs(playerstats.Inventory:GetChildren()) do
+            if v.Value == "Treasure Map" then
+                Treasure[v.Name] = {
+                    ["Repaired"] = v["Repaired"]["Value"],
+                    ["Pos"] = {
+                        ["x"] = v["x"]["Value"],
+                        ["y"] = v["y"]["Value"],
+                        ["z"] = v["z"]["Value"]
+                    }
+                }
+            end
+        end
+        return Treasure
+    end
+    local function SplitRepair(Obj,Boolean)
+        local SortTo = {}
+        for i,v in pairs(Obj) do
+            if v["Repaired"] == Boolean then
+                SortTo[i] = v
+            end
+        end
+        return SortTo
+    end
+    local function GetObj(Name)
+        local ItemCount = 0
+        for i,v in pairs(playerstats["Inventory"]:GetChildren()) do
+           if v.Value == Name then
+                ItemCount = ItemCount + 1
+           end
+        end
+        return ItemCount
+    end
+    local tick1 = tick() + 10
+    print(GetObj("Treasure Map"))
+    while true do task.wait()
+        local val,err = pcall(function()
+            if tick1 >= tick() then return end
+            if GetObj("Treasure Map") >= 10 then
+                BYfArt("Auto Treasure","Post",true)
+                if BYfArt("Auto Treasure","Get") then
+                    IsFishing()
+                    local NeedToRepeair = false
+                    for i,v in pairs(SplitRepair(Get_All_Treasure(),false)) do
+                        NeedToRepeair = true
+                        break
+                    end
+                    if NeedToRepeair then
+                        if not workspace.world.npcs:FindFirstChild("Jack Marrow") then
+                            repeat task.wait()
+                                game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Re Map"]
+                            until not BYfArt("Auto Treasure","Get") or workspace.world.npcs:FindFirstChild("Jack Marrow")
+                        end
+                        for i,v in pairs(SplitRepair(Get_All_Treasure(),false)) do
+                            repeat task.wait()
+                                if not game.Players.LocalPlayer.Character:FindFirstChild("Treasure Map") then 
+                                    local tloading = tick() + 1
+                                    Equip_Item(GetPlayerData()[i])
+                                    repeat task.wait() until game.Players.LocalPlayer.Character:FindFirstChild("Treasure Map") or tick() >= tloading
+                                else
+                                    TalkNpc("Jack Marrow")
+                                    local tloading = tick() + .2
+                                    delay(0.0001, function()
+                                        workspace.world.npcs["Jack Marrow"].treasure.repairmap:InvokeServer()
+                                    end)
+                                    repeat task.wait() until tick() >= tloading
+                                end
+                            until GetPlayerData()[i]["Repaired"]["Value"] or not workspace.world.npcs:FindFirstChild("Jack Marrow") or not BYfArt("Auto Treasure","Get")
+                            if not workspace.world.npcs:FindFirstChild("Jack Marrow") or not BYfArt("Auto Treasure","Get") then
+                                break
+                            else
+                                Equip_Item(GetPlayerData()[i])
+                            end
+                        end
+                    end
+                    for i,v in pairs(SplitRepair(Get_All_Treasure(),true)) do 
+                        if v["Repaired"] then
+                            local tloading = tick() + .3
+                            game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("open_treasure"):FireServer({
+                                ["x"] = v["Pos"]["x"],
+                                ["y"] = v["Pos"]["y"],
+                                ["z"] = v["Pos"]["z"]
+                            })
+                            repeat task.wait() until tick() >= tloading
+                        end
+                    end
+                end
+            else
+                tick1 = tick() + 120
+                BYfArt("Auto Treasure","Post",false)
+            end
+        end)
+        if not val then
+            print("Treasure : ",err)
+        end
+    end
+end)
+
+spawn(function()
+    if not Settings["Auto Meteor"] then return end
+    local tick1 = tick() + 10
+    while true do task.wait()
+        local val,err = pcall(function()
+            if tick1 >= tick() then return end
+            if workspace.MeteorItems:FindFirstChildWhichIsA("Model") then
+                BYfArt("Auto Meteor","Post",true)
+                if BYfArt("Auto Meteor","Get") then
+                    IsFishing()
+                    if Magnitude(plr.Character.HumanoidRootPart.CFrame,workspace.MeteorItems:FindFirstChildWhichIsA("Model"):GetPivot()) >= 10 then
+                        plr.Character.HumanoidRootPart.CFrame = workspace.MeteorItems:FindFirstChildWhichIsA("Model"):GetPivot() * CFrame.new(0,0,5)
+                    else
+                        if workspace.MeteorItems:FindFirstChildWhichIsA("Model") then
+                            for i = 1,5 do
+                                local tloading = tick() + .3
+                                PromptN(workspace.MeteorItems:FindFirstChildWhichIsA("Model"))
+                                repeat task.wait() until tick() >= tloading
+                            end
+                            workspace.MeteorItems:FindFirstChildWhichIsA("Model"):Destroy()
+                        end
+                    end
+                end
+            else
+                tick1 = tick() + 1
+                BYfArt("Auto Meteor","Post",false)
+            end
+        end)
+        if not val then
+            print("Meteor : ",err)
+        end
+    end
+end)
+
+
 spawn(function()
     while true do task.wait()
         local val,err = pcall(function()
@@ -3728,7 +1277,78 @@ local connect2 = plr.PlayerGui.ChildAdded:Connect(function(v)
         ConnectToReel(v)
     end
 end)
+local direction = Vector3.new(0, -20, 0)
 
+local raycastParams = RaycastParams.new()
+raycastParams.FilterDescendantsInstances = {workspace.zones.fishing} 
+raycastParams.FilterType = Enum.RaycastFilterType.Whitelist 
+raycastParams.IgnoreWater = false 
+
+local function detectWater(startPoint,part)
+    local result = workspace:Raycast(startPoint, direction, raycastParams)
+    if result then
+        if result.Material == Enum.Material.Water then
+            local bodyPosition = Instance.new("BodyPosition")
+            bodyPosition.Parent = part
+            bodyPosition.Position = result["Position"]
+            bodyPosition.MaxForce = Vector3.new(100000, 100000, 100000) 
+            bodyPosition.D = 500
+            bodyPosition.P = 10000
+            return true
+        else
+            local bodyPosition = Instance.new("BodyPosition")
+            bodyPosition.Parent = part
+            bodyPosition.Position = result["Position"] 
+            bodyPosition.MaxForce = Vector3.new(100000, 100000, 100000) 
+            bodyPosition.D = 500
+            bodyPosition.P = 10000
+            return true
+        end
+    end
+    return false
+end
+local ConnectToRod = nil
+plr.Character.ChildAdded:Connect(function(v)
+    if v:IsA("Tool") and v:FindFirstChild("values") then
+        if ConnectToRod then
+            ConnectToRod:Disconnect()
+        end
+        ConnectToRod = v.ChildAdded:Connect(function(v1)
+            if v1.Name == "bobber" then
+                v1:WaitForChild("gyro")
+                v1:WaitForChild("RopeConstraint")
+               
+                v1.RopeConstraint.Length = 9999
+                v1.gyro:Destroy()
+                warn("bobber",tick())
+                local gotcframe = false
+                for i,v in pairs({14,-14}) do
+                    if detectWater(plr.Character.HumanoidRootPart.Position + plr.Character.HumanoidRootPart.CFrame.LookVector * v,v1) then
+                        gotcframe = true
+                        break
+                    end
+                end
+                if not gotcframe then
+                    for i,v in pairs({14,-14}) do
+                        if detectWater(plr.Character.HumanoidRootPart.Position + plr.Character.HumanoidRootPart.CFrame.RightVector * v,v1) then
+                            break
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+local CraftPos = {
+    ["Driftwood"] = CFrame.new(5859.06494, 104.494919, 412.9646, 0.501003683, -5.7265559e-05, 0.865445137, -1.65918436e-07, 1, 6.62649545e-05, -0.865445137, -3.33425814e-05, 0.501003683),
+    ["Void Wood"] = CFrame.new(1423.28601, -850.145203, -130.561844, -0.732493877, -1.20579124e-09, -0.680773616, -1.44833631e-10, 1, -1.61537028e-09, 0.680773616, -1.08464993e-09, -0.732493877),
+    ["Ancient Wood"] = CFrame.new(5793.5234375, 129.99000549316406, 397.7882385253906, 0.7848547101020813, 0, -0.6196799278259277, -0, 1.0000001192092896, -0, 0.6196799278259277, 0, 0.7848547101020813),
+    ["Moon Wood"] = CFrame.new(2856.61206, 110.609444, 2627.62231, -0.966820002, -8.82622544e-07, 0.255458504, 2.90028055e-07, 1, 4.55270583e-06, -0.255458504, 4.47573757e-06, -0.966820002),
+    ["Inferno Wood"] = CFrame.new(-1928.39136, 151.841339, 325.43335, 0.980352521, 1.31087319e-08, 0.197253615, -3.33541261e-09, 1, -4.98791977e-08, -0.197253615, 4.82412723e-08, 0.980352521),
+    ["Meg's Fang"] = CFrame.new(5859.06494, 104.494919, 412.9646, 0.501003683, -5.7265559e-05, 0.865445137, -1.65918436e-07, 1, 6.62649545e-05, -0.865445137, -3.33425814e-05, 0.501003683),
+    ["Meg's Spine"] = CFrame.new(5859.06494, 104.494919, 412.9646, 0.501003683, -5.7265559e-05, 0.865445137, -1.65918436e-07, 1, 6.62649545e-05, -0.865445137, -3.33425814e-05, 0.501003683),
+    ["Golden Sea Pearl"] = CFrame.new(-1526.93994, 112.73819, 592.267212, 0.999723256, 1.76769584e-06, -0.0235235505, -2.11808739e-07, 1, 6.61441663e-05, 0.0235235505, -6.61208833e-05, 0.999723256)
+}
 -- Auto Book
 local function Book(fish,justfarm)
     local Config = Configs[fish]
@@ -3765,7 +1385,6 @@ local function Book(fish,justfarm)
                 return Config["Spot"]
             else  
                 local Isonade = Config["Function"]()
-                print(Isonade)
                 return Isonade and Isonade.CFrame * CFrame.new(0,60,25) or Configs["Spot"]["Money"] 
             end
         else
@@ -3774,7 +1393,6 @@ local function Book(fish,justfarm)
     end
     local connect4,connect5,connect3
     if not justfarm then
-        print("BOOK FARMING",justfarm)
         for i,v in pairs(fishs) do
             if type(v) == "table" and v["From"] == fish then
                table.insert(total,i)
@@ -3792,7 +1410,6 @@ local function Book(fish,justfarm)
         end)
         for i,v in pairs(playerstats.Bestiary:GetChildren()) do
             if table.find(total,v.Name) then
-                print(IsStage())
                 table.insert(cur_,v.Name)
                 IsStage()
                 Position = IsPosition()
@@ -3801,7 +1418,6 @@ local function Book(fish,justfarm)
         end
         connect3 = playerstats.Bestiary.ChildAdded:Connect(function(v)
             if table.find(total,v.Name) and not table.find(cur_,v.Name) then
-                print(IsStage())
                 table.insert(cur_,v.Name)
                 IsStage()
                 Position = IsPosition()
@@ -3834,13 +1450,7 @@ local function Book(fish,justfarm)
                             if playerstats.Stats.coins.Value >= 300 then
                                 BYfArt("Auto Crab","Post",true)
                                 if BYfArt("Auto Crab","Get") then
-                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                        return
-                                    end
-                                    task.wait(.3)
-                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                        return
-                                    end 
+                                    IsFishing() 
                                     if (plr.Character.HumanoidRootPart.Position - Configs["Spot"]["Cage"].Position).Magnitude >= 5  then
                                         plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Cage"]
                                     else
@@ -3886,13 +1496,7 @@ local function Book(fish,justfarm)
                         if not Stage then
                             BYfArt("Auto Crab","Post",true)
                             if BYfArt("Auto Crab","Get") then
-                                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                    return
-                                end
-                                task.wait(.3)
-                                if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                    return
-                                end 
+                                IsFishing()
                                 for _ = 1,3 do task.wait()
                                     for i,v in pairs(workspace.active:GetChildren()) do
                                         if v.Name == plr.Name then
@@ -3917,13 +1521,7 @@ local function Book(fish,justfarm)
                             if Cahce then
                                 BYfArt("Auto Crab","Post",true)
                                 if BYfArt("Auto Crab","Get") then
-                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                        return
-                                    end
-                                    task.wait(.3)
-                                    if plr.PlayerGui:FindFirstChild("shakeui") or plr.PlayerGui:FindFirstChild("reel") then
-                                        return
-                                    end 
+                                    IsFishing()
                                     for _ = 1,3 do task.wait()
                                         for i,v in pairs(workspace.active:GetChildren()) do
                                             if v.Name == plr.Name then
@@ -3992,11 +1590,15 @@ local function Book(fish,justfarm)
                         -- plr.Character[playerstats.Stats.rod.Value]["rod/client"].Enabled = false
                         -- print(plr.Character[playerstats.Stats.rod.Value]["rod/client"].Enabled)
                     elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                        time = tick() + 1.5
-                        if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                            -- plr.Character.HumanoidRootPart.Anchored = false
-                            plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
-                            plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.cast:FireServer(100,1)
+                        local FishingRod = plr.Character:FindFirstChild(playerstats.Stats.rod.Value)
+                        if FishingRod and FishingRod:FindFirstChild("bobber") then
+                            local tloading = tick() + 2
+                            repeat task.wait() until not FishingRod or not FishingRod:FindFirstChild("bobber") or tick() >= tloading
+                        end
+                        time = tick() + 1.25
+                        if FishingRod and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                            FishingRod.events.reset:FireServer()
+                            FishingRod.events.cast:FireServer(100,1)
                         end
                     end
                 end
@@ -4017,6 +1619,335 @@ local function Book(fish,justfarm)
     end
     print("Finish")
 end
+local function AutoCraft(Rod)
+    local playerstats = ReplicatedStorage["playerstats"][plr.Name]
+    local Recip =  recipes[Rod]
+    local AllItems = {}
+    for i,v in pairs(Recip["Items"]) do
+        AllItems[v[1]] = v[2]
+    end
+    BYfArt("Auto Fish","Post",true)
+    if playerstats.Stats.level.Value < recipes[Rod]["Level"] then
+        local Position = Configs["Spot"]["Farm EXP"]
+        print("Here")
+        while true and playerstats.Stats.level.Value < recipes[Rod]["Level"] do task.wait()
+            local var,err = pcall(function()
+                if plr.Character and BYfArt("Auto Fish","Get") then
+                    if tick() >= time then
+                        if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                            local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                            if prompt:FindFirstChild("deny") then
+                                prompt.deny.AnchorPoint = Vector2.new(.5,.5)
+                                prompt.deny.Position = UDim2.fromScale(.5,.5)
+                                prompt.deny.Size = UDim2.fromScale(999,999)
+                            else
+                                prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                                prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                                prompt.confirm.Size = UDim2.fromScale(999,999)
+                            end
+                            task.wait(.2)
+                            local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                            VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                            VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                        elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Position) >= 5 then
+                            plr.Character.HumanoidRootPart.CFrame = Position + Vector3.new(0,0,0)
+                        elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
+                            time = tick() + 1.75
+                            game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
+                            game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
+                        elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                            local FishingRod = plr.Character:FindFirstChild(playerstats.Stats.rod.Value)
+                            if FishingRod and FishingRod:FindFirstChild("bobber") then
+                                local tloading = tick() + 2
+                                repeat task.wait() until not FishingRod or not FishingRod:FindFirstChild("bobber") or tick() >= tloading
+                            end
+                            time = tick() + 1.25
+                            if FishingRod and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                                FishingRod.events.reset:FireServer()
+                                FishingRod.events.cast:FireServer(100,1)
+                            end
+                        end
+                    end
+                end
+            end)
+            if not var then
+                print("Craft 1 : ",err)
+            end
+        end
+    end
+    print("Level")
+    local function GetObj(Name)
+        local ItemCount = 0
+        for i,v in pairs(playerstats["Inventory"]:GetChildren()) do
+           if v.Value == Name then
+                ItemCount = ItemCount + 1
+           end
+        end
+        return ItemCount
+    end
+    local function GetObjBuff(Name,Buff)
+        local ItemCount = 0
+        for i,v in pairs(playerstats["Inventory"]:GetChildren()) do
+           if v.Value == Name and v:FindFirstChild("Mutation") and v["Mutation"].Value == Buff then
+                ItemCount = ItemCount + 1
+           end
+        end
+        return ItemCount
+    end 
+    for i1,v1 in pairs(AllItems) do
+        if GetObj(i1) < v1 and CraftPos[i1] then
+            local Break = false
+            local time = tick()
+            while true and not Break do task.wait()
+                local var,err = pcall(function()
+                    if plr.Character and BYfArt("Auto Fish","Get") then
+                        if GetObj(i1) >= v1 then
+                            Break = true
+                        end
+                        if tick() >= time then
+                            if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                                local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                                if prompt:FindFirstChild("deny") then
+                                    prompt.deny.AnchorPoint = Vector2.new(.5,.5)
+                                    prompt.deny.Position = UDim2.fromScale(.5,.5)
+                                    prompt.deny.Size = UDim2.fromScale(999,999)
+                                else
+                                    prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                                    prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                                    prompt.confirm.Size = UDim2.fromScale(999,999)
+                                end
+                                task.wait(.2)
+                                local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                                VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                                VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                            elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,CraftPos[i1]) >= 5 then
+                                plr.Character.HumanoidRootPart.CFrame = CraftPos[i1] + Vector3.new(0,0,0)
+                            elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
+                                time = tick() + 1.75
+                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
+                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
+                            elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                                local FishingRod = plr.Character:FindFirstChild(playerstats.Stats.rod.Value)
+                                if FishingRod and FishingRod:FindFirstChild("bobber") then
+                                    local tloading = tick() + 2
+                                    repeat task.wait() print("In Loop") until not FishingRod or not FishingRod:FindFirstChild("bobber") or tick() >= tloading
+                                end
+                                if FishingRod and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                                    FishingRod.events.reset:FireServer()
+                                    FishingRod.events.cast:FireServer(100,1)
+                                end
+                                time = tick() + 1.25
+                            end
+                        end
+                    end
+                end)
+                if not var then
+                    print("Craft 2 : ",err)
+                end
+            end
+        end
+    end
+    print("Item")
+    for i1,v1 in pairs(AllItems) do
+        if GetObj(i1) < v1 then
+            while true do task.wait()
+                local var,err = pcall(function()
+                    if plr.Character and BYfArt("Auto Fish","Get") then
+                        if tick() >= time then
+                            if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
+                                local prompt = game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt")
+                                if prompt:FindFirstChild("deny") then
+                                    prompt.deny.AnchorPoint = Vector2.new(.5,.5)
+                                    prompt.deny.Position = UDim2.fromScale(.5,.5)
+                                    prompt.deny.Size = UDim2.fromScale(999,999)
+                                else
+                                    prompt.confirm.AnchorPoint = Vector2.new(.5,.5)
+                                    prompt.confirm.Position = UDim2.fromScale(.5,.5)
+                                    prompt.confirm.Size = UDim2.fromScale(999,999)
+                                end
+                                task.wait(.2)
+                                local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+                                VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+                                VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+                            elseif Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["Money"]) >= 5 then
+                                plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["Money"] + Vector3.new(0,0,0)
+                            elseif not plr.Character:FindFirstChild(playerstats.Stats.rod.Value) then
+                                time = tick() + 1.75
+                                game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
+                                game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
+                            elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                                local FishingRod = plr.Character:FindFirstChild(playerstats.Stats.rod.Value)
+                                if FishingRod and FishingRod:FindFirstChild("bobber") then
+                                    local tloading = tick() + 2
+                                    repeat task.wait() until not FishingRod or not FishingRod:FindFirstChild("bobber") or tick() >= tloading
+                                end
+                                time = tick() + 1.25
+                                if FishingRod and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                                    FishingRod.events.reset:FireServer()
+                                    FishingRod.events.cast:FireServer(100,1)
+                                end
+                            end
+                        end
+                    end
+                end)
+                if not var then
+                    print("Craft 3 : ",err)
+                end
+            end
+        end
+    end
+    print("Item 1")
+    local backpack = game:GetService("Players").LocalPlayer.PlayerGui.hud:WaitForChild("safezone"):WaitForChild("backpack")
+    backpack:WaitForChild("inventory")
+    backpack.inventory:WaitForChild("scroll")
+    local function Equip_Item(Id)
+        if plr.Character:FindFirstChildWhichIsA("Tool") then
+            backpack["events"].equip:FireServer(plr.Character:FindFirstChildWhichIsA("Tool"))
+        end
+        for i,v in pairs(plr["Backpack"]:GetChildren()) do
+            if v:FindFirstChild("link") and v["link"]["Value"] == Id then
+                backpack["events"].equip:FireServer(v)
+            end
+        end
+    end
+    local function Get_Item_Enchant()
+        for i,v in pairs(Recip["Items"]) do
+            if v[3] then
+                if GetObjBuff(v[1],v[3]) < v[2] then
+                    return v[1] , v[3]
+                end
+            end
+        end
+        return nil
+    end
+    
+    local function Get_Item_To_Roll(Name,Ignore)
+        for i,v in pairs(playerstats["Inventory"]:GetChildren()) do
+            if v.Value == Name and (not v:FindFirstChild("Mutation") or v["Mutation"].Value ~= Ignore) then
+                return v
+            end
+         end
+    end
+    local function Unfav(UnequipID)
+        backpack["events"].favourite:FireServer(UnequipID.tool.Value)
+    end
+    print("Item 2")
+    while not playerstats.Rods:FindFirstChild(Rod) do task.wait()
+        local var,err = pcall(function()
+            local Find_Item,EnchantType = Get_Item_Enchant()
+            if Find_Item then
+                if playerstats.Stats.coins.Value >= 300000 then
+                    BYfArt("Stop Things","Post",true)
+                    if not plr.PlayerGui.hud.safezone.backpack.inventory.Visible then
+                        for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
+                            for i1,v1 in pairs(getconnections(plr.PlayerGui.hud.safezone.backpack.Open[v2])) do
+                                v1.Function()
+                            end
+                        end
+                    end
+                    plr.PlayerGui.hud.safezone.backpack.inventory.Visible = false
+                    local Find_Item,EnchantType = Get_Item_Enchant()
+                    while Find_Item and playerstats.Stats.coins.Value > 449 do task.wait()
+                        local Find_Item,EnchantType = Get_Item_Enchant()
+                        if Find_Item then
+                            repeat task.wait(.1)
+                                if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["ReSize"]) >= 5 then
+                                    plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["ReSize"]
+                                else
+                                    if not plr.Character:FindFirstChild(Find_Item) then
+                                        local tloading = tick() + 1
+                                        Equip_Item(Get_Item_To_Roll(Find_Item,EnchantType))
+                                        repeat task.wait() until plr.Character:FindFirstChild(Find_Item) or tick() >= tloading
+                                    else
+                                        local tloading = tick() + .12
+                                        TalkNpc("Appraiser")
+                                        delay(.0001,function ()
+                                            workspace:WaitForChild("world"):WaitForChild("npcs"):WaitForChild("Appraiser"):WaitForChild("appraiser"):WaitForChild("appraise"):InvokeServer()
+                                        end)
+                                        repeat task.wait() until tick() >= tloading
+                                    end
+                                end
+                            until not Find_Item or playerstats.Stats.coins.Value < 450
+                        else
+                            print("BREAK")
+                            break
+                        end
+                    end
+                    plr.PlayerGui.hud.safezone.backpack.inventory.Visible = true
+                    if plr.PlayerGui.hud.safezone.backpack.inventory.Visible then
+                        for i2,v2 in pairs({"MouseButton1Click", "MouseButton1Down", "Activated"}) do
+                            for i1,v1 in pairs(getconnections(plr.PlayerGui.hud.safezone.backpack.Open[v2])) do
+                                v1.Function()
+                            end
+                        end
+                    end
+                    BYfArt("Stop Things","Post",false)
+                else
+                    local os1 = os.time()
+                    StopFarm_[os1] = false
+                    spawn(function() 
+                        Book("The Depths",os1) 
+                    end)
+                    repeat task.wait() until playerstats.Stats.coins.Value >= 300000
+                    StopFarm_[os1] = true
+                end
+            else 
+                if playerstats.Stats.coins.Value < Recip["Cost"] then
+                    local os1 = os.time()
+                    StopFarm_[os1] = false
+                    spawn(function() 
+                        Book("The Depths",os1) 
+                    end)
+                    repeat task.wait() until playerstats.Stats.coins.Value >= Recip["Cost"]
+                    StopFarm_[os1] = true
+                else
+                    BYfArt("Stop Things","Post",true)
+                    if game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("CanCraft"):InvokeServer(Rod) then
+                        if Magnitude(plr.Character.HumanoidRootPart.CFrame,workspace.RodCrafting:GetPivot()) >= 5 then
+                            plr.Character.HumanoidRootPart.CFrame = workspace.RodCrafting:GetPivot() * CFrame.new(0,2.5,0)
+                        else
+                            game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("AttemptCraft"):InvokeServer(Rod)
+                        end
+                    else
+                        local AllItemInFav = {}
+                        for i,v in pairs(Recip["Items"]) do
+                            for i1,v1 in pairs(backpack.inventory.scroll:GetChildren()) do
+                                if v1.Name == v[1] and v1:FindFirstChild("item") and v1["item"].Value:FindFirstChild("Favourited") then
+                                    if v[3] and v1["item"]["Value"]:FindFirstChild("Mutation") and v1["item"]["Value"]["Mutation"]["Value"] then
+                                        if (AllItemInFav[v[1]..v[3]] or 0) < v[2] then
+                                            if not AllItemInFav[v[1]..v[3]] then
+                                                AllItemInFav[v[1]..v[3]] = 1
+                                            else
+                                                AllItemInFav[v[1]..v[3]] = AllItemInFav[v[1]] + 1
+                                            end
+                                            backpack["events"].favourite:FireServer(v1.tool.Value)
+                                        end
+                                    else
+                                        if (AllItemInFav[v[1]] or 0) < v[2] then
+                                            if not AllItemInFav[v[1]] then
+                                                AllItemInFav[v[1]] = 1
+                                            else
+                                                AllItemInFav[v[1]] = AllItemInFav[v[1]] + 1
+                                            end
+                                            backpack["events"].favourite:FireServer(v1.tool.Value)
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+                    local time12 = tick() + 1
+                    repeat task.wait() until tick() >= time12
+                end
+            end
+        end)
+       
+        if not var then
+            print("Craft 4 : ",err)
+        end
+    end
+    print("Finish Bait")
+end
 local function Enchant()
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     local Hexed,Abyssal = false,false
@@ -4033,8 +1964,11 @@ local function Enchant()
     return not Hexed and "Hexed" or not Abyssal and "Abyssal" or "Fully"
 end
 
-
-if Settings["Rod Quest"] == "Rod Of The Depth" then
+if #Settings["Recipe"] >= 1 then
+    for i,v in pairs(Settings["Recipe"]) do
+        AutoCraft(v)
+    end
+elseif Settings["Rod Quest"] == "Rod Of The Depth" then
     Book("Vertigo")
     local function GetEnchants()
         local playerstats = ReplicatedStorage["playerstats"][plr.Name]
@@ -4365,13 +2299,13 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
     local function IsPosition()
         if Settings["WorldEvent"] then
             if workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark") then
-                return workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark").CFrame * CFrame.new(0,-40,0)
+                return workspace.zones.fishing:FindFirstChild("Great Hammerhead Shark").CFrame * CFrame.new(0,-20,0)
             elseif workspace.zones.fishing:FindFirstChild("Great White Shark") then
-                return workspace.zones.fishing:FindFirstChild("Great White Shark").CFrame * CFrame.new(0,-40,0)
+                return workspace.zones.fishing:FindFirstChild("Great White Shark").CFrame * CFrame.new(0,-20,0)
             elseif workspace.zones.fishing:FindFirstChild("Whale Shark") then
-                return  workspace.zones.fishing:FindFirstChild("Whale Shark").CFrame * CFrame.new(0,-40,0)
+                return  workspace.zones.fishing:FindFirstChild("Whale Shark").CFrame * CFrame.new(0,-20,0)
             elseif workspace.zones.fishing:FindFirstChild("Megalodon Default") then
-                return  workspace.zones.fishing:FindFirstChild("Megalodon Default").CFrame * CFrame.new(0,-40,0)
+                return  workspace.zones.fishing:FindFirstChild("Megalodon Default").CFrame * CFrame.new(0,-20,0)
             end
             return Configs[Settings["Spot"]] and Configs[Settings["Spot"]]["Spot"] or Configs["Spot"]["Money"]   
         else
@@ -4415,10 +2349,15 @@ elseif Settings["Rod Quest"] == "" and #Settings["Bestiary"] <= 0 then
                         game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
                         game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
                     elseif not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                        time = tick() + 1.25
-                        if not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
-                            plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.reset:FireServer()
-                            plr.Character:FindFirstChild(playerstats.Stats.rod.Value).events.cast:FireServer(100,1)
+                        local FishingRod = plr.Character:FindFirstChild(playerstats.Stats.rod.Value)
+                        if FishingRod and FishingRod:FindFirstChild("bobber") then
+                            local tloading = tick() + 2
+                            repeat task.wait() until not FishingRod or not FishingRod:FindFirstChild("bobber") or tick() >= tloading
+                        end
+                        time = tick() + 1
+                        if FishingRod and not plr.PlayerGui:FindFirstChild("shakeui") and not plr.PlayerGui:FindFirstChild("reel") then
+                            FishingRod.events.reset:FireServer()
+                            FishingRod.events.cast:FireServer(100,1)
                         end
                     end
                 end
