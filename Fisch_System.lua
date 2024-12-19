@@ -125,6 +125,7 @@ _G.User = {
         ["Bestiary"] = {},
         ["Auto Buy Luck"] = false,
         ["WorldEvent"] = false,
+        ["Auto Meteor"] = false,
         ["Auto Aurora"] = false,
         ["Auto Eclipse"] = false,
         ["Auto Treasure"] = false,
