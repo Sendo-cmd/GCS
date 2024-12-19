@@ -732,7 +732,7 @@ end
 local function PromptN(obj)
     plr.CameraMode = Enum.CameraMode.LockFirstPerson
     local Prompt = obj:FindFirstChildWhichIsA("ProximityPrompt",true)
-    workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,obj.handle.Position + Vector3.new(0,0,0))
+    workspace.Camera.CFrame = CFrame.lookAt(workspace.Camera.CFrame.Position,obj:FindFirstChild("handle") and obj.handle.Position or obj:GetPivot().Position  + Vector3.new(0,0,0))
     Prompt.GamepadKeyCode = Enum.KeyCode.E
     Prompt.RequiresLineOfSight = false
     Prompt.MaxActivationDistance = 50
