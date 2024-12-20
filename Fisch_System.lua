@@ -132,7 +132,7 @@ _G.User = {
         ["Auto Treasure"] = false,
         ["Auto Totem Meteor"] = false,
         ["Spot"] = "Ancient IsIe",
-        ["Recipe"] = {""},
+        ["Recipe"] = {},
         ["Rod"] = "",
     },
 }
