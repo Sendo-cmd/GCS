@@ -92,7 +92,7 @@ _G.User = {
         ["Auto Treasure"] = false,
         ["Auto Aurora"] = true,
         ["Auto Eclipse"] = false,
-        ["Auto Totem Meteor"] = true,
+        ["Auto Totem Meteor"] = false,
         ["Spot"] = "EXP",
         ["Recipe"] = {
             "Rod Of The Forgotten Fang",
