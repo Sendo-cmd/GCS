@@ -322,7 +322,6 @@ local Settings = {
         "Ancient Thread",
         "Lunar Thread",
         "Golden Sea Pearl",
-        "Icicle",
         "Meg's Fang",
         "Meg's Spine",
         "Magic Thread",
@@ -1136,7 +1135,11 @@ spawn(function()
         local ItemCount = 0
         for i,v in pairs(playerstats["Inventory"]:GetChildren()) do
            if v.Value == Name then
-                ItemCount = ItemCount + 1
+                if v:FindFirstChild("Stack") then
+                    ItemCount = ItemCount  + v.Stack.Value
+                else
+                    ItemCount = ItemCount + 1
+                end
            end
         end
         return ItemCount
@@ -1324,7 +1327,6 @@ plr.Character.ChildAdded:Connect(function(v)
                
                 v1.RopeConstraint.Length = 9999
                 v1.gyro:Destroy()
-                warn("bobber",tick())
                 local gotcframe = false
                 for i,v in pairs({14,-14}) do
                     if detectWater(plr.Character.HumanoidRootPart.Position + plr.Character.HumanoidRootPart.CFrame.LookVector * v,v1) then
@@ -1684,7 +1686,11 @@ local function AutoCraft(Rod)
         local ItemCount = 0
         for i,v in pairs(playerstats["Inventory"]:GetChildren()) do
            if v.Value == Name then
-                ItemCount = ItemCount + 1
+                if v:FindFirstChild("Stack") then
+                    ItemCount = ItemCount  + v.Stack.Value
+                else
+                    ItemCount = ItemCount + 1
+                end
            end
         end
         return ItemCount
@@ -1693,12 +1699,17 @@ local function AutoCraft(Rod)
         local ItemCount = 0
         for i,v in pairs(playerstats["Inventory"]:GetChildren()) do
            if v.Value == Name and v:FindFirstChild("Mutation") and v["Mutation"].Value == Buff then
-                ItemCount = ItemCount + 1
+                if v:FindFirstChild("Stack") then
+                    ItemCount = ItemCount  + v.Stack.Value
+                else
+                    ItemCount = ItemCount + 1
+                end
            end
         end
         return ItemCount
     end 
     for i1,v1 in pairs(AllItems) do
+        print(GetObj(i1) < v1, i1 ,CraftPos[i1])
         if GetObj(i1) < v1 and CraftPos[i1] then
             local Break = false
             local time = tick()
@@ -1839,6 +1850,7 @@ local function AutoCraft(Rod)
     while not playerstats.Rods:FindFirstChild(Rod) do task.wait()
         local var,err = pcall(function()
             local Find_Item,EnchantType = Get_Item_Enchant()
+            
             if Find_Item then
                 if playerstats.Stats.coins.Value >= 300000 then
                     BYfArt("Stop Things","Post",true)
@@ -1854,7 +1866,7 @@ local function AutoCraft(Rod)
                     while Find_Item and playerstats.Stats.coins.Value > 449 do task.wait()
                         local Find_Item,EnchantType = Get_Item_Enchant()
                         if Find_Item then
-                            repeat task.wait(.1)
+                            while Find_Item or playerstats.Stats.coins.Value > 450 do
                                 if Magnitude(plr.Character.HumanoidRootPart.CFrame,Configs["Spot"]["ReSize"]) >= 5 then
                                     plr.Character.HumanoidRootPart.CFrame = Configs["Spot"]["ReSize"]
                                 else
@@ -1871,7 +1883,7 @@ local function AutoCraft(Rod)
                                         repeat task.wait() until tick() >= tloading
                                     end
                                 end
-                            until not Find_Item or playerstats.Stats.coins.Value < 450
+                            end
                         else
                             print("BREAK")
                             break
@@ -1913,27 +1925,56 @@ local function AutoCraft(Rod)
                             game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("AttemptCraft"):InvokeServer(Rod)
                         end
                     else
+                        print("Unfav")
                         local AllItemInFav = {}
                         for i,v in pairs(Recip["Items"]) do
+                            -- print(i,v)
+                            
                             for i1,v1 in pairs(backpack.inventory.scroll:GetChildren()) do
-                                if v1.Name == v[1] and v1:FindFirstChild("item") and v1["item"].Value:FindFirstChild("Favourited") then
-                                    if v[3] and v1["item"]["Value"]:FindFirstChild("Mutation") and v1["item"]["Value"]["Mutation"]["Value"] then
+                                if v1:FindFirstChild("item") and v1["item"]["Value"]["Value"] == v[1] then
+                                    local Item_ = v1["item"]
+
+                                    if v[3] and Item_["Value"]:FindFirstChild("Mutation") and Item_["Value"]["Mutation"]["Value"] == v[3] then
                                         if (AllItemInFav[v[1]..v[3]] or 0) < v[2] then
                                             if not AllItemInFav[v[1]..v[3]] then
-                                                AllItemInFav[v[1]..v[3]] = 1
+                                                if Item_["Value"]:FindFirstChild("Stack") then
+                                                    AllItemInFav[v[1]..v[3]] = Item_["Value"].Stack.Value
+                                                else
+                                                    AllItemInFav[v[1]..v[3]] = 1
+                                                end 
                                             else
-                                                AllItemInFav[v[1]..v[3]] = AllItemInFav[v[1]] + 1
+                                                if Item_["Value"]:FindFirstChild("Stack") then
+                                                    AllItemInFav[v[1]..v[3]] =  AllItemInFav[v[1]..v[3]] + Item_["Value"].Stack.Value
+                                                else
+                                                    AllItemInFav[v[1]..v[3]] =  AllItemInFav[v[1]..v[3]] + 1
+                                                end 
                                             end
-                                            backpack["events"].favourite:FireServer(v1.tool.Value)
+                                            if Item_.Value:FindFirstChild("Favourited") then
+                                                print(v1.tool.Value)
+                                                backpack["events"].favourite:FireServer(v1.tool.Value)
+                                            end
+                                            print(AllItemInFav[v[1]..v[3]],v1.Name)
                                         end
                                     else
                                         if (AllItemInFav[v[1]] or 0) < v[2] then
                                             if not AllItemInFav[v[1]] then
-                                                AllItemInFav[v[1]] = 1
+                                                if Item_["Value"]:FindFirstChild("Stack") then
+                                                    AllItemInFav[v[1]] = Item_["Value"].Stack.Value
+                                                else
+                                                    AllItemInFav[v[1]] = 1
+                                                end 
                                             else
-                                                AllItemInFav[v[1]] = AllItemInFav[v[1]] + 1
+                                                if Item_["Value"]:FindFirstChild("Stack") then
+                                                    AllItemInFav[v[1]] = AllItemInFav[v[1]] + Item_["Value"].Stack.Value
+                                                else
+                                                    AllItemInFav[v[1]] = AllItemInFav[v[1]] + 1
+                                                end 
                                             end
-                                            backpack["events"].favourite:FireServer(v1.tool.Value)
+                                            if Item_.Value:FindFirstChild("Favourited") then
+                                                print(v1.tool.Value)
+                                                backpack["events"].favourite:FireServer(v1.tool.Value)
+                                            end
+                                            print(AllItemInFav[v[1]],v1.Name)
                                         end
                                     end
                                 end
