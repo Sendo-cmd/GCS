@@ -321,6 +321,7 @@ local Settings = {
         "Magic Thread",
         "Ancient Thread",
         "Lunar Thread",
+        "Icicle",
         "Golden Sea Pearl",
         "Meg's Fang",
         "Meg's Spine",
@@ -1989,6 +1990,16 @@ local function AutoCraft(Rod)
        
         if not var then
             print("Craft 4 : ",err)
+        end
+    end
+    for i,v in pairs(backpack.inventory.scroll:GetChildren()) do
+        if v:IsA("ImageButton") then
+            v:WaitForChild("favourited")
+            v:WaitForChild("tool")
+            repeat task.wait() until v.tool.Value
+            if v["favourited"].Visible == false and table.find(Settings["Fav"],v["tool"].Value.Name) then
+                backpack["events"].favourite:FireServer(v.tool.Value)
+            end
         end
     end
     print("Finish Bait")
