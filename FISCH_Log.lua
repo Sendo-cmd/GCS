@@ -2,7 +2,7 @@
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ReplicatedStorage = ReplicatedStorage
 local plr = game.Players.LocalPlayer
 local tloading = tick() + 5
 local loading
@@ -58,7 +58,7 @@ local Settings = {
 }
 
 local plr = game:GetService("Players").LocalPlayer
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local ReplicatedStorage = game:GetService("ReplicatedStorage"):WaitForChild("Link")
 local playerstats = ReplicatedStorage:WaitForChild("playerstats")
 local HttpService = game:GetService("HttpService")
 local Insert_To = {}
@@ -69,7 +69,7 @@ local Fishs = {}
 for i,v in pairs(playerstats[plr.Name].Inventory:GetChildren()) do
     table.insert(FishCahce,v.Name)
 end
-game:GetService("ReplicatedStorage").events.anno_catch.OnClientEvent:Connect(function(b)
+ReplicatedStorage.events.anno_catch.OnClientEvent:Connect(function(b)
     Fishs[tostring(Index)] = b
     Index = Index + 1
 end)
@@ -77,7 +77,7 @@ end)
 spawn(function ()
     while true do task.wait()
         if tick() >= Last_Send_Data then
-            for i,v in pairs(game:GetService("ReplicatedStorage").world:GetChildren()) do
+            for i,v in pairs(ReplicatedStorage.world:GetChildren()) do
                 Insert_To[v.Name] = v.Value
             end
             local Rod_All = {}

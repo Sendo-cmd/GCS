@@ -322,7 +322,6 @@ local Settings = {
         "Ancient Thread",
         "Lunar Thread",
         "Golden Sea Pearl",
-        "Icicle",
         "Meg's Fang",
         "Meg's Spine",
         "Magic Thread",
@@ -780,7 +779,7 @@ spawn(function()
 end)
 
 if #Settings["Rod"] > 4 then
-    game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("equiprod"):FireServer(Settings["Rod"])
+    ReplicatedStorage:WaitForChild("events"):WaitForChild("equiprod"):FireServer(Settings["Rod"])
 end
 local FishCount = 0
 spawn(function()
@@ -846,7 +845,7 @@ spawn(function()
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     while true do task.wait()
         local val,err = pcall(function()
-            if game:GetService("ReplicatedStorage").world.cycle.Value == "Day" and not game:GetService("ReplicatedStorage").world.weather.Value:match("Eclipse") then
+            if ReplicatedStorage.world.cycle.Value == "Day" and not ReplicatedStorage.world.weather.Value:match("Eclipse") then
                 local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll:FindFirstChild("Eclipse Totem")
                 if Totem then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
@@ -903,7 +902,7 @@ spawn(function()
             else
                 BYfArt("Auto Totem 2","Post",false)
             end
-            -- game:GetService("ReplicatedStorage").world.weather
+            -- ReplicatedStorage.world.weather
         end)
         if not val then
             print("Eclipse : ",err)
@@ -915,7 +914,7 @@ spawn(function()
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     while true do task.wait()
         local val,err = pcall(function()
-            if game:GetService("ReplicatedStorage").world.cycle.Value == "Night" and not game:GetService("ReplicatedStorage").world.weather.Value:match("Aurora")then
+            if ReplicatedStorage.world.cycle.Value == "Night" and not ReplicatedStorage.world.weather.Value:match("Aurora")then
                 local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll:FindFirstChild("Aurora Totem")
                 if Totem then
                     print("Found Totem")
@@ -974,7 +973,7 @@ spawn(function()
             else
                 BYfArt("Auto Totem 1","Post",false)
             end
-            -- game:GetService("ReplicatedStorage").world.weather
+            -- ReplicatedStorage.world.weather
         end)
         if not val then
             print("Aurora : ",err)
@@ -986,7 +985,7 @@ spawn(function()
     local playerstats = ReplicatedStorage["playerstats"][plr.Name]
     while true do task.wait()
         local val,err = pcall(function()
-            if not game:GetService("ReplicatedStorage").world.meteor_active.Value then
+            if not ReplicatedStorage.world.meteor_active.Value then
                 local Totem = game:GetService("Players").LocalPlayer.PlayerGui.hud.safezone.backpack.inventory.scroll:FindFirstChild("Meteor Totem")
                 if Totem then
                     if game:GetService("Players").LocalPlayer.PlayerGui.over:FindFirstChild("prompt") then
@@ -1043,7 +1042,7 @@ spawn(function()
             else
                 BYfArt("Auto Totem 3","Post",false)
             end
-            -- game:GetService("ReplicatedStorage").world.weather
+            -- ReplicatedStorage.world.weather
         end)
         if not val then
             print("Aurora : ",err)
@@ -1190,7 +1189,7 @@ spawn(function()
                     for i,v in pairs(SplitRepair(Get_All_Treasure(),true)) do 
                         if v["Repaired"] then
                             local tloading = tick() + .3
-                            game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("open_treasure"):FireServer({
+                            ReplicatedStorage:WaitForChild("events"):WaitForChild("open_treasure"):FireServer({
                                 ["x"] = v["Pos"]["x"],
                                 ["y"] = v["Pos"]["y"],
                                 ["z"] = v["Pos"]["z"]
@@ -1262,7 +1261,7 @@ spawn(function()
         end
     end
 end)
-game:GetService("ReplicatedStorage").events.anno_catch.OnClientEvent:Connect(function(b)
+ReplicatedStorage.events.anno_catch.OnClientEvent:Connect(function(b)
     FishCount = FishCount + 1
 end)
 for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui:GetChildren()) do
@@ -1408,19 +1407,19 @@ local function Book(fish,justfarm)
         connect4 = workspace.zones.fishing.ChildAdded:Connect(function(v)
             IsStage()
             Position = IsPosition()
-            game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
+            ReplicatedStorage:WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
         end)
         connect5 = workspace.zones.fishing.ChildRemoved:Connect(function(v)
             IsStage()
             Position = IsPosition()
-            game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
+            ReplicatedStorage:WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
         end)
         for i,v in pairs(playerstats.Bestiary:GetChildren()) do
             if table.find(total,v.Name) then
                 table.insert(cur_,v.Name)
                 IsStage()
                 Position = IsPosition()
-                game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
+                ReplicatedStorage:WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
             end
         end
         connect3 = playerstats.Bestiary.ChildAdded:Connect(function(v)
@@ -1428,7 +1427,7 @@ local function Book(fish,justfarm)
                 table.insert(cur_,v.Name)
                 IsStage()
                 Position = IsPosition()
-                game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
+                ReplicatedStorage:WaitForChild("events"):WaitForChild("bestiarycomplete"):FireServer(fish)
             end
         end)
     end
@@ -1919,11 +1918,11 @@ local function AutoCraft(Rod)
                     StopFarm_[os1] = true
                 else
                     BYfArt("Stop Things","Post",true)
-                    if game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("CanCraft"):InvokeServer(Rod) then
+                    if ReplicatedStorage:WaitForChild("events"):WaitForChild("CanCraft"):InvokeServer(Rod) then
                         if Magnitude(plr.Character.HumanoidRootPart.CFrame,workspace.RodCrafting:GetPivot()) >= 5 then
                             plr.Character.HumanoidRootPart.CFrame = workspace.RodCrafting:GetPivot() * CFrame.new(0,2.5,0)
                         else
-                            game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("AttemptCraft"):InvokeServer(Rod)
+                            ReplicatedStorage:WaitForChild("events"):WaitForChild("AttemptCraft"):InvokeServer(Rod)
                         end
                     else
                         print("Unfav")
@@ -2167,7 +2166,7 @@ elseif Settings["Rod Quest"] == "Rod Of The Depth" then
                     if playerstats.Stats.coins.Value >= 750000 then
                         BYfArt("Stop Things","Post",true)
                         if not Door then
-                            if game:GetService("ReplicatedStorage"):WaitForChild("packages"):WaitForChild("Net"):WaitForChild("RF/GetDoorState"):InvokeServer("TheDepthsGate") then
+                            if ReplicatedStorage:WaitForChild("packages"):WaitForChild("Net"):WaitForChild("RF/GetDoorState"):InvokeServer("TheDepthsGate") then
                                 Door = true
                             else
                                 if workspace.world.npcs:FindFirstChild("Custos") then
