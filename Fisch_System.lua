@@ -321,7 +321,6 @@ local Settings = {
         "Magic Thread",
         "Ancient Thread",
         "Lunar Thread",
-        "Icicle",
         "Golden Sea Pearl",
         "Meg's Fang",
         "Meg's Spine",
