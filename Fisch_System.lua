@@ -118,7 +118,7 @@ _G.User = {
         ["Auto Eclipse"] = false,
         ["Auto Totem Meteor"] = false,
         ["Spot"] = "EXP",
-        ["Recipe"] = {"Wisdom Rod"},
+        ["Recipe"] = {},
         ["Rod"] = "Wisdom Rod",
     },
     ["oiotumoio123"] = {
