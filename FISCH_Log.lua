@@ -2,7 +2,6 @@
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
-local ReplicatedStorage = ReplicatedStorage
 local plr = game.Players.LocalPlayer
 local tloading = tick() + 5
 local loading
@@ -58,7 +57,7 @@ local Settings = {
 }
 
 local plr = game:GetService("Players").LocalPlayer
-local ReplicatedStorage = game:GetService("ReplicatedStorage"):WaitForChild("Link")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local playerstats = ReplicatedStorage:WaitForChild("playerstats")
 local HttpService = game:GetService("HttpService")
 local Insert_To = {}
