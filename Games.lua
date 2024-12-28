@@ -63,6 +63,7 @@ Games = {
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Marco.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
         ["FarmGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Gem.lua",
+        ["Hs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs.lua",
     }
 }
 Accounts = {
@@ -555,9 +556,9 @@ Accounts = {
         "DungBase",
     },
     ["FireBlackDevilZ"] = {
-        "Xenon_ALS",
-        "ALS_Reroll",
-        "ALS_AReroll",
+        "Marco",
+        "System",
+        "Hs",
     },
     ["chopperaob"] = {
         "LogACB",

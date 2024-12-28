@@ -47,16 +47,20 @@ Virtual Dungeon (Bosses)
 Magic Hills (Elf Invasion)
 Ruined City (Midnight)
 
+[Event]
+Haunted Academy
+Frozen Abyss
+
 ]]
 
 
 _G.User = {
     ["FireBlackDevilZ"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story 
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false, 
     },
     ["paopqo780"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
@@ -95,10 +99,10 @@ _G.User = {
     },
 }
 local Settings = {
-    ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite
+    ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
     
     ["Select Map"] = "Planet Greenie",
-    ["Select Level"] = 1, -- Story & Legend Stage & Raid
+    ["Select Level"] = "1", -- Story & Legend Stage & Raid
     ["Hard"] = false, -- Story 
 }
 local plr = game.Players.LocalPlayer
@@ -153,6 +157,20 @@ function RoomRaid()
         end
     end
 end
+function EventRoom()
+    local RoomCheck = "_lobbytemplate_event3"
+    if Settings["Select Map"] == "Haunted Academy" then
+        RoomCheck = "_lobbytemplate_event3"
+    elseif Settings["Select Map"] == "Frozen Abyss" then
+        RoomCheck = "_lobbytemplate_event4"
+    end
+    for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
+        if v:IsA('Model') and v.Name == RoomCheck and tostring(v["Owner"]["Value"]) == "nil" then
+            return v
+        end
+    end
+    return false
+end
 function JoinConvert(args)
 	for i,v in pairs(require(game:GetService("ReplicatedStorage").src.Data.Worlds)) do
 		if v.name == args then
@@ -166,7 +184,7 @@ local function Next_(var)
 end
 spawn(function ()
 	while true do
-        pcall(function ()
+        local val,err = pcall(function ()
             if game.PlaceId == 8304191830  then
                 if Settings["Select Mode"] == 'Story'then
                     if CheckRoom()[1] == true then
@@ -178,6 +196,7 @@ spawn(function ()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoom()[2], JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,Settings["Hard"] and "Hard" or "Normal")
                         Next_(.2)
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoom()[2])
+                        Next_(5)
                     else
                         OldCframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
                         TeleportRoom = true
@@ -194,7 +213,7 @@ spawn(function ()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoom()[2], JoinConvert(Settings["Select Map"])['infinite']['id'],true,"Hard")
                         Next_(.2)
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoom()[2])
-                        Next_(2)
+                        Next_(5)
                     else
                         OldCframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
                         TeleportRoom = true
@@ -211,7 +230,7 @@ spawn(function ()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoom()[2], JoinConvert(Settings["Select Map"])["levels"][Settings["Select Level"]]['id'],true,"Hard")
                         Next_(.2)
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoom()[2])
-                        Next_(2)
+                        Next_(5)
                     else
                         OldCframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
                         TeleportRoom = true
@@ -228,16 +247,31 @@ spawn(function ()
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoomRaid()[2], JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,"Hard")
                         Next_(.2)
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoomRaid()[2])
-                        Next_(2)
+                        Next_(5)
                     else
                         OldCframe = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
                         TeleportRoom = true
                         Next_(.1)
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(RoomRaid())
                     end
+                elseif Settings["Select Mode"] == 'Event'then
+                    local RoomA = EventRoom()
+                    print(RoomA)
+                    if RoomA then
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(RoomA.Name)
+                        while tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) > 1 or tonumber(RoomA.Door.Surface.Status.Players.Text:split("/")[1]) == 0 do
+
+                        end
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(RoomA.Name)
+                    else 
+                        Next_(2)
+                    end
                 end
             end
         end)
-		wait()
+        if not val then
+            print(err)
+        end
+		task.wait()
 	end
 end)
