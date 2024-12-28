@@ -70,11 +70,11 @@ _G.User = {
         ["Hard"] = false, -- Story 
     },
     ["okillua006"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story 
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
     ["puggtopro"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
