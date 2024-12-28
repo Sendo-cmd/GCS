@@ -58,7 +58,7 @@ Games = {
     [6149138290] = { --Anime-Card-Battle
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
         ["LogACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
-    }
+    },
     [3183403065] = { --Anime Adventures
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Marco.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
