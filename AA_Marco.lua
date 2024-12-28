@@ -5,8 +5,9 @@ local Profiles = {
 }
 
 repeat task.wait(1) until game:IsLoaded()
+game.CoreGui.Cryptic:Destroy()
 
-local PATH = "Xenon Hub Anime Last Stand/User"
+local PATH = "Nousigi Hub/Macro/AnimeAdventures"
 
 -- Process
 
