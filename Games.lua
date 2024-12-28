@@ -59,6 +59,12 @@ Games = {
         ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
         ["LogACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
     }
+    [3183403065] = { --Anime Adventures
+        ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Marco.lua",
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
+        ["FarmGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Gem.lua",
+        ["log"] = "",
+    }
 }
 Accounts = {
     ["SHIFUGOD"] = {
@@ -162,8 +168,9 @@ Accounts = {
         "System",
     },
     ["opoppoky"] = {
-        "Log",
+        "Marco",
         "System",
+        "FarmGem",
     },
     ["SQR019"] = {
         "Log",
@@ -442,9 +449,9 @@ Accounts = {
         "ESSE",
     },
     ["puggtopro"] = {
-        "Log",
         "Marco",
-        "CF",
+        "System",
+        "FarmGem",
     },
     ["Etaa_xm"] = {
         "Log",
@@ -582,6 +589,16 @@ Accounts = {
     ["nowgodzz"] = {
         "LogACB",
         "ACB",
+    },
+    ["paopqo780"] = {
+        "Marco",
+        "System",
+        "FarmGem",
+    },
+    ["okillua006"] = {
+        "Marco",
+        "System",
+        "FarmGem",
     },
 
 }
