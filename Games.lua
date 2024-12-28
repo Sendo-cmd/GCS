@@ -63,7 +63,6 @@ Games = {
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Marco.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
         ["FarmGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Gem.lua",
-        ["log"] = "",
     }
 }
 Accounts = {
