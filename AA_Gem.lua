@@ -14,7 +14,6 @@ getgenv().Config = {
 		["Walk Around"] = true
 	},
 	["Performance"] = {
-		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
