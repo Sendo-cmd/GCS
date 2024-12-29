@@ -2,6 +2,7 @@ local Endpoint = "https://raw.githubusercontent.com/test-macro/AA_Marco/main/"
 local Profiles = {
     "gem.json",
     "hs.json",
+    "dbz.json",
 }
 
 repeat task.wait(1) until game:IsLoaded()
