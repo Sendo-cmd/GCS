@@ -94,18 +94,7 @@ _G.User = {
         ["Auto Eclipse"] = false,
         ["Auto Totem Meteor"] = false,
         ["Spot"] = "EXP",
-        ["Recipe"] = {
-            "Rod Of The Forgotten Fang",
-            "Krampus's Rod",
-            "Precision Rod",
-            "Celestial Rod",
-            "The Lost Rod",
-            "Voyager Rod",
-            "Seasons Rod",
-            "Rod Of The Eternal King",
-            "Riptide Rod",
-            "Wisdom Rod"
-        },
+        ["Recipe"] = {},
         ["Rod"] = "Rod Of The Forgotten Fang",
     },
     ["qpsSXxqp"] = {
