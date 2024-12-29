@@ -2,6 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
+	["AutoSave"] = true,
 	["Game Finished"] = {
 		["Auto Replay"] = true
 	},
@@ -9,6 +10,7 @@ getgenv().Config = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
 	},
+	["Joiner Cooldown"] = 0,
 	["Secure"] = {
 		["Random Offset"] = true,
 		["Walk Around"] = true
@@ -18,15 +20,15 @@ getgenv().Config = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
-	["Gameplay"] = {
-		["Auto Skip Wave"] = true
-	},
 	["Macros"] = {
 		["Macro"] = "dbz",
+		["No Ignore Sell Timing"] = true,
 		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
+		["Play"] = true
 	},
-	["AutoSave"] = true
+	["Gameplay"] = {
+		["Auto Skip Wave"] = true
+	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
