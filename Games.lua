@@ -559,7 +559,7 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "Marco",
         "System",
-        "Hs",
+        "Dbz",
     },
     ["chopperaob"] = {
         "LogACB",
