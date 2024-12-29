@@ -95,7 +95,7 @@ _G.User = {
         ["Auto Totem Meteor"] = false,
         ["Spot"] = "EXP",
         ["Recipe"] = {},
-        ["Rod"] = "Rod Of The Forgotten Fang",
+        ["Rod"] = "",
     },
     ["qpsSXxqp"] = {
         ["Rod Quest"] = "", 
