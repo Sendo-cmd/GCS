@@ -24,7 +24,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro"] = "hs",
 		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
+		["No Ignore Sell Timing"] = true,
 		["Play"] = true
 	},
 	["AutoSave"] = true
