@@ -51,7 +51,7 @@ Games = {
         ["ALS_Reroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Marco.lua",
     },
-    [5750914919] = {
+    [5750914919] = { --Fisch
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
     },
