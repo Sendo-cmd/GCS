@@ -1,6 +1,5 @@
 
 repeat  task.wait() until game:IsLoaded()
-game.CoreGui.Cryptic:Destroy()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
 local plr = game.Players.LocalPlayer

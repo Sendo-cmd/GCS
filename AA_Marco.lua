@@ -5,7 +5,6 @@ local Profiles = {
 }
 
 repeat task.wait(1) until game:IsLoaded()
-game.CoreGui.Cryptic:Destroy()
 
 local PATH = "Nousigi Hub/Macro/AnimeAdventures"
 

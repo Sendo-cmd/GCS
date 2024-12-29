@@ -97,6 +97,20 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
     },
+    ["TONKAORIKI_NEW"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
+    },
+    ["noop_45670"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false, -- Story 
+    },
 }
 local Settings = {
     ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
