@@ -63,6 +63,9 @@ Games = {
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Marco.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
         ["FarmGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Gem.lua",
+        ["FarmGemG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemG.lua",
+        ["FarmGemJ"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemJ.lua",
+        ["FarmGemR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemR.lua",
         ["Hs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
     }
@@ -594,7 +597,7 @@ Accounts = {
     ["paopqo780"] = {
         "Marco",
         "System",
-        "FarmGem",
+        "FarmGemR",
     },
     ["okillua006"] = {
         "Marco",
