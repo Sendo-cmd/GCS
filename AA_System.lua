@@ -59,7 +59,7 @@ _G.User = {
         ["Select Mode"] = "Raid", 
     
         ["Select Map"] = "Sacred Planet", 
-        ["Select Level"] = "2", 
+        ["Select Level"] = "3", 
         ["Hard"] = false, 
     },
     ["paopqo780"] = {
