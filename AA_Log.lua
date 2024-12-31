@@ -3,6 +3,7 @@ game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("spawn_units")
 game:GetService("Players").LocalPlayer.PlayerGui.spawn_units:WaitForChild("Lives")
 local plr = game:GetService("Players").LocalPlayer
+local HttpService = game:GetService("HttpService")
 if game.PlaceId == 8304191830  then
     local response = request({
         ["Url"] = "https://api.championshop.date/log-AA",
