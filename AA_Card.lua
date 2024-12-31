@@ -5,8 +5,8 @@ repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("Pl
 
 local Priority = {
     ["+ Range I"] = 99,
-    ["- Cooldown I"] = 98,
-    ["+ Attack I"] = 97,
+    ["+ Attack I"] = 98,
+    ["- Cooldown I"] = 97,
     ["+ Range II"] = 96,
     ["- Cooldown II"] = 95,
     ["+ Attack II"] = 94,
