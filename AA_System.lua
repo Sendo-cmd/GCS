@@ -146,6 +146,13 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["TawanNoob1"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
     ["okillua006"] = {
         ["Select Mode"] = "Event", 
     
