@@ -174,7 +174,6 @@ Accounts = {
         "System",
     },
     ["opoppoky"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGemG",
@@ -456,7 +455,6 @@ Accounts = {
         "ESSE",
     },
     ["puggtopro"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
@@ -599,19 +597,16 @@ Accounts = {
         "ACB",
     },
     ["paopqo780"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGemR",
     },
     ["okillua006"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
     },
     ["Naiza080947"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
@@ -622,49 +617,41 @@ Accounts = {
         "Hs",
     },
     ["TONKAORIKI_NEW"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
     },
     ["Kirito_VIJ"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
     },
     ["DDYUFCiSRHT"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
     },
     ["Lookmoo1987"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
     },
     ["Punpungoaway"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGem",
     },
     ["ArutanKatsuki"] = {
-        "Log",
         "Marco",
         "System",
         "FarmGemG",
     },
     ["Nongneuftawchin"] = {
-        "Log",
         "Marco",
         "System",
         "Hs",
     },
     ["lwntrueman"] = {
-        "Log",
         "Marco",
         "System",
         "Hs",
