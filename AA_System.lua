@@ -56,11 +56,11 @@ Frozen Abyss
 
 _G.User = {
     ["FireBlackDevilZ"] = {
-        ["Select Mode"] = "Raid", 
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Sacred Planet", 
-        ["Select Level"] = "4", 
-        ["Hard"] = false, 
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
     ["paopqo780"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
@@ -145,6 +145,27 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+    },
+    ["okillua006"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["lwntrueman"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["Nongneuftawchin"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
 }
 local Settings = {

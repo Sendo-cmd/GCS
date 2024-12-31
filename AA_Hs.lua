@@ -7,6 +7,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
+		["Auto Next"] = true,
 		["Teleport Lobby if Player"] = true
 	},
 	["Secure"] = {
