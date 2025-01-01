@@ -56,10 +56,10 @@ Frozen Abyss
 
 _G.User = {
     ["FireBlackDevilZ"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Raid", 
     
-        ["Select Map"] = "Haunted Academy", 
-        ["Select Level"] = "1", 
+        ["Select Map"] = "Sacred Planet", 
+        ["Select Level"] = "4", 
         ["Hard"] = false,
     },
     ["paopqo780"] = {
