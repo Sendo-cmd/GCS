@@ -841,10 +841,10 @@ spawn(function()
                                         TalkNpc("Marc Merchant")
                                     end
                                     task.delay(.001,function ()
-                                        local Sell = workspace.world.npcs:FindFirstChild("Marc Merchant"):FindFirstChild("sellall",true)
-                                        Sell:InvokeServer()
+                                        game:GetService("ReplicatedStorage"):WaitForChild("events"):WaitForChild("SellAll"):InvokeServer()
                                     end)
                                     
+
                                     tick2 = tick() + .2
                                 end
                             until tick() >= tick1
