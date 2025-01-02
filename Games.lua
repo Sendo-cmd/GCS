@@ -243,8 +243,9 @@ Accounts = {
         "System",
     },
     ["bombayzaza1234"] = {
-        "Log",
+        "Marco",
         "System",
+        "FarmGemG",
     },
     ["PieRoseApple"] = {
         "Log",
@@ -329,10 +330,9 @@ Accounts = {
         "AutoBuyR",
     },
     ["maser080"] = {
-        "Log",
-        "System",
         "Marco",
-        "FarmGem",
+        "System",
+        "FarmGemG",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
