@@ -71,6 +71,7 @@ Games = {
         ["Hs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs.lua",
         ["Hs2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs2.lua",
         ["Hs3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs3.lua",
+        ["Hs4"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs4.lua",
         ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
         ["Hsnd2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND2.lua",
         ["Hsnd3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND3.lua",
@@ -611,7 +612,7 @@ Accounts = {
     ["okillua006"] = {
         "Marco",
         "System",
-        "FarmGem",
+        "Hs2",
     },
     ["Naiza080947"] = {
         "Marco",
@@ -661,7 +662,7 @@ Accounts = {
     ["lwntrueman"] = {
         "Marco",
         "System",
-        "Hs",
+        "Hs4",
     },
     ["Chouko_japanese"] = {
         "Log",

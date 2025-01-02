@@ -76,7 +76,7 @@ getgenv().Config = {
 	},
 	["Macros"] = {
 		["Ignore Macro Timing"] = true,
-		["Macro"] = "hs2",
+		["Macro"] = "hs4",
 		["Macro Retry Limit"] = 0,
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true
