@@ -5,6 +5,13 @@ local Profiles = {
     "gem3.json",
     "gem4.json",
     "hs.json",
+    "hs2.json",
+    "hs3.json",
+    "hsnd.json",
+    "hsnd2.json",
+    "hsnd3.json",
+    "hsnd4.json",
+    "hsnd5.json",
     "dbz.json",
 }
 

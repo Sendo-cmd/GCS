@@ -7,6 +7,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
+		["Auto Next"] = true,
 		["Teleport Lobby if Player"] = true
 	},
 	["Secure"] = {
@@ -22,13 +23,10 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "gem2",
+		["Macro"] = "hsnd",
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true
-	},
-	["Auto Sell"] = {
-		["Wave"] = 20
 	},
 	["AutoSave"] = true
 }

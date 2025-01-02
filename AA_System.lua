@@ -56,10 +56,10 @@ Frozen Abyss
 
 _G.User = {
     ["FireBlackDevilZ"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Raid", 
     
-        ["Select Map"] = "Haunted Academy", 
-        ["Select Level"] = "1", 
+        ["Select Map"] = "Sacred Planet", 
+        ["Select Level"] = "4", 
         ["Hard"] = false,
     },
     ["paopqo780"] = {
@@ -173,6 +173,69 @@ _G.User = {
         ["Select Map"] = "Haunted Academy", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
+    },
+    ["Leokung_XD"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["just_testLOL"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["bombayzaza1234"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["maser080"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["04B38"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["caretone38"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["xx0073zx"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["runtz_32868"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["AASN_1"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
     },
 }
 local Settings = {

@@ -14,6 +14,7 @@ getgenv().Config = {
 		["Walk Around"] = true
 	},
 	["Performance"] = {
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
@@ -25,6 +26,9 @@ getgenv().Config = {
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true
+	},
+	["Auto Sell"] = {
+		["Wave"] = 20
 	},
 	["AutoSave"] = true
 }

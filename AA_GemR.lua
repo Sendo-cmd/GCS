@@ -14,11 +14,15 @@ getgenv().Config = {
 		["Walk Around"] = true
 	},
 	["Performance"] = {
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
 	["Gameplay"] = {
 		["Auto Skip Wave"] = true
+	},
+	["Auto Sell"] = {
+		["Wave"] = 20
 	},
 	["Macros"] = {
 		["Macro"] = "gem4",

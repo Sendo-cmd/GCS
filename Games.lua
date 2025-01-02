@@ -69,6 +69,13 @@ Games = {
         ["FarmGemJ"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemJ.lua",
         ["FarmGemR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemR.lua",
         ["Hs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs.lua",
+        ["Hs2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs2.lua",
+        ["Hs3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs3.lua",
+        ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
+        ["Hsnd2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND2.lua",
+        ["Hsnd3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND3.lua",
+        ["Hsnd4"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND4.lua",
+        ["Hsnd5"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND5.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
     }
 }
@@ -564,7 +571,7 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "Marco",
         "System",
-        "Hs",
+        "Dbz",
     },
     ["chopperaob"] = {
         "LogACB",
@@ -614,7 +621,7 @@ Accounts = {
     ["noop_45670"] = {
         "Marco",
         "System",
-        "Hs",
+        "Hsnd4",
     },
     ["TONKAORIKI_NEW"] = {
         "Marco",
@@ -656,10 +663,34 @@ Accounts = {
         "System",
         "Hs",
     },
-    ["TawanNoob1"] = {
+    ["Chouko_japanese"] = {
+        "Log",
+        "System",
+    },
+    ["Leokung_XD"] = {
         "Marco",
         "System",
-        "FarmGemR",
+        "Hsnd5",
+    },
+    ["just_testLOL"] = {
+        "Marco",
+        "System",
+        "Hs3",
+    },
+    ["04B38"] = {
+        "Marco",
+        "System",
+        "Hsnd4",
+    },
+    ["xx0073zx"] = {
+        "Marco",
+        "System",
+        "Hsnd4",
+    },
+    ["runtz_32868"] = {
+        "Marco",
+        "System",
+        "Hsnd2",
     },
 
 }

@@ -148,6 +148,20 @@ _G.User = {
         ["Recipe"] = {},
         ["Rod"] = "",
     },
+    ["Chouko_japanese"] = {
+        ["Rod Quest"] = "", 
+        ["Bestiary"] = {},
+        ["Auto Buy Luck"] = false,
+        ["WorldEvent"] = false,
+        ["Auto Meteor"] = false,
+        ["Auto Aurora"] = false,
+        ["Auto Eclipse"] = false,
+        ["Auto Treasure"] = false,
+        ["Auto Totem Meteor"] = false,
+        ["Spot"] = "Ancient IsIe",
+        ["Recipe"] = {},
+        ["Rod"] = "",
+    },
 }
 
 if VariableIndex == nil then
