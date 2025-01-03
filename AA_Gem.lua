@@ -10,10 +10,6 @@ getgenv().Config = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
 	},
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Level Milestone"] = true
-	},
 	["Secure"] = {
 		["Random Offset"] = true,
 		["Walk Around"] = true
