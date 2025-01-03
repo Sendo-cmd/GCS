@@ -1,5 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["AutoSave"] = true,
