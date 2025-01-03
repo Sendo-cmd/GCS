@@ -14,10 +14,6 @@ getgenv().Config = {
 		},
 		["Upgrade Method"] = "Randomize"
 	},
-	["Raid Joiner"] = {
-		["Level"] = "Level 4",
-		["World"] = "Sacred Planet"
-	},
 	["Macros"] = {
 		["Macro"] = "HTestLow",
 		["Macro Retry Limit"] = 0,

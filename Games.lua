@@ -65,9 +65,6 @@ Games = {
         ["Card"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Card.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
         ["FarmGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Gem.lua",
-        ["FarmGemG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemG.lua",
-        ["FarmGemJ"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemJ.lua",
-        ["FarmGemR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GemR.lua",
         ["Hs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs.lua",
         ["Hs2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs2.lua",
         ["Hs3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs3.lua",
@@ -179,7 +176,7 @@ Accounts = {
     },
     ["opoppoky"] = {
         "Marco",
-        "FarmGemG",
+        "FarmGem",
         "System",
     },
     ["SQR019"] = {
@@ -328,7 +325,7 @@ Accounts = {
     },
     ["maser080"] = {
         "Marco",
-        "FarmGemG",
+        "FarmGem",
         "System",
     },
     ["Thai_WilYuLaw"] = {
@@ -647,7 +644,7 @@ Accounts = {
     },
     ["ArutanKatsuki"] = {
         "Marco",
-        "FarmGemG",
+        "FarmGem",
         "System",
     },
     ["Nongneuftawchin"] = {
