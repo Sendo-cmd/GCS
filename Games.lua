@@ -73,10 +73,6 @@ Games = {
         ["Hs3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs3.lua",
         ["Hs4"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs4.lua",
         ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
-        ["Hsnd2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND2.lua",
-        ["Hsnd3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND3.lua",
-        ["Hsnd4"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND4.lua",
-        ["Hsnd5"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND5.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
     }
 }
@@ -621,7 +617,7 @@ Accounts = {
     },
     ["noop_45670"] = {
         "Marco",
-        "Hsnd4",
+        "Hsnd",
         "System",
     },
     ["TONKAORIKI_NEW"] = {
@@ -670,27 +666,27 @@ Accounts = {
     },
     ["Leokung_XD"] = {
         "Marco",
-        "Hsnd5",
+        "Hsnd",
         "System",
     },
     ["just_testLOL"] = {
         "Marco",
-        "Hsnd2",
+        "Hsnd",
         "System",
     },
     ["04B38"] = {
         "Marco",
-        "Hsnd4",
+        "Hsnd",
         "System",
     },
     ["xx0073zx"] = {
         "Marco",
-        "Hsnd4",
+        "Hsnd",
         "System",
     },
     ["runtz_32868"] = {
         "Marco",
-        "Hsnd2",
+        "Hsnd",
         "System",
     },
     ["AASN_1"] = {
@@ -700,12 +696,12 @@ Accounts = {
     },
     ["skdbsnxb"] = {
         "Marco",
-        "Hsnd4",
+        "Hsnd",
         "System",
     },
     ["packky02"] = {
         "Marco",
-        "Hsnd5",
+        "Hsnd",
         "System",
     },
 

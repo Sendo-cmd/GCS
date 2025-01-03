@@ -8,11 +8,6 @@ local Profiles = {
     "hs2.json",
     "hs3.json",
     "hs4.json",
-    "hsnd.json",
-    "hsnd2.json",
-    "hsnd3.json",
-    "hsnd4.json",
-    "hsnd5.json",
     "dbz.json",
 }
 
