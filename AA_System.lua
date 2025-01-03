@@ -251,6 +251,27 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
+    ["wooiy12"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["namnam12327"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["SugarSnow_17627"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
 }
 repeat task.wait(40) until game:IsLoaded()
 
