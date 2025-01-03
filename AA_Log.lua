@@ -6,7 +6,7 @@ local plr = game:GetService("Players").LocalPlayer
 local HttpService = game:GetService("HttpService")
 if game.PlaceId == 8304191830  then
     local response = request({
-        ["Url"] = "https://api.championshop.date/log-AA",
+        ["Url"] = "https://api.championshop.date/log-aa",
         ["Method"] = "POST",
         ["Headers"] = {
             ["content-type"] = "application/json"
@@ -29,7 +29,7 @@ if game.PlaceId == 8304191830  then
 else
     game:GetService("ReplicatedStorage").endpoints.server_to_client.game_finished.OnClientEvent:Connect(function(g)
         local response = request({
-            ["Url"] = "https://api.championshop.date/log-AA",
+            ["Url"] = "https://api.championshop.date/log-aa",
             ["Method"] = "POST",
             ["Headers"] = {
                 ["content-type"] = "application/json"
