@@ -558,7 +558,6 @@ Accounts = {
         "DungBase",
     },
     ["FireBlackDevilZ"] = {
-        "Log",
         "Marco",
         "Dbz",
         "System",
