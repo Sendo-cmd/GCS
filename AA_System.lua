@@ -237,6 +237,27 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["skdbsnxb"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["packky02"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
+    ["runtz_32868"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
 }
 repeat task.wait(45) until game:IsLoaded()
 
