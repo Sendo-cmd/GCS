@@ -599,6 +599,7 @@ Accounts = {
         "FarmGemR",
     },
     ["okillua006"] = {
+        "Card",
         "Marco",
         "Hs2",
         "System",
@@ -609,6 +610,7 @@ Accounts = {
         "System",
     },
     ["noop_45670"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
@@ -644,11 +646,13 @@ Accounts = {
         "System",
     },
     ["Nongneuftawchin"] = {
+        "Card",
         "Marco",
         "Hs",
         "System",
     },
     ["lwntrueman"] = {
+        "Card",
         "Marco",
         "Hs4",
         "System",
@@ -658,26 +662,31 @@ Accounts = {
         "System",
     },
     ["Leokung_XD"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
     },
     ["just_testLOL"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
     },
     ["04B38"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
     },
     ["xx0073zx"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
     },
     ["runtz_32868"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
@@ -688,11 +697,13 @@ Accounts = {
         "System",
     },
     ["skdbsnxb"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
     },
     ["packky02"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
@@ -703,16 +714,19 @@ Accounts = {
         "System",
     },
     ["namnam12327"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
     },
     ["SugarSnow_17627"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
     },
     ["caretone38"] = {
+        "Card",
         "Marco",
         "Hsnd",
         "System",
