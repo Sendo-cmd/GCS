@@ -246,7 +246,7 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
-    ["packky02"] = {
+    ["Packky02"] = {
         ["Select Mode"] = "Event", 
     
         ["Select Map"] = "Frozen Abyss", 
