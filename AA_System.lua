@@ -1,6 +1,4 @@
 --[[
-
-
 [Story Mode]
 Planet Greenie
 Walled City
