@@ -758,6 +758,13 @@ Accounts = {
         "System",
         "Card",
     },
+    ["Bestganeryoutube"] = {
+        "Log",
+        "Marco",
+        "Hsnd",
+        "System",
+        "Card",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
