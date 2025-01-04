@@ -37,7 +37,7 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true,
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Wave"] = 20
+			["Wave"] = 25
 		}
 	},
 	["Performance"] = {
