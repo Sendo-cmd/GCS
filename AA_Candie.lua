@@ -35,6 +35,20 @@ getgenv().Config = {
 		["Auto Sell"] = {
 			["Wave"] = 1
 		},
+		["Smart Auto Ability"] = {
+			["Wind Dragon"] = true,
+			["Commander"] = true,
+			["Delinquent"] = true,
+			["Usurper (Founder)"] = true,
+			["Fiery Commander (Hellfire)"] = true,
+			["JIO (Over Heaven)"] = true,
+			["Shadowgirl (Time Traveller)"] = true,
+			["Illusionist (Final)"] = true,
+			["Trickster (Release)"] = true,
+			["Lulu (Emperor)"] = true,
+			["Time Wizard (Chronos)"] = true,
+			["Priest (Heaven)"] = true
+		},
 		["Auto Modifier"] = {
 			["Enable"] = true,
 			["Prioritize"] = {
