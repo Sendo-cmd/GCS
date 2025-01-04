@@ -50,7 +50,7 @@ Ruined City (Midnight)
 [Event]
 Haunted Academy
 Frozen Abyss
-
+Strange Town (Haunted)
 ]]
 
 
@@ -296,7 +296,7 @@ _G.User = {
     ["yukilito001"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Haunted Academy",
+        ["Select Map"] = "Strange Town (Haunted)",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
@@ -363,17 +363,26 @@ function RoomRaid()
     end
 end
 function EventRoom()
-    local RoomCheck = "_lobbytemplate_event3"
     if Settings["Select Map"] == "Haunted Academy" then
-        RoomCheck = "_lobbytemplate_event3"
+        for i, v in pairs(workspace._DUNGEONS.Lobbies:GetChildren()) do
+            if v:IsA('Model') and v.Name == "_lobbytemplate_event222" and tostring(v["Owner"]["Value"]) == "nil" then
+                return v
+            end
+        end
     elseif Settings["Select Map"] == "Frozen Abyss" then
-        RoomCheck = "_lobbytemplate_event4"
-    end
-    for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
-        if v:IsA('Model') and v.Name == RoomCheck and tostring(v["Owner"]["Value"]) == "nil" then
-            return v
+        for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
+            if v:IsA('Model') and v.Name == "_lobbytemplate_event3" and tostring(v["Owner"]["Value"]) == "nil" then
+                return v
+            end
+        end
+    elseif Settings["Select Map"] == "Strange Town (Haunted)" then
+        for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
+            if v:IsA('Model') and v.Name == "_lobbytemplate_event4" and tostring(v["Owner"]["Value"]) == "nil" then
+                return v
+            end
         end
     end
+   
     return false
 end
 function JoinConvert(args)
