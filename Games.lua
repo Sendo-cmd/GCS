@@ -262,6 +262,8 @@ Accounts = {
     },
     ["xdyrdgyrdfg"] = {
         "Log",
+        "Marco",
+        "Hs4",
         "System",
     },
     ["mixkung31"] = {
@@ -667,9 +669,8 @@ Accounts = {
     },
     ["lwntrueman"] = {
         "Log",
-        "Hs4",
+        "Hsnd",
         "System",
-        "Card",
         "Marco",
     },
     ["Chouko_japanese"] = {
