@@ -286,6 +286,13 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
+    ["TPLshop_135148"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
 }
 repeat task.wait(40) until game:IsLoaded()
 

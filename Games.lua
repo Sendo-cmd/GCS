@@ -765,6 +765,12 @@ Accounts = {
         "System",
         "Card",
     },
+    ["TPLshop_135148"] = {
+        "Log",
+        "Marco",
+        "FarmGem",
+        "System",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
