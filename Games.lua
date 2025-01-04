@@ -70,6 +70,7 @@ Games = {
         ["Hs3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs3.lua",
         ["Hs4"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs4.lua",
         ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
+        ["Candie"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Candie.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
     }
 }
@@ -769,6 +770,12 @@ Accounts = {
         "Log",
         "Marco",
         "FarmGem",
+        "System",
+    },
+    ["yukilito001"] = {
+        "Log",
+        "Marco",
+        "Candie",
         "System",
     },
 

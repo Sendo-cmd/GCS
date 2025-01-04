@@ -1,33 +1,23 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Game Finished"] = {
-		["Auto Replay"] = true,
-		["Auto Next"] = true
-	},
 	["Joiner Cooldown"] = 0,
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Enable"] = true,
 		["Middle Position"] = {
-			["Frozen Abyss"] = "397.4182434082031, 45.9230842590332, 371.3970642089844"
+			["Walled City (Midnight)"] = "-2975.684326171875, 33.741798400878906, -692.74560546875"
 		},
 		["Upgrade Method"] = "Randomize"
-	},
-	["Macros"] = {
-		["Macro"] = "HTestLow",
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
+	},
+	["Macros"] = {
+		["Ignore Macro Timing"] = true,
+		["Macro Retry Limit"] = 0,
+		["No Ignore Sell Timing"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true
@@ -38,10 +28,15 @@ getgenv().Config = {
 		["Auto Claim Level Milestone"] = true
 	},
 	["Gameplay"] = {
-		["Auto Skip Wave"] = true,
 		["Auto Sell"] = {
-			["Wave"] = 20
-		}
+			["Wave"] = 1
+		},
+		["Auto Skip Wave"] = true
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"

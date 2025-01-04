@@ -15,7 +15,6 @@ getgenv().Config = {
 		["Auto Claim Level Milestone"] = true
 	},
 	["Secure"] = {
-		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
 	["Performance"] = {

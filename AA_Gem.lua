@@ -26,7 +26,6 @@ getgenv().Config = {
 		["Teleport Lobby if Player"] = true
 	},
 	["Secure"] = {
-		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
 	["AutoSave"] = true,
