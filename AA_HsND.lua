@@ -16,7 +16,7 @@ getgenv().Config = {
 		}
 	},
 	["Macros"] = {
-		["Macro"] = "HTestLow",
+		["Macro"] = "",
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
