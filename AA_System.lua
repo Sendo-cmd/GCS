@@ -58,10 +58,10 @@ Plantet Greenie (Haunted)
 
 _G.User = {
     ["FireBlackDevilZ"] = {
-        ["Select Mode"] = "Raid", 
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Sacred Planet", 
-        ["Select Level"] = "4", 
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["paopqo780"] = {
