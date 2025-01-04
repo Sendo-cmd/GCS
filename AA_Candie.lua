@@ -5,10 +5,12 @@ getgenv().Config = {
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Enable"] = true,
+		["Upgrade Method"] = "Randomize",
+		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Walled City (Midnight)"] = "-2975.684326171875, 33.741798400878906, -692.74560546875"
-		},
-		["Upgrade Method"] = "Randomize"
+			["Walled City (Midnight)"] = "-2975.684326171875, 33.741798400878906, -692.74560546875",
+			["Strange Town (Haunted)"] = "-594.7011108398438, 32.403968811035156, -133.05189514160156"
+		}
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
@@ -25,6 +27,7 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
+		["Auto Accept Daily Mission"] = true,
 		["Auto Claim Level Milestone"] = true
 	},
 	["Gameplay"] = {

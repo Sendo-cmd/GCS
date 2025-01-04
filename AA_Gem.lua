@@ -9,11 +9,11 @@ getgenv().Config = {
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Enable"] = true,
+		["Upgrade Method"] = "Randomize",
+		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Frozen Abyss"] = "397.4182434082031, 45.9230842590332, 371.3970642089844",
 			["Planet Greenie"] = "-2930.51611328125, 91.80620574951172, -734.8823852539062"
-		},
-		["Upgrade Method"] = "Randomize"
+		}
 	},
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
