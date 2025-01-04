@@ -72,7 +72,7 @@ _G.User = {
     ["okillua006"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
@@ -107,7 +107,7 @@ _G.User = {
     ["noop_45670"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false, -- Story
     },
@@ -156,35 +156,35 @@ _G.User = {
     ["okillua006"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["lwntrueman"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["Nongneuftawchin"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["Leokung_XD"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["just_testLOL"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
@@ -205,28 +205,28 @@ _G.User = {
     ["04B38"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["caretone38"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["xx0073zx"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["runtz_32868"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
@@ -240,14 +240,14 @@ _G.User = {
     ["skdbsnxb"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["packky02"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
@@ -261,28 +261,28 @@ _G.User = {
     ["namnam12327"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["SugarSnow_17627"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["caretone38"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
     ["Bestganeryoutube"] = {
         ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Haunted Academy", 
+        ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
