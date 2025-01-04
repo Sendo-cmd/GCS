@@ -47,9 +47,10 @@ else
                 ["DataKey"] = "GamingChampionShopAPI",
             })
         })
+        for i,v in pairs(response) do
+            print(i,v)
+        end
     end)
  
-    for i,v in pairs(response) do
-        print(i,v)
-    end
+    
 end
