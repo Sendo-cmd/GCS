@@ -12,7 +12,8 @@ getgenv().Config = {
 	},
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
-		["Auto Claim Level Milestone"] = true
+		["Auto Claim Level Milestone"] = true,
+		["Auto Claim Present"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true

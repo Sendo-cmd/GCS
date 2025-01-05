@@ -31,7 +31,7 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Claimer"] = {
 		["Auto Claim Level Milestone"] = true,
-		["Auto Claim Quest"] = true
+		["Auto Claim Present"] = true
 	},
 	["Gameplay"] = {
 		["Auto Skip Wave"] = true,

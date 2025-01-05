@@ -31,7 +31,8 @@ getgenv().Config = {
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
 		["Auto Accept Daily Mission"] = true,
-		["Auto Claim Level Milestone"] = true
+		["Auto Claim Level Milestone"] = true,
+		["Auto Claim Present"] = true
 	},
 	["Gameplay"] = {
 		["Auto Skip Wave"] = true,
