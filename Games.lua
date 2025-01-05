@@ -465,7 +465,8 @@ Accounts = {
     ["Etaa_xm"] = {
         "Log",
         "Marco",
-        "BIgrisGS",
+        "Hsnd",
+        "System",
     },
     ["M_Darknesss"] = {
         "Log",
