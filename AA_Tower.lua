@@ -1,6 +1,10 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
+	["Game Finished"] = {
+		["Auto Replay"] = true,
+		["Auto Next"] = true
+	},
 	["Joiner Cooldown"] = 0,
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -8,21 +12,26 @@ getgenv().Config = {
 		["Upgrade Method"] = "Nearest from Middle Position (until Max)",
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Walled City (Midnight)"] = "-2975.684326171875, 33.741798400878906, -692.74560546875",
-			["Strange Town (Haunted)"] = "-594.7011108398438, 32.403968811035156, -133.05189514160156",
-			["Planet Greenie (Haunted)"] = "-2936.037109375, 91.80620574951172, -721.120849609375",
-			["Navy Bay (Midnight)"] = "-2587.32421875, 25.210872650146484, -70.11207580566406",
-			["Magic Town (Haunted)"] = "-627.0025024414062, 6.752476215362549, -807.8677978515625"
+			["Frozen Abyss"] = "397.4182434082031, 45.9230842590332, 371.3970642089844"
 		}
+	},
+	["Macros"] = {
+		["Macro"] = "",
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
+	},
+	["Infinity Mansion Joiner"] = {
+		["Auto Join"] = true
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
-	},
-	["Macros"] = {
-		["Ignore Macro Timing"] = true,
-		["Macro Retry Limit"] = 0,
-		["No Ignore Sell Timing"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true
@@ -30,7 +39,6 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
-		["Auto Accept Daily Mission"] = true,
 		["Auto Claim Level Milestone"] = true,
 		["Auto Claim Present"] = true
 	},
@@ -54,7 +62,6 @@ getgenv().Config = {
 			["Priest (Heaven)"] = true
 		},
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Attack I"] = 39,
 				["Attack II"] = 31,
@@ -98,12 +105,7 @@ getgenv().Config = {
 				["Explosive Deaths III"] = 13,
 			}
 		}
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
-repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(4)until Joebiden
+repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden

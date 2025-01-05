@@ -122,5 +122,5 @@ getgenv().Config = {
 		}
 	}
 }
-getgenv().Key = "kFreePremiumKey2025x8Jan"
+getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
 repeat wait(6)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(2)until Joebiden
