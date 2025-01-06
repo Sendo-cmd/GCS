@@ -383,7 +383,7 @@ _G.User = {
         ["Select Mode"] = "Raid", 
     
         ["Select Map"] = "Sacred Planet", 
-        ["Select Level"] = "4", 
+        ["Select Level"] = "1", 
         ["Hard"] = false,
     },
 }
