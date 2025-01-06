@@ -379,6 +379,13 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
+    ["PeeVongzaTV"] = {
+        ["Select Mode"] = "Raid", 
+    
+        ["Select Map"] = "Sacred Planet", 
+        ["Select Level"] = "4", 
+        ["Hard"] = false,
+    },
 }
 repeat task.wait(40) until game:IsLoaded()
 

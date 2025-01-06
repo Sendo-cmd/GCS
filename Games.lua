@@ -72,6 +72,7 @@ Games = {
         ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
         ["Candie"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Candie.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
+        ["Dbz2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz2.lua",
     }
 }
 Accounts = {
@@ -810,6 +811,12 @@ Accounts = {
         "Log",
         "Marco",
         "Hsnd",
+        "System",
+    },
+    ["PeeVongzaTV"] = {
+        "Log",
+        "Marco",
+        "Dbz2",
         "System",
     },
 
