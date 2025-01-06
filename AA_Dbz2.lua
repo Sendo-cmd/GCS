@@ -7,26 +7,19 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Joiner Cooldown"] = 0,
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Macro"] = "Dbz2",
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Teleport Lobby if Player"] = true
 	},
-	["Performance"] = {
-		["Delete Map"] = true
-	},
-	["Gameplay"] = {
-		["Auto Sell"] = {
-			["Wave"] = 1
-		},
-		["Auto Skip Wave"] = true,
-		["Smart Auto Ability"] = {
-			["Wind Dragon"] = true
-		}
+	["Macros"] = {
+		["No Ignore Sell Timing"] = true,
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -35,10 +28,19 @@ getgenv().Config = {
 			["6"] = true
 		},
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
-		["Focus on Farm"] = true,
 		["Middle Position"] = {
 			["Sacred Planet"] = "-147.89646911621094, 109.84346008300781, 53.93146514892578"
-		}
+		},
+		["Focus on Farm"] = true
+	},
+	["Gameplay"] = {
+		["Auto Sell"] = {
+			["Wave"] = 1
+		},
+		["Smart Auto Ability"] = {
+			["Wind Dragon"] = true
+		},
+		["Auto Skip Wave"] = true
 	}
 }
 getgenv().Key = "k517c79e9160307a9b87210d"
