@@ -5,6 +5,7 @@ local Profiles = {
     "hs3.json",
     "hs4.json",
     "dbz.json",
+    "dbz2.json",
 }
 
 repeat task.wait(1) until game:IsLoaded()
