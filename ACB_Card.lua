@@ -3,12 +3,12 @@ repeat task.wait(20) until game:IsLoaded()
 ACBCardNotification = {
     ["Chance"] = 100000,
     ["Webhook"] = {
-        ["chopperaob"] = "https://discord.com/api/webhooks/1281517680502771745/fkCYKSJiv1d2jzXk6v3vHc3r17eCu5wLN-RlpLx8RGA6VPS1anjaXsdfb2mJgYwisRWo",
-        ["nowgodzz"] = "https://discord.com/api/webhooks/1281517680502771745/fkCYKSJiv1d2jzXk6v3vHc3r17eCu5wLN-RlpLx8RGA6VPS1anjaXsdfb2mJgYwisRWo",
-        ["a_454za"] = "https://discord.com/api/webhooks/1281517680502771745/fkCYKSJiv1d2jzXk6v3vHc3r17eCu5wLN-RlpLx8RGA6VPS1anjaXsdfb2mJgYwisRWo",
-        ["HamieKung"] = "https://discord.com/api/webhooks/1281517680502771745/fkCYKSJiv1d2jzXk6v3vHc3r17eCu5wLN-RlpLx8RGA6VPS1anjaXsdfb2mJgYwisRWo",
-        ["MaxzTv"] = "https://discord.com/api/webhooks/1281517680502771745/fkCYKSJiv1d2jzXk6v3vHc3r17eCu5wLN-RlpLx8RGA6VPS1anjaXsdfb2mJgYwisRWo",
-        ["Miksaza1"] = "https://discord.com/api/webhooks/1281517680502771745/fkCYKSJiv1d2jzXk6v3vHc3r17eCu5wLN-RlpLx8RGA6VPS1anjaXsdfb2mJgYwisRWo",
+        ["chopperaob"] = "",
+        ["nowgodzz"] = "",
+        ["a_454za"] = "",
+        ["HamieKung"] = "",
+        ["MaxzTv"] = "",
+        ["Miksaza1"] = "",
     }
 }
 

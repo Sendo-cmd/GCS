@@ -11,8 +11,8 @@ TechniqueNotificaition = {
         ["Dxw2pz"] = "1153497403534614528"
     },
     ["Webhook"] = {
-        ["Ikatsuq"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le",
-        ["Dxw2pz"] = "https://discord.com/api/webhooks/1281507869987962930/WSK1OvwSAXUMSDjD0To-yVzYRtFk4lJh_1N9QTOduQCOg86qh4Uw2HyYm0po3wJCg0le",
+        ["Ikatsuq"] = "",
+        ["Dxw2pz"] = "",
     }
 }
 
