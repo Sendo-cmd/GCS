@@ -73,6 +73,7 @@ Games = {
         ["Candie"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Candie.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
         ["Dbz2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz2.lua",
+        ["Tower"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Tower.lua",
     }
 }
 Accounts = {
@@ -542,7 +543,8 @@ Accounts = {
     ["Nonglud"] = {
         "Log",
         "Marco",
-        "BaseB",
+        "Tower",
+        "System",
     },
     ["GODAOTT"] = {
         "Log",
@@ -644,7 +646,7 @@ Accounts = {
     ["DDYUFCiSRHT"] = {
         "Log",
         "Marco",
-        "FarmGem",
+        "Tower",
         "System",
     },
     ["Lookmoo1987"] = {
