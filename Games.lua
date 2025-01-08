@@ -853,6 +853,6 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 3
+        repeat task.wait() until Loaded or (Timer - tick()) > 4
     end
 end
