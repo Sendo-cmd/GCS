@@ -380,11 +380,11 @@ _G.User = {
         ["Hard"] = false,
     },
     ["PeeVongzaTV"] = {
-        ["Select Mode"] = "Raid", 
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Sacred Planet", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+        ["Select Map"] = "Strange Town (Haunted)",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
     },
     ["LM3FLO25"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
@@ -392,6 +392,20 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+    },
+    ["XDcggza4"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Strange Town (Haunted)",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["HD111222"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
 }
 repeat task.wait(40) until game:IsLoaded()

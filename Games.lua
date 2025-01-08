@@ -817,13 +817,25 @@ Accounts = {
     ["PeeVongzaTV"] = {
         "Log",
         "Marco",
-        "Dbz2",
+        "Candie",
         "System",
     },
     ["LM3FLO25"] = {
         "Log",
         "Marco",
         "FarmGem",
+        "System",
+    },
+    ["XDcggza4"] = {
+        "Log",
+        "Marco",
+        "Candie",
+        "System",
+    },
+    ["HD111222"] = {
+        "Log",
+        "Marco",
+        "Hsnd",
         "System",
     },
 
