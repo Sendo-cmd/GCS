@@ -422,7 +422,7 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
 }
-repeat task.wait(60) until game:IsLoaded()
+repeat task.wait(40) until game:IsLoaded()
 
 local Settings = {
     ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
