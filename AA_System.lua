@@ -408,11 +408,11 @@ _G.User = {
         ["Hard"] = false,
     },
     ["D_Dk05"] = {
-        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
     
         ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
     },
     ["momsans08"] = {
         ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite
