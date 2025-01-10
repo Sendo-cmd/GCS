@@ -2,8 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["Game Finished"] = {
-		["Auto Replay"] = true,
-		["Auto Next"] = true
+		["Auto Replay"] = true
 	},
 	["Joiner Cooldown"] = 0,
 	["Auto Play"] = {
