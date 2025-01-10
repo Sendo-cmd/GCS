@@ -74,6 +74,7 @@ Games = {
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
         ["Dbz2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz2.lua",
         ["Tower"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Tower.lua",
+        ["StarGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GEMSF.lua",
     }
 }
 Accounts = {
