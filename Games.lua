@@ -339,8 +339,7 @@ Accounts = {
     ["maser080"] = {
         "Log",
         "Marco",
-        "FarmGem",
-        "System",
+        "StarFruit",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
