@@ -435,7 +435,7 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
-    ["Noinual"] = {
+    ["noinual"] = {
         ["Select Mode"] = "Event", 
     
         ["Select Map"] = "Frozen Abyss", 
