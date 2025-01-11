@@ -47,11 +47,6 @@ getgenv().Config = {
 	},
 	["Gameplay"] = {
 		["Auto Skip Wave"] = true,
-		["Auto Sell Farm"] = {
-			["Enable"] = true,
-			["Wave"] = 50
-		},
-		["Auto Vote Start"] = true
 		["Auto Sell"] = {
 			["Wave"] = 1
 		},
