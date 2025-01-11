@@ -75,6 +75,7 @@ Games = {
         ["Dbz2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz2.lua",
         ["Tower"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Tower.lua",
         ["StarGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GEMSF.lua",
+        ["StarFruit"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarFruit.lua",
     }
 }
 Accounts = {
@@ -576,8 +577,7 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "Log",
         "Marco",
-        "Hs",
-        "System",
+        "StarFruit",
     },
     ["chopperaob"] = {
         "LogACB",
