@@ -163,11 +163,11 @@ _G.User = {
         ["Hard"] = false,
     },
     ["lwntrueman"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
     },
     ["Nongneuftawchin"] = {
         ["Select Mode"] = "Event", 
