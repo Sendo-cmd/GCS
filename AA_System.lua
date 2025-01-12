@@ -128,11 +128,11 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["DDYUFCiSRHT"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
     ["Punpungoaway"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
