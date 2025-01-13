@@ -876,6 +876,19 @@ Accounts = {
         "FarmGem",
         "System",
     },
+    ["NoOneCareDisnameXD"] = {
+        "Log",
+        "Marco",
+        "Hsnd",
+        "System",
+    },
+    ["Wakoji4516"] = {
+        "Log",
+        "Marco",
+        "FarmGem",
+        "System",
+    },
+    
 
 }
 repeat task.wait() until game:IsLoaded()
