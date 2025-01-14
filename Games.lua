@@ -820,7 +820,7 @@ Accounts = {
     ["PeeVongzaTV"] = {
         "Log",
         "Marco",
-        "Candie",
+        "Hsnd",
         "System",
     },
     ["LM3FLO25"] = {
@@ -893,6 +893,17 @@ Accounts = {
         "Marco",
         "FarmGem",
         "System",
+    },
+    ["Saitamasankundes"] = {
+        "Log",
+        "Marco",
+        "StarFruit",
+        "System",
+    },
+    ["9xfake030"] = {
+        "Log",
+        "Marco",
+        "StarGem",
     },
     
 
