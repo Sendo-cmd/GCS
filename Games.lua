@@ -578,7 +578,8 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "Log",
         "Marco",
-        "StarFruit",
+        "Hsnd",
+        "System",
     },
     ["chopperaob"] = {
         "LogACB",
