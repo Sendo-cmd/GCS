@@ -168,6 +168,8 @@ Accounts = {
     },
     ["trexefxtd"] = {
         "Log",
+        "Marco",
+        "FarmGem",
         "System",
     },
     ["RiceBing"] = {
