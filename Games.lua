@@ -834,8 +834,7 @@ Accounts = {
     ["XDcggza4"] = {
         "Log",
         "Marco",
-        "Candie",
-        "System",
+        "StarFruit",
     },
     ["HD111222"] = {
         "Log",
@@ -901,7 +900,6 @@ Accounts = {
         "Log",
         "Marco",
         "StarFruit",
-        "System",
     },
     ["9xfake030"] = {
         "Log",
