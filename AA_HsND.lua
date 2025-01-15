@@ -16,7 +16,7 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
-		["Auto Fuse Vego-Carrot Anchor"] = "Carrot",
+		["Auto Fuse Vego-Carrot Anchor"] = "Vego",
 		["Enable"] = true,
 		["Placement Type"] = {
 			["Otherwordly Plane"] = "Middle Position",
