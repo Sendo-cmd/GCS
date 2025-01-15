@@ -22,6 +22,7 @@ if game.PlaceId == 8304191830  then
 			["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
 			["Candies"] = plr._stats._resourceCandies.Value,
             ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
+			["GamePassLevel"] = game:GetService("Players").LocalPlayer.PlayerGui["BattlePass"].Main.Level.V.Text,
             ["GuildId"] = "467359347744309248",
             ["DataKey"] = "GamingChampionShopAPI",
         })
@@ -48,6 +49,7 @@ else
 				["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
 				["Candies"] = plr._stats._resourceCandies.Value,
                 ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
+				["GamePassLevel"] = game:GetService("Players").LocalPlayer.PlayerGui["BattlePass"].Main.Level.V.Text,
                 ["Rewards"] = g,
                 ["MapInfo"] = workspace._MAP_CONFIG.GetLevelData:InvokeServer(),
                 ["GuildId"] = "467359347744309248",
