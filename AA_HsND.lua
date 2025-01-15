@@ -271,7 +271,7 @@ getgenv().Config = {
 				["Range I"] = 96
 			},
 			["Amount"] = {
-				"Boss Damage III"] = 0,
+				["Boss Damage III"] = 0,
 				["Enemy Health III"] = 3,
 				["New Path"] = 0,
 				["Yen II"] = 1,
