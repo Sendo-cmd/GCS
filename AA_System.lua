@@ -512,6 +512,13 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
+    ["pokpong4123"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+    },
 }
 repeat task.wait(40) until game:IsLoaded()
 

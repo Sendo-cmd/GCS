@@ -77,6 +77,7 @@ Games = {
         ["StarGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GEMSF.lua",
         ["StarFruit"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarFruit.lua",
         ["StarRem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarRem.lua",
+        ["CursedT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Cursed.lua",
     }
 }
 Accounts = {
@@ -539,7 +540,8 @@ Accounts = {
     ["pokpong4123"] = {
         "Log",
         "Marco",
-        "DungBase",
+        "Hsnd",
+        "System",
     },
     ["gmhgoodies"] = {
         "Log",
