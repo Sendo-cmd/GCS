@@ -261,10 +261,10 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["namnam12327"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Raid", 
     
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
+        ["Select Map"] = "Sacred Planet", 
+        ["Select Level"] = "4", 
         ["Hard"] = false,
     },
     ["SugarSnow_17627"] = {
@@ -464,7 +464,7 @@ _G.User = {
         ["Hard"] = false,
     },
     ["jiwzanis"] = {
-        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event
     
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
@@ -520,6 +520,13 @@ _G.User = {
         ["Hard"] = false,
     },
     ["UOUSDFZF"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["Vana_Ungkap"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Planet Greenie",

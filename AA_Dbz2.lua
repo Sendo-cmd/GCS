@@ -38,9 +38,30 @@ getgenv().Config = {
 			["Wave"] = 1
 		},
 		["Smart Auto Ability"] = {
-			["Wind Dragon"] = true
+			["Wind Dragon"] = true,
+			["Time Wizard (Chronos)"] = true,
+			["Supreme Being (Sovereign)"] = true,
+			["Elfy (Sylph)"] = true,
+			["Commander"] = true,
+			["Delinquent"] = true,
+			["Usurper (Founder)"] = true,
+			["Fiery Commander (Hellfire)"] = true,
+			["JIO (Over Heaven)"] = true,
+			["Shadowgirl (Time Traveller)"] = true,
+			["Illusionist (Final)"] = true,
+			["Trickster (Release)"] = true,
+			["Lulu (Emperor)"] = true,
+			["Menace (Terror)"] = true,
+			["Priest (Heaven)"] = true
 		},
-		["Auto Skip Wave"] = true
+		["Auto Leave"] = {
+			["Wave"] = 1
+		},
+		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = true,
+		["Auto Sell Farm"] = {
+			["Wave"] = 1
+		}
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
