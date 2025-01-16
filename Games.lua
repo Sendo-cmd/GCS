@@ -342,7 +342,8 @@ Accounts = {
     ["maser080"] = {
         "Log",
         "Marco",
-        "StarFruit",
+        "Hsnd",
+        "System",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
@@ -923,6 +924,11 @@ Accounts = {
         "Marco",
         "FarmGem",
         "System",
+    },
+    ["PohTayyy"] = {
+        "Log",
+        "Marco",
+        "StarGem",
     },
 
 }
