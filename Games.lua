@@ -344,7 +344,6 @@ Accounts = {
         "Log",
         "Marco",
         "CursedT",
-        "System",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
