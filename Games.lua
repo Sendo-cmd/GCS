@@ -404,7 +404,8 @@ Accounts = {
     ["XDGGZTheGod"] = {
         "Log",
         "Marco",
-        "BaseGemInf",
+        "Hsnd",
+        "System",
     },
     ["pifcbvjj"] = {
         "Log",
@@ -871,7 +872,7 @@ Accounts = {
     ["king_one248"] = {
         "Log",
         "Marco",
-        "FarmGem",
+        "StarGem",
         "System",
     },
     ["BQT_OIM"] = {
