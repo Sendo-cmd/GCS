@@ -81,7 +81,7 @@ getgenv().Config = {
 			["Planet Greenie"] = "Middle Position"
 		},
 		["Enable"] = true,
-		["Auto Fuse Vego-Carrot Anchor"] = "Carrot",
+		["Auto Fuse Vego-Carrot Anchor"] = "Vego",
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Middle Position"] = {
 			["Virtual Dungeon"] = "103.89673614501953, 37.418487548828125, 10.653985977172852"
