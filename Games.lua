@@ -343,7 +343,7 @@ Accounts = {
     ["maser080"] = {
         "Log",
         "Marco",
-        "Hsnd",
+        "CursedT",
         "System",
     },
     ["Thai_WilYuLaw"] = {
