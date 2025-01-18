@@ -547,6 +547,13 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["ifuyubf06"] = {
+        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
+    },
 }
 repeat task.wait(40) until game:IsLoaded()
 
