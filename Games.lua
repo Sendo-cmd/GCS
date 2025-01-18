@@ -66,10 +66,8 @@ Games = {
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
         ["FarmGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Gem.lua",
         ["Hs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs.lua",
-        ["Hs2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs2.lua",
-        ["Hs3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs3.lua",
-        ["Hs4"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hs4.lua",
         ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
+        ["Hsdb"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Hsdb.lua",
         ["Candie"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Candie.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
         ["Dbz2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz2.lua",
@@ -582,7 +580,7 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "Log",
         "Marco",
-        "StarRem",
+        "Hsdb",
     },
     ["chopperaob"] = {
         "LogACB",
