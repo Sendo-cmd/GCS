@@ -485,11 +485,11 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["king_one248"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
     ["phawadon014"] = {
         ["Select Mode"] = "Event", 

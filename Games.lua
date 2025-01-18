@@ -872,7 +872,7 @@ Accounts = {
     ["king_one248"] = {
         "Log",
         "Marco",
-        "StarGem",
+        "Hsnd",
         "System",
     },
     ["BQT_OIM"] = {
