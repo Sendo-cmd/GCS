@@ -176,10 +176,6 @@ getgenv().Config = {
 			["Frozen Abyss"] = 1.4
 		}
 	},
-	["Raid Joiner"] = {
-		["Level"] = "Level 4",
-		["World"] = "Sacred Planet"
-	},
 	["Holiday Hunt Joiner"] = {
 		["Auto Join"] = true,
 		["Join Solo"] = true
@@ -299,14 +295,14 @@ getgenv().Config = {
 				["Enemy Shield I"] = 5,
 				["Enemy Health I"] = 95,
 				["Gain 2 Random Effects Tier 3"] = 15,
-				["Enemy Regen I"] = 10,
+				["Enemy Regen I"] = 12,
 				["Enemy Shield III"] = 3,
 				["Boss Damage I"] = 78,
 				["Cooldown III"] = 9,
-				["Enemy Regen III"] = 11,
+				["Enemy Regen III"] = 10,
 				["Gain 2 Random Curses Tier 2"] = 7,
 				["Attack II"] = 90,
-				["Enemy Regen II"] = 12,
+				["Enemy Regen II"] = 11,
 				["Attack I"] = 97,
 				["Range I"] = 98
 			},
