@@ -1,4 +1,3 @@
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Summoner"] = {
@@ -11,7 +10,7 @@ getgenv().Config = {
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = false
+		["Black Screen"] = true
 	},
 	["Macros"] = {
 		["No Ignore Sell Timing"] = true,
@@ -103,7 +102,7 @@ getgenv().Config = {
 			["Spirit Town"] = "Middle Position",
 			["Planet Greenie"] = "Middle Position"
 		},
-		["Focus on Farm"] = false,
+		["Focus on Farm"] = true,
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Otherwordly Plane"] = "Middle",
