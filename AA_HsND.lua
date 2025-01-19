@@ -184,7 +184,7 @@ getgenv().Config = {
 		},
 		["Distance Threshold"] = {
 			["Otherwordly Plane"] = 15,
-			["Frozen Abyss"] = 10,
+			["Frozen Abyss"] = 15,
 			["Virtual Dungeon"] = 15,
 			["Fiend City"] = 15,
 			["Magic Hills"] = 15,
