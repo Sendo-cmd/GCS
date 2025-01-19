@@ -248,10 +248,6 @@ getgenv().Config = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true
 	},
-	["Holiday Hunt Joiner"] = {
-		["Auto Join"] = true,
-		["Join Solo"] = true
-	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
