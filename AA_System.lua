@@ -506,11 +506,11 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["KUNGNING"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
     },
     ["pokpong4123"] = {
         ["Select Mode"] = "Event", 
@@ -609,6 +609,20 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+    },
+    ["sonza567"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["Radgoh_261"] = {
+        ["Select Mode"] = "Raid", 
+    
+        ["Select Map"] = "Sacred Planet", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
 }
 repeat task.wait(40) until game:IsLoaded()
