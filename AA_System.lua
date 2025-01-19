@@ -163,11 +163,11 @@ _G.User = {
         ["Hard"] = false,
     },
     ["lwntrueman"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
     },
     ["Nongneuftawchin"] = {
         ["Select Mode"] = "Event", 
@@ -561,28 +561,21 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
-    ["PerfectBoyz_VX"] = {
-        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
-    
-        ["Select Map"] = "Frozen Abyss",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
-    },
-    ["Katoy_2007"] = {
-        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
-    
-        ["Select Map"] = "Frozen Abyss",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
-    },
     ["loremm382"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Plantet Greenie (Haunted)",
+        ["Select Map"] = "Strange Town (Haunted)",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
     ["torzasool"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["wavenakub121"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Frozen Abyss",
@@ -597,6 +590,20 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["Senpai_DaisukiX2"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["Katoy_2007"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["PerfectBoyz_VX"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Frozen Abyss",
