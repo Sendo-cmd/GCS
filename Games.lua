@@ -581,7 +581,6 @@ Accounts = {
     },
     ["FireBlackDevilZ"] = {
         "Log",
-        "Marco",
         "Hsnd",
         "System",
     },
