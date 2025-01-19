@@ -999,6 +999,18 @@ Accounts = {
         "Hsnd",
         "System",
     },
+    ["Radgoh_261"] = {
+        "Log",
+        "Marco",
+        "Dbz2",
+        "System",
+    },
+    ["sonza567"] = {
+        "Log",
+        "Marco",
+        "Hsnd",
+        "System",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
