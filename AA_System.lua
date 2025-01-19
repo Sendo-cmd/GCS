@@ -631,7 +631,7 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
-    ["Wakoji4516"] = {
+    ["wakoji4516"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Strange Town (Haunted)",
