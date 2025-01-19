@@ -180,7 +180,7 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = 0
+			["6"] = -1
 		},
 		["Distance Threshold"] = {
 			["Otherwordly Plane"] = 15,
@@ -253,7 +253,7 @@ getgenv().Config = {
 			["Planet Greenie"] = 15
 		},
 		["Place Gap"] = {
-			["Frozen Abyss"] = 1.4
+			["Frozen Abyss"] = 1.3
 		}
 	},
 	["Secure"] = {
