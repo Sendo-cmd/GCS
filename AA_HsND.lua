@@ -180,11 +180,11 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = -1
+			["6"] = 0
 		},
 		["Distance Threshold"] = {
 			["Otherwordly Plane"] = 15,
-			["Frozen Abyss"] = 15,
+			["Frozen Abyss"] = 10,
 			["Virtual Dungeon"] = 15,
 			["Fiend City"] = 15,
 			["Magic Hills"] = 15,
@@ -253,7 +253,7 @@ getgenv().Config = {
 			["Planet Greenie"] = 15
 		},
 		["Place Gap"] = {
-			["Frozen Abyss"] = 2
+			["Frozen Abyss"] = 1.4
 		}
 	},
 	["Secure"] = {
