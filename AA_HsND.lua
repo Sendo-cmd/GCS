@@ -1,4 +1,3 @@
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Summoner"] = {
@@ -103,7 +102,7 @@ getgenv().Config = {
 			["Spirit Town"] = "Middle Position",
 			["Planet Greenie"] = "Middle Position"
 		},
-		["Focus on Farm"] = false,
+		["Focus on Farm"] = true,
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Otherwordly Plane"] = "Middle",
