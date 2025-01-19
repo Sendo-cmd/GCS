@@ -1,12 +1,16 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
+	["AutoSave"] = true,
 	["Summoner"] = {
 		["Exchange Legacy Gem"] = 0
 	},
 	["Game Finished"] = {
-		["Auto Return Lobby"] = true,
 		["Auto Replay"] = true
+	},
+	["Holiday Hunt Joiner"] = {
+		["Auto Join"] = true,
+		["Join Solo"] = true
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
@@ -241,36 +245,23 @@ getgenv().Config = {
 			["Planet Greenie"] = "Middle Position"
 		},
 		["Place Gap"] = {
-			["Frozen Abyss"] = 1.4
+			["Frozen Abyss"] = 1.5
 		}
 	},
-	["Joiner Cooldown"] = 0,
+	["Macros"] = {
+		["No Ignore Sell Timing"] = true,
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true
+	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = true
-	},
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Present"] = true
-	},
-	["Holiday Hunt Joiner"] = {
-		["Auto Join"] = true,
-		["Join Solo"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true
 	},
 	["Challenge Joiner"] = {
 		["Auto Join"] = true,
-		["Teleport Lobby new Challenge"] = true,
-		["Reward"] = {
-			["Star Remnant"] = true,
-			["Star Remnant (Limited)"] = true
-		},
-		["Ignore"] = {
-			["Fast Enemies"] = true,
-			["High Cost"] = true
-		},
 		["World"] = {
 			["Navy Bay"] = true,
 			["Mountain Temple"] = true,
@@ -285,17 +276,28 @@ getgenv().Config = {
 			["Magic Town"] = true,
 			["Fabled Kingdom"] = true,
 			["Ruined City"] = true,
-			["Walled City"] = true,
-			["Dungeon Throne"] = true,
+			["Planet Greenie"] = true,
+			["Haunted Academy"] = true,
 			["Alien Spaceship"] = true,
 			["Ant Kingdom"] = true,
-			["Puppet Island"] = true,
 			["Space Center"] = true,
-			["Haunted Academy"] = true,
-			["Planet Greenie"] = true
-		}
+			["Puppet Island"] = true,
+			["Dungeon Throne"] = true,
+			["Walled City"] = true
+		},
+		["Ignore"] = {
+			["Fast Enemies"] = true,
+			["High Cost"] = true
+		},
+		["Reward"] = {
+			["Star Remnant"] = true
+		},
+		["Teleport Lobby new Challenge"] = true
 	},
-	["AutoSave"] = true,
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Present"] = true
+	},
 	["Gameplay"] = {
 		["Auto Sell"] = {
 			["Wave"] = 1
@@ -323,16 +325,15 @@ getgenv().Config = {
 		},
 		["Auto Vote Start"] = true,
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Boss Damage III"] = 75,
 				["Enemy Health III"] = 70,
 				["New Path"] = 100,
 				["Yen II"] = 40,
-				["Attack III"] = 36,
+				["Attack I"] = 97,
 				["Enemy Speed II"] = 1,
 				["Gain 2 Random Effects Tier 2"] = 88,
-				["Range III"] = 39,
+				["Range I"] = 98,
 				["Cooldown I"] = 93,
 				["Active Cooldown III"] = 79,
 				["Explosive Deaths III"] = 21,
@@ -341,21 +342,21 @@ getgenv().Config = {
 				["Yen III"] = 41,
 				["Enemy Speed III"] = 0,
 				["Enemy Speed I"] = 2,
-				["Active Cooldown II"] = 87,
+				["Active Cooldown II"] = 71,
 				["Gain 2 Random Effects Tier 1"] = 96,
 				["Active Cooldown I"] = 92,
-				["Range II"] = 91,
+				["Enemy Regen II"] = 11,
 				["Enemy Shield II"] = 4,
 				["Gain 2 Random Curses Tier 1"] = 9,
 				["Enemy Health II"] = 80,
 				["Yen I"] = 86,
 				["Boss Damage II"] = 87,
 				["Double Attack"] = 99,
-				["Explosive Deaths I"] = 94,
-				["Gain 2 Random Curses Tier 3"] = 8,
 				["Enemy Shield I"] = 5,
+				["Gain 2 Random Curses Tier 3"] = 8,
 				["Enemy Health I"] = 95,
-				["Gain 2 Random Effects Tier 3"] = 15,
+				["Gain 2 Random Effects Tier 3"] = 73,
+				["Explosive Deaths I"] = 94,
 				["Enemy Regen I"] = 12,
 				["Enemy Shield III"] = 3,
 				["Boss Damage I"] = 78,
@@ -363,19 +364,20 @@ getgenv().Config = {
 				["Enemy Regen III"] = 10,
 				["Gain 2 Random Curses Tier 2"] = 7,
 				["Attack II"] = 90,
-				["Enemy Regen II"] = 11,
-				["Attack I"] = 97,
-				["Range I"] = 98
+				["Range II"] = 91,
+				["Attack III"] = 36,
+				["Range III"] = 72
 			},
+			["Enable"] = true,
 			["Amount"] = {
 				["Boss Damage III"] = 0,
 				["Enemy Health III"] = 0,
 				["New Path"] = 0,
 				["Yen II"] = 1,
-				["Attack I"] = 0,
+				["Attack III"] = 0,
 				["Enemy Speed II"] = 1,
 				["Gain 2 Random Effects Tier 2"] = 0,
-				["Range I"] = 0,
+				["Range III"] = 0,
 				["Cooldown I"] = 0,
 				["Active Cooldown III"] = 0,
 				["Explosive Deaths III"] = 0,
@@ -387,8 +389,8 @@ getgenv().Config = {
 				["Active Cooldown II"] = 0,
 				["Gain 2 Random Effects Tier 1"] = 0,
 				["Active Cooldown I"] = 0,
-				["Enemy Regen II"] = 1,
-				["Enemy Shield II"] = 0,
+				["Range II"] = 0,
+				["Enemy Shield II"] = 1,
 				["Gain 2 Random Curses Tier 1"] = 1,
 				["Enemy Health II"] = 0,
 				["Yen I"] = 1,
@@ -396,19 +398,19 @@ getgenv().Config = {
 				["Double Attack"] = 0,
 				["Enemy Shield I"] = 1,
 				["Gain 2 Random Curses Tier 3"] = 1,
-				["Enemy Health I"] = 0,
 				["Gain 2 Random Effects Tier 3"] = 0,
 				["Explosive Deaths I"] = 0,
-				["Enemy Regen I"] = 2,
-				["Enemy Shield III"] = 0,
+				["Enemy Health I"] = 0,
+				["Enemy Regen I"] = 1,
+				["Enemy Shield III"] = 1,
 				["Boss Damage I"] = 0,
 				["Cooldown III"] = 0,
 				["Enemy Regen III"] = 1,
 				["Gain 2 Random Curses Tier 2"] = 1,
 				["Attack II"] = 0,
-				["Range II"] = 0,
-				["Attack III"] = 0,
-				["Range III"] = 0
+				["Enemy Regen II"] = 1,
+				["Attack I"] = 0,
+				["Range I"] = 0
 			}
 		},
 		["Auto Sell Farm"] = {
@@ -417,11 +419,7 @@ getgenv().Config = {
 		},
 		["Auto Skip Wave"] = true
 	},
-	["Macros"] = {
-		["No Ignore Sell Timing"] = true,
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true
-	}
+	["Joiner Cooldown"] = 0
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(7)until Joebiden
