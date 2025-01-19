@@ -98,7 +98,7 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = 0
+			["6"] = -1
 		},
 		["Distance Threshold"] = {
 			["Otherwordly Plane"] = 15,
