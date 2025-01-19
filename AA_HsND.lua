@@ -241,7 +241,7 @@ getgenv().Config = {
 			["Planet Greenie"] = "Middle Position"
 		},
 		["Place Gap"] = {
-			["Frozen Abyss"] = 1.5
+			["Frozen Abyss"] = 1.4
 		}
 	},
 	["Macros"] = {
