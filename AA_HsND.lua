@@ -27,7 +27,6 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
-		["Auto Fuse Vego-Carrot Anchor"] = "Vego",
 		["Enable"] = true,
 		["Middle Position"] = {
 			["Frozen Abyss"] = "397.7925109863281, 45.92308044433594, 371.3822021484375"
