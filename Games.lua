@@ -1030,6 +1030,11 @@ Accounts = {
         "Hsnd",
         "System",
     },
+    ["pocyuiou77"] = {
+        "Log",
+        "FarmGem",
+        "System",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
