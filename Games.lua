@@ -470,7 +470,7 @@ Accounts = {
     },
     ["Etaa_xm"] = {
         "Log",
-        "Hsnd",
+        "FarmGem",
         "System",
         "Card",
     },
@@ -1034,6 +1034,11 @@ Accounts = {
         "Card",
     },
     ["pocyuiou77"] = {
+        "Log",
+        "FarmGem",
+        "System",
+    },
+    ["xiptid"] = {
         "Log",
         "FarmGem",
         "System",

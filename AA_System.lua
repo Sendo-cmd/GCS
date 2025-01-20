@@ -331,11 +331,11 @@ _G.User = {
         ["Hard"] = false,
     },
     ["Etaa_xm"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
     },
     ["marutkord"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
@@ -653,6 +653,13 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["pocyuiou77"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["xiptid"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Planet Greenie",
