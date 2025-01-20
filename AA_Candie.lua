@@ -5,7 +5,7 @@ getgenv().Config = {
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Enable"] = true,
-		["Upgrade Method"] = "Nearest from Middle Position (until Max)",
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
 			["Walled City (Midnight)"] = "-2975.684326171875, 33.741798400878906, -692.74560546875",
@@ -54,7 +54,7 @@ getgenv().Config = {
 			["Priest (Heaven)"] = true
 		},
 		["Auto Modifier"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["Prioritize"] = {
 				["Boss Damage III"] = 83,
 				["Enemy Health III"] = 40,
