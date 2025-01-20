@@ -285,7 +285,7 @@ getgenv().Config = {
 		},
 		["Auto Vote Start"] = true,
 		["Auto Modifier"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["Prioritize"] = {
 				["Boss Damage III"] = 71,
 				["Enemy Health III"] = 13,

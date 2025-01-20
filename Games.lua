@@ -577,6 +577,7 @@ Accounts = {
         "Log",
         "Hsnd",
         "System",
+        "Card",
     },
     ["chopperaob"] = {
         "LogACB",
