@@ -102,7 +102,7 @@ getgenv().Config = {
 			["Spirit Town"] = "Middle Position",
 			["Planet Greenie"] = "Middle Position"
 		},
-		["Focus on Farm"] = false,
+		["Focus on Farm"] = true,
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Otherwordly Plane"] = "Middle",
