@@ -638,6 +638,13 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["tomishop_25"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
 }
 repeat task.wait(40) until game:IsLoaded()
 

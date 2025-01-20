@@ -468,12 +468,6 @@ Accounts = {
         "Marco",
         "ESSE",
     },
-    ["puggtopro"] = {
-        "Log",
-        "Marco",
-        "FarmGem",
-        "System",
-    },
     ["Etaa_xm"] = {
         "Log",
         "Marco",
@@ -1021,6 +1015,16 @@ Accounts = {
         "Marco",
         "Candie",
         "System",
+    },
+    ["tomishop_25"] = {
+        "Log",
+        "Hsnd",
+        "System",
+    },
+    ["puggtopro"] = {
+        "Log",
+        "Hsnd",
+        "StarGem",
     },
 
 }
