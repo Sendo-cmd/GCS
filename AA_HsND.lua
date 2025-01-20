@@ -9,7 +9,7 @@ getgenv().Config = {
 	["Joiner Cooldown"] = 0,
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = true,
+		["Boost FPS"] = false,
 		["Black Screen"] = true
 	},
 	["Macros"] = {
