@@ -1023,7 +1023,6 @@ Accounts = {
     },
     ["puggtopro"] = {
         "Log",
-        "Hsnd",
         "StarGem",
     },
 
