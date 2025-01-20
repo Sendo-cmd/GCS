@@ -1040,8 +1040,9 @@ Accounts = {
     },
     ["xiptid"] = {
         "Log",
-        "FarmGem",
+        "Hsnd",
         "System",
+        "Card",
     },
 
 }
