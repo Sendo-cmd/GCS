@@ -953,8 +953,7 @@ Accounts = {
     ["NayNaHeee"] = {
         "Log",
         "Marco",
-        "FarmGem",
-        "System",
+        "StarGem",
     },
     ["loremm382"] = {
         "Log",
@@ -1062,6 +1061,12 @@ Accounts = {
         "Card",
     },
     ["bankuiok1"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
+    ["nuttaputlnw"] = {
         "Log",
         "Hsnd",
         "System",
