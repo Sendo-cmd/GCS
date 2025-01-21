@@ -1044,6 +1044,18 @@ Accounts = {
         "System",
         "Card",
     },
+    ["MiNiKaiYungShop287"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
+    ["SB_Cr0w"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
