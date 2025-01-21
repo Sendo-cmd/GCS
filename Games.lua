@@ -575,8 +575,7 @@ Accounts = {
     },
     ["FireBlackDevilZ"] = {
         "Log",
-        "Hsnd",
-        "System",
+        "StarRem",
         "Card",
     },
     ["chopperaob"] = {
@@ -1057,6 +1056,12 @@ Accounts = {
         "Card",
     },
     ["YTJTP_Jittiphatn"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
+    ["bankuiok1"] = {
         "Log",
         "Hsnd",
         "System",

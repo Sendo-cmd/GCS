@@ -680,7 +680,7 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
-    ["YTJTP_Jittiphatn"] = {
+    ["bankuiok1"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Frozen Abyss",
