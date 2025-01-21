@@ -1056,6 +1056,12 @@ Accounts = {
         "System",
         "Card",
     },
+    ["YTJTP_Jittiphatn"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
