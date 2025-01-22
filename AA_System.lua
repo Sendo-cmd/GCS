@@ -394,9 +394,9 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["XDcggza4"] = {
-        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Strange Town (Haunted)",
+        ["Select Map"] = "Planet Greenie",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
