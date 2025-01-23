@@ -575,7 +575,8 @@ Accounts = {
     },
     ["FireBlackDevilZ"] = {
         "Log",
-        "StarRem",
+        "Hsnd",
+        "System",
         "Card",
     },
     ["chopperaob"] = {
@@ -960,7 +961,7 @@ Accounts = {
     ["loremm382"] = {
         "Log",
         "Marco",
-        "Candie",
+        "Hsnd",
         "System",
     },
     ["PerfectBoyz_vx"] = {
@@ -1111,6 +1112,11 @@ Accounts = {
         "System",
     },
     ["picoloveanime"] = {
+        "Log",
+        "FarmGem",
+        "System",
+    },
+    ["May_SD232"] = {
         "Log",
         "FarmGem",
         "System",

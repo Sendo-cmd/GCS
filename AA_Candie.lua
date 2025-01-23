@@ -99,6 +99,7 @@ getgenv().Config = {
 		},
 		["Enable"] = true,
 		["Auto Fuse Vego-Carrot Anchor"] = "Vego",
+		["Auto Griffin Buff"] = true,
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Otherwordly Plane"] = "Middle",
