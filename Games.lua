@@ -1118,8 +1118,9 @@ Accounts = {
     },
     ["May_SD232"] = {
         "Log",
-        "FarmGem",
+        "Candie",
         "System",
+        "Card",
     },
     ["zazatyuk"] = {
         "Log",
