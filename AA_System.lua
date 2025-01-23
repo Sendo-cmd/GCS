@@ -994,7 +994,7 @@ local Settings = {
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
     ["Hard"] = false, -- Story 
-    ["Evo"] = {"Honey"},
+    ["Evo"] = {""},
     ["Ignore"] = {
         -- "tank_enemies",
         -- "fast_enemies",
