@@ -1089,6 +1089,27 @@ Accounts = {
         "System",
         "Card",
     },
+    ["Atitipost"] = {
+        "Log",
+        "Candie",
+        "System",
+        "Card",
+    },
+    ["nanemilk90"] = {
+        "Log",
+        "FarmGem",
+        "System",
+    },
+    ["Xwohogi_thailand"] = {
+        "Log",
+        "FarmGem",
+        "System",
+    },
+    ["S_saihaa"] = {
+        "Log",
+        "Dbz2",
+        "System",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()

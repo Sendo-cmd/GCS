@@ -722,6 +722,27 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["S_saihaa"] = {
+        ["Select Mode"] = "Raid", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Sacred Planet", 
+        ["Select Level"] = "4", 
+        ["Hard"] = false,
+    },
+    ["nanemilk90"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
+    ["Xwohogi_thailand"] = {
+        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
 }
 repeat task.wait(40) until game:IsLoaded()
 
