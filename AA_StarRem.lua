@@ -2,6 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["AutoSave"] = true,
+	["Auto Summon Special"] = true,
 	["Summoner"] = {
 		["Exchange Legacy Gem"] = 0
 	},
