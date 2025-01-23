@@ -1110,6 +1110,11 @@ Accounts = {
         "Dbz2",
         "System",
     },
+    ["picoloveanime"] = {
+        "Log",
+        "FarmGem",
+        "System",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
