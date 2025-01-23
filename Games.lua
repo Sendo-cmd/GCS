@@ -128,7 +128,6 @@ Accounts = {
     },
     ["supakitdunk"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -170,7 +169,6 @@ Accounts = {
     },
     ["trexefxtd"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -188,7 +186,6 @@ Accounts = {
     },
     ["opoppoky"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -202,7 +199,6 @@ Accounts = {
     },
     ["D_Dk05"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -252,7 +248,6 @@ Accounts = {
     },
     ["bombayzaza1234"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -616,14 +611,12 @@ Accounts = {
     },
     ["okillua006"] = {
         "Log",
-        "Hs2",
+        "Hsnd",
         "System",
         "Card",
-        "Marco",
     },
     ["Naiza080947"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -635,13 +628,11 @@ Accounts = {
     },
     ["TONKAORIKI_NEW"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["Kirito_VIJ"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -653,28 +644,24 @@ Accounts = {
     },
     ["Lookmoo1987"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["Punpungoaway"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["ArutanKatsuki"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["Nongneuftawchin"] = {
         "Log",
-        "Hs",
+        "Hsnd",
         "System",
         "Card",
-        "Marco",
     },
     ["lwntrueman"] = {
         "Log",
@@ -718,7 +705,6 @@ Accounts = {
     },
     ["AASN_1"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -736,13 +722,11 @@ Accounts = {
     },
     ["wooiy12"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["namnam12327"] = {
         "Log",
-        "Marco",
         "Dbz2",
         "System",
     },
@@ -766,15 +750,14 @@ Accounts = {
     },
     ["TPLshop_135148"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["yukilito001"] = {
         "Log",
-        "Marco",
         "Candie",
         "System",
+        "Card",
     },
     ["Thailand_chin"] = {
         "Log",
@@ -784,7 +767,6 @@ Accounts = {
     },
     ["CGGG_TYUL2"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -802,13 +784,11 @@ Accounts = {
     },
     ["marutkord"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["Tokina_aaaaa"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -826,13 +806,11 @@ Accounts = {
     },
     ["LM3FLO25"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["XDcggza4"] = {
         "Log",
-        "Marco",
         "StarGem",
     },
     ["HD111222"] = {
@@ -843,7 +821,6 @@ Accounts = {
     },
     ["momsans08"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -855,7 +832,6 @@ Accounts = {
     },
     ["Du_ZraX05"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -873,7 +849,6 @@ Accounts = {
     },
     ["BQT_OIM"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -885,24 +860,20 @@ Accounts = {
     },
     ["Wakoji4516"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["jiwzanis"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["Saitamasankundes"] = {
         "Log",
-        "Marco",
         "StarFruit",
     },
     ["9xfake030"] = {
         "Log",
-        "Marco",
         "StarGem",
     },
     ["phawadon014"] = {
@@ -913,24 +884,20 @@ Accounts = {
     },
     ["KUNGNING"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["sjsjsjsjgghd"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["PohTayyy"] = {
         "Log",
-        "Marco",
         "StarGem",
     },
     ["UOUSDFZF"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -942,13 +909,11 @@ Accounts = {
     },
     ["igushi3"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
     ["ifuyubf06"] = {
         "Log",
-        "Marco",
         "FarmGem",
         "System",
     },
@@ -960,9 +925,9 @@ Accounts = {
     },
     ["loremm382"] = {
         "Log",
-        "Marco",
         "Hsnd",
         "System",
+        "Card",
     },
     ["PerfectBoyz_vx"] = {
         "Log",
@@ -996,7 +961,6 @@ Accounts = {
     },
     ["Radgoh_261"] = {
         "Log",
-        "Marco",
         "Dbz2",
         "System",
     },
@@ -1014,9 +978,9 @@ Accounts = {
     },
     ["Wakoji4516"] = {
         "Log",
-        "Marco",
         "Candie",
         "System",
+        "Card",
     },
     ["tomishop_25"] = {
         "Log",
