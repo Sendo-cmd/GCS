@@ -974,7 +974,7 @@ _G.User = {
     ["May_SD232"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Frozen Abyss",
+        ["Select Map"] = "Strange Town (Haunted)",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
