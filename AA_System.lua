@@ -1385,7 +1385,7 @@ function EventRoom()
                 return v
             end
         end
-    elseif Settings["Select Map"] == "Strange Town (Haunted)" then
+    elseif Settings["Select Map"] == "Strange Town (Haunted)" or "Plantet Greenie (Haunted)" or "Navy Bay (Midnight)" or "Walled City (Midnight)" or "Magic Town (Haunted)" then
         for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
             if v:IsA('Model') and v.Name == "_lobbytemplate_event4" and tostring(v["Owner"]["Value"]) == "nil" then
                 return v
