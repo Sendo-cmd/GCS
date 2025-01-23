@@ -1078,6 +1078,18 @@ Accounts = {
         "FarmGem",
         "System",
     },
+    ["zwontop_KCFAQ"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
+    ["Atitipost"] = {
+        "Log",
+        "Candie",
+        "System",
+        "Card",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
