@@ -1354,53 +1354,25 @@ end
 
 -- Normal Auto Join
 
+local function GetRoom()
+    local Rooms = {}
+    for i,v in pairs(workspace._LOBBIES.Story:GetChildren()) do
+        if v:IsA("Model") and v:FindFirstChild("Players") and #v["Players"]:GetChildren() == 0 then
+            table.insert(Rooms,v)
+        end
+    end
+    return Rooms[math.random(1,#Rooms)]
+end
+local function GetRaidRoom()
+    local Rooms = {}
+    for i,v in pairs(game:GetService("Workspace")["_RAID"].Raid:GetChildren()) do
+        if v:IsA("Model") and v:FindFirstChild("Players") and #v["Players"]:GetChildren() == 0 then
+            table.insert(Rooms,v)
+        end
+    end
+    return Rooms[math.random(1,#Rooms)]
+end
 
-CheckRoom = function()
-    for i, v in pairs(game:GetService("Workspace")["_LOBBIES"].Story:GetChildren()) do
-        if v:IsA('Model') then
-            for i1, v1 in pairs(v:GetChildren()) do
-                if v1.Name == 'Owner' and tostring(v1.Value) == tostring(game.Players.LocalPlayer.Name) then
-                    return v.Name
-                end
-            end
-        end
-    end
-    return false
-end
-CheckRoomRaid = function()
-    for i, v in pairs(game:GetService("Workspace")["_RAID"].Raid:GetChildren()) do
-        if v:IsA('Model') then
-            for i1, v1 in pairs(v:GetChildren()) do
-                if v1.Name == 'Owner' and tostring(v1.Value) == tostring(game.Players.LocalPlayer.Name) then
-                    return {true,v.Name}
-                end
-            end
-        end
-    end
-    return {false}
-end
-function Room()
-    for i, v in pairs(game:GetService("Workspace")["_LOBBIES"].Story:GetChildren()) do
-        if v:IsA('Model') then
-            for i1, v1 in pairs(v:GetChildren()) do
-                if v1.Name == 'Owner' and tostring(v1.Value) == 'nil' then
-                    return v.Name
-                end
-            end
-        end
-    end
-end
-function RoomRaid()
-    for i, v in pairs(game:GetService("Workspace")["_RAID"].Raid:GetChildren()) do
-        if v:IsA('Model') then
-            for i1, v1 in pairs(v:GetChildren()) do
-                if v1.Name == 'Owner' and tostring(v1.Value) == 'nil' then
-                    return v.Name
-                end
-            end
-        end
-    end
-end
 function EventRoom()
     if Settings["Select Map"] == "Haunted Academy" then
         for i, v in pairs(workspace._DUNGEONS.Lobbies:GetChildren()) do
@@ -1414,7 +1386,7 @@ function EventRoom()
                 return v
             end
         end
-    elseif Settings["Select Map"] == "Strange Town (Haunted)" or "Plantet Greenie (Haunted)" or "Navy Bay (Midnight)" or "Walled City (Midnight)" or "Magic Town (Haunted)" then
+    elseif Settings["Select Map"] == "Strange Town (Haunted)" then
         for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
             if v:IsA('Model') and v.Name == "_lobbytemplate_event4" and tostring(v["Owner"]["Value"]) == "nil" then
                 return v
@@ -1440,85 +1412,65 @@ spawn(function ()
         local val,err = pcall(function ()
             if game.PlaceId == 8304191830  then
                 if Settings["Select Mode"] == 'Story'then
-                    if CheckRoom()[1] == true then
-                        if TeleportRoom then
-                            Character.HumanoidRootPart.CFrame = OldCframe
+                    local Room = GetRoom()
+                    repeat task.wait()
+                        if #Room["Players"]:GetChildren() == 1 then
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,Settings["Hard"] and "Hard" or "Normal")
                             Next_(.2)
-                            TeleportRoom = false
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                            Next_(5)
+                        else
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
                         end
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoom()[2], JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,Settings["Hard"] and "Hard" or "Normal")
-                        Next_(.2)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoom()[2])
-                        Next_(5)
-                    else
-                        OldCframe = Character.HumanoidRootPart.CFrame
-                        TeleportRoom = true
-                        Next_(.1)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room())
-                    end
+                    until #Room["Players"]:GetChildren() > 1
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
                 elseif Settings["Select Mode"] == 'Infinite'then
-                    if CheckRoom ()[1] == true then
-                        if TeleportRoom then
-                            Character.HumanoidRootPart.CFrame = OldCframe
+                    local Room = GetRoom()
+                    repeat task.wait()
+                        if #Room["Players"]:GetChildren() == 1 then
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['infinite']['id'],true,"Hard")
                             Next_(.2)
-                            TeleportRoom = false
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                            Next_(5)
+                        else
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
                         end
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoom()[2], JoinConvert(Settings["Select Map"])['infinite']['id'],true,"Hard")
-                        Next_(.2)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoom()[2])
-                        Next_(5)
-                    else
-                        OldCframe = Character.HumanoidRootPart.CFrame
-                        TeleportRoom = true
-                        Next_(.1)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room())
-                    end
+                    until #Room["Players"]:GetChildren() > 1
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
                 elseif Settings["Select Mode"] == 'Legend Stage'then
-                    if CheckRoom ()[1] == true then
-                        if TeleportRoom then
-                            Character.HumanoidRootPart.CFrame = OldCframe
+                    local Room = GetRoom()
+                    repeat task.wait()
+                        if #Room["Players"]:GetChildren() == 1 then
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])["levels"][Settings["Select Level"]]['id'],true,"Hard")
                             Next_(.2)
-                            TeleportRoom = false
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                            Next_(5)
+                        else
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
                         end
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoom()[2], JoinConvert(Settings["Select Map"])["levels"][Settings["Select Level"]]['id'],true,"Hard")
-                        Next_(.2)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoom()[2])
-                        Next_(5)
-                    else
-                        OldCframe = Character.HumanoidRootPart.CFrame
-                        TeleportRoom = true
-                        Next_(.1)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room())
-                    end
+                    until #Room["Players"]:GetChildren() > 1
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
                 elseif Settings["Select Mode"] == 'Raid'then
-                    if CheckRoomRaid()[1] == true then
-                        if TeleportRoom then
-                            Character.HumanoidRootPart.CFrame = OldCframe
+                    local Room = GetRaidRoom()
+                    repeat task.wait()
+                        if #Room["Players"]:GetChildren() == 1 then
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,"Hard")
                             Next_(.2)
-                            TeleportRoom = false
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                            Next_(5)
+                        else
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
                         end
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(CheckRoomRaid()[2], JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,"Hard")
-                        Next_(.2)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(CheckRoomRaid()[2])
-                        Next_(5)
-                    else
-                        OldCframe = Character.HumanoidRootPart.CFrame
-                        TeleportRoom = true
-                        Next_(.1)
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(RoomRaid())
-                    end
+                    until #Room["Players"]:GetChildren() > 1
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
                 elseif Settings["Select Mode"] == 'Event'then
-                    local RoomA = EventRoom()
-                    print(RoomA)
-                    if RoomA then
-                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(RoomA.Name)
-                        while tonumber(RoomA.Door.Surface.Status.Players.Text:split("/")[1]) > 1 or tonumber(RoomA.Door.Surface.Status.Players.Text:split("/")[1]) == 0 do
-
+                    local Room = EventRoom()
+                    repeat task.wait()
+                        if #Room["Players"]:GetChildren() == 0 then
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
                         end
-                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(RoomA.Name)
-                    else 
-                        Next_(2)
-                    end
+                    until #Room["Players"]:GetChildren() > 1
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(RoomA.Name)
                 end
             end
         end)
