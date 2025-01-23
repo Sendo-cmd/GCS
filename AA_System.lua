@@ -994,7 +994,7 @@ local Settings = {
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
     ["Hard"] = false, -- Story 
-    ["Evo"] = {""},
+    ["Evo"] = {"Honey"},
     ["Ignore"] = {
         -- "tank_enemies",
         -- "fast_enemies",
@@ -1066,6 +1066,8 @@ if #Settings["Evo"] >= 1 then
     -- can craft > normal > star
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
     local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+    local RaidShop = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_current_raidshop_shop:InvokeServer()
+
     local Fruits = {
         "StarFruit",
         "StarFruitEpic",
@@ -1179,6 +1181,7 @@ if #Settings["Evo"] >= 1 then
             for i1,v1 in pairs(UnitData["evolve"]["normal"]["item_requirement"]) do
                 if CheckItemValue(v1["item_id"]) < v1["amount"] then
                     local SaleEvent = ItemsForSaleEvent[v1["item_id"]]
+                    local InRaidShop = RaidShop[v1["item_id"]]
                     if SaleEvent then
                         local Resource_ = SaleEvent["resource_cost"]["id"] 
                         if Resources()[Resource_] >= SaleEvent["resource_cost"]["amount"] then
@@ -1509,7 +1512,7 @@ spawn(function ()
                     print(RoomA)
                     if RoomA then
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(RoomA.Name)
-                        while tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) > 1 or tonumber(RoomA.Door.Surface.Status.Players.Text:split("/")[1]) == 0 do
+                        while tonumber(RoomA.Door.Surface.Status.Players.Text:split("/")[1]) > 1 or tonumber(RoomA.Door.Surface.Status.Players.Text:split("/")[1]) == 0 do
 
                         end
                         game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(RoomA.Name)
