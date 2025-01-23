@@ -555,9 +555,9 @@ _G.User = {
         ["Hard"] = false, -- Story 
     },
     ["NayNaHeee"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Planet Greenie",
+        ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
