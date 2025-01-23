@@ -283,7 +283,6 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Evo"] = {"Dark Mage"},
     },
     ["paopqo780"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
