@@ -1118,7 +1118,7 @@ Accounts = {
     },
     ["May_SD232"] = {
         "Log",
-        "Candie",
+        "Hsnd",
         "System",
         "Card",
     },
