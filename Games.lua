@@ -1125,6 +1125,7 @@ Accounts = {
         "Log",
         "Candie",
         "System",
+        "Card",
     },
 
 }
