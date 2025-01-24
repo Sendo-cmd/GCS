@@ -946,7 +946,7 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Sacred Planet", 
-        ["Select Level"] = "3", 
+        ["Select Level"] = "2", 
         ["Hard"] = false,
     },
     ["nanemilk90"] = {
