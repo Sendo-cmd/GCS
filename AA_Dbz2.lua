@@ -153,7 +153,7 @@ getgenv().Config = {
 			["Planet Greenie"] = 15
 		},
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
-		["Focus on Farm"] = true,
+		["Focus on Farm"] = false,
 		["Upgrade Cap"] = {
 			["1"] = 0,
 			["3"] = 0,
