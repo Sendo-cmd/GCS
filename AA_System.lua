@@ -284,6 +284,13 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
+    ["SHIFUGOD"] = {
+        ["Select Mode"] = "Raid", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Strange Town", 
+        ["Select Level"] = "2", 
+        ["Hard"] = false,
+    },
     ["paopqo780"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     

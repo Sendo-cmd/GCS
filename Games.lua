@@ -83,6 +83,7 @@ Games = {
 Accounts = {
     ["SHIFUGOD"] = {
         "Log",
+        "Hsnd",
         "System",
     },
     ["Champandbank147"] = {
