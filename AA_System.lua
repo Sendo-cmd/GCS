@@ -984,7 +984,7 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
-    ["Pifcbvjj"] = {
+    ["pifcbvjj"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Frozen Abyss",
