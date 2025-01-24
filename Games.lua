@@ -570,8 +570,7 @@ Accounts = {
     },
     ["FireBlackDevilZ"] = {
         "Log",
-        "Hsnd",
-        "System",
+        "StarRem",
         "Card",
     },
     ["chopperaob"] = {
