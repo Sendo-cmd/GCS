@@ -452,8 +452,9 @@ Accounts = {
     },
     ["underhorror"] = {
         "Log",
-        "Marco",
-        "BaseGemInf",
+        "Hsnd",
+        "System",
+        "Card",
     },
     ["yanawarutkanpai"] = {
         "Log",
@@ -905,8 +906,9 @@ Accounts = {
     },
     ["igushi3"] = {
         "Log",
-        "FarmGem",
+        "Hsnd",
         "System",
+        "Card",
     },
     ["ifuyubf06"] = {
         "Log",
