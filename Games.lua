@@ -1137,6 +1137,12 @@ Accounts = {
         "System",
         "Card",
     },
+    ["HP_GTR"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
