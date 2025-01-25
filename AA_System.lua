@@ -1005,7 +1005,13 @@ _G.User = {
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
     },
+    ["sunprite23"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
 
 }
 
