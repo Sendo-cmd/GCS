@@ -384,8 +384,9 @@ Accounts = {
     },
     ["euakungchannel"] = {
         "Log",
-        "Marco",
-        "LSEV3",
+        "Candie",
+        "System",
+        "Card",
     },
     ["110AAE2"] = {
         "Log",
