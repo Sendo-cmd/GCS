@@ -1,8 +1,8 @@
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Auto Summon Special"] = true,
 	["Summoner"] = {
-		["Exchange Legacy Gem"] = 0
+		["Exchange Legacy Gem"] = 0,
+		["Auto Summon Special"] = true
 	},
 	["Game Finished"] = {
 		["Auto Return Lobby"] = true,
