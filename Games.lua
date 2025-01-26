@@ -1143,6 +1143,17 @@ Accounts = {
         "System",
         "Card",
     },
+    ["Kemjud999"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
+    ["jamess1280"] = {
+        "Log",
+        "StarRem",
+        "Card",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
