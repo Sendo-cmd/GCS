@@ -738,6 +738,15 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Evo"] = {"Dark Mage"},
+    },
+    ["FormatDataNumber448"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+        ["Evo"] = {"Dreamer"},
     },
     ["pokpong4123"] = {
         ["Select Mode"] = "Event", 

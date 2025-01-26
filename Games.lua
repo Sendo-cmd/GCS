@@ -881,8 +881,9 @@ Accounts = {
     },
     ["KUNGNING"] = {
         "Log",
-        "FarmGem",
+        "Hsnd",
         "System",
+        "Card",
     },
     ["sjsjsjsjgghd"] = {
         "Log",
@@ -1155,6 +1156,12 @@ Accounts = {
         "Card",
     },
     ["efv1z"] = {
+        "Log",
+        "Hsnd",
+        "System",
+        "Card",
+    },
+    ["FormatDataNumber448"] = {
         "Log",
         "Hsnd",
         "System",
