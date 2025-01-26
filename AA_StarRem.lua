@@ -333,6 +333,7 @@ getgenv().Config = {
 	},
 	["Daily Challenge Joiner"] = {
 		["Auto Join"] = true,
+		["Join Solo"] = true,
 		["Teleport Lobby new Challenge"] = true
 	}
 }
