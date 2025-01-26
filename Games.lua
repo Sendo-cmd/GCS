@@ -834,7 +834,7 @@ Accounts = {
     },
     ["Noinual"] = {
         "Log",
-        "StarGem",
+        "Hsnd",
         "System",
         "Card",
     },
