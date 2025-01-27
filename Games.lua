@@ -1022,7 +1022,9 @@ Accounts = {
     },
     ["YTJTP_Jittiphatn"] = {
         "Log",
-        "StarGem",
+        "Hsnd",
+        "System",
+        "Card",
     },
     ["bankuiok1"] = {
         "Log",
