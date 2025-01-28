@@ -250,7 +250,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = true
+		["Teleport Lobby if Player"] = false
 	},
 	["Holiday Hunt Joiner"] = {
 		["Auto Join"] = true,
