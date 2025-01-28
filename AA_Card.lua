@@ -6,6 +6,7 @@ repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("Pl
 local Priority = {
     ["+ New Path"] = 100,
     ["+ Double Attack"] = 99,
+    ["+ Double Range"] = 96,
     ["+ Range I"] = 98,
     ["+ Range II"] = 91,
     ["+ Range III"] = 86,
@@ -15,7 +16,7 @@ local Priority = {
     ["+ Attack I"] = 97,
     ["+ Attack II"] = 90,
     ["+ Attack III"] = 84,
-    ["+ Random Blessings I"] = 96,
+    ["+ Random Blessings I"] = 76,
     ["+ Random Blessings II"] = 88,
     ["+ Random Blessings III"] = 85,
     ["+ Boss Damage I"] = 92,
