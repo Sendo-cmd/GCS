@@ -249,7 +249,8 @@ getgenv().Config = {
 		["Auto Claim Quest"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Teleport Lobby if Player"] = false
 	},
 	["Holiday Hunt Joiner"] = {
 		["Auto Join"] = true,
