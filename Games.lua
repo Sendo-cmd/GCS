@@ -399,10 +399,8 @@ Accounts = {
         "DungBase",
     },
     ["XDGGZTheGod"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["JeremiahOsAVcK"] = {
         "Log",
@@ -451,10 +449,8 @@ Accounts = {
         "BaseCF",
     },
     ["underhorror"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["yanawarutkanpai"] = {
         "Log",
@@ -462,10 +458,8 @@ Accounts = {
         "ESSE",
     },
     ["Etaa_xm"] = {
-        "Log",
-        "FarmGem",
         "System",
-        "Card",
+        "FarmGem",
     },
     ["M_Darknesss"] = {
         "Log",
@@ -525,10 +519,8 @@ Accounts = {
         "LSEV3",
     },
     ["pokpong4123"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["gmhgoodies"] = {
         "Log",
@@ -607,10 +599,8 @@ Accounts = {
         "FarmGemR",
     },
     ["okillua006"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Naiza080947"] = {
         "Log",
@@ -618,10 +608,8 @@ Accounts = {
         "System",
     },
     ["noop_45670"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["TONKAORIKI_NEW"] = {
         "Log",
@@ -634,10 +622,8 @@ Accounts = {
         "System",
     },
     ["DDYUFCiSRHT"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Lookmoo1987"] = {
         "Log",
@@ -655,50 +641,36 @@ Accounts = {
         "System",
     },
     ["Nongneuftawchin"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["lwntrueman"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Chouko_japanese"] = {
         "Log",
         "System",
     },
     ["Leokung_XD"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["just_testLOL"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["04B38"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["xx0073zx"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["runtz_32868"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["AASN_1"] = {
         "Log",
@@ -706,16 +678,12 @@ Accounts = {
         "System",
     },
     ["skdbsnxb"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["packky02"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["wooiy12"] = {
         "Log",
@@ -728,22 +696,16 @@ Accounts = {
         "System",
     },
     ["SugarSnow_17627"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["caretone38"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Bestganeryoutube"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["TPLshop_135148"] = {
         "Log",
@@ -757,10 +719,8 @@ Accounts = {
         "Card",
     },
     ["Thailand_chin"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["CGGG_TYUL2"] = {
         "Log",
@@ -768,16 +728,12 @@ Accounts = {
         "System",
     },
     ["FormatDataNumber63"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["wavenakub121"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["marutkord"] = {
         "Log",
@@ -790,16 +746,12 @@ Accounts = {
         "System",
     },
     ["yuojkfgh"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["PeeVongzaTV"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["LM3FLO25"] = {
         "Log",
@@ -811,10 +763,8 @@ Accounts = {
         "StarGem",
     },
     ["HD111222"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["momsans08"] = {
         "Log",
@@ -822,10 +772,8 @@ Accounts = {
         "System",
     },
     ["Newbiethreepoint00"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Du_ZraX05"] = {
         "Log",
@@ -833,16 +781,12 @@ Accounts = {
         "System",
     },
     ["Noinual"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["king_one248"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["BQT_OIM"] = {
         "Log",
@@ -850,10 +794,8 @@ Accounts = {
         "System",
     },
     ["NoOneCareDisnameXD"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Wakoji4516"] = {
         "Log",
@@ -874,16 +816,12 @@ Accounts = {
         "StarGem",
     },
     ["phawadon014"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["KUNGNING"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["sjsjsjsjgghd"] = {
         "Log",
@@ -900,16 +838,12 @@ Accounts = {
         "System",
     },
     ["Vana_Ungkap"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["igushi3"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["ifuyubf06"] = {
         "Log",
@@ -917,46 +851,32 @@ Accounts = {
         "System",
     },
     ["NayNaHeee"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["loremm382"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["PerfectBoyz_vx"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Katoy_2007"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["torzasool"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["sunprite23"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Senpai_DaisukiX2"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Radgoh_261"] = {
         "Log",
@@ -964,16 +884,12 @@ Accounts = {
         "System",
     },
     ["sonza567"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["2kgetmoneytoez"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Wakoji4516"] = {
         "Log",
@@ -982,20 +898,16 @@ Accounts = {
         "Card",
     },
     ["tomishop_25"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["puggtopro"] = {
         "Log",
         "StarGem",
     },
     ["pupu4582zxc"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["pocyuiou77"] = {
         "Log",
@@ -1003,40 +915,28 @@ Accounts = {
         "System",
     },
     ["xiptid"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["MiNiKaiYungShop287"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["SB_Cr0w"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["YTJTP_Jittiphatn"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["bankuiok1"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["nuttaputlnw"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["MKFEOEF55"] = {
         "Log",
@@ -1044,10 +944,8 @@ Accounts = {
         "System",
     },
     ["zwontop_KCFAQ"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Atitipost"] = {
         "Log",
@@ -1082,10 +980,8 @@ Accounts = {
         "System",
     },
     ["May_SD232"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["zazatyuk"] = {
         "Log",
@@ -1094,10 +990,8 @@ Accounts = {
         "Card",
     },
     ["Pifcbvjj"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Sowldd96"] = {
         "Log",
@@ -1105,52 +999,36 @@ Accounts = {
         "System",
     },
     ["sunprite23"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["RIXIEEDID"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Demonjom2"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["jim0021zx"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["bbcommasterb"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["micyk12345"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["HP_GTR"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["Kemjud999"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["jamess1280"] = {
         "Log",
@@ -1158,40 +1036,28 @@ Accounts = {
         "Card",
     },
     ["efv1z"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["FormatDataNumber448"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["gelatiExcotic_681"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["S78ONG"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["ZGG962"] = {
-        "Log",
+       "System",
         "Hsnd",
-        "System",
-        "Card",
     },
     ["PrechaNewBie27Point"] = {
-        "Log",
-        "FarmGem",
         "System",
-        "Card",
+        "FarmGem",
     },
 
 }

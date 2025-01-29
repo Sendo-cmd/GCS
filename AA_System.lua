@@ -3,7 +3,7 @@ repeat  task.wait(40) until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
-
+local ApiUrl = "https://api.championshop.date/log-aa"
 
 local InsertItem = require(game:GetService("ReplicatedStorage").src.Data.Items)
 local ItemsForSaleEvent = require(game:GetService("ReplicatedStorage").src.Data.ItemsForSaleEvent)
@@ -1166,6 +1166,132 @@ end
 local IgnoreInf = {
     ["item"] = "map",
 }
+local function SendWebhook(evo)
+    local plr = game:GetService("Players").LocalPlayer
+    local HttpService = game:GetService("HttpService")
+    local Current = "silver_christmas"
+
+    local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+    local collection_profile_data = session["collection"]["collection_profile_data"]
+    local profile_data = session["profile_data"]
+    local battlepass_data = profile_data["battlepass_data"][Current]
+    local equipped_units = collection_profile_data["equipped_units"]
+    local owner = collection_profile_data["owned_units"]
+
+
+    local Battleplass = require(game:GetService("ReplicatedStorage").src.Data.BattlePass)
+    local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
+
+    local function BattleLevel()
+        local CurrentLevel = 0
+        for i = 1,Battleplass[Current]["total_tiers"] do
+            local Data = Battleplass[Current]["tiers"][tostring(i)]
+            if battlepass_data["xp"] > Data["xp_required"] then
+                continue;
+            else
+                CurrentLevel = i - 1
+                break
+            end
+        end
+        return CurrentLevel
+    end
+
+    local function Equipped_Display()
+        local Display = {}
+        for i,v in pairs(equipped_units) do
+            table.insert(Display,Units[owner[v]["unit_id"]]["name"])
+        end
+        return Display
+    end
+    if evo then
+        local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+        local response = request({
+            ApiUrl,
+            ["Method"] = "POST",
+            ["Headers"] = {
+                ["content-type"] = "application/json"
+            },
+            ["Body"] = HttpService:JSONEncode({
+                ["Method"] = "Update",
+                ["Place"] = "Lobby",
+                ["Username"] = plr.Name,
+                ["inventory"] = session["inventory"]["inventory_profile_data"],
+                ["Evo"] = evo,
+                ["equipped_units"] = Equipped_Display(),
+                ["battle_level"] = BattleLevel(),
+                ["allunit"] = owner,
+                ["Gold"] = plr._stats.gold_amount.Value,
+                ["Gem"] =  plr._stats.gem_amount.Value,
+                ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
+                ["GuildId"] = "467359347744309248",
+                ["DataKey"] = "GamingChampionShopAPI",
+            })
+        })
+        for i,v in pairs(response) do
+            print(i,v)
+        end
+    else
+        if game.PlaceId == 8304191830  then
+            local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+            local response = request({
+                ApiUrl,
+                ["Method"] = "POST",
+                ["Headers"] = {
+                    ["content-type"] = "application/json"
+                },
+                ["Body"] = HttpService:JSONEncode({
+                    ["Method"] = "Update",
+                    ["Place"] = "Lobby",
+                    ["Username"] = plr.Name,
+                    ["inventory"] = session["inventory"]["inventory_profile_data"],
+                    ["equipped_units"] = Equipped_Display(),
+                    ["battle_level"] = BattleLevel(),
+                    ["allunit"] = owner,
+                    ["Gold"] = plr._stats.gold_amount.Value,
+                    ["Gem"] =  plr._stats.gem_amount.Value,
+                    ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
+                    ["GuildId"] = "467359347744309248",
+                    ["DataKey"] = "GamingChampionShopAPI",
+                })
+            })
+            for i,v in pairs(response) do
+                print(i,v)
+            end
+        else
+            game:GetService("ReplicatedStorage").endpoints.server_to_client.game_finished.OnClientEvent:Connect(function(g)
+                local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+                local response = request({
+                    ApiUrl,
+                    ["Method"] = "POST",
+                    ["Headers"] = {
+                        ["content-type"] = "application/json"
+                    },
+                    ["Body"] = HttpService:JSONEncode({
+                        ["Method"] = "Update",
+                        ["Place"] = "Game",
+                        ["Username"] = plr.Name,
+                        ["inventory"] = session["inventory"]["inventory_profile_data"],
+                        ["equipped_units"] = Equipped_Display(),
+                        ["battle_level"] = BattleLevel(),
+                        ["allunit"] = owner,
+                        ["Gold"] = plr._stats.gold_amount.Value,
+                        ["Gem"] =  plr._stats.gem_amount.Value,
+                        ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
+                        ["Rewards"] = g,
+                        ["MapInfo"] = workspace._MAP_CONFIG.GetLevelData:InvokeServer(),
+                        ["GuildId"] = "467359347744309248",
+                        ["DataKey"] = "GamingChampionShopAPI",
+                    })
+                })
+                for i,v in pairs(response) do
+                    print(i,v)
+                end
+            end)
+        end
+    end
+    
+end
+
 local function GetRoom(Type)
     if Type == "Challenge" then
         for i, v in pairs(workspace._CHALLENGES.Challenges:GetChildren()) do
@@ -1209,7 +1335,8 @@ local function Next_(var)
     local duration = tick() + var
     repeat task.wait() until tick() >= duration
 end
-if Settings["Evo"] then
+
+if Settings["Evo"] and game.PlaceId == 8304191830  then
     -- can craft > normal > star
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
     local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
@@ -1414,27 +1541,10 @@ if Settings["Evo"] then
                     [1] = UUID
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("evolve_unit"):InvokeServer(unpack(args))
-                local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
-                local response = request({
-                    ["Url"] = "",
-                    ["Method"] = "POST",
-                    ["Headers"] = {
-                        ["content-type"] = "application/json"
-                    },
-                    ["Body"] = HttpService:JSONEncode({
-                        ["Method"] = "Update",
-                        ["Place"] = "Game",
-                        ["Username"] = plr.Name,
-                        ["inventory"] = session["inventory"]["inventory_profile_data"],
-                        ["Gold"] = plr._stats.gold_amount.Value,
-                        ["Gem"] =  plr._stats.gem_amount.Value,
-                        ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
-                        ["Rewards"] = g,
-                        ["MapInfo"] = workspace._MAP_CONFIG.GetLevelData:InvokeServer(),
-                        ["GuildId"] = "467359347744309248",
-                        ["DataKey"] = "GamingChampionShopAPI",
-                    })
-                })
+                
+                SendWebhook(UnitData["name"])
+
+               
                 -- Sent Notification to api
             end
         end
@@ -1480,7 +1590,7 @@ if Settings["Evo"] then
                 Next_(.8)
             end
         end
-
+        SendWebhook()
         local TeleportRoom = true
         local OldCframe = CFrame.new()
         while true do task.wait(.1)
@@ -1603,7 +1713,7 @@ if Settings["Evo"] then
 end
 
 -- Normal Auto Join
-
+if game.PlaceId == 8304191830 then
 local function GetRoom()
     local Rooms = {}
     for i,v in pairs(workspace._LOBBIES.Story:GetChildren()) do
@@ -1657,6 +1767,8 @@ local function Next_(var)
     local duration = tick() + var
     repeat task.wait() until tick() >= duration
 end
+
+SendWebhook()
 spawn(function ()
 	while true do
         local val,err = pcall(function ()
@@ -1730,3 +1842,79 @@ spawn(function ()
 		task.wait()
 	end
 end)
+else
+    SendWebhook()
+    local Priority = {
+        ["+ New Path"] = 100,
+        ["+ Double Attack"] = 99,
+        ["+ Double Range"] = 98,
+        ["+ Range I"] = 97,
+        ["+ Range II"] = 91,
+        ["+ Range III"] = 86,
+        ["+ Cooldown I"] = 93,
+        ["+ Cooldown II"] = 89,
+        ["+ Cooldown III"] = 83,
+        ["+ Attack I"] = 96,
+        ["+ Attack II"] = 90,
+        ["+ Attack III"] = 84,
+        ["+ Random Blessings I"] = 76,
+        ["+ Random Blessings II"] = 88,
+        ["+ Random Blessings III"] = 85,
+        ["+ Boss Damage I"] = 92,
+        ["+ Boss Damage II"] = 87,
+        ["+ Boss Damage III"] = 77,
+        ["+ Yen I"] = 88,
+        ["+ Yen II"] = 81,
+        ["+ Yen III"] = 78,
+        ["+ Active Cooldown I"] = 82,
+        ["+ Active Cooldown II"] = 79,
+        ["+ Active Cooldown III"] = 80,
+        ["+ Enemy Health I"] = 95,
+        ["+ Enemy Health II"] = 12,
+        ["+ Enemy Health III"] = 13,
+        ["+ Explosive Deaths I"] = 94,
+        ["+ Explosive Deaths II"] = 14,
+        ["+ Explosive Deaths III"] = 15,
+        ["+ Enemy Regen I"] = 11,
+        ["+ Enemy Regen II"] = 10,
+        ["+ Enemy Regen III"] = 9,
+        ["+ Enemy Shield I"] = 8,
+        ["+ Enemy Shield II"] = 7,
+        ["+ Enemy Shield III"] = 6,
+        ["+ Enemy Speed I"] = 5,
+        ["+ Enemy Speed II"] = 4,
+        ["+ Enemy Speed III"] = 3,
+        ["+ Random Curses I"] = 2,
+        ["+ Random Curses II"] = 1,
+        ["+ Random Curses III"] = 0,
+    }
+    local Tick = function(sec)
+        local n = tick() + sec
+        repeat wait() until tick() >= n
+    end
+    local Roguelike = workspace:WaitForChild("_DATA"):WaitForChild("Roguelike"):WaitForChild("WaitingForRoguelikeChoice")
+    if Roguelike then
+        Roguelike.Changed:Connect(function(v)
+            if v then
+                Tick(1)
+                local GetBest = 0
+                local Path = nil
+                for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.RoguelikeSelect.Main.Main.Items:GetChildren()) do
+                    if v:IsA("Frame") then 
+                        local conti = math.random(1,99)
+                        if (Priority[v.bg.Main.Title.TextLabel.Text] or conti) > GetBest then
+                            GetBest = Priority[v.bg.Main.Title.TextLabel.Text] or conti
+                            Path = v
+                        end
+                    end
+                end
+                for i1,v1 in pairs(getconnections(Path.Button["Activated"])) do
+                    v1.Function()
+                end
+                for i1,v1 in pairs(getconnections(Path.Confirm["Activated"])) do
+                    v1.Function()
+                end
+            end
+        end)
+    end
+end
