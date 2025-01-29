@@ -1,5 +1,3 @@
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Summoner"] = {
