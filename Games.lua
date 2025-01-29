@@ -513,9 +513,7 @@ Accounts = {
         "BaseBS",
     },
     ["Nonglud"] = {
-        "Log",
-        "Marco",
-        "Tower",
+         "Tower",
         "System",
     },
     ["GODAOTT"] = {
@@ -544,9 +542,8 @@ Accounts = {
         "DungBase",
     },
     ["FireBlackDevilZ"] = {
-        "Log",
-        "StarRem",
-        "Card",
+         "StarRem",
+        "System",
     },
     ["chopperaob"] = {
         "LogACB",
@@ -976,9 +973,8 @@ Accounts = {
         "Hsnd",
     },
     ["jamess1280"] = {
-        "Log",
-        "StarRem",
-        "Card",
+         "StarRem",
+        "System",
     },
     ["efv1z"] = {
        "System",
