@@ -332,8 +332,8 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true
 	},
 	["Daily Challenge Joiner"] = {
-		["Auto Join"] = false,
-		["Join Solo"] = true,
+		["Auto Join"] = true,
+		["Join Solo"] = false,
 		["Teleport Lobby new Challenge"] = true
 	}
 }
