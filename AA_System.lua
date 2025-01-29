@@ -1128,7 +1128,7 @@ local Settings = {
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
     ["Hard"] = false, -- Story 
-    ["Evo"] = {},
+    ["Evo"] = true,
     ["Ignore"] = {
         -- "tank_enemies",
         -- "fast_enemies",
@@ -1173,6 +1173,12 @@ local function GetRoom(Type)
                 return v
             end
         end
+    elseif Type == "Raid" then
+        for i, v in pairs(workspace._RAID.Raid:GetChildren()) do
+            if v:IsA('Model') and v["Active"].Value == false then
+                return v
+            end
+        end
     elseif Type == "_lobbytemplate_event3" or Type == "_lobbytemplate_event4"then
         for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
             if v:IsA('Model') and v.Name == Type and v["Active"].Value == false then
@@ -1192,16 +1198,40 @@ end
 function JoinConvert(args)
     return require(game:GetService("ReplicatedStorage").src.Data.Worlds)[args]["infinite"]["id"]
 end
+function RaidConvert(arg)
+    for i,v in pairs(require(game:GetService("ReplicatedStorage").src.Data.Worlds)) do
+        if v.name == arg then 
+            return v["levels"]["1"]["id"]
+        end
+    end
+end
 local function Next_(var)
     local duration = tick() + var
     repeat task.wait() until tick() >= duration
 end
-if #Settings["Evo"] >= 1 then
+if Settings["Evo"] then
     -- can craft > normal > star
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
     local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
     local RaidShop = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_current_raidshop_shop:InvokeServer()
-
+    local collection_profile_data = session["collection"]["collection_profile_data"]
+    local getloadout = collection_profile_data["loadouts"]
+    local farmfruit = getloadout["1"]
+    local farmkill = getloadout["2"]
+    local evounit = getloadout["3"]
+    local IsRaid = false
+    local CoinToIsland = {}
+    for i,v in pairs(RaidShop) do
+        local cost = v["item_cost"]
+        if cost and cost["item_id"] and not CoinToIsland[cost["item_id"]] then
+            CoinToIsland[cost["item_id"]] = v["category"]
+        end
+    end
+    
+    
+    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("switch_team_loadout"):InvokeServer("4")
+    
+    -- print(evounit)
     local Fruits = {
         "StarFruit",
         "StarFruitEpic",
@@ -1222,14 +1252,7 @@ if #Settings["Evo"] >= 1 then
         end
         return false
     end
-    local function ConvertDisplayToTable(Display)
-        for i,v in pairs(Units) do
-            if v.name == Display then
-                return v
-            end
-        end
-        return "Not Found"
-    end
+
     local function CheckInventory(id)
         for i,v in pairs(session["collection"]["collection_profile_data"]["owned_units"]) do
             if v["unit_id"] == id then
@@ -1280,14 +1303,22 @@ if #Settings["Evo"] >= 1 then
         return GetWorld
     end
     local ItemToFind = nil
-    for i,v in pairs(Settings["Evo"]) do
-        local UnitData = ConvertDisplayToTable(v)
+    local UUID = nil
+    for i = 1,6,1 do
+
+        UUID = evounit[tostring(i)]
+        local ID = collection_profile_data["owned_units"][evounit[tostring(i)]]
+        if not ID then
+            continue;
+        end
+        print(ID)
+        local UnitData = Units[ID["unit_id"]]
         if type(UnitData) == "table" then
-            if CheckInventory(UnitData["evolve"]["evolve_unit"]) then
-                -- Sent Notification to api
-                print("Already Have Skip!")
-                continue;
-            end
+            -- if CheckInventory(UnitData["evolve"]["evolve_unit"]) then
+            --     -- Sent Notification to api
+            --     print("Already Have Skip!")
+            --     continue;
+            -- end
             -- FindCrafting First
             for i = 1,2 do task.wait()
                 for i1,v1 in pairs(UnitData["evolve"]["normal"]["item_requirement"]) do
@@ -1312,48 +1343,62 @@ if #Settings["Evo"] >= 1 then
             if ItemToFind then
                 break                
             end
-            for i1,v1 in pairs(UnitData["evolve"]["normal"]["item_requirement"]) do
-                if CheckItemValue(v1["item_id"]) < v1["amount"] then
-                    local SaleEvent = ItemsForSaleEvent[v1["item_id"]]
-                    local InRaidShop = RaidShop[v1["item_id"]]
-                    if SaleEvent then
-                        local Resource_ = SaleEvent["resource_cost"]["id"] 
-                        if Resources()[Resource_] >= SaleEvent["resource_cost"]["amount"] then
-                            local args = {
-                                [1] = v1["item_id"],
-                                [2] = "event",
-                                [3] = Resource_ == "Candies" and "event_shop2" or  "event_shop",
-                                [4] = "1"
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("buy_item_generic"):InvokeServer(unpack(args))
-                            
+            for i = 1,2 do task.wait()
+                for i1,v1 in pairs(UnitData["evolve"]["normal"]["item_requirement"]) do
+                    if CheckItemValue(v1["item_id"]) < v1["amount"] then
+                        local SaleEvent = ItemsForSaleEvent[v1["item_id"]]
+                        local InRaidShop = RaidShop[v1["item_id"]]
+                        if InRaidShop then
+                            local Resource_ = InRaidShop["item_cost"]
+                            if CheckItemValue(Resource_["item_id"]) >= Resource_["amount"] then
+                                while CheckItemValue(Resource_["item_id"]) >= Resource_["amount"] and CheckItemValue(v1["item_id"]) < v1["amount"] do 
+                                    local args = {
+                                        [1] = v1["item_id"],
+                                        [2] = "1"
+                                    }
+                                    
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("buy_raidshop_shop_item"):InvokeServer(unpack(args)) 
+                                    -- print(v1["item_id"],"1")
+                                    task.wait()
+                                end
+                            else
+                                IsRaid = true
+                                ItemToFind = v1["category"]
+                                break
+                            end
+                        elseif SaleEvent then
+                            local Resource_ = SaleEvent["resource_cost"]["id"] 
+                            if Resources()[Resource_] >= SaleEvent["resource_cost"]["amount"] then
+                                while Resources()[Resource_] >= SaleEvent["resource_cost"]["amount"] and CheckItemValue(v1["item_id"]) < v1["amount"] do 
+                                    local args = {
+                                        [1] = v1["item_id"],
+                                        [2] = "event",
+                                        [3] = Resource_ == "Candies" and "event_shop2" or  "event_shop",
+                                        [4] = "1"
+                                    }
+                                    
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("buy_item_generic"):InvokeServer(unpack(args))
+                                end
+                            else
+                                ItemToFind = v1["item_id"]
+                                break
+                            end
+                        elseif CoinToIsland[v1["item_id"]] then
+                            ItemToFind = CoinToIsland[v1["item_id"]]
+                            break
                         else
                             ItemToFind = v1["item_id"]
+                            break
                         end
-                    else
-                        ItemToFind = v1["item_id"]
-                        break
                     end
                 end
             end
+            if ItemToFind then
+                break                
+            end
+          
             print(ItemToFind,"Here2")
             if not ItemToFind then
-                local ID = nil
-                for i,v in pairs(session["collection"]["collection_profile_data"]["owned_units"]) do
-                    if v["unit_id"] == UnitData["id"] and v["_locked"] then
-                        ID = v
-                        break;
-                    end
-                end
-                if not ID then
-                    for i,v in pairs(session["collection"]["collection_profile_data"]["owned_units"]) do
-                        if v["unit_id"] == UnitData["id"] then
-                            ID = v
-                            break;
-                        end
-                    end
-                end
                 -- print(ID["uuid"],ID["total_takedowns"])
                 if UnitData["evolve"]["normal"]["_takedown_requirement"] and UnitData["evolve"]["normal"]["_takedown_requirement"] > (ID["total_takedowns"] or 0) then
                     ItemToFind = "Kill"
@@ -1365,18 +1410,31 @@ if #Settings["Evo"] >= 1 then
                     
                     break
                 end
-                -- local args = {
-                --     [1] = ID["uuid"],
-                --     [2] = false
-                -- }
-                
-                -- game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("lock_unlock_unit"):InvokeServer(unpack(args))
-                
                 local args = {
-                    [1] = ID["uuid"]
+                    [1] = UUID
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("evolve_unit"):InvokeServer(unpack(args))
-               
+                local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+                local response = request({
+                    ["Url"] = "",
+                    ["Method"] = "POST",
+                    ["Headers"] = {
+                        ["content-type"] = "application/json"
+                    },
+                    ["Body"] = HttpService:JSONEncode({
+                        ["Method"] = "Update",
+                        ["Place"] = "Game",
+                        ["Username"] = plr.Name,
+                        ["inventory"] = session["inventory"]["inventory_profile_data"],
+                        ["Gold"] = plr._stats.gold_amount.Value,
+                        ["Gem"] =  plr._stats.gem_amount.Value,
+                        ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
+                        ["Rewards"] = g,
+                        ["MapInfo"] = workspace._MAP_CONFIG.GetLevelData:InvokeServer(),
+                        ["GuildId"] = "467359347744309248",
+                        ["DataKey"] = "GamingChampionShopAPI",
+                    })
+                })
                 -- Sent Notification to api
             end
         end
@@ -1386,14 +1444,16 @@ if #Settings["Evo"] >= 1 then
     local ChallengeData = nil
     if ItemToFind then
         local RoomId = ""
-        if ItemToFind == "Kill" then
+        if IsRaid then
+            RoomId = RaidConvert(ItemToFind)
+        elseif ItemToFind == "Kill" then
             RoomId = "Kill"
         elseif table.find(Fruits,ItemToFind) then
             RoomId = "Challenge"
             ChallengeData = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_normal_challenge:InvokeServer()
         else
             if ItemsForSaleEvent[ItemToFind] then
-                local cost = temsForSaleEvent[ItemToFind]["resource_cost"]
+                local cost = ItemsForSaleEvent[ItemToFind]["resource_cost"]
                 if cost["id"] == "Candies" then
                     RoomId = "_lobbytemplate_event3"
                 elseif cost["id"] == "HolidayStars" then
@@ -1403,11 +1463,67 @@ if #Settings["Evo"] >= 1 then
                 RoomId = IgnoreInf[ItemToFind] or JoinConvert(GetMap(ItemToFind))
             end
         end 
-        print(RoomId)
+        -- Auto Equip
+        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("unequip_all"):InvokeServer()
+        if RoomId == "Kill" then
+            for i,v in pairs(farmkill) do task.wait()
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("equip_unit"):InvokeServer(v)
+                Next_(.8)
+            end
+            Next_(.8)
+            task.wait()
+            print("kill",UUID)
+            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("equip_unit"):InvokeServer(UUID)
+        else
+            for i,v in pairs(farmfruit) do task.wait()
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("equip_unit"):InvokeServer(v)
+                Next_(.8)
+            end
+        end
+
         local TeleportRoom = true
         local OldCframe = CFrame.new()
         while true do task.wait(.1)
-            if RoomId == "Challenge" then
+            if IsRaid then
+                local Room = GetRoom("Raid")
+                if Room then
+                    local t = tick() + 10
+                    repeat task.wait()
+                        if Room["Owner"].Value then
+                            if TeleportRoom then
+                                Character.HumanoidRootPart.CFrame = OldCframe
+                                Next_(.2)
+                                TeleportRoom = false
+                            end
+                            if RoomId == "Kill" then
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert("naruto"),true,"Hard")
+                            else
+                                local args = {
+                                    [1] = Room.Name,
+                                    [2] = RoomId,
+                                    [3] = true,
+                                    [4] = "Hard"
+                                }
+                                
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_lock_level"):InvokeServer(unpack(args))
+
+                                
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, RoomId,true,"Hard")
+                            end
+                            Next_(.2)
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                            Next_(5)
+                        else
+                            OldCframe = Character.HumanoidRootPart.CFrame
+                                TeleportRoom = true
+                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                        end
+                    until tick() >= t or (Room["Owner"].Value and tostring(Room["Owner"].Value) ~= game.Players.LocalPlayer.Name) or (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) > 1 
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    TeleportRoom = true
+                end
+
+            elseif RoomId == "Challenge" then
                 if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
                     local Room = GetRoom(RoomId)
                     if Room then
@@ -1510,13 +1626,13 @@ end
 function EventRoom()
     if Settings["Select Map"] == "Haunted Academy" then
         for i, v in pairs(workspace._DUNGEONS.Lobbies:GetChildren()) do
-            if v:IsA('Model') and v.Name == "_lobbytemplate_event222" and tostring(v["Owner"]["Value"]) == "nil" then
+            if v:IsA('Model') and v.Name == "_lobbytemplate_event222" and #v["Players"]:GetChildren() == 0 then
                 return v
             end
         end
     elseif Settings["Select Map"] == "Frozen Abyss" then
         for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
-            if v:IsA('Model') and v.Name == "_lobbytemplate_event3" and tostring(v["Owner"]["Value"]) == "nil" then
+            if v:IsA('Model') and v.Name == "_lobbytemplate_event3" and #v["Players"]:GetChildren() == 0 then
                 return v
             end
         end
