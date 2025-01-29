@@ -1187,6 +1187,12 @@ Accounts = {
         "System",
         "Card",
     },
+    ["PrechaNewBie27Point"] = {
+        "Log",
+        "FarmGem",
+        "System",
+        "Card",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
