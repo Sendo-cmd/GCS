@@ -434,7 +434,7 @@ Accounts = {
         "BaseCF",
     },
     ["underhorror"] = {
-       "Hsnd",
+        "CursedT",
         "System",
     },
     ["yanawarutkanpai"] = {
