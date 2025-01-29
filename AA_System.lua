@@ -1222,6 +1222,8 @@ local function SendWebhook(evo)
                 ["allunit"] = owner,
                 ["Gold"] = plr._stats.gold_amount.Value,
                 ["Gem"] =  plr._stats.gem_amount.Value,
+                ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
+			    ["Candies"] = plr._stats._resourceCandies.Value,
                 ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                 ["GuildId"] = "467359347744309248",
                 ["DataKey"] = "GamingChampionShopAPI",
