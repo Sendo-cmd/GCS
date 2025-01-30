@@ -544,11 +544,11 @@ _G.User = {
         ["Hard"] = false,
     },
     ["CGGG_TYUL2"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
     ["FormatDataNumber63"] = {
         ["Select Mode"] = "Event", 
@@ -1189,14 +1189,17 @@ local function SendWebhook(evo)
     local Battleplass = require(game:GetService("ReplicatedStorage").src.Data.BattlePass)
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
 
+    for i,v in pairs(owner) do
+        v["Display"] = Units[v["unit_id"]]["name"]
+    end
+
     local function BattleLevel()
         local CurrentLevel = 0
         for i = 1,Battleplass[Current]["total_tiers"] do
             local Data = Battleplass[Current]["tiers"][tostring(i)]
             if battlepass_data["xp"] > Data["xp_required"] then
-                continue;
+                CurrentLevel = i
             else
-                CurrentLevel = i - 1
                 break
             end
         end
@@ -1206,7 +1209,7 @@ local function SendWebhook(evo)
     local function Equipped_Display()
         local Display = {}
         for i,v in pairs(equipped_units) do
-            table.insert(Display,Units[owner[v]["unit_id"]]["name"])
+            table.insert(Display,owner[v])
         end
         return Display
     end
@@ -1230,7 +1233,7 @@ local function SendWebhook(evo)
                 ["Gold"] = plr._stats.gold_amount.Value,
                 ["Gem"] =  plr._stats.gem_amount.Value,
                 ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
-			    ["Candies"] = plr._stats._resourceCandies.Value,
+		        ["Candies"] = plr._stats._resourceCandies.Value,
                 ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                 ["GuildId"] = "467359347744309248",
                 ["DataKey"] = "GamingChampionShopAPI",
@@ -1259,7 +1262,7 @@ local function SendWebhook(evo)
                     ["Gold"] = plr._stats.gold_amount.Value,
                     ["Gem"] =  plr._stats.gem_amount.Value,
                     ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
-			        ["Candies"] = plr._stats._resourceCandies.Value,
+		            ["Candies"] = plr._stats._resourceCandies.Value,
                     ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                     ["GuildId"] = "467359347744309248",
                     ["DataKey"] = "GamingChampionShopAPI",
