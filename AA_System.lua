@@ -1,4 +1,4 @@
-repeat  task.wait(50) until game:IsLoaded()
+repeat  task.wait(10) until game:IsLoaded()
 
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
@@ -283,6 +283,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
+        ["Auto Join"] = false,
     },
     ["SHIFUGOD"] = {
         ["Select Mode"] = "Raid", -- Raid , Legend Stage , Infinite
@@ -1130,6 +1131,7 @@ _G.User = {
 }
 
 local Settings = {
+    ["Auto Join"] = true,
     ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
     
     ["Select Map"] = "Planet Greenie",
@@ -1233,7 +1235,7 @@ local function SendWebhook(evo)
                 ["Gold"] = plr._stats.gold_amount.Value,
                 ["Gem"] =  plr._stats.gem_amount.Value,
                 ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
-		        ["Candies"] = plr._stats._resourceCandies.Value,
+			    ["Candies"] = plr._stats._resourceCandies.Value,
                 ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                 ["GuildId"] = "467359347744309248",
                 ["DataKey"] = "GamingChampionShopAPI",
@@ -1262,7 +1264,7 @@ local function SendWebhook(evo)
                     ["Gold"] = plr._stats.gold_amount.Value,
                     ["Gem"] =  plr._stats.gem_amount.Value,
                     ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
-		            ["Candies"] = plr._stats._resourceCandies.Value,
+			        ["Candies"] = plr._stats._resourceCandies.Value,
                     ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                     ["GuildId"] = "467359347744309248",
                     ["DataKey"] = "GamingChampionShopAPI",
@@ -1607,6 +1609,9 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
             end
         end
         SendWebhook()
+        if not Settings["Auto Join"] then
+            return
+        end
         local TeleportRoom = true
         local OldCframe = CFrame.new()
         while true do task.wait(.1)
@@ -1785,6 +1790,9 @@ local function Next_(var)
 end
 
 SendWebhook()
+if not Settings["Auto Join"] then
+    return
+end
 spawn(function ()
 	while true do
         local val,err = pcall(function ()
