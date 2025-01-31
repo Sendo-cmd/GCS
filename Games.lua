@@ -71,6 +71,7 @@ Games = {
         ["StarGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GEMSF.lua",
         ["StarFruit"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarFruit.lua",
         ["StarRem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarRem.lua",
+        ["StarRemF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarRemF.lua",
         ["CursedT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Cursed.lua",
     }
 }
