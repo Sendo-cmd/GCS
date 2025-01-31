@@ -306,7 +306,7 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
-    ["puggtopro"] = {
+    ["Puggtopro"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Planet Greenie",
