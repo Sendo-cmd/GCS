@@ -975,7 +975,7 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["Xwohogi_thailand"] = {
-        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event
     
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
