@@ -525,7 +525,7 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["yukilito001"] = {
-        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", 
     
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
