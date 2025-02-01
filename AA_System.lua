@@ -1195,15 +1195,21 @@ local function SendWebhook(evo)
     local battlepass_data = profile_data["battlepass_data"][Current]
     local equipped_units = collection_profile_data["equipped_units"]
     local owner = collection_profile_data["owned_units"]
-
+    local Function = require(game.ReplicatedStorage.src.Loader).load_core_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "TraitServiceCore")["calculate_stat_rank"]
 
     local Battleplass = require(game:GetService("ReplicatedStorage").src.Data.BattlePass)
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
 
+
     for i,v in pairs(owner) do
         v["Display"] = Units[v["unit_id"]]["name"]
+        v["TraitDisplay"] = {}
+        for i1,v1 in pairs(v["trait_stats"]) do
+            local f = Function(v["unit_id"],v,i1,v1)
+            v["TraitDisplay"][i1] = f
+        end
     end
-
+    -- setclipboard(HttpService:JSONEncode(owner))
     local function BattleLevel()
         local CurrentLevel = 0
         for i = 1,Battleplass[Current]["total_tiers"] do
@@ -1224,6 +1230,7 @@ local function SendWebhook(evo)
         end
         return Display
     end
+    game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("spawn_units"):WaitForChild("Lives")
     if evo then
         local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
         local response = request({
@@ -1365,11 +1372,12 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
     local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
     local RaidShop = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_current_raidshop_shop:InvokeServer()
+    local profile_data = session["profile_data"]
     local collection_profile_data = session["collection"]["collection_profile_data"]
-    local getloadout = collection_profile_data["loadouts"]
-    local farmfruit = getloadout["1"]
-    local farmkill = getloadout["2"]
-    local evounit = getloadout["3"]
+    local getloadout = profile_data["loadouts_v2"]
+    local farmfruit = getloadout["1"] and getloadout["1"]["saved_equipped"] or {}
+    local farmkill = getloadout["2"] and getloadout["2"]["saved_equipped"] or {}
+    local evounit = getloadout["3"] and getloadout["3"]["saved_equipped"] or {}
     local IsRaid = false
     local CoinToIsland = {}
     for i,v in pairs(RaidShop) do
@@ -1380,7 +1388,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
     end
     
     
-    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("switch_team_loadout"):InvokeServer("4")
+    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("load_team_loadout"):InvokeServer("4")
     
     -- print(evounit)
     local Fruits = {
@@ -1557,7 +1565,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                         [1] = "2"
                     }
                     
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("switch_team_loadout"):InvokeServer(unpack(args))
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("load_team_loadout"):InvokeServer(unpack(args))
                     
                     break
                 end
@@ -1573,6 +1581,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
             end
         end
     end
+
     
     print(ItemToFind,"Out")
     local ChallengeData = nil
