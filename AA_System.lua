@@ -1131,6 +1131,300 @@ _G.User = {
 
 }
 
+repeat  task.wait() until game:IsLoaded()
+
+repeat task.wait() until game:GetService("Players").LocalPlayer
+repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+
+local ApiUrl = "https://api.championshop.date/log-aa"
+
+local InsertItem = require(game:GetService("ReplicatedStorage").src.Data.Items)
+local ItemsForSaleEvent = require(game:GetService("ReplicatedStorage").src.Data.ItemsForSaleEvent)
+
+
+--[[
+Can Evo
+Stringy
+Elfy
+Tamiki
+Gene (Adult)
+Fox Ninja (Demon Cloak)
+Fairy Ruler
+Kyko
+Jackal
+Smoka
+Gamer Girl
+Takamu
+Morbid
+Bodybuilder
+Gunslinger
+Waterfist
+Siren
+Frost Navy
+Crush
+Pirate King
+Prayer Master
+Flamefeather
+Hubris (Day)
+Carrot
+Juozu
+Magma
+Eccentric Researcher
+Ghost Lady
+Elize
+Gazu
+Lucifer
+Packy
+Ghosty
+Black Dog
+Wratho
+Doll
+Elf Spirit
+Cyborg (Overdrive)
+Ant
+Supreme Being
+Hammerhead
+Dark Mage
+Lunar Hare
+Illusionist (Betrayal)
+Priest
+Cream
+Berserker
+Honey
+Hubris (Night)
+Shizo
+Fiery Commander
+Lyla
+Donut
+Verdant Hero (String)
+Scarlet Slayer
+Tiger
+Whitehair
+Haze
+Rebel
+Itukoda
+Mirror Ninja
+Captain (Timeskip)
+Void Spear
+Paragon
+Hex
+Shade Sorceror
+Thunder Maid
+Aquatic Mage
+InHuman
+Hammer Giantess
+Saka
+Menace
+Faker
+Millie
+Weather Girl
+Cowardly
+Cherub
+Dragonslayer
+Gravity Navy
+Alien King
+Joykid (Bounce)
+Blaze Frost
+Icy Dragon
+Supersound
+Crimson Thief
+Paradox
+Cold Mage
+Black Blade
+Chance
+Cotton
+Bunny
+Delinquent (Serious)
+Flame Hero
+Infinity Mage
+Blood
+Illusionist (Fusion)
+Gamer
+Mangaka
+Sword Queen
+Vego
+Iceclaw (Rebirth)
+Mochi
+Crystal Rose
+Operator (Heart)
+Skeleton
+Puppet Girl
+Gravity Mage
+Lex
+Reliable Student
+Bubblegum
+Lulu
+Mimic Sorceror
+Usurper
+Dreamer
+Golden King
+Sepsis
+Magic Disbeliever
+Akemy
+Crusader
+Explosion Hero (Bang)
+Iron Knight
+Ratio
+Griffin
+Experiment X (Imperfect)
+Umbra
+Vego (Mage)
+Agony (Path)
+Idol
+Enlightened
+Fox Ninja (Sage)
+Spearer
+Toad Sensei
+Brawler
+Eta
+Lightning God
+Carrot (Super III)
+Experiment X (Semi-Perfect)
+Gas
+Death Ninja
+Fiend Girl
+Dracula
+Dolphin
+Saki
+Ghost-kun
+Spirit Reaper (Dusk)
+Connor
+Ashborn
+Wasp
+Priest (New Moon)
+Killer (Whirlwind)
+Psychic Princess
+Green Alien (Fusion)
+Experiment X (Perfect)
+Flower Ninja
+Sharkfin
+Lilia
+Spirit Sniper
+Mazara
+Player
+Izo (Black Fire)
+Magic Girl
+Trickster
+Calm Killer
+Shinobi (Hood)
+Karma
+Cat Guard
+Elf Mage
+Hermy
+Blade Beast
+Illusionist (Chrysalis)
+Virtual Samurai
+Skeleton Knight
+Catgirl
+Falcon
+Sea God
+Chunks
+Dragon Knight
+Golden Navy
+Shinobi (Awakened)
+Riony
+Jelly
+Weather
+Origami
+Illusionist
+Ariva
+Time Wizard
+Vego (Super)
+Silver Slayer
+Bloodcry
+Shadowgirl
+Curse
+Skater
+Idol
+Ice Queen
+White Snake
+Tango (Score)
+Gene
+Martial Demon
+Spirit Archer
+Tarata
+Golden Tyrant
+Prime Force
+Jose (Shining Gem)
+Red Scar
+Shrimp
+Bro
+]]
+
+
+
+--[[
+
+
+[Story Mode]
+Planet Greenie
+Walled City
+Snowy Town
+Sand Village
+Navy Bay
+Fiend City
+Spirit World
+Ant Kingdom
+Magic Town
+Haunted Academy
+Magic Hills
+Space Center
+Alien Spaceship
+Fabled Kingdom
+Ruined City
+Puppet Island
+Virtual Dungeon
+Snowy Kingdom
+Dungeon Throne
+Mountain Temple
+Rain Village
+
+[Raid Mode]
+Strange Town
+Nightmare Train
+Sacred Planet
+Ruined City (The Menace)
+Walled City
+Future City (Tyrant's Invasion)
+Navy's Ford (Buddha)
+Sand Village
+Future City
+Cursed Festival
+Storm Hideout
+
+[Legend Stage]
+Fabled Kingdom (Generals)
+Spirit Invasion
+Dungeon Throne
+Space Center
+Rain Village
+Virtual Dungeon (Bosses)
+Magic Hills (Elf Invasion)
+Ruined City (Midnight)
+
+[Event]
+Haunted Academy
+Frozen Abyss
+Strange Town (Haunted)
+]]
+
+
+
+
+_G.User = {
+    ["FireBlackDevilZ"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Haunted Academy", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false, 
+        ["Evo"] = {"Elf Mage"},
+    },
+}
+
+
+
+
 local Settings = {
     ["Auto Join"] = true,
     ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
@@ -1187,15 +1481,21 @@ local function SendWebhook(evo)
     local battlepass_data = profile_data["battlepass_data"][Current]
     local equipped_units = collection_profile_data["equipped_units"]
     local owner = collection_profile_data["owned_units"]
-
+    local Function = require(game.ReplicatedStorage.src.Loader).load_core_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "TraitServiceCore")["calculate_stat_rank"]
 
     local Battleplass = require(game:GetService("ReplicatedStorage").src.Data.BattlePass)
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
 
+
     for i,v in pairs(owner) do
         v["Display"] = Units[v["unit_id"]]["name"]
+        v["TraitDisplay"] = {}
+        for i1,v1 in pairs(v["trait_stats"]) do
+            local f = Function(v,i1)
+            v["TraitDisplay"][i] = f
+        end
     end
-
+    -- setclipboard(HttpService:JSONEncode(owner))
     local function BattleLevel()
         local CurrentLevel = 0
         for i = 1,Battleplass[Current]["total_tiers"] do
@@ -1943,3 +2243,4 @@ else
         end)
     end
 end
+
