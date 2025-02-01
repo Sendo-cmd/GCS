@@ -315,7 +315,7 @@ _G.User = {
         ["Auto Join"] = false, -- Story 
     },
     ["opoppoky"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
