@@ -1128,6 +1128,14 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["SDEgFGtxuid"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+        ["Auto Join"] = false,
+    },
 
 }
 
@@ -1187,21 +1195,15 @@ local function SendWebhook(evo)
     local battlepass_data = profile_data["battlepass_data"][Current]
     local equipped_units = collection_profile_data["equipped_units"]
     local owner = collection_profile_data["owned_units"]
-    local Function = require(game.ReplicatedStorage.src.Loader).load_core_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "TraitServiceCore")["calculate_stat_rank"]
+
 
     local Battleplass = require(game:GetService("ReplicatedStorage").src.Data.BattlePass)
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
 
-
     for i,v in pairs(owner) do
         v["Display"] = Units[v["unit_id"]]["name"]
-        v["TraitDisplay"] = {}
-        for i1,v1 in pairs(v["trait_stats"]) do
-            local f = Function(v,i1)
-            v["TraitDisplay"][i] = f
-        end
     end
-    -- setclipboard(HttpService:JSONEncode(owner))
+
     local function BattleLevel()
         local CurrentLevel = 0
         for i = 1,Battleplass[Current]["total_tiers"] do
@@ -1949,4 +1951,3 @@ else
         end)
     end
 end
-
