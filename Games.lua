@@ -483,12 +483,6 @@ Accounts = {
         "Marco",
         "BaseGem",
     },
-    ["yukilito001"] = {
-        "Log",
-        "Marco",
-        "AutoBuyR",
-        "BaseR",
-    },
     ["winnoooql"] = {
         "Log",
         "Marco",
@@ -686,8 +680,8 @@ Accounts = {
         "System",
     },
     ["yukilito001"] = {
+        "Hsnd",
         "System",
-        "Candie",
     },
     ["Thailand_chin"] = {
        "Hsnd",
@@ -726,7 +720,7 @@ Accounts = {
         "System",
     },
     ["XDcggza4"] = {
-        "StarGem",
+        "Hsnd",
         "System",
     },
     ["HD111222"] = {
@@ -1002,6 +996,10 @@ Accounts = {
         "System",
     },
     ["faeikgame"] = {
+        "Hsnd",
+        "System",
+     },
+     ["StarRemF"] = {
         "Hsnd",
         "System",
      },

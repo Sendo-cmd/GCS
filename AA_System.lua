@@ -527,9 +527,9 @@ _G.User = {
     ["yukilito001"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
     
-        ["Select Map"] = "Strange Town (Haunted)",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
     ["Thailand_chin"] = {
         ["Select Mode"] = "Event", 
@@ -623,11 +623,11 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["XDcggza4"] = {
-        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Event", 
     
-        ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
     },
     ["HD111222"] = {
         ["Select Mode"] = "Event", 
