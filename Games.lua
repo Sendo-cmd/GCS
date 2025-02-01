@@ -998,11 +998,11 @@ Accounts = {
     ["faeikgame"] = {
         "Hsnd",
         "System",
-     },
+    },
     ["SDEgFGtxuid"] = {
         "StarRemF",
         "System",
-     },
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
