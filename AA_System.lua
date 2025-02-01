@@ -315,10 +315,10 @@ _G.User = {
         ["Auto Join"] = false, -- Story 
     },
     ["opoppoky"] = {
-        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
     
         ["Select Map"] = "Planet Greenie",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
     },
     ["Naiza080947"] = {
