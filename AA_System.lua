@@ -1136,6 +1136,14 @@ _G.User = {
         ["Hard"] = false, -- Story
         ["Auto Join"] = false,
     },
+    ["SugarSnow_84782"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+        ["Auto Join"] = false,
+    },
 
 }
 
