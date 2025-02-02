@@ -1007,6 +1007,10 @@ Accounts = {
         "StarGem",
         "System",
     },
+    ["as_01999"] = {
+        "Hsnd",
+        "System",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
