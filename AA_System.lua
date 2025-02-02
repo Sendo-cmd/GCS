@@ -1208,10 +1208,16 @@ local function SendWebhook(evo)
     local Battleplass = require(game:GetService("ReplicatedStorage").src.Data.BattlePass)
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
 
-
+    local CalcLevel = function() end 
+    for i,v in pairs(getgc()) do
+        if type(v) == "function" and getinfo(v).name == "calculate_level" then
+            CalcLevel = v
+        end
+    end
     for i,v in pairs(owner) do
         v["Display"] = Units[v["unit_id"]]["name"]
         v["TraitDisplay"] = {}
+        v["Level"] = CalcLevel(v["unit_id"],v["xp"])
         for i1,v1 in pairs(v["trait_stats"]) do
             local f = Function(v["unit_id"],v,i1,v1)
             v["TraitDisplay"][i1] = f
@@ -1394,7 +1400,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
             CoinToIsland[cost["item_id"]] = v["category"]
         end
     end
-    
+   
     
     game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("load_team_loadout"):InvokeServer("4")
     
@@ -1965,3 +1971,4 @@ else
         end)
     end
 end
+
