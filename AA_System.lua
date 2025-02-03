@@ -1159,7 +1159,7 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
-    ["Ldtwo_03"] = {
+    ["LDtwo_03"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
     
         ["Select Map"] = "Planet Greenie",
