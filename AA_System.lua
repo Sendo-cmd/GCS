@@ -1025,11 +1025,11 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["RIXIEEDID"] = {
-        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event
     
-        ["Select Map"] = "Frozen Abyss",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
     },
     ["Demonjom2"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
