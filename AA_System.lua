@@ -1159,6 +1159,13 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["Ldtwo_03"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+    },
 
 }
 
@@ -1211,6 +1218,7 @@ local function SendWebhook(evo)
     local plr = game:GetService("Players").LocalPlayer
     local HttpService = game:GetService("HttpService")
     local Current = "silver_christmas"
+    local OwnUnits = {}
 
     local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
     local collection_profile_data = session["collection"]["collection_profile_data"]
@@ -1222,13 +1230,15 @@ local function SendWebhook(evo)
 
     local Battleplass = require(game:GetService("ReplicatedStorage").src.Data.BattlePass)
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
-
+    
+    
     local CalcLevel = function() end 
     for i,v in pairs(getgc()) do
         if type(v) == "function" and getinfo(v).name == "calculate_level" then
             CalcLevel = v
         end
     end
+    
     for i,v in pairs(owner) do
         v["Display"] = Units[v["unit_id"]]["name"]
         v["TraitDisplay"] = {}
@@ -1238,7 +1248,9 @@ local function SendWebhook(evo)
             v["TraitDisplay"][i1] = f
         end
     end
-    -- setclipboard(HttpService:JSONEncode(owner))
+    for i,v in pairs(session["inventory"]["inventory_profile_data"]["normal_items"]) do
+        OwnUnits[InsertItem[i]["name"]] = v
+    end
     local function BattleLevel()
         local CurrentLevel = 0
         for i = 1,Battleplass[Current]["total_tiers"] do
@@ -1251,7 +1263,7 @@ local function SendWebhook(evo)
         end
         return CurrentLevel
     end
-
+    -- setclipboard(HttpService:JSONEncode(OwnUnits))
     local function Equipped_Display()
         local Display = {}
         for i,v in pairs(equipped_units) do
@@ -1259,9 +1271,9 @@ local function SendWebhook(evo)
         end
         return Display
     end
+    
     game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("spawn_units"):WaitForChild("Lives")
     if evo then
-        local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
         local response = request({
             ["Url"] = ApiUrl,
             ["Method"] = "POST",
@@ -1272,7 +1284,7 @@ local function SendWebhook(evo)
                 ["Method"] = "Update",
                 ["Place"] = "Lobby",
                 ["Username"] = plr.Name,
-                ["inventory"] = session["inventory"]["inventory_profile_data"],
+                ["inventory"] = OwnUnits,
                 ["Evo"] = evo,
                 ["equipped_units"] = Equipped_Display(),
                 ["battle_level"] = BattleLevel(),
@@ -1290,7 +1302,6 @@ local function SendWebhook(evo)
         end
     else
         if game.PlaceId == 8304191830  then
-            local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
             local response = request({
                 ["Url"] = ApiUrl,
                 ["Method"] = "POST",
@@ -1301,7 +1312,7 @@ local function SendWebhook(evo)
                     ["Method"] = "Update",
                     ["Place"] = "Lobby",
                     ["Username"] = plr.Name,
-                    ["inventory"] = session["inventory"]["inventory_profile_data"],
+                    ["inventory"] = OwnUnits,
                     ["equipped_units"] = Equipped_Display(),
                     ["battle_level"] = BattleLevel(),
                     ["allunit"] = owner,
@@ -1318,7 +1329,6 @@ local function SendWebhook(evo)
             end
         else
             game:GetService("ReplicatedStorage").endpoints.server_to_client.game_finished.OnClientEvent:Connect(function(g)
-                local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
                 local response = request({
                     ["Url"] = ApiUrl,
                     ["Method"] = "POST",
@@ -1329,7 +1339,7 @@ local function SendWebhook(evo)
                         ["Method"] = "Update",
                         ["Place"] = "Game",
                         ["Username"] = plr.Name,
-                        ["inventory"] = session["inventory"]["inventory_profile_data"],
+                        ["inventory"] = OwnUnits,
                         ["equipped_units"] = Equipped_Display(),
                         ["battle_level"] = BattleLevel(),
                         ["allunit"] = owner,
@@ -1986,4 +1996,3 @@ else
         end)
     end
 end
-
