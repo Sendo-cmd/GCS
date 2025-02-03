@@ -770,6 +770,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Evo"] = {"Iceclaw (Rebirth)"},
     },
     ["igushi3"] = {
         ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
