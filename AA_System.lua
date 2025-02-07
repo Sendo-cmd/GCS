@@ -288,7 +288,6 @@ _G.User = {
             "Embeberr1043",
             "XDcggza4",
             "bankuiok1",
-            "FormatDataNumber",
             "lwntrueman",
         },
 
