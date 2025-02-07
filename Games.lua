@@ -425,9 +425,8 @@ Accounts = {
         "CF_Obita",
     },
     ["FormatDataNumber"] = {
-        "Log",
-        "Marco",
-        "BaseCFE",
+        "Hsnd",
+       "System",
     },
     ["aamlop1"] = {
         "Log",
