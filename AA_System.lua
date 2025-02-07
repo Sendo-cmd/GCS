@@ -283,7 +283,12 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Auto Join"] = false,
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Embeberr1043",
+            "XDcggza4",
+        },
+
     },
     ["SHIFUGOD"] = {
         ["Select Mode"] = "Raid", -- Raid , Legend Stage , Infinite
@@ -623,11 +628,7 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["XDcggza4"] = {
-        ["Select Mode"] = "Event", 
-    
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+        ["Party Mode"] = true,
     },
     ["HD111222"] = {
         ["Select Mode"] = "Event", 
@@ -1165,6 +1166,9 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
     },
+    ["Embeberr1043"] = {
+        ["Party Mode"] = true,
+    },
 
 }
 
@@ -1176,6 +1180,7 @@ local Settings = {
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
     ["Hard"] = false, -- Story 
     ["Evo"] = false,
+    ["Party Mode"] = false,
     ["Ignore"] = {
         -- "tank_enemies",
         -- "fast_enemies",
@@ -1204,6 +1209,7 @@ local Settings = {
 }
 
 local plr = game.Players.LocalPlayer
+local HttpService = game:GetService("HttpService")
 local Character = plr.Character or plr.CharacterAdded:Wait()
 if _G.User[plr.Name] then
     for i,v in pairs(_G.User[plr.Name]) do
@@ -1285,7 +1291,6 @@ local function SendWebhook(evo)
                 ["allunit"] = owner,
                 ["Gold"] = plr._stats.gold_amount.Value,
                 ["Gem"] =  plr._stats.gem_amount.Value,
-                ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
                 ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                 ["GuildId"] = "467359347744309248",
                 ["DataKey"] = "GamingChampionShopAPI",
@@ -1313,7 +1318,6 @@ local function SendWebhook(evo)
                     ["allunit"] = owner,
                     ["Gold"] = plr._stats.gold_amount.Value,
                     ["Gem"] =  plr._stats.gem_amount.Value,
-                    ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
                     ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                     ["GuildId"] = "467359347744309248",
                     ["DataKey"] = "GamingChampionShopAPI",
@@ -1341,7 +1345,6 @@ local function SendWebhook(evo)
                         ["allunit"] = owner,
                         ["Gold"] = plr._stats.gold_amount.Value,
                         ["Gem"] =  plr._stats.gem_amount.Value,
-                        ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
                         ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                         ["Rewards"] = g,
                         ["MapInfo"] = workspace._MAP_CONFIG.GetLevelData:InvokeServer(),
@@ -1401,6 +1404,177 @@ local function Next_(var)
     local duration = tick() + var
     repeat task.wait() until tick() >= duration
 end
+local socket 
+if Settings["Party Mode"]  then
+    if game.PlaceId == 8304191830 then
+        if Settings["Party Mode"] and not Settings["Party Member"] then
+            wait(math.random(2,14))
+        end
+        socket = WebSocket.connect("wss://api.championshop.date/websocket")
+       
+        local function Pcheck(name)
+            for i,v in pairs(game:GetService("Players"):GetChildren()) do
+                if v.Name == name then
+                    return true
+                end
+            end
+            return false
+        end
+        function AllPlayerInGame()
+            for i,v in pairs(Settings["Party Member"]) do
+                if not game:GetService("Players"):FindFirstChild(v) then
+                    return false
+                end
+            end
+            return true
+        end
+       function CheckPlayerInRoom(Path,List)
+            if Settings["Party Member"] then
+                table.insert(List,plr.Name)
+            end
+            for i,v in pairs(Path["Players"]:GetChildren()) do
+                if not table.find(List,tostring(v.Value)) then
+                    print("False")
+                    return false
+                end
+            end
+            print("True")
+            return true
+        end
+        local function JoinConvert(args)
+            for i,v in pairs(require(game:GetService("ReplicatedStorage").src.Data.Worlds)) do
+                if v.name == args then
+                    return v
+                end
+            end
+        end
+        local function GetRoom(Type)
+            if Type == "Challenge" then
+                for i, v in pairs(workspace._CHALLENGES.Challenges:GetChildren()) do
+                    if v:IsA('Model') and v["Active"].Value == false then
+                        return v
+                    end
+                end
+            elseif Type == "Raid" then
+                for i, v in pairs(workspace._RAID.Raid:GetChildren()) do
+                    if v:IsA('Model') and v["Active"].Value == false then
+                        return v
+                    end
+                end
+            elseif Type == "_lobbytemplate_event3" or Type == "_lobbytemplate_event4"then
+                for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
+                    if v:IsA('Model') and v.Name == Type and v["Active"].Value == false then
+                        return v
+                    end
+                end
+            else
+                for i, v in pairs(game:GetService("Workspace")["_LOBBIES"].Story:GetChildren()) do
+                    if v:IsA('Model') and v["Owner"].Value == nil then
+                        return v
+                    end
+                end
+            end
+           
+            return false
+        end
+        if Settings["Party Member"] then
+            -- Host configs
+            socket.OnMessage:Connect(function(msg)
+                local data = HttpService:JSONDecode(msg)
+                if data[1] == "Member" and table.find(Settings["Party Member"],data[2]) and not game:GetService("Players"):FindFirstChild(data[2]) then
+                    Next_(2)
+                    socket:Send(HttpService:JSONEncode({"Leader","Teleport",game.Players.LocalPlayer.Name, game.JobId}))
+                end
+            end) 
+            -- For Host
+            spawn(function()
+                while true do task.wait()
+                    if AllPlayerInGame() then
+                        Next_(75)
+                        print("Found All Players")
+                        if AllPlayerInGame() then 
+                            local Room = GetRoom()
+                            repeat task.wait(.5)
+                                if #Room["Players"]:GetChildren() == 0 then
+                                    print("Join Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                    print("Settings Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],false,Settings["Hard"] and "Hard" or "Normal")
+                                elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                    print("Found All Member In Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                    for i,v in pairs(Settings["Party Member"]) do
+                                        if not Room["Players"]:FindFirstChild(v) then
+                                            print("Leader Send To",v)
+                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                        end
+                                    end
+                                    Next_(3)
+                                end
+                            until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        end
+                    else
+                        print("Waiting Players")
+                    end
+                    Next_(1)
+                end
+            end)
+        else
+            -- Member configs
+            socket.OnMessage:Connect(function(msg)
+                local data = HttpService:JSONDecode(msg)
+                if data[1] == "Leader" then
+                    if data[2] == "Teleport" then
+                        game:GetService("StarterGui"):SetCore("SendNotification",{
+                            Title = "Teleporting", 
+                            Text = "Leader By" .. data[3], 
+                            Icon = "rbxassetid://1234567890" 
+                        })
+                        Next_(2)
+                        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, data[4], game.Players.LocalPlayer)
+                    elseif data[2] == "Join" and data[3] == game.Players.LocalPlayer.Name then
+                        print("Try To Join Room")
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(data[4])
+                    end
+                end
+            end) 
+            -- For Member
+            spawn(function()
+                while true do task.wait()
+                    print("Send To Host")
+                    local data = HttpService:JSONEncode({"Member",game.Players.LocalPlayer.Name})
+                    socket:Send(data)
+                    Next_(10)
+                end    
+            end)
+            return false
+        end
+    else
+        game:GetService("StarterGui"):SetCore("SendNotification",{
+            Title = "Waiting 20 Sec To Check Party", 
+            Text = "Hope we will stay here", 
+            Icon = "rbxassetid://1234567890" 
+        })
+        Next_(20)
+        spawn(function()
+            while true do wait()
+                local GetData = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
+                if GetData["_number_of_lobby_players"] ~= #game:GetService("Players"):GetChildren() then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                        v.Function()
+                    end  
+                end
+                Next_(30)
+            end
+        end)
+        
+    end
+end
+
+
 
 if Settings["Evo"] and game.PlaceId == 8304191830  then
     -- can craft > normal > star
@@ -1665,47 +1839,180 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
         local TeleportRoom = true
         local OldCframe = CFrame.new()
         while true do task.wait(.1)
-            if IsRaid then
-                local Room = GetRoom("Raid")
-                if Room then
-                    local t = tick() + 10
-                    repeat task.wait()
-                        if Room["Owner"].Value then
-                            if TeleportRoom then
-                                Character.HumanoidRootPart.CFrame = OldCframe
-                                Next_(.2)
-                                TeleportRoom = false
-                            end
-                            if RoomId == "Kill" then
-                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert("naruto"),true,"Hard")
+            if Settings["Party Mode"] and Settings["Party Member"]  then
+                if AllPlayerInGame() then
+                    Next_(75)
+                    print("Found All Players")
+                    if AllPlayerInGame() then 
+                        if IsRaid then
+                            local Room = GetRoom("Raid")
+                            repeat task.wait(.5)
+                                if #Room["Players"]:GetChildren() == 0 then
+                                    print("Join Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                    print("Settings Room")
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_lock_level"):InvokeServer(Room.Name,RoomId,false,"Hard")
+                                elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                    print("Found All Member In Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                    for i,v in pairs(Settings["Party Member"]) do
+                                        if not Room["Players"]:FindFirstChild(v) then
+                                            print("Leader Send To",v)
+                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                        end
+                                    end
+                                    Next_(3)
+                                end
+                            until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        elseif RoomId == "Challenge" then
+                            if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
+                                local Room = GetRoom(RoomId)
+                                repeat task.wait(.5)
+                                    if #Room["Players"]:GetChildren() == 0 then
+                                        print("Join Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                        print("Settings Room")
+                                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_lock_level"):InvokeServer(Room.Name,RoomId,false,"Hard")
+                                    elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                        print("Found All Member In Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                        for i,v in pairs(Settings["Party Member"]) do
+                                            if not Room["Players"]:FindFirstChild(v) then
+                                                print("Leader Send To",v)
+                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            end
+                                        end
+                                        Next_(3)
+                                    end
+                                until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
                             else
-                                local args = {
-                                    [1] = Room.Name,
-                                    [2] = RoomId,
-                                    [3] = true,
-                                    [4] = "Hard"
-                                }
-                                
-                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_lock_level"):InvokeServer(unpack(args))
-
-                                
-                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, RoomId,true,"Hard")
+                                ChallengeData = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_normal_challenge:InvokeServer()
                             end
-                            Next_(.2)
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
-                            Next_(5)
+                        elseif RoomId == "_lobbytemplate_event3" or RoomId == "_lobbytemplate_event4" then
+                            local Room = GetRoom(RoomId)
+                            repeat task.wait(.5)
+                                if #Room["Players"]:GetChildren() == 0 then
+                                    print("Join Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                    print("Settings Room")
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_lock_level"):InvokeServer(Room.Name,RoomId,false,"Hard")
+                                elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                    print("Found All Member In Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                    for i,v in pairs(Settings["Party Member"]) do
+                                        if not Room["Players"]:FindFirstChild(v) then
+                                            print("Leader Send To",v)
+                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                        end
+                                    end
+                                    Next_(3)
+                                end
+                            until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
                         else
-                            OldCframe = Character.HumanoidRootPart.CFrame
-                                TeleportRoom = true
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            local Room = GetRoom(RoomId)
+                            repeat task.wait(.5)
+                                if #Room["Players"]:GetChildren() == 0 then
+                                    print("Join Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                    print("Settings Room")
+                                    if RoomId == "Kill" then
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert("naruto"),false,"Hard")
+                                    else
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, RoomId,false,"Hard")
+                                    end
+                                elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                    print("Found All Member In Room")
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                    for i,v in pairs(Settings["Party Member"]) do
+                                        if not Room["Players"]:FindFirstChild(v) then
+                                            print("Leader Send To",v)
+                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                        end
+                                    end
+                                    Next_(3)
+                                end
+                            until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
                         end
-                    until tick() >= t or (Room["Owner"].Value and tostring(Room["Owner"].Value) ~= game.Players.LocalPlayer.Name) or (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) > 1 
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                    TeleportRoom = true
-                end
-
-            elseif RoomId == "Challenge" then
-                if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
+                    end
+                end 
+            else
+                if IsRaid then
+                    local Room = GetRoom("Raid")
+                    if Room then
+                        local t = tick() + 10
+                        repeat task.wait()
+                            if Room["Owner"].Value then
+                                if TeleportRoom then
+                                    Character.HumanoidRootPart.CFrame = OldCframe
+                                    Next_(.2)
+                                    TeleportRoom = false
+                                end
+                                if RoomId == "Kill" then
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert("naruto"),true,"Hard")
+                                else
+                                    local args = {
+                                        [1] = Room.Name,
+                                        [2] = RoomId,
+                                        [3] = true,
+                                        [4] = "Hard"
+                                    }
+                                    
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_lock_level"):InvokeServer(unpack(args))
+    
+                                    
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, RoomId,true,"Hard")
+                                end
+                                Next_(.2)
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                Next_(5)
+                            else
+                                OldCframe = Character.HumanoidRootPart.CFrame
+                                    TeleportRoom = true
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            end
+                        until tick() >= t or (Room["Owner"].Value and tostring(Room["Owner"].Value) ~= game.Players.LocalPlayer.Name) or (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) > 1 
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        TeleportRoom = true
+                    end
+    
+                elseif RoomId == "Challenge" then
+                    if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
+                        local Room = GetRoom(RoomId)
+                        if Room then
+                            local t = tick() + 60
+                            repeat task.wait()
+                                if (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) == 1 then
+                                    if TeleportRoom then
+                                        Character.HumanoidRootPart.CFrame = OldCframe
+                                        Next_(.2)
+                                        TeleportRoom = false
+                                    end
+                                else
+                                    OldCframe = Character.HumanoidRootPart.CFrame
+                                    TeleportRoom = true
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                end
+                            until tick() >= t or (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) > 1 
+                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                            TeleportRoom = true
+                        end
+                    else
+                        ChallengeData = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_normal_challenge:InvokeServer()
+                        Next_(25)
+                    end
+                elseif RoomId == "_lobbytemplate_event3" or RoomId == "_lobbytemplate_event4" then
                     local Room = GetRoom(RoomId)
                     if Room then
                         local t = tick() + 60
@@ -1726,58 +2033,36 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                         TeleportRoom = true
                     end
                 else
-                    ChallengeData = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_normal_challenge:InvokeServer()
-                    Next_(25)
-                end
-            elseif RoomId == "_lobbytemplate_event3" or RoomId == "_lobbytemplate_event4" then
-                local Room = GetRoom(RoomId)
-                if Room then
-                    local t = tick() + 60
-                    repeat task.wait()
-                        if (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) == 1 then
-                            if TeleportRoom then
-                                Character.HumanoidRootPart.CFrame = OldCframe
+                    local Room = GetRoom(RoomId)
+                    if Room then
+                        local t = tick() + 10
+                        repeat task.wait()
+                            if Room["Owner"].Value then
+                                if TeleportRoom then
+                                    Character.HumanoidRootPart.CFrame = OldCframe
+                                    Next_(.2)
+                                    TeleportRoom = false
+                                end
+                                if RoomId == "Kill" then
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert("naruto"),true,"Hard")
+                                else
+                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, RoomId,true,"Hard")
+                                end
                                 Next_(.2)
-                                TeleportRoom = false
-                            end
-                        else
-                            OldCframe = Character.HumanoidRootPart.CFrame
-                            TeleportRoom = true
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        end
-                    until tick() >= t or (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) > 1 
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                    TeleportRoom = true
-                end
-            else
-                local Room = GetRoom(RoomId)
-                if Room then
-                    local t = tick() + 10
-                    repeat task.wait()
-                        if Room["Owner"].Value then
-                            if TeleportRoom then
-                                Character.HumanoidRootPart.CFrame = OldCframe
-                                Next_(.2)
-                                TeleportRoom = false
-                            end
-                            if RoomId == "Kill" then
-                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert("naruto"),true,"Hard")
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                Next_(5)
                             else
-                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, RoomId,true,"Hard")
+                                OldCframe = Character.HumanoidRootPart.CFrame
+                                    TeleportRoom = true
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
                             end
-                            Next_(.2)
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
-                            Next_(5)
-                        else
-                            OldCframe = Character.HumanoidRootPart.CFrame
-                                TeleportRoom = true
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        end
-                    until tick() >= t or (Room["Owner"].Value and tostring(Room["Owner"].Value) ~= game.Players.LocalPlayer.Name) or (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) > 1 
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                    TeleportRoom = true
+                        until tick() >= t or (Room["Owner"].Value and tostring(Room["Owner"].Value) ~= game.Players.LocalPlayer.Name) or (tonumber(Room.Door.Surface.Status.Players.Text:split("/")[1]) or 0) > 1 
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        TeleportRoom = true
+                    end
                 end
             end
+           
         end
     end
     return false
@@ -1824,7 +2109,6 @@ function EventRoom()
             end
         end
     end
-   
     return false
 end
 function JoinConvert(args)
@@ -1847,67 +2131,193 @@ spawn(function ()
 	while true do
         local val,err = pcall(function ()
             if game.PlaceId == 8304191830  then
-                if Settings["Select Mode"] == 'Story'then
-                    local Room = GetRoom()
-                    repeat task.wait()
-                        if #Room["Players"]:GetChildren() == 1 then
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,Settings["Hard"] and "Hard" or "Normal")
-                            Next_(.2)
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
-                            Next_(5)
-                        else
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                if Settings["Party Mode"] and Settings["Party Member"]  then
+                    if AllPlayerInGame() then
+                        Next_(75)
+                        print("Found All Players")
+                        if AllPlayerInGame() then 
+                            if Settings["Select Mode"] == 'Story'then
+                                local Room = GetRoom()
+                                repeat task.wait(.5)
+                                    if #Room["Players"]:GetChildren() == 0 then
+                                        print("Join Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                        print("Settings Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],false,Settings["Hard"] and "Hard" or "Normal")
+                                    elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                        print("Found All Member In Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                        for i,v in pairs(Settings["Party Member"]) do
+                                            if not Room["Players"]:FindFirstChild(v) then
+                                                print("Leader Send To",v)
+                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            end
+                                        end
+                                        Next_(3)
+                                    end
+                                until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)                   
+                            elseif Settings["Select Mode"] == 'Infinite'then
+                                local Room = GetRoom()
+                                repeat task.wait(.5)
+                                    if #Room["Players"]:GetChildren() == 0 then
+                                        print("Join Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                        print("Settings Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['infinite']['id'],false,"Hard")
+                                    elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                        print("Found All Member In Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                        for i,v in pairs(Settings["Party Member"]) do
+                                            if not Room["Players"]:FindFirstChild(v) then
+                                                print("Leader Send To",v)
+                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            end
+                                        end
+                                        Next_(3)
+                                    end
+                                until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                            elseif Settings["Select Mode"] == 'Legend Stage'then
+                                local Room = GetRoom()
+                                repeat task.wait(.5)
+                                    if #Room["Players"]:GetChildren() == 0 then
+                                        print("Join Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                        print("Settings Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])["levels"][Settings["Select Level"]]['id'],false,"Hard")
+                                    elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                        print("Found All Member In Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                        for i,v in pairs(Settings["Party Member"]) do
+                                            if not Room["Players"]:FindFirstChild(v) then
+                                                print("Leader Send To",v)
+                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            end
+                                        end
+                                        Next_(3)
+                                    end
+                                until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                            elseif Settings["Select Mode"] == 'Raid'then
+                                local Room = GetRaidRoom()
+                                repeat task.wait(.5)
+                                    if #Room["Players"]:GetChildren() == 0 then
+                                        print("Join Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                        print("Settings Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],false,"Hard")
+                                    elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                        print("Found All Member In Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                        for i,v in pairs(Settings["Party Member"]) do
+                                            if not Room["Players"]:FindFirstChild(v) then
+                                                print("Leader Send To",v)
+                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            end
+                                        end
+                                        Next_(3)
+                                    end
+                                until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                            elseif Settings["Select Mode"] == 'Event'then
+                                local Room = EventRoom()
+                                repeat task.wait(.5)
+                                    if #Room["Players"]:GetChildren() == 0 then
+                                        print("Join Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
+                                        print("Settings Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],false,"Hard")
+                                    elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
+                                        print("Found All Member In Room")
+                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                    elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                        for i,v in pairs(Settings["Party Member"]) do
+                                            if not Room["Players"]:FindFirstChild(v) then
+                                                print("Leader Send To",v)
+                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            end
+                                        end
+                                        Next_(3)
+                                    end
+                                until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                            end
                         end
-                    until #Room["Players"]:GetChildren() > 1
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                elseif Settings["Select Mode"] == 'Infinite'then
-                    local Room = GetRoom()
-                    repeat task.wait()
-                        if #Room["Players"]:GetChildren() == 1 then
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['infinite']['id'],true,"Hard")
-                            Next_(.2)
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
-                            Next_(5)
-                        else
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        end
-                    until #Room["Players"]:GetChildren() > 1
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                elseif Settings["Select Mode"] == 'Legend Stage'then
-                    local Room = GetRoom()
-                    repeat task.wait()
-                        if #Room["Players"]:GetChildren() == 1 then
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])["levels"][Settings["Select Level"]]['id'],true,"Hard")
-                            Next_(.2)
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
-                            Next_(5)
-                        else
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        end
-                    until #Room["Players"]:GetChildren() > 1
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                elseif Settings["Select Mode"] == 'Raid'then
-                    local Room = GetRaidRoom()
-                    repeat task.wait()
-                        if #Room["Players"]:GetChildren() == 1 then
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,"Hard")
-                            Next_(.2)
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
-                            Next_(5)
-                        else
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        end
-                    until #Room["Players"]:GetChildren() > 1
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                elseif Settings["Select Mode"] == 'Event'then
-                    local Room = EventRoom()
-                    repeat task.wait()
-                        if #Room["Players"]:GetChildren() == 0 then
-                            game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        end
-                    until #Room["Players"]:GetChildren() > 1
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(RoomA.Name)
+                    end
+                else
+                    if Settings["Select Mode"] == 'Story'then
+                        local Room = GetRoom()
+                        repeat task.wait()
+                            if #Room["Players"]:GetChildren() == 1 then
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,Settings["Hard"] and "Hard" or "Normal")
+                                Next_(.2)
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                Next_(5)
+                            else
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            end
+                        until #Room["Players"]:GetChildren() > 1
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    elseif Settings["Select Mode"] == 'Infinite'then
+                        local Room = GetRoom()
+                        repeat task.wait()
+                            if #Room["Players"]:GetChildren() == 1 then
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['infinite']['id'],true,"Hard")
+                                Next_(.2)
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                Next_(5)
+                            else
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            end
+                        until #Room["Players"]:GetChildren() > 1
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    elseif Settings["Select Mode"] == 'Legend Stage'then
+                        local Room = GetRoom()
+                        repeat task.wait()
+                            if #Room["Players"]:GetChildren() == 1 then
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])["levels"][Settings["Select Level"]]['id'],true,"Hard")
+                                Next_(.2)
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                Next_(5)
+                            else
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            end
+                        until #Room["Players"]:GetChildren() > 1
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    elseif Settings["Select Mode"] == 'Raid'then
+                        local Room = GetRaidRoom()
+                        repeat task.wait()
+                            if #Room["Players"]:GetChildren() == 1 then
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],true,"Hard")
+                                Next_(.2)
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
+                                Next_(5)
+                            else
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            end
+                        until #Room["Players"]:GetChildren() > 1
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    elseif Settings["Select Mode"] == 'Event'then
+                        local Room = EventRoom()
+                        repeat task.wait()
+                            if #Room["Players"]:GetChildren() == 0 then
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            end
+                        until #Room["Players"]:GetChildren() > 1
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(RoomA.Name)
+                    end
                 end
+               
             end
         end)
         if not val then
@@ -1992,3 +2402,4 @@ else
         end)
     end
 end
+
