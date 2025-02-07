@@ -1561,8 +1561,7 @@ if Settings["Party Mode"]  then
         Next_(20)
         spawn(function()
             while true do wait()
-                local GetData = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
-                if GetData["_number_of_lobby_players"] ~= #game:GetService("Players"):GetChildren() then
+                if #Settings["Party Member"] + 1 ~= #game:GetService("Players"):GetChildren() then
                     for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
                         v.Function()
                     end  
@@ -2234,9 +2233,6 @@ spawn(function ()
                                     if #Room["Players"]:GetChildren() == 0 then
                                         print("Join Room")
                                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
-                                        print("Settings Room")
-                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],false,"Hard")
                                     elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
                                         print("Found All Member In Room")
                                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
@@ -2402,4 +2398,3 @@ else
         end)
     end
 end
-
