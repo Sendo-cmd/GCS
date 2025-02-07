@@ -288,6 +288,8 @@ _G.User = {
             "Embeberr1043",
             "XDcggza4",
             "bankuiok1",
+            "FormatDataNumber",
+            "lwntrueman",
         },
 
     },
@@ -398,11 +400,7 @@ _G.User = {
         ["Hard"] = false,
     },
     ["lwntrueman"] = {
-        ["Select Mode"] = "Event", 
-    
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+        ["Party Mode"] = true, 
     },
     ["Nongneuftawchin"] = {
         ["Select Mode"] = "Event", 
@@ -558,12 +556,8 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
     },
-    ["FormatDataNumber63"] = {
-        ["Select Mode"] = "Event", 
-    
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
-        ["Hard"] = false,
+    ["FormatDataNumber"] = {
+        ["Party Mode"] = true,
     },
     ["Etaa_xm"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
