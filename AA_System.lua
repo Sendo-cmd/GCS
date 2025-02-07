@@ -287,6 +287,7 @@ _G.User = {
         ["Party Member"] = {
             "Embeberr1043",
             "XDcggza4",
+            "bankuiok1",
         },
 
     },
@@ -921,11 +922,7 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["bankuiok1"] = {
-        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
-    
-        ["Select Map"] = "Frozen Abyss",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Party Mode"] = true,
     },
     ["nuttaputlnw"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
