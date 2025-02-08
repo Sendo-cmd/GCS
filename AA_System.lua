@@ -1480,41 +1480,6 @@ if Settings["Party Mode"]  then
                 end
             end) 
             -- For Host
-            spawn(function()
-                while true do task.wait()
-                    if AllPlayerInGame() then
-                        Next_(75)
-                        print("Found All Players")
-                        if AllPlayerInGame() then 
-                            local Room = GetRoom()
-                            repeat task.wait(.5)
-                                if #Room["Players"]:GetChildren() == 0 then
-                                    print("Join Room")
-                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                                elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
-                                    print("Settings Room")
-                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_lock_level:InvokeServer(Room.Name, JoinConvert(Settings["Select Map"])['levels'][Settings["Select Level"]]['id'],false,Settings["Hard"] and "Hard" or "Normal")
-                                elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
-                                    print("Found All Member In Room")
-                                    game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
-                                elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
-                                    for i,v in pairs(Settings["Party Member"]) do
-                                        if not Room["Players"]:FindFirstChild(v) then
-                                            print("Leader Send To",v)
-                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
-                                        end
-                                    end
-                                    Next_(3)
-                                end
-                            until not CheckPlayerInRoom(Room,Settings["Party Member"]) or not AllPlayerInGame()
-                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
-                        end
-                    else
-                        print("Waiting Players")
-                    end
-                    Next_(1)
-                end
-            end)
         else
             -- Member configs
             socket.OnMessage:Connect(function(msg)
@@ -2091,6 +2056,7 @@ local function GetRaidRoom()
 end
 
 function EventRoom()
+    
     if Settings["Select Map"] == "Haunted Academy" then
         for i, v in pairs(workspace._DUNGEONS.Lobbies:GetChildren()) do
             if v:IsA('Model') and v.Name == "_lobbytemplate_event222" and #v["Players"]:GetChildren() == 0 then
@@ -2110,6 +2076,7 @@ function EventRoom()
             end
         end
     end
+    
     return false
 end
 function JoinConvert(args)
