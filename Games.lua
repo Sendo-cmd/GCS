@@ -372,8 +372,8 @@ Accounts = {
         "ESSE",
     },
     ["euakungchannel"] = {
+        "System,
         "MemberStar",
-        "System",
     },
     ["110AAE2"] = {
         "Log",
@@ -435,8 +435,8 @@ Accounts = {
         "BaseCF",
     },
     ["underhorror"] = {
+        "System,
         "MemberStar",
-        "System",
     },
     ["yanawarutkanpai"] = {
         "Log",
@@ -537,8 +537,8 @@ Accounts = {
         "DungBase",
     },
     ["FireBlackDevilZ"] = {
+        "System,
         "Hsnd",
-        "System",
     },
     ["chopperaob"] = {
         "LogACB",
@@ -680,16 +680,16 @@ Accounts = {
         "System",
     },
     ["yukilito001"] = {
+        "System,
         "Hsnd",
-        "System",
     },
     ["Thailand_chin"] = {
        "Hsnd",
        "System",
     },
     ["CGGG_TYUL2"] = {
+        "System,
         "Hsnd",
-        "System",
     },
     ["FormatDataNumber63"] = {
        "Hsnd",
@@ -968,8 +968,8 @@ Accounts = {
        "System",
     },
     ["jamess1280"] = {
+        "System,
         "MemberStar",
-        "System",
     },
     ["efv1z"] = {
        "Hsnd",
@@ -996,20 +996,20 @@ Accounts = {
         "System",
     },
     ["faeikgame"] = {
+        "System,
         "Hsnd",
-        "System",
     },
     ["SDEgFGtxuid"] = {
+        "System,
         "MemberStar",
-        "System",
     },
     ["SugarSnow_84782"] = {
         "StarGem",
         "System",
     },
     ["as_01999"] = {
+        "System,
         "Hsnd",
-        "System",
     },
     ["Rami_AlKindi23"] = {
         "FarmGem",
@@ -1020,12 +1020,12 @@ Accounts = {
         "System",
     },
     ["Embeberr1043"] = {
+        "System,
         "MemberStar",
-        "System",
     },
     ["OTeMoKungO"] = {
+        "System,
         "Hsnd",
-        "System",
     },
 
 }
