@@ -283,11 +283,9 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
-            "XDcggza4",
-            "bankuiok1",
-            "lwntrueman",
+            "jamess1280",
         },
 
     },
@@ -1158,6 +1156,9 @@ _G.User = {
     ["Embeberr1043"] = {
         ["Party Mode"] = true,
     },
+    ["jamess1280"] = {
+        ["Party Mode"] = true,
+    },
 
 }
 
@@ -1402,7 +1403,7 @@ if Settings["Party Mode"]  then
         if Settings["Party Mode"] and not Settings["Party Member"] then
             wait(math.random(2,14))
         end
-        socket = WebSocket.connect("wss://s14010.sgp1.piesocket.com/v3/1?api_key=ZMPMHqPjbWEG4M52m5oyZAf1hPum4njUJqZDVPua&notify_self=1")
+        socket = WebSocket.connect("wss://api.championshop.date/websocket")
        
         local function Pcheck(name)
             for i,v in pairs(game:GetService("Players"):GetChildren()) do
