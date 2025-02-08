@@ -287,6 +287,7 @@ _G.User = {
         ["Party Member"] = {
             "jamess1280",
             "SDEgFGtxuid",
+            "pokpong4123",
         },
 
     },
@@ -749,6 +750,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
+        ["Party Mode"] = true,
     },
     ["UOUSDFZF"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
