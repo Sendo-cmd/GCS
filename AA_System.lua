@@ -623,7 +623,8 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["XDcggza4"] = {
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
+        ["Auto Join"] = false,
     },
     ["HD111222"] = {
         ["Select Mode"] = "Event", 
