@@ -289,6 +289,7 @@ _G.User = {
             "SDEgFGtxuid",
             "pokpong4123",
             "loremm382",
+            "May_SD232".
         },
 
     },
@@ -988,6 +989,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true, 
     },
     ["zazatyuk"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
