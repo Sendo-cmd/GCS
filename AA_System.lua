@@ -1169,6 +1169,17 @@ _G.User = {
     ["jamess1280"] = {
         ["Party Mode"] = true,
     },
+    ["OTeMoKungO"] = {
+        ["Select Mode"] = "Event", 
+    
+        ["Select Map"] = "Frozen Abyss", 
+        ["Select Level"] = "1", 
+        ["Hard"] = false,
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "bankuiok1",
+        },
+    },
 
 }
 
