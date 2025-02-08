@@ -288,6 +288,7 @@ _G.User = {
             "jamess1280",
             "SDEgFGtxuid",
             "pokpong4123",
+            "loremm382",
         },
 
     },
@@ -801,6 +802,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true,
     },
     ["torzasool"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
