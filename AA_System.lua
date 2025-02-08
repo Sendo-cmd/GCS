@@ -1048,6 +1048,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true,
     },
     ["jim0021zx"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
@@ -1178,6 +1179,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "bankuiok1",
+            "underhorror",
         },
     },
 
