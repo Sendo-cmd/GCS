@@ -64,6 +64,7 @@ Games = {
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_System.lua",
         ["FarmGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Gem.lua",
         ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
+        ["MemberStar"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND2.lua",
         ["Candie"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Candie.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
         ["Dbz2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz2.lua",
@@ -498,7 +499,7 @@ Accounts = {
         "LSEV3",
     },
     ["pokpong4123"] = {
-       "Hsnd",
+       "MemberStar",
        "System",
     },
     ["gmhgoodies"] = {
@@ -807,7 +808,7 @@ Accounts = {
        "System",
     },
     ["loremm382"] = {
-       "Hsnd",
+       "MemberStar",
        "System",
     },
     ["PerfectBoyz_vx"] = {
@@ -919,7 +920,7 @@ Accounts = {
         "System",
     },
     ["May_SD232"] = {
-       "Hsnd",
+       "MemberStar",
        "System",
     },
     ["zazatyuk"] = {
@@ -967,7 +968,7 @@ Accounts = {
        "System",
     },
     ["jamess1280"] = {
-        "Hsnd",
+        "MemberStar",
         "System",
     },
     ["efv1z"] = {
@@ -999,7 +1000,7 @@ Accounts = {
         "System",
     },
     ["SDEgFGtxuid"] = {
-        "Hsnd",
+        "MemberStar",
         "System",
     },
     ["SugarSnow_84782"] = {
