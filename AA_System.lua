@@ -286,6 +286,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "jamess1280",
+            "SDEgFGtxuid",
         },
 
     },
@@ -1123,6 +1124,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true, -- Story
     },
     ["SugarSnow_84782"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
