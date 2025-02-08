@@ -288,7 +288,7 @@ _G.User = {
             "jamess1280",
             "SDEgFGtxuid",
             "pokpong4123",
-            "loremm382",
+            "euakungchannel",
             "May_SD232",
         },
 
@@ -1040,6 +1040,7 @@ _G.User = {
         ["Select Map"] = "Strange Town (Haunted)",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true, -- Story
     },
     ["underhorror"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite

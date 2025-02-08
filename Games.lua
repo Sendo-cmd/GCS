@@ -372,8 +372,8 @@ Accounts = {
         "ESSE",
     },
     ["euakungchannel"] = {
+        "MemberStar",
         "System",
-        "Candie",
     },
     ["110AAE2"] = {
         "Log",
