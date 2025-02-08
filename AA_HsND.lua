@@ -244,7 +244,7 @@ getgenv().Config = {
 		},
 		["Auto Fuse Vego-Carrot Anchor"] = "Vego",
 		["Place Gap"] = {
-			["Frozen Abyss"] = 1
+			["Frozen Abyss"] = 1.3
 		}
 	},
 	["Joiner Cooldown"] = 0,
