@@ -1402,7 +1402,7 @@ if Settings["Party Mode"]  then
         if Settings["Party Mode"] and not Settings["Party Member"] then
             wait(math.random(2,14))
         end
-        socket = WebSocket.connect("wss://api.championshop.date/websocket")
+        socket = WebSocket.connect("wss://s14010.sgp1.piesocket.com/v3/1?api_key=ZMPMHqPjbWEG4M52m5oyZAf1hPum4njUJqZDVPua&notify_self=1")
        
         local function Pcheck(name)
             for i,v in pairs(game:GetService("Players"):GetChildren()) do
@@ -1553,10 +1553,19 @@ if Settings["Party Mode"]  then
         Next_(20)
         spawn(function()
             while true do wait()
-                if #Settings["Party Member"] + 1 ~= #game:GetService("Players"):GetChildren() then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
-                        v.Function()
-                    end  
+                if Settings["Party Member"] then
+                    if #Settings["Party Member"] + 1 ~= #game:GetService("Players"):GetChildren() then
+                        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                            v.Function()
+                        end  
+                    end
+                else
+                    local GetData = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
+                    if GetData["_number_of_lobby_players"] ~= #game:GetService("Players"):GetChildren() then
+                        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                            v.Function()
+                        end  
+                    end
                 end
                 Next_(30)
             end
