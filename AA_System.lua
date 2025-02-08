@@ -289,7 +289,7 @@ _G.User = {
             "SDEgFGtxuid",
             "pokpong4123",
             "loremm382",
-            "May_SD232".
+            "May_SD232",
         },
 
     },
