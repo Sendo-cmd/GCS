@@ -537,7 +537,7 @@ Accounts = {
         "DungBase",
     },
     ["FireBlackDevilZ"] = {
-        "System,
+        "System",
         "Hsnd",
     },
     ["chopperaob"] = {
@@ -680,7 +680,7 @@ Accounts = {
         "System",
     },
     ["yukilito001"] = {
-        "System,
+        "System",
         "Hsnd",
     },
     ["Thailand_chin"] = {
@@ -688,7 +688,7 @@ Accounts = {
        "System",
     },
     ["CGGG_TYUL2"] = {
-        "System,
+        "System",
         "Hsnd",
     },
     ["FormatDataNumber63"] = {
@@ -996,7 +996,7 @@ Accounts = {
         "System",
     },
     ["faeikgame"] = {
-        "System,
+        "System",
         "Hsnd",
     },
     ["SDEgFGtxuid"] = {
@@ -1008,7 +1008,7 @@ Accounts = {
         "System",
     },
     ["as_01999"] = {
-        "System,
+        "System",
         "Hsnd",
     },
     ["Rami_AlKindi23"] = {
@@ -1024,7 +1024,7 @@ Accounts = {
         "MemberStar",
     },
     ["OTeMoKungO"] = {
-        "System,
+        "System",
         "Hsnd",
     },
 
