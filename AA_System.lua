@@ -283,9 +283,8 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
-            "Embeberr1043",
             "XDcggza4",
             "bankuiok1",
             "lwntrueman",
