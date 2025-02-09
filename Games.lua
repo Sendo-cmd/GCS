@@ -372,7 +372,7 @@ Accounts = {
         "ESSE",
     },
     ["euakungchannel"] = {
-        "System,
+        "System",
         "MemberStar",
     },
     ["110AAE2"] = {
@@ -435,7 +435,7 @@ Accounts = {
         "BaseCF",
     },
     ["underhorror"] = {
-        "System,
+        "System",
         "MemberStar",
     },
     ["yanawarutkanpai"] = {
@@ -968,7 +968,7 @@ Accounts = {
         "Hsnd",
     },
     ["jamess1280"] = {
-        "System,
+        "System",
         "MemberStar",
     },
     ["efv1z"] = {
@@ -1000,7 +1000,7 @@ Accounts = {
         "Hsnd",
     },
     ["SDEgFGtxuid"] = {
-        "System,
+        "System",
         "MemberStar",
     },
     ["SugarSnow_84782"] = {
@@ -1020,7 +1020,7 @@ Accounts = {
         "System",
     },
     ["Embeberr1043"] = {
-        "System,
+        "System",
         "MemberStar",
     },
     ["OTeMoKungO"] = {
