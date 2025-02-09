@@ -1183,7 +1183,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "bankuiok1",
         },
