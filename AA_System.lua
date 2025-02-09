@@ -289,6 +289,7 @@ _G.User = {
             "SDEgFGtxuid",
             "pokpong4123",
             "May_SD232",
+            "euakungchannel",
         },
 
     },
