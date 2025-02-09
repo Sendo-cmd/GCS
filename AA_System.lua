@@ -288,7 +288,6 @@ _G.User = {
             "jamess1280",
             "SDEgFGtxuid",
             "pokpong4123",
-            "euakungchannel",
             "May_SD232",
         },
 
@@ -1515,14 +1514,16 @@ if Settings["Party Mode"]  then
             socket.OnMessage:Connect(function(msg)
                 local data = HttpService:JSONDecode(msg)
                 if data[1] == "Leader" then
-                    if data[2] == "Teleport" then
+                    if data[2] == "Teleport" and game.JobId ~= data[4] then
                         game:GetService("StarterGui"):SetCore("SendNotification",{
                             Title = "Teleporting", 
                             Text = "Leader By" .. data[3], 
                             Icon = "rbxassetid://1234567890" 
                         })
                         Next_(2)
-                        game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, data[4], game.Players.LocalPlayer)
+                        if game.JobId ~= data[4] then
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, data[4], game.Players.LocalPlayer)
+                        end
                     elseif data[2] == "Join" and data[3] == game.Players.LocalPlayer.Name then
                         print("Try To Join Room")
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(data[4])
@@ -1837,7 +1838,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
         while true do task.wait(.1)
             if Settings["Party Mode"] and Settings["Party Member"]  then
                 if AllPlayerInGame() then
-                    Next_(75)
+                    Next_(150)
                     print("Found All Players")
                     if AllPlayerInGame() then 
                         if IsRaid then
@@ -2131,7 +2132,7 @@ spawn(function ()
             if game.PlaceId == 8304191830  then
                 if Settings["Party Mode"] and Settings["Party Member"]  then
                     if AllPlayerInGame() then
-                        Next_(75)
+                        Next_(150)
                         print("Found All Players")
                         if AllPlayerInGame() then 
                             if Settings["Select Mode"] == 'Story'then
@@ -2397,3 +2398,4 @@ else
         end)
     end
 end
+
