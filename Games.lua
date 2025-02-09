@@ -588,7 +588,7 @@ Accounts = {
         "Hsnd",
     },
     ["TONKAORIKI_NEW"] = {
-        "FarmGem",
+        "MemberStar",
         "System",
     },
     ["Kirito_VIJ"] = {

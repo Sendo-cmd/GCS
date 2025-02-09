@@ -341,6 +341,7 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
+        ["Party Mode"] = true,
     },
     ["noop_45670"] = {
         ["Select Mode"] = "Event", 
@@ -1183,9 +1184,10 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
             "bankuiok1",
+            "TONKAORIKI_NEW",
         },
     },
 
