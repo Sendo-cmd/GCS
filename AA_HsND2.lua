@@ -239,7 +239,7 @@ getgenv().Config = {
 		},
 		["Auto Fuse Vego-Carrot Anchor"] = "Vego",
 		["Place Gap"] = {
-			["Frozen Abyss"] = 2
+			["Frozen Abyss"] = 3
 		}
 	},
 	["Assassin Contract Joiner"] = {
