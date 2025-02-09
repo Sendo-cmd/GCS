@@ -286,7 +286,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "SDEgFGtxuid",
-            "pokpong4123",
             "May_SD232",
             "euakungchannel",
         },
