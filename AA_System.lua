@@ -1185,7 +1185,6 @@ _G.User = {
         ["Hard"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "bankuiok1",
             "TONKAORIKI_NEW",
         },
     },
