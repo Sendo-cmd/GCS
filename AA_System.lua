@@ -287,7 +287,6 @@ _G.User = {
         ["Party Member"] = {
             "SDEgFGtxuid",
             "May_SD232",
-            "euakungchannel",
             "Katakuri_Print",
         },
 
@@ -1189,6 +1188,9 @@ _G.User = {
             "bankuiok1",
             "TONKAORIKI_NEW",
         },
+    },
+    ["Katakuri_Print"] = {
+        ["Party Mode"] = true,
     },
 
 }
