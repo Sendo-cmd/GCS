@@ -277,7 +277,7 @@ Strange Town (Haunted)
 
 
 _G.User = {
-    ["OTeMoKungO"] = {
+    ["FireBlackDevilZ"] = {
         ["Select Mode"] = "Event", 
     
         ["Select Map"] = "Frozen Abyss", 
@@ -1177,7 +1177,7 @@ _G.User = {
     ["jamess1280"] = {
         ["Party Mode"] = true,
     },
-    ["FireBlackDevilZ"] = {
+    ["OTeMoKungO"] = {
         ["Select Mode"] = "Event", 
     
         ["Select Map"] = "Frozen Abyss", 
