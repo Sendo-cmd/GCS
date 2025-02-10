@@ -1031,6 +1031,10 @@ Accounts = {
         "FarmGem",
         "System",
     },
+    ["Katakuri_Print"] = {
+        "System",
+        "MemberStar",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()

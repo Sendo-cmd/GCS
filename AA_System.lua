@@ -288,6 +288,7 @@ _G.User = {
             "SDEgFGtxuid",
             "May_SD232",
             "euakungchannel",
+            "Katakuri_Print",
         },
 
     },
