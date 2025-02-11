@@ -496,6 +496,7 @@ _G.User = {
         ["Select Map"] = "Sacred Planet", 
         ["Select Level"] = "3", 
         ["Hard"] = false,
+        ["Auto Join"] = false,
     },
     ["SugarSnow_17627"] = {
         ["Select Mode"] = "Event", 
