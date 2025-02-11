@@ -283,9 +283,9 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
-            "Katakuri_Print",
+            "bankuiok1",
         },
 
     },
