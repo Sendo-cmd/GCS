@@ -13,7 +13,7 @@ getgenv().Config = {
 		["No Ignore Sell Timing"] = true
 	},
 	["Assassin Contract Joiner"] = {
-		["Tier Required"] = 5,
+		["Tier Required"] = 7,
 		["Auto Join"] = true,
 		["Ignore Challenge"] = {
 			["Fast Enemies"] = true,
