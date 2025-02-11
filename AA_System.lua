@@ -1194,13 +1194,39 @@ _G.User = {
 
 local Settings = {
     ["Auto Join"] = true,
-    ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
+    ["Select Mode"] = "Contract", -- Raid , Legend Stage , Infinite , Event , Contract
     
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
     ["Hard"] = false, -- Story 
     ["Evo"] = false,
     ["Party Mode"] = false,
+    ["Contract Tier"] = 5,
+
+    ["Challenge"] = false,
+    
+    ["Contract Swap"] = false,
+    ["Team Slot"] = {
+        ["p"] = "1",
+        ["m"] = "2",
+    },
+    ["Contract Ignore"] = {
+        -- "tank_enemies",
+        -- "fast_enemies",
+        -- "short_range",
+        "godspeed_enemies",
+        -- "regen_enemies",
+        -- "short_range_2",
+        -- "flying_enemies",
+        "burst_enemies",
+        -- "shield_enemies",
+        "triple_cost",
+        -- "mini_range",
+        -- "double_cost",
+        -- "armored_enemies",
+        -- "hyper_shield_enemies",
+        -- "hyper_regen_enemies",
+    },
     ["Ignore"] = {
         -- "tank_enemies",
         -- "fast_enemies",
@@ -1413,6 +1439,45 @@ local function GetRoom(Type)
    
     return false
 end
+local function IsPlayerInPortal()
+    for i,v in pairs(workspace._PORTALS.Lobbies:GetChildren()) do
+        if tostring(v["Owner"].Value) == plr.Name then
+            return v
+        end
+    end
+    return false
+end
+local get_current_event_contracts = nil
+local function GetContractEvent()
+   
+    if not get_current_event_contracts then
+        if (plr.Character.HumanoidRootPart.Position - Vector3.new(345.3016357421875, 187.05645751953125, -548.4273071289062)).Magnitude > 10 then
+            plr.Character.HumanoidRootPart.CFrame = CFrame.new(345.3016357421875, 187.05645751953125, -548.4273071289062)
+        end
+        get_current_event_contracts = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_current_event_contracts:InvokeServer()
+        task.delay(30,function()
+            get_current_event_contracts = nil
+        end)
+    end
+
+    local portal_id = nil
+    local Type = nil
+    for i = 6,1,-1 do 
+        local current = get_current_event_contracts[tostring(i)]
+        if Settings["Contract Tier"] < current["_portal_depth"] then
+            continue;
+        end
+        if table.find(Settings["Contract Ignore"],current["_challenge"]) then
+            continue;
+        end
+        local physical = current["_weak_against"]["physical"] and current["_weak_against"]["physical"]["amplification"] or 0
+        local magic = current["_weak_against"]["magic"] and current["_weak_against"]["magic"]["amplification"] or 0
+        Type = physical > magic and "p" or "m"
+        portal_id = tostring(i)
+        break
+    end
+    return portal_id , Type
+end
 function JoinConvert(args)
     return require(game:GetService("ReplicatedStorage").src.Data.Worlds)[args]["infinite"]["id"]
 end
@@ -1433,7 +1498,7 @@ if Settings["Party Mode"]  then
         if Settings["Party Mode"] and not Settings["Party Member"] then
             wait(math.random(2,14))
         end
-        socket = WebSocket.connect("wss://api.championshop.date/websocket")
+        socket = WebSocket.connect("wss://s14010.sgp1.piesocket.com/v3/1?api_key=ZMPMHqPjbWEG4M52m5oyZAf1hPum4njUJqZDVPua&notify_self=1")
        
         local function Pcheck(name)
             for i,v in pairs(game:GetService("Players"):GetChildren()) do
@@ -1454,6 +1519,9 @@ if Settings["Party Mode"]  then
        function CheckPlayerInRoom(Path,List)
             if Settings["Party Member"] then
                 table.insert(List,plr.Name)
+            end
+            if not Path then
+                return true
             end
             for i,v in pairs(Path["Players"]:GetChildren()) do
                 if not table.find(List,tostring(v.Value)) then
@@ -1528,6 +1596,9 @@ if Settings["Party Mode"]  then
                     elseif data[2] == "Join" and data[3] == game.Players.LocalPlayer.Name then
                         print("Try To Join Room")
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(data[4])
+                    -- elseif data[2] == "Join Portal" and data[3] == game.Players.LocalPlayer.Name then
+                    --     print("Try To Join Room")
+                    --     game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(data[4])
                     end
                 end
             end) 
@@ -2136,7 +2207,41 @@ spawn(function ()
                         Next_(150)
                         print("Found All Players")
                         if AllPlayerInGame() then 
-                            if Settings["Select Mode"] == 'Story'then
+                            if Settings["Select Mode"] == 'Contract'then
+                                local Portal_ = nil
+                                repeat task.wait()
+                                    local Portal = IsPlayerInPortal()
+                                    if not Portal then
+                                        local Id,Type = GetContractEvent()
+                                        if Settings["Contract Swap"] and Type then
+                                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("load_team_loadout"):InvokeServer( Settings["Team Slot"][Type])
+                                        end
+                                        if Id then
+                                            if (plr.Character.HumanoidRootPart.Position - Vector3.new(408.7968444824219, 251.42733764648438, -368.0303649902344)).Magnitude > 10 then
+                                                plr.Character.HumanoidRootPart.CFrame = CFrame.new(408.7968444824219, 251.42733764648438, -368.0303649902344)
+                                            end
+                                            game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("open_event_contract_portal"):InvokeServer(Id)
+                                        end
+                                        Next_(3)
+                                    elseif #Portal["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Portal,Settings["Party Member"]) then
+                                        print("Found All Member In Room")
+                                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_start_game"):InvokeServer(Portal.Name)
+                                        Portal_ = Portal
+                                    elseif #Portal["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                        Portal_ = Portal
+                                        for i,v in pairs(Settings["Party Member"]) do
+                                            if not Portal["Players"]:FindFirstChild(v) then
+                                                print("Leader Send To",v)
+                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Portal.Name}))
+                                            end
+                                        end
+                                        Next_(3)
+                                    end
+                                until not CheckPlayerInRoom(Portal_,Settings["Party Member"]) or not AllPlayerInGame()
+                                if Portal_ then
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Portal_.Name)
+                                end
+                            elseif Settings["Select Mode"] == 'Story'then
                                 local Room = GetRoom()
                                 repeat task.wait(.5)
                                     if #Room["Players"]:GetChildren() == 0 then
@@ -2252,7 +2357,30 @@ spawn(function ()
                         end
                     end
                 else
-                    if Settings["Select Mode"] == 'Story'then
+                    if Settings["Select Mode"] == 'Contract'then
+                        
+                        local Portal_ = nil
+                        repeat task.wait()
+                            local Portal = IsPlayerInPortal()
+                            if not Portal then
+                                local Id,Type = GetContractEvent()
+                                
+                                if Settings["Contract Swap"] and Type then
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("load_team_loadout"):InvokeServer( Settings["Team Slot"][Type])
+                                end
+                                if Id then
+                                    if (plr.Character.HumanoidRootPart.Position - Vector3.new(408.7968444824219, 251.42733764648438, -368.0303649902344)).Magnitude > 10 then
+                                        plr.Character.HumanoidRootPart.CFrame = CFrame.new(408.7968444824219, 251.42733764648438, -368.0303649902344)
+                                    end
+                                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("open_event_contract_portal"):InvokeServer(Id)
+                                end
+                                Next_(3)
+                            else
+                                Portal_ = Portal
+                                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_start_game"):InvokeServer(Portal.Name)
+                            end
+                        until (Portal_ and #Portal_["Players"]:GetChildren() > 1)
+                    elseif Settings["Select Mode"] == 'Story'then
                         local Room = GetRoom()
                         repeat task.wait()
                             if #Room["Players"]:GetChildren() == 1 then
@@ -2399,4 +2527,3 @@ else
         end)
     end
 end
-
