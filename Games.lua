@@ -74,6 +74,7 @@ Games = {
         ["StarRem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarRem.lua",
         ["StarRemF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarRemF.lua",
         ["CursedT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Cursed.lua",
+        ["AssPack"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_AssPack.lua",
     }
 }
 Accounts = {
@@ -1032,8 +1033,12 @@ Accounts = {
         "System",
     },
     ["Katakuri_Print"] = {
-        "System",
         "MemberStar",
+        "System",
+    },
+    ["nutkingss"] = {
+        "AssPack",
+        "System",
     },
 
 }

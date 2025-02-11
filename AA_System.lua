@@ -1189,6 +1189,10 @@ _G.User = {
     ["Katakuri_Print"] = {
         ["Party Mode"] = true,
     },
+    ["nutkingss"] = {
+        ["Party Mode"] = false,
+        ["Auto Join"] = false,
+    },
 
 }
 
