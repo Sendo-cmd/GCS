@@ -11,11 +11,10 @@ getgenv().Config = {
 	["Assassin Contract Joiner"] = {
 		["Tier Required"] = 12,
 		["Auto Join"] = true,
-		["Assassin Park Only"] = true,
+		["Assassin Park Only"] = false,
 		["Ignore Challenge"] = {
 			["Short Range"] = true,
-			["Fast Enemies"] = true,
-			["High Cost"] = true
+			["Fast Enemies"] = true
 		}
 	},
 	["Macros"] = {
