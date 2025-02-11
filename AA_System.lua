@@ -285,9 +285,7 @@ _G.User = {
         ["Hard"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "SDEgFGtxuid",
             "Katakuri_Print",
-            "bankuiok1",
         },
 
     },
