@@ -16,8 +16,7 @@ getgenv().Config = {
 		["Tier Required"] = 7,
 		["Auto Join"] = true,
 		["Ignore Challenge"] = {
-			["Fast Enemies"] = true,
-			["Short Range"] = true
+			["Fast Enemies"] = true
 		}
 	},
 	["Joiner Cooldown"] = 0,
