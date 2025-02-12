@@ -1040,6 +1040,10 @@ Accounts = {
         "System",
         "AssPack",
     },
+    ["YABUKI3232"] = {
+        "System",
+        "MemberStar",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()

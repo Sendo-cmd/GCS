@@ -283,9 +283,9 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
-            "bankuiok1",
+            "YABUKI3232",
         },
 
     },
@@ -1193,6 +1193,9 @@ _G.User = {
     ["nutkingss"] = {
         ["Party Mode"] = false,
         ["Auto Join"] = false,
+    },
+    ["YABUKI3232"] = {
+        ["Party Mode"] = true,
     },
 
 }
