@@ -286,6 +286,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "YABUKI3232",
+            "igushi3",
         },
 
     },
@@ -766,7 +767,6 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
-        ["Evo"] = {"Iceclaw (Rebirth)"},
     },
     ["igushi3"] = {
         ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event
@@ -774,6 +774,7 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
+        ["Party Mode"] = true,
     },
     ["XDGGZTheGod"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
