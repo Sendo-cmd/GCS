@@ -1506,7 +1506,7 @@ if Settings["Party Mode"]  then
         if Settings["Party Mode"] and not Settings["Party Member"] then
             wait(math.random(2,14))
         end
-        socket = WebSocket.connect("wss://s14010.sgp1.piesocket.com/v3/1?api_key=ZMPMHqPjbWEG4M52m5oyZAf1hPum4njUJqZDVPua&notify_self=1")
+        socket = WebSocket.connect("wss://api.championshop.date/websocket")
        
         local function Pcheck(name)
             for i,v in pairs(game:GetService("Players"):GetChildren()) do
