@@ -287,6 +287,7 @@ _G.User = {
         ["Party Member"] = {
             "YABUKI3232",
             "igushi3",
+            "Charlottex207x",
         },
 
     },
@@ -1196,6 +1197,9 @@ _G.User = {
         ["Auto Join"] = false,
     },
     ["YABUKI3232"] = {
+        ["Party Mode"] = true,
+    },
+    ["Charlottex207x"] = {
         ["Party Mode"] = true,
     },
 

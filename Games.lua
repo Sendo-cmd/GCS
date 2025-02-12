@@ -1044,6 +1044,10 @@ Accounts = {
         "System",
         "MemberStar",
     },
+    ["Charlottex207x"] = {
+        "System",
+        "MemberStar",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
