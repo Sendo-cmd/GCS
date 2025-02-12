@@ -1207,12 +1207,15 @@ _G.User = {
     ["Charlottex207x"] = {
         ["Party Mode"] = true,
     },
+    ["tootzzee"] = {
+        ["Party Mode"] = true,
+    },
 
 }
 
 local Settings = {
     ["Auto Join"] = true,
-    ["Select Mode"] = "Contract", -- Raid , Legend Stage , Infinite , Event , Contract
+    ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event , Contract
     
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
