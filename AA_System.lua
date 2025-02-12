@@ -288,6 +288,8 @@ _G.User = {
             "YABUKI3232",
             "igushi3",
             "Charlottex207x",
+            "bankuiok1",
+            "tootzzee",
         },
 
     },
@@ -369,6 +371,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
+        ["Party Mode"] = true,
     },
     ["Punpungoaway"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
@@ -934,6 +937,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true,
     },
     ["MKFEOEF55"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
@@ -1186,7 +1190,8 @@ _G.User = {
         ["Hard"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "TONKAORIKI_NEW",
+            "DDYUFCiSRHT",
+            "YTJTP_Jittiphatn",
         },
     },
     ["Katakuri_Print"] = {
