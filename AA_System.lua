@@ -287,7 +287,6 @@ _G.User = {
         ["Party Member"] = {
             "igushi3",
             "Charlottex207x",
-            "bankuiok1",
             "tootzzee",
         },
 
