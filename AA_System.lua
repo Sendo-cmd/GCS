@@ -287,7 +287,8 @@ _G.User = {
         ["Party Member"] = {
             "igushi3",
             "Charlottex207x",
-            "tootzzee",
+            "DDYUFCiSRHT",
+            "YTJTP_Jittiphatn",
         },
 
     },
@@ -1197,8 +1198,8 @@ _G.User = {
         ["Hard"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "DDYUFCiSRHT",
-            "YTJTP_Jittiphatn",
+            "bankuiok1",
+            "tootzzee",
         },
     },
     ["Katakuri_Print"] = {
