@@ -1043,7 +1043,8 @@ _G.User = {
         ["Select Map"] = "Strange Town (Haunted)",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
-        ["Party Mode"] = true, -- Story
+        ["Party Mode"] = false, -- Story
+        ["Auto Join"] = false,
     },
     ["underhorror"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
