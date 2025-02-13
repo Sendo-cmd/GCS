@@ -1054,7 +1054,7 @@ Accounts = {
     },
     ["pete3232zaza"] = {
         "System",
-        "MemberStar",
+        "StarGem",
     },
 
 }
