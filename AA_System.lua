@@ -1224,6 +1224,13 @@ _G.User = {
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
     },
+    ["CGFONE06m"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event , Contract
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
+    },
 
 }
 
