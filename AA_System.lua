@@ -288,6 +288,7 @@ _G.User = {
             "igushi3",
             "DDYUFCiSRHT",
             "YTJTP_Jittiphatn",
+            "Charlottex207x",
         },
 
     },
