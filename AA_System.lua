@@ -1199,7 +1199,6 @@ _G.User = {
         ["Party Mode"] = false,
         ["Party Member"] = {
             "bankuiok1",
-            "tootzzee",
         },
     },
     ["Katakuri_Print"] = {
