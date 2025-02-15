@@ -1201,6 +1201,7 @@ _G.User = {
             "euakungchannel",
             "ownekitte",
             "SNYXRUN3",
+            "May_SD232",
         },
     },
     ["Katakuri_Print"] = {
