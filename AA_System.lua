@@ -1199,6 +1199,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "bankuiok1",
+            "euakungchannel",
+            "ownekitte",
         },
     },
     ["Katakuri_Print"] = {
@@ -1230,6 +1232,9 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
+    },
+    ["ownekitte"] = {
+        ["Party Mode"] = true,
     },
 
 }
