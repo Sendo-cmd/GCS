@@ -1202,6 +1202,7 @@ _G.User = {
             "ownekitte",
             "SNYXRUN3",
             "May_SD232",
+            "bankuiok1",
         },
     },
     ["Katakuri_Print"] = {
