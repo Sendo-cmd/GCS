@@ -1068,6 +1068,11 @@ Accounts = {
         "System",
         "MemberStar",
     },
+    ["SNYXRUN3"] = {
+        "System",
+        "MemberStar",
+    },
+
 
 }
 repeat task.wait() until game:IsLoaded()

@@ -1200,6 +1200,7 @@ _G.User = {
             "bankuiok1",
             "euakungchannel",
             "ownekitte",
+            "SNYXRUN3",
         },
     },
     ["Katakuri_Print"] = {
@@ -1233,6 +1234,9 @@ _G.User = {
         ["Hard"] = false, -- Story 
     },
     ["ownekitte"] = {
+        ["Party Mode"] = true,
+    },
+    ["SNYXRUN3"] = {
         ["Party Mode"] = true,
     },
 
