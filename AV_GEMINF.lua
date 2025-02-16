@@ -24,19 +24,36 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
-		["Upgrade Method"] = "Nearest from Middle Position (until Max)",
 		["Place Cap"] = {
 			["1"] = 0,
 			["3"] = 0,
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = 0
+			["6"] = -1
 		},
 		["Enable"] = true,
-		["Middle Position"] = {
-			["Planet Namak"] = "134.9243927001953, 7.105718612670898, 112.10484313964844"
-		}
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
+		["Prefer Position"] = {
+			["Golden Castle"] = "Middle",
+			["Double Dungeon"] = "Middle",
+			["Planet Namak"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Sand Village"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Underground Church"] = "Middle",
+			["Spider Forest"] = "Middle"
+		},
+		["Upgrade Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = -1
+		},
+		["Focus on Farm"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
