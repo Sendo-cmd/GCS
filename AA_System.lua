@@ -1162,6 +1162,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true,
     },
     ["Rami_AlKindi23"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
