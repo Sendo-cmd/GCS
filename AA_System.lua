@@ -1198,11 +1198,8 @@ _G.User = {
         ["Hard"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "euakungchannel",
-            "ownekitte",
             "SNYXRUN3",
             "May_SD232",
-            "bankuiok1",
         },
     },
     ["Katakuri_Print"] = {
