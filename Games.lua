@@ -307,6 +307,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
+        "Portal",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -440,8 +441,7 @@ Accounts = {
     },
     ["yanawarutkanpai"] = {
         "Log",
-        "Marco",
-        "ESSE",
+        "Portal",
     },
     ["Etaa_xm"] = {
         "FarmGem",
@@ -1078,6 +1078,10 @@ Accounts = {
     ["PSRiT6"] = {
         "Log",
         "Portal",
+    },
+    ["ager8ge9a"] = {
+        "Log",
+        "BaseGem",
     },
 
 }
