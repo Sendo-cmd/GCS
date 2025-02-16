@@ -1201,6 +1201,7 @@ _G.User = {
         ["Party Member"] = {
             "as_01999",
             "bankuiok1",
+            "tonklachza2007",
         },
     },
     ["Katakuri_Print"] = {
