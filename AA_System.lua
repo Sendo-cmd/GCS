@@ -1199,7 +1199,7 @@ _G.User = {
         ["Hard"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "May_SD232",
+            "as_01999",
         },
     },
     ["Katakuri_Print"] = {
