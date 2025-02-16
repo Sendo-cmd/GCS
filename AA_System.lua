@@ -1240,6 +1240,9 @@ _G.User = {
     ["SNYXRUN3"] = {
         ["Party Mode"] = true,
     },
+    ["tonklachza2007"] = {
+        ["Party Mode"] = true,
+    },
 
 }
 
