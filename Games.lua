@@ -437,8 +437,8 @@ Accounts = {
         "BaseCF",
     },
     ["underhorror"] = {
-        "System",
-        "MemberStar",
+        "Log",
+        "BaseGemInf",
     },
     ["yanawarutkanpai"] = {
         "Log",
