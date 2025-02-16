@@ -2,24 +2,20 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["AutoSave"] = true,
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	},
-	["Boss Event Joiner"] = {
-		["Stage"] = "IgrosEvent"
-	},
 	["Portal Joiner"] = {
+		["Tier Cap"] = 10,
+		["Auto Join"] = true,
 		["Ignore Act"] = {
+			["[Spider Forest] Act2"] = true,
 			["[Spider Forest] Act3"] = true,
 			["[Spider Forest] Act1"] = true,
-			["[Spider Forest] Act4"] = true,
-			["[Spider Forest] Act2"] = true
+			["[Spider Forest] Act4"] = true
 		},
-		["Auto Join"] = true,
-		["Tier Cap"] = 10,
 		["Ignore Modifier"] = {
 			["Thrice"] = true,
 			["Fast"] = true
@@ -45,6 +41,7 @@ getgenv().Config = {
 			["6"] = -1
 		},
 		["Enable"] = true,
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Golden Castle"] = "Middle",
 			["Double Dungeon"] = "Middle",
@@ -66,26 +63,39 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true
 	},
-	["AutoExecute"] = true,
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
 	["Match Finished"] = {
 		["Auto Next"] = true
 	},
+	["AutoSave"] = true,
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true
 	},
+	["Boss Event Joiner"] = {
+		["Stage"] = "IgrosEvent"
+	},
+	["AutoExecute"] = true,
 	["Gameplay"] = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Use Ability"] = true,
-		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
-		}
+		},
+		["Auto Use Ability"] = true,
+		["Auto Skip Wave"] = true
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
