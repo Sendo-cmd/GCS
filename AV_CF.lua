@@ -66,14 +66,31 @@ getgenv().Config = {
 			["3"] = 0,
 			["2"] = 0,
 			["5"] = 0,
-			["4"] = 1,
-			["6"] = 0
+			["4"] = 0,
+			["6"] = -1
 		},
 		["Enable"] = true,
-		["Middle Position"] = {
-			["Shibuya Station"] = "-766.054443359375, 9.356081008911133, -118.76422119140625"
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
+		["Prefer Position"] = {
+			["Golden Castle"] = "Middle",
+			["Double Dungeon"] = "Middle",
+			["Planet Namak"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Sand Village"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Underground Church"] = "Middle",
+			["Spider Forest"] = "Middle"
 		},
-		["Upgrade Method"] = "Nearest from Middle Position (until Max)"
+		["Upgrade Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = -1
+		},
+		["Focus on Farm"] = true
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
