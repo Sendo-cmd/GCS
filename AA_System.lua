@@ -1198,7 +1198,6 @@ _G.User = {
         ["Hard"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "SNYXRUN3",
             "May_SD232",
         },
     },

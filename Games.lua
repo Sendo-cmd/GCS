@@ -40,6 +40,7 @@ Games = {
         ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
         ["DungBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase.lua",
         ["DioBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dio_Base.lua",
+        ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -307,7 +308,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "Marco",
-        "DungBase",
+        "Portal",
     },
     ["spiltduc9241"] = {
         "Log",
