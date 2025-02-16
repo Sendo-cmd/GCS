@@ -1077,6 +1077,10 @@ Accounts = {
         "System",
         "MemberStar",
     },
+    ["PSRiT6"] = {
+        "Log",
+        "Portal",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
