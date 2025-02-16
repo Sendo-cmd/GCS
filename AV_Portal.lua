@@ -3,20 +3,21 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
+	["AutoExecute"] = true,
+	["Stage Joiner"] = {
+		["Auto Join"] = true,
+		["Stage"] = "Planet Namak",
+		["Act"] = "Infinite"
 	},
 	["Portal Joiner"] = {
-		["Tier Cap"] = 10,
-		["Auto Join"] = true,
 		["Ignore Act"] = {
 			["[Spider Forest] Act2"] = true,
 			["[Spider Forest] Act3"] = true,
 			["[Spider Forest] Act1"] = true,
 			["[Spider Forest] Act4"] = true
 		},
+		["Auto Join"] = true,
+		["Tier Cap"] = 10,
 		["Ignore Modifier"] = {
 			["Thrice"] = true,
 			["Fast"] = true
@@ -64,17 +65,14 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true
 	},
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
 	["Match Finished"] = {
 		["Auto Next"] = true
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
 	["AutoSave"] = true,
 	["Failsafe"] = {
@@ -86,23 +84,34 @@ getgenv().Config = {
 	["Boss Event Joiner"] = {
 		["Stage"] = "IgrosEvent"
 	},
-	["AutoExecute"] = true,
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
 	["Gameplay"] = {
+		["Auto Sell"] = {
+			["Enable"] = true,
+			["Wave"] = 22
+		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
+		["Auto Use Ability"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
 		},
-		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true
 	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
