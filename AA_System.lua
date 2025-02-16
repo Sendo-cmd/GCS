@@ -1200,6 +1200,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "as_01999",
+            "bankuiok1",
         },
     },
     ["Katakuri_Print"] = {
