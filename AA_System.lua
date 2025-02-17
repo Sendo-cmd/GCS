@@ -1242,6 +1242,13 @@ _G.User = {
     ["tonklachza2007"] = {
         ["Party Mode"] = true,
     },
+    ["DOTANIX"] = {
+        ["Select Mode"] = "Raid", -- Raid , Legend Stage , Infinite , Event , Contract
+    
+        ["Select Map"] = "Sacred Planet",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
+    },
 
 }
 

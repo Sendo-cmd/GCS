@@ -1083,6 +1083,10 @@ Accounts = {
         "Log",
         "BaseGem",
     },
+    ["DOTANIX"] = {
+        "System",
+        "Dbz2",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
