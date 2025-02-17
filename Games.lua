@@ -441,7 +441,7 @@ Accounts = {
     },
     ["yanawarutkanpai"] = {
         "Log",
-        "BaseCF",
+        "Portal",
     },
     ["Etaa_xm"] = {
         "FarmGem",

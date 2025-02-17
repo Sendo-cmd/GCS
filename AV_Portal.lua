@@ -3,32 +3,38 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
 	},
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
+	["Stage Joiner"] = {
+		["Auto Join"] = true,
+		["Act"] = "Infinite",
+		["Stage"] = "Planet Namak"
 	},
 	["Portal Joiner"] = {
-		["Tier Cap"] = 10,
-		["Auto Join"] = true,
 		["Ignore Act"] = {
+			["[Shibuya Aftermath] Act2"] = true,
+			["[Spider Forest] Act2"] = true,
 			["[Spider Forest] Act3"] = true,
 			["[Spider Forest] Act1"] = true,
+			["[Shibuya Aftermath] Act3"] = true,
 			["[Spider Forest] Act4"] = true,
-			["[Spider Forest] Act2"] = true
+			["[Shibuya Aftermath] Act1"] = true
 		},
+		["Auto Join"] = true,
+		["Tier Cap"] = 10,
 		["Ignore Modifier"] = {
-			["Drowsy"] = true,
-			["Fast"] = true,
-			["Dodge"] = true,
+			["Thrice"] = true,
 			["Quake"] = true,
-			["Thrice"] = true
+			["Fast"] = true,
+			["Drowsy"] = true,
+			["Dodge"] = true
 		},
 		["Portal Reward Picker"] = {
 			["Enable"] = true,
@@ -40,6 +46,15 @@ getgenv().Config = {
 		},
 		["Auto Delete Spider Forest Portal"] = true
 	},
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
+	},
+	["Match Finished"] = {
+		["Auto Next"] = true
+	},
+	["AutoSave"] = true,
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Place Cap"] = {
@@ -73,11 +88,6 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true
 	},
-	["AutoExecute"] = true,
-	["Match Finished"] = {
-		["Auto Next"] = true
-	},
-	["AutoSave"] = true,
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
 	},
@@ -87,15 +97,7 @@ getgenv().Config = {
 	["Boss Event Joiner"] = {
 		["Stage"] = "IgrosEvent"
 	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
+	["AutoExecute"] = true,
 	["Gameplay"] = {
 		["Auto Sell"] = {
 			["Enable"] = true,
@@ -104,17 +106,18 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
 		},
-		["Auto Use Ability"] = true
+		["Auto Use Ability"] = true,
+		["Auto Skip Wave"] = true
 	},
-	["Stage Joiner"] = {
-		["Auto Join"] = true,
-		["Act"] = "Infinite",
-		["Stage"] = "Planet Namak"
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
