@@ -283,6 +283,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "igushi3",
@@ -1197,6 +1198,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "tonklachza2007",
@@ -1263,8 +1265,10 @@ local Settings = {
     ["Party Mode"] = false,
     ["Contract Tier"] = 5,
 
-    ["Challenge"] = false,
-    
+    ["Challenge"] = true,
+    ["Daily"] = true,
+    ["Normal"] = false,
+
     ["Contract Swap"] = false,
     ["Team Slot"] = {
         ["p"] = "1",
@@ -1703,7 +1707,234 @@ if Settings["Party Mode"]  then
     end
 end
 
+if Settings["Challenge"] then
+    local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+    local function UnlockThisMap(id)
+        return session["profile_data"]["level_data"]["completed_story_levels"][id] or false
+    end
+    local function CheckIgnoreChallenge(id)
+        return table.find(Settings["Ignore"],id) or false
+    end
+    local function GetRoom(Type)
+        if Type == "Challenge" then
+            for i, v in pairs(workspace._CHALLENGES.Challenges:GetChildren()) do
+                if v:IsA('Model') and v["Active"].Value == false then
+                    return v
+                end
+            end
+        elseif Type == "DailyChallenge" then
+            for i, v in pairs(workspace._CHALLENGES.DailyChallenge:GetChildren()) do
+                if v:IsA('Model') and v["Active"].Value == false then
+                    return v
+                end
+            end
+        end
+       
+        return false
+    end
+    local ChallengeData = nil
+    local Canplay = false
+    if Settings["Daily"] then
+        
+        print("Daily")
+        ChallengeData = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_daily_challenge:InvokeServer()
+        local second = 99999
+        game:GetService("ReplicatedStorage").endpoints.server_to_client.daily_challenge_remaining_time_changed.OnClientEvent:Connect(function(ab)
+            second = ab
+        end)
+        local function cooldown()
+            return tick() + second
+        end
+        if not isfile('Daily_Challenge.txt') then
+            print("Daily 0")
+            if game.PlaceId == 8304191830  then
+                print("Daily 1")
+                if not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
+                    print("Daily 2")
+                    local Room = GetRoom("DailyChallenge")
+                    Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    if not Canplay then
+                        print("Daily 3")
+                        writefile("Daily_Challenge.txt",cooldown())
+                    end
+                else
+                    writefile("Daily_Challenge.txt",cooldown())
+                end
+            else
+                local MapConfigs = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
+                if MapConfigs["name"] == "Daily Challenge" then
 
+                else
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                        v.Function()
+                    end 
+                end
+            end
+        else
+            print("Daily 0.1")
+            local lastos = readfile('Daily_Challenge.txt')
+             if game.PlaceId == 8304191830  then
+                if tick() >= tonumber(lastos) then
+                    if  not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
+                        local Room = GetRoom("DailyChallenge")
+                        Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        if not Canplay then
+                            writefile("Daily_Challenge.txt",cooldown())
+                        end
+                    else
+                        writefile("Daily_Challenge.txt",cooldown())
+                    end
+                end
+            else
+                if tick() >= tonumber(lastos) then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                        v.Function()
+                    end
+                end
+            end
+        end
+    end
+    if Canplay then
+        SendWebhook()
+        while true do task.wait()
+            if Settings["Party Mode"] and Settings["Party Member"]  then
+                if AllPlayerInGame() then
+                    Next_(150)
+                    print("Found All Players")
+                    if AllPlayerInGame() then 
+                        local Room = GetRoom("DailyChallenge")
+                        repeat task.wait(.5)
+                            if #Room["Players"]:GetChildren() == 0 then
+                                print("Join Room")
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                for i,v in pairs(Settings["Party Member"]) do
+                                    if not Room["Players"]:FindFirstChild(v) then
+                                        print("Leader Send To",v)
+                                        socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                    end
+                                end
+                                Next_(3)
+                            end
+                        until not AllPlayerInGame()
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)                   
+                    end
+                end
+            else
+                local Room = GetRoom("DailyChallenge")
+                repeat task.wait(.5)
+                    if #Room["Players"]:GetChildren() == 0 then
+                        print("Join Room")
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                    end
+                until #Room["Players"]:GetChildren() > 1
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)                   
+                Next_(10)
+            end
+        end
+    end
+
+    if Settings["Normal"] then
+        local Canplay = false
+        
+        ChallengeData = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_normal_challenge:InvokeServer()
+        local second = 99999
+        game:GetService("ReplicatedStorage").endpoints.server_to_client.normal_challenge_remaining_time_changed.OnClientEvent:Connect(function(ab)
+            second = ab
+        end)
+        local function cooldown()
+            return tick() + second
+        end
+        if not isfile('Challenge.txt') then
+            if game.PlaceId == 8304191830  then
+                if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
+                    local Room = GetRoom("Challenge")
+                    Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    if not Canplay then
+                        writefile("Challenge.txt",cooldown())
+                    end
+                else
+                    writefile("Challenge.txt",cooldown())
+                end
+            else
+                local MapConfigs = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
+                if MapConfigs["name"] == "Challenge" then
+
+                else
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                        v.Function()
+                    end 
+                end
+            end
+        else
+            local lastos = readfile('Challenge.txt')
+             if game.PlaceId == 8304191830  then
+                if tick() >= tonumber(lastos) then
+                    if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
+                        local Room = GetRoom("Challenge")
+                        Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        if not Canplay then
+                            writefile("Challenge.txt",cooldown())
+                        end
+                    else
+                        writefile("Challenge.txt",cooldown())
+                    end
+                end
+            else
+                if tick() >= tonumber(lastos) then
+                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                        v.Function()
+                    end
+                end
+            end
+        end
+    end
+    if Canplay then
+        SendWebhook()
+        while true do task.wait()
+            if Settings["Party Mode"] and Settings["Party Member"]  then
+                if AllPlayerInGame() then
+                    Next_(150)
+                    print("Found All Players")
+                    if AllPlayerInGame() then 
+                        local Room = GetRoom("Challenge")
+                        repeat task.wait(.5)
+                            if #Room["Players"]:GetChildren() == 0 then
+                                print("Join Room")
+                                game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                            elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
+                                for i,v in pairs(Settings["Party Member"]) do
+                                    if not Room["Players"]:FindFirstChild(v) then
+                                        print("Leader Send To",v)
+                                        socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                    end
+                                end
+                                Next_(3)
+                            end
+                        until not AllPlayerInGame()
+                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)                   
+                    end
+                end
+            else
+                local Room = GetRoom("Challenge")
+                repeat task.wait(.5)
+                    if #Room["Players"]:GetChildren() == 0 then
+                        print("Join Room")
+                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
+                    end
+                until #Room["Players"]:GetChildren() > 1
+                game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)                   
+                Next_(10)
+            end
+        end
+    end
+
+    
+end
 
 if Settings["Evo"] and game.PlaceId == 8304191830  then
     -- can craft > normal > star
@@ -2003,12 +2234,6 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                                     if #Room["Players"]:GetChildren() == 0 then
                                         print("Join Room")
                                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                                    elseif #Room["Players"]:GetChildren() == 1 and Room.World.Value == "" then
-                                        print("Settings Room")
-                                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_lock_level"):InvokeServer(Room.Name,RoomId,false,"Hard")
-                                    elseif #Room["Players"]:GetChildren() == #Settings["Party Member"] + 1 and CheckPlayerInRoom(Room,Settings["Party Member"]) then
-                                        print("Found All Member In Room")
-                                        game:GetService("ReplicatedStorage").endpoints.client_to_server.request_start_game:InvokeServer(Room.Name)
                                     elseif #Room["Players"]:GetChildren() ~= #Settings["Party Member"]  + 1 then
                                         for i,v in pairs(Settings["Party Member"]) do
                                             if not Room["Players"]:FindFirstChild(v) then
