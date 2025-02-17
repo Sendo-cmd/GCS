@@ -61,7 +61,7 @@ getgenv().Config = {
 			["1"] = 0,
 			["3"] = 0,
 			["2"] = 0,
-			["5"] = -1,
+			["5"] = 0,
 			["4"] = -1,
 			["6"] = -1
 		},
@@ -86,7 +86,7 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = -1
 		},
-		["Focus on Farm"] = true
+		["Focus on Farm"] = false
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
