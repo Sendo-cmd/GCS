@@ -33,7 +33,6 @@ getgenv().Config = {
 			["Thrice"] = true,
 			["Quake"] = true,
 			["Fast"] = true,
-			["Drowsy"] = true,
 			["Dodge"] = true
 		},
 		["Portal Reward Picker"] = {
