@@ -20,7 +20,7 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = -1
+			["6"] = 0,
 		},
 		["Enable"] = true,
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
