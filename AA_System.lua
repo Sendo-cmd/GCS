@@ -1744,7 +1744,7 @@ if Settings["Challenge"] then
             second = ab
         end)
         local function cooldown()
-            return tick() + second
+            return tostring(tick() + second)
         end
         if not isfile('Daily_Challenge.txt') then
             print("Daily 0")
@@ -1842,7 +1842,7 @@ if Settings["Challenge"] then
             second = ab
         end)
         local function cooldown()
-            return tick() + second
+            return tostring(tick() + second)
         end
         if not isfile('Challenge.txt') then
             if game.PlaceId == 8304191830  then
