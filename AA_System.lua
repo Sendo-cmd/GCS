@@ -1265,8 +1265,8 @@ local Settings = {
     ["Party Mode"] = false,
     ["Contract Tier"] = 5,
 
-    ["Challenge"] = true,
-    ["Daily"] = true,
+    ["Challenge"] = false,
+    ["Daily"] = false,
     ["Normal"] = false,
 
     ["Contract Swap"] = false,
