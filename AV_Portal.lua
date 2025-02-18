@@ -45,7 +45,7 @@ getgenv().Config = {
 			["1"] = 0,
 			["3"] = 0,
 			["2"] = 0,
-			["5"] = -1,
+			["5"] = 0,
 			["4"] = 0,
 			["6"] = -1
 		},
@@ -92,7 +92,7 @@ getgenv().Config = {
 		},
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
-			["Wave"] = 15
+			["Wave"] = 20
 		},
 		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true
