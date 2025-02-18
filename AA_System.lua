@@ -283,7 +283,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "igushi3",
@@ -1198,7 +1198,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "tonklachza2007",
