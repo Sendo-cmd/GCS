@@ -18,23 +18,8 @@ getgenv().Config = {
 		["Stage"] = "Planet Namak"
 	},
 	["Portal Joiner"] = {
-		["Ignore Act"] = {
-			["[Shibuya Aftermath] Act2"] = true,
-			["[Spider Forest] Act2"] = true,
-			["[Spider Forest] Act3"] = true,
-			["[Spider Forest] Act1"] = true,
-			["[Shibuya Aftermath] Act3"] = true,
-			["[Spider Forest] Act4"] = true,
-			["[Shibuya Aftermath] Act1"] = true
-		},
 		["Auto Join"] = true,
 		["Tier Cap"] = 10,
-		["Ignore Modifier"] = {
-			["Thrice"] = true,
-			["Quake"] = true,
-			["Fast"] = true,
-			["Dodge"] = true
-		},
 		["Portal Reward Picker"] = {
 			["Enable"] = true,
 			["Prioritize"] = {
