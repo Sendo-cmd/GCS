@@ -70,7 +70,7 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = -1
 		},
-		["Focus on Farm"] = false
+		["Focus on Farm"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
