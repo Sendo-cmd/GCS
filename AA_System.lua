@@ -1927,7 +1927,7 @@ if Settings["Challenge"] then
 
     
 end
-
+print("dont give a shit bout challenge")
 if Settings["Evo"] and game.PlaceId == 8304191830  then
     -- can craft > normal > star
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
