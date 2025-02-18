@@ -283,7 +283,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "igushi3",
@@ -1198,7 +1198,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "tonklachza2007",
@@ -1266,8 +1266,8 @@ local Settings = {
     ["Party Mode"] = false,
     ["Contract Tier"] = 5,
 
-    ["Challenge"] = false,
-    ["Daily"] = false,
+    ["Challenge"] = true,
+    ["Daily"] = true,
     ["Normal"] = false,
 
     ["Contract Swap"] = false,
@@ -1752,9 +1752,7 @@ if Settings["Challenge"] then
                 print("Daily 1")
                 if not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
                     print("Daily 2")
-                    local Room = GetRoom("DailyChallenge")
-                    Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_daily_challenge_uuid)
                     if not Canplay then
                         print("Daily 3")
                         writefile("Daily_Challenge.txt",cooldown())
@@ -1778,9 +1776,7 @@ if Settings["Challenge"] then
              if game.PlaceId == 8304191830  then
                 if tick() >= tonumber(lastos) then
                     if  not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
-                        local Room = GetRoom("DailyChallenge")
-                        Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_daily_challenge_uuid)
                         if not Canplay then
                             writefile("Daily_Challenge.txt",cooldown())
                         end
@@ -1851,9 +1847,7 @@ if Settings["Challenge"] then
         if not isfile('Challenge.txt') then
             if game.PlaceId == 8304191830  then
                 if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
-                    local Room = GetRoom("Challenge")
-                    Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                    game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                    Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_challenge_uuid)
                     if not Canplay then
                         writefile("Challenge.txt",cooldown())
                     end
@@ -1875,9 +1869,7 @@ if Settings["Challenge"] then
              if game.PlaceId == 8304191830  then
                 if tick() >= tonumber(lastos) then
                     if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
-                        local Room = GetRoom("Challenge")
-                        Canplay = game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(Room.Name)
-                        game:GetService("ReplicatedStorage"):WaitForChild("endpoints"):WaitForChild("client_to_server"):WaitForChild("request_leave_lobby"):InvokeServer(Room.Name)
+                        Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_challenge_uuid)
                         if not Canplay then
                             writefile("Challenge.txt",cooldown())
                         end
