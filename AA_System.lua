@@ -1233,7 +1233,7 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
-        ["Auto Join"] = false,
+        ["Auto Join"] = true,
     },
     ["ownekitte"] = {
         ["Party Mode"] = true,

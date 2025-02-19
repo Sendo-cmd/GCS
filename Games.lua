@@ -1061,7 +1061,7 @@ Accounts = {
     },
     ["CGFONE06m"] = {
         "System",
-        "StarGem",
+        "FarmGem",
     },
     ["ownekitte"] = {
         "System",
@@ -1086,6 +1086,10 @@ Accounts = {
     ["DOTANIX"] = {
         "System",
         "Dbz2",
+    },
+    ["clpcarsloverpakin"] = {
+        "Log",
+        "Portal",
     },
 
 }
