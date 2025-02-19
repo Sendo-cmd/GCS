@@ -284,7 +284,6 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
         ["Daily"] = false,
-        ["Challenge"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "igushi3",
@@ -1200,7 +1199,6 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
         ["Daily"] = false,
-        ["Challenge"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "tonklachza2007",
