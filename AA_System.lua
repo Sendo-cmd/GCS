@@ -1256,7 +1256,7 @@ _G.User = {
 
 local Settings = {
     ["Auto Join"] = true,
-    ["Select Mode"] = "Contract", -- Raid , Legend Stage , Infinite , Event , Contract
+    ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event , Contract
     
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
@@ -1647,15 +1647,15 @@ if Settings["Party Mode"]  then
             socket.OnMessage:Connect(function(msg)
                 local data = HttpService:JSONDecode(msg)
                 if data[1] == "Leader" and data[2] == game.Players.LocalPlayer.Name then
-                    if data[2] == "Teleport" and game.JobId ~= data[4] then
+                    if data[3] == "Teleport" and game.JobId ~= data[5] then
                         game:GetService("StarterGui"):SetCore("SendNotification",{
                             Title = "Teleporting", 
-                            Text = "Leader By" .. data[3], 
+                            Text = "Leader By" .. data[4], 
                             Icon = "rbxassetid://1234567890" 
                         })
                         Next_(2)
                         if game.JobId ~= data[4] then
-                            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, data[4], game.Players.LocalPlayer)
+                            game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, data[5], game.Players.LocalPlayer)
                         end
                     elseif data[3] == "Join" then
                         print("Try To Join Room")
