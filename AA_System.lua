@@ -283,8 +283,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
-        ["Challenge"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "igushi3",
@@ -1199,8 +1198,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
-        ["Challenge"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "tonklachza2007",
@@ -1258,7 +1256,7 @@ _G.User = {
 
 local Settings = {
     ["Auto Join"] = true,
-    ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event , Contract
+    ["Select Mode"] = "Contract", -- Raid , Legend Stage , Infinite , Event , Contract
     
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
@@ -1640,7 +1638,7 @@ if Settings["Party Mode"]  then
                 local data = HttpService:JSONDecode(msg)
                 if data[1] == "Member" and table.find(Settings["Party Member"],data[2]) and not game:GetService("Players"):FindFirstChild(data[2]) then
                     Next_(2)
-                    socket:Send(HttpService:JSONEncode({"Leader","Teleport",game.Players.LocalPlayer.Name, game.JobId}))
+                    socket:Send(HttpService:JSONEncode({"Leader",data[2],"Teleport",game.Players.LocalPlayer.Name, game.JobId}))
                 end
             end) 
             -- For Host
@@ -1648,7 +1646,7 @@ if Settings["Party Mode"]  then
             -- Member configs
             socket.OnMessage:Connect(function(msg)
                 local data = HttpService:JSONDecode(msg)
-                if data[1] == "Leader" then
+                if data[1] == "Leader" and data[2] == game.Players.LocalPlayer.Name then
                     if data[2] == "Teleport" and game.JobId ~= data[4] then
                         game:GetService("StarterGui"):SetCore("SendNotification",{
                             Title = "Teleporting", 
@@ -1659,7 +1657,7 @@ if Settings["Party Mode"]  then
                         if game.JobId ~= data[4] then
                             game:GetService("TeleportService"):TeleportToPlaceInstance(game.PlaceId, data[4], game.Players.LocalPlayer)
                         end
-                    elseif data[2] == "Join" and data[3] == game.Players.LocalPlayer.Name then
+                    elseif data[3] == "Join" then
                         print("Try To Join Room")
                         game:GetService("ReplicatedStorage").endpoints.client_to_server.request_join_lobby:InvokeServer(data[4])
                     -- elseif data[2] == "Join Portal" and data[3] == game.Players.LocalPlayer.Name then
@@ -1811,7 +1809,7 @@ if Settings["Challenge"] then
                                 for i,v in pairs(Settings["Party Member"]) do
                                     if not Room["Players"]:FindFirstChild(v) then
                                         print("Leader Send To",v)
-                                        socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                        socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                     end
                                 end
                                 Next_(3)
@@ -1904,7 +1902,7 @@ if Settings["Challenge"] then
                                 for i,v in pairs(Settings["Party Member"]) do
                                     if not Room["Players"]:FindFirstChild(v) then
                                         print("Leader Send To",v)
-                                        socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                        socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                     end
                                 end
                                 Next_(3)
@@ -1929,7 +1927,7 @@ if Settings["Challenge"] then
 
     
 end
-
+print("dont give a shit bout challenge")
 if Settings["Evo"] and game.PlaceId == 8304191830  then
     -- can craft > normal > star
     local Units = require(game:GetService("ReplicatedStorage").src.Data.Units)
@@ -2214,7 +2212,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                                     for i,v in pairs(Settings["Party Member"]) do
                                         if not Room["Players"]:FindFirstChild(v) then
                                             print("Leader Send To",v)
-                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                         end
                                     end
                                     Next_(3)
@@ -2232,7 +2230,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                                         for i,v in pairs(Settings["Party Member"]) do
                                             if not Room["Players"]:FindFirstChild(v) then
                                                 print("Leader Send To",v)
-                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                                socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                             end
                                         end
                                         Next_(3)
@@ -2258,7 +2256,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                                     for i,v in pairs(Settings["Party Member"]) do
                                         if not Room["Players"]:FindFirstChild(v) then
                                             print("Leader Send To",v)
-                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                         end
                                     end
                                     Next_(3)
@@ -2285,7 +2283,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                                     for i,v in pairs(Settings["Party Member"]) do
                                         if not Room["Players"]:FindFirstChild(v) then
                                             print("Leader Send To",v)
-                                            socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                            socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                         end
                                     end
                                     Next_(3)
@@ -2536,7 +2534,7 @@ spawn(function ()
                                         for i,v in pairs(Settings["Party Member"]) do
                                             if not Room["Players"]:FindFirstChild(v) then
                                                 print("Leader Send To",v)
-                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                                socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                             end
                                         end
                                         Next_(3)
@@ -2559,7 +2557,7 @@ spawn(function ()
                                         for i,v in pairs(Settings["Party Member"]) do
                                             if not Room["Players"]:FindFirstChild(v) then
                                                 print("Leader Send To",v)
-                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                                socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                             end
                                         end
                                         Next_(3)
@@ -2582,7 +2580,7 @@ spawn(function ()
                                         for i,v in pairs(Settings["Party Member"]) do
                                             if not Room["Players"]:FindFirstChild(v) then
                                                 print("Leader Send To",v)
-                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                                socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                             end
                                         end
                                         Next_(3)
@@ -2605,7 +2603,7 @@ spawn(function ()
                                         for i,v in pairs(Settings["Party Member"]) do
                                             if not Room["Players"]:FindFirstChild(v) then
                                                 print("Leader Send To",v)
-                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                                socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                             end
                                         end
                                         Next_(3)
@@ -2625,7 +2623,7 @@ spawn(function ()
                                         for i,v in pairs(Settings["Party Member"]) do
                                             if not Room["Players"]:FindFirstChild(v) then
                                                 print("Leader Send To",v)
-                                                socket:Send(HttpService:JSONEncode({"Leader","Join",v,Room.Name}))
+                                                socket:Send(HttpService:JSONEncode({"Leader",v,"Join",Room.Name}))
                                             end
                                         end
                                         Next_(3)
