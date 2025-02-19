@@ -287,7 +287,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "igushi3",
-            "DDYUFCiSRHT",
+            "tonklachza2007",
             "YTJTP_Jittiphatn",
             "Charlottex207x",
             "SDEgFGtxuid",
@@ -1199,7 +1199,7 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
         ["Daily"] = false,
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "tonklachza2007",
         },
