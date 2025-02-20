@@ -283,7 +283,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
+        ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "bankuiok1",
@@ -1255,7 +1255,7 @@ _G.User = {
 
 local Settings = {
     ["Auto Join"] = true,
-    ["Select Mode"] = "Story", -- Raid , Legend Stage , Infinite , Event , Contract
+    ["Select Mode"] = "Contract", -- Raid , Legend Stage , Infinite , Event , Contract
     
     ["Select Map"] = "Planet Greenie",
     ["Select Level"] = "1", -- Story & Legend Stage & Raid
@@ -1264,8 +1264,8 @@ local Settings = {
     ["Party Mode"] = false,
     ["Contract Tier"] = 5,
 
-    ["Challenge"] = false,
-    ["Daily"] = false,
+    ["Challenge"] = true,
+    ["Daily"] = true,
     ["Normal"] = false,
 
     ["Contract Swap"] = false,
@@ -1707,6 +1707,9 @@ if Settings["Party Mode"]  then
 end
 
 if Settings["Challenge"] then
+    if Settings["Party Mode"] and not Settings["Party Member"] then
+        return false
+    end
     local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
     local function UnlockThisMap(id)
         return session["profile_data"]["level_data"]["completed_story_levels"][id] or false
@@ -1744,48 +1747,28 @@ if Settings["Challenge"] then
         local function cooldown()
             return tostring(tick() + second)
         end
-        if not isfile('Daily_Challenge.txt') then
-            print("Daily 0")
-            if game.PlaceId == 8304191830  then
-                print("Daily 1")
-                if not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
-                    print("Daily 2")
-                    Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_daily_challenge_uuid)
-                    if not Canplay then
-                        print("Daily 3")
-                        writefile("Daily_Challenge.txt",cooldown())
-                    end
-                else
-                    writefile("Daily_Challenge.txt",cooldown())
-                end
+        if game.PlaceId == 8304191830  then
+            if not CheckIgnoreChallenge(ChallengeData["current_challenge"]) and ChallengeData["current_uuid"] ~= session.profile_data.last_completed_daily_challenge_uuid then
+                print("Daily 2")
+                Canplay = true
             else
-                local MapConfigs = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
-                if MapConfigs["name"] == "Daily Challenge" then
-
-                else
+                writefile("Daily_Challenge.txt",cooldown())
+            end
+        else
+            local MapConfigs = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
+            if MapConfigs["name"] == "Daily Challenge" then
+                print("In Daily")
+            else
+                if not isfile('Daily_Challenge.txt') then
                     for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
                         v.Function()
                     end 
-                end
-            end
-        else
-            print("Daily 0.1")
-            local lastos = readfile('Daily_Challenge.txt')
-             if game.PlaceId == 8304191830  then
-                if tick() >= tonumber(lastos) then
-                    if  not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
-                        Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_daily_challenge_uuid)
-                        if not Canplay then
-                            writefile("Daily_Challenge.txt",cooldown())
+                else
+                    local lastos = readfile('Daily_Challenge.txt')
+                    if tick() >= tonumber(lastos) then
+                        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                            v.Function()
                         end
-                    else
-                        writefile("Daily_Challenge.txt",cooldown())
-                    end
-                end
-            else
-                if tick() >= tonumber(lastos) then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
-                        v.Function()
                     end
                 end
             end
@@ -1830,10 +1813,8 @@ if Settings["Challenge"] then
             end
         end
     end
-
+    local Canplay = false
     if Settings["Normal"] then
-        local Canplay = false
-        
         ChallengeData = game:GetService("ReplicatedStorage").endpoints.client_to_server.get_normal_challenge:InvokeServer()
         local second = 99999
         game:GetService("ReplicatedStorage").endpoints.server_to_client.normal_challenge_remaining_time_changed.OnClientEvent:Connect(function(ab)
@@ -1842,43 +1823,28 @@ if Settings["Challenge"] then
         local function cooldown()
             return tostring(tick() + second)
         end
-        if not isfile('Challenge.txt') then
-            if game.PlaceId == 8304191830  then
-                if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
-                    Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_challenge_uuid)
-                    if not Canplay then
-                        writefile("Challenge.txt",cooldown())
-                    end
-                else
-                    writefile("Challenge.txt",cooldown())
-                end
+        if game.PlaceId == 8304191830  then
+            if not CheckIgnoreChallenge(ChallengeData["current_challenge"]) and ChallengeData["current_uuid"] ~= session.profile_data.last_completed_challenge_uuid then
+                print("Daily 2")
+                Canplay = true
             else
-                local MapConfigs = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
-                if MapConfigs["name"] == "Challenge" then
-
-                else
+                writefile("Challenge.txt",cooldown())
+            end
+        else
+            local MapConfigs = workspace._MAP_CONFIG.GetLevelData:InvokeServer()
+            if MapConfigs["name"] == "Challenge" then
+                print("In Challenge")
+            else
+                if not isfile('Challenge.txt') then
                     for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
                         v.Function()
                     end 
-                end
-            end
-        else
-            local lastos = readfile('Challenge.txt')
-             if game.PlaceId == 8304191830  then
-                if tick() >= tonumber(lastos) then
-                    if UnlockThisMap(ChallengeData["current_level_id"]) and not CheckIgnoreChallenge(ChallengeData["current_challenge"]) then
-                        Canplay = not (ChallengeData["current_uuid"] == session.profile_data.last_completed_challenge_uuid)
-                        if not Canplay then
-                            writefile("Challenge.txt",cooldown())
+                else
+                    local lastos = readfile('Challenge.txt')
+                    if tick() >= tonumber(lastos) then
+                        for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
+                            v.Function()
                         end
-                    else
-                        writefile("Challenge.txt",cooldown())
-                    end
-                end
-            else
-                if tick() >= tonumber(lastos) then
-                    for i,v in pairs(getconnections(game:GetService("Players").LocalPlayer.PlayerGui.ResultsUI.Finished.Next.Activated)) do
-                        v.Function()
                     end
                 end
             end
