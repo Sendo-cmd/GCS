@@ -1776,7 +1776,7 @@ if Settings["Challenge"] then
         end
     end
     if Canplay then
-        SendWebhook()
+        
         while true do task.wait()
             if Settings["Party Mode"] and Settings["Party Member"]  then
                 if AllPlayerInGame() then
@@ -1852,7 +1852,7 @@ if Settings["Challenge"] then
         end
     end
     if Canplay then
-        SendWebhook()
+        
         while true do task.wait()
             if Settings["Party Mode"] and Settings["Party Member"]  then
                 if AllPlayerInGame() then
@@ -2150,7 +2150,7 @@ if Settings["Evo"] and game.PlaceId == 8304191830  then
                 Next_(.8)
             end
         end
-        SendWebhook()
+        
         if not Settings["Auto Join"] then
             return
         end
@@ -2437,7 +2437,7 @@ local function Next_(var)
     repeat task.wait() until tick() >= duration
 end
 
-SendWebhook()
+
 if not Settings["Auto Join"] then
     return
 end
@@ -2695,7 +2695,7 @@ spawn(function ()
 	end
 end)
 else
-    SendWebhook()
+    
     local Priority = {
         ["+ New Path"] = 100,
         ["+ Double Attack"] = 99,
@@ -2770,3 +2770,5 @@ else
         end)
     end
 end
+end)
+print("ABc")
