@@ -10,6 +10,7 @@ Games = {
         ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
         ["BaseIG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Base.lua",
+        ["IgrisSECV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV4.lua",
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         ["RIgris"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
         ["RRengoku"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Renguko.lua",
@@ -1094,6 +1095,11 @@ Accounts = {
     ["princeAD_4857"] = {
         "Log",
         "Portal",
+    },
+    ["BBWX_099"] = {
+        "Log",
+        "Marco",
+        "IgrisSECV",
     },
 
 }
