@@ -124,6 +124,13 @@ elseif IsMatch then
             ["Gold"] = plr:GetAttribute("Gold"),
             ["Gems"] = plr:GetAttribute("Gems"),
             ["TraitRerolls"] = plr:GetAttribute("TraitRerolls"),
+            ["Present"] = plr:GetAttribute("Present"),
+            ["CommanderTokens"] = plr:GetAttribute("CommanderTokens"),
+            ["CurseTokens"] = plr:GetAttribute("CurseTokens"),
+            ["CorruptedTokens"] = plr:GetAttribute("CorruptedTokens"),
+            ["Horseshoe"] = plr:GetAttribute("Horseshoe"),
+            ["RedWebs"] = plr:GetAttribute("RedWebs"),
+            ["CommandSeal"] = plr:GetAttribute("CommandSeal"),
         }
         
         local response = request({
