@@ -3,6 +3,8 @@ repeat  task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
+
+spawn(function()
 local ApiUrl = "https://api.championshop.date/log-aa"
 
 local InsertItem = require(game:GetService("ReplicatedStorage").src.Data.Items)
