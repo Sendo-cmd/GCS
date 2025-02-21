@@ -82,7 +82,7 @@ Games = {
 }
 Accounts = {
     ["SHIFUGOD"] = {
-       "Log"
+       "Log",
        "System",
        "Hsnd",
     },
