@@ -1170,10 +1170,12 @@ Accounts = {
         "StarGem",
     },
     ["ParNinTeTe"] = {
+        "Log",
         "System",
         "FarmGem",
     },
     ["CGFONE06m"] = {
+        "Log",
         "System",
         "FarmGem",
     },
