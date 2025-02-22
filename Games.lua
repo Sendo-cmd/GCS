@@ -126,7 +126,7 @@ Accounts = {
     },
     ["Noslots56"] = {
         "Log",
-        "System",
+        "Portal",
     },
     ["supakitdunk"] = {
         "Log",
@@ -1218,6 +1218,10 @@ Accounts = {
         "Log",
         "Marco",
         "BaseCF",
+    },
+    ["Foster72383"] = {
+        "Log",
+        "Portal",
     },
 
 }
