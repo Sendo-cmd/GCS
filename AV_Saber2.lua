@@ -25,7 +25,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
-		["Macro"] = "Saber",
+		["Macro"] = "SaberClear",
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true
 	},
@@ -59,7 +59,7 @@ getgenv().Config = {
 		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true,
 		["Auto Restart"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["Wave"] = 16
 		},
 		["Auto Sell Farm"] = {
