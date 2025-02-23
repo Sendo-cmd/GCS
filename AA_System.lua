@@ -291,6 +291,7 @@ _G.User = {
             "Charlottex207x",
             "SDEgFGtxuid",
             "as_01999",
+            "faeikgame",
         },
 
     },
@@ -1140,6 +1141,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Party Mode"] = true
     },
     ["SDEgFGtxuid"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
