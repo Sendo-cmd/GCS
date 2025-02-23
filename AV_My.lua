@@ -30,7 +30,7 @@ getgenv().Config = {
 		["Auto Next"] = true
 	},
 	["Summoner"] = {
-		["Auto Summon Special"] = true,
+		["Auto Summon Special"] = false,
 		["Unselect if Summoned"] = true,
 		["Delete Rarity"] = {
 			["Epic"] = true,
