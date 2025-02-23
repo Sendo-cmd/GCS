@@ -44,6 +44,7 @@ Games = {
         ["DioBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dio_Base.lua",
         ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
         ["Saber"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber.lua",
+        ["Saber2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber3.lua",
         ["Sokora"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber2.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
@@ -451,7 +452,8 @@ Accounts = {
     },
     ["underhorror"] = {
         "Log",
-        "BaseGemInf",
+        "Marco",
+        "Saber2",
     },
     ["yanawarutkanpai"] = {
         "Log",
