@@ -1220,7 +1220,7 @@ Accounts = {
     ["BBWX_099"] = {
         "Log",
         "Marco",
-        "BaseCF",
+        "BaseGemInf",
     },
     ["Foster72383"] = {
         "Log",
@@ -1258,6 +1258,6 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 4
+        repeat task.wait() until Loaded or (Timer - tick()) > 5
     end
 end
