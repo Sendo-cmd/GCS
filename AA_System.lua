@@ -290,7 +290,6 @@ _G.User = {
         ["Party Member"] = {
             "Charlottex207x",
             "SDEgFGtxuid",
-            "as_01999",
             "faeikgame",
         },
 
