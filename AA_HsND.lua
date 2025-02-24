@@ -3,6 +3,7 @@ getgenv().Config = {
 		["Exchange Legacy Gem"] = 0
 	},
 	["Game Finished"] = {
+		["Auto Return Lobby"] = true,
 		["Auto Replay"] = true
 	},
 	["Performance"] = {
