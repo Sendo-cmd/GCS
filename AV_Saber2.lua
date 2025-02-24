@@ -58,13 +58,10 @@ getgenv().Config = {
 		},
 		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true,
-		["Auto Restart"] = {
-			["Enable"] = false,
+		["Auto Sell"] = {
+			["Enable"] = true,
 			["Wave"] = 16
 		},
-		["Auto Sell Farm"] = {
-			["Wave"] = 1
-		}
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"

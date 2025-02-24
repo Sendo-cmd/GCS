@@ -3,14 +3,13 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
+	["AutoSave"] = true,
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true,
+		["Macro"] = "Saber2"
 	},
 	["Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -22,21 +21,14 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["Macro"] = "Saber2",
-		["Play"] = true,
-		["No Ignore Sell Timing"] = true
-	},
 	["AutoExecute"] = true,
 	["Match Finished"] = {
 		["Auto Replay"] = true,
 		["Replay Amount"] = 0
 	},
 	["Boss Event Joiner"] = {
-		["Auto Join"] = true,
-		["Stage"] = "SaberEvent"
+		["Stage"] = "SaberEvent",
+		["Auto Join"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
@@ -44,27 +36,32 @@ getgenv().Config = {
 	["Secure"] = {
 		["Walk Around"] = true
 	},
+	["Claimer"] = {
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Quest"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
+	["Gameplay"] = {
+		["Auto Sell"] = {
+			["Enable"] = true,
+			["Wave"] = 16
+		},
+		["Saber Event"] = {
+			["Auto Select Servant"] = true,
+			["Servant"] = "Berserker"
+		},
+		["Auto Skip Wave"] = true,
+		["Auto Use Ability"] = true
+	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true,
 		["Delete Entities"] = true
-	},
-	["AutoSave"] = true,
-	["Gameplay"] = {
-		["Saber Event"] = {
-			["Servant"] = "Berserker",
-			["Auto Select Servant"] = true
-		},
-		["Auto Use Ability"] = true,
-		["Auto Skip Wave"] = true,
-		["Auto Restart"] = {
-			["Enable"] = true,
-			["Wave"] = 16
-		},
-		["Auto Sell Farm"] = {
-			["Wave"] = 1
-		}
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
