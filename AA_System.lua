@@ -1287,10 +1287,10 @@ local Settings = {
     ["Ignore"] = {
         -- "tank_enemies",
         -- "fast_enemies",
-        -- "short_range",
+        "short_range",
         "godspeed_enemies",
         -- "regen_enemies",
-        -- "short_range_2",
+        "short_range_2",
         -- "flying_enemies",
         "burst_enemies",
         -- "shield_enemies",
