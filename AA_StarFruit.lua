@@ -182,7 +182,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = true
+		["Teleport Lobby if Player"] = false
 	},
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,

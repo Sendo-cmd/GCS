@@ -20,7 +20,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = true
+		["Teleport Lobby if Player"] = false
 	},
 	["Macros"] = {
 		["No Ignore Sell Timing"] = true,

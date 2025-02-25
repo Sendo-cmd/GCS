@@ -11,7 +11,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = true
+		["Teleport Lobby if Player"] = false
 	},
 	["Joiner Cooldown"] = 65,
 	["Performance"] = {

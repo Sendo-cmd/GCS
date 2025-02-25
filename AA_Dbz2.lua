@@ -178,6 +178,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
+		["Teleport Lobby if Player"] = false
 	},
 	["Secure"] = {
 		["Walk Around"] = true
