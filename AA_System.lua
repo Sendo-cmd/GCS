@@ -1188,15 +1188,15 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["OTeMoKungO"] = {
-        ["Select Mode"] = "Event", 
+        ["Select Mode"] = "Raid", 
     
-        ["Select Map"] = "Frozen Abyss", 
-        ["Select Level"] = "1", 
+        ["Select Map"] = "Sacred Planet", 
+        ["Select Level"] = "4", 
         ["Hard"] = false,
         ["Daily"] = false,
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
-            "tonklachza2007",
+            "CGFONE06m",
         },
     },
     ["Katakuri_Print"] = {
@@ -1228,8 +1228,8 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
-        ["Daily"] = false,
-        ["Auto Join"] = true,
+        ["Auto Join"] = false,
+        ["Party Mode"] = true,
     },
     ["ownekitte"] = {
         ["Party Mode"] = true,
