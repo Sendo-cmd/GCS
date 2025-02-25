@@ -1137,7 +1137,7 @@ Accounts = {
     ["OTeMoKungO"] = {
        "Log",
        "System",
-       "Hsnd",
+       "Dbz2",
     },
     ["kosantokol05"] = {
         "Log",
