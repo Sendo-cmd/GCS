@@ -1189,11 +1189,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["OTeMoKungO"] = {
-        ["Select Mode"] = "Raid", 
-    
-        ["Select Map"] = "Sacred Planet", 
-        ["Select Level"] = "3", 
-        ["Hard"] = false,
         ["Party Mode"] = true,
     },
     ["Katakuri_Print"] = {
