@@ -1194,7 +1194,6 @@ _G.User = {
         ["Select Level"] = "3", 
         ["Hard"] = false,
         ["Daily"] = false,
-        ["Challenge"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "CGFONE06m",
