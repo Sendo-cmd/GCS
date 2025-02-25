@@ -97,13 +97,10 @@ getgenv().Config = {
 	["Gameplay"] = {
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Wave"] = 15
+			["Wave"] = 20
 		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
-		},
-		["Auto Sell Farm"] = {
-			["Wave"] = 15
 		},
 		["Auto Vote Start"] = true,
 		["Auto Use Ability"] = true,
