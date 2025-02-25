@@ -37,6 +37,7 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
+			["Golden Castle"] = "-100.51405334472656, -0.16030120849609375, -210.62820434570312",
 			["Shibuya Aftermath"] = "-94.77557373046875, 316.1539306640625, -34.29759216308594",
 			["Spider Forest"] = "-324.47222900390625, 1644.5369873046875, -319.5542297363281",
 			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781"
@@ -64,8 +65,8 @@ getgenv().Config = {
 	},
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
 		["Auto Claim Milestone"] = true,
+		["Auto Claim Achievement"] = true,
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
@@ -77,10 +78,11 @@ getgenv().Config = {
 		["Replay Amount"] = 0
 	},
 	["Summoner"] = {
+		["Auto Summon Special"] = true,
 		["Unselect if Summoned"] = true,
 		["Special Unit"] = {
-			["Oryo"] = true,
-			["Eizan"] = true
+			["Eizan"] = true,
+			["Oryo"] = true
 		},
 		["Delete Rarity"] = {
 			["Epic"] = true,
@@ -102,12 +104,12 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
+		["Auto Use Ability"] = true,
+		["Auto Vote Start"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
 		},
-		["Auto Vote Start"] = true,
-		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true
 	},
 	["Macros"] = {
