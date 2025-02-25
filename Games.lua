@@ -1180,7 +1180,7 @@ Accounts = {
     ["CGFONE06m"] = {
         "Log",
         "System",
-        "FarmGem",
+        "Dbz2",
     },
     ["ownekitte"] = {
        "Log",

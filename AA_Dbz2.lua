@@ -183,6 +183,12 @@ getgenv().Config = {
 	["Secure"] = {
 		["Walk Around"] = true
 	},
+	["Raid Joiner"] = {
+		["Matchmaking"] = true,
+		["Level"] = "Level 1",
+		["Enable"] = true,
+		["World"] = "Sacred Planet"
+	},
 	["AutoSave"] = true,
 	["Gameplay"] = {
 		["Smart Auto Ability"] = {

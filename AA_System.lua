@@ -285,9 +285,10 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = true,
+        ["Daily"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
+            "OTeMoKungO",
             "Charlottex207x",
             "SDEgFGtxuid",
         },
@@ -1195,9 +1196,6 @@ _G.User = {
         ["Hard"] = false,
         ["Daily"] = false,
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "CGFONE06m",
-        },
     },
     ["Katakuri_Print"] = {
         ["Party Mode"] = true,
@@ -1227,8 +1225,9 @@ _G.User = {
     
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story 
-        ["Party Mode"] = true,
+        ["Hard"] = false, -- Story
+        ["Auto Join"] = false,
+        ["Party Mode"] = false,
     },
     ["ownekitte"] = {
         ["Party Mode"] = true,
