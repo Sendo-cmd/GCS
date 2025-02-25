@@ -185,7 +185,7 @@ getgenv().Config = {
 	},
 	["Raid Joiner"] = {
 		["Matchmaking"] = true,
-		["Level"] = "Level 1",
+		["Level"] = "Level 4",
 		["Enable"] = true,
 		["World"] = "Sacred Planet"
 	},
