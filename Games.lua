@@ -1,6 +1,7 @@
 Games = {
     [5578556129] = { --Anime-Vanguards
         ["Me"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_My.lua",
+        ["Me2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_My2.lua",
         ["BaseB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Base.lua",
         ["BaseBS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Bases.lua",
         ["BaseBS2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_Bases2.lua",
@@ -320,7 +321,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Me",
+        "Me2",
     },
     ["spiltduc9241"] = {
         "Log",
