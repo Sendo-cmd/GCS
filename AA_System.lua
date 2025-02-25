@@ -288,7 +288,6 @@ _G.User = {
         ["Daily"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "OTeMoKungO",
             "Charlottex207x",
             "SDEgFGtxuid",
         },
