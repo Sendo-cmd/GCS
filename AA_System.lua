@@ -1194,6 +1194,7 @@ _G.User = {
         ["Select Level"] = "3", 
         ["Hard"] = false,
         ["Daily"] = false,
+        ["Challenge"]
         ["Party Mode"] = true,
         ["Party Member"] = {
             "CGFONE06m",
@@ -1228,7 +1229,7 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
-        ["Auto Join"] = false,
+        ["Auto Join"] = true,
         ["Party Mode"] = true,
     },
     ["ownekitte"] = {
