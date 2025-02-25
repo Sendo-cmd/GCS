@@ -285,7 +285,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = true,
+        ["Daily"] = false,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Charlottex207x",
