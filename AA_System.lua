@@ -1194,7 +1194,6 @@ _G.User = {
         ["Select Map"] = "Sacred Planet", 
         ["Select Level"] = "3", 
         ["Hard"] = false,
-        ["Daily"] = false,
         ["Party Mode"] = true,
     },
     ["Katakuri_Print"] = {
@@ -1226,6 +1225,8 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Challenge"] = false,
+        ["Daily"] = false,
         ["Auto Join"] = false,
         ["Party Mode"] = false,
     },
