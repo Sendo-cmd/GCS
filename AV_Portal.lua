@@ -75,7 +75,7 @@ getgenv().Config = {
 			["Spider Forest"] = "-324.47222900390625, 1644.5369873046875, -319.5542297363281",
 			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781"
 		},
-		["Focus on Farm"] = false
+		["Focus on Farm"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
