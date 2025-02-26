@@ -1296,7 +1296,7 @@ local Settings = {
         -- "shield_enemies",
         "triple_cost",
         -- "mini_range",
-        -- "double_cost",
+        "double_cost",
         -- "armored_enemies",
         -- "hyper_shield_enemies",
         -- "hyper_regen_enemies",
