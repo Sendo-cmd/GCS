@@ -50,7 +50,7 @@ getgenv().Config = {
 			["6"] = -1
 		},
 		["Enable"] = true,
-		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
+		["Upgrade Method"] = "Hotbar left to right (until Max)",
 		["Prefer Position"] = {
 			["Golden Castle"] = "Middle",
 			["Double Dungeon"] = "Middle",
