@@ -1244,6 +1244,10 @@ Accounts = {
         "Log",
         "Paragon",
     },
+    ["pangpondInwzaza007"] = {
+        "Log",
+        "Portal",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
