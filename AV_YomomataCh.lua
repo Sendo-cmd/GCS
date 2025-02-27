@@ -71,9 +71,9 @@ getgenv().Config = {
 		["Replay Amount"] = 0
 	},
 	["Performance Failsafe"] = {
-		["Ping Freeze"] = true,
+		["Ping Freeze"] = false,
 		["Teleport Lobby FPS below"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["FPS"] = 4
 		}
 	},
@@ -89,8 +89,8 @@ getgenv().Config = {
 		["Random Offset"] = true
 	},
 	["Legend Stage Joiner"] = {
+		["Stage"] = "Kuinshi Palace",
 		["Auto Join"] = true,
-		["Stage"] = "Double Dungeon",
 		["Act"] = "Act3"
 	},
 	["AutoSave"] = true,
@@ -99,30 +99,29 @@ getgenv().Config = {
 			["Servant"] = "Berserker"
 		},
 		["Auto Sell Farm"] = {
-			["Wave"] = 1
+			["Wave"] = 15
 		},
 		["Auto Skip Wave"] = true,
 		["Auto Use Ability"] = true,
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 3,
 				["Thrice"] = 4,
 				["Warding off Evil"] = 24,
-				["Precise Attack"] = 13,
+				["Champions"] = 99,
 				["Fast"] = 1,
-				["Revitalize"] = 6,
-				["Exploding"] = 2,
+				["Revitalize"] = 98,
+				["Exploding"] = 97,
 				["Dodge"] = 10,
-				["Immunity"] = 11,
+				["Immunity"] = 100,
 				["Fisticuffs"] = 25,
 				["Harvest"] = 17,
 				["Slayer"] = 16,
-				["Champions"] = 12,
+				["Precise Attack"] = 13,
 				["Planning Ahead"] = 15,
 				["No Trait No Problem"] = 23,
 				["Cooldown"] = 19,
-				["Quake"] = 9,
+				["Quake"] = 96,
 				["King's Burden"] = 27,
 				["Range"] = 18,
 				["Common Loot"] = 21,
@@ -134,11 +133,12 @@ getgenv().Config = {
 				["Uncommon Loot"] = 22,
 				["Money Surge"] = 26
 			},
+			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
+				["Champions"] = 0,
 				["Fast"] = 0,
 				["Revitalize"] = 0,
 				["Exploding"] = 0,
@@ -147,7 +147,7 @@ getgenv().Config = {
 				["Fisticuffs"] = 0,
 				["Harvest"] = 0,
 				["Slayer"] = 0,
-				["Champions"] = 0,
+				["Precise Attack"] = 0,
 				["Planning Ahead"] = 0,
 				["No Trait No Problem"] = 0,
 				["Cooldown"] = 0,
@@ -166,7 +166,7 @@ getgenv().Config = {
 		}
 	},
 	["Macros"] = {
-		["Macro"] = "SonjVC_Igris",
+		["Macro"] = "YomomataCh",
 		["Ignore Macro Timing"] = true,
 		["Macro Retry Limit"] = 0,
 		["Play"] = true,

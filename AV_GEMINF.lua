@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Joiner Cooldown"] = 65,
+	["Joiner Cooldown"] = 0,
 	["Stage Joiner"] = {
 		["Auto Join"] = true,
 		["Act"] = "Infinite",
