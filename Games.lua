@@ -33,8 +33,7 @@ Games = {
         ["MONS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Mon.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
-        ["PPN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25.lua",
-        ["PPS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon25S.lua",
+        ["Paragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon.lua",
         ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
         ["BaseCFE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_GojoE.lua",
         ["CF_RengukoE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_RengukoE.lua",
@@ -1240,6 +1239,10 @@ Accounts = {
     ["GimGiw"] = {
         "Log",
         "Portal",
+    },
+    ["Umbreon14142"] = {
+        "Log",
+        "Paragon",
     },
 
 }
