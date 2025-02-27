@@ -30,7 +30,7 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Planet Namak"] = "538.678955078125, 2.062572717666626, -365.94683837890625"
+			["Planet Namak"] = "540.7809448242188, 2.062572717666626, -365.7040710449219"
 		}
 	},
 	["Stage Joiner"] = {
