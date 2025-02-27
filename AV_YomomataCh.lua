@@ -77,9 +77,6 @@ getgenv().Config = {
 			["FPS"] = 4
 		}
 	},
-	["Webhook"] = {
-		["URL"] = ""
-	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Teleport Lobby if Player"] = false

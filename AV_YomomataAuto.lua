@@ -9,10 +9,6 @@ getgenv().Config = {
 		["Black Screen"] = true,
 		["Delete Entities"] = true
 	},
-	["Stage Joiner"] = {
-		["Act"] = "Infinite",
-		["Stage"] = "Spirit Society"
-	},
 	["Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
@@ -33,21 +29,6 @@ getgenv().Config = {
 	["Match Finished"] = {
 		["Auto Replay"] = true,
 		["Replay Amount"] = 0
-	},
-	["Summoner"] = {
-		["Auto Summon Special"] = true,
-		["Unselect if Summoned"] = true,
-		["Special Unit"] = {
-			["Eizan"] = true,
-			["Oryo"] = true
-		},
-		["Delete Rarity"] = {
-			["Epic"] = true,
-			["Legendary"] = true,
-			["Rare"] = true
-		},
-		["Teleport Lobby new Banner"] = true,
-		["Auto Open Gift Box"] = true
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
