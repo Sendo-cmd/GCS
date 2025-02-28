@@ -58,16 +58,38 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
-		["Place and Upgrade"] = false,
 		["Enable"] = true,
-		["Middle Position"] = {
-			["Planet Namak"] = "79.00111389160156, 7.105718612670898, 122.80880737304688",
-			["Shibuya Station"] = "-764.9132080078125, 9.356081008911133, -119.7239990234375",
-			["Double Dungeon"] = "-278.3384094238281, 0.10069097578525543, -92.76183319091797",
-			["Sand Village"] = "58.4763298034668, 9.966852188110352, -26.314233779907227"
+		["Upgrade Method"] = "Hotbar left to right (until Max)",
+		["Prefer Position"] = {
+			["Golden Castle"] = "Middle",
+			["Double Dungeon"] = "Middle",
+			["Planet Namak"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Sand Village"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Kuinshi Palace"] = "Middle",
+			["Underground Church"] = "Middle",
+			["Spider Forest"] = "Middle",
+			["Spirit Society"] = "Middle"
 		},
-		["Upgrade Method"] = "Nearest from Middle Position (until Max)"
-	},
+		["Upgrade Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = -1
+		},
+		["Focus on Farm"] = true,
+		["Middle Position"] = {
+			["Shibuya Aftermath"] = "-94.77557373046875, 316.1539306640625, -34.29759216308594",
+			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781",
+			["Golden Castle"] = "-100.51405334472656, -0.16030120849609375, -210.62820434570312",
+			["Spider Forest"] = "-324.47222900390625, 1644.5369873046875, -319.5542297363281",
+			["Kuinshi Palace"] = "395.2952880859375, 268.38262939453125, 114.03340148925781"
+		}
+	},	
 	["Gameplay"] = {
 		["Auto Skip Wave"] = true,
 		["Auto Modifier"] = {
@@ -90,12 +112,8 @@ getgenv().Config = {
 	},
 	["Daily Challenge Joiner"] = {
 		["Ignore Modifier"] = {
-			["Exploding"] = true,
 			["Thrice"] = true,
 			["Fast"] = true
-		},
-		["Ignore Act"] = {
-			["[Double Dungeon] Act6"] = true
 		},
 		["Auto Join"] = true,
 		["Reward"] = {

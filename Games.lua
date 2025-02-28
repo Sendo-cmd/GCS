@@ -1242,7 +1242,7 @@ Accounts = {
     },
     ["Umbreon14142"] = {
         "Log",
-        "Paragon",
+        "TraitReroll",
     },
     ["pangpondInwzaza007"] = {
         "Log",
@@ -1251,7 +1251,15 @@ Accounts = {
     ["XDASD077"] = {
         "Log",
         "Marco",
-        "YomomataG",
+        "YomomataV",
+    },
+    ["Irjfifig9t8rot8"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["comgg2135"] = {
+        "Log",
+        "YomomataAuto",
     },
 
 }
