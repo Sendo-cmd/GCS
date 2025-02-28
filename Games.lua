@@ -775,8 +775,8 @@ Accounts = {
         "FarmGem",
     },
     ["XDcggza4"] = {
-        "StarGem",
-        "System",
+        "Log",
+        "YomomataAuto",
     },
     ["HD111222"] = {
        "Log",
