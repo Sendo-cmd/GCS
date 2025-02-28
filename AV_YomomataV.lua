@@ -3,53 +3,11 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Gold Buyer"] = {
-		["Enable"] = true,
-		["Item"] = {
-			["Crystal"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true,
-			["Senzu Bean"] = true,
-			["Pink Essence Stone"] = true,
-			["Ramen"] = true,
-			["Green Essence Stone"] = true,
-			["Super Stat Chip"] = true,
-			["Rainbow Essence Stone"] = true,
-			["Stat Chip"] = true
-		}
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = {
-			["Enable"] = true
-		},
-		["Delete Entities"] = true
-	},
-	["Joiner Cooldown"] = 0,
-	["Crafter"] = {
-		["Enable"] = true,
-		["Teleport Lobby full Essence"] = true,
-		["Essence Stone"] = {
-			["Pink Essence Stone"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true
-		},
-		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 10,
-			["Blue Essence Stone"] = 10,
-			["Red Essence Stone"] = 10,
-			["Yellow Essence Stone"] = 10,
-			["Purple Essence Stone"] = 10
-		}
-	},
+	["AutoExecute"] = true,
 	["Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
+			["Enable"] = true,
 			["Prioritize"] = {
 				["Shibuya Aftermath"] = 2,
 				["Spider Forest"] = 1,
@@ -57,49 +15,43 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Battle Pass"] = true
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,
 		["Replay Amount"] = 0
 	},
-	["Performance Failsafe"] = {
-		["Ping Freeze"] = false,
-		["Teleport Lobby FPS below"] = {
-			["Enable"] = false,
-			["FPS"] = 4
-		}
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
+	["AutoSave"] = true,
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = false
+		["Auto Rejoin"] = true
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Walk Around"] = true
 	},
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Kuinshi Palace",
 		["Auto Join"] = true,
 		["Act"] = "Act3"
 	},
-	["AutoSave"] = true,
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
 	["Gameplay"] = {
-		["Saber Event"] = {
-			["Servant"] = "Berserker"
-		},
-		["Auto Sell Farm"] = {
-			["Wave"] = 15
-		},
-		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = true,
 		["Auto Modifier"] = {
 			["Prioritize"] = {
 				["Strong"] = 3,
@@ -160,14 +112,59 @@ getgenv().Config = {
 				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			}
-		}
+		},
+		["Saber Event"] = {
+			["Servant"] = "Berserker"
+		},
+		["Auto Use Ability"] = true,
+		["Auto Vote Start"] = true,
+		["Auto Sell Farm"] = {
+			["Enable"] = true,
+			["Wave"] = 15
+		},
+		["Auto Skip Wave"] = true
 	},
-	["Macros"] = {
-		["Macro"] = "YomomataV",
-		["Ignore Macro Timing"] = true,
-		["Macro Retry Limit"] = 0,
-		["Play"] = true,
-		["No Ignore Sell Timing"] = true
+	["Auto Play"] = {
+		["Auto Upgrade"] = true,
+		["Place Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 2,
+			["6"] = 0
+		},
+		["Enable"] = true,
+		["Upgrade Method"] = "Hotbar left to right (until Max)",
+		["Prefer Position"] = {
+			["Golden Castle"] = "Middle",
+			["Double Dungeon"] = "Middle",
+			["Planet Namak"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Sand Village"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Kuinshi Palace"] = "Middle",
+			["Underground Church"] = "Middle",
+			["Spider Forest"] = "Middle",
+			["Spirit Society"] = "Middle"
+		},
+		["Upgrade Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = 0
+		},
+		["Focus on Farm"] = true,
+		["Middle Position"] = {
+			["Shibuya Aftermath"] = "-94.77557373046875, 316.1539306640625, -34.29759216308594",
+			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781",
+			["Golden Castle"] = "-100.51405334472656, -0.16030120849609375, -210.62820434570312",
+			["Spider Forest"] = "-324.47222900390625, 1644.5369873046875, -319.5542297363281",
+			["Kuinshi Palace"] = "391.9526672363281, 268.38262939453125, 115.10562896728516"
+		}
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
