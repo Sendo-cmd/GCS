@@ -1285,7 +1285,7 @@ local Settings = {
     },
     ["Ignore"] = {
         -- "tank_enemies",
-        -- "fast_enemies",
+        "fast_enemies",
         "short_range",
         "godspeed_enemies",
         -- "regen_enemies",
