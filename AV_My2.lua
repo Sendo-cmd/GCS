@@ -53,7 +53,7 @@ getgenv().Config = {
 	["Stage Joiner"] = {
 		["Auto Join"] = true,
 		["Act"] = "Infinite",
-		["Stage"] = "Spirit Society"
+		["Stage"] = "Planet Namak"
 	},
 	["Portal Joiner"] = {
 		["Tier Cap"] = 10,
