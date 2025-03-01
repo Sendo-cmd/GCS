@@ -51,6 +51,7 @@ Games = {
         ["YomomataG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataG.lua",
         ["YomomataV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataV.lua",
         ["YomomataAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAuto.lua",
+        ["KeyGilgamesh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -325,6 +326,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
+        "Me3",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -1263,6 +1265,10 @@ Accounts = {
     ["Saezxx_99"] = {
         "Log",
         "YomomataAuto",
+    },
+    ["yycsYvBvBRz"] = {
+        "Log",
+        "Portal",
     },
 
 }
