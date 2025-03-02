@@ -1279,6 +1279,13 @@ Accounts = {
         "Log",
         "Portal",
     },
+    ["fourgroupssss"] = {
+        "Log",
+    },
+    ["junjai007"] = {
+        "Log",
+        "TraitReroll",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
