@@ -1,12 +1,29 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
 getgenv().Config = {
+	["Summoner"] = {
+		["Special Unit"] = {
+			["Saber"] = true
+		},
+		["Auto Open Gift Box"] = true,
+		["Delete Rarity"] = {
+			["Epic"] = true,
+			["Legendary"] = true,
+			["Rare"] = true
+		}
+	},
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
+	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true,
 		["Delete Entities"] = true
 	},
+	["AutoExecute"] = true,
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Place Cap"] = {
@@ -14,7 +31,7 @@ getgenv().Config = {
 			["3"] = 0,
 			["2"] = 0,
 			["5"] = 0,
-			["4"] = 2,
+			["4"] = 1,
 			["6"] = -1
 		},
 		["Enable"] = true,
@@ -47,38 +64,9 @@ getgenv().Config = {
 			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781"
 		}
 	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
-	},
 	["AutoSave"] = true,
 	["Match Finished"] = {
 		["Auto Next"] = true
-	},
-	["Summoner"] = {
-		["Auto Summon Special"] = true,
-		["Unselect if Summoned"] = true,
-		["Special Unit"] = {
-			["Eizan"] = true,
-			["Oryo"] = true
-		},
-		["Delete Rarity"] = {
-			["Epic"] = true,
-			["Legendary"] = true,
-			["Rare"] = true
-		},
-		["Teleport Lobby new Banner"] = true,
-		["Auto Open Gift Box"] = true
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -93,9 +81,6 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Boss Event Joiner"] = {
-		["Stage"] = "IgrosEvent"
-	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
 	},
@@ -103,8 +88,9 @@ getgenv().Config = {
 		["Walk Around"] = true
 	},
 	["Winter Portal Joiner"] = {
-		["Auto Join"] = true,
 		["Tier Cap"] = 10,
+		["Auto Next"] = true,
+		["Auto Join"] = true,
 		["Portal Reward Picker"] = {
 			["Enable"] = true,
 			["Prioritize"] = {
@@ -113,15 +99,18 @@ getgenv().Config = {
 				["Planet Namak"] = 3
 			}
 		},
-		["Auto Next"] = true,
 		["Auto Delete Spider Forest Portal"] = true
 	},
-	["AutoExecute"] = true,
+	["Claimer"] = {
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Quest"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
 	["Gameplay"] = {
-		["Auto Sell"] = {
-			["Enable"] = true,
-			["Wave"] = 22
-		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
@@ -132,13 +121,7 @@ getgenv().Config = {
 			["Enable"] = true,
 			["Wave"] = 20
 		}
-	},
-	["Stage Joiner"] = {
-		["Auto Join"] = true,
-		["Act"] = "Infinite",
-		["Stage"] = "Planet Namak"
 	}
 }
-
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
