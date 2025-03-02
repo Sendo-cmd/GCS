@@ -1286,6 +1286,10 @@ Accounts = {
         "Log",
         "TraitReroll",
     },
+    ["Lawbana"] = {
+        "Log",
+        "Portal",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
