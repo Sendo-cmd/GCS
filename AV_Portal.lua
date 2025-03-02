@@ -100,6 +100,7 @@ getgenv().Config = {
 			["Wave"] = 20
 		},
 		["Auto Use Ability"] = true,
+		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true
 	},
 	["Performance"] = {
