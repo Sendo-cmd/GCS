@@ -54,6 +54,7 @@ Games = {
         ["KeyGilgamesh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
         ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
     },
