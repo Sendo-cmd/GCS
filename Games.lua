@@ -326,7 +326,6 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Me2",
     },
     ["spiltduc9241"] = {
         "Log",
