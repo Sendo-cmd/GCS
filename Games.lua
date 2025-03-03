@@ -1289,7 +1289,7 @@ Accounts = {
     },
     ["Lawbana"] = {
         "Log",
-        "Portal",
+        "YomomataAuto",
     },
 
 }
