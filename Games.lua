@@ -1296,6 +1296,10 @@ Accounts = {
         "Log",
         "Portal",
     },
+    ["Meesoonma"] = {
+        "Log",
+        "StarGem",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
