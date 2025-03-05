@@ -463,7 +463,7 @@ Accounts = {
     },
     ["yanawarutkanpai"] = {
         "Log",
-        "Marco"
+        "Marco",
         "YomomataAuto",
     },
     ["Etaa_xm"] = {
