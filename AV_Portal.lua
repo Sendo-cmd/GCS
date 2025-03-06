@@ -78,9 +78,6 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Boss Event Joiner"] = {
-		["Stage"] = "IgrosEvent"
-	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
 	},
