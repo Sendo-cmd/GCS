@@ -1296,6 +1296,14 @@ Accounts = {
         "Log",
         "Portal",
     },
+    ["Tpwz195"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Tanjiro29035"] = {
+        "Log",
+        "StarRemF",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
