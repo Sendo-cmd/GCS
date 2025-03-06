@@ -464,7 +464,7 @@ Accounts = {
     ["yanawarutkanpai"] = {
         "Log",
         "Marco",
-        "YomomataAuto",
+        "Portal",
     },
     ["Etaa_xm"] = {
         "Log",
