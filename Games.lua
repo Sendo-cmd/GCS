@@ -1304,7 +1304,8 @@ Accounts = {
     },
     ["Tanjiro29035"] = {
         "Log",
-        "StarRemF",
+        "System",
+        "MemberStar",
     },
     ["Meesoonma"] = {
         "Log",

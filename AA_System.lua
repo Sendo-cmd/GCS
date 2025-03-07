@@ -289,6 +289,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "SDEgFGtxuid",
+            "Tanjiro29035",
         },
 
     },
@@ -1242,6 +1243,9 @@ _G.User = {
         ["Select Map"] = "Sacred Planet",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
+    },
+    ["Tanjiro29035"] = {
+        ["Party Mode"] = true,
     },
 
 }
