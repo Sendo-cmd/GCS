@@ -1,6 +1,6 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().RedeemAllCode = true
-ggetgenv().Config = {
+getgenv().Config = {
 	["AutoSave"] = true,
 	["Gold Buyer"] = {
 		["Enable"] = true,
