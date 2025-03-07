@@ -1,5 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
 getgenv().Config = {
 	["Summoner"] = {
 		["Unselect if Summoned"] = true,
@@ -100,7 +99,8 @@ getgenv().Config = {
 				["Spider Forest"] = 1,
 				["Planet Namak"] = 3
 			}
-		}
+		},
+		["Auto Delete Spider Forest Portal"] = true
 	},
 	["AutoExecute"] = true,
 	["Gameplay"] = {
