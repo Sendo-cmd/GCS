@@ -4,28 +4,16 @@ getgenv().Config = {
 	["Summoner"] = {
 		["Unselect if Summoned"] = true,
 		["Special Unit"] = {
-			["Oryo"] = true
+			["Saber"] = true
 		},
-		["Auto Open Gift Box"] = true,
-		["Teleport Lobby new Banner"] = true,
 		["Delete Rarity"] = {
 			["Epic"] = true,
 			["Legendary"] = true,
 			["Rare"] = true
-		}
+		},
+		["Teleport Lobby new Banner"] = true,
+		["Auto Open Gift Box"] = true
 	},
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
-	},
-	["AutoExecute"] = true,
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Place Cap"] = {
@@ -66,10 +54,22 @@ getgenv().Config = {
 			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781"
 		}
 	},
-	["AutoSave"] = true,
-	["Match Finished"] = {
-		["Auto Next"] = true
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
 	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
+	},
+	["AutoSave"] = true,
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
@@ -91,6 +91,7 @@ getgenv().Config = {
 	},
 	["Winter Portal Joiner"] = {
 		["Tier Cap"] = 10,
+		["Auto Next"] = true,
 		["Auto Join"] = true,
 		["Portal Reward Picker"] = {
 			["Enable"] = true,
@@ -101,26 +102,22 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
+	["AutoExecute"] = true,
 	["Gameplay"] = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Vote Start"] = true,
-		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 20
-		}
+		},
+		["Auto Use Ability"] = true,
+		["Auto Skip Wave"] = true
+	},
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
