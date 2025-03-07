@@ -289,7 +289,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "SDEgFGtxuid",
-            "Tanjiro29035",
         },
 
     },
