@@ -64,7 +64,7 @@ getgenv().Config = {
 		["Random Offset"] = true
 	},
 	["Gold Buyer"] = {
-		["Enable"] = true,
+		["Enable"] = false,
 		["Item"] = {
 			["Crystal"] = true,
 			["Blue Essence Stone"] = true,
