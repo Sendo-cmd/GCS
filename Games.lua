@@ -1322,7 +1322,7 @@ Accounts = {
     ["FlossiI5015"] = {
         "Log",
         "Marco",
-        "YomomataG",
+        "YomomataAuto",
     },
     ["tawannieiei"] = {
         "Log",
