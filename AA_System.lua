@@ -286,7 +286,7 @@ _G.User = {
         ["Select Level"] = "1", 
         ["Hard"] = false,
         ["Daily"] = false,
-        ["Auto Join"] = false
+        ["Auto Join"] = false,
         ["Party Mode"] = false,
         ["Party Member"] = {
             "SDEgFGtxuid",
