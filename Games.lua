@@ -1300,7 +1300,6 @@ Accounts = {
     },
     ["Tpwz195"] = {
         "Log",
-        "BaseGem",
     },
     ["Tanjiro29035"] = {
         "Log",
