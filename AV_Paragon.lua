@@ -1,5 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Auto Play"] = {
@@ -27,17 +26,48 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = -1
 		},
-		["Focus on Farm"] = true,
 		["Middle Position"] = {
 			["Planet Namak"] = "540.7809448242188, 2.062572717666626, -365.7040710449219"
+		},
+		["Focus on Farm"] = true
+	},
+	["AutoExecute"] = true,
+	["Stage Joiner"] = {
+		["Auto Join"] = true,
+		["Act"] = "Paragon",
+		["Stage"] = "Planet Namak"
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
+	},
+	["Match Finished"] = {
+		["Auto Next"] = true,
+		["Auto Replay"] = true,
+		["Replay Amount"] = 0
+	},
+	["Love Portal Joiner"] = {
+		["Tier Cap"] = 10,
+		["Portal Reward Picker"] = {
+			["Prioritize"] = {
+				["Double Dungeon"] = 3,
+				["Planet Namak"] = 1,
+				["Spirit Society"] = 6,
+				["Shibuya Station"] = 4,
+				["Underground Church"] = 5,
+				["Sand Village"] = 2
+			}
 		}
 	},
-	["Stage Joiner"] = {
-		["Act"] = "Paragon",
-		["Stage"] = "Planet Namak",
-		["Auto Join"] = true
+	["Failsafe"] = {
+		["Auto Rejoin"] = true
 	},
-	["Portal Joiner"] = {
+	["Secure"] = {
+		["Walk Around"] = true
+	},
+	["Winter Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
@@ -47,73 +77,52 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
-	},
-	["AutoExecute"] = true,
-	["Match Finished"] = {
-		["Auto Next"] = true,
-		["Auto Replay"] = true,
-		["Replay Amount"] = 0
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true
-	},
-	["Secure"] = {
-		["Walk Around"] = true
-	},
 	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
-		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Achievement"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Collection Milestone"] = true
 	},
 	["Gameplay"] = {
-		["Saber Event"] = {
-			["Servant"] = "Berserker"
-		},
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 97,
 				["Thrice"] = 4,
 				["Warding off Evil"] = 24,
-				["Precise Attack"] = 13,
+				["Champions"] = 100,
 				["Fast"] = 1,
 				["Revitalize"] = 98,
 				["Exploding"] = 96,
-				["Dodge"] = 10,
+				["Dodge"] = 79,
 				["Immunity"] = 99,
 				["Fisticuffs"] = 25,
 				["Harvest"] = 17,
 				["Uncommon Loot"] = 22,
-				["Champions"] = 100,
+				["Precise Attack"] = 13,
+				["Drowsy"] = 80,
 				["No Trait No Problem"] = 23,
-				["Drowsy"] = 8,
 				["Cooldown"] = 19,
-				["King's Burden"] = 27,
 				["Regen"] = 95,
+				["King's Burden"] = 27,
 				["Damage"] = 20,
 				["Common Loot"] = 21,
 				["Range"] = 18,
-				["Quake"] = 9,
+				["Quake"] = 2,
 				["Press It"] = 14,
 				["Planning Ahead"] = 15,
 				["Shielded"] = 94,
 				["Slayer"] = 16,
 				["Money Surge"] = 26
 			},
+			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
+				["Champions"] = 0,
 				["Fast"] = 0,
 				["Revitalize"] = 0,
 				["Exploding"] = 0,
@@ -122,12 +131,12 @@ getgenv().Config = {
 				["Fisticuffs"] = 0,
 				["Harvest"] = 0,
 				["Uncommon Loot"] = 0,
-				["Champions"] = 0,
-				["No Trait No Problem"] = 0,
+				["Precise Attack"] = 0,
 				["Drowsy"] = 0,
+				["No Trait No Problem"] = 0,
 				["Cooldown"] = 0,
-				["King's Burden"] = 0,
 				["Regen"] = 0,
+				["King's Burden"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
 				["Range"] = 0,
@@ -139,13 +148,16 @@ getgenv().Config = {
 				["Money Surge"] = 0
 			}
 		},
-		["Auto Vote Start"] = true,
-		["Auto Use Ability"] = true,
-		["Auto Skip Wave"] = true,
+		["Saber Event"] = {
+			["Servant"] = "Berserker"
+		},
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
-		}
+		},
+		["Auto Vote Start"] = true,
+		["Auto Use Ability"] = true,
+		["Auto Skip Wave"] = true
 	},
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
