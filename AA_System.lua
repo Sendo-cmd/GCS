@@ -281,12 +281,12 @@ Strange Town (Haunted)
 _G.User = {
     ["FireBlackDevilZ"] = {
         ["Select Mode"] = "Event", 
-    
+
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = true,
-        ["Party Mode"] = true,
+        ["Daily"] = false,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "SDEgFGtxuid",
         },
