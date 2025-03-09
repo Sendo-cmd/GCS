@@ -781,7 +781,7 @@ Accounts = {
     },
     ["XDcggza4"] = {
         "Log",
-        "YomomataAuto",
+        "StarGem",
     },
     ["HD111222"] = {
        "Log",
@@ -1313,7 +1313,8 @@ Accounts = {
     },
     ["bababuty"] = {
         "Log",
-        "ESSE",
+        "Marco",
+        "YomomataG",
     },
     ["bentoggwp7916"] = {
         "Log",
@@ -1330,6 +1331,10 @@ Accounts = {
         "YomomataAuto",
     },
     ["jarnmosx01"] = {
+        "Log",
+        "Portal",
+    },
+    ["petezero0"] = {
         "Log",
         "Portal",
     },
