@@ -1,5 +1,12 @@
 local Endpoint = "https://raw.githubusercontent.com/test-macro/marco/main/"
 local Profiles = {
+    "GCW.json",
+    "DDW.json",
+    "NW.json",
+    "UCW.json",
+    "SSW.json",
+    "SAW.json",
+    "KPW.json",
     "Igris_Base.json",
     "Raid_Base.json",
     "IgrisMon.json",

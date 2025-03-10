@@ -54,6 +54,7 @@ Games = {
         ["YomomataV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataV.lua",
         ["YomomataAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAuto.lua",
         ["KeyGilgamesh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
+        ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
@@ -1314,7 +1315,7 @@ Accounts = {
     ["bababuty"] = {
         "Log",
         "Marco",
-        "YomomataG",
+        "YomomataAuto",
     },
     ["bentoggwp7916"] = {
         "Log",
@@ -1328,7 +1329,7 @@ Accounts = {
     ["tawannieiei"] = {
         "Log",
         "Marco",
-        "YomomataAuto",
+        "Worldline",
     },
     ["jarnmosx01"] = {
         "Log",
