@@ -52,6 +52,7 @@ Games = {
         ["YomomataCh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataCh.lua",
         ["YomomataG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataG.lua",
         ["YomomataV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataV.lua",
+        ["YomomataR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataR.lua",
         ["YomomataAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAuto.lua",
         ["KeyGilgamesh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
         ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",

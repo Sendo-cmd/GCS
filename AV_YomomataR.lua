@@ -160,7 +160,7 @@ getgenv().Config = {
 		}
 	},
 	["Macros"] = {
-		["Macro"] = "YomomataV",
+		["Macro"] = "YomomataR",
 		["Ignore Macro Timing"] = true,
 		["Macro Retry Limit"] = 0,
 		["Play"] = true,
