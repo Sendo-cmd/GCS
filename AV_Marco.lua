@@ -7,6 +7,7 @@ local Profiles = {
     "SSW.json",
     "SAW.json",
     "KPW.json",
+    "SPSW.json",
     "Igris_Base.json",
     "Raid_Base.json",
     "IgrisMon.json",

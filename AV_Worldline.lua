@@ -22,6 +22,7 @@ getgenv().Config = {
 			["Shibuya Station"] = "SSW",
 			["Underground Church"] = "UCW",
 			["Kuinshi Palace"] = "KPW",
+			["Spirit Society"] = "SPSW",
 			["Golden Castle"] = "GCW"
 		},
 		["No Ignore Sell Timing"] = true
