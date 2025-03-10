@@ -39,7 +39,7 @@ local Profiles = {
     "YomomataCh.json",
     "YomomataG.json",
     "YomomataV.json",
-    "YomomataR.json"
+    "YomomataR.json",
     "KeyGilgamesh.json",
 };
 
