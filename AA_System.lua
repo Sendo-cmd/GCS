@@ -846,11 +846,12 @@ _G.User = {
         ["Hard"] = false, -- Story
     },
     ["Katoy_2007"] = {
-        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event
     
-        ["Select Map"] = "Frozen Abyss",
-        ["Select Level"] = 1, -- Story & Legend Stage & Raid
-        ["Hard"] = false, -- Story
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
+        ["Daily"] = false,
     },
     ["PerfectBoyz_VX"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
