@@ -1349,6 +1349,10 @@ Accounts = {
         "Log",
         "FarmGemSw",
     },
+    ["Reset24333192"] = {
+        "Log",
+        "FarmGemSw",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
