@@ -898,7 +898,6 @@ Accounts = {
     },
     ["Katoy_2007"] = {
        "Log",
-       "System",
        "BaseGem",
     },
     ["torzasool"] = {
