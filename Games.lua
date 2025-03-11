@@ -46,6 +46,7 @@ Games = {
         ["DioBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dio_Base.lua",
         ["DioAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DioAuto.lua",
         ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
+        ["LovePortal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Love_Portal.lua",
         ["Saber"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber.lua",
         ["Saber2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber3.lua",
         ["Sokora"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber2.lua",
@@ -332,7 +333,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Me2",
+        "LovePortal",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -1316,7 +1317,7 @@ Accounts = {
     ["bababuty"] = {
         "Log",
         "Marco",
-        "YomomataG",
+        "LovePortal",
     },
     ["bentoggwp7916"] = {
         "Log",
@@ -1330,7 +1331,7 @@ Accounts = {
     ["tawannieiei"] = {
         "Log",
         "Marco",
-        "Worldline",
+        "LovePortal",
     },
     ["jarnmosx01"] = {
         "Log",
