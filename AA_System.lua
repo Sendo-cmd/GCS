@@ -285,9 +285,9 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
-        ["Auto Join"] = false,
-        ["Party Mode"] = false,
+        ["Daily"] = true,
+        ["Auto Join"] = true,
+        ["Party Mode"] = true,
         ["Party Member"] = {
             "SDEgFGtxuid",
         },
@@ -1144,7 +1144,7 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
         ["Daily"] = true,
-        ["Party Mode"] = false, -- Story
+        ["Party Mode"] = true, -- Story
     },
     ["SugarSnow_84782"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
