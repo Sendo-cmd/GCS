@@ -95,6 +95,7 @@ Games = {
         ["StarRemF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_StarRemF.lua",
         ["CursedT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Cursed.lua",
         ["AssPack"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_AssPack.lua",
+        ["RunDungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_RunDungeon.lua",
     }
 }
 Accounts = {
