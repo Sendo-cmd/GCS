@@ -1120,7 +1120,7 @@ Accounts = {
     ["SDEgFGtxuid"] = {
        "Log",
        "System",
-       "MemberStar",
+       "Hsnd",
     },
     ["SugarSnow_84782"] = {
         "StarGem",
