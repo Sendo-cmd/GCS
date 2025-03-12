@@ -1361,6 +1361,10 @@ Accounts = {
         "Log",
         "FarmGemSw",
     },
+    ["wanzweY04520"] = {
+        "Log",
+        "CursedT",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
