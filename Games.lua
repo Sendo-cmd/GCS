@@ -1282,7 +1282,7 @@ Accounts = {
     },
     ["RedAshleyKung"] = {
         "Log",
-        "Portal",
+        "LovePortal",
     },
     ["fourgroupssss"] = {
         "Log",
