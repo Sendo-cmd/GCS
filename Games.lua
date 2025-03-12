@@ -1357,6 +1357,10 @@ Accounts = {
         "System",
         "FarmGem",
     },
+    ["bloxfruit756"] = {
+        "Log",
+        "FarmGemSw",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
