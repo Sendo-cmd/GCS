@@ -1365,6 +1365,10 @@ Accounts = {
         "Log",
         "CursedT",
     },
+    ["Vwx9m"] = {
+        "Log",
+        "StarGem",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
