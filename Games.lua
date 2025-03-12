@@ -1352,6 +1352,11 @@ Accounts = {
         "Log",
         "FarmGemSw",
     },
+    ["PDXD22"] = {
+        "Log",
+        "System",
+        "FarmGem",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()

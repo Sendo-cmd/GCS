@@ -1247,6 +1247,15 @@ _G.User = {
     ["Tanjiro29035"] = {
         ["Party Mode"] = true,
     },
+    ["PDXD22"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event , Contract
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+        ["Daily"] = false,
+        ["Party Mode"] = false,
+    },
 
 }
 
