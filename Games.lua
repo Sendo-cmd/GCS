@@ -1150,8 +1150,7 @@ Accounts = {
     },
     ["OTeMoKungO"] = {
        "Log",
-       "System",
-       "MemberStar",
+       "BaseGem",
     },
     ["kosantokol05"] = {
         "Log",
