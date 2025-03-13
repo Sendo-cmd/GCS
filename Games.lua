@@ -50,6 +50,7 @@ Games = {
         ["Saber"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber.lua",
         ["Saber2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber3.lua",
         ["Sokora"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber2.lua",
+        ["Sokora2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Sokora.lua",
         ["YomomataCh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataCh.lua",
         ["YomomataG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataG.lua",
         ["YomomataV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataV.lua",
@@ -1331,7 +1332,7 @@ Accounts = {
     ["tawannieiei"] = {
         "Log",
         "Marco",
-        "LovePortal",
+        "Sokora2",
     },
     ["jarnmosx01"] = {
         "Log",
@@ -1380,6 +1381,10 @@ Accounts = {
     ["KinGDoM_BoYXD"] = {
         "Log",
         "Dbz2",
+    },
+    ["OPggripTH"] = {
+        "Log",
+        "LovePortal",
     },
 
 }

@@ -23,6 +23,7 @@ local Profiles = {
     "Saber.json",
     "Saber2.json",
     "SaberClear.json",
+    "Sokora.json",
     "Igris_SonjE.json",
     "Igris_SonjEV.json",
     "Igris_SonjEV2.json",
