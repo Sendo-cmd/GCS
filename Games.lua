@@ -355,11 +355,12 @@ Accounts = {
     },
     ["maser080"] = {
         "Log",
-        "BaseGemInf",
+        "FarmGemSW",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
-        "FarmGemSw",
+        "System"
+        "MemberStar",
     },
     ["joy006zx"] = {
         "Log",

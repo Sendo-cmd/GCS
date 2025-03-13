@@ -1143,7 +1143,10 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
-        ["Party Mode"] = false, -- Story
+        ["Party Mode"] = true, -- Story
+        ["Party Member"] = {
+            "Thai_WilYuLaw"
+        },
     },
     ["SugarSnow_84782"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
@@ -1152,6 +1155,14 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
         ["Auto Join"] = false,
+    },
+    ["Thai_WilYuLaw"] = {
+        ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
+    
+        ["Select Map"] = "Frozen Abyss",
+        ["Select Level"] = 1, -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+        ["Party Mode"] = true, -- Story
     },
     ["as_01999"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
