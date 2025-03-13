@@ -1143,7 +1143,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
-        ["Party Mode"] = true, -- Story
+        ["Party Mode"] = false, -- Story
         ["Party Member"] = {
             "Thai_WilYuLaw"
         },
