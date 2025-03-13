@@ -334,7 +334,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Portal",
+        "LovePortal",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -1368,6 +1368,10 @@ Accounts = {
     ["Vwx9m"] = {
         "Log",
         "StarGem",
+    },
+    ["unf0rg1ven_249"] = {
+        "Log",
+        "LovePortal",
     },
 
 }
