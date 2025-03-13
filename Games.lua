@@ -1377,6 +1377,10 @@ Accounts = {
         "Log",
         "Dbz2",
     },
+    ["KinGDoM_BoYXD"] = {
+        "Log",
+        "Dbz2",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
