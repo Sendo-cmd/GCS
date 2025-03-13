@@ -1373,6 +1373,10 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["Overbe2716"] = {
+        "Log",
+        "Dbz2",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
