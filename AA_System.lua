@@ -1039,7 +1039,15 @@ _G.User = {
         ["Select Map"] = "Planet Greenie",
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story 
-        ["Auto Join"] = false,
+        ["Auto Join"] = true,
+    },
+    ["champsinon"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story 
+        ["Auto Join"] = true,
     },
     ["Demonjom2"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite

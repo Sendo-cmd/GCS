@@ -1047,8 +1047,9 @@ Accounts = {
        "Hsnd",
     },
     ["RIXIEEDID"] = {
-       "StarGem",
+       "Log",
        "System",
+       "FarmGem",
     },
     ["Demonjom2"] = {
        "Log",
@@ -1385,6 +1386,11 @@ Accounts = {
     ["OPggripTH"] = {
         "Log",
         "LovePortal",
+    },
+    ["champsinon"] = {
+        "Log",
+        "System",
+        "FarmGem",
     },
 
 }
