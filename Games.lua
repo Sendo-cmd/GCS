@@ -1386,7 +1386,7 @@ Accounts = {
         "Log",
         "LovePortal",
     },
-    ["champsinon"] = {
+    ["Champsinon"] = {
         "Log",
         "System",
         "FarmGem",

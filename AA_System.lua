@@ -1041,7 +1041,7 @@ _G.User = {
         ["Hard"] = false, -- Story 
         ["Auto Join"] = true,
     },
-    ["champsinon"] = {
+    ["Champsinon"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event
     
         ["Select Map"] = "Planet Greenie",
