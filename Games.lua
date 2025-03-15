@@ -1388,7 +1388,7 @@ Accounts = {
     },
 
 }
-repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game:IsLoaded(15)
 
 local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
