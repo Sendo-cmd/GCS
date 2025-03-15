@@ -1395,6 +1395,10 @@ Accounts = {
         "Log",
         "Portal",
     },
+    ["ASD_King70"] = {
+        "Log",
+        "R",
+    },
 
 }
 repeat task.wait() until game:IsLoaded()
