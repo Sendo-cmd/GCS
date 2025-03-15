@@ -825,8 +825,7 @@ Accounts = {
     },
     ["NoOneCareDisnameXD"] = {
        "Log",
-       "System",
-       "Hsnd",
+       "FarmGemSw",
     },
     ["Wakoji4516"] = {
         "Log",
