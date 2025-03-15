@@ -1397,7 +1397,7 @@ Accounts = {
     },
     ["ASD_King70"] = {
         "Log",
-        "AV_YomomataR",
+        "YomomataR",
     },
 
 }
