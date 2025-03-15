@@ -1397,11 +1397,11 @@ Accounts = {
     },
     ["ASD_King70"] = {
         "Log",
-        "R",
+        "AV_YomomataR",
     },
 
 }
-repeat task.wait() until game:IsLoaded()
+repeat task.wait(5) until game:IsLoaded(5)
 
 local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
