@@ -41,7 +41,7 @@ getgenv().Config = {
 	["Raid Joiner"] = {
 		["Auto Join"] = true,
 		["Stage"] = "Spider Forest",
-		["Act"] = "Act3"
+		["Act"] = "Act4"
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
