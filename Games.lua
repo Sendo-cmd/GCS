@@ -1422,7 +1422,7 @@ Accounts = {
     },
 
 }
-repeat task.wait(5) until game:IsLoaded(5)
+repeat task.wait() until game:IsLoaded()
 
 local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
