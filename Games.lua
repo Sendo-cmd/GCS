@@ -1398,6 +1398,10 @@ Accounts = {
         "Log",
         "YomomataR",
     },
+    ["G2G168P117"] = {
+        "Log",
+        "Dbz2",
+    },
 
 }
 repeat task.wait(5) until game:IsLoaded(5)
