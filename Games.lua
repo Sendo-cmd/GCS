@@ -335,7 +335,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "LovePortal",
+        "Marco"
+        "Saber",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -1401,6 +1402,11 @@ Accounts = {
     ["G2G168P117"] = {
         "Log",
         "Dbz2",
+    },
+    ["Tiramisu_01"] = {
+        "Log",
+        "Marco",
+        "Saber",
     },
 
 }
