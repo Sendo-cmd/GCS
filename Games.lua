@@ -1317,8 +1317,7 @@ Accounts = {
     },
     ["bababuty"] = {
         "Log",
-        "Marco",
-        "Portal",
+        "StarGem",
     },
     ["bentoggwp7916"] = {
         "Log",

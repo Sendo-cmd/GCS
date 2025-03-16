@@ -11,9 +11,12 @@ local ItemsForSaleEvent = require(game:GetService("ReplicatedStorage").src.Data.
 local function SendWebhook(evo)
     local plr = game:GetService("Players").LocalPlayer
     local HttpService = game:GetService("HttpService")
-    local Current = "silver_christmas"
+    local Current = "lily_february"
 
-    local session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+    local session 
+    repeat task.wait(.1)
+        session = require(game.ReplicatedStorage.src.Loader).load_client_service(game:GetService("Players").LocalPlayer.PlayerScripts.main, "UnitCollectionServiceClient")["session"]
+    until session
     local collection_profile_data = session["collection"]["collection_profile_data"]
     local profile_data = session["profile_data"]
     local battlepass_data = profile_data["battlepass_data"][Current]

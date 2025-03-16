@@ -1,17 +1,56 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
-getgenv().EquipMacroUnit = true
 getgenv().Config = {
+	["AutoSave"] = true,
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true,
+		["Play"] = true,
+		["Macro"] = "Sokora"
+	},
 	["Claimer"] = {
+		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
 		["Auto Claim Achievement"] = true,
-		["Auto Claim Milestone"] = true,
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Collection Milestone"] = true
 	},
-	["Portal Joiner"] = {
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
+	},
+	["Match Finished"] = {
+		["Auto Replay"] = true,
+		["Replay Amount"] = 0
+	},
+	["Boss Event Joiner"] = {
+		["Stage"] = "SaberEvent",
+		["Auto Join"] = true
+	},
+	["Love Portal Joiner"] = {
+		["Tier Cap"] = 10,
+		["Portal Reward Picker"] = {
+			["Prioritize"] = {
+				["Double Dungeon"] = 3,
+				["Planet Namak"] = 1,
+				["Spirit Society"] = 6,
+				["Shibuya Station"] = 4,
+				["Underground Church"] = 5,
+				["Sand Village"] = 2
+			}
+		}
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true
+	},
+	["Secure"] = {
+		["Walk Around"] = true
+	},
+	["Winter Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
@@ -21,46 +60,17 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["Macro"] = "Sokora",
-		["Play"] = true,
-		["No Ignore Sell Timing"] = true
-	},
 	["AutoExecute"] = true,
-	["Match Finished"] = {
-		["Auto Replay"] = true,
-		["Replay Amount"] = 0
-	},
-	["Boss Event Joiner"] = {
-		["Auto Join"] = true,
-		["Stage"] = "SaberEvent"
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true
-	},
-	["Secure"] = {
-		["Walk Around"] = true
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
-	},
-	["AutoSave"] = true,
 	["Gameplay"] = {
 		["Saber Event"] = {
-			["Servant"] = "Berserker",
-			["Auto Select Servant"] = true
+			["Auto Select Servant"] = true,
+			["Servant"] = "Berserker"
 		},
-		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true,
-		["Auto Sell"] = {
-			["Enable"] = true,
-			["Wave"] = 16
-		},
+		["Auto Use Ability"] = true,
+		["Auto Sell Farm"] = {
+			["Wave"] = 1
+		}
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
