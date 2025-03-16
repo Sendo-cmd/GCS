@@ -1416,6 +1416,10 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["Bamboo_NMpk"] = {
+        "Log",
+        "LovePortal",
+    },
 
 }
 repeat task.wait(5) until game:IsLoaded(5)
