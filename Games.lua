@@ -58,6 +58,7 @@ Games = {
         ["YomomataAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAuto.lua",
         ["KeyGilgamesh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
         ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",
+        ["Dungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungeonAnt.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
@@ -336,7 +337,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "Marco",
-        "LovePortal",
+        "Dungeon",
     },
     ["spiltduc9241"] = {
         "Log",
