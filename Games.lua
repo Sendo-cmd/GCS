@@ -571,7 +571,7 @@ Accounts = {
     ["FireBlackDevilZ"] = {
        "Log",
        "System",
-       "RunDungeon",
+       "Hsnd",
     },
     ["chopperaob"] = {
         "LogACB",
@@ -1124,7 +1124,7 @@ Accounts = {
     ["SDEgFGtxuid"] = {
        "Log",
        "System",
-       "Hsnd",
+       "MemberStar",
     },
     ["SugarSnow_84782"] = {
         "StarGem",
@@ -1409,6 +1409,10 @@ Accounts = {
         "Saber",
     },
     ["narabadee004"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["AMERICAMENTIONEDRAHH"] = {
         "Log",
         "LovePortal",
     },
