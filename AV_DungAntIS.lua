@@ -2,14 +2,11 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Macro"] = "DungBoost3",
+		["Macro"] = "DungAntIS",
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true,
-		["Joiner Macro Equipper"] = {
-			["Enable"] = true
-		}
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
