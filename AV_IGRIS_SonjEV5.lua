@@ -165,7 +165,7 @@ getgenv().Config = {
 		}
 	},
 	["Macros"] = {
-		["Macro"] = "SonjVC_Igris",
+		["Macro"] = "SonjVCH_Igris",
 		["Ignore Macro Timing"] = true,
 		["Macro Retry Limit"] = 0,
 		["Play"] = true,

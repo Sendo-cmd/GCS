@@ -15,6 +15,7 @@ Games = {
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
         ["BaseIG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Base.lua",
         ["IgrisSECV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV4.lua",
+        ["IgrisSECHV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV5.lua",
         ["BaseR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Base.lua",
         ["RIgris"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Igris.lua",
         ["RRengoku"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rengoku_Renguko.lua",
@@ -1444,6 +1445,10 @@ Accounts = {
     ["frongk006"] = {
         "Log",
         "YomomataAuto",
+    },
+    ["Minarusame"] = {
+        "Log",
+        "IgrisSECHV",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

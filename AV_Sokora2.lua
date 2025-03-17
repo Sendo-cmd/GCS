@@ -7,9 +7,6 @@ getgenv().Config = {
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true,
 		["Macro"] = "Sokora2"
-		["Joiner Macro Equipper"] = {
-			["Enable"] = true
-		}
 	},
 	["Claimer"] = {
 		["Auto Claim Milestone"] = true,

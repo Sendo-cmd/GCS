@@ -92,6 +92,9 @@ getgenv().Config = {
 		["Play"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
+		["Joiner Macro Equipper"] = {
+			["Enable"] = true
+		}
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
