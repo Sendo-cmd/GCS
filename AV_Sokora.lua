@@ -79,7 +79,7 @@ getgenv().Config = {
 			["Wave"] = 1
 		},
 		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = true,
+		["Auto Use Ability"] = false,
 		["Auto Sell Farm"] = {
 			["Enable"] = false,
 			["Wave"] = 1
