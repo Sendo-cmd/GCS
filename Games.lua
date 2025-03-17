@@ -1376,7 +1376,7 @@ Accounts = {
     },
     ["unf0rg1ven_249"] = {
         "Log",
-        "LovePortal",
+        "Dungeon",
     },
     ["Overbe2716"] = {
         "Log",
@@ -1427,7 +1427,7 @@ Accounts = {
     },
     ["atomwat123"] = {
         "Log",
-        "KeyGilgameshAuto",
+        "YomomataAuto",
     },
     ["NonBemmy"] = {
         "Log",
@@ -1436,6 +1436,14 @@ Accounts = {
     ["anakin_av240"] = {
         "Log",
         "Dungeon",
+    },
+    ["STARPLATINUMEPIC"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["frongk006"] = {
+        "Log",
+        "YomomataAuto",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
