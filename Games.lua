@@ -404,7 +404,7 @@ Accounts = {
     },
     ["OPggripTH"] = {
         "Log",
-        "LovePortal",
+        "Dungeon",
     },
     ["champsinon"] = {
         "System",
