@@ -33,6 +33,7 @@ local Profiles = {
     "Igris_SonjEV3.json",
     "Igris_SonjEMon.json",
     "SonjVC_Igris.json",
+    "SonjVCH_Igris.json",
     "Igris_Base.json",
     "Igris_ChainE.json",
     "Igris_Chain.json",
