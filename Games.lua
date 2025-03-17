@@ -1336,7 +1336,7 @@ Accounts = {
     ["tawannieiei"] = {
         "Log",
         "Marco",
-        "",
+        "Dungeon",
     },
     ["jarnmosx01"] = {
         "Log",
