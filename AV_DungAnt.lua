@@ -51,16 +51,6 @@ getgenv().Config = {
 			["Wave"] = 30
 		},
 		["Auto Skip Wave"] = true,
-	["Misc"] = {
-		["Redeem Code"] = true
-	},
-	["Modifier"] = {
-		["Restart Modifier"] = {
-			["Enable"] = true,
-			["Modifier"] = {
-				["Money Surge"] = true
-			}
-		},
 		["Auto Modifier"] = {
 			["Prioritize"] = {
 				["Strong"] = 0,
@@ -122,6 +112,82 @@ getgenv().Config = {
 				["Press It"] = 0,
 				["Champions"] = 0,
 				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		}
+	},
+	["Misc"] = {
+		["Redeem Code"] = true
+	},
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = true,
+			["Modifier"] = {
+				["Money Surge"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Planning Ahead"] = 0,
+				["Immunity"] = 92,
+				["Exploding"] = 90,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 94,
+				["Fisticuffs"] = 0,
+				["Revitalize"] = 0,
+				["Harvest"] = 99,
+				["Quake"] = 0,
+				["Cooldown"] = 96,
+				["Drowsy"] = 91,
+				["Lifeline"] = 0,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 97,
+				["Common Loot"] = 93,
+				["Range"] = 98,
+				["No Trait No Problem"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 0,
+				["Slayer"] = 95,
+				["Money Surge"] = 100
+			},
+			["Enable"] = true,
+			["Amount"] = {
+				["Strong"] = 3,
+				["Thrice"] = 3,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Planning Ahead"] = 0,
+				["Immunity"] = 1,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Revitalize"] = 3,
+				["Harvest"] = 0,
+				["Quake"] = 3,
+				["Cooldown"] = 3,
+				["Drowsy"] = 3,
+				["Lifeline"] = 0,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 3,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["No Trait No Problem"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 3,
 				["Slayer"] = 0,
 				["Money Surge"] = 1
 			}
@@ -198,5 +264,3 @@ getgenv().Config = {
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
-
-
