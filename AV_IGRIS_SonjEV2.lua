@@ -1,101 +1,213 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
-getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Legend Stage Joiner"] = {
-		["Stage"] = "Double Dungeon",
-		["Auto Join"] = true,
-		["Act"] = "Act3"
+	["Macros"] = {
+		["Macro"] = "Igris_SonjEV2",
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true,
 	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = false
+	["Love Portal Joiner"] = {
+		["Tier Cap"] = 10,
+		["Portal Reward Picker"] = {
+			["Prioritize"] = {
+				["Double Dungeon"] = 3,
+				["Planet Namak"] = 1,
+				["Spirit Society"] = 6,
+				["Shibuya Station"] = 4,
+				["Underground Church"] = 5,
+				["Sand Village"] = 2
+			}
+		}
 	},
-	["Joiner Cooldown"] = 0,
+	["Winter Portal Joiner"] = {
+		["Tier Cap"] = 10,
+		["Portal Reward Picker"] = {
+			["Prioritize"] = {
+				["Shibuya Aftermath"] = 2,
+				["Spider Forest"] = 1,
+				["Planet Namak"] = 3
+			}
+		}
+	},
+	["Gameplay"] = {
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 98,
+				["Immunity"] = 100,
+				["Exploding"] = 97,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 96,
+				["Cooldown"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 99,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 0,
+				["Immunity"] = 0,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 0,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		},
+		["Ant Island"] = {
+			["Walk To Ant Tunnel"] = false,
+			["Auto Plug Ant Tunnel"] = false
+		},
+		["Saber Event"] = {
+			["Servant"] = "Berserker"
+		},
+		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = true,
+		["Auto Sell Farm"] = {
+			["Wave"] = 15
+		}
+	},
+	["Misc"] = {
+		["Redeem Code"] = true
+	},
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = false,
+			["Modifier"] = {
+				["King's Burden"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 98,
+				["Immunity"] = 100,
+				["Exploding"] = 97,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 96,
+				["Cooldown"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 99,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 3,
+				["Thrice"] = 3,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 3,
+				["Immunity"] = 1,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 3,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 3,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 3,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		}
+	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Delete Entities"] = true,
-        ["Black Screen"] = {
-			["Enable"] = true
-		}	
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
-	["Performance Failsafe"] = {
-		["Ping Freeze"] = true,
-		["Teleport Lobby FPS below"] = {
-			["Enable"] = true,
-			["FPS"] = 4
-		}
+	["Match Finished"] = {
+		["Auto Replay"] = true,
+		["Replay Amount"] = 0
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Walk Around"] = true
 	},
-	["Gold Buyer"] = {
-		["Enable"] = true,
-		["Item"] = {
-			["Crystal"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true,
-			["Senzu Bean"] = true,
-			["Pink Essence Stone"] = true,
-			["Ramen"] = true,
-			["Green Essence Stone"] = true,
-			["Rainbow Essence Stone"] = true,
-			["Super Stat Chip"] = true,
-			["Stat Chip"] = true
-		}
-	},		
-	["Auto Skip Wave"] = true,
-	["Match Finished"] = {
-		["Auto Replay"] = true
+	["Legend Stage Joiner"] = {
+		["Auto Join"] = true,
+		["Stage"] = "Double Dungeon",
+		["Act"] = "Act3"
 	},
-	["Webhook"] = {
-		["Stage Finished"] = false,
-		["URL"] = ""
-	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Battle Pass"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Daily Reward"] = true
-	},
-	["Crafter"] = {
-		["Teleport Lobby full Essence"] = true,
-		["Enable"] = true,
-		["Essence Stone"] = {
-			["Pink Essence Stone"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true
-		},
-		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 10,
-			["Blue Essence Stone"] = 10,
-			["Red Essence Stone"] = 10,
-			["Yellow Essence Stone"] = 10,
-			["Purple Essence Stone"] = 10
-		}
-	},
-	["Macros"] = {
-		["Macro"] = "Igris_SonjEV2",
-		["Play"] = true,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
-		["Joiner Macro Equipper"] = {
-			["Enable"] = true
-		}
-	}
+	["AutoExecute"] = true
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden

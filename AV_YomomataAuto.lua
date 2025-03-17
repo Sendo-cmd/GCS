@@ -1,53 +1,34 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
 getgenv().Config = {
-	["AutoExecute"] = true,
-	["Portal Joiner"] = {
+	["AutoSave"] = true,
+	["Macros"] = {
+		["Macro"] = "YomomataR",
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true,
+	},
+	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
-			["Enable"] = true,
+			["Prioritize"] = {
+				["Double Dungeon"] = 3,
+				["Planet Namak"] = 1,
+				["Spirit Society"] = 6,
+				["Shibuya Station"] = 4,
+				["Underground Church"] = 5,
+				["Sand Village"] = 2
+			}
+		}
+	},
+	["Winter Portal Joiner"] = {
+		["Tier Cap"] = 10,
+		["Portal Reward Picker"] = {
 			["Prioritize"] = {
 				["Shibuya Aftermath"] = 2,
 				["Spider Forest"] = 1,
 				["Planet Namak"] = 3
 			}
 		}
-	},
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true
-	},
-	["Match Finished"] = {
-		["Auto Replay"] = true,
-		["Replay Amount"] = 0
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
-	},
-	["AutoSave"] = true,
-	["Failsafe"] = {
-		["Auto Rejoin"] = true
-	},
-	["Secure"] = {
-		["Walk Around"] = true
-	},
-	["Legend Stage Joiner"] = {
-		["Stage"] = "Kuinshi Palace",
-		["Auto Join"] = true,
-		["Act"] = "Act3"
-	},
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
 	},
 	["Gameplay"] = {
 		["Auto Modifier"] = {
@@ -70,8 +51,8 @@ getgenv().Config = {
 				["Cooldown"] = 0,
 				["No Trait No Problem"] = 0,
 				["Drowsy"] = 0,
-				["King's Burden"] = 0,
 				["Exterminator"] = 0,
+				["King's Burden"] = 0,
 				["Regen"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
@@ -115,17 +96,117 @@ getgenv().Config = {
 				["Money Surge"] = 1
 			}
 		},
+		["Ant Island"] = {
+			["Walk To Ant Tunnel"] = false,
+			["Auto Plug Ant Tunnel"] = false
+		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Use Ability"] = true,
 		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
-			["Enable"] = true,
 			["Wave"] = 15
-		},
-		["Auto Skip Wave"] = true
+		}
 	},
+	["Misc"] = {
+		["Redeem Code"] = true
+	},
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = false,
+			["Modifier"] = {
+				["King's Burden"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 97,
+				["Immunity"] = 99,
+				["Exploding"] = 100,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 96,
+				["Cooldown"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 98,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 3,
+				["Thrice"] = 3,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 3,
+				["Immunity"] = 1,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 3,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 3,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 3,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		}
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
+	},
+	["Match Finished"] = {
+		["Auto Replay"] = true,
+		["Replay Amount"] = 0
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true
+	},
+	["Secure"] = {
+		["Walk Around"] = true
+	},
+	["Legend Stage Joiner"] = {
+		["Stage"] = "Kuinshi Palace",
+		["Auto Join"] = true,
+		["Act"] = "Act3"
+	},
+	["AutoExecute"] = true,
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Place Cap"] = {

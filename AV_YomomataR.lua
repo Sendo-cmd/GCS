@@ -1,50 +1,27 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
-	["Gold Buyer"] = {
-		["Enable"] = true,
-		["Item"] = {
-			["Crystal"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true,
-			["Senzu Bean"] = true,
-			["Pink Essence Stone"] = true,
-			["Ramen"] = true,
-			["Green Essence Stone"] = true,
-			["Super Stat Chip"] = true,
-			["Rainbow Essence Stone"] = true,
-			["Stat Chip"] = true
+	["AutoSave"] = true,
+	["Macros"] = {
+		["Macro"] = "YomomataR",
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true,
+	},
+	["Love Portal Joiner"] = {
+		["Tier Cap"] = 10,
+		["Portal Reward Picker"] = {
+			["Prioritize"] = {
+				["Double Dungeon"] = 3,
+				["Planet Namak"] = 1,
+				["Spirit Society"] = 6,
+				["Shibuya Station"] = 4,
+				["Underground Church"] = 5,
+				["Sand Village"] = 2
+			}
 		}
 	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = {
-			["Enable"] = true
-		},
-		["Delete Entities"] = true
-	},
-	["Joiner Cooldown"] = 0,
-	["Crafter"] = {
-		["Enable"] = true,
-		["Teleport Lobby full Essence"] = true,
-		["Essence Stone"] = {
-			["Pink Essence Stone"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true
-		},
-		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 10,
-			["Blue Essence Stone"] = 10,
-			["Red Essence Stone"] = 10,
-			["Yellow Essence Stone"] = 10,
-			["Purple Essence Stone"] = 10
-		}
-	},
-	["Portal Joiner"] = {
+	["Winter Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
@@ -54,121 +31,183 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Battle Pass"] = true
+	["Gameplay"] = {
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 98,
+				["Immunity"] = 100,
+				["Exploding"] = 97,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 96,
+				["Cooldown"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 99,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 0,
+				["Immunity"] = 0,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 0,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		},
+		["Ant Island"] = {
+			["Walk To Ant Tunnel"] = false,
+			["Auto Plug Ant Tunnel"] = false
+		},
+		["Saber Event"] = {
+			["Servant"] = "Berserker"
+		},
+		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = true,
+		["Auto Sell Farm"] = {
+			["Wave"] = 15
+		}
+	},
+	["Misc"] = {
+		["Redeem Code"] = true
+	},
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = false,
+			["Modifier"] = {
+				["King's Burden"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 97,
+				["Immunity"] = 99,
+				["Exploding"] = 100,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 96,
+				["Cooldown"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 98,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 3,
+				["Thrice"] = 3,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 3,
+				["Immunity"] = 1,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 3,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 3,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 3,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		}
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,
 		["Replay Amount"] = 0
 	},
-	["Performance Failsafe"] = {
-		["Ping Freeze"] = false,
-		["Teleport Lobby FPS below"] = {
-			["Enable"] = false,
-			["FPS"] = 4
-		}
-	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = false
+		["Auto Rejoin"] = true
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Walk Around"] = true
 	},
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Kuinshi Palace",
 		["Auto Join"] = true,
 		["Act"] = "Act3"
 	},
-	["AutoSave"] = true,
-	["Gameplay"] = {
-		["Saber Event"] = {
-			["Servant"] = "Berserker"
-		},
-		["Auto Sell Farm"] = {
-			["Wave"] = 15
-		},
-		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = true,
-		["Auto Modifier"] = {
-			["Prioritize"] = {
-				["Strong"] = 3,
-				["Thrice"] = 4,
-				["Warding off Evil"] = 24,
-				["Champions"] = 98,
-				["Fast"] = 1,
-				["Revitalize"] = 97,
-				["Exploding"] = 100,
-				["Dodge"] = 10,
-				["Immunity"] = 99,
-				["Fisticuffs"] = 25,
-				["Harvest"] = 17,
-				["Slayer"] = 16,
-				["Precise Attack"] = 13,
-				["Planning Ahead"] = 15,
-				["No Trait No Problem"] = 23,
-				["Cooldown"] = 19,
-				["Quake"] = 96,
-				["King's Burden"] = 27,
-				["Range"] = 18,
-				["Common Loot"] = 21,
-				["Damage"] = 20,
-				["Regen"] = 7,
-				["Press It"] = 14,
-				["Drowsy"] = 8,
-				["Shielded"] = 5,
-				["Uncommon Loot"] = 22,
-				["Money Surge"] = 26
-			},
-			["Enable"] = true,
-			["Amount"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Champions"] = 0,
-				["Fast"] = 0,
-				["Revitalize"] = 0,
-				["Exploding"] = 0,
-				["Dodge"] = 0,
-				["Immunity"] = 0,
-				["Fisticuffs"] = 0,
-				["Harvest"] = 0,
-				["Slayer"] = 0,
-				["Precise Attack"] = 0,
-				["Planning Ahead"] = 0,
-				["No Trait No Problem"] = 0,
-				["Cooldown"] = 0,
-				["Quake"] = 0,
-				["King's Burden"] = 0,
-				["Range"] = 0,
-				["Common Loot"] = 0,
-				["Damage"] = 0,
-				["Regen"] = 0,
-				["Press It"] = 0,
-				["Drowsy"] = 0,
-				["Shielded"] = 0,
-				["Uncommon Loot"] = 0,
-				["Money Surge"] = 0
-			}
-		}
-	},
-	["Macros"] = {
-		["Macro"] = "YomomataR",
-		["Ignore Macro Timing"] = true,
-		["Macro Retry Limit"] = 0,
-		["Play"] = true,
-		["No Ignore Sell Timing"] = true
-		["Joiner Macro Equipper"] = {
-			["Enable"] = true
-		}
-	}
+	["AutoExecute"] = true
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
