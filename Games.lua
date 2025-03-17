@@ -51,6 +51,7 @@ Games = {
         ["Saber2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber3.lua",
         ["Sokora"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber2.lua",
         ["Sokora2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Sokora.lua",
+        ["Sokora3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Sokora2.lua",
         ["YomomataCh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataCh.lua",
         ["YomomataG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataG.lua",
         ["YomomataV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataV.lua",
@@ -1335,7 +1336,7 @@ Accounts = {
     ["tawannieiei"] = {
         "Log",
         "Marco",
-        "Sokora2",
+        "",
     },
     ["jarnmosx01"] = {
         "Log",
@@ -1401,7 +1402,7 @@ Accounts = {
     ["ASD_King70"] = {
         "Log",
         "Marco",
-        "Sokora2",
+        "Sokora3",
     },
     ["G2G168P117"] = {
         "Log",
