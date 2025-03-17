@@ -117,9 +117,11 @@ getgenv().Config = {
 				["Cooldown"] = 19,
 				["Quake"] = 96,
 				["King's Burden"] = 27,
+				["Exterminator"] = 0,
 				["Range"] = 18,
 				["Common Loot"] = 21,
 				["Damage"] = 20,
+				["Lifeline"] = 0,
 				["Regen"] = 7,
 				["Press It"] = 14,
 				["Drowsy"] = 8,
@@ -153,6 +155,8 @@ getgenv().Config = {
 				["Regen"] = 0,
 				["Press It"] = 0,
 				["Drowsy"] = 0,
+				["Lifeline"] = 0,
+				["Exterminator"] = 0,
 				["Shielded"] = 0,
 				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
@@ -165,9 +169,6 @@ getgenv().Config = {
 		["Macro Retry Limit"] = 0,
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true
-		["Joiner Macro Equipper"] = {
-			["Enable"] = true
-		}
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
