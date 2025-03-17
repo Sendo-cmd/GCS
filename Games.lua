@@ -441,7 +441,8 @@ Accounts = {
     },
     ["NonBemmy"] = {
         "Log",
-        "Dungeon",
+        "Marco",
+        "DungeonBoost3",
     },
     ["anakin_av240"] = {
         "Log",
