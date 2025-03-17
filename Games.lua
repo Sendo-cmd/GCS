@@ -463,6 +463,7 @@ Accounts = {
     },
     ["Minarusame"] = {
         "Log",
+        "Marco",
         "IgrisSECHV",
     },
     ["TKPOL321"] = {
