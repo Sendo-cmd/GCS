@@ -6,7 +6,7 @@ getgenv().Config = {
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true,
-		["Macro"] = "Sokora"
+		["Macro"] = "Sokora2"
 		["Joiner Macro Equipper"] = {
 			["Enable"] = true
 		}

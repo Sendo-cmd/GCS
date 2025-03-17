@@ -57,9 +57,11 @@ Games = {
         ["YomomataR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataR.lua",
         ["YomomataAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAuto.lua",
         ["KeyGilgamesh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
+        ["KeyGilgameshAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgameshAuto.lua",
         ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",
         ["Dungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnt.lua",
         ["DungeonIS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntIS.lua",
+        ["DungeonBoost3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
@@ -337,8 +339,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Marco",
-        "DungeonIS",
+        "Dungeon",
     },
     ["spiltduc9241"] = {
         "Log",
@@ -363,8 +364,8 @@ Accounts = {
     },
     ["Thai_WilYuLaw"] = {
         "Log",
-        "System",
-        "MemberStar",
+        "Marco",
+        "DungeonBoost3",
     },
     ["joy006zx"] = {
         "Log",
@@ -1399,7 +1400,8 @@ Accounts = {
     },
     ["ASD_King70"] = {
         "Log",
-        "Webs",
+        "Marco",
+        "Sokora2",
     },
     ["G2G168P117"] = {
         "Log",
@@ -1422,7 +1424,18 @@ Accounts = {
         "Log",
         "LovePortal",
     },
-
+    ["atomwat123"] = {
+        "Log",
+        "KeyGilgameshAuto",
+    },
+    ["NonBemmy"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["anakin_av240"] = {
+        "Log",
+        "Dungeon",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 

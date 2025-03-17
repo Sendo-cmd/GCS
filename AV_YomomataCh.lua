@@ -167,6 +167,9 @@ getgenv().Config = {
 		["Macro Retry Limit"] = 0,
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true
+		["Joiner Macro Equipper"] = {
+			["Enable"] = true
+		}
 	}
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"

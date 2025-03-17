@@ -1,66 +1,10 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
-	["Auto Play"] = {
-		["Auto Upgrade"] = true,
-		["Enable"] = true,
-		["Upgrade Method"] = "Randomize",
-		["Prefer Position"] = {
-			["Golden Castle"] = "Middle",
-			["Spirit Society"] = "Middle",
-			["Planet Namak"] = "Middle",
-			["Ant Island"] = "Middle",
-			["Shibuya Station"] = "Middle",
-			["Sand Village"] = "Middle",
-			["Shibuya Aftermath"] = "Middle",
-			["Mountain Shrine (Natural)"] = "Middle",
-			["Kuinshi Palace"] = "Middle",
-			["Double Dungeon"] = "Middle",
-			["Underground Church"] = "Middle",
-			["Spider Forest"] = "Middle",
-			["Tracks at the Edge of the World"] = "Middle"
-		},
-		["Upgrade Cap"] = {
-			["1"] = 0,
-			["3"] = 0,
-			["2"] = 0,
-			["5"] = 0,
-			["4"] = 0,
-			["6"] = 0
-		},
-		["Middle Position"] = {
-			["Ant Island"] = "-20.361221313476562, 164.8186492919922, -45.29857635498047"
-		}
-	},
-	["Dungeon Joiner"] = {
-		["Stage"] = "Ant Island",
-		["Auto Join"] = true,
-		["Act"] = "AntIsland"
-	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
-	},
 	["AutoSave"] = true,
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
-	},
-	["Match Finished"] = {
-		["Auto Replay"] = true,
-		["Auto Next"] = true,
-		["Replay Amount"] = 0
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -75,12 +19,6 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true
-	},
-	["Secure"] = {
-		["Walk Around"] = true
-	},
 	["Winter Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
@@ -91,71 +29,76 @@ getgenv().Config = {
 			}
 		}
 	},
-	["AutoExecute"] = true,
 	["Gameplay"] = {
 		["Auto Modifier"] = {
-			["Prioritize"] = {
-				["Strong"] = 96,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
-				["Fast"] = 1,
-				["Revitalize"] = 0,
-				["Immunity"] = 0,
-				["Exploding"] = 0,
-				["Dodge"] = 2,
-				["Slayer"] = 92,
-				["Fisticuffs"] = 0,
-				["Champions"] = 98,
-				["Harvest"] = 100,
-				["Planning Ahead"] = 0,
-				["Damage"] = 90,
-				["No Trait No Problem"] = 0,
-				["Drowsy"] = 0,
-				["Quake"] = 0,
-				["Exterminator"] = 23,
-				["Regen"] = 0,
-				["Range"] = 91,
-				["Common Loot"] = 97,
-				["King's Burden"] = 80,
-				["Lifeline"] = 24,
-				["Press It"] = 93,
-				["Cooldown"] = 89,
-				["Shielded"] = 0,
-				["Uncommon Loot"] = 99,
-				["Money Surge"] = 0
-			},
 			["Enable"] = true,
-			["Amount"] = {
+			["Prioritize"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
 				["Precise Attack"] = 0,
 				["Fast"] = 0,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 0,
-				["Dodge"] = 0,
-				["Slayer"] = 0,
-				["Immunity"] = 0,
 				["Revitalize"] = 0,
-				["Harvest"] = 0,
-				["Champions"] = 0,
-				["Cooldown"] = 0,
-				["Drowsy"] = 0,
-				["Lifeline"] = 0,
-				["Range"] = 0,
-				["Regen"] = 0,
+				["Immunity"] = 0,
+				["Exploding"] = 1,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 93,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 99,
+				["Quake"] = 0,
+				["Cooldown"] = 95,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 96,
 				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 97,
+				["Common Loot"] = 92,
+				["Range"] = 98,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 94,
+				["Money Surge"] = 100
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 0,
+				["Immunity"] = 0,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 0,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["Exterminator"] = 0,
-				["No Trait No Problem"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 0,
+				["Champions"] = 0,
 				["Shielded"] = 0,
-				["Uncommon Loot"] = 0,
-				["Money Surge"] = 0
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		},
+		["Occult Hunt"] = {
+			["Restart Unmatch"] = {
+				["Enable"] = true,
+				["Modifier"] = "Money Surge"
 			}
 		},
 		["Ant Island"] = {
@@ -165,13 +108,158 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
+		["Auto Use Ability"] = true,
 		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = true,
 		["Auto Sell Farm"] = {
-			["Wave"] = 1
+			["Enable"] = true,
+			["Wave"] = 30
 		}
-	}
+	},
+	["Misc"] = {
+		["Redeem Code"] = true
+	},
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = true,
+			["Modifier"] = {
+				["Money Surge"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Immunity"] = 92,
+				["Exploding"] = 90,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 94,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 99,
+				["Quake"] = 0,
+				["Cooldown"] = 96,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 91,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 97,
+				["Common Loot"] = 93,
+				["Range"] = 98,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 0,
+				["Slayer"] = 95,
+				["Money Surge"] = 100
+			},
+			["Amount"] = {
+				["Strong"] = 3,
+				["Thrice"] = 3,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 3,
+				["Immunity"] = 1,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 3,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 3,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 3,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		}
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Delete Entities"] = true
+	},
+	["Match Finished"] = {
+		["Auto Replay"] = true,
+		["Replay Amount"] = 0
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true
+	},
+	["Auto Play"] = {
+		["Auto Upgrade"] = true,
+		["Enable"] = true,
+		["Upgrade Method"] = "Randomize",
+		["Prefer Position"] = {
+			["Golden Castle"] = "Middle",
+			["Spirit Society"] = "Middle",
+			["Planet Namak"] = "Middle",
+			["Ant Island"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Sand Village"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Mountain Shrine (Natural)"] = "Middle",
+			["Kuinshi Palace"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
+			["Underground Church"] = "Middle",
+			["Spider Forest"] = "Middle",
+			["Double Dungeon"] = "Middle"
+		},
+		["Upgrade Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = 0
+		},
+		["Focus on Farm"] = true,
+		["Middle Position"] = {
+			["Ant Island"] = "-18.261302947998047, 164.8186492919922, -44.56714630126953"
+		},
+		["Place Gap"] = {
+			["Golden Castle"] = 2,
+			["Spirit Society"] = 2,
+			["Planet Namak"] = 2,
+			["Ant Island"] = 3,
+			["Shibuya Station"] = 2,
+			["Sand Village"] = 2,
+			["Shibuya Aftermath"] = 2,
+			["Mountain Shrine (Natural)"] = 2,
+			["Kuinshi Palace"] = 2,
+			["Tracks at the Edge of the World"] = 2,
+			["Underground Church"] = 2,
+			["Spider Forest"] = 2,
+			["Double Dungeon"] = 2
+		}
+	},
+	["Secure"] = {
+		["Walk Around"] = true
+	},
+	["Dungeon Joiner"] = {
+		["Stage"] = "Ant Island",
+		["Auto Join"] = true,
+		["Act"] = "AntIsland"
+	},
+	["AutoExecute"] = true
 }
 getgenv().Key = "sZoENIPLYqhElsjhrFywrbFsAGeUzAdm"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden

@@ -120,7 +120,7 @@ getgenv().Config = {
 		["Restart Modifier"] = {
 			["Enable"] = true,
 			["Modifier"] = {
-				["King's Burden"] = true
+				["Money Surge"] = true
 			}
 		},
 		["Auto Modifier"] = {
