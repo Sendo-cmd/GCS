@@ -131,6 +131,7 @@ elseif IsMatch then
             ["Horseshoe"] = plr:GetAttribute("Horseshoe"),
             ["RedWebs"] = plr:GetAttribute("RedWebs"),
             ["CommandSeal"] = plr:GetAttribute("CommandSeal"),
+            ["MonarchToken"] = plr:GetAttribute("MonarchToken"),
         }
         
         local response = request({
