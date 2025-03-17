@@ -1429,7 +1429,7 @@ Accounts = {
     },
     ["atomwat123"] = {
         "Log",
-        "YomomataAuto",
+        "Dungeon",
     },
     ["NonBemmy"] = {
         "Log",
@@ -1450,6 +1450,10 @@ Accounts = {
     ["Minarusame"] = {
         "Log",
         "IgrisSECHV",
+    },
+    ["TKPOL321"] = {
+        "Log",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
