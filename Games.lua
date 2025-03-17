@@ -303,7 +303,8 @@ Accounts = {
     },
     ["RedAshleyKung"] = {
         "Log",
-        "LovePortal",
+        "Marco",
+        "DungeonBoost3",
     },
     ["fourgroupssss"] = {
         "Log",
