@@ -113,7 +113,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Dungeon",
+        "LovePortal",
     },
     ["maser080"] = {
         "Log",
@@ -286,7 +286,19 @@ Accounts = {
     },
     ["Saezxx_99"] = {
         "Log",
-        "YomomataAuto",
+        "LovePortal",
+    },
+    ["tahkrisda126"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["anakin_av139"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Fvfvgoecwokdi"] = {
+        "Log",
+        "LovePortal",
     },
     ["yycsYvBvBRz"] = {
         "Log",
@@ -497,12 +509,12 @@ Accounts = {
     ["TONKAORIKI_NEW"] = {
         "Log",
         "Marco",
-        "Sokora2",
+        "Sokora3",
     },
     ["Kreovx"] = {
         "Log",
         "Marco",
-        "DungeonBoost3",
+        "Dungeon",
     },
     ["quk1lp"] = {
         "Log",
@@ -516,6 +528,11 @@ Accounts = {
     ["SoBoySVRRR"] = {
         "Log",
         "Dungeon",
+    },
+    ["KO9Ker"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3V2",
     },
     
 }
