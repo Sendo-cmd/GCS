@@ -8,7 +8,7 @@ local HttpService = game:GetService("HttpService")
 
 local plr = Players.LocalPlayer
 
-repeat task.wait() until not plr:GetAttribute("Loading")
+repeat task.wait(10) until not plr:GetAttribute("Loading")
 
 local PlayerModules = game:GetService("StarterPlayer"):WaitForChild("Modules")
 local Modules = ReplicatedStorage:WaitForChild("Modules")
