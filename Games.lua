@@ -543,6 +543,14 @@ Accounts = {
         "Marco",
         "DungeonBoost3V2",
     },
+    ["RadarxXx2020"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["FGHJKIG4"] = {
+        "Log",
+        "Dungeon",
+    },
     
 }
 repeat task.wait(5) until game:IsLoaded(5)
