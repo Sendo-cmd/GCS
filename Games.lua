@@ -513,7 +513,6 @@ Accounts = {
     },
     ["Kreovx"] = {
         "Log",
-        "Marco",
         "Dungeon",
     },
     ["quk1lp"] = {
@@ -530,6 +529,16 @@ Accounts = {
         "Dungeon",
     },
     ["KO9Ker"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3V2",
+    },
+    ["GGGGKURTEZ"] = {
+        "Log",
+        "Marco",
+        "IgrisSECV",
+    },
+    ["icemateenoobth"] = {
         "Log",
         "Marco",
         "DungeonBoost3V2",
