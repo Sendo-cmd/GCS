@@ -499,6 +499,21 @@ Accounts = {
         "Marco",
         "Sokora2",
     },
+    ["Kreovx"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3",
+    },
+    ["quk1lp"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3",
+    },
+    ["Zacherycttp"] = {
+        "Log",
+        "BaseGemInf",
+    },
+    
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
