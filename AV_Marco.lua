@@ -10,6 +10,7 @@ local Profiles = {
     "SPSW.json",
     "DungAntIS.json",
     "DungBoost3.json",
+    "DungBoost3V2.json",
     "Igris_Base.json",
     "Raid_Base.json",
     "IgrisMon.json",
