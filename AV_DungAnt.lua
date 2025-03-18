@@ -141,7 +141,8 @@ getgenv().Config = {
 	},
 	["AutoExecute"] = true,
 	["Secure"] = {
-		["Walk Around"] = true
+		["Walk Around"] = true,
+		["Random Offset"] = true
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = false,

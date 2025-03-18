@@ -189,7 +189,8 @@ getgenv().Config = {
 		["Delete Entities"] = true
 	},
 	["Secure"] = {
-		["Walk Around"] = true
+		["Walk Around"] = true,
+		["Random Offset"] = true
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = false,
