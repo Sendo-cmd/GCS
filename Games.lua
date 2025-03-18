@@ -541,7 +541,7 @@ Accounts = {
     ["icemateenoobth"] = {
         "Log",
         "Marco",
-        "DungeonBoost3V2",
+        "DungeonBoost3",
     },
     ["RadarxXx2020"] = {
         "Log",
