@@ -480,6 +480,21 @@ Accounts = {
         "Marco",
         "Sokora2",
     },
+    ["artyg111"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3",
+    },
+    ["Brutaroth"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["Theegg840"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3",
+    },
+    
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
