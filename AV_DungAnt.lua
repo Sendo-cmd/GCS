@@ -42,7 +42,6 @@ getgenv().Config = {
 			["Wave"] = 1
 		},
 		["Ant Island"] = {
-			["Walk To Ant Tunnel"] = true,
 			["Auto Plug Ant Tunnel"] = true
 		}
 	},
