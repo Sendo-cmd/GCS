@@ -621,7 +621,7 @@ Accounts = {
         "Log",
         "LovePortal",
     },
-    ["joy006zx"] = {
+    ["Rustwhir2660"] = {
         "Log",
         "LovePortal",
     },
