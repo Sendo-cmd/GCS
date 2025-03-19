@@ -59,6 +59,7 @@ Games = {
         ["DungeonIS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntIS.lua",
         ["DungeonBoost3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3.lua",
         ["DungeonBoost3V2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3V2.lua",
+        ["DungeonBoost3V3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3V2.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",

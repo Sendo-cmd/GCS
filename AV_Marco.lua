@@ -11,6 +11,7 @@ local Profiles = {
     "DungAntIS.json",
     "DungBoost3.json",
     "DungBoost3V2.json",
+    "DungBoost3V3.json",
     "Igris_Base.json",
     "Raid_Base.json",
     "IgrisMon.json",
