@@ -597,11 +597,12 @@ Accounts = {
     },
     ["IKAIx99"] = {
         "Log",
+        "Marco",
         "DungeonBoost3V2",
     },
     ["pza059"] = {
         "Log",
-        "DungeonBoost3V2",
+        "Dungeon",
     },
     ["HelloIamRyuu"] = {
         "Log",
@@ -609,6 +610,7 @@ Accounts = {
     },
     ["Salmon0X"] = {
         "Log",
+        "Marco",
         "DungeonBoost3V2",
     },
     ["Zulu_OoB30"] = {
