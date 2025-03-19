@@ -1152,6 +1152,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss",
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
+        ["Daily"] = false,
         ["Party Mode"] = false, -- Story
     },
     ["SugarSnow_84782"] = {
