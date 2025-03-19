@@ -114,7 +114,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Dungeon",
+        "BaseGemInf",
     },
     ["maser080"] = {
         "Log",
