@@ -295,7 +295,7 @@ Accounts = {
     },
     ["anakin_av139"] = {
         "Log",
-        "LovePortal",
+        "Portal",
     },
     ["Fvfvgoecwokdi"] = {
         "Log",
