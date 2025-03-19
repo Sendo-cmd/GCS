@@ -550,6 +550,30 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["AD_kp614"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Alow_2116"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["mossaeo007"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["XDcggza4"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["HelloIamRyuu"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["Salmon0X"] = {
+        "Log",
+        "Dungeon",
+    },
     
 }
 repeat task.wait(5) until game:IsLoaded(5)
