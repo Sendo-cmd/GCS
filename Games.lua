@@ -114,7 +114,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "BaseGemInf",
+        "Dungeon",
     },
     ["maser080"] = {
         "Log",
@@ -634,6 +634,20 @@ Accounts = {
         "Log",
         "Marco",
         "DungeonBoost3V3",
+    },
+    ["EXSTREMz"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3",
+    },
+    ["Leokub02"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["EXSTREMz"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3",
     },
     
 }
