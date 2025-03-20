@@ -430,7 +430,7 @@ Accounts = {
     },
     ["G2G168P117"] = {
         "Log",
-        "Dbz2",
+        "FarmGemSw",
     },
     ["Tiramisu_01"] = {
         "Log",
@@ -522,7 +522,7 @@ Accounts = {
     },
     ["Zacherycttp"] = {
         "Log",
-        "BaseGemInf",
+        "Portal",
     },
     ["SoBoySVRRR"] = {
         "Log",
@@ -649,7 +649,38 @@ Accounts = {
         "Marco",
         "DungeonBoost3",
     },
-    
+    ["dliddndimddi"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["mai254"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["efv1z"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["Extercel_o"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["QWQPcZfdXlf"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["bababuty"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["Koko08937"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["Fyudxe234"] = {
+        "Log",
+        "LovePortal",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
