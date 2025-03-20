@@ -522,7 +522,6 @@ Accounts = {
     },
     ["Zacherycttp"] = {
         "Log",
-        "Portal",
     },
     ["SoBoySVRRR"] = {
         "Log",
