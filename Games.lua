@@ -60,6 +60,8 @@ Games = {
         ["DungeonBoost3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3.lua",
         ["DungeonBoost3V2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3V2.lua",
         ["DungeonBoost3V3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3V2.lua",
+        ["DungeonAK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntKing.lua",
+        ["DungeonAK2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntKing2.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
@@ -635,11 +637,6 @@ Accounts = {
         "Marco",
         "DungeonBoost3V3",
     },
-    ["EXSTREMz"] = {
-        "Log",
-        "Marco",
-        "DungeonBoost3",
-    },
     ["Leokub02"] = {
         "Log",
         "Dungeon",
@@ -647,7 +644,7 @@ Accounts = {
     ["EXSTREMz"] = {
         "Log",
         "Marco",
-        "DungeonBoost3",
+        "DungeonAK",
     },
     ["dliddndimddi"] = {
         "Log",
@@ -705,7 +702,11 @@ Accounts = {
     ["kong2562"] = {
         "Log",
         "Marco",
-        "DungeonBoost3V2",
+        "DungeonAK",
+    },
+    ["PleumRukNa"] = {
+        "Log",
+        "LovePortal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

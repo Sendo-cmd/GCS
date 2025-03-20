@@ -134,15 +134,7 @@ getgenv().Config = {
 		["Teleport Lobby if Player"] = false
 	},
 	["Secure"] = {
-		["Random Offset"] = true,
 		["Walk Around"] = true
-	}
-	["Performance Failsafe"] = {
-		["Ping Freeze"] = false,
-		["Teleport Lobby FPS below"] = {
-			["Enable"] = false,
-			["FPS"] = 5
-		}
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
