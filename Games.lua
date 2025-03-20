@@ -702,6 +702,11 @@ Accounts = {
         "Log",
         "Worldline",
     },
+    ["kong2562"] = {
+        "Log",
+        "Marco",
+        "DungeonBoost3V2",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
