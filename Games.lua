@@ -698,6 +698,10 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["scp1774"] = {
+        "Log",
+        "Worldline",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
