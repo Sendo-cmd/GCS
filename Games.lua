@@ -559,7 +559,7 @@ Accounts = {
     ["Alow_2116"] = {
         "Log",
         "Marco",
-        "YoumomataR",
+        "YomomataR",
     },
     ["mossaeo007"] = {
         "Log",
