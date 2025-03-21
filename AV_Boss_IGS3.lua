@@ -1,8 +1,7 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
-getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["Joiner Cooldown"] = 0,
+	["AutoExecute"] = true,
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
@@ -64,7 +63,7 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "Boss_Base",
+		["Macro"] = "BEIgris2",
 		["Play"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
