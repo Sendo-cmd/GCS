@@ -706,7 +706,7 @@ Accounts = {
     },
     ["teeeuox2"] = {
         "Log",
-        "BaseGem",
+        "BaseGemInf",
     },
     ["Bfkaitun398355"] = {
         "Log",
