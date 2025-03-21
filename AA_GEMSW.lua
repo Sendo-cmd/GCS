@@ -1,5 +1,6 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
+	["AutoExecute"] = true,
 	["Misc"] = {
 		["Redeem Code"] = true
 	},

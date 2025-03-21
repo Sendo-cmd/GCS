@@ -1,4 +1,5 @@
 getgenv().Config = {
+	["AutoExecute"] = true,
 	["Summoner"] = {
 		["Exchange Legacy Gem"] = 0
 	},

@@ -1,5 +1,6 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
+	["AutoExecute"] = true,
 	["AutoSave"] = true,
 	["Summoner"] = {
 		["Exchange Legacy Gem"] = 0
