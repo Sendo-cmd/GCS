@@ -725,6 +725,23 @@ Accounts = {
         "Log",
         "Portal",
     },
+    ["GOD_PPZEED"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Gunnnnn0196"] = {
+        "Log",
+        "Portal",
+    },
+    ["EstaB9895"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["NANO_SHOP04"] = {
+        "Log",
+        "Marco",
+        "DungeonAK",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
