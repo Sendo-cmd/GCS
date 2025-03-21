@@ -509,6 +509,7 @@ Accounts = {
     },
     ["Zacherycttp"] = {
         "Log",
+        "LovePortal",
     },
     ["SoBoySVRRR"] = {
         "Log",
