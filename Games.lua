@@ -593,10 +593,6 @@ Accounts = {
         "Log",
         "Dungeon",
     },
-    ["HelloIamRyuu"] = {
-        "Log",
-        "Dungeon",
-    },
     ["Salmon0X"] = {
         "Log",
         "Marco",
