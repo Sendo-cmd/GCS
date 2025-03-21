@@ -63,7 +63,7 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true
 	},
 	["Macros"] = {
-		["Macro"] = "BEIgris2",
+		["Macro"] = "BEIgris3",
 		["Play"] = true,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
