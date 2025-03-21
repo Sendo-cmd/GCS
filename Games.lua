@@ -731,7 +731,7 @@ Accounts = {
     },
     ["ilovemymommmlp"] = {
         "Log",
-        "BaseGem",
+        "FarmGem",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
