@@ -698,7 +698,7 @@ Accounts = {
     },
     ["Tupp_py"] = {
         "Log",
-        "Dungeon",
+        "LovePortal",
     },
     ["jkkcnnrj150"] = {
         "Log",
@@ -738,6 +738,11 @@ Accounts = {
         "LovePortal",
     },
     ["NANO_SHOP04"] = {
+        "Log",
+        "Marco",
+        "DungeonAK",
+    },
+    ["godre902"] = {
         "Log",
         "Marco",
         "DungeonAK",

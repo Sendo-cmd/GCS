@@ -22,6 +22,8 @@ local Profiles = {
     "YomomataR.json",
     "KeyGilgamesh.json",
     "BEIgris.json",
+    "BEIgris2.json",
+    "BEIgris3.json",
 };
 
 repeat task.wait(1) until game:IsLoaded()
