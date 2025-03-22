@@ -38,8 +38,8 @@ Games = {
         ["YomomataV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataV.lua",
         ["YomomataR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataR.lua",
         ["YomomataAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAuto.lua",
-        ["KeyGilgamesh"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
-        ["KeyGilgameshAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgameshAuto.lua",
+        ["KeyG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
+        ["KeyGAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgameshAuto.lua",
         ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",
         ["Dungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnt.lua",
         ["DungeonIS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntIS.lua",
@@ -103,7 +103,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Webs",
+        "KeyGAuto",
     },
     ["maser080"] = {
         "Log",
