@@ -621,7 +621,7 @@ Accounts = {
     },
     ["Leokub02"] = {
         "Log",
-        "Dungeon",
+        "Portal",
     },
     ["EXSTREMz"] = {
         "Log",
@@ -746,6 +746,10 @@ Accounts = {
         "Log",
         "Marco",
         "DungeonAK",
+    },
+    ["FV303XD"] = {
+        "Log",
+        "ESSE",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
