@@ -618,8 +618,7 @@ Accounts = {
     },
     ["GZG_Pin"] = {
         "Log",
-        "Marco",
-        "DungeonBoost3V3",
+        "Portal",
     },
     ["Leokub02"] = {
         "Log",
@@ -762,6 +761,18 @@ Accounts = {
         "Log",
         "Marco",
         "DungeonAK",
+    },
+    ["PhantomWolfx72"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["natthakit587"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["jingja2549"] = {
+        "Log",
+        "Dungeon",
     },
     
 }
