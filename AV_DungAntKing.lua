@@ -104,9 +104,9 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = false,
-		["Black Screen"] = false,
-		["Delete Entities"] = false
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true
