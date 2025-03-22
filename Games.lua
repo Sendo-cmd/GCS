@@ -10,6 +10,7 @@ Games = {
         ["BEIgris"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGS.lua",
         ["BEIgris2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGS2.lua",
         ["BEIgris3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGS3.lua",
+        ["BEIgrisAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGSAuto.lua",
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
         ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
