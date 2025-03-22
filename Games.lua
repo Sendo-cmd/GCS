@@ -75,6 +75,7 @@ Games = {
         ["FarmGemSw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_GEMSW.lua",
         ["Hsnd"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND.lua",
         ["MemberStar"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND2.lua",
+        ["Hsnd3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_HsND3.lua",
         ["Candie"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Candie.lua",
         ["Dbz"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz.lua",
         ["Dbz2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Dbz2.lua",
@@ -370,7 +371,8 @@ Accounts = {
     },
     ["PDXD22"] = {
         "Log",
-        "AssPack",
+        "System",
+        "Hsnd3",
     },
     ["bloxfruit756"] = {
         "Log",

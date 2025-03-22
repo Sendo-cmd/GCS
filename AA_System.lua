@@ -1274,6 +1274,7 @@ _G.User = {
         ["Hard"] = false, -- Story
         ["Daily"] = false,
         ["Party Mode"] = false,
+        ["Auto Join"] = false,
     },
     ["ilovemymommmlp"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event , Contract
