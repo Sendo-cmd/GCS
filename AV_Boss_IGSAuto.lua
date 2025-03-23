@@ -30,6 +30,7 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Place and Upgrade"] = false,
 		["Place Cap"] = {
 			["1"] = 0,
