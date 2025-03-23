@@ -821,6 +821,10 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["ChickenBooMza"] = {
+        "Log",
+        "Dungeon",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
