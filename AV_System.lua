@@ -18,57 +18,41 @@ _G.User = {
 
         ["Select Mode"] = "Portal", -- Portal
 
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "Xx_e1ainaxX",
             "KageMonarchz",
             "jarnmosx01",
-        },
-
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
         },
     },
     ["Nuikk24"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "AMERICAMENTIONEDRAHH",
             "anakin_av139",
             "Samueltitiala",
         },
-
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },
     },
     ["anakin_av139"] = {
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
     },
     ["AMERICAMENTIONEDRAHH"] = {
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
     },
     ["Samueltitiala"] = {
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
     },
     ["KageMonarchz"] = {
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
     },
     ["Xx_e1ainaxX"] = {
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
     },
     ["jarnmosx01"] = {
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
     },
 }
 -- Service
