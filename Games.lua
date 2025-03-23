@@ -284,6 +284,7 @@ Accounts = {
     },
     ["anakin_av139"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["Fvfvgoecwokdi"] = {
@@ -352,6 +353,7 @@ Accounts = {
     },
     ["jarnmosx01"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["petezero0"] = {
@@ -433,6 +435,7 @@ Accounts = {
     },
     ["AMERICAMENTIONEDRAHH"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["Bamboo_NMpk"] = {
@@ -471,6 +474,7 @@ Accounts = {
     },
     ["natthakit587"] = {
         "Log",
+        "System",
         "Dungeon",
     },
     ["pokpong4123"] = {
@@ -771,6 +775,7 @@ Accounts = {
     },
     ["natthakit587"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["jingja2549"] = {
@@ -799,6 +804,7 @@ Accounts = {
     },
     ["KageMonarchz"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["Gdtiaueqejvb"] = {
@@ -811,6 +817,7 @@ Accounts = {
     },
     ["Nuikk24"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["Mk8wyoblseo"] = {
@@ -819,11 +826,17 @@ Accounts = {
     },
     ["Xx_e1ainaxX"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["ChickenBooMza"] = {
         "Log",
         "Dungeon",
+    },
+    ["samueltitiala"] = {
+        "Log",
+        "System",
+        "LovePortal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
