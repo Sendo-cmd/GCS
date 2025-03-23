@@ -103,7 +103,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "KeyGAuto",
+        "LovePortal",
     },
     ["maser080"] = {
         "Log",
@@ -585,7 +585,7 @@ Accounts = {
     },
     ["Demonsun0601"] = {
         "Log",
-        "LovePortal",
+        "Portal",
     },
     ["IKAIx99"] = {
         "Log",
