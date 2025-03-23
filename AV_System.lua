@@ -37,22 +37,22 @@ _G.User = {
         },
     },
     ["anakin_av139"] = {
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
     },
     ["AMERICAMENTIONEDRAHH"] = {
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
     },
     ["Samueltitiala"] = {
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
     },
     ["KageMonarchz"] = {
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
     },
     ["Xx_e1ainaxX"] = {
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
     },
     ["jarnmosx01"] = {
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
     },
 }
 -- Service
