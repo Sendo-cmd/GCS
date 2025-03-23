@@ -58,24 +58,6 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["AMERICAMENTIONEDRAHH"] = {
-        ["Party Mode"] = true,
-    },
-    ["anakin_av139"] = {
-        ["Party Mode"] = true,
-    },
-    ["jarnmosx01"] = {
-        ["Party Mode"] = true,
-    },
-    ["samueltitiala"] = {
-        ["Party Mode"] = true,
-    },
-    ["KageMonarchz"] = {
-        ["Party Mode"] = true,
-    },
-    ["Xx_e1ainaxX"] = {
-        ["Party Mode"] = true,
-    },
 }
 -- Service
 local HttpService = game:GetService("HttpService")
