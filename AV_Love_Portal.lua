@@ -176,8 +176,8 @@ getgenv().Config = {
 			["3"] = 0,
 			["2"] = 0,
 			["5"] = 0,
-			["4"] = 2,
-			["6"] = -1
+			["4"] = 0,
+			["6"] = 0
 		},
 		["Enable"] = true,
 		["Upgrade Method"] = "Hotbar left to right (until Max)",
@@ -202,7 +202,7 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = -1
+			["6"] = 0
 		},
 		["Middle Position"] = {
 			["Shibuya Aftermath"] = "-94.77557373046875, 316.1539306640625, -34.29759216308594",
