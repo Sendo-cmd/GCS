@@ -29,12 +29,8 @@ _G.User = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {
-                "Shibuya Station",
-        },
-            ["Ignore Modify"] = {
-                "Fast",
-            },
+            ["Ignore Stage"] = {"Shibuya Station"},
+            ["Ignore Modify"] = {"Fast"},
         },
     },
     ["Nuikk24"] = {
@@ -45,18 +41,34 @@ _G.User = {
         ["Party Member"] = {
             "AMERICAMENTIONEDRAHH",
             "anakin_av139",
-            "samueltitiala",
+            "Samueltitiala",
         },
 
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {
-                "Shibuya Station",
-        },
+            ["Ignore Stage"] = {"Shibuya Station"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["anakin_av139"] = {
+        ["Party Mode"] = true,
+    },
+    ["AMERICAMENTIONEDRAHH"] = {
+        ["Party Mode"] = true,
+    },
+    ["Samueltitiala"] = {
+        ["Party Mode"] = true,
+    },
+    ["KageMonarchz"] = {
+        ["Party Mode"] = true,
+    },
+    ["Xx_e1ainaxX"] = {
+        ["Party Mode"] = true,
+    },
+    ["jarnmosx01"] = {
+        ["Party Mode"] = true,
     },
 }
 -- Service
