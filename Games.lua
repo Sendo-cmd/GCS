@@ -670,7 +670,7 @@ Accounts = {
     ["pinkeersw"] = {
         "Log",
         "Marco",
-        "BEIgris3",
+        "BEIgrisAuto",
     },
     ["TYD_X098"] = {
         "Log",
