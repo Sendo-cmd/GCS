@@ -675,7 +675,7 @@ Accounts = {
     },
     ["TYD_X098"] = {
         "Log",
-        "LovePortal",
+        "Dungeon",
     },
     ["R3N_Vixtoria3"] = {
         "Log",
