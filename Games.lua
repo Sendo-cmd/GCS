@@ -805,7 +805,22 @@ Accounts = {
         "Log",
         "YomomataAuto",
     },
-    
+    ["SixMa072"] = {
+        "Log",
+        "BaseGemInf",
+    },
+    ["Nuikk24"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Mk8wyoblseo"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Xx_e1ainaxX"] = {
+        "Log",
+        "LovePortal",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
