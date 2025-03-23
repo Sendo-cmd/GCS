@@ -284,7 +284,6 @@ Accounts = {
     },
     ["anakin_av139"] = {
         "Log",
-        "System",
         "LovePortal",
     },
     ["Fvfvgoecwokdi"] = {
@@ -353,7 +352,6 @@ Accounts = {
     },
     ["jarnmosx01"] = {
         "Log",
-        "System",
         "LovePortal",
     },
     ["petezero0"] = {
@@ -435,7 +433,6 @@ Accounts = {
     },
     ["AMERICAMENTIONEDRAHH"] = {
         "Log",
-        "System",
         "LovePortal",
     },
     ["Bamboo_NMpk"] = {
@@ -775,7 +772,6 @@ Accounts = {
     },
     ["natthakit587"] = {
         "Log",
-        "System",
         "LovePortal",
     },
     ["jingja2549"] = {
@@ -804,7 +800,6 @@ Accounts = {
     },
     ["KageMonarchz"] = {
         "Log",
-        "System",
         "LovePortal",
     },
     ["Gdtiaueqejvb"] = {
@@ -817,7 +812,6 @@ Accounts = {
     },
     ["Nuikk24"] = {
         "Log",
-        "System",
         "LovePortal",
     },
     ["Mk8wyoblseo"] = {
@@ -826,7 +820,6 @@ Accounts = {
     },
     ["Xx_e1ainaxX"] = {
         "Log",
-        "System",
         "LovePortal",
     },
     ["ChickenBooMza"] = {
@@ -835,7 +828,6 @@ Accounts = {
     },
     ["samueltitiala"] = {
         "Log",
-        "System",
         "LovePortal",
     },
 }
