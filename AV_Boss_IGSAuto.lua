@@ -66,7 +66,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Middle Position"] = {
-			["Blood-Red Chamber"] = "0.20836776494979858, -0.2512565851211548, -20.52935791015625"
+			["Blood-Red Chamber"] = "1.5541236400604248, -0.2512565851211548, -20.021881103515625"
 		},
 		["Focus on Farm"] = true,
 		["Place Gap"] = {
@@ -128,3 +128,4 @@ getgenv().Config = {
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
+
