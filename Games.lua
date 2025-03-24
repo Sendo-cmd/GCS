@@ -831,7 +831,7 @@ Accounts = {
     },
     ["Loixyz2"] = {
         "Log",
-        "Portal",
+        "BaseGem",
     },
     ["animelaststand26hour"] = {
         "Log",
