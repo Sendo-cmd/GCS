@@ -687,7 +687,7 @@ Accounts = {
     },
     ["PleumRukNa"] = {
         "Log",
-        "LovePortal",
+        "BEIgrisAuto",
     },
     ["ReiYuLiz"] = {
         "Log",
