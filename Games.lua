@@ -566,7 +566,7 @@ Accounts = {
     },
     ["Salmon0X"] = {
         "Log",
-        "Dungeon",
+        "LovePortal",
     },
     ["MirahOhma"] = {
         "Log",
@@ -835,6 +835,26 @@ Accounts = {
         "BEIgrisAuto",
     },
     ["Loixyz2"] = {
+        "Log",
+        "Portal",
+    },
+    ["animelaststand26hour"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Irinor96511"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Lucinda2471"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["ASKDEX2_54016"] = {
+        "Log",
+        "Portal",
+    },
+    ["MyheroDD113"] = {
         "Log",
         "Portal",
     },
