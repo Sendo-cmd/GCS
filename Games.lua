@@ -14,7 +14,7 @@ Games = {
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
         ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
-        ["IgrisSECV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV4.lua",
+        ["IgrisSECR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV4.lua",
         ["IgrisSECHV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_SonjEV5.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
@@ -786,7 +786,8 @@ Accounts = {
     },
     ["Wawawa_761"] = {
         "Log",
-        "BEIgrisAuto",
+        "Marco",
+        "IgrisSEVR",
     },
     ["incura497654"] = {
         "Log",
