@@ -865,6 +865,10 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["Top_game1111"] = {
+        "Log",
+        "YomomataR",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
