@@ -1285,6 +1285,15 @@ _G.User = {
         ["Daily"] = false,
         ["Party Mode"] = false,
     },
+    ["ggg_ufgj"] = {
+        ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event , Contract
+    
+        ["Select Map"] = "Planet Greenie",
+        ["Select Level"] = "1", -- Story & Legend Stage & Raid
+        ["Hard"] = false, -- Story
+        ["Daily"] = false,
+        ["Party Mode"] = false,
+    },
 
 }
 

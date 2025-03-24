@@ -887,6 +887,11 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["ggg_ufgj"] = {
+        "Log",
+        "System",
+        "FarmGem",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
