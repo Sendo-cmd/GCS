@@ -48,6 +48,7 @@ Games = {
         ["DungeonBoost3V3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3V2.lua",
         ["DungeonAK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntKing.lua",
         ["DungeonAK2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntKing2.lua",
+        ["DungeonAK3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntKing3.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
@@ -819,7 +820,8 @@ Accounts = {
     },
     ["ChickenBooMza"] = {
         "Log",
-        "Dungeon",
+        "Marco",
+        "DungeonAK3",
     },
     ["samueltitiala"] = {
         "Log",

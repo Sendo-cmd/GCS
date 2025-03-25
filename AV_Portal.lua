@@ -7,8 +7,8 @@ getgenv().Config = {
 			["3"] = 0,
 			["2"] = 0,
 			["5"] = 0,
-			["4"] = 2,
-			["6"] = -1
+			["4"] = 0,
+			["6"] = 0,
 		},
 		["Enable"] = true,
 		["Upgrade Method"] = "Hotbar left to right (until Max)",
