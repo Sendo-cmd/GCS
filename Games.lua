@@ -238,7 +238,8 @@ Accounts = {
     },
     ["BBWX_099"] = {
         "Log",
-        "ESSE",
+        "Marco",
+        "YomomataG",
     },
     ["Foster72383"] = {
         "Log",
