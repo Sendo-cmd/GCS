@@ -905,6 +905,10 @@ Accounts = {
         "Marco",
         "DungeonAK",
     },
+    ["HP_GTR"] = {
+        "Log",
+        "BaseGem",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
