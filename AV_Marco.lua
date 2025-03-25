@@ -6,6 +6,7 @@ local Profiles = {
     "DungBoost3V3.json",
     "DungAntKing.json",
     "DungAntKing2.json",
+    "DungAntKing3.json",
     "Saber.json",
     "Saber2.json",
     "SaberClear.json",
