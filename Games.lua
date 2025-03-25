@@ -238,8 +238,7 @@ Accounts = {
     },
     ["BBWX_099"] = {
         "Log",
-        "Marco",
-        "BaseGemInf",
+        "ESSE",
     },
     ["Foster72383"] = {
         "Log",
@@ -758,8 +757,7 @@ Accounts = {
     },
     ["Ceeme7777"] = {
         "Log",
-        "Marco",
-        "DungeonAK",
+        "Portal",
     },
     ["PhantomWolfx72"] = {
         "Log",
@@ -893,6 +891,14 @@ Accounts = {
         "Log",
         "System",
         "FarmGem",
+    },
+    ["MAXTONINE"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Autoautov9"] = {
+        "Log",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
