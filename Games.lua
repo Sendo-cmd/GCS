@@ -832,7 +832,7 @@ Accounts = {
     },
     ["Loixyz2"] = {
         "Log",
-        "BaseCF",
+        "ESSE",
     },
     ["animelaststand26hour"] = {
         "Log",
