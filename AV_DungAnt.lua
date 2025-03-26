@@ -189,7 +189,7 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Ant Island"] = "-16.998580932617188, 164.8186492919922, -44.8011360168457"
+			["Ant Island"] = "-16.99512481689453, 164.8186492919922, -45.40901184082031"
 		},
 		["Place Gap"] = {
 			["Golden Castle"] = 2,
