@@ -523,8 +523,7 @@ Accounts = {
     },
     ["KO9Ker"] = {
         "Log",
-        "Marco",
-        "DungeonBoost3V2",
+        "Portal",
     },
     ["GGGGKURTEZ"] = {
         "Log",
@@ -820,8 +819,7 @@ Accounts = {
     },
     ["LoveIcedevil"] = {
         "Log",
-        "Marco",
-        "DungeonAK3",
+        "YomomataAuto",
     },
     ["samueltitiala"] = {
         "Log",
@@ -857,7 +855,7 @@ Accounts = {
     },
     ["Namo1171"] = {
         "Log",
-        "LovePortal",
+        "Portal",
     },
     ["effdskofkduf2"] = {
         "Log",
@@ -878,7 +876,7 @@ Accounts = {
     },
     ["GetgetTHTV"] = {
         "Log",
-        "LovePortal",
+        "Portal",
     },
     ["iNotkakk"] = {
         "Log",
@@ -931,6 +929,14 @@ Accounts = {
     ["oJTm_fjmrw"] = {
         "Log",
         "Dungeon",
+    },
+    ["underhorror"] = {
+        "Log",
+        "ESSE",
+    },
+    ["MFBF_7640"] = {
+        "Log",
+        "BaseGemInf",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
