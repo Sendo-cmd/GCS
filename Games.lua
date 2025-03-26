@@ -26,6 +26,7 @@ Games = {
         ["DungBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungBase.lua",
         ["DioBase"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dio_Base.lua",
         ["DioAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DioAuto.lua",
+        ["PortalParty"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
         ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
         ["LovePortal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Love_Portal.lua",
         ["Saber"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber.lua",
@@ -105,7 +106,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["maser080"] = {
         "Log",
@@ -488,7 +489,7 @@ Accounts = {
     },
     ["artyg111"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["Brutaroth"] = {
         "Log",
@@ -587,7 +588,7 @@ Accounts = {
     },
     ["Demonsun0601"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["IKAIx99"] = {
         "Log",
