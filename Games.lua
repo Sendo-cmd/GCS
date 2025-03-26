@@ -900,11 +900,6 @@ Accounts = {
         "Log",
         "Portal",
     },
-    ["LoveIcedevil"] = {
-        "Log",
-        "Marco",
-        "DungeonAK",
-    },
     ["HP_GTR"] = {
         "Log",
         "BaseGem",
