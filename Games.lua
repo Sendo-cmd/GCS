@@ -876,7 +876,7 @@ Accounts = {
     },
     ["GetgetTHTV"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["iNotkakk"] = {
         "Log",
