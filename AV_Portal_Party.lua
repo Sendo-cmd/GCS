@@ -111,11 +111,6 @@ getgenv().Config = {
 			["Enable"] = true,
 			["Wave"] = 20
 		}
-	},
-	["Stage Joiner"] = {
-		["Auto Join"] = true,
-		["Act"] = "Infinite",
-		["Stage"] = "Planet Namak"
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
