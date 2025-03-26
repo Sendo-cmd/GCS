@@ -929,6 +929,10 @@ Accounts = {
         "Log",
         "ESSE",
     },
+    ["kamkamincu"] = {
+        "Log",
+        "ESSE",
+    },
     ["MFBF_7640"] = {
         "Log",
         "BaseGemInf",
