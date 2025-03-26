@@ -946,6 +946,10 @@ Accounts = {
         "Log",
         "Portal",
     },
+    ["I_Wxrst"] = {
+        "Log",
+        "PortalParty",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
