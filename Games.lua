@@ -487,7 +487,7 @@ Accounts = {
     },
     ["artyg111"] = {
         "Log",
-        "Dungeon",
+        "Portal",
     },
     ["Brutaroth"] = {
         "Log",
