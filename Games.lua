@@ -685,7 +685,7 @@ Accounts = {
     },
     ["kong2562"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["PleumRukNa"] = {
         "Log",
