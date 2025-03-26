@@ -106,7 +106,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "PortalParty",
+        "Portal",
     },
     ["maser080"] = {
         "Log",
@@ -894,7 +894,7 @@ Accounts = {
     },
     ["MAXTONINE"] = {
         "Log",
-        "LovePortal",
+        "Portal",
     },
     ["Autoautov9"] = {
         "Log",
