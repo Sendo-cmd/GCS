@@ -285,11 +285,12 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = false,
+        ["Daily"] = true,
         ["Auto Join"] = true,
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
             "SDEgFGtxuid",
+            "PDXD22",
         },
 
     },
@@ -1153,7 +1154,7 @@ _G.User = {
         ["Select Level"] = 1, -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
         ["Daily"] = false,
-        ["Party Mode"] = false, -- Story
+        ["Party Mode"] = true, -- Story
     },
     ["SugarSnow_84782"] = {
         ["Select Mode"] = "Event", -- Raid , Legend Stage , Infinite
@@ -1273,8 +1274,8 @@ _G.User = {
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
         ["Daily"] = false,
-        ["Party Mode"] = false,
-        ["Auto Join"] = false,
+        ["Party Mode"] = true,
+        ["Auto Join"] = true,
     },
     ["ilovemymommmlp"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event , Contract
