@@ -898,7 +898,7 @@ Accounts = {
     },
     ["Autoautov9"] = {
         "Log",
-        "Portal",
+        "TraitReroll",
     },
     ["HP_GTR"] = {
         "Log",
