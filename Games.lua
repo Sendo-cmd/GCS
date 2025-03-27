@@ -580,7 +580,7 @@ Accounts = {
     },
     ["supakitdunk"] = {
         "Log",
-        "Dungeon",
+        "LovePortal",
     },
     ["hdkjsksp"] = {
         "Log",
@@ -635,7 +635,11 @@ Accounts = {
     },
     ["mai254"] = {
         "Log",
-        "DungeonAK",
+        "LovePortal",
+    },
+    ["DonQuixoteBarber"] = {
+        "Log",
+        "LovePortal",
     },
     ["efv1z"] = {
         "Log",
