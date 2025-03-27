@@ -25,8 +25,8 @@ getgenv().Config = {
 			["[Shibuya Station] Act3"] = true,
 			["[Shibuya Station] Act5"] = true,
 			["[Shibuya Station] Act1"] = true,
-			["[Shibuya Station] Act6"] = true,
-			["[Shibuya Station] Act2"] = true
+			["[Shibuya Station] Act2"] = true,
+			["[Shibuya Station] Act6"] = true
 		}
 	},
 	["Winter Portal Joiner"] = {
@@ -48,13 +48,13 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
+		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = true,
+		["Auto Use Ability"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 20
-		},
-		["Auto Vote Start"] = true,
-		["Auto Use Ability"] = true,
-		["Auto Skip Wave"] = true
+		}
 	},
 	["Misc"] = {
 		["Redeem Code"] = true
@@ -68,28 +68,28 @@ getgenv().Config = {
 				["Champions"] = 12,
 				["Fast"] = 1,
 				["Planning Ahead"] = 15,
-				["Fisticuffs"] = 25,
+				["Immunity"] = 11,
 				["Exploding"] = 2,
 				["Dodge"] = 10,
-				["Uncommon Loot"] = 22,
-				["Immunity"] = 11,
+				["Slayer"] = 16,
+				["Fisticuffs"] = 25,
 				["Revitalize"] = 6,
 				["Harvest"] = 17,
-				["Precise Attack"] = 13,
+				["Quake"] = 9,
 				["Range"] = 18,
 				["No Trait No Problem"] = 23,
 				["Drowsy"] = 8,
-				["Cooldown"] = 19,
-				["Exterminator"] = 28,
 				["King's Burden"] = 27,
+				["Regen"] = 7,
+				["Exterminator"] = 28,
 				["Damage"] = 20,
 				["Common Loot"] = 21,
-				["Regen"] = 7,
+				["Cooldown"] = 19,
 				["Lifeline"] = 29,
 				["Press It"] = 14,
-				["Quake"] = 9,
+				["Precise Attack"] = 13,
 				["Shielded"] = 5,
-				["Slayer"] = 16,
+				["Uncommon Loot"] = 22,
 				["Money Surge"] = 26
 			},
 			["Amount"] = {
@@ -99,31 +99,53 @@ getgenv().Config = {
 				["Champions"] = 0,
 				["Fast"] = 0,
 				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
+				["Immunity"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
 				["Revitalize"] = 0,
 				["Harvest"] = 0,
-				["Precise Attack"] = 0,
+				["Quake"] = 0,
 				["Range"] = 0,
 				["No Trait No Problem"] = 0,
 				["Drowsy"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
 				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["Regen"] = 0,
+				["Cooldown"] = 0,
 				["Lifeline"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 0,
+				["Precise Attack"] = 0,
 				["Shielded"] = 0,
-				["Slayer"] = 0,
+				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			}
 		}
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
+	},
+	["Match Finished"] = {
+		["Auto Replay"] = true,
+		["Replay Amount"] = 0
+	},
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Collection Milestone"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Milestone"] = true
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -132,10 +154,10 @@ getgenv().Config = {
 		["Prefer Position"] = {
 			["Golden Castle"] = "Middle",
 			["Double Dungeon"] = "Middle",
-			["Blood-Red Chamber"] = "Middle",
-			["Tracks at the Edge of the World"] = "Middle",
-			["Shibuya Station"] = "Middle",
+			["Planet Namak"] = "Middle",
 			["Ant Island"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Blood-Red Chamber"] = "Middle",
 			["Sand Village"] = "Middle",
 			["Shibuya Aftermath"] = "Middle",
 			["Cavern"] = "Middle",
@@ -144,7 +166,7 @@ getgenv().Config = {
 			["Spirit Society"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Planet Namak"] = "Middle"
+			["Tracks at the Edge of the World"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -163,30 +185,9 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true
 	},
-	["Match Finished"] = {
-		["Auto Replay"] = true,
-		["Replay Amount"] = 0
-	},
-	["Claimer"] = {
-		["Auto Claim Collection Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Milestone"] = true
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true
-	},
 	["Secure"] = {
-		["Walk Around"] = true
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
+		["Walk Around"] = true,
+		["Random Offset"] = true
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
