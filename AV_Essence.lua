@@ -42,7 +42,7 @@ getgenv().Config = {
 			["Double Dungeon"] = "-275.28289794921875, 0.10069097578525543, -118.52613830566406"
 		},
 		["Focus on Farm"] = true
-	}
+	},
 	["Modifier"] = {
 		["Restart Modifier"] = {
 			["Enable"] = false,
