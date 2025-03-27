@@ -89,14 +89,14 @@ getgenv().Config = {
 				["Money Surge"] = 0
 			},
 			["Amount"] = {
-				["Strong"] = 3,
+				["Strong"] = 1,
 				["Thrice"] = 1,
 				["Warding off Evil"] = 0,
 				["Champions"] = 1,
 				["Fast"] = 1,
-				["Revitalize"] = 3,
+				["Revitalize"] = 1,
 				["Fisticuffs"] = 0,
-				["Exploding"] = 3,
+				["Exploding"] = 1,
 				["Dodge"] = 1,
 				["Uncommon Loot"] = 0,
 				["Immunity"] = 1,
@@ -113,10 +113,10 @@ getgenv().Config = {
 				["Common Loot"] = 0,
 				["Regen"] = 1,
 				["Drowsy"] = 1,
-				["Press It"] = 0,
+				["Press It"] = 3,
 				["Quake"] = 1,
 				["Shielded"] = 1,
-				["Slayer"] = 0,
+				["Slayer"] = 4,
 				["Money Surge"] = 1
 			}
 		}
