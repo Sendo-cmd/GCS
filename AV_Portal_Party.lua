@@ -44,7 +44,6 @@ getgenv().Config = {
 	},
 	["Gameplay"] = {
 		["Auto Sell"] = {
-			["Enable"] = true,
 			["Wave"] = 22
 		},
 		["Saber Event"] = {
