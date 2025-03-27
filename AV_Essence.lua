@@ -1,6 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
-getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["Joiner Cooldown"] = 0,
 	["Performance"] = {
@@ -13,26 +11,24 @@ getgenv().Config = {
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
-		["Place Cap"] = {
-			["1"] = 0,
-			["3"] = 0,
-			["2"] = 0,
-			["5"] = 0,
-			["4"] = 0,
-			["6"] = 0,
-		},
 		["Enable"] = true,
 		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Golden Castle"] = "Middle",
 			["Double Dungeon"] = "Middle",
-			["Planet Namak"] = "Middle",
+			["Blood-Red Chamber"] = "Middle",
 			["Tracks at the Edge of the World"] = "Middle",
 			["Shibuya Station"] = "Middle",
+			["Spirit Society"] = "Middle",
 			["Sand Village"] = "Middle",
 			["Shibuya Aftermath"] = "Middle",
+			["Cavern"] = "Middle",
+			["Mountain Shrine (Natural)"] = "Middle",
+			["Kuinshi Palace"] = "Middle",
+			["Ant Island"] = "Middle",
 			["Underground Church"] = "Middle",
-			["Spider Forest"] = "Middle"
+			["Spider Forest"] = "Middle",
+			["Planet Namak"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -42,8 +38,11 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = -1
 		},
+		["Middle Position"] = {
+			["Double Dungeon"] = "-275.28289794921875, 0.10069097578525543, -118.52613830566406"
+		},
 		["Focus on Farm"] = true
-	},
+	}
 	["Modifier"] = {
 		["Restart Modifier"] = {
 			["Enable"] = false,
@@ -197,3 +196,5 @@ getgenv().Config = {
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
+
+
