@@ -433,7 +433,7 @@ Accounts = {
     },
     ["narabadee004"] = {
         "Log",
-        "Dungeon",
+        "LovePortal",
     },
     ["AMERICAMENTIONEDRAHH"] = {
         "Log",
@@ -545,6 +545,10 @@ Accounts = {
         "Dungeon",
     },
     ["AD_kp614"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["zywimq"] = {
         "Log",
         "LovePortal",
     },
