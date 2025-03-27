@@ -356,7 +356,7 @@ Accounts = {
     },
     ["jarnmosx01"] = {
         "Log",
-        "LovePortal",
+        "Portal",
     },
     ["petezero0"] = {
         "Log",
