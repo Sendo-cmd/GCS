@@ -852,7 +852,11 @@ Accounts = {
     },
     ["Lucinda2471"] = {
         "Log",
-        "BaseGem",
+        "Dungeon",
+    },
+    ["MarioNo1111"] = {
+        "Log",
+        "Dungeon",
     },
     ["ASKDEX2_54016"] = {
         "Log",
@@ -959,10 +963,18 @@ Accounts = {
         "Log",
         "PortalParty",
     },
+    ["gokvdera12"] = {
+        "Log",
+        "PortalParty",
+    },
     ["YAMANO_OT"] = {
         "Log",
         "Marco",
         "IgrisSEVR",
+    },
+    ["tw1C4ddQ"] = {
+        "Log",
+        "KeyGAuto",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
