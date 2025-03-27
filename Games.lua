@@ -356,7 +356,7 @@ Accounts = {
     },
     ["jarnmosx01"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["petezero0"] = {
         "Log",
@@ -872,7 +872,7 @@ Accounts = {
     },
     ["PanDa_An1b"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["Top_game1111"] = {
         "Log",
@@ -940,7 +940,7 @@ Accounts = {
     },
     ["kamkamincu"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["MFBF_7640"] = {
         "Log",
@@ -953,7 +953,7 @@ Accounts = {
     },
     ["RyuzaaaV2"] = {
         "Log",
-        "Portal",
+        "LovePortal",
     },
     ["I_Wxrst"] = {
         "Log",
