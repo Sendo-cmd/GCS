@@ -43,6 +43,7 @@ Games = {
         ["KeyGAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgameshAuto.lua",
         ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",
         ["Dungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnt.lua",
+        ["Dungeons"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnts.lua",
         ["DungeonIS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntIS.lua",
         ["DungeonBoost3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3.lua",
         ["DungeonBoost3V2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAntBoost3V2.lua",
