@@ -44,6 +44,79 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true
 	},
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = false,
+			["Modifier"] = {
+				["King's Burden"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 97,
+				["Immunity"] = 99,
+				["Exploding"] = 100,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 96,
+				["Cooldown"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 98,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 3,
+				["Thrice"] = 3,
+				["Warding off Evil"] = 0,
+				["Precise Attack"] = 0,
+				["Fast"] = 3,
+				["Revitalize"] = 3,
+				["Immunity"] = 1,
+				["Exploding"] = 3,
+				["Dodge"] = 3,
+				["Uncommon Loot"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 3,
+				["Cooldown"] = 3,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 3,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 3,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Champions"] = 1,
+				["Shielded"] = 3,
+				["Slayer"] = 0,
+				["Money Surge"] = 1
+			}
+		}
+	},
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
