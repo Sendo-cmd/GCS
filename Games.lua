@@ -868,7 +868,7 @@ Accounts = {
     },
     ["PanDa_An1b"] = {
         "Log",
-        "Dungeon",
+        "Portal",
     },
     ["Top_game1111"] = {
         "Log",
@@ -936,7 +936,7 @@ Accounts = {
     },
     ["kamkamincu"] = {
         "Log",
-        "ESSE",
+        "Portal",
     },
     ["MFBF_7640"] = {
         "Log",
@@ -954,6 +954,11 @@ Accounts = {
     ["I_Wxrst"] = {
         "Log",
         "PortalParty",
+    },
+    ["YAMANO_OT"] = {
+        "Log",
+        "Marco",
+        "IgrisSEVR",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
