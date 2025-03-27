@@ -959,6 +959,10 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["SIAFK19"] = {
+        "Log",
+        "LovePortal",
+    },
     ["I_Wxrst"] = {
         "Log",
         "PortalParty",
