@@ -895,7 +895,7 @@ Accounts = {
     },
     ["MAXTONINE"] = {
         "Log",
-        "Portal",
+        "PortalParty",
     },
     ["Autoautov9"] = {
         "Log",
