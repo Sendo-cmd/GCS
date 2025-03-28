@@ -16,6 +16,7 @@ Games = {
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
         ["IgrisG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_G.lua",
         ["IgrisCH"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_CH.lua",
+        ["IgrisIC"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_CH.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["Paragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon.lua",
@@ -426,7 +427,7 @@ Accounts = {
     },
     ["narabadee004"] = {
         "Log",
-        "LovePortal",
+        "PortalParty",
     },
     ["AMERICAMENTIONEDRAHH"] = {
         "Log",
@@ -980,8 +981,7 @@ Accounts = {
     },
     ["Holybus"] = {
         "Log",
-        "Marco",
-        "IgrisCH",
+        "YomomataAuto",
     },
     ["Awelasper0369"] = {
         "Log",
@@ -998,6 +998,11 @@ Accounts = {
     ["HaineToram2"] = {
         "Log",
         "PortalParty",
+    },
+    ["Pun156_Pat"] = {
+        "Log",
+        "Marco",
+        "IgrisIC",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
