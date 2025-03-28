@@ -1,21 +1,6 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Gold Buyer"] = {
-		["Enable"] = true,
-		["Item"] = {
-			["Blue Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true,
-			["Stat Chip"] = true,
-			["Pink Essence Stone"] = true,
-			["Super Stat Chip"] = true,
-			["Green Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Rainbow Essence Stone"] = true
-		}
-	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Enable"] = true,
@@ -77,6 +62,9 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
+	},
+	["Match Finished"] = {
+		["Auto Replay"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true

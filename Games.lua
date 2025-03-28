@@ -104,7 +104,7 @@ Accounts = {
     },
     ["maser080"] = {
         "Log",
-        "FarmGemSw",
+        "PortalParty",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
@@ -543,7 +543,7 @@ Accounts = {
     },
     ["zywimq"] = {
         "Log",
-        "LovePortal",
+        "SukonoAuto",
     },
     ["Alow_2116"] = {
         "Log",
@@ -990,6 +990,14 @@ Accounts = {
     ["canonA624"] = {
         "Log",
         "YomomataAuto",
+    },
+    ["yanawarutkanpai"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["HaineToram2"] = {
+        "Log",
+        "PortalParty",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
