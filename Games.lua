@@ -840,7 +840,7 @@ Accounts = {
     },
     ["Loixyz2"] = {
         "Log",
-        "ESSE",
+        "LovePortal",
     },
     ["animelaststand26hour"] = {
         "Log",
