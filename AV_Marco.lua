@@ -13,6 +13,7 @@ local Profiles = {
     "Sokora.json",
     "Sokora2.json",
     "Igris_G.json",
+    "Igris_CH.json",
     "YomomataCh.json",
     "YomomataG.json",
     "YomomataV.json",

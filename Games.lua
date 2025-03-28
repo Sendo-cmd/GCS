@@ -15,6 +15,7 @@ Games = {
         ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
         ["IgrisG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_G.lua",
+        ["IgrisCH"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_CH.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["Paragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon.lua",
@@ -972,6 +973,15 @@ Accounts = {
     ["tw1C4ddQ"] = {
         "Log",
         "KeyGAuto",
+    },
+    ["dawg_4944"] = {
+        "Log",
+        "YomomataAuto",
+    },
+    ["tw1C4ddQ"] = {
+        "Log",
+        "Marco",
+        "IgrisCH",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
