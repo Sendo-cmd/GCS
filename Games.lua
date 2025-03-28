@@ -923,7 +923,7 @@ Accounts = {
     },
     ["Mzwz13"] = {
         "Log",
-        "Dungeon",
+        "LovePortal",
     },
     ["monkuyautokungKICKIC"] = {
         "Log",
