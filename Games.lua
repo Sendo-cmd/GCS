@@ -990,6 +990,10 @@ Accounts = {
         "Log",
         "YomomataAuto",
     },
+    ["Pokampud"] = {
+        "Log",
+        "YomomataAuto",
+    },
     ["yanawarutkanpai"] = {
         "Log",
         "LovePortal",
