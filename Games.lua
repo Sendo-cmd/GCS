@@ -939,7 +939,7 @@ Accounts = {
     },
     ["kamkamincu"] = {
         "Log",
-        "PortalParty",
+        "ESSE",
     },
     ["MFBF_7640"] = {
         "Log",
