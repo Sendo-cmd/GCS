@@ -980,7 +980,11 @@ Accounts = {
     },
     ["Holybus"] = {
         "Log",
-        "BaseGem",
+        "BaseGeminf",
+    },
+    ["iffahan"] = {
+        "Log",
+        "BaseGemInf",
     },
     ["Awelasper0369"] = {
         "Log",
