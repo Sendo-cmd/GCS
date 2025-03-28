@@ -972,7 +972,7 @@ Accounts = {
     },
     ["tw1C4ddQ"] = {
         "Log",
-        "KeyGAuto",
+        "YomomataAuto",
     },
     ["dawg_4944"] = {
         "Log",
