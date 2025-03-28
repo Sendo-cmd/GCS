@@ -822,7 +822,6 @@ Accounts = {
     },
     ["LoveIcedevil"] = {
         "Log",
-        "YomomataG",
     },
     ["samueltitiala"] = {
         "Log",
