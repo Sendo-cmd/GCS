@@ -952,7 +952,7 @@ Accounts = {
     },
     ["RyuzaaaV2"] = {
         "Log",
-        "LovePortal",
+        "PortalParty",
     },
     ["SIAFK19"] = {
         "Log",
