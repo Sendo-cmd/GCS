@@ -19,14 +19,6 @@ getgenv().Config = {
 				["Underground Church"] = 5,
 				["Sand Village"] = 2
 			}
-		},
-		["Ignore Act"] = {
-			["[Shibuya Station] Act4"] = true,
-			["[Shibuya Station] Act3"] = true,
-			["[Shibuya Station] Act5"] = true,
-			["[Shibuya Station] Act1"] = true,
-			["[Shibuya Station] Act6"] = true,
-			["[Shibuya Station] Act2"] = true
 		}
 	},
 	["Winter Portal Joiner"] = {
