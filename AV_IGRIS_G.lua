@@ -2,7 +2,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Macro"] = "SonjVC_Igris",
+		["Macro"] = "Igris_G",
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
 		["Play"] = true,
