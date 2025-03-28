@@ -793,7 +793,7 @@ Accounts = {
     },
     ["incura497654"] = {
         "Log",
-        "YomomataAuto",
+        "Dungeons",
     },
     ["KageMonarchz"] = {
         "Log",
@@ -821,7 +821,7 @@ Accounts = {
     },
     ["LoveIcedevil"] = {
         "Log",
-        "YomomataAuto",
+        "YomomataG",
     },
     ["samueltitiala"] = {
         "Log",
@@ -930,7 +930,7 @@ Accounts = {
     },
     ["oJTm_fjmrw"] = {
         "Log",
-        "Dungeon",
+        "BaseGemInf",
     },
     ["underhorror"] = {
         "Log",
@@ -986,6 +986,10 @@ Accounts = {
     ["Awelasper0369"] = {
         "Log",
         "LovePortal",
+    },
+    ["canonA624"] = {
+        "Log",
+        "YomomataAuto",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
