@@ -180,7 +180,6 @@ getgenv().Config = {
 		["Delete Entities"] = true
 	},
 	["Secure"] = {
-		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
 	["AutoExecute"] = true
