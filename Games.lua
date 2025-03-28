@@ -1011,6 +1011,10 @@ Accounts = {
         "Marco",
         "IgrisIC",
     },
+    ["Turlizoha3831"] = {
+        "Log",
+        "ESSEa",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
