@@ -987,7 +987,7 @@ Accounts = {
     },
     ["Awelasper0369"] = {
         "Log",
-        "LovePortal",
+        "YomomataAuto",
     },
     ["canonA624"] = {
         "Log",
