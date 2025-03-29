@@ -838,7 +838,7 @@ Accounts = {
     },
     ["animelaststand26hour"] = {
         "Log",
-        "Dungeon",
+        "Dungeons",
     },
     ["Irinor96511"] = {
         "Log",
