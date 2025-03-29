@@ -101,7 +101,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Dungeons",
+        "LovePortal",
     },
     ["maser080"] = {
         "Log",
@@ -1013,6 +1013,26 @@ Accounts = {
     ["Turlizoha3831"] = {
         "Log",
         "ESSE",
+    },
+    ["Pb0yXJUB19Bc05"] = {
+        "Log",
+        "LovePortal"
+    },
+    ["rain4834"] = {
+        "Log",
+        "LovePortal"
+    },
+    ["AWDUu38132uaudo"] = {
+        "Log",
+        "BaseGemInf"
+    },
+    ["A39yL7Pw8WS9nM"] = {
+        "Log",
+        "BaseGemInf"
+    },
+    ["5f1KhS3AspH20T"] = {
+        "Log",
+        "BaseGemInf"
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
