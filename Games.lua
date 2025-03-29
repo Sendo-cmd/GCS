@@ -1024,15 +1024,15 @@ Accounts = {
     },
     ["AWDUu38132uaudo"] = {
         "Log",
-        "BaseGemInf"
+        "BaseGem"
     },
     ["A39yL7Pw8WS9nM"] = {
         "Log",
-        "BaseGemInf"
+        "BaseGem"
     },
     ["5f1KhS3AspH20T"] = {
         "Log",
-        "BaseGemInf"
+        "BaseGem"
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
