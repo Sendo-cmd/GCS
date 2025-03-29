@@ -1043,6 +1043,10 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["mewant2die_d"] = {
+        "Log",
+        "Dungeon",
+    },
     ["rip_guesst12"] = {
         "Log",
         "Marco",
