@@ -1016,27 +1016,27 @@ Accounts = {
     },
     ["Pb0yXJUB19Bc05"] = {
         "Log",
-        "LovePortal"
+        "LovePortal",
     },
     ["rain4834"] = {
         "Log",
-        "LovePortal"
+        "LovePortal",
     },
     ["AWDUu38132uaudo"] = {
         "Log",
-        "BaseGem"
+        "BaseGem",
     },
     ["A39yL7Pw8WS9nM"] = {
         "Log",
-        "BaseGem"
+        "BaseGem",
     },
     ["5f1KhS3AspH20T"] = {
         "Log",
-        "BaseGem"
+        "BaseGem",
     },
     ["BelvadsNI"] = {
         "Log",
-        "Dungeon"
+        "Dungeon",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
