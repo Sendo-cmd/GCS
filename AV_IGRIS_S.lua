@@ -2,11 +2,11 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Macro"] = "Igris_S",
 		["Macro Retry Limit"] = 0,
+		["Macro"] = "Igris_S",
 		["Ignore Macro Timing"] = true,
-		["Play"] = true,
 		["No Ignore Sell Timing"] = true,
+		["Play"] = true
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -32,157 +32,87 @@ getgenv().Config = {
 		}
 	},
 	["Gameplay"] = {
-		["Auto Modifier"] = {
-			["Enable"] = true,
-			["Prioritize"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
-				["Fast"] = 0,
-				["Revitalize"] = 98,
-				["Immunity"] = 100,
-				["Exploding"] = 97,
-				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
-				["Harvest"] = 0,
-				["Quake"] = 96,
-				["Cooldown"] = 0,
-				["No Trait No Problem"] = 0,
-				["Drowsy"] = 0,
-				["Exterminator"] = 0,
-				["King's Burden"] = 0,
-				["Regen"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
-				["Press It"] = 0,
-				["Champions"] = 99,
-				["Shielded"] = 0,
-				["Slayer"] = 0,
-				["Money Surge"] = 0
-			},
-			["Amount"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
-				["Fast"] = 3,
-				["Revitalize"] = 0,
-				["Immunity"] = 0,
-				["Exploding"] = 3,
-				["Dodge"] = 3,
-				["Uncommon Loot"] = 0,
-				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
-				["Harvest"] = 0,
-				["Quake"] = 0,
-				["Cooldown"] = 3,
-				["No Trait No Problem"] = 0,
-				["Drowsy"] = 3,
-				["King's Burden"] = 0,
-				["Exterminator"] = 0,
-				["Regen"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
-				["Press It"] = 0,
-				["Champions"] = 0,
-				["Shielded"] = 0,
-				["Slayer"] = 0,
-				["Money Surge"] = 1
-			}
-		},
-		["Ant Island"] = {
-			["Walk To Ant Tunnel"] = false,
-			["Auto Plug Ant Tunnel"] = false
-		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
 		["Auto Vote Start"] = true,
-		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Wave"] = 15
-		}
+		},
+		["Auto Use Ability"] = true
 	},
 	["Misc"] = {
 		["Redeem Code"] = true
 	},
 	["Modifier"] = {
 		["Restart Modifier"] = {
-			["Enable"] = false,
 			["Modifier"] = {
 				["King's Burden"] = true
 			}
 		},
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
+				["Champions"] = 98,
 				["Fast"] = 0,
-				["Revitalize"] = 98,
-				["Immunity"] = 100,
-				["Exploding"] = 97,
-				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
-				["Harvest"] = 0,
-				["Quake"] = 96,
-				["Cooldown"] = 0,
-				["No Trait No Problem"] = 0,
-				["Drowsy"] = 0,
-				["Exterminator"] = 0,
+				["Revitalize"] = 0,
 				["King's Burden"] = 0,
+				["Exploding"] = 100,
+				["Dodge"] = 0,
+				["Slayer"] = 0,
+				["Immunity"] = 99,
+				["Fisticuffs"] = 0,
+				["Harvest"] = 0,
+				["Planning Ahead"] = 0,
+				["Drowsy"] = 0,
+				["Quake"] = 0,
+				["Lifeline"] = 0,
+				["Range"] = 0,
 				["Regen"] = 0,
+				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
+				["Cooldown"] = 0,
+				["Precise Attack"] = 0,
 				["Press It"] = 0,
-				["Champions"] = 99,
+				["No Trait No Problem"] = 0,
 				["Shielded"] = 0,
-				["Slayer"] = 0,
+				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			},
+			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 3,
 				["Thrice"] = 3,
 				["Warding off Evil"] = 0,
 				["Precise Attack"] = 0,
 				["Fast"] = 3,
-				["Revitalize"] = 3,
-				["Immunity"] = 1,
+				["Planning Ahead"] = 0,
+				["Fisticuffs"] = 0,
 				["Exploding"] = 3,
 				["Dodge"] = 3,
-				["Uncommon Loot"] = 0,
-				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
+				["Slayer"] = 0,
+				["Immunity"] = 1,
+				["Revitalize"] = 3,
 				["Harvest"] = 0,
-				["Quake"] = 3,
+				["Champions"] = 1,
 				["Cooldown"] = 3,
-				["No Trait No Problem"] = 0,
 				["Drowsy"] = 3,
-				["Exterminator"] = 0,
-				["King's Burden"] = 0,
+				["Lifeline"] = 0,
+				["Range"] = 0,
 				["Regen"] = 3,
+				["King's Burden"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
+				["Exterminator"] = 0,
+				["No Trait No Problem"] = 0,
 				["Press It"] = 0,
-				["Champions"] = 1,
+				["Quake"] = 3,
 				["Shielded"] = 3,
-				["Slayer"] = 0,
+				["Uncommon Loot"] = 0,
 				["Money Surge"] = 1
 			}
 		}
@@ -201,14 +131,15 @@ getgenv().Config = {
 		["Auto Rejoin"] = true
 	},
 	["Secure"] = {
+		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
+	["AutoExecute"] = true,
 	["Legend Stage Joiner"] = {
 		["Auto Join"] = true,
 		["Stage"] = "Double Dungeon",
 		["Act"] = "Act3"
-	},
-	["AutoExecute"] = true
+	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
