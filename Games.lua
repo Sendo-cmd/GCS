@@ -17,6 +17,7 @@ Games = {
         ["IgrisG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_G.lua",
         ["IgrisCH"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_CH.lua",
         ["IgrisIC"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_IC.lua",
+        ["IgrisS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_S.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["Paragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon.lua",
@@ -938,7 +939,7 @@ Accounts = {
     },
     ["kamkamincu"] = {
         "Log",
-        "ESSE",
+        "BaseGem",
     },
     ["MFBF_7640"] = {
         "Log",
@@ -1037,6 +1038,11 @@ Accounts = {
     ["BelvadsNI"] = {
         "Log",
         "Dungeon",
+    },
+    ["rip_guesst12"] = {
+        "Log",
+        "Marco",
+        "IgrisS",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
