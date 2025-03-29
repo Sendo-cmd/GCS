@@ -2,11 +2,11 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Macro"] = "YomomataG",
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
 		["Play"] = true,
+		["Macro"] = "YomomataG",
+		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true,
+		["Macro Retry Limit"] = 0
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -46,24 +46,23 @@ getgenv().Config = {
 	},
 	["Modifier"] = {
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Champions"] = 100,
+				["Champions"] = 97,
 				["Fast"] = 0,
 				["Revitalize"] = 0,
 				["King's Burden"] = 0,
-				["Exploding"] = 98,
+				["Exploding"] = 100,
 				["Dodge"] = 0,
 				["Slayer"] = 0,
-				["Immunity"] = 99,
+				["Immunity"] = 98,
 				["Fisticuffs"] = 0,
 				["Harvest"] = 0,
 				["Planning Ahead"] = 0,
 				["Drowsy"] = 0,
-				["Quake"] = 0,
+				["Quake"] = 99,
 				["Lifeline"] = 0,
 				["Range"] = 0,
 				["Regen"] = 0,
@@ -78,35 +77,36 @@ getgenv().Config = {
 				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			},
+			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
 				["Champions"] = 0,
 				["Fast"] = 0,
-				["Revitalize"] = 0,
-				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Immunity"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 0,
-				["Planning Ahead"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
+				["Revitalize"] = 0,
 				["Harvest"] = 0,
-				["Lifeline"] = 0,
-				["Precise Attack"] = 0,
-				["Drowsy"] = 0,
+				["Quake"] = 0,
+				["Range"] = 0,
 				["No Trait No Problem"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
+				["Drowsy"] = 0,
+				["King's Burden"] = 0,
 				["Regen"] = 0,
+				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["Range"] = 0,
+				["Cooldown"] = 0,
+				["Lifeline"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 0,
+				["Precise Attack"] = 0,
 				["Shielded"] = 0,
-				["Slayer"] = 0,
+				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			}
 		}
@@ -125,14 +125,15 @@ getgenv().Config = {
 		["Auto Rejoin"] = true
 	},
 	["Secure"] = {
+		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
+	["AutoExecute"] = true,
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Kuinshi Palace",
 		["Auto Join"] = true,
 		["Act"] = "Act3"
-	},
-	["AutoExecute"] = true
+	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden

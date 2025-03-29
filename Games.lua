@@ -823,6 +823,11 @@ Accounts = {
     },
     ["LoveIcedevil"] = {
         "Log",
+        "PortalParty",
+    },
+    ["Toeeweg_1122"] = {
+        "Log",
+        "PortalParty",
     },
     ["samueltitiala"] = {
         "Log",
