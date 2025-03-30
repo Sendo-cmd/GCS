@@ -976,7 +976,7 @@ Accounts = {
     },
     ["tw1C4ddQ"] = {
         "Log",
-        "YomomataAuto",
+        "Dungeon",
     },
     ["dawg_4944"] = {
         "Log",
@@ -1092,6 +1092,10 @@ Accounts = {
     ["Shadof3702"] = {
         "Log",
         "LovePortal",
+    },
+    ["lnwyorn_0823"] = {
+        "Log",
+        "ESSE",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
