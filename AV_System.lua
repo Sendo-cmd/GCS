@@ -53,7 +53,7 @@ _G.User = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Shibuya Station"},
+            ["Ignore Stage"] = {},
             ["Ignore Modify"] = {},
         },
     },
