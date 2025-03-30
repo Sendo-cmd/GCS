@@ -121,6 +121,11 @@ getgenv().Config = {
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
 	},
+	["Legend Stage Joiner"] = {
+		["Auto Join"] = true,
+		["Stage"] = "Double Dungeon",
+		["Act"] = "Act3"
+	},
 	["Secure"] = {
 		["Walk Around"] = true,
 		["Random Offset"] = true
