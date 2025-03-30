@@ -106,7 +106,7 @@ Accounts = {
     },
     ["maser080"] = {
         "Log",
-        "PortalParty",
+        "BaseGemInf",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
@@ -125,8 +125,7 @@ Accounts = {
     },
     ["SDEgFGtxuid"] = {
        "Log",
-       "System",
-       "MemberStar",
+       "BaseGem",
     },
     ["SugarSnow_84782"] = {
         "StarGem",
@@ -839,7 +838,7 @@ Accounts = {
     },
     ["Loixyz2"] = {
         "Log",
-        "LovePortal",
+        "PortalParty",
     },
     ["animelaststand26hour"] = {
         "Log",
@@ -948,7 +947,7 @@ Accounts = {
     },
     ["MFBF_7640"] = {
         "Log",
-        "BaseGemInf",
+        "SukonoAuto",
     },
     ["ilovecat326"] = {
         "Log",
@@ -993,7 +992,7 @@ Accounts = {
     },
     ["Awelasper0369"] = {
         "Log",
-        "YomomataAuto",
+        "PortalParty",
     },
     ["canonA624"] = {
         "Log",
@@ -1081,6 +1080,14 @@ Accounts = {
     ["SnowCamelKid"] = {
         "Log",
         "PortalParty",
+    },
+    ["NonameT_T1"] = {
+        "Log",
+        "LovePortal",
+    },
+    ["Shadof3702"] = {
+        "Log",
+        "LovePortal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

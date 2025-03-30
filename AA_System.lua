@@ -289,7 +289,6 @@ _G.User = {
         ["Auto Join"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "SDEgFGtxuid",
             "PDXD22",
         },
 
