@@ -3,6 +3,10 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+local function Next_(var)
+    local duration = tick() + var
+    repeat task.wait() until tick() >= duration
+end
 --[[
 Map
 Sand Village
@@ -13,48 +17,57 @@ Underground Church
 Spirit Society
 ]]
 
+
+--[[
+ 
+local response = request({
+    ["Url"] = "https://api.championshop.date/party-aa",
+    ["Method"] = "POST",
+    ["Headers"] = {
+        ["content-type"] = "application/json"
+    },
+    ["Body"] = game:GetService("HttpService"):JSONEncode({
+        ["index"] = "XD",
+        ["value"] = {
+            ["data"] = "Hello World",
+            ["os"] = tick()
+        },
+    })
+})
+print(game:HttpGet("https://api.championshop.date/party-aa/XD"))
+]]
 _G.User = {
-    ["natthakit587"] = {
+    ["GCshop2"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
-            "Xx_e1ainaxX",
-            "KageMonarchz",
-            "jarnmosx01",
+            "GF4TR",
+            "WIN1241TH",
+            "Tiyarat2007",
+
+        },
+
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Shibuya Station"},
+            ["Ignore Modify"] = {},
         },
     },
-    ["Nuikk24"] = {
-
-        ["Select Mode"] = "Portal", -- Portal
-
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "AMERICAMENTIONEDRAHH",
-            "anakin_av139",
-            "Samueltitiala",
-        },
-    },
-    ["anakin_av139"] = {
+    ["GF4TR"] = {
         ["Party Mode"] = true,
     },
-    ["AMERICAMENTIONEDRAHH"] = {
+    ["WIN1241TH"] = {
         ["Party Mode"] = true,
     },
-    ["Samueltitiala"] = {
-        ["Party Mode"] = true,
-    },
-    ["KageMonarchz"] = {
-        ["Party Mode"] = true,
-    },
-    ["Xx_e1ainaxX"] = {
-        ["Party Mode"] = true,
-    },
-    ["jarnmosx01"] = {
+    ["Tiyarat2007"] = {
         ["Party Mode"] = true,
     },
 }
+
 -- Service
 local HttpService = game:GetService("HttpService")
 local TextChatService = game:GetService("TextChatService")
@@ -81,7 +94,7 @@ local function IndexToDisplay(arg)
     return StagesData["Story"][arg]["StageData"]["Name"]
 end
 -- All Variables
-local Key = "Onio_#@@421"
+-- local Key = "Onio_#@@421"
 local plr = game.Players.LocalPlayer
 local Character = plr.Character or plr.CharacterAdded:Wait()
 local RBXGeneral = TextChatService.TextChannels.RBXGeneral
@@ -111,49 +124,65 @@ end
 game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
 task.spawn(function()
     task.wait(2)
-    if game.PlaceId == 16146832113 then
-        
+    if game.PlaceId == 16146832113 then     
         if Settings["Party Mode"]  then
             if not Settings["Party Member"]  then
-                TextChatService.OnIncomingMessage = function(message)
-                    if message.Text:match(Key) then
-                        local Split = message.Text:split("|")
-                        if Split[3] == plr.Name and Split[2] == "Join" then
-                            if Split[4] == "Portal" then
-                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
-                                    "JoinPortal",
-                                    Split[5]
-                                )
-                            end
-                        end
+                -- TextChatService.OnIncomingMessage = function(message)
+                --     if message.Text:match(Key) then
+                --         local Split = message.Text:split("|")
+                --         if Split[3] == plr.Name and Split[2] == "Join" then
+                --             if Split[4] == "Portal" then
+                --                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
+                --                     "JoinPortal",
+                --                     Split[5]
+                --                 )
+                --             end
+                --         end
+                --     end
+                -- end
+                while task.wait(10) do
+                    local requestTo = game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name)
+                    if requestTo["status"] and requestTo["value"]["os"] < (tick() + 120) then
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
+                            "JoinPortal",
+                            requestTo["value"]["data"]
+                        )
                     end
                 end
-                while task.wait(5) do
-                    RBXGeneral:SendAsync(table.concat({Key,"Request Join",plr.Name},"|")) 
-                end
+                
             else
                 local PartyMember = {}
-                local UUID = ""
+                local UUID = nil
                 game:GetService("ReplicatedStorage").Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
                     if index == "Replicate" then
                         UUID = value["GUID"]
-                        for i,v in pairs(PartyMember) do
-                            RBXGeneral:SendAsync(table.concat({Key,"Join",plr.Name,"Portal",UUID},"|")) 
+                    end
+                end)
+                task.spawn(function()
+                    while task.wait(10) do
+                        if UUID then
+                            for i,v in pairs(PartyMember) do
+                                local response = request({
+                                    ["Url"] = "https://api.championshop.date/party-aa",
+                                    ["Method"] = "POST",
+                                    ["Headers"] = {
+                                        ["content-type"] = "application/json"
+                                    },
+                                    ["Body"] = game:GetService("HttpService"):JSONEncode({
+                                        ["index"] = v,
+                                        ["value"] = {
+                                            ["data"] = UUID,
+                                            ["os"] = tick()
+                                        },
+                                    })
+                                })
+                                -- RBXGeneral:SendAsync(table.concat({Key,"Join",plr.Name,"Portal",UUID},"|")) 
+                            end
                         end
                     end
                 end)
-                TextChatService.OnIncomingMessage = function(message)
-                    if message.Text:match(Key) then
-                        local Split = message.Text:split("|")
-                        if Split[2] == "Request Join" and table.find(Settings["Party Mode"],Split[3]) and not table.find(PartyMember,plr.Name) then
-                            table.insert(PartyMember,plr.Name)
-                        end
-                    end
-                end
-                repeat
-                    task.wait()
-                until #PartyMember >= Settings["Party Member"]
             end
+            
         end
         local function GetItem(ID)
             game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
@@ -194,17 +223,25 @@ task.spawn(function()
             end
             print("Im here")
             while true do
-                local Portal = PortalSettings(GetItem(Settings["ID"]))
-                if Portal then
-                    local args = {
-                        [1] = "ActivatePortal",
-                        [2] = Portal
-                    }
-                    
-                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                if AllPlayerInGame() then
+                    Next_(150)
+                    print("Found All Players")
+                    if AllPlayerInGame() then 
+                        local Portal = PortalSettings(GetItem(Settings["ID"]))
+                        if Portal then
+                            local args = {
+                                [1] = "ActivatePortal",
+                                [2] = Portal
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                        end
+                    end
                 end
                 task.wait(2)
             end
         end
+    else
+
     end    
 end)

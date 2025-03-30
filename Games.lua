@@ -1033,6 +1033,7 @@ Accounts = {
     },
     ["GF4TR"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["AWDUu38132uaudo"] = {
@@ -1099,10 +1100,12 @@ Accounts = {
     },
     ["Tiyarat2007"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["WIN1241TH"] = {
         "Log",
+        "System",
         "LovePortal",
     },
 }
