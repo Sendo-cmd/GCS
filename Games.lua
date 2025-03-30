@@ -1061,6 +1061,15 @@ Accounts = {
         "Log",
         "TraitReroll",
     },
+    ["xDsupakorn007"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Marie_31250"] = {
+        "Log",
+        "Marco",
+        "YomomataR",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
