@@ -414,8 +414,7 @@ Accounts = {
     },
     ["ASD_King70"] = {
         "Log",
-        "Marco",
-        "Sokora3",
+        "Dungeon",
     },
     ["G2G168P117"] = {
         "Log",
