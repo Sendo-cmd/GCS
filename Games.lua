@@ -1081,6 +1081,10 @@ Accounts = {
         "Log",
         "PortalParty",
     },
+    ["dv3ZP"] = {
+        "Log",
+        "PortalParty",
+    },
     ["NonameT_T1"] = {
         "Log",
         "LovePortal",
