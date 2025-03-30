@@ -2,14 +2,11 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
-		["Play"] = true,
 		["Macro"] = "Igris_G",
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true,
 		["Macro Retry Limit"] = 0,
-		["Joiner Macro Equipper"] = {
-			["Enable"] = true
-		}
+		["Ignore Macro Timing"] = true,
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -38,155 +35,81 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
-			["Wave"] = 15
-		},
+			["Wave"] = 1
+		}
+	},
+	["Modifier"] = {
 		["Auto Modifier"] = {
+			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
+				["Champions"] = 97,
 				["Fast"] = 0,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 97,
+				["Revitalize"] = 0,
+				["Immunity"] = 98,
+				["Exploding"] = 100,
 				["Dodge"] = 0,
 				["Slayer"] = 0,
-				["Immunity"] = 100,
-				["Revitalize"] = 98,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
 				["Harvest"] = 0,
-				["Champions"] = 99,
-				["Cooldown"] = 0,
-				["Drowsy"] = 0,
-				["Lifeline"] = 0,
+				["Quake"] = 99,
 				["Range"] = 0,
+				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
+				["King's Burden"] = 0,
 				["Regen"] = 0,
 				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["No Trait No Problem"] = 0,
+				["Cooldown"] = 0,
+				["Drowsy"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 96,
+				["Precise Attack"] = 0,
 				["Shielded"] = 0,
 				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			},
-			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
-				["Fast"] = 3,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 3,
-				["Dodge"] = 3,
-				["Slayer"] = 0,
-				["Immunity"] = 0,
-				["Revitalize"] = 0,
-				["Harvest"] = 0,
 				["Champions"] = 0,
-				["Cooldown"] = 3,
-				["Drowsy"] = 3,
-				["Lifeline"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Fisticuffs"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Immunity"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Precise Attack"] = 0,
 				["Range"] = 0,
+				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
+				["Cooldown"] = 0,
+				["Exterminator"] = 0,
 				["Regen"] = 0,
-				["King's Burden"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["Exterminator"] = 0,
-				["No Trait No Problem"] = 0,
+				["King's Burden"] = 0,
+				["Drowsy"] = 0,
 				["Press It"] = 0,
 				["Quake"] = 0,
 				["Shielded"] = 0,
-				["Uncommon Loot"] = 0,
-				["Money Surge"] = 1
-			}
-		}
-	},
-	["Misc"] = {
-		["Redeem Code"] = true
-	},
-	["Modifier"] = {
-		["Restart Modifier"] = {
-			["Modifier"] = {
-				["King's Burden"] = true
-			}
-		},
-		["Auto Modifier"] = {
-			["Prioritize"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
-				["Fast"] = 0,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 97,
-				["Dodge"] = 0,
 				["Slayer"] = 0,
-				["Immunity"] = 100,
-				["Revitalize"] = 98,
-				["Harvest"] = 0,
-				["Champions"] = 99,
-				["Cooldown"] = 0,
-				["Drowsy"] = 0,
-				["Lifeline"] = 0,
-				["Range"] = 0,
-				["Regen"] = 0,
-				["Exterminator"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["No Trait No Problem"] = 0,
-				["Press It"] = 0,
-				["Quake"] = 96,
-				["Shielded"] = 0,
-				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
-			},
-			["Enable"] = true,
-			["Amount"] = {
-				["Strong"] = 3,
-				["Thrice"] = 3,
-				["Warding off Evil"] = 0,
-				["Precise Attack"] = 0,
-				["Fast"] = 3,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 3,
-				["Dodge"] = 3,
-				["Slayer"] = 0,
-				["Immunity"] = 1,
-				["Revitalize"] = 3,
-				["Harvest"] = 0,
-				["Champions"] = 1,
-				["Cooldown"] = 3,
-				["Drowsy"] = 3,
-				["Lifeline"] = 0,
-				["Range"] = 0,
-				["Regen"] = 3,
-				["Exterminator"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["No Trait No Problem"] = 0,
-				["Press It"] = 0,
-				["Quake"] = 3,
-				["Shielded"] = 3,
-				["Uncommon Loot"] = 0,
-				["Money Surge"] = 1
 			}
 		}
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = false,
+		["Boost FPS"] = true,
 		["Black Screen"] = true,
 		["Delete Entities"] = true
 	},
@@ -194,18 +117,13 @@ getgenv().Config = {
 		["Auto Replay"] = true,
 		["Replay Amount"] = 0
 	},
+	["AutoExecute"] = true,
 	["Failsafe"] = {
 		["Auto Rejoin"] = true
 	},
 	["Secure"] = {
-		["Random Offset"] = true,
-		["Walk Around"] = true
-	},
-	["AutoExecute"] = true,
-	["Legend Stage Joiner"] = {
-		["Auto Join"] = true,
-		["Stage"] = "Double Dungeon",
-		["Act"] = "Act3"
+		["Walk Around"] = true,
+		["Random Offset"] = true
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
