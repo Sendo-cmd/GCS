@@ -224,7 +224,7 @@ task.spawn(function()
             print("Im here")
             while true do
                 if AllPlayerInGame() then
-                    Next_(150)
+                    Next_(60)
                     print("Found All Players")
                     if AllPlayerInGame() then 
                         local Portal = PortalSettings(GetItem(Settings["ID"]))
