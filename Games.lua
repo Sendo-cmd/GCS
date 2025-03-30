@@ -1033,6 +1033,10 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["GF4TR"] = {
+        "Log",
+        "LovePortal",
+    },
     ["AWDUu38132uaudo"] = {
         "Log",
         "BaseGem",
