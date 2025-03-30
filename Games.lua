@@ -1089,10 +1089,12 @@ Accounts = {
     },
     ["NonameT_T1"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["Shadof3702"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["lnwyorn_0823"] = {

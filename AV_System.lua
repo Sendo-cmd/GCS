@@ -66,6 +66,37 @@ _G.User = {
     ["Tiyarat2007"] = {
         ["Party Mode"] = true,
     },
+    ["Shadof3702"] = {
+
+        ["Select Mode"] = "Portal", -- Portal
+
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "NonameT_T1",
+        },
+
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["NonameT_T1"] = {
+
+        ["Select Mode"] = "Portal", -- Portal
+
+        ["Party Mode"] = true,
+
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },
+    },
 }
 
 -- Service
