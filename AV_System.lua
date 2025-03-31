@@ -66,34 +66,6 @@ _G.User = {
     ["Jamesnani2023"] = {
         ["Party Mode"] = true,
     },
-    ["incura497654"] = {
-
-        ["Select Mode"] = "Portal", -- Portal
-
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "BeemNaJaaa",
-            "effdskofkduf2",
-            "Holybus",
-        },
-
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["BeemNaJaaa"] = {
-        ["Party Mode"] = true,
-    },
-    ["Holybus"] = {
-        ["Party Mode"] = true,
-    },
-    ["effdskofkduf2"] = {
-        ["Party Mode"] = true,
-    },
     ["RyuzaaaV2"] = {
 
         ["Select Mode"] = "Portal", -- Portal
@@ -120,6 +92,34 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["kong2562"] = {
+        ["Party Mode"] = true,
+    },
+    ["incura497654"] = {
+
+        ["Select Mode"] = "Portal", -- Portal
+
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "BeemNaJaaa",
+            "effdskofkduf2",
+            "Holybus",
+        },
+
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["BeemNaJaaa"] = {
+        ["Party Mode"] = true,
+    },
+    ["Holybus"] = {
+        ["Party Mode"] = true,
+    },
+    ["effdskofkduf2"] = {
         ["Party Mode"] = true,
     },
 }
