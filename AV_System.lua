@@ -100,7 +100,7 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "rain4834",
+            "keam093321",
             "Lucinda2471",
             "kong2562",
         },
@@ -113,7 +113,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["rain4834"] = {
+    ["keam093321"] = {
         ["Party Mode"] = true,
     },
     ["Lucinda2471"] = {
