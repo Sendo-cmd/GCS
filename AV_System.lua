@@ -66,7 +66,7 @@ _G.User = {
     ["Jamesnani2023"] = {
         ["Party Mode"] = true,
     },
-    ["Holybus"] = {
+    ["incura497654"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
@@ -74,7 +74,7 @@ _G.User = {
         ["Party Member"] = {
             "BeemNaJaaa",
             "effdskofkduf2",
-            "incura497654",
+            "Holybus",
         },
 
         ["Portal Settings"] = {
@@ -88,7 +88,7 @@ _G.User = {
     ["BeemNaJaaa"] = {
         ["Party Mode"] = true,
     },
-    ["incura497654"] = {
+    ["Holybus"] = {
         ["Party Mode"] = true,
     },
     ["effdskofkduf2"] = {
