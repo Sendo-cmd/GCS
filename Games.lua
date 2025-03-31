@@ -1018,7 +1018,8 @@ Accounts = {
     },
     ["canonA624"] = {
         "Log",
-        "YomomataAuto",
+        "System",
+        "PortalParty",
     },
     ["Pokampud"] = {
         "Log",
