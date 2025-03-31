@@ -122,34 +122,6 @@ _G.User = {
     ["kong2562"] = {
         ["Party Mode"] = true,
     },
-    ["None"] = {
-
-        ["Select Mode"] = "Portal", -- Portal
-
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "None",
-            "None",
-            "None",
-        },
-
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["None"] = {
-        ["Party Mode"] = true,
-    },
-    ["None"] = {
-        ["Party Mode"] = true,
-    },
-    ["None"] = {
-        ["Party Mode"] = true,
-    },
 }
 
 -- Service
