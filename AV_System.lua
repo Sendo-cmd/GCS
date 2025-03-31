@@ -74,7 +74,7 @@ _G.User = {
         ["Party Member"] = {
             "keam093321",
             "Lucinda2471",
-            "kong2562",
+            "effdskofkduf2",
         },
 
         ["Portal Settings"] = {
@@ -91,7 +91,7 @@ _G.User = {
     ["Lucinda2471"] = {
         ["Party Mode"] = true,
     },
-    ["kong2562"] = {
+    ["effdskofkduf2"] = {
         ["Party Mode"] = true,
     },
     ["incura497654"] = {
@@ -102,7 +102,6 @@ _G.User = {
         ["Party Member"] = {
             "holybus",
             "beemNaJaaa",
-            "effdskofkduf2",
         },
 
         ["Portal Settings"] = {
@@ -119,9 +118,27 @@ _G.User = {
     ["beemnajaaa"] = {
         ["Party Mode"] = true,
     },
-    ["effdskofkduf2"] = {
+    ["kong2562"] = {
+
+        ["Select Mode"] = "Portal", -- Portal
+
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "none",
+        },
+
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["none"] = {
         ["Party Mode"] = true,
     },
+    
 }
 
 -- Service
@@ -261,6 +278,7 @@ task.spawn(function()
         end
         print("Im here 1")
         function AllPlayerInGame()
+            print(Settings["Party Member"])
             for i,v in pairs(Settings["Party Member"]) do
                 if not game:GetService("Players"):FindFirstChild(v) then
                     return false
@@ -301,7 +319,7 @@ task.spawn(function()
                 print("Hey")
                 if AllPlayerInGame() then
                     print("Hey 1")
-                    Next_(90)
+                    Next_(60)
                     print("Found All Players")
                     if AllPlayerInGame() then 
                         local Portal = PortalSettings(GetItem(Settings_["ID"]))
