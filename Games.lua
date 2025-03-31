@@ -794,7 +794,7 @@ Accounts = {
     },
     ["incura497654"] = {
         "Log",
-        "Dungeon",
+        "PortalParty",
     },
     ["KageMonarchz"] = {
         "Log",
@@ -851,7 +851,7 @@ Accounts = {
     },
     ["Lucinda2471"] = {
         "Log",
-        "Dungeon",
+        "PortalParty",
     },
     ["MarioNo1111"] = {
         "Log",
@@ -871,11 +871,11 @@ Accounts = {
     },
     ["effdskofkduf2"] = {
         "Log",
-        "LovePortal",
+        "PortalParty",
     },
     ["PanDa_An1b"] = {
         "Log",
-        "PortalParty",
+        "LovePortal",
     },
     ["Top_game1111"] = {
         "Log",
@@ -964,7 +964,7 @@ Accounts = {
     },
     ["I_Wxrst"] = {
         "Log",
-        "PortalParty",
+        "LovePortal",
     },
     ["gokvdera12"] = {
         "Log",
@@ -985,7 +985,11 @@ Accounts = {
     },
     ["Holybus"] = {
         "Log",
-        "ESSE",
+        "PortalParty",
+    },
+    ["BeemNaJaaa"] = {
+        "Log",
+        "PortalParty",
     },
     ["iffahan"] = {
         "Log",
@@ -1030,7 +1034,7 @@ Accounts = {
     },
     ["rain4834"] = {
         "Log",
-        "LovePortal",
+        "PortalParty",
     },
     ["GF4TR"] = {
         "Log",

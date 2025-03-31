@@ -53,7 +53,7 @@ _G.User = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
+            ["Ignore Stage"] = {"Shibuya Station"},
             ["Ignore Modify"] = {},
         },
     },
@@ -66,24 +66,88 @@ _G.User = {
     ["Jamesnani2023"] = {
         ["Party Mode"] = true,
     },
-    ["Shadof3702"] = {
+    ["Holybus"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "NonameT_T1",
+            "BeemNaJaaa",
+            "effdskofkduf2",
+            "incura497654",
         },
 
         ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["ID"] = 87, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
             ["Ignore Stage"] = {},
             ["Ignore Modify"] = {},
         },
     },
-    ["NonameT_T1"] = {
+    ["BeemNaJaaa"] = {
+        ["Party Mode"] = true,
+    },
+    ["incura497654"] = {
+        ["Party Mode"] = true,
+    },
+    ["effdskofkduf2"] = {
+        ["Party Mode"] = true,
+    },
+    ["RyuzaaaV2"] = {
+
+        ["Select Mode"] = "Portal", -- Portal
+
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "rain4834",
+            "Lucinda2471",
+            "kong2562",
+        },
+
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["rain4834"] = {
+        ["Party Mode"] = true,
+    },
+    ["Lucinda2471"] = {
+        ["Party Mode"] = true,
+    },
+    ["kong2562"] = {
+        ["Party Mode"] = true,
+    },
+    ["None"] = {
+
+        ["Select Mode"] = "Portal", -- Portal
+
+        ["Party Mode"] = false,
+        ["Party Member"] = {
+            "None",
+            "None",
+            "None",
+        },
+
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["None"] = {
+        ["Party Mode"] = true,
+    },
+    ["None"] = {
+        ["Party Mode"] = true,
+    },
+    ["None"] = {
         ["Party Mode"] = true,
     },
 }
@@ -163,8 +227,9 @@ task.spawn(function()
                 --     end
                 -- end
                 while task.wait(10) do
-                    local requestTo = game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name)
-                    if requestTo["status"] and requestTo["value"]["os"] < (tick() + 120) then
+                    local requestTo = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name))
+                    -- warn(requestTo["status"] ,  requestTo["value"]["os"] < (tick() + 120))
+                    if requestTo["status"] and tick() < requestTo["value"]["os"] + 120 then
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
                             "JoinPortal",
                             requestTo["value"]["data"]
