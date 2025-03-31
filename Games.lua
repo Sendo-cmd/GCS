@@ -346,8 +346,7 @@ Accounts = {
     },
     ["tawannieiei"] = {
         "Log",
-        "Marco",
-        "Dungeon",
+        "Portal",
     },
     ["jarnmosx01"] = {
         "Log",
@@ -957,7 +956,7 @@ Accounts = {
     },
     ["ilovecat326"] = {
         "Log",
-        "PortalParty",
+        "Dungeon",
     },
     ["keam093321"] = {
         "Log",
@@ -1000,6 +999,10 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["noomnaso68725"] = {
+        "Log",
+        "SukonoAuto",
+    },
     ["BeemNaJaaa"] = {
         "Log",
         "System",
@@ -1027,7 +1030,7 @@ Accounts = {
     },
     ["HaineToram2"] = {
         "Log",
-        "ESSE",
+        "Dungeon",
     },
     ["Pun156_Pat"] = {
         "Log",
@@ -1048,8 +1051,7 @@ Accounts = {
     },
     ["rain4834"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["GF4TR"] = {
         "Log",
