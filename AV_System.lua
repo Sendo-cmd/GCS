@@ -100,8 +100,8 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "holybus",
-            "beemNaJaaa",
+            "HolyBus",
+            "BeemNaJaaa",
             "canonA624",
         },
 
@@ -113,10 +113,10 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["holybus"] = {
+    ["HolyBus"] = {
         ["Party Mode"] = true,
     },
-    ["beemnajaaa"] = {
+    ["BeemNaJaaa"] = {
         ["Party Mode"] = true,
     },
     ["canonA624"] = {
@@ -128,7 +128,7 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "none",
+            "Pb0yXJUB19Bc05",
         },
 
         ["Portal Settings"] = {
@@ -139,7 +139,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["none"] = {
+    ["Pb0yXJUB19Bc05"] = {
         ["Party Mode"] = true,
     },
     
