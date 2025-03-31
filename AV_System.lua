@@ -100,9 +100,9 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "BeemNaJaaa",
+            "holybus",
+            "beemNaJaaa",
             "effdskofkduf2",
-            "Holybus",
         },
 
         ["Portal Settings"] = {
@@ -113,10 +113,10 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["Holybus"] = {
+    ["holybus"] = {
         ["Party Mode"] = true,
     },
-    ["BeemNaJaaa"] = {
+    ["beemnajaaa"] = {
         ["Party Mode"] = true,
     },
     ["effdskofkduf2"] = {
