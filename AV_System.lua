@@ -102,6 +102,7 @@ _G.User = {
         ["Party Member"] = {
             "holybus",
             "beemNaJaaa",
+            "canonA624",
         },
 
         ["Portal Settings"] = {
@@ -116,6 +117,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["beemnajaaa"] = {
+        ["Party Mode"] = true,
+    },
+    ["canonA624"] = {
         ["Party Mode"] = true,
     },
     ["kong2562"] = {
