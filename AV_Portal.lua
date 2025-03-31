@@ -22,6 +22,7 @@ getgenv().Config = {
 	["Winter Portal Joiner"] = {
 		["Buy if out of Portal"] = true,
 		["Auto Next"] = true,
+		["Auto Join"] = true,
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
 			["Enable"] = true,
