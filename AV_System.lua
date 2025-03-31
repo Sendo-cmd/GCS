@@ -198,6 +198,7 @@ if _G.User[plr.Name] then
         Settings[i] = v
     end
 end
+print(Settings["Party Member"],plr.Name,_G.User[plr.Name])
 game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
 task.spawn(function()
     task.wait(2)
@@ -232,18 +233,15 @@ task.spawn(function()
                 
             else
                 print("Im here 4")
-                local PartyMember = {}
                 local UUID = nil
                 game:GetService("ReplicatedStorage").Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
-                    if index == "Replicate" then
+                    if index == "Replicate" and tostring(value["Owner"]) == plr.Name then
                         UUID = value["GUID"]
                     end
                 end)
                 task.spawn(function()
                     while task.wait(10) do
-                        print("Hold")
                         if UUID then
-                            print("Hold 1") 
                             for i,v in pairs(Settings["Party Member"]) do
                                 local response = request({
                                     ["Url"] = "https://api.championshop.date/party-aa",
@@ -320,11 +318,8 @@ task.spawn(function()
           
             print("Im here")
             while true do
-                print("Hey")
                 if AllPlayerInGame() then
-                    print("Hey 1")
                     Next_(60)
-                    print("Found All Players")
                     if AllPlayerInGame() then 
                         local Portal = PortalSettings(GetItem(Settings_["ID"]))
                         if Portal then
