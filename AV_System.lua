@@ -1,4 +1,4 @@
-repeat  task.wait() until game:IsLoaded()
+repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
@@ -113,10 +113,10 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["BeemNaJaaa"] = {
+    ["Holybus"] = {
         ["Party Mode"] = true,
     },
-    ["Holybus"] = {
+    ["BeemNaJaaa"] = {
         ["Party Mode"] = true,
     },
     ["effdskofkduf2"] = {
