@@ -1104,6 +1104,11 @@ Accounts = {
         "System",
         "LovePortal",
     },
+    ["Jamesnani2023"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
     ["WIN1241TH"] = {
         "Log",
         "System",

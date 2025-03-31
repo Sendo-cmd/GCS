@@ -43,9 +43,9 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GF4TR",
-            "WIN1241TH",
-            "Tiyarat2007",
+            "I_Wxrst",
+            "PanDa_An1b",
+            "Jamesnani2023",
 
         },
 
@@ -57,13 +57,13 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["GF4TR"] = {
+    ["I_Wxrst"] = {
         ["Party Mode"] = true,
     },
-    ["WIN1241TH"] = {
+    ["PanDa_An1b"] = {
         ["Party Mode"] = true,
     },
-    ["Tiyarat2007"] = {
+    ["Jamesnani2023"] = {
         ["Party Mode"] = true,
     },
     ["Shadof3702"] = {
@@ -84,18 +84,7 @@ _G.User = {
         },
     },
     ["NonameT_T1"] = {
-
-        ["Select Mode"] = "Portal", -- Portal
-
         ["Party Mode"] = true,
-
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },
     },
 }
 
@@ -157,7 +146,9 @@ task.spawn(function()
     task.wait(2)
     if game.PlaceId == 16146832113 then     
         if Settings["Party Mode"]  then
+            print("Im here 2")
             if not Settings["Party Member"]  then
+                print("Im here 3")
                 -- TextChatService.OnIncomingMessage = function(message)
                 --     if message.Text:match(Key) then
                 --         local Split = message.Text:split("|")
@@ -182,6 +173,7 @@ task.spawn(function()
                 end
                 
             else
+                print("Im here 4")
                 local PartyMember = {}
                 local UUID = nil
                 game:GetService("ReplicatedStorage").Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
@@ -191,8 +183,10 @@ task.spawn(function()
                 end)
                 task.spawn(function()
                     while task.wait(10) do
+                        print("Hold")
                         if UUID then
-                            for i,v in pairs(PartyMember) do
+                            print("Hold 1") 
+                            for i,v in pairs(Settings["Party Member"]) do
                                 local response = request({
                                     ["Url"] = "https://api.championshop.date/party-aa",
                                     ["Method"] = "POST",
@@ -207,6 +201,9 @@ task.spawn(function()
                                         },
                                     })
                                 })
+                                for i,v in pairs(response) do
+                                    print(i,v)
+                                end
                                 -- RBXGeneral:SendAsync(table.concat({Key,"Join",plr.Name,"Portal",UUID},"|")) 
                             end
                         end
@@ -225,8 +222,17 @@ task.spawn(function()
             end
             return Items
         end
+        print("Im here 1")
+        function AllPlayerInGame()
+            for i,v in pairs(Settings["Party Member"]) do
+                if not game:GetService("Players"):FindFirstChild(v) then
+                    return false
+                end
+            end
+            return true
+        end
         if Settings["Select Mode"] == "Portal" then
-            local Settings = Settings["Portal Settings"]
+            local Settings_ = Settings["Portal Settings"]
             local function Ignore(tab1,tab2)
                 for i,v in pairs(tab1) do
                     if table.find(tab2,v) then
@@ -239,7 +245,7 @@ task.spawn(function()
                 local AllPortal = {}
                 for i,v in pairs(tabl) do
                     
-                    if not table.find(Settings["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"])) and Ignore(v["ExtraData"]["Modifiers"],Settings["Ignore Modify"]) and Settings["Tier Cap"] >= v["ExtraData"]["Tier"] then
+                    if not table.find(Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"])) and Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
                         AllPortal[#AllPortal + 1] = {
                             [1] = i,
                             [2] = v["ExtraData"]["Tier"]
@@ -252,13 +258,16 @@ task.spawn(function()
                 end)
                 return AllPortal[1][1] or false
             end
+          
             print("Im here")
             while true do
+                print("Hey")
                 if AllPlayerInGame() then
-                    Next_(60)
+                    print("Hey 1")
+                    Next_(10)
                     print("Found All Players")
                     if AllPlayerInGame() then 
-                        local Portal = PortalSettings(GetItem(Settings["ID"]))
+                        local Portal = PortalSettings(GetItem(Settings_["ID"]))
                         if Portal then
                             local args = {
                                 [1] = "ActivatePortal",
