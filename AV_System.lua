@@ -301,7 +301,7 @@ task.spawn(function()
                 print("Hey")
                 if AllPlayerInGame() then
                     print("Hey 1")
-                    Next_(30)
+                    Next_(10)
                     print("Found All Players")
                     if AllPlayerInGame() then 
                         local Portal = PortalSettings(GetItem(Settings_["ID"]))
