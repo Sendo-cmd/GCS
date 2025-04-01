@@ -99,7 +99,7 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "canonA624"
+            "HolyBus"
         },
 
         ["Portal Settings"] = {
