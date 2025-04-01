@@ -140,7 +140,9 @@ _G.User = {
     ["Pb0yXJUB19Bc05"] = {
         ["Party Mode"] = true,
     },
-    
+    ["Arscontia"] = {
+        ["Party Mode"] = true,
+    },
 }
 
 -- Service

@@ -1025,6 +1025,11 @@ Accounts = {
         "Log",
         "YomomataAuto",
     },
+    ["Arscontia"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
     ["yanawarutkanpai"] = {
         "Log",
         "LovePortal",
