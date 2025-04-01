@@ -97,7 +97,7 @@ _G.User = {
             "canonA624"
         },
         ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["ID"] = 87, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
             ["Ignore Stage"] = {},
