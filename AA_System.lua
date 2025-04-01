@@ -287,7 +287,7 @@ _G.User = {
         ["Hard"] = false,
         ["Daily"] = true,
         ["Auto Join"] = true,
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "Newbiethreepoint00",
         },
@@ -664,7 +664,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
     },
     ["Du_ZraX05"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite
