@@ -168,10 +168,10 @@ _G.User = {
     ["Turlizoha3831"] = {
         ["Party Mode"] = true,
     },
-    ["Arscontia"] = {
+    ["none"] = {
         ["Party Mode"] = true,
     },
-    ["BelvadsNI"] = {
+    ["none"] = {
         ["Party Mode"] = true,
     },
 }
