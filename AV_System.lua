@@ -125,7 +125,7 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Pb0yXJUB19Bc05",
+            "petezero0",
             "Arscontia",
             "BelvadsNI"
         },
@@ -138,7 +138,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["Pb0yXJUB19Bc05"] = {
+    ["petezero0"] = {
         ["Party Mode"] = true,
     },
     ["Arscontia"] = {
