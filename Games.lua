@@ -371,7 +371,7 @@ Accounts = {
     ["PDXD22"] = {
         "Log",
         "System",
-        "MemberStar",
+        "FarmGemSw",
     },
     ["bloxfruit756"] = {
         "Log",
@@ -1079,7 +1079,8 @@ Accounts = {
     },
     ["BelvadsNI"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "LovePortal",
     },
     ["mewant2die_d"] = {
         "Log",

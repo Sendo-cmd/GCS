@@ -126,7 +126,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Pb0yXJUB19Bc05",
-            "Arscontia"
+            "Arscontia",
+            "BelvadsNI"
         },
 
         ["Portal Settings"] = {
@@ -141,6 +142,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Arscontia"] = {
+        ["Party Mode"] = true,
+    },
+    ["BelvadsNI"] = {
         ["Party Mode"] = true,
     },
 }

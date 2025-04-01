@@ -289,7 +289,7 @@ _G.User = {
         ["Auto Join"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "PDXD22",
+            "Newbiethreepoint00",
         },
 
     },
@@ -1273,7 +1273,8 @@ _G.User = {
         ["Select Level"] = "1", -- Story & Legend Stage & Raid
         ["Hard"] = false, -- Story
         ["Daily"] = false,
-        ["Party Mode"] = true,
+        ["Auto Join"] = false,
+        ["Party Mode"] = false,
     },
     ["ilovemymommmlp"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite , Event , Contract
