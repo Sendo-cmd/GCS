@@ -16,6 +16,7 @@ local Profiles = {
     "Igris_CH.json",
     "Igris_IC.json",
     "Igris_S.json",
+    "Igris_Y.json",
     "YomomataCh.json",
     "YomomataG.json",
     "YomomataV.json",
