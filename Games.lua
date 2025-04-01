@@ -1114,6 +1114,11 @@ Accounts = {
         "Marco",
         "YomomataR",
     },
+    ["66KAPIL"] = {
+        "Log",
+        "Marco",
+        "YomomataG",
+    },
     ["AceLilFellow"] = {
         "Log",
         "PortalParty",
