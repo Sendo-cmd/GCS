@@ -38,9 +38,7 @@ print(game:HttpGet("https://api.championshop.date/party-aa/XD"))
 ]]
 _G.User = {
     ["GCshop2"] = {
-
         ["Select Mode"] = "Portal", -- Portal
-
         ["Party Mode"] = true,
         ["Party Member"] = {
             "I_Wxrst",
@@ -136,9 +134,7 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["NonameT_T1"] = {
-
         ["Select Mode"] = "Portal", -- Portal
-
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Turlizoha3831",
