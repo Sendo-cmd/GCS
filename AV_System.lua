@@ -94,14 +94,14 @@ _G.User = {
     ["effdskofkduf2"] = {
         ["Party Mode"] = true,
     },
-    ["canonA624"] = {
+    ["RyuzaaaV2"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
         ["Party Mode"] = true,
         ["Party Member"] = {
             "HolyBus",
-            "RyuzaaaV2"
+            "canonA624"
         },
 
         ["Portal Settings"] = {
@@ -118,7 +118,7 @@ _G.User = {
     ["BeemNaJaaa"] = {
         ["Party Mode"] = true,
     },
-    ["RyuzaaaV2"] = {
+    ["canonA624"] = {
         ["Party Mode"] = true,
     },
     ["kong2562"] = {
@@ -167,12 +167,6 @@ _G.User = {
         },
     },
     ["Turlizoha3831"] = {
-        ["Party Mode"] = true,
-    },
-    ["none"] = {
-        ["Party Mode"] = true,
-    },
-    ["none"] = {
         ["Party Mode"] = true,
     },
 }
