@@ -664,6 +664,7 @@ _G.User = {
         ["Select Map"] = "Frozen Abyss", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
+        ["Party Mode"] = true,
     },
     ["Du_ZraX05"] = {
         ["Select Mode"] = "Infinite", -- Raid , Legend Stage , Infinite

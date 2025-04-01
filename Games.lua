@@ -642,6 +642,11 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["Newbiethreepoint00"] = {
+        "Log",
+        "System",
+        "MemberStar",
+    },
     ["Extercel_o"] = {
         "Log",
         "Dungeon",
