@@ -46,9 +46,7 @@ _G.User = {
             "I_Wxrst",
             "PanDa_An1b",
             "Jamesnani2023"
-
         },
-
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
@@ -67,16 +65,13 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Lucinda2471"] = {
-
         ["Select Mode"] = "Portal", -- Portal
-
         ["Party Mode"] = true,
         ["Party Member"] = {
             "keam093321",
             "effdskofkduf2",
             "BeemNaJaaa"
         },
-
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
@@ -97,13 +92,11 @@ _G.User = {
     ["RyuzaaaV2"] = {
 
         ["Select Mode"] = "Portal", -- Portal
-
         ["Party Mode"] = true,
         ["Party Member"] = {
             "HolyBus",
             "canonA624"
         },
-
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
@@ -122,16 +115,13 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["kong2562"] = {
-
         ["Select Mode"] = "Portal", -- Portal
-
         ["Party Mode"] = true,
         ["Party Member"] = {
             "petezero0",
             "Arscontia",
             "BelvadsNI"
         },
-
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
@@ -157,7 +147,6 @@ _G.User = {
         ["Party Member"] = {
             "Turlizoha3831",
         },
-
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
