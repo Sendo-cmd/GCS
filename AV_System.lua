@@ -105,7 +105,7 @@ _G.User = {
         },
 
         ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["ID"] = 113, -- 113 Love , 87 Winter
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
             ["Ignore Stage"] = {},
@@ -155,7 +155,7 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Turlizoha3831"
+            "Turlizoha3831",
         },
 
         ["Portal Settings"] = {
