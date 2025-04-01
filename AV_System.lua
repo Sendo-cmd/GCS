@@ -73,7 +73,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "keam093321",
-            "effdskofkduf2"
+            "effdskofkduf2",
+            "BeemNaJaaa"
         },
 
         ["Portal Settings"] = {
@@ -87,7 +88,7 @@ _G.User = {
     ["keam093321"] = {
         ["Party Mode"] = true,
     },
-    ["none"] = {
+    ["BeemNaJaaa"] = {
         ["Party Mode"] = true,
     },
     ["effdskofkduf2"] = {
@@ -117,6 +118,34 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["none"] = {
+        ["Party Mode"] = true,
+    },
+    ["kong2562"] = {
+
+        ["Select Mode"] = "Portal", -- Portal
+
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "petezero0",
+            "Arscontia",
+            "BelvadsNI"
+        },
+
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Shibuya Station"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["petezero0"] = {
+        ["Party Mode"] = true,
+    },
+    ["Arscontia"] = {
+        ["Party Mode"] = true,
+    },
+    ["BelvadsNI"] = {
         ["Party Mode"] = true,
     },
     ["kong2562"] = {
