@@ -865,7 +865,8 @@ Accounts = {
     },
     ["MarioNo1111"] = {
         "Log",
-        "Dungeon",
+        "Marco",
+        "YomomataG",
     },
     ["ASKDEX2_54016"] = {
         "Log",
