@@ -1054,7 +1054,8 @@ Accounts = {
     },
     ["Turlizoha3831"] = {
         "Log",
-        "ESSE",
+        "System",
+        "LovePortal",
     },
     ["Pb0yXJUB19Bc05"] = {
         "Log",
@@ -1133,6 +1134,7 @@ Accounts = {
     },
     ["NonameT_T1"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["Shadof3702"] = {
