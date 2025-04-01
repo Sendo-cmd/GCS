@@ -929,7 +929,8 @@ Accounts = {
     },
     ["MitakaSann"] = {
         "Log",
-        "LovePortal",
+        "Marco",
+        "IgrisY",
     },
     ["Mzwz13"] = {
         "Log",
