@@ -1060,12 +1060,11 @@ Accounts = {
     },
     ["Pb0yXJUB19Bc05"] = {
         "Log",
-        "System",
-        "LovePortal",
+        "BaseGem",
     },
     ["4N3hHaKS62eZH1"] = {
         "Log",
-        "LovePortal",
+        "BaseGem",
     },
     ["rain4834"] = {
         "Log",
