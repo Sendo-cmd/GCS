@@ -107,9 +107,6 @@ _G.User = {
     ["HolyBus"] = {
         ["Party Mode"] = true,
     },
-    ["BeemNaJaaa"] = {
-        ["Party Mode"] = true,
-    },
     ["canonA624"] = {
         ["Party Mode"] = true,
     },
