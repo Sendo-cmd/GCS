@@ -148,15 +148,13 @@ _G.User = {
     ["BelvadsNI"] = {
         ["Party Mode"] = true,
     },
-    ["kong2562"] = {
+    ["NonameT_T1"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "petezero0",
-            "Arscontia",
-            "BelvadsNI"
+            "Turlizoha3831"
         },
 
         ["Portal Settings"] = {
@@ -167,7 +165,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["petezero0"] = {
+    ["Turlizoha3831"] = {
         ["Party Mode"] = true,
     },
     ["Arscontia"] = {
