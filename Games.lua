@@ -1066,6 +1066,14 @@ Accounts = {
         "Log",
         "BaseGem",
     },
+    ["5f1KhS3AspH20T"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["A39yL7Pw8WS9nM"] = {
+        "Log",
+        "BaseGem",
+    },
     ["rain4834"] = {
         "Log",
         "Dungeon",
