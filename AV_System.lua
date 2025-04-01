@@ -66,15 +66,14 @@ _G.User = {
     ["Jamesnani2023"] = {
         ["Party Mode"] = true,
     },
-    ["RyuzaaaV2"] = {
+    ["Lucinda2471"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
         ["Party Mode"] = true,
         ["Party Member"] = {
             "keam093321",
-            "Lucinda2471",
-            "effdskofkduf2",
+            "effdskofkduf2"
         },
 
         ["Portal Settings"] = {
@@ -88,20 +87,18 @@ _G.User = {
     ["keam093321"] = {
         ["Party Mode"] = true,
     },
-    ["Lucinda2471"] = {
+    ["none"] = {
         ["Party Mode"] = true,
     },
     ["effdskofkduf2"] = {
         ["Party Mode"] = true,
     },
-    ["incura497654"] = {
+    ["canonA624"] = {
 
         ["Select Mode"] = "Portal", -- Portal
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "HolyBus",
-            "BeemNaJaaa",
             "canonA624"
         },
 
@@ -119,7 +116,7 @@ _G.User = {
     ["BeemNaJaaa"] = {
         ["Party Mode"] = true,
     },
-    ["canonA624"] = {
+    ["none"] = {
         ["Party Mode"] = true,
     },
     ["kong2562"] = {
@@ -128,7 +125,8 @@ _G.User = {
 
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Pb0yXJUB19Bc05"
+            "Pb0yXJUB19Bc05",
+            "Arscontia"
         },
 
         ["Portal Settings"] = {
