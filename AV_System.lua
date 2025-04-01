@@ -90,7 +90,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["RyuzaaaV2"] = {
-
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
