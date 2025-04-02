@@ -506,7 +506,8 @@ Accounts = {
     },
     ["Kreovx"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "LovePortal",
     },
     ["quk1lp"] = {
         "Log",
