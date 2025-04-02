@@ -167,7 +167,7 @@ if _G.User[plr.Name] then
         Settings[i] = v
     end
 end
-print(Settings["Party Member"],plr.Name,_G.User[plr.Name])
+warn(Settings["Party Member"],plr.Name,_G.User[plr.Name])
 game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
 task.spawn(function()
     task.wait(2)
@@ -189,10 +189,15 @@ task.spawn(function()
                 --         end
                 --     end
                 -- end
-                while task.wait(10) do
+                while task.wait(5) do
                     local requestTo = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name))
-                    -- warn(requestTo["status"] ,  requestTo["value"]["os"] < (tick() + 120))
-                    if requestTo["status"] and tick() < requestTo["value"]["os"] + 120 then
+                    local ost = requestTo["status"] == "success" and requestTo["value"]["os"] or 0
+                    -- warn(requestTo["status"] , requestTo["value"])
+                    -- warn(ost)
+                    -- warn(requestTo["status"] == "success" and requestTo["value"]["data"])
+                    -- warn(tostring(requestTo["status"]) == "success" , requestTo["value"] , requestTo["value"]["os"] >= tick())
+                    if tostring(requestTo["status"]) == "success" and requestTo["value"] and tonumber(requestTo["value"]["os"]) >= os.time() then
+                        warn("Join")
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
                             "JoinPortal",
                             requestTo["value"]["data"]
@@ -209,7 +214,7 @@ task.spawn(function()
                     end
                 end)
                 task.spawn(function()
-                    while task.wait(10) do
+                    while task.wait() do
                         if UUID then
                             for i,v in pairs(Settings["Party Member"]) do
                                 local response = request({
@@ -222,15 +227,13 @@ task.spawn(function()
                                         ["index"] = v,
                                         ["value"] = {
                                             ["data"] = UUID,
-                                            ["os"] = tick()
+                                            ["os"] = os.time() + 120
                                         },
                                     })
                                 })
-                                for i,v in pairs(response) do
-                                    print(i,v)
-                                end
                                 -- RBXGeneral:SendAsync(table.concat({Key,"Join",plr.Name,"Portal",UUID},"|")) 
                             end
+                            task.wait(10)
                         end
                     end
                 end)
