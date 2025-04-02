@@ -41,8 +41,9 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "AWDUu38132uaudo",
-            "x72FZv924NOpJI"
+            "Kreovx",
+            "x72FZv924NOpJI",
+            "Theppartarn"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -52,10 +53,10 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["AWDUu38132uaudo"] = {
+    ["Kreovx"] = {
         ["Party Mode"] = true,
     },
-    ["NonameT_T1"] = {
+    ["Theppartarn"] = {
         ["Party Mode"] = true,
     },
     ["x72FZv924NOpJI"] = {
@@ -90,8 +91,6 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "petezero0",
-            "Arscontia",
             "I97Iwnqlm1sy60"
         },
         ["Portal Settings"] = {

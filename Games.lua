@@ -1059,6 +1059,11 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["Theppartarn"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
     ["Pun156_Pat"] = {
         "Log",
         "Marco",
@@ -1066,8 +1071,7 @@ Accounts = {
     },
     ["Turlizoha3831"] = {
         "Log",
-        "System",
-        "LovePortal",
+        "Portal",
     },
     ["A39yL7Pw8WS9nM"] = {
         "Log",
