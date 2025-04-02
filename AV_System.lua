@@ -42,7 +42,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "I_Wxrst",
-            "PanDa_An1b",
             "Jamesnani2023"
         },
         ["Portal Settings"] = {
