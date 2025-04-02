@@ -68,7 +68,7 @@ _G.User = {
         ["Party Member"] = {
             "RyuzaaaV2",
             "rain4834",
-            "1mpSs7K27A2TeZ"
+            "MarioNo1111"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -84,7 +84,7 @@ _G.User = {
     ["rain4834"] = {
         ["Party Mode"] = true,
     },
-    ["1mpSs7K27A2TeZ"] = {
+    ["MarioNo1111"] = {
         ["Party Mode"] = true,
     },
     ["4N3hHaKS62eZH1"] = {
