@@ -103,15 +103,15 @@ _G.User = {
     ["HolyBus"] = {
         ["Party Mode"] = true,
     },
-    ["BelvadsNI"] = {
+    ["canonA624"] = {
         ["Party Mode"] = true,
     },
-    ["kong2562"] = {
+    ["BelvadsNI"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "petezero0",
-            "Arscontia",
+            "Arscontia"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
