@@ -1023,8 +1023,7 @@ Accounts = {
     },
     ["noomnaso68725"] = {
         "Log",
-        "Marco",
-        "Sokora2",
+        "SokoraAuto",
     },
     ["BeemNaJaaa"] = {
         "Log",
