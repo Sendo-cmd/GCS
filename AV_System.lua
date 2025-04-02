@@ -42,7 +42,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "I_Wxrst",
-            "Jamesnani2023"
+            "Jamesnani2023",
+            "NonameT_T1"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -55,7 +56,7 @@ _G.User = {
     ["I_Wxrst"] = {
         ["Party Mode"] = true,
     },
-    ["PanDa_An1b"] = {
+    ["NonameT_T1"] = {
         ["Party Mode"] = true,
     },
     ["Jamesnani2023"] = {
@@ -86,11 +87,13 @@ _G.User = {
     ["effdskofkduf2"] = {
         ["Party Mode"] = true,
     },
-    ["RyuzaaaV2"] = {
+    ["4N3hHaKS62eZH1"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "HolyBus"
+            "RyuzaaaV2",
+            "1mpSs7K27A2TeZ",
+            "Pb0yXJUB19Bc05"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -100,10 +103,13 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["HolyBus"] = {
+    ["RyuzaaaV2"] = {
         ["Party Mode"] = true,
     },
-    ["canonA624"] = {
+    ["1mpSs7K27A2TeZ"] = {
+        ["Party Mode"] = true,
+    },
+    ["Pb0yXJUB19Bc05"] = {
         ["Party Mode"] = true,
     },
     ["BelvadsNI"] = {
@@ -125,23 +131,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Arscontia"] = {
-        ["Party Mode"] = true,
-    },
-    ["NonameT_T1"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Turlizoha3831",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Shibuya Station"},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["Turlizoha3831"] = {
         ["Party Mode"] = true,
     },
 }

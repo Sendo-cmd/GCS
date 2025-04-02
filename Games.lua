@@ -95,7 +95,7 @@ Accounts = {
     ["SHIFUGOD"] = {
        "Log",
        "System",
-       "Hsnd",
+       "Candie",
     },
     ["Champandbank147"] = {
         "Log",
@@ -914,8 +914,7 @@ Accounts = {
     },
     ["ggg_ufgj"] = {
         "Log",
-        "System",
-        "FarmGem",
+        "BaseGem",
     },
     ["MAXTONINE"] = {
         "Log",

@@ -274,6 +274,7 @@ Ruined City (Midnight)
 Haunted Academy
 Frozen Abyss
 Strange Town (Haunted)
+Fools Hunt
 ]]
 
 
@@ -282,10 +283,10 @@ _G.User = {
     ["FireBlackDevilZ"] = {
         ["Select Mode"] = "Event", 
 
-        ["Select Map"] = "Frozen Abyss", 
+        ["Select Map"] = "Fools Hunt", 
         ["Select Level"] = "1", 
         ["Hard"] = false,
-        ["Daily"] = true,
+        ["Daily"] = false,
         ["Auto Join"] = true,
         ["Party Mode"] = false,
         ["Party Member"] = {
@@ -1445,7 +1446,8 @@ local function SendWebhook(evo)
                 ["allunit"] = owner,
                 ["Gold"] = plr._stats.gold_amount.Value,
                 ["Gem"] =  plr._stats.gem_amount.Value,
-                ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
+                ["AprilCoins"] = plr._stats._resourceAprilCoins.Value,
+             -- ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
                 ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                 ["GuildId"] = "467359347744309248",
                 ["DataKey"] = "GamingChampionShopAPI",
@@ -1473,7 +1475,8 @@ local function SendWebhook(evo)
                     ["allunit"] = owner,
                     ["Gold"] = plr._stats.gold_amount.Value,
                     ["Gem"] =  plr._stats.gem_amount.Value,
-                    ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
+                    ["AprilCoins"] = plr._stats._resourceAprilCoins.Value,
+                 -- ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
                     ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                     ["GuildId"] = "467359347744309248",
                     ["DataKey"] = "GamingChampionShopAPI",
@@ -1501,7 +1504,8 @@ local function SendWebhook(evo)
                         ["allunit"] = owner,
                         ["Gold"] = plr._stats.gold_amount.Value,
                         ["Gem"] =  plr._stats.gem_amount.Value,
-                        ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
+                        ["AprilCoins"] = plr._stats._resourceAprilCoins.Value,
+                     -- ["HolidayStars"] = plr._stats._resourceHolidayStars.Value,
                         ["Level"] = game.Players.LocalPlayer.PlayerGui["spawn_units"].Lives.Main.Desc.Level.Text:split('Level ')[2],
                         ["Rewards"] = g,
                         ["MapInfo"] = workspace._MAP_CONFIG.GetLevelData:InvokeServer(),
@@ -2453,7 +2457,7 @@ function EventRoom()
                 return v
             end
         end
-    elseif Settings["Select Map"] == "Frozen Abyss" then
+    elseif Settings["Select Map"] == "Frozen Abyss" or "Fools Hunt" then
         for i, v in pairs(workspace._EVENT_CHALLENGES.Lobbies:GetChildren()) do
             if v:IsA('Model') and v.Name == "_lobbytemplate_event3" and #v["Players"]:GetChildren() == 0 then
                 return v
@@ -2783,6 +2787,8 @@ else
         ["+ Random Curses I"] = 2,
         ["+ Random Curses II"] = 1,
         ["+ Random Curses III"] = 0,
+
+        
     }
     local Tick = function(sec)
         local n = tick() + sec
