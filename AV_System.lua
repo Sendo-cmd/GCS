@@ -111,7 +111,7 @@ _G.User = {
     },
     ["Arscontia"] = {
         ["Party Mode"] = true,
-    },"Party Mode"] = true,
+    },
 }
 
 -- Service
