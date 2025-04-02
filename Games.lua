@@ -33,6 +33,7 @@ Games = {
         ["PortalParty"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal_Party.lua",
         ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
         ["LovePortal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Love_Portal.lua",
+        ["SaberAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_SaberAuto.lua",
         ["Saber"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber.lua",
         ["SokoraAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_SokoraAuto.lua",
         ["Saber2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber3.lua",
@@ -1202,6 +1203,10 @@ Accounts = {
         "Log",
         "Marco",
         "KeyG",
+    },
+    ["uytjh_20"] = {
+        "Log",
+        "SaberAuto",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
