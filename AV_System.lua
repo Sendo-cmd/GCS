@@ -41,8 +41,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "I_Wxrst",
-            "Jamesnani2023",
+            "AWDUu38132uaudo",
+            "x72FZv924NOpJI",
             "NonameT_T1"
         },
         ["Portal Settings"] = {
@@ -53,47 +53,22 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["I_Wxrst"] = {
+    ["AWDUu38132uaudo"] = {
         ["Party Mode"] = true,
     },
     ["NonameT_T1"] = {
         ["Party Mode"] = true,
     },
-    ["Jamesnani2023"] = {
+    ["x72FZv924NOpJI"] = {
         ["Party Mode"] = true,
     },
     ["Lucinda2471"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "keam093321",
-            "effdskofkduf2",
-            "BeemNaJaaa"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["keam093321"] = {
-        ["Party Mode"] = true,
-    },
-    ["BeemNaJaaa"] = {
-        ["Party Mode"] = true,
-    },
-    ["effdskofkduf2"] = {
-        ["Party Mode"] = true,
-    },
-    ["4N3hHaKS62eZH1"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
             "RyuzaaaV2",
-            "1mpSs7K27A2TeZ",
-            "Pb0yXJUB19Bc05"
+            "BeemNaJaaa",
+            "1mpSs7K27A2TeZ"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -106,18 +81,19 @@ _G.User = {
     ["RyuzaaaV2"] = {
         ["Party Mode"] = true,
     },
+    ["BeemNaJaaa"] = {
+        ["Party Mode"] = true,
+    },
     ["1mpSs7K27A2TeZ"] = {
         ["Party Mode"] = true,
     },
-    ["Pb0yXJUB19Bc05"] = {
-        ["Party Mode"] = true,
-    },
-    ["BelvadsNI"] = {
+    ["4N3hHaKS62eZH1"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "petezero0",
-            "Arscontia"
+            "Arscontia",
+            "I97Iwnqlm1sy60"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -127,12 +103,15 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
+    ["I97Iwnqlm1sy60"] = {
+        ["Party Mode"] = true,
+    },
     ["petezero0"] = {
         ["Party Mode"] = true,
     },
     ["Arscontia"] = {
         ["Party Mode"] = true,
-    },
+    },"Party Mode"] = true,
 }
 
 -- Service
