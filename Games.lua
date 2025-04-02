@@ -1203,7 +1203,7 @@ Accounts = {
     ["Virgil748843"] = {
         "Log",
         "Marco",
-        "KeyG",
+        "KeyGAuto",
     },
     ["uytjh_20"] = {
         "Log",
