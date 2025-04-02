@@ -34,6 +34,7 @@ Games = {
         ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
         ["LovePortal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Love_Portal.lua",
         ["Saber"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber.lua",
+        ["SokoraAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_SokoraAuto.lua",
         ["Saber2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber3.lua",
         ["Sokora"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber2.lua",
         ["Sokora2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Sokora.lua",
@@ -797,8 +798,11 @@ Accounts = {
     },
     ["Wawawa_761"] = {
         "Log",
-        "Marco",
-        "IgrisSEVR",
+        "SokoraAuto",
+    },
+    ["LitheTankSun"] = {
+        "Log",
+        "SokoraAuto",
     },
     ["incura497654"] = {
         "Log",
@@ -918,8 +922,11 @@ Accounts = {
     },
     ["MAXTONINE"] = {
         "Log",
-        "Marco",
-        "IgrisG",
+        "SokoraAuto",
+    },
+    ["AD_kp508"] = {
+        "Log",
+        "Dungeon",
     },
     ["Autoautov9"] = {
         "Log",
@@ -967,10 +974,14 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["Gu_Peem"] = {
+        "Log",
+        "Dungeon",
+    },
     ["keam093321"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "Marco",
+        "YomomataR",
     },
     ["RyuzaaaV2"] = {
         "Log",
@@ -1005,12 +1016,13 @@ Accounts = {
     },
     ["Holybus"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "Marco",
+        "YomomataR",
     },
     ["noomnaso68725"] = {
         "Log",
-        "SukonoAuto",
+        "Marco",
+        "Sokora2",
     },
     ["BeemNaJaaa"] = {
         "Log",
@@ -1063,7 +1075,8 @@ Accounts = {
     },
     ["rain4834"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "PortalParty",
     },
     ["GF4TR"] = {
         "Log",
@@ -1143,7 +1156,7 @@ Accounts = {
     },
     ["AceLilFellow"] = {
         "Log",
-        "PortalParty",
+        "Dungeon",
     },
     ["SnowCamelKid"] = {
         "Log",
@@ -1183,7 +1196,8 @@ Accounts = {
     },
     ["Virgil748843"] = {
         "Log",
-        "KeyGAuto",
+        "Marco",
+        "KeyG",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

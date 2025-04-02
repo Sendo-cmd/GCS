@@ -42,8 +42,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "AWDUu38132uaudo",
-            "x72FZv924NOpJI",
-            "NonameT_T1"
+            "x72FZv924NOpJI"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -67,7 +66,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "RyuzaaaV2",
-            "BeemNaJaaa",
+            "rain4834",
             "1mpSs7K27A2TeZ"
         },
         ["Portal Settings"] = {
@@ -81,7 +80,7 @@ _G.User = {
     ["RyuzaaaV2"] = {
         ["Party Mode"] = true,
     },
-    ["BeemNaJaaa"] = {
+    ["rain4834"] = {
         ["Party Mode"] = true,
     },
     ["1mpSs7K27A2TeZ"] = {
