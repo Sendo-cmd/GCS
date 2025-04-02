@@ -1161,7 +1161,7 @@ Accounts = {
     },
     ["AceLilFellow"] = {
         "Log",
-        "Dungeon",
+        "Dungeons",
     },
     ["SnowCamelKid"] = {
         "Log",
