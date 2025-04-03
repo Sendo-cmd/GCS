@@ -60,7 +60,7 @@ getgenv().Config = {
 	["Raid Joiner"] = {
 		["Auto Join"] = true,
 		["Stage"] = "Tracks at the Edge of the World",
-		["Act"] = "Act3"
+		["Act"] = "Act2"
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,
