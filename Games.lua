@@ -987,8 +987,7 @@ Accounts = {
     },
     ["RyuzaaaV2"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["SIAFK19"] = {
         "Log",
@@ -1085,8 +1084,7 @@ Accounts = {
     },
     ["rain4834"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "ESSE",
     },
     ["GF4TR"] = {
         "Log",
@@ -1176,6 +1174,11 @@ Accounts = {
         "Log",
         "PortalParty",
     },
+    ["autopvan137"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
     ["NonameT_T1"] = {
         "Log",
         "System",
@@ -1212,6 +1215,10 @@ Accounts = {
     ["uytjh_20"] = {
         "Log",
         "SaberAuto",
+    },
+    ["robid1450"] = {
+        "Log",
+        "Dungeon",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

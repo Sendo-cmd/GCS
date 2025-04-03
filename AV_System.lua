@@ -67,7 +67,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "ball77071",
-            "rain4834",
+            "autopvan137",
             "MarioNo1111"
         },
         ["Portal Settings"] = {
@@ -81,7 +81,7 @@ _G.User = {
     ["ball77071"] = {
         ["Party Mode"] = true,
     },
-    ["rain4834"] = {
+    ["autopvan137"] = {
         ["Party Mode"] = true,
     },
     ["MarioNo1111"] = {
