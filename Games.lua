@@ -483,8 +483,8 @@ Accounts = {
     },
     ["NARUTO4gm"] = {
         "Log",
-        "Marco",
-        "Sokora2",
+        "System",
+        "LovePortal",
     },
     ["artyg111"] = {
         "Log",
@@ -1227,11 +1227,6 @@ Accounts = {
         "PortalParty",
     },
     ["shadoTsunami"] = {
-        "Log",
-        "System",
-        "PortalParty",
-    },
-    ["NARUTO4gm"] = {
         "Log",
         "System",
         "PortalParty",
