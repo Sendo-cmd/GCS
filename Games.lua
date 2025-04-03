@@ -1078,10 +1078,6 @@ Accounts = {
         "Log",
         "Portal",
     },
-    ["A39yL7Pw8WS9nM"] = {
-        "Log",
-        "BaseGem",
-    },
     ["rain4834"] = {
         "Log",
         "ESSE",
@@ -1099,7 +1095,7 @@ Accounts = {
     ["1mpSs7K27A2TeZ"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["I97Iwnqlm1sy60"] = {
         "Log",
@@ -1109,11 +1105,7 @@ Accounts = {
     ["x72FZv924NOpJI"] = {
         "Log",
         "System",
-        "LovePortal",
-    },
-    ["A39yL7Pw8WS9nM"] = {
-        "Log",
-        "BaseGem",
+        "PortalParty",
     },
     ["5f1KhS3AspH20T"] = {
         "Log",
@@ -1125,6 +1117,16 @@ Accounts = {
         "LovePortal",
     },
     ["4N3hHaKS62eZH1"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["gM1Ct1OS3K9c4y"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["A39yL7Pw8WS9nM"] = {
         "Log",
         "System",
         "LovePortal",
@@ -1223,6 +1225,15 @@ Accounts = {
     ["SxGYW2"] = {
         "Log",
         "Dungeon",
+    },
+    ["CigramGamerTV"] = {
+        "Log",
+        "SokoraAuto",
+    },
+    ["Levid098508"] = {
+        "Log",
+        "System",
+        "PortalParty",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

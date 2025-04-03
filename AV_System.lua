@@ -41,57 +41,9 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Kreovx",
-            "1mpSs7K27A2TeZ",
-            "Theppartarn"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Shibuya Station"},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["Kreovx"] = {
-        ["Party Mode"] = true,
-    },
-    ["Theppartarn"] = {
-        ["Party Mode"] = true,
-    },
-    ["1mpSs7K27A2TeZ"] = {
-        ["Party Mode"] = true,
-    },
-    ["Lucinda2471"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "ball77071",
-            "autopvan137",
-            "MarioNo1111"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["ball77071"] = {
-        ["Party Mode"] = true,
-    },
-    ["autopvan137"] = {
-        ["Party Mode"] = true,
-    },
-    ["MarioNo1111"] = {
-        ["Party Mode"] = true,
-    },
-    ["4N3hHaKS62eZH1"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "I97Iwnqlm1sy60"
+            "I97Iwnqlm1sy60",
+            "A39yL7Pw8WS9nM",
+            "gM1Ct1OS3K9c4y",
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -104,10 +56,57 @@ _G.User = {
     ["I97Iwnqlm1sy60"] = {
         ["Party Mode"] = true,
     },
-    ["petezero0"] = {
+    ["gM1Ct1OS3K9c4y"] = {
         ["Party Mode"] = true,
     },
-    ["Arscontia"] = {
+    ["A39yL7Pw8WS9nM"] = {
+        ["Party Mode"] = true,
+    },
+    ["Lucinda2471"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Levid098508",
+            "autopvan137",
+            "MarioNo1111"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["Levid098508"] = {
+        ["Party Mode"] = true,
+    },
+    ["autopvan137"] = {
+        ["Party Mode"] = true,
+    },
+    ["MarioNo1111"] = {
+        ["Party Mode"] = true,
+    },
+    ["x72FZv924NOpJI"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "1mpSs7K27A2TeZ",
+            "4N3hHaKS62eZH1",
+            
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["4N3hHaKS62eZH1"] = {
+        ["Party Mode"] = true,
+    },
+    ["1mpSs7K27A2TeZ"] = {
         ["Party Mode"] = true,
     },
 }
