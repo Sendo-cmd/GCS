@@ -42,7 +42,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Kreovx",
-            "x72FZv924NOpJI",
+            "1mpSs7K27A2TeZ",
             "Theppartarn"
         },
         ["Portal Settings"] = {
@@ -59,14 +59,14 @@ _G.User = {
     ["Theppartarn"] = {
         ["Party Mode"] = true,
     },
-    ["x72FZv924NOpJI"] = {
+    ["1mpSs7K27A2TeZ"] = {
         ["Party Mode"] = true,
     },
     ["Lucinda2471"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RyuzaaaV2",
+            "ball77071",
             "rain4834",
             "MarioNo1111"
         },
@@ -78,7 +78,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["RyuzaaaV2"] = {
+    ["ball77071"] = {
         ["Party Mode"] = true,
     },
     ["rain4834"] = {

@@ -1003,6 +1003,11 @@ Accounts = {
         "Log",
         "PortalParty",
     },
+    ["ball77071"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
     ["YAMANO_OT"] = {
         "Log",
         "Marco",
@@ -1096,7 +1101,7 @@ Accounts = {
     ["1mpSs7K27A2TeZ"] = {
         "Log",
         "System",
-        "PortalParty",
+        "LovePortal",
     },
     ["I97Iwnqlm1sy60"] = {
         "Log",
