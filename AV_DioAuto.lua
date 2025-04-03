@@ -44,7 +44,7 @@ getgenv().Config = {
 		["Middle Position"] = {
 			["Shibuya Aftermath"] = "224.20382690429688, 514.7516479492188, 60.891056060791016",
 			["Double Dungeon"] = "-286.22698974609375, 0.10069097578525543, -113.49510192871094",
-			["Tracks at the Edge of the World"] = "1042.94287109375, 143.2725830078125, -748.5692749023438"
+			["Tracks at the Edge of the World"] = "746.0689697265625, 143.2725830078125, -769.0408325195312"
 		}
 	},
 	["AutoExecute"] = true,
@@ -129,3 +129,4 @@ getgenv().Config = {
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
+
