@@ -41,7 +41,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "I97Iwnqlm1sy60",
+            "NARUTO4gm",
             "A39yL7Pw8WS9nM",
             "gM1Ct1OS3K9c4y",
         },
@@ -93,7 +93,7 @@ _G.User = {
         ["Party Member"] = {
             "BeeKak1",
             "4N3hHaKS62eZH1",
-            "NARUTO4gm"
+            ""
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
