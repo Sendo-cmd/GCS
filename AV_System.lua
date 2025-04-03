@@ -66,6 +66,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
+            "shadoTsunami",
             "Levid098508",
             "autopvan137"
         },
@@ -83,16 +84,16 @@ _G.User = {
     ["autopvan137"] = {
         ["Party Mode"] = true,
     },
-    ["MarioNo1111"] = {
+    ["shadoTsunami"] = {
         ["Party Mode"] = true,
     },
     ["x72FZv924NOpJI"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "1mpSs7K27A2TeZ",
+            "BeeKak1",
             "4N3hHaKS62eZH1",
-            
+            "NARUTO4gm"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -105,7 +106,10 @@ _G.User = {
     ["4N3hHaKS62eZH1"] = {
         ["Party Mode"] = true,
     },
-    ["1mpSs7K27A2TeZ"] = {
+    ["BeeKak1"] = {
+        ["Party Mode"] = true,
+    },
+    ["NARUTO4gm"] = {
         ["Party Mode"] = true,
     },
 }

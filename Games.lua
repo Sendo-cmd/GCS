@@ -1092,8 +1092,8 @@ Accounts = {
         "LovePortal",
     },
     ["1mpSs7K27A2TeZ"] = {
-        "System",
-        "PortalParty",
+        "Log",
+        "ESSE",
     },
     ["I97Iwnqlm1sy60"] = {
         "System",
@@ -1222,6 +1222,21 @@ Accounts = {
         "SokoraAuto",
     },
     ["Levid098508"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["shadoTsunami"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["NARUTO4gm"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["BeeKak1"] = {
         "Log",
         "System",
         "PortalParty",
