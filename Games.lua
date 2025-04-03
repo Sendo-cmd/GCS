@@ -549,7 +549,7 @@ Accounts = {
     },
     ["zywimq"] = {
         "Log",
-        "SukonoAuto",
+        "DioAuto",
     },
     ["Alow_2116"] = {
         "Log",
