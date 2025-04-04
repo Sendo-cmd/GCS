@@ -121,11 +121,12 @@ _G.User = {
     ["Pokampud"] = {
         ["Party Mode"] = true,
     },
-    ["Zboy1XD"] = {
+    ["tw1C4ddQ"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "tw1C4ddQ"
+            "Zboy1XD",
+            "AceLilFellow",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -135,7 +136,10 @@ _G.User = {
             ["FriendsOnly"] = false
         },    
     },
-    ["tw1C4ddQ"] = {
+    ["Zboy1XD"] = {
+        ["Party Mode"] = true,
+    },
+    ["AceLilFellow"] = {
         ["Party Mode"] = true,
     },
 }
@@ -286,29 +290,44 @@ task.spawn(function()
                     -- warn(tostring(requestTo["status"]) == "success" , requestTo["value"] , requestTo["value"]["os"] >= tick())
                     if tostring(requestTo["status"]) == "success" and requestTo["value"] and tonumber(requestTo["value"]["os"]) >= os.time() then
                         warn("Join")
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
-                            "JoinPortal",
-                            requestTo["value"]["data"]
-                        )
+                        if requestTo["value"]["type"] == "Portal" then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
+                                "JoinPortal",
+                                requestTo["value"]["data"]
+                            )
+                        elseif requestTo["value"]["type"] == "Normal" then
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer( 
+                                "JoinMatch",
+                                requestTo["value"]["data"]
+                            )
+                        end
+                       
                     end
                 end
                 
             else
                 print("Im here 4")
                 local UUID = nil
+                local Type = false
                 game:GetService("ReplicatedStorage").Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
                     if index == "Replicate" and tostring(value["Owner"]) == plr.Name then
+                        Type = true
                         UUID = value["GUID"]
                     end
                 end)
                 game:GetService("ReplicatedStorage").Networking.MatchReplicationEvent.OnClientEvent:Connect(function(index,value)
-                    if index == "Replicate" and tostring(value["Owner"]) == plr.Name then
+                    warn(index,value,tostring(value["Owner"]) == plr.Name)
+                    if index == "AddMatch" and tostring(value["Host"]) == plr.Name then
+                        Type = false
                         UUID = value["GUID"]
+                        print(value)
                     end
                 end)
                 task.spawn(function()
                     while task.wait() do
                         if UUID then
+                            print(UUID)
                             for i,v in pairs(Settings["Party Member"]) do
                                 local response = request({
                                     ["Url"] = "https://api.championshop.date/party-aa",
@@ -319,6 +338,7 @@ task.spawn(function()
                                     ["Body"] = game:GetService("HttpService"):JSONEncode({
                                         ["index"] = v,
                                         ["value"] = {
+                                            ["type"] = Type and "Portal" or "Normal",
                                             ["data"] = UUID,
                                             ["os"] = os.time() + 120
                                         },
@@ -352,7 +372,7 @@ task.spawn(function()
             end
             return true
         end
-        local WaitTime = 10
+        local WaitTime = 120
         if Settings["Select Mode"] == "Portal" then
             local Settings_ = Settings["Portal Settings"]
             local function Ignore(tab1,tab2)
@@ -410,6 +430,12 @@ task.spawn(function()
                         }
                         
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        task.wait(10)
+                        local args = {
+                            [1] = "StartMatch"
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                     end
                 end
                 task.wait(2)
@@ -424,6 +450,12 @@ task.spawn(function()
                         local args = {
                             [1] = "AddMatch",
                             [2] = DungeonSettings
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        task.wait(10)
+                        local args = {
+                            [1] = "StartMatch"
                         }
                         
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
@@ -444,6 +476,12 @@ task.spawn(function()
                         }
                         
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        task.wait(10)
+                        local args = {
+                            [1] = "StartMatch"
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                     end
                 end
                 task.wait(2)
@@ -458,6 +496,12 @@ task.spawn(function()
                         local args = {
                             [1] = "AddMatch",
                             [2] = RaidSettings
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        task.wait(10)
+                        local args = {
+                            [1] = "StartMatch"
                         }
                         
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
