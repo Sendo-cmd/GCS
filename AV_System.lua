@@ -68,7 +68,7 @@ _G.User = {
         ["Party Member"] = {
             "shadoTsunami",
             "Levid098508",
-            "autopvan137"
+            "BeeKak1"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -81,30 +81,10 @@ _G.User = {
     ["Levid098508"] = {
         ["Party Mode"] = true,
     },
-    ["autopvan137"] = {
-        ["Party Mode"] = true,
-    },
-    ["shadoTsunami"] = {
-        ["Party Mode"] = true,
-    },
-    ["x72FZv924NOpJI"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "BeeKak1",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
-    },
     ["BeeKak1"] = {
         ["Party Mode"] = true,
     },
-    ["NARUTO4gm"] = {
+    ["shadoTsunami"] = {
         ["Party Mode"] = true,
     },
 }

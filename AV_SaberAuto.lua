@@ -42,7 +42,7 @@ getgenv().Config = {
 	["Gameplay"] = {
 		["Saber Event"] = {
 			["Auto Select Servant"] = true,
-			["Servant"] = "Berserker"
+			["Servant"] = "Saber"
 		},
 		["Auto Restart"] = {
 			["Enable"] = true,

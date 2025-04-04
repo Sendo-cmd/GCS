@@ -1264,7 +1264,16 @@ Accounts = {
     },
     ["BeeKak1"] = {
         "Log",
-        "Portal",
+        "System",
+        "PortalParty",
+    },
+    ["zumaei_5182"] = {
+        "Log",
+        "ESSE",
+    },
+    ["Zboy1XD"] = {
+        "Log",
+        "Dungeon",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
