@@ -127,6 +127,7 @@ _G.User = {
         ["Party Member"] = {
             "Zboy1XD",
             "AceLilFellow",
+            "OVERDOG_KUNG"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -140,6 +141,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["AceLilFellow"] = {
+        ["Party Mode"] = true,
+    },
+    ["OVERDOG_KUNG"] = {
         ["Party Mode"] = true,
     },
 }

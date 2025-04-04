@@ -1255,6 +1255,7 @@ Accounts = {
     },
     ["OVERDOG_KUNG"] = {
         "Log",
+        "System",
         "Dungeon",
     },
     ["CigramGamerTV"] = {
