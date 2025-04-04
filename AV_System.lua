@@ -8,7 +8,7 @@ local function Next_(var)
     repeat task.wait() until tick() >= duration
 end
 --[[
-Map
+Portal 
 Sand Village
 Double Dungeon
 Planet Namak
@@ -17,25 +17,39 @@ Underground Church
 Spirit Society
 ]]
 
+--[[
+Story Stage Map
+Planet Namak
+Spirit Society
+Underground Church
+Sand Village
+Shibuya Station
+Double Dungeon
+]]
 
 --[[
- 
-local response = request({
-    ["Url"] = "https://api.championshop.date/party-aa",
-    ["Method"] = "POST",
-    ["Headers"] = {
-        ["content-type"] = "application/json"
-    },
-    ["Body"] = game:GetService("HttpService"):JSONEncode({
-        ["index"] = "XD",
-        ["value"] = {
-            ["data"] = "Hello World",
-            ["os"] = tick()
-        },
-    })
-})
-print(game:HttpGet("https://api.championshop.date/party-aa/XD"))
+Legend Stage Map
+Sand Village
+Kuinshi Palace
+Golden Castle
+Shibuya Aftermath
+Double Dungeon
 ]]
+
+--[[
+Dungeon Map
+Mountain Shrine (Natural)
+Ant Island
+]]
+
+--[[
+Raid Map
+Spider Forest
+Tracks at the Edge of the World
+]]
+
+
+
 _G.User = {
     ["GCshop2"] = {
         ["Select Mode"] = "Portal", -- Portal
@@ -67,7 +81,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "shadoTsunami",
-            "BeeKak1"
+            "BeeKak1",
+            "robid1450"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -77,7 +92,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["Levid098508"] = {
+    ["robid1450"] = {
         ["Party Mode"] = true,
     },
     ["BeeKak1"] = {
@@ -107,6 +122,23 @@ _G.User = {
     ["Pokampud"] = {
         ["Party Mode"] = true,
     },
+    ["Zboy1XD"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "tw1C4ddQ"
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act1",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },
+    },
+    ["tw1C4ddQ"] = {
+        ["Party Mode"] = true,
+    },
 }
 
 -- Service
@@ -131,9 +163,42 @@ local StagesData = LoadModule(game:GetService("ReplicatedStorage").Modules.Data.
 
 
 -- All Functions
+local function DisplayToIndexStory(arg)
+    for i,v in pairs(StagesData["Story"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
+local function DisplayToIndexLegend(arg)
+    for i,v in pairs(StagesData["LegendStage"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
+local function DisplayToIndexDungeon(arg)
+    for i,v in pairs(StagesData["Dungeon"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
+local function DisplayToIndexRaid(arg)
+    for i,v in pairs(StagesData["Raid"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
 local function IndexToDisplay(arg)
     return StagesData["Story"][arg]["StageData"]["Name"]
 end
+
 -- All Variables
 -- local Key = "Onio_#@@421"
 local plr = game.Players.LocalPlayer
@@ -145,9 +210,38 @@ game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:C
 end)
 local Settings ={
 
-    ["Select Mode"] = "Portal", -- Portal
+    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid
 
     ["Party Mode"] = false,
+
+    ["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    },
+    ["Raid Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "Spider Forest",
+        ["FriendsOnly"] = false
+    },
+    ["Legend Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Sand Village",
+        ["FriendsOnly"] = false
+    },
+    ["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Mountain Shrine (Natural)",
+        ["FriendsOnly"] = false
+    },
     ["Portal Settings"] = {
         ["ID"] = 113, -- 113 Love , 87 Winter
         ["Tier Cap"] = 10,
@@ -208,6 +302,11 @@ task.spawn(function()
                         UUID = value["GUID"]
                     end
                 end)
+                game:GetService("ReplicatedStorage").Networking.MatchReplicationEvent.OnClientEvent:Connect(function(index,value)
+                    if index == "Replicate" and tostring(value["Owner"]) == plr.Name then
+                        UUID = value["GUID"]
+                    end
+                end)
                 task.spawn(function()
                     while task.wait() do
                         if UUID then
@@ -245,7 +344,6 @@ task.spawn(function()
             end
             return Items
         end
-        print("Im here 1")
         function AllPlayerInGame()
             print(Settings["Party Member"])
             for i,v in pairs(Settings["Party Member"]) do
@@ -255,6 +353,7 @@ task.spawn(function()
             end
             return true
         end
+        local WaitTime = 120
         if Settings["Select Mode"] == "Portal" then
             local Settings_ = Settings["Portal Settings"]
             local function Ignore(tab1,tab2)
@@ -282,11 +381,9 @@ task.spawn(function()
                 end)
                 return AllPortal[1][1] or false
             end
-          
-            print("Im here")
             while true do
                 if AllPlayerInGame() then
-                    Next_(200)
+                    Next_(WaitTime)
                     if AllPlayerInGame() then 
                         local Portal = PortalSettings(GetItem(Settings_["ID"]))
                         if Portal then
@@ -297,6 +394,74 @@ task.spawn(function()
                             
                             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
                         end
+                    end
+                end
+                task.wait(2)
+            end
+        elseif Settings["Select Mode"] == "Story" then
+            while true do
+                if AllPlayerInGame() then
+                    Next_(WaitTime)
+                    if AllPlayerInGame() then 
+                        local StorySettings = Settings["Story Settings"]
+                        StorySettings["Stage"] = DisplayToIndexStory(StorySettings["Stage"])
+                        local args = {
+                            [1] = "AddMatch",
+                            [2] = StorySettings
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    end
+                end
+                task.wait(2)
+            end
+        elseif Settings["Select Mode"] == "Dungeon" then
+            while true do
+                if AllPlayerInGame() then
+                    Next_(WaitTime)
+                    if AllPlayerInGame() then 
+                        local DungeonSettings = Settings["Dungeon Settings"]
+                        DungeonSettings["Stage"] = DisplayToIndexDungeon(DungeonSettings["Stage"])
+                        local args = {
+                            [1] = "AddMatch",
+                            [2] = DungeonSettings
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    end
+                end
+                task.wait(2)
+            end
+        elseif Settings["Select Mode"] == "Legend Stage" then
+            while true do
+                if AllPlayerInGame() then
+                    Next_(WaitTime)
+                    if AllPlayerInGame() then 
+                        local LegendSettings = Settings["Legend Settings"]
+                        LegendSettings["Stage"] = DisplayToIndexLegend(LegendSettings["Stage"])
+                        local args = {
+                            [1] = "AddMatch",
+                            [2] = LegendSettings
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    end
+                end
+                task.wait(2)
+            end
+        elseif Settings["Select Mode"] == "Raid" then
+            while true do
+                if AllPlayerInGame() then
+                    Next_(WaitTime)
+                    if AllPlayerInGame() then 
+                        local RaidSettings = Settings["Raid Settings"]
+                        RaidSettings["Stage"] = DisplayToIndexRaid(RaidSettings["Stage"])
+                        local args = {
+                            [1] = "AddMatch",
+                            [2] = RaidSettings
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                     end
                 end
                 task.wait(2)
