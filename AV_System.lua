@@ -42,8 +42,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "NARUTO4gm",
-            "A39yL7Pw8WS9nM",
-            "gM1Ct1OS3K9c4y",
+            "Naiza080947",
+            "Dwekyphwzxpsg",
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -53,10 +53,10 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["I97Iwnqlm1sy60"] = {
+    ["Naiza080947"] = {
         ["Party Mode"] = true,
     },
-    ["gM1Ct1OS3K9c4y"] = {
+    ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
     },
     ["A39yL7Pw8WS9nM"] = {
@@ -92,7 +92,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BeeKak1",
-            "4N3hHaKS62eZH1",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -101,9 +100,6 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
-    },
-    ["4N3hHaKS62eZH1"] = {
-        ["Party Mode"] = true,
     },
     ["BeeKak1"] = {
         ["Party Mode"] = true,

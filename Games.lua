@@ -1104,10 +1104,6 @@ Accounts = {
         "System",
         "PortalParty",
     },
-    ["5f1KhS3AspH20T"] = {
-        "Log",
-        "BaseGem",
-    },
     ["Pb0yXJUB19Bc05"] = {
         "Log",
         "System",
@@ -1117,6 +1113,21 @@ Accounts = {
         "Log",
         "System",
         "PortalParty",
+    },
+    ["uiYM83u2iEV16m"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["jG1P6pprU0z0n8"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["uiYM83u2iEV16m"] = {
+        "Log",
+        "System",
+        "LovePortal",
     },
     ["gM1Ct1OS3K9c4y"] = {
         "Log",
@@ -1201,6 +1212,16 @@ Accounts = {
         "System",
         "LovePortal",
     },
+    ["Dwekyphwzxpsg"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["Naiza080947"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
     ["WIN1241TH"] = {
         "Log",
         "System",
@@ -1220,6 +1241,10 @@ Accounts = {
         "Dungeon",
     },
     ["SxGYW2"] = {
+        "Log",
+        "Dungeon",
+    },
+    ["OVERDOG_KUNG"] = {
         "Log",
         "Dungeon",
     },
