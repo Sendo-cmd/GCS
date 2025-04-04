@@ -89,7 +89,7 @@ _G.User = {
     },
     ["x72FZv924NOpJI"] = {
         ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "BeeKak1",
         },

@@ -1264,8 +1264,7 @@ Accounts = {
     },
     ["BeeKak1"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
