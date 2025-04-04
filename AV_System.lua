@@ -59,7 +59,7 @@ _G.User = {
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
     },
-    ["A39yL7Pw8WS9nM"] = {
+    ["NARUTO4gm"] = {
         ["Party Mode"] = true,
     },
     ["Lucinda2471"] = {
@@ -67,7 +67,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "shadoTsunami",
-            "Levid098508",
             "BeeKak1"
         },
         ["Portal Settings"] = {
@@ -85,6 +84,23 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["shadoTsunami"] = {
+        ["Party Mode"] = true,
+    },
+    ["keam093321"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "lpkiohuyvguyh"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["lpkiohuyvguyh"] = {
         ["Party Mode"] = true,
     },
 }
