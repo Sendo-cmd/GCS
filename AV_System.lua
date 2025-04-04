@@ -81,7 +81,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "shadoTsunami",
-            "BeeKak1",
+            "bigyoshi909",
             "robid1450"
         },
         ["Portal Settings"] = {
@@ -95,7 +95,7 @@ _G.User = {
     ["robid1450"] = {
         ["Party Mode"] = true,
     },
-    ["BeeKak1"] = {
+    ["bigyoshi909"] = {
         ["Party Mode"] = true,
     },
     ["shadoTsunami"] = {
@@ -129,11 +129,11 @@ _G.User = {
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act1",
+            ["Act"] = "AntIsland",
             ["StageType"] = "Dungeon",
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
-        },
+        },    
     },
     ["tw1C4ddQ"] = {
         ["Party Mode"] = true,
@@ -352,7 +352,7 @@ task.spawn(function()
             end
             return true
         end
-        local WaitTime = 120
+        local WaitTime = 10
         if Settings["Select Mode"] == "Portal" then
             local Settings_ = Settings["Portal Settings"]
             local function Ignore(tab1,tab2)
