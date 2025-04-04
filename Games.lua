@@ -1049,7 +1049,13 @@ Accounts = {
     },
     ["Pokampud"] = {
         "Log",
-        "YomomataAuto",
+        "System",
+        "LovePortal",
+    },
+    ["lpkiohuyvguyh"] = {
+        "Log",
+        "System",
+        "LovePortal",
     },
     ["Arscontia"] = {
         "Log",

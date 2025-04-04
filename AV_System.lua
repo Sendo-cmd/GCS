@@ -90,7 +90,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "lpkiohuyvguyh"
+            "lpkiohuyvguyh",
+            "Pokampud"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -101,6 +102,9 @@ _G.User = {
         },
     },
     ["lpkiohuyvguyh"] = {
+        ["Party Mode"] = true,
+    },
+    ["Pokampud"] = {
         ["Party Mode"] = true,
     },
 }
