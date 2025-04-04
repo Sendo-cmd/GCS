@@ -199,7 +199,6 @@ getgenv().Config = {
 		["Auto Claim Battle Pass"] = true
 	},
 	["Dungeon Joiner"] = {
-		["Auto Join"] = true,
 		["Stage"] = "Ant Island",
 		["Act"] = "AntIsland"
 	}
