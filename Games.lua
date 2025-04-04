@@ -1014,7 +1014,6 @@ Accounts = {
     },
     ["tw1C4ddQ"] = {
         "Log",
-        "System",
         "Dungeon",
     },
     ["dawg_4944"] = {
@@ -1281,7 +1280,6 @@ Accounts = {
     },
     ["Zboy1XD"] = {
         "Log",
-        "System",
         "Dungeon",
     },
 }
