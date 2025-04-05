@@ -960,7 +960,7 @@ Accounts = {
     },
     ["oJTm_fjmrw"] = {
         "Log",
-        "BaseGemInf",
+        "BaseGem",
     },
     ["underhorror"] = {
         "Log",
@@ -1298,6 +1298,21 @@ Accounts = {
         "Log",
         "System",
         "LovePortal",
+    },
+    ["Embeflu8651"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["enonef2"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["traijo"] = {
+        "Log",
+        "System",
+        "PortalParty",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

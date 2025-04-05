@@ -55,7 +55,6 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "keam093321",
             "Dwekyphwzxpsg",
             "Blastch8892"
         },
@@ -80,9 +79,9 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "shadoTsunami",
             "bigyoshi909",
-            "robid1450"
+            "enonef2",
+            "RyuzaaaV2"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -93,6 +92,9 @@ _G.User = {
         },
     },
     ["robid1450"] = {
+        ["Party Mode"] = true,
+    },
+    ["enonef2"] = {
         ["Party Mode"] = true,
     },
     ["bigyoshi909"] = {
@@ -107,9 +109,9 @@ _G.User = {
     ["Pokampud"] = {
         ["Party Mode"] = true,
     },
-    ["tw1C4ddQ"] = {
+    ["Embeflu8651"] = {
         ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "Zboy1XD",
             "AceLilFellow",
@@ -132,12 +134,13 @@ _G.User = {
     ["OVERDOG_KUNG"] = {
         ["Party Mode"] = true,
     },
-    ["rain4834"] = {
+    ["traijo"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "anakin_av139",
-            "ASD_King70"
+            "ASD_King70",
+            "rain4834"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -151,6 +154,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["ASD_King70"] = {
+        ["Party Mode"] = true,
+    },
+    ["rain4834"] = {
+        ["Party Mode"] = true,
+    },
+    ["RyuzaaaV2"] = {
         ["Party Mode"] = true,
     },
 }
