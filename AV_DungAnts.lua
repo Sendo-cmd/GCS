@@ -3,7 +3,6 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Dungeon Joiner"] = {
 		["Stage"] = "Ant Island",
-		["Auto Join"] = true,
 		["Act"] = "AntIsland"
 	},
 	["Macros"] = {
