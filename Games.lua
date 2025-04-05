@@ -695,7 +695,8 @@ Accounts = {
     },
     ["scp1774"] = {
         "Log",
-        "Worldline",
+        "System",
+        "LovePortal",
     },
     ["kong2562"] = {
         "Log",
@@ -1070,9 +1071,15 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["Sobiebugge84811"] = {
+        "Log",
+        "System",
+        "Dungeons",
+    },
     ["HaineToram2"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "Dungeons",
     },
     ["Theppartarn"] = {
         "Log",
@@ -1329,6 +1336,15 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["GZ10966"] = {
+        "Log",
+        "Macro",
+        "Sokora",
+    },
+    ["Skate9517"] = {
+        "Log",
+        "BaseCF",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

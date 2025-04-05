@@ -55,7 +55,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Dwekyphwzxpsg",
+            "scp1774",
             "Blastch8892",
             "nongmai813"
         },
@@ -74,6 +74,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Dwekyphwzxpsg"] = {
+        ["Party Mode"] = true,
+    },
+    ["scp1774"] = {
         ["Party Mode"] = true,
     },
     ["keam093321"] = {
@@ -148,7 +151,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "anakin_av139",
-            "ASD_King70",
             "rain4834"
         },
         ["Portal Settings"] = {
@@ -170,6 +172,23 @@ _G.User = {
     },
     ["RyuzaaaV2"] = {
         ["Party Mode"] = true,
+    },
+    ["HaineToram2"] = {
+        ["Party Mode"] = true,
+    },
+    ["Sobiebugge84811"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "HaineToram2"
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },    
     },
 }
 
