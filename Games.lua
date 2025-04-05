@@ -287,7 +287,8 @@ Accounts = {
     },
     ["anakin_av139"] = {
         "Log",
-        "LovePortal",
+        "System",
+        "PortalParty",
     },
     ["Fvfvgoecwokdi"] = {
         "Log",
@@ -418,7 +419,8 @@ Accounts = {
     },
     ["ASD_King70"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "PortalParty",
     },
     ["G2G168P117"] = {
         "Log",
@@ -1290,6 +1292,11 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["Blastch8892"] = {
+        "Log",
+        "System",
+        "LovePortal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

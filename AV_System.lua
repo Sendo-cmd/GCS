@@ -56,7 +56,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "keam093321",
-            "Dwekyphwzxpsg"
+            "Dwekyphwzxpsg",
+            "Blastch8892"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -66,7 +67,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["Naiza080947"] = {
+    ["Blastch8892"] = {
         ["Party Mode"] = true,
     },
     ["Dwekyphwzxpsg"] = {
@@ -129,6 +130,28 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["OVERDOG_KUNG"] = {
+        ["Party Mode"] = true,
+    },
+    ["rain4834"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "anakin_av139",
+            "ASD_King70",
+            ""
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["anakin_av139"] = {
+        ["Party Mode"] = true,
+    },
+    ["ASD_King70"] = {
         ["Party Mode"] = true,
     },
 }
