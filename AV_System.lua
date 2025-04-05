@@ -137,8 +137,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "anakin_av139",
-            "ASD_King70",
-            ""
+            "ASD_King70"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
