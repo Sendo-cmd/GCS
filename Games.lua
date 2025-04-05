@@ -1315,6 +1315,11 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["zxzxc666"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 

@@ -111,11 +111,9 @@ _G.User = {
     },
     ["Embeflu8651"] = {
         ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
-            "Zboy1XD",
-            "AceLilFellow",
-            "OVERDOG_KUNG"
+            "zxzxc666"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -134,11 +132,14 @@ _G.User = {
     ["OVERDOG_KUNG"] = {
         ["Party Mode"] = true,
     },
+    ["zxzxc666"] = {
+        ["Party Mode"] = true,
+    },
     ["traijo"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "anakin_av139",
+            "zxzxc666",
             "ASD_King70",
             "rain4834"
         },
