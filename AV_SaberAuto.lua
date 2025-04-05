@@ -40,10 +40,6 @@ getgenv().Config = {
 		["Auto Claim Collection Milestone"] = true
 	},
 	["Gameplay"] = {
-		["Saber Event"] = {
-			["Auto Select Servant"] = true,
-			["Servant"] = "Saber"
-		},
 		["Auto Restart"] = {
 			["Enable"] = true,
 			["Wave"] = 16
