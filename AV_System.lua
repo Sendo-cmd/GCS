@@ -56,7 +56,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Dwekyphwzxpsg",
-            "Blastch8892"
+            "Blastch8892",
+            "nongmai813"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -65,6 +66,9 @@ _G.User = {
             ["Ignore Stage"] = {"Shibuya Station"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["nongmai813"] = {
+        ["Party Mode"] = true,
     },
     ["Blastch8892"] = {
         ["Party Mode"] = true,
