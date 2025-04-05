@@ -988,7 +988,7 @@ Accounts = {
     ["keam093321"] = {
         "Log",
         "System",
-        "LovePortal",
+        "Dungeon",
     },
     ["RyuzaaaV2"] = {
         "Log",
@@ -1066,8 +1066,8 @@ Accounts = {
     },
     ["Arscontia"] = {
         "Log",
-        "System",
-        "LovePortal",
+        "Marco",
+        "Sokora3",
     },
     ["yanawarutkanpai"] = {
         "Log",
@@ -1342,11 +1342,15 @@ Accounts = {
     ["GZ10966"] = {
         "Log",
         "Macro",
-        "Sokora",
+        "Sokora3",
     },
     ["Skate9517"] = {
         "Log",
         "BaseCF",
+    },
+    ["TIME_i777"] = {
+        "Log",
+        "BaseGem",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

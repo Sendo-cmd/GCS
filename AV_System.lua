@@ -122,6 +122,7 @@ _G.User = {
         ["Party Member"] = {
             "zxzxc666",
             "MEEMDAY2530",
+            "keam093321"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
