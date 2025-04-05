@@ -121,8 +121,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "zxzxc666",
-            "MEEMDAY2530",
-            "keam093321"
+            "MEEMDAY2530"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -181,7 +180,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "HaineToram2"
+            "HaineToram2",
+            "keam093321"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
