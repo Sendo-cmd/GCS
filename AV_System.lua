@@ -55,9 +55,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "NARUTO4gm",
-            "Naiza080947",
-            "Dwekyphwzxpsg",
+            "keam093321",
+            "Dwekyphwzxpsg"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -73,7 +72,7 @@ _G.User = {
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
     },
-    ["NARUTO4gm"] = {
+    ["keam093321"] = {
         ["Party Mode"] = true,
     },
     ["Lucinda2471"] = {
@@ -100,20 +99,6 @@ _G.User = {
     },
     ["shadoTsunami"] = {
         ["Party Mode"] = true,
-    },
-    ["keam093321"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Pokampud"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
     },
     ["lpkiohuyvguyh"] = {
         ["Party Mode"] = true,
