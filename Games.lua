@@ -989,7 +989,8 @@ Accounts = {
     },
     ["RyuzaaaV2"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "PortalParty",
     },
     ["SIAFK19"] = {
         "Log",
