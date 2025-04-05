@@ -12,6 +12,7 @@ local Profiles = {
     "SaberClear.json",
     "Sokora.json",
     "Sokora2.json",
+    "Sokora3.json",
     "Igris_G.json",
     "Igris_CH.json",
     "Igris_IC.json",
