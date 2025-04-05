@@ -1,6 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-getgenv().RedeemAllCode = true
-getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
@@ -27,6 +25,9 @@ getgenv().Config = {
 		["Macro"] = "Saber",
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true
+		["Joiner Macro Equipper"] = {
+			["Enable"] = true
+		}
 	},
 	["AutoExecute"] = true,
 	["Match Finished"] = {

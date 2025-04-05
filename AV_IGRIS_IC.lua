@@ -7,6 +7,9 @@ getgenv().Config = {
 		["Ignore Macro Timing"] = true,
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true,
+		["Joiner Macro Equipper"] = {
+			["Enable"] = true
+		}
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,

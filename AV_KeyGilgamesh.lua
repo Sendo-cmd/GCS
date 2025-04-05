@@ -141,6 +141,9 @@ getgenv().Config = {
 		["Macro"] = "KeyGilgamesh",
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true
+		["Joiner Macro Equipper"] = {
+			["Enable"] = true
+		}
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"

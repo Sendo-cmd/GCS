@@ -9,6 +9,9 @@ getgenv().Config = {
 		["Play"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Macro"] = "Saber2"
+		["Joiner Macro Equipper"] = {
+			["Enable"] = true
+		}
 	},
 	["Portal Joiner"] = {
 		["Tier Cap"] = 10,

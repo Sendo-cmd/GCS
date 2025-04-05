@@ -7,10 +7,12 @@ getgenv().Config = {
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Macro"] = "Sokora3",
+		["Joiner Macro Equipper"] = {
+			["Enable"] = true
+		}
 	},
 	["Love Portal Joiner"] = {
 		["Tier Cap"] = 10,
-		["Auto Next"] = false,
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
 				["Double Dungeon"] = 3,
@@ -19,87 +21,107 @@ getgenv().Config = {
 				["Shibuya Station"] = 4,
 				["Underground Church"] = 5,
 				["Sand Village"] = 2
-			},
-			["Enable"] = false
+			}
 		}
 	},
 	["Winter Portal Joiner"] = {
-		["Buy if out of Portal"] = false,
 		["Tier Cap"] = 10,
-		["Auto Next"] = false,
-		["Auto Join"] = false,
-		["Ignore Act"] = {
-			["[Planet Namak] Act3"] = false,
-			["[Shibuya Aftermath] Act2"] = false,
-			["[Planet Namak] Act6"] = false,
-			["[Planet Namak] Act1"] = false,
-			["[Spider Forest] Act3"] = false,
-			["[Planet Namak] Act5"] = false,
-			["[Spider Forest] Act1"] = false,
-			["[Planet Namak] Act4"] = false,
-			["[Planet Namak] Act2"] = false,
-			["[Spider Forest] Act4"] = false,
-			["[Shibuya Aftermath] Act3"] = false,
-			["[Shibuya Aftermath] Act1"] = false,
-			["[Spider Forest] Act2"] = false
-		},
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
 				["Shibuya Aftermath"] = 2,
 				["Spider Forest"] = 1,
 				["Planet Namak"] = 3
-			},
-			["Enable"] = false
-		},
-		["Ignore Modifier"] = {
-			["Strong"] = false,
-			["Drowsy"] = false,
-			["Regen"] = false,
-			["Fast"] = false,
-			["Revitalize"] = false,
-			["Champions"] = false,
-			["Exploding"] = false,
-			["Dodge"] = false,
-			["Immunity"] = false,
-			["Shielded"] = false,
-			["Quake"] = false,
-			["Thrice"] = false
-		},
-		["Auto Delete Spider Forest Portal"] = false
-	},
-	["AutoExecute"] = true,
-	["Gameplay"] = {
-		["Saber Event"] = {
-			["Servant"] = "Berserker",
-			["Auto Select Servant"] = true
-		},
-		["Auto Vote Start"] = true,
-		["Auto Restart"] = {
-			["Enable"] = false,
-			["Wave"] = 1
-		},
-		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = false,
-		["Auto Sell Farm"] = {
-			["Enable"] = false,
-			["Wave"] = 1
+			}
 		}
 	},
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Collection Milestone"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Milestone"] = true
+	},
+	["Gameplay"] = {
+		["Saber Event"] = {
+			["Auto Select Servant"] = true,
+			["Servant"] = "Berserker"
+		},
+		["Auto Vote Start"] = true,
+		["Auto Sell Farm"] = {
+			["Wave"] = 1
+		},
+		["Auto Skip Wave"] = true
+	},
 	["Misc"] = {
-		["Right Click Teleport"] = false,
-		["Right Click Move"] = false,
-		["Redeem Code"] = true,
-		["Max Camera Zoom"] = 40
+		["Redeem Code"] = true
 	},
-	["Match Finished"] = {
-		["Auto Return Lobby"] = false,
-		["Auto Next"] = false,
-		["Auto Replay"] = true,
-		["Replay Amount"] = 0
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = false
+	["Modifier"] = {
+		["Auto Modifier"] = {
+			["Prioritize"] = {
+				["Strong"] = 3,
+				["Thrice"] = 4,
+				["Warding off Evil"] = 24,
+				["Champions"] = 12,
+				["Fast"] = 1,
+				["Revitalize"] = 6,
+				["Fisticuffs"] = 25,
+				["Exploding"] = 2,
+				["Dodge"] = 10,
+				["Uncommon Loot"] = 22,
+				["Immunity"] = 11,
+				["Planning Ahead"] = 15,
+				["Harvest"] = 17,
+				["Lifeline"] = 29,
+				["Precise Attack"] = 13,
+				["Drowsy"] = 8,
+				["No Trait No Problem"] = 23,
+				["Cooldown"] = 19,
+				["Exterminator"] = 28,
+				["Regen"] = 7,
+				["Damage"] = 20,
+				["Common Loot"] = 21,
+				["King's Burden"] = 27,
+				["Range"] = 18,
+				["Press It"] = 14,
+				["Quake"] = 9,
+				["Shielded"] = 5,
+				["Slayer"] = 16,
+				["Money Surge"] = 26
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Fisticuffs"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Immunity"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Lifeline"] = 0,
+				["Precise Attack"] = 0,
+				["Drowsy"] = 0,
+				["No Trait No Problem"] = 0,
+				["Cooldown"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["King's Burden"] = 0,
+				["Range"] = 0,
+				["Press It"] = 0,
+				["Quake"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			}
+		}
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
@@ -107,29 +129,19 @@ getgenv().Config = {
 		["Black Screen"] = true,
 		["Delete Entities"] = true
 	},
+	["Match Finished"] = {
+		["Auto Replay"] = true,
+		["Replay Amount"] = 0
+	},
+	["AutoExecute"] = true,
+	["Failsafe"] = {
+		["Auto Rejoin"] = true
+	},
 	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
-	},
-	["Performance Failsafe"] = {
-		["Ping Freeze"] = false,
-		["Teleport Lobby FPS below"] = {
-			["Enable"] = false,
-			["FPS"] = 5
-		}
-	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Battle Pass"] = false,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
+		["Random Offset"] = true,
+		["Walk Around"] = true
 	},
 	["Boss Event Joiner"] = {
-		["Elite Mode"] = false,
 		["Auto Join"] = true,
 		["Stage"] = "SaberEvent"
 	}

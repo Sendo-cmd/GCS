@@ -12,10 +12,7 @@ getgenv().Config = {
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true,
 		["Joiner Macro Equipper"] = {
-			["Enable"] = true,
-			["Joiner Macro"] = {
-				["Boss Event Joiner"] = "Saber"
-			}
+			["Enable"] = true
 		}
 	},
 	["Claimer"] = {
