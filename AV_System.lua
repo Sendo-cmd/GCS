@@ -56,8 +56,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "scp1774",
-            "Blastch8892",
-            "nongmai813"
+            "Blastch8892"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
