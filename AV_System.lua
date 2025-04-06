@@ -114,11 +114,15 @@ _G.User = {
     ["Pokampud"] = {
         ["Party Mode"] = true,
     },
+    ["Primo_Dzek"] = {
+        ["Party Mode"] = true,
+    },
     ["Embeflu8651"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "zxzxc666"
+            "zxzxc666",
+            "Primo_Dzek"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -173,12 +177,16 @@ _G.User = {
     ["HaineToram2"] = {
         ["Party Mode"] = true,
     },
+    ["Gameeeq52"] = {
+        ["Party Mode"] = true,
+    },
     ["Sobiebugge84811"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "HaineToram2",
-            "keam093321"
+            "keam093321",
+            "Gameeeq52"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",

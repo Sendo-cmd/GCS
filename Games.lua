@@ -1073,6 +1073,11 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["Gameeeq52"] = {
+        "Log",
+        "System",
+        "Dungeons",
+    },
     ["Sobiebugge84811"] = {
         "Log",
         "System",
@@ -1329,6 +1334,11 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["Primo_Dzek"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
     ["zxzxc666"] = {
         "Log",
         "System",
@@ -1341,8 +1351,8 @@ Accounts = {
     },
     ["GZ10966"] = {
         "Log",
-        "Macro",
-        "Sokora3",
+        "Marco",
+        "Sokora4",
     },
     ["Skate9517"] = {
         "Log",
