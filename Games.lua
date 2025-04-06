@@ -1218,8 +1218,8 @@ Accounts = {
     },
     ["NonameT_T1"] = {
         "Log",
-        "System",
-        "LovePortal",
+        "Marco",
+        "Sokora4",
     },
     ["Shadof3702"] = {
         "Log",
