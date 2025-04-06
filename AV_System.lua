@@ -55,8 +55,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "scp1774",
-            "Blastch8892"
+            "Gu_Peem"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -78,6 +77,12 @@ _G.User = {
     ["scp1774"] = {
         ["Party Mode"] = true,
     },
+    ["svieex10"] = {
+        ["Party Mode"] = true,
+    },
+    ["YoScoreDummy"] = {
+        ["Party Mode"] = true,
+    },
     ["keam093321"] = {
         ["Party Mode"] = true,
     },
@@ -85,8 +90,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "bigyoshi909",
-            "RyuzaaaV2"
+            "YoScoreDummy",
+            "svieex10"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -102,11 +107,28 @@ _G.User = {
     ["enonef2"] = {
         ["Party Mode"] = true,
     },
+    ["scarygirl362"] = {
+        ["Party Mode"] = true,
+    },
     ["bigyoshi909"] = {
         ["Party Mode"] = true,
     },
     ["shadoTsunami"] = {
         ["Party Mode"] = true,
+    },
+    ["klopyodgiud"] = {
+        ["Select Mode"] = "LegendStage", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "scarygirl362"
+        },
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act3",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Kuinshi Palace",
+            ["FriendsOnly"] = false
+        },
     },
     ["lpkiohuyvguyh"] = {
         ["Party Mode"] = true,
@@ -114,15 +136,16 @@ _G.User = {
     ["Pokampud"] = {
         ["Party Mode"] = true,
     },
-    ["Primo_Dzek"] = {
+    ["unf0rg1ven_249"] = {
         ["Party Mode"] = true,
     },
-    ["Embeflu8651"] = {
+    
+    ["Primo_Dzek"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "zxzxc666",
-            "Primo_Dzek"
+            "unf0rg1ven_249",
+            "Gameeeq52"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -131,6 +154,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },    
+    },
+    ["Embeflu8651"] = {
+        ["Party Mode"] = true,
     },
     ["Zboy1XD"] = {
         ["Party Mode"] = true,
@@ -148,19 +174,7 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["traijo"] = {
-        ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "anakin_av139",
-            "rain4834"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
     },
     ["anakin_av139"] = {
         ["Party Mode"] = true,
@@ -181,20 +195,7 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Sobiebugge84811"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "HaineToram2",
-            "keam093321",
-            "Gameeeq52"
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },    
     },
 }
 

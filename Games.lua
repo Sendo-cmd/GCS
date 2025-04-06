@@ -394,8 +394,8 @@ Accounts = {
     },
     ["unf0rg1ven_249"] = {
         "Log",
-        "Marco",
-        "DungeonBoost3",
+        "System",
+        "Dungeon",
     },
     ["Overbe2716"] = {
         "Log",
@@ -983,7 +983,8 @@ Accounts = {
     },
     ["Gu_Peem"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "LovePortal",
     },
     ["keam093321"] = {
         "Log",
@@ -1076,7 +1077,7 @@ Accounts = {
     ["Gameeeq52"] = {
         "Log",
         "System",
-        "Dungeons",
+        "Dungeon",
     },
     ["Sobiebugge84811"] = {
         "Log",
@@ -1361,6 +1362,26 @@ Accounts = {
     ["TIME_i777"] = {
         "Log",
         "BaseGem",
+    },
+    ["scarygirl362"] = {
+        "Log",
+        "System",
+        "YomomataAuto",
+    },
+    ["klopyodgiud"] = {
+        "Log",
+        "System",
+        "YomomataAuto",
+    },
+    ["YoScoreDummy"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["svieex10"] = {
+        "Log",
+        "System",
+        "PortalParty",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
