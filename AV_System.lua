@@ -109,7 +109,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "saveew"
+            "saveew",
+            "PranlovelyP"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -132,6 +133,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["bigyoshi909"] = {
+        ["Party Mode"] = true,
+    },
+    ["PranlovelyP"] = {
         ["Party Mode"] = true,
     },
     ["shadoTsunami"] = {
