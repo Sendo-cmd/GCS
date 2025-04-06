@@ -65,6 +65,9 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
+    ["Gu_Peem"] = {
+        ["Party Mode"] = true,
+    },
     ["nongmai813"] = {
         ["Party Mode"] = true,
     },
@@ -91,7 +94,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "YoScoreDummy",
-            "svieex10"
+            "svieex10",
+            "lnwyorn_0823"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -100,6 +104,23 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["ilovecat326"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "saveew"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["saveew"] = {
+        ["Party Mode"] = true,
     },
     ["robid1450"] = {
         ["Party Mode"] = true,
@@ -145,7 +166,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "unf0rg1ven_249",
-            "Gameeeq52"
+            "HaineToram2",
+            "zywimq"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -156,6 +178,9 @@ _G.User = {
         },    
     },
     ["Embeflu8651"] = {
+        ["Party Mode"] = true,
+    },
+    ["zywimq"] = {
         ["Party Mode"] = true,
     },
     ["Zboy1XD"] = {

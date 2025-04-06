@@ -552,8 +552,8 @@ Accounts = {
     },
     ["zywimq"] = {
         "Log",
-        "Marco",
-        "Sokora4",
+        "System",
+        "Dungeon",
     },
     ["Alow_2116"] = {
         "Log",
@@ -979,6 +979,12 @@ Accounts = {
     },
     ["ilovecat326"] = {
         "Log",
+        "System",
+        "Dungeon",
+    },
+    ["saveew"] = {
+        "Log",
+        "System",
         "Dungeon",
     },
     ["Gu_Peem"] = {
@@ -1087,7 +1093,7 @@ Accounts = {
     ["HaineToram2"] = {
         "Log",
         "System",
-        "Dungeons",
+        "Dungeon",
     },
     ["Theppartarn"] = {
         "Log",
@@ -1382,6 +1388,10 @@ Accounts = {
         "Log",
         "System",
         "PortalParty",
+    },
+    ["iPram0"] = {
+        "Log",
+        "BaseGemInf",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
