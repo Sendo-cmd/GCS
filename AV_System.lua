@@ -55,7 +55,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Gu_Peem"
+            "Pokampud",
+            "mafsui7234"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -115,7 +116,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "saveew",
+            "ball77071",
             "PranLoveLyP"
         },
         ["Portal Settings"] = {
@@ -177,7 +178,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "entanwit2817"
+            "entanwit2817",
+            "zywimq"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",

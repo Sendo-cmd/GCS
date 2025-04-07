@@ -553,7 +553,7 @@ Accounts = {
     ["zywimq"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Dungeons",
     },
     ["Alow_2116"] = {
         "Log",
@@ -1062,6 +1062,11 @@ Accounts = {
         "PortalParty",
     },
     ["Pokampud"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["mafsui7234"] = {
         "Log",
         "System",
         "LovePortal",
