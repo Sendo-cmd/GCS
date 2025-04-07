@@ -89,6 +89,9 @@ _G.User = {
     ["keam093321"] = {
         ["Party Mode"] = true,
     },
+    ["lnwyorn_0823"] = {
+        ["Party Mode"] = true,
+    },
     ["Lucinda2471"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
