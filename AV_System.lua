@@ -135,7 +135,7 @@ _G.User = {
     ["bigyoshi909"] = {
         ["Party Mode"] = true,
     },
-    ["PranlovelyP"] = {
+    ["PranLoveLyP"] = {
         ["Party Mode"] = true,
     },
     ["shadoTsunami"] = {
