@@ -101,7 +101,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "YoScoreDummy",
-            "mooqill_875577",
             "lnwyorn_0823"
         },
         ["Portal Settings"] = {
