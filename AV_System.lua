@@ -69,6 +69,9 @@ _G.User = {
     ["Gu_Peem"] = {
         ["Party Mode"] = true,
     },
+    ["mafsui7234"] = {
+        ["Party Mode"] = true,
+    },
     ["nongmai813"] = {
         ["Party Mode"] = true,
     },
