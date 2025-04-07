@@ -1233,7 +1233,8 @@ Accounts = {
     },
     ["lnwyorn_0823"] = {
         "Log",
-        "ESSE",
+        "System",
+        "PortalParty",
     },
     ["Tiyarat2007"] = {
         "Log",
