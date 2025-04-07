@@ -129,6 +129,9 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
+    ["ball77071"] = {
+        ["Party Mode"] = true,
+    },
     ["saveew"] = {
         ["Party Mode"] = true,
     },
