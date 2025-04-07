@@ -92,12 +92,15 @@ _G.User = {
     ["lnwyorn_0823"] = {
         ["Party Mode"] = true,
     },
+    ["mooqill_875577"] = {
+        ["Party Mode"] = true,
+    },
     ["Lucinda2471"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "YoScoreDummy",
-            "svieex10",
+            "mooqill_875577",
             "lnwyorn_0823"
         },
         ["Portal Settings"] = {
@@ -146,7 +149,7 @@ _G.User = {
     },
     ["klopyodgiud"] = {
         ["Select Mode"] = "LegendStage", -- Portal
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "scarygirl362"
         },
@@ -167,14 +170,14 @@ _G.User = {
     ["unf0rg1ven_249"] = {
         ["Party Mode"] = true,
     },
-    
+    ["entanwit2817"] = {
+        ["Party Mode"] = true,
+    },
     ["Primo_Dzek"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "unf0rg1ven_249",
-            "HaineToram2",
-            "zywimq"
+            "entanwit2817"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",

@@ -1345,7 +1345,7 @@ Accounts = {
     ["Primo_Dzek"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Dungeons",
     },
     ["zxzxc666"] = {
         "Log",
@@ -1356,6 +1356,11 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["entanwit2817"] = {
+        "Log",
+        "System",
+        "Dungeons",
     },
     ["GZ10966"] = {
         "Log",
@@ -1377,8 +1382,7 @@ Accounts = {
     },
     ["klopyodgiud"] = {
         "Log",
-        "System",
-        "YomomataAuto",
+        "YomomataR",
     },
     ["YoScoreDummy"] = {
         "Log",
@@ -1390,7 +1394,16 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["Auto_Atv"] = {
+        "Log",
+        "ESSE",
+    },
     ["PranlovelyP"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["mooqill_875577"] = {
         "Log",
         "System",
         "PortalParty",
