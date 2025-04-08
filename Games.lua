@@ -1056,6 +1056,11 @@ Accounts = {
         "Log",
         "PortalParty",
     },
+    ["tangdda"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
     ["canonA624"] = {
         "Log",
         "System",
