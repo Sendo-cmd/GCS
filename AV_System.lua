@@ -122,7 +122,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["ilovecat326"] = {
+    ["RyuzaaaV2"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
@@ -241,9 +241,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["rain4834"] = {
-        ["Party Mode"] = true,
-    },
-    ["RyuzaaaV2"] = {
         ["Party Mode"] = true,
     },
     ["HaineToram2"] = {
