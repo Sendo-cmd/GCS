@@ -1034,7 +1034,7 @@ Accounts = {
         "Log",
         "YomomataAuto",
     },
-    ["Holybus"] = {
+    ["HolyBus"] = {
         "Log",
         "System",
         "LovePortal",
