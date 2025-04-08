@@ -56,7 +56,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Pokampud",
-            "mafsui7234"
+            "mafsui7234",
+            "holybus"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -65,6 +66,9 @@ _G.User = {
             ["Ignore Stage"] = {"Shibuya Station"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["holybus"] = {
+        ["Party Mode"] = true,
     },
     ["Gu_Peem"] = {
         ["Party Mode"] = true,
@@ -96,14 +100,19 @@ _G.User = {
     ["lnwyorn_0823"] = {
         ["Party Mode"] = true,
     },
-    ["mooqill_875577"] = {
+    ["344t0sHCdw6oDK"] = {
+        ["Party Mode"] = true,
+    },
+    ["x8s0r1y5knI3Ls"] = {
         ["Party Mode"] = true,
     },
     ["Lucinda2471"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "YoScoreDummy"
+            "YoScoreDummy",
+            "344t0sHCdw6oDK",
+            "x8s0r1y5knI3Ls"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -182,7 +191,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "zywimq"
+            "zywimq",
+            "saveew"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
