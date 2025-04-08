@@ -103,8 +103,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "YoScoreDummy",
-            "lnwyorn_0823"
+            "YoScoreDummy"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -183,7 +182,6 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "entanwit2817",
             "zywimq"
         },
         ["Dungeon Settings"] = {
