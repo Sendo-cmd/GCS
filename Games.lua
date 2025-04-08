@@ -553,7 +553,7 @@ Accounts = {
     ["zywimq"] = {
         "Log",
         "System",
-        "Dungeons",
+        "Dungeon",
     },
     ["Alow_2116"] = {
         "Log",
@@ -985,7 +985,7 @@ Accounts = {
     ["saveew"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["Gu_Peem"] = {
         "Log",
@@ -1180,6 +1180,11 @@ Accounts = {
         "Log",
         "System",
         "LovePortal",
+    },
+    ["MSK6_78"] = {
+        "Log",
+        "System",
+        "Dungeon",
     },
     ["mewant2die_d"] = {
         "Log",
@@ -1376,7 +1381,7 @@ Accounts = {
     ["entanwit2817"] = {
         "Log",
         "System",
-        "Dungeons",
+        "Dungeon",
     },
     ["GZ10966"] = {
         "Log",

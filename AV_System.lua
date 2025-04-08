@@ -187,12 +187,13 @@ _G.User = {
     ["entanwit2817"] = {
         ["Party Mode"] = true,
     },
-    ["Primo_Dzek"] = {
+    ["MSK6_78"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "zywimq",
-            "saveew"
+            "saveew",
+            "entanwit2817"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -201,6 +202,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },    
+    },
+    ["Primo_Dzek"] = {
+        ["Party Mode"] = true,
     },
     ["Embeflu8651"] = {
         ["Party Mode"] = true,
