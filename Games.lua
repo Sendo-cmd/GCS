@@ -1036,8 +1036,8 @@ Accounts = {
     },
     ["Holybus"] = {
         "Log",
-        "Marco",
-        "YomomataR",
+        "System",
+        "LovePortal",
     },
     ["noomnaso68725"] = {
         "Log",
@@ -1338,6 +1338,16 @@ Accounts = {
         "Dungeon",
     },
     ["enonef2"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["x8s0r1y5knI3Ls"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
         "PortalParty",

@@ -57,7 +57,7 @@ _G.User = {
         ["Party Member"] = {
             "Pokampud",
             "mafsui7234",
-            "holybus"
+            "Holybus"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -67,7 +67,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["holybus"] = {
+    ["Holybus"] = {
         ["Party Mode"] = true,
     },
     ["Gu_Peem"] = {
