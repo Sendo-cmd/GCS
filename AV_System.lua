@@ -55,7 +55,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Pokampud",
+            "avremin27",
             "mafsui7234",
             "HolyBus"
         },
@@ -66,6 +66,9 @@ _G.User = {
             ["Ignore Stage"] = {"Shibuya Station"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["avremin27"] = {
+        ["Party Mode"] = true,
     },
     ["HolyBus"] = {
         ["Party Mode"] = true,
