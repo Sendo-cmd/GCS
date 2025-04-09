@@ -46,6 +46,7 @@ Games = {
         ["YomomataV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataV.lua",
         ["YomomataR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataR.lua",
         ["YomomataAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAuto.lua",
+        ["YAutoTest"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_YomomataAutoL.lua",
         ["KeyG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgamesh.lua",
         ["KeyGAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_KeyGilgameshAuto.lua",
         ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",
@@ -108,7 +109,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "System",
-        "LovePortal",
+        "YAutoTest",
     },
     ["maser080"] = {
         "Log",
@@ -535,8 +536,7 @@ Accounts = {
     },
     ["icemateenoobth"] = {
         "Log",
-        "Marco",
-        "DungeonBoost3",
+        "FarmGemSw",
     },
     ["RadarxXx2020"] = {
         "Log",
