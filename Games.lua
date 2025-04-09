@@ -1429,6 +1429,11 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["Gus001934"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
     ["mooqill_875577"] = {
         "Log",
         "System",

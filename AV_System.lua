@@ -51,7 +51,7 @@ Tracks at the Edge of the World
 
 
 _G.User = {
-    ["GCshop2"] = {
+    ["PranLoveLyp"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
@@ -129,8 +129,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "ball77071",
-            "PranLoveLyP",
+            "Gus001934",
             "tangdda"
         },
         ["Portal Settings"] = {
@@ -140,6 +139,9 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["Gus001934"] = {
+        ["Party Mode"] = true,
     },
     ["tangdda"] = {
         ["Party Mode"] = true,
@@ -162,7 +164,7 @@ _G.User = {
     ["bigyoshi909"] = {
         ["Party Mode"] = true,
     },
-    ["PranLoveLyP"] = {
+    ["GCshop2"] = {
         ["Party Mode"] = true,
     },
     ["shadoTsunami"] = {
@@ -198,9 +200,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "zywimq",
-            "saveew",
-            "entanwit2817"
+            "saveew"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
