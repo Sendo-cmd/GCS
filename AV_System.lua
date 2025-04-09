@@ -51,7 +51,7 @@ Tracks at the Edge of the World
 
 
 _G.User = {
-    ["PranLoveLyp"] = {
+    ["PranLoveLyP"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
