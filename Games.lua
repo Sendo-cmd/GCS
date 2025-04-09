@@ -982,6 +982,11 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["Captainlnwza005"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
     ["saveew"] = {
         "Log",
         "System",
@@ -1311,8 +1316,7 @@ Accounts = {
     },
     ["shadoTsunami"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "Portal",
     },
     ["BeeKak1"] = {
         "Log",

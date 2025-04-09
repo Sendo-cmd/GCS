@@ -201,7 +201,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "saveew"
+            "saveew",
+            "Captainlnwza005"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -210,6 +211,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },    
+    },
+    ["Captainlnwza005"] = {
+        ["Party Mode"] = true,
     },
     ["Primo_Dzek"] = {
         ["Party Mode"] = true,
