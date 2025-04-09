@@ -1069,7 +1069,7 @@ Accounts = {
     ["Pokampud"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["mafsui7234"] = {
         "Log",
@@ -1339,6 +1339,11 @@ Accounts = {
         "YomomataR",
     },
     ["nongmai813"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["avremin27"] = {
         "Log",
         "System",
         "LovePortal",
