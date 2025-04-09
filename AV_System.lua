@@ -56,7 +56,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "avremin27",
-            "mafsui7234",
+            "KOW7Po",
             "HolyBus"
         },
         ["Portal Settings"] = {
@@ -66,6 +66,9 @@ _G.User = {
             ["Ignore Stage"] = {"Shibuya Station"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["KOW7Po"] = {
+        ["Party Mode"] = true,
     },
     ["avremin27"] = {
         ["Party Mode"] = true,
@@ -131,7 +134,7 @@ _G.User = {
         ["Party Member"] = {
             "Gus001934",
             "tangdda",
-            "Pokampud"
+            "shadoTsunami"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -202,7 +205,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "saveew",
-            "Captainlnwza005"
+            "Captainlnwza005",
+            "Skate9517"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -211,6 +215,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },    
+    },
+    ["Skate9517"] = {
+        ["Party Mode"] = true,
     },
     ["Captainlnwza005"] = {
         ["Party Mode"] = true,

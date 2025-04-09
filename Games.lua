@@ -283,6 +283,10 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["Estellburst"] = {
+        "Log",
+        "BEIgrisAuto",
+    },
     ["tahkrisda126"] = {
         "Log",
         "LovePortal",
@@ -1316,7 +1320,8 @@ Accounts = {
     },
     ["shadoTsunami"] = {
         "Log",
-        "Portal",
+        "System",
+        "PortalParty",
     },
     ["BeeKak1"] = {
         "Log",
@@ -1404,7 +1409,8 @@ Accounts = {
     },
     ["Skate9517"] = {
         "Log",
-        "BaseCF",
+        "System",
+        "Dungeon",
     },
     ["TIME_i777"] = {
         "Log",
