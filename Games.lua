@@ -481,7 +481,7 @@ Accounts = {
     ["natthakit587"] = {
         "Log",
         "System",
-        "Dungeon",
+        "LovePortal",
     },
     ["pokpong4123"] = {
         "Log",
@@ -782,10 +782,6 @@ Accounts = {
         "Portal",
     },
     ["PhantomWolfx72"] = {
-        "Log",
-        "LovePortal",
-    },
-    ["natthakit587"] = {
         "Log",
         "LovePortal",
     },
@@ -1272,7 +1268,7 @@ Accounts = {
     ["Dwekyphwzxpsg"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["Naiza080947"] = {
         "Log",
@@ -1324,7 +1320,7 @@ Accounts = {
     ["BeeKak1"] = {
         "Log",
         "System",
-        "PortalParty",
+        "LovePortal",
     },
     ["bigyoshi909"] = {
         "Log",

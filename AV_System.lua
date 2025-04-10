@@ -50,13 +50,13 @@ Tracks at the Edge of the World
 
 
 _G.User = {
-    ["KOW7Po"] = {
+    ["natthakit587"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Rynar50144",
-            "HolyBus",
-            "mafsui7234"
+            "mewant2die_d",
+            "enonef2"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -65,6 +65,9 @@ _G.User = {
             ["Ignore Stage"] = {"Shibuya Station"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["mewant2die_d"] = {
+        ["Party Mode"] = true,
     },
     ["Rynar50144"] = {
         ["Party Mode"] = true,
@@ -127,12 +130,10 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["RyuzaaaV2"] = {
+    ["BeeKak1"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Gus001934",
-            "tangdda",
             "shadoTsunami"
         },
         ["Portal Settings"] = {
@@ -177,7 +178,9 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GZ10966"
+            "GZ10966",
+            "Dwekyphwzxpsg",
+            "lnwyorn_0823"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
