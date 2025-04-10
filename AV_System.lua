@@ -234,6 +234,9 @@ _G.User = {
             ["FriendsOnly"] = false
         },    
     },
+    ["KengKwangs"] = {
+        ["Party Mode"] = true,
+    },
     ["MonarchJINWO21"] = {
         ["Party Mode"] = true,
     },
