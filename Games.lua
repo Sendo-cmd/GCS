@@ -1294,8 +1294,9 @@ Accounts = {
         "System",
         "PortalParty",
     },
-    ["SxGYW2"] = {
+    ["KengKwangs"] = {
         "Log",
+        "System",
         "Dungeon",
     },
     ["OVERDOG_KUNG"] = {
