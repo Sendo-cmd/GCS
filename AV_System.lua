@@ -174,21 +174,24 @@ __G.User = {
     ["shadoTsunami"] = {
         ["Party Mode"] = true,
     },
-    ["klopyodgiud"] = {
-        ["Select Mode"] = "LegendStage", -- Portal
-        ["Party Mode"] = false,
+    ["Bregas1170"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
         ["Party Member"] = {
-            "scarygirl362"
+            "GZ10966"
         },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act3",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Kuinshi Palace",
-            ["FriendsOnly"] = false
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
         },
     },
     ["lpkiohuyvguyh"] = {
+        ["Party Mode"] = true,
+    },
+    ["GZ10966"] = {
         ["Party Mode"] = true,
     },
     ["Pokampud"] = {

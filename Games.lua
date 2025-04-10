@@ -1402,7 +1402,8 @@ Accounts = {
     },
     ["GZ10966"] = {
         "Log",
-        "Portal",
+        "System",
+        "PortalParty",
     },
     ["Skate9517"] = {
         "Log",
@@ -1451,7 +1452,7 @@ Accounts = {
         "System",
         "PortalParty",
     },
-    ["mooqill_875577"] = {
+    ["Bregas1170"] = {
         "Log",
         "System",
         "PortalParty",
