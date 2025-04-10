@@ -108,8 +108,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "System",
-        "YAutoTest",
+        "BEIgrisAuto",
     },
     ["maser080"] = {
         "Log",
