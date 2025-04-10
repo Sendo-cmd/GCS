@@ -200,12 +200,11 @@ _G.User = {
     ["entanwit2817"] = {
         ["Party Mode"] = true,
     },
-    ["MSK6_78"] = {
+    ["Captainlnwza005"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "saveew",
-            "Captainlnwza005",
             "Skate9517"
         },
         ["Dungeon Settings"] = {
@@ -217,9 +216,6 @@ _G.User = {
         },    
     },
     ["Skate9517"] = {
-        ["Party Mode"] = true,
-    },
-    ["Captainlnwza005"] = {
         ["Party Mode"] = true,
     },
     ["Primo_Dzek"] = {
