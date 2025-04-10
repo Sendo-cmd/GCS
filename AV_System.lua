@@ -51,11 +51,11 @@ Tracks at the Edge of the World
 
 
 __G.User = {
-    ["PranLoveLyP"] = {
+    ["KOW7Po"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "KOW7Po",
+            "Rynar50144",
             "HolyBus",
             "mafsui7234"
         },
@@ -67,7 +67,7 @@ __G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["KOW7Po"] = {
+    ["Rynar50144"] = {
         ["Party Mode"] = true,
     },
     ["avremin27"] = {
