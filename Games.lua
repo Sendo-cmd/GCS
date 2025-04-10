@@ -556,8 +556,7 @@ Accounts = {
     },
     ["zywimq"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "BEIgrisAuto",
     },
     ["Alow_2116"] = {
         "Log",
@@ -1458,10 +1457,19 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
+    ["NoOneCareDisnameXD"] = {
+        "Log",
+        "StarGem",
+    },
     ["MonarchJINWO21"] = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["QWQPcZfdXlf"] = {
+        "Log",
+        "Marco",
+        "YomomataR",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

@@ -205,7 +205,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "saveew",
-            "Skate9517"
+            "Skate9517",
+            "MonarchJINWO21"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -214,6 +215,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },    
+    },
+    ["MonarchJINWO21"] = {
+        ["Party Mode"] = true,
     },
     ["Skate9517"] = {
         ["Party Mode"] = true,
