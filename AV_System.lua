@@ -50,7 +50,7 @@ Tracks at the Edge of the World
 
 
 
-_G.User = {
+__G.User = {
     ["PranLoveLyP"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
@@ -323,6 +323,13 @@ local function DisplayToIndexRaid(arg)
     end 
     return ""
 end
+local function Len(tab)
+    local count = 0
+    for i,v in pairs(tab) do
+        count = count + 1
+    end
+    return count
+end
 local function IndexToDisplay(arg)
     return StagesData["Story"][arg]["StageData"]["Name"]
 end
@@ -339,6 +346,8 @@ end)
 local Settings ={
 
     ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid
+    ["Auto Join Rift"] = false,
+    ["Auto Join Boss Event"] = false,
 
     ["Party Mode"] = false,
 
@@ -409,10 +418,6 @@ task.spawn(function()
                 while task.wait(5) do
                     local requestTo = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name))
                     local ost = requestTo["status"] == "success" and requestTo["value"]["os"] or 0
-                    -- warn(requestTo["status"] , requestTo["value"])
-                    -- warn(ost)
-                    -- warn(requestTo["status"] == "success" and requestTo["value"]["data"])
-                    -- warn(tostring(requestTo["status"]) == "success" , requestTo["value"] , requestTo["value"]["os"] >= tick())
                     if tostring(requestTo["status"]) == "success" and requestTo["value"] and tonumber(requestTo["value"]["os"]) >= os.time() then
                         warn("Join")
                         if requestTo["value"]["type"] == "Portal" then
@@ -421,18 +426,20 @@ task.spawn(function()
                                 requestTo["value"]["data"]
                             )
                         elseif requestTo["value"]["type"] == "Normal" then
-                            
                             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer( 
                                 "JoinMatch",
+                                requestTo["value"]["data"]
+                            )
+                        elseif requestTo["value"]["type"] == "Rift" then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                                "Join",
                                 requestTo["value"]["data"]
                             )
                         end
                        
                     end
                 end
-                
             else
-                print("Im here 4")
                 local UUID = nil
                 local Type = false
                 game:GetService("ReplicatedStorage").Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
@@ -498,6 +505,48 @@ task.spawn(function()
             return true
         end
         local WaitTime = 120
+        if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
+            while true do
+                if AllPlayerInGame() then
+                    Next_(WaitTime)
+                    if AllPlayerInGame() then 
+                        task.wait(math.random(2,10))
+                        local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                        local GUID = nil
+                        for i,v in pairs(Rift.GetRifts()) do
+                            if Len(v["Players"]) and not v["Teleporting"] then
+                                GUID = v["GUID"]
+                            end
+                        end
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                            "Join",
+                            GUID
+                        )
+                        for i,v in pairs(Settings["Party Member"]) do
+                            local response = request({
+                                ["Url"] = "https://api.championshop.date/party-aa",
+                                ["Method"] = "POST",
+                                ["Headers"] = {
+                                    ["content-type"] = "application/json"
+                                },
+                                ["Body"] = game:GetService("HttpService"):JSONEncode({
+                                    ["index"] = v,
+                                    ["value"] = {
+                                        ["type"] = "Rift",
+                                        ["data"] = GUID,
+                                        ["os"] = os.time() + 120
+                                    },
+                                })
+                            })
+                        end
+                    end
+                end
+                task.wait(2)
+            end
+        end
+        if Settings["Auto Join Boss Event"] then
+            
+        end
         if Settings["Select Mode"] == "Portal" then
             local Settings_ = Settings["Portal Settings"]
             local function Ignore(tab1,tab2)
