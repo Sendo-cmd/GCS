@@ -49,8 +49,7 @@ Tracks at the Edge of the World
 ]]
 
 
-
-__G.User = {
+_G.User = {
     ["KOW7Po"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
