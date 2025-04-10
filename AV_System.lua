@@ -56,7 +56,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "KOW7Po",
-            "HolyBus"
+            "HolyBus",
+            "mafsui7234"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
