@@ -1469,7 +1469,7 @@ Accounts = {
     ["QWQPcZfdXlf"] = {
         "Log",
         "Marco",
-        "YomomataR",
+        "YomomataAuto",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
