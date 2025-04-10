@@ -55,7 +55,6 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "avremin27",
             "KOW7Po",
             "HolyBus"
         },
