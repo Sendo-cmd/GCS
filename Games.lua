@@ -931,7 +931,7 @@ Accounts = {
     },
     ["MAXTONINE"] = {
         "Log",
-        "SokoraAuto",
+        "BEIgrisAuto",
     },
     ["AD_kp508"] = {
         "Log",
