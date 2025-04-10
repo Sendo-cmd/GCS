@@ -109,7 +109,18 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["344t0sHCdw6oDK"] = {
+        ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
+        ["Party Member"] = {
+            "KOW7Po"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
     },
     ["x8s0r1y5knI3Ls"] = {
         ["Party Mode"] = true,
@@ -119,7 +130,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "YoScoreDummy",
-            "344t0sHCdw6oDK",
             "x8s0r1y5knI3Ls"
         },
         ["Portal Settings"] = {
@@ -145,6 +155,9 @@ _G.User = {
         },
     },
     ["Gus001934"] = {
+        ["Party Mode"] = true,
+    },
+    ["KOW7Po"] = {
         ["Party Mode"] = true,
     },
     ["tangdda"] = {

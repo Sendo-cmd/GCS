@@ -1196,7 +1196,8 @@ Accounts = {
     },
     ["mewant2die_d"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "LovePortal",
     },
     ["rip_guesst12"] = {
         "Log",
