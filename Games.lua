@@ -1365,7 +1365,7 @@ Accounts = {
     ["dukduies"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["Embeflu8651"] = {
         "Log",
