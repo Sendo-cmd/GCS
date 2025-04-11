@@ -1353,12 +1353,32 @@ Accounts = {
         "System",
         "LovePortal",
     },
+    ["Juniorlnw5"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["Diablo039a"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["dukduies"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
     ["Embeflu8651"] = {
         "Log",
         "System",
         "Dungeon",
     },
     ["enonef2"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["aHc9GRuQ65RN66"] = {
         "Log",
         "System",
         "PortalParty",

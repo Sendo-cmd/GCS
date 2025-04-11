@@ -54,7 +54,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Rynar50144",
+            "natthakit587",
             "mewant2die_d",
             "KOW7Po"
         },
@@ -66,7 +66,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["Rynar50144"] = {
+    ["natthakit587"] = {
         ["Party Mode"] = true,
     },
     ["mewant2die_d"] = {
@@ -100,7 +100,7 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["8jH8lUH6ay3Ji0"] = {
+    ["None"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
@@ -117,10 +117,84 @@ _G.User = {
     ["BOOMBIGOO"] = {
         ["Party Mode"] = true,
     },
-    ["None"] = {
+    ["None3"] = {
         ["Party Mode"] = true,
     },
     ["None2"] = {
+        ["Party Mode"] = true,
+    },
+    ["8jH8lUH6ay3Ji0"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "shadoTsunami",
+            "BeeKak1",
+            "Dwekyphwzxpsg"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["shadoTsunami"] = {
+        ["Party Mode"] = true,
+    },
+    ["BeeKak1"] = {
+        ["Party Mode"] = true,
+    },
+    ["Dwekyphwzxpsg"] = {
+        ["Party Mode"] = true,
+    },
+    ["aHc9GRuQ65RN66"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "saveew",
+            "RyuzaaaV2",
+            "lnwyorn_0823"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["saveew"] = {
+        ["Party Mode"] = true,
+    },
+    ["RyuzaaaV2"] = {
+        ["Party Mode"] = true,
+    },
+    ["lnwyorn_0823"] = {
+        ["Party Mode"] = true,
+    },
+    ["Juniorlnw5"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Diablo039a",
+            "dukduies"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Shibuya Station"},
+            ["Ignore Modify"] = {},
+        },
+    },
+    ["Diablo039a"] = {
+        ["Party Mode"] = true,
+    },
+    ["dukduies"] = {
+        ["Party Mode"] = true,
+    },
+    ["none99"] = {
         ["Party Mode"] = true,
     },
 }
