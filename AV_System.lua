@@ -50,13 +50,13 @@ Tracks at the Edge of the World
 
 
 _G.User = {
-    ["natthakit587"] = {
+    ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Rynar50144",
             "mewant2die_d",
-            "enonef2"
+            "KOW7Po"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -66,134 +66,22 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["mewant2die_d"] = {
-        ["Party Mode"] = true,
-    },
     ["Rynar50144"] = {
         ["Party Mode"] = true,
     },
-    ["avremin27"] = {
-        ["Party Mode"] = true,
-    },
-    ["HolyBus"] = {
-        ["Party Mode"] = true,
-    },
-    ["Gu_Peem"] = {
-        ["Party Mode"] = true,
-    },
-    ["mafsui7234"] = {
-        ["Party Mode"] = true,
-    },
-    ["nongmai813"] = {
-        ["Party Mode"] = true,
-    },
-    ["Blastch8892"] = {
-        ["Party Mode"] = true,
-    },
-    ["Dwekyphwzxpsg"] = {
-        ["Party Mode"] = true,
-    },
-    ["scp1774"] = {
-        ["Party Mode"] = true,
-    },
-    ["svieex10"] = {
-        ["Party Mode"] = true,
-    },
-    ["YoScoreDummy"] = {
-        ["Party Mode"] = true,
-    },
-    ["keam093321"] = {
-        ["Party Mode"] = true,
-    },
-    ["lnwyorn_0823"] = {
-        ["Party Mode"] = true,
-    },
-    ["344t0sHCdw6oDK"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "KOW7Po"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["x8s0r1y5knI3Ls"] = {
-        ["Party Mode"] = true,
-    },
-    ["Lucinda2471"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "YoScoreDummy",
-            "x8s0r1y5knI3Ls"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["BeeKak1"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "shadoTsunami"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["Gus001934"] = {
+    ["mewant2die_d"] = {
         ["Party Mode"] = true,
     },
     ["KOW7Po"] = {
         ["Party Mode"] = true,
     },
-    ["tangdda"] = {
-        ["Party Mode"] = true,
-    },
-    ["ball77071"] = {
-        ["Party Mode"] = true,
-    },
-    ["saveew"] = {
-        ["Party Mode"] = true,
-    },
-    ["robid1450"] = {
-        ["Party Mode"] = true,
-    },
-    ["enonef2"] = {
-        ["Party Mode"] = true,
-    },
-    ["scarygirl362"] = {
-        ["Party Mode"] = true,
-    },
-    ["bigyoshi909"] = {
-        ["Party Mode"] = true,
-    },
-    ["GCshop2"] = {
-        ["Party Mode"] = false,
-    },
-    ["shadoTsunami"] = {
-        ["Party Mode"] = true,
-    },
-    ["Bregas1170"] = {
+    ["x8s0r1y5knI3Ls"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GZ10966",
-            "Dwekyphwzxpsg",
-            "lnwyorn_0823"
+            "Lucinda2471",
+            "YoScoreDummy",
+            "ilovecat326"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -203,89 +91,38 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["lpkiohuyvguyh"] = {
+    ["Lucinda2471"] = {
         ["Party Mode"] = true,
     },
-    ["GZ10966"] = {
+    ["YoScoreDummy"] = {
         ["Party Mode"] = true,
     },
-    ["Pokampud"] = {
+    ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["unf0rg1ven_249"] = {
-        ["Party Mode"] = true,
-    },
-    ["entanwit2817"] = {
-        ["Party Mode"] = true,
-    },
-    ["Captainlnwza005"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+    [""] = {
+        ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "KengKwangs",
-            "Skate9517",
-            "MonarchJINWO21"
+            "Lucinda2471",
+            "YoScoreDummy",
+            "ilovecat326"
         },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },    
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
     },
-    ["KengKwangs"] = {
+    [""] = {
         ["Party Mode"] = true,
     },
-    ["MonarchJINWO21"] = {
+    [""] = {
         ["Party Mode"] = true,
     },
-    ["Skate9517"] = {
-        ["Party Mode"] = true,
-    },
-    ["Primo_Dzek"] = {
-        ["Party Mode"] = true,
-    },
-    ["Embeflu8651"] = {
-        ["Party Mode"] = true,
-    },
-    ["zywimq"] = {
-        ["Party Mode"] = true,
-    },
-    ["Zboy1XD"] = {
-        ["Party Mode"] = true,
-    },
-    ["MEEMDAY2530"] = {
-        ["Party Mode"] = true,
-    },
-    ["AceLilFellow"] = {
-        ["Party Mode"] = true,
-    },
-    ["OVERDOG_KUNG"] = {
-        ["Party Mode"] = true,
-    },
-    ["zxzxc666"] = {
-        ["Party Mode"] = true,
-    },
-    ["traijo"] = {
-        ["Party Mode"] = true,
-    },
-    ["anakin_av139"] = {
-        ["Party Mode"] = true,
-    },
-    ["ASD_King70"] = {
-        ["Party Mode"] = true,
-    },
-    ["rain4834"] = {
-        ["Party Mode"] = true,
-    },
-    ["HaineToram2"] = {
-        ["Party Mode"] = true,
-    },
-    ["Gameeeq52"] = {
-        ["Party Mode"] = true,
-    },
-    ["Sobiebugge84811"] = {
+    [""] = {
         ["Party Mode"] = true,
     },
 }
