@@ -1426,7 +1426,7 @@ Accounts = {
         "System",
         "PortalParty",
     },
-    ["svieex10"] = {
+    ["8jH8lUH6ay3Ji0"] = {
         "Log",
         "System",
         "PortalParty",
@@ -1471,6 +1471,10 @@ Accounts = {
     ["MonarchJINWO21"] = {
         "Log",
         "System",
+        "Dungeon",
+    },
+    ["BOOMBIGOO"] = {
+        "Log",
         "Dungeon",
     },
     ["QWQPcZfdXlf"] = {

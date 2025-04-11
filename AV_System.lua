@@ -100,29 +100,27 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    [""] = {
-        ["Select Mode"] = "Portal", -- Portal
+    ["8jH8lUH6ay3Ji0"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Lucinda2471",
-            "YoScoreDummy",
-            "ilovecat326"
+            "BOOMBIGOO"
         },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },    
     },
-    [""] = {
+    ["BOOMBIGOO"] = {
         ["Party Mode"] = true,
     },
-    [""] = {
+    ["None"] = {
         ["Party Mode"] = true,
     },
-    [""] = {
+    ["None2"] = {
         ["Party Mode"] = true,
     },
 }
