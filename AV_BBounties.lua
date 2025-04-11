@@ -137,7 +137,7 @@ getgenv().Config = {
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,
-		["Replay Amount"] = 2
+		["Replay Amount"] = 0
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,

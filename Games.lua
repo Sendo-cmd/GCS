@@ -614,7 +614,7 @@ Accounts = {
     },
     ["joy006zx"] = {
         "Log",
-        "LovePortal",
+        "DioAuto",
     },
     ["Rustwhir2660"] = {
         "Log",
@@ -1071,8 +1071,7 @@ Accounts = {
     },
     ["Pokampud"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "BEIgrisAuto",
     },
     ["mafsui7234"] = {
         "Log",
@@ -1501,6 +1500,10 @@ Accounts = {
         "Log",
         "Marco",
         "YomomataAuto",
+    },
+    ["arzero2"] = {
+        "Log",
+        "BBounties",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
