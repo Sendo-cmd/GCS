@@ -173,12 +173,12 @@ _G.User = {
     ["lnwyorn_0823"] = {
         ["Party Mode"] = true,
     },
-    ["Juniorlnw5"] = {
+    ["juniorlnw5"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Diablo039a",
-            "dukduies",
+            "Dukduies",
             "rain4834"
         },
         ["Portal Settings"] = {
@@ -192,7 +192,7 @@ _G.User = {
     ["Diablo039a"] = {
         ["Party Mode"] = true,
     },
-    ["dukduies"] = {
+    ["Dukduies"] = {
         ["Party Mode"] = true,
     },
     ["rain4834"] = {
