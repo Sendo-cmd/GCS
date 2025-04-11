@@ -1371,7 +1371,7 @@ Accounts = {
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
-        "PortalParty",
+        "LovePortal",
     },
     ["traijo"] = {
         "Log",
@@ -1478,6 +1478,122 @@ Accounts = {
         "Marco",
         "YomomataAuto",
     },
+    ["aR8xV9v6JI0FV9"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["J9O0Eg0cQ03MCV"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["v0k9Seb9nB6q0P"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["c97m7VvHFTPZ19"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["A6bU2F244SgVIL"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["s1t4d4vPKqIz61"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["s0SoYQ84GXSc12"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["R6W2iU8NY0Yt0y"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["HN0U173rfP9Rej"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["GVU257sFK8en2v"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["2Z7CsAUL631eyO"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["2TdA1E6Ri13Vvc"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["2p16ASLfOpL04N"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["4cMw7l8Q9U3kEE"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["Js5Sa48yS05SBI"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["E245uF79awrOox"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["u18PbJ2q2SZdx9"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["tjr23sqU554Jqv"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["8jH8lUH6ay3Ji0"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["aHc9GRuQ65RN66"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["HnD9n1lVJ4Ap23"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["qAK16V7ZLSX0a4"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["Yq34Uk84nh8aHE"] = { 
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
