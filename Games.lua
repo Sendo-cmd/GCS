@@ -868,10 +868,15 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["AutomodevDP5Lh"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
     ["Lucinda2471"] = {
         "Log",
         "System",
-        "PortalParty",
+        "LovePortal",
     },
     ["MarioNo1111"] = {
         "Log",
@@ -940,7 +945,8 @@ Accounts = {
     },
     ["HP_GTR"] = {
         "Log",
-        "BaseGem",
+        "Marco",
+        "YomomataR",
     },
     ["MitakaSann"] = {
         "Log",
@@ -989,7 +995,7 @@ Accounts = {
     ["saveew"] = {
         "Log",
         "System",
-        "Dungeon",
+        "LovePortal",
     },
     ["Gu_Peem"] = {
         "Log",
@@ -1005,6 +1011,11 @@ Accounts = {
         "Log",
         "System",
         "PortalParty",
+    },
+    ["4cMw7l8Q9U3kEE"] = {
+        "Log",
+        "System",
+        "LovePortal",
     },
     ["SIAFK19"] = {
         "Log",
