@@ -158,9 +158,6 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["dukduies"] = {
-        ["Party Mode"] = true,
-    },
     ["RyuzaaaV2"] = {
         ["Party Mode"] = true,
     },
