@@ -491,8 +491,7 @@ Accounts = {
     },
     ["NARUTO4gm"] = {
         "Log",
-        "System",
-        "LovePortal",
+        "TraitReroll",
     },
     ["artyg111"] = {
         "Log",
