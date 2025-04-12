@@ -79,7 +79,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Lucinda2471",
+            "Bregas1170",
             "YoScoreDummy",
             "ilovecat326"
         },
@@ -91,7 +91,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["Lucinda2471"] = {
+    ["Bregas1170"] = {
         ["Party Mode"] = true,
     },
     ["YoScoreDummy"] = {

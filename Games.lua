@@ -1503,7 +1503,6 @@ Accounts = {
     },
     ["arzero2"] = {
         "Log",
-        "BBounties",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
