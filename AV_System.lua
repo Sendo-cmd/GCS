@@ -54,9 +54,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "natthakit587",
-            "mewant2die_d",
-            "KOW7Po"
+            "Lucinda2471",
+            "AutomodevDP5Lh"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -66,13 +65,13 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["natthakit587"] = {
+    ["Lucinda2471"] = {
         ["Party Mode"] = true,
     },
-    ["mewant2die_d"] = {
+    ["None55"] = {
         ["Party Mode"] = true,
     },
-    ["KOW7Po"] = {
+    ["AutomodevDP5Lh"] = {
         ["Party Mode"] = true,
     },
     ["x8s0r1y5knI3Ls"] = {
@@ -80,7 +79,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Bregas1170",
-            "YoScoreDummy",
             "ilovecat326"
         },
         ["Portal Settings"] = {
@@ -100,9 +98,9 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["BOOMBIGOO"] = {
+    ["GCshop2"] = {
         ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
             "BOOMBIGOO"
         },
@@ -127,9 +125,9 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "shadoTsunami",
             "BeeKak1",
             "Dwekyphwzxpsg"
+            ""
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -152,9 +150,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "saveew",
-            "RyuzaaaV2",
-            "lnwyorn_0823"
+            "RyuzaaaV2"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -164,7 +160,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["saveew"] = {
+    ["dukduies"] = {
         ["Party Mode"] = true,
     },
     ["RyuzaaaV2"] = {
@@ -173,13 +169,12 @@ _G.User = {
     ["lnwyorn_0823"] = {
         ["Party Mode"] = true,
     },
-    ["juniorlnw5"] = {
+    ["4cMw7l8Q9U3kEE"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Diablo039a",
-            "Dukduies",
-            "rain4834"
+            "saveew",
+            "dukduies"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -189,7 +184,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["Diablo039a"] = {
+    ["saveew"] = {
         ["Party Mode"] = true,
     },
     ["Dukduies"] = {

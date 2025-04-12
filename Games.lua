@@ -108,7 +108,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "BEIgrisAuto",
+        "System",
+        "Dungeon",
     },
     ["maser080"] = {
         "Log",
@@ -1494,6 +1495,7 @@ Accounts = {
     },
     ["BOOMBIGOO"] = {
         "Log",
+        "System",
         "Dungeon",
     },
     ["QWQPcZfdXlf"] = {
