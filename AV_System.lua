@@ -100,9 +100,9 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["None"] = {
+    ["BOOMBIGOO"] = {
         ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "BOOMBIGOO"
         },
