@@ -103,7 +103,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BOOMBIGOO",
-            "HOdnJWa0347"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
