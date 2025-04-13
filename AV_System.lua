@@ -55,7 +55,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Lucinda2471",
-            "AutomodevDP5Lh"
+            "JapanMovieTH12",
+            "saveew"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -68,7 +69,7 @@ _G.User = {
     ["Lucinda2471"] = {
         ["Party Mode"] = true,
     },
-    ["None55"] = {
+    ["JapanMovieTH12"] = {
         ["Party Mode"] = true,
     },
     ["AutomodevDP5Lh"] = {
@@ -168,7 +169,6 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "saveew",
             "Dukduies"
         },
         ["Portal Settings"] = {

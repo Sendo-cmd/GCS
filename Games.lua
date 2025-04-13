@@ -910,8 +910,7 @@ Accounts = {
     },
     ["masxteng38"] = {
         "Log",
-        "Marco",
-        "BEIgrisAuto",
+        "BaseGem",
     },
     ["GetgetTHTV"] = {
         "Log",
@@ -1399,6 +1398,11 @@ Accounts = {
         "PortalParty",
     },
     ["344t0sHCdw6oDK"] = {
+        "Log",
+        "System",
+        "LovePortal",
+    },
+    ["JapanMovieTH12"] = {
         "Log",
         "System",
         "LovePortal",
