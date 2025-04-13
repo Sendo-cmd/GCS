@@ -945,7 +945,7 @@ Accounts = {
     ["HP_GTR"] = {
         "Log",
         "Marco",
-        "YomomataR",
+        "YomomataG",
     },
     ["MitakaSann"] = {
         "Log",
