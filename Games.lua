@@ -910,8 +910,7 @@ Accounts = {
     },
     ["masxteng38"] = {
         "Log",
-        "Marco",
-        "BEIgrisAuto",
+        "BaseGem",
     },
     ["GetgetTHTV"] = {
         "Log",
@@ -922,8 +921,9 @@ Accounts = {
         "Marco",
         "BEIgrisAuto",
     },
-    ["AVGDia20K_0X185"] = {
+    ["JapanMovieTH12"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["ggg_ufgj"] = {
@@ -1520,7 +1520,7 @@ Accounts = {
     },
     ["arzero2"] = {
         "Log",
-        "TraitReroll"
+        "TraitReroll",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
