@@ -103,7 +103,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "BOOMBIGOO",
+            "Yumi28031",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -113,7 +113,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },    
     },
-    ["BOOMBIGOO"] = {
+    ["Yumi28031"] = {
         ["Party Mode"] = true,
     },
     ["HOdnJWa0347"] = {
