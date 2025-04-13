@@ -56,7 +56,7 @@ _G.User = {
         ["Party Member"] = {
             "Lucinda2471",
             "JapanMovieTH12",
-            "saveew"
+            "Ruxdevol0867"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter

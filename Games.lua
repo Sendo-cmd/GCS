@@ -938,14 +938,15 @@ Accounts = {
         "Log",
         "Dungeon",
     },
-    ["Autoautov9"] = {
+    ["Ruxdevol0867"] = {
         "Log",
+        "System",
         "LovePortal",
     },
     ["HP_GTR"] = {
         "Log",
         "Marco",
-        "YomomataR",
+        "YomomataG",
     },
     ["MitakaSann"] = {
         "Log",
