@@ -80,7 +80,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Bregas1170",
-            "ilovecat326"
+            "RyuzaaaV2"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -149,7 +149,6 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RyuzaaaV2"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
