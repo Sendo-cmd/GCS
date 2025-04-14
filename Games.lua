@@ -1142,7 +1142,7 @@ Accounts = {
     ["rain4834"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["GF4TR"] = {
         "Log",
