@@ -128,9 +128,9 @@ elseif IsMain then
             ["Method"] = "Update",
             ["WorldLine_Floor"] = WorldLine,
             ["Units"] = Units,
-            ["EquippedUnits"] = EquippedUnits,
             ["Skins"] = SkinTable,
             ["Familiars"] = FamiliarTable,
+            ["EquippedUnits"] = EquippedUnits,
             ["Items"] = InventoryHandler:GetInventory(),
             ["WinCounting"] = VictoryCount,
             ["Username"] = plr.Name,
@@ -225,7 +225,7 @@ elseif IsMatch then
             ["Body"] = HttpService:JSONEncode({
                 ["Method"] = "MatchEnd",
                 ["WorldLine_Floor"] = 1 or WorldLine,
-                ["EquippedUnits"] = EquippedUnits,
+                ["Units"] = EquippedUnits,
                 ["Skins"] = SkinTable,
                 ["Familiars"] = FamiliarTable,
                 ["Results"] = Results,
@@ -242,7 +242,7 @@ elseif IsMatch then
         setclipboard(HttpService:JSONEncode({
             ["Method"] = "MatchEnd",
             ["WorldLine_Floor"] = 1 or WorldLine,
-            ["EquippedUnits"] = EquippedUnits,
+            ["Units"] = EquippedUnits,
             ["Skins"] = SkinTable,
             ["Familiars"] = FamiliarTable,
             ["Results"] = Results,

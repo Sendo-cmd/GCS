@@ -82,7 +82,7 @@ _G.User = {
             ["Difficulty"] = "Normal",
             ["Act"] = "Act1",
             ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
+            ["Stage"] = "Martial Island",
             ["FriendsOnly"] = false
         },   
     },
