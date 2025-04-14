@@ -1,4 +1,4 @@
---
+
 local Players = game:GetService("Players")
 
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -21,6 +21,7 @@ local UnitsData = require(Modules.Data.Entities.Units)
 
 repeat task.wait() until SettingsHandler.SettingsLoaded
 
+local IsTimeChamber = game:GetService("StarterPlayer").Modules.Interface:FindFirstChild("TimeChamber")
 local IsMain = workspace:FindFirstChild("MainLobby")
 local IsMatch = plr:FindFirstChild("StageInfo")
 
@@ -33,17 +34,59 @@ local MultiplierHandler = require(Shared.MultiplierHandler)
 local NumberUtils = require(Utilities.NumberUtils)
 local TableUtils = require(Utilities.TableUtils)
 
-local IsMain = workspace:FindFirstChild("MainLobby")
-local IsMatch = plr:FindFirstChild("StageInfo")
 
 local url = "https://api.championshop.date/logs"
 
-if IsMain then
+if IsTimeChamber then
+    print("Time Chamber")
+    local PlayerData = plr:GetAttributes()
+    local function Send()
+        local response = request({
+            ["Url"] = url,
+            ["Method"] = "POST",
+            ["Headers"] = {
+                ["content-type"] = "application/json"
+            },
+            ["Body"] = HttpService:JSONEncode({
+                ["Method"] = "Update",
+                ["Time Chamber"] = true,
+                ["Username"] = plr.Name,
+                ["PlayerData"] = PlayerData,
+                ["GuildId"] = "467359347744309248",
+                ["DataKey"] = "GamingChampionShopAPI",
+            })
+        })
+    end
+    
+    Send()
+    game:GetService("Players").LocalPlayer:GetAttributeChangedSignal("GemsEarned"):Connect(function()
+        Send()
+    end)
+elseif IsMain then
+    print("Lobby")
     local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
     local InventoryHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.InventoryHandler)
     local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
+    local SkinTable = {}
+    local FamiliarTable = {}
+    local WorldLine = 1
+
+    game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
+        FamiliarTable = val
+    end)
+    game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
+        SkinTable = val
+    end)
+    game:GetService("ReplicatedStorage").Networking.WorldlinesEvent.OnClientEvent:Connect(function(val,val1)
+        WorldLine = val1["Season3"]["CurrentRoom"]
+    end)
 
     repeat task.wait() until UnitWindowHandler.AreUnitsLoaded;
+
+    game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+    game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+    game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("RetrieveData")
+    task.wait(1.5)
 
     local EquippedUnits = {}
 
@@ -71,6 +114,10 @@ if IsMain then
 
     local PlayerData = plr:GetAttributes()
 
+    local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
+    local VictoryCount = (requestTo and requestTo["value"] and requestTo["value"]["win"]) or 0
+   
+
     local response = request({
         ["Url"] = url,
         ["Method"] = "POST",
@@ -79,9 +126,13 @@ if IsMain then
         },
         ["Body"] = HttpService:JSONEncode({
             ["Method"] = "Update",
+            ["WorldLine_Floor"] = WorldLine,
             ["Units"] = Units,
             ["EquippedUnits"] = EquippedUnits,
+            ["Skins"] = SkinTable,
+            ["Familiars"] = FamiliarTable,
             ["Items"] = InventoryHandler:GetInventory(),
+            ["WinCounting"] = VictoryCount,
             ["Username"] = plr.Name,
             ["Battlepass"] = BattlepassHandler:GetPlayerData(),
             ["PlayerData"] = PlayerData,
@@ -90,9 +141,28 @@ if IsMain then
         })
     })
 elseif IsMatch then
+    print("Match")
     local UnitsHUD = require(game:GetService("StarterPlayer").Modules.Interface.Loader.HUD.Units)
     local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
     local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
+
+    local SkinTable = {}
+    local FamiliarTable = {}
+    local WorldLine = nil
+    game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
+        FamiliarTable = val
+    end)
+    
+    game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
+        SkinTable = val
+    end)
+    if  game:GetService("ReplicatedStorage").Networking:FindFirstChild("WorldlinesEvent") then
+        game:GetService("ReplicatedStorage").Networking.WorldlinesEvent.OnClientEvent:Connect(function(val,val1)
+            WorldLine = val1["Season3"]["CurrentRoom"]
+        end)
+    end
+   
+    
 
     local BattlePassXp = 0
     local BPPlay = BattlepassText.Play
@@ -100,8 +170,7 @@ elseif IsMatch then
         BattlePassXp += data[1]
         return BPPlay(self, data)
     end
-
-    Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+    local function Send(Results)
         local EquippedUnits = {}
         for i,v in pairs(UnitsHUD._Cache) do
             if v == "None" then continue end
@@ -110,6 +179,12 @@ elseif IsMatch then
             EquippedUnits[v.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v.Identifier).Name
         end
         
+        game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+        game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+        if game:GetService("ReplicatedStorage").Networking:FindFirstChild("WorldlinesEvent") then
+            game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("RetrieveData")
+        end
+        task.wait(2)
         local GameData = GameHandler.GameData
         
         pcall(function()
@@ -119,26 +194,28 @@ elseif IsMatch then
         if BattlePassXp > 0 then
             Results.Rewards["Pass Xp"] = { ["Amount"] = BattlePassXp }
         end
+        local PlayerData = plr:GetAttributes()
+        if Results["Status"] == "Finished" then
+            local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
+            local VictoryCount = requestTo and requestTo["value"] or 0
+            
 
-        local PlayerData = {
-            ["Gold"] = plr:GetAttribute("Gold"),
-            ["Gems"] = plr:GetAttribute("Gems"),
-            ["TraitRerolls"] = plr:GetAttribute("TraitRerolls"),
-            ["Present"] = plr:GetAttribute("Present"),
-            ["CommanderTokens"] = plr:GetAttribute("CommanderTokens"),
-            ["CurseTokens"] = plr:GetAttribute("CurseTokens"),
-            ["CorruptedTokens"] = plr:GetAttribute("CorruptedTokens"),
-            ["Horseshoe"] = plr:GetAttribute("Horseshoe"),
-            ["RedWebs"] = plr:GetAttribute("RedWebs"),
-            ["CommandSeal"] = plr:GetAttribute("CommandSeal"),
-            ["MonarchToken"] = plr:GetAttribute("MonarchToken"),
-            ["SpiritWisp"] = plr:GetAttribute("SpiritWisp"),
-            ["LegacyCoin"] = plr:GetAttribute("LegacyCoin"),
-            ["Trophies"] = plr:GetAttribute("Trophies"),
-            ["Chocolate"] = plr:GetAttribute("Chocolate"),
-            ["RiftShards"] = plr:GetAttribute("RiftShards"),
-        }
-        
+            local response = request({
+                ["Url"] = "https://api.championshop.date/history-av",
+                ["Method"] = "POST",
+                ["Headers"] = {
+                    ["content-type"] = "application/json"
+                },
+                ["Body"] = HttpService:JSONEncode({
+                    ["index"] = game.Players.LocalPlayer.Name,
+                    ["value"] = VictoryCount + 1,
+                })
+            })
+        end
+
+        local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
+        local VictoryCount = (requestTo and requestTo["value"] and requestTo["value"]["win"]) or 0
+
         local response = request({
             ["Url"] = url,
             ["Method"] = "POST",
@@ -147,14 +224,36 @@ elseif IsMatch then
             },
             ["Body"] = HttpService:JSONEncode({
                 ["Method"] = "MatchEnd",
-                ["Units"] = EquippedUnits,
+                ["WorldLine_Floor"] = 1 or WorldLine,
+                ["Units"] = Units,
+                ["EquippedUnits"] = EquippedUnits,
+                ["Skins"] = SkinTable,
+                ["Familiars"] = FamiliarTable,
                 ["Results"] = Results,
                 ["Username"] = plr.Name,
                 ["PlayerData"] = PlayerData,
+                ["WinCounting"] = VictoryCount,
                 ["GuildId"] = "467359347744309248",
                 ["DataKey"] = "GamingChampionShopAPI",
             })
         })
+    end 
+    Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+        Send(Results)
+        setclipboard(HttpService:JSONEncode({
+            ["Method"] = "MatchEnd",
+            ["WorldLine_Floor"] = 1 or WorldLine,
+            ["Units"] = Units,
+            ["EquippedUnits"] = EquippedUnits,
+            ["Skins"] = SkinTable,
+            ["Familiars"] = FamiliarTable,
+            ["Results"] = Results,
+            ["Username"] = plr.Name,
+            ["PlayerData"] = PlayerData,
+            ["WinCounting"] = VictoryCount,
+            ["GuildId"] = "467359347744309248",
+            ["DataKey"] = "GamingChampionShopAPI",
+        }))
     end)
     
     Networking.EndScreen.HideEndScreenEvent.OnClientEvent:Connect(function()
