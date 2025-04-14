@@ -109,8 +109,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "System",
         "Dragon",
+        "System",
     },
     ["maser080"] = {
         "Log",
@@ -1402,13 +1402,13 @@ Accounts = {
     },
     ["x8s0r1y5knI3Ls"] = {
         "Log",
-        "System",
         "Dragon",
+        "System",
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
-        "System",
         "Dragon",
+        "System",
     },
     ["traijo"] = {
         "Log",
@@ -1465,8 +1465,8 @@ Accounts = {
     },
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
-        "System",
         "Dragon",
+        "System",
     },
     ["Auto_Atv"] = {
         "Log",
