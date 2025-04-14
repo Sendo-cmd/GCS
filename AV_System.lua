@@ -123,6 +123,9 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
+    ["Valkor72009"] = {
+        ["Party Mode"] = true,
+    },
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
     },
