@@ -50,7 +50,6 @@ Spider Forest
 Tracks at the Edge of the World
 ]]
 
-
 _G.User = {
     ["Lucinda2471"] = {
         ["Party Mode"] = true,
@@ -82,7 +81,7 @@ _G.User = {
             ["Difficulty"] = "Normal",
             ["Act"] = "Act1",
             ["StageType"] = "Story",
-            ["Stage"] = "Martial Island",
+            ["Stage"] = "Planet Namak",
             ["FriendsOnly"] = false
         },   
     },
