@@ -21,6 +21,7 @@ Spirit Society
 Story Stage Map
 Planet Namak
 Spirit Society
+Martial Island
 Underground Church
 Sand Village
 Shibuya Station
@@ -31,6 +32,7 @@ Double Dungeon
 Legend Stage Map
 Sand Village
 Kuinshi Palace
+Land of the Gods
 Golden Castle
 Shibuya Aftermath
 Double Dungeon
@@ -50,22 +52,6 @@ Tracks at the Edge of the World
 
 
 _G.User = {
-    ["344t0sHCdw6oDK"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Lucinda2471",
-            "JapanMovieTH12",
-            "Ruxdevol0867"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Shibuya Station"},
-            ["Ignore Modify"] = {},
-        },
-    },
     ["Lucinda2471"] = {
         ["Party Mode"] = true,
     },
@@ -74,21 +60,6 @@ _G.User = {
     },
     ["AutomodevDP5Lh"] = {
         ["Party Mode"] = true,
-    },
-    ["x8s0r1y5knI3Ls"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Bregas1170",
-            "RyuzaaaV2"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
     },
     ["Bregas1170"] = {
         ["Party Mode"] = true,
@@ -100,18 +71,29 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["GCshop2"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+        ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Yumi28031",
+            "344t0sHCdw6oDK",
+            "x8s0r1y5knI3Ls",
+            "8jH8lUH6ay3Ji0"
         },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
             ["FriendsOnly"] = false
-        },    
+        },   
+    },
+    ["344t0sHCdw6oDK"] = {
+        ["Party Mode"] = true,
+    },
+    ["x8s0r1y5knI3Ls"] = {
+        ["Party Mode"] = true,
+    },
+    ["8jH8lUH6ay3Ji0"] = {
+        ["Party Mode"] = true,
     },
     ["Yumi28031"] = {
         ["Party Mode"] = true,
@@ -122,25 +104,25 @@ _G.User = {
     ["None2"] = {
         ["Party Mode"] = true,
     },
-    ["8jH8lUH6ay3Ji0"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Dwekyphwzxpsg"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
-    },
     ["shadoTsunami"] = {
         ["Party Mode"] = true,
     },
     ["BeeKak1"] = {
         ["Party Mode"] = true,
+    },
+    ["HP_GTR"] = {
+        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Valkor72009"
+        },
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act3",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Kuinshi Palace",
+            ["FriendsOnly"] = false
+        },
     },
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
@@ -149,6 +131,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
+            "RyuzaaaV2",
+            "rain4834"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -165,20 +149,22 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["4cMw7l8Q9U3kEE"] = {
-        ["Select Mode"] = "Portal", -- Portal
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Dukduies"
+            "Yumi28031",
+            "nongmai813",
+            "Lucinda2471"
         },
-        ["Portal Settings"] = {
-            ["ID"] = 113, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Shibuya Station"},
-            ["Ignore Modify"] = {},
-        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },   
     },
-    ["saveew"] = {
+    ["nongmai813"] = {
         ["Party Mode"] = true,
     },
     ["Dukduies"] = {

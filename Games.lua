@@ -52,6 +52,7 @@ Games = {
         ["Worldline"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Worldline.lua",
         ["Dungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnt.lua",
         ["Dungeons"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnts.lua",
+        ["Dragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dragon.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
@@ -109,7 +110,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Dragon",
     },
     ["maser080"] = {
         "Log",
@@ -875,7 +876,7 @@ Accounts = {
     ["Lucinda2471"] = {
         "Log",
         "System",
-        "LovePortal",
+        "Dungeon",
     },
     ["MarioNo1111"] = {
         "Log",
@@ -945,8 +946,8 @@ Accounts = {
     },
     ["HP_GTR"] = {
         "Log",
-        "Marco",
-        "YomomataG",
+        "System",
+        "YomomataAuto",
     },
     ["MitakaSann"] = {
         "Log",
@@ -1362,7 +1363,7 @@ Accounts = {
     ["nongmai813"] = {
         "Log",
         "System",
-        "LovePortal",
+        "Dungeon",
     },
     ["avremin27"] = {
         "Log",
@@ -1402,12 +1403,12 @@ Accounts = {
     ["x8s0r1y5knI3Ls"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dragon",
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
-        "LovePortal",
+        "Dragon",
     },
     ["traijo"] = {
         "Log",
@@ -1465,7 +1466,7 @@ Accounts = {
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dragon",
     },
     ["Auto_Atv"] = {
         "Log",
@@ -1524,9 +1525,22 @@ Accounts = {
         "Marco",
         "YomomataAuto",
     },
+    ["Valkor72009"] = {
+        "Log",
+        "System",
+        "YomomataAuto",
+    },
     ["arzero2"] = {
         "Log",
-        "TraitReroll",
+        "DioAuto",
+    },
+    ["Xdyrdgyrdfg"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["masxteng38"] = {
+        "Log",
+        "BaseGem",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
