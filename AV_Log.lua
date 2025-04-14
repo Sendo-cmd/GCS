@@ -225,6 +225,7 @@ elseif IsMatch then
             ["Body"] = HttpService:JSONEncode({
                 ["Method"] = "MatchEnd",
                 ["WorldLine_Floor"] = 1 or WorldLine,
+                ["Units"] = Units,
                 ["EquippedUnits"] = EquippedUnits,
                 ["Skins"] = SkinTable,
                 ["Familiars"] = FamiliarTable,
@@ -242,6 +243,7 @@ elseif IsMatch then
         setclipboard(HttpService:JSONEncode({
             ["Method"] = "MatchEnd",
             ["WorldLine_Floor"] = 1 or WorldLine,
+            ["Units"] = Units,
             ["EquippedUnits"] = EquippedUnits,
             ["Skins"] = SkinTable,
             ["Familiars"] = FamiliarTable,

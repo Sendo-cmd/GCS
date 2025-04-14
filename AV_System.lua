@@ -300,7 +300,9 @@ if _G.User[plr.Name] then
     end
 end
 warn(Settings["Party Member"],plr.Name,_G.User[plr.Name])
-game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
+if game.PlaceId == 16146832113 then
+    game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
+end
 task.spawn(function()
     task.wait(2)
     if game.PlaceId == 16146832113 then     
