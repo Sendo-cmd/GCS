@@ -155,7 +155,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Yumi28031",
-            "nongmai813",
             "Lucinda2471"
         },
         ["Dungeon Settings"] = {
