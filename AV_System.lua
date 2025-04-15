@@ -248,9 +248,7 @@ local plr = game.Players.LocalPlayer
 local Character = plr.Character or plr.CharacterAdded:Wait()
 local RBXGeneral = TextChatService.TextChannels.RBXGeneral
 local Inventory = {}
-game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
-    Inventory = value
-end)
+
 local Settings ={
 
     ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid
@@ -303,6 +301,9 @@ if _G.User[plr.Name] then
 end
 warn(Settings["Party Member"],plr.Name,_G.User[plr.Name])
 if game.PlaceId == 16146832113 then
+    game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
+        Inventory = value
+    end)
     game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
 end
 task.spawn(function()

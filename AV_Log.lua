@@ -13,30 +13,11 @@ repeat task.wait(10) until not plr:GetAttribute("Loading")
 local PlayerModules = game:GetService("StarterPlayer"):WaitForChild("Modules")
 local Modules = ReplicatedStorage:WaitForChild("Modules")
 
-local Networking = ReplicatedStorage:WaitForChild("Networking")
 
-local SettingsHandler = require(PlayerModules.Gameplay.SettingsHandler)
-local StagesData = require(Modules.Data.StagesData)
-local UnitsData = require(Modules.Data.Entities.Units)
 
-repeat task.wait() until SettingsHandler.SettingsLoaded
-
-local IsTimeChamber = game:GetService("StarterPlayer").Modules.Interface:FindFirstChild("TimeChamber")
-local IsMain = workspace:FindFirstChild("MainLobby")
-local IsMatch = plr:FindFirstChild("StageInfo")
-
-local Utilities = Modules:WaitForChild("Utilities")
-
-local Shared = Modules:WaitForChild("Shared")
-
-local MultiplierHandler = require(Shared.MultiplierHandler)
-
-local NumberUtils = require(Utilities.NumberUtils)
-local TableUtils = require(Utilities.TableUtils)
-
+local IsTimeChamber = Modules.Interface:FindFirstChild("TimeChamber")
 
 local url = "https://api.championshop.date/logs"
-
 if IsTimeChamber then
     print("Time Chamber")
     local PlayerData = plr:GetAttributes()
@@ -62,7 +43,27 @@ if IsTimeChamber then
     game:GetService("Players").LocalPlayer:GetAttributeChangedSignal("GemsEarned"):Connect(function()
         Send()
     end)
-elseif IsMain then
+end
+local Networking = ReplicatedStorage:WaitForChild("Networking")
+
+local SettingsHandler = require(PlayerModules.Gameplay.SettingsHandler)
+local StagesData = require(Modules.Data.StagesData)
+local UnitsData = require(Modules.Data.Entities.Units)
+
+repeat task.wait() until SettingsHandler.SettingsLoaded
+
+local IsMain = workspace:FindFirstChild("MainLobby")
+local IsMatch = plr:FindFirstChild("StageInfo")
+
+local Utilities = Modules:WaitForChild("Utilities")
+
+local Shared = Modules:WaitForChild("Shared")
+
+local MultiplierHandler = require(Shared.MultiplierHandler)
+
+local NumberUtils = require(Utilities.NumberUtils)
+local TableUtils = require(Utilities.TableUtils)
+if IsMain then
     print("Lobby")
     local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
     local InventoryHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.InventoryHandler)
@@ -214,7 +215,7 @@ elseif IsMatch then
         end
 
         local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
-        local VictoryCount = (requestTo and requestTo["value"] and requestTo["value"]["win"]) or 0
+        local VictoryCount = requestTo and requestTo["value"] or 0
 
         local response = request({
             ["Url"] = url,
