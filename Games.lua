@@ -261,7 +261,7 @@ Accounts = {
     },
     ["Umbreon14142"] = {
         "Log",
-        "TraitReroll",
+        "BEIgrisAuto",
     },
     ["pangpondInwzaza007"] = {
         "Log",
