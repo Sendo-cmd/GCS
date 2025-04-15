@@ -109,8 +109,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Dragon",
         "System",
+        "Dragon",
     },
     ["maser080"] = {
         "Log",
@@ -657,8 +657,7 @@ Accounts = {
     },
     ["Newbiethreepoint00"] = {
         "Log",
-        "System",
-        "Hsnd",
+        "BaseGemInf",
     },
     ["Extercel_o"] = {
         "Log",
@@ -868,10 +867,15 @@ Accounts = {
         "Log",
         "LovePortal",
     },
+    ["PRY_NS"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
     ["AutomodevDP5Lh"] = {
         "Log",
         "System",
-        "LovePortal",
+        "Dungeon",
     },
     ["Lucinda2471"] = {
         "Log",
@@ -1223,8 +1227,8 @@ Accounts = {
     },
     ["anakluwza"] = {
         "Log",
-        "Marco",
-        "IgrisR",
+        "System",
+        "PortalParty",
     },
     ["xDsupakorn007"] = {
         "Log",
@@ -1402,13 +1406,13 @@ Accounts = {
     },
     ["x8s0r1y5knI3Ls"] = {
         "Log",
-        "Dragon",
         "System",
+        "Dragon",
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
-        "Dragon",
         "System",
+        "Dragon",
     },
     ["traijo"] = {
         "Log",
@@ -1465,8 +1469,8 @@ Accounts = {
     },
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
-        "Dragon",
         "System",
+        "Dragon",
     },
     ["Auto_Atv"] = {
         "Log",

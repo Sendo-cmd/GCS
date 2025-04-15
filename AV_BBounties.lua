@@ -39,11 +39,16 @@ getgenv().Config = {
 		["Auto Claim Collection Milestone"] = true
 	},
 	["Gameplay"] = {
-		["Auto Mohato"] = {
-			["Enable"] = true,
-			["Unit"] = "Foboko",
-			["Upgrade"] = 2
+		["Double Dungeon"] = {
+			["Upgrade Amount"] = 2,
+			["Statue Unit"] = "Rom and Ran",
+			["Auto Statue"] = true
 		},
+		["Shibuya Station"] = {
+			["Mohato Unit"] = "Rom and Ran",
+			["Auto Mohato"] = true,
+			["Upgrade Amount"] = 2
+		}
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
@@ -186,9 +191,11 @@ getgenv().Config = {
 			["Double Dungeon"] = "-274.45904541015625, 0.10069097578525543, -117.80802917480469",
 			["Blood-Red Chamber"] = "0.8260197639465332, -0.2512565851211548, -55.03996658325195",
 			["Planet Namak"] = "446.45465087890625, 2.062572717666626, -341.6218566894531",
+			["Shibuya Aftermath"] = "225.790771484375, 514.7516479492188, 60.21217727661133",
 			["Kuinshi Palace"] = "396.4739990234375, 268.38262939453125, 115.33984375"
 		}
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
+
