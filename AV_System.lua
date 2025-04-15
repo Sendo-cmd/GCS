@@ -95,7 +95,7 @@ _G.User = {
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Act"] = "Act3",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
@@ -138,7 +138,7 @@ _G.User = {
             "Valkor72009"
         },
         ["Legend Settings"] = {
-            ["Difficulty"] = "Normal",
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act3",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Kuinshi Palace",
@@ -329,7 +329,7 @@ local Settings ={
         ["FriendsOnly"] = false
     },
     ["Legend Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
         ["StageType"] = "LegendStage",
         ["Stage"] = "Sand Village",
