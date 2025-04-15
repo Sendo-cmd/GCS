@@ -69,13 +69,29 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["GCshop2"] = {
+    ["GCshop22"] = {
         ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "344t0sHCdw6oDK",
             "x8s0r1y5knI3Ls",
             "8jH8lUH6ay3Ji0"
+        },
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Martial Island",
+            ["FriendsOnly"] = false
+        },   
+    },
+    ["GCshop2"] = {
+        ["Select Mode"] = "Story", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "BOOMBIGOO",
+            "Feasqdx0437",
+            "QWQPcZfdXlf"
         },
         ["Story Settings"] = {
             ["Difficulty"] = "Normal",
@@ -94,13 +110,19 @@ _G.User = {
     ["8jH8lUH6ay3Ji0"] = {
         ["Party Mode"] = true,
     },
-    ["Yumi28031"] = {
+    ["BOOMBIGOO"] = {
+        ["Party Mode"] = true,
+    },
+    ["QWQPcZfdXlf"] = {
+        ["Party Mode"] = true,
+    },
+    ["Feasqdx0437"] = {
         ["Party Mode"] = true,
     },
     ["HOdnJWa0347"] = {
         ["Party Mode"] = true,
     },
-    ["None2"] = {
+    ["MonarchJINWO21"] = {
         ["Party Mode"] = true,
     },
     ["shadoTsunami"] = {
@@ -169,6 +191,31 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["Yq34Uk84nh8aHE"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "dfadawdadaw",
+            "Taqmgapckpkyl",
+            "0621319907fake"
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },   
+    },
+    ["dfadawdadaw"] = {
+        ["Party Mode"] = true,
+    },
+    ["Taqmgapckpkyl"] = {
+        ["Party Mode"] = true,
+    },
+    ["0621319907fake"] = {
+        ["Party Mode"] = true,
     },
     ["AVisAVorAV241"] = {
         ["Party Mode"] = true,

@@ -663,10 +663,6 @@ Accounts = {
         "Log",
         "Dungeon",
     },
-    ["QWQPcZfdXlf"] = {
-        "Log",
-        "Dungeon",
-    },
     ["bababuty"] = {
         "Log",
         "Marco",
@@ -1508,25 +1504,50 @@ Accounts = {
         "Log",
         "StarGem",
     },
+    ["Yq34Uk84nh8aHE"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["dfadawdadaw"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["Taqmgapckpkyl"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["0621319907fake"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
     ["MonarchJINWO21"] = {
-        "Log",
-        "System",
-        "Dungeon",
-    },
-    ["BOOMBIGOO"] = {
-        "Log",
-        "System",
-        "Dungeon",
-    },
-    ["HOdnJWa0347"] = {
         "Log",
         "System",
         "Dungeon",
     },
     ["QWQPcZfdXlf"] = {
         "Log",
-        "Marco",
-        "YomomataAuto",
+        "System",
+        "Dragon",
+    },
+    ["Feasqdx0437"] = {
+        "Log",
+        "System",
+        "Dragon",
+    },
+    ["BOOMBIGOO"] = {
+        "Log",
+        "System",
+        "Dragon",
+    },
+    ["HOdnJWa0347"] = {
+        "Log",
+        "System",
+        "Dungeon",
     },
     ["Valkor72009"] = {
         "Log",
