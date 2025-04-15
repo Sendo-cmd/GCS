@@ -94,7 +94,7 @@ _G.User = {
             "QWQPcZfdXlf"
         },
         ["Legend Settings"] = {
-            ["Difficulty"] = "Normal",
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act3",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Land of the Gods",
