@@ -149,11 +149,14 @@ elseif IsMatch then
 
     local SkinTable = {}
     local FamiliarTable = {}
+    local Inventory = {}
     local WorldLine = nil
+    game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val)
+        Inventory = val
+    end)
     game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
         FamiliarTable = val
     end)
-    
     game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
         SkinTable = val
     end)
@@ -179,9 +182,10 @@ elseif IsMatch then
 
             EquippedUnits[v.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v.Identifier).Name
         end
-        
+        game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+
         if game:GetService("ReplicatedStorage").Networking:FindFirstChild("WorldlinesEvent") then
             game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("RetrieveData")
         end
@@ -216,7 +220,20 @@ elseif IsMatch then
 
         local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
         local VictoryCount = requestTo and requestTo["value"] or 0
-
+        setclipboard(HttpService:JSONEncode({
+                ["Method"] = "MatchEnd",
+                ["WorldLine_Floor"] = 1 or WorldLine,
+                ["Inventory"] = Inventory,
+                ["Units"] = EquippedUnits,
+                ["Skins"] = SkinTable,
+                ["Familiars"] = FamiliarTable,
+                ["Results"] = Results,
+                ["Username"] = plr.Name,
+                ["PlayerData"] = PlayerData,
+                ["WinCounting"] = VictoryCount,
+                ["GuildId"] = "467359347744309248",
+                ["DataKey"] = "GamingChampionShopAPI",
+        }))
         local response = request({
             ["Url"] = url,
             ["Method"] = "POST",
@@ -226,6 +243,7 @@ elseif IsMatch then
             ["Body"] = HttpService:JSONEncode({
                 ["Method"] = "MatchEnd",
                 ["WorldLine_Floor"] = 1 or WorldLine,
+                ["Inventory"] = Inventory,
                 ["Units"] = EquippedUnits,
                 ["Skins"] = SkinTable,
                 ["Familiars"] = FamiliarTable,
@@ -240,6 +258,7 @@ elseif IsMatch then
     end 
     Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
         Send(Results)
+       
     end)
     
     Networking.EndScreen.HideEndScreenEvent.OnClientEvent:Connect(function()
