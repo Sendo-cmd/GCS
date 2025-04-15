@@ -163,7 +163,8 @@ getgenv().Config = {
 		}
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true,

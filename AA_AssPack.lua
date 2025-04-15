@@ -269,7 +269,8 @@ getgenv().Config = {
 		["Black Screen"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["AutoSave"] = true,
 	["Secure"] = {

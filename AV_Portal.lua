@@ -123,7 +123,8 @@ getgenv().Config = {
 		["Delete Entities"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Claimer"] = {
 		["Auto Claim Milestone"] = true,

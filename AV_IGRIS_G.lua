@@ -119,7 +119,8 @@ getgenv().Config = {
 	},
 	["AutoExecute"] = true,
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Legend Stage Joiner"] = {
 		["Auto Join"] = true,

@@ -54,7 +54,8 @@ getgenv().Config = {
 		["Stage"] = "SaberEvent"
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Misc"] = {
 		["Redeem Code"] = true

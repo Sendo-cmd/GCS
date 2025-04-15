@@ -83,7 +83,8 @@ getgenv().Config = {
 		["Focus on Farm"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true
