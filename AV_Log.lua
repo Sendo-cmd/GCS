@@ -14,8 +14,8 @@ local PlayerModules = game:GetService("StarterPlayer"):WaitForChild("Modules")
 local Modules = ReplicatedStorage:WaitForChild("Modules")
 
 
-
-local IsTimeChamber = Modules.Interface:FindFirstChild("TimeChamber")
+task.wait(1.5)
+local IsTimeChamber = Modules:FindFirstChild("TimeChamber",true) 
 
 local url = "https://api.championshop.date/logs"
 if IsTimeChamber then
@@ -116,7 +116,7 @@ if IsMain then
     local PlayerData = plr:GetAttributes()
 
     local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
-    local VictoryCount = (requestTo and requestTo["value"] and requestTo["value"]["win"]) or 0
+    local VictoryCount = requestTo and requestTo["value"] or 0
    
 
     local response = request({
@@ -240,19 +240,6 @@ elseif IsMatch then
     end 
     Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
         Send(Results)
-        setclipboard(HttpService:JSONEncode({
-            ["Method"] = "MatchEnd",
-            ["WorldLine_Floor"] = 1 or WorldLine,
-            ["Units"] = EquippedUnits,
-            ["Skins"] = SkinTable,
-            ["Familiars"] = FamiliarTable,
-            ["Results"] = Results,
-            ["Username"] = plr.Name,
-            ["PlayerData"] = PlayerData,
-            ["WinCounting"] = VictoryCount,
-            ["GuildId"] = "467359347744309248",
-            ["DataKey"] = "GamingChampionShopAPI",
-        }))
     end)
     
     Networking.EndScreen.HideEndScreenEvent.OnClientEvent:Connect(function()
