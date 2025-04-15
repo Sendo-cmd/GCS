@@ -159,7 +159,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "AutomodevDP5Lh",
-            "Lucinda2471",
+            "AVisAVorAV241",
             "PRY_NS"
         },
         ["Dungeon Settings"] = {
@@ -169,6 +169,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["AVisAVorAV241"] = {
+        ["Party Mode"] = true,
     },
     ["PRY_NS"] = {
         ["Party Mode"] = true,
