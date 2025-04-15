@@ -86,20 +86,20 @@ _G.User = {
         },   
     },
     ["GCshop2"] = {
-        ["Select Mode"] = "Story", -- Portal
+        ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BOOMBIGOO",
             "Feasqdx0437",
             "QWQPcZfdXlf"
         },
-        ["Story Settings"] = {
+        ["Legend Settings"] = {
             ["Difficulty"] = "Normal",
             ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Martial Island",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
-        },   
+        }, 
     },
     ["344t0sHCdw6oDK"] = {
         ["Party Mode"] = true,
