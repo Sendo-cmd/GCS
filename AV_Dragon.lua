@@ -42,8 +42,7 @@ getgenv().Config = {
 	["Gameplay"] = {
 		["Rotara Earring"] = {
 			["Collect Rotara Earring"] = true,
-			["Walk To Rotara Earring"] = true,
-			["Restart if no Rotara Earring"] = true
+			["Restart if no Rotara Earring"] = false
 		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
