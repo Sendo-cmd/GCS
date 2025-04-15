@@ -1122,8 +1122,7 @@ Accounts = {
     },
     ["HaineToram2"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "BEIgrisAuto",
     },
     ["Theppartarn"] = {
         "Log",
