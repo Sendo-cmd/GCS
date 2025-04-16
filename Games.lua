@@ -556,7 +556,7 @@ Accounts = {
     },
     ["zywimq"] = {
         "Log",
-        "BEIgrisAuto",
+        "SukonoAuto",
     },
     ["Alow_2116"] = {
         "Log",
