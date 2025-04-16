@@ -995,7 +995,7 @@ Accounts = {
     ["saveew"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["Gu_Peem"] = {
         "Log",

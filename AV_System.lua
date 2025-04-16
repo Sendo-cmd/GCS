@@ -157,6 +157,7 @@ _G.User = {
         ["Party Member"] = {
             "keam093321",
             "mrclouduoooo",
+            "saveew"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -165,6 +166,9 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["saveew"] = {
+        ["Party Mode"] = true,
     },
     ["mrclouduoooo"] = {
         ["Party Mode"] = true,
