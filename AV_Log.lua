@@ -43,6 +43,7 @@ if IsTimeChamber then
     game:GetService("Players").LocalPlayer:GetAttributeChangedSignal("GemsEarned"):Connect(function()
         Send()
     end)
+    return false
 end
 local Networking = ReplicatedStorage:WaitForChild("Networking")
 
@@ -63,6 +64,7 @@ local MultiplierHandler = require(Shared.MultiplierHandler)
 
 local NumberUtils = require(Utilities.NumberUtils)
 local TableUtils = require(Utilities.TableUtils)
+
 if IsMain then
     print("Lobby")
     local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
