@@ -1573,7 +1573,7 @@ Accounts = {
     },
     ["arzero2"] = {
         "Log",
-        "DioAuto",
+        "Worldline",
     },
     ["Xdyrdgyrdfg"] = {
         "Log",

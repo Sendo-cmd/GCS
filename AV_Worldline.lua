@@ -8,11 +8,16 @@ getgenv().Config = {
 		["Play"] = false,
 	},
 	["Gameplay"] = {
-		["Auto Mohato"] = {
-			["Enable"] = true,
-			["Unit"] = "Tuji (Sorcerer Killer)",
-			["Upgrade"] = 0
+		["Double Dungeon"] = {
+			["Auto Statue"] = true,
+			["Statue Unit"] = "Chaso (Blood Curse)",
+			["Upgrade Amount"] = 1
 		},
+		["Shibuya Station"] = {
+			["Mohato Unit"] = "Chaso (Blood Curse)",
+			["Auto Mohato"] = true,
+			["Upgrade Amount"] = 0
+		}
 		["Auto Sell"] = {
 			["Enable"] = false,
 			["Wave"] = 1
