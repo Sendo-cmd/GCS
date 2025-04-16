@@ -74,9 +74,9 @@ getgenv().Config = {
 			["Auto Plug Ant Tunnel"] = false
 		},
 		["Martial Island"] = {
-			["Auto Join God Portal"] = false,
+			["Auto Join God Portal"] = true,
 			["Collect Rotara Earring"] = true,
-			["Pause instead of Joining"] = false,
+			["Pause instead of Joining"] = true,
 			["Restart if no Rotara Earring"] = false
 		},
 		["Auto Sell Farm"] = {
