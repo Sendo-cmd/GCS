@@ -1107,8 +1107,8 @@ Accounts = {
     },
     ["Arscontia"] = {
         "Log",
-        "Marco",
-        "Sokora4",
+        "System",
+        "Dungeon",
     },
     ["yanawarutkanpai"] = {
         "Log",

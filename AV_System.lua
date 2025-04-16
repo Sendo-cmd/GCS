@@ -191,7 +191,7 @@ _G.User = {
         ["Party Member"] = {
             "gsokem",
             "PRY_NS",
-            "enonef2"
+            "Arscontia"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -205,7 +205,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "0621319907fake",
+            "enonef2",
             "zxzxc666",
             "Etaa_xm"
         },
