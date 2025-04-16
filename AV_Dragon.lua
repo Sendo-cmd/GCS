@@ -26,30 +26,6 @@ getgenv().Config = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true,
-		["Joiner Team Equipper"] = {
-			["Enable"] = false,
-			["Joiner Team"] = {
-				["Love Portal Joiner"] = 0,
-				["Legend Stage Joiner"] = 0,
-				["Boss Event Joiner"] = 0,
-				["Dungeon Joiner"] = 0,
-				["Weekly Challenge Joiner"] = 0,
-				["Regular Challenge Joiner"] = 0,
-				["Stage Joiner"] = 0,
-				["Winter Portal Joiner"] = 0,
-				["Worldline Joiner"] = 0,
-				["Boss Bounties Joiner"] = 0,
-				["Daily Challenge Joiner"] = 0,
-				["Raid Joiner"] = 0
-			}
-		},
-		["Play"] = false,
-		["Joiner Macro Equipper"] = {
-			["Enable"] = false,
-			["Joiner Macro"] = {
-
-			}
-		}
 	},
 	["Claimer"] = {
 		["Auto Claim Collection Milestone"] = true,
@@ -87,28 +63,13 @@ getgenv().Config = {
 			["Servant"] = "Berserker",
 			["Auto Select Servant"] = false
 		},
-		["Steel Ball Run"] = {
-			["Collect Steel Ball"] = false
-		},
 		["Auto Use Ability"] = true,
 		["Auto Vote Start"] = true,
-		["Occult Hunt"] = {
-			["Use All Talisman"] = {
-				["Enable"] = false,
-				["Wave"] = 1
-			},
-			["Collect Talisman"] = false,
-			["Use Talisman on Crab"] = false
-		},
 		["Auto Skip Wave"] = true,
 		["Auto Restart"] = {
 			["Enable"] = false,
 			["Wave"] = 1
 		},
-		["Shibuya Station"] = {
-			["Auto Mohato"] = false,
-			["Upgrade Amount"] = 0
-		}
 	},
 	["Misc"] = {
 		["Redeem Code"] = true,
@@ -192,7 +153,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Enable"] = true,
-		["Upgrade Method"] = "Hotbar left to right (until Max)",
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Double Dungeon"] = "Middle",
 			["Planet Namak"] = "Middle",

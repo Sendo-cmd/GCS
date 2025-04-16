@@ -189,8 +189,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "AutomodevDP5Lh",
-            "AVisAVorAV241",
+            "gsokem",
             "PRY_NS"
         },
         ["Dungeon Settings"] = {
@@ -216,6 +215,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["gsokem"] = {
+        ["Party Mode"] = true,
     },
     ["Etaa_xm"] = {
         ["Party Mode"] = true,
