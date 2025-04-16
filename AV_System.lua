@@ -155,7 +155,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "rain4834",
+            "keam093321",
+            "mrclouduoooo",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -194,7 +195,9 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "0621319907fake"
+            "0621319907fake",
+            "zxzxc666",
+            "Etaa_xm"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -203,6 +206,12 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["Etaa_xm"] = {
+        ["Party Mode"] = true,
+    },
+    ["zxzxc666"] = {
+        ["Party Mode"] = true,
     },
     ["dfadawdadaw"] = {
         ["Party Mode"] = true,

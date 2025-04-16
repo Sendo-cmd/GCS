@@ -875,8 +875,7 @@ Accounts = {
     },
     ["Lucinda2471"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "SukonoAuto",
     },
     ["MarioNo1111"] = {
         "Log",
@@ -1006,7 +1005,7 @@ Accounts = {
     ["keam093321"] = {
         "Log",
         "System",
-        "Dungeon",
+        "PortalParty",
     },
     ["Yumi28031"] = {
         "Log",
@@ -1269,8 +1268,7 @@ Accounts = {
     },
     ["lnwyorn_0823"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "YomomataAuto",
     },
     ["Tiyarat2007"] = {
         "Log",
@@ -1495,6 +1493,11 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["mrclouduoooo"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
     ["iPram0"] = {
         "Log",
         "BaseGemInf",
@@ -1544,6 +1547,16 @@ Accounts = {
         "Dragon",
     },
     ["HOdnJWa0347"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["Etaa_xm"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["zxzxc666"] = {
         "Log",
         "System",
         "Dungeon",
