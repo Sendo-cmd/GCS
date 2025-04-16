@@ -155,9 +155,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RyuzaaaV2",
             "rain4834",
-            "anakluwza"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -196,8 +194,6 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "dfadawdadaw",
-            "Taqmgapckpkyl",
             "0621319907fake"
         },
         ["Dungeon Settings"] = {
