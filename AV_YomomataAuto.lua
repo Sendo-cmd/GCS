@@ -242,7 +242,7 @@ getgenv().Config = {
 	},
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Kuinshi Palace",
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Act"] = "Act3"
 	}
 }
