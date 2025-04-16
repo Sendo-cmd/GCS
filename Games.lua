@@ -868,6 +868,11 @@ Accounts = {
         "System",
         "Dungeon",
     },
+    ["gsokem"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
     ["AutomodevDP5Lh"] = {
         "Log",
         "System",
