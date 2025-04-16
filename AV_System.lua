@@ -190,7 +190,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "gsokem",
-            "PRY_NS"
+            "PRY_NS",
+            "enonef2"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -215,6 +216,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["enonef2"] = {
+        ["Party Mode"] = true,
     },
     ["gsokem"] = {
         ["Party Mode"] = true,
