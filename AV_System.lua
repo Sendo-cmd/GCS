@@ -193,7 +193,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "gsokem",
-            "PRY_NS",
+            "dfadawdadaw",
             "Arscontia"
         },
         ["Dungeon Settings"] = {
