@@ -185,6 +185,9 @@ _G.User = {
     ["lnwyorn_0823"] = {
         ["Party Mode"] = true,
     },
+    ["Arscontia"] = {
+        ["Party Mode"] = true,
+    },
     ["4cMw7l8Q9U3kEE"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
