@@ -23,16 +23,83 @@ getgenv().Config = {
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
-	["AutoSave"] = true,
-	["HalfHourly Challenge Joiner"] = {
-		["Ignore Act"] = {
-			["[Double Dungeon] Act6"] = true
-		},
-		["Auto Join"] = true,
-		["Teleport Lobby new Challenge"] = true,
-		["Reward"] = {
-			["TraitRerolls"] = true
+	["Modifier"] = {
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 1,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Immunity"] = 100,
+				["Exploding"] = 99,
+				["Dodge"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
+				["Regen"] = 0,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Cooldown"] = 0,
+				["Drowsy"] = 0,
+				["Press It"] = 0,
+				["Precise Attack"] = 0,
+				["Shielded"] = 0,
+				["Uncommon Loot"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Fisticuffs"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Immunity"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Precise Attack"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
+				["Cooldown"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Regen"] = 0,
+				["Drowsy"] = 0,
+				["Press It"] = 0,
+				["Quake"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			}
 		}
+	},
+	["AutoSave"] = true,
+	["Daily Challenge Joiner"] = {
+		["Auto Join"] = true,
+	},
+	["Regular Challenge Joiner"] = {
+		["Auto Join"] = true,
+		["Reward"] = "Trait Reroll Challenge"
+	},
+	["Weekly Challenge Joiner"] = {
+		["Auto Join"] = true,
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
@@ -90,33 +157,30 @@ getgenv().Config = {
 		}
 	},	
 	["Gameplay"] = {
-		["Auto Skip Wave"] = true,
-		["Auto Modifier"] = {
-			["Enable"] = true,
-			["Prioritize"] = {
-				["Strong"] = 29,
-				["Thrice"] = 4,
-				["Regen"] = 28,
-				["Fast"] = 0,
-				["Revitalize"] = 6,
-				["Drowsy"] = 20,
-				["Exploding"] = 2,
-				["Dodge"] = 1,
-				["Quake"] = 3,
-				["Immunity"] = 26,
-				["Shielded"] = 25,
-				["Champions"] = 30
-			}
-		}
-	},
-	["Daily Challenge Joiner"] = {
-		["Ignore Modifier"] = {
-			["Thrice"] = true,
-			["Fast"] = true
+		["Double Dungeon"] = {
+			["Auto Statue"] = true,
+			["Statue Unit"] = "Rom and Ran (Fanatic)",
+			["Upgrade Amount"] = 0
 		},
-		["Auto Join"] = true,
-		["Reward"] = {
-			["TraitRerolls"] = true
+		["Auto Sell"] = {
+			["Enable"] = false,
+			["Wave"] = 1
+		},
+		["Auto Restart"] = {
+			["Enable"] = false,
+			["Wave"] = 1
+		},
+		["Auto Vote Start"] = true,
+		["Auto Use Ability"] = true,
+		["Auto Skip Wave"] = true,
+		["Auto Sell Farm"] = {
+			["Enable"] = false,
+			["Wave"] = 1
+		},
+		["Shibuya Station"] = {
+			["Mohato Unit"] = "Rom and Ran (Fanatic)",
+			["Auto Mohato"] = true,
+			["Upgrade Amount"] = 0
 		}
 	}
 }

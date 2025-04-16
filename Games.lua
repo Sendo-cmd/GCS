@@ -312,7 +312,7 @@ Accounts = {
     ["RedAshleyKung"] = {
         "Log",
         "Marco",
-        "DungeonAK",
+        "YomomataG",
     },
     ["fourgroupssss"] = {
         "Log",
@@ -1577,6 +1577,10 @@ Accounts = {
     ["masxteng38"] = {
         "Log",
         "BaseGem",
+    },
+    ["Alkazan_117"] = {
+        "Log",
+        "BaseGemInf",
     },
     ["adadwfaawe"] = {
         "Log",
