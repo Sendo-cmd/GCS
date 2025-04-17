@@ -1313,7 +1313,7 @@ Accounts = {
     ["robid1450"] = {
         "Log",
         "System",
-        "Dungeon",
+        "PortalParty",
     },
     ["KengKwangs"] = {
         "Log",
@@ -1406,7 +1406,7 @@ Accounts = {
     ["x8s0r1y5knI3Ls"] = {
         "Log",
         "System",
-        "Dragon",
+        "PortalParty",
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
