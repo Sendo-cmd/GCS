@@ -77,7 +77,7 @@ _G.User = {
         },
         ["Story Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Act"] = "Act3",
             ["StageType"] = "Story",
             ["Stage"] = "Martial Island",
             ["FriendsOnly"] = false
