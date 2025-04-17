@@ -88,7 +88,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BOOMBIGOO",
-            "F1imkungz",
+            "f1imkungz",
             "MonarchJINWO21"
         },
         ["Legend Settings"] = {
@@ -99,7 +99,7 @@ _G.User = {
             ["FriendsOnly"] = false
         }, 
     },
-    ["F1imkungz"] = {
+    ["f1imkungz"] = {
         ["Party Mode"] = true,
     },
     ["OPggripTH"] = {
