@@ -133,7 +133,6 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    },
     ["robid1450"] = {
         ["Party Mode"] = true,
     },
