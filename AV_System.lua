@@ -69,12 +69,10 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["GCshop22"] = {
+    ["GCshop2"] = {
         ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "344t0sHCdw6oDK",
-            "x8s0r1y5knI3Ls",
             "8jH8lUH6ay3Ji0"
         },
         ["Story Settings"] = {
@@ -85,13 +83,13 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["GCshop2"] = {
+    ["GCshop22"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BOOMBIGOO",
             "Feasqdx0437",
-            "QWQPcZfdXlf"
+            "OPggripTH"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -100,6 +98,9 @@ _G.User = {
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         }, 
+    },
+    ["OPggripTH"] = {
+        ["Party Mode"] = true,
     },
     ["344t0sHCdw6oDK"] = {
         ["Party Mode"] = true,
