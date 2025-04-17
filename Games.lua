@@ -949,6 +949,11 @@ Accounts = {
         "System",
         "LovePortal",
     },
+    ["F1imkungz"] = {
+        "Log",
+        "System",
+        "Dragon",
+    },
     ["HP_GTR"] = {
         "Log",
         "System",

@@ -88,7 +88,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BOOMBIGOO",
-            "OPggripTH",
+            "F1imkungz",
             "MonarchJINWO21"
         },
         ["Legend Settings"] = {
@@ -98,6 +98,9 @@ _G.User = {
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         }, 
+    },
+    ["F1imkungz"] = {
+        ["Party Mode"] = true,
     },
     ["OPggripTH"] = {
         ["Party Mode"] = true,
