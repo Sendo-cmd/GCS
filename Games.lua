@@ -413,7 +413,8 @@ Accounts = {
     },
     ["OPggripTH"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "Dragon",
     },
     ["champsinon"] = {
         "System",
@@ -1311,7 +1312,8 @@ Accounts = {
     },
     ["robid1450"] = {
         "Log",
-        "BaseGem",
+        "System",
+        "Dungeon",
     },
     ["KengKwangs"] = {
         "Log",
@@ -1466,8 +1468,7 @@ Accounts = {
     },
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
-        "System",
-        "Dragon",
+        "ESSE",
     },
     ["Auto_Atv"] = {
         "Log",
@@ -1534,7 +1535,7 @@ Accounts = {
     ["MonarchJINWO21"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Dragon",
     },
     ["QWQPcZfdXlf"] = {
         "Log",
@@ -1550,6 +1551,11 @@ Accounts = {
         "Log",
         "System",
         "Dragon",
+    },
+    ["qAK16V7ZLSX0a4"] = {
+        "Log",
+        "System",
+        "Dungeon",
     },
     ["HOdnJWa0347"] = {
         "Log",

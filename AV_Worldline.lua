@@ -17,7 +17,7 @@ getgenv().Config = {
 			["Mohato Unit"] = "Chaso (Blood Curse)",
 			["Auto Mohato"] = true,
 			["Upgrade Amount"] = 0
-		}
+		},
 		["Auto Sell"] = {
 			["Enable"] = false,
 			["Wave"] = 1

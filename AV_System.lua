@@ -69,7 +69,7 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["GCshop2"] = {
+    ["GCshop22"] = {
         ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
@@ -83,13 +83,13 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["GCshop22"] = {
+    ["GCshop2"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BOOMBIGOO",
-            "Feasqdx0437",
-            "OPggripTH"
+            "OPggripTH",
+            "MonarchJINWO21"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -102,13 +102,41 @@ _G.User = {
     ["OPggripTH"] = {
         ["Party Mode"] = true,
     },
+    ["qAK16V7ZLSX0a4"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "HOdnJWa0347"
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },
+    },
     ["344t0sHCdw6oDK"] = {
         ["Party Mode"] = true,
     },
     ["x8s0r1y5knI3Ls"] = {
+        ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
+        ["Party Member"] = {
+            "robid1450",
+            "PRY_NS",
+            "saveew"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
+        },
     },
-    ["8jH8lUH6ay3Ji0"] = {
+    },
+    ["robid1450"] = {
         ["Party Mode"] = true,
     },
     ["BOOMBIGOO"] = {
@@ -152,12 +180,12 @@ _G.User = {
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
     },
-    ["aHc9GRuQ65RN66"] = {
+    ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "keam093321",
-            "mrclouduoooo",
+            "PRY_NS",
             "saveew"
         },
         ["Portal Settings"] = {
