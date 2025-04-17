@@ -235,8 +235,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "enonef2",
-            "zxzxc666",
-            "Etaa_xm"
+            "zxzxc666"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
