@@ -223,20 +223,20 @@ elseif IsMatch then
 
         local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
         local VictoryCount = requestTo and requestTo["value"] or 0
-        setclipboard(HttpService:JSONEncode({
-                ["Method"] = "MatchEnd",
-                ["WorldLine_Floor"] = 1 or WorldLine,
-                ["Inventory"] = Inventory,
-                ["Units"] = EquippedUnits,
-                ["Skins"] = SkinTable,
-                ["Familiars"] = FamiliarTable,
-                ["Results"] = Results,
-                ["Username"] = plr.Name,
-                ["PlayerData"] = PlayerData,
-                ["WinCounting"] = VictoryCount,
-                ["GuildId"] = "467359347744309248",
-                ["DataKey"] = "GamingChampionShopAPI",
-        }))
+      --  setclipboard(HttpService:JSONEncode({
+                --["Method"] = "MatchEnd",
+                --["WorldLine_Floor"] = 1 or WorldLine,
+                --["Inventory"] = Inventory,
+                --["Units"] = EquippedUnits,
+                --["Skins"] = SkinTable,
+                --["Familiars"] = FamiliarTable,
+                --["Results"] = Results,
+                --["Username"] = plr.Name,
+                --["PlayerData"] = PlayerData,
+                --["WinCounting"] = VictoryCount,
+                --["GuildId"] = "467359347744309248",
+                --["DataKey"] = "GamingChampionShopAPI",
+        })) 
         local response = request({
             ["Url"] = url,
             ["Method"] = "POST",
