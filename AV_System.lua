@@ -183,7 +183,6 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "keam093321",
             "PRY_NS",
             "saveew"
         },
