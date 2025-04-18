@@ -445,7 +445,8 @@ Accounts = {
     },
     ["AMERICAMENTIONEDRAHH"] = {
         "Log",
-        "Dungeons",
+        "System",
+        "PortalParty",
     },
     ["Bamboo_NMpk"] = {
         "Log",
