@@ -1608,6 +1608,11 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
+    ["SS_dddd1"] = {
+        "Log",
+        "Marco",
+        "YomomataAuto",
+    },
     ["adadwfaawe"] = {
         "Log",
     },
