@@ -1600,6 +1600,10 @@ Accounts = {
         "Log",
         "BaseGem",
     },
+    ["Villegas7qs"] = {
+        "Log",
+        "BaseGemInf",
+    },
     ["Alkazan_117"] = {
         "Log",
         "BaseGemInf",
