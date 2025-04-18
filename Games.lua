@@ -1603,6 +1603,10 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
+    ["Kumozoe"] = {
+        "Log",
+        "BaseGemInf",
+    },
     ["adadwfaawe"] = {
         "Log",
     },
