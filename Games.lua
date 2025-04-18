@@ -964,9 +964,9 @@ Accounts = {
         "Marco",
         "IgrisY",
     },
-    ["Mzwz13"] = {
+    ["Adeqdae"] = {
         "Log",
-        "LovePortal",
+        "TraitReroll",
     },
     ["monkuyautokungKICKIC"] = {
         "Log",
