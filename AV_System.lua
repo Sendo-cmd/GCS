@@ -137,6 +137,12 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
+    ["Levid098508"] = {
+        ["Party Mode"] = true,
+    },
+    ["AMERICAMENTIONEDRAHH"] = {
+        ["Party Mode"] = true,
+    },
     ["robid1450"] = {
         ["Party Mode"] = true,
     },
