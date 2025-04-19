@@ -33,7 +33,7 @@ getgenv().Config = {
 		["Double Dungeon"] = {
 			["Auto Statue"] = true,
 			["Statue Unit"] = "Chaso (Blood Curse)",
-			["Leave Extra Money"] = 5000,
+			["Leave Extra Money"] = 2000,
 			["Upgrade Amount"] = 2
 		},
 		["Auto Sell Farm"] = {
@@ -48,7 +48,7 @@ getgenv().Config = {
 		["Shibuya Station"] = {
 			["Upgrade Amount"] = 2,
 			["Auto Mohato"] = true,
-			["Leave Extra Money"] = 5000,
+			["Leave Extra Money"] = 2000,
 			["Mohato Unit"] = "Chaso (Blood Curse)"
 		}
 	},
