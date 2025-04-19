@@ -471,8 +471,8 @@ Accounts = {
     },
     ["Minarusame"] = {
         "Log",
-        "Marco",
-        "IgrisSECHV",
+        "System",
+        "Dungeon",
     },
     ["TKPOL321"] = {
         "Log",
