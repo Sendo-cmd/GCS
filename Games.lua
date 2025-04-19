@@ -554,7 +554,7 @@ Accounts = {
     },
     ["zywimq"] = {
         "Log",
-        "SukonoAuto",
+        "TraitReroll",
     },
     ["Alow_2116"] = {
         "Log",
