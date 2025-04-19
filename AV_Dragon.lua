@@ -85,20 +85,19 @@ getgenv().Config = {
 			["1"] = 0,
 			["3"] = 0,
 			["2"] = 0,
-			["5"] = 0,
+			["5"] = -1,
 			["4"] = 0,
 			["6"] = 0
 		},
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
 			["Martial Island"] = "-487.8406066894531, 136.8050537109375, -454.28057861328125",
-			["Land of the Gods"] = "-168.6636962890625, 1.2214683294296265, 174.24331665039062"
+			["Land of the Gods"] = "-153.90126037597656, 1.2214683294296265, 192.60882568359375"
 		}
 	},
 	["Match Finished"] = {
 		["Replay Amount"] = 0,
-		["Auto Replay"] = true,
-		["Auto Next"] = true
+		["Auto Replay"] = true
 	},
 	["Claimer"] = {
 		["Auto Claim Battle Pass"] = true,
