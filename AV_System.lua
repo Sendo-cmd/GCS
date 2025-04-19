@@ -105,11 +105,11 @@ _G.User = {
     ["OPggripTH"] = {
         ["Party Mode"] = true,
     },
-    ["qAK16V7ZLSX0a4"] = {
+    ["HnD9n1lVJ4Ap23"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "HOdnJWa0347"
+            "joy006zx"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -136,6 +136,9 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["joy006zx"] = {
+        ["Party Mode"] = true,
     },
     ["Levid098508"] = {
         ["Party Mode"] = true,

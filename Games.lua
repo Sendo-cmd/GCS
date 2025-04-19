@@ -21,6 +21,7 @@ Games = {
         ["IgrisY"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Y.lua",
         ["IgrisR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_R.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
+        ["ESSEN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EssenceN.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["Paragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Paragon.lua",
         ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
@@ -615,9 +616,15 @@ Accounts = {
         "Log",
         "Dungeon",
     },
+    ["HnD9n1lVJ4Ap23"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
     ["joy006zx"] = {
         "Log",
-        "DioAuto",
+        "System",
+        "Dungeon",
     },
     ["Rustwhir2660"] = {
         "Log",
@@ -1478,6 +1485,7 @@ Accounts = {
     },
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
+        "ESSEN"
     },
     ["Auto_Atv"] = {
         "Log",
@@ -1563,8 +1571,7 @@ Accounts = {
     },
     ["qAK16V7ZLSX0a4"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "ESSE",
     },
     ["HOdnJWa0347"] = {
         "Log",
