@@ -1478,7 +1478,6 @@ Accounts = {
     },
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
-        "ESSE",
     },
     ["Auto_Atv"] = {
         "Log",
