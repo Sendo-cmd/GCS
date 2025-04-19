@@ -123,7 +123,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["344t0sHCdw6oDK"] = {
+    ["Minarusame"] = {
         ["Party Mode"] = true,
     },
     ["x8s0r1y5knI3Ls"] = {
