@@ -60,9 +60,9 @@ getgenv().Config = {
 			["Wave"] = 1
 		},
 		["Shibuya Station"] = {
-			["Upgrade Amount"] = 0,
+			["Upgrade Amount"] = 1,
 			["Auto Mohato"] = true,
-			["Leave Extra Money"] = 5000,
+			["Leave Extra Money"] = 0,
 			["Mohato Unit"] = "Rom and Ran (Fanatic)"
 		}
 	},
