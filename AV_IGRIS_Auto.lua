@@ -68,10 +68,10 @@ getgenv().Config = {
 		["Redeem Code"] = true
 	},
 	["Performance"] = {
-		["Delete Map"] = false,
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true,
-		["Delete Entities"] = false
+		["Delete Entities"] = true
 	},
 	["Match Finished"] = {
 		["Replay Amount"] = 0,

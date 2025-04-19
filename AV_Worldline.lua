@@ -186,9 +186,10 @@ getgenv().Config = {
 		["Walk Around"] = true
 	},
 	["Performance"] = {
-		["Delete Map"] = false,
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = true
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
