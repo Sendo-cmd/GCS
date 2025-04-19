@@ -14,12 +14,7 @@ Games = {
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
         ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
-        ["IgrisG"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_G.lua",
-        ["IgrisCH"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_CH.lua",
-        ["IgrisIC"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_IC.lua",
-        ["IgrisS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_S.lua",
-        ["IgrisY"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Y.lua",
-        ["IgrisR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_R.lua",
+        ["IgrisAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_G.lua",
         ["ESSE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence.lua",
         ["ESSEN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EssenceN.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
@@ -889,7 +884,7 @@ Accounts = {
     },
     ["Lucinda2471"] = {
         "Log",
-        "SukonoAuto",
+        "IgrisAuto",
     },
     ["MarioNo1111"] = {
         "Log",
