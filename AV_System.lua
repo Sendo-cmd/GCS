@@ -200,7 +200,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RyuzaaaV2"
+            "RyuzaaaV2",
+            "mangkorn93100"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -209,6 +210,9 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["mangkorn93100"] = {
+        ["Party Mode"] = true,
     },
     ["saveew"] = {
         ["Party Mode"] = true,
