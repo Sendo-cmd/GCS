@@ -77,7 +77,7 @@ _G.User = {
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act3",
+            ["Act"] = "Act1",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false

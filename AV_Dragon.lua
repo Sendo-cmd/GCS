@@ -85,7 +85,7 @@ getgenv().Config = {
 			["1"] = 0,
 			["3"] = 0,
 			["2"] = 0,
-			["5"] = -1,
+			["5"] = 0,
 			["4"] = 0,
 			["6"] = 0
 		},
@@ -97,7 +97,8 @@ getgenv().Config = {
 	},
 	["Match Finished"] = {
 		["Replay Amount"] = 0,
-		["Auto Replay"] = true
+		["Auto Replay"] = true,
+		["Auto Next"] = true
 	},
 	["Claimer"] = {
 		["Auto Claim Battle Pass"] = true,
