@@ -201,7 +201,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "RyuzaaaV2",
-            "mangkorn93100"
+            "Mangkorn93100"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -211,7 +211,7 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["mangkorn93100"] = {
+    ["Mangkorn93100"] = {
         ["Party Mode"] = true,
     },
     ["saveew"] = {
