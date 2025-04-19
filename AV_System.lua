@@ -69,17 +69,17 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
-    ["GCshop22"] = {
-        ["Select Mode"] = "Story", -- Portal
+    ["8jH8lUH6ay3Ji0"] = {
+        ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "8jH8lUH6ay3Ji0"
+            "JanMesu"
         },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act3",
-            ["StageType"] = "Story",
-            ["Stage"] = "Martial Island",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         },   
     },
@@ -97,6 +97,9 @@ _G.User = {
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         }, 
+    },
+    ["JanMesu"] = {
+        ["Party Mode"] = true,
     },
     ["R3N_Vixtoria3"] = {
         ["Party Mode"] = true,
