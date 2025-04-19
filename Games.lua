@@ -134,7 +134,7 @@ Accounts = {
     },
     ["SDEgFGtxuid"] = {
        "Log",
-       "BaseGem",
+       "BaseGemInf",
     },
     ["SugarSnow_84782"] = {
         "StarGem",
