@@ -51,7 +51,7 @@ getgenv().Config = {
 		},
 		["Shibuya Station"] = {
 			["Upgrade Amount"] = 0,
-			["Leave Extra Money"] = 5000
+			["Leave Extra Money"] = 0
 		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
