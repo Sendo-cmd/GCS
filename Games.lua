@@ -1583,8 +1583,7 @@ Accounts = {
     },
     ["HOdnJWa0347"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "SukonoAuto",
     },
     ["Etaa_xm"] = {
         "Log",
