@@ -867,8 +867,7 @@ Accounts = {
     },
     ["PRY_NS"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "TraitReroll",
     },
     ["gsokem"] = {
         "Log",
