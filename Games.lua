@@ -696,7 +696,8 @@ Accounts = {
     },
     ["R3N_Vixtoria3"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "Dragon",
     },
     ["scp1774"] = {
         "Log",

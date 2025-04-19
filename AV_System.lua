@@ -87,9 +87,8 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "f1imkungz",
-            "Feasqdx0437",
-            "MonarchJINWO21"
+            "R3N_Vixtoria3",
+            "Feasqdx0437"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -98,6 +97,9 @@ _G.User = {
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         }, 
+    },
+    ["R3N_Vixtoria3"] = {
+        ["Party Mode"] = true,
     },
     ["f1imkungz"] = {
         ["Party Mode"] = true,
