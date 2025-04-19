@@ -1135,7 +1135,7 @@ Accounts = {
     },
     ["HaineToram2"] = {
         "Log",
-        "BEIgrisAuto",
+        "IgrisAuto",
     },
     ["Theppartarn"] = {
         "Log",
