@@ -126,7 +126,6 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "AMERICAMENTIONEDRAHH",
             "Levid098508"
         },
         ["Portal Settings"] = {
@@ -195,6 +194,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "RyuzaaaV2",
+            "AMERICAMENTIONEDRAHH"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
