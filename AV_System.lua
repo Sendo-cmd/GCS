@@ -73,7 +73,7 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            ""
+            "None"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
