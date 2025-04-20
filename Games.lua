@@ -872,7 +872,7 @@ Accounts = {
     },
     ["PRY_NS"] = {
         "Log",
-        "TraitReroll",
+        "SukonoAuto",
     },
     ["gsokem"] = {
         "Log",
@@ -880,6 +880,11 @@ Accounts = {
         "Dungeon",
     },
     ["AutomodevDP5Lh"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["Bisctm1000"] = {
         "Log",
         "System",
         "Dungeon",
@@ -1411,7 +1416,7 @@ Accounts = {
     ["enonef2"] = {
         "Log",
         "System",
-        "Dungeon",
+        "PortalParty",
     },
     ["aHc9GRuQ65RN66"] = {
         "Log",
@@ -1635,6 +1640,10 @@ Accounts = {
     },
     ["adadwfaawe"] = {
         "Log",
+    },
+    ["Y9R2O5"] = {
+        "Log",
+        "BaseGemInf",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
