@@ -146,7 +146,8 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = true
+		["Teleport Lobby if Player"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["AutoExecute"] = true,
 	["Secure"] = {
