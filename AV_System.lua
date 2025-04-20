@@ -128,7 +128,7 @@ _G.User = {
     ["Minarusame"] = {
         ["Party Mode"] = true,
     },
-    ["x8s0r1y5knI3Ls"] = {
+    ["None999"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
