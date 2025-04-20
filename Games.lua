@@ -886,7 +886,7 @@ Accounts = {
     },
     ["Lucinda2471"] = {
         "Log",
-        "IgrisAuto",
+        "BBounties",
     },
     ["MarioNo1111"] = {
         "Log",

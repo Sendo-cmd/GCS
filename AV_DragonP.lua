@@ -96,7 +96,7 @@ getgenv().Config = {
 		}
 	},
 	["Match Finished"] = {
-		["Auto Next"] = false,
+		["Auto Next"] = true,
 		["Replay Amount"] = 0,
 		["Auto Replay"] = true
 	},
@@ -184,7 +184,7 @@ getgenv().Config = {
 		}
 	},
 	["Performance"] = {
-		["Delete Map"] = true,
+		["Delete Map"] = false,
 		["Boost FPS"] = true,
 		["Black Screen"] = true,
 		["Delete Entities"] = true
