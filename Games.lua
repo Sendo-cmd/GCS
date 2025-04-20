@@ -1584,6 +1584,11 @@ Accounts = {
         "Log",
         "SukonoAuto",
     },
+    ["xCrazy_Boyx0"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
     ["Etaa_xm"] = {
         "Log",
         "System",

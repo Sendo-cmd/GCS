@@ -115,7 +115,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "joy006zx",
-            "Minarusame"
+            "Minarusame",
+            "xCrazy_Boyx0"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -124,6 +125,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },
+    },
+    ["xCrazy_Boyx0"] = {
+        ["Party Mode"] = true,
     },
     ["Minarusame"] = {
         ["Party Mode"] = true,
