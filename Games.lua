@@ -49,6 +49,7 @@ Games = {
         ["Dungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnt.lua",
         ["Dungeons"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnts.lua",
         ["Dragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dragon.lua",
+        ["DragonP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DragonP.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
@@ -106,7 +107,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "System",
-        "Dragon",
+        "DragonP",
     },
     ["maser080"] = {
         "Log",

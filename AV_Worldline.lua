@@ -34,7 +34,7 @@ getgenv().Config = {
 			["Auto Statue"] = true,
 			["Statue Unit"] = "Chaso (Blood Curse)",
 			["Leave Extra Money"] = 0,
-			["Upgrade Amount"] = 1
+			["Upgrade Amount"] = 2
 		},
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
@@ -46,7 +46,7 @@ getgenv().Config = {
 		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true,
 		["Shibuya Station"] = {
-			["Upgrade Amount"] = 1,
+			["Upgrade Amount"] = 2,
 			["Auto Mohato"] = true,
 			["Leave Extra Money"] = 0,
 			["Mohato Unit"] = "Chaso (Blood Curse)"
