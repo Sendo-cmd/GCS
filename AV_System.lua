@@ -73,7 +73,7 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "JanMesu"
+            ""
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -87,8 +87,8 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "R3N_Vixtoria3",
-            "Feasqdx0437"
+            "Feasqdx0437",
+            "JanMesu"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
