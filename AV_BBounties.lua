@@ -40,98 +40,26 @@ getgenv().Config = {
 	},
 	["Gameplay"] = {
 		["Double Dungeon"] = {
-			["Upgrade Amount"] = 2,
-			["Statue Unit"] = "Rom and Ran",
+			["Upgrade Amount"] = 1,
+			["Statue Unit"] = "Rom and Ran (Fanatic)",
+			["Leave Extra Money"] = 5000,
 			["Auto Statue"] = true
 		},
 		["Shibuya Station"] = {
-			["Mohato Unit"] = "Rom and Ran",
 			["Auto Mohato"] = true,
-			["Upgrade Amount"] = 2
-		}
+			["Mohato Unit"] = "Rom and Ran (Fanatic)",
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 1
+		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Ant Island"] = {
-			["Auto Plug Ant Tunnel"] = true
-		},
+		["Auto Use Ability"] = true,
+		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
-		},
-		["Auto Use Ability"] = true
-	},
-	["Modifier"] = {
-		["Restart Modifier"] = {
-			["Modifier"] = {
-				["Money Surge"] = true
-			}
-		},
-		["Auto Modifier"] = {
-			["Enable"] = true,
-			["Prioritize"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Champions"] = 98,
-				["Fast"] = 0,
-				["Revitalize"] = 0,
-				["Immunity"] = 99,
-				["Exploding"] = 100,
-				["Dodge"] = 0,
-				["Slayer"] = 0,
-				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
-				["Harvest"] = 0,
-				["Quake"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
-				["No Trait No Problem"] = 0,
-				["King's Burden"] = 0,
-				["Regen"] = 0,
-				["Exterminator"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["Cooldown"] = 0,
-				["Drowsy"] = 0,
-				["Press It"] = 0,
-				["Precise Attack"] = 0,
-				["Shielded"] = 0,
-				["Uncommon Loot"] = 0,
-				["Money Surge"] = 0
-			},
-			["Amount"] = {
-				["Strong"] = 2,
-				["Thrice"] = 1,
-				["Warding off Evil"] = 0,
-				["Champions"] = 1,
-				["Fast"] = 1,
-				["Revitalize"] = 1,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 1,
-				["Dodge"] = 1,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 1,
-				["Planning Ahead"] = 0,
-				["Harvest"] = 0,
-				["Precise Attack"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
-				["No Trait No Problem"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
-				["Regen"] = 1,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["Drowsy"] = 1,
-				["Press It"] = 0,
-				["Quake"] = 1,
-				["Shielded"] = 1,
-				["Slayer"] = 4,
-				["Money Surge"] = 0
-			}
 		}
 	},
 	["Performance"] = {
@@ -141,42 +69,48 @@ getgenv().Config = {
 		["Delete Entities"] = true
 	},
 	["Match Finished"] = {
-		["Auto Replay"] = true,
-		["Replay Amount"] = 0
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Teleport Lobby if Player"] = true,
-		["Disable Auto Teleport AFK Chamber"] = true
+		["Auto Next"] = true,
+		["Replay Amount"] = 0,
+		["Auto Replay"] = true
 	},
 	["AutoExecute"] = true,
-	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
-	},
-	["Boss Bounties Joiner"] = {
-		["Auto Join"] = true
-	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
+		["Place Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = -1,
+			["6"] = 0
+		},
 		["Enable"] = true,
-		["Upgrade Method"] = "Randomize",
+		["Middle Position"] = {
+			["Golden Castle"] = "-100.67581939697266, -0.16030120849609375, -215.53640747070312",
+			["Double Dungeon"] = "-274.45904541015625, 0.10069097578525543, -117.80802917480469",
+			["Blood-Red Chamber"] = "0.8260197639465332, -0.2512565851211548, -55.03996658325195",
+			["Planet Namak"] = "446.45465087890625, 2.062572717666626, -341.6218566894531",
+			["Shibuya Aftermath"] = "225.790771484375, 514.7516479492188, 60.21217727661133",
+			["Kuinshi Palace"] = "396.4739990234375, 268.38262939453125, 115.33984375"
+		}
 		["Prefer Position"] = {
-			["Golden Castle"] = "Middle",
 			["Double Dungeon"] = "Middle",
-			["Planet Namak"] = "Middle",
+			["Cavern"] = "Middle",
+			["Sand Village"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Mountain Shrine (Natural)"] = "Middle",
+			["Kuinshi Palace"] = "Middle",
+			["Land of the Gods"] = "Middle",
+			["Golden Castle"] = "Middle",
+			["Spirit Society"] = "Middle",
 			["Ant Island"] = "Middle",
 			["Shibuya Station"] = "Middle",
 			["Blood-Red Chamber"] = "Middle",
-			["Sand Village"] = "Middle",
-			["Shibuya Aftermath"] = "Middle",
-			["Cavern"] = "Middle",
-			["Mountain Shrine (Natural)"] = "Middle",
-			["Kuinshi Palace"] = "Middle",
+			["Planet Namak"] = "Middle",
 			["Tracks at the Edge of the World"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Spirit Society"] = "Middle"
+			["Martial Island"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -186,17 +120,92 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = 0
 		},
-		["Focus on Farm"] = true,
-		["Middle Position"] = {
-			["Golden Castle"] = "-100.67581939697266, -0.16030120849609375, -215.53640747070312",
-			["Double Dungeon"] = "-274.45904541015625, 0.10069097578525543, -117.80802917480469",
-			["Blood-Red Chamber"] = "0.8260197639465332, -0.2512565851211548, -55.03996658325195",
-			["Planet Namak"] = "446.45465087890625, 2.062572717666626, -341.6218566894531",
-			["Shibuya Aftermath"] = "225.790771484375, 514.7516479492188, 60.21217727661133",
-			["Kuinshi Palace"] = "396.4739990234375, 268.38262939453125, 115.33984375"
+		["Focus on Farm"] = true
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},
+	["Boss Bounties Joiner"] = {
+		["Auto Join"] = true
+	},
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = true,
+			["Modifier"] = {
+				["Immunity"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Fisticuffs"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Immunity"] = 100,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Lifeline"] = 0,
+				["Precise Attack"] = 0,
+				["Drowsy"] = 0,
+				["No Trait No Problem"] = 0,
+				["Cooldown"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["King's Burden"] = 0,
+				["Range"] = 0,
+				["Press It"] = 0,
+				["Quake"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Fisticuffs"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Immunity"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Lifeline"] = 0,
+				["Precise Attack"] = 0,
+				["Drowsy"] = 0,
+				["No Trait No Problem"] = 0,
+				["Cooldown"] = 0,
+				["Exterminator"] = 0,
+				["Regen"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["King's Burden"] = 0,
+				["Range"] = 0,
+				["Press It"] = 0,
+				["Quake"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			}
 		}
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
-
