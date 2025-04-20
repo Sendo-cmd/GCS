@@ -110,12 +110,11 @@ _G.User = {
     ["OPggripTH"] = {
         ["Party Mode"] = true,
     },
-    ["HnD9n1lVJ4Ap23"] = {
+    ["x8s0r1y5knI3Ls"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "joy006zx",
-            "enonef2",
             "Minarusame"
         },
         ["Dungeon Settings"] = {

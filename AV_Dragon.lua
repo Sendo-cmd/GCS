@@ -65,7 +65,7 @@ getgenv().Config = {
 		["Delete Entities"] = true
 	},
 	["Match Finished"] = {
-		["Auto Next"] = true,
+		["Auto Next"] = false,
 		["Replay Amount"] = 0,
 		["Auto Replay"] = true
 	},
