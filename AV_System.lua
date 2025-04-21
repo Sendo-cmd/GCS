@@ -74,7 +74,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "icemateenoobth",
-            "Feasqdx0437",
             "MRLUCKY_SKYZA"
         },
         ["Legend Settings"] = {
