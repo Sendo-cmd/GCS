@@ -87,7 +87,8 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Feasqdx0437"
+            "Feasqdx0437",
+            "MRLUCKY_SKYZA"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",

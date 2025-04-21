@@ -1604,6 +1604,11 @@ Accounts = {
         "System",
         "Dungeon",
     },
+    ["MRLUCKY_SKYZA"] = {
+        "Log",
+        "System",
+        "Dragon",
+    },
     ["Valkor72009"] = {
         "Log",
         "System",
@@ -1611,7 +1616,7 @@ Accounts = {
     },
     ["arzero2"] = {
         "Log",
-        "Worldline",
+        "TraitReroll",
     },
     ["Xdyrdgyrdfg"] = {
         "Log",
