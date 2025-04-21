@@ -38,7 +38,7 @@ getgenv().Config = {
 		["Martial Island"] = {
 			["Auto Join God Portal"] = true,
 			["Collect Rotara Earring"] = true,
-			["Pause instead of Joining"] = true
+			["Pause instead of Joining"] = false
 		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
