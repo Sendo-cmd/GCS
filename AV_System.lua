@@ -113,9 +113,9 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "joy006zx",
-            "Minarusame",
-            "xCrazy_Boyx0"
+            "Chok248",
+            "ggkong1412",
+            "Bisctm1000"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -124,6 +124,15 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },
+    },
+    ["Chok248"] = {
+        ["Party Mode"] = true,
+    },
+    ["ggkong1412"] = {
+        ["Party Mode"] = true,
+    },
+    ["Bisctm1000"] = {
+        ["Party Mode"] = true,
     },
     ["xCrazy_Boyx0"] = {
         ["Party Mode"] = true,
@@ -202,8 +211,8 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RyuzaaaV2",
-            "Mangkorn93100"
+            "enonef2",
+            "saveew"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
