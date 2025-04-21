@@ -1592,8 +1592,7 @@ Accounts = {
     },
     ["xCrazy_Boyx0"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "BaseGemInf",
     },
     ["Etaa_xm"] = {
         "Log",
