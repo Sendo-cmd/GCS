@@ -88,7 +88,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Feasqdx0437",
-            "MRLUCKY_SKYZA"
+            "MRLUCKY_SKYZA",
+            "icemateenoobth"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -97,6 +98,12 @@ _G.User = {
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         }, 
+    },
+    ["icemateenoobth"] = {
+        ["Party Mode"] = true,
+    },
+    ["MRLUCKY_SKYZA"] = {
+        ["Party Mode"] = true,
     },
     ["JanMesu"] = {
         ["Party Mode"] = true,
