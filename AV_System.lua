@@ -73,8 +73,7 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "icemateenoobth",
-            "MRLUCKY_SKYZA"
+            "surx23"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -83,6 +82,9 @@ _G.User = {
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         },   
+    },
+    ["surx23"] = {
+        ["Party Mode"] = true,
     },
     ["icemateenoobth"] = {
         ["Party Mode"] = true,
@@ -106,9 +108,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Chok248",
-            "ggkong1412",
-            "Bisctm1000"
+            "shadoTsunami"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",

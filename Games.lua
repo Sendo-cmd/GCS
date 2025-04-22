@@ -659,8 +659,8 @@ Accounts = {
     },
     ["surx23"] = {
         "Log",
-        "Marco",
-        "YomomataR",
+        "System",
+        "Dragon",
     },
     ["Newbiethreepoint00"] = {
         "Log",
@@ -881,11 +881,6 @@ Accounts = {
         "Dungeon",
     },
     ["AutomodevDP5Lh"] = {
-        "Log",
-        "System",
-        "Dungeon",
-    },
-    ["Bisctm1000"] = {
         "Log",
         "System",
         "Dungeon",
@@ -1353,7 +1348,7 @@ Accounts = {
     ["shadoTsunami"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["BeeKak1"] = {
         "Log",
@@ -1662,8 +1657,7 @@ Accounts = {
     },
     ["Bisctm1000"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "IgrisAuto",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
