@@ -108,7 +108,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "shadoTsunami"
+            "shadoTsunami",
+            "8jH8lUH6ay3Ji0"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -117,6 +118,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },
+    },
+    ["8jH8lUH6ay3Ji0"] = {
+        ["Party Mode"] = true,
     },
     ["Chok248"] = {
         ["Party Mode"] = true,
