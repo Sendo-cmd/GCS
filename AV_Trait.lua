@@ -35,10 +35,10 @@ getgenv().Config = {
 		}
 	},
 	["Claimer"] = {
+		["Auto Claim Collection Milestone"] = true,
 		["Auto Claim Quest"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Battle Pass"] = true,
 		["Auto Claim Achievement"] = true,
+		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Milestone"] = true
@@ -51,98 +51,63 @@ getgenv().Config = {
 			["Upgrade Amount"] = 0
 		},
 		["Auto Use Ability"] = true,
+		["The System"] = {
+			["Auto Shadow"] = {
+				["Enable"] = true,
+				["Shadow"] = "Belu"
+			}
+		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
+		["Auto Sell Farm"] = {
+			["Enable"] = true,
+			["Wave"] = 15
+		},
 		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
-		["Auto Sell Farm"] = {
-			["Wave"] = 1
-		},
 		["Shibuya Station"] = {
-			["Upgrade Amount"] = 1,
+			["Mohato Unit"] = "Rom and Ran (Fanatic)",
 			["Auto Mohato"] = true,
-			["Leave Extra Money"] = 0,
-			["Mohato Unit"] = "Rom and Ran (Fanatic)"
+			["Leave Extra Money"] = 2000,
+			["Upgrade Amount"] = 1
 		}
 	},
 	["Daily Challenge Joiner"] = {
 		["Auto Join"] = true
 	},
-	["Modifier"] = {
-		["Auto Modifier"] = {
-			["Prioritize"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Champions"] = 1,
-				["Fast"] = 0,
-				["Planning Ahead"] = 0,
-				["Immunity"] = 100,
-				["Exploding"] = 99,
-				["Dodge"] = 0,
-				["Slayer"] = 0,
-				["Fisticuffs"] = 0,
-				["Revitalize"] = 0,
-				["Harvest"] = 0,
-				["Quake"] = 0,
-				["Range"] = 0,
-				["No Trait No Problem"] = 0,
-				["Drowsy"] = 0,
-				["King's Burden"] = 0,
-				["Regen"] = 0,
-				["Exterminator"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["Cooldown"] = 0,
-				["Lifeline"] = 0,
-				["Press It"] = 0,
-				["Precise Attack"] = 0,
-				["Shielded"] = 0,
-				["Uncommon Loot"] = 0,
-				["Money Surge"] = 0
-			},
-			["Enable"] = true,
-			["Amount"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Champions"] = 0,
-				["Fast"] = 0,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 0,
-				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 0,
-				["Revitalize"] = 0,
-				["Harvest"] = 0,
-				["Precise Attack"] = 0,
-				["Range"] = 0,
-				["No Trait No Problem"] = 0,
-				["Drowsy"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
-				["Regen"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["Lifeline"] = 0,
-				["Press It"] = 0,
-				["Quake"] = 0,
-				["Shielded"] = 0,
-				["Slayer"] = 0,
-				["Money Surge"] = 0
-			}
-		}
+	["Regular Challenge Joiner"] = {
+		["Reward"] = "Trait Reroll Challenge",
+		["Auto Join"] = true,
+		["Teleport Lobby new Challenge"] = true
 	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
+	},
+	["Match Finished"] = {
+		["Auto Next"] = true,
+		["Replay Amount"] = 0,
+		["Auto Replay"] = true
+	},
+	["AutoExecute"] = true,
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
+		["Place Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = -1
+		},
 		["Enable"] = true,
 		["Upgrade Method"] = "Hotbar left to right (until Max)",
 		["Prefer Position"] = {
 			["Double Dungeon"] = "Middle",
-			["Cavern"] = "Middle",
+			["Planet Namak"] = "Middle",
 			["Sand Village"] = "Middle",
 			["Shibuya Aftermath"] = "Middle",
 			["Mountain Shrine (Natural)"] = "Middle",
@@ -150,11 +115,11 @@ getgenv().Config = {
 			["Land of the Gods"] = "Middle",
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
-			["Tracks at the Edge of the World"] = "Middle",
+			["Ant Island"] = "Middle",
 			["Martial Island"] = "Middle",
 			["Shibuya Station"] = "Middle",
-			["Planet Namak"] = "Middle",
-			["Ant Island"] = "Middle",
+			["Cavern"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
 			["Blood-Red Chamber"] = "Middle"
@@ -165,31 +130,20 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = -1
+			["6"] = 0,
 		},
+		["Focus on Farm"] = true,
 		["Middle Position"] = {
 			["Shibuya Aftermath"] = "-94.77557373046875, 316.1539306640625, -34.29759216308594",
 			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781",
 			["Golden Castle"] = "-100.51405334472656, -0.16030120849609375, -210.62820434570312",
 			["Spider Forest"] = "-324.47222900390625, 1644.5369873046875, -319.5542297363281",
 			["Kuinshi Palace"] = "395.2952880859375, 268.38262939453125, 114.03340148925781"
-		},
-		["Focus on Farm"] = true
-	},
-	["Match Finished"] = {
-		["Replay Amount"] = 0,
-		["Auto Replay"] = true
-	},
-	["Performance Failsafe"] = {
-		["Ping Freeze"] = true,
-		["Teleport Lobby FPS below"] = {
-			["Enable"] = true,
-			["FPS"] = 4
 		}
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Disable Auto Teleport AFK Chamber"] = true
+		["Disable Auto Teleport AFK Chamber"] = true,
+		["Auto Rejoin"] = true
 	},
 	["Weekly Challenge Joiner"] = {
 		["Auto Join"] = true
@@ -198,16 +152,72 @@ getgenv().Config = {
 		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
-	},
-	["Regular Challenge Joiner"] = {
-		["Reward"] = "Trait Reroll Challenge",
-		["Auto Join"] = true,
-		["Teleport Lobby new Challenge"] = true
+	["Modifier"] = {
+		["Auto Modifier"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 1,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Immunity"] = 100,
+				["Exploding"] = 99,
+				["Dodge"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 0,
+				["Range"] = 0,
+				["Drowsy"] = 0,
+				["Lifeline"] = 0,
+				["Regen"] = 0,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Cooldown"] = 0,
+				["No Trait No Problem"] = 0,
+				["Press It"] = 0,
+				["Precise Attack"] = 0,
+				["Shielded"] = 0,
+				["Uncommon Loot"] = 0,
+				["Money Surge"] = 0
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Fisticuffs"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Immunity"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Precise Attack"] = 0,
+				["Range"] = 0,
+				["Drowsy"] = 0,
+				["Lifeline"] = 0,
+				["Cooldown"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Regen"] = 0,
+				["No Trait No Problem"] = 0,
+				["Press It"] = 0,
+				["Quake"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			}
+		}
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
