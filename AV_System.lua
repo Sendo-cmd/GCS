@@ -208,7 +208,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "underhorror"
+            "surasafe"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -217,6 +217,9 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["surasafe"] = {
+        ["Party Mode"] = true,
     },
     ["underhorror"] = {
         ["Party Mode"] = true,
