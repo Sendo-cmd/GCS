@@ -104,21 +104,6 @@ _G.User = {
     ["OPggripTH"] = {
         ["Party Mode"] = true,
     },
-    ["x8s0r1y5knI3Ls"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "shadoTsunami",
-            "8jH8lUH6ay3Ji0"
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
-    },
     ["8jH8lUH6ay3Ji0"] = {
         ["Party Mode"] = true,
     },
@@ -137,19 +122,19 @@ _G.User = {
     ["Minarusame"] = {
         ["Party Mode"] = true,
     },
-    ["None999"] = {
-        ["Select Mode"] = "Portal", -- Portal
+    ["x8s0r1y5knI3Ls"] = {
+        ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Levid098508"
+            "Mangkorn93100"
         },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act3",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Kuinshi Palace",
+            ["FriendsOnly"] = false
+        },   
     },
     ["joy006zx"] = {
         ["Party Mode"] = true,
@@ -209,7 +194,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "surasafe",
-            "x8s0r1y5knI3Ls"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -218,9 +202,6 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
-    },
-    ["x8s0r1y5knI3Ls"] = {
-        ["Party Mode"] = true,
     },
     ["surasafe"] = {
         ["Party Mode"] = true,

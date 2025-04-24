@@ -1422,7 +1422,7 @@ Accounts = {
     ["x8s0r1y5knI3Ls"] = {
         "Log",
         "System",
-        "PortalParty",
+        "YomomataAuto",
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
@@ -1529,7 +1529,7 @@ Accounts = {
     ["mangkorn93100"] = {
         "Log",
         "System",
-        "PortalParty",
+        "YomomataAuto",
     },
     ["iPram0"] = {
         "Log",
