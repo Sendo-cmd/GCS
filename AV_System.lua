@@ -126,7 +126,8 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Mangkorn93100"
+            "Mangkorn93100",
+            "smyfon8"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -135,6 +136,9 @@ _G.User = {
             ["Stage"] = "Kuinshi Palace",
             ["FriendsOnly"] = false
         },   
+    },
+    ["smyfon8"] = {
+        ["Party Mode"] = true,
     },
     ["joy006zx"] = {
         ["Party Mode"] = true,

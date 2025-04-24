@@ -1424,6 +1424,11 @@ Accounts = {
         "System",
         "YomomataAuto",
     },
+    ["smyfon8"] = {
+        "Log",
+        "System",
+        "YomomataAuto",
+    },
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
