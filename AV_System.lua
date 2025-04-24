@@ -122,11 +122,10 @@ _G.User = {
     ["Minarusame"] = {
         ["Party Mode"] = true,
     },
-    ["x8s0r1y5knI3Ls"] = {
+    ["Mangkorn93100"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Mangkorn93100",
             "smyfon8"
         },
         ["Legend Settings"] = {
@@ -211,9 +210,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["underhorror"] = {
-        ["Party Mode"] = true,
-    },
-    ["Mangkorn93100"] = {
         ["Party Mode"] = true,
     },
     ["saveew"] = {
