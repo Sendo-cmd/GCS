@@ -1533,8 +1533,7 @@ Accounts = {
     },
     ["mangkorn93100"] = {
         "Log",
-        "System",
-        "YomomataAuto",
+        "SokoraAuto",
     },
     ["iPram0"] = {
         "Log",
