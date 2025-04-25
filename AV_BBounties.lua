@@ -60,6 +60,12 @@ getgenv().Config = {
 			["Enable"] = true,
 			["Wave"] = 15
 		},
+		["The System"] = {
+			["Auto Shadow"] = {
+				["Enable"] = true,
+				["Shadow"] = "Belu"
+			}
+		},
 		["Auto Use Ability"] = true
 	},
 	["Modifier"] = {

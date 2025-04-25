@@ -39,8 +39,8 @@ getgenv().Config = {
 	},
 	["Gameplay"] = {
 		["Double Dungeon"] = {
-			["Upgrade Amount"] = 1,
-			["Statue Unit"] = "Rom and Ran (Fanatic)",
+			["Upgrade Amount"] = 2,
+			["Statue Unit"] = "Dawntay (Jackpot)",
 			["Leave Extra Money"] = 5000,
 			["Auto Statue"] = true
 		},
@@ -54,8 +54,8 @@ getgenv().Config = {
 		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true,
 		["Shibuya Station"] = {
-			["Upgrade Amount"] = 1,
-			["Mohato Unit"] = "Rom and Ran (Fanatic)",
+			["Upgrade Amount"] = 2,
+			["Mohato Unit"] = "Dawntay (Jackpot)",
 			["Leave Extra Money"] = 5000,
 			["Auto Mohato"] = true
 		}
@@ -67,8 +67,8 @@ getgenv().Config = {
 			["3"] = 0,
 			["2"] = 0,
 			["5"] = 0,
-			["4"] = -1,
-			["6"] = 0
+			["4"] = 0,
+			["6"] = -1
 		},
 		["Enable"] = true,
 		["Upgrade Method"] = "Randomize",
@@ -131,13 +131,10 @@ getgenv().Config = {
 		["Walk Around"] = true,
 		["Random Offset"] = true
 	},
-	["Boss Bounties Joiner"] = {
-		["Auto Join"] = true
-	},
 	["Modifier"] = {
 		["Restart Modifier"] = {
 			["Modifier"] = {
-				["Immunity"] = true
+				["Immunity"] = false
 			}
 		},
 		["Auto Modifier"] = {
