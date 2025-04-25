@@ -73,7 +73,7 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "surx23"
+            "9999"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -193,17 +193,17 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["344t0sHCdw6oDK"] = {
-        ["Select Mode"] = "Portal", -- Portal
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "surasafe",
+            "surx23",
         },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
         },
     },
     ["surasafe"] = {

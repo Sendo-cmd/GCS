@@ -659,7 +659,7 @@ Accounts = {
     ["surx23"] = {
         "Log",
         "System",
-        "Dragon",
+        "Dungeon",
     },
     ["Newbiethreepoint00"] = {
         "Log",
@@ -1432,7 +1432,7 @@ Accounts = {
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["traijo"] = {
         "Log",
