@@ -48,7 +48,7 @@ getgenv().Config = {
 			["Mohato Unit"] = "Rom and Ran",
 			["Auto Mohato"] = true,
 			["Upgrade Amount"] = 2
-		}
+		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
