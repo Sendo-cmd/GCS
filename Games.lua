@@ -613,11 +613,6 @@ Accounts = {
         "Log",
         "Dungeon",
     },
-    ["HnD9n1lVJ4Ap23"] = {
-        "Log",
-        "System",
-        "Dungeon",
-    },
     ["joy006zx"] = {
         "Log",
         "System",
@@ -1424,11 +1419,6 @@ Accounts = {
         "System",
         "PortalParty",
     },
-    ["x8s0r1y5knI3Ls"] = {
-        "Log",
-        "System",
-        "YomomataAuto",
-    },
     ["smyfon8"] = {
         "Log",
         "System",
@@ -1673,6 +1663,63 @@ Accounts = {
         "Log",
         "System",
         "PortalParty",
+    },
+    ["aR8xV9v6JI0FV9"] = {
+        "BaseGem",
+    },
+    ["J9O0Eg0cQ03MCV"] = {
+        "BaseGem",
+    },
+    ["v0k9Seb9nB6q0P"] = {
+        "BaseGem",
+    },
+    ["c97m7VvHFTPZ19"] = {
+        "BaseGem",
+    },
+    ["A6bU2F244SgVIL"] = {
+        "BaseGem",
+    },
+    ["x8s0r1y5knI3Ls"] = {
+        "BaseGem",
+    },
+    ["s1t4d4vPKqIz61"] = {
+        "BaseGem",
+    },
+    ["s0SoYQ84GXSc12"] = {
+        "BaseGem",
+    },
+    ["R6W2iU8NY0Yt0y"] = {
+        "BaseGem",
+    },
+    ["HN0U173rfP9Rej"] = {
+        "BaseGem",
+    },
+    ["GVU257sFK8en2v"] = {
+        "BaseGem",
+    },
+    ["2Z7CsAUL631eyO"] = {
+        "BaseGem",
+    },
+    ["2TdA1E6Ri13Vvc"] = {
+        "BaseGem",
+    },
+    ["2p16ASLfOpL04N"] = {
+        "BaseGem",
+    },
+    ["Js5Sa48yS05SBI"] = {
+        "BaseGem",
+    },
+    ["E245uF79awrOox"] = {
+        "BaseGem",
+    },
+    ["u18PbJ2q2SZdx9"] = {
+        "BaseGem",
+    },
+    ["tjr23sqU554Jqv"] = {
+        "BaseGem",
+    },
+    ["HnD9n1lVJ4Ap23"] = {
+        "BaseGem",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
