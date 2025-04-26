@@ -12,6 +12,7 @@ Games = {
         ["BEIgris3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGS3.lua",
         ["BEIgrisAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGSAuto.lua",
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
+        ["GMe"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMME.lua",
         ["BaseGemDD"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMDD.lua",
         ["BaseGemInf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEMINF.lua",
         ["IgrisAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_IGRIS_Auto.lua",
@@ -1665,61 +1666,61 @@ Accounts = {
         "PortalParty",
     },
     ["aR8xV9v6JI0FV9"] = {
-        "BaseGem",
+        "GMe",
     },
     ["J9O0Eg0cQ03MCV"] = {
-        "BaseGem",
+        "GMe",
     },
     ["v0k9Seb9nB6q0P"] = {
-        "BaseGem",
+        "GMe",
     },
     ["c97m7VvHFTPZ19"] = {
-        "BaseGem",
+        "GMe",
     },
     ["A6bU2F244SgVIL"] = {
-        "BaseGem",
+        "GMe",
     },
     ["x8s0r1y5knI3Ls"] = {
-        "BaseGem",
+        "GMe",
     },
     ["s1t4d4vPKqIz61"] = {
-        "BaseGem",
+        "GMe",
     },
     ["s0SoYQ84GXSc12"] = {
-        "BaseGem",
+        "GMe",
     },
     ["R6W2iU8NY0Yt0y"] = {
-        "BaseGem",
+        "GMe",
     },
     ["HN0U173rfP9Rej"] = {
-        "BaseGem",
+        "GMe",
     },
     ["GVU257sFK8en2v"] = {
-        "BaseGem",
+        "GMe",
     },
     ["2Z7CsAUL631eyO"] = {
-        "BaseGem",
+        "GMe",
     },
     ["2TdA1E6Ri13Vvc"] = {
-        "BaseGem",
+        "GMe",
     },
     ["2p16ASLfOpL04N"] = {
-        "BaseGem",
+        "GMe",
     },
     ["Js5Sa48yS05SBI"] = {
-        "BaseGem",
+        "GMe",
     },
     ["E245uF79awrOox"] = {
-        "BaseGem",
+        "GMe",
     },
     ["u18PbJ2q2SZdx9"] = {
-        "BaseGem",
+        "GMe",
     },
     ["tjr23sqU554Jqv"] = {
-        "BaseGem",
+        "GMe",
     },
     ["HnD9n1lVJ4Ap23"] = {
-        "BaseGem",
+        "GMe",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
