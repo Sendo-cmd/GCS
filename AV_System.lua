@@ -238,7 +238,7 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["344t0sHCdw6oDK"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+        ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "OP_autokill",
