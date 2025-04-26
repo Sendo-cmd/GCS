@@ -241,7 +241,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "OP_AUTOKILL",
+            "OP_autokill",
             "juniorlnw5"
         },
         ["Portal Settings"] = {
@@ -270,7 +270,7 @@ _G.User = {
     ["juniorlnw5"] = {
         ["Party Mode"] = true,
     },
-    ["OP_AUTOKILL"] = {
+    ["OP_autokill"] = {
         ["Party Mode"] = true,
     },
     ["enonef2"] = {
