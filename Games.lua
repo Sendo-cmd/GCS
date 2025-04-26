@@ -1383,10 +1383,15 @@ Accounts = {
         "System",
         "LovePortal",
     },
+    ["OP_AUTOKILL"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
     ["Juniorlnw5"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["Diablo039a"] = {
         "Log",
