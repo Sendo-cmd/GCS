@@ -1565,8 +1565,7 @@ Accounts = {
     },
     ["0621319907fake"] = {
         "Log",
-        "System",
-        "Dungeon",
+        "IgrisAuto",
     },
     ["MonarchJINWO21"] = {
         "Log",
