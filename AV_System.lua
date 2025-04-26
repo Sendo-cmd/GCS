@@ -242,7 +242,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "OP_AUTOKILL",
-            "Juniorlnw5"
+            "juniorlnw5"
         },
         ["Portal Settings"] = {
             ["ID"] = 113, -- 113 Love , 87 Winter
@@ -267,7 +267,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["Juniorlnw5"] = {
+    ["juniorlnw5"] = {
         ["Party Mode"] = true,
     },
     ["OP_AUTOKILL"] = {
