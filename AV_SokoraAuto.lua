@@ -3,7 +3,6 @@ getgenv().Config = {
 	["AutoSave"] = true,
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
-		["Macro"] = "fixallls",
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	},
@@ -31,8 +30,8 @@ getgenv().Config = {
 		}
 	},
 	["Claimer"] = {
-		["Auto Claim Quest"] = true,
 		["Auto Claim Milestone"] = true,
+		["Auto Claim Quest"] = true,
 		["Auto Claim Achievement"] = true,
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
@@ -40,17 +39,88 @@ getgenv().Config = {
 		["Auto Claim Collection Milestone"] = true
 	},
 	["Gameplay"] = {
+		["Double Dungeon"] = {
+			["Upgrade Amount"] = 2,
+			["Statue Unit"] = "Dawntay (Jackpot)",
+			["Leave Extra Money"] = 5000,
+			["Auto Statue"] = true
+		},
+		["Shibuya Station"] = {
+			["Mohato Unit"] = "Dawntay (Jackpot)",
+			["Auto Mohato"] = true,
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 2
+		},
+		["The System"] = {
+			["Auto Shadow"] = {
+				["Shadow"] = "Bear"
+			}
+		},
 		["Saber Event"] = {
-			["Auto Select Servant"] = true,
 			["Servant"] = "Berserker"
 		},
+		["Auto Skip Wave"] = true,
+		["Auto Use Ability"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
-			["Wave"] = 30
+			["Wave"] = 15
+		}
+	},
+	["Auto Play"] = {
+		["Auto Upgrade"] = true,
+		["Place Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = -1
 		},
-		["Auto Vote Start"] = true,
-		["Auto Use Ability"] = true,
-		["Auto Skip Wave"] = true
+		["Enable"] = true,
+		["Upgrade Method"] = "Randomize",
+		["Prefer Position"] = {
+			["Double Dungeon"] = "Middle",
+			["Cavern"] = "Middle",
+			["Sand Village"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Mountain Shrine (Natural)"] = "Middle",
+			["Kuinshi Palace"] = "Middle",
+			["Land of the Gods"] = "Middle",
+			["Golden Castle"] = "Middle",
+			["Spirit Society"] = "Middle",
+			["Ant Island"] = "Middle",
+			["Martial Island"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Planet Namak"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
+			["Underground Church"] = "Middle",
+			["Spider Forest"] = "Middle",
+			["Blood-Red Chamber"] = "Middle"
+		},
+		["Upgrade Cap"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = 0
+		},
+		["Focus on Farm"] = true,
+		["Middle Position"] = {
+			["Shibuya Aftermath"] = "224.88145446777344, 514.7516479492188, 59.84856033325195",
+			["Sand Village"] = "-301.56982421875, 180.48907470703125, -202.10836791992188",
+			["Spirit Society"] = "196.10484313964844, -0.5, 657.8773193359375",
+			["Planet Namak"] = "458.4173889160156, 2.062572717666626, -329.8487548828125",
+			["Kuinshi Palace"] = "395.5283508300781, 268.38262939453125, 115.10245513916016",
+			["Shibuya Station"] = "-767.7849731445312, 9.356081008911133, -117.69595336914062",
+			["Golden Castle"] = "-99.95283508300781, -0.16030120849609375, -209.19700622558594",
+			["Land of the Gods"] = "-157.45309448242188, 1.2214683294296265, 119.47007751464844"
+		}
+	},
+	["Match Finished"] = {
+		["Auto Next"] = true,
+		["Replay Amount"] = 0,
+		["Auto Replay"] = true
 	},
 	["Modifier"] = {
 		["Auto Modifier"] = {
@@ -59,29 +129,29 @@ getgenv().Config = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
-				["Champions"] = 98,
+				["Champions"] = 99,
 				["Fast"] = 0,
 				["Revitalize"] = 0,
 				["Fisticuffs"] = 0,
-				["Exploding"] = 100,
+				["Exploding"] = 98,
 				["Dodge"] = 0,
 				["Uncommon Loot"] = 0,
-				["Immunity"] = 99,
+				["Immunity"] = 100,
 				["Planning Ahead"] = 0,
 				["Harvest"] = 0,
 				["Precise Attack"] = 0,
 				["Range"] = 0,
+				["Drowsy"] = 0,
 				["Lifeline"] = 0,
-				["No Trait No Problem"] = 0,
 				["Cooldown"] = 0,
 				["Exterminator"] = 0,
-				["Regen"] = 0,
+				["King's Burden"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["Drowsy"] = 0,
+				["Regen"] = 0,
+				["No Trait No Problem"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 1,
+				["Quake"] = 0,
 				["Shielded"] = 0,
 				["Slayer"] = 0,
 				["Money Surge"] = 0
@@ -102,15 +172,15 @@ getgenv().Config = {
 				["Harvest"] = 0,
 				["Quake"] = 0,
 				["Range"] = 0,
+				["Drowsy"] = 0,
 				["Lifeline"] = 0,
-				["No Trait No Problem"] = 0,
-				["Regen"] = 0,
 				["King's Burden"] = 0,
+				["Regen"] = 0,
 				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
 				["Cooldown"] = 0,
-				["Drowsy"] = 0,
+				["No Trait No Problem"] = 0,
 				["Press It"] = 0,
 				["Precise Attack"] = 0,
 				["Shielded"] = 0,
@@ -120,15 +190,11 @@ getgenv().Config = {
 		}
 	},
 	["Performance"] = {
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = true,
 		["Delete Entities"] = true
 	},
-	["Match Finished"] = {
-		["Auto Replay"] = true,
-		["Replay Amount"] = 0
-	},
-	["AutoExecute"] = true,
 	["Failsafe"] = {
 		["Auto Rejoin"] = true,
 		["Disable Auto Teleport AFK Chamber"] = true
@@ -137,44 +203,11 @@ getgenv().Config = {
 		["Random Offset"] = true,
 		["Walk Around"] = true
 	},
-	["Auto Play"] = {
-		["Auto Upgrade"] = true,
-		["Enable"] = true,
-		["Prefer Position"] = {
-			["Golden Castle"] = "Middle",
-			["Spirit Society"] = "Middle",
-			["Blood-Red Chamber"] = "Middle",
-			["Ant Island"] = "Middle",
-			["Shibuya Station"] = "Middle",
-			["Double Dungeon"] = "Middle",
-			["Sand Village"] = "Middle",
-			["Shibuya Aftermath"] = "Middle",
-			["Cavern"] = "Middle",
-			["Mountain Shrine (Natural)"] = "Middle",
-			["Kuinshi Palace"] = "Middle",
-			["Tracks at the Edge of the World"] = "Middle",
-			["Underground Church"] = "Middle",
-			["Spider Forest"] = "Middle",
-			["Planet Namak"] = "Middle"
-		},
-		["Upgrade Cap"] = {
-			["1"] = 0,
-			["3"] = 0,
-			["2"] = 0,
-			["5"] = 0,
-			["4"] = 0,
-			["6"] = 0
-		},
-		["Middle Position"] = {
-			["Cavern"] = "113.20248413085938, 99.44668579101562, 435.1754150390625"
-		},
-		["Focus on Farm"] = true
-	},
 	["Boss Event Joiner"] = {
-		["Elite Mode"] = false,
 		["Auto Join"] = true,
 		["Stage"] = "SaberEvent"
-	}
+	},
+	["AutoExecute"] = true
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
