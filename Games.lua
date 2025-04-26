@@ -1724,8 +1724,12 @@ Accounts = {
     ["tjr23sqU554Jqv"] = {
         "GMe",
     },
-    ["HnD9n1lVJ4Ap23"] = {
+    ["DreamUWU1"] = {
         "GMe",
+    },
+    ["DreamUWU1"] = {
+        "Log"
+        "BaseGem",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
