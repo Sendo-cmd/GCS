@@ -498,6 +498,7 @@ Accounts = {
     },
     ["Brutaroth"] = {
         "Log",
+        "System",
         "Dungeon",
     },
     ["Theegg840"] = {
@@ -1611,8 +1612,8 @@ Accounts = {
     },
     ["MRLUCKY_SKYZA"] = {
         "Log",
-        "System",
-        "Dragon",
+        "Marco",
+        "YomomataR",
     },
     ["Valkor72009"] = {
         "Log",

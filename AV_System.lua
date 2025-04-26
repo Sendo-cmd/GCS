@@ -192,11 +192,12 @@ _G.User = {
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
     },
-    ["344t0sHCdw6oDK"] = {
+    ["8jH8lUH6ay3Ji0"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "surx23",
+            "Brutaroth"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -205,6 +206,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },
+    },
+    ["Brutaroth"] = {
+        ["Party Mode"] = true,
     },
     ["surasafe"] = {
         ["Party Mode"] = true,
@@ -233,19 +237,19 @@ _G.User = {
     ["Arscontia"] = {
         ["Party Mode"] = true,
     },
-    ["4cMw7l8Q9U3kEE"] = {
+    ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "gsokem",
-            "Arscontia"
+            "OP_AUTOKILL",
+            "Juniorlnw5"
         },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
+        ["Portal Settings"] = {
+            ["ID"] = 113, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
         },   
     },
     ["Yq34Uk84nh8aHE"] = {
@@ -262,6 +266,12 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["Juniorlnw5"] = {
+        ["Party Mode"] = true,
+    },
+    ["OP_AUTOKILL"] = {
+        ["Party Mode"] = true,
     },
     ["enonef2"] = {
         ["Party Mode"] = true,
