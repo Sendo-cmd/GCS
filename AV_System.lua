@@ -196,7 +196,6 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "surx23",
             "Brutaroth"
         },
         ["Dungeon Settings"] = {
