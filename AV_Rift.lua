@@ -43,6 +43,10 @@ getgenv().Config = {
 			["Upgrade Amount"] = 0,
 			["Leave Extra Money"] = 5000
 		},
+		["Auto Sell"] = {
+			["Enable"] = true,
+			["Wave"] = 25
+		},
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 20

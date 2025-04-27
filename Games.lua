@@ -42,8 +42,8 @@ Games = {
         ["Dragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dragon.lua",
         ["DragonP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DragonP.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
-        ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
-        ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
+        ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
+        ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
@@ -1479,7 +1479,7 @@ Accounts = {
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Rift",
     },
     ["JanMesu"] = {
         "Log",

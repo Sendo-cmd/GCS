@@ -123,18 +123,7 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Mangkorn93100"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "smyfon8"
-        },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act3",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Kuinshi Palace",
-            ["FriendsOnly"] = false
-        },   
     },
     ["smyfon8"] = {
         ["Party Mode"] = true,
@@ -193,16 +182,17 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["8jH8lUH6ay3Ji0"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+        ["Auto Join Rift"] = true,
+        ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Brutaroth"
+            "Mangkorn93100"
         },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
             ["FriendsOnly"] = false
         },
     },
