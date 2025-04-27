@@ -1734,6 +1734,10 @@ Accounts = {
         "System",
         "PortalParty",
     },
+    ["hiherbz22"] = {
+        "Log",
+        "IgrisAuto",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
