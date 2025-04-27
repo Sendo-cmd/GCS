@@ -1373,10 +1373,9 @@ Accounts = {
         "System",
         "LovePortal",
     },
-    ["OP_AUTOKILL"] = {
+    ["OP_autokill"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "SokoraAuto",
     },
     ["Juniorlnw5"] = {
         "Log",
