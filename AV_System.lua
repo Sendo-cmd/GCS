@@ -229,11 +229,14 @@ _G.User = {
     ["Arscontia"] = {
         ["Party Mode"] = true,
     },
+    ["sans_dee1134"] = {
+        ["Party Mode"] = true,
+    },
     ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "OP_autokill",
+            "sans_dee1134",
             "bam87871"
         },
         ["Portal Settings"] = {
