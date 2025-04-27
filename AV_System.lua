@@ -241,8 +241,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "OP_autokill",
-            "juniorlnw5",
-            "aocyms"
+            "bam87871"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -266,6 +265,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["bam87871"] = {
+        ["Party Mode"] = true,
     },
     ["aocyms"] = {
         ["Party Mode"] = true,
