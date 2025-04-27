@@ -29,7 +29,16 @@ getgenv().Config = {
 			}
 		}
 	},
-	["AutoExecute"] = true,
+	["Claimer"] = {
+		["Auto Claim Collection Milestone"] = true,
+		["Auto Claim Quest"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Battle Pass"] = true
+	},
 	["Gameplay"] = {
 		["Double Dungeon"] = {
 			["Upgrade Amount"] = 0,
@@ -39,96 +48,28 @@ getgenv().Config = {
 			["Auto Join God Portal"] = true,
 			["Collect Rotara Earring"] = true
 		},
+		["The System"] = {
+			["Auto Shadow"] = {
+				["Shadow"] = "Bear"
+			}
+		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
 		["Auto Vote Start"] = true,
-		["Shibuya Station"] = {
-			["Upgrade Amount"] = 0,
-			["Leave Extra Money"] = 5000
-		},
+		["Auto Use Ability"] = true,
 		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
 		},
-		["Auto Use Ability"] = true
+		["Shibuya Station"] = {
+			["Upgrade Amount"] = 0,
+			["Leave Extra Money"] = 5000
+		}
 	},
 	["Misc"] = {
 		["Redeem Code"] = true
-	},
-	["Modifier"] = {
-		["Restart Modifier"] = {
-			["Enable"] = true,
-			["Modifier"] = {
-				["Immunity"] = true
-			}
-		},
-		["Auto Modifier"] = {
-			["Enable"] = true,
-			["Prioritize"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Champions"] = 98,
-				["Fast"] = 0,
-				["Revitalize"] = 0,
-				["Immunity"] = 99,
-				["Exploding"] = 100,
-				["Dodge"] = 0,
-				["Slayer"] = 0,
-				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
-				["Harvest"] = 0,
-				["Quake"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
-				["No Trait No Problem"] = 0,
-				["King's Burden"] = 0,
-				["Regen"] = 0,
-				["Exterminator"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["Cooldown"] = 0,
-				["Drowsy"] = 0,
-				["Press It"] = 0,
-				["Precise Attack"] = 0,
-				["Shielded"] = 0,
-				["Uncommon Loot"] = 0,
-				["Money Surge"] = 0
-			},
-			["Amount"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Champions"] = 0,
-				["Fast"] = 0,
-				["Revitalize"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 0,
-				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 0,
-				["Planning Ahead"] = 0,
-				["Harvest"] = 0,
-				["Precise Attack"] = 0,
-				["Range"] = 0,
-				["Lifeline"] = 0,
-				["No Trait No Problem"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
-				["Regen"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["Drowsy"] = 0,
-				["Press It"] = 0,
-				["Quake"] = 0,
-				["Shielded"] = 0,
-				["Slayer"] = 0,
-				["Money Surge"] = 0
-			}
-		}
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -136,7 +77,7 @@ getgenv().Config = {
 		["Upgrade Method"] = "Hotbar left to right (until Max)",
 		["Prefer Position"] = {
 			["Double Dungeon"] = "Middle",
-			["Cavern"] = "Middle",
+			["Planet Namak"] = "Middle",
 			["Sand Village"] = "Middle",
 			["Shibuya Aftermath"] = "Middle",
 			["Mountain Shrine (Natural)"] = "Middle",
@@ -144,14 +85,14 @@ getgenv().Config = {
 			["Land of the Gods"] = "Middle",
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
-			["Ant Island"] = "Middle",
-			["Shibuya Station"] = "Middle",
-			["Blood-Red Chamber"] = "Middle",
-			["Planet Namak"] = "Middle",
 			["Tracks at the Edge of the World"] = "Middle",
+			["Shibuya Station"] = "Middle",
+			["Martial Island"] = "Middle",
+			["Cavern"] = "Middle",
+			["Ant Island"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Martial Island"] = "Middle"
+			["Blood-Red Chamber"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -161,41 +102,106 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = 0
 		},
+		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Land of the Gods"] = "-170.0379638671875, 1.2214683294296265, 208.72645568847656",
-			["Martial Island"] = "-487.8406066894531, 136.8050537109375, -454.28057861328125"
-		},
-		["Focus on Farm"] = true
+			["Martial Island"] = "-487.8406066894531, 136.8050537109375, -454.28057861328125",
+			["Land of the Gods"] = "-170.0379638671875, 1.2214683294296265, 208.72645568847656"
+		}
 	},
 	["Match Finished"] = {
 		["Auto Return Lobby"] = true,
 		["Auto Next"] = true,
 		["Replay Amount"] = 0,
+		["Return Lobby Failsafe"] = true,
 		["Auto Replay"] = true
 	},
-	["Claimer"] = {
-		["Auto Claim Battle Pass"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Collection Milestone"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Milestone"] = true
-	},
-	["Failsafe"] = {
-		["Disable Auto Teleport AFK Chamber"] = true,
-		["Auto Rejoin"] = true
-	},
-	["Secure"] = {
-		["Random Offset"] = true,
-		["Walk Around"] = true
+	["Modifier"] = {
+		["Restart Modifier"] = {
+			["Enable"] = true,
+			["Modifier"] = {
+				["Immunity"] = true
+			}
+		},
+		["Auto Modifier"] = {
+			["Prioritize"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 98,
+				["Fast"] = 0,
+				["Planning Ahead"] = 0,
+				["Fisticuffs"] = 0,
+				["Exploding"] = 100,
+				["Dodge"] = 0,
+				["Uncommon Loot"] = 0,
+				["Immunity"] = 99,
+				["Revitalize"] = 0,
+				["Harvest"] = 0,
+				["Precise Attack"] = 0,
+				["Range"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["Cooldown"] = 0,
+				["Exterminator"] = 0,
+				["King's Burden"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Regen"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Quake"] = 0,
+				["Shielded"] = 0,
+				["Slayer"] = 0,
+				["Money Surge"] = 0
+			},
+			["Enable"] = true,
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 0,
+				["Fast"] = 0,
+				["Planning Ahead"] = 0,
+				["Immunity"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
+				["Revitalize"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 0,
+				["Range"] = 0,
+				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
+				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Exterminator"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Cooldown"] = 0,
+				["Lifeline"] = 0,
+				["Press It"] = 0,
+				["Precise Attack"] = 0,
+				["Shielded"] = 0,
+				["Uncommon Loot"] = 0,
+				["Money Surge"] = 0
+			}
+		}
 	},
 	["Performance"] = {
 		["Boost FPS"] = true,
 		["Black Screen"] = true,
 		["Delete Entities"] = true
-	}
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},
+	["AutoExecute"] = true
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
