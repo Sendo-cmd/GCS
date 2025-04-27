@@ -1380,8 +1380,7 @@ Accounts = {
     },
     ["Juniorlnw5"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "TraitReroll",
     },
     ["Diablo039a"] = {
         "Log",
