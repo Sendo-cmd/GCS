@@ -73,7 +73,7 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "9999"
+            "CigramGamerTV"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -82,6 +82,9 @@ _G.User = {
             ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         },   
+    },
+    ["CigramGamerTV"] = {
+        ["Party Mode"] = true,
     },
     ["surx23"] = {
         ["Party Mode"] = true,
