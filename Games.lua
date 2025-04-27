@@ -14,7 +14,6 @@ Games = {
         ["ESSEN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EssenceN.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
-        ["BaseCFE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF_GojoE.lua",
         ["TraitReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Trait.lua",
         ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
         ["DioAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DioAuto.lua",
@@ -1736,6 +1735,10 @@ Accounts = {
     ["hiherbz22"] = {
         "Log",
         "IgrisAuto",
+    },
+    ["paralfar7347"] = {
+        "Log",
+        "BaseCF",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
