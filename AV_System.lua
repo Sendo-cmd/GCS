@@ -186,17 +186,9 @@ _G.User = {
     },
     ["8jH8lUH6ay3Ji0"] = {
         ["Auto Join Rift"] = true,
-        ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Mangkorn93100"
-        },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
         },
     },
     ["Brutaroth"] = {
