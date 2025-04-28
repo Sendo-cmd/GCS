@@ -1607,7 +1607,7 @@ Accounts = {
     },
     ["arzero2"] = {
         "Log",
-        "TraitReroll",
+        "SokoraAuto",
     },
     ["Xdyrdgyrdfg"] = {
         "Log",
