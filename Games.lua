@@ -1733,8 +1733,7 @@ Accounts = {
     },
     ["sans_dee1134"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "SokoraAuto",
     },
     ["hiherbz22"] = {
         "Log",
