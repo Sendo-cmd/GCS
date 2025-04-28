@@ -1373,7 +1373,8 @@ Accounts = {
     },
     ["OP_autokill"] = {
         "Log",
-        "SokoraAuto",
+        "System",
+        "PortalParty"
     },
     ["Juniorlnw5"] = {
         "Log",
