@@ -1609,6 +1609,10 @@ Accounts = {
         "Log",
         "SokoraAuto",
     },
+    ["Trxsh99"] = {
+        "Log",
+        "BaseGemInf",
+    },
     ["Xdyrdgyrdfg"] = {
         "Log",
         "BaseGem",
