@@ -73,7 +73,7 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "CigramGamerTV"
+            "N999a"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -236,9 +236,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "sans_dee1134",
-            "bam87871",
-            "Chok248"
+            "bam87871"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter

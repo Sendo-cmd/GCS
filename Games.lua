@@ -97,8 +97,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "System",
-        "Dragon",
+        "TraitReroll",
     },
     ["maser080"] = {
         "Log",
@@ -1662,61 +1661,61 @@ Accounts = {
         "PortalParty",
     },
     ["aR8xV9v6JI0FV9"] = {
-        "GMe",
+        "Log",
     },
     ["J9O0Eg0cQ03MCV"] = {
-        "GMe",
+        "Log",
     },
     ["v0k9Seb9nB6q0P"] = {
-        "GMe",
+        "Log",
     },
     ["c97m7VvHFTPZ19"] = {
-        "GMe",
+        "Log",
     },
     ["A6bU2F244SgVIL"] = {
-        "GMe",
+        "Log",
     },
     ["x8s0r1y5knI3Ls"] = {
-        "GMe",
+        "Log",
     },
     ["s1t4d4vPKqIz61"] = {
-        "GMe",
+        "Log",
     },
     ["s0SoYQ84GXSc12"] = {
-        "GMe",
+        "Log",
     },
     ["R6W2iU8NY0Yt0y"] = {
-        "GMe",
+        "Log",
     },
     ["HN0U173rfP9Rej"] = {
-        "GMe",
+        "Log",
     },
     ["GVU257sFK8en2v"] = {
-        "GMe",
+        "Log",
     },
     ["2Z7CsAUL631eyO"] = {
-        "GMe",
+        "Log",
     },
     ["2TdA1E6Ri13Vvc"] = {
-        "GMe",
+        "Log",
     },
     ["2p16ASLfOpL04N"] = {
-        "GMe",
+        "Log",
     },
     ["Js5Sa48yS05SBI"] = {
-        "GMe",
+        "Log",
     },
     ["E245uF79awrOox"] = {
-        "GMe",
+        "Log",
     },
     ["u18PbJ2q2SZdx9"] = {
-        "GMe",
+        "Log",
     },
     ["tjr23sqU554Jqv"] = {
-        "GMe",
+        "Log",
     },
     ["HnD9n1lVJ4Ap23"] = {
-        "GMe",
+        "Log",
     },
     ["DreamUWU1"] = {
         "Log",
