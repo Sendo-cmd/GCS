@@ -1380,6 +1380,10 @@ Accounts = {
         "Log",
         "TraitReroll",
     },
+    ["OVERDOG_KUNG"] = {
+        "Log",
+        "TraitReroll",
+    },
     ["Diablo039a"] = {
         "Log",
         "System",
