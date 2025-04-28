@@ -46,9 +46,9 @@ getgenv().Config = {
 	["Gameplay"] = {
 		["Double Dungeon"] = {
 			["Auto Statue"] = true,
-			["Statue Unit"] = "Rom and Ran (Fanatic)",
+			["Statue Unit"] = "Dawntay (Jackpot)",
 			["Leave Extra Money"] = 5000,
-			["Upgrade Amount"] = 0
+			["Upgrade Amount"] = 2
 		},
 		["Auto Use Ability"] = true,
 		["The System"] = {
@@ -68,9 +68,9 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true,
 		["Shibuya Station"] = {
 			["Auto Mohato"] = true,
-			["Mohato Unit"] = "Rom and Ran (Fanatic)",
-			["Leave Extra Money"] = 0,
-			["Upgrade Amount"] = 1
+			["Mohato Unit"] = "Dawntay (Jackpot)",
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 2
 		}
 	},
 	["Daily Challenge Joiner"] = {
