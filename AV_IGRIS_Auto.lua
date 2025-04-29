@@ -45,9 +45,9 @@ getgenv().Config = {
 	},
 	["Gameplay"] = {
 		["Double Dungeon"] = {
-			["Upgrade Amount"] = 1,
+			["Upgrade Amount"] = 2,
 			["Statue Unit"] = "Rom and Ran (Fanatic)",
-			["Leave Extra Money"] = 0,
+			["Leave Extra Money"] = 5000,
 			["Auto Statue"] = true
 		},
 		["Shibuya Station"] = {
