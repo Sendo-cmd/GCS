@@ -185,13 +185,27 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["8jH8lUH6ay3Ji0"] = {
-        ["Auto Join Rift"] = true,
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Mangkorn93100"
+            "Reishthill26675",
+            "Rustwhir2660"
         },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },   
+    },
+    ["Rustwhir2660"] = {
+        ["Party Mode"] = true,
     },
     ["Brutaroth"] = {
+        ["Party Mode"] = true,
+    },
+    ["Reishthill26675"] = {
         ["Party Mode"] = true,
     },
     ["surasafe"] = {
