@@ -229,7 +229,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "bam87871",
-            "OP_autokill"
+            "OP_autokill",
+            "RyuzaaaV2"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter

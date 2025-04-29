@@ -273,7 +273,7 @@ Accounts = {
     },
     ["Estellburst"] = {
         "Log",
-        "BEIgrisAuto",
+        "TraitReroll",
     },
     ["tahkrisda126"] = {
         "Log",
@@ -1647,8 +1647,7 @@ Accounts = {
     },
     ["Chok248"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "SokoraAuto",
     },
     ["ggkong1412"] = {
         "Log",
@@ -1746,6 +1745,14 @@ Accounts = {
     ["paralfar7347"] = {
         "Log",
         "BaseCF",
+    },
+    ["GHeirtid"] = {
+        "Log",
+        "IgrisAuto",
+    },
+    ["F2PARXz"] = {
+        "Log",
+        "BaseGem",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
