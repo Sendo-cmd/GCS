@@ -1375,7 +1375,7 @@ Accounts = {
     ["OP_autokill"] = {
         "Log",
         "System",
-        "PortalParty"
+        "Dungeon",
     },
     ["Juniorlnw5"] = {
         "Log",

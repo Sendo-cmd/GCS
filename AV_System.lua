@@ -189,7 +189,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Reishthill26675",
-            "Rustwhir2660"
+            "Rustwhir2660",
+            "OP_autokill"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -243,7 +244,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "bam87871",
-            "OP_autokill",
             "RyuzaaaV2"
         },
         ["Portal Settings"] = {
