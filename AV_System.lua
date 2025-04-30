@@ -189,7 +189,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Reishthill26675",
-            "Rustwhir2660",
             "OP_autokill"
         },
         ["Dungeon Settings"] = {
