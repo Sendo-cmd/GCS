@@ -30,7 +30,7 @@ if IsTimeChamber then
                 ["content-type"] = "application/json"
             },
             ["Body"] = HttpService:JSONEncode({
-                ["Method"] = "Update",
+                ["Method"] = "Update-AFK",
                 ["Time Chamber"] = true,
                 ["Username"] = plr.Name,
                 ["PlayerData"] = PlayerData,
