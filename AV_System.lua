@@ -107,9 +107,6 @@ _G.User = {
     ["OPggripTH"] = {
         ["Party Mode"] = true,
     },
-    ["8jH8lUH6ay3Ji0"] = {
-        ["Party Mode"] = true,
-    },
     ["Chok248"] = {
         ["Party Mode"] = true,
     },
@@ -186,21 +183,6 @@ _G.User = {
     },
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
-    },
-    ["8jH8lUH6ay3Ji0"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Reishthill26675",
-            "OP_autokill"
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },   
     },
     ["Rustwhir2660"] = {
         ["Party Mode"] = true,
