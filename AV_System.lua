@@ -227,8 +227,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "bam87871",
-            "RyuzaaaV2"
+            "paralfar7347"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -252,6 +251,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["paralfar7347"] = {
+        ["Party Mode"] = true,
     },
     ["bam87871"] = {
         ["Party Mode"] = true,
