@@ -164,11 +164,11 @@ _G.User = {
     ["BeeKak1"] = {
         ["Party Mode"] = true,
     },
-    ["HP_GTR"] = {
+    ["8jH8lUH6ay3Ji0"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Valkor72009"
+            "Alawihuf8081"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -177,6 +177,9 @@ _G.User = {
             ["Stage"] = "Kuinshi Palace",
             ["FriendsOnly"] = false
         },
+    },
+    ["Alawihuf8081"] = {
+        ["Party Mode"] = true,
     },
     ["Valkor72009"] = {
         ["Party Mode"] = true,

@@ -1481,7 +1481,7 @@ Accounts = {
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
         "System",
-        "Dungeon",
+        "YomomataAuto",
     },
     ["JanMesu"] = {
         "Log",
