@@ -169,7 +169,7 @@ _G.User = {
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act3",
+            ["Act"] = "Act1",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Kuinshi Palace",
             ["FriendsOnly"] = false
