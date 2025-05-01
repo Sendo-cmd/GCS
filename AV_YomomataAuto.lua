@@ -190,6 +190,7 @@ getgenv().Config = {
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true,
+		["Auto Next"] = true,
 		["Replay Amount"] = 0
 	},
 	["Failsafe"] = {
