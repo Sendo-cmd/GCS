@@ -507,8 +507,7 @@ Accounts = {
     },
     ["Kreovx"] = {
         "Log",
-        "System",
-        "LovePortal",
+        "BaseGemInf",
     },
     ["quk1lp"] = {
         "Log",
@@ -1775,6 +1774,10 @@ Accounts = {
     },
     ["Dbhhceuhceuh"] = {
         "Log",
+    },
+    ["Flamesiraphat"] = {
+        "Log",
+        "TraitReroll",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
