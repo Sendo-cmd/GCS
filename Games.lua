@@ -82,7 +82,7 @@ Games = {
         ["CursedT"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Cursed.lua",
         ["AssPack"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_AssPack.lua",
         ["RunDungeon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_RunDungeon.lua",
-    }
+    },
     [6884266247] = { --Anime Rangers X
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_System.lua",
