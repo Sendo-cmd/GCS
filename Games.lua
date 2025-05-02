@@ -123,7 +123,7 @@ Accounts = {
     },
     ["SDEgFGtxuid"] = {
        "Log",
-       "BaseGemInf",
+       "Worldline",
     },
     ["SugarSnow_84782"] = {
         "StarGem",
@@ -988,7 +988,7 @@ Accounts = {
     },
     ["MFBF_7640"] = {
         "Log",
-        "SukonoAuto",
+        "TraitReroll",
     },
     ["ilovecat326"] = {
         "Log",
@@ -1761,7 +1761,7 @@ Accounts = {
     },
     ["F2PARXz"] = {
         "Log",
-        "BaseGem",
+        "IgrisAuto",
     },
     ["Reishthill26675"] = {
         "Log",
