@@ -8,22 +8,23 @@ if game.GameId ~= 6884266247 then return warn("Doesn't match ID") end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui["LoadingDataUI"].Enabled
 print("Loading..") task.wait(5)
 _G.User = {
-    ["SHIFUGOD"] = {
-        ["Select End Method"] = "VoteNext",
-        ["Select Mode"] = "Story", -- Story , Ranger
+    ["FireBlackDevilZ"] = {
+        ["Select End Method"] = "VoteRetry",
+        ["Select Mode"] = "Story", -- Story , Ranger, Event
         ["Story Settings"] = {
             ["World"] = "Voocha Village",
-            ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
+            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
             ["Level"] = "10",
             ["Friend Only"] = true,
         },
         ["Ranger Settings"] = {
             ["World"] = "Green Planet",
-            ["Level"] = "1",
+            ["Level"] = "2",
             ["Friend Only"] = true,
         },
     }
 }
+
 --[[
 Map
 Voocha Village
@@ -124,7 +125,7 @@ if Workspace:FindFirstChild("WayPoint") then
         task.spawn(function()
             while true do
                 if plr.PlayerGui.RewardsUI.Enabled then
-                    UseVote(Settings)
+                    UseVote(Settings["Select End Method"])
                 end
                 task.wait(1)
             end
@@ -185,7 +186,7 @@ if Workspace:FindFirstChild("WayPoint") then
                 end
             end)
             while Enabled do
-                if not workspace.Agent.UnitT:FindFirstChildWhichIsA("Part") or GetNearestPath() < LastPath/2 or PlaceAccess() or OneTimePlace then
+                if not workspace.Agent.UnitT:FindFirstChildWhichIsA("Part") or GetNearestPath() < math.floor(LastPath/2) or PlaceAccess() or OneTimePlace then
                     for i = 1,6 do 
                         local UnitLoadout = LocalData["UnitLoadout" .. i].Value 
                         if #UnitLoadout > 2 then
