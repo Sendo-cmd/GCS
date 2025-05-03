@@ -1529,11 +1529,6 @@ Accounts = {
         "System",
         "PortalParty",
     },
-    ["mangkorn93100"] = {
-        "Log",
-        "System",
-        "Rift",
-    },
     ["iPram0"] = {
         "Log",
         "BaseGemInf",
