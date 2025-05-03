@@ -69,6 +69,20 @@ _G.User = {
     ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
+    ["c97m7VvHFTPZ19"] = {
+        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Party Mode"] = false,
+        ["Party Member"] = {
+            "N999a"
+        },
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act1",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Land of the Gods",
+            ["FriendsOnly"] = false
+        },   
+    },
     ["GCshop2"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
