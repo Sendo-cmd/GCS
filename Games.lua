@@ -1483,7 +1483,7 @@ Accounts = {
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
         "System",
-        "YomomataAuto",
+        "Dungeon",
     },
     ["Alawihuf8081"] = {
         "Log",
@@ -1740,7 +1740,8 @@ Accounts = {
     },
     ["sans_dee1134"] = {
         "Log",
-        "SokoraAuto",
+        "System",
+        "Dungeon",
     },
     ["hiherbz22"] = {
         "Log",
