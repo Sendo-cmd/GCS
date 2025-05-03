@@ -162,16 +162,16 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["8jH8lUH6ay3Ji0"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Alawihuf8081"
+            "sans_dee1134"
         },
-        ["Legend Settings"] = {
+        ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act1",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Kuinshi Palace",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },
     },
