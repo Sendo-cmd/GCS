@@ -227,7 +227,9 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "paralfar7347"
+            "masxteng38",
+            "paralfar7347",
+            "Easyblox_P2CWU"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -251,6 +253,12 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["Easyblox_P2CWU"] = {
+        ["Party Mode"] = true,
+    },
+    ["masxteng38"] = {
+        ["Party Mode"] = true,
     },
     ["paralfar7347"] = {
         ["Party Mode"] = true,

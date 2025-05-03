@@ -90,7 +90,6 @@ Games = {
 }
 Accounts = {
     ["FireBlackDevilZ"] = {
-        "Log",
         "System",
      },
     ["SHIFUGOD"] = {
@@ -911,7 +910,8 @@ Accounts = {
     },
     ["masxteng38"] = {
         "Log",
-        "BaseGem",
+        "System",
+        "PortalParty",
     },
     ["GetgetTHTV"] = {
         "Log",
@@ -1625,10 +1625,6 @@ Accounts = {
         "Log",
         "BaseGem",
     },
-    ["masxteng38"] = {
-        "Log",
-        "BaseGem",
-    },
     ["Villegas7qs"] = {
         "Log",
         "BaseGemInf",
@@ -1783,6 +1779,12 @@ Accounts = {
         "Log",
         "YomomataAuto",
     },
+    ["Easyblox_P2CWU"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
