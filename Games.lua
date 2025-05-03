@@ -1779,6 +1779,10 @@ Accounts = {
         "Log",
         "TraitReroll",
     },
+    ["jdhufhdsukfhk"] = {
+        "Log",
+        "YomomataAuto",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
