@@ -179,7 +179,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "sans_dee1134"
+            "sans_dee1134",
+            "Mangkorn93100"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
