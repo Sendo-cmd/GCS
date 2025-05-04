@@ -82,8 +82,6 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "aR8xV9v6JI0FV9",
-            "R6W2iU8NY0Yt0y",
             "1dayforfirst"
         },
         ["Legend Settings"] = {
@@ -191,7 +189,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "sans_dee1134",
-            "Mangkorn93100"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
