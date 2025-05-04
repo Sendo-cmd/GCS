@@ -79,17 +79,17 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["c97m7VvHFTPZ19"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "1dayforfirst",
             "8jH8lUH6ay3Ji0"
         },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act1",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Land of the Gods",
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act6",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
             ["FriendsOnly"] = false
         }, 
     },

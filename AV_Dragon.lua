@@ -95,7 +95,7 @@ getgenv().Config = {
 	},
 	["Modifier"] = {
 		["Restart Modifier"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["Modifier"] = {
 				["Immunity"] = true
 			}
@@ -250,11 +250,6 @@ getgenv().Config = {
 			["Red Essence Stone"] = 50,
 			["Yellow Essence Stone"] = 50,
 			["Purple Essence Stone"] = 50
-		}
-	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
 		}
 	},
 	["Performance"] = {
