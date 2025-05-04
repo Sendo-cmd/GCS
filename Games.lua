@@ -1670,7 +1670,7 @@ Accounts = {
     ["aR8xV9v6JI0FV9"] = {
         "Log",
         "System",
-        "Dragon",
+        "DragonP",
     },
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
@@ -1681,7 +1681,7 @@ Accounts = {
     ["c97m7VvHFTPZ19"] = {
         "Log",
         "System",
-        "DragonP",
+        "Dragon",
     },
     ["A6bU2F244SgVIL"] = {
         "Log",
@@ -1698,7 +1698,7 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Dragon",
+        "DragonP",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -1802,7 +1802,11 @@ Accounts = {
     ["mac12345uo"] = {
         "Log",
     },
-    
+    ["1dayforfirst"] = {
+        "Log",
+        "System",
+        "DragonP",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 

@@ -82,7 +82,7 @@ getgenv().Config = {
 	},
 	["Modifier"] = {
 		["Restart Modifier"] = {
-			["Enable"] = false,
+			["Enable"] = true,
 			["Modifier"] = {
 				["Immunity"] = true
 			}

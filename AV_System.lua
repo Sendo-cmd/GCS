@@ -75,12 +75,16 @@ _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
         ["Party Mode"] = true,
     },
+    ["1dayforfirst"] = {
+        ["Party Mode"] = true,
+    },
     ["c97m7VvHFTPZ19"] = {
         ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "aR8xV9v6JI0FV9",
-            "R6W2iU8NY0Yt0y"
+            "R6W2iU8NY0Yt0y",
+            "1dayforfirst"
         },
         ["Story Settings"] = {
             ["Difficulty"] = "Normal",
