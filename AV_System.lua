@@ -249,9 +249,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "masxteng38",
-            "paralfar7347",
-            "Easyblox_P2CWU"
+            "masxteng38"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
