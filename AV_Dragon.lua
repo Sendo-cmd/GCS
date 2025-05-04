@@ -275,7 +275,7 @@ getgenv().Config = {
 	},
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Land of the Gods",
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Act"] = "Act1"
 	},
 	["Claimer"] = {
