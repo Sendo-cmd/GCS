@@ -79,20 +79,20 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["c97m7VvHFTPZ19"] = {
-        ["Select Mode"] = "Story", -- Portal
+        ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
             "aR8xV9v6JI0FV9",
             "R6W2iU8NY0Yt0y",
             "1dayforfirst"
         },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Martial Island",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
-        },   
+        }, 
     },
     ["GCshop2"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
