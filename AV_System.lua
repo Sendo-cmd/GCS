@@ -82,7 +82,8 @@ _G.User = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "1dayforfirst"
+            "1dayforfirst",
+            "8jH8lUH6ay3Ji0"
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -185,18 +186,18 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["8jH8lUH6ay3Ji0"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+        -- ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "sans_dee1134",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
+        -- ["Party Member"] = {
+        --     "sans_dee1134",
+        -- },
+        -- ["Dungeon Settings"] = {
+        --     ["Difficulty"] = "Nightmare",
+        --     ["Act"] = "AntIsland",
+        --     ["StageType"] = "Dungeon",
+        --     ["Stage"] = "Ant Island",
+        --     ["FriendsOnly"] = false
+        -- },
     },
     ["Alawihuf8081"] = {
         ["Party Mode"] = true,
