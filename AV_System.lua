@@ -77,7 +77,7 @@ _G.User = {
     },
     ["c97m7VvHFTPZ19"] = {
         ["Select Mode"] = "Story", -- Portal
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
             "aR8xV9v6JI0FV9",
             "R6W2iU8NY0Yt0y"
