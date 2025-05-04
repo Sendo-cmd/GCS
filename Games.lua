@@ -1795,6 +1795,13 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
+    ["GOF66ABC"] = {
+        "Log",
+        "BaseGemInf",
+    },
+    ["mac12345uo"] = {
+        "Log",
+    },
     
 }
 repeat task.wait(5) until game:IsLoaded(5)
