@@ -113,7 +113,7 @@ _G.User = {
     ["surx23"] = {
         ["Party Mode"] = true,
     },
-    ["icemateenoobth"] = {
+    ["GHeirtid"] = {
         ["Party Mode"] = true,
     },
     ["MRLUCKY_SKYZA"] = {
@@ -251,7 +251,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "masxteng38"
+            "GHeirtid"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter

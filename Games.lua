@@ -1752,7 +1752,8 @@ Accounts = {
     },
     ["GHeirtid"] = {
         "Log",
-        "IgrisAuto",
+        "System",
+        "PortalParty",
     },
     ["F2PARXz"] = {
         "Log",
