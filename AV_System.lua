@@ -82,8 +82,7 @@ _G.User = {
         ["Select Mode"] = "Story", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "1dayforfirst",
-            "8jH8lUH6ay3Ji0"
+            "1dayforfirst"
         },
         ["Story Settings"] = {
             ["Difficulty"] = "Normal",
