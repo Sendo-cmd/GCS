@@ -104,7 +104,6 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Worldline",
     },
     ["maser080"] = {
         "Log",
