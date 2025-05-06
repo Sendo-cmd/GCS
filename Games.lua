@@ -761,7 +761,7 @@ Accounts = {
     ["NANO_SHOP04"] = {
         "Log",
         "Marco",
-        "DungeonAK",
+        "CidP",
     },
     ["godre902"] = {
         "Log",

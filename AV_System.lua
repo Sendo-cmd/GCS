@@ -99,7 +99,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Chok248",
-            "icemateenoobth"
+            "icemateenoobth",
+            "NANO_SHOP04"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -108,6 +109,9 @@ _G.User = {
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },   
+    },
+    ["NANO_SHOP04"] = {
+        ["Party Mode"] = true,
     },
     ["icemateenoobth"] = {
         ["Party Mode"] = true,
