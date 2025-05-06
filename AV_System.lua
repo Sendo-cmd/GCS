@@ -282,7 +282,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GHeirtid"
+            "Yuyttxutescwq"
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -292,12 +292,11 @@ _G.User = {
             ["Ignore Modify"] = {},
         },   
     },
-    ["Yq34Uk84nh8aHE"] = {
+    ["A6bU2F244SgVIL"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "enonef2",
-            "zxzxc666"
+            "Yuyttxutescwq"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -319,7 +318,7 @@ _G.User = {
     ["paralfar7347"] = {
         ["Party Mode"] = true,
     },
-    ["bam87871"] = {
+    ["Yuyttxutescwq"] = {
         ["Party Mode"] = true,
     },
     ["aocyms"] = {
