@@ -102,7 +102,7 @@ _G.User = {
             "icemateenoobth"
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
+            ["Difficulty"] = "Normal",
             ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
