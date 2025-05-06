@@ -1099,7 +1099,7 @@ Accounts = {
     ["canonA624"] = {
         "Log",
         "System",
-        "PortalParty",
+        "CidP",
     },
     ["Pokampud"] = {
         "Log",

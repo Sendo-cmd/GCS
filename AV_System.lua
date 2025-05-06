@@ -58,7 +58,7 @@ _G.User = {
     ["JapanMovieTH12"] = {
         ["Party Mode"] = true,
     },
-    ["AutomodevDP5Lh"] = {
+    ["canonA624"] = {
         ["Party Mode"] = true,
     },
     ["EliXXLRkF"] = {
@@ -91,6 +91,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Mangkorn93100",
+            "canonA624"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
