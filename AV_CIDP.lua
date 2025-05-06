@@ -193,7 +193,7 @@ getgenv().Config = {
 		["Feed Level"] = 60
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
+		["Walk Around"] = false,
 		["Random Offset"] = true
 	},
 	["Modifier"] = {

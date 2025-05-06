@@ -234,7 +234,7 @@ getgenv().Config = {
 	},
 	["Secure"] = {
 		["Random Offset"] = true,
-		["Walk Around"] = true
+		["Walk Around"] = false
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
