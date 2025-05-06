@@ -1,3 +1,80 @@
+_G.User = {
+    ["FireBlackDevilZ"] = {
+        ["Auto Play"] = {
+            ["Enabled"] = true,
+        },
+        ["Select Mode"] = "Story", -- Story , Event , Challenge
+        ["Ranger Enabled"] = true,
+        ["Party Mode"] = false,
+
+        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+        ["Story Settings"] = {
+            ["World"] = "Z City",
+            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+            ["Level"] = "1",
+            ["Friend Only"] = true,
+        },
+        ["Ranger Settings"] = {
+            ["World"] = {
+                ["Green Planet"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Leaf Village"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+            },
+            ["Friend Only"] = true,
+        },
+    },
+}
+local Settings = {
+    ["Auto Play"] = {
+        ["Enabled"] = true,
+    },
+    ["Select Mode"] = "Story", -- Story , Event , Challenge
+    ["Ranger Enabled"] = true,
+    ["Party Mode"] = false,
+
+    ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+    ["Story Settings"] = {
+        ["World"] = "Voocha Village",
+        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
+        ["Level"] = "1",
+        ["Friend Only"] = true,
+    },
+    ["Ranger Settings"] = {
+        ["World"] = {
+            ["Voocha Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Green Planet"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Demon Forest"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Leaf Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+        },
+        ["Friend Only"] = true,
+    },
+}
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -7,23 +84,6 @@ game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("LoadingDataUI",3)
 if game.GameId ~= 6884266247 then return warn("Doesn't match ID") end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui["LoadingDataUI"].Enabled
 print("Loading..") task.wait(5)
-_G.User = {
-    ["FireBlackDevilZ"] = {
-        ["Select End Method"] = "VoteRetry",
-        ["Select Mode"] = "Story", -- Story , Ranger, Event
-        ["Story Settings"] = {
-            ["World"] = "Voocha Village",
-            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
-            ["Level"] = "10",
-            ["Friend Only"] = true,
-        },
-        ["Ranger Settings"] = {
-            ["World"] = "Green Planet",
-            ["Level"] = "2",
-            ["Friend Only"] = true,
-        },
-    }
-}
 
 --[[
 Map
@@ -59,36 +119,19 @@ end
 local Worlds = LoadModule(game:GetService("ReplicatedStorage").Shared.Info.GameWorld.World)
 -- Variables
 local plr = game.Players.LocalPlayer
+local VisualEvent = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Remote = ReplicatedStorage:WaitForChild("Remote")
+local Values = ReplicatedStorage:WaitForChild("Values")
 local Server = Remote:WaitForChild("Server")
 local Client = Remote:WaitForChild("Client")
+local Data = ReplicatedStorage.Player_Data[plr.Name]
+local LocalData = Data:WaitForChild("Data")
+local Collection = Data:WaitForChild("Collection")
 local MapIndexs = {}
 local Character = plr.Character or plr.CharacterAdded:Wait()
 
-local Settings = {
-    ["Auto Play"] = {
-        ["Enabled"] = true,
-    },
-    ["Select Mode"] = "Story", -- Story , Ranger
- 
-    ["Party Mode"] = false,
 
-    ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
-
-    ["Story Settings"] = {
-        ["World"] = "Voocha Village",
-        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
-        ["Level"] = "1",
-        ["Friend Only"] = true,
-    },
-    ["Ranger Settings"] = {
-        ["World"] = "Voocha Village",
-        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
-        ["Level"] = "1",
-        ["Friend Only"] = true,
-    },
-}
 
 if _G.User[plr.Name] then
     for i,v in pairs(_G.User[plr.Name]) do
@@ -115,11 +158,62 @@ end
 local function UseVote(path,...)
     Server:WaitForChild("OnGame"):WaitForChild("Voting"):WaitForChild(path):FireServer(...)
 end
+local function Reverse_ID(id)
+    return id:split("_")[1]
+end
+local function IsRangerCD()
+    if Settings["Ranger Enabled"] then
+        local Setting = Settings["Ranger Settings"]
+        for i,v in pairs(Setting["World"]) do
+            for i1,v1 in pairs(v) do
+                print(Data["RangerStage"])
+                if not Data["RangerStage"]:FindFirstChild(Get_Ranger(i,v1)) then
+                    return Get_Ranger(i,v1)
+                end
+            end 
+        end
+    end
+    return false
+end
 -- Script Sections 
-
+local RangerIsCD = IsRangerCD()
+local CurrentIs = RangerIsCD and "Ranger Stage" or Settings["Select Mode"] 
+local function Join()
+    if not Settings["Party Mode"] then
+        if Settings["Ranger Enabled"] and RangerIsCD then
+            print(RangerIsCD)
+            local Setting = Settings["Ranger Settings"]
+            Event("Create") task.wait(.2)
+            if Setting["Friend Only"] then
+                Event("Change-FriendOnly") task.wait(.2)
+            end
+            Event("Change-Mode",{Mode = "Ranger Stage"}) task.wait(.2)
+            Event("Change-World",{World = MapIndexs[Reverse_ID(RangerIsCD)]}) task.wait(.2)
+            Event("Change-Chapter",{Chapter = RangerIsCD}) task.wait(.2)
+            Event("Submit") task.wait(.2)
+            Event("Start") task.wait(10)
+        end
+        if Settings["Select Mode"] == "Story" then
+            local Setting = Settings[Settings["Select Mode"] .. " Settings"]
+            Event("Create") task.wait(.2)
+            if Setting["Friend Only"] then
+                Event("Change-FriendOnly") task.wait(.2)
+            end
+            Event("Change-World",{World = MapIndexs[Setting["World"]]}) task.wait(.2)
+            Event("Change-Chapter",{Chapter = Get_Story(Setting["World"],Setting["Level"])}) task.wait(.2)
+            Event("Change-Difficulty",{Difficulty = Setting["Difficulty"]}) task.wait(.2)
+            Event("Submit") 
+        elseif Settings["Select Mode"] == "Event" then
+            Event("Easter-Event")
+           
+        elseif Settings["Select Mode"] == "Challenge" then
+            Event("Create",{CreateChallengeRoom = true})
+        end
+        Event("Start")
+    end
+end 
 -- In-Game
-if Workspace:FindFirstChild("WayPoint") then
-    
+if Workspace:FindFirstChild("WayPoint")then
     local Setting = Settings["Auto Play"]
     if Setting["Enabled"] then
         task.spawn(function()
@@ -130,13 +224,30 @@ if Workspace:FindFirstChild("WayPoint") then
                 task.wait(1)
             end
         end)
-
+        task.spawn(function()
+            while true do
+                if plr.PlayerGui.Visual:FindFirstChild("Showcase_Units") then
+                    VisualEvent:SendMouseButtonEvent(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2  - (game:GetService("GuiService"):GetGuiInset().Y/2), 0, true, game, 1) task.wait()
+                    VisualEvent:SendMouseButtonEvent(workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2  - (game:GetService("GuiService"):GetGuiInset().Y/2), 0, false, game, 1)
+                end
+                task.wait(1)
+            end
+        end)
         local function AutoPlay()
+            RangerIsCD = IsRangerCD()
+            print(RangerIsCD ,Values.Game.Level.Value)
+            if RangerIsCD ~= Values.Game.Level.Value then
+                Join()
+            elseif Values.Game.Gamemode.Value ~= CurrentIs then
+                print(Values.Game.Gamemode.Value,CurrentIs)
+                Join()
+                
+            end
+            
+            
             local Enabled = true
             local GameCF = LoadModule(game:GetService("ReplicatedStorage").Shared.GAMEPLAY_CONFIG)
-            local Data = ReplicatedStorage.Player_Data[plr.Name]
-            local LocalData = Data:WaitForChild("Data")
-            local Collection = Data:WaitForChild("Collection")
+           
             local LastGetPath = tick()
             local LastPath = #workspace.WayPoint:GetChildren()
             local LastPlace = tick()
@@ -230,29 +341,7 @@ if Workspace:FindFirstChild("WayPoint") then
     -- Deploy()
     return false 
 end
+
 -- No Party
-if not Settings["Party Mode"] then
-    if Settings["Select Mode"] == "Story" then
-        local Setting = Settings[Settings["Select Mode"] .. " Settings"]
-        Event("Create") task.wait(.2)
-        if Setting["Friend Only"] then
-            Event("Change-FriendOnly") task.wait(.2)
-        end
-        Event("Change-World",{World = MapIndexs[Setting["World"]]}) task.wait(.2)
-        Event("Change-Chapter",{Chapter = Get_Story(Setting["World"],Setting["Level"])}) task.wait(.2)
-        Event("Change-Difficulty",{Difficulty = Setting["Difficulty"]}) task.wait(.2)
-        Event("Submit") task.wait(.2)
-    elseif Settings["Select Mode"] == "Ranger" then
-        local Setting = Settings[Settings["Select Mode"] .. " Settings"]
-        Event("Create") task.wait(.2)
-        if Setting["Friend Only"] then
-            Event("Change-FriendOnly") task.wait(.2)
-        end
-        Event("Change-Mode",{Mode = "Ranger Stage"}) task.wait(.2)
-        Event("Change-World",{World = MapIndexs[Setting["World"]]}) task.wait(.2)
-        Event("Change-Chapter",{Chapter = Get_Ranger(Setting["World"],Setting["Level"])}) task.wait(.2)
-        Event("Submit") task.wait(.2)
-    end
-    Event("Start")
-end
+Join()
 
