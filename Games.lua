@@ -1150,7 +1150,18 @@ Accounts = {
     },
     ["Turlizoha3831"] = {
         "Log",
-        "Portal",
+        "System",
+        "CidP",
+    },
+    ["deenhumyai"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["EliXXLRkF"] = {
+        "Log",
+        "System",
+        "CidP",
     },
     ["rain4834"] = {
         "Log",
@@ -1677,6 +1688,8 @@ Accounts = {
     },
     ["aR8xV9v6JI0FV9"] = {
         "Log",
+        "System",
+        "Cid",
     },
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
@@ -1703,6 +1716,8 @@ Accounts = {
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
+        "System",
+        "Cid",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -1768,7 +1783,7 @@ Accounts = {
     ["Mangkorn93100"] = {
         "Log",
         "System",
-        "Dungeon",
+        "CidP",
     },
     ["Reishthill26675"] = {
         "Log",

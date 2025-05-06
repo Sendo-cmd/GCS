@@ -61,20 +61,44 @@ _G.User = {
     ["AutomodevDP5Lh"] = {
         ["Party Mode"] = true,
     },
-    ["Bregas1170"] = {
+    ["EliXXLRkF"] = {
         ["Party Mode"] = true,
     },
-    ["YoScoreDummy"] = {
+    ["deenhumyai"] = {
         ["Party Mode"] = true,
     },
-    ["ilovecat326"] = {
+    ["Turlizoha3831"] = {
         ["Party Mode"] = true,
     },
     ["aR8xV9v6JI0FV9"] = {
+        ["Select Mode"] = "Raid", -- Portal
         ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Turlizoha3831",
+            "deenhumyai",
+            "EliXXLRkF"
+        },
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
+            ["FriendsOnly"] = false
+        },
     },
     ["R6W2iU8NY0Yt0y"] = {
+        ["Select Mode"] = "Raid", -- Portal
         ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Mangkorn93100",
+        },
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
+            ["FriendsOnly"] = false
+        },
     },
     ["1dayforfirst"] = {
         ["Party Mode"] = true,
