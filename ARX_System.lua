@@ -1,3 +1,14 @@
+
+--[[
+Map
+Voocha Village
+Green Planet
+Demon Forest
+Leaf Village
+Z City
+Cursed Town
+Easter Egg
+]]
 _G.User = {
     ["FireBlackDevilZ"] = {
         ["Auto Play"] = {
@@ -69,18 +80,6 @@ game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("LoadingDataUI",3)
 if game.GameId ~= 6884266247 then return warn("Doesn't match ID") end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui["LoadingDataUI"].Enabled
 print("Loading..") task.wait(5)
-
---[[
-Map
-Voocha Village
-Green Planet
-Demon Forest
-Leaf Village
-Z City
-Cursed Town
-Easter Egg
-]]
-
 
 -- Service
 local HttpService = game:GetService("HttpService")
