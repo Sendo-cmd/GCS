@@ -1442,8 +1442,7 @@ Accounts = {
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["traijo"] = {
         "Log",
@@ -1704,6 +1703,7 @@ Accounts = {
     },
     ["A6bU2F244SgVIL"] = {
         "Log",
+        "Dungeon",
     },
     ["x8s0r1y5knI3Ls"] = {
         "Log",
