@@ -319,7 +319,18 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Yuyttxutescwq"] = {
-        ["Party Mode"] = true,
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Party Mode"] = false,
+        ["Party Member"] = {
+            "a"
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },   
     },
     ["aocyms"] = {
         ["Party Mode"] = true,
