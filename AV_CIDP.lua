@@ -167,7 +167,7 @@ getgenv().Config = {
 		["Middle Position"] = {
 			["Ruined City"] = "1039.1806640625, 6.927220821380615, -284.40570068359375"
 		},
-		["Focus on Farm"] = true,
+		["Focus on Farm"] = false,
 		["Place Gap"] = {
 			["Double Dungeon"] = 2,
 			["Cavern"] = 2,
