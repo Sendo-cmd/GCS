@@ -57,7 +57,7 @@ getgenv().Config = {
 			}
 		},
 		["Ruined City"] = {
-			["Active Tower"] = true,
+			["Active Tower"] = false,
 			["Use Mount to Travel"] = true
 		},
 		["The System"] = {
