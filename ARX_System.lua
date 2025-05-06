@@ -1,4 +1,3 @@
-
 --[[
 Map
 Voocha Village
@@ -43,34 +42,6 @@ _G.User = {
         },
     },
 }
-local Settings = {
-    ["Auto Play"] = {
-        ["Enabled"] = true,
-    },
-    ["Select Mode"] = "Story", -- Story , Event , Challenge
-    ["Ranger Enabled"] = false,
-    ["Party Mode"] = false,
-
-    ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
-
-    ["Story Settings"] = {
-        ["World"] = "Voocha Village",
-        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
-        ["Level"] = "1",
-        ["Friend Only"] = true,
-    },
-    ["Ranger Settings"] = {
-        ["World"] = {
-            ["Voocha Village"] = {
-                [1] = "1",
-                [2] = "2",
-                [3] = "3",
-            },
-        },
-        ["Friend Only"] = true,
-    },
-}
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -149,8 +120,9 @@ local function IsRangerCD()
     if Settings["Ranger Enabled"] then
         local Setting = Settings["Ranger Settings"]
         for i,v in pairs(Setting["World"]) do
+            -- print(i,v)
             for i1,v1 in pairs(v) do
-                print(Data["RangerStage"])
+                print(Data["RangerStage"],i,v1)
                 if not Data["RangerStage"]:FindFirstChild(Get_Ranger(i,v1)) then
                     return Get_Ranger(i,v1)
                 end
@@ -165,14 +137,14 @@ local CurrentIs = RangerIsCD and "Ranger Stage" or Settings["Select Mode"]
 local function Join()
     if not Settings["Party Mode"] then
         if Settings["Ranger Enabled"] and RangerIsCD then
-            print(RangerIsCD)
+            -- print(RangerIsCD)
             local Setting = Settings["Ranger Settings"]
             Event("Create") task.wait(.2)
             if Setting["Friend Only"] then
                 Event("Change-FriendOnly") task.wait(.2)
             end
             Event("Change-Mode",{Mode = "Ranger Stage"}) task.wait(.2)
-            Event("Change-World",{World = MapIndexs[Reverse_ID(RangerIsCD)]}) task.wait(.2)
+            Event("Change-World",{World = Reverse_ID(RangerIsCD)}) task.wait(.2)
             Event("Change-Chapter",{Chapter = RangerIsCD}) task.wait(.2)
             Event("Submit") task.wait(.2)
             Event("Start") task.wait(10)

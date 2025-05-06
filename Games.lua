@@ -1756,7 +1756,7 @@ Accounts = {
     },
     ["F2PARXz"] = {
         "Log",
-        "IgrisAuto",
+        "BaseGem",
     },
     ["Mangkorn93100"] = {
         "Log",
