@@ -8,8 +8,10 @@ Z City
 Cursed Town
 Easter Egg
 ]]
+
+
 _G.User = {
-    ["FireBlackDevilZ"] = {
+    ["CAVIARHUB"] = {
         ["Auto Play"] = {
             ["Enabled"] = true,
         },
@@ -20,14 +22,108 @@ _G.User = {
         ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
 
         ["Story Settings"] = {
-            ["World"] = "Z City",
+            ["World"] = "Easter Egg",
             ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
             ["Level"] = "1",
             ["Friend Only"] = true,
         },
         ["Ranger Settings"] = {
             ["World"] = {
+                ["Voocha Village"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
                 ["Green Planet"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Demon Forest"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Leaf Village"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+            },
+            ["Friend Only"] = true,
+        },
+    },
+    ["CAVIARHUB"] = {
+        ["Auto Play"] = {
+            ["Enabled"] = true,
+        },
+        ["Select Mode"] = "Event", -- Story , Event , Challenge
+        ["Ranger Enabled"] = false,
+        ["Party Mode"] = false,
+
+        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+        ["Story Settings"] = {
+            ["World"] = "Easter Egg",
+            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+            ["Level"] = "1",
+            ["Friend Only"] = true,
+        },
+        ["Ranger Settings"] = {
+            ["World"] = {
+                ["Voocha Village"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Green Planet"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Demon Forest"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Leaf Village"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+            },
+            ["Friend Only"] = true,
+        },
+    },
+    ["maser080"] = {
+        ["Auto Play"] = {
+            ["Enabled"] = true,
+        },
+        ["Select Mode"] = "Event", -- Story , Event , Challenge
+        ["Ranger Enabled"] = false,
+        ["Party Mode"] = false,
+
+        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+        ["Story Settings"] = {
+            ["World"] = "Easter Egg",
+            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+            ["Level"] = "1",
+            ["Friend Only"] = true,
+        },
+        ["Ranger Settings"] = {
+            ["World"] = {
+                ["Voocha Village"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Green Planet"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Demon Forest"] = {
                     [1] = "1",
                     [2] = "2",
                     [3] = "3",
@@ -42,6 +138,54 @@ _G.User = {
         },
     },
 }
+local Settings = {
+    ["Auto Play"] = {
+        ["Enabled"] = true,
+    },
+    ["Select Mode"] = "Story", -- Story , Event , Challenge
+    ["Ranger Enabled"] = true,
+    ["Party Mode"] = false,
+
+    ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+    ["Story Settings"] = {
+        ["World"] = "Voocha Village",
+        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
+        ["Level"] = "1",
+        ["Friend Only"] = true,
+    },
+    ["Ranger Settings"] = {
+        ["World"] = {
+            ["Voocha Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Green Planet"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Demon Forest"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Leaf Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Z City"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+        },
+        ["Friend Only"] = true,
+    },
+}
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -143,6 +287,7 @@ local function Join()
             if Setting["Friend Only"] then
                 Event("Change-FriendOnly") task.wait(.2)
             end
+
             Event("Change-Mode",{Mode = "Ranger Stage"}) task.wait(.2)
             Event("Change-World",{World = Reverse_ID(RangerIsCD)}) task.wait(.2)
             Event("Change-Chapter",{Chapter = RangerIsCD}) task.wait(.2)
