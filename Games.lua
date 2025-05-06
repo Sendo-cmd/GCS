@@ -40,6 +40,8 @@ Games = {
         ["Dungeons"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DungAnts.lua",
         ["Dragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dragon.lua",
         ["DragonP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DragonP.lua",
+        ["Cid"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dragon.lua",
+        ["CidP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DragonP.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -104,6 +106,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
+        "System",
+        "Cid",
     },
     ["maser080"] = {
         "Log",
@@ -531,7 +535,12 @@ Accounts = {
     ["icemateenoobth"] = {
         "Log",
         "System",
-        "Dragon",
+        "CidP",
+    },
+    ["tanjiroxfire"] = {
+        "Log",
+        "System",
+        "CidP",
     },
     ["RadarxXx2020"] = {
         "Log",
@@ -1644,7 +1653,8 @@ Accounts = {
     },
     ["Chok248"] = {
         "Log",
-        "SokoraAuto",
+        "System",
+        "CidP",
     },
     ["ggkong1412"] = {
         "Log",

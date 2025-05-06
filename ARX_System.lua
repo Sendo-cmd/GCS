@@ -11,11 +11,11 @@ Easter Egg
 
 
 _G.User = {
-    ["CAVIARHUB"] = {
+    ["FireBlackDevilZ"] = {
         ["Auto Play"] = {
             ["Enabled"] = true,
         },
-        ["Select Mode"] = "Challenge", -- Story , Event , Challenge
+        ["Select Mode"] = "Event", -- Story , Event , Challenge
         ["Ranger Enabled"] = true,
         ["Party Mode"] = false,
 
@@ -29,17 +29,7 @@ _G.User = {
         },
         ["Ranger Settings"] = {
             ["World"] = {
-                ["Voocha Village"] = {
-                    [1] = "1",
-                    [2] = "2",
-                    [3] = "3",
-                },
                 ["Green Planet"] = {
-                    [1] = "1",
-                    [2] = "2",
-                    [3] = "3",
-                },
-                ["Demon Forest"] = {
                     [1] = "1",
                     [2] = "2",
                     [3] = "3",

@@ -48,6 +48,7 @@ Ant Island
 Raid Map
 Spider Forest
 Tracks at the Edge of the World
+Ruined City
 ]]
 
 _G.User = {
@@ -94,20 +95,21 @@ _G.User = {
         }, 
     },
     ["GCshop2"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Select Mode"] = "Raid", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "N999a"
+            "Chok248",
+            "icemateenoobth"
         },
-        ["Legend Settings"] = {
+        ["Raid Settings"] = {
             ["Difficulty"] = "Nightmare",
             ["Act"] = "Act1",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Land of the Gods",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },   
     },
-    ["CigramGamerTV"] = {
+    ["icemateenoobth"] = {
         ["Party Mode"] = true,
     },
     ["surx23"] = {
