@@ -1481,6 +1481,8 @@ Accounts = {
     },
     ["8jH8lUH6ay3Ji0"] = {
         "Log",
+        "System",
+        "Dragon",
     },
     ["Alawihuf8081"] = {
         "Log",
@@ -1499,7 +1501,7 @@ Accounts = {
     ["KOW7Po"] = {
         "Log",
         "System",
-        "LovePortal",
+        "Dragon",
     },
     ["PranlovelyP"] = {
         "Log",
@@ -1676,6 +1678,8 @@ Accounts = {
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
+        "System",
+        "DragonP",
     },
     ["A6bU2F244SgVIL"] = {
         "Log",

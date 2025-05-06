@@ -79,17 +79,17 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["c97m7VvHFTPZ19"] = {
-        ["Select Mode"] = "Story", -- Portal
+        ["Select Mode"] = "Legend Stage", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "1dayforfirst",
+            "KOW7Po",
             "8jH8lUH6ay3Ji0"
         },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act6",
-            ["StageType"] = "Story",
-            ["Stage"] = "Martial Island",
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act1",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         }, 
     },
@@ -275,6 +275,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["KOW7Po"] = {
+        ["Party Mode"] = true,
     },
     ["Easyblox_P2CWU"] = {
         ["Party Mode"] = true,
