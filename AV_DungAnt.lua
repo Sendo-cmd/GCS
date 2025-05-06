@@ -186,7 +186,7 @@ getgenv().Config = {
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
+		["Walk Around"] = false,
 		["Random Offset"] = true
 	},
 	["Claimer"] = {
