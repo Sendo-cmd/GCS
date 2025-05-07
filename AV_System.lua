@@ -143,7 +143,7 @@ _G.User = {
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Koopfoolxd2",
+            "KoopfoolxD2",
             "Alawihuf8081",
         },
         ["Raid Settings"] = {
@@ -153,6 +153,9 @@ _G.User = {
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },
+    },
+    ["KoopfoolxD2"] = {
+        ["Party Mode"] = true,
     },
     ["CaptainMaru863"] = {
         ["Party Mode"] = true,
