@@ -700,7 +700,7 @@ Accounts = {
     ["scp1774"] = {
         "Log",
         "System",
-        "LovePortal",
+        "CidP",
     },
     ["kong2562"] = {
         "Log",
@@ -1347,7 +1347,7 @@ Accounts = {
     ["CigramGamerTV"] = {
         "Log",
         "System",
-        "DragonP",
+        "CidP",
     },
     ["Levid098508"] = {
         "Log",
@@ -1700,7 +1700,7 @@ Accounts = {
     ["c97m7VvHFTPZ19"] = {
         "Log",
         "System",
-        "DragonP",
+        "Cid",
     },
     ["A6bU2F244SgVIL"] = {
         "Log",
@@ -1829,7 +1829,7 @@ Accounts = {
     ["1dayforfirst"] = {
         "Log",
         "System",
-        "Dragon",
+        "CidP",
     },
     ["PXDLKIG"] = {
         "Log",

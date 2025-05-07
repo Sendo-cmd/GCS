@@ -90,8 +90,9 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Mangkorn93100",
-            "canonA624"
+            "CigramGamerTV",
+            "canonA624",
+            "scp1774"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -101,21 +102,18 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["1dayforfirst"] = {
-        ["Party Mode"] = true,
-    },
     ["c97m7VvHFTPZ19"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Select Mode"] = "Raid", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "KOW7Po",
-            "8jH8lUH6ay3Ji0"
+            "1dayforfirst",
+            "tanjiroxfire"
         },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Nightmare",
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
             ["Act"] = "Act1",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Land of the Gods",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         }, 
     },
@@ -125,7 +123,7 @@ _G.User = {
         ["Party Member"] = {
             "Chok248",
             "icemateenoobth",
-            "NANO_SHOP04"
+            "breddkey"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -138,6 +136,15 @@ _G.User = {
     ["NANO_SHOP04"] = {
         ["Party Mode"] = true,
     },
+    ["CigramGamerTV"] = {
+        ["Party Mode"] = true,
+    },
+    ["scp1774"] = {
+        ["Party Mode"] = true,
+    },
+    ["breddkey"] = {
+        ["Party Mode"] = true,
+    },
     ["icemateenoobth"] = {
         ["Party Mode"] = true,
     },
@@ -145,6 +152,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["GHeirtid"] = {
+        ["Party Mode"] = true,
+    },
+    ["1dayforfirst"] = {
+        ["Party Mode"] = true,
+    },
+    ["tanjiroxfire"] = {
         ["Party Mode"] = true,
     },
     ["MRLUCKY_SKYZA"] = {
