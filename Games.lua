@@ -1864,6 +1864,10 @@ Accounts = {
         "System",
         "CidP",
     },
+    ["UntitlekaitunG_27166"] = {
+        "Log",
+        "SukonoAuto",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
