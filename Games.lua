@@ -1442,7 +1442,7 @@ Accounts = {
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
-        "CidP",
+        "Cid",
     },
     ["traijo"] = {
         "Log",
