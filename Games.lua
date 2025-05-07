@@ -1874,6 +1874,10 @@ Accounts = {
         "Log",
         "SukonoAuto",
     },
+    ["Frostlynz"] = {
+        "Log",
+        "Worldline",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
