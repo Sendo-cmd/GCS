@@ -24,7 +24,7 @@ _G.User = {
         ["Story Settings"] = {
             ["World"] = "Easter Egg",
             ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
-            ["Level"] = "1",
+            ["Level"] = "0",
             ["Friend Only"] = true,
         },
         ["Ranger Settings"] = {
@@ -55,17 +55,7 @@ _G.User = {
         ["Story Settings"] = {
             ["World"] = "Easter Egg",
             ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
-            ["Level"] = "1",
-            ["Friend Only"] = true,
-        },
-        ["Ranger Settings"] = {
-            ["World"] = {
-                ["Voocha Village"] = {
-                    [1] = "1",
-                    [2] = "2",
-                    [3] = "3",
-                },
-            },
+            ["Level"] = "0",
             ["Friend Only"] = true,
         },
     },
