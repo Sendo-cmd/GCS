@@ -138,7 +138,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["8jH8lUH6ay3Ji0"] = {
+    ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
@@ -293,9 +293,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["lnwyorn_0823"] = {
-        ["Party Mode"] = true,
-    },
-    ["344t0sHCdw6oDK"] = {
         ["Party Mode"] = true,
     },
     ["sans_dee1134"] = {
