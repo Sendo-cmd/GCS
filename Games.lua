@@ -548,9 +548,10 @@ Accounts = {
         "Log",
         "Dungeon",
     },
-    ["AD_kp614"] = {
+    ["smart961"] = {
         "Log",
-        "LovePortal",
+        "System",
+        "PortalParty",
     },
     ["zywimq"] = {
         "Log",

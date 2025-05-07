@@ -301,11 +301,15 @@ _G.User = {
     ["sans_dee1134"] = {
         ["Party Mode"] = true,
     },
+    ["smart961"] = {
+        ["Party Mode"] = true,
+    },
     ["x8s0r1y5knI3Ls"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "keam093321"
+            "keam093321",
+            "smart961",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
