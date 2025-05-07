@@ -1839,6 +1839,20 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
+    ["Niticotin"] = {
+        "Log",
+        "BaseGemInf",
+    },
+    ["breddkey"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["loveone25403"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
