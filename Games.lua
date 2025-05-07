@@ -987,7 +987,7 @@ Accounts = {
     ["underhorror"] = {
         "Log",
         "System",
-        "PortalParty",
+        "CidP",
     },
     ["kamkamincu"] = {
         "Log",
@@ -1786,8 +1786,7 @@ Accounts = {
     },
     ["Mangkorn93100"] = {
         "Log",
-        "System",
-        "CidP",
+        "SukonoAuto",
     },
     ["Reishthill26675"] = {
         "Log",

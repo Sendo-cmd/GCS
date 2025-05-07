@@ -74,7 +74,6 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Turlizoha3831",
             "deenhumyai",
             "EliXXLRkF"
         },
@@ -107,7 +106,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "1dayforfirst",
-            "tanjiroxfire"
+            "tanjiroxfire",
+            "underhorror"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
