@@ -92,7 +92,7 @@ getgenv().Config = {
 	},
 	["Match Finished"] = {
 		["Replay Amount"] = 0,
-		["Return Lobby Failsafe"] = true,
+		["Return Lobby Failsafe"] = false,
 		["Auto Replay"] = true
 	},
 	["Crafter"] = {
