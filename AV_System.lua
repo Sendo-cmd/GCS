@@ -145,6 +145,7 @@ _G.User = {
         ["Party Member"] = {
             "KoopfoolxD2",
             "Alawihuf8081",
+            "jm_ep30",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -153,6 +154,9 @@ _G.User = {
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },
+    },
+    ["jm_ep30"] = {
+        ["Party Mode"] = true,
     },
     ["KoopfoolxD2"] = {
         ["Party Mode"] = true,

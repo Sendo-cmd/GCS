@@ -1865,6 +1865,11 @@ Accounts = {
         "System",
         "CidP",
     },
+    ["jm_ep30"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
     ["UntitlekaitunG_27166"] = {
         "Log",
         "SukonoAuto",
