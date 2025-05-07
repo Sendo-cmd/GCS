@@ -476,7 +476,7 @@ local Settings ={
     ["Auto Join Rift"] = false,
     ["Auto Join Boss Event"] = false,
 
-    ["Auto Stun"] = false,
+    ["Auto Stun"] = true,
     ["Party Mode"] = false,
 
     ["Story Settings"] = {
