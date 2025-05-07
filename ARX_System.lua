@@ -48,7 +48,6 @@ _G.User = {
             ["Enabled"] = true,
         },
         ["Select Mode"] = "Event", -- Story , Event , Challenge
-        ["Ranger Enabled"] = false,
         ["Party Mode"] = false,
 
         ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
