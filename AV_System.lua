@@ -72,10 +72,12 @@ _G.User = {
     },
     ["aR8xV9v6JI0FV9"] = {
         ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "deenhumyai",
-            "EliXXLRkF"
+            "EliXXLRkF",
+            "CaptainMaru863"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -87,9 +89,10 @@ _G.User = {
     },
     ["R6W2iU8NY0Yt0y"] = {
         ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "CigramGamerTV",
+            "Brutaroth",
             "canonA624",
             "scp1774"
         },
@@ -103,6 +106,7 @@ _G.User = {
     },
     ["c97m7VvHFTPZ19"] = {
         ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "1dayforfirst",
@@ -119,6 +123,7 @@ _G.User = {
     },
     ["GCshop2"] = {
         ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Chok248",
@@ -132,6 +137,25 @@ _G.User = {
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },   
+    },
+    ["8jH8lUH6ay3Ji0"] = {
+        ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Koopfoolxd2",
+            "Alawihuf8081",
+        },
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
+            ["FriendsOnly"] = false
+        },
+    },
+    ["CaptainMaru863"] = {
+        ["Party Mode"] = true,
     },
     ["NANO_SHOP04"] = {
         ["Party Mode"] = true,
@@ -229,20 +253,6 @@ _G.User = {
     ["BeeKak1"] = {
         ["Party Mode"] = true,
     },
-    ["8jH8lUH6ay3Ji0"] = {
-        -- ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "sans_dee1134",
-        -- },
-        -- ["Dungeon Settings"] = {
-        --     ["Difficulty"] = "Nightmare",
-        --     ["Act"] = "AntIsland",
-        --     ["StageType"] = "Dungeon",
-        --     ["Stage"] = "Ant Island",
-        --     ["FriendsOnly"] = false
-        -- },
-    },
     ["Alawihuf8081"] = {
         ["Party Mode"] = true,
     },
@@ -309,7 +319,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Yuyttxutescwq"
+            "s"
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -333,10 +343,6 @@ _G.User = {
     },
     ["Yuyttxutescwq"] = {
         ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "a"
-        },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
             ["Act"] = "AntIsland",
@@ -470,6 +476,7 @@ local Settings ={
     ["Auto Join Rift"] = false,
     ["Auto Join Boss Event"] = false,
 
+    ["Auto Stun"] = false,
     ["Party Mode"] = false,
 
     ["Story Settings"] = {
@@ -487,7 +494,7 @@ local Settings ={
         ["FriendsOnly"] = false
     },
     ["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
+        ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
         ["StageType"] = "LegendStage",
         ["Stage"] = "Sand Village",
@@ -811,6 +818,33 @@ task.spawn(function()
             end
         end
     else
+        if Settings["Auto Stun"] then
+            repeat wait() until game:IsLoaded()
+            local plr = game:GetService("Players").LocalPlayer
+            local Characters = workspace:WaitForChild("Characters")
 
+            local function ConnectToPrompt(c)
+                if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
+                    c.ChildAdded:Connect(function(v)
+                        if v.Name == "CidStunPrompt" then
+                            task.wait(.1)
+                            -- v.MaxActivationDistance = 999999
+                            plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                            fireproximityprompt(v)
+                            print(c.Name)
+                        end
+                    end)
+                    c:SetAttribute("connect_1",true)
+                end
+            end
+
+            for i,v in pairs(Characters:GetChildren()) do
+                ConnectToPrompt(v)
+            end
+            Characters.ChildAdded:Connect(function(v)
+                ConnectToPrompt(v)
+            end)
+            print("Executed")
+        end
     end    
 end)

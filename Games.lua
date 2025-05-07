@@ -495,7 +495,7 @@ Accounts = {
     ["Brutaroth"] = {
         "Log",
         "System",
-        "Dungeon",
+        "CidP",
     },
     ["Theegg840"] = {
         "Log",
@@ -1847,7 +1847,22 @@ Accounts = {
         "System",
         "CidP",
     },
-    ["loveone25403"] = {
+    ["CaptainMaru863"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["Koopfoolxd2"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["Alawihuf8081"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["CaptainMaru863"] = {
         "Log",
         "System",
         "CidP",
