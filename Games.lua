@@ -435,10 +435,8 @@ Accounts = {
         "Log",
         "PortalParty",
     },
-    ["AMERICAMENTIONEDRAHH"] = {
-        "Log",
+    ["CAVIARHUB"] = {
         "System",
-        "PortalParty",
     },
     ["Bamboo_NMpk"] = {
         "Log",
