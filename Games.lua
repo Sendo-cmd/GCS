@@ -445,7 +445,8 @@ Accounts = {
     },
     ["atomwat123"] = {
         "Log",
-        "Dungeon",
+        "System",
+        "CidP",
     },
     ["NonBemmy"] = {
         "Log",
@@ -780,7 +781,8 @@ Accounts = {
     },
     ["Ceeme7777"] = {
         "Log",
-        "Portal",
+        "System",
+        "CidP",
     },
     ["PhantomWolfx72"] = {
         "Log",
@@ -1447,6 +1449,7 @@ Accounts = {
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
+        "System",
         "Cid",
     },
     ["traijo"] = {
@@ -1878,7 +1881,8 @@ Accounts = {
     },
     ["UntitlekaitunG_27166"] = {
         "Log",
-        "SukonoAuto",
+        "System",
+        "CidP",
     },
     ["Frostlynz"] = {
         "Log",

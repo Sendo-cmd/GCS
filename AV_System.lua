@@ -80,7 +80,7 @@ _G.User = {
         ["Party Member"] = {
             "deenhumyai",
             "underhorror",
-            "Frostlynz",
+            "UntitlekaitunG_27166",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -145,8 +145,25 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Estellburst",
-            "tanjiroxfire",
+            "Frostlynz",
             "PleumRukNa",
+        },
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
+            ["FriendsOnly"] = false
+        },
+    },
+    ["344t0sHCdw6oDK"] = {
+        ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "atomwat123",
+            "Ceeme7777",
+            "tanjiroxfire",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
