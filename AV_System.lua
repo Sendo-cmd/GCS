@@ -76,7 +76,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "deenhumyai",
-            "EliXXLRkF",
             "underhorror"
         },
         ["Raid Settings"] = {
