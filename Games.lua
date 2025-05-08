@@ -1894,6 +1894,10 @@ Accounts = {
         "System",
         "CidP",
     },
+    ["Abfbtwekpjkkn"] = {
+        "Log",
+        "TraitReroll",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
