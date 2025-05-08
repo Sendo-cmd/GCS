@@ -162,7 +162,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "atomwat123",
-            "Ceeme7777",
+            "ceeme7777",
             "tanjiroxfire",
         },
         ["Raid Settings"] = {
@@ -179,7 +179,7 @@ _G.User = {
     ["UntitlekaitunG_27166"] = {
         ["Party Mode"] = true,
     },
-    ["Ceeme7777"] = {
+    ["ceeme7777"] = {
         ["Party Mode"] = true,
     },
     ["atomwat123"] = {
