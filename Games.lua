@@ -106,7 +106,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "TraitReroll",
+        "Wordline",
     },
     ["maser080"] = {
         "Log",
