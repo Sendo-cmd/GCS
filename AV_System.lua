@@ -77,7 +77,7 @@ _G.User = {
         ["Party Member"] = {
             "deenhumyai",
             "EliXXLRkF",
-            "CaptainMaru863"
+            "underhorror"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -93,8 +93,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Brutaroth",
-            "canonA624",
-            "scp1774"
+            "1dayforfirst",
+            "Alawihuf8081"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -109,9 +109,9 @@ _G.User = {
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "1dayforfirst",
-            "tanjiroxfire",
-            "underhorror"
+            "jm_ep30",
+            "dejdjd121",
+            "GHeirtid"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -126,9 +126,8 @@ _G.User = {
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Chok248",
+            "PleumRukNa",
             "icemateenoobth",
-            "breddkey"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -143,9 +142,8 @@ _G.User = {
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "KoopfoolxD2",
-            "Alawihuf8081",
-            "jm_ep30",
+            "Estellburst",
+            "tanjiroxfire",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -156,6 +154,12 @@ _G.User = {
         },
     },
     ["jm_ep30"] = {
+        ["Party Mode"] = true,
+    },
+    ["Estellburst"] = {
+        ["Party Mode"] = true,
+    },
+    ["dejdjd121"] = {
         ["Party Mode"] = true,
     },
     ["KoopfoolxD2"] = {
@@ -308,12 +312,18 @@ _G.User = {
     ["smart961"] = {
         ["Party Mode"] = true,
     },
+    ["mewant2die_d"] = {
+        ["Party Mode"] = true,
+    },
+    ["bam87871"] = {
+        ["Party Mode"] = true,
+    },
     ["x8s0r1y5knI3Ls"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "keam093321",
-            "smart961",
+            "mewant2die_d",
+            "bam87871",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter

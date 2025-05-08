@@ -278,7 +278,8 @@ Accounts = {
     },
     ["Estellburst"] = {
         "Log",
-        "TraitReroll",
+        "System",
+        "CidP",
     },
     ["tahkrisda126"] = {
         "Log",
@@ -299,7 +300,8 @@ Accounts = {
     },
     ["dejdjd121"] = {
         "Log",
-        "YomomataG",
+        "System",
+        "CidP",
     },
     ["RedAshleyKung"] = {
         "Log",
@@ -708,7 +710,8 @@ Accounts = {
     },
     ["PleumRukNa"] = {
         "Log",
-        "BEIgrisAuto",
+        "System",
+        "CidP",
     },
     ["ReiYuLiz"] = {
         "Log",
@@ -988,6 +991,10 @@ Accounts = {
         "System",
         "CidP",
     },
+    ["PDM803"] = {
+        "Log",
+        "TraitReroll",
+    },
     ["kamkamincu"] = {
         "Log",
         "BaseGem",
@@ -1236,7 +1243,7 @@ Accounts = {
     ["mewant2die_d"] = {
         "Log",
         "System",
-        "LovePortal",
+        "PortalParty",
     },
     ["rip_guesst12"] = {
         "Log",
@@ -1504,7 +1511,7 @@ Accounts = {
     ["Alawihuf8081"] = {
         "Log",
         "System",
-        "YomomataAuto",
+        "CidP",
     },
     ["JanMesu"] = {
         "Log",
@@ -1776,7 +1783,7 @@ Accounts = {
     ["GHeirtid"] = {
         "Log",
         "System",
-        "PortalParty",
+        "CidP",
     },
     ["F2PARXz"] = {
         "Log",
