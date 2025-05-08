@@ -125,8 +125,7 @@ _G.User = {
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "PleumRukNa",
-            "icemateenoobth",
+            "",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -143,6 +142,7 @@ _G.User = {
         ["Party Member"] = {
             "Estellburst",
             "tanjiroxfire",
+            "PleumRukNa",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
