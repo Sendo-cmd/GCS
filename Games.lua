@@ -106,8 +106,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "System",
-        "Cid",
+        "TraitReroll",
     },
     ["maser080"] = {
         "Log",
@@ -1884,7 +1883,8 @@ Accounts = {
     },
     ["Frostlynz"] = {
         "Log",
-        "Worldline",
+        "System",
+        "CidP",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

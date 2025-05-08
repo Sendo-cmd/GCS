@@ -70,13 +70,17 @@ _G.User = {
     ["Turlizoha3831"] = {
         ["Party Mode"] = true,
     },
+    ["Frostlynz"] = {
+        ["Party Mode"] = true,
+    },
     ["aR8xV9v6JI0FV9"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
         ["Party Member"] = {
             "deenhumyai",
-            "underhorror"
+            "underhorror",
+            "Frostlynz",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
