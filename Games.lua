@@ -1506,7 +1506,8 @@ Accounts = {
     },
     ["Rexbla9791"] = {
         "Log",
-        "ESSE",
+        "System",
+        "Cid"
     },
     ["Alawihuf8081"] = {
         "Log",

@@ -59,6 +59,22 @@ _G.User = {
             ["Friend Only"] = true,
         },
     },
+    ["saveew"] = {
+        ["Auto Play"] = {
+            ["Enabled"] = true,
+        },
+        ["Select Mode"] = "Event", -- Story , Event , Challenge
+        ["Party Mode"] = false,
+
+        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+        ["Story Settings"] = {
+            ["World"] = "Easter Egg",
+            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+            ["Level"] = "0",
+            ["Friend Only"] = true,
+        },
+    },
     ["maser080"] = {
         ["Auto Play"] = {
             ["Enabled"] = true,

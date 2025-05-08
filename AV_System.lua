@@ -137,7 +137,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["344t0sHCdw6oDK"] = {
+    ["Rexbla9791"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
