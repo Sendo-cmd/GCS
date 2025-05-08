@@ -176,6 +176,15 @@ _G.User = {
     ["PleumRukNa"] = {
         ["Party Mode"] = true,
     },
+    ["UntitlekaitunG_27166"] = {
+        ["Party Mode"] = true,
+    },
+    ["Ceeme7777"] = {
+        ["Party Mode"] = true,
+    },
+    ["atomwat123"] = {
+        ["Party Mode"] = true,
+    },
     ["jm_ep30"] = {
         ["Party Mode"] = true,
     },
