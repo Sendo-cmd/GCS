@@ -156,6 +156,9 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
+    ["PleumRukNa"] = {
+        ["Party Mode"] = true,
+    },
     ["jm_ep30"] = {
         ["Party Mode"] = true,
     },
