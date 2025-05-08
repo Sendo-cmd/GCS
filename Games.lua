@@ -1889,6 +1889,11 @@ Accounts = {
         "System",
         "CidP",
     },
+    ["Coknwz"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 

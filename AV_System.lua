@@ -155,7 +155,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Estellburst",
-            "Frostlynz",
+            "Coknwz",
             "PleumRukNa",
         },
         ["Raid Settings"] = {
@@ -184,6 +184,9 @@ _G.User = {
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },
+    },
+    ["Coknwz"] = {
+        ["Party Mode"] = true,
     },
     ["PleumRukNa"] = {
         ["Party Mode"] = true,
