@@ -76,6 +76,8 @@ _G.User = {
     ["aR8xV9v6JI0FV9"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "deenhumyai",
@@ -93,6 +95,8 @@ _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Brutaroth",
@@ -110,6 +114,8 @@ _G.User = {
     ["c97m7VvHFTPZ19"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "jm_ep30",
@@ -127,6 +133,8 @@ _G.User = {
     ["GCshop2"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "",
@@ -142,6 +150,8 @@ _G.User = {
     ["Rexbla9791"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Estellburst",
@@ -159,6 +169,8 @@ _G.User = {
     ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "atomwat123",
@@ -527,6 +539,8 @@ local Settings ={
     ["Auto Join Boss Event"] = false,
 
     ["Auto Stun"] = true,
+    ["Auto Priority"] = false,
+    ["Priority"] = "Closest", 
     ["Party Mode"] = false,
 
     ["Story Settings"] = {
@@ -868,6 +882,25 @@ task.spawn(function()
             end
         end
     else
+        if Settings["Auto Priority"] then
+            local function Priority(Model,ChangePriority)
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
+                    "ChangePriority",
+                    Model.Name,
+                    ChangePriority
+                }))
+            end
+            for i,v in pairs(workspace.Units:GetChildren()) do
+                if v:IsA("Model") then
+                    Priority(v,Settings["Priority"])
+                end
+            end
+            workspace.Units.ChildAdded:Connect(function(v)
+                v:WaitForChild("HumanoidRootPart")
+                task.wait(1)
+                Priority(v,Settings["Priority"])
+            end)
+        end
         if Settings["Auto Stun"] then
             repeat wait() until game:IsLoaded()
             local plr = game:GetService("Players").LocalPlayer
@@ -877,9 +910,8 @@ task.spawn(function()
                 if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
                     c.ChildAdded:Connect(function(v)
                         if v.Name == "CidStunPrompt" then
-                            task.wait(.1)
-                            -- v.MaxActivationDistance = 999999
                             plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                            task.wait(.5)
                             fireproximityprompt(v)
                             print(c.Name)
                         end
