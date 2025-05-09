@@ -80,9 +80,7 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "deenhumyai",
-            "underhorror",
-            "UntitlekaitunG_27166",
+            "None",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -100,8 +98,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Brutaroth",
-            "1dayforfirst",
-            "Alawihuf8081"
+            "Coknwz",
+            "KOW7Po"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -118,9 +116,9 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "jm_ep30",
-            "dejdjd121",
-            "GHeirtid"
+            "ceeme7777",
+            "Alawihuf8081",
+            "Estellburst"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -137,7 +135,7 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
+            "None",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -154,9 +152,7 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Estellburst",
-            "Coknwz",
-            "PleumRukNa",
+            "None",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -173,9 +169,7 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "atomwat123",
-            "ceeme7777",
-            "tanjiroxfire",
+            "None",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -184,6 +178,9 @@ _G.User = {
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },
+    },
+    ["KOW7Po"] = {
+        ["Party Mode"] = true,
     },
     ["Coknwz"] = {
         ["Party Mode"] = true,

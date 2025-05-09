@@ -56,7 +56,7 @@ getgenv().Config = {
 	},
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
+		["Auto Claim Achievement"] = false,
 		["Auto Claim Collection Milestone"] = true,
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
