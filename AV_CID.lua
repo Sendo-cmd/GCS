@@ -149,7 +149,7 @@ getgenv().Config = {
 		}
 	},
 	["Performance"] = {
-		["Delete Map"] = true,
+		["Delete Map"] = false,
 		["Boost FPS"] = true,
 		["Black Screen"] = true
 	},
