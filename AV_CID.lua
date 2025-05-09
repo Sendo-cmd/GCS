@@ -73,6 +73,7 @@ getgenv().Config = {
 		["Auto Restart"] = {
 			["Wave"] = 1
 		},
+		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
 		["Auto Use Ability"] = true,
 		["Shibuya Station"] = {
