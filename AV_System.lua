@@ -86,9 +86,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "ceeme7777",
+            "1dayforfirst",
             "unf0rg1ven_249",
-            "Trarockker"
+            "UntitlekaitunG_27166",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -105,7 +105,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Brutaroth",
+            "Trarockker",
             "Coknwz",
             "KOW7Po"
         },
@@ -124,9 +124,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Alawihuf8081",
-            "UntitlekaitunG_27166",
-            "Estellburst",
+            "Imissuu0v0",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -388,7 +386,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "s"
+            "Embecog4084",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -397,6 +395,9 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
+    },
+    ["Embecog4084"] = {
+        ["Party Mode"] = true,
     },
     ["KOW7Po"] = {
         ["Party Mode"] = true,
