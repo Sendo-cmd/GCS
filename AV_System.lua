@@ -92,7 +92,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -111,7 +111,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -129,7 +129,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -163,7 +163,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -180,7 +180,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -386,9 +386,9 @@ _G.User = {
             ["Ignore Modify"] = {},
         },   
     },
-    ["A6bU2F244SgVIL"] = {
+    ["Embecog4084"] = {
         ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "Embecog4084",
         },
@@ -400,9 +400,9 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["Embecog4084"] = {
-        ["Party Mode"] = true,
-    },
+    -- ["Embecog4084"] = {
+    --     ["Party Mode"] = true,
+    -- },
     ["KOW7Po"] = {
         ["Party Mode"] = true,
     },
