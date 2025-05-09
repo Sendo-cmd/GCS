@@ -83,7 +83,7 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
-        ["Priority"] = "Closest",
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "ceeme7777",
@@ -102,7 +102,7 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
-        ["Priority"] = "Closest",
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Brutaroth",
@@ -121,7 +121,7 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
-        ["Priority"] = "Closest",
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Alawihuf8081",
@@ -140,7 +140,7 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
-        ["Priority"] = "Closest",
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "None",
@@ -157,7 +157,7 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
-        ["Priority"] = "Closest",
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "None",
@@ -174,7 +174,7 @@ _G.User = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
-        ["Priority"] = "Closest",
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "None",
