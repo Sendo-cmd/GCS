@@ -186,7 +186,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["KOW7Po"] = {
+    ["Imissuu0v0"] = {
         ["Party Mode"] = true,
     },
     ["Flamesiraphat"] = {
