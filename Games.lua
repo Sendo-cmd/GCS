@@ -394,7 +394,7 @@ Accounts = {
     ["unf0rg1ven_249"] = {
         "Log",
         "System",
-        "Dungeon",
+        "CidP",
     },
     ["Overbe2716"] = {
         "Log",
@@ -445,8 +445,7 @@ Accounts = {
     },
     ["atomwat123"] = {
         "Log",
-        "System",
-        "CidP",
+        "Worldline",
     },
     ["NonBemmy"] = {
         "Log",
@@ -1875,8 +1874,7 @@ Accounts = {
     },
     ["jm_ep30"] = {
         "Log",
-        "System",
-        "CidP",
+        "BaseGemInf",
     },
     ["UntitlekaitunG_27166"] = {
         "Log",
@@ -1894,6 +1892,10 @@ Accounts = {
         "CidP",
     },
     ["Abfbtwekpjkkn"] = {
+        "Log",
+        "TraitReroll",
+    },
+    ["Trarockker"] = {
         "Log",
         "TraitReroll",
     },

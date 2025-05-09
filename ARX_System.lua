@@ -98,6 +98,54 @@ _G.User = {
         },
     },
 }
+local Settings = {
+    ["Auto Play"] = {
+        ["Enabled"] = true,
+    },
+    ["Select Mode"] = "Event", -- Story , Event , Challenge
+    ["Ranger Enabled"] = false,
+    ["Party Mode"] = false,
+
+    ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+    ["Story Settings"] = {
+        ["World"] = "Voocha Village",
+        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
+        ["Level"] = "1",
+        ["Friend Only"] = true,
+    },
+    ["Ranger Settings"] = {
+        ["World"] = {
+            ["Voocha Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Green Planet"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Demon Forest"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Leaf Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Z City"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+        },
+        ["Friend Only"] = true,
+    },
+}
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -107,6 +155,18 @@ game:GetService("Players").LocalPlayer.PlayerGui:WaitForChild("LoadingDataUI",3)
 if game.GameId ~= 6884266247 then return warn("Doesn't match ID") end
 repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui["LoadingDataUI"].Enabled
 print("Loading..") task.wait(5)
+
+--[[
+Map
+Voocha Village
+Green Planet
+Demon Forest
+Leaf Village
+Z City
+Cursed Town
+Easter Egg
+]]
+
 
 -- Service
 local HttpService = game:GetService("HttpService")

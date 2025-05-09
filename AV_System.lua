@@ -73,6 +73,12 @@ _G.User = {
     ["Frostlynz"] = {
         ["Party Mode"] = true,
     },
+    ["unf0rg1ven_249"] = {
+        ["Party Mode"] = true,
+    },
+    ["Trarockker"] = {
+        ["Party Mode"] = true,
+    },
     ["aR8xV9v6JI0FV9"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
@@ -81,8 +87,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "ceeme7777",
-            "Alawihuf8081",
-            "Estellburst"
+            "unf0rg1ven_249",
+            "Trarockker"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -118,7 +124,9 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "None",
+            "Alawihuf8081",
+            "UntitlekaitunG_27166",
+            "Estellburst",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
