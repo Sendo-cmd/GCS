@@ -34,11 +34,6 @@ _G.User = {
                     [2] = "2",
                     [3] = "3",
                 },
-                ["Leaf Village"] = {
-                    [1] = "1",
-                    [2] = "2",
-                    [3] = "3",
-                },
             },
             ["Friend Only"] = true,
         },
@@ -103,54 +98,6 @@ _G.User = {
         },
     },
 }
-local Settings = {
-    ["Auto Play"] = {
-        ["Enabled"] = true,
-    },
-    ["Select Mode"] = "Story", -- Story , Event , Challenge
-    ["Ranger Enabled"] = false,
-    ["Party Mode"] = false,
-
-    ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
-
-    ["Story Settings"] = {
-        ["World"] = "Voocha Village",
-        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
-        ["Level"] = "1",
-        ["Friend Only"] = true,
-    },
-    ["Ranger Settings"] = {
-        ["World"] = {
-            ["Voocha Village"] = {
-                [1] = "1",
-                [2] = "2",
-                [3] = "3",
-            },
-            ["Green Planet"] = {
-                [1] = "1",
-                [2] = "2",
-                [3] = "3",
-            },
-            ["Demon Forest"] = {
-                [1] = "1",
-                [2] = "2",
-                [3] = "3",
-            },
-            ["Leaf Village"] = {
-                [1] = "1",
-                [2] = "2",
-                [3] = "3",
-            },
-            ["Z City"] = {
-                [1] = "1",
-                [2] = "2",
-                [3] = "3",
-            },
-        },
-        ["Friend Only"] = true,
-    },
-}
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -302,7 +249,7 @@ if Workspace:FindFirstChild("WayPoint")then
         local function AutoPlay()
             RangerIsCD = IsRangerCD()
             print(RangerIsCD ,Values.Game.Level.Value)
-            if RangerIsCD ~= Values.Game.Level.Value then
+            if RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
                 Join()
             elseif Values.Game.Gamemode.Value ~= CurrentIs then
                 print(Values.Game.Gamemode.Value,CurrentIs)
