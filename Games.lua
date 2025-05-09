@@ -959,9 +959,7 @@ Accounts = {
         "Dragon",
     },
     ["HP_GTR"] = {
-        "Log",
         "System",
-        "YomomataAuto",
     },
     ["MitakaSann"] = {
         "Log",
