@@ -183,8 +183,10 @@ getgenv().Config = {
 	},
 	["Joiner Cooldown"] = 0,
 	["Performance"] = {
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = true
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
 	["Modifier"] = {
 		["Auto Modifier"] = {
