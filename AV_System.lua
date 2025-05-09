@@ -80,7 +80,9 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "None",
+            "ceeme7777",
+            "Alawihuf8081",
+            "Estellburst"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -116,9 +118,7 @@ _G.User = {
         ["Priority"] = "Closest",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "ceeme7777",
-            "Alawihuf8081",
-            "Estellburst"
+            "None",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
