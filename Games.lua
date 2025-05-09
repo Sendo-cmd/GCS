@@ -1899,6 +1899,30 @@ Accounts = {
         "Log",
         "TraitReroll",
     },
+    ["Blastc3526"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Voidne1953"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Skycraz2124"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Starstr8505"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Blastgrind9475"] = {
+        "Log",
+        "BaseGem",
+    },
+    ["Embesna5706"] = {
+        "Log",
+        "BaseGem",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
