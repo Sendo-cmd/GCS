@@ -539,8 +539,7 @@ Accounts = {
     },
     ["tanjiroxfire"] = {
         "Log",
-        "System",
-        "CidP",
+        "BaseGem",
     },
     ["RadarxXx2020"] = {
         "Log",
@@ -1772,7 +1771,7 @@ Accounts = {
     ["sans_dee1134"] = {
         "Log",
         "System",
-        "Dungeon",
+        "PortalParty",
     },
     ["hiherbz22"] = {
         "Log",
@@ -1780,7 +1779,7 @@ Accounts = {
     },
     ["paralfar7347"] = {
         "Log",
-        "BaseCF",
+        "SukonoAuto",
     },
     ["GHeirtid"] = {
         "Log",
