@@ -1806,7 +1806,8 @@ Accounts = {
     },
     ["Flamesiraphat"] = {
         "Log",
-        "TraitReroll",
+        "System",
+        "CidP",
     },
     ["jdhufhdsukfhk"] = {
         "Log",

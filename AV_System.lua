@@ -125,6 +125,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Imissuu0v0",
+            "Flamesiraphat",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -186,6 +187,9 @@ _G.User = {
         },
     },
     ["KOW7Po"] = {
+        ["Party Mode"] = true,
+    },
+    ["Flamesiraphat"] = {
         ["Party Mode"] = true,
     },
     ["Coknwz"] = {
