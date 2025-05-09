@@ -208,7 +208,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Middle Position"] = {
-			["Ruined City"] = "1026.7001953125, 6.927220821380615, -280.6117858886719"
+			["Ruined City"] = "1021.5393676757812, 6.927220821380615, -279.898193359375"
 		},
 		["Focus on Farm"] = true,
 		["Place Gap"] = {
@@ -236,7 +236,6 @@ getgenv().Config = {
 		["Feed Level"] = 60
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
 		["Random Offset"] = true
 	},
 	["Joiner Cooldown"] = 0,
