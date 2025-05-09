@@ -1897,7 +1897,8 @@ Accounts = {
     },
     ["Trarockker"] = {
         "Log",
-        "TraitReroll",
+        "System",
+        "CidP",
     },
     ["Blastc3526"] = {
         "Log",
