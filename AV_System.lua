@@ -92,7 +92,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act2",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -111,7 +111,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act2",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -129,7 +129,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act2",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -163,7 +163,7 @@ _G.User = {
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
-            ["Act"] = "Act2",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
