@@ -104,7 +104,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Trarockker",
-            "Coknwz",
             "KOW7Po"
         },
         ["Raid Settings"] = {
@@ -124,6 +123,7 @@ _G.User = {
         ["Party Member"] = {
             "Imissuu0v0",
             "Flamesiraphat",
+            "Alawihuf8081",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
