@@ -1,4 +1,5 @@
 getgenv().Config = {
+	["Joiner Cooldown"] = 0,
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
@@ -9,11 +10,11 @@ getgenv().Config = {
 				["Raid Joiner"] = 0,
 				["Dungeon Joiner"] = 0,
 				["Weekly Challenge Joiner"] = 0,
-				["Worldline Joiner"] = 0,
 				["Stage Joiner"] = 0,
-				["Regular Challenge Joiner"] = 0,
-				["Boss Bounties Joiner"] = 0,
+				["Worldline Joiner"] = 0,
 				["Winter Portal Joiner"] = 0,
+				["Boss Bounties Joiner"] = 0,
+				["Regular Challenge Joiner"] = 0,
 				["Daily Challenge Joiner"] = 0,
 				["Rift Joiner"] = 0
 			}
@@ -31,15 +32,17 @@ getgenv().Config = {
 		}
 	},
 	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
 		["Auto Claim Quest"] = true,
-		["Auto Claim Achievement"] = true,
+		["Auto Claim Milestone"] = true,
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Collection Milestone"] = true
 	},
 	["Gameplay"] = {
+		["Auto Sell Farm"] = {
+			["Wave"] = 1
+		},
 		["Double Dungeon"] = {
 			["Upgrade Amount"] = 0,
 			["Leave Extra Money"] = 5000
@@ -68,18 +71,14 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Use Ability"] = true,
-		["Auto Vote Start"] = true,
-		["Auto Skip Wave"] = true,
 		["Auto Restart"] = {
 			["Wave"] = 1
 		},
-		["Auto Sell Farm"] = {
-			["Wave"] = 1
-		}
+		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = true,
+		["Auto Use Ability"] = true
 	},
 	["Misc"] = {
-		["Redeem Code"] = true,
 		["Max Camera Zoom"] = 40
 	},
 	["Modifier"] = {
@@ -100,15 +99,15 @@ getgenv().Config = {
 				["Harvest"] = 17,
 				["Quake"] = 9,
 				["Range"] = 18,
-				["Drowsy"] = 8,
 				["Lifeline"] = 29,
-				["King's Burden"] = 27,
+				["No Trait No Problem"] = 23,
 				["Regen"] = 7,
+				["King's Burden"] = 27,
 				["Exterminator"] = 28,
 				["Damage"] = 20,
 				["Common Loot"] = 21,
 				["Cooldown"] = 19,
-				["No Trait No Problem"] = 23,
+				["Drowsy"] = 8,
 				["Press It"] = 14,
 				["Precise Attack"] = 13,
 				["Shielded"] = 5,
@@ -131,15 +130,15 @@ getgenv().Config = {
 				["Harvest"] = 0,
 				["Quake"] = 0,
 				["Range"] = 0,
-				["Drowsy"] = 0,
 				["Lifeline"] = 0,
-				["King's Burden"] = 0,
+				["No Trait No Problem"] = 0,
 				["Regen"] = 0,
+				["King's Burden"] = 0,
 				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
 				["Cooldown"] = 0,
-				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
 				["Press It"] = 0,
 				["Precise Attack"] = 0,
 				["Shielded"] = 0,
@@ -147,25 +146,6 @@ getgenv().Config = {
 				["Money Surge"] = 0
 			}
 		}
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
-	},
-	["Match Finished"] = {
-		["Replay Amount"] = 0,
-		["Auto Replay"] = true
-	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
-		}
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -189,15 +169,15 @@ getgenv().Config = {
 			["Land of the Gods"] = "Middle",
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
-			["Ant Island"] = "Middle",
-			["Martial Island"] = "Middle",
-			["Ruined City"] = "Middle",
 			["Tracks at the Edge of the World"] = "Middle",
-			["Planet Namak"] = "Middle",
 			["Shibuya Station"] = "Middle",
+			["Ruined City"] = "Middle",
+			["Martial Island"] = "Middle",
+			["Planet Namak"] = "Middle",
+			["Blood-Red Chamber"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Blood-Red Chamber"] = "Middle"
+			["Ant Island"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -208,7 +188,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Middle Position"] = {
-			["Ruined City"] = "1043.54541015625, 6.927220821380615, -278.23492431640625"
+			["Ruined City"] = "1040.9862060546875, 6.927220821380615, -279.43145751953125"
 		},
 		["Focus on Farm"] = true,
 		["Place Gap"] = {
@@ -221,24 +201,41 @@ getgenv().Config = {
 			["Land of the Gods"] = 2,
 			["Golden Castle"] = 2,
 			["Spirit Society"] = 2,
-			["Ant Island"] = 2,
-			["Martial Island"] = 2,
-			["Ruined City"] = 2,
 			["Tracks at the Edge of the World"] = 2,
-			["Planet Namak"] = 2,
 			["Shibuya Station"] = 2,
+			["Ruined City"] = 2,
+			["Martial Island"] = 2,
+			["Planet Namak"] = 2,
+			["Blood-Red Chamber"] = 2,
 			["Underground Church"] = 2,
 			["Spider Forest"] = 2,
-			["Blood-Red Chamber"] = 2
+			["Ant Island"] = 2
 		}
+	},
+	["Match Finished"] = {
+		["Replay Amount"] = 0,
+		["Auto Replay"] = true
+	},
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["FPS"] = 5
+		}
+	},
+	["Stat Reroller"] = {
+		["Stat Potential"] = 100
+	},
+	["Failsafe"] = {
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Unit Feeder"] = {
 		["Feed Level"] = 60
 	},
-	["Secure"] = {
-		["Random Offset"] = true
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = true,
+		["Delete Entities"] = true
 	},
-	["Joiner Cooldown"] = 0,
 	["Crafter"] = {
 		["Essence Stone"] = {
 			["Pink Essence Stone"] = true,
@@ -254,9 +251,6 @@ getgenv().Config = {
 			["Yellow Essence Stone"] = 50,
 			["Purple Essence Stone"] = 50
 		}
-	},
-	["Stat Reroller"] = {
-		["Stat Potential"] = 100
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"

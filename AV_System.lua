@@ -86,9 +86,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "1dayforfirst",
-            "unf0rg1ven_249",
-            "UntitlekaitunG_27166",
+            "",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -126,6 +124,7 @@ _G.User = {
         ["Party Member"] = {
             "Imissuu0v0",
             "Flamesiraphat",
+            "1dayforfirst",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
