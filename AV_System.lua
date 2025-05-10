@@ -124,7 +124,6 @@ _G.User = {
         ["Party Member"] = {
             "Imissuu0v0",
             "Flamesiraphat",
-            "1dayforfirst",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
