@@ -113,6 +113,33 @@ _G.User = {
             ["Friend Only"] = true,
         },
     },
+    ["bestbestneta9"] = {
+        ["Auto Play"] = {
+            ["Enabled"] = true,
+        },
+        ["Select Mode"] = "Event", -- Story , Event , Challenge
+        ["Ranger Enabled"] = true,
+        ["Party Mode"] = false,
+
+        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+        ["Story Settings"] = {
+            ["World"] = "Easter Egg",
+            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+            ["Level"] = "0",
+            ["Friend Only"] = true,
+        },
+        ["Ranger Settings"] = {
+            ["World"] = {
+                ["Green Planet"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+            },
+            ["Friend Only"] = true,
+        },
+    },
 }
 local Settings = {
     ["Auto Play"] = {
