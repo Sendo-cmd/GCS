@@ -24,7 +24,7 @@ _G.User = {
         ["Story Settings"] = {
             ["World"] = "Easter Egg",
             ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
-            ["Level"] = "0",
+            ["Level"] = "1",
             ["Friend Only"] = true,
         },
         ["Ranger Settings"] = {
