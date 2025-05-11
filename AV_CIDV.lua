@@ -2,7 +2,6 @@ getgenv().Config = {
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true,
 		["Joiner Team Equipper"] = {
 			["Joiner Team"] = {
 				["Legend Stage Joiner"] = 0,
@@ -10,15 +9,16 @@ getgenv().Config = {
 				["Raid Joiner"] = 0,
 				["Dungeon Joiner"] = 0,
 				["Weekly Challenge Joiner"] = 0,
-				["Winter Portal Joiner"] = 0,
 				["Worldline Joiner"] = 0,
+				["Stage Joiner"] = 0,
 				["Regular Challenge Joiner"] = 0,
 				["Boss Bounties Joiner"] = 0,
-				["Stage Joiner"] = 0,
+				["Winter Portal Joiner"] = 0,
 				["Daily Challenge Joiner"] = 0,
 				["Rift Joiner"] = 0
 			}
-		}
+		},
+		["No Ignore Sell Timing"] = true
 	},
 	["Winter Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -56,7 +56,6 @@ getgenv().Config = {
 			["Leave Extra Money"] = 5000
 		},
 		["Ruined City"] = {
-			["Active Tower"] = true,
 			["Use Mount to Travel"] = true
 		},
 		["The System"] = {
@@ -68,15 +67,15 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Sell Farm"] = {
+		["Auto Restart"] = {
 			["Wave"] = 1
 		},
 		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
-		["Auto Restart"] = {
+		["Auto Use Ability"] = true,
+		["Auto Sell Farm"] = {
 			["Wave"] = 1
-		},
-		["Auto Use Ability"] = true
+		}
 	},
 	["Misc"] = {
 		["Max Camera Zoom"] = 40
@@ -90,28 +89,28 @@ getgenv().Config = {
 				["Champions"] = 12,
 				["Fast"] = 1,
 				["Revitalize"] = 6,
-				["Fisticuffs"] = 25,
+				["Immunity"] = 11,
 				["Exploding"] = 2,
 				["Dodge"] = 10,
-				["Uncommon Loot"] = 22,
-				["Immunity"] = 11,
+				["Slayer"] = 16,
+				["Fisticuffs"] = 25,
 				["Planning Ahead"] = 15,
 				["Harvest"] = 17,
-				["Precise Attack"] = 13,
+				["Quake"] = 9,
 				["Range"] = 18,
 				["Drowsy"] = 8,
 				["Lifeline"] = 29,
-				["Cooldown"] = 19,
-				["Exterminator"] = 28,
 				["King's Burden"] = 27,
+				["Regen"] = 7,
+				["Exterminator"] = 28,
 				["Damage"] = 20,
 				["Common Loot"] = 21,
-				["Regen"] = 7,
+				["Cooldown"] = 19,
 				["No Trait No Problem"] = 23,
 				["Press It"] = 14,
-				["Quake"] = 9,
+				["Precise Attack"] = 13,
 				["Shielded"] = 5,
-				["Slayer"] = 16,
+				["Uncommon Loot"] = 22,
 				["Money Surge"] = 26
 			},
 			["Amount"] = {
@@ -121,28 +120,28 @@ getgenv().Config = {
 				["Champions"] = 0,
 				["Fast"] = 0,
 				["Revitalize"] = 0,
-				["Fisticuffs"] = 0,
+				["Immunity"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
 				["Planning Ahead"] = 0,
 				["Harvest"] = 0,
-				["Precise Attack"] = 0,
+				["Quake"] = 0,
 				["Range"] = 0,
 				["Drowsy"] = 0,
 				["Lifeline"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
 				["King's Burden"] = 0,
+				["Regen"] = 0,
+				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["Regen"] = 0,
+				["Cooldown"] = 0,
 				["No Trait No Problem"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 0,
+				["Precise Attack"] = 0,
 				["Shielded"] = 0,
-				["Slayer"] = 0,
+				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			}
 		}
@@ -157,20 +156,9 @@ getgenv().Config = {
 		["Replay Amount"] = 0,
 		["Auto Replay"] = true
 	},
-	["Crafter"] = {
-		["Essence Stone"] = {
-			["Pink Essence Stone"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true
-		},
-		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 50,
-			["Blue Essence Stone"] = 50,
-			["Red Essence Stone"] = 50,
-			["Yellow Essence Stone"] = 50,
-			["Purple Essence Stone"] = 50
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["FPS"] = 5
 		}
 	},
 	["Auto Play"] = {
@@ -195,15 +183,15 @@ getgenv().Config = {
 			["Land of the Gods"] = "Middle",
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
-			["Tracks at the Edge of the World"] = "Middle",
+			["Ant Island"] = "Middle",
 			["Shibuya Station"] = "Middle",
 			["Ruined City"] = "Middle",
-			["Martial Island"] = "Middle",
+			["Blood-Red Chamber"] = "Middle",
 			["Planet Namak"] = "Middle",
-			["Ant Island"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Blood-Red Chamber"] = "Middle"
+			["Martial Island"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -214,7 +202,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Middle Position"] = {
-			["Ruined City"] = "1067.6109619140625, 6.927220821380615, -262.1294860839844"
+			["Ruined City"] = "1021.087890625, 6.927220821380615, -280.67706298828125"
 		},
 		["Focus on Farm"] = true,
 		["Place Gap"] = {
@@ -227,15 +215,15 @@ getgenv().Config = {
 			["Land of the Gods"] = 2,
 			["Golden Castle"] = 2,
 			["Spirit Society"] = 2,
-			["Tracks at the Edge of the World"] = 2,
+			["Ant Island"] = 2,
 			["Shibuya Station"] = 2,
 			["Ruined City"] = 2,
-			["Martial Island"] = 2,
+			["Blood-Red Chamber"] = 2,
 			["Planet Namak"] = 2,
-			["Ant Island"] = 2,
+			["Tracks at the Edge of the World"] = 2,
 			["Underground Church"] = 2,
 			["Spider Forest"] = 2,
-			["Blood-Red Chamber"] = 2
+			["Martial Island"] = 2
 		}
 	},
 	["Failsafe"] = {
@@ -245,9 +233,20 @@ getgenv().Config = {
 	["Unit Feeder"] = {
 		["Feed Level"] = 60
 	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
+	["Crafter"] = {
+		["Essence Stone"] = {
+			["Pink Essence Stone"] = true,
+			["Blue Essence Stone"] = true,
+			["Red Essence Stone"] = true,
+			["Yellow Essence Stone"] = true,
+			["Purple Essence Stone"] = true
+		},
+		["Essence Stone Limit"] = {
+			["Pink Essence Stone"] = 50,
+			["Blue Essence Stone"] = 50,
+			["Red Essence Stone"] = 50,
+			["Yellow Essence Stone"] = 50,
+			["Purple Essence Stone"] = 50
 		}
 	},
 	["Stat Reroller"] = {

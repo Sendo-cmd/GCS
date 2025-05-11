@@ -1510,7 +1510,7 @@ Accounts = {
     ["Alawihuf8081"] = {
         "Log",
         "System",
-        "CidP",
+        "Cid",
     },
     ["JanMesu"] = {
         "Log",
@@ -1814,7 +1814,7 @@ Accounts = {
     ["Flamesiraphat"] = {
         "Log",
         "System",
-        "CidP",
+        "Cid",
     },
     ["Imissuu0v0"] = {
         "Log",
