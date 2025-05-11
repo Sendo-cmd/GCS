@@ -157,7 +157,7 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = 0
 		},
-		["Enable"] = true,
+		["Enable"] = false,
 		["Upgrade Method"] = "Hotbar left to right (until Max)",
 		["Prefer Position"] = {
 			["Double Dungeon"] = "Middle",
