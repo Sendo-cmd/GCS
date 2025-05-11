@@ -195,7 +195,7 @@ getgenv().Config = {
 			["Ant Island"] = "Middle"
 		},
 		["Upgrade Cap"] = {
-			["1"] = 5,
+			["1"] = 0,
 			["3"] = 0,
 			["2"] = 0,
 			["5"] = 0,
