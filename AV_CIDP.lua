@@ -173,7 +173,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Enable"] = true,
-		["Upgrade Method"] = "Hotbar left to right (until Max)",
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Double Dungeon"] = "Middle",
 			["Planet Namak"] = "Middle",
