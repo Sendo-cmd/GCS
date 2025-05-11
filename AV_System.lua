@@ -86,7 +86,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
+            "DB_KHOON",
+            "J9O0Eg0cQ03MCV",
+            "tjr23sqU554Jqv",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -103,8 +105,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Trarockker",
-            "KOW7Po"
+            "atomwat123",
+            "KOW7Po",
+            "Estellburst",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",

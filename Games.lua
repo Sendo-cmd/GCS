@@ -1033,7 +1033,7 @@ Accounts = {
     ["RyuzaaaV2"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["4cMw7l8Q9U3kEE"] = {
         "Log",
@@ -1696,6 +1696,8 @@ Accounts = {
     },
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
+        "System",
+        "CidP",
     },
     ["v0k9Seb9nB6q0P"] = {
         "Log",
@@ -1752,6 +1754,8 @@ Accounts = {
     },
     ["tjr23sqU554Jqv"] = {
         "Log",
+        "System",
+        "CidP",
     },
     ["HnD9n1lVJ4Ap23"] = {
         "Log",
@@ -1932,6 +1936,10 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["Artyg111"] = {
+        "Log",
+        "BaseGemInf",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
