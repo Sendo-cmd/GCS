@@ -124,7 +124,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Imissuu0v0",
+            "s1t4d4vPKqIz61",
             "Flamesiraphat",
             "Alawihuf8081",
         },
@@ -436,8 +436,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "RyuzaaaV2",
-            "s1t4d4vPKqIz61",
-            "s0SoYQ84GXSc12",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
