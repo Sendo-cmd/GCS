@@ -1958,7 +1958,7 @@ Accounts = {
     ["IQSHOP_1275"] = {
         "Log",
         "System",
-        "CdT1",
+        "CidP",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
