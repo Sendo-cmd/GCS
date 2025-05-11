@@ -761,10 +761,10 @@ Accounts = {
         "Log",
         "LovePortal",
     },
-    ["NANO_SHOP04"] = {
+    ["NANO_SHOP04"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
-        "CdT2",
+        "CidP",
     },
     ["godre902"] = {
         "Log",
@@ -1953,7 +1953,7 @@ Accounts = {
     ["IQSHOP_1275"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["Latia3417"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
