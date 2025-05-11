@@ -1700,7 +1700,7 @@ Accounts = {
     ["v0k9Seb9nB6q0P"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
@@ -1935,7 +1935,7 @@ Accounts = {
     ["DB_KHOON"] = {
         "Log",
         "System",
-        "CdT1",
+        "CidP",
     },
     ["bestbestneta9"] = {
         "System",
