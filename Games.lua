@@ -43,7 +43,7 @@ Games = {
         ["Cid"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CID.lua",
         ["CdT1"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT1.lua",
         ["CdT2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT2.lua",
-        ["CdT3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT3.lua",
+        ["CidP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDP.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -1700,7 +1700,7 @@ Accounts = {
     ["v0k9Seb9nB6q0P"] = {
         "Log",
         "System",
-        "CdT3",
+        "CidP",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
@@ -1875,7 +1875,7 @@ Accounts = {
     ["Alawihuf8081"] = {
         "Log",
         "System",
-        "CdT3",
+        "CidP",
     },
     ["CaptainMaru863"] = {
         "Log",
@@ -1948,7 +1948,7 @@ Accounts = {
     ["iceploy01"] = {
         "Log",
         "System",
-        "CdT3",
+        "CidP",
     },
     ["TheDarkwolf8333"] = {
         "Log",
