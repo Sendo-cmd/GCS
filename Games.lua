@@ -1950,7 +1950,7 @@ Accounts = {
         "System",
         "CdT1",
     },
-    ["IQSHOP_1275"] = {
+    ["IQSHOP_1275"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
         "CidP",
