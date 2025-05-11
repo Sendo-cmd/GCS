@@ -187,6 +187,18 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
+    ["s1t4d4vPKqIz61"] = {
+        ["Party Mode"] = true,
+    },
+    ["s0SoYQ84GXSc12"] = {
+        ["Party Mode"] = true,
+    },
+    ["tjr23sqU554Jqv"] = {
+        ["Party Mode"] = true,
+    },
+    ["J9O0Eg0cQ03MCV"] = {
+        ["Party Mode"] = true,
+    },
     ["Imissuu0v0"] = {
         ["Party Mode"] = true,
     },
@@ -416,8 +428,14 @@ _G.User = {
     ["paralfar7347"] = {
         ["Party Mode"] = true,
     },
-    ["Yuyttxutescwq"] = {
+    ["A6bU2F244SgVIL"] = {
         ["Select Mode"] = "Dungeon", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "RyuzaaaV2",
+            "s1t4d4vPKqIz61",
+            "s0SoYQ84GXSc12",
+        },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
             ["Act"] = "AntIsland",
