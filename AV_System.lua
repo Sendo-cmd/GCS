@@ -88,7 +88,7 @@ _G.User = {
         ["Party Member"] = {
             "DB_KHOON",
             "J9O0Eg0cQ03MCV",
-            "tjr23sqU554Jqv",
+            "v0k9Seb9nB6q0P",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -193,7 +193,7 @@ _G.User = {
     ["s0SoYQ84GXSc12"] = {
         ["Party Mode"] = true,
     },
-    ["tjr23sqU554Jqv"] = {
+    ["v0k9Seb9nB6q0P"] = {
         ["Party Mode"] = true,
     },
     ["J9O0Eg0cQ03MCV"] = {

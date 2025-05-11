@@ -1701,6 +1701,8 @@ Accounts = {
     },
     ["v0k9Seb9nB6q0P"] = {
         "Log",
+        "System",
+        "CidP",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
@@ -1940,6 +1942,11 @@ Accounts = {
     ["Artyg111"] = {
         "Log",
         "BaseGemInf",
+    },
+    ["DB_KHOON"] = {
+        "Log",
+        "System",
+        "CidP",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
