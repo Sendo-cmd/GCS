@@ -334,7 +334,9 @@ if Workspace:FindFirstChild("WayPoint")then
     if Setting["Enabled"] then
         task.spawn(function()
             while true do
+                print( plr.PlayerGui.RewardsUI.Enable,"End Method Debug")
                 if plr.PlayerGui.RewardsUI.Enabled then
+                    
                     UseVote(Settings["Select End Method"])
                 end
                 task.wait(1)
@@ -460,4 +462,6 @@ end
 
 -- No Party
 Join()
+
+
 
