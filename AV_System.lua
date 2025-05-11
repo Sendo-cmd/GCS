@@ -153,7 +153,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["Rexbla9791"] = {
+    ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
@@ -172,7 +172,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["344t0sHCdw6oDK"] = {
+    ["aaaaaaaaaa"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
