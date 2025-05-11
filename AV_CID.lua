@@ -243,9 +243,6 @@ getgenv().Config = {
 			["FPS"] = 5
 		}
 	},
-	["Secure"] = {
-		["Random Offset"] = true
-	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
