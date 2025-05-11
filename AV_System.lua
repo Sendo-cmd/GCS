@@ -202,6 +202,9 @@ _G.User = {
     ["Imissuu0v0"] = {
         ["Party Mode"] = true,
     },
+    ["DB_KHOON"] = {
+        ["Party Mode"] = true,
+    },
     ["Flamesiraphat"] = {
         ["Party Mode"] = true,
     },
