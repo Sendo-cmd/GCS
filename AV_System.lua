@@ -106,8 +106,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "atomwat123",
-            "KOW7Po",
             "Estellburst",
+            "iceploy01",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -160,7 +160,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "None",
+            "TheDarkwolf8333",
+            "NANO_SHOP04",
+            "IQSHOP_1275",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -224,6 +226,15 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["jm_ep30"] = {
+        ["Party Mode"] = true,
+    },
+    ["iceploy01"] = {
+        ["Party Mode"] = true,
+    },
+    ["TheDarkwolf8333"] = {
+        ["Party Mode"] = true,
+    },
+    ["IQSHOP_1275"] = {
         ["Party Mode"] = true,
     },
     ["Estellburst"] = {
@@ -393,6 +404,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "bam87871",
+            "smart961",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter

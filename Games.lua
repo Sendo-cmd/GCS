@@ -41,8 +41,9 @@ Games = {
         ["Dragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dragon.lua",
         ["DragonP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DragonP.lua",
         ["Cid"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CID.lua",
-        ["CidV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDV.lua",
-        ["CidP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDP.lua",
+        ["CdT1"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT1.lua",
+        ["CdT2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT2.lua",
+        ["CdT3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT3.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -279,7 +280,7 @@ Accounts = {
     ["Estellburst"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["tahkrisda126"] = {
         "Log",
@@ -447,7 +448,7 @@ Accounts = {
     ["atomwat123"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["NonBemmy"] = {
         "Log",
@@ -763,7 +764,7 @@ Accounts = {
     ["NANO_SHOP04"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["godre902"] = {
         "Log",
@@ -1694,12 +1695,12 @@ Accounts = {
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["v0k9Seb9nB6q0P"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT3",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
@@ -1719,7 +1720,7 @@ Accounts = {
     ["s1t4d4vPKqIz61"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["s0SoYQ84GXSc12"] = {
         "Log",
@@ -1812,7 +1813,7 @@ Accounts = {
     ["Flamesiraphat"] = {
         "Log",
         "System",
-        "CidV",
+        "CdT2",
     },
     ["Imissuu0v0"] = {
         "Log",
@@ -1874,7 +1875,7 @@ Accounts = {
     ["Alawihuf8081"] = {
         "Log",
         "System",
-        "CidV",
+        "CdT3",
     },
     ["CaptainMaru863"] = {
         "Log",
@@ -1910,27 +1911,21 @@ Accounts = {
         "CidP",
     },
     ["Blastc3526"] = {
-        "Log",
         "BaseGem",
     },
     ["Voidne1953"] = {
-        "Log",
         "BaseGem",
     },
     ["Skycraz2124"] = {
-        "Log",
         "BaseGem",
     },
     ["Starstr8505"] = {
-        "Log",
         "BaseGem",
     },
     ["Blastgrind9475"] = {
-        "Log",
         "BaseGem",
     },
     ["Embesna5706"] = {
-        "Log",
         "BaseGem",
     },
     ["Embecog4084"] = {
@@ -1945,10 +1940,25 @@ Accounts = {
     ["DB_KHOON"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["bestbestneta9"] = {
         "System",
+    },
+    ["iceploy01"] = {
+        "Log",
+        "System",
+        "CdT3",
+    },
+    ["TheDarkwolf8333"] = {
+        "Log",
+        "System",
+        "CdT1",
+    },
+    ["IQSHOP_1275"] = {
+        "Log",
+        "System",
+        "CdT1",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

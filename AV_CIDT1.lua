@@ -1,9 +1,7 @@
 getgenv().Config = {
-	["Joiner Cooldown"] = 0,
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true,
 		["Joiner Team Equipper"] = {
 			["Joiner Team"] = {
 				["Legend Stage Joiner"] = 0,
@@ -11,18 +9,16 @@ getgenv().Config = {
 				["Raid Joiner"] = 0,
 				["Dungeon Joiner"] = 0,
 				["Weekly Challenge Joiner"] = 0,
-				["Regular Challenge Joiner"] = 0,
 				["Stage Joiner"] = 0,
+				["Worldline Joiner"] = 0,
 				["Winter Portal Joiner"] = 0,
 				["Boss Bounties Joiner"] = 0,
-				["Worldline Joiner"] = 0,
+				["Regular Challenge Joiner"] = 0,
 				["Daily Challenge Joiner"] = 0,
 				["Rift Joiner"] = 0
 			}
-		}
-	},
-	["Stat Reroller"] = {
-		["Stat Potential"] = 100
+		},
+		["No Ignore Sell Timing"] = true
 	},
 	["Winter Portal Joiner"] = {
 		["Tier Cap"] = 10,
@@ -35,15 +31,14 @@ getgenv().Config = {
 		}
 	},
 	["Claimer"] = {
-		["Auto Claim Quest"] = true,
 		["Auto Claim Collection Milestone"] = true,
+		["Auto Claim Quest"] = true,
 		["Auto Claim Daily Reward"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Milestone"] = true
 	},
 	["Gameplay"] = {
-		["Auto Use Ability"] = true,
 		["Double Dungeon"] = {
 			["Upgrade Amount"] = 0,
 			["Leave Extra Money"] = 5000
@@ -56,7 +51,12 @@ getgenv().Config = {
 				["Wave"] = 1
 			}
 		},
+		["Shibuya Station"] = {
+			["Upgrade Amount"] = 0,
+			["Leave Extra Money"] = 5000
+		},
 		["Ruined City"] = {
+			["Active Tower"] = true,
 			["Use Mount to Travel"] = true
 		},
 		["The System"] = {
@@ -68,17 +68,14 @@ getgenv().Config = {
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
+		["Auto Use Ability"] = true,
+		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Wave"] = 1
 		},
-		["Auto Vote Start"] = true,
-		["Auto Skip Wave"] = true,
 		["Auto Restart"] = {
 			["Wave"] = 1
-		},
-		["Shibuya Station"] = {
-			["Upgrade Amount"] = 0,
-			["Leave Extra Money"] = 5000
 		}
 	},
 	["Misc"] = {
@@ -93,28 +90,28 @@ getgenv().Config = {
 				["Champions"] = 12,
 				["Fast"] = 1,
 				["Planning Ahead"] = 15,
-				["Fisticuffs"] = 25,
+				["Immunity"] = 11,
 				["Exploding"] = 2,
 				["Dodge"] = 10,
-				["Uncommon Loot"] = 22,
-				["Immunity"] = 11,
+				["Slayer"] = 16,
+				["Fisticuffs"] = 25,
 				["Revitalize"] = 6,
 				["Harvest"] = 17,
-				["Precise Attack"] = 13,
+				["Quake"] = 9,
 				["Range"] = 18,
 				["Lifeline"] = 29,
 				["No Trait No Problem"] = 23,
-				["Cooldown"] = 19,
-				["Exterminator"] = 28,
 				["Regen"] = 7,
+				["King's Burden"] = 27,
+				["Exterminator"] = 28,
 				["Damage"] = 20,
 				["Common Loot"] = 21,
-				["King's Burden"] = 27,
+				["Cooldown"] = 19,
 				["Drowsy"] = 8,
 				["Press It"] = 14,
-				["Quake"] = 9,
+				["Precise Attack"] = 13,
 				["Shielded"] = 5,
-				["Slayer"] = 16,
+				["Uncommon Loot"] = 22,
 				["Money Surge"] = 26
 			},
 			["Amount"] = {
@@ -124,28 +121,28 @@ getgenv().Config = {
 				["Champions"] = 0,
 				["Fast"] = 0,
 				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
+				["Immunity"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
 				["Revitalize"] = 0,
 				["Harvest"] = 0,
-				["Precise Attack"] = 0,
+				["Quake"] = 0,
 				["Range"] = 0,
 				["Lifeline"] = 0,
 				["No Trait No Problem"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
 				["Regen"] = 0,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["King's Burden"] = 0,
+				["Cooldown"] = 0,
 				["Drowsy"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 0,
+				["Precise Attack"] = 0,
 				["Shielded"] = 0,
-				["Slayer"] = 0,
+				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			}
 		}
@@ -172,15 +169,15 @@ getgenv().Config = {
 			["Land of the Gods"] = "Middle",
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
-			["Ant Island"] = "Middle",
-			["Martial Island"] = "Middle",
-			["Ruined City"] = "Middle",
 			["Tracks at the Edge of the World"] = "Middle",
-			["Cavern"] = "Middle",
 			["Shibuya Station"] = "Middle",
+			["Ruined City"] = "Middle",
+			["Blood-Red Chamber"] = "Middle",
+			["Cavern"] = "Middle",
+			["Martial Island"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Blood-Red Chamber"] = "Middle"
+			["Ant Island"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -191,7 +188,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Middle Position"] = {
-			["Ruined City"] = "1041.7470703125, 6.927220821380615, -283.2968444824219"
+			["Ruined City"] = "1097.0452880859375, 6.927220821380615, -340.48614501953125"
 		},
 		["Focus on Farm"] = true,
 		["Place Gap"] = {
@@ -204,28 +201,20 @@ getgenv().Config = {
 			["Land of the Gods"] = 2,
 			["Golden Castle"] = 2,
 			["Spirit Society"] = 2,
-			["Ant Island"] = 2,
-			["Martial Island"] = 2,
-			["Ruined City"] = 2,
 			["Tracks at the Edge of the World"] = 2,
-			["Cavern"] = 2,
 			["Shibuya Station"] = 2,
+			["Ruined City"] = 2,
+			["Blood-Red Chamber"] = 2,
+			["Cavern"] = 2,
+			["Martial Island"] = 2,
 			["Underground Church"] = 2,
 			["Spider Forest"] = 2,
-			["Blood-Red Chamber"] = 2
+			["Ant Island"] = 2
 		}
 	},
 	["Match Finished"] = {
 		["Replay Amount"] = 0,
 		["Auto Replay"] = true
-	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
-		}
-	},
-	["Failsafe"] = {
-		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Crafter"] = {
 		["Essence Stone"] = {
@@ -249,8 +238,20 @@ getgenv().Config = {
 		["Black Screen"] = true,
 		["Delete Entities"] = true
 	},
+	["Failsafe"] = {
+		["Disable Auto Teleport AFK Chamber"] = true
+	},
+	["Joiner Cooldown"] = 0,
 	["Unit Feeder"] = {
 		["Feed Level"] = 60
+	},
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["FPS"] = 5
+		}
+	},
+	["Stat Reroller"] = {
+		["Stat Potential"] = 100
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
