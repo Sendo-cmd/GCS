@@ -108,7 +108,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Worldline",
+        "TraitReroll",
     },
     ["maser080"] = {
         "Log",
@@ -1954,6 +1954,10 @@ Accounts = {
         "Log",
         "System",
         "CidP",
+    },
+    ["Latia3417"] = { -- Cid ต้องเช็คแบบละเอียด
+        "Log",
+        "TraitReroll",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
