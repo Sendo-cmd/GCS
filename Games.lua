@@ -1802,11 +1802,6 @@ Accounts = {
         "System",
         "Dungeon",
     },
-    ["paralfar7347"] = {
-        "Log",
-        "System",
-        "PortalParty",
-    },
     ["Dbhhceuhceuh"] = {
         "Log",
     },
