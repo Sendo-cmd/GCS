@@ -41,6 +41,7 @@ Games = {
         ["Dragon"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Dragon.lua",
         ["DragonP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DragonP.lua",
         ["Cid"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CID.lua",
+        ["CidV"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDV.lua",
         ["CidP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDP.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
@@ -1507,11 +1508,6 @@ Accounts = {
         "System",
         "Cid"
     },
-    ["Alawihuf8081"] = {
-        "Log",
-        "System",
-        "Cid",
-    },
     ["JanMesu"] = {
         "Log",
         "System",
@@ -1722,6 +1718,8 @@ Accounts = {
     },
     ["s1t4d4vPKqIz61"] = {
         "Log",
+        "System",
+        "CidP",
     },
     ["s0SoYQ84GXSc12"] = {
         "Log",
@@ -1814,7 +1812,7 @@ Accounts = {
     ["Flamesiraphat"] = {
         "Log",
         "System",
-        "Cid",
+        "CidV",
     },
     ["Imissuu0v0"] = {
         "Log",
@@ -1876,7 +1874,7 @@ Accounts = {
     ["Alawihuf8081"] = {
         "Log",
         "System",
-        "CidP",
+        "CidV",
     },
     ["CaptainMaru863"] = {
         "Log",
