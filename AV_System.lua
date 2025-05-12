@@ -107,6 +107,7 @@ _G.User = {
         ["Party Member"] = {
             "Estellburst",
             "iceploy01",
+            "NANO_SHOP04",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",

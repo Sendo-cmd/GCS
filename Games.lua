@@ -280,7 +280,7 @@ Accounts = {
     ["Estellburst"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["tahkrisda126"] = {
         "Log",
@@ -1808,7 +1808,7 @@ Accounts = {
     ["Flamesiraphat"] = {
         "Log",
         "System",
-        "CdT1",
+        "CidP",
     },
     ["Imissuu0v0"] = {
         "Log",
@@ -1945,7 +1945,7 @@ Accounts = {
     ["MAMEAN2497"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["onekrazy2112"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
