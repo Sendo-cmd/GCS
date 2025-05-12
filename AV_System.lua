@@ -86,9 +86,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "DB_KHOON",
-            "J9O0Eg0cQ03MCV",
-            "v0k9Seb9nB6q0P",
+            ""
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -206,6 +204,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Flamesiraphat"] = {
+        ["Party Mode"] = true,
+    },
+    ["sjdbbzh09"] = {
         ["Party Mode"] = true,
     },
     ["Coknwz"] = {
