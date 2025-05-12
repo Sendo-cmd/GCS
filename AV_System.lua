@@ -105,7 +105,6 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "onekrazy2112",
             "Estellburst",
             "iceploy01",
         },
