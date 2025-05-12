@@ -356,12 +356,13 @@ if Workspace:FindFirstChild("WayPoint")then
             print(RangerIsCD ,Values.Game.Level.Value)
             if RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
                 Join()
+                print("Join Debug 1")
             elseif Values.Game.Gamemode.Value ~= CurrentIs then
                 print(Values.Game.Gamemode.Value,CurrentIs)
                 Join()
-                
+                print("Join Debug 2")
             end
-            
+            print("Join Debug 3")
             
             local Enabled = true
             local GameCF = LoadModule(game:GetService("ReplicatedStorage").Shared.GAMEPLAY_CONFIG)
@@ -453,6 +454,7 @@ if Workspace:FindFirstChild("WayPoint")then
             task.wait(2.5)
             AutoPlay()
         end
+        print("Auto Play")
         AutoPlay()
     end
 
