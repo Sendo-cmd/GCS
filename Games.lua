@@ -1920,6 +1920,7 @@ Accounts = {
         "CidP",
     },
     ["bestbestneta9"] = {
+        "Log",
         "System",
     },
     ["iceploy01"] = {
