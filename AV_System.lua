@@ -151,7 +151,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["344t0sHCdw6oDK"] = {
+    ["c97m7VvHFTPZ19"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
