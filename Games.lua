@@ -1808,7 +1808,7 @@ Accounts = {
     ["Flamesiraphat"] = {
         "Log",
         "System",
-        "CdT2",
+        "CidP",
     },
     ["Imissuu0v0"] = {
         "Log",
@@ -1867,10 +1867,10 @@ Accounts = {
         "System",
         "CidP",
     },
-    ["Alawihuf8081"] = {
+    ["Alawihuf8081"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["CaptainMaru863"] = {
         "Log",
