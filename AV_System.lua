@@ -124,9 +124,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "MAMEAN2497",
-            "Flamesiraphat",
-            "Alawihuf8081",
+            "",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -160,9 +158,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "TheDarkwolf8333",
-            "NANO_SHOP04",
-            "IQSHOP_1275",
+            "MAMEAN2497",
+            "Flamesiraphat",
+            "Alawihuf8081",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
