@@ -140,6 +140,23 @@ _G.User = {
             ["Friend Only"] = true,
         },
     },
+    ["CGFONE06m"] = {
+        ["Auto Play"] = {
+            ["Enabled"] = true,
+        },
+        ["Select Mode"] = "Challenge", -- Story , Event , Challenge
+        ["Ranger Enabled"] = true,
+        ["Party Mode"] = false,
+
+        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+
+        ["Story Settings"] = {
+            ["World"] = "Easter Egg",
+            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+            ["Level"] = "0",
+            ["Friend Only"] = true,
+        },
+    },
 }
 local Settings = {
     ["Auto Play"] = {
