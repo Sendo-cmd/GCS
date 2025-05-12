@@ -1905,24 +1905,6 @@ Accounts = {
         "System",
         "CidP",
     },
-    ["Blastc3526"] = {
-        "BaseGem",
-    },
-    ["Voidne1953"] = {
-        "BaseGem",
-    },
-    ["Skycraz2124"] = {
-        "BaseGem",
-    },
-    ["Starstr8505"] = {
-        "BaseGem",
-    },
-    ["Blastgrind9475"] = {
-        "BaseGem",
-    },
-    ["Embesna5706"] = {
-        "BaseGem",
-    },
     ["Embecog4084"] = {
         "Log",
         "System",
@@ -1958,6 +1940,16 @@ Accounts = {
     ["Latia3417"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "TraitReroll",
+    },
+    ["MAMEAN2497"] = { -- Cid ต้องเช็คแบบละเอียด
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["onekrazy2112"] = { -- Cid ต้องเช็คแบบละเอียด
+        "Log",
+        "System",
+        "CdT1",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
