@@ -407,8 +407,9 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "bam87871",
+            "deenhumyai",
             "smart961",
+            "Spiryfedje86606",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -494,7 +495,7 @@ _G.User = {
     ["AVisAVorAV241"] = {
         ["Party Mode"] = true,
     },
-    ["PRY_NS"] = {
+    ["Spiryfedje86606"] = {
         ["Party Mode"] = true,
     },
     ["nongmai813"] = {
