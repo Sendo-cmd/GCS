@@ -105,7 +105,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "atomwat123",
+            "onekrazy2112",
             "Estellburst",
             "iceploy01",
         },
@@ -124,7 +124,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "s1t4d4vPKqIz61",
+            "MAMEAN2497",
             "Flamesiraphat",
             "Alawihuf8081",
         },
@@ -217,6 +217,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["UntitlekaitunG_27166"] = {
+        ["Party Mode"] = true,
+    },
+    ["MAMEAN2497"] = {
+        ["Party Mode"] = true,
+    },
+    ["onekrazy2112"] = {
         ["Party Mode"] = true,
     },
     ["ceeme7777"] = {

@@ -280,7 +280,7 @@ Accounts = {
     ["Estellburst"] = {
         "Log",
         "System",
-        "CdT2",
+        "CidP",
     },
     ["tahkrisda126"] = {
         "Log",
@@ -1808,7 +1808,7 @@ Accounts = {
     ["Flamesiraphat"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["Imissuu0v0"] = {
         "Log",
@@ -1925,7 +1925,7 @@ Accounts = {
     ["iceploy01"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["TheDarkwolf8333"] = {
         "Log",
