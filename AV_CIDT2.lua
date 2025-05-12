@@ -149,7 +149,7 @@ getgenv().Config = {
 		}
 	},
 	["Auto Play"] = {
-		["Auto Upgrade"] = true,
+		["Auto Upgrade"] = false,
 		["Place Cap"] = {
 			["1"] = 1,
 			["3"] = -1,
