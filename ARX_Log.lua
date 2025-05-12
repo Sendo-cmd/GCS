@@ -127,7 +127,7 @@ else
                 ["Body"] = HttpService:JSONEncode({
                     ["Event"] = "Playing",
                     ["WinOrLose"] = WinOrLose,
-                    ["Method"] = "Update",
+                    ["Method"] = "Playing",
                     ["Rewards"] = Value,
                     ["Units"] = Units,
                     ["EquippedUnits"] = EquippedUnits,
