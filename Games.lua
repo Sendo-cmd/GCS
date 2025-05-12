@@ -1951,6 +1951,11 @@ Accounts = {
         "System",
         "CdT1",
     },
+    ["sjdbbzh09"] = { -- Cid ต้องเช็คแบบละเอียด
+        "Log",
+        "System",
+        "CdT2",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 

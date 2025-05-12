@@ -106,7 +106,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Estellburst",
-            "iceploy01",
+            "sjdbbzh09",
             "NANO_SHOP04",
         },
         ["Raid Settings"] = {
