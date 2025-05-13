@@ -395,7 +395,7 @@ Accounts = {
     ["unf0rg1ven_249"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["Overbe2716"] = {
         "Log",
@@ -640,7 +640,7 @@ Accounts = {
     ["EXSTREMz"] = {
         "Log",
         "System",
-        "CdT1",
+        "CidP",
     },
     ["dliddndimddi"] = {
         "Log",
@@ -1572,7 +1572,8 @@ Accounts = {
     },
     ["0621319907fake"] = {
         "Log",
-        "IgrisAuto",
+        "System",
+        "CidP",
     },
     ["MonarchJINWO21"] = {
         "Log",
@@ -1724,7 +1725,7 @@ Accounts = {
     ["s0SoYQ84GXSc12"] = {
         "Log",
         "System",
-        "CidP"
+        "CdT2"
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
@@ -1805,6 +1806,7 @@ Accounts = {
     },
     ["Dbhhceuhceuh"] = {
         "Log",
+        "ESSE",
     },
     ["Flamesiraphat"] = {
         "Log",
@@ -1959,13 +1961,27 @@ Accounts = {
     },
     ["Spiryfedje86606"] = {
         "Log",
-        "System",
-        "PortalParty",
+        "SukonoAuto",
     },
     ["Vangard0012"] = {
         "Log",
         "System",
         "CidP",
+    },
+    ["Nsteam111"] = {
+        "Log",
+        "System",
+        "CdT1",
+    },
+    ["XDD155490"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["Dboom_Aet"] = {
+        "Log",
+        "System",
+        "CdT1",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

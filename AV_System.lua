@@ -86,7 +86,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            ""
+            "0621319907fake",
+            "Dboom_Aet",
+            "s0SoYQ84GXSc12",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -104,8 +106,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "EXSTREMz",
-            "sjdbbzh09",
-            "NANO_SHOP04",
+            "unf0rg1ven_249",
+            "Nsteam111",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -218,6 +220,9 @@ _G.User = {
     ["EXSTREMz"] = {
         ["Party Mode"] = true,
     },
+    ["Nsteam111"] = {
+        ["Party Mode"] = true,
+    },
     ["Vangard0012"] = {
         ["Party Mode"] = true,
     },
@@ -227,7 +232,7 @@ _G.User = {
     ["MAMEAN2497"] = {
         ["Party Mode"] = true,
     },
-    ["onekrazy2112"] = {
+    ["Dboom_Aet"] = {
         ["Party Mode"] = true,
     },
     ["ceeme7777"] = {
@@ -414,8 +419,7 @@ _G.User = {
         ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "deenhumyai",
-            "Spiryfedje86606",
+            "XDD155490",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -489,7 +493,7 @@ _G.User = {
     ["zxzxc666"] = {
         ["Party Mode"] = true,
     },
-    ["dfadawdadaw"] = {
+    ["XDD155490"] = {
         ["Party Mode"] = true,
     },
     ["Taqmgapckpkyl"] = {
