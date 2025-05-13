@@ -639,8 +639,8 @@ Accounts = {
     },
     ["EXSTREMz"] = {
         "Log",
-        "Marco",
-        "DungeonAK",
+        "System",
+        "CdT1",
     },
     ["dliddndimddi"] = {
         "Log",
@@ -1944,7 +1944,7 @@ Accounts = {
     ["MAMEAN2497"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
-        "CdT1",
+        "CidP",
     },
     ["onekrazy2112"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",

@@ -103,7 +103,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Estellburst",
+            "EXSTREMz",
             "sjdbbzh09",
             "NANO_SHOP04",
         },
@@ -157,8 +157,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "MAMEAN2497",
-            "Flamesiraphat",
-            "Alawihuf8081",
+            "J9O0Eg0cQ03MCV",
+            "v0k9Seb9nB6q0P",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -409,7 +409,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "deenhumyai",
-            "smart961",
             "Spiryfedje86606",
         },
         ["Portal Settings"] = {
