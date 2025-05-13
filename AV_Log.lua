@@ -79,6 +79,7 @@ if IsMain then
         for i,v in pairs(val) do
             Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
             Inventory[i]["ID"] = v["ID"]
+             Inventory[i]["AMOUNT"] = v["Amount"]
         end
        
         print("Inventory Updated",os.time())
@@ -187,6 +188,7 @@ elseif IsMatch then
         for i,v in pairs(val1) do
             Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
             Inventory[i]["ID"] = v["ID"]
+            Inventory[i]["AMOUNT"] = v["Amount"]
         end
         print("Inventory Updated",os.time())
     end)
