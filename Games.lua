@@ -278,8 +278,7 @@ Accounts = {
     },
     ["Estellburst"] = {
         "Log",
-        "System",
-        "CdT1",
+        "TraitReroll",
     },
     ["tahkrisda126"] = {
         "Log",
