@@ -160,7 +160,8 @@ elseif IsMatch then
     local Inventory = {}
     local WorldLine = nil
     game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
-        Inventory = val1
+        Inventory = val
+        print(val,val1)
         print("Inventory Updated",os.time())
     end)
     game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
