@@ -1723,6 +1723,8 @@ Accounts = {
     },
     ["s0SoYQ84GXSc12"] = {
         "Log",
+        "System",
+        "CidP"
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
