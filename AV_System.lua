@@ -215,6 +215,9 @@ _G.User = {
     ["PleumRukNa"] = {
         ["Party Mode"] = true,
     },
+    ["EXSTREMz"] = {
+        ["Party Mode"] = true,
+    },
     ["UntitlekaitunG_27166"] = {
         ["Party Mode"] = true,
     },
