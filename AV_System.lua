@@ -87,7 +87,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "0621319907fake",
-            "Dboom_Aet",
+            "Imissuu0v0",
             "s0SoYQ84GXSc12",
         },
         ["Raid Settings"] = {

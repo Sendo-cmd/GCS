@@ -51,7 +51,7 @@ local Networking = ReplicatedStorage:WaitForChild("Networking")
 local SettingsHandler = require(PlayerModules.Gameplay.SettingsHandler)
 local StagesData = require(Modules.Data.StagesData)
 local UnitsData = require(Modules.Data.Entities.Units)
-
+local ItemsData = require(Modules.Data.ItemsData)
 repeat task.wait() until SettingsHandler.SettingsLoaded
 
 local IsMain = workspace:FindFirstChild("MainLobby")
@@ -71,11 +71,16 @@ if IsMain then
     local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
     local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
     local SkinTable = {}
-    local Items = {}
+    local Inventory = {}
     local FamiliarTable = {}
     local WorldLine = nil
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(val)
-        Items = val
+        Inventory = {}
+        for i,v in pairs(val) do
+            Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
+            Inventory[i]["ID"] = v["ID"]
+        end
+       
         print("Inventory Updated",os.time())
     end)
     game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
@@ -89,7 +94,7 @@ if IsMain then
     game:GetService("ReplicatedStorage").Networking.WorldlinesEvent.OnClientEvent:Connect(function(val,val1)
         WorldLine = val1["Season3"]["CurrentRoom"]
     end)
-
+    
     repeat task.wait() until UnitWindowHandler.AreUnitsLoaded;
     game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer()
     game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
@@ -123,10 +128,28 @@ if IsMain then
 
     local PlayerData = plr:GetAttributes()
 
-    local requestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
-    local VictoryCount = requestTo and requestTo["value"] or 0
-   
-
+    local VictoryCount = 0
+    local calling,err = pcall(function()
+        RequestTo = HttpService:JSONDecode(game:HttpGet("https://api.championshop.date/history-av/" .. game.Players.LocalPlayer.Name))
+    end) 
+    if calling then
+        VictoryCount = RequestTo and RequestTo["value"] or 0
+    end
+    setclipboard(HttpService:JSONEncode({
+        ["Method"] = "Update",
+        ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
+        ["Units"] = Units,
+        ["Skins"] = SkinTable,
+        ["Familiars"] = FamiliarTable,
+        ["EquippedUnits"] = EquippedUnits,
+        ["Inventory"] = Inventory,
+        ["WinCounting"] = VictoryCount,
+        ["Username"] = plr.Name,
+        ["Battlepass"] = BattlepassHandler:GetPlayerData(),
+        ["PlayerData"] = PlayerData,
+        ["GuildId"] = "467359347744309248",
+        ["DataKey"] = "GamingChampionShopAPI",
+    }))
     local response = request({
         ["Url"] = url,
         ["Method"] = "POST",
@@ -140,7 +163,7 @@ if IsMain then
             ["Skins"] = SkinTable,
             ["Familiars"] = FamiliarTable,
             ["EquippedUnits"] = EquippedUnits,
-            ["Items"] = Items,
+            ["Inventory"] = Inventory,
             ["WinCounting"] = VictoryCount,
             ["Username"] = plr.Name,
             ["Battlepass"] = BattlepassHandler:GetPlayerData(),
@@ -160,8 +183,11 @@ elseif IsMatch then
     local Inventory = {}
     local WorldLine = nil
     game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
-        Inventory = val1
-        print(val,val1)
+         Inventory = {}
+        for i,v in pairs(val1) do
+            Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
+            Inventory[i]["ID"] = v["ID"]
+        end
         print("Inventory Updated",os.time())
     end)
     game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
