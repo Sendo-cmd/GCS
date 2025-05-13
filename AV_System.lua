@@ -156,9 +156,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "s0SoYQ84GXSc12",
-            "J9O0Eg0cQ03MCV",
             "v0k9Seb9nB6q0P",
+            "J9O0Eg0cQ03MCV",
+            "Vangard0012",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -216,6 +216,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["EXSTREMz"] = {
+        ["Party Mode"] = true,
+    },
+    ["Vangard0012"] = {
         ["Party Mode"] = true,
     },
     ["UntitlekaitunG_27166"] = {
