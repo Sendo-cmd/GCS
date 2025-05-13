@@ -616,7 +616,7 @@ Accounts = {
     ["joy006zx"] = {
         "Log",
         "System",
-        "Dungeon",
+        "CidP",
     },
     ["Rustwhir2660"] = {
         "Log",
@@ -902,7 +902,8 @@ Accounts = {
     },
     ["Namo1171"] = {
         "Log",
-        "Portal",
+        "System",
+        "Dungeon",
     },
     ["effdskofkduf2"] = {
         "Log",
@@ -1733,6 +1734,8 @@ Accounts = {
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
+        "System",
+        "CdT2",
     },
     ["GVU257sFK8en2v"] = {
         "Log",
@@ -1872,7 +1875,7 @@ Accounts = {
     ["Alawihuf8081"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
-        "CdT2",
+        "PortalParty",
     },
     ["CaptainMaru863"] = {
         "Log",
@@ -1978,6 +1981,11 @@ Accounts = {
         "PortalParty",
     },
     ["Dboom_Aet"] = {
+        "Log",
+        "System",
+        "CdT1",
+    },
+    ["luckcome24"] = {
         "Log",
         "System",
         "CdT1",

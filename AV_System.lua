@@ -124,7 +124,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
+            "joy006zx",
+            "luckcome24",
+            "HN0U173rfP9Rej",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -170,14 +172,14 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["aaaaaaaaaa"] = {
+    ["344t0sHCdw6oDK"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "None",
+            "",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -186,6 +188,9 @@ _G.User = {
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },
+    },
+    ["HN0U173rfP9Rej"] = {
+        ["Party Mode"] = true,
     },
     ["s1t4d4vPKqIz61"] = {
         ["Party Mode"] = true,
@@ -197,6 +202,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["J9O0Eg0cQ03MCV"] = {
+        ["Party Mode"] = true,
+    },
+    ["GVU257sFK8en2v"] = {
         ["Party Mode"] = true,
     },
     ["Imissuu0v0"] = {
@@ -227,6 +235,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["UntitlekaitunG_27166"] = {
+        ["Party Mode"] = true,
+    },
+    ["luckcome24"] = {
         ["Party Mode"] = true,
     },
     ["MAMEAN2497"] = {
@@ -420,6 +431,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "XDD155490",
+            "Alawihuf8081",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -463,6 +475,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "RyuzaaaV2",
+            "Namo1171",
+            "GVU257sFK8en2v",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
