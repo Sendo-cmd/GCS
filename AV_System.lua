@@ -499,7 +499,7 @@ _G.User = {
     ["0621319907fake"] = {
         ["Party Mode"] = true,
     },
-    ["AVisAVorAV241"] = {
+    ["Namo1171"] = {
         ["Party Mode"] = true,
     },
     ["Spiryfedje86606"] = {
