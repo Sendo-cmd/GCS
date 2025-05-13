@@ -91,7 +91,7 @@ if IsMain then
     end)
 
     repeat task.wait() until UnitWindowHandler.AreUnitsLoaded;
-
+    game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer()
     game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
     game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
     game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("RetrieveData")
@@ -160,7 +160,7 @@ elseif IsMatch then
     local Inventory = {}
     local WorldLine = nil
     game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
-        Inventory = val
+        Inventory = val1
         print(val,val1)
         print("Inventory Updated",os.time())
     end)
