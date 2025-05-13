@@ -181,6 +181,7 @@ elseif IsMatch then
         return BPPlay(self, data)
     end
     local function Send(Results)
+        print("Debug 1",Results)
         local Results = Results or {}
         local EquippedUnits = {}
         for i,v in pairs(UnitsHUD._Cache) do
@@ -196,7 +197,7 @@ elseif IsMatch then
 
         task.wait(2)
         local GameData = GameHandler.GameData
-        
+        print("Debug 2",Results)
         local bool,err = pcall(function()
             Results["StageName"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
         end)
@@ -242,7 +243,7 @@ elseif IsMatch then
         end
        
         setclipboard(HttpService:JSONEncode({
-                ["Method"] = "MatchEnd",
+                ["Method"] = Results.Rewards and "MatchEnd" or "FirstTime",
                 ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
                 ["Inventory"] = Inventory,
                 ["Units"] = EquippedUnits,
@@ -255,6 +256,7 @@ elseif IsMatch then
                 ["GuildId"] = "467359347744309248",
                 ["DataKey"] = "GamingChampionShopAPI",
         }))
+        warn("Setclipboard")
         local response = request({
             ["Url"] = url,
             ["Method"] = "POST",
@@ -262,7 +264,7 @@ elseif IsMatch then
                 ["content-type"] = "application/json"
             },
             ["Body"] = HttpService:JSONEncode({
-                ["Method"] = "MatchEnd",
+                ["Method"] =  Results.Rewards and "MatchEnd" or "FirstTime",
                 ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
                 ["Inventory"] = Inventory,
                 ["Units"] = EquippedUnits,
@@ -276,6 +278,9 @@ elseif IsMatch then
                 ["DataKey"] = "GamingChampionShopAPI",
             })
         })
+        for i,v in pairs(response) do
+            warn("Debug",i,v)
+        end
     end 
     Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
         Send(Results)
