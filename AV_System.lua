@@ -117,25 +117,6 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["c97m7VvHFTPZ19"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
-        ["Auto Priority"] = true,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "joy006zx",
-            "luckcome24",
-            "HN0U173rfP9Rej",
-        },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
-        }, 
-    },
     ["GCshop2"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
@@ -162,7 +143,7 @@ _G.User = {
         ["Party Member"] = {
             "v0k9Seb9nB6q0P",
             "J9O0Eg0cQ03MCV",
-            "Vangard0012",
+            "luckcome24",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -179,7 +160,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
+            "joy006zx",
+            "s1t4d4vPKqIz61",
+            "HN0U173rfP9Rej",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
