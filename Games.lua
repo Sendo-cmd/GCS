@@ -195,7 +195,6 @@ Accounts = {
         "FarmGem",
     },
     ["CGFONE06m"] = {
-        "Log",
         "System",
     },
     ["ownekitte"] = {
@@ -1921,7 +1920,6 @@ Accounts = {
         "CidP",
     },
     ["bestbestneta9"] = {
-        "Log",
         "System",
     },
     ["iceploy01"] = {
