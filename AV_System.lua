@@ -105,8 +105,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "EXSTREMz",
-            "unf0rg1ven_249",
+            "s0SoYQ84GXSc12",
+            "A6bU2F244SgVIL",
             "Nsteam111",
         },
         ["Raid Settings"] = {
