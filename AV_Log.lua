@@ -77,14 +77,14 @@ if IsMain then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(val)
         Inventory = {}
         for i,v in pairs(val) do
-            if v["ID"] then 
-                Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
-                Inventory[i]["ID"] = v["ID"]
-                Inventory[i]["AMOUNT"] = v["Amount"]
+            if v then 
+                local call,err = pcall(function()
+                    Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                    Inventory[i]["ID"] = v["ID"]
+                    Inventory[i]["AMOUNT"] = v["Amount"]
+                end) 
             end
-            
         end
-       
         print("Inventory Updated",os.time())
     end)
     game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
@@ -190,7 +190,7 @@ elseif IsMatch then
         Inventory = {}
         for i,v in pairs(val1) do
             print(os.time(),i,v)
-            if v and v["ID"] then 
+            if v then 
                 local call,err = pcall(function()
                     Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
                     Inventory[i]["ID"] = v["ID"]
