@@ -44,7 +44,7 @@ getgenv().Config = {
 			["Leave Extra Money"] = 5000
 		},
 		["Auto Sell"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["Wave"] = 22
 		},
 		["Occult Hunt"] = {
