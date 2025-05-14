@@ -107,7 +107,7 @@ _G.User = {
         ["Party Member"] = {
             "s0SoYQ84GXSc12",
             "A6bU2F244SgVIL",
-            "Nsteam111",
+            "GoDis_BanG",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
