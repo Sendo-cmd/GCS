@@ -414,7 +414,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "XDD155490",
-            "Alawihuf8081",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
