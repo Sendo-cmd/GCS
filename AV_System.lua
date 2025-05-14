@@ -87,7 +87,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "deenhumyai",
-            "GVU257sFK8en2v",
+            "GODZARIO8113",
             "J9O0Eg0cQ03MCV",
         },
         ["Dungeon Settings"] = {
@@ -105,13 +105,13 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "s0SoYQ84GXSc12",
+            "GoDis_BanG",
             "A6bU2F244SgVIL",
             "Nsteam111",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -127,8 +127,8 @@ _G.User = {
             "None",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -146,8 +146,8 @@ _G.User = {
             "bababuty",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -165,8 +165,8 @@ _G.User = {
             "HN0U173rfP9Rej",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act2",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -235,6 +235,9 @@ _G.User = {
     ["ceeme7777"] = {
         ["Party Mode"] = true,
     },
+    ["GoDis_BanG"] = {
+        ["Party Mode"] = true,
+    },
     ["atomwat123"] = {
         ["Party Mode"] = true,
     },
@@ -253,7 +256,7 @@ _G.User = {
     ["Estellburst"] = {
         ["Party Mode"] = true,
     },
-    ["dejdjd121"] = {
+    ["GODZARIO8113"] = {
         ["Party Mode"] = true,
     },
     ["KoopfoolxD2"] = {
