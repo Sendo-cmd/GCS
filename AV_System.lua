@@ -453,20 +453,20 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["A6bU2F244SgVIL"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+        -- ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "RyuzaaaV2",
-            "Namo1171",
-            "GVU257sFK8en2v",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },   
+        -- ["Party Member"] = {
+        --     "RyuzaaaV2",
+        --     "Namo1171",
+        --     "GVU257sFK8en2v",
+        -- },
+        -- ["Dungeon Settings"] = {
+        --     ["Difficulty"] = "Nightmare",
+        --     ["Act"] = "AntIsland",
+        --     ["StageType"] = "Dungeon",
+        --     ["Stage"] = "Ant Island",
+        --     ["FriendsOnly"] = false
+        -- },   
     },
     ["aocyms"] = {
         ["Party Mode"] = true,
