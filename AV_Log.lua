@@ -189,7 +189,7 @@ elseif IsMatch then
     game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
         Inventory = {}
         for i,v in pairs(val1) do
-            print(i,v)
+            print(os.time(),i,v)
             if v and v["ID"] then 
                 Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
                 Inventory[i]["ID"] = v["ID"]
