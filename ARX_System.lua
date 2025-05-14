@@ -145,7 +145,7 @@ _G.User = {
             ["Enabled"] = true,
         },
         ["Select Mode"] = "Challenge", -- Story , Event , Challenge
-        ["Ranger Enabled"] = true,
+        ["Ranger Enabled"] = false,
         ["Party Mode"] = false,
 
         ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
