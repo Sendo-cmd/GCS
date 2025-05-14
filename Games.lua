@@ -2018,6 +2018,10 @@ Accounts = {
         "Log",
         "TraitReroll",
     },
+    ["jojoisrealko"] = {
+        "Log",
+        "SokoraAuto",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
