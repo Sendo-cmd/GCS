@@ -139,21 +139,21 @@ if IsMain then
     if calling then
         VictoryCount = RequestTo and RequestTo["value"] or 0
     end
-    -- setclipboard(HttpService:JSONEncode({
-    --     ["Method"] = "Update",
-    --     ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
-    --     ["Units"] = Units,
-    --     ["Skins"] = SkinTable,
-    --     ["Familiars"] = FamiliarTable,
-    --     ["EquippedUnits"] = EquippedUnits,
-    --     ["Inventory"] = Inventory,
-    --     ["WinCounting"] = VictoryCount,
-    --     ["Username"] = plr.Name,
-    --     ["Battlepass"] = BattlepassHandler:GetPlayerData(),
-    --     ["PlayerData"] = PlayerData,
-    --     ["GuildId"] = "467359347744309248",
-    --     ["DataKey"] = "GamingChampionShopAPI",
-    -- }))
+    setclipboard(HttpService:JSONEncode({
+        ["Method"] = "Update",
+        ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
+        ["Units"] = Units,
+        ["Skins"] = SkinTable,
+        ["Familiars"] = FamiliarTable,
+        ["EquippedUnits"] = EquippedUnits,
+        ["Inventory"] = Inventory,
+        ["WinCounting"] = VictoryCount,
+        ["Username"] = plr.Name,
+        ["Battlepass"] = BattlepassHandler:GetPlayerData(),
+        ["PlayerData"] = PlayerData,
+        ["GuildId"] = "467359347744309248",
+        ["DataKey"] = "GamingChampionShopAPI",
+    }))
     local response = request({
         ["Url"] = url,
         ["Method"] = "POST",
@@ -227,11 +227,7 @@ elseif IsMatch then
 
             EquippedUnits[v.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v.Identifier).Name
         end
-        game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
-        game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
-        game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
-
-
+        
         task.wait(2)
         local GameData = GameHandler.GameData
         print("Debug 2",Results)
@@ -278,22 +274,26 @@ elseif IsMatch then
         if calling then
             VictoryCount = RequestTo and RequestTo["value"] or 0
         end
-       
-        -- setclipboard(HttpService:JSONEncode({
-        --         ["Method"] = Results.Rewards and "MatchEnd" or "FirstTime",
-        --         ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
-        --         ["Inventory"] = Inventory,
-        --         ["Units"] = EquippedUnits,
-        --         ["Skins"] = SkinTable,
-        --         ["Familiars"] = FamiliarTable,
-        --         ["Results"] = Results,
-        --         ["Username"] = plr.Name,
-        --         ["PlayerData"] = PlayerData,
-        --         ["WinCounting"] = VictoryCount,
-        --         ["GuildId"] = "467359347744309248",
-        --         ["DataKey"] = "GamingChampionShopAPI",
-        -- }))
-        -- warn("Setclipboard")
+        task.wait(2)
+        game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
+        game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+        game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+        task.wait(1)
+        setclipboard(HttpService:JSONEncode({
+                ["Method"] = Results.Rewards and "MatchEnd" or "FirstTime",
+                ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
+                ["Inventory"] = Inventory,
+                ["Units"] = EquippedUnits,
+                ["Skins"] = SkinTable,
+                ["Familiars"] = FamiliarTable,
+                ["Results"] = Results,
+                ["Username"] = plr.Name,
+                ["PlayerData"] = PlayerData,
+                ["WinCounting"] = VictoryCount,
+                ["GuildId"] = "467359347744309248",
+                ["DataKey"] = "GamingChampionShopAPI",
+        }))
+        warn("Setclipboard")
         local response = request({
             ["Url"] = url,
             ["Method"] = "POST",
