@@ -105,13 +105,13 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GoDis_BanG",
+            "s0SoYQ84GXSc12",
             "A6bU2F244SgVIL",
             "Nsteam111",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act2",
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -127,8 +127,8 @@ _G.User = {
             "None",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act2",
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -146,8 +146,8 @@ _G.User = {
             "bababuty",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act2",
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
@@ -165,8 +165,8 @@ _G.User = {
             "HN0U173rfP9Rej",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act2",
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
