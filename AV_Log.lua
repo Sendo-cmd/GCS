@@ -191,9 +191,11 @@ elseif IsMatch then
         for i,v in pairs(val1) do
             print(os.time(),i,v)
             if v and v["ID"] then 
-                Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
-                Inventory[i]["ID"] = v["ID"]
-                Inventory[i]["AMOUNT"] = v["Amount"]
+                local call,err = pcall(function()
+                    Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                    Inventory[i]["ID"] = v["ID"]
+                    Inventory[i]["AMOUNT"] = v["Amount"]
+                end) 
             end
         end
         print("Inventory Updated",os.time())
