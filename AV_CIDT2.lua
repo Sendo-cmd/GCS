@@ -45,7 +45,7 @@ getgenv().Config = {
 		},
 		["Auto Sell"] = {
 			["Enable"] = true,
-			["Wave"] = 25
+			["Wave"] = 22
 		},
 		["Occult Hunt"] = {
 			["Use All Talisman"] = {
