@@ -1706,7 +1706,7 @@ Accounts = {
     ["A6bU2F244SgVIL"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["x8s0r1y5knI3Ls"] = {
         "Log",
@@ -1997,7 +1997,7 @@ Accounts = {
     ["Nsteam111"] = {
         "Log",
         "System",
-        "CdT1",
+        "CidP",
     },
     ["XDD155490"] = {
         "Log",
