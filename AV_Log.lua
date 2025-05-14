@@ -291,7 +291,7 @@ elseif IsMatch then
         --         ["GuildId"] = "467359347744309248",
         --         ["DataKey"] = "GamingChampionShopAPI",
         -- }))
-        warn("Setclipboard")
+        -- warn("Setclipboard")
         local response = request({
             ["Url"] = url,
             ["Method"] = "POST",
