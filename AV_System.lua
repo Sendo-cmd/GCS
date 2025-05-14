@@ -160,7 +160,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "joy006zx",
+            "twelvgir5130",
             "s1t4d4vPKqIz61",
             "HN0U173rfP9Rej",
         },
@@ -197,6 +197,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Flamesiraphat"] = {
+        ["Party Mode"] = true,
+    },
+    ["twelvgir5130"] = {
         ["Party Mode"] = true,
     },
     ["sjdbbzh09"] = {

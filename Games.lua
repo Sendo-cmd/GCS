@@ -2022,6 +2022,11 @@ Accounts = {
         "Log",
         "SokoraAuto",
     },
+    ["twelvgir5130"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
