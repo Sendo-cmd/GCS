@@ -88,7 +88,7 @@ _G.User = {
         ["Party Member"] = {
             "0621319907fake",
             "Imissuu0v0",
-            "s0SoYQ84GXSc12",
+            "bababuty",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -226,7 +226,7 @@ _G.User = {
     ["MAMEAN2497"] = {
         ["Party Mode"] = true,
     },
-    ["Dboom_Aet"] = {
+    ["bababuty"] = {
         ["Party Mode"] = true,
     },
     ["ceeme7777"] = {

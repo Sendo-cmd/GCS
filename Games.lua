@@ -338,7 +338,8 @@ Accounts = {
     },
     ["bababuty"] = {
         "Log",
-        "StarGem",
+        "System",
+        "CdT2",
     },
     ["bentoggwp7916"] = {
         "Log",
