@@ -187,9 +187,10 @@ elseif IsMatch then
     local Inventory = {}
     local WorldLine = nil
     game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
-         Inventory = {}
+        Inventory = {}
         for i,v in pairs(val1) do
-            if v["ID"] then 
+            print(i,v)
+            if v and v["ID"] then 
                 Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
                 Inventory[i]["ID"] = v["ID"]
                 Inventory[i]["AMOUNT"] = v["Amount"]
