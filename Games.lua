@@ -1157,7 +1157,7 @@ Accounts = {
     ["deenhumyai"] = {
         "Log",
         "System",
-        "CidP",
+        "Dungeon",
     },
     ["EliXXLRkF"] = {
         "Log",
@@ -1691,7 +1691,7 @@ Accounts = {
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
         "System",
-        "CdT2",
+        "Dungeon",
     },
     ["v0k9Seb9nB6q0P"] = {
         "Log",
