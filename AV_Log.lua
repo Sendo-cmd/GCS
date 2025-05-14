@@ -136,21 +136,21 @@ if IsMain then
     if calling then
         VictoryCount = RequestTo and RequestTo["value"] or 0
     end
-    setclipboard(HttpService:JSONEncode({
-        ["Method"] = "Update",
-        ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
-        ["Units"] = Units,
-        ["Skins"] = SkinTable,
-        ["Familiars"] = FamiliarTable,
-        ["EquippedUnits"] = EquippedUnits,
-        ["Inventory"] = Inventory,
-        ["WinCounting"] = VictoryCount,
-        ["Username"] = plr.Name,
-        ["Battlepass"] = BattlepassHandler:GetPlayerData(),
-        ["PlayerData"] = PlayerData,
-        ["GuildId"] = "467359347744309248",
-        ["DataKey"] = "GamingChampionShopAPI",
-    }))
+    -- setclipboard(HttpService:JSONEncode({
+    --     ["Method"] = "Update",
+    --     ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
+    --     ["Units"] = Units,
+    --     ["Skins"] = SkinTable,
+    --     ["Familiars"] = FamiliarTable,
+    --     ["EquippedUnits"] = EquippedUnits,
+    --     ["Inventory"] = Inventory,
+    --     ["WinCounting"] = VictoryCount,
+    --     ["Username"] = plr.Name,
+    --     ["Battlepass"] = BattlepassHandler:GetPlayerData(),
+    --     ["PlayerData"] = PlayerData,
+    --     ["GuildId"] = "467359347744309248",
+    --     ["DataKey"] = "GamingChampionShopAPI",
+    -- }))
     local response = request({
         ["Url"] = url,
         ["Method"] = "POST",
@@ -271,21 +271,21 @@ elseif IsMatch then
             VictoryCount = RequestTo and RequestTo["value"] or 0
         end
        
-        setclipboard(HttpService:JSONEncode({
-                ["Method"] = Results.Rewards and "MatchEnd" or "FirstTime",
-                ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
-                ["Inventory"] = Inventory,
-                ["Units"] = EquippedUnits,
-                ["Skins"] = SkinTable,
-                ["Familiars"] = FamiliarTable,
-                ["Results"] = Results,
-                ["Username"] = plr.Name,
-                ["PlayerData"] = PlayerData,
-                ["WinCounting"] = VictoryCount,
-                ["GuildId"] = "467359347744309248",
-                ["DataKey"] = "GamingChampionShopAPI",
-        }))
-        warn("Setclipboard")
+        -- setclipboard(HttpService:JSONEncode({
+        --         ["Method"] = Results.Rewards and "MatchEnd" or "FirstTime",
+        --         ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
+        --         ["Inventory"] = Inventory,
+        --         ["Units"] = EquippedUnits,
+        --         ["Skins"] = SkinTable,
+        --         ["Familiars"] = FamiliarTable,
+        --         ["Results"] = Results,
+        --         ["Username"] = plr.Name,
+        --         ["PlayerData"] = PlayerData,
+        --         ["WinCounting"] = VictoryCount,
+        --         ["GuildId"] = "467359347744309248",
+        --         ["DataKey"] = "GamingChampionShopAPI",
+        -- }))
+        -- warn("Setclipboard")
         local response = request({
             ["Url"] = url,
             ["Method"] = "POST",
