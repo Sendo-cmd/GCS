@@ -667,11 +667,6 @@ Accounts = {
         "Log",
         "Dungeon",
     },
-    ["bababuty"] = {
-        "Log",
-        "Marco",
-        "DungeonBoost3V2",
-    },
     ["Koko08937"] = {
         "Log",
         "Dungeon",
