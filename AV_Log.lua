@@ -314,7 +314,7 @@ elseif IsMatch then
     Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
         Send(Results)
     end)
-    Send()
+    -- Send()
     Networking.EndScreen.HideEndScreenEvent.OnClientEvent:Connect(function()
         BattlePassXp = 0
     end)
