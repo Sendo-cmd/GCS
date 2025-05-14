@@ -86,9 +86,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "0621319907fake",
-            "Imissuu0v0",
-            "bababuty",
+            "",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -142,8 +140,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "v0k9Seb9nB6q0P",
-            "J9O0Eg0cQ03MCV",
-            "luckcome24",
+            "0621319907fake",
+            "bababuty",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
