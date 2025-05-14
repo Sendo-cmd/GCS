@@ -1946,8 +1946,7 @@ Accounts = {
     },
     ["DB_KHOON"] = {
         "Log",
-        "System",
-        "CidP",
+        "Worldline",
     },
     ["bestbestneta9"] = {
         "System",
