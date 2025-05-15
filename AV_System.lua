@@ -260,7 +260,7 @@ _G.User = {
     ["jm_ep30"] = {
         ["Party Mode"] = true,
     },
-    ["iceploy01"] = {
+    ["Uhdennanji979"] = {
         ["Party Mode"] = true,
     },
     ["TheDarkwolf8333"] = {
