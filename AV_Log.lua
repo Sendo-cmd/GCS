@@ -275,7 +275,6 @@ elseif IsMatch then
         if calling then
             VictoryCount = RequestTo and RequestTo["value"] or 0
         end
-        task.wait(2)
         game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
@@ -298,7 +297,7 @@ elseif IsMatch then
         warn(FirstTime == false and "POST" or "Update")
         local response = request({
             ["Url"] = url,
-            ["Method"] = FirstTime == false and "POST" or "Update",
+            ["Method"] = FirstTime == false and "POST" or "UPDATE",
             ["Headers"] = {
                 ["content-type"] = "application/json"
             },
