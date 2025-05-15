@@ -334,7 +334,7 @@ Accounts = {
     ["bababuty"] = {
         "Log",
         "System",
-        "CdT2",
+        "CidP",
     },
     ["bentoggwp7916"] = {
         "Log",
@@ -2033,6 +2033,11 @@ Accounts = {
         "CidP",
     },
     ["Uhdennanji979"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["2MILL_XXL"] = {
         "Log",
         "System",
         "CidP",

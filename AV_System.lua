@@ -126,7 +126,7 @@ _G.User = {
         ["Party Member"] = {
             "s0SoYQ84GXSc12",
             "s1t4d4vPKqIz61",
-            "GoDis_BanG",
+            "bababuty",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -404,7 +404,7 @@ _G.User = {
     ["saveew"] = {
         ["Party Mode"] = true,
     },
-    ["mrclouduoooo"] = {
+    ["2MILL_XXL"] = {
         ["Party Mode"] = true,
     },
     ["keam093321"] = {
