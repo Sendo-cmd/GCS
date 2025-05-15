@@ -297,7 +297,7 @@ elseif IsMatch then
         warn(FirstTime == false and "POST" or "Update")
         local response = request({
             ["Url"] = url,
-            ["Method"] = FirstTime == false and "POST" or "UPDATE",
+            ["Method"] = "UPDATE",
             ["Headers"] = {
                 ["content-type"] = "application/json"
             },
