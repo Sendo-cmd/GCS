@@ -1680,7 +1680,7 @@ Accounts = {
     ["aR8xV9v6JI0FV9"] = {
         "Log",
         "System",
-        "Dungeon",
+        "PortalParty",
     },
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
@@ -1731,6 +1731,14 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["Embesna5706"] = {
+        "System",
+        "PortalParty",
+    },
+    ["Skycraz2124"] = {
+        "System",
+        "PortalParty",
     },
     ["2Z7CsAUL631eyO"] = {
         "Log",
@@ -1986,7 +1994,7 @@ Accounts = {
     ["Vangard0012"] = {
         "Log",
         "System",
-        "CidP",
+        "PortalParty",
     },
     ["Nsteam111"] = {
         "Log",

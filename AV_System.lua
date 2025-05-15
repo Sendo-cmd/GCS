@@ -105,9 +105,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
-            "",
-            "",
+            "Vangard0012",
+            "Embesna5706",
+            "Skycraz2124",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -204,6 +204,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["GVU257sFK8en2v"] = {
+        ["Party Mode"] = true,
+    },
+    ["Embesna5706"] = {
+        ["Party Mode"] = true,
+    },
+    ["Skycraz2124"] = {
         ["Party Mode"] = true,
     },
     ["Imissuu0v0"] = {
