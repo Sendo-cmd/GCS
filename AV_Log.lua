@@ -219,7 +219,7 @@ elseif IsMatch then
     end
     local FirstTime = false
     local function Send(Results)
-        -- print("Debug 1",Results)
+        print("Debug 1",Results)
         local Results = Results or {}
         local EquippedUnits = {}
         for i,v in pairs(UnitsHUD._Cache) do
@@ -228,10 +228,8 @@ elseif IsMatch then
 
             EquippedUnits[v.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v.Identifier).Name
         end
-        
-        task.wait(2)
         local GameData = GameHandler.GameData
-        -- print("Debug 2",Results)
+        print("Debug 2",Results)
         local bool,err = pcall(function()
             Results["StageName"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
         end)
@@ -275,11 +273,11 @@ elseif IsMatch then
         if calling then
             VictoryCount = RequestTo and RequestTo["value"] or 0
         end
-        task.wait(2)
+        task.wait(.1)
         game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
-        task.wait(1)
+        task.wait(.1)
         -- setclipboard(HttpService:JSONEncode({
         --         ["Method"] = Results.Rewards and "MatchEnd" or "FirstTime",
         --         ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
@@ -318,7 +316,7 @@ elseif IsMatch then
                 })
             })
             for i,v in pairs(response) do
-                -- warn("Debug",i,v)
+                warn("Debug",i,v)
             end
         end
        
