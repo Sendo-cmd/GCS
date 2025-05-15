@@ -275,6 +275,7 @@ elseif IsMatch then
         if calling then
             VictoryCount = RequestTo and RequestTo["value"] or 0
         end
+        task.wait(2)
         game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
         game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
@@ -294,17 +295,15 @@ elseif IsMatch then
                 ["DataKey"] = "GamingChampionShopAPI",
         }))
         warn("Setclipboard")
-        warn(FirstTime == false and "POST" or "Update")
         local response = request({
             ["Url"] = url,
-            ["Method"] = "UPDATE",
+            ["Method"] = FirstTime == false and "POST" or "Update",
             ["Headers"] = {
                 ["content-type"] = "application/json"
             },
             ["Body"] = HttpService:JSONEncode({
                 ["Method"] =  Results.Rewards and "MatchEnd" or "FirstTime",
                 ["WorldLine_Floor"] = WorldLine == nil and "Cannot Get Worldline" or WorldLine,
-                ["ostime"] = os.time(),
                 ["Inventory"] = Inventory,
                 ["Units"] = EquippedUnits,
                 ["Skins"] = SkinTable,
