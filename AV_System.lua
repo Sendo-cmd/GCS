@@ -79,22 +79,41 @@ _G.User = {
     ["Trarockker"] = {
         ["Party Mode"] = true,
     },
-    ["aR8xV9v6JI0FV9"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
+    ["J9O0Eg0cQ03MCV"] = {
+        ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "deenhumyai",
-            "GODZARIO8113",
-            "J9O0Eg0cQ03MCV",
+            "HN0U173rfP9Rej",
+            "x8s0r1y5knI3Ls",
+            "2MILL_XXL",
         },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
+            ["FriendsOnly"] = false
+        },
+    },
+    ["aR8xV9v6JI0FV9"] = {
+        ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "",
+            "",
+            "",
+        },
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },
     },
@@ -106,7 +125,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "s0SoYQ84GXSc12",
-            "A6bU2F244SgVIL",
+            "s1t4d4vPKqIz61",
             "GoDis_BanG",
         },
         ["Raid Settings"] = {
@@ -142,8 +161,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "v0k9Seb9nB6q0P",
-            "0621319907fake",
-            "bababuty",
+            "A6bU2F244SgVIL",
+            "Uhdennanji979",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -182,9 +201,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["v0k9Seb9nB6q0P"] = {
-        ["Party Mode"] = true,
-    },
-    ["J9O0Eg0cQ03MCV"] = {
         ["Party Mode"] = true,
     },
     ["GVU257sFK8en2v"] = {
@@ -416,18 +432,18 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["x8s0r1y5knI3Ls"] = {
-        ["Select Mode"] = "Portal", -- Portal
+        -- ["Select Mode"] = "Portal", -- Portal
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "XDD155490",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },   
+        -- ["Party Member"] = {
+        --     "XDD155490",
+        -- },
+        -- ["Portal Settings"] = {
+        --     ["ID"] = 87, -- 113 Love , 87 Winter
+        --     ["Tier Cap"] = 10,
+        --     ["Method"] = "Highest", -- Highest , Lowest
+        --     ["Ignore Stage"] = {"Spider Forest"},
+        --     ["Ignore Modify"] = {},
+        -- },   
     },
     ["Embecog4084"] = {
         ["Select Mode"] = "Dungeon", -- Portal

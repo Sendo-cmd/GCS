@@ -1686,7 +1686,7 @@ Accounts = {
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Cid",
     },
     ["v0k9Seb9nB6q0P"] = {
         "Log",
@@ -1706,7 +1706,7 @@ Accounts = {
     ["x8s0r1y5knI3Ls"] = {
         "Log",
         "System",
-        "PortalParty",
+        "CdT1",
     },
     ["s1t4d4vPKqIz61"] = {
         "Log",
@@ -1716,7 +1716,7 @@ Accounts = {
     ["s0SoYQ84GXSc12"] = {
         "Log",
         "System",
-        "CdT2"
+        "CdT1"
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
@@ -1726,7 +1726,7 @@ Accounts = {
     ["HN0U173rfP9Rej"] = {
         "Log",
         "System",
-        "CdT1",
+        "CdT2",
     },
     ["GVU257sFK8en2v"] = {
         "Log",
