@@ -700,8 +700,7 @@ Accounts = {
     },
     ["PleumRukNa"] = {
         "Log",
-        "System",
-        "CidP",
+        "SokoraAuto",
     },
     ["ReiYuLiz"] = {
         "Log",
