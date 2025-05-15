@@ -14,7 +14,8 @@ Games = {
         ["ESSEN"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_EssenceN.lua",
         ["ESSE2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Essence2.lua",
         ["BaseCF"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CF.lua",
-        ["TraitReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Trait.lua",
+        ["Reroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Trait.lua",
+        ["RerollSuper"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_TraitSuper.lua",
         ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
         ["DioAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DioAuto.lua",
         ["PortalParty"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal_Party.lua",
@@ -53,18 +54,12 @@ Games = {
         ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
     },
     [4509896324] = { --Anime-Last-Stand
-        ["Xenon_ALS"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_X.lua",
-        ["ALS_AReroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
-        ["ALS_Reroll"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
-        ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Marco.lua",
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
     },
     [5750914919] = { --Fisch
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
-    },
-    [6149138290] = { --Anime-Card-Battle
-        ["ACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Banana.lua",
-        ["LogACB"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ACB_Card.lua",
     },
     [3183403065] = { --Anime Adventures
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AA_Log.lua",
@@ -108,7 +103,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "TraitReroll",
+        "RerollSuper",
     },
     ["maser080"] = {
         "Log",
@@ -278,7 +273,7 @@ Accounts = {
     },
     ["Estellburst"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["tahkrisda126"] = {
         "Log",
@@ -314,7 +309,7 @@ Accounts = {
     },
     ["junjai007"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["Lawbana"] = {
         "Log",
@@ -487,7 +482,7 @@ Accounts = {
     },
     ["NARUTO4gm"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["artyg111"] = {
         "Log",
@@ -557,7 +552,7 @@ Accounts = {
     },
     ["zywimq"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["Alow_2116"] = {
         "Log",
@@ -966,7 +961,7 @@ Accounts = {
     },
     ["Adeqdae"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["monkuyautokungKICKIC"] = {
         "Log",
@@ -988,7 +983,7 @@ Accounts = {
     },
     ["PDM803"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["kamkamincu"] = {
         "Log",
@@ -996,7 +991,7 @@ Accounts = {
     },
     ["MFBF_7640"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["ilovecat326"] = {
         "Log",
@@ -1400,11 +1395,11 @@ Accounts = {
     },
     ["Juniorlnw5"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["OVERDOG_KUNG"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["Diablo039a"] = {
         "Log",
@@ -1872,7 +1867,7 @@ Accounts = {
     },
     ["PXDLKIG"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["Biszhedter"] = {
         "Log",
@@ -1928,7 +1923,7 @@ Accounts = {
     },
     ["Abfbtwekpjkkn"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["Trarockker"] = {
         "Log",
@@ -1968,7 +1963,7 @@ Accounts = {
     },
     ["Latia3417"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["MAMEAN2497"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
@@ -2016,7 +2011,7 @@ Accounts = {
     },
     ["ElisabethobqPa"] = {
         "Log",
-        "TraitReroll",
+        "Reroll",
     },
     ["jojoisrealko"] = {
         "Log",
