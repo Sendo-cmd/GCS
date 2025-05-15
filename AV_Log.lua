@@ -219,7 +219,7 @@ elseif IsMatch then
     end
     local FirstTime = false
     local function Send(Results)
-        print("Debug 1",Results)
+        -- print("Debug 1",Results)
         local Results = Results or {}
         local EquippedUnits = {}
         for i,v in pairs(UnitsHUD._Cache) do
@@ -231,7 +231,7 @@ elseif IsMatch then
         
         task.wait(2)
         local GameData = GameHandler.GameData
-        print("Debug 2",Results)
+        -- print("Debug 2",Results)
         local bool,err = pcall(function()
             Results["StageName"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
         end)
@@ -295,7 +295,7 @@ elseif IsMatch then
         --         ["DataKey"] = "GamingChampionShopAPI",
         -- }))
         -- warn("Setclipboard")
-        for i,v in pairs({"Update","MatchEnd"}) do
+        for i,v in pairs({"Update-All","MatchEnd"}) do
             local response = request({
                 ["Url"] = url,
                 ["Method"] = "POST",
@@ -318,7 +318,7 @@ elseif IsMatch then
                 })
             })
             for i,v in pairs(response) do
-                warn("Debug",i,v)
+                -- warn("Debug",i,v)
             end
         end
        
