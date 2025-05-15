@@ -217,6 +217,7 @@ elseif IsMatch then
         BattlePassXp += data[1]
         return BPPlay(self, data)
     end
+    local FirstTime = false
     local function Send(Results)
         print("Debug 1",Results)
         local Results = Results or {}
@@ -296,7 +297,7 @@ elseif IsMatch then
         -- warn("Setclipboard")
         local response = request({
             ["Url"] = url,
-            ["Method"] = "POST",
+            ["Method"] = FirstTime == false and "POST" or "Update",
             ["Headers"] = {
                 ["content-type"] = "application/json"
             },
@@ -318,6 +319,7 @@ elseif IsMatch then
         for i,v in pairs(response) do
             warn("Debug",i,v)
         end
+        FirstTime = true
     end 
     Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
         Send(Results)
