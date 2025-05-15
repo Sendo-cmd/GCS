@@ -1701,7 +1701,7 @@ Accounts = {
     ["A6bU2F244SgVIL"] = {
         "Log",
         "System",
-        "CdT1",
+        "CdT2",
     },
     ["x8s0r1y5knI3Ls"] = {
         "Log",
@@ -2028,6 +2028,11 @@ Accounts = {
         "Dungeon",
     },
     ["GoDis_BanG"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["Uhdennanji979"] = {
         "Log",
         "System",
         "CidP",
