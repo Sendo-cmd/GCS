@@ -239,6 +239,12 @@ _G.User = {
     ["Nsteam111"] = {
         ["Party Mode"] = true,
     },
+    ["Londaruh"] = {
+        ["Party Mode"] = true,
+    },
+    ["WGwOktecgyo"] = {
+        ["Party Mode"] = true,
+    },
     ["Vangard0012"] = {
         ["Party Mode"] = true,
     },
