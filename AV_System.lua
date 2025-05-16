@@ -269,6 +269,9 @@ _G.User = {
     ["bababuty"] = {
         ["Party Mode"] = true,
     },
+    ["KsYhgVKd4476"] = {
+        ["Party Mode"] = true,
+    },
     ["ceeme7777"] = {
         ["Party Mode"] = true,
     },
