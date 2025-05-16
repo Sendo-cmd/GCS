@@ -180,7 +180,6 @@ elseif IsMatch then
     print("Match")
     local UnitsHUD = require(game:GetService("StarterPlayer").Modules.Interface.Loader.HUD.Units)
     local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
-    local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
     local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
 
     local SkinTable = {}
@@ -310,7 +309,6 @@ elseif IsMatch then
                     ["Familiars"] = FamiliarTable,
                     ["Results"] = Results,
                     ["Username"] = plr.Name,
-                    ["Battlepass"] = BattlepassHandler:GetPlayerData(),
                     ["PlayerData"] = PlayerData,
                     ["WinCounting"] = VictoryCount,
                     ["GuildId"] = "467359347744309248",
