@@ -2056,7 +2056,7 @@ Accounts = {
     ["Londaruh"] = {
         "Log",
         "System",
-        "CdT2",
+        "CidP",
     },
     ["WGwOktecgyo"] = {
         "Log",
