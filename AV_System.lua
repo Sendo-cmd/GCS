@@ -99,22 +99,22 @@ _G.User = {
         },
     },
     ["aR8xV9v6JI0FV9"] = {
-        ["Select Mode"] = "Raid", -- Portal
+        ["Select Mode"] = "Portal", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Vangard0012",
-            "Embesna5706",
-            "Skycraz2124",
+            "9b22SXTc95wqYO",
+            "P9VeDu4uR7xJ28",
         },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
         },
     },
     ["R6W2iU8NY0Yt0y"] = {
@@ -206,10 +206,10 @@ _G.User = {
     ["GVU257sFK8en2v"] = {
         ["Party Mode"] = true,
     },
-    ["Embesna5706"] = {
+    ["9b22SXTc95wqYO"] = {
         ["Party Mode"] = true,
     },
-    ["Skycraz2124"] = {
+    ["P9VeDu4uR7xJ28"] = {
         ["Party Mode"] = true,
     },
     ["Imissuu0v0"] = {
