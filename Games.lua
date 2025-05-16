@@ -2054,12 +2054,12 @@ Accounts = {
     ["Londaruh"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT2",
     },
     ["WGwOktecgyo"] = {
         "Log",
         "System",
-        "CdT2",
+        "CidP",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
