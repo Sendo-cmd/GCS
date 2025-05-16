@@ -309,6 +309,7 @@ elseif IsMatch then
                     ["Familiars"] = FamiliarTable,
                     ["Results"] = Results,
                     ["Username"] = plr.Name,
+                    ["Battlepass"] = BattlepassHandler:GetPlayerData(),
                     ["PlayerData"] = PlayerData,
                     ["WinCounting"] = VictoryCount,
                     ["GuildId"] = "467359347744309248",
