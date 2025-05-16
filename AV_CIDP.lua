@@ -65,8 +65,9 @@ getgenv().Config = {
 			}
 		},
 		["Ruined City"] = {
+			["Use Mount to Travel"] = true,
 			["Active Tower"] = true,
-			["Use Mount to Travel"] = true
+			["Unhandcuff"] = true
 		},
 		["The System"] = {
 			["Auto Shadow"] = {

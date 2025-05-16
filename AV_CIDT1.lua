@@ -57,8 +57,9 @@ getgenv().Config = {
 			["Leave Extra Money"] = 5000
 		},
 		["Ruined City"] = {
+			["Use Mount to Travel"] = true,
 			["Active Tower"] = true,
-			["Use Mount to Travel"] = true
+			["Unhandcuff"] = true
 		},
 		["The System"] = {
 			["Auto Shadow"] = {

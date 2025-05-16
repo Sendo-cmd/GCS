@@ -1438,7 +1438,7 @@ Accounts = {
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
-        "Cid",
+        "PortalParty",
     },
     ["traijo"] = {
         "Log",
@@ -1730,7 +1730,7 @@ Accounts = {
     ["GVU257sFK8en2v"] = {
         "Log",
         "System",
-        "Dungeon",
+        "CdT2",
     },
     ["Embesna5706"] = {
         "System",
@@ -1782,14 +1782,16 @@ Accounts = {
         "BaseGem",
     },
     ["82OxShoVI49Iz5"] = {
-        "BaseGem",
+        "System",
+        "PortalParty",
     },
     ["P9VeDu4uR7xJ28"] = {
         "System",
         "PortalParty",
     },
     ["qM1155WsEQhz4k"] = {
-        "BaseGem",
+        "System",
+        "PortalParty",
     },
     ["9b22SXTc95wqYO"] = {
         "System",
@@ -2057,6 +2059,11 @@ Accounts = {
         "CdT2",
     },
     ["WGwOktecgyo"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["KsYhgVKd4476"] = {
         "Log",
         "System",
         "CidP",

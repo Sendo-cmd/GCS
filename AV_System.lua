@@ -81,14 +81,14 @@ _G.User = {
     },
     ["J9O0Eg0cQ03MCV"] = {
         ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
+        ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "HN0U173rfP9Rej",
             "x8s0r1y5knI3Ls",
-            "2MILL_XXL",
+            "WGwOktecgyo",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -100,12 +100,12 @@ _G.User = {
     },
     ["aR8xV9v6JI0FV9"] = {
         ["Select Mode"] = "Portal", -- Portal
-        ["Auto Stun"] = true,
+        ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Vangard0012",
+            "82OxShoVI49Iz5",
             "9b22SXTc95wqYO",
             "P9VeDu4uR7xJ28",
         },
@@ -119,14 +119,14 @@ _G.User = {
     },
     ["R6W2iU8NY0Yt0y"] = {
         ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
+        ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "s0SoYQ84GXSc12",
-            "s1t4d4vPKqIz61",
-            "bababuty",
+            "GVU257sFK8en2v",
+            "GoDis_BanG",
+            "KsYhgVKd4476",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -138,7 +138,7 @@ _G.User = {
     },
     ["GCshop2"] = {
         ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
+        ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
@@ -155,14 +155,14 @@ _G.User = {
     },
     ["c97m7VvHFTPZ19"] = {
         ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
+        ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "v0k9Seb9nB6q0P",
             "A6bU2F244SgVIL",
-            "Uhdennanji979",
+            "Londaruh",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -173,22 +173,22 @@ _G.User = {
         },
     },
     ["344t0sHCdw6oDK"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
-        ["Auto Priority"] = true,
+        ["Select Mode"] = "Portal", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "WGwOktecgyo",
-            "Londaruh",
-            "GoDis_BanG",
+            "2pdu",
+            "smart961",
+            "qM1155WsEQhz4k",
         },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Spider Forest"},
+            ["Ignore Modify"] = {},
         },
     },
     ["HN0U173rfP9Rej"] = {
@@ -210,6 +210,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["P9VeDu4uR7xJ28"] = {
+        ["Party Mode"] = true,
+    },
+    ["qM1155WsEQhz4k"] = {
+        ["Party Mode"] = true,
+    },
+    ["82OxShoVI49Iz5"] = {
         ["Party Mode"] = true,
     },
     ["Imissuu0v0"] = {
@@ -234,6 +240,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["EXSTREMz"] = {
+        ["Party Mode"] = true,
+    },
+    ["2pdu"] = {
         ["Party Mode"] = true,
     },
     ["Nsteam111"] = {
@@ -627,7 +636,7 @@ local Settings ={
     ["Auto Join Rift"] = false,
     ["Auto Join Boss Event"] = false,
 
-    ["Auto Stun"] = true,
+    ["Auto Stun"] = false,
     ["Auto Priority"] = false,
     ["Priority"] = "Closest", 
     ["Party Mode"] = false,
