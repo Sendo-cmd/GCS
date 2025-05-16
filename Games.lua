@@ -2039,7 +2039,7 @@ Accounts = {
     ["GoDis_BanG"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["Uhdennanji979"] = {
         "Log",
@@ -2050,6 +2050,16 @@ Accounts = {
         "Log",
         "System",
         "CidP",
+    },
+    ["Londaruh"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["WGwOktecgyo"] = {
+        "Log",
+        "System",
+        "CdT2",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

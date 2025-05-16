@@ -179,9 +179,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "twelvgir5130",
-            "s1t4d4vPKqIz61",
-            "HN0U173rfP9Rej",
+            "WGwOktecgyo",
+            "Londaruh",
+            "GoDis_BanG",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
