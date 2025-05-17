@@ -125,7 +125,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "GVU257sFK8en2v",
-            "GoDis_BanG",
+            "s1t4d4vPKqIz61",
             "KsYhgVKd4476",
         },
         ["Raid Settings"] = {
@@ -161,7 +161,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "v0k9Seb9nB6q0P",
-            "A6bU2F244SgVIL",
+            "s0SoYQ84GXSc12",
             "Londaruh",
         },
         ["Raid Settings"] = {
@@ -179,8 +179,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "2pdu",
-            "smart961",
+            "Mamean2497",
+            "Falsoraben712",
             "qM1155WsEQhz4k",
         },
         ["Portal Settings"] = {
@@ -190,6 +190,28 @@ _G.User = {
             ["Ignore Stage"] = {"Spider Forest"},
             ["Ignore Modify"] = {},
         },
+    },
+    ["A6bU2F244SgVIL"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "RyuzaaaV2",
+            "Namo1171",
+            "GVU257sFK8en2v",
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },   
+    },
+    ["Mamean2497"] = {
+        ["Party Mode"] = true,
+    },
+    ["Falsoraben712"] = {
+        ["Party Mode"] = true,
     },
     ["HN0U173rfP9Rej"] = {
         ["Party Mode"] = true,
@@ -469,23 +491,6 @@ _G.User = {
         --     ["Ignore Modify"] = {},
         -- },   
     },
-    ["Embecog4084"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "Embecog4084",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },   
-    },
-    -- ["Embecog4084"] = {
-    --     ["Party Mode"] = true,
-    -- },
     ["KOW7Po"] = {
         ["Party Mode"] = true,
     },
@@ -497,22 +502,6 @@ _G.User = {
     },
     ["paralfar7347"] = {
         ["Party Mode"] = true,
-    },
-    ["A6bU2F244SgVIL"] = {
-        -- ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "RyuzaaaV2",
-        --     "Namo1171",
-        --     "GVU257sFK8en2v",
-        -- },
-        -- ["Dungeon Settings"] = {
-        --     ["Difficulty"] = "Nightmare",
-        --     ["Act"] = "AntIsland",
-        --     ["StageType"] = "Dungeon",
-        --     ["Stage"] = "Ant Island",
-        --     ["FriendsOnly"] = false
-        -- },   
     },
     ["aocyms"] = {
         ["Party Mode"] = true,

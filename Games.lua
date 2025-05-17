@@ -1710,12 +1710,12 @@ Accounts = {
     ["s1t4d4vPKqIz61"] = {
         "Log",
         "System",
-        "CdT2",
+        "CdT1",
     },
     ["s0SoYQ84GXSc12"] = {
         "Log",
         "System",
-        "CdT1"
+        "CdT2"
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
@@ -2069,6 +2069,16 @@ Accounts = {
         "CidP",
     },
     ["2pdu"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["Mamean2497"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
+    ["Falsoraben712"] = {
         "Log",
         "System",
         "PortalParty",
