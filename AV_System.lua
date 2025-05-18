@@ -124,9 +124,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GVU257sFK8en2v",
-            "s1t4d4vPKqIz61",
-            "Coknwz",
+            "",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -153,14 +151,14 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["c97m7VvHFTPZ19"] = {
+    ["A6bU2F244SgVIL"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "v0k9Seb9nB6q0P",
+            "Coknwz",
             "s0SoYQ84GXSc12",
             "GHeirtid",
         },
@@ -191,12 +189,13 @@ _G.User = {
             ["Ignore Modify"] = {},
         },
     },
-    ["A6bU2F244SgVIL"] = {
+    ["c97m7VvHFTPZ19"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
-            "Namo1171",
+            "Turlizoha3831",
+            "v0k9Seb9nB6q0P",
+            "s1t4d4vPKqIz61",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",

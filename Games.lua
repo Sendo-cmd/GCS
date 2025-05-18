@@ -1146,7 +1146,7 @@ Accounts = {
     ["Turlizoha3831"] = {
         "Log",
         "System",
-        "CidP",
+        "Dungeon",
     },
     ["deenhumyai"] = {
         "Log",
@@ -1690,17 +1690,17 @@ Accounts = {
     ["v0k9Seb9nB6q0P"] = {
         "Log",
         "System",
-        "CdT1",
+        "Dungeon",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
         "System",
-        "Cid",
+        "Dungeon",
     },
     ["A6bU2F244SgVIL"] = {
         "Log",
         "System",
-        "CdT2",
+        "Cid",
     },
     ["x8s0r1y5knI3Ls"] = {
         "Log",
@@ -1710,7 +1710,7 @@ Accounts = {
     ["s1t4d4vPKqIz61"] = {
         "Log",
         "System",
-        "CdT1",
+        "Dungeon",
     },
     ["s0SoYQ84GXSc12"] = {
         "Log",
@@ -1939,7 +1939,7 @@ Accounts = {
     ["Coknwz"] = {
         "Log",
         "System",
-        "CidP",
+        "CdT1",
     },
     ["Abfbtwekpjkkn"] = {
         "Log",
