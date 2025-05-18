@@ -88,7 +88,7 @@ _G.User = {
         ["Party Member"] = {
             "HN0U173rfP9Rej",
             "x8s0r1y5knI3Ls",
-            "WGwOktecgyo",
+            "deenhumyai",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -126,7 +126,7 @@ _G.User = {
         ["Party Member"] = {
             "GVU257sFK8en2v",
             "s1t4d4vPKqIz61",
-            "KsYhgVKd4476",
+            "Coknwz",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -162,7 +162,7 @@ _G.User = {
         ["Party Member"] = {
             "v0k9Seb9nB6q0P",
             "s0SoYQ84GXSc12",
-            "Londaruh",
+            "GHeirtid",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -179,8 +179,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "MAMEAN2497",
-            "Falsoraben712",
+            "RyuzaaaV2",
+            "MonarchJINWO21",
             "qM1155WsEQhz4k",
         },
         ["Portal Settings"] = {
@@ -195,7 +195,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RyuzaaaV2",
+            "",
             "Namo1171",
         },
         ["Dungeon Settings"] = {

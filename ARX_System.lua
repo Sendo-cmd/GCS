@@ -7,6 +7,7 @@ Leaf Village
 Z City
 Cursed Town
 Easter Egg
+Ghoul City
 ]]
 
 
@@ -15,15 +16,15 @@ _G.User = {
         ["Auto Play"] = {
             ["Enabled"] = true,
         },
-        ["Select Mode"] = "Challenge", -- Story , Event , Challenge
+        ["Select Mode"] = "Story", -- Story , Event , Challenge
         ["Ranger Enabled"] = false,
         ["Party Mode"] = false,
 
-        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+        ["Select End Method"] = "VoteNext", -- VoteRetry , VoteNext , VotePlaying
 
         ["Story Settings"] = {
-            ["World"] = "Easter Egg",
-            ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+            ["World"] = "Ghoul City",
+            ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
             ["Level"] = "1",
             ["Friend Only"] = true,
         },
