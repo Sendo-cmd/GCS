@@ -179,7 +179,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Mamean2497",
+            "MAMEAN2497",
             "Falsoraben712",
             "qM1155WsEQhz4k",
         },
@@ -205,9 +205,6 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
-    },
-    ["Mamean2497"] = {
-        ["Party Mode"] = true,
     },
     ["Falsoraben712"] = {
         ["Party Mode"] = true,
