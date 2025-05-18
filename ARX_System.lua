@@ -15,7 +15,7 @@ _G.User = {
         ["Auto Play"] = {
             ["Enabled"] = true,
         },
-        ["Select Mode"] = "Event", -- Story , Event , Challenge
+        ["Select Mode"] = "Challenge", -- Story , Event , Challenge
         ["Ranger Enabled"] = false,
         ["Party Mode"] = false,
 
