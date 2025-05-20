@@ -88,7 +88,7 @@ _G.User = {
         ["Party Member"] = {
             "HN0U173rfP9Rej",
             "x8s0r1y5knI3Ls",
-            "deenhumyai",
+            "viaaaaa1234",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -105,9 +105,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "82OxShoVI49Iz5",
-            "9b22SXTc95wqYO",
-            "P9VeDu4uR7xJ28",
+            "w42mwpY03FJs3d",
+            "J49Mr8EDKF5R5I",
+            "8F0qejRl63VT7L",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -122,9 +122,9 @@ _G.User = {
         ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
-            "",
+            "none5",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -139,7 +139,7 @@ _G.User = {
         ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "None",
         },
@@ -177,9 +177,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RyuzaaaV2",
             "MonarchJINWO21",
-            "qM1155WsEQhz4k",
+            "RyuzaaaV2",
+            "O9ctwM68Ix2UG3",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -193,8 +193,6 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Turlizoha3831",
-            "v0k9Seb9nB6q0P",
             "Nsteam111",
         },
         ["Dungeon Settings"] = {
@@ -223,16 +221,49 @@ _G.User = {
     ["GVU257sFK8en2v"] = {
         ["Party Mode"] = true,
     },
-    ["9b22SXTc95wqYO"] = {
+    ["8F0qejRl63VT7L"] = {
         ["Party Mode"] = true,
     },
-    ["P9VeDu4uR7xJ28"] = {
+    ["a4LbRw0S2O30gi"] = {
         ["Party Mode"] = true,
     },
-    ["qM1155WsEQhz4k"] = {
+    ["w42mwpY03FJs3d"] = {
         ["Party Mode"] = true,
     },
-    ["82OxShoVI49Iz5"] = {
+    ["J49Mr8EDKF5R5I"] = {
+        ["Party Mode"] = true,
+    },
+    ["O9ctwM68Ix2UG3"] = {
+        ["Party Mode"] = true,
+    },
+    ["8OcN9bx2VN6N2B"] = {
+        ["Party Mode"] = true,
+    },
+    ["n0iM1h7wc3tcM5"] = {
+        ["Party Mode"] = true,
+    },
+    ["fZ7R4D87gVY6WS"] = {
+        ["Party Mode"] = true,
+    },
+    ["I67y3cRp2zG7YU"] = {
+        ["Party Mode"] = true,
+    },
+    ["15F1TxIv5Vz7ml"] = {
+        ["Party Mode"] = true,
+    },
+    ["ls09mFx9AEj56p"] = {
+        ["Party Mode"] = true,
+    },
+    ["47XCD6el66XjzO"] = {
+        ["Party Mode"] = true,
+    },
+    ["1vZ92LnVo3Fu9l"] = {
+        ["Party Mode"] = true,
+    },
+    ["HpEW3m7W65IeF1"] = {
+        ["Party Mode"] = true,
+    },
+    ["1wfj842inPvQ5P"] = {
         ["Party Mode"] = true,
     },
     ["Imissuu0v0"] = {
@@ -331,7 +362,7 @@ _G.User = {
     ["scp1774"] = {
         ["Party Mode"] = true,
     },
-    ["breddkey"] = {
+    ["viaaaaa1234"] = {
         ["Party Mode"] = true,
     },
     ["icemateenoobth"] = {

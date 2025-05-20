@@ -1755,56 +1755,61 @@ Accounts = {
     ["E245uF79awrOox"] = {
         "Log",
     },
-    ["u18PbJ2q2SZdx9"] = {
-        "Log",
-    },
-    ["tjr23sqU554Jqv"] = {
-        "Log",
+    ["a4LbRw0S2O30gi"] = {
         "System",
-        "CidP",
+        "PortalParty",
     },
-    ["HnD9n1lVJ4Ap23"] = {
-        "Log",
+    ["w42mwpY03FJs3d"] = {
+        "System",
+        "PortalParty",
+    },
+    ["J49Mr8EDKF5R5I"] = {
+        "System",
+        "PortalParty",
     },
     ["8F0qejRl63VT7L"] = {
-        "BaseGem",
+        "System",
+        "PortalParty",
     },
     ["O9ctwM68Ix2UG3"] = {
-        "BaseGem",
-    },
-    ["tji241d2IewJz9"] = {
-        "BaseGem",
-    },
-    ["Q3inJ933eBah2t"] = {
-        "BaseGem",
-    },
-    ["TsK58N70EtoAt2"] = {
-        "BaseGem",
-    },
-    ["xEl424EQY4aCy3"] = {
-        "BaseGem",
-    },
-    ["z13E2uA4YK8FfX"] = {
-        "BaseGem",
-    },
-    ["9R17nwqErK4s3N"] = {
-        "BaseGem",
-    },
-    ["82OxShoVI49Iz5"] = {
         "System",
         "PortalParty",
     },
-    ["P9VeDu4uR7xJ28"] = {
-        "System",
-        "PortalParty",
+    ["0Z0Z0lo6sv1LSH"] = {
+        "BaseGem",
     },
-    ["qM1155WsEQhz4k"] = {
-        "System",
-        "PortalParty",
+    ["30HccVBYST427d"] = {
+        "BaseGem",
     },
-    ["9b22SXTc95wqYO"] = {
-        "System",
-        "PortalParty",
+    ["8OcN9bx2VN6N2B"] = {
+        "BaseGem",
+    },
+    ["n0iM1h7wc3tcM5"] = {
+        "BaseGem",
+    },
+    ["fZ7R4D87gVY6WS"] = {
+        "BaseGem",
+    },
+    ["I67y3cRp2zG7YU"] = {
+        "BaseGem",
+    },
+    ["15F1TxIv5Vz7ml"] = {
+        "BaseGem",
+    },
+    ["ls09mFx9AEj56p"] = {
+        "BaseGem",
+    },
+    ["47XCD6el66XjzO"] = {
+        "BaseGem",
+    },
+    ["1vZ92LnVo3Fu9l"] = {
+        "BaseGem",
+    },
+    ["HpEW3m7W65IeF1"] = {
+        "BaseGem",
+    },
+    ["1wfj842inPvQ5P"] = {
+        "BaseGem",
     },
     ["DreamUWU1"] = {
         "Log",
@@ -1848,7 +1853,7 @@ Accounts = {
     },
     ["Dbhhceuhceuh"] = {
         "Log",
-        "ESSE",
+        "Worldline",
     },
     ["Flamesiraphat"] = {
         "Log",
@@ -2095,6 +2100,15 @@ Accounts = {
     ["TOOBToobbbb"] = {
         "Log",
         "RerollSuper",
+    },
+    ["Tee_7765"] = {
+        "Log",
+        "BaseGemInf",
+    },
+    ["viaaaaa1234"] = {
+        "Log",
+        "System",
+        "CidP",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

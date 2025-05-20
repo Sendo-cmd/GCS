@@ -16,21 +16,37 @@ _G.User = {
         ["Auto Play"] = {
             ["Enabled"] = true,
         },
-        ["Select Mode"] = "Story", -- Story , Event , Challenge
-        ["Ranger Enabled"] = false,
+        ["Select Mode"] = "Challenge", -- Story , Event , Challenge
+        ["Ranger Enabled"] = true,
         ["Party Mode"] = false,
 
-        ["Select End Method"] = "VoteNext", -- VoteRetry , VoteNext , VotePlaying
+        ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
 
         ["Story Settings"] = {
             ["World"] = "Ghoul City",
             ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
-            ["Level"] = "1",
+            ["Level"] = "10",
             ["Friend Only"] = true,
         },
         ["Ranger Settings"] = {
             ["World"] = {
-                ["Green Planet"] = {
+                ["Voocha Village"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+    
+                ["Demon Forest"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Z City"] = {
+                    [1] = "1",
+                    [2] = "2",
+                    [3] = "3",
+                },
+                ["Ghoul City"] = {
                     [1] = "1",
                     [2] = "2",
                     [3] = "3",
