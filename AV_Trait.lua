@@ -159,8 +159,8 @@ getgenv().Config = {
 				["Vigil (Power)"] = true,
 				["Boohon (Evil)"] = true
 			},
-			["Leave Extra Money"] = 2000,
-			["Upgrade Amount"] = 0
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 2
 		},
 		["Auto Sell"] = {
 			["Wave"] = 1

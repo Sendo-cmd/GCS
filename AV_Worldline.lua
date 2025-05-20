@@ -68,7 +68,6 @@ getgenv().Config = {
 				["Roku (Angel)"] = true,
 				["Ichiga (True Release)"] = true,
 				["Karem (Chilled)"] = true,
-				["Song Jinwu (Monarch)"] = true,
 				["Sosuke (Hebi)"] = true,
 				["Ichiga (Savior)"] = true,
 				["Tuji (Sorcerer Killer)"] = true,
@@ -154,8 +153,8 @@ getgenv().Config = {
 				["Vigil (Doppelganger)"] = true,
 				["Boohon (Evil)"] = true
 			},
-			["Leave Extra Money"] = 2000,
-			["Upgrade Amount"] = 0
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 2
 		},
 		["Auto Sell"] = {
 			["Wave"] = 1
@@ -208,7 +207,6 @@ getgenv().Config = {
 				["Kempache (Feral)"] = true,
 				["Oryo (Antithesis)"] = true,
 				["Luce (Hacker)"] = true,
-				["Song Jinwu and Igros"] = true,
 				["Super Vogito"] = true,
 				["Vogita Super (Awakened)"] = true,
 				["Bomberetta (Zombie)"] = true,
