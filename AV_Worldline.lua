@@ -403,7 +403,7 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 0,
 			["4"] = 0,
-			["6"] = -1
+			["6"] = 1
 		},
 		["Enable"] = true,
 		["Upgrade Method"] = "Randomize",
