@@ -574,7 +574,7 @@ _G.User = {
     },
     ["SkyRedTV"] = {
         ["Select Mode"] = "Legend Stage", -- Portal , Dungeon , Story , Legend Stage , Raid
-        ["Party Mode"] = false
+        ["Party Mode"] = false,
         ["Legend Settings"] = {
             ["Difficulty"] = "Normal",
             ["Act"] = "Act3",
