@@ -574,13 +574,14 @@ _G.User = {
     },
     ["SkyRedTV"] = {
         ["Select Mode"] = "Legend Stage", -- Portal , Dungeon , Story , Legend Stage , Raid
+        ["Party Mode"] = false
         ["Legend Settings"] = {
             ["Difficulty"] = "Normal",
             ["Act"] = "Act3",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Kuinshi Palace",
             ["FriendsOnly"] = false
-        }
+        },
     },
 }
 
