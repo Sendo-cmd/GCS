@@ -572,6 +572,16 @@ _G.User = {
     ["rain4834"] = {
         ["Party Mode"] = true,
     },
+    ["SkyRedTV"] = {
+        ["Select Mode"] = "Legend Stage", -- Portal , Dungeon , Story , Legend Stage , Raid
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act3",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Kuinshi Palace",
+            ["FriendsOnly"] = false
+        }
+    },
 }
 
 -- Service
