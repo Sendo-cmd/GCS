@@ -30,11 +30,6 @@ _G.User = {
         },
         ["Ranger Settings"] = {
             ["World"] = {
-                ["Voocha Village"] = {
-                    [1] = "1",
-                    [2] = "2",
-                    [3] = "3",
-                },
                 ["Demon Village"] = {
                     [1] = "1",
                     [2] = "2",
