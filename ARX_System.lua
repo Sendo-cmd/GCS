@@ -2,7 +2,7 @@
 Map
 Voocha Village
 Green Planet
-Demon Forest
+Demon Village
 Leaf Village
 Z City
 Cursed Town
@@ -35,7 +35,7 @@ _G.User = {
                     [2] = "2",
                     [3] = "3",
                 },
-                ["Demon Forest"] = {
+                ["Demon Village"] = {
                     [1] = "1",
                     [2] = "2",
                     [3] = "3",
