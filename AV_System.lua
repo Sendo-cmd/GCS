@@ -176,6 +176,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "O9ctwM68Ix2UG3",
+            "Hub6ix04",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -388,7 +389,7 @@ _G.User = {
     ["f1imkungz"] = {
         ["Party Mode"] = true,
     },
-    ["OPggripTH"] = {
+    ["Hub6ix04"] = {
         ["Party Mode"] = true,
     },
     ["Chok248"] = {

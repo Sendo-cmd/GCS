@@ -19,6 +19,7 @@ Games = {
         ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
         ["DioAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DioAuto.lua",
         ["PortalParty"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal_Party.lua",
+        ["PortalParty2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal_Party.lua",
         ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
         ["LovePortal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Love_Portal.lua",
         ["SaberAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_SaberAuto.lua",
@@ -1735,22 +1736,22 @@ Accounts = {
     ["w42mwpY03FJs3d"] = {
         "Log",
         "System",
-        "PortalParty",
+        "PortalParty2",
     },
     ["J49Mr8EDKF5R5I"] = {
         "Log",
         "System",
-        "PortalParty",
+        "PortalParty2",
     },
     ["8F0qejRl63VT7L"] = {
         "Log",
         "System",
-        "PortalParty",
+        "PortalParty2",
     },
     ["O9ctwM68Ix2UG3"] = {
         "Log",
         "System",
-        "PortalParty",
+        "PortalParty2",
     },
     ["0Z0Z0lo6sv1LSH"] = {
         "BaseGem",
@@ -2088,6 +2089,11 @@ Accounts = {
         "Log",
         "System",
         "YomomataAuto",
+    },
+    ["Hub6ix04"] = {
+        "Log",
+        "System",
+        "PortalParty",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
