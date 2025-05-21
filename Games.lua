@@ -1680,7 +1680,7 @@ Accounts = {
     ["x8s0r1y5knI3Ls"] = {
         "Log",
         "System",
-        "CdT1",
+        "CdT2",
     },
     ["s1t4d4vPKqIz61"] = {
         "Log",
@@ -2094,6 +2094,16 @@ Accounts = {
         "Log",
         "System",
         "PortalParty",
+    },
+    ["MeanPo01"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["jojoisrealko"] = {
+        "Log",
+        "System",
+        "CdT1",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

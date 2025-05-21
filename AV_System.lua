@@ -124,7 +124,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = false,
         ["Party Member"] = {
-            "none5",
+            "MeanPo01",
+            "jojoisrealko",
+            "x8s0r1y5knI3Ls",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -190,7 +192,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Nsteam111",
+            "MonarchJINWO21",
+            "Turlizoha3831",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -297,6 +300,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["WGwOktecgyo"] = {
+        ["Party Mode"] = true,
+    },
+    ["MeanPo01"] = {
+        ["Party Mode"] = true,
+    },
+    ["jojoisrealko"] = {
         ["Party Mode"] = true,
     },
     ["Vangard0012"] = {
