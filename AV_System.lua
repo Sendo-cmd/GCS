@@ -174,7 +174,6 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "I67y3cRp2zG7YU",
             "TYTAP002",
         },
         ["Portal Settings"] = {
