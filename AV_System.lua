@@ -123,7 +123,7 @@ _G.User = {
         ["Party Member"] = {
             "MeanPo01",
             "jojoisrealko",
-            "O9ctwM68Ix2UG3",
+            "v0k9Seb9nB6q0P",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -307,7 +307,7 @@ _G.User = {
     ["Vangard0012"] = {
         ["Party Mode"] = true,
     },
-    ["UntitlekaitunG_27166"] = {
+    ["ggotv02"] = {
         ["Party Mode"] = true,
     },
     ["luckcome24"] = {
