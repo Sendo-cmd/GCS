@@ -105,7 +105,6 @@ _G.User = {
         ["Party Member"] = {
             "w42mwpY03FJs3d",
             "J49Mr8EDKF5R5I",
-            "8F0qejRl63VT7L",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
