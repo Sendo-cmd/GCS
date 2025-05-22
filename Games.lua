@@ -1751,7 +1751,7 @@ Accounts = {
     ["O9ctwM68Ix2UG3"] = {
         "Log",
         "System",
-        "PortalParty2",
+        "CdT2",
     },
     ["0Z0Z0lo6sv1LSH"] = {
         "BaseGem",
@@ -1769,7 +1769,8 @@ Accounts = {
         "BaseGem",
     },
     ["I67y3cRp2zG7YU"] = {
-        "BaseGem",
+        "System",
+        "PortalParty2",
     },
     ["15F1TxIv5Vz7ml"] = {
         "BaseGem",
@@ -2015,7 +2016,8 @@ Accounts = {
     },
     ["jojoisrealko"] = {
         "Log",
-        "SokoraAuto",
+        "System",
+        "CdT1",
     },
     ["twelvgir5130"] = {
         "Log",
@@ -2104,6 +2106,36 @@ Accounts = {
         "Log",
         "System",
         "CdT1",
+    },
+    ["Cavarculek59483"] = {
+        "BaseGem",
+    },
+    ["Timkeroupp0744"] = {
+        "BaseGem",
+    },
+    ["Grahlvigoa06944"] = {
+        "BaseGem",
+    },
+    ["Homenpalat315"] = {
+        "BaseGem",
+    },
+    ["Marrysolee03619"] = {
+        "BaseGem",
+    },  
+    ["Peotafu18772"] = {
+        "BaseGem",
+    },
+    ["Nanikmajd3106"] = {
+        "BaseGem",
+    },
+    ["Emmyezerna47783"] = {
+        "BaseGem",
+    },
+    ["Croftmciff9120"] = {
+        "BaseGem",
+    },
+    ["Aneeqkorcz47478"] = {
+        "BaseGem",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

@@ -86,9 +86,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "HN0U173rfP9Rej",
-            "x8s0r1y5knI3Ls",
-            "viaaaaa1234",
+            "1none9",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -126,7 +124,7 @@ _G.User = {
         ["Party Member"] = {
             "MeanPo01",
             "jojoisrealko",
-            "x8s0r1y5knI3Ls",
+            "O9ctwM68Ix2UG3",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Normal",
@@ -153,7 +151,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["A6bU2F244SgVIL"] = {
+    ["NoneFree"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = true,
@@ -177,8 +175,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "O9ctwM68Ix2UG3",
-            "Hub6ix04",
+            "I67y3cRp2zG7YU",
+            "TYTAP002",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -192,8 +190,8 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "MonarchJINWO21",
-            "Turlizoha3831",
+            "ggotv02",
+            "",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -578,6 +576,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["rain4834"] = {
+        ["Party Mode"] = true,
+    },
+    ["TYTAP002"] = {
         ["Party Mode"] = true,
     },
     ["SkyRedTV"] = {
