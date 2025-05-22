@@ -2155,6 +2155,10 @@ Accounts = {
         "Log",
         "BaseGem",
     },
+    ["kvuou1"] = {
+        "Log",
+        "RerollSuper",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
