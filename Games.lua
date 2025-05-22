@@ -2137,6 +2137,11 @@ Accounts = {
     ["Aneeqkorcz47478"] = {
         "BaseGem",
     },
+    ["TYTAP002"] = {
+        "Log",
+        "System",
+        "PortalParty",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
