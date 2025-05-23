@@ -80,19 +80,19 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["J9O0Eg0cQ03MCV"] = {
-        ["Select Mode"] = "Raid", -- Portal
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Auto Stun"] = false,
-        ["Auto Priority"] = true,
+        ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "1none9",
+            "ggotv02",
         },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },
     },
@@ -188,7 +188,7 @@ _G.User = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "ggotv02",
+            "",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
