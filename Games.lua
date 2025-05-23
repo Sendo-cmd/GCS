@@ -2017,7 +2017,7 @@ Accounts = {
     ["jojoisrealko"] = {
         "Log",
         "System",
-        "CdT1",
+        "Dungeon",
     },
     ["twelvgir5130"] = {
         "Log",

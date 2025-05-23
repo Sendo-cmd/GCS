@@ -87,6 +87,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "ggotv02",
+            "MonarchJINWO21",
+            "jojoisrealko",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -103,8 +105,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "w42mwpY03FJs3d",
-            "J49Mr8EDKF5R5I",
+            "nicezar963",
+            "",
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
