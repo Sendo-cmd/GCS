@@ -2159,6 +2159,42 @@ Accounts = {
         "Log",
         "RerollSuper",
     },
+    ["Rovarares04408"] = {
+        "BaseGem",
+    },
+    ["Nivalroppo7407"] = {
+        "BaseGem",
+    },
+    ["Synerkelty3125"] = {
+        "BaseGem",
+    },
+    ["Vavalheff8589"] = {
+        "BaseGem",
+    },
+    ["Rebemarco78036"] = {
+        "BaseGem",
+    },
+    ["Kongablog03966"] = {
+        "BaseGem",
+    },
+    ["Leadyniyat87487"] = {
+        "BaseGem",
+    },
+    ["Leitldance9086"] = {
+        "BaseGem",
+    },
+    ["Gattuwinni8237"] = {
+        "BaseGem",
+    },
+    ["Brukmitha1865"] = {
+        "BaseGem",
+    },
+    ["Suedarton989"] = {
+        "BaseGem",
+    },
+    ["Ailisshaia7871"] = {
+        "BaseGem",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
