@@ -2195,6 +2195,9 @@ Accounts = {
     ["Ailisshaia7871"] = {
         "BaseGem",
     },
+    ["Motesgihan6026"] = {
+        "BaseGem",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
