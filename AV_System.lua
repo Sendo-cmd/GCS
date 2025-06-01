@@ -122,7 +122,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "BonesKidToot",
-            "nicezar963",
+            "v0k9Seb9nB6q0P",
             "v0k9Seb9nB6q0P",
         },
         ["Raid Settings"] = {
