@@ -2198,6 +2198,16 @@ Accounts = {
     ["Motesgihan6026"] = {
         "BaseGem",
     },
+    ["BonesKidToot"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["nicezar963"] = {
+        "Log",
+        "System",
+        "CdT1",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 

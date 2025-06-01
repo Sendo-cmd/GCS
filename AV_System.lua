@@ -104,8 +104,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "nicezar963",
-            "",
+            ""
         },
         ["Portal Settings"] = {
             ["ID"] = 87, -- 113 Love , 87 Winter
@@ -122,8 +121,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "MeanPo01",
-            "jojoisrealko",
+            "BonesKidToot",
+            "nicezar963",
             "v0k9Seb9nB6q0P",
         },
         ["Raid Settings"] = {
@@ -577,6 +576,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["TYTAP002"] = {
+        ["Party Mode"] = true,
+    },
+    ["BonesKidToot"] = {
+        ["Party Mode"] = true,
+    },
+    ["nicezar963"] = {
         ["Party Mode"] = true,
     },
     ["SkyRedTV"] = {
