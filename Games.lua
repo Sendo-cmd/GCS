@@ -1122,7 +1122,7 @@ Accounts = {
     ["Turlizoha3831"] = {
         "Log",
         "System",
-        "Dungeon",
+        "PortalParty",
     },
     ["deenhumyai"] = {
         "Log",
@@ -2207,6 +2207,10 @@ Accounts = {
         "Log",
         "System",
         "CdT1",
+    },
+    ["ElisabethobqPa"] = {
+        "Log",
+        "RerollSuper",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
