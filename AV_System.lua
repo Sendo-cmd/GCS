@@ -98,20 +98,20 @@ _G.User = {
         },
     },
     ["aR8xV9v6JI0FV9"] = {
-        ["Select Mode"] = "Portal", -- Portal
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            ""
+            "rainbowskythai",
         },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
         },
     },
     ["R6W2iU8NY0Yt0y"] = {
@@ -370,6 +370,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["surx23"] = {
+        ["Party Mode"] = true,
+    },
+    ["rainbowskythai"] = {
         ["Party Mode"] = true,
     },
     ["GHeirtid"] = {
