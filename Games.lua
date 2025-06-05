@@ -46,6 +46,8 @@ Games = {
         ["CdT1"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT1.lua",
         ["CdT2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT2.lua",
         ["CidP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDP.lua",
+        ["Byeken"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Byeken.lua",
+        ["Lfelt"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Lfelt.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -79,7 +81,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "RerollSuper",
+        "System",
+        "Byeken",
     },
     ["maser080"] = {
         "Log",
@@ -588,7 +591,7 @@ Accounts = {
     ["joy006zx"] = {
         "Log",
         "System",
-        "CidP",
+        "Byeken",
     },
     ["Rustwhir2660"] = {
         "Log",
@@ -1413,7 +1416,7 @@ Accounts = {
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Lfelt",
     },
     ["traijo"] = {
         "Log",
@@ -1660,7 +1663,7 @@ Accounts = {
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
         "System",
-        "Cid",
+        "Lfelt",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
@@ -1695,7 +1698,7 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Cid",
+        "Lfelt",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -1705,7 +1708,7 @@ Accounts = {
     ["GVU257sFK8en2v"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Lfelt",
     },
     ["Embesna5706"] = {
         "System",
@@ -2220,6 +2223,16 @@ Accounts = {
     ["Bfkaitun9772"] = {
         "Log",
         "IgrisAuto",
+    },
+    ["XIIqPD"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["tatoeyaa"] = {
+        "Log",
+        "System",
+        "Dungeon",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

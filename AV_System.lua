@@ -26,6 +26,7 @@ Underground Church
 Sand Village
 Shibuya Station
 Double Dungeon
+Edge of Heaven
 ]]
 
 --[[
@@ -36,6 +37,7 @@ Land of the Gods
 Golden Castle
 Shibuya Aftermath
 Double Dungeon
+Shining Castle
 ]]
 
 --[[
@@ -52,6 +54,126 @@ Ruined City
 ]]
 
 _G.User = {
+    ["J9O0Eg0cQ03MCV"] = {
+        -- ["Select Mode"] = "Dungeon", -- Portal
+        -- ["Auto Stun"] = false,
+        -- ["Auto Priority"] = false,
+        -- ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        -- ["Party Member"] = {
+        --     "MonarchJINWO21",
+        --     "jojoisrealko",
+        -- },
+        -- ["Dungeon Settings"] = {
+        --     ["Difficulty"] = "Nightmare",
+        --     ["Act"] = "AntIsland",
+        --     ["StageType"] = "Dungeon",
+        --     ["Stage"] = "Ant Island",
+        --     ["FriendsOnly"] = false
+        -- },
+    },
+    ["aR8xV9v6JI0FV9"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "rainbowskythai",
+            "c97m7VvHFTPZ19",
+            "XIIqPD",
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },
+    },
+    ["R6W2iU8NY0Yt0y"] = {
+        ["Select Mode"] = "Story", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "J9O0Eg0cQ03MCV",
+            "344t0sHCdw6oDK",
+            "GVU257sFK8en2v",
+        },
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Edge of Heaven",
+            ["FriendsOnly"] = false
+        },
+    },
+    ["GCshop2"] = {
+        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = false,
+        ["Party Member"] = {
+            "joy006zx",
+            "tatoeyaa",
+        },
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act3",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Shining Castle",
+            ["FriendsOnly"] = false
+        },   
+    },
+    ["NoneFree"] = {
+        ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = true,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "None3",
+        },
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
+            ["FriendsOnly"] = false
+        },
+    },
+    ["344t0sHCdw6oDK"] = {
+        -- ["Select Mode"] = "Portal", -- Portal
+        -- ["Auto Stun"] = false,
+        -- ["Auto Priority"] = false,
+        -- ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        -- ["Party Member"] = {
+        --     "Turlizoha3831",
+        -- },
+        -- ["Portal Settings"] = {
+        --     ["ID"] = 87, -- 113 Love , 87 Winter
+        --     ["Tier Cap"] = 10,
+        --     ["Method"] = "Highest", -- Highest , Lowest
+        --     ["Ignore Stage"] = {"Spider Forest"},
+        --     ["Ignore Modify"] = {},
+        -- },
+    },
+    ["c97m7VvHFTPZ19"] = {
+        ["Party Mode"] = true,  
+    },
+    ["Falsoraben712"] = {
+        ["Party Mode"] = true,
+    },
+    ["HN0U173rfP9Rej"] = {
+        ["Party Mode"] = true,
+    },
+    ["s1t4d4vPKqIz61"] = {
+        ["Party Mode"] = true,
+    },
     ["Lucinda2471"] = {
         ["Party Mode"] = true,
     },
@@ -77,124 +199,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Trarockker"] = {
-        ["Party Mode"] = true,
-    },
-    ["J9O0Eg0cQ03MCV"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "MonarchJINWO21",
-            "jojoisrealko",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
-    },
-    ["aR8xV9v6JI0FV9"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "rainbowskythai",
-            "c97m7VvHFTPZ19",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
-    },
-    ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = true,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "BonesKidToot",
-            "s0SoYQ84GXSc12",
-            "v0k9Seb9nB6q0P",
-        },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
-        },
-    },
-    ["GCshop2"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = true,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "None",
-        },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
-        },   
-    },
-    ["NoneFree"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = true,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "None3",
-        },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
-        },
-    },
-    ["344t0sHCdw6oDK"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Turlizoha3831",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Spider Forest"},
-            ["Ignore Modify"] = {},
-        },
-    },
-    ["c97m7VvHFTPZ19"] = {
-        ["Party Mode"] = true,  
-    },
-    ["Falsoraben712"] = {
-        ["Party Mode"] = true,
-    },
-    ["HN0U173rfP9Rej"] = {
-        ["Party Mode"] = true,
-    },
-    ["s1t4d4vPKqIz61"] = {
         ["Party Mode"] = true,
     },
     ["s0SoYQ84GXSc12"] = {
@@ -571,10 +575,10 @@ _G.User = {
     ["TYTAP002"] = {
         ["Party Mode"] = true,
     },
-    ["BonesKidToot"] = {
+    ["tatoeyaa"] = {
         ["Party Mode"] = true,
     },
-    ["nicezar963"] = {
+    ["XIIqPD"] = {
         ["Party Mode"] = true,
     },
     ["SkyRedTV"] = {
