@@ -2217,6 +2217,10 @@ Accounts = {
         "System",
         "Dungeon",
     },
+    ["Bfkaitun9772"] = {
+        "Log",
+        "IgrisAuto",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
