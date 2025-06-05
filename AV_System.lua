@@ -186,18 +186,7 @@ _G.User = {
         },
     },
     ["c97m7VvHFTPZ19"] = {
-        -- ["Select Mode"] = "Dungeon", -- Portal
-        ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "",
-        -- },
-        -- ["Dungeon Settings"] = {
-        --     ["Difficulty"] = "Nightmare",
-        --     ["Act"] = "AntIsland",
-        --     ["StageType"] = "Dungeon",
-        --     ["Stage"] = "Ant Island",
-        --     ["FriendsOnly"] = false
-        -- },   
+        ["Party Mode"] = true,  
     },
     ["Falsoraben712"] = {
         ["Party Mode"] = true,
