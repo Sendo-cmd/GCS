@@ -120,8 +120,8 @@ _G.User = {
             "joy006zx",
         },
         ["Legend Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act3",
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act1",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Shining Castle",
             ["FriendsOnly"] = false
@@ -691,7 +691,7 @@ local Settings ={
         ["FriendsOnly"] = false
     },
     ["Legend Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
         ["StageType"] = "LegendStage",
         ["Stage"] = "Sand Village",
