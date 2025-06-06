@@ -118,7 +118,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "joy006zx",
-            "tatoeyaa",
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Normal",
