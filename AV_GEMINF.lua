@@ -121,5 +121,5 @@ getgenv().Config = {
 		["Delete Entities"] = true
 	}
 }
-getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
+getgenv().Key = "PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH]
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(3)until Joebiden

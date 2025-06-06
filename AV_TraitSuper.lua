@@ -506,5 +506,5 @@ getgenv().Config = {
 	},
 	["Joiner Cooldown"] = 0
 }
-getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH"
+getgenv().Key = "PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH]
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(5)until Joebiden
