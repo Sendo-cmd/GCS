@@ -121,7 +121,7 @@ _G.User = {
             "tatoeyaa",
         },
         ["Legend Settings"] = {
-            ["Difficulty"] = "Normal",
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act3",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Shining Castle",
@@ -692,7 +692,7 @@ local Settings ={
         ["FriendsOnly"] = false
     },
     ["Legend Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
         ["StageType"] = "LegendStage",
         ["Stage"] = "Sand Village",
