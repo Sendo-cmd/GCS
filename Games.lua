@@ -1,8 +1,5 @@
 Games = {
     [5578556129] = { --Anime-Vanguards
-        ["Me"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_My.lua",
-        ["Me2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_My2.lua",
-        ["Me3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_My3.lua",
         ["SukonoAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_SukonoAuto.lua",
         ["BEIgrisAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Boss_IGSAuto.lua",
         ["BaseGem"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_GEM.lua",
@@ -2232,7 +2229,7 @@ Accounts = {
     ["OPggripTH"] = {
         "Log",
         "System",
-        "Cid",
+        "Cid"
     },
     ["Wawawa_761"] = {
         "Log",
@@ -2242,7 +2239,7 @@ Accounts = {
     ["Nainklk"] = {
         "Log",
         "System",
-        "CdT1",
+        "CdT1"
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
