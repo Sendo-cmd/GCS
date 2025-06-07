@@ -2229,7 +2229,7 @@ Accounts = {
     ["OPggripTH"] = {
         "Log",
         "System",
-        "Cid"
+        "Cid",
     },
     ["Wawawa_761"] = {
         "Log",
@@ -2239,7 +2239,7 @@ Accounts = {
     ["Nainklk"] = {
         "Log",
         "System",
-        "CdT1"
+        "CdT1",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
