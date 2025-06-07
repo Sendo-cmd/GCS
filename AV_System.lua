@@ -145,21 +145,7 @@ _G.User = {
         },
     },
     ["344t0sHCdw6oDK"] = {
-        -- ["Select Mode"] = "Portal", -- Portal
-        -- ["Auto Stun"] = false,
-        -- ["Auto Priority"] = false,
-        -- ["Priority"] = "Bosses",
         ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "Turlizoha3831",
-        -- },
-        -- ["Portal Settings"] = {
-        --     ["ID"] = 87, -- 113 Love , 87 Winter
-        --     ["Tier Cap"] = 10,
-        --     ["Method"] = "Highest", -- Highest , Lowest
-        --     ["Ignore Stage"] = {"Spider Forest"},
-        --     ["Ignore Modify"] = {},
-        -- },
     },
     ["c97m7VvHFTPZ19"] = {
         ["Party Mode"] = true,  
@@ -301,7 +287,7 @@ _G.User = {
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
-        ["Party Mode"] = true,.
+        ["Party Mode"] = true,
         ["Party Member"] = {
             "Wawawa_761",
             "Nainklk",
