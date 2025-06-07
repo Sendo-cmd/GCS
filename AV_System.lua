@@ -137,7 +137,7 @@ _G.User = {
             "None3",
         },
         ["Raid Settings"] = {
-            ["Difficulty"] = "Normal",
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act1",
             ["StageType"] = "Raid",
             ["Stage"] = "Ruined City",
@@ -308,12 +308,12 @@ _G.User = {
             "issei123i",
         },
         ["Raid Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "Raid",
-        ["Stage"] = "Ruined City",
-        ["FriendsOnly"] = false
-    },
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act1",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
+            ["FriendsOnly"] = false
+        },
     },
     ["issei123i"] = {
         ["Party Mode"] = true,
