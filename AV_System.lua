@@ -92,7 +92,7 @@ _G.User = {
         },
     },
     ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Story", -- Portal
+        ["Select Mode"] = "Legend Stage", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
@@ -102,11 +102,11 @@ _G.User = {
             "344t0sHCdw6oDK",
             "GVU257sFK8en2v",
         },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
+        ["Legend Settings"] = {
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Edge of Heaven",
+            ["StageType"] = "LegendStage",
+            ["Stage"] = "Shining Castle",
             ["FriendsOnly"] = false
         },
     },
