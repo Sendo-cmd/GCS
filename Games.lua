@@ -379,11 +379,6 @@ Accounts = {
         "Log",
         "Dbz2",
     },
-    ["OPggripTH"] = {
-        "Log",
-        "System",
-        "Dragon",
-    },
     ["champsinon"] = {
         "System",
         "FarmGem",
@@ -771,10 +766,6 @@ Accounts = {
     ["gkjosj_01"] = {
         "Log",
         "LovePortal",
-    },
-    ["Wawawa_761"] = {
-        "Log",
-        "SokoraAuto",
     },
     ["LitheTankSun"] = {
         "Log",
@@ -2208,8 +2199,7 @@ Accounts = {
     },
     ["nicezar963"] = {
         "Log",
-        "System",
-        "CdT1",
+        "SokoraAuto",
     },
     ["ElisabethobqPa"] = {
         "Log",
@@ -2233,6 +2223,26 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["issei123i"] = {
+        "Log",
+        "System",
+        "CdT2",
+    },
+    ["OPggripTH"] = {
+        "Log",
+        "System",
+        "Cid",
+    },
+    ["Wawawa_761"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["Nainklk"] = {
+        "Log",
+        "System",
+        "CdT1",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

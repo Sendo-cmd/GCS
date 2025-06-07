@@ -296,16 +296,32 @@ _G.User = {
     ["jojoisrealko"] = {
         ["Party Mode"] = true,
     },
-    ["Vangard0012"] = {
+    ["OPggripTH"] = {
+        ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,.
+        ["Party Member"] = {
+            "Wawawa_761",
+            "Nainklk",
+            "issei123i",
+        },
+        ["Raid Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "Ruined City",
+        ["FriendsOnly"] = false
+    },
+    },
+    ["issei123i"] = {
         ["Party Mode"] = true,
     },
-    ["ggotv02"] = {
+    ["Nainklk"] = {
         ["Party Mode"] = true,
     },
-    ["luckcome24"] = {
-        ["Party Mode"] = true,
-    },
-    ["MAMEAN2497"] = {
+    ["Wawawa_761"] = {
         ["Party Mode"] = true,
     },
     ["bababuty"] = {
