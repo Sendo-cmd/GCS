@@ -561,7 +561,7 @@ Accounts = {
     },
     ["hdkjsksp"] = {
         "Log",
-        "LovePortal",
+        "RerollSuper",
     },
     ["Demonsun0601"] = {
         "Log",
@@ -1727,12 +1727,12 @@ Accounts = {
     ["w42mwpY03FJs3d"] = {
         "Log",
         "System",
-        "PortalParty2",
+        "Lfelt",
     },
     ["J49Mr8EDKF5R5I"] = {
         "Log",
         "System",
-        "PortalParty2",
+        "Lfelt",
     },
     ["8F0qejRl63VT7L"] = {
         "Log",
@@ -1820,7 +1820,8 @@ Accounts = {
     },
     ["Dbhhceuhceuh"] = {
         "Log",
-        "Worldline",
+        "System",
+        "Lfelt",
     },
     ["Flamesiraphat"] = {
         "Log",
@@ -2209,7 +2210,8 @@ Accounts = {
     },
     ["Bfkaitun9772"] = {
         "Log",
-        "IgrisAuto",
+        "System",
+        "Dungeon",
     },
     ["XIIqPD"] = {
         "Log",
@@ -2240,6 +2242,11 @@ Accounts = {
         "Log",
         "System",
         "CdT1",
+    },
+    ["beastnahee"] = {
+        "Log",
+        "System",
+        "PortalParty2",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

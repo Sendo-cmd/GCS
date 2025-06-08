@@ -80,7 +80,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "rainbowskythai",
-            "c97m7VvHFTPZ19",
+            "Bfkaitun9772",
             "XIIqPD",
         },
         ["Dungeon Settings"] = {
@@ -100,7 +100,7 @@ _G.User = {
         ["Party Member"] = {
             "J9O0Eg0cQ03MCV",
             "344t0sHCdw6oDK",
-            "GVU257sFK8en2v",
+            "joy006zx",
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -117,7 +117,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "joy006zx",
+            "",
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -148,7 +148,21 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["c97m7VvHFTPZ19"] = {
-        ["Party Mode"] = true,  
+        ["Select Mode"] = "Portal", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "beastnahee",
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 87, -- 113 Love , 87 Winter
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },
     },
     ["Falsoraben712"] = {
         ["Party Mode"] = true,
@@ -159,7 +173,7 @@ _G.User = {
     ["s1t4d4vPKqIz61"] = {
         ["Party Mode"] = true,
     },
-    ["Lucinda2471"] = {
+    ["beastnahee"] = {
         ["Party Mode"] = true,
     },
     ["JapanMovieTH12"] = {
@@ -177,7 +191,7 @@ _G.User = {
     ["Turlizoha3831"] = {
         ["Party Mode"] = true,
     },
-    ["Frostlynz"] = {
+    ["Bfkaitun9772"] = {
         ["Party Mode"] = true,
     },
     ["unf0rg1ven_249"] = {
@@ -281,6 +295,24 @@ _G.User = {
     },
     ["jojoisrealko"] = {
         ["Party Mode"] = true,
+    },
+    ["Dbhhceuhceuh"] = {
+        ["Select Mode"] = "Story", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "w42mwpY03FJs3d",
+            "J49Mr8EDKF5R5I",
+        },
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Edge of Heaven",
+            ["FriendsOnly"] = false
+        },
     },
     ["OPggripTH"] = {
         ["Select Mode"] = "Raid", -- Portal
