@@ -614,14 +614,14 @@ _G.User = {
     ["XIIqPD"] = {
         ["Party Mode"] = true,
     },
-    ["SkyRedTV"] = {
+    ["mamekokoe"] = {
         ["Select Mode"] = "Legend Stage", -- Portal , Dungeon , Story , Legend Stage , Raid
         ["Party Mode"] = false,
         ["Legend Settings"] = {
             ["Difficulty"] = "Normal",
             ["Act"] = "Act3",
             ["StageType"] = "LegendStage",
-            ["Stage"] = "Kuinshi Palace",
+            ["Stage"] = "Land of the Gods",
             ["FriendsOnly"] = false
         },
     },

@@ -2252,6 +2252,11 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
+    ["mamekokoe"] = {
+        "Log",
+        "System",
+        "Dragon",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
