@@ -129,7 +129,7 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Shining Castle"] = "15.210970878601074, 177.0242919921875, 106.63894653320312",
+			["Shining Castle"] = "39.549964904785156, 177.0242919921875, 94.37834930419922",
 			["Edge of Heaven"] = "-39.13007354736328, 147.29444885253906, -186.71127319335938"
 		},
 		["Place Gap"] = {
@@ -201,7 +201,6 @@ getgenv().Config = {
 		["Restart Modifier"] = {
 			["Enable"] = true,
 			["Modifier"] = {
-				["Champions"] = true,
 				["Immunity"] = true
 			}
 		},
