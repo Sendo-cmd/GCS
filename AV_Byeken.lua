@@ -8,14 +8,14 @@ getgenv().Config = {
 				["Raid Joiner"] = 0,
 				["Boss Event Joiner"] = 0,
 				["Legend Stage Joiner"] = 0,
-				["Stage Joiner"] = 0,
-				["Dungeon Joiner"] = 0,
-				["Weekly Challenge Joiner"] = 0,
-				["Regular Challenge Joiner"] = 0,
 				["Worldline Joiner"] = 0,
+				["Odyssey Joiner"] = 0,
+				["Weekly Challenge Joiner"] = 0,
 				["Winter Portal Joiner"] = 0,
 				["Boss Bounties Joiner"] = 0,
-				["Odyssey Joiner"] = 0,
+				["Regular Challenge Joiner"] = 0,
+				["Stage Joiner"] = 0,
+				["Dungeon Joiner"] = 0,
 				["Daily Challenge Joiner"] = 0,
 				["Rift Joiner"] = 0
 			}
@@ -41,9 +41,7 @@ getgenv().Config = {
 		}
 	},
 	["Gameplay"] = {
-		["Edge of Heaven"] = {
-			["Auto Join Lfelt Portal"] = true
-		},
+		["Auto Vote Start"] = true,
 		["Auto Use Ability"] = true,
 		["Double Dungeon"] = {
 			["Upgrade Amount"] = 0,
@@ -69,7 +67,9 @@ getgenv().Config = {
 				["Wave"] = 1
 			}
 		},
-		["Auto Vote Start"] = true,
+		["Edge of Heaven"] = {
+			["Auto Join Lfelt Portal"] = true
+		},
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
@@ -99,25 +99,25 @@ getgenv().Config = {
 		["Enable"] = true,
 		["Prefer Position"] = {
 			["Double Dungeon"] = "Middle",
-			["Cavern"] = "Middle",
+			["Blood-Red Chamber"] = "Middle",
 			["Sand Village"] = "Middle",
 			["Shining Castle"] = "Middle",
 			["Mountain Shrine (Natural)"] = "Middle",
-			["Kuinshi Palace"] = "Middle",
+			["Edge of Heaven"] = "Middle",
 			["Land of the Gods"] = "Middle",
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
-			["Tracks at the Edge of the World"] = "Middle",
+			["Ant Island"] = "Middle",
 			["Shibuya Station"] = "Middle",
 			["Ruined City"] = "Middle",
 			["Planet Namak"] = "Middle",
-			["Ant Island"] = "Middle",
-			["Blood-Red Chamber"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
+			["Cavern"] = "Middle",
 			["Martial Island"] = "Middle",
 			["Shibuya Aftermath"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Edge of Heaven"] = "Middle"
+			["Kuinshi Palace"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -129,49 +129,36 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Shining Castle"] = "39.549964904785156, 177.0242919921875, 94.37834930419922",
+			["Shining Castle"] = "15.210970878601074, 177.0242919921875, 106.63894653320312",
 			["Edge of Heaven"] = "-39.13007354736328, 147.29444885253906, -186.71127319335938"
 		},
 		["Place Gap"] = {
 			["Double Dungeon"] = 2,
-			["Cavern"] = 2,
+			["Blood-Red Chamber"] = 2,
 			["Sand Village"] = 2,
 			["Shining Castle"] = 2,
 			["Mountain Shrine (Natural)"] = 2,
-			["Kuinshi Palace"] = 2,
+			["Edge of Heaven"] = 2,
 			["Land of the Gods"] = 2,
 			["Golden Castle"] = 2,
 			["Spirit Society"] = 2,
-			["Tracks at the Edge of the World"] = 2,
+			["Ant Island"] = 2,
 			["Shibuya Station"] = 2,
 			["Ruined City"] = 2,
 			["Planet Namak"] = 2,
-			["Ant Island"] = 2,
-			["Blood-Red Chamber"] = 2,
+			["Tracks at the Edge of the World"] = 2,
+			["Cavern"] = 2,
 			["Martial Island"] = 2,
 			["Shibuya Aftermath"] = 2,
 			["Underground Church"] = 2,
 			["Spider Forest"] = 2,
-			["Edge of Heaven"] = 2
+			["Kuinshi Palace"] = 2
 		}
 	},
 	["Match Finished"] = {
 		["Auto Next"] = true,
 		["Replay Amount"] = 0,
 		["Auto Replay"] = true
-	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
-		}
-	},
-	["Failsafe"] = {
-		["Disable Auto Teleport AFK Chamber"] = true
-	},
-	["Joiner Cooldown"] = 0,
-	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
 	},
 	["Crafter"] = {
 		["Essence Stone"] = {
@@ -189,11 +176,23 @@ getgenv().Config = {
 			["Purple Essence Stone"] = 50
 		}
 	},
+	["Failsafe"] = {
+		["Disable Auto Teleport AFK Chamber"] = true
+	},
+	["Joiner Cooldown"] = 0,
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["FPS"] = 5
+		}
+	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = true,
-		["Delete Entities"] = true
+		["Black Screen"] = true
 	},
 	["Unit Feeder"] = {
 		["Feed Level"] = 60
@@ -207,63 +206,63 @@ getgenv().Config = {
 			}
 		},
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 3,
 				["Thrice"] = 4,
 				["Warding off Evil"] = 24,
 				["Champions"] = 12,
 				["Fast"] = 1,
-				["Revitalize"] = 6,
+				["Planning Ahead"] = 15,
 				["Fisticuffs"] = 25,
 				["Exploding"] = 2,
 				["Dodge"] = 10,
 				["Uncommon Loot"] = 22,
 				["Immunity"] = 11,
-				["Planning Ahead"] = 15,
+				["Revitalize"] = 6,
 				["Harvest"] = 17,
 				["Precise Attack"] = 13,
 				["Range"] = 18,
-				["Drowsy"] = 8,
 				["Lifeline"] = 29,
+				["No Trait No Problem"] = 23,
 				["Cooldown"] = 19,
 				["Exterminator"] = 28,
-				["Regen"] = 7,
+				["King's Burden"] = 27,
 				["Damage"] = 20,
 				["Common Loot"] = 21,
-				["King's Burden"] = 27,
-				["No Trait No Problem"] = 23,
+				["Regen"] = 7,
+				["Drowsy"] = 8,
 				["Press It"] = 14,
 				["Quake"] = 9,
 				["Shielded"] = 5,
 				["Slayer"] = 16,
 				["Money Surge"] = 26
 			},
+			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
 				["Champions"] = 0,
 				["Fast"] = 0,
-				["Revitalize"] = 0,
+				["Planning Ahead"] = 0,
 				["Fisticuffs"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
 				["Uncommon Loot"] = 0,
 				["Immunity"] = 0,
-				["Planning Ahead"] = 0,
+				["Revitalize"] = 0,
 				["Harvest"] = 0,
 				["Precise Attack"] = 0,
 				["Range"] = 0,
-				["Drowsy"] = 0,
 				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
 				["Cooldown"] = 0,
 				["Exterminator"] = 0,
-				["Regen"] = 0,
+				["King's Burden"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["King's Burden"] = 0,
-				["No Trait No Problem"] = 0,
+				["Regen"] = 0,
+				["Drowsy"] = 0,
 				["Press It"] = 0,
 				["Quake"] = 0,
 				["Shielded"] = 0,

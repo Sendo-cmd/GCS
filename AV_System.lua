@@ -616,6 +616,7 @@ _G.User = {
     ["mamekokoe"] = {
         ["Select Mode"] = "Legend Stage", -- Portal , Dungeon , Story , Legend Stage , Raid
         ["Auto Join"] = true,
+        ["Party Mode"] = false,
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
             ["Act"] = "Act3",
