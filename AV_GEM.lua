@@ -77,9 +77,7 @@ getgenv().Config = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Delete Entities"] = true,
-        ["Black Screen"] = {
-			["Enable"] = true
-		}	
+        ["Black Screen"] = false
 	},
 	["Performance Failsafe"] = {
 		["Ping Freeze"] = true,
