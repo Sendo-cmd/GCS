@@ -39,7 +39,7 @@ getgenv().Config = {
 	["Performance"] = {
 		["Fullbright"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = true
+		["Black Screen"] = false
 	},
 	["Auto Treasure Map"] = true,
 	["Auto Aurora Totem"] = {
