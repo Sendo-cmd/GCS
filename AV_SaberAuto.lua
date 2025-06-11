@@ -124,7 +124,7 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Boost FPS"] = true,
-		["Black Screen"] = true,
+		["Black Screen"] = false,
 		["Delete Entities"] = true
 	},
 	["Match Finished"] = {

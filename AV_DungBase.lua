@@ -11,7 +11,7 @@ getgenv().Config = {
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Boost FPS"] = true,
-		["Black Screen"] = true,
+		["Black Screen"] = false,
 		["Delete Entities"] = true
 	},
 	["Dungeon Joiner"] = {
