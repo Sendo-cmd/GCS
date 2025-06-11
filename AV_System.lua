@@ -54,7 +54,7 @@ Ruined City
 ]]
 
 _G.User = {
-    ["J9O0Eg0cQ03MCV"] = {
+    ["R6W2iU8NY0Yt0y"] = {
         -- ["Select Mode"] = "Dungeon", -- Portal
         -- ["Auto Stun"] = false,
         -- ["Auto Priority"] = false,
@@ -90,14 +90,14 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["R6W2iU8NY0Yt0y"] = {
+    ["J9O0Eg0cQ03MCV"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "J9O0Eg0cQ03MCV",
+            "R6W2iU8NY0Yt0y",
             "344t0sHCdw6oDK",
             "joy006zx",
         },
