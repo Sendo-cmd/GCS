@@ -1114,7 +1114,7 @@ Accounts = {
     ["Turlizoha3831"] = {
         "Log",
         "System",
-        "DragonP",
+        "Dragon",
     },
     ["deenhumyai"] = {
         "Log",
@@ -2256,7 +2256,7 @@ Accounts = {
     ["mamekokoe"] = {
         "Log",
         "System",
-        "Dragon",
+        "DragonP",
     },
     ["beetyou15"] = {
         "Log",
