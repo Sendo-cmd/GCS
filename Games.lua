@@ -44,6 +44,7 @@ Games = {
         ["CdT2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDT2.lua",
         ["CidP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_CIDP.lua",
         ["Byeken"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Byeken.lua",
+        ["ByekenP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_ByekenP.lua",
         ["Lfelt"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Lfelt.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
@@ -1651,7 +1652,7 @@ Accounts = {
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
         "System",
-        "Byeken",
+        "ByekenP",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",

@@ -129,7 +129,7 @@ getgenv().Config = {
 		},
 		["Focus on Farm"] = true,
 		["Middle Position"] = {
-			["Shining Castle"] = "39.549964904785156, 177.0242919921875, 94.37834930419922",
+			["Shining Castle"] = "21.112224578857422, 177.0242919921875, 94.26405334472656",
 			["Edge of Heaven"] = "-39.13007354736328, 147.29444885253906, -186.71127319335938"
 		},
 		["Place Gap"] = {
@@ -191,8 +191,7 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Delete Entities"] = true
+		["Boost FPS"] = true
 	},
 	["Unit Feeder"] = {
 		["Feed Level"] = 60
@@ -201,7 +200,7 @@ getgenv().Config = {
 		["Restart Modifier"] = {
 			["Enable"] = true,
 			["Modifier"] = {
-				["Champions"] = true
+				["Immunity"] = true
 			}
 		},
 		["Auto Modifier"] = {
@@ -270,6 +269,5 @@ getgenv().Config = {
 			}
 		}
 	}
-}
-getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
+}getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
