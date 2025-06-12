@@ -58,7 +58,7 @@ getgenv().Config = {
 		["The System"] = {
 			["Auto Shadow"] = {
 				["Enable"] = true,
-				["Shadow"] = "Belu"
+				["Shadow"] = "Bear"
 			}
 		},
 		["Saber Event"] = {
