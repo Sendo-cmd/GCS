@@ -616,17 +616,16 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["mamekokoe"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal , Dungeon , Story , Legend Stage , Raid
-        ["Auto Join"] = true,
+        ["Select Mode"] = "Story", -- Portal , Dungeon , Story , Legend Stage , Raid
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Turlizoha3831",
         },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act3",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Land of the Gods",
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Martial Island",
             ["FriendsOnly"] = false
         },
     },
