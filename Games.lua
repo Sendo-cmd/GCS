@@ -1056,7 +1056,7 @@ Accounts = {
     ["tangdda"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["canonA624"] = {
         "Log",
@@ -1113,7 +1113,7 @@ Accounts = {
     ["Turlizoha3831"] = {
         "Log",
         "System",
-        "PortalParty",
+        "DragonP",
     },
     ["deenhumyai"] = {
         "Log",
@@ -1840,7 +1840,7 @@ Accounts = {
     ["Easyblox_P2CWU"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Dungeon",
     },
     ["drakaieiei"] = {
         "Log",
@@ -2260,6 +2260,11 @@ Accounts = {
     ["beetyou15"] = {
         "Log",
         "BaseGemInf",
+    },
+    ["MazhOG"] = {
+        "Log",
+        "System",
+        "Dungeon",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

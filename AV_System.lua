@@ -147,20 +147,22 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["c97m7VvHFTPZ19"] = {
-        ["Select Mode"] = "Portal", -- Portal
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "beastnahee",
+            "Easyblox_P2CWU",
+            "tangdda",
+            "MazhOG",
         },
-        ["Portal Settings"] = {
-            ["ID"] = 87, -- 113 Love , 87 Winter
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
         },
     },
     ["Falsoraben712"] = {
@@ -253,7 +255,7 @@ _G.User = {
     ["1wfj842inPvQ5P"] = {
         ["Party Mode"] = true,
     },
-    ["Imissuu0v0"] = {
+    ["tangdda"] = {
         ["Party Mode"] = true,
     },
     ["DB_KHOON"] = {
@@ -277,7 +279,7 @@ _G.User = {
     ["EXSTREMz"] = {
         ["Party Mode"] = true,
     },
-    ["2pdu"] = {
+    ["MazhOG"] = {
         ["Party Mode"] = true,
     },
     ["Nsteam111"] = {
@@ -616,7 +618,10 @@ _G.User = {
     ["mamekokoe"] = {
         ["Select Mode"] = "Legend Stage", -- Portal , Dungeon , Story , Legend Stage , Raid
         ["Auto Join"] = true,
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Turlizoha3831",
+        },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
             ["Act"] = "Act3",
