@@ -97,6 +97,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Enable"] = true,
+		["Upgrade Method"] = "Hotbar left to right (until Max)",
 		["Prefer Position"] = {
 			["Double Dungeon"] = "Middle",
 			["Cavern"] = "Middle",
@@ -191,6 +192,7 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
+		["Delete Entities"] = true,
 		["Boost FPS"] = true
 	},
 	["Unit Feeder"] = {
@@ -269,5 +271,6 @@ getgenv().Config = {
 			}
 		}
 	}
-}getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
+}
+getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
