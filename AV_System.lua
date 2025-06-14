@@ -705,7 +705,7 @@ local Inventory = {}
 
 local Settings ={
 
-    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid
+    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event
     ["Auto Join Rift"] = false,
     ["Auto Join Boss Event"] = false,
 
@@ -729,7 +729,7 @@ local Settings ={
         ["FriendsOnly"] = false
     },
     ["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
+        ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
         ["StageType"] = "LegendStage",
         ["Stage"] = "Sand Village",
@@ -765,47 +765,35 @@ if game.PlaceId == 16146832113 then
 end
 task.spawn(function()
     task.wait(2)
-    if game.PlaceId == 16146832113 then     
+    if game.PlaceId == 16146832113 then
         if Settings["Party Mode"]  then
             print("Im here 2")
             if not Settings["Party Member"]  then
                 print("Im here 3")
-                -- TextChatService.OnIncomingMessage = function(message)
-                --     if message.Text:match(Key) then
-                --         local Split = message.Text:split("|")
-                --         if Split[3] == plr.Name and Split[2] == "Join" then
-                --             if Split[4] == "Portal" then
-                --                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
-                --                     "JoinPortal",
-                --                     Split[5]
-                --                 )
-                --             end
-                --         end
-                --     end
-                -- end
                 while task.wait(5) do
-                    local requestTo = game:GetService("HttpService"):JSONDecode(game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name))
-                    local ost = requestTo["status"] == "success" and requestTo["value"]["os"] or 0
-                    if tostring(requestTo["status"]) == "success" and requestTo["value"] and tonumber(requestTo["value"]["os"]) >= os.time() then
-                        warn("Join")
-                        if requestTo["value"]["type"] == "Portal" then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
-                                "JoinPortal",
-                                requestTo["value"]["data"]
-                            )
-                        elseif requestTo["value"]["type"] == "Normal" then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer( 
-                                "JoinMatch",
-                                requestTo["value"]["data"]
-                            )
-                        elseif requestTo["value"]["type"] == "Rift" then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
-                                "Join",
-                                requestTo["value"]["data"]
-                            )
+                    pcall(function()
+                        local requestTo = game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name) and game:GetService("HttpService"):JSONDecode(game:HttpGet("https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name))
+                        local ost = requestTo["status"] == "success" and requestTo["value"]["os"] or 0
+                        if tostring(requestTo["status"]) == "success" and requestTo["value"] and tonumber(ost) >= os.time() then
+                            warn("Join")
+                            if requestTo["value"]["type"] == "Portal" then
+                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
+                                    "JoinPortal",
+                                    requestTo["value"]["data"]
+                                )
+                            elseif requestTo["value"]["type"] == "Normal" then
+                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer( 
+                                    "JoinMatch",
+                                    requestTo["value"]["data"]
+                                )
+                            elseif requestTo["value"]["type"] == "Rift" then
+                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                                    "Join",
+                                    requestTo["value"]["data"]
+                                )
+                            end
                         end
-                       
-                    end
+                    end)
                 end
             else
                 local UUID = nil
@@ -1053,6 +1041,33 @@ task.spawn(function()
             end
         end
     else
+        task.spawn(function()
+            while task.wait() do
+                local currentTime = os.date("!*t", os.time() ) 
+                local hour = currentTime.hour
+                local minute = currentTime.min
+                local Tables = {0,3,6,9,12,15,18,21,24}
+                if table.find(Tables, hour) and minute < 11 then
+                    local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
+                    local GameData = GameHandler.GameData
+
+                    if GameData.StageType ~= "Rift" and GameData.StageType ~= "Rifts" then
+                        local Http = game:GetService("HttpService") 
+                        local TPS = game:GetService("TeleportService") 
+                        local Api = "https://games.roblox.com/v1/games/" 
+                        local _place = 16146832113 local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100" 
+                        function ListServers(cursor) 
+                            local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or "")) 
+                            return Http:JSONDecode(Raw) 
+                        end 
+                        local Server, Next; 
+                        repeat local Servers = ListServers(Next) Server = Servers.data[1] Next = Servers.nextPageCursor 
+                        until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+                    end
+                end
+                task.wait(30)
+            end
+        end) 
         if Settings["Auto Priority"] then
             local function Priority(Model,ChangePriority)
                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
@@ -1099,5 +1114,6 @@ task.spawn(function()
             end)
             print("Executed")
         end
+        
     end    
 end)
