@@ -153,7 +153,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Easyblox_P2CWU",
+            "2PhuPhu1",
             "tangdda",
             "MazhOG",
         },
@@ -457,7 +457,7 @@ _G.User = {
     ["AMERICAMENTIONEDRAHH"] = {
         ["Party Mode"] = true,
     },
-    ["robid1450"] = {
+    ["2PhuPhu1"] = {
         ["Party Mode"] = true,
     },
     ["BOOMBIGOO"] = {

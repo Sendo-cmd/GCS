@@ -1851,8 +1851,10 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
-    ["mac12345uo"] = {
+    ["2PhuPhu1"] = {
         "Log",
+        "System",
+        "Dungeon",
     },
     ["1dayforfirst"] = {
         "Log",
