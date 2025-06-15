@@ -1863,7 +1863,7 @@ Accounts = {
     },
     ["PXDLKIG"] = {
         "Log",
-        "Reroll",
+        "Worldline",
     },
     ["Biszhedter"] = {
         "Log",
