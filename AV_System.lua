@@ -79,8 +79,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Bfkaitun9772",
-            "XIIqPD",
+            "2PhuPhu1",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -91,23 +90,7 @@ _G.User = {
         },
     },
     ["J9O0Eg0cQ03MCV"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "R6W2iU8NY0Yt0y",
-            "344t0sHCdw6oDK",
-            "joy006zx",
-        },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act4",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Shining Castle",
-            ["FriendsOnly"] = false
-        },
     },
     ["GCshop2"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
@@ -116,11 +99,13 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
+            "J9O0Eg0cQ03MCV",
+            "344t0sHCdw6oDK",
+            "R6W2iU8NY0Yt0y",
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act1",
+            ["Act"] = "Act3",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Shining Castle",
             ["FriendsOnly"] = false
@@ -153,9 +138,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "2PhuPhu1",
-            "tangdda",
-            "MazhOG",
+            "Noen",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",

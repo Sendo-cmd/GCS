@@ -369,6 +369,46 @@ getgenv().Config = {
 			}
 		}
 	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = false,
+		["Delete Entities"] = true
+	},
+	["Match Finished"] = {
+		["Replay Amount"] = 0,
+		["Return Lobby Failsafe"] = true,
+		["Auto Replay"] = true
+	},
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["FPS"] = 5
+		}
+	},
+	["Unit Feeder"] = {
+		["Feed Level"] = 60
+	},
+	["AutoExecute"] = true,
+	["Crafter"] = {
+		["Essence Stone"] = {
+			["Pink Essence Stone"] = true,
+			["Blue Essence Stone"] = true,
+			["Red Essence Stone"] = true,
+			["Yellow Essence Stone"] = true,
+			["Purple Essence Stone"] = true
+		},
+		["Essence Stone Limit"] = {
+			["Pink Essence Stone"] = 50,
+			["Blue Essence Stone"] = 50,
+			["Red Essence Stone"] = 50,
+			["Yellow Essence Stone"] = 50,
+			["Purple Essence Stone"] = 50
+		}
+	},
+	["Failsafe"] = {
+		["Disable Auto Teleport AFK Chamber"] = true,
+		["Auto Rejoin"] = true
+	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
 		["Place Cap"] = {

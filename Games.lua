@@ -80,7 +80,7 @@ Accounts = {
     ["GCshop2"] = {
         "Log",
         "System",
-        "Byeken",
+        "ByekenP",
     },
     ["maser080"] = {
         "Log",
@@ -1652,7 +1652,7 @@ Accounts = {
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
         "System",
-        "ByekenP",
+        "Byeken",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
@@ -2268,6 +2268,10 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["domaincat"] = {
+        "Log",
+        "RerollSuper",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
