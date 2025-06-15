@@ -105,7 +105,7 @@ _G.User = {
         },
         ["Legend Settings"] = {
             ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act3",
+            ["Act"] = "Act4",
             ["StageType"] = "LegendStage",
             ["Stage"] = "Shining Castle",
             ["FriendsOnly"] = false
