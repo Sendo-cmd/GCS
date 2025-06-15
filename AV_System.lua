@@ -90,23 +90,7 @@ _G.User = {
         },
     },
     ["J9O0Eg0cQ03MCV"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "R6W2iU8NY0Yt0y",
-            "344t0sHCdw6oDK",
-            "joy006zx",
-        },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act4",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Shining Castle",
-            ["FriendsOnly"] = false
-        },
     },
     ["GCshop2"] = {
         ["Select Mode"] = "Legend Stage", -- Portal
