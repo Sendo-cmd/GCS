@@ -1657,7 +1657,7 @@ Accounts = {
     ["c97m7VvHFTPZ19"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Rift",
     },
     ["v0k9Seb9nB6q0P"] = {
         "Log",
