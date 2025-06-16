@@ -132,21 +132,7 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["c97m7VvHFTPZ19"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Noen",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
+        ["Auto Join Rift"] = true,
     },
     ["Falsoraben712"] = {
         ["Party Mode"] = true,
@@ -1026,6 +1012,7 @@ task.spawn(function()
     else
         task.spawn(function()
             while task.wait() do
+                if not Settings["Auto Join Rift"] then return end
                 local currentTime = os.date("!*t", os.time() ) 
                 local hour = currentTime.hour
                 local minute = currentTime.min
