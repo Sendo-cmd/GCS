@@ -73,21 +73,7 @@ _G.User = {
         -- },
     },
     ["aR8xV9v6JI0FV9"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "2PhuPhu1",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
+        ["Auto Join Rift"] = true,
     },
     ["J9O0Eg0cQ03MCV"] = {
         ["Party Mode"] = true,
