@@ -2153,45 +2153,6 @@ Accounts = {
         "Log",
         "RerollSuper",
     },
-    ["Rovarares04408"] = {
-        "BaseGem",
-    },
-    ["Nivalroppo7407"] = {
-        "BaseGem",
-    },
-    ["Synerkelty3125"] = {
-        "BaseGem",
-    },
-    ["Vavalheff8589"] = {
-        "BaseGem",
-    },
-    ["Rebemarco78036"] = {
-        "BaseGem",
-    },
-    ["Bintafredi54262"] = {
-        "BaseGem",
-    },
-    ["Krutaolech662"] = {
-        "BaseGem",
-    },
-    ["Samotakei4315"] = {
-        "BaseGem",
-    },
-    ["Moedfaige1809"] = {
-        "BaseGem",
-    },
-    ["Rehakelahi0174"] = {
-        "BaseGem",
-    },
-    ["Kirksjajou52471"] = {
-        "BaseGem",
-    },
-    ["Cotopritz6753"] = {
-        "BaseGem",
-    },
-    ["Rahivines411"] = {
-        "BaseGem",
-    },
     ["BonesKidToot"] = {
         "Log",
         "System",
