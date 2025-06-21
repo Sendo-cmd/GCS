@@ -36,20 +36,20 @@ getgenv().Config = {
 			["[Land of the Gods] Act1"] = true
 		}
 	}
-	["Winter Portal Joiner"] = {
-		["Buy if out of Portal"] = true,
-		["Tier Cap"] = 10,
-		["Auto Next"] = true,
-		["Portal Reward Picker"] = {
-			["Enable"] = true,
-			["Prioritize"] = {
-				["Shibuya Aftermath"] = 2,
-				["Spider Forest"] = 1,
-				["Planet Namak"] = 3
-			}
-		},
-		["Auto Delete Spider Forest Portal"] = true
-	},
+	-- ["Winter Portal Joiner"] = {
+	-- 	["Buy if out of Portal"] = true,
+	-- 	["Tier Cap"] = 10,
+	-- 	["Auto Next"] = true,
+	-- 	["Portal Reward Picker"] = {
+	-- 		["Enable"] = true,
+	-- 		["Prioritize"] = {
+	-- 			["Shibuya Aftermath"] = 2,
+	-- 			["Spider Forest"] = 1,
+	-- 			["Planet Namak"] = 3
+	-- 		}
+	-- 	},
+	-- 	["Auto Delete Spider Forest Portal"] = true
+	-- },
 	["Claimer"] = {
 		["Auto Claim Quest"] = true,
 		["Auto Claim Daily Reward"] = true,
