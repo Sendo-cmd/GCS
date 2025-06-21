@@ -35,7 +35,7 @@ getgenv().Config = {
 			["[Land of the Gods] Act3"] = true,
 			["[Land of the Gods] Act1"] = true
 		}
-	}
+	},
 	-- ["Winter Portal Joiner"] = {
 	-- 	["Buy if out of Portal"] = true,
 	-- 	["Tier Cap"] = 10,
