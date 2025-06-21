@@ -698,7 +698,7 @@ local Settings ={
         ["FriendsOnly"] = false
     },
     ["Portal Settings"] = {
-        ["ID"] = 113, -- 113 Love , 87 Winter
+        ["ID"] = 113, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
