@@ -6,19 +6,19 @@ getgenv().Config = {
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	},
-	["Love Portal Joiner"] = {
-		["Tier Cap"] = 10,
-		["Portal Reward Picker"] = {
-			["Prioritize"] = {
-				["Double Dungeon"] = 3,
-				["Planet Namak"] = 1,
-				["Spirit Society"] = 6,
-				["Shibuya Station"] = 4,
-				["Underground Church"] = 5,
-				["Sand Village"] = 2
-			}
-		}
-	},
+	-- ["Love Portal Joiner"] = {
+	-- 	["Tier Cap"] = 10,
+	-- 	["Portal Reward Picker"] = {
+	-- 		["Prioritize"] = {
+	-- 			["Double Dungeon"] = 3,
+	-- 			["Planet Namak"] = 1,
+	-- 			["Spirit Society"] = 6,
+	-- 			["Shibuya Station"] = 4,
+	-- 			["Underground Church"] = 5,
+	-- 			["Sand Village"] = 2
+	-- 		}
+	-- 	}
+	-- },
 	["Spring Portal Joiner"] = {
 		["Buy if out of Portal"] = true,
 		["Tier Cap"] = 10,
