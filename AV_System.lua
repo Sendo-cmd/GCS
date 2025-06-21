@@ -79,22 +79,22 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["GCshop2"] = {
-        ["Select Mode"] = "Legend Stage", -- Portal
+        ["Select Mode"] = "Portal", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
-            "J9O0Eg0cQ03MCV",
-            "344t0sHCdw6oDK",
-            "R6W2iU8NY0Yt0y",
+            "GVU257sFK8en2v",
         },
-        ["Legend Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act4",
-            ["StageType"] = "LegendStage",
-            ["Stage"] = "Shining Castle",
-            ["FriendsOnly"] = false
+        ["Portal Settings"] = {
+            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {
+                "Land of the Gods"
+            },
+            ["Ignore Modify"] = {},
         },   
     },
     ["NoneFree"] = {

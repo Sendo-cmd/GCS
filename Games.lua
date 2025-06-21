@@ -15,10 +15,7 @@ Games = {
         ["RerollSuper"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_TraitSuper.lua",
         ["Webs"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Raid.lua",
         ["DioAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_DioAuto.lua",
-        ["PortalParty"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal_Party.lua",
-        ["PortalParty2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal_Party.lua",
         ["Portal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Portal.lua",
-        ["LovePortal"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Love_Portal.lua",
         ["SaberAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_SaberAuto.lua",
         ["Saber"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Saber.lua",
         ["SokoraAuto"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_SokoraAuto.lua",
@@ -79,7 +76,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "RerollSuper",
+        "System",
+        "Portal",
     },
     ["maser080"] = {
         "Log",

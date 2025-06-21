@@ -19,33 +19,60 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Winter Portal Joiner"] = {
+	["Spring Portal Joiner"] = {
 		["Buy if out of Portal"] = true,
-		["Auto Next"] = true,
-		["Auto Join"] = true,
 		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
 			["Enable"] = true,
 			["Prioritize"] = {
-				["Shibuya Aftermath"] = 19,
-				["Spider Forest"] = 0,
-				["Planet Namak"] = 20
+				["Land of the Gods"] = 1,
+				["Planet Namak"] = 3,
+				["Edge of Heaven"] = 2
+			}
+		},
+		["Ignore Act"] = {
+			["[Land of the Gods] Act2"] = true,
+			["[Land of the Gods] Act3"] = true,
+			["[Land of the Gods] Act1"] = true
+		}
+	}
+	["Winter Portal Joiner"] = {
+		["Buy if out of Portal"] = true,
+		["Tier Cap"] = 10,
+		["Auto Next"] = true,
+		["Portal Reward Picker"] = {
+			["Enable"] = true,
+			["Prioritize"] = {
+				["Shibuya Aftermath"] = 2,
+				["Spider Forest"] = 1,
+				["Planet Namak"] = 3
 			}
 		},
 		["Auto Delete Spider Forest Portal"] = true
 	},
-	["AutoExecute"] = true,
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
 	["Gameplay"] = {
+		["Auto Sell"] = {
+			["Wave"] = 22
+		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
 		},
-		["Auto Vote Start"] = true,
-		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 20
 		},
-		["Auto Use Ability"] = true
+		["Auto Vote Start"] = true,
+		["Auto Use Ability"] = true,
+		["Auto Skip Wave"] = true
 	},
 	["Misc"] = {
 		["Redeem Code"] = true
@@ -58,29 +85,29 @@ getgenv().Config = {
 				["Warding off Evil"] = 24,
 				["Champions"] = 12,
 				["Fast"] = 1,
-				["Planning Ahead"] = 15,
-				["Fisticuffs"] = 25,
+				["Revitalize"] = 6,
+				["King's Burden"] = 27,
 				["Exploding"] = 2,
 				["Dodge"] = 10,
-				["Uncommon Loot"] = 22,
+				["Slayer"] = 16,
 				["Immunity"] = 11,
-				["Revitalize"] = 6,
+				["Fisticuffs"] = 25,
 				["Harvest"] = 17,
-				["Precise Attack"] = 13,
-				["Range"] = 18,
-				["No Trait No Problem"] = 23,
+				["Planning Ahead"] = 15,
 				["Drowsy"] = 8,
-				["Cooldown"] = 19,
+				["Quake"] = 9,
+				["Lifeline"] = 29,
+				["Range"] = 18,
+				["Regen"] = 7,
 				["Exterminator"] = 28,
-				["King's Burden"] = 27,
 				["Damage"] = 20,
 				["Common Loot"] = 21,
-				["Regen"] = 7,
-				["Lifeline"] = 29,
+				["Cooldown"] = 19,
+				["Precise Attack"] = 13,
 				["Press It"] = 14,
-				["Quake"] = 9,
+				["No Trait No Problem"] = 23,
 				["Shielded"] = 5,
-				["Slayer"] = 16,
+				["Uncommon Loot"] = 22,
 				["Money Surge"] = 26
 			},
 			["Amount"] = {
@@ -89,55 +116,32 @@ getgenv().Config = {
 				["Warding off Evil"] = 0,
 				["Champions"] = 0,
 				["Fast"] = 0,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
+				["Revitalize"] = 0,
+				["King's Burden"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
+				["Slayer"] = 0,
 				["Immunity"] = 0,
-				["Revitalize"] = 0,
+				["Fisticuffs"] = 0,
 				["Harvest"] = 0,
-				["Precise Attack"] = 0,
-				["Range"] = 0,
-				["No Trait No Problem"] = 0,
+				["Planning Ahead"] = 0,
 				["Drowsy"] = 0,
-				["Cooldown"] = 0,
+				["Quake"] = 0,
+				["Lifeline"] = 0,
+				["Range"] = 0,
+				["Regen"] = 0,
 				["Exterminator"] = 0,
-				["King's Burden"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
-				["Regen"] = 0,
-				["Lifeline"] = 0,
+				["Cooldown"] = 0,
+				["Precise Attack"] = 0,
 				["Press It"] = 0,
-				["Quake"] = 0,
+				["No Trait No Problem"] = 0,
 				["Shielded"] = 0,
-				["Slayer"] = 0,
+				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			}
 		}
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = false,
-		["Delete Entities"] = true
-	},
-	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Disable Auto Teleport AFK Chamber"] = true
-	},
-	["Claimer"] = {
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Quest"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
-	["Secure"] = {
-		["Random Offset"] = true,
-		["Walk Around"] = true
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -145,11 +149,11 @@ getgenv().Config = {
 		["Upgrade Method"] = "Hotbar left to right (until Max)",
 		["Prefer Position"] = {
 			["Golden Castle"] = "Middle",
-			["Spirit Society"] = "Middle",
+			["Double Dungeon"] = "Middle",
 			["Blood-Red Chamber"] = "Middle",
 			["Tracks at the Edge of the World"] = "Middle",
 			["Shibuya Station"] = "Middle",
-			["Planet Namak"] = "Middle",
+			["Spirit Society"] = "Middle",
 			["Sand Village"] = "Middle",
 			["Shibuya Aftermath"] = "Middle",
 			["Cavern"] = "Middle",
@@ -158,7 +162,7 @@ getgenv().Config = {
 			["Ant Island"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Double Dungeon"] = "Middle"
+			["Planet Namak"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -168,14 +172,30 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = -1
 		},
+		["Focus on Farm"] = true,
 		["Middle Position"] = {
 			["Shibuya Aftermath"] = "-94.77557373046875, 316.1539306640625, -34.29759216308594",
 			["Spider Forest"] = "-324.47222900390625, 1644.5369873046875, -319.5542297363281",
-			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781"
-		},
-		["Focus on Farm"] = true
-	}
+			["Planet Namak"] = "540.7099609375, 2.062572717666626, -365.3252258300781",
+			["Land of the Gods"] = "-158.46160888671875, 1.2214683294296265, 119.30146026611328",
+			["Edge of Heaven"] = "-39.13007354736328, 147.29444885253906, -186.71127319335938"
+		}
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
+	},
+	["Secure"] = {
+		["Walk Around"] = true,
+		["Random Offset"] = true
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = false,
+		["Delete Entities"] = true
+	},
+	["AutoExecute"] = true
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
 repeat wait(4)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden
-
