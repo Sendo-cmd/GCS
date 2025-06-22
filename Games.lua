@@ -2247,6 +2247,11 @@ Accounts = {
         "System",
         "Portal",
     },
+    ["UR2VIG67"] = {
+        "Log",
+        "System",
+        "YomomataAuto",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
