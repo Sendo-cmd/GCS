@@ -1931,10 +1931,6 @@ Accounts = {
         "System",
         "Dungeon",
     },
-    ["Artyg111"] = {
-        "Log",
-        "BaseGemInf",
-    },
     ["DB_KHOON"] = {
         "Log",
         "RerollSuper",
