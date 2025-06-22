@@ -403,7 +403,9 @@ Accounts = {
         "PortalParty",
     },
     ["CAVIARHUB"] = {
+        "Log",
         "System",
+        "Portal",
     },
     ["Bamboo_NMpk"] = {
         "Log",
@@ -2234,6 +2236,16 @@ Accounts = {
         "Log",
         "System",
         "Dungeon",
+    },
+    ["JOJJPON"] = {
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["zumaei_9182"] = {
+        "Log",
+        "System",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

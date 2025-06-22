@@ -75,7 +75,23 @@ _G.User = {
         ["Auto Join Rift"] = true,
     },
     ["J9O0Eg0cQ03MCV"] = {
-        ["Party Mode"] = true,
+        ["Select Mode"] = "Portal", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = false,
+        ["Party Member"] = {
+            "JOJJPON",
+            "zumaei_9182",
+            "CAVIARHUB",
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Land of the Gods"},
+            ["Ignore Modify"] = {},
+        },   
     },
     ["GCshop2"] = {
         ["Select Mode"] = "Portal", -- Portal
@@ -139,7 +155,7 @@ _G.User = {
     ["ggotv02"] = {
         ["Party Mode"] = true,
     },
-    ["s1t4d4vPKqIz61"] = {
+    ["JOJJPON"] = {
         ["Party Mode"] = true,
     },
     ["beastnahee"] = {
@@ -169,7 +185,7 @@ _G.User = {
     ["Trarockker"] = {
         ["Party Mode"] = true,
     },
-    ["s0SoYQ84GXSc12"] = {
+    ["zumaei_9182"] = {
         ["Party Mode"] = true,
     },
     ["v0k9Seb9nB6q0P"] = {
@@ -217,7 +233,7 @@ _G.User = {
     ["1vZ92LnVo3Fu9l"] = {
         ["Party Mode"] = true,
     },
-    ["HpEW3m7W65IeF1"] = {
+    ["CAVIARHUB"] = {
         ["Party Mode"] = true,
     },
     ["1wfj842inPvQ5P"] = {
