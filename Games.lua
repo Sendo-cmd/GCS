@@ -1132,7 +1132,7 @@ Accounts = {
     ["rain4834"] = {
         "Log",
         "System",
-        "Portal"
+        "Lfelt"
     },
     ["GF4TR"] = {
         "Log",
@@ -1362,7 +1362,7 @@ Accounts = {
     ["OP_autokill"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Portal",
     },
     ["Juniorlnw5"] = {
         "Log",

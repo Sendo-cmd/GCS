@@ -119,7 +119,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "artyg111",
-            "rain4834",
+            "OP_autokill",
             "ggotv02"
         },
         ["Portal Settings"] = {
@@ -588,7 +588,21 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["rain4834"] = {
+        ["Select Mode"] = "Story", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
+        ["Party Member"] = {
+            "TYTAP002",
+        },
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Edge of Heaven",
+            ["FriendsOnly"] = false
+        },   
     },
     ["TYTAP002"] = {
         ["Party Mode"] = true,
