@@ -247,7 +247,8 @@ Accounts = {
     },
     ["Estellburst"] = {
         "Log",
-        "Reroll",
+        "System",
+        "Portal",
     },
     ["tahkrisda126"] = {
         "Log",
@@ -1059,7 +1060,12 @@ Accounts = {
     ["canonA624"] = {
         "Log",
         "System",
-        "CidP",
+        "Portal",
+    },
+    ["Skyfe0397"] = {
+        "Log",
+        "System",
+        "Portal",
     },
     ["Pokampud"] = {
         "Log",
@@ -1694,7 +1700,7 @@ Accounts = {
     ["GVU257sFK8en2v"] = {
         "Log",
         "System",
-        "Byeken",
+        "Portal",
     },
     ["Embesna5706"] = {
         "System",

@@ -326,7 +326,25 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Estellburst"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
+        ["Party Member"] = {
+            "Skyfe0397",
+            "canonA624",
+            "GVU257sFK8en2v",
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {
+                "Land of the Gods"
+            },
+            ["Ignore Modify"] = {},
+        },   
     },
     ["GODZARIO8113"] = {
         ["Party Mode"] = true,
@@ -346,7 +364,7 @@ _G.User = {
     ["scp1774"] = {
         ["Party Mode"] = true,
     },
-    ["viaaaaa1234"] = {
+    ["Skyfe0397"] = {
         ["Party Mode"] = true,
     },
     ["icemateenoobth"] = {
