@@ -456,7 +456,8 @@ Accounts = {
     },
     ["artyg111"] = {
         "Log",
-        "PortalParty",
+        "System",
+        "Portal",
     },
     ["Brutaroth"] = {
         "Log",
@@ -1130,7 +1131,8 @@ Accounts = {
     },
     ["rain4834"] = {
         "Log",
-        "Worldline",
+        "System",
+        "Portal"
     },
     ["GF4TR"] = {
         "Log",
@@ -2142,7 +2144,7 @@ Accounts = {
     ["ggotv02"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Portal",
     },
     ["shhahrhehrh"] = {
         "Log",
@@ -2231,6 +2233,11 @@ Accounts = {
     ["domaincat"] = {
         "Log",
         "RerollSuper",
+    },
+    ["octopuswfd_449"] = {
+        "Log",
+        "System",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

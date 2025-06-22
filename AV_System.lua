@@ -55,22 +55,21 @@ Ruined City
 
 _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
-        -- ["Select Mode"] = "Dungeon", -- Portal
-        -- ["Auto Stun"] = false,
-        -- ["Auto Priority"] = false,
-        -- ["Priority"] = "Bosses",
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "MonarchJINWO21",
-        --     "jojoisrealko",
-        -- },
-        -- ["Dungeon Settings"] = {
-        --     ["Difficulty"] = "Nightmare",
-        --     ["Act"] = "AntIsland",
-        --     ["StageType"] = "Dungeon",
-        --     ["Stage"] = "Ant Island",
-        --     ["FriendsOnly"] = false
-        -- },
+        ["Party Member"] = {
+            "octopuswfd_449"
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },
     },
     ["aR8xV9v6JI0FV9"] = {
         ["Auto Join Rift"] = true,
@@ -113,15 +112,31 @@ _G.User = {
         },
     },
     ["344t0sHCdw6oDK"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
         ["Party Mode"] = true,
+        ["Party Member"] = {
+            "artyg111",
+            "rain4834",
+            "ggotv02"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Land of the Gods"},
+            ["Ignore Modify"] = {},
+        },   
     },
-    ["c97m7VvHFTPZ19"] = {
+    ["artyg111"] = {
         ["Auto Join Rift"] = true,
     },
-    ["Falsoraben712"] = {
+    ["octopuswfd_449"] = {
         ["Party Mode"] = true,
     },
-    ["HN0U173rfP9Rej"] = {
+    ["ggotv02"] = {
         ["Party Mode"] = true,
     },
     ["s1t4d4vPKqIz61"] = {
@@ -251,41 +266,41 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Dbhhceuhceuh"] = {
-        ["Select Mode"] = "Story", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
+        -- ["Select Mode"] = "Story", -- Portal
+        -- ["Auto Stun"] = false,
+        -- ["Auto Priority"] = false,
+        -- ["Priority"] = "Bosses",
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "w42mwpY03FJs3d",
-            "J49Mr8EDKF5R5I",
-        },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Edge of Heaven",
-            ["FriendsOnly"] = false
-        },
+        -- ["Party Member"] = {
+        --     "w42mwpY03FJs3d",
+        --     "J49Mr8EDKF5R5I",
+        -- },
+        -- ["Story Settings"] = {
+        --     ["Difficulty"] = "Normal",
+        --     ["Act"] = "Act1",
+        --     ["StageType"] = "Story",
+        --     ["Stage"] = "Edge of Heaven",
+        --     ["FriendsOnly"] = false
+        -- },
     },
     ["OPggripTH"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = true,
-        ["Priority"] = "Bosses",
+        -- ["Select Mode"] = "Raid", -- Portal
+        -- ["Auto Stun"] = false,
+        -- ["Auto Priority"] = true,
+        -- ["Priority"] = "Bosses",
         ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Wawawa_761",
-            "Nainklk",
-            "issei123i",
-        },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
-        },
+        -- ["Party Member"] = {
+        --     "Wawawa_761",
+        --     "Nainklk",
+        --     "issei123i",
+        -- },
+        -- ["Raid Settings"] = {
+        --     ["Difficulty"] = "Nightmare",
+        --     ["Act"] = "Act1",
+        --     ["StageType"] = "Raid",
+        --     ["Stage"] = "Ruined City",
+        --     ["FriendsOnly"] = false
+        -- },
     },
     ["issei123i"] = {
         ["Party Mode"] = true,
