@@ -91,9 +91,7 @@ _G.User = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {
-                "Land of the Gods"
-            },
+            ["Ignore Stage"] = {"Land of the Gods"},
             ["Ignore Modify"] = {},
         },   
     },
@@ -340,9 +338,7 @@ _G.User = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {
-                "Land of the Gods"
-            },
+            ["Ignore Stage"] = {"Land of the Gods"},
             ["Ignore Modify"] = {},
         },   
     },
