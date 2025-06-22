@@ -79,7 +79,7 @@ _G.User = {
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
-        ["Party Mode"] = false,
+        ["Party Mode"] = true,
         ["Party Member"] = {
             "JOJJPON",
             "zumaei_9182",
