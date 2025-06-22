@@ -346,7 +346,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Skyfe0397",
-            "canonA624",
             "GVU257sFK8en2v",
         },
         ["Portal Settings"] = {
