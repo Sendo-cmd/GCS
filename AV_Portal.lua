@@ -277,8 +277,8 @@ getgenv().Config = {
 			["Enable"] = true,
 			["Prioritize"] = {
 				["Land of the Gods"] = 1,
-				["Planet Namak"] = 2,
-				["Edge of Heaven"] = 3
+				["Planet Namak"] = 3,
+				["Edge of Heaven"] = 2
 			}
 		},
 		["Ignore Act"] = {
