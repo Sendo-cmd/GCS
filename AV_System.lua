@@ -131,7 +131,7 @@ _G.User = {
         },   
     },
     ["artyg111"] = {
-        ["Auto Join Rift"] = true,
+        ["Party Mode"] = true,
     },
     ["octopuswfd_449"] = {
         ["Party Mode"] = true,
