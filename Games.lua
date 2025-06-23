@@ -664,7 +664,7 @@ Accounts = {
     ["scp1774"] = {
         "Log",
         "System",
-        "CidP",
+        "Portal",
     },
     ["kong2562"] = {
         "Log",
