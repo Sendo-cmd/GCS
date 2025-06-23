@@ -55,21 +55,23 @@ Ruined City
 
 _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+        ["Select Mode"] = "Portal", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "octopuswfd_449"
+            "ilovecat326",
+            "canonA624",
+            "Easyblox_P2CWU"
         },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
+        ["Portal Settings"] = {
+            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {"Land of the Gods"},
+            ["Ignore Modify"] = {},
+        },   
     },
     ["aR8xV9v6JI0FV9"] = {
         ["Auto Join Rift"] = true,
@@ -110,14 +112,15 @@ _G.User = {
             ["Ignore Modify"] = {},
         },   
     },
-    ["NoneFree"] = {
+    ["PXDLKIG"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "None3",
+            "2hemnt_52",
+            "CGGG108151",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -170,7 +173,7 @@ _G.User = {
     ["EliXXLRkF"] = {
         ["Party Mode"] = true,
     },
-    ["deenhumyai"] = {
+    ["ilovecat326"] = {
         ["Party Mode"] = true,
     },
     ["Turlizoha3831"] = {

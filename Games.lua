@@ -964,7 +964,7 @@ Accounts = {
     ["ilovecat326"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Portal",
     },
     ["Captainlnwza005"] = {
         "Log",
@@ -1694,7 +1694,7 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Portal",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -1735,7 +1735,7 @@ Accounts = {
     ["J49Mr8EDKF5R5I"] = {
         "Log",
         "System",
-        "Lfelt",
+        "CdT2",
     },
     ["8F0qejRl63VT7L"] = {
         "Log",
@@ -1843,7 +1843,7 @@ Accounts = {
     ["Easyblox_P2CWU"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Portal",
     },
     ["drakaieiei"] = {
         "Log",
@@ -1865,7 +1865,8 @@ Accounts = {
     },
     ["PXDLKIG"] = {
         "Log",
-        "Worldline",
+        "System",
+        "Cid",
     },
     ["Biszhedter"] = {
         "Log",
@@ -2250,7 +2251,16 @@ Accounts = {
     ["UR2VIG67"] = {
         "Log",
         "System",
-        "YomomataAuto",
+    },
+    ["CGGG108151"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
+    ["2hemnt_52"] = {
+        "Log",
+        "System",
+        "CdT1",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
