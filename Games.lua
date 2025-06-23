@@ -1412,7 +1412,7 @@ Accounts = {
     ["344t0sHCdw6oDK"] = {
         "Log",
         "System",
-        "Byeken",
+        "Portal",
     },
     ["traijo"] = {
         "Log",
@@ -2137,7 +2137,7 @@ Accounts = {
     ["TYTAP002"] = {
         "Log",
         "System",
-        "Lfelt",
+        "Portal",
     },
     ["ggotv02"] = {
         "Log",

@@ -83,7 +83,7 @@ _G.User = {
         ["Party Member"] = {
             "JOJJPON",
             "zumaei_9182",
-            "CAVIARHUB",
+            "scp1774",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -136,6 +136,7 @@ _G.User = {
         ["Party Member"] = {
             "OP_autokill",
             "MazhOG",
+            "TYTAP002"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
