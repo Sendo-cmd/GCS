@@ -136,7 +136,6 @@ _G.User = {
         ["Party Member"] = {
             "OP_autokill",
             "MazhOG",
-            "ggotv02"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
