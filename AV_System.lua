@@ -134,8 +134,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "artyg111",
             "OP_autokill",
+            "MazhOG",
             "ggotv02"
         },
         ["Portal Settings"] = {
@@ -361,7 +361,6 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Skyfe0397",
             "GVU257sFK8en2v",
         },
         ["Portal Settings"] = {

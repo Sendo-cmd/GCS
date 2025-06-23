@@ -2226,7 +2226,7 @@ Accounts = {
     ["MazhOG"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Portal",
     },
     ["domaincat"] = {
         "Log",
