@@ -43,9 +43,6 @@ getgenv().Config = {
 		["Auto Claim Collection Milestone"] = true
 	},
 	["Gameplay"] = {
-		["Martial Island"] = {
-			["Auto Join God Portal"] = true
-		},
 		["Auto Restart"] = {
 			["Wave"] = 1
 		},
@@ -60,9 +57,6 @@ getgenv().Config = {
 			["Leave Extra Money"] = 5000,
 			["Upgrade Amount"] = 0
 		},
-		["Ruined City"] = {
-			["Use Mount to Travel"] = true
-		},
 		["The System"] = {
 			["Auto Shadow"] = {
 				["Shadow"] = "Bear"
@@ -70,9 +64,6 @@ getgenv().Config = {
 		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker"
-		},
-		["Edge of Heaven"] = {
-			["Auto Join Lfelt Portal"] = true
 		},
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
@@ -201,8 +192,7 @@ getgenv().Config = {
 		["Feed Level"] = 60
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Walk Around"] = true
 	},
 	["Modifier"] = {
 		["Auto Modifier"] = {

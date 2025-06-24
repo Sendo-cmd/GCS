@@ -113,7 +113,7 @@ _G.User = {
     },
     ["PXDLKIG"] = {
         ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = false,
+        ["Auto Stun"] = true,
         ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
@@ -185,7 +185,7 @@ _G.User = {
     ["2hemnt_52"] = {
         ["Party Mode"] = true,
     },
-    ["Trarockker"] = {
+    ["Zulu_OoB30"] = {
         ["Party Mode"] = true,
     },
     ["zumaei_9182"] = {
@@ -491,7 +491,7 @@ _G.User = {
     ["Dwekyphwzxpsg"] = {
         ["Party Mode"] = true,
     },
-    ["Rustwhir2660"] = {
+    ["wosssssso"] = {
         ["Party Mode"] = true,
     },
     ["Brutaroth"] = {
