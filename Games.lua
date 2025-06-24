@@ -1704,7 +1704,7 @@ Accounts = {
     ["GVU257sFK8en2v"] = {
         "Log",
         "System",
-        "Portal",
+        "CdT2",
     },
     ["Embesna5706"] = {
         "System",

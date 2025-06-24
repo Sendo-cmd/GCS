@@ -83,9 +83,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "JOJJPON",
-            "zumaei_9182",
-            "scp1774",
+            "wosssssso",
+            "Zulu_OoB30",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -121,6 +120,7 @@ _G.User = {
         ["Party Member"] = {
             "2hemnt_52",
             "CGGG108151",
+            "GVU257sFK8en2v"
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Nightmare",
