@@ -2262,6 +2262,16 @@ Accounts = {
         "System",
         "CdT1",
     },
+    ["wosssssso"] = {
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["Zulu_OoB30"] = {
+        "Log",
+        "System",
+        "Portal",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
