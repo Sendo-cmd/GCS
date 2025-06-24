@@ -179,10 +179,10 @@ _G.User = {
     ["Turlizoha3831"] = {
         ["Party Mode"] = true,
     },
-    ["Bfkaitun9772"] = {
+    ["CGGG108151"] = {
         ["Party Mode"] = true,
     },
-    ["unf0rg1ven_249"] = {
+    ["2hemnt_52"] = {
         ["Party Mode"] = true,
     },
     ["Trarockker"] = {
