@@ -180,9 +180,11 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["CGGG108151"] = {
+        ["Auto Stun"] = true,
         ["Party Mode"] = true,
     },
     ["2hemnt_52"] = {
+        ["Auto Stun"] = true,
         ["Party Mode"] = true,
     },
     ["Zulu_OoB30"] = {
@@ -195,6 +197,7 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["GVU257sFK8en2v"] = {
+        ["Auto Stun"] = true,
         ["Party Mode"] = true,
     },
     ["8F0qejRl63VT7L"] = {
