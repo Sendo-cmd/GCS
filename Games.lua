@@ -1124,7 +1124,8 @@ Accounts = {
     },
     ["deenhumyai"] = {
         "Log",
-        "Worldline",
+        "System",
+        "Portal",
     },
     ["EliXXLRkF"] = {
         "Log",
@@ -1689,7 +1690,7 @@ Accounts = {
     ["s0SoYQ84GXSc12"] = {
         "Log",
         "System",
-        "CdT1"
+        "Portal"
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
@@ -2268,6 +2269,11 @@ Accounts = {
         "Portal",
     },
     ["Zulu_OoB30"] = {
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["ioio30330p"] = {
         "Log",
         "System",
         "Portal",

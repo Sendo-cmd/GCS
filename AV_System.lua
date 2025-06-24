@@ -85,6 +85,7 @@ _G.User = {
         ["Party Member"] = {
             "wosssssso",
             "Zulu_OoB30",
+            "deenhumyai",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -139,6 +140,7 @@ _G.User = {
         ["Party Member"] = {
             "OP_autokill",
             "MazhOG",
+            "ioio30330p",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
@@ -199,10 +201,10 @@ _G.User = {
         ["Auto Stun"] = true,
         ["Party Mode"] = true,
     },
-    ["8F0qejRl63VT7L"] = {
+    ["ioio30330p"] = {
         ["Party Mode"] = true,
     },
-    ["a4LbRw0S2O30gi"] = {
+    ["deenhumyai"] = {
         ["Party Mode"] = true,
     },
     ["w42mwpY03FJs3d"] = {
@@ -366,7 +368,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GVU257sFK8en2v",
+            "s0SoYQ84GXSc12",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -409,7 +411,7 @@ _G.User = {
     ["GHeirtid"] = {
         ["Party Mode"] = true,
     },
-    ["1dayforfirst"] = {
+    ["s0SoYQ84GXSc12"] = {
         ["Party Mode"] = true,
     },
     ["tanjiroxfire"] = {
