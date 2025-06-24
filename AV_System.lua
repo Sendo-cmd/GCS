@@ -139,10 +139,9 @@ _G.User = {
         ["Party Member"] = {
             "OP_autokill",
             "MazhOG",
-            "TYTAP002"
         },
         ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
             ["Tier Cap"] = 10,
             ["Method"] = "Highest", -- Highest , Lowest
             ["Ignore Stage"] = {"Land of the Gods"},
