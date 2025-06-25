@@ -55,22 +55,20 @@ Ruined City
 
 _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Portal", -- Portal
+        ["Select Mode"] = "Story", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "ilovecat326",
-            "canonA624",
-            "Easyblox_P2CWU"
+            "wosssssso",
         },
-        ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
-            ["Ignore Modify"] = {},
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Edge of Heaven",
+            ["FriendsOnly"] = false
         },   
     },
     ["aR8xV9v6JI0FV9"] = {
@@ -83,7 +81,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "wosssssso",
+            "scp1774",
             "Zulu_OoB30",
             "deenhumyai",
         },
@@ -120,7 +118,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "2hemnt_52",
-            "CGGG108151",
+            "uNkxJXRt2641",
             "GVU257sFK8en2v"
         },
         ["Raid Settings"] = {
@@ -139,7 +137,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "OP_autokill",
-            "MazhOG",
+            "artyg111",
             "ioio30330p",
         },
         ["Portal Settings"] = {
@@ -216,7 +214,7 @@ _G.User = {
     ["O9ctwM68Ix2UG3"] = {
         ["Party Mode"] = true,
     },
-    ["8OcN9bx2VN6N2B"] = {
+    ["uNkxJXRt2641"] = {
         ["Party Mode"] = true,
     },
     ["n0iM1h7wc3tcM5"] = {

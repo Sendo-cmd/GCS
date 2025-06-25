@@ -1695,7 +1695,7 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Portal",
+        "Lfelt",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -2258,6 +2258,11 @@ Accounts = {
         "System",
         "CidP",
     },
+    ["uNkxJXRt2641"] = {
+        "Log",
+        "System",
+        "CidP",
+    },
     ["2hemnt_52"] = {
         "Log",
         "System",
@@ -2266,7 +2271,7 @@ Accounts = {
     ["wosssssso"] = {
         "Log",
         "System",
-        "Portal",
+        "Lfelt",
     },
     ["Zulu_OoB30"] = {
         "Log",
