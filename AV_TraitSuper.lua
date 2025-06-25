@@ -487,7 +487,7 @@ getgenv().Config = {
 		}
 	},
 	["Match Finished"] = {
-		["Auto Return Lobby"] = true,
+		["Auto Return Lobby"] = false,
 		["Replay Amount"] = 0,
 		["Auto Replay"] = true
 	},

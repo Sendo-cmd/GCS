@@ -312,7 +312,7 @@ getgenv().Config = {
 		["Auto Next"] = false,
 		["Replay Amount"] = 0,
 		["Return Lobby Failsafe"] = false,
-		["Auto Return Lobby"] = true,
+		["Auto Return Lobby"] = false,
 		["Auto Replay"] = true
 	},
 	["Crafter"] = {
