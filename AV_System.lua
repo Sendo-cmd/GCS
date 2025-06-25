@@ -95,7 +95,6 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "scp1774",
             "Easyblox_P2CWU",
             "deenhumyai",
         },
