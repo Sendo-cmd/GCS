@@ -55,25 +55,39 @@ Ruined City
 
 _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Story", -- Portal
+        ["Select Mode"] = "Dungeon", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "wosssssso",
+            "TradingByThanakorn",
         },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Edge of Heaven",
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },   
     },
-    ["aR8xV9v6JI0FV9"] = {
-        ["Auto Join Rift"] = true,
-    },
+    ["None9999"] = {
+        ["Select Mode"] = "Dungeon", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "",
+        },
+        ["Dungeon Settings"] = {
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "AntIsland",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Ant Island",
+            ["FriendsOnly"] = false
+        },
+    },    
     ["J9O0Eg0cQ03MCV"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Auto Stun"] = false,
@@ -82,7 +96,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "scp1774",
-            "Zulu_OoB30",
+            "Easyblox_P2CWU",
             "deenhumyai",
         },
         ["Portal Settings"] = {
@@ -136,9 +150,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "OP_autokill",
-            "artyg111",
-            "ioio30330p",
+            "D0FWALL",
+            "Reset29879635",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
@@ -211,7 +224,7 @@ _G.User = {
     ["J49Mr8EDKF5R5I"] = {
         ["Party Mode"] = true,
     },
-    ["O9ctwM68Ix2UG3"] = {
+    ["TradingByThanakorn"] = {
         ["Party Mode"] = true,
     },
     ["uNkxJXRt2641"] = {
@@ -235,13 +248,13 @@ _G.User = {
     ["47XCD6el66XjzO"] = {
         ["Party Mode"] = true,
     },
-    ["1vZ92LnVo3Fu9l"] = {
+    ["Reset29879635"] = {
         ["Party Mode"] = true,
     },
     ["CAVIARHUB"] = {
         ["Party Mode"] = true,
     },
-    ["1wfj842inPvQ5P"] = {
+    ["D0FWALL"] = {
         ["Party Mode"] = true,
     },
     ["tangdda"] = {
@@ -754,9 +767,9 @@ local Settings ={
     },
     ["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
+        ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Mountain Shrine (Natural)",
+        ["Stage"] = "Ant Island",
         ["FriendsOnly"] = false
     },
     ["Portal Settings"] = {

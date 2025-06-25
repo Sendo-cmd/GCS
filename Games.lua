@@ -1695,7 +1695,7 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Lfelt",
+        "Dungeon",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -2279,6 +2279,21 @@ Accounts = {
         "Portal",
     },
     ["ioio30330p"] = {
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["TradingByThanakorn"] = {
+        "Log",
+        "System",
+        "Dungeon",
+    },
+    ["D0FWALL"] = {
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["Reset29879635"] = {
         "Log",
         "System",
         "Portal",
