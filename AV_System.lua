@@ -95,8 +95,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Easyblox_P2CWU",
             "deenhumyai",
+            "Easyblox_P2CWU"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
