@@ -147,5 +147,5 @@ getgenv().Config = {
 		["Stage"] = "SaberEvent"
 	}
 }
-getgenv().Key = "swxqHzWiWRRSVkZqanyraHCEYNggPiBx" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , swxqHzWiWRRSVkZqanyraHCEYNggPiBx]
+getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(2)until Joebiden
