@@ -478,7 +478,8 @@ Accounts = {
     },
     ["Kreovx"] = {
         "Log",
-        "BaseGemInf",
+        "System",
+        "Portal",
     },
     ["quk1lp"] = {
         "Log",
