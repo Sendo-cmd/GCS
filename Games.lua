@@ -1670,7 +1670,7 @@ Accounts = {
     ["v0k9Seb9nB6q0P"] = {
         "Log",
         "System",
-        "CdT2",
+        "Portal",
     },
     ["A6bU2F244SgVIL"] = {
         "Log",
@@ -1705,7 +1705,7 @@ Accounts = {
     ["GVU257sFK8en2v"] = {
         "Log",
         "System",
-        "CdT2",
+        "Portal",
     },
     ["Embesna5706"] = {
         "System",
@@ -2241,8 +2241,6 @@ Accounts = {
     },
     ["JOJJPON"] = {
         "Log",
-        "System",
-        "Portal",
     },
     ["zumaei_9182"] = {
         "Log",
@@ -2305,6 +2303,11 @@ Accounts = {
     ["Bartadewig610"] = {
         "Log",
         "BaseGem",
+    },
+    ["ninenew2015"] = {
+        "Log",
+        "System",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

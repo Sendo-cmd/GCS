@@ -87,7 +87,26 @@ _G.User = {
             ["Stage"] = "Ant Island",
             ["FriendsOnly"] = false
         },
-    },    
+    },
+    ["Kreovx"] = {
+        ["Select Mode"] = "Portal", -- Portal
+        ["Auto Stun"] = false,
+        ["Auto Priority"] = false,
+        ["Priority"] = "Bosses",
+        ["Party Mode"] = true,
+        ["Party Member"] = {
+            "GVU257sFK8en2v",
+            "s0SoYQ84GXSc12",
+            "v0k9Seb9nB6q0P"
+        },
+        ["Portal Settings"] = {
+            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
+        },   
+    },
     ["J9O0Eg0cQ03MCV"] = {
         ["Select Mode"] = "Portal", -- Portal
         ["Auto Stun"] = false,
@@ -95,8 +114,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "deenhumyai",
-            "Easyblox_P2CWU"
+            "Namo1171",
+            "Easyblox_P2CWU",
+            "ninenew2015"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -151,6 +171,7 @@ _G.User = {
         ["Party Member"] = {
             "D0FWALL",
             "Reset29879635",
+            "Coknwz",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
@@ -208,7 +229,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["GVU257sFK8en2v"] = {
-        ["Auto Stun"] = true,
         ["Party Mode"] = true,
     },
     ["ioio30330p"] = {
@@ -217,7 +237,7 @@ _G.User = {
     ["deenhumyai"] = {
         ["Party Mode"] = true,
     },
-    ["w42mwpY03FJs3d"] = {
+    ["ninenew2015"] = {
         ["Party Mode"] = true,
     },
     ["J49Mr8EDKF5R5I"] = {
@@ -376,7 +396,7 @@ _G.User = {
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
+        ["Party Mode"] = false,
         ["Party Member"] = {
             "s0SoYQ84GXSc12",
         },
