@@ -127,6 +127,6 @@ getgenv().Config = {
 		["No Ignore Sell Timing"] = true
 	}
 }
-getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
+getgenv().Key = "swxqHzWiWRRSVkZqanyraHCEYNggPiBx" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , swxqHzWiWRRSVkZqanyraHCEYNggPiBx]
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(2)until Joebiden
 
