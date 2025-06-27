@@ -253,7 +253,7 @@ _G.User = {
     ["JINGJUNG59"] = {
         ["Party Mode"] = true,
     },
-    ["I67y3cRp2zG7YU"] = {
+    ["Ngerntongg"] = {
         ["Party Mode"] = true,
     },
     ["15F1TxIv5Vz7ml"] = {
