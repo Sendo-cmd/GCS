@@ -564,7 +564,8 @@ Accounts = {
     },
     ["hdkjsksp"] = {
         "Log",
-        "RerollSuper",
+        "System",
+        "Portal",
     },
     ["Demonsun0601"] = {
         "Log",
@@ -863,7 +864,7 @@ Accounts = {
     ["Namo1171"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Portal",
     },
     ["effdskofkduf2"] = {
         "Log",
@@ -1696,7 +1697,7 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Lfelt",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -1920,7 +1921,7 @@ Accounts = {
     ["Coknwz"] = {
         "Log",
         "System",
-        "CdT1",
+        "Portal",
     },
     ["Abfbtwekpjkkn"] = {
         "Log",
@@ -2309,6 +2310,16 @@ Accounts = {
         "Log",
         "System",
         "Portal",
+    },
+    ["JINGJUNG59"] = {
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["Ngerntongg"] = {
+        "Log",
+        "System",
+        "Lfelt",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

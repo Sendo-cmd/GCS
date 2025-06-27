@@ -55,19 +55,19 @@ Ruined City
 
 _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
+        ["Select Mode"] = "Story", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "TradingByThanakorn",
+            "Ngerntongg",
         },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Edge of Heaven",
             ["FriendsOnly"] = false
         },   
     },
@@ -115,6 +115,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Namo1171",
+            "hdkjsksp",
             "ninenew2015"
         },
         ["Portal Settings"] = {
@@ -169,6 +170,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Coknwz",
+            "JINGJUNG59",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
@@ -246,10 +248,10 @@ _G.User = {
     ["uNkxJXRt2641"] = {
         ["Party Mode"] = true,
     },
-    ["n0iM1h7wc3tcM5"] = {
+    ["hdkjsksp"] = {
         ["Party Mode"] = true,
     },
-    ["fZ7R4D87gVY6WS"] = {
+    ["JINGJUNG59"] = {
         ["Party Mode"] = true,
     },
     ["I67y3cRp2zG7YU"] = {
