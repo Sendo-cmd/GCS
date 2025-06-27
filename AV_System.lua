@@ -116,7 +116,6 @@ _G.User = {
         ["Party Member"] = {
             "Namo1171",
             "hdkjsksp",
-            "ninenew2015"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
