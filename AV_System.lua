@@ -115,7 +115,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Namo1171",
-            "Easyblox_P2CWU",
             "ninenew2015"
         },
         ["Portal Settings"] = {
@@ -169,8 +168,6 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "D0FWALL",
-            "Reset29879635",
             "Coknwz",
         },
         ["Portal Settings"] = {
