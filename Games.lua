@@ -1122,7 +1122,7 @@ Accounts = {
     ["Turlizoha3831"] = {
         "Log",
         "System",
-        "Dragon",
+        "Portal",
     },
     ["deenhumyai"] = {
         "Log",
@@ -2261,7 +2261,7 @@ Accounts = {
     ["uNkxJXRt2641"] = {
         "Log",
         "System",
-        "CidP",
+        "Portal",
     },
     ["2hemnt_52"] = {
         "Log",
