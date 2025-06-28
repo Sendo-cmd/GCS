@@ -90,24 +90,22 @@ _G.User = {
             ["FriendsOnly"] = false
         },
     },
-    ["Kreovx"] = {
-        ["Select Mode"] = "Portal", -- Portal
+    ["GVU257sFK8en2v"] = {
+        ["Select Mode"] = "Story", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "GVU257sFK8en2v",
-            "s0SoYQ84GXSc12",
-            "",
+            "Ngerntongg",
         },
-        ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },   
+        ["Story Settings"] = {
+            ["Difficulty"] = "Normal",
+            ["Act"] = "Act1",
+            ["StageType"] = "Story",
+            ["Stage"] = "Edge of Heaven",
+            ["FriendsOnly"] = false
+        },    
     },
     ["J9O0Eg0cQ03MCV"] = {
         ["Select Mode"] = "Portal", -- Portal
@@ -226,9 +224,6 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["v0k9Seb9nB6q0P"] = {
-        ["Party Mode"] = true,
-    },
-    ["GVU257sFK8en2v"] = {
         ["Party Mode"] = true,
     },
     ["ioio30330p"] = {
