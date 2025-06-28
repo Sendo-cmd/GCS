@@ -99,7 +99,7 @@ _G.User = {
         ["Party Member"] = {
             "GVU257sFK8en2v",
             "s0SoYQ84GXSc12",
-            "v0k9Seb9nB6q0P"
+            "euakungchannel"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -316,6 +316,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["jojoisrealko"] = {
+        ["Party Mode"] = true,
+    },
+    ["euakungchannel"] = {
         ["Party Mode"] = true,
     },
     ["Dbhhceuhceuh"] = {
