@@ -274,8 +274,8 @@ Accounts = {
     },
     ["RedAshleyKung"] = {
         "Log",
-        "Marco",
-        "YomomataG",
+        "System",
+        "CidP",
     },
     ["fourgroupssss"] = {
         "Log",
@@ -1672,7 +1672,7 @@ Accounts = {
     ["v0k9Seb9nB6q0P"] = {
         "Log",
         "System",
-        "Portal",
+        "CdT2",
     },
     ["A6bU2F244SgVIL"] = {
         "Log",
@@ -1692,12 +1692,12 @@ Accounts = {
     ["s0SoYQ84GXSc12"] = {
         "Log",
         "System",
-        "Portal"
+        "CdT1"
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Lfelt",
+        "Cid",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -2320,6 +2320,11 @@ Accounts = {
         "Log",
         "System",
         "Lfelt",
+    },
+    ["itzmemepoq"] = {
+        "Log",
+        "System",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)

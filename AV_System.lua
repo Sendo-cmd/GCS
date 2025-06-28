@@ -55,19 +55,21 @@ Ruined City
 
 _G.User = {
     ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Story", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
+        ["Select Mode"] = "Raid", -- Portal
+        ["Auto Stun"] = true,
+        ["Auto Priority"] = true,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Ngerntongg",
+            "RedAshleyKung",
+            "v0k9Seb9nB6q0P",
+            "s0SoYQ84GXSc12",
         },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
+        ["Raid Settings"] = {
+            ["Difficulty"] = "Nightmare",
             ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Edge of Heaven",
+            ["StageType"] = "Raid",
+            ["Stage"] = "Ruined City",
             ["FriendsOnly"] = false
         },   
     },
@@ -114,9 +116,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Namo1171",
             "hdkjsksp",
             "uNkxJXRt2641",
+            "itzmemepoq",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -169,9 +171,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Coknwz",
-            "JINGJUNG59",
-            "Turlizoha3831",
+            "ninenew2015"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
@@ -258,7 +258,7 @@ _G.User = {
     ["Ngerntongg"] = {
         ["Party Mode"] = true,
     },
-    ["15F1TxIv5Vz7ml"] = {
+    ["RedAshleyKung"] = {
         ["Party Mode"] = true,
     },
     ["ls09mFx9AEj56p"] = {
