@@ -62,7 +62,7 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "RedAshleyKung",
-            "v0k9Seb9nB6q0P",
+            "euakungchannel",
             "s0SoYQ84GXSc12",
         },
         ["Raid Settings"] = {
@@ -99,7 +99,7 @@ _G.User = {
         ["Party Member"] = {
             "GVU257sFK8en2v",
             "s0SoYQ84GXSc12",
-            "euakungchannel"
+            "",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
