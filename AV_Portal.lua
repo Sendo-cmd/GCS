@@ -272,7 +272,7 @@ getgenv().Config = {
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
 				["Edge of Heaven"] = 1,
-				["Planet Namak"] = 3,
+				["Planet Namak"] = 20,
 				["Land of the Gods"] = 1
 			},
 			["Enable"] = true
