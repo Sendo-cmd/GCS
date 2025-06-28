@@ -1,47 +1,45 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
-	["Joiner Cooldown"] = 0,
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,
 		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true,
 		["Joiner Team Equipper"] = {
 			["Joiner Team"] = {
 				["Boss Event Joiner"] = 0,
 				["Raid Joiner"] = 0,
-				["Daily Challenge Joiner"] = 0,
-				["Legend Stage Joiner"] = 0,
+				["Spring Portal Joiner"] = 0,
+				["Dungeon Joiner"] = 0,
 				["Odyssey Joiner"] = 0,
 				["Weekly Challenge Joiner"] = 0,
-				["Boss Bounties Joiner"] = 0,
 				["Worldline Joiner"] = 0,
-				["Regular Challenge Joiner"] = 0,
 				["Stage Joiner"] = 0,
-				["Dungeon Joiner"] = 0,
-				["Spring Portal Joiner"] = 0,
+				["Regular Challenge Joiner"] = 0,
+				["Boss Bounties Joiner"] = 0,
+				["Legend Stage Joiner"] = 0,
+				["Daily Challenge Joiner"] = 0,
 				["Rift Joiner"] = 0
 			}
-		}
-	},
-	["Stat Reroller"] = {
-		["Stat Potential"] = 100
+		},
+		["No Ignore Sell Timing"] = true
 	},
 	["Odyssey Joiner"] = {
 		["Second Team"] = 2,
 		["Intensity"] = 200,
-		["First Team"] = 1,
-		["Cash Out Floor"] = 5
+		["Cash Out Floor"] = 5,
+		["First Team"] = 1
 	},
-	["AutoExecute"] = true,
+	["Claimer"] = {
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Quest"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
 	["Gameplay"] = {
-		["Auto Sell Farm"] = {
-			["Enable"] = true,
-			["Wave"] = 20
-		},
-		["Auto Restart"] = {
-			["Wave"] = 1
-		},
+		["Auto Use Ability"] = true,
 		["Double Dungeon"] = {
 			["Upgrade Amount"] = 0,
 			["Leave Extra Money"] = 5000
@@ -53,6 +51,10 @@ getgenv().Config = {
 			["Use All Talisman"] = {
 				["Wave"] = 1
 			}
+		},
+		["Shibuya Station"] = {
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 0
 		},
 		["Ruined City"] = {
 			["Use Mount to Travel"] = true
@@ -66,15 +68,83 @@ getgenv().Config = {
 			["Servant"] = "Berserker"
 		},
 		["Auto Skip Wave"] = true,
-		["Auto Use Ability"] = true,
-		["Shibuya Station"] = {
-			["Leave Extra Money"] = 5000,
-			["Upgrade Amount"] = 0
+		["Auto Restart"] = {
+			["Wave"] = 1
+		},
+		["Auto Sell Farm"] = {
+			["Enable"] = true,
+			["Wave"] = 20
 		}
 	},
 	["Misc"] = {
 		["Redeem Code"] = true,
 		["Max Camera Zoom"] = 40
+	},
+	["Modifier"] = {
+		["Auto Modifier"] = {
+			["Prioritize"] = {
+				["Strong"] = 3,
+				["Thrice"] = 4,
+				["Warding off Evil"] = 24,
+				["Champions"] = 12,
+				["Fast"] = 1,
+				["Revitalize"] = 6,
+				["Immunity"] = 11,
+				["Exploding"] = 2,
+				["Dodge"] = 10,
+				["Slayer"] = 16,
+				["Fisticuffs"] = 25,
+				["Planning Ahead"] = 15,
+				["Harvest"] = 17,
+				["Quake"] = 9,
+				["Range"] = 18,
+				["Lifeline"] = 29,
+				["No Trait No Problem"] = 23,
+				["Regen"] = 7,
+				["King's Burden"] = 27,
+				["Exterminator"] = 28,
+				["Damage"] = 20,
+				["Common Loot"] = 21,
+				["Cooldown"] = 19,
+				["Drowsy"] = 8,
+				["Press It"] = 14,
+				["Precise Attack"] = 13,
+				["Shielded"] = 5,
+				["Uncommon Loot"] = 22,
+				["Money Surge"] = 26
+			},
+			["Amount"] = {
+				["Strong"] = 0,
+				["Thrice"] = 0,
+				["Warding off Evil"] = 0,
+				["Champions"] = 0,
+				["Fast"] = 0,
+				["Revitalize"] = 0,
+				["Immunity"] = 0,
+				["Exploding"] = 0,
+				["Dodge"] = 0,
+				["Slayer"] = 0,
+				["Fisticuffs"] = 0,
+				["Planning Ahead"] = 0,
+				["Harvest"] = 0,
+				["Quake"] = 0,
+				["Range"] = 0,
+				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
+				["Regen"] = 0,
+				["King's Burden"] = 0,
+				["Exterminator"] = 0,
+				["Damage"] = 0,
+				["Common Loot"] = 0,
+				["Cooldown"] = 0,
+				["Drowsy"] = 0,
+				["Press It"] = 0,
+				["Precise Attack"] = 0,
+				["Shielded"] = 0,
+				["Uncommon Loot"] = 0,
+				["Money Surge"] = 0
+			}
+		}
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
@@ -101,19 +171,18 @@ getgenv().Config = {
 			["Purple Essence Stone"] = 50
 		}
 	},
+	["Stat Reroller"] = {
+		["Stat Potential"] = 100
+	},
 	["Performance Failsafe"] = {
 		["Teleport Lobby FPS below"] = {
 			["FPS"] = 5
 		}
 	},
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
+	["Joiner Cooldown"] = 0,
+	["Failsafe"] = {
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -134,21 +203,21 @@ getgenv().Config = {
 			["Sand Village"] = "Middle",
 			["Shining Castle"] = "Middle",
 			["Mountain Shrine (Natural)"] = "Middle",
-			["Edge of Heaven"] = "Middle",
+			["Kuinshi Palace"] = "Middle",
 			["Land of the Gods"] = "Middle",
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
 			["Ant Island"] = "Middle",
-			["Martial Island"] = "Middle",
-			["Ruined City"] = "Middle",
-			["Kuinshi Palace"] = "Middle",
 			["Shibuya Station"] = "Middle",
+			["Ruined City"] = "Middle",
+			["Shibuya Aftermath"] = "Middle",
+			["Martial Island"] = "Middle",
 			["Cavern"] = "Middle",
-			["Blood-Red Chamber"] = "Middle",
 			["Tracks at the Edge of the World"] = "Middle",
+			["Blood-Red Chamber"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Shibuya Aftermath"] = "Middle"
+			["Edge of Heaven"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -160,15 +229,15 @@ getgenv().Config = {
 		},
 		["Middle Position"] = {
 			["Shibuya Aftermath"] = "-94.77557373046875, 316.1539306640625, -34.29759216308594",
-			["Edge of Heaven"] = "-39.13007354736328, 147.29444885253906, -186.71127319335938",
+			["Land of the Gods"] = "-158.46160888671875, 1.2214683294296265, 119.30146026611328",
 			["Spider Forest"] = "-324.47222900390625, 1644.5369873046875, -319.5542297363281",
-			["Land of the Gods"] = "-158.46160888671875, 1.2214683294296265, 119.30146026611328"
+			["Edge of Heaven"] = "-39.13007354736328, 147.29444885253906, -186.71127319335938"
 		},
 		["Focus on Farm"] = true,
 		["Place Gap"] = {
 			["Planet Namak (Spring)"] = 2,
 			["Double Dungeon"] = 2,
-			["Cavern"] = 2,
+			["Blood-Red Chamber"] = 2,
 			["Sand Village"] = 2,
 			["Shining Castle"] = 2,
 			["Mountain Shrine (Natural)"] = 2,
@@ -176,117 +245,46 @@ getgenv().Config = {
 			["Land of the Gods"] = 2,
 			["Golden Castle"] = 2,
 			["Spirit Society"] = 2,
-			["Tracks at the Edge of the World"] = 2,
+			["Ant Island"] = 2,
 			["Shibuya Station"] = 2,
 			["Ruined City"] = 2,
-			["Blood-Red Chamber"] = 2,
-			["Ant Island"] = 2,
+			["Edge of Heaven"] = 2,
+			["Cavern"] = 2,
 			["Planet Namak"] = 2,
-			["Martial Island"] = 2,
 			["Shibuya Aftermath"] = 2,
+			["Martial Island"] = 2,
 			["Underground Church"] = 2,
 			["Spider Forest"] = 2,
-			["Edge of Heaven"] = 2
+			["Tracks at the Edge of the World"] = 2
 		}
-	},
-	["Failsafe"] = {
-		["Disable Auto Teleport AFK Chamber"] = true,
-		["Auto Rejoin"] = true
 	},
 	["Unit Feeder"] = {
 		["Feed Level"] = 60
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Random Offset"] = true,
+		["Walk Around"] = true
 	},
-	["Modifier"] = {
-		["Auto Modifier"] = {
-			["Prioritize"] = {
-				["Strong"] = 3,
-				["Thrice"] = 4,
-				["Warding off Evil"] = 24,
-				["Champions"] = 12,
-				["Fast"] = 1,
-				["Planning Ahead"] = 15,
-				["Fisticuffs"] = 25,
-				["Exploding"] = 2,
-				["Dodge"] = 10,
-				["Uncommon Loot"] = 22,
-				["Immunity"] = 11,
-				["Revitalize"] = 6,
-				["Harvest"] = 17,
-				["Precise Attack"] = 13,
-				["Range"] = 18,
-				["Drowsy"] = 8,
-				["Lifeline"] = 29,
-				["Cooldown"] = 19,
-				["Exterminator"] = 28,
-				["King's Burden"] = 27,
-				["Damage"] = 20,
-				["Common Loot"] = 21,
-				["Regen"] = 7,
-				["No Trait No Problem"] = 23,
-				["Press It"] = 14,
-				["Quake"] = 9,
-				["Shielded"] = 5,
-				["Slayer"] = 16,
-				["Money Surge"] = 26
-			},
-			["Amount"] = {
-				["Strong"] = 0,
-				["Thrice"] = 0,
-				["Warding off Evil"] = 0,
-				["Champions"] = 0,
-				["Fast"] = 0,
-				["Planning Ahead"] = 0,
-				["Fisticuffs"] = 0,
-				["Exploding"] = 0,
-				["Dodge"] = 0,
-				["Uncommon Loot"] = 0,
-				["Immunity"] = 0,
-				["Revitalize"] = 0,
-				["Harvest"] = 0,
-				["Precise Attack"] = 0,
-				["Range"] = 0,
-				["Drowsy"] = 0,
-				["Lifeline"] = 0,
-				["Cooldown"] = 0,
-				["Exterminator"] = 0,
-				["King's Burden"] = 0,
-				["Damage"] = 0,
-				["Common Loot"] = 0,
-				["Regen"] = 0,
-				["No Trait No Problem"] = 0,
-				["Press It"] = 0,
-				["Quake"] = 0,
-				["Shielded"] = 0,
-				["Slayer"] = 0,
-				["Money Surge"] = 0
-			}
-		}
-	},
+	["AutoExecute"] = true,
 	["Spring Portal Joiner"] = {
 		["Tier Cap"] = 10,
 		["Auto Next"] = true,
-		["Ignore Act"] = {
-			["[Land of the Gods] Act2"] = true,
-			["[Edge of Heaven] Act2"] = true,
-			["[Edge of Heaven] Act6"] = true,
-			["[Land of the Gods] Act3"] = true,
-			["[Edge of Heaven] Act3"] = true,
-			["[Edge of Heaven] Act1"] = true,
-			["[Edge of Heaven] Act4"] = true,
-			["[Land of the Gods] Act1"] = true,
-			["[Edge of Heaven] Act5"] = true
-		},
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
-				["Land of the Gods"] = 1,
+				["Edge of Heaven"] = 1,
 				["Planet Namak"] = 3,
-				["Edge of Heaven"] = 2
+				["Land of the Gods"] = 1
 			},
 			["Enable"] = true
+		},
+		["Ignore Act"] = {
+			["[Land of the Gods] Act2"] = true,
+			["[Land of the Gods] Act1"] = true,
+			["[Land of the Gods] Act3"] = true,
+			["[Edge of Heaven] Act3"] = true,
+			["[Edge of Heaven] Act4"] = true,
+			["[Edge of Heaven] Act6"] = true,
+			["[Edge of Heaven] Act5"] = true
 		}
 	}
 }
