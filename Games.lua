@@ -1070,8 +1070,6 @@ Accounts = {
     },
     ["Skyfe0397"] = {
         "Log",
-        "System",
-        "Portal",
     },
     ["Pokampud"] = {
         "Log",
