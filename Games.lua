@@ -1940,7 +1940,8 @@ Accounts = {
     },
     ["DB_KHOON"] = {
         "Log",
-        "RerollSuper",
+        "System",
+        "Portal",
     },
     ["bestbestneta9"] = {
         "System",

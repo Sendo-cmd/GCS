@@ -114,9 +114,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "hdkjsksp",
-            "uNkxJXRt2641",
-            "itzmemepoq",
+            "DB_KHOON",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
