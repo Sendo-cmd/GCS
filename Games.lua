@@ -828,7 +828,8 @@ Accounts = {
     },
     ["Irinor96511"] = {
         "Log",
-        "LovePortal",
+        "System",
+        "Portal",
     },
     ["PRY_NS"] = {
         "Log",
@@ -2330,6 +2331,11 @@ Accounts = {
         "Log",
         "System",
         "CidP",
+    },
+    ["zkiyt53dd"] = {
+        "Log",
+        "System",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
