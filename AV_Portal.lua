@@ -281,10 +281,7 @@ getgenv().Config = {
 			["[Land of the Gods] Act2"] = true,
 			["[Land of the Gods] Act1"] = true,
 			["[Land of the Gods] Act3"] = true,
-			["[Edge of Heaven] Act3"] = true,
-			["[Edge of Heaven] Act4"] = true,
 			["[Edge of Heaven] Act6"] = true,
-			["[Edge of Heaven] Act5"] = true
 		}
 	}
 }
