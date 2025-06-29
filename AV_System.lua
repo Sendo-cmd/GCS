@@ -61,9 +61,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "RedAshleyKung",
             "euakungchannel",
             "s0SoYQ84GXSc12",
+            "v0k9Seb9nB6q0P",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -169,7 +169,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "ninenew2015"
+            "ninenew2015",
+            "Irinor96511",
+            "zkiyt53dd"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
@@ -242,6 +244,12 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["uNkxJXRt2641"] = {
+        ["Party Mode"] = true,
+    },
+    ["Irinor96511"] = {
+        ["Party Mode"] = true,
+    },
+    ["zkiyt53dd"] = {
         ["Party Mode"] = true,
     },
     ["hdkjsksp"] = {
