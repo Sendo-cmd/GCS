@@ -2340,6 +2340,10 @@ Accounts = {
         "Log",
         "Worldline",
     },
+    ["Isudsmogj"] = { 
+        "Log",
+        "Reroll",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
