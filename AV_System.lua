@@ -645,6 +645,9 @@ _G.User = {
     ["Dukduies"] = {
         ["Party Mode"] = true,
     },
+    ["iamnewbie3p"] = {
+        ["Party Mode"] = true,
+    },
     ["rain4834"] = {
         ["Select Mode"] = "Story", -- Portal
         ["Auto Stun"] = false,
