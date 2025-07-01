@@ -1696,7 +1696,7 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Cid",
+        "Dungeon",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -2343,6 +2343,11 @@ Accounts = {
     ["Isudsmogj"] = { 
         "Log",
         "Reroll",
+    },
+    ["iamnewbie3p"] = { 
+        "Log",
+        "System",
+        "Dungeon",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
