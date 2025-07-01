@@ -54,7 +54,7 @@ Ruined City
 ]]
 
 _G.User = {
-    ["R6W2iU8NY0Yt0y"] = {
+    ["NoneFree"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
@@ -73,14 +73,14 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["None9999"] = {
+    ["R6W2iU8NY0Yt0y"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "",
+            "iamnewbie3p",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
