@@ -116,7 +116,6 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "hdkjsksp",
-            "EXSTREMz",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
