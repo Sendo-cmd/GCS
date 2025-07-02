@@ -2349,6 +2349,11 @@ Accounts = {
         "System",
         "Dungeon",
     },
+    ["MNTYJu"] = { 
+        "Log",
+        "System",
+        "Portal",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 

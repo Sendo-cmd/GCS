@@ -91,20 +91,21 @@ _G.User = {
         },
     },
     ["GVU257sFK8en2v"] = {
-        ["Select Mode"] = "Story", -- Portal
+        ["Select Mode"] = "Portal", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Ngerntongg",
+            "MNTYJu",
         },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Edge of Heaven",
-            ["FriendsOnly"] = false
+        ["Portal Settings"] = {
+            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            ["Tier Cap"] = 10,
+            ["Method"] = "Highest", -- Highest , Lowest
+            ["Ignore Stage"] = {},
+            ["Ignore Modify"] = {},
         },    
     },
     ["J9O0Eg0cQ03MCV"] = {
@@ -672,6 +673,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["XIIqPD"] = {
+        ["Party Mode"] = true,
+    },
+    ["MNTYJu"] = {
         ["Party Mode"] = true,
     },
     ["mamekokoe"] = {
