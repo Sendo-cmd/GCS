@@ -276,11 +276,6 @@ getgenv().Config = {
 				["Land of the Gods"] = 1
 			},
 			["Enable"] = true
-		},
-		["Ignore Act"] = {
-			["[Land of the Gods] Act2"] = true,
-			["[Land of the Gods] Act1"] = true,
-			["[Land of the Gods] Act3"] = true,
 		}
 	}
 }
