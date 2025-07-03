@@ -197,6 +197,15 @@ _G.User = {
     ["JapanMovieTH12"] = {
         ["Party Mode"] = true,
     },
+    ["GlennShelby238"] = {
+        ["Party Mode"] = true,
+    },
+    ["Love_Rog2"] = {
+        ["Party Mode"] = true,
+    },
+    ["Hunzeabut1296"] = {
+        ["Party Mode"] = true,
+    },
     ["canonA624"] = {
         ["Party Mode"] = true,
     },
