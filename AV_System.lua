@@ -80,7 +80,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "iamnewbie3p",
+            "Hunzeabut1296",
         },
         ["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
