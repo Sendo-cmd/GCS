@@ -2041,7 +2041,7 @@ Accounts = {
     ["2MILL_XXL"] = {
         "Log",
         "System",
-        "CidP",
+        "Portal",
     },
     ["Londaruh"] = {
         "Log",
@@ -2352,6 +2352,16 @@ Accounts = {
         "Dungeon",
     },
     ["MNTYJu"] = { 
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["GlennShelby238"] = { 
+        "Log",
+        "System",
+        "Portal",
+    },
+    ["Love_Rog2"] = { 
         "Log",
         "System",
         "Portal",

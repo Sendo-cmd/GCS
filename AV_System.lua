@@ -97,7 +97,9 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Ngerntongg"
+            "Love_Rog2",
+            "GlennShelby238",
+            "2MILL_XXL",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
