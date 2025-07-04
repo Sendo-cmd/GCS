@@ -116,7 +116,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "hdkjsksp",
+            "Gjipp49",
+            "Ngerntongg",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -204,6 +205,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["Hunzeabut1296"] = {
+        ["Party Mode"] = true,
+    },
+    ["Gjipp49"] = {
         ["Party Mode"] = true,
     },
     ["canonA624"] = {
