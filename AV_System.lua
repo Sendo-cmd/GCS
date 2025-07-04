@@ -118,6 +118,7 @@ _G.User = {
         ["Party Member"] = {
             "Gjipp49",
             "Ngerntongg",
+            "ninenew2015",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -170,7 +171,7 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Skyfe0397"
+            "RedAshleyKung"
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
