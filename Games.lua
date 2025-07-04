@@ -2376,6 +2376,9 @@ Accounts = {
         "System",
         "Portal",
     },
+    ["narutoez441"] = { 
+        "Log",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
