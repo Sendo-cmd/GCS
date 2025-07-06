@@ -54,7 +54,7 @@ Ruined City
 ]]
 
 _G.User = {
-    ["NoneFree"] = {
+    ["R6W2iU8NY0Yt0y"] = {
         ["Select Mode"] = "Raid", -- Portal
         ["Auto Stun"] = true,
         ["Auto Priority"] = true,
@@ -62,8 +62,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "euakungchannel",
+            "Tan444_Sd",
             "s0SoYQ84GXSc12",
-            "v0k9Seb9nB6q0P",
         },
         ["Raid Settings"] = {
             ["Difficulty"] = "Nightmare",
@@ -73,7 +73,7 @@ _G.User = {
             ["FriendsOnly"] = false
         },   
     },
-    ["R6W2iU8NY0Yt0y"] = {
+    ["NoneFree"] = {
         ["Select Mode"] = "Dungeon", -- Portal
         ["Auto Stun"] = false,
         ["Auto Priority"] = false,
@@ -97,8 +97,8 @@ _G.User = {
         ["Priority"] = "Bosses",
         ["Party Mode"] = true,
         ["Party Member"] = {
-            "Love_Rog2",
-            "GlennShelby238",
+            "YoScoreDummy",
+            "mewant2die_d",
             "2MILL_XXL",
         },
         ["Portal Settings"] = {
@@ -117,8 +117,8 @@ _G.User = {
         ["Party Mode"] = true,
         ["Party Member"] = {
             "Gjipp49",
-            "Ngerntongg",
-            "ninenew2015",
+            "xX_GoDO7Xx",
+            "Skyfe0397",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -502,6 +502,9 @@ _G.User = {
         ["Party Mode"] = true,
     },
     ["smyfon8"] = {
+        ["Party Mode"] = true,
+    },
+    ["Tan444_Sd"] = {
         ["Party Mode"] = true,
     },
     ["joy006zx"] = {

@@ -1210,7 +1210,7 @@ Accounts = {
     ["mewant2die_d"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Portal",
     },
     ["rip_guesst12"] = {
         "Log",
@@ -1469,7 +1469,7 @@ Accounts = {
     ["YoScoreDummy"] = {
         "Log",
         "System",
-        "PortalParty",
+        "Portal",
     },
     ["Rexbla9791"] = {
         "Log",
@@ -1693,12 +1693,12 @@ Accounts = {
     ["s0SoYQ84GXSc12"] = {
         "Log",
         "System",
-        "CdT1"
+        "CdT2"
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "System",
-        "Dungeon",
+        "Cid",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
@@ -2378,6 +2378,16 @@ Accounts = {
     },
     ["narutoez441"] = { 
         "Log",
+    },
+    ["Tan444_Sd"] = { 
+        "Log",
+        "System",
+        "CdT1",
+    },
+    ["xX_GoDO7Xx"] = { 
+        "Log",
+        "System",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
