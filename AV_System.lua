@@ -193,6 +193,9 @@ _G.User = {
     ["JOJJPON"] = {
         ["Party Mode"] = true,
     },
+    ["YoScoreDummy"] = {
+        ["Party Mode"] = true,
+    },
     ["beastnahee"] = {
         ["Party Mode"] = true,
     },
