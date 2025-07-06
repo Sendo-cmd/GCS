@@ -2077,10 +2077,6 @@ Accounts = {
         "Log",
         "RerollSuper",
     },
-    ["YoScoreDummy"] = {
-        "Log",
-        "RerollSuper",
-    },
     ["Tee_7765"] = {
         "Log",
         "BaseGemInf",
