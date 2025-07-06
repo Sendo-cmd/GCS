@@ -196,6 +196,9 @@ _G.User = {
     ["beastnahee"] = {
         ["Party Mode"] = true,
     },
+    ["xX_GoDO7Xx"] = {
+        ["Party Mode"] = true,
+    },
     ["JapanMovieTH12"] = {
         ["Party Mode"] = true,
     },
