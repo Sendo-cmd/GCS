@@ -99,7 +99,6 @@ _G.User = {
         ["Party Member"] = {
             "YoScoreDummy",
             "mewant2die_d",
-            "2MILL_XXL",
         },
         ["Portal Settings"] = {
             ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
