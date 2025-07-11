@@ -1,16 +1,17 @@
 local Endpoint = "https://raw.githubusercontent.com/test-macro/AA_Marco/main/"
 local Profiles = {
-    "hs.json",
-    "hs2.json",
-    "hs3.json",
-    "hs4.json",
-    "dbz.json",
-    "dbz2.json",
+    "SMInf.json",
+    "DWInf.json",
+    "GokuInf.json",
+    "GokuCh.json",
+    "GokuCh2.json",
+    "GokuCh3.json",
+    "StoryGV.json",
 }
 
 repeat task.wait(1) until game:IsLoaded()
 
-local PATH = "Nousigi Hub/Macro/AnimeAdventures"
+local PATH = "Nousigi Hub/Macro/AllStarTowerDefenseX"
 
 -- Process
 

@@ -58,6 +58,17 @@ Games = {
     [6884266247] = { --Anime Rangers X
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_System.lua",
+    },
+    [6057699512] = { --Anime Rangers X
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Log.lua",
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_System.lua",
+        ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Marco.lua",
+        ["DW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_DW.lua",
+        ["SM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_SM.lua",
+        ["GK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_GK.lua",
+        ["Challenge"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha.lua",
+        ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
+
     }
 }
 Accounts = {
@@ -80,8 +91,8 @@ Accounts = {
         "Portal",
     },
     ["maser080"] = {
-        "Log",
-        "BaseGemInf",
+        "Marco",
+        "Challenge",
     },
     ["Thai_WilYuLaw"] = {
         "Log",
@@ -2303,9 +2314,8 @@ Accounts = {
         "BaseGem",
     },
     ["ninenew2015"] = {
-        "Log",
-        "System",
-        "Portal",
+        "Marco",
+        "Story",
     },
     ["JINGJUNG59"] = {
         "Log",
@@ -2351,9 +2361,7 @@ Accounts = {
         "Dungeon",
     },
     ["MNTYJu"] = { 
-        "Log",
-        "System",
-        "Portal",
+        "Challenge",
     },
     ["GlennShelby238"] = { 
         "Log",
@@ -2382,6 +2390,10 @@ Accounts = {
         "Log",
         "System",
         "Portal",
+    },
+    ["lungs_tu"] = { 
+        "Marco",
+        "DW",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
