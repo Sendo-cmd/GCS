@@ -2,8 +2,8 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["Infinite Joiner"] = {
-		["Auto Join"] = true,
 		["Max Void Bag Action"] = "Loose game - Auto Open Void Bag can open while in game",
+		["Auto Join"] = true,
 		["Auto Open Void Bag"] = true
 	},
 	["Failsafe"] = {
@@ -18,8 +18,6 @@ getgenv().Config = {
 			["Flying Enemies"] = true,
 			["Juggernaut Enemies"] = true,
 			["Unsellable"] = true,
-			["High Cost"] = true,
-			["Random Units"] = true,
 			["Single Placement"] = true
 		},
 		["Teleport Lobby new Challenge"] = true,
@@ -36,24 +34,19 @@ getgenv().Config = {
 			["Ghost I (Rainbow)"] = true,
 			["Skill Orb I (Blue)"] = true,
 			["Skill Orb II (Green)"] = true,
-			["Skill Orb II (Pure)"] = true,
+			["Skill Orb II (Red)"] = true,
 			["Ghost III (Rainbow)"] = true,
 			["Skill Orb II (Blue)"] = true,
 			["Skill Orb I (Red)"] = true,
 			["Ghost II (Rainbow)"] = true,
 			["Stat Dice"] = true,
 			["Skill Orb I (Orange)"] = true,
-			["Skill Orb II (Red)"] = true,
-			["Skill Orb I (Pure)"] = true,
+			["Skill Orb II (Pure)"] = true,
 			["Trait Burner"] = true,
+			["Skill Orb I (Pure)"] = true,
 			["Skill Orb I (Green)"] = true,
 			["Skill Orb II (Purple)"] = true
 		}
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Delete Enemies"] = true,
-		["Boost FPS"] = true
 	},
 	["Macros"] = {
 		["Challenge Macro"] = {
@@ -61,33 +54,37 @@ getgenv().Config = {
 			["City of Voldstandig"] = "GokuCh2",
 			["Hidden Storm Village"] = "GokuCh3"
 		},
-		["No Ignore Sell Timing"] = true,
-		["Macro"] = "GokuInf",
 		["Ignore Macro Timing"] = true,
-		["Play"] = true,
-		["Macro Retry Limit"] = 0
+		["Macro Retry Limit"] = 0,
+		["No Ignore Sell Timing"] = true,
+		["Macro"] = "GokuCh2"
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Delete Enemies"] = true,
+		["Boost FPS"] = true
 	},
 	["Gameplay"] = {
 		["Auto Card"] = {
 			["Prioritize"] = {
-				["Thunder Step"] = 5,
+				["Binding Vow of Vitality"] = 1,
 				["Tsuku & Yomii"] = 2,
 				["Revert to Null"] = 4,
 				["Binding Vow of Aegis"] = 7,
 				["Arise"] = 3,
 				["Binding Vow of Haste"] = 6,
-				["Binding Vow of Vitality"] = 1,
+				["Thunder Step"] = 5,
 				["Red Spirit"] = 8,
 				["Sixth Sense"] = 9
 			},
 			["Amount"] = {
-				["Thunder Step"] = 0,
+				["Binding Vow of Vitality"] = 0,
 				["Tsuku & Yomii"] = 0,
 				["Revert to Null"] = 0,
 				["Binding Vow of Aegis"] = 0,
 				["Arise"] = 0,
 				["Binding Vow of Haste"] = 0,
-				["Binding Vow of Vitality"] = 0,
+				["Thunder Step"] = 0,
 				["Red Spirit"] = 0,
 				["Sixth Sense"] = 0
 			}
