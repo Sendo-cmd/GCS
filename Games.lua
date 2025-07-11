@@ -75,7 +75,8 @@ Games = {
 }
 Accounts = {
     ["FireBlackDevilZ"] = {
-        "System",
+        "Marco",
+        "Story",
      },
     ["SHIFUGOD"] = {
        "Log",
