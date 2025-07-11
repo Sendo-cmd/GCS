@@ -6,6 +6,10 @@ local Profiles = {
     "GokuCh.json",
     "GokuCh2.json",
     "GokuCh3.json",
+    "DWCh.json",
+    "DWCh2.json",
+    "DWCh3.json",
+    "DWCh4.json",
     "StoryGV.json",
     "Tdw.json",
 }
