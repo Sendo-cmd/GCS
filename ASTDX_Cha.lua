@@ -1,5 +1,4 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["Infinite Joiner"] = {
 		["Auto Join"] = true,
