@@ -24,7 +24,6 @@ getgenv().Config = {
 		["Stage"] = {
 			["Innovation Island"] = true,
 			["City of Voldstandig"] = true,
-			["Future City (Ruins)"] = true,
 			["Hidden Storm Village"] = true
 		},
 		["Reward"] = {
