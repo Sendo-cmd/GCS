@@ -18,7 +18,6 @@ getgenv().Config = {
 			["Flying Enemies"] = true,
 			["Juggernaut Enemies"] = true,
 			["Unsellable"] = true,
-			["Single Placement"] = true
 		},
 		["Teleport Lobby new Challenge"] = true,
 		["Stage"] = {
