@@ -1,4 +1,5 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
+getgenv().EquipMacroUnit = true
 getgenv().Config = {
 	["Infinite Joiner"] = {
 		["Auto Join"] = true,
