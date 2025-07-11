@@ -2396,6 +2396,10 @@ Accounts = {
         "Marco",
         "DW",
     },
+    ["Lowxllz"] = { 
+        "Marco",
+        "DW",
+    },
     ["IlIReyGale"] = { 
         "Marco",
         "Tdw",
