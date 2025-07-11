@@ -26,6 +26,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Ignore Macro Timing"] = true,
 		["Macro"] = "GokuInf",
+		["Play"] = true,
 		["No Ignore Sell Timing"] = true,
 		["Macro Retry Limit"] = 0
 	},

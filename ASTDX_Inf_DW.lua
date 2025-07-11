@@ -2,9 +2,12 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["Infinite Joiner"] = {
-		["Max Void Bag Action"] = "Loose game - Auto Open Void Bag can open while in game",
 		["Auto Join"] = true,
+		["Max Void Bag Action"] = "Loose game - Auto Open Void Bag can open while in game",
 		["Auto Open Void Bag"] = true
+	},
+	["Failsafe"] = {
+		["Teleport Lobby if Player"] = true
 	},
 	["Secure"] = {
 		["Random Offset"] = true
@@ -14,6 +17,8 @@ getgenv().Config = {
 			["Flying Enemies"] = true,
 			["Juggernaut Enemies"] = true,
 			["Unsellable"] = true,
+			["High Cost"] = true,
+			["Random Units"] = true,
 			["Single Placement"] = true
 		},
 		["Stage"] = {
@@ -23,38 +28,39 @@ getgenv().Config = {
 			["Hidden Storm Village"] = true
 		}
 	},
-	["Macros"] = {
-		["Ignore Macro Timing"] = true,
-		["Macro"] = "DWInf",
-		["No Ignore Sell Timing"] = true,
-		["Macro Retry Limit"] = 0
-	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Delete Enemies"] = true,
 		["Boost FPS"] = true
 	},
+	["Macros"] = {
+		["Ignore Macro Timing"] = true,
+		["Macro Retry Limit"] = 0,
+		["No Ignore Sell Timing"] = true,
+		["Play"] = true,
+		["Macro"] = "DWInf"
+	},
 	["Gameplay"] = {
 		["Auto Card"] = {
 			["Prioritize"] = {
-				["Binding Vow of Vitality"] = 1,
+				["Thunder Step"] = 5,
 				["Tsuku & Yomii"] = 2,
 				["Revert to Null"] = 4,
 				["Binding Vow of Aegis"] = 7,
 				["Arise"] = 3,
 				["Binding Vow of Haste"] = 6,
-				["Thunder Step"] = 5,
+				["Binding Vow of Vitality"] = 1,
 				["Red Spirit"] = 8,
 				["Sixth Sense"] = 9
 			},
 			["Amount"] = {
-				["Binding Vow of Vitality"] = 0,
+				["Thunder Step"] = 0,
 				["Tsuku & Yomii"] = 0,
 				["Revert to Null"] = 0,
 				["Binding Vow of Aegis"] = 0,
 				["Arise"] = 0,
 				["Binding Vow of Haste"] = 0,
-				["Thunder Step"] = 0,
+				["Binding Vow of Vitality"] = 0,
 				["Red Spirit"] = 0,
 				["Sixth Sense"] = 0
 			}
@@ -71,9 +77,6 @@ getgenv().Config = {
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true
-	},
-	["Failsafe"] = {
-		["Teleport Lobby if Player"] = true
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , k7d27caec454d21cbd95104d]
