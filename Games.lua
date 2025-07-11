@@ -2211,6 +2211,8 @@ Accounts = {
     },
     ["Wawawa_761"] = {
         "Log",
+        "System",
+        "Portal",
     },
     ["Nainklk"] = {
         "Log",
