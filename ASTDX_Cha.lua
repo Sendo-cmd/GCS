@@ -16,13 +16,10 @@ getgenv().Config = {
 		["Modifier"] = {
 			["Flying Enemies"] = true,
 			["Juggernaut Enemies"] = true,
-			["Unsellable"] = true
-		},
-		["Teleport Lobby new Challenge"] = true,
-		["Stage"] = {
-			["Innovation Island"] = true,
-			["City of Voldstandig"] = true,
-			["Hidden Storm Village"] = true
+			["Unsellable"] = true,
+			["High Cost"] = false,
+			["Random Units"] = false,
+			["Single Placement"] = false
 		},
 		["Reward"] = {
 			["Bounded Cube"] = true,
@@ -31,58 +28,54 @@ getgenv().Config = {
 			["Ghost I (Rainbow)"] = true,
 			["Skill Orb I (Blue)"] = true,
 			["Skill Orb II (Green)"] = true,
-			["Skill Orb II (Pure)"] = true,
+			["Skill Orb II (Red)"] = true,
 			["Ghost III (Rainbow)"] = true,
 			["Skill Orb II (Blue)"] = true,
 			["Skill Orb I (Red)"] = true,
-			["Ghost II (Rainbow)"] = true,
+			["Skill Orb I (Green)"] = true,
 			["Stat Dice"] = true,
 			["Skill Orb I (Orange)"] = true,
-			["Skill Orb II (Red)"] = true,
+			["Skill Orb II (Pure)"] = true,
 			["Skill Orb I (Pure)"] = true,
 			["Trait Burner"] = true,
-			["Skill Orb I (Green)"] = true,
+			["Ghost II (Rainbow)"] = true,
 			["Skill Orb II (Purple)"] = true
-		}
+		},
+		["Stage"] = {
+			["Innovation Island"] = true,
+			["Future City (Ruins)"] = false,
+			["City of Voldstandig"] = true,
+			["Hidden Storm Village"] = true
+		},
+		["Teleport Lobby new Challenge"] = true
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Delete Enemies"] = true,
 		["Boost FPS"] = true
 	},
-	["Macros"] = {
-		["Challenge Macro"] = {
-			["Innovation Island"] = "GokuCh",
-			["City of Voldstandig"] = "GokuCh2",
-			["Hidden Storm Village"] = "GokuCh3"
-		},
-		["No Ignore Sell Timing"] = true,
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["Macro"] = "GokuCh2"
-	},
 	["Gameplay"] = {
 		["Auto Card"] = {
 			["Prioritize"] = {
-				["Thunder Step"] = 5,
-				["Tsuku & Yomii"] = 2,
-				["Revert to Null"] = 4,
-				["Binding Vow of Aegis"] = 7,
-				["Arise"] = 3,
-				["Binding Vow of Haste"] = 6,
 				["Binding Vow of Vitality"] = 1,
+				["Tsuku & Yomii"] = 2,
+				["Arise"] = 3,
 				["Red Spirit"] = 8,
+				["Revert to Null"] = 4,
+				["Binding Vow of Haste"] = 6,
+				["Thunder Step"] = 5,
+				["Binding Vow of Aegis"] = 7,
 				["Sixth Sense"] = 9
 			},
 			["Amount"] = {
-				["Thunder Step"] = 0,
-				["Tsuku & Yomii"] = 0,
-				["Revert to Null"] = 0,
-				["Binding Vow of Aegis"] = 0,
-				["Arise"] = 0,
-				["Binding Vow of Haste"] = 0,
 				["Binding Vow of Vitality"] = 0,
+				["Tsuku & Yomii"] = 0,
+				["Arise"] = 0,
 				["Red Spirit"] = 0,
+				["Revert to Null"] = 0,
+				["Binding Vow of Haste"] = 0,
+				["Thunder Step"] = 0,
+				["Binding Vow of Aegis"] = 0,
 				["Sixth Sense"] = 0
 			}
 		},
@@ -98,6 +91,17 @@ getgenv().Config = {
 	},
 	["Match Finished"] = {
 		["Auto Replay"] = true
+	},
+	["Macros"] = {
+		["Challenge Macro"] = {
+			["Innovation Island"] = "GokuCh",
+			["City of Voldstandig"] = "GokuCh2",
+			["Hidden Storm Village"] = "GokuCh3"
+		},
+		["Macro Retry Limit"] = 0,
+		["Macro"] = "GokuCh2",
+		["No Ignore Sell Timing"] = true,
+		["Ignore Macro Timing"] = true
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , k7d27caec454d21cbd95104d]
