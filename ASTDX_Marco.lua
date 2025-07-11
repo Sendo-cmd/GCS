@@ -7,6 +7,7 @@ local Profiles = {
     "GokuCh2.json",
     "GokuCh3.json",
     "StoryGV.json",
+    "Tdw.json",
 }
 
 repeat task.wait(1) until game:IsLoaded()
