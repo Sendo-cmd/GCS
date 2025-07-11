@@ -67,6 +67,7 @@ Games = {
         ["SM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_SM.lua",
         ["GK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_GK.lua",
         ["Challenge"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha.lua",
+        ["ChallengeDW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_DW.lua",
         ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
         ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
 
@@ -2417,6 +2418,10 @@ Accounts = {
     ["rodioxsouk"] = { 
         "Marco",
         "Challenge",
+    },
+    ["Angelzioc"] = { 
+        "Marco",
+        "ChallengeDW",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
