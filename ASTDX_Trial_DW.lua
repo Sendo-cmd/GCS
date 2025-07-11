@@ -26,8 +26,12 @@ getgenv().Config = {
 			["Hidden Storm Village"] = true
 		}
 	},
-	["Failsafe"] = {
-		["Teleport Lobby if Player"] = true
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Macro"] = "Tdw",
+		["No Ignore Sell Timing"] = true,
+		["Ignore Macro Timing"] = true,
+		["Play"] = true
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
@@ -36,26 +40,26 @@ getgenv().Config = {
 	},
 	["Gameplay"] = {
 		["Auto Card"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
-				["Binding Vow of Vitality"] = 1,
+				["Thunder Step"] = 10,
 				["Tsuku & Yomii"] = 2,
 				["Arise"] = 3,
 				["Red Spirit"] = 9,
 				["Revert to Null"] = 4,
 				["Binding Vow of Haste"] = 6,
-				["Thunder Step"] = 10,
+				["Binding Vow of Vitality"] = 1,
 				["Binding Vow of Aegis"] = 7,
 				["Sixth Sense"] = 8
 			},
+			["Enable"] = true,
 			["Amount"] = {
-				["Binding Vow of Vitality"] = 0,
+				["Thunder Step"] = 0,
 				["Tsuku & Yomii"] = 0,
 				["Arise"] = 0,
 				["Red Spirit"] = 0,
 				["Revert to Null"] = 0,
 				["Binding Vow of Haste"] = 0,
-				["Thunder Step"] = 0,
+				["Binding Vow of Vitality"] = 0,
 				["Binding Vow of Aegis"] = 0,
 				["Sixth Sense"] = 0
 			}
@@ -70,12 +74,11 @@ getgenv().Config = {
 			["Speed"] = 2
 		}
 	},
-	["Macros"] = {
-		["Macro"] = "Tdw",
-		["Macro Retry Limit"] = 0,
-		["No Ignore Sell Timing"] = true,
-		["Play"] = true,
-		["Ignore Macro Timing"] = true
+	["Match Finished"] = {
+		["Auto Replay"] = true
+	},
+	["Failsafe"] = {
+		["Teleport Lobby if Player"] = true
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , k7d27caec454d21cbd95104d]
