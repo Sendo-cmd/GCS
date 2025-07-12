@@ -1,21 +1,7 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
+getgenv().EquipMacroUnit = true
 getgenv().Config = {
-	["Auto Join Equipper"] = {
-		["Macro Equipper"] = {
-			["Enable"] = true
-		},
-		["Team Equipper"] = {
-			["Enable"] = true,
-			["Auto Join Team"] = {
-				["Challenge Joiner"] = 0,
-				["Infinite Joiner"] = 0,
-				["Story Joiner"] = 0,
-				["Trial Joiner"] = 0,
-				["Dungeon Joiner"] = 0
-			}
-		}
-	},
 	["Infinite Joiner"] = {
 		["Auto Join"] = true,
 		["Max Void Bag Action"] = "Loose game - Auto Open Void Bag can open while in game",
