@@ -2424,6 +2424,17 @@ Accounts = {
         "Marco",
         "ChallengeDW",
     },
+    ["taechawit_god"] = { 
+        "Marco",
+        "Story",
+    },
+    ["AI2TTMS37"] = { 
+        "Marco",
+        "ChallengeDW",
+    },
+    ["fogouswer111"] = { 
+        "Marco",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
