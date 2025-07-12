@@ -5,7 +5,8 @@ getgenv().Config = {
 		["Max Void Bag Action"] = "Do nothing"
 	},
 	["Trial Joiner"] = {
-		["Auto Join"] = true
+		["Auto Join"] = true,
+		["Stage"] = "Trial 1"
 	},
 	["Secure"] = {
 		["Random Offset"] = true
