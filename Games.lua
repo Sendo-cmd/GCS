@@ -126,11 +126,6 @@ Accounts = {
         "System",
         "FarmGem",
     },
-    ["LDtwo_03"] = {
-        "Log",
-        "System",
-        "FarmGem",
-    },
     ["Embeberr1043"] = {
        "Log",
        "System",
@@ -2407,13 +2402,17 @@ Accounts = {
     },
     ["may2334v15"] = { 
         "Marco",
-        "SM",
+        "Challenge",
     },
     ["IlIReyGale"] = { 
         "Marco",
         "Tdw",
     },
     ["OP01LO14"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["fgjopj355"] = { 
         "Marco",
         "Tdw",
     },
@@ -2448,6 +2447,22 @@ Accounts = {
     ["notyuio111"] = { 
         "Marco",
         "DW",
+    },
+    ["Ghdver"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["1X3h2h"] = { 
+        "Marco",
+        "ChallengeDW",
+    },
+    ["Ldtwo_03"] = { 
+        "Marco",
+        "DW",
+    },
+    ["Oakham801"] = { 
+        "Marco",
+        "Story",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
