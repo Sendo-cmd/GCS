@@ -45,7 +45,7 @@ getgenv().Config = {
 		},
 		["Stage"] = {
 			["Innovation Island"] = true,
-			["Future City (Ruins)"] = false,
+			["Future City (Ruins)"] = true,
 			["City of Voldstandig"] = true,
 			["Hidden Storm Village"] = true
 		},
@@ -98,7 +98,8 @@ getgenv().Config = {
 		["Challenge Macro"] = {
 			["Innovation Island"] = "GokuCh",
 			["City of Voldstandig"] = "GokuCh2",
-			["Hidden Storm Village"] = "GokuCh3"
+			["Hidden Storm Village"] = "GokuCh3",
+			["Future City (Ruins)"] = "GokuCh4"
 		},
 		["Macro Retry Limit"] = 0,
 		["Macro"] = "GokuInf",
