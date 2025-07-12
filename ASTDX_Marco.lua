@@ -13,6 +13,7 @@ local Profiles = {
     "DWCh4.json",
     "StoryGV.json",
     "Tdw.json",
+    "DgDw.json",
 }
 
 repeat task.wait(1) until game:IsLoaded()

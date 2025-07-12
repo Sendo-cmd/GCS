@@ -70,6 +70,7 @@ Games = {
         ["ChallengeDW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_DW.lua",
         ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
         ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
+        ["DgDW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
 
     }
 }
@@ -2434,6 +2435,7 @@ Accounts = {
     },
     ["fogouswer111"] = { 
         "Marco",
+        "DgDW",
     },
     ["500IQBAS"] = { 
         "Marco",
@@ -2443,7 +2445,6 @@ Accounts = {
         "Marco",
         "Story",
     },
-}
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
