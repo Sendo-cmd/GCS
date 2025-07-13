@@ -71,7 +71,7 @@ Games = {
         ["ChallengeSM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_DW.lua",
         ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
         ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
-        ["DgDW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
+        ["dgdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
 
     }
 }
@@ -101,7 +101,7 @@ Accounts = {
     },
     ["Thai_WilYuLaw"] = {
         "Marco",
-        "DgDW",
+        "dgdw",
     },
     ["faeikgame"] = {
        "Log",
@@ -2431,7 +2431,7 @@ Accounts = {
     },
     ["fogouswer111"] = { 
         "Marco",
-        "DgDW",
+        "dgdw",
     },
     ["500IQBAS"] = { 
         "Marco",
