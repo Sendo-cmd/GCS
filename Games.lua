@@ -100,9 +100,8 @@ Accounts = {
         "Challenge",
     },
     ["Thai_WilYuLaw"] = {
-        "Log",
         "Marco",
-        "DungeonBoost3",
+        "DgDw",
     },
     ["faeikgame"] = {
        "Log",
@@ -2410,7 +2409,7 @@ Accounts = {
     },
     ["OP01LO14"] = { 
         "Marco",
-        "Tdw",
+        "ChallengeDW",
     },
     ["fgjopj355"] = { 
         "Marco",
@@ -2473,6 +2472,34 @@ Accounts = {
         "Tdw",
     },
     ["XD_ORGA530"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["LynixGennXpVfhSj"] = { 
+        "Marco",
+        "Story",
+    },
+    ["farkung1135"] = { 
+        "Marco",
+        "GK",
+    },
+    ["x4X1i"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["UchikiKono"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["D3n_AstdX"] = { 
+        "Marco",
+        "DgDW",
+    },
+    ["werstadfs"] = { 
+        "Marco",
+        "Story",
+    },
+    ["Earth_Shop563"] = { 
         "Marco",
         "Tdw",
     },
