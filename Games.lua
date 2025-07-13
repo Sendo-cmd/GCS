@@ -101,7 +101,7 @@ Accounts = {
     },
     ["Thai_WilYuLaw"] = {
         "Marco",
-        "DgDw",
+        "DgDW",
     },
     ["faeikgame"] = {
        "Log",
@@ -2431,7 +2431,7 @@ Accounts = {
     },
     ["fogouswer111"] = { 
         "Marco",
-        "DgDw",
+        "DgDW",
     },
     ["500IQBAS"] = { 
         "Marco",
