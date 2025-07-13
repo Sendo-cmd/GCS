@@ -68,6 +68,7 @@ Games = {
         ["GK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_GK.lua",
         ["Challenge"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha.lua",
         ["ChallengeDW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_DW.lua",
+        ["ChallengeSM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_DW.lua",
         ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
         ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
         ["DgDW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
@@ -820,8 +821,8 @@ Accounts = {
         "PortalParty",
     },
     ["samueltitiala"] = {
-        "Log",
-        "LovePortal",
+        "Marco",
+        "ChallengeSM",
     },
     ["0HappyBoy4ever0"] = {
         "Log",
@@ -1265,9 +1266,8 @@ Accounts = {
         "PortalParty",
     },
     ["NonameT_T1"] = {
-        "Log",
         "Marco",
-        "Sokora4",
+        "DW",
     },
     ["Shadof3702"] = {
         "Log",
@@ -2394,7 +2394,7 @@ Accounts = {
     },
     ["lungs_tu"] = { 
         "Marco",
-        "DW",
+        "Tdw",
     },
     ["Lowxllz"] = { 
         "Marco",
@@ -2406,7 +2406,7 @@ Accounts = {
     },
     ["IlIReyGale"] = { 
         "Marco",
-        "Tdw",
+        "ChallengeSM",
     },
     ["OP01LO14"] = { 
         "Marco",
@@ -2442,7 +2442,7 @@ Accounts = {
     },
     ["HJRETAP"] = { 
         "Marco",
-        "Story",
+        "DW",
     },
     ["notyuio111"] = { 
         "Marco",
@@ -2463,6 +2463,14 @@ Accounts = {
     ["Oakham801"] = { 
         "Marco",
         "Story",
+    },
+    ["FormatDataNumber"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["XD_ORGA530"] = { 
+        "Marco",
+        "Tdw",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
