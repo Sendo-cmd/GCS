@@ -46,7 +46,7 @@ getgenv().Config = {
 			["Innovation Island"] = true,
 			["Future City (Ruins)"] = true,
 			["City of Voldstandig"] = true,
-			["Hidden Storm Village"] = true
+			["Hidden Storm Village"] = true,
 			["Giant Island"] = false,
 		},
 		["Teleport Lobby new Challenge"] = true
