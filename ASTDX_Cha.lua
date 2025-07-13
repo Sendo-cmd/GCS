@@ -47,7 +47,8 @@ getgenv().Config = {
 			["Innovation Island"] = true,
 			["Future City (Ruins)"] = true,
 			["City of Voldstandig"] = true,
-			["Hidden Storm Village"] = true
+			["Hidden Storm Village"] = true,
+			["Giant Island"] = false,
 		},
 		["Teleport Lobby new Challenge"] = true
 	},
@@ -99,7 +100,8 @@ getgenv().Config = {
 			["Innovation Island"] = "GokuCh",
 			["City of Voldstandig"] = "GokuCh2",
 			["Hidden Storm Village"] = "GokuCh3",
-			["Future City (Ruins)"] = "GokuCh4"
+			["Future City (Ruins)"] = "GokuCh4",
+			["Giant Island"] = "GokuCh5",
 		},
 		["Macro Retry Limit"] = 0,
 		["Macro"] = "GokuInf",
