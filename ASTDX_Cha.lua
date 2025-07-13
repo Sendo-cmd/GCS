@@ -24,7 +24,7 @@ getgenv().Config = {
 			["Single Placement"] = false
 		},
 		["Reward"] = {
-			["Bounded Cube"] = true,
+			["Bounded Cube"] = false,
 			["Skill Orb I (Purple)"] = true,
 			["Skill Orb II (Orange)"] = true,
 			["Ghost I (Rainbow)"] = true,
@@ -35,7 +35,7 @@ getgenv().Config = {
 			["Skill Orb II (Blue)"] = true,
 			["Skill Orb I (Red)"] = true,
 			["Skill Orb I (Green)"] = true,
-			["Stat Dice"] = true,
+			["Stat Dice"] = false,
 			["Skill Orb I (Orange)"] = true,
 			["Skill Orb II (Pure)"] = true,
 			["Skill Orb I (Pure)"] = true,
