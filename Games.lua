@@ -673,9 +673,8 @@ Accounts = {
         "Dragon",
     },
     ["scp1774"] = {
-        "Log",
-        "System",
-        "Portal",
+        "Marco",
+        "Tdw",
     },
     ["kong2562"] = {
         "Log",
@@ -2500,6 +2499,14 @@ Accounts = {
     ["Earth_Shop563"] = { 
         "Marco",
         "Tdw",
+    },
+    ["Ayama1204"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["phxkhin7"] = { 
+        "Marco",
+        "ChallengeSM",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
