@@ -66,7 +66,7 @@ getgenv().Config = {
 				["Sixth Sense"] = 0
 			}
 		},
-		["Auto Vote Start"] = true,
+		["Auto Vote Start"] = false,
 		["Auto Skip Wave"] = {
 			["Enable"] = true,
 			["Stop at Wave"] = 0
