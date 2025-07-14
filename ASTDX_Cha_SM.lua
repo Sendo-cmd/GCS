@@ -19,6 +19,7 @@ getgenv().Config = {
 		["Random Offset"] = true
 	},
 	["Challenge Joiner"] = {
+		["Auto Join"] = true,
 		["Modifier"] = {
 			["Flying Enemies"] = true,
 			["Juggernaut Enemies"] = true,
