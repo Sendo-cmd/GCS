@@ -2347,9 +2347,8 @@ Accounts = {
         "Reroll",
     },
     ["iamnewbie3p"] = { 
-        "Log",
-        "System",
-        "Dungeon",
+        "Marco",
+        "Tdw",
     },
     ["Hunzeabut1296"] = { 
         "Log",
@@ -2498,7 +2497,7 @@ Accounts = {
     },
     ["Earth_Shop563"] = { 
         "Marco",
-        "Tdw",
+        "DW",
     },
     ["Ayama1204"] = { 
         "Marco",
