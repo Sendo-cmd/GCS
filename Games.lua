@@ -2528,6 +2528,14 @@ Accounts = {
         "Marco",
         "Tdw",
     },
+    ["Pikachu_011105"] = { 
+        "Marco",
+        "DW",
+    },
+    ["NemoKung001"] = { 
+        "Marco",
+        "ChallengeSM",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
