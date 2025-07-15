@@ -95,6 +95,29 @@ getgenv().Config = {
 	["Match Finished"] = {
 		["Auto Replay"] = true
 	},
+	["Auto Play"] = {
+		["Enable"] = true,
+		["Place Limit"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = 0
+		},
+		["Auto Upgrade"] = {
+			["Enable"] = true,
+			["Upgrade Limit"] = {
+				["1"] = 0,
+				["3"] = 0,
+				["2"] = 0,
+				["5"] = 0,
+				["4"] = 0,
+				["6"] = 0
+			},
+			["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
+		}
+	},
 	["Macros"] = {
 		["Challenge Macro"] = {
 			["Innovation Island"] = "GokuCh",
@@ -105,10 +128,11 @@ getgenv().Config = {
 		},
 		["Macro Retry Limit"] = 0,
 		["Macro"] = "GokuInf",
-		["Play"] = true,
+		["Play"] = false,
 		["No Ignore Sell Timing"] = true,
 		["Ignore Macro Timing"] = true
 	}
 }
+
 getgenv().Key = "k7d27caec454d21cbd95104d" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , k7d27caec454d21cbd95104d]
 repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(2)until Joebiden

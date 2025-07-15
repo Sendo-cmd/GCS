@@ -63,6 +63,7 @@ Games = {
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_System.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Marco.lua",
+        ["Inf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_DW.lua",
         ["DW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_DW.lua",
         ["SM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_SM.lua",
         ["GK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_GK.lua",
@@ -1265,7 +1266,7 @@ Accounts = {
     },
     ["NonameT_T1"] = {
         "Marco",
-        "DW",
+        "Inf",
     },
     ["Shadof3702"] = {
         "Log",
@@ -2405,7 +2406,7 @@ Accounts = {
     },
     ["OP01LO14"] = { 
         "Marco",
-        "ChallengeDW",
+        "Challenge",
     },
     ["fgjopj355"] = { 
         "Marco",
@@ -2417,7 +2418,7 @@ Accounts = {
     },
     ["Angelzioc"] = { 
         "Marco",
-        "ChallengeDW",
+        "Challenge",
     },
     ["taechawit_god"] = { 
         "Marco",
@@ -2425,7 +2426,7 @@ Accounts = {
     },
     ["AI2TTMS37"] = { 
         "Marco",
-        "ChallengeDW",
+        "Challenge",
     },
     ["fogouswer111"] = { 
         "Marco",
@@ -2433,15 +2434,15 @@ Accounts = {
     },
     ["500IQBAS"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
     ["HJRETAP"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
     ["notyuio111"] = { 
         "Marco",
-        "ChallengeDW",
+        "Challenge",
     },
     ["Ghdver"] = { 
         "Marco",
@@ -2449,15 +2450,15 @@ Accounts = {
     },
     ["1X3h2h"] = { 
         "Marco",
-        "ChallengeDW",
+        "Challenge",
     },
     ["Ldtwo_03"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
     ["Jensidn0"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
     ["Oakham801"] = { 
         "Marco",
@@ -2489,7 +2490,7 @@ Accounts = {
     },
     ["D3n_AstdX"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
     ["werstadfs"] = { 
         "Marco",
@@ -2497,7 +2498,7 @@ Accounts = {
     },
     ["Earth_Shop563"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
     ["Ayama1204"] = { 
         "Marco",
@@ -2529,7 +2530,7 @@ Accounts = {
     },
     ["Pikachu_011105"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
     ["NemoKung001"] = { 
         "Marco",
@@ -2541,7 +2542,7 @@ Accounts = {
     },
     ["RoyaIDoggy"] = { 
         "Marco",
-        "DW",
+        "Inf",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
