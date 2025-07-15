@@ -82,29 +82,43 @@ getgenv().Config = {
 		["Play"] = false,
 		["Macro Retry Limit"] = 0
 	},
-	 ["Auto Play"] = {
-        ["Enable"] = true,
-        ["Place Limit"] = {
-            ["1"] = 0,
-            ["3"] = 0,
-            ["2"] = 0,
-            ["5"] = 0,
-            ["4"] = 0,
-            ["6"] = 0
-        },
-        ["Auto Upgrade"] = {
-            ["Enable"] = true,
-            ["Focus on Farm"] = true,
-            ["Upgrade Limit"] = {
-                ["1"] = 0,
-                ["3"] = 0,
-                ["2"] = 0,
-                ["5"] = 0,
-                ["4"] = 0,
-                ["6"] = 0
-            },
-            ["Upgrade Method"] = "Lowest Level (Spread Upgrade)"
-        }
+	["Auto Play"] = {
+		["Enable"] = true,
+		["Auto Upgrade"] = {
+			["Upgrade Limit"] = {
+				["1"] = 0,
+				["3"] = 0,
+				["2"] = 0,
+				["5"] = 0,
+				["4"] = 0,
+				["6"] = 0
+			},
+			["Enable"] = true,
+			["Upgrade Method"] = "Lowest Level (Spread Upgrade)"
+		},
+		["Place Wave"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = 0,
+			["4"] = 0,
+			["6"] = 0
+		},
+		["Slot Position"] = {
+			["Innovation Island"] = {
+				["1"] = "-113.25743103027344, 2.9135429859161377, -51.63191604614258",
+				["3"] = "-109.16082763671875, 2.9135429859161377, -95.34555053710938",
+				["2"] = "-74.1626968383789, 2.9135429859161377, -33.46575164794922"
+			}
+		},
+		["Place Limit"] = {
+			["1"] = 0,
+			["3"] = 0,
+			["2"] = 0,
+			["5"] = -1,
+			["4"] = -1,
+			["6"] = -1
+		}
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , k7d27caec454d21cbd95104d]
