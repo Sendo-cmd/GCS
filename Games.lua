@@ -2401,7 +2401,7 @@ Accounts = {
     },
     ["IlIReyGale"] = { 
         "Marco",
-        "ChallengeSM",
+        "Challenge",
     },
     ["OP01LO14"] = { 
         "Marco",
@@ -2505,7 +2505,7 @@ Accounts = {
     },
     ["phxkhin7"] = { 
         "Marco",
-        "ChallengeSM",
+        "Challenge",
     },
     ["playbacffshsj"] = { 
         "Marco",
@@ -2533,7 +2533,7 @@ Accounts = {
     },
     ["NemoKung001"] = { 
         "Marco",
-        "ChallengeSM",
+        "Challenge",
     },
     ["D_Dk05"] = { 
         "Marco",
