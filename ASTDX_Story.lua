@@ -79,8 +79,32 @@ getgenv().Config = {
 		["No Ignore Sell Timing"] = true,
 		["Macro"] = "StoryGV",
 		["Ignore Macro Timing"] = true,
-		["Play"] = true,
+		["Play"] = false,
 		["Macro Retry Limit"] = 0
+	},
+	 ["Auto Play"] = {
+        ["Enable"] = true,
+        ["Place Limit"] = {
+            ["1"] = 0,
+            ["3"] = 0,
+            ["2"] = 0,
+            ["5"] = 0,
+            ["4"] = 0,
+            ["6"] = 0
+        },
+        ["Auto Upgrade"] = {
+            ["Enable"] = true,
+            ["Focus on Farm"] = true,
+            ["Upgrade Limit"] = {
+                ["1"] = 0,
+                ["3"] = 0,
+                ["2"] = 0,
+                ["5"] = 0,
+                ["4"] = 0,
+                ["6"] = 0
+            },
+            ["Upgrade Method"] = "Lowest Level (Spread Upgrade)"
+        }
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , k7d27caec454d21cbd95104d]
