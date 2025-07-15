@@ -429,7 +429,7 @@ Accounts = {
     },
     ["NonBemmy"] = {
         "Marco",
-        "Tdw",
+        "Inf",
     },
     ["anakin_av240"] = {
         "Log",
@@ -595,9 +595,8 @@ Accounts = {
         "Dungeon",
     },
     ["joy006zx"] = {
-        "Log",
-        "System",
-        "Byeken",
+        "Marco",
+        "Tdw",
     },
     ["Rustwhir2660"] = {
         "Log",
@@ -2543,6 +2542,26 @@ Accounts = {
     ["RoyaIDoggy"] = { 
         "Marco",
         "Inf",
+    },
+    ["DekchiKAK"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["adesu003"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["dsadiajd"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["MatelGearTT"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["OneDMX"] = { 
+        "Marco",
+        "Challenge",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
