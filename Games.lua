@@ -2478,7 +2478,7 @@ Accounts = {
     },
     ["farkung1135"] = { 
         "Marco",
-        "GK",
+        "Inf",
     },
     ["x4X1i"] = { 
         "Marco",
