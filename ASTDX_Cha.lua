@@ -14,6 +14,7 @@ getgenv().Config = {
 	},
 	["Challenge Joiner"] = {
 		["Auto Join"] = true,
+		["Expert Mode"] = true,
 		["Modifier"] = {
 			["Flying Enemies"] = true,
 			["Juggernaut Enemies"] = true,
