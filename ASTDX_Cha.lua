@@ -82,10 +82,18 @@ getgenv().Config = {
 				["Sixth Sense"] = 0
 			}
 		},
-		["Auto Vote Start"] = false,
 		["Auto Skip Wave"] = {
 			["Enable"] = true,
 			["Stop at Wave"] = 0
+		},
+		["Auto Sell"] = {
+			["Auto Sell Farm"] = {
+				["Enable"] = true,
+				["Wave"] = 15
+			},
+			["Auto Sell Unit"] = {
+				["Wave"] = 1
+			}
 		},
 		["Game Speed"] = {
 			["Enable"] = true,
