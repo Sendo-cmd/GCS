@@ -72,6 +72,8 @@ Games = {
         ["ChallengeSM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_SM.lua",
         ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
         ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
+        ["Tdw2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW2.lua",
+        ["Tzk"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial2_Zk.lua",
         ["dgdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
 
     }
@@ -931,7 +933,8 @@ Accounts = {
         "Dragon",
     },
     ["HP_GTR"] = {
-        "System",
+        "Marco",
+        "Tdw2",
     },
     ["MitakaSann"] = {
         "Log",
@@ -2560,6 +2563,38 @@ Accounts = {
         "Tdw",
     },
     ["OneDMX"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["Sutthitham2"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["HP_GTR"] = { 
+        "Marco",
+        "Tdw2",
+    },
+    ["Nxiz_k"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["DekchiKAK"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["sbvoa17"] = { 
+        "Marco",
+        "Tzk",
+    },
+    ["80edfgh_1049"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["LUK_VIEW56"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["JINOGMING4"] = { 
         "Marco",
         "Challenge",
     },

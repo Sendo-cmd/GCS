@@ -20,6 +20,8 @@ local Profiles = {
     "SMCh5.json",
     "StoryGV.json",
     "Tdw.json",
+    "Tdw2.json",
+    "Tzk.json",
     "DgDw.json",
 }
 
