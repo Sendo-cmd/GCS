@@ -2351,7 +2351,7 @@ Accounts = {
     },
     ["iamnewbie3p"] = { 
         "Marco",
-        "Tdw",
+        "dgdw",
     },
     ["Hunzeabut1296"] = { 
         "Log",
@@ -2595,6 +2595,10 @@ Accounts = {
         "Challenge",
     },
     ["JINOGMING4"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["DarkwolfX473"] = { 
         "Marco",
         "Challenge",
     },
