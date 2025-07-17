@@ -934,7 +934,7 @@ Accounts = {
     },
     ["HP_GTR"] = {
         "Marco",
-        "Tdw2",
+        "Challenge",
     },
     ["MitakaSann"] = {
         "Log",
@@ -2623,6 +2623,18 @@ Accounts = {
     ["qGZKiGVcbFI"] = { 
         "Marco",
         "Challenge",
+    },
+    ["hushzaxz"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["Hiko_0074"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["ASKINGX11_78"] = { 
+        "Marco",
+        "Tdw2",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
