@@ -991,9 +991,8 @@ Accounts = {
         "PortalParty",
     },
     ["Gu_Peem"] = {
-        "Log",
-        "System",
-        "LovePortal",
+        "Marco",
+        "Tdw",
     },
     ["keam093321"] = {
         "Log",
@@ -2663,6 +2662,10 @@ Accounts = {
     ["S0u_lDik"] = { 
         "Marco",
         "Tdw",
+    },
+    ["RebirthOfhacknot3377"] = { 
+        "Marco",
+        "Challenge",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
