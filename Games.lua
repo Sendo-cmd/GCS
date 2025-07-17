@@ -2667,6 +2667,10 @@ Accounts = {
         "Marco",
         "Challenge",
     },
+    ["6adv2"] = { 
+        "Marco",
+        "Inf",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
