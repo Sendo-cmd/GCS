@@ -2640,6 +2640,30 @@ Accounts = {
         "Marco",
         "dgdw",
     },
+    ["CEO11504"] = { 
+        "Marco",
+        "dgdw",
+    },
+    ["kimfire001x"] = { 
+        "Marco",
+        "Tzk",
+    },
+    ["WHITEBDMAX"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["FiRe012365"] = { 
+        "Marco",
+        "Tdw",
+    },
+    ["jiwzanis"] = { 
+        "Marco",
+        "Tzk",
+    },
+    ["S0u_lDik"] = { 
+        "Marco",
+        "Tdw",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
