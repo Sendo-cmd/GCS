@@ -47,7 +47,7 @@ getgenv().Config = {
 	},
 	["Secure"] = {
 		["Random Offset"] = true,
-		["Walk Around"] = true
+		["Walk Around"] = false
 	},
 	["Challenge Joiner"] = {
 		["Modifier"] = {
