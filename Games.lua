@@ -1080,9 +1080,7 @@ Accounts = {
         "Portal",
     },
     ["Skyfe0397"] = {
-        "Log",
-        "System",
-        "Portal",
+        "Story",
     },
     ["Pokampud"] = {
         "Log",
@@ -2615,6 +2613,14 @@ Accounts = {
         "Tdw2",
     },
     ["MonKung_CH123"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["LaxyZona"] = { 
+        "Marco",
+        "dgdw",
+    },
+    ["qGZKiGVcbFI"] = { 
         "Marco",
         "Challenge",
     },
