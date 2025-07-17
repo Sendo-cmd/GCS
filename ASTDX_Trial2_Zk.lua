@@ -158,7 +158,7 @@ getgenv().Config = {
 		},
 		["Game Speed"] = {
 			["Enable"] = true,
-			["Speed"] = 3
+			["Speed"] = 2
 		}
 	},
 	["Match Finished"] = {
