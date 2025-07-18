@@ -2569,7 +2569,7 @@ Accounts = {
     },
     ["HP_GTR"] = { 
         "Marco",
-        "Tdw2",
+        "Challenge",
     },
     ["Nxiz_k"] = { 
         "Marco",
