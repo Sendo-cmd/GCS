@@ -359,9 +359,8 @@ Accounts = {
         "FarmGemSw",
     },
     ["PDXD22"] = {
-        "Log",
-        "System",
-        "FarmGemSw",
+        "Marco",
+        "Tdw2",
     },
     ["bloxfruit756"] = {
         "Log",
@@ -2401,7 +2400,7 @@ Accounts = {
     },
     ["IlIReyGale"] = { 
         "Marco",
-        "Challenge",
+        "Story",
     },
     ["OP01LO14"] = { 
         "Marco",
@@ -2465,7 +2464,7 @@ Accounts = {
     },
     ["FormatDataNumber"] = { 
         "Marco",
-        "Tdw",
+        "dgdw",
     },
     ["XD_ORGA530"] = { 
         "Marco",
@@ -2505,7 +2504,7 @@ Accounts = {
     },
     ["phxkhin7"] = { 
         "Marco",
-        "Challenge",
+        "Tdw",
     },
     ["playbacffshsj"] = { 
         "Marco",
@@ -2593,7 +2592,7 @@ Accounts = {
     },
     ["JINOGMING4"] = { 
         "Marco",
-        "Challenge",
+        "Inf",
     },
     ["DarkwolfX473"] = { 
         "Marco",
@@ -2670,6 +2669,26 @@ Accounts = {
     ["6adv2"] = { 
         "Marco",
         "Inf",
+    },
+    ["Rip_lll2023"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["saikya007"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["Bombyy59"] = { 
+        "Marco",
+        "Tzk",
+    },
+    ["Fyssh4242"] = { 
+        "Marco",
+        "dgdw",
+    },
+    ["Emmabga6571"] = { 
+        "Marco",
+        "Tdw",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
