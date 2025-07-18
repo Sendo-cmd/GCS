@@ -17,6 +17,10 @@ getgenv().Config = {
 		["Auto Basic Capsule"] = true
 	},
 	["Joiner Cooldown"] = 0,
+	["Claimer"] = {
+		["Auto Claim Daily Rewards"] = true,
+		["Auto Claim Tasks"] = true
+	},
 	["Performance"] = {
 		["Delete Map"] = true,
 		["Delete Enemies"] = true,

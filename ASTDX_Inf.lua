@@ -13,6 +13,10 @@ getgenv().Config = {
 		["Random Offset"] = true,
 		["Walk Around"] = false
 	},
+	["Claimer"] = {
+		["Auto Claim Daily Rewards"] = true,
+		["Auto Claim Tasks"] = true
+	},
 	["Challenge Joiner"] = {
 		["Modifier"] = {
 			["Flying Enemies"] = true,

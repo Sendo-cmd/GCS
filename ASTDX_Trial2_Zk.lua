@@ -66,6 +66,10 @@ getgenv().Config = {
 			["Hidden Storm Village"] = true
 		}
 	},
+	["Claimer"] = {
+		["Auto Claim Daily Rewards"] = true,
+		["Auto Claim Tasks"] = true
+	},
 	["Macros"] = {
 		["Macro"] = "Tzk",
 		["Macro Retry Limit"] = 0,
