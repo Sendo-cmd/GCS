@@ -136,7 +136,8 @@ getgenv().Config = {
 		["Teleport Lobby if Player"] = true
 	},
 	["Secure"] = {
-		["Random Offset"] = true
+		["Random Offset"] = true,
+		["Walk Around"] = false
 	},
 	["Challenge Joiner"] = {
 		["Expert Mode"] = true,
