@@ -112,8 +112,8 @@ Accounts = {
        "MemberStar",
     },
     ["SDEgFGtxuid"] = {
-       "Log",
-       "Worldline",
+       "Marco",
+       "Tzk",
     },
     ["SugarSnow_84782"] = {
         "StarGem",
@@ -2364,9 +2364,8 @@ Accounts = {
         "Portal",
     },
     ["Love_Rog2"] = { 
-        "Log",
-        "System",
-        "Portal",
+        "Marco",
+        "Inf",
     },
     ["Gjipp49"] = { 
         "Log",
@@ -2480,7 +2479,7 @@ Accounts = {
     },
     ["x4X1i"] = { 
         "Marco",
-        "Tdw",
+        "Inf",
     },
     ["UchikiKono"] = { 
         "Marco",
@@ -2528,7 +2527,7 @@ Accounts = {
     },
     ["Pikachu_011105"] = { 
         "Marco",
-        "Inf",
+        "Tzk",
     },
     ["NemoKung001"] = { 
         "Marco",
@@ -2556,7 +2555,7 @@ Accounts = {
     },
     ["MatelGearTT"] = { 
         "Marco",
-        "Tdw",
+        "dgdw",
     },
     ["OneDMX"] = { 
         "Marco",
@@ -2697,6 +2696,18 @@ Accounts = {
     ["pom_op012"] = { 
         "Marco",
         "Tdw2",
+    },
+    ["Trtankung"] = { 
+        "Marco",
+        "Challenge",
+    },
+    ["qITeddyBearIp"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["Xizzzse"] = { 
+        "Marco",
+        "Challenge",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
