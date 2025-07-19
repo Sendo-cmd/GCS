@@ -100,7 +100,7 @@ Accounts = {
     },
     ["maser080"] = {
         "Marco",
-        "Challenge",
+        "Inf",
     },
     ["Thai_WilYuLaw"] = {
         "Marco",
