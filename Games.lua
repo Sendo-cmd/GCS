@@ -2524,7 +2524,7 @@ Accounts = {
     },
     ["arnonkasak11"] = { 
         "Marco",
-        "Tdw",
+        "Challenge",
     },
     ["Pikachu_011105"] = { 
         "Marco",
@@ -2689,6 +2689,14 @@ Accounts = {
     ["Emmabga6571"] = { 
         "Marco",
         "Tdw",
+    },
+    ["nolimitkaka1"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["pom_op012"] = { 
+        "Marco",
+        "Tdw2",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
