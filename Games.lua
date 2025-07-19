@@ -63,18 +63,15 @@ Games = {
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_System.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Marco.lua",
-        ["Inf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_DW.lua",
-        ["DW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_DW.lua",
-        ["SM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_SM.lua",
-        ["GK"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf_GK.lua",
+        ["Inf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf.lua",
+        ["Lvl"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_lvl.lua",
         ["Challenge"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha.lua",
-        ["ChallengeDW"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_DW.lua",
-        ["ChallengeSM"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_SM.lua",
+        ["ChallengeEx"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_Expert.lua",
         ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
         ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
         ["Tdw2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW2.lua",
         ["Tzk"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial2_Zk.lua",
-        ["dgdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
+        ["dg"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
 
     }
 }
@@ -104,7 +101,7 @@ Accounts = {
     },
     ["Thai_WilYuLaw"] = {
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["faeikgame"] = {
        "Log",
@@ -2347,7 +2344,7 @@ Accounts = {
     },
     ["iamnewbie3p"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["Hunzeabut1296"] = { 
         "Log",
@@ -2427,7 +2424,7 @@ Accounts = {
     },
     ["fogouswer111"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["500IQBAS"] = { 
         "Marco",
@@ -2463,7 +2460,7 @@ Accounts = {
     },
     ["FormatDataNumber"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["XD_ORGA530"] = { 
         "Marco",
@@ -2555,7 +2552,7 @@ Accounts = {
     },
     ["MatelGearTT"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["OneDMX"] = { 
         "Marco",
@@ -2615,7 +2612,7 @@ Accounts = {
     },
     ["LaxyZona"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["qGZKiGVcbFI"] = { 
         "Marco",
@@ -2635,11 +2632,11 @@ Accounts = {
     },
     ["milk216785"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["CEO11504"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["kimfire001x"] = { 
         "Marco",
@@ -2683,7 +2680,7 @@ Accounts = {
     },
     ["Fyssh4242"] = { 
         "Marco",
-        "dgdw",
+        "dg",
     },
     ["Emmabga6571"] = { 
         "Marco",

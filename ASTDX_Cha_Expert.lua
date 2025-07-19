@@ -226,7 +226,7 @@ getgenv().Config = {
 	},
 	["Daily Challenge Joiner"] = {
 		["Auto Join"] = true,
-		["Expert Mode"] = false
+		["Expert Mode"] = true
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
