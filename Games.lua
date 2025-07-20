@@ -96,8 +96,8 @@ Accounts = {
         "Portal",
     },
     ["maser080"] = {
-        "Marco",
-        "Inf",
+        "Log",
+        "BaseGemInf",
     },
     ["Thai_WilYuLaw"] = {
         "Marco",
@@ -2724,6 +2724,18 @@ Accounts = {
     ["baNk25523456"] = { 
         "Marco",
         "Tdw2",
+    },
+    ["Selinalem1294"] = { 
+        "Marco",
+        "Tzk",
+    },
+    ["IDreq337"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["Wakoji4516"] = { 
+        "Marco",
+        "Inf",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
