@@ -2316,8 +2316,7 @@ Accounts = {
     },
     ["Ngerntongg"] = {
         "Log",
-        "System",
-        "Portal",
+        "BaseGem",
     },
     ["itzmemepoq"] = {
         "Log",
