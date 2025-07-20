@@ -357,7 +357,7 @@ Accounts = {
     },
     ["PDXD22"] = {
         "Marco",
-        "Tdw2",
+        "Inf",
     },
     ["bloxfruit756"] = {
         "Log",
@@ -2604,7 +2604,7 @@ Accounts = {
     },
     ["ABZDz_19"] = { 
         "Marco",
-        "Tdw2",
+        "Challenge",
     },
     ["MonKung_CH123"] = { 
         "Marco",
