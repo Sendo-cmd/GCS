@@ -2443,7 +2443,7 @@ Accounts = {
     },
     ["1X3h2h"] = { 
         "Marco",
-        "Challenge",
+        "Tdw",
     },
     ["Ldtwo_03"] = { 
         "Marco",
@@ -2712,6 +2712,14 @@ Accounts = {
     ["snowmaple125"] = { 
         "Marco",
         "Tdw2",
+    },
+    ["qw_qw51"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["SPECTRAL_X2"] = { 
+        "Marco",
+        "ChallengeEx",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
