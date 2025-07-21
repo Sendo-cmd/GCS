@@ -77,8 +77,7 @@ Games = {
 }
 Accounts = {
     ["FireBlackDevilZ"] = {
-        "Marco",
-        "Story",
+        "Inf",
      },
     ["SHIFUGOD"] = {
        "Log",
@@ -2736,6 +2735,11 @@ Accounts = {
     ["Wakoji4516"] = { 
         "Marco",
         "Inf",
+    },
+    ["Kmkxbetfmviqs"] = {
+        "Log",
+        "System",
+        "Portal",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
