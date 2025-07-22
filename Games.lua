@@ -2392,7 +2392,7 @@ Accounts = {
     },
     ["IlIReyGale"] = { 
         "Marco",
-        "Story",
+        "Tzk",
     },
     ["OP01LO14"] = { 
         "Marco",
@@ -2604,7 +2604,7 @@ Accounts = {
     },
     ["MonKung_CH123"] = { 
         "Marco",
-        "Tzk",
+        "ChallengeEx",
     },
     ["LaxyZona"] = { 
         "Marco",
