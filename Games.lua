@@ -316,9 +316,7 @@ Accounts = {
         "StarGem",
     },
     ["bababuty"] = {
-        "Log",
-        "System",
-        "CidP",
+        "ChallengeEx",
     },
     ["bentoggwp7916"] = {
         "Log",
@@ -2430,7 +2428,7 @@ Accounts = {
     },
     ["HJRETAP"] = { 
         "Marco",
-        "Inf",
+        "ChallengeEx",
     },
     ["notyuio111"] = { 
         "Marco",
@@ -2733,6 +2731,10 @@ Accounts = {
         "Inf",
     },
     ["Wakoji4516"] = { 
+        "Marco",
+        "Inf",
+    },
+    ["ZeGalaxy808"] = { 
         "Marco",
         "Inf",
     },
