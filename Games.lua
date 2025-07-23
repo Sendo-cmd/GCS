@@ -1009,7 +1009,7 @@ Accounts = {
     },
     ["SIAFK19"] = {
         "Log",
-        "LovePortal",
+        "Portal",
     },
     ["I_Wxrst"] = {
         "Log",
@@ -2304,7 +2304,7 @@ Accounts = {
     },
     ["ninenew2015"] = {
         "Marco",
-        "Challenge",
+        "Inf",
     },
     ["JINGJUNG59"] = {
         "Log",
@@ -2456,7 +2456,7 @@ Accounts = {
     },
     ["FormatDataNumber"] = { 
         "Marco",
-        "dg",
+        "Tzk",
     },
     ["XD_ORGA530"] = { 
         "Marco",
@@ -2628,7 +2628,7 @@ Accounts = {
     },
     ["milk216785"] = { 
         "Marco",
-        "dg",
+        "Tzk",
     },
     ["CEO11504"] = { 
         "Marco",
@@ -2704,7 +2704,7 @@ Accounts = {
     },
     ["hdjuxjxbduxb"] = { 
         "Marco",
-        "Challenge",
+        "ChallengeEx",
     },
     ["snowmaple125"] = { 
         "Marco",
@@ -2749,7 +2749,15 @@ Accounts = {
     },
     ["Ivettemum7411"] = {
         "Marco",
-        "Tdw2",
+        "Story",
+    },
+    ["LSZLOL"] = {
+        "Marco",
+        "Challenge",
+    },
+    ["Sirichot123za"] = {
+        "Marco",
+        "Inf",
     },
 }
 repeat task.wait(5) until game:IsLoaded(5)
