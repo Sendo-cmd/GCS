@@ -145,7 +145,7 @@ getgenv().Config = {
 				["4"] = 4,
 				["6"] = 6
 			},
-			["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
+			["Upgrade Method"] = "Randomize",
 			["Enable"] = true,
 			["Upgrade Limit"] = {
 				["1"] = 0,
