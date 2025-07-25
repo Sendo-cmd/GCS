@@ -4,7 +4,9 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 local Url = "https://api.championshop.date"
 local List = {
-    "Gems"
+    "Gems",
+    "Gold",
+    "Flowers"
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
