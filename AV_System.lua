@@ -627,16 +627,49 @@ local function Auto_Config()
                 end)
                 Battlepass =  BattlepassHandler:GetPlayerData()
             else
+                local UnitsHUD = require(game:GetService("StarterPlayer").Modules.Interface.Loader.HUD.Units)
+                local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
+                local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
 
+                local Inventory = {}
+                game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
+                    Inventory = {}
+                    for i,v in pairs(val1) do
+                        print(os.time(),i,v)
+                        if v then 
+                            local call,err = pcall(function()
+                                Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
+                                Inventory[i]["ID"] = v["ID"]
+                                Inventory[i]["AMOUNT"] = v["Amount"]
+                            end) 
+                        end
+                    end
+                    print("Inventory Updated",os.time())
+                end)
+                game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
+                    FamiliarTable = val
+                    print("Family Updated",os.time())
+                end)
+                game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
+                    SkinTable = val
+                    print("Skin Updated",os.time())
+                end)
             end
             local PlayerData = plr:GetAttributes()
             
         
             repeat 
                 -- print("Stucking")
-                game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer()
-                game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
-                game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+                if game.PlaceId == 16146832113 then
+                    game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer()
+                    game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+                    game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+                else
+                    game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
+                    game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+                    game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+                end
+               
                 print(Val_3 , Val_2 , Val_1)
                 task.wait(1) 
             until Val_3 and Val_2 and Val_1
@@ -747,7 +780,7 @@ task.spawn(function()
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent.OnClientEvent:Connect(function(type_,value_)
             if type_ == "ChallengeData" then 
                 for i,v in pairs(value_) do
-                    if ChallengesData.GetChallengeRewards(i)['Currencies']['TraitRerolls'] then
+                    if ChallengesData.GetChallengeRewards(i)['Currencies'] and ChallengesData.GetChallengeRewards(i)['Currencies']['TraitRerolls'] then
                         table.insert(TraitChallenge,i)
                     end
                 end 
