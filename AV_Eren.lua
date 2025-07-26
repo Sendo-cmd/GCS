@@ -1,3 +1,4 @@
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Joiner Cooldown"] = 0,
@@ -55,6 +56,7 @@ getgenv().Config = {
 		},
 		["The System"] = {
 			["Auto Shadow"] = {
+				["Enable"] = true,
 				["Shadow"] = "Bear"
 			}
 		},
