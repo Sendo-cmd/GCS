@@ -261,7 +261,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Edge of Heaven",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["5e334be7-56c9-4bfa-96e1-4856755b3f23"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
