@@ -53,6 +53,8 @@ Tracks at the Edge of the World
 Ruined City
 ]]
 
+_G.User = {}
+
 -- Service
 local HttpService = game:GetService("HttpService")
 local TextChatService = game:GetService("TextChatService")
