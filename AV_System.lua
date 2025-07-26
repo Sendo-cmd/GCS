@@ -509,6 +509,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
+    print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
@@ -555,7 +556,9 @@ local function Auto_Config()
             Changes[OrderData["product_id"]]()
             print("Changed Configs")
         end 
-        
+        if OrderData["want_carry"] then
+            Settings["Party Mode"] = true
+        end
         local ReplicatedStorage = game:GetService("ReplicatedStorage")
 
         local Modules = ReplicatedStorage:WaitForChild("Modules")
@@ -707,7 +710,6 @@ local function Auto_Config()
 end
 Auto_Config()
 
--- warn(Settings["Party Member"],plr.Name,_G.User[plr.Name])
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
         Inventory = value
@@ -790,205 +792,347 @@ task.spawn(function()
                     end
                 end)
             end
-            
-        end
-        local function GetItem(ID)
-            game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
-            local Items = {}
-            for i,v in pairs(Inventory) do
-                if v["ID"] == ID then
-                    Items[i] = v
-                end
-            end
-            return Items
-        end
-        function AllPlayerInGame()
-            print(Settings["Party Member"])
-            for i,v in pairs(Settings["Party Member"]) do
-                if not game:GetService("Players"):FindFirstChild(v) then
-                    return false
-                end
-            end
-            return true
-        end
-        local WaitTime = 120
-        if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
-            while true do
-                if AllPlayerInGame() then
-                    Next_(WaitTime)
-                    if AllPlayerInGame() then 
-                        task.wait(math.random(2,10))
-                        local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
-                        local GUID = nil
-                        for i,v in pairs(Rift.GetRifts()) do
-                            if Len(v["Players"]) and not v["Teleporting"] then
-                                GUID = v["GUID"]
-                            end
-                        end
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
-                            "Join",
-                            GUID
-                        )
-                        for i,v in pairs(Settings["Party Member"]) do
-                            local response = request({
-                                ["Url"] = "https://api.championshop.date/party-aa",
-                                ["Method"] = "POST",
-                                ["Headers"] = {
-                                    ["content-type"] = "application/json"
-                                },
-                                ["Body"] = game:GetService("HttpService"):JSONEncode({
-                                    ["index"] = v,
-                                    ["value"] = {
-                                        ["type"] = "Rift",
-                                        ["data"] = GUID,
-                                        ["os"] = os.time() + 120
-                                    },
-                                })
-                            })
-                        end
+            local function GetItem(ID)
+                game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
+                local Items = {}
+                for i,v in pairs(Inventory) do
+                    if v["ID"] == ID then
+                        Items[i] = v
                     end
                 end
-                task.wait(2)
+                return Items
             end
-        end
-        if Settings["Auto Join Boss Event"] then
-            
-        end
-        if Settings["Select Mode"] == "Portal" then
-            local Settings_ = Settings["Portal Settings"]
-            local function Ignore(tab1,tab2)
-                for i,v in pairs(tab1) do
-                    if table.find(tab2,v) then
+            function AllPlayerInGame()
+                print(Settings["Party Member"])
+                for i,v in pairs(Settings["Party Member"]) do
+                    if not game:GetService("Players"):FindFirstChild(v) then
                         return false
-                    end 
+                    end
                 end
                 return true
             end
-            local function PortalSettings(tabl)
-                local AllPortal = {}
-                for i,v in pairs(tabl) do
-                    
-                    if not table.find(Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"])) and Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
-                        AllPortal[#AllPortal + 1] = {
-                            [1] = i,
-                            [2] = v["ExtraData"]["Tier"]
-                        }
-                        
-                    end
-                end
-                table.sort(AllPortal, function(a, b)
-                    return a[2] > b[2]
-                end)
-                return AllPortal[1][1] or false
-            end
-            while true do
-                if AllPlayerInGame() then
-                    Next_(WaitTime)
-                    if AllPlayerInGame() then 
-                        local Portal = PortalSettings(GetItem(Settings_["ID"]))
-                        if Portal then
-                            local args = {
-                                [1] = "ActivatePortal",
-                                [2] = Portal
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+            local WaitTime = 120
+            if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
+                while true do
+                    if AllPlayerInGame() then
+                        Next_(WaitTime)
+                        if AllPlayerInGame() then 
+                            task.wait(math.random(2,10))
+                            local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                            local GUID = nil
+                            for i,v in pairs(Rift.GetRifts()) do
+                                if Len(v["Players"]) and not v["Teleporting"] then
+                                    GUID = v["GUID"]
+                                end
+                            end
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                                "Join",
+                                GUID
+                            )
+                            for i,v in pairs(Settings["Party Member"]) do
+                                local response = request({
+                                    ["Url"] = "https://api.championshop.date/party-aa",
+                                    ["Method"] = "POST",
+                                    ["Headers"] = {
+                                        ["content-type"] = "application/json"
+                                    },
+                                    ["Body"] = game:GetService("HttpService"):JSONEncode({
+                                        ["index"] = v,
+                                        ["value"] = {
+                                            ["type"] = "Rift",
+                                            ["data"] = GUID,
+                                            ["os"] = os.time() + 120
+                                        },
+                                    })
+                                })
+                            end
                         end
                     end
+                    task.wait(2)
                 end
-                task.wait(2)
             end
-        elseif Settings["Select Mode"] == "Story" then
-            while true do
-                if AllPlayerInGame() then
-                    Next_(WaitTime)
-                    if AllPlayerInGame() then 
-                        local StorySettings = Settings["Story Settings"]
-                        StorySettings["Stage"] = DisplayToIndexStory(StorySettings["Stage"])
+            if Settings["Select Mode"] == "Portal" then
+                local Settings_ = Settings["Portal Settings"]
+                local function Ignore(tab1,tab2)
+                    for i,v in pairs(tab1) do
+                        if table.find(tab2,v) then
+                            return false
+                        end 
+                    end
+                    return true
+                end
+                local function PortalSettings(tabl)
+                    local AllPortal = {}
+                    for i,v in pairs(tabl) do
+                        
+                        if not table.find(Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"])) and Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
+                            AllPortal[#AllPortal + 1] = {
+                                [1] = i,
+                                [2] = v["ExtraData"]["Tier"]
+                            }
+                            
+                        end
+                    end
+                    table.sort(AllPortal, function(a, b)
+                        return a[2] > b[2]
+                    end)
+                    return AllPortal[1][1] or false
+                end
+                while true do
+                    if AllPlayerInGame() then
+                        Next_(WaitTime)
+                        if AllPlayerInGame() then 
+                            local Portal = PortalSettings(GetItem(Settings_["ID"]))
+                            if Portal then
+                                local args = {
+                                    [1] = "ActivatePortal",
+                                    [2] = Portal
+                                }
+                                
+                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                            end
+                        end
+                    end
+                    task.wait(2)
+                end
+            elseif Settings["Select Mode"] == "Story" then
+                while true do
+                    if AllPlayerInGame() then
+                        Next_(WaitTime)
+                        if AllPlayerInGame() then 
+                            local StorySettings = Settings["Story Settings"]
+                            StorySettings["Stage"] = DisplayToIndexStory(StorySettings["Stage"])
+                            local args = {
+                                [1] = "AddMatch",
+                                [2] = StorySettings
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                            task.wait(10)
+                            local args = {
+                                [1] = "StartMatch"
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        end
+                    end
+                    task.wait(2)
+                end
+            elseif Settings["Select Mode"] == "Dungeon" then
+                while true do
+                    if AllPlayerInGame() then
+                        Next_(WaitTime)
+                        if AllPlayerInGame() then 
+                            local DungeonSettings = Settings["Dungeon Settings"]
+                            DungeonSettings["Stage"] = DisplayToIndexDungeon(DungeonSettings["Stage"])
+                            local args = {
+                                [1] = "AddMatch",
+                                [2] = DungeonSettings
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                            task.wait(10)
+                            local args = {
+                                [1] = "StartMatch"
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        end
+                    end
+                    task.wait(2)
+                end
+            elseif Settings["Select Mode"] == "Legend Stage" then
+                while true do
+                    if AllPlayerInGame() then
+                        Next_(WaitTime)
+                        if AllPlayerInGame() then 
+                            local LegendSettings = Settings["Legend Settings"]
+                            LegendSettings["Stage"] = DisplayToIndexLegend(LegendSettings["Stage"])
+                            local args = {
+                                [1] = "AddMatch",
+                                [2] = LegendSettings
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                            task.wait(10)
+                            local args = {
+                                [1] = "StartMatch"
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        end
+                    end
+                    task.wait(2)
+                end
+            elseif Settings["Select Mode"] == "Raid" then
+                while true do
+                    if AllPlayerInGame() then
+                        Next_(WaitTime)
+                        if AllPlayerInGame() then 
+                            local RaidSettings = Settings["Raid Settings"]
+                            RaidSettings["Stage"] = DisplayToIndexRaid(RaidSettings["Stage"])
+                            local args = {
+                                [1] = "AddMatch",
+                                [2] = RaidSettings
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                            task.wait(10)
+                            local args = {
+                                [1] = "StartMatch"
+                            }
+                            
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                        end
+                    end
+                    task.wait(2)
+                end
+            end
+        else
+            local function GetItem(ID)
+                game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
+                local Items = {}
+                for i,v in pairs(Inventory) do
+                    if v["ID"] == ID then
+                        Items[i] = v
+                    end
+                end
+                return Items
+            end
+            if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
+                while true do
+                    task.wait(math.random(2,10))
+                    local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                    local GUID = nil
+                    for i,v in pairs(Rift.GetRifts()) do
+                        if Len(v["Players"]) and not v["Teleporting"] then
+                            GUID = v["GUID"]
+                        end
+                    end
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                        "Join",
+                        GUID
+                    )
+                    task.wait(2)
+                end
+            end
+            if Settings["Select Mode"] == "Portal" then
+                local Settings_ = Settings["Portal Settings"]
+                local function Ignore(tab1,tab2)
+                    for i,v in pairs(tab1) do
+                        if table.find(tab2,v) then
+                            return false
+                        end 
+                    end
+                    return true
+                end
+                local function PortalSettings(tabl)
+                    local AllPortal = {}
+                    for i,v in pairs(tabl) do
+                        
+                        if not table.find(Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"])) and Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
+                            AllPortal[#AllPortal + 1] = {
+                                [1] = i,
+                                [2] = v["ExtraData"]["Tier"]
+                            }
+                            
+                        end
+                    end
+                    table.sort(AllPortal, function(a, b)
+                        return a[2] > b[2]
+                    end)
+                    return AllPortal[1][1] or false
+                end
+                while true do
+                    local Portal = PortalSettings(GetItem(Settings_["ID"]))
+                    if Portal then
                         local args = {
-                            [1] = "AddMatch",
-                            [2] = StorySettings
+                            [1] = "ActivatePortal",
+                            [2] = Portal
                         }
                         
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                        task.wait(10)
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                         task.wait(2)
                         local args = {
                             [1] = "StartMatch"
                         }
                         
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                    end
-                end
-                task.wait(2)
-            end
-        elseif Settings["Select Mode"] == "Dungeon" then
-            while true do
-                if AllPlayerInGame() then
-                    Next_(WaitTime)
-                    if AllPlayerInGame() then 
-                        local DungeonSettings = Settings["Dungeon Settings"]
-                        DungeonSettings["Stage"] = DisplayToIndexDungeon(DungeonSettings["Stage"])
-                        local args = {
-                            [1] = "AddMatch",
-                            [2] = DungeonSettings
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                         task.wait(10)
-                        local args = {
-                            [1] = "StartMatch"
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                     end
                 end
-                task.wait(2)
-            end
-        elseif Settings["Select Mode"] == "Legend Stage" then
-            while true do
-                if AllPlayerInGame() then
-                    Next_(WaitTime)
-                    if AllPlayerInGame() then 
-                        local LegendSettings = Settings["Legend Settings"]
-                        LegendSettings["Stage"] = DisplayToIndexLegend(LegendSettings["Stage"])
-                        local args = {
-                            [1] = "AddMatch",
-                            [2] = LegendSettings
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                        task.wait(10)
-                        local args = {
-                            [1] = "StartMatch"
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                    end
+            elseif Settings["Select Mode"] == "Story" then
+                while true do
+                    local StorySettings = Settings["Story Settings"]
+                    StorySettings["Stage"] = DisplayToIndexStory(StorySettings["Stage"])
+                    local args = {
+                        [1] = "AddMatch",
+                        [2] = StorySettings
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(2)
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(10)
                 end
-                task.wait(2)
-            end
-        elseif Settings["Select Mode"] == "Raid" then
-            while true do
-                if AllPlayerInGame() then
-                    Next_(WaitTime)
-                    if AllPlayerInGame() then 
-                        local RaidSettings = Settings["Raid Settings"]
-                        RaidSettings["Stage"] = DisplayToIndexRaid(RaidSettings["Stage"])
-                        local args = {
-                            [1] = "AddMatch",
-                            [2] = RaidSettings
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                        task.wait(10)
-                        local args = {
-                            [1] = "StartMatch"
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                    end
+            elseif Settings["Select Mode"] == "Dungeon" then
+                while true do
+                    local DungeonSettings = Settings["Dungeon Settings"]
+                    DungeonSettings["Stage"] = DisplayToIndexDungeon(DungeonSettings["Stage"])
+                    local args = {
+                        [1] = "AddMatch",
+                        [2] = DungeonSettings
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(2)
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(10)
                 end
-                task.wait(2)
+            elseif Settings["Select Mode"] == "Legend Stage" then
+                while true do
+                    local LegendSettings = Settings["Legend Settings"]
+                    LegendSettings["Stage"] = DisplayToIndexLegend(LegendSettings["Stage"])
+                    local args = {
+                        [1] = "AddMatch",
+                        [2] = LegendSettings
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(2)
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(10)
+                end
+            elseif Settings["Select Mode"] == "Raid" then
+                while true do
+                    local RaidSettings = Settings["Raid Settings"]
+                    RaidSettings["Stage"] = DisplayToIndexRaid(RaidSettings["Stage"])
+                    local args = {
+                        [1] = "AddMatch",
+                        [2] = RaidSettings
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(2)
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(10)
+                end
             end
         end
     else
