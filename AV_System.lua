@@ -26,7 +26,7 @@ Underground Church
 Sand Village
 Shibuya Station
 Double Dungeon
-Edge of Heaven
+Lebereo Raid
 ]]
 
 --[[
@@ -37,7 +37,7 @@ Land of the Gods
 Golden Castle
 Shibuya Aftermath
 Double Dungeon
-Shining Castle
+Crystal Chapel
 ]]
 
 --[[
@@ -52,668 +52,6 @@ Spider Forest
 Tracks at the Edge of the World
 Ruined City
 ]]
-
-_G.User = {
-    ["R6W2iU8NY0Yt0y"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
-        ["Auto Priority"] = true,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "euakungchannel",
-            "Tan444_Sd",
-            "s0SoYQ84GXSc12",
-        },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
-        },   
-    },
-    ["NoneFree"] = {
-        ["Select Mode"] = "Dungeon", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Hunzeabut1296",
-        },
-        ["Dungeon Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "AntIsland",
-            ["StageType"] = "Dungeon",
-            ["Stage"] = "Ant Island",
-            ["FriendsOnly"] = false
-        },
-    },
-    ["GVU257sFK8en2v"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Kmkxbetfmviqs",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },    
-    },
-    ["J9O0Eg0cQ03MCV"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "DB_KHOON",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },   
-    },
-    ["GCshop2"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "GVU257sFK8en2v",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },   
-    },
-    ["PXDLKIG"] = {
-        ["Select Mode"] = "Raid", -- Portal
-        ["Auto Stun"] = true,
-        ["Auto Priority"] = true,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "2hemnt_52",
-            "uNkxJXRt2641",
-            "GVU257sFK8en2v"
-        },
-        ["Raid Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Act1",
-            ["StageType"] = "Raid",
-            ["Stage"] = "Ruined City",
-            ["FriendsOnly"] = false
-        },
-    },
-    ["344t0sHCdw6oDK"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Wawawa_761"
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Wintear , 190 Spring
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {},
-            ["Ignore Modify"] = {},
-        },   
-    },
-    ["artyg111"] = {
-        ["Party Mode"] = true,
-    },
-    ["octopuswfd_449"] = {
-        ["Party Mode"] = true,
-    },
-    ["ggotv02"] = {
-        ["Party Mode"] = true,
-    },
-    ["JOJJPON"] = {
-        ["Party Mode"] = true,
-    },
-    ["Kmkxbetfmviqs"] = {
-        ["Party Mode"] = true,
-    },
-    ["YoScoreDummy"] = {
-        ["Party Mode"] = true,
-    },
-    ["beastnahee"] = {
-        ["Party Mode"] = true,
-    },
-    ["xX_GoDO7Xx"] = {
-        ["Party Mode"] = true,
-    },
-    ["JapanMovieTH12"] = {
-        ["Party Mode"] = true,
-    },
-    ["GlennShelby238"] = {
-        ["Party Mode"] = true,
-    },
-    ["Love_Rog2"] = {
-        ["Party Mode"] = true,
-    },
-    ["Hunzeabut1296"] = {
-        ["Party Mode"] = true,
-    },
-    ["Gjipp49"] = {
-        ["Party Mode"] = true,
-    },
-    ["canonA624"] = {
-        ["Party Mode"] = true,
-    },
-    ["EliXXLRkF"] = {
-        ["Party Mode"] = true,
-    },
-    ["ilovecat326"] = {
-        ["Party Mode"] = true,
-    },
-    ["Turlizoha3831"] = {
-        ["Party Mode"] = true,
-    },
-    ["CGGG108151"] = {
-        ["Auto Stun"] = true,
-        ["Party Mode"] = true,
-    },
-    ["2hemnt_52"] = {
-        ["Auto Stun"] = true,
-        ["Party Mode"] = true,
-    },
-    ["Zulu_OoB30"] = {
-        ["Party Mode"] = true,
-    },
-    ["zumaei_9182"] = {
-        ["Party Mode"] = true,
-    },
-    ["v0k9Seb9nB6q0P"] = {
-        ["Party Mode"] = true,
-    },
-    ["ioio30330p"] = {
-        ["Party Mode"] = true,
-    },
-    ["deenhumyai"] = {
-        ["Party Mode"] = true,
-    },
-    ["ninenew2015"] = {
-        ["Party Mode"] = true,
-    },
-    ["J49Mr8EDKF5R5I"] = {
-        ["Party Mode"] = true,
-    },
-    ["TradingByThanakorn"] = {
-        ["Party Mode"] = true,
-    },
-    ["uNkxJXRt2641"] = {
-        ["Party Mode"] = true,
-    },
-    ["Irinor96511"] = {
-        ["Party Mode"] = true,
-    },
-    ["zkiyt53dd"] = {
-        ["Party Mode"] = true,
-    },
-    ["hdkjsksp"] = {
-        ["Party Mode"] = true,
-    },
-    ["JINGJUNG59"] = {
-        ["Party Mode"] = true,
-    },
-    ["Ngerntongg"] = {
-        ["Party Mode"] = true,
-    },
-    ["RedAshleyKung"] = {
-        ["Party Mode"] = true,
-    },
-    ["ls09mFx9AEj56p"] = {
-        ["Party Mode"] = true,
-    },
-    ["47XCD6el66XjzO"] = {
-        ["Party Mode"] = true,
-    },
-    ["Reset29879635"] = {
-        ["Party Mode"] = true,
-    },
-    ["CAVIARHUB"] = {
-        ["Party Mode"] = true,
-    },
-    ["D0FWALL"] = {
-        ["Party Mode"] = true,
-    },
-    ["tangdda"] = {
-        ["Party Mode"] = true,
-    },
-    ["DB_KHOON"] = {
-        ["Party Mode"] = true,
-    },
-    ["Flamesiraphat"] = {
-        ["Party Mode"] = true,
-    },
-    ["twelvgir5130"] = {
-        ["Party Mode"] = true,
-    },
-    ["sjdbbzh09"] = {
-        ["Party Mode"] = true,
-    },
-    ["Coknwz"] = {
-        ["Party Mode"] = true,
-    },
-    ["PleumRukNa"] = {
-        ["Party Mode"] = true,
-    },
-    ["EXSTREMz"] = {
-        ["Party Mode"] = true,
-    },
-    ["MazhOG"] = {
-        ["Party Mode"] = true,
-    },
-    ["Nsteam111"] = {
-        ["Party Mode"] = true,
-    },
-    ["Londaruh"] = {
-        ["Party Mode"] = true,
-    },
-    ["WGwOktecgyo"] = {
-        ["Party Mode"] = true,
-    },
-    ["MeanPo01"] = {
-        ["Party Mode"] = true,
-    },
-    ["jojoisrealko"] = {
-        ["Party Mode"] = true,
-    },
-    ["euakungchannel"] = {
-        ["Party Mode"] = true,
-    },
-    ["Dbhhceuhceuh"] = {
-        -- ["Select Mode"] = "Story", -- Portal
-        -- ["Auto Stun"] = false,
-        -- ["Auto Priority"] = false,
-        -- ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "w42mwpY03FJs3d",
-        --     "J49Mr8EDKF5R5I",
-        -- },
-        -- ["Story Settings"] = {
-        --     ["Difficulty"] = "Normal",
-        --     ["Act"] = "Act1",
-        --     ["StageType"] = "Story",
-        --     ["Stage"] = "Edge of Heaven",
-        --     ["FriendsOnly"] = false
-        -- },
-    },
-    ["OPggripTH"] = {
-        -- ["Select Mode"] = "Raid", -- Portal
-        -- ["Auto Stun"] = false,
-        -- ["Auto Priority"] = true,
-        -- ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "Wawawa_761",
-        --     "Nainklk",
-        --     "issei123i",
-        -- },
-        -- ["Raid Settings"] = {
-        --     ["Difficulty"] = "Nightmare",
-        --     ["Act"] = "Act1",
-        --     ["StageType"] = "Raid",
-        --     ["Stage"] = "Ruined City",
-        --     ["FriendsOnly"] = false
-        -- },
-    },
-    ["issei123i"] = {
-        ["Party Mode"] = true,
-    },
-    ["itzmemepoq"] = {
-        ["Party Mode"] = true,
-    },
-    ["Nainklk"] = {
-        ["Party Mode"] = true,
-    },
-    ["Wawawa_761"] = {
-        ["Party Mode"] = true,
-    },
-    ["bababuty"] = {
-        ["Party Mode"] = true,
-    },
-    ["KsYhgVKd4476"] = {
-        ["Party Mode"] = true,
-    },
-    ["ceeme7777"] = {
-        ["Party Mode"] = true,
-    },
-    ["GoDis_BanG"] = {
-        ["Party Mode"] = true,
-    },
-    ["atomwat123"] = {
-        ["Party Mode"] = true,
-    },
-    ["jm_ep30"] = {
-        ["Party Mode"] = true,
-    },
-    ["Uhdennanji979"] = {
-        ["Party Mode"] = true,
-    },
-    ["TheDarkwolf8333"] = {
-        ["Party Mode"] = true,
-    },
-    ["IQSHOP_1275"] = {
-        ["Party Mode"] = true,
-    },
-    ["Estellburst"] = {
-        ["Select Mode"] = "Portal", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = false,
-        ["Party Member"] = {
-            "s0SoYQ84GXSc12",
-        },
-        ["Portal Settings"] = {
-            ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-            ["Tier Cap"] = 10,
-            ["Method"] = "Highest", -- Highest , Lowest
-            ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
-            ["Ignore Modify"] = {},
-        },   
-    },
-    ["GODZARIO8113"] = {
-        ["Party Mode"] = true,
-    },
-    ["KoopfoolxD2"] = {
-        ["Party Mode"] = true,
-    },
-    ["CaptainMaru863"] = {
-        ["Party Mode"] = true,
-    },
-    ["NANO_SHOP04"] = {
-        ["Party Mode"] = true,
-    },
-    ["CigramGamerTV"] = {
-        ["Party Mode"] = true,
-    },
-    ["scp1774"] = {
-        ["Party Mode"] = true,
-    },
-    ["Skyfe0397"] = {
-        ["Party Mode"] = true,
-    },
-    ["icemateenoobth"] = {
-        ["Party Mode"] = true,
-    },
-    ["surx23"] = {
-        ["Party Mode"] = true,
-    },
-    ["rainbowskythai"] = {
-        ["Party Mode"] = true,
-    },
-    ["GHeirtid"] = {
-        ["Party Mode"] = true,
-    },
-    ["s0SoYQ84GXSc12"] = {
-        ["Party Mode"] = true,
-    },
-    ["tanjiroxfire"] = {
-        ["Party Mode"] = true,
-    },
-    ["MRLUCKY_SKYZA"] = {
-        ["Party Mode"] = true,
-    },
-    ["JanMesu"] = {
-        ["Party Mode"] = true,
-    },
-    ["R3N_Vixtoria3"] = {
-        ["Party Mode"] = true,
-    },
-    ["f1imkungz"] = {
-        ["Party Mode"] = true,
-    },
-    ["Hub6ix04"] = {
-        ["Party Mode"] = true,
-    },
-    ["Chok248"] = {
-        ["Party Mode"] = true,
-    },
-    ["ggkong1412"] = {
-        ["Party Mode"] = true,
-    },
-    ["Bisctm1000"] = {
-        ["Party Mode"] = true,
-    },
-    ["xCrazy_Boyx0"] = {
-        ["Party Mode"] = true,
-    },
-    ["Minarusame"] = {
-        ["Party Mode"] = true,
-    },
-    ["Mangkorn93100"] = {
-        ["Party Mode"] = true,
-    },
-    ["smyfon8"] = {
-        ["Party Mode"] = true,
-    },
-    ["Tan444_Sd"] = {
-        ["Party Mode"] = true,
-    },
-    ["joy006zx"] = {
-        ["Party Mode"] = true,
-    },
-    ["Levid098508"] = {
-        ["Party Mode"] = true,
-    },
-    ["AMERICAMENTIONEDRAHH"] = {
-        ["Party Mode"] = true,
-    },
-    ["2PhuPhu1"] = {
-        ["Party Mode"] = true,
-    },
-    ["BOOMBIGOO"] = {
-        ["Party Mode"] = true,
-    },
-    ["QWQPcZfdXlf"] = {
-        ["Party Mode"] = true,
-    },
-    ["Feasqdx0437"] = {
-        ["Party Mode"] = true,
-    },
-    ["HOdnJWa0347"] = {
-        ["Party Mode"] = true,
-    },
-    ["MonarchJINWO21"] = {
-        ["Party Mode"] = true,
-    },
-    ["shadoTsunami"] = {
-        ["Party Mode"] = true,
-    },
-    ["BeeKak1"] = {
-        ["Party Mode"] = true,
-    },
-    ["Alawihuf8081"] = {
-        ["Party Mode"] = true,
-    },
-    ["Valkor72009"] = {
-        ["Party Mode"] = true,
-    },
-    ["Dwekyphwzxpsg"] = {
-        ["Party Mode"] = true,
-    },
-    ["wosssssso"] = {
-        ["Party Mode"] = true,
-    },
-    ["Brutaroth"] = {
-        ["Party Mode"] = true,
-    },
-    ["Reishthill26675"] = {
-        ["Party Mode"] = true,
-    },
-    ["surasafe"] = {
-        ["Party Mode"] = true,
-    },
-    ["underhorror"] = {
-        ["Party Mode"] = true,
-    },
-    ["saveew"] = {
-        ["Party Mode"] = true,
-    },
-    ["2MILL_XXL"] = {
-        ["Party Mode"] = true,
-    },
-    ["keam093321"] = {
-        ["Party Mode"] = true,
-    },
-    ["anakluwza"] = {
-        ["Party Mode"] = true,
-    },
-    ["RyuzaaaV2"] = {
-        ["Party Mode"] = true,
-    },
-    ["lnwyorn_0823"] = {
-        ["Party Mode"] = true,
-    },
-    ["sans_dee1134"] = {
-        ["Party Mode"] = true,
-    },
-    ["smart961"] = {
-        ["Party Mode"] = true,
-    },
-    ["mewant2die_d"] = {
-        ["Party Mode"] = true,
-    },
-    ["bam87871"] = {
-        ["Party Mode"] = true,
-    },
-    ["x8s0r1y5knI3Ls"] = {
-        -- ["Select Mode"] = "Portal", -- Portal
-        ["Party Mode"] = true,
-        -- ["Party Member"] = {
-        --     "XDD155490",
-        -- },
-        -- ["Portal Settings"] = {
-        --     ["ID"] = 87, -- 113 Love , 87 Winter
-        --     ["Tier Cap"] = 10,
-        --     ["Method"] = "Highest", -- Highest , Lowest
-        --     ["Ignore Stage"] = {"Spider Forest"},
-        --     ["Ignore Modify"] = {},
-        -- },   
-    },
-    ["KOW7Po"] = {
-        ["Party Mode"] = true,
-    },
-    ["Easyblox_P2CWU"] = {
-        ["Party Mode"] = true,
-    },
-    ["masxteng38"] = {
-        ["Party Mode"] = true,
-    },
-    ["paralfar7347"] = {
-        ["Party Mode"] = true,
-    },
-    ["aocyms"] = {
-        ["Party Mode"] = true,
-    },
-    ["juniorlnw5"] = {
-        ["Party Mode"] = true,
-    },
-    ["OP_autokill"] = {
-        ["Party Mode"] = true,
-    },
-    ["enonef2"] = {
-        ["Party Mode"] = true,
-    },
-    ["gsokem"] = {
-        ["Party Mode"] = true,
-    },
-    ["Etaa_xm"] = {
-        ["Party Mode"] = true,
-    },
-    ["zxzxc666"] = {
-        ["Party Mode"] = true,
-    },
-    ["XDD155490"] = {
-        ["Party Mode"] = true,
-    },
-    ["Taqmgapckpkyl"] = {
-        ["Party Mode"] = true,
-    },
-    ["0621319907fake"] = {
-        ["Party Mode"] = true,
-    },
-    ["Namo1171"] = {
-        ["Party Mode"] = true,
-    },
-    ["Spiryfedje86606"] = {
-        ["Party Mode"] = true,
-    },
-    ["nongmai813"] = {
-        ["Party Mode"] = true,
-    },
-    ["Dukduies"] = {
-        ["Party Mode"] = true,
-    },
-    ["iamnewbie3p"] = {
-        ["Party Mode"] = true,
-    },
-    ["rain4834"] = {
-        ["Select Mode"] = "Story", -- Portal
-        ["Auto Stun"] = false,
-        ["Auto Priority"] = false,
-        ["Priority"] = "Bosses",
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "TYTAP002",
-        },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Edge of Heaven",
-            ["FriendsOnly"] = false
-        },   
-    },
-    ["TYTAP002"] = {
-        ["Party Mode"] = true,
-    },
-    ["tatoeyaa"] = {
-        ["Party Mode"] = true,
-    },
-    ["XIIqPD"] = {
-        ["Party Mode"] = true,
-    },
-    ["MNTYJu"] = {
-        ["Party Mode"] = true,
-    },
-    ["mamekokoe"] = {
-        ["Select Mode"] = "Story", -- Portal , Dungeon , Story , Legend Stage , Raid
-        ["Party Mode"] = true,
-        ["Party Member"] = {
-            "Turlizoha3831",
-        },
-        ["Story Settings"] = {
-            ["Difficulty"] = "Normal",
-            ["Act"] = "Act1",
-            ["StageType"] = "Story",
-            ["Stage"] = "Martial Island",
-            ["FriendsOnly"] = false
-        },
-    },
-}
 
 -- Service
 local HttpService = game:GetService("HttpService")
@@ -784,7 +122,6 @@ end
 -- local Key = "Onio_#@@421"
 local plr = game.Players.LocalPlayer
 local Character = plr.Character or plr.CharacterAdded:Wait()
-local RBXGeneral = TextChatService.TextChannels.RBXGeneral
 local Inventory = {}
 
 local Settings ={
@@ -793,7 +130,7 @@ local Settings ={
     ["Auto Join Rift"] = false,
     ["Auto Join Boss Event"] = false,
 
-    ["Auto Stun"] = false,
+    ["Auto Stun"] = true,
     ["Auto Priority"] = false,
     ["Priority"] = "Closest", 
     ["Party Mode"] = false,
@@ -821,26 +158,523 @@ local Settings ={
     },
     ["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "AntIsland",
+        ["Act"] = "Act1",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
+        ["Stage"] = "Mountain Shrine (Natural)",
         ["FriendsOnly"] = false
     },
     ["Portal Settings"] = {
-        ["ID"] = 113, -- 113 Love , 87 Winter , 190 Spring
+        ["ID"] = 113, -- 113 Love , 87 Winter
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
     },
 }
-
+local Changes = {
+    -- ถ้าต้องการสร้าง configs แบบไหนให้ order ก็เปลี่ยนแปลงเหมือนใส่ config ธรรมดาได้เลย สร้างครั้งนึงแล้วเหมือนกันทุก order
+    ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    },
+    ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    },
+    ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    },
+    ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    },
+    ["3c18df46-db36-4cd4-93b2-9f03926fdadb"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    },
+    ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    },
+    ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Edge of Heaven",
+        ["FriendsOnly"] = false
+    },
+    ["bc1be299-c561-4a41-964a-a055f8a8e436"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Edge of Heaven",
+        ["FriendsOnly"] = false
+    },
+    ["1c58db6a-b5d1-4d8d-8195-75aad0403c90"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Edge of Heaven",
+        ["FriendsOnly"] = false
+    },
+    ["5e334be7-56c9-4bfa-96e1-4856755b3f23"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Shibuya Station",
+        ["FriendsOnly"] = false
+    },
+    ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Shibuya Station",
+        ["FriendsOnly"] = false
+    },
+    ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
+        Settings["Select Mode"] = "Raid"
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "Ruined City",
+        ["FriendsOnly"] = false
+    },
+    ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
+        Settings["Select Mode"] = "Raid"
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "Ruined City",
+        ["FriendsOnly"] = false
+    },
+    ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
+        Settings["Select Mode"] = "Raid"
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "Ruined City",
+        ["FriendsOnly"] = false
+    },
+    ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "AntIsland",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Ant Island",
+        ["FriendsOnly"] = false
+    },
+    ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "AntIsland",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Ant Island",
+        ["FriendsOnly"] = false
+    },
+    ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "AntIsland",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Ant Island",
+        ["FriendsOnly"] = false
+    },
+    ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Double Dungeon",
+        ["FriendsOnly"] = false
+    },
+    ["ba6f3c6d-c503-4fe4-b06f-0326776ba349"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Double Dungeon",
+        ["FriendsOnly"] = false
+    },
+    ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Double Dungeon",
+        ["FriendsOnly"] = false
+    },
+    ["c4ca5b41-f68f-4e7b-a8e7-8b2ee7284d08"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Double Dungeon",
+        ["FriendsOnly"] = false
+    },
+    ["5a2a67e9-7407-4437-bc2e-c332135cec53"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Double Dungeon",
+        ["FriendsOnly"] = false
+    },
+    ["e7403190-850c-49e5-b2b0-b4949e477c47"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Kuinshi Palace",
+        ["FriendsOnly"] = false
+    },
+    ["139a8d72-0bfb-478b-98e4-5dd152f01206"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Kuinshi Palace",
+        ["FriendsOnly"] = false
+    },
+    ["7d480a51-e6df-45e7-b0f8-9e34966ecc7e"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Kuinshi Palace",
+        ["FriendsOnly"] = false
+    },
+    ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Land of the Gods",
+        ["FriendsOnly"] = false
+    },
+    ["9d07aae3-76ca-4976-a29c-9f6ece183ade"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Land of the Gods",
+        ["FriendsOnly"] = false
+    },
+    ["ef2bf1de-f30f-46aa-98bb-4a34635a2ed8"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Land of the Gods",
+        ["FriendsOnly"] = false
+    },
+    ["89901139-d4b5-4555-8913-4900d176546c"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Crystal Chapel",
+        ["FriendsOnly"] = false
+    },
+    ["7b29fe07-6313-48cb-a095-3680d4758ab6"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Crystal Chapel",
+        ["FriendsOnly"] = false
+    },
+    ["1e07ff1f-ab45-466b-8b36-ae0ff8b43198"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Crystal Chapel",
+        ["FriendsOnly"] = false
+    },
+}
 if _G.User[plr.Name] then
     for i,v in pairs(_G.User[plr.Name]) do
         Settings[i] = v
     end
 end
-warn(Settings["Party Member"],plr.Name,_G.User[plr.Name])
+
+-- Auto Configs
+local Api = "" -- Api ใส่ / ลงท้ายด้วย เช่น www.google.com/
+local Key = "NO_ORDER" 
+local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
+local function Get(Api)
+    local Data = request({
+        ["Url"] = Api,
+        ["Method"] = "GET",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+    })
+    return Data
+end
+local function Fetch_data()
+    local Data = Get(PathWay .. plr.Name)
+    local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
+    return Order_Data[1]
+end
+local function CreateBody(...)
+    local Order_Data = Fetch_data()
+    local body = {
+        ["order_id"] = Order_Data["id"],
+    }
+    local array = {...}
+    for i,v in pairs(array) do
+        for i1,v1 in pairs(v) do
+            body[i1] = v1
+        end
+    end
+    return body
+end
+local function Post(Url,...)
+    local response = request({
+        ["Url"] = Url,
+        ["Method"] = "POST",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+        ["Body"] = HttpService:JSONEncode(CreateBody(...))
+    })
+   
+    return response
+end
+local Auto_Configs = true
+local function Auto_Config()
+    if Auto_Configs then
+        local OrderData = Fetch_data()
+        if OrderData then
+            Key = OrderData["id"]
+        else
+            print("Cannot Fetch Data")
+            return false;
+        end
+        local ConnectToEnd 
+        local Order = Get(PathWay .. "cache/" .. Key)
+        
+        if Changes[OrderData["product_id"]] then
+            Changes[OrderData["product_id"]]()
+            print("Changed Configs")
+        end 
+        
+        local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+        local Modules = ReplicatedStorage:WaitForChild("Modules")
+        local Utilities = Modules:WaitForChild("Utilities")
+        local Networking = ReplicatedStorage:WaitForChild("Networking")
+
+        local function GetData()
+            local SkinTable = {}
+            local FamiliarTable = {}
+            local Inventory = {}
+            local EquippedUnits = {}
+
+            local Val_1,Val_2,Val_3 = false,false,false
+
+            
+
+            local NumberUtils = require(Utilities.NumberUtils)
+            local TableUtils = require(Utilities.TableUtils)
+            local ItemsData = require(Modules.Data.ItemsData)
+            local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
+            local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
+            
+            for i,v in pairs(UnitWindowHandler.EquippedUnits) do
+                if i == "None" then continue end
+
+                EquippedUnits[i] = TableUtils.DeepCopy(UnitWindowHandler._Cache[i])
+                EquippedUnits[i].Name = EquippedUnits[i].UnitData.Name
+
+                EquippedUnits[i].UnitData = nil
+            end
+
+            local Units = {}
+
+            for i,v in pairs(UnitWindowHandler._Cache) do
+                if not v.UnitData then continue end
+                Units[i] = v.UnitData.Name
+            end
+            game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
+                Inventory = {}
+                for i,v in pairs(val1) do
+                    if v then 
+                        local call,err = pcall(function()
+                            Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
+                            Inventory[i]["ID"] = v["ID"]
+                            Inventory[i]["AMOUNT"] = v["Amount"]
+                        end) 
+                    end
+                end
+                Val_1 = true
+            end)
+            game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
+                FamiliarTable = val
+                Val_2 = true
+            end)
+            game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
+                SkinTable = val
+                Val_3 = true
+            end)
+            local PlayerData = plr:GetAttributes()
+            
+        
+            repeat 
+                game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
+                game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+                game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+                task.wait(.2) 
+            until Val_3 and Val_2 and Val_1
+            return {
+                ["Units"] = Units,
+                ["Skins"] = SkinTable,
+                ["Familiars"] = FamiliarTable,
+                ["Inventory"] = Inventory,
+                ["Username"] = plr.Name,
+                ["Battlepass"] = BattlepassHandler:GetPlayerData(),
+                ["PlayerData"] = PlayerData,
+            }
+        end
+        -- Post_Data_FirstTime ส่วนนี้จะทำการเก็บ data มา 1 ครั้งก่อนเริ่ม ถ้าสมมุติจบงานแล้ว ยังเจออยู่อาจจะทำให้มีปัญหาได้
+        -- ผมใส่เป็น cache เลยถ้ามันไม่เจอให้สร้าง
+        if not Order then
+            Post(PathWay .. "cache/",GetData())
+        else 
+            local Data = GetData()
+            local OldData = Order
+            local Product = OrderData["product"]
+            local Goal = Product["condition"]["value"]
+            
+            local function GetUnit(path,name)
+                local InsertUnits = {}
+                for i,v in pairs(path) do
+                    if v.UnitData == name then
+                        table.insert(InsertUnits,i)
+                    end
+                end
+                return #InsertUnits
+            end
+            local function GetItem(path,name)
+                local InsertItems = {}
+                for i,v in pairs(path) do
+                    if v.NAME == name then
+                        table.insert(InsertItems,i)
+                    end
+                end
+                return #InsertItems
+            end
+            
+            if Product["condition"]["type"] == "Gems" then
+                local AlreadyFarm = Data["Gems"] - OldData["Gems"]
+                if AlreadyFarm > Goal then
+                    Post(PathWay .. "finished", CreateBody())
+                end
+            elseif Product["condition"]["type"] == "Coins" then
+                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
+                if AlreadyFarm > Goal then
+                   Post(PathWay .. "finished", CreateBody())
+                end
+            elseif Product["condition"]["type"] == "Units" then
+                local AlreadyFarm = GetUnit(Data,Product["condition"]["name"]) - GetUnit(OldData,Product["condition"]["name"])
+                if AlreadyFarm > Goal then
+                    Post(PathWay .. "finished", CreateBody())
+                end
+            elseif Product["condition"]["type"] == "Items" then
+                local AlreadyFarm = GetItem(Data,Product["condition"]["name"]) - GetItem(OldData,Product["condition"]["name"])
+                if AlreadyFarm > Goal then
+                    Post(PathWay .. "finished", CreateBody())
+                end
+            elseif Product["condition"]["type"] == "Times" then
+                local AlreadyFarm = Get(Data,Product["condition"]["name"]) - Get(OldData,Product["condition"]["name"])
+                if AlreadyFarm > Goal then
+                   Post(PathWay .. "finished", CreateBody())
+                end
+            elseif Product["condition"]["type"] == "Wins" then
+                local AlreadyFarm = Get(Data,Product["condition"]["name"]) - Get(OldData,Product["condition"]["name"])
+                if AlreadyFarm > Goal then
+                    Post(PathWay .. "finished", CreateBody())
+                end
+            end
+        end
+            -- Post(PathWay .. "finished", {
+            --     ["order_id"] = P_Key,
+            -- })
+        -- finished 
+        ConnectToEnd = Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+            Auto_Config()
+            ConnectToEnd:Disconnect()
+        end)
+        
+    end
+end
+Auto_Config()
+
+-- warn(Settings["Party Member"],plr.Name,_G.User[plr.Name])
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
         Inventory = value
