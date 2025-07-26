@@ -66,7 +66,7 @@ getgenv().Config = {
 		["Auto Skip Wave"] = true,
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
-			["Wave"] = 20
+			["Wave"] = 15
 		},
 		["Shibuya Station"] = {
 			["Leave Extra Money"] = 5000,
@@ -88,7 +88,7 @@ getgenv().Config = {
 			["6"] = -1
 		},
 		["Enable"] = true,
-		["Upgrade Method"] = "Hotbar left to right (until Max)",
+		["Upgrade Method"] = "Randomize",
 		["Prefer Position"] = {
 			["Planet Namak (Spring)"] = "Middle",
 			["Double Dungeon"] = "Middle",
