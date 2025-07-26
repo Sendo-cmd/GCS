@@ -718,6 +718,7 @@ for i,v in pairs(Settings) do
 end 
 Auto_Config()
 warn("Hello")
+
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
         Inventory = value
@@ -725,7 +726,7 @@ if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
 end
 task.spawn(function()
-    task.wait(2)
+    task.wait(10)
     if game.PlaceId == 16146832113 then
         if Settings["Party Mode"]  then
             print("Im here 2")
