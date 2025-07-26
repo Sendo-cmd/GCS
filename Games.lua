@@ -473,8 +473,7 @@ Accounts = {
     },
     ["Theegg840"] = {
         "Log",
-        "Marco",
-        "DungeonBoost3",
+        "System",
     },
     ["TONKAORIKI_NEW"] = {
         "Log",
