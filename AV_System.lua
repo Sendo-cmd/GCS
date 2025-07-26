@@ -718,7 +718,7 @@ for i,v in pairs(Settings) do
 end 
 Auto_Config()
 warn("Hello")
-อ
+
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
         Inventory = value
