@@ -91,8 +91,8 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "System",
         "Portal",
+        "System",
     },
     ["maser080"] = {
         "Log",
@@ -473,8 +473,8 @@ Accounts = {
     },
     ["Theegg840"] = {
         "Log",
-        "System",
         "Portal",
+        "System",
     },
     ["TONKAORIKI_NEW"] = {
         "Log",
