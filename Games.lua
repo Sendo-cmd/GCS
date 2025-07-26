@@ -474,6 +474,7 @@ Accounts = {
     ["Theegg840"] = {
         "Log",
         "System",
+        "Portal",
     },
     ["TONKAORIKI_NEW"] = {
         "Log",
