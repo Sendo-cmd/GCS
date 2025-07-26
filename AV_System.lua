@@ -723,22 +723,22 @@ local function Auto_Config()
                 if AlreadyFarm > Goal then
                    Post(PathWay .. "finished", CreateBody())
                 end
-            elseif Product["condition"]["type"] == "Units" then
+            elseif Product["condition"]["type"] == "character" then
                 local AlreadyFarm = GetUnit(Data,Product["condition"]["name"]) - GetUnit(OldData,Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
                 end
-            elseif Product["condition"]["type"] == "Items" then
+            elseif Product["condition"]["type"] == "items" then
                 local AlreadyFarm = GetItem(Data,Product["condition"]["name"]) - GetItem(OldData,Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
                 end
-            elseif Product["condition"]["type"] == "Times" then
+            elseif Product["condition"]["type"] == "hour" then
                 local AlreadyFarm = Get(Data,Product["condition"]["name"]) - Get(OldData,Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                    Post(PathWay .. "finished", CreateBody())
                 end
-            elseif Product["condition"]["type"] == "Wins" then
+            elseif Product["condition"]["type"] == "round" then
                 local AlreadyFarm = Get(Data,Product["condition"]["name"]) - Get(OldData,Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
