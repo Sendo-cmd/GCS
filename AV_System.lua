@@ -128,9 +128,11 @@ local Inventory = {}
 
 local Settings ={
 
-    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event
+    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty
     ["Auto Join Rift"] = false,
+    ["Auto Join Bounty"] = false,
     ["Auto Join Boss Event"] = false,
+    ["Auto Join Challenge"] = false,
 
     ["Auto Stun"] = true,
     ["Auto Priority"] = false,
@@ -164,6 +166,10 @@ local Settings ={
         ["StageType"] = "Dungeon",
         ["Stage"] = "Mountain Shrine (Natural)",
         ["FriendsOnly"] = false
+    },
+    ["Boss Event Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Stage"] = "RumblingEvent",
     },
     ["Portal Settings"] = {
         ["ID"] = 113, -- 113 Love , 87 Winter
@@ -736,6 +742,18 @@ end
 task.spawn(function()
     task.wait(10)
     if game.PlaceId == 16146832113 then
+        local ChallengesData = require(game:GetService('ReplicatedStorage').Modules.Data.Challenges.ChallengesData)
+        local TraitChallenge = {}
+        game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent.OnClientEvent:Connect(function(type_,value_)
+            if type_ == "ChallengeData" then 
+                for i,v in pairs(value_) do
+                    if ChallengesData.GetChallengeRewards(i)['Currencies']['TraitRerolls'] then
+                        table.insert(TraitChallenge,i)
+                    end
+                end 
+            end 
+        end)
+        game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent:FireServer('ChallengeData')
         if Settings["Party Mode"]  then
             print("Im here 2")
             if not Settings["Party Member"]  then
@@ -1017,9 +1035,14 @@ task.spawn(function()
                 end
                 return Items
             end
+            if Settings["Auto Join Challenge"] then
+                for i,v in pairs(TraitChallenge) do
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("ChallengesEvent"):FireServer("StartChallenge",v)
+                    task.wait(5)
+                end
+            end
             if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
                 while true do
-                    task.wait(math.random(2,10))
                     local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
                     local GUID = nil
                     for i,v in pairs(Rift.GetRifts()) do
@@ -1034,7 +1057,50 @@ task.spawn(function()
                     task.wait(2)
                 end
             end
-            if Settings["Select Mode"] == "Portal" then
+            if Settings["Auto Join Bounty"] then
+                local PlayerBountyDataHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Bounty.PlayerBountyDataHandler)
+                local BountyData = require(game:GetService('ReplicatedStorage').Modules.Data.BountyData)
+                local Created = PlayerBountyDataHandler.GetBountyFromSeed(BountyData.GetData()["BountySeed"])
+                
+                local args = {
+                    "AddMatch",
+                    {
+                        Difficulty = "Nightmare",
+                        Act = Created["Act"],
+                        StageType = Created["StageType"],
+                        Stage = Created["Stage"],
+                        FriendsOnly = true
+                    }
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                task.wait(2)
+                local args = {
+                    [1] = "StartMatch"
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                task.wait(10)
+            end
+            if Settings["Select Mode"] == "World Line" then
+                while true do
+                    game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("Teleport","Traits")
+                    task.wait(10)
+                end
+            elseif Settings["Select Mode"] == "Boss Event" then
+                local Settings_ = Settings["Boss Event Settings"]
+                while true do
+                    local args = {
+                        "Start",
+                        {
+                            Settings_["Stage"],
+                            Settings_["Difficulty"]
+                        }
+                    }
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("BossEvent"):WaitForChild("BossEvent"):FireServer(unpack(args))
+                    task.wait(15)
+                end
+                
+            elseif Settings["Select Mode"] == "Portal" then
                 local Settings_ = Settings["Portal Settings"]
                 local function Ignore(tab1,tab2)
                     for i,v in pairs(tab1) do
