@@ -181,7 +181,8 @@ local Changes = {
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
-    },
+    }
+    end,
     ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
@@ -190,7 +191,8 @@ local Changes = {
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
-    },
+    }
+    end,
     ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
@@ -199,7 +201,8 @@ local Changes = {
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
-    },
+    }
+    end,
     ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -208,7 +211,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["3c18df46-db36-4cd4-93b2-9f03926fdadb"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -217,7 +221,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -226,7 +231,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -235,7 +241,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Edge of Heaven",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["bc1be299-c561-4a41-964a-a055f8a8e436"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -244,7 +251,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Edge of Heaven",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["1c58db6a-b5d1-4d8d-8195-75aad0403c90"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -262,7 +270,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Shibuya Station",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -271,7 +280,8 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Shibuya Station",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
         Settings["Select Mode"] = "Raid"
         Settings["Raid Settings"] = {
@@ -280,7 +290,8 @@ local Changes = {
         ["StageType"] = "Raid",
         ["Stage"] = "Ruined City",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
         Settings["Select Mode"] = "Raid"
         Settings["Raid Settings"] = {
@@ -289,7 +300,8 @@ local Changes = {
         ["StageType"] = "Raid",
         ["Stage"] = "Ruined City",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
         Settings["Select Mode"] = "Raid"
         Settings["Raid Settings"] = {
@@ -298,7 +310,8 @@ local Changes = {
         ["StageType"] = "Raid",
         ["Stage"] = "Ruined City",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
@@ -307,7 +320,8 @@ local Changes = {
         ["StageType"] = "Dungeon",
         ["Stage"] = "Ant Island",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
@@ -316,7 +330,8 @@ local Changes = {
         ["StageType"] = "Dungeon",
         ["Stage"] = "Ant Island",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
@@ -325,7 +340,8 @@ local Changes = {
         ["StageType"] = "Dungeon",
         ["Stage"] = "Ant Island",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -334,7 +350,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Double Dungeon",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["ba6f3c6d-c503-4fe4-b06f-0326776ba349"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -343,7 +360,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Double Dungeon",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -352,7 +370,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Double Dungeon",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["c4ca5b41-f68f-4e7b-a8e7-8b2ee7284d08"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -361,7 +380,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Double Dungeon",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["5a2a67e9-7407-4437-bc2e-c332135cec53"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -370,7 +390,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Double Dungeon",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["e7403190-850c-49e5-b2b0-b4949e477c47"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -379,7 +400,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Kuinshi Palace",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["139a8d72-0bfb-478b-98e4-5dd152f01206"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -388,7 +410,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Kuinshi Palace",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["7d480a51-e6df-45e7-b0f8-9e34966ecc7e"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -397,7 +420,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Kuinshi Palace",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -406,7 +430,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Land of the Gods",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["9d07aae3-76ca-4976-a29c-9f6ece183ade"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -415,7 +440,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Land of the Gods",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["ef2bf1de-f30f-46aa-98bb-4a34635a2ed8"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -424,7 +450,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Land of the Gods",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["89901139-d4b5-4555-8913-4900d176546c"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -433,7 +460,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Crystal Chapel",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["7b29fe07-6313-48cb-a095-3680d4758ab6"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -442,7 +470,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Crystal Chapel",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
     ["1e07ff1f-ab45-466b-8b36-ae0ff8b43198"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -451,7 +480,8 @@ local Changes = {
         ["StageType"] = "LegendStage",
         ["Stage"] = "Crystal Chapel",
         ["FriendsOnly"] = false
-    },
+    }
+    end,
 }
 if _G.User[plr.Name] then
     for i,v in pairs(_G.User[plr.Name]) do
