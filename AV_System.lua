@@ -713,6 +713,9 @@ local function Auto_Config()
         end
     end
 end
+for i,v in pairs(Settings) do
+    print(i,v)
+end 
 Auto_Config()
 warn("Hello")
 if game.PlaceId == 16146832113 then
