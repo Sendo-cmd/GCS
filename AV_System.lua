@@ -493,7 +493,7 @@ if _G.User[plr.Name] then
 end
 
 -- Auto Configs
-local Api = "https://api.championshop.date" -- Api ใส่ / ลงท้ายด้วย เช่น www.google.com/
+local Api = "https://api.championshop.date/" -- Api ใส่ / ลงท้ายด้วย เช่น www.google.com/
 local Key = "NO_ORDER" 
 local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
 local function Get(Api)
