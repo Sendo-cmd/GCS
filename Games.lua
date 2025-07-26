@@ -2551,7 +2551,7 @@ Accounts = {
     },
     ["OneDMX"] = { 
         "Marco",
-        "Challenge",
+        "dg",
     },
     ["Sutthitham2"] = { 
         "Marco",
@@ -2603,7 +2603,7 @@ Accounts = {
     },
     ["MonKung_CH123"] = { 
         "Marco",
-        "ChallengeEx",
+        "dg",
     },
     ["LaxyZona"] = { 
         "Marco",
@@ -2735,7 +2735,7 @@ Accounts = {
     },
     ["ZeGalaxy808"] = { 
         "Marco",
-        "Inf",
+        "Tdw",
     },
     ["Kmkxbetfmviqs"] = {
         "Log",
@@ -2755,6 +2755,10 @@ Accounts = {
         "Challenge",
     },
     ["Sirichot123za"] = {
+        "Marco",
+        "Inf",
+    },
+    ["lszlol"] = {
         "Marco",
         "Inf",
     },
