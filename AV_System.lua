@@ -596,18 +596,19 @@ local function Auto_Config()
                 if not v.UnitData then continue end
                 Units[i] = v.UnitData.Name
             end
-            game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
+            game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(val)
                 Inventory = {}
-                for i,v in pairs(val1) do
+                for i,v in pairs(val) do
                     if v then 
                         local call,err = pcall(function()
-                            Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
+                            Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
                             Inventory[i]["ID"] = v["ID"]
                             Inventory[i]["AMOUNT"] = v["Amount"]
                         end) 
                     end
                 end
                 Val_1 = true
+                print("Inventory Updated",os.time())
             end)
             game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
                 FamiliarTable = val
@@ -621,10 +622,12 @@ local function Auto_Config()
             
         
             repeat 
-                game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
+                -- print("Stucking")
+                game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer()
                 game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
                 game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
-                task.wait(.2) 
+                print(Val_3 , Val_2 , Val_1)
+                task.wait(1) 
             until Val_3 and Val_2 and Val_1
             return {
                 ["Units"] = Units,
@@ -701,15 +704,17 @@ local function Auto_Config()
             --     ["order_id"] = P_Key,
             -- })
         -- finished 
-        ConnectToEnd = Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-            Auto_Config()
-            ConnectToEnd:Disconnect()
-        end)
-        
+        if game.PlaceId == 16146832113 then
+        else
+            ConnectToEnd = Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+                Auto_Config()
+                ConnectToEnd:Disconnect()
+            end)
+        end
     end
 end
 Auto_Config()
-
+warn("Hello")
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
         Inventory = value
@@ -989,6 +994,7 @@ task.spawn(function()
                 end
             end
         else
+            warn("Hello 2")
             local function GetItem(ID)
                 game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
                 local Items = {}
