@@ -570,54 +570,59 @@ local function Auto_Config()
             local FamiliarTable = {}
             local Inventory = {}
             local EquippedUnits = {}
-
+            local Units = {}
+            local Battlepass = 0
             local Val_1,Val_2,Val_3 = false,false,false
 
             
+            if game.PlaceId == 16146832113 then
+                local NumberUtils = require(Utilities.NumberUtils)
+                local TableUtils = require(Utilities.TableUtils)
+                local ItemsData = require(Modules.Data.ItemsData)
+                local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
+                local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
+                
+                for i,v in pairs(UnitWindowHandler.EquippedUnits) do
+                    if i == "None" then continue end
 
-            local NumberUtils = require(Utilities.NumberUtils)
-            local TableUtils = require(Utilities.TableUtils)
-            local ItemsData = require(Modules.Data.ItemsData)
-            local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
-            local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
-            
-            for i,v in pairs(UnitWindowHandler.EquippedUnits) do
-                if i == "None" then continue end
+                    EquippedUnits[i] = TableUtils.DeepCopy(UnitWindowHandler._Cache[i])
+                    EquippedUnits[i].Name = EquippedUnits[i].UnitData.Name
 
-                EquippedUnits[i] = TableUtils.DeepCopy(UnitWindowHandler._Cache[i])
-                EquippedUnits[i].Name = EquippedUnits[i].UnitData.Name
-
-                EquippedUnits[i].UnitData = nil
-            end
-
-            local Units = {}
-
-            for i,v in pairs(UnitWindowHandler._Cache) do
-                if not v.UnitData then continue end
-                Units[i] = v.UnitData.Name
-            end
-            game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(val)
-                Inventory = {}
-                for i,v in pairs(val) do
-                    if v then 
-                        local call,err = pcall(function()
-                            Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
-                            Inventory[i]["ID"] = v["ID"]
-                            Inventory[i]["AMOUNT"] = v["Amount"]
-                        end) 
-                    end
+                    EquippedUnits[i].UnitData = nil
                 end
-                Val_1 = true
-                print("Inventory Updated",os.time())
-            end)
-            game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
-                FamiliarTable = val
-                Val_2 = true
-            end)
-            game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
-                SkinTable = val
-                Val_3 = true
-            end)
+
+                
+
+                for i,v in pairs(UnitWindowHandler._Cache) do
+                    if not v.UnitData then continue end
+                    Units[i] = v.UnitData.Name
+                end
+                game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(val)
+                    Inventory = {}
+                    for i,v in pairs(val) do
+                        if v then 
+                            local call,err = pcall(function()
+                                Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                                Inventory[i]["ID"] = v["ID"]
+                                Inventory[i]["AMOUNT"] = v["Amount"]
+                            end) 
+                        end
+                    end
+                    Val_1 = true
+                    print("Inventory Updated",os.time())
+                end)
+                game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
+                    FamiliarTable = val
+                    Val_2 = true
+                end)
+                game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
+                    SkinTable = val
+                    Val_3 = true
+                end)
+                Battlepass =  BattlepassHandler:GetPlayerData()
+            else
+
+            end
             local PlayerData = plr:GetAttributes()
             
         
@@ -629,13 +634,14 @@ local function Auto_Config()
                 print(Val_3 , Val_2 , Val_1)
                 task.wait(1) 
             until Val_3 and Val_2 and Val_1
+
             return {
                 ["Units"] = Units,
                 ["Skins"] = SkinTable,
                 ["Familiars"] = FamiliarTable,
                 ["Inventory"] = Inventory,
                 ["Username"] = plr.Name,
-                ["Battlepass"] = BattlepassHandler:GetPlayerData(),
+                ["Battlepass"] = Battlepass,
                 ["PlayerData"] = PlayerData,
             }
         end
@@ -718,6 +724,7 @@ Auto_Config()
 for i,v in pairs(Settings) do
     print(i,v)
 end 
+setclipboard(HttpService:JSONEncode(Settings))
 warn("Hello")
 
 if game.PlaceId == 16146832113 then
@@ -1063,12 +1070,6 @@ task.spawn(function()
                         }
                         
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
-                         task.wait(2)
-                        local args = {
-                            [1] = "StartMatch"
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                         task.wait(10)
                     end
                 end
