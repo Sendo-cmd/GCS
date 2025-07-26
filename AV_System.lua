@@ -551,7 +551,7 @@ local function Auto_Config()
         end
         local ConnectToEnd 
         local Order = Get(PathWay .. "cache/" .. Key)
-        
+        print(OrderData["product_id"])
         if Changes[OrderData["product_id"]] then
             Changes[OrderData["product_id"]]()
             print("Changed Configs")
@@ -718,7 +718,7 @@ for i,v in pairs(Settings) do
 end 
 Auto_Config()
 warn("Hello")
-
+อ
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
         Inventory = value
