@@ -43,6 +43,7 @@ Games = {
         ["Byeken"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Byeken.lua",
         ["ByekenP"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_ByekenP.lua",
         ["Lfelt"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Lfelt.lua",
+        ["Eren"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Eren.lua",
         ["BBounties"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_BBounties.lua",
         ["Rift"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Rift.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
@@ -473,7 +474,7 @@ Accounts = {
     },
     ["Theegg840"] = {
         "Log",
-        "Portal",
+        "Eren",
         "System",
     },
     ["TONKAORIKI_NEW"] = {
