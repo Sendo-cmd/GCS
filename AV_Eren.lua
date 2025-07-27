@@ -7,16 +7,16 @@ getgenv().Config = {
 		["Ignore Macro Timing"] = true,
 		["Joiner Team Equipper"] = {
 			["Joiner Team"] = {
-				["Boss Event Joiner"] = 0,
 				["Raid Joiner"] = 0,
+				["Boss Event Joiner"] = 0,
 				["Spring Portal Joiner"] = 0,
 				["Dungeon Joiner"] = 0,
 				["Odyssey Joiner"] = 0,
 				["Weekly Challenge Joiner"] = 0,
-				["Boss Bounties Joiner"] = 0,
 				["Worldline Joiner"] = 0,
-				["Regular Challenge Joiner"] = 0,
 				["Stage Joiner"] = 0,
+				["Regular Challenge Joiner"] = 0,
+				["Boss Bounties Joiner"] = 0,
 				["Legend Stage Joiner"] = 0,
 				["Daily Challenge Joiner"] = 0,
 				["Rift Joiner"] = 0
@@ -24,21 +24,18 @@ getgenv().Config = {
 		},
 		["No Ignore Sell Timing"] = true
 	},
+	["Legend Stage Joiner"] = {
+		["Stage"] = "Crystal Chapel",
+		["Auto Join"] = true,
+		["Act"] = "Act3"
+	},
 	["Odyssey Joiner"] = {
 		["Second Team"] = 2,
 		["Intensity"] = 200,
 		["Cash Out Floor"] = 5,
 		["First Team"] = 1
 	},
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
+	["AutoExecute"] = true,
 	["Gameplay"] = {
 		["Auto Use Ability"] = true,
 		["Auto Restart"] = {
@@ -56,6 +53,10 @@ getgenv().Config = {
 				["Wave"] = 1
 			}
 		},
+		["Shibuya Station"] = {
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 0
+		},
 		["Ruined City"] = {
 			["Use Mount to Travel"] = true
 		},
@@ -71,10 +72,6 @@ getgenv().Config = {
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
-		},
-		["Shibuya Station"] = {
-			["Leave Extra Money"] = 5000,
-			["Upgrade Amount"] = 0
 		}
 	},
 	["Misc"] = {
@@ -83,11 +80,29 @@ getgenv().Config = {
 	},
 	["Performance"] = {
 		["Delete Map"] = true,
-		["Boost FPS"] = true
+		["Boost FPS"] = true,
+		["Delete Entities"] = true
 	},
 	["Match Finished"] = {
 		["Replay Amount"] = 0,
 		["Auto Replay"] = true
+	},
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["FPS"] = 5
+		}
+	},
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
+	["Stat Reroller"] = {
+		["Stat Potential"] = 100
 	},
 	["Crafter"] = {
 		["Essence Stone"] = {
@@ -105,21 +120,12 @@ getgenv().Config = {
 			["Purple Essence Stone"] = 50
 		}
 	},
-	["Stat Reroller"] = {
-		["Stat Potential"] = 100
-	},
-	["AutoExecute"] = true,
-	["Legend Stage Joiner"] = {
-		["Auto Join"] = true,
-		["Stage"] = "Crystal Chapel",
-		["Act"] = "Act3"
-	},
 	["Unit Feeder"] = {
 		["Feed Level"] = 60
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
-		["Disable Auto Teleport AFK Chamber"] = true
+		["Disable Auto Teleport AFK Chamber"] = true,
+		["Auto Rejoin"] = true
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -146,7 +152,7 @@ getgenv().Config = {
 			["Golden Castle"] = "Middle",
 			["Spirit Society"] = "Middle",
 			["Shibuya Aftermath"] = "Middle",
-			["Ant Island"] = "Middle",
+			["Tracks at the Edge of the World"] = "Middle",
 			["Shibuya Station"] = "Middle",
 			["Ruined City"] = "Middle",
 			["Lebereo Raid"] = "Middle",
@@ -157,7 +163,7 @@ getgenv().Config = {
 			["Crystal Chapel"] = "Middle",
 			["Underground Church"] = "Middle",
 			["Spider Forest"] = "Middle",
-			["Tracks at the Edge of the World"] = "Middle"
+			["Ant Island"] = "Middle"
 		},
 		["Upgrade Cap"] = {
 			["1"] = 0,
@@ -181,7 +187,7 @@ getgenv().Config = {
 			["Blood-Red Chamber"] = 2,
 			["Outer Walls"] = 2,
 			["Sand Village"] = 2,
-			["Shining Castle"] = 2,
+			["Shibuya Aftermath"] = 2,
 			["Mountain Shrine (Natural)"] = 2,
 			["Kuinshi Palace"] = 2,
 			["Land of the Gods"] = 2,
@@ -199,11 +205,12 @@ getgenv().Config = {
 			["Crystal Chapel"] = 2,
 			["Underground Church"] = 2,
 			["Spider Forest"] = 2,
-			["Shibuya Aftermath"] = 2
+			["Shining Castle"] = 2
 		}
 	},
 	["Secure"] = {
-		["Walk Around"] = true
+		["Walk Around"] = true,
+		["Random Offset"] = true
 	},
 	["Modifier"] = {
 		["Restart Modifier"] = {
@@ -212,74 +219,69 @@ getgenv().Config = {
 			}
 		},
 		["Auto Modifier"] = {
+			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 0,
 				["Thrice"] = 97,
 				["Warding off Evil"] = 0,
 				["Champions"] = 0,
 				["Fast"] = 0,
-				["Revitalize"] = 100,
+				["Planning Ahead"] = 0,
 				["Immunity"] = 0,
 				["Exploding"] = 98,
 				["Dodge"] = 0,
 				["Slayer"] = 0,
 				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
+				["Revitalize"] = 100,
 				["Harvest"] = 0,
 				["Quake"] = 0,
 				["Range"] = 0,
-				["Drowsy"] = 0,
 				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
 				["Regen"] = 0,
 				["King's Burden"] = 0,
 				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
 				["Cooldown"] = 0,
-				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
 				["Press It"] = 0,
 				["Precise Attack"] = 0,
 				["Shielded"] = 0,
 				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			},
-			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
 				["Champions"] = 0,
 				["Fast"] = 0,
-				["Revitalize"] = 0,
+				["Planning Ahead"] = 0,
 				["Immunity"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
 				["Slayer"] = 0,
 				["Fisticuffs"] = 0,
-				["Planning Ahead"] = 0,
+				["Revitalize"] = 0,
 				["Harvest"] = 0,
 				["Quake"] = 0,
 				["Range"] = 0,
-				["Drowsy"] = 0,
 				["Lifeline"] = 0,
+				["No Trait No Problem"] = 0,
 				["Regen"] = 0,
 				["King's Burden"] = 0,
 				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
 				["Cooldown"] = 0,
-				["No Trait No Problem"] = 0,
+				["Drowsy"] = 0,
 				["Press It"] = 0,
 				["Precise Attack"] = 0,
 				["Shielded"] = 0,
 				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			}
-		}
-	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
 		}
 	},
 	["Spring Portal Joiner"] = {
