@@ -277,7 +277,7 @@ getgenv().Config = {
 	},
 	["Secure"] = {
 		["Walk Around"] = true,
-		["Random Offset"] = true
+		["Random Offset"] = false
 	},
 	["AutoExecute"] = true,
 	["Spring Portal Joiner"] = {
