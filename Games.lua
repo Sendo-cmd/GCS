@@ -93,7 +93,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Portal",
+        "Eren",
         "System",
         "System2",
     },
@@ -1700,7 +1700,7 @@ Accounts = {
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
-        "Portal",
+        "Eren",
         "System",
         "System2",
     },
