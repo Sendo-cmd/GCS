@@ -91,7 +91,7 @@ local function GetCache(Id)
 end
 local function SendUUID(player,get_type,data)
     for i,v in pairs(player) do
-        Post("https://api.championshop.date/party-room",{["index"] = v},{["value"] = {
+        Post("https://api.championshop.date/party-aa",{["index"] = v},{["value"] = {
             ["type"] = get_type,
             ["data"] = data,
             ["os"] = os.time() + 120
@@ -819,7 +819,7 @@ if game.PlaceId == local_data[2] then
         task.spawn(function()
             while task.wait(5) do
                 pcall(function()
-                    local get_my_room,callback = pcall(get,"https://api.championshop.date/party-room/" .. game.Players.LocalPlayer.Name)
+                    local get_my_room,callback = pcall(get,"https://api.championshop.date/party-aa/" .. game.Players.LocalPlayer.Name)
                     if get_my_room then
                         local val = callback and game:GetService("HttpService"):JSONDecode(callback)
                         if val["status"] == "success" and tonumber(val["value"]["os"]) >= os.time() then
