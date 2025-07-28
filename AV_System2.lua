@@ -781,7 +781,7 @@ if game.PlaceId == local_data[2] then
             local IsContinue = false
             all_kai = Get(Api .. MainSettings["Path_Kai"] .. "/search?product_id=" .. myproduct)
             body_kai = HttpService:JSONDecode(all_kai['Body'])
-            for i,v in pairs(body_kai['Body']) do
+            for i,v in pairs(body_kai['data']) do
                 local counting = 0
                 local Cache_ = GetCache(All_Key[IsGame] .. "-" .. v["username"])
 
