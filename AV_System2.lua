@@ -746,6 +746,7 @@ if GetKai['Success'] then
 end
 if game.PlaceId == local_data[2] then
     if IsKai then
+        print("Im Host")
         task.spawn(function()
             local Looping = true
             while Looping do
@@ -760,12 +761,15 @@ if game.PlaceId == local_data[2] then
                     if get_my_order['Success'] and counting > 1 then
                         Register_Room(get_my_product["product_id"],order_body["data"])
                         Looping = false
+                    else
+                        print("No Party Host")
                     end
                 end)
                 task.wait(10)
             end
         end) 
     else
+        print("Im User")
         local data = Fetch_data() if not data["want_carry"] then return false end
         local myproduct = data["product_id"]
         local order_id = data["id"]
@@ -774,10 +778,8 @@ if game.PlaceId == local_data[2] then
         local function is_in_party()
             return GetCache(order_id .. "_party")['Success']
         end
-        local function get(url)
-            return game:HttpGet(url)
-        end
         while not is_in_party() do
+             print("No Party")
             local IsContinue = false
             all_kai = Get(Api .. MainSettings["Path_Kai"] .. "/search?product_id=" .. myproduct)
             body_kai = HttpService:JSONDecode(all_kai['Body'])
