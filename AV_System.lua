@@ -652,6 +652,11 @@ local function Auto_Config()
                 local UnitsHUD = require(game:GetService("StarterPlayer").Modules.Interface.Loader.HUD.Units)
                 local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
                 local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
+                local UnitWindowHandler = require(game:GetService('StarterPlayer').Modules.Interface.Loader.Windows.UnitWindowHandler)
+                for i, v in pairs(UnitWindowHandler["_Cache"]) do
+                    if not v.UnitData then continue end
+                    Units[i] = v.UnitData.Name
+                end
 
                 local Inventory = {}
                 game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
@@ -676,6 +681,7 @@ local function Auto_Config()
                     SkinTable = val
                     print("Skin Updated",os.time())
                 end)
+
             end
             local PlayerData = plr:GetAttributes()
             
@@ -715,7 +721,7 @@ local function Auto_Config()
             })
         else 
             local Data = GetData()
-            local OldData = HttpService:JSONDecode(Order["Body"])['Body']
+            local OldData = HttpService:JSONDecode(Order["Body"])['data']
             local Product = OrderData["product"]
             local Goal = Product["condition"]["value"]
             
@@ -770,7 +776,7 @@ local function Auto_Config()
                 end
                 return type_ == "win" and Win or Time
             end
-            -- print(Product["condition"]["type"],MatchProdunct("time"),Goal)
+            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
                 local AlreadyFarm = Data["Gems"] - OldData["Gems"]
                 if AlreadyFarm > Goal then
@@ -784,13 +790,13 @@ local function Auto_Config()
                    OutParty()
                 end
             elseif Product["condition"]["type"] == "character" then
-                local AlreadyFarm = GetUnit(Data,Product["condition"]["name"]) - GetUnit(OldData,Product["condition"]["name"])
+                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "items" then
-                local AlreadyFarm = GetItem(Data,Product["condition"]["name"]) - GetItem(OldData,Product["condition"]["name"])
+                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
                     OutParty()
