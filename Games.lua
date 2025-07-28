@@ -49,6 +49,7 @@ Games = {
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Marco.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/logs_av.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
+        ["System2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System2.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
         ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
     },
@@ -94,6 +95,7 @@ Accounts = {
         "Log",
         "Portal",
         "System",
+        "System2",
     },
     ["maser080"] = {
         "Log",
@@ -1698,8 +1700,9 @@ Accounts = {
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
+        "Portal",
         "System",
-        "Cid",
+        "System2",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",

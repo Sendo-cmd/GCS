@@ -545,6 +545,28 @@ local function Post(Url,...)
    
     return response
 end
+local function Post_(Url,data)
+    local response = request({
+        ["Url"] = Url,
+        ["Method"] = "POST",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+        ["Body"] = HttpService:JSONEncode(data)
+    })
+   
+    return response
+end
+local function GetCache(Id)
+    return Get(Api .. "/api/v1/shop/orders/cache/" .. Id)
+end
+local function is_in_party(order_id)
+    local data = GetCache(order_id .. "_party")
+    return data['Success'] , HttpService:JSONDecode(data)
+end
+
+
 local Auto_Configs = true
 local function Auto_Config()
     if Auto_Configs then
@@ -686,11 +708,14 @@ local function Auto_Config()
         end
         -- Post_Data_FirstTime ส่วนนี้จะทำการเก็บ data มา 1 ครั้งก่อนเริ่ม ถ้าสมมุติจบงานแล้ว ยังเจออยู่อาจจะทำให้มีปัญหาได้
         -- ผมใส่เป็น cache เลยถ้ามันไม่เจอให้สร้าง
-        if not Order then
-            Post(PathWay .. "cache/",GetData())
+        if not Order["Success"] then
+            Post_(PathWay .. "/cache",{
+                ["index"] = Key,
+                ["value"] = GetData()
+            })
         else 
             local Data = GetData()
-            local OldData = Order
+            local OldData = HttpService:JSONDecode(Order["Body"])['Body']
             local Product = OrderData["product"]
             local Goal = Product["condition"]["value"]
             
@@ -711,37 +736,76 @@ local function Auto_Config()
                     end
                 end
                 return #InsertItems
+            end 
+            local function OutParty()
+                local val,orderp = is_in_party(Key)
+                if val then
+                    local Cache_ = GetCache(HttpService:JSONDecode(orderp['Body'])["data"]["join"])
+                    if Cache_["Success"] then
+                        local Cache = HttpService:JSONDecode(Cache_["Body"])
+                        local NewTable = {}
+                        local Replace = Cache['data']
+                        for i,v in pairs(Replace) do
+                            if i ~= plr.Name then
+                                NewTable[i] = v
+                            end
+                        end
+                        Post_(Api .. "/api/v1/shop/orders/cache",{
+                                ["index"] = orderp['Body']["join"],
+                                ["value"] = NewTable
+                            }
+                        )
+                    end
+                end
             end
-            
+            local function MatchProdunct(type_)
+                local Win,Time = 0,0
+                for i,v in pairs(OrderData["match_history"]) do
+                    if v["win"] then
+                        Win = Win + 1
+                    end
+                    if v["time"] then
+                        Time = v["time"] + Time
+                    end
+                end
+                return type_ == "win" and Win or Time
+            end
+            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
                 local AlreadyFarm = Data["Gems"] - OldData["Gems"]
                 if AlreadyFarm > Goal then
-                    Post(PathWay .. "finished", CreateBody())
+                    Post(PathWay .. "finished", CreateBody()) 
+                    OutParty()
                 end
             elseif Product["condition"]["type"] == "Coins" then
                 local AlreadyFarm = Data["Coin"] - OldData["Coin"]
                 if AlreadyFarm > Goal then
                    Post(PathWay .. "finished", CreateBody())
+                   OutParty()
                 end
-            elseif Product["condition"]["type"] == "Character" then
+            elseif Product["condition"]["type"] == "character" then
                 local AlreadyFarm = GetUnit(Data,Product["condition"]["name"]) - GetUnit(OldData,Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
+                    OutParty()
                 end
-            elseif Product["condition"]["type"] == "Items" then
+            elseif Product["condition"]["type"] == "items" then
                 local AlreadyFarm = GetItem(Data,Product["condition"]["name"]) - GetItem(OldData,Product["condition"]["name"])
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
+                    OutParty()
                 end
-            elseif Product["condition"]["type"] == "Hour" then
-                local AlreadyFarm = Get(Data,Product["condition"]["name"]) - Get(OldData,Product["condition"]["name"])
-                if AlreadyFarm > Goal then
+            elseif Product["condition"]["type"] == "hour" then
+                local AlreadyFarm = MatchProdunct("time")
+                if AlreadyFarm > tonumber(Goal) * 60 then
                    Post(PathWay .. "finished", CreateBody())
+                   OutParty()
                 end
-            elseif Product["condition"]["type"] == "Round" then
-                local AlreadyFarm = Get(Data,Product["condition"]["name"]) - Get(OldData,Product["condition"]["name"])
+            elseif Product["condition"]["type"] == "round" then
+                local AlreadyFarm = MatchProdunct("win")
                 if AlreadyFarm > Goal then
                     Post(PathWay .. "finished", CreateBody())
+                    OutParty()
                 end
             end
         end
@@ -760,11 +824,7 @@ local function Auto_Config()
 end
 
 Auto_Config()
-for i,v in pairs(Settings) do
-    print(i,v)
-end 
-setclipboard(HttpService:JSONEncode(Settings))
-warn("Hello")
+
 
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
@@ -775,6 +835,9 @@ end
 task.spawn(function()
     task.wait(10)
     if game.PlaceId == 16146832113 then
+        if Settings["Party Mode"] then
+            return false
+        end 
         local ChallengesData = require(game:GetService('ReplicatedStorage').Modules.Data.Challenges.ChallengesData)
         local TraitChallenge = {}
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent.OnClientEvent:Connect(function(type_,value_)
@@ -787,7 +850,7 @@ task.spawn(function()
             end 
         end)
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent:FireServer('ChallengeData')
-        if Settings["Party Mode"]  then
+        if Settings["Party Mode"] then
             print("Im here 2")
             if not Settings["Party Member"]  then
                 print("Im here 3")
@@ -830,13 +893,11 @@ task.spawn(function()
                     if index == "AddMatch" and tostring(value["Host"]) == plr.Name then
                         Type = false
                         UUID = value["GUID"]
-                        print(value)
                     end
                 end)
                 task.spawn(function()
                     while task.wait() do
                         if UUID then
-                            print(UUID)
                             for i,v in pairs(Settings["Party Member"]) do
                                 local response = request({
                                     ["Url"] = "https://api.championshop.date/party-aa",
@@ -871,7 +932,6 @@ task.spawn(function()
                 return Items
             end
             function AllPlayerInGame()
-                print(Settings["Party Member"])
                 for i,v in pairs(Settings["Party Member"]) do
                     if not game:GetService("Players"):FindFirstChild(v) then
                         return false
@@ -938,7 +998,6 @@ task.spawn(function()
                                 [1] = i,
                                 [2] = v["ExtraData"]["Tier"]
                             }
-                            
                         end
                     end
                     table.sort(AllPortal, function(a, b)
