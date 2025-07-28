@@ -782,39 +782,44 @@ if game.PlaceId == local_data[2] then
              print("No Party")
             local IsContinue = false
             all_kai = Get(Api .. MainSettings["Path_Kai"] .. "/search?product_id=" .. myproduct)
-            body_kai = HttpService:JSONDecode(all_kai['Body'])
-            for i,v in pairs(body_kai['data']) do
-                local counting = 0
-                local Cache_ = GetCache(All_Key[IsGame] .. "-" .. v["username"])
+            if all_kai['Success'] then
+                body_kai = HttpService:JSONDecode(all_kai['Body'])
+                 print(body_kai)
+                for i,v in pairs(body_kai['data']) do
+                    print(i,v)
+                    local counting = 0
+                    local Cache_ = GetCache(All_Key[IsGame] .. "-" .. v["username"])
 
-                if not Cache_["Success"] then
-                    Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = {
-                        [Username] = true,
-                    }})
-                    Post(Api .. MainSettings["Path_Cache"],{["index"] = order_id .. "_party"},{["value"] = {
-                        ["join"] = All_Key[IsGame] .. "-" ..  v["username"],
-                    }})
-                    IsContinue = true
-                    break;
-                else
-                    local Cache = HttpService:JSONDecode(Cache_["Body"]) 
-                    local NewTable = table.clone(Cache['data'])
-                    for i,v in pairs(Cache['data']) do
-                        counting = counting + 1
-                    end
-                    if counting < 4 then
-                        NewTable[Username] = true
-                        Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = NewTable})
+                    if not Cache_["Success"] then
+                        Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = {
+                            [Username] = true,
+                        }})
                         Post(Api .. MainSettings["Path_Cache"],{["index"] = order_id .. "_party"},{["value"] = {
                             ["join"] = All_Key[IsGame] .. "-" ..  v["username"],
                         }})
                         IsContinue = true
                         break;
                     else
-                        continue;
+                        local Cache = HttpService:JSONDecode(Cache_["Body"]) 
+                        local NewTable = table.clone(Cache['data'])
+                        for i,v in pairs(Cache['data']) do
+                            counting = counting + 1
+                        end
+                        if counting < 4 then
+                            NewTable[Username] = true
+                            Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = NewTable})
+                            Post(Api .. MainSettings["Path_Cache"],{["index"] = order_id .. "_party"},{["value"] = {
+                                ["join"] = All_Key[IsGame] .. "-" ..  v["username"],
+                            }})
+                            IsContinue = true
+                            break;
+                        else
+                            continue;
+                        end
                     end
                 end
             end
+           
             if IsContinue then
                 break;
             end 
