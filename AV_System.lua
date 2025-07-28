@@ -770,7 +770,7 @@ local function Auto_Config()
                 end
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
+            -- print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
                 local AlreadyFarm = Data["Gems"] - OldData["Gems"]
                 if AlreadyFarm > Goal then
