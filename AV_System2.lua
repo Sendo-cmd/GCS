@@ -59,8 +59,9 @@ local function Get(Api)
     return Data
 end
 local function Fetch_data()
-    local Data = Get(Api .. "/api/v1/shop/orders/" .. plr.Name)
+    local Data = Get(Api .. "/api/v1/shop/orders/" .. Username)
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
+    print(Order_Data,Order_Data[1])
     return Order_Data[1]
 end
 local function CreateBody(...)
