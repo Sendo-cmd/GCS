@@ -782,9 +782,10 @@ if game.PlaceId == local_data[2] then
              print("No Party")
             local IsContinue = false
             all_kai = Get(Api .. MainSettings["Path_Kai"] .. "/search?product_id=" .. myproduct)
+             print("User",all_kai,myproduct)
             if all_kai['Success'] then
                 body_kai = HttpService:JSONDecode(all_kai['Body'])
-                 print(body_kai)
+                
                 for i,v in pairs(body_kai['data']) do
                     print(i,v)
                     local counting = 0
