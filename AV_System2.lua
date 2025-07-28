@@ -746,7 +746,8 @@ end
 if game.PlaceId == local_data[2] then
     if IsKai then
         task.spawn(function()
-            while task.wait(10) do
+            local Looping = true
+            while Looping do
                 pcall(function()
                     local get_my_order = GetCache(All_Key[IsGame] .. "-" .. plr.Name)
                     local order_body = HttpService:JSONDecode(get_my_order["Body"])
@@ -757,13 +758,14 @@ if game.PlaceId == local_data[2] then
                     end
                     if get_my_order['Success'] and counting > 1 then
                         Register_Room(get_my_product["product_id"],order_body["data"])
-                        break;
+                        Looping = false
                     end
                 end)
+                task.wait(10)
             end
         end) 
     else
-        local data = Fetch_data()
+        local data = Fetch_data() if not data["want_carry"] then return false end
         local myproduct = data["product_id"]
         local order_id = data["id"]
         local all_kai = Get(Api .. MainSettings["Path_Kai"] .. "/search?product_id=" .. myproduct)
@@ -795,7 +797,7 @@ if game.PlaceId == local_data[2] then
                     local Cache = HttpService:JSONDecode(Cache_["Body"]) 
                     local NewTable = table.clone(Cache['data'])
                     for i,v in pairs(Cache['data']) do
-                        counting += 1
+                        counting = counting + 1
                     end
                     if counting < 4 then
                         NewTable[Username] = true
