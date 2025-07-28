@@ -14,7 +14,7 @@ repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
-local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
+local Api = "" -- ใส่ API ตรงนี้
 local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
 local IsGame = local_data[1]
 local MainSettings = {
@@ -733,7 +733,7 @@ local function Register_Room(myproduct,player)
     end
 end
 -- Check Am I Kai
-local GetKai = Get(Api .. MainSettings["Path_Kai"])["data"]
+local GetKai = Get(Api .. MainSettings["Path_Kai"])
 local IsKai = false
 if GetKai['Success'] then
     local Body = HttpService:JSONDecode(GetKai['Body'])
