@@ -26,7 +26,7 @@ getgenv().Config = {
 	},
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Crystal Chapel",
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Act"] = "Act3"
 	},
 	["Odyssey Joiner"] = {
