@@ -754,7 +754,7 @@ if game.PlaceId == local_data[2] then
         task.spawn(function()
             local Looping = true
             while Looping do
-                pcall(function()
+                --pcall(function()
                     local get_my_order = GetCache(All_Key[IsGame] .. "-" .. Username)
                     local order_body = HttpService:JSONDecode(get_my_order["Body"])
                     local get_my_product = HttpService:JSONDecode(GetKai['Body'])
@@ -773,7 +773,7 @@ if game.PlaceId == local_data[2] then
                     else
                         print("No Party Host")
                     end
-                end)
+                --end)
                 task.wait(10)
             end
         end) 
