@@ -2757,7 +2757,7 @@ Accounts = {
     },
     ["LSZLOL"] = {
         "Marco",
-        "Tzk",
+        "Tdw",
     },
     ["Sirichot123za"] = {
         "Marco",
