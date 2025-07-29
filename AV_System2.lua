@@ -125,7 +125,7 @@ local function Join(get_type,get_data)
 end 
 local function GetPartyMember(data)
     local insert = {}
-    for i,v in pairs(data["Body"]) do
+    for i,v in pairs(data) do
         table.insert(insert,i)
     end
     return insert
