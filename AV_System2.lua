@@ -509,6 +509,7 @@ local function Register_Room(myproduct,player)
         }
         if Changes[myproduct] then
             Changes[myproduct]()
+            print("Configs has Changed ")
         end 
         local Inventory = {}
         game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
@@ -765,7 +766,7 @@ if game.PlaceId == local_data[2] then
                         end
                         if counting > 1 then
                              Register_Room(get_my_product["product_id"],order_body["data"])
-                        Looping = false
+                            Looping = false
                         end
                        
                     else
@@ -796,13 +797,12 @@ if game.PlaceId == local_data[2] then
                 body_kai = HttpService:JSONDecode(all_kai['Body'])
                 
                 for i,v in pairs(body_kai['data']) do
-                    warn(i,v)
                     local counting = 0
                     local Cache_ = GetCache(All_Key[IsGame] .. "-" .. v["username"])
 
                     if not Cache_["Success"] then
                         Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = {
-                            [Username] = true,
+                            [Username] = order_id,
                         }})
                         Post(Api .. MainSettings["Path_Cache"],{["index"] = order_id .. "_party"},{["value"] = {
                             ["join"] = All_Key[IsGame] .. "-" ..  v["username"],
@@ -816,7 +816,7 @@ if game.PlaceId == local_data[2] then
                             counting = counting + 1
                         end
                         if counting < 4 then
-                            NewTable[Username] = true
+                            NewTable[Username] = order_id
                             Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = NewTable})
                             Post(Api .. MainSettings["Path_Cache"],{["index"] = order_id .. "_party"},{["value"] = {
                                 ["join"] = All_Key[IsGame] .. "-" ..  v["username"],
