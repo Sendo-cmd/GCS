@@ -140,6 +140,7 @@ local function AllPlayerInGame(data)
 end
 local function Register_Room(myproduct,player)
     if IsGame == "AV" then
+        print(myproduct)
         local player_ = GetPartyMember(player)
         local player = player_
         local Networking = ReplicatedStorage:WaitForChild("Networking")
@@ -611,7 +612,6 @@ local function Register_Room(myproduct,player)
             local function PortalSettings(tabl)
                 local AllPortal = {}
                 for i,v in pairs(tabl) do
-                    
                     if not table.find(Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"])) and Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
                         AllPortal[#AllPortal + 1] = {
                             [1] = i,
@@ -619,23 +619,27 @@ local function Register_Room(myproduct,player)
                         }
                     end
                 end
-                table.sort(AllPortal, function(a, b)
-                    return a[2] > b[2]
-                end)
-                return AllPortal[1][1] or false
+                if AllPortal[1] then
+                    table.sort(AllPortal, function(a, b)
+                        return a[2] > b[2]
+                    end)
+                end
+                return AllPortal[1] and AllPortal[1][1] or false
             end
             while true do
                 if AllPlayerInGame(player) then
                     Next_(WaitTime)
-                    if AllPlayerInGame(player) then 
-                        local Portal = PortalSettings(GetItem(Settings_["ID"]))
-                        if Portal then
-                            local args = {
-                                [1] = "ActivatePortal",
-                                [2] = Portal
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                    if AllPlayerInGame(player) then
+                        for i = 1,10 do task.wait(.2) 
+                            local Portal = PortalSettings(GetItem(Settings_["ID"]))
+                            if Portal then
+                                local args = {
+                                    [1] = "ActivatePortal",
+                                    [2] = Portal
+                                }
+                                
+                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                            end
                         end
                     end
                 end
