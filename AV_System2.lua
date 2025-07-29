@@ -783,11 +783,13 @@ if game.PlaceId == local_data[2] then
         local function is_in_party()
             return GetCache(order_id .. "_party")['Success']
         end
+        print(is_in_party(),order_id .. "_party")
         while not is_in_party() do
              print("No Party")
             local IsContinue = false
             all_kai = Get(Api .. MainSettings["Path_Kai"] .. "/search?product_id=" .. myproduct)
              print("User",all_kai,all_kai['Success'],myproduct)
+
             if all_kai['Success'] then
                 body_kai = HttpService:JSONDecode(all_kai['Body'])
                 
