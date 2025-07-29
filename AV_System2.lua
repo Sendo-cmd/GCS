@@ -733,6 +733,7 @@ local function Register_Room(myproduct,player)
         end
     end
 end
+
 -- Check Am I Kai
 local GetKai = Get(Api .. MainSettings["Path_Kai"])
 local IsKai = false
@@ -751,16 +752,20 @@ if game.PlaceId == local_data[2] then
             local Looping = true
             while Looping do
                 pcall(function()
-                    local get_my_order = GetCache(All_Key[IsGame] .. "-" .. plr.Name)
+                    local get_my_order = GetCache(All_Key[IsGame] .. "-" .. Username)
                     local order_body = HttpService:JSONDecode(get_my_order["Body"])
                     local get_my_product = HttpService:JSONDecode(GetKai['Body'])
-                    local counting = 0
-                    for i,v in pairs(order_body["data"]) do
-                        counting = counting + 1
-                    end
-                    if get_my_order['Success'] and counting > 1 then
-                        Register_Room(get_my_product["product_id"],order_body["data"])
+                    
+                    if get_my_order['Success'] then
+                        local counting = 0
+                        for i,v in pairs(order_body["data"]) do
+                            counting = counting + 1
+                        end
+                        if counting > 1 then
+                             Register_Room(get_my_product["product_id"],order_body["data"])
                         Looping = false
+                        end
+                       
                     else
                         print("No Party Host")
                     end
@@ -826,11 +831,13 @@ if game.PlaceId == local_data[2] then
             end 
             task.wait(10)
         end
+        print("Im in the party")
         task.wait(3)
         task.spawn(function()
             while task.wait(5) do
                 pcall(function()
                     local get_my_room = GetCache(game.Players.LocalPlayer.Name)
+                     print(get_my_room["Success"])
                     if get_my_room["Success"] then
                         local val = HttpService:JSONDecode(get_my_room["Body"])["data"]
                         if tonumber(val["os"]) >= os.time() then
