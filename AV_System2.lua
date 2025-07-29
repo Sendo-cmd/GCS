@@ -765,7 +765,7 @@ if game.PlaceId == local_data[2] then
                             counting = counting + 1
                         end
                         print(counting)
-                        if counting > 1 then
+                        if counting >= 1 then
                             Register_Room(get_my_product["product_id"],order_body["data"])
                             Looping = false
                             print("Breaking Loop!!!!!!!!!!!!!!!!!")
