@@ -764,6 +764,7 @@ if game.PlaceId == local_data[2] then
                         for i,v in pairs(order_body["data"]) do
                             counting = counting + 1
                         end
+                        print(counting)
                         if counting > 1 then
                              Register_Room(get_my_product["product_id"],order_body["data"])
                             Looping = false
