@@ -766,10 +766,10 @@ if game.PlaceId == local_data[2] then
                         end
                         print(counting)
                         if counting > 1 then
-                             Register_Room(get_my_product["product_id"],order_body["data"])
+                            Register_Room(get_my_product["product_id"],order_body["data"])
                             Looping = false
+                            print("Breaking Loop!!!!!!!!!!!!!!!!!")
                         end
-                       
                     else
                         print("No Party Host")
                     end
