@@ -84,7 +84,9 @@ local function Post(Url,...)
         },
         ["Body"] = HttpService:JSONEncode(CreateBody(...))
     })
-   
+    for i,v in pairs(response) do
+        print(i,v)
+    end
     return response
 end
 local function GetCache(Id)
