@@ -567,8 +567,8 @@ Accounts = {
         "Dungeon",
     },
     ["supakitdunk"] = {
-        "Log",
-        "LovePortal",
+        "Marco",
+        "Inf",
     },
     ["hdkjsksp"] = {
         "Log",
@@ -2632,7 +2632,7 @@ Accounts = {
     },
     ["milk216785"] = { 
         "Marco",
-        "Tzk",
+        "ChallengeEx",
     },
     ["CEO11504"] = { 
         "Marco",
@@ -2740,7 +2740,7 @@ Accounts = {
     },
     ["ZeGalaxy808"] = { 
         "Marco",
-        "Tdw",
+        "Inf",
     },
     ["Kmkxbetfmviqs"] = {
         "Log",
