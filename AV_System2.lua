@@ -1,5 +1,5 @@
 local All_Key = {
-    ["AV"] = "Party-AV",
+    ["AV"] = "Party-AV-1",
     ["AA"] = "Party-AA",
     ["ASTD X"] = "Party-ASTDX"
 }
@@ -84,9 +84,17 @@ local function Post(Url,...)
         },
         ["Body"] = HttpService:JSONEncode(CreateBody(...))
     })
-    for i,v in pairs(response) do
-        print(i,v)
-    end
+    return response
+end
+local function Delete(Url,...)
+    local response = request({
+        ["Url"] = Url,
+        ["Method"] = "DELETE",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+    })
     return response
 end
 local function GetCache(Id)
@@ -765,12 +773,16 @@ if game.PlaceId == local_data[2] then
                     print(All_Key[IsGame] .. "-" .. Username,Username,get_my_order['Success'])
                     if get_my_order['Success'] then
                         local counting = 0
+                        local myproducttofarm = nil
                         for i,v in pairs(order_body["data"]) do
                             counting = counting + 1
+                            if v[2] then
+                                myproducttofarm = v[2]
+                            end 
                         end
                         print(counting)
-                        if counting >= 1 then
-                            Register_Room(get_my_product["product_id"],order_body["data"])
+                        if counting >= 1 and myproducttofarm then
+                            Register_Room(get_my_product["data"]["product_id"],order_body["data"])
                             Looping = false
                             print("Breaking Loop!!!!!!!!!!!!!!!!!")
                         end
@@ -788,8 +800,18 @@ if game.PlaceId == local_data[2] then
         local order_id = data["id"]
         local all_kai = Get(Api .. MainSettings["Path_Kai"] .. "/search?product_id=" .. myproduct)
         local body_kai = HttpService:JSONDecode(all_kai['Body'])
+
         local function is_in_party()
             return GetCache(order_id .. "_party")['Success']
+        end
+        if is_in_party() then
+            local Cache_1 = HttpService:JSONDecode(GetCache(order_id .. "_party")['Body'])
+            local splitOwner = Cache_1["data"]["join"]:split("-")
+            local OwnerName = splitOwner[#splitOwner]
+            if Get(Api .. MainSettings["Path_Kai"] .. "/search?username=" .. OwnerName) then
+                Delete(Api .. MainSettings["Path_Cache"] .. "/" .. order_id .. "_party")
+                Delete(Api .. MainSettings["Path_Cache"] .. "/" .. Cache_1["data"]["join"])
+            end
         end
         print(is_in_party(),order_id .. "_party")
         while not is_in_party() do
@@ -807,7 +829,7 @@ if game.PlaceId == local_data[2] then
 
                     if not Cache_["Success"] then
                         Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = {
-                            [Username] = order_id,
+                            [Username] = {[1] = order_id,[2] = myproduct},
                         }})
                         Post(Api .. MainSettings["Path_Cache"],{["index"] = order_id .. "_party"},{["value"] = {
                             ["join"] = All_Key[IsGame] .. "-" ..  v["username"],
@@ -821,7 +843,7 @@ if game.PlaceId == local_data[2] then
                             counting = counting + 1
                         end
                         if counting < 4 then
-                            NewTable[Username] = order_id
+                            NewTable[Username] = {[1] = order_id}
                             Post(Api .. MainSettings["Path_Cache"],{["index"] = All_Key[IsGame] .. "-" ..  v["username"]},{["value"] = NewTable})
                             Post(Api .. MainSettings["Path_Cache"],{["index"] = order_id .. "_party"},{["value"] = {
                                 ["join"] = All_Key[IsGame] .. "-" ..  v["username"],
