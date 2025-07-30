@@ -574,12 +574,12 @@ local function Register_Room(myproduct,player)
             return StagesData["Story"][arg]["StageData"]["Name"]
         end
         Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
-            if index == "Replicate" and tostring(value["Owner"]) == plr.Name then
+            if index == "Replicate" and tostring(value["Owner"]) == Username then
                 SendUUID(player,"Portal",value["GUID"])
             end
         end)
         Networking.MatchReplicationEvent.OnClientEvent:Connect(function(index,value)
-            if index == "AddMatch" and tostring(value["Host"]) == plr.Name then
+            if index == "AddMatch" and tostring(value["Host"]) == Username then
                 SendUUID(player,"Normal",value["GUID"])
             end
         end)
