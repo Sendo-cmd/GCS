@@ -102,7 +102,7 @@ local function GetCache(Id)
 end
 local function SendUUID(player,get_type,data)
     for i,v in pairs(player) do
-        Post(Api .. MainSettings["Path_Cache"] .. "/" .. v,{["index"] = v},{["value"] = {
+        Post(Api .. MainSettings["Path_Cache"],{["index"] = v},{["value"] = {
             ["type"] = get_type,
             ["data"] = data,
             ["os"] = os.time() + 120
