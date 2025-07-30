@@ -123,51 +123,79 @@ local Utilities = Modules:WaitForChild("Utilities")
 
 local Shared = Modules:WaitForChild("Shared")
 
-local MultiplierHandler = require(Shared.MultiplierHandler)
-
-local NumberUtils = require(Utilities.NumberUtils)
 local TableUtils = require(Utilities.TableUtils)
 
+local function GetData()
+    local SkinTable = {}
+    local FamiliarTable = {}
+    local Inventory = {}
+    local EquippedUnits = {}
+    local Units = {}
+    local Battlepass = 0
+    local Val_1,Val_2,Val_3 = false,false,false
 
-if IsMain then
-   
-elseif IsMatch then
-    local UnitsHUD = require(game:GetService("StarterPlayer").Modules.Interface.Loader.HUD.Units)
-    local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
-    local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
+    if game.PlaceId == 16146832113 then
+        local ItemsData = require(Modules.Data.ItemsData)
+        local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
+        local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
+        
+        for i,v in pairs(UnitWindowHandler.EquippedUnits) do
+            if i == "None" then continue end
 
-    Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-        local ConvertResult = {}
-        local StageInfo = {}
-        local SkinTable = {}
-        local FamiliarTable = {}
-        local Inventory = {}
-        local EquippedUnits = {}
-        local Units = {}
+            EquippedUnits[i] = TableUtils.DeepCopy(UnitWindowHandler._Cache[i])
+            EquippedUnits[i].Name = EquippedUnits[i].UnitData.Name
 
-        for i,v in pairs(UnitsHUD._Cache) do
-            if not v.UnitData then continue end
-
-            if not Units[v.UnitData.Rarity] then Units[v.UnitData.Rarity] = {} end
-
-            Units[v.UnitData.Rarity][i] = TableUtils.DeepCopy(v)
-            Units[v.UnitData.Rarity][i].Name = Units[v.UnitData.Rarity][i].UnitData.Name
-
-            Units[v.UnitData.Rarity][i].UnitData = nil
+            EquippedUnits[i].UnitData = nil
         end
-    
+
+        for i,v in pairs(UnitWindowHandler._Cache) do
+            if not v.UnitData then continue end
+            Units[i] = v.UnitData.Name
+        end
+        game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(val)
+            Inventory = {}
+            for i,v in pairs(val) do
+                if v then 
+                    local call,err = pcall(function()
+                        Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                        Inventory[i]["ID"] = v["ID"]
+                        Inventory[i]["AMOUNT"] = v["Amount"]
+                    end) 
+                end
+            end
+            Val_1 = true
+            print("Inventory Updated",os.time())
+        end)
+        game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
+            FamiliarTable = val
+            Val_2 = true
+        end)
+        game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
+            SkinTable = val
+            Val_3 = true
+        end)
+        Battlepass =  BattlepassHandler:GetPlayerData()
+    else
+        local UnitsHUD = require(game:GetService("StarterPlayer").Modules.Interface.Loader.HUD.Units)
+        local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
+        local UnitWindowHandler = require(game:GetService('StarterPlayer').Modules.Interface.Loader.Windows.UnitWindowHandler)
+        for i, v in pairs(UnitWindowHandler["_Cache"]) do
+            if not v.UnitData then continue end
+            Units[i] = v.UnitData.Name
+        end
         for i,v in pairs(UnitsHUD._Cache) do
             if v == "None" then continue end
             EquippedUnits[v.UniqueIdentifier] = TableUtils.DeepCopy(v)
 
             EquippedUnits[v.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v.Identifier).Name
         end
-
+        local Inventory = {}
         game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
             Inventory = {}
             for i,v in pairs(val1) do
+                print(os.time(),i,v)
                 if v then 
-                    pcall(function()
+                    local call,err = pcall(function()
                         Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
                         Inventory[i]["ID"] = v["ID"]
                         Inventory[i]["AMOUNT"] = v["Amount"]
@@ -184,7 +212,58 @@ elseif IsMatch then
             SkinTable = val
             print("Skin Updated",os.time())
         end)
+
+    end
+    local PlayerData = plr:GetAttributes()
+    
+
+    repeat 
+        -- print("Stucking")
+        if game.PlaceId == 16146832113 then
+            game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer()
+            game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+            game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+        else
+            game:GetService("ReplicatedStorage").Networking.InventoryEvent:FireServer()
+            game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent:FireServer()
+            game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
+        end
+        
+        print(Val_3 , Val_2 , Val_1)
+        task.wait(1) 
+    until Val_3 and Val_2 and Val_1
+
+    return {
+        ["Units"] = Units,
+        ["Skins"] = SkinTable,
+        ["Familiars"] = FamiliarTable,
+        ["Inventory"] = Inventory,
+        ["Username"] = plr.Name,
+        ["Battlepass"] = Battlepass,
+        ["PlayerData"] = PlayerData,
+        ["EquippedUnits"] = EquippedUnits,
+    }
+end
+if IsMain then
+    local Data = GetData()
+    SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
+elseif IsMatch then
+    local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
+    local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
+    Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+        local ConvertResult = {}
+        local StageInfo = {}
         local Times = 0
+        local Data = GetData()
+        local BattlePassXp = 0
+        local BPPlay = BattlepassText.Play
+        BattlepassText.Play = function(self, data)
+            BattlePassXp += data[1]
+            return BPPlay(self, data)
+        end
+        if BattlePassXp > 0 and Results.Rewards then
+            Results.Rewards["Pass Xp"] = { ["Amount"] = BattlePassXp }
+        end
         for i,v in pairs(Results["Rewards"]) do
             if v["Amount"] then
                 ConvertResult[#ConvertResult + 1] = convertToField(i,v["Amount"])
@@ -202,7 +281,7 @@ elseif IsMatch then
             StageInfo["win"] = false
         end
         if not StageInfo["map"] then
-            local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
+           
             local GameData = GameHandler.GameData
         
             StageInfo["map"] = {
@@ -218,7 +297,7 @@ elseif IsMatch then
         end
         print("SendTo")
         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
-        SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = FamiliarTable,["Skin"] = SkinTable,["Inventory"] = Inventory,["EquippedUnits"] = EquippedUnits,["Units"] = Units}})
+        SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
     end)
 end
 
