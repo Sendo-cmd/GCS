@@ -868,7 +868,7 @@ if game.PlaceId == local_data[2] then
         task.wait(3)
         task.spawn(function()
             while task.wait(2) do
-                pcall(function()
+                --pcall(function()
                     local get_my_room = GetCache(Username)
                      print(get_my_room["Success"])
                     if get_my_room["Success"] then
@@ -878,7 +878,7 @@ if game.PlaceId == local_data[2] then
                             Join(val["type"],val["data"])
                         end
                     end
-                end)
+                --end)
             end
         end) 
     end 
