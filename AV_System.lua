@@ -602,10 +602,10 @@ local function Auto_Config()
             local Battlepass = 0
             local Val_1,Val_2,Val_3 = false,false,false
 
-            
+            local NumberUtils = require(Utilities.NumberUtils)
+            local TableUtils = require(Utilities.TableUtils)
             if game.PlaceId == 16146832113 then
-                local NumberUtils = require(Utilities.NumberUtils)
-                local TableUtils = require(Utilities.TableUtils)
+              
                 local ItemsData = require(Modules.Data.ItemsData)
                 local UnitWindowHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.UnitWindowHandler)
                 local BattlepassHandler = require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler)
@@ -657,7 +657,12 @@ local function Auto_Config()
                     if not v.UnitData then continue end
                     Units[i] = v.UnitData.Name
                 end
+                for i,v in pairs(UnitsHUD._Cache) do
+                    if v == "None" then continue end
+                    EquippedUnits[v.UniqueIdentifier] = TableUtils.DeepCopy(v)
 
+                    EquippedUnits[v.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v.Identifier).Name
+                end
                 local Inventory = {}
                 game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
                     Inventory = {}
@@ -710,12 +715,13 @@ local function Auto_Config()
                 ["Username"] = plr.Name,
                 ["Battlepass"] = Battlepass,
                 ["PlayerData"] = PlayerData,
+                ["EquippedUnits"] = EquippedUnits,
             }
         end
         -- Post_Data_FirstTime ส่วนนี้จะทำการเก็บ data มา 1 ครั้งก่อนเริ่ม ถ้าสมมุติจบงานแล้ว ยังเจออยู่อาจจะทำให้มีปัญหาได้
         -- ผมใส่เป็น cache เลยถ้ามันไม่เจอให้สร้าง
         if not Order["Success"] then
-            Post_(PathWay .. "/cache",{
+            Post_(PathWay .. "cache",{
                 ["index"] = Key,
                 ["value"] = GetData()
             })
