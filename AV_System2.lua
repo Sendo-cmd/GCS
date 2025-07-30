@@ -111,7 +111,7 @@ local function SendUUID(player,get_type,data)
 end
 local function Join(get_type,get_data)
     if IsGame == "AV" then
-        local data_ = get_data["uuid"]
+        local data_ = get_data
         local Networking = ReplicatedStorage:WaitForChild("Networking")
         if get_type == "Portal" then
             Networking:WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
@@ -867,12 +867,13 @@ if game.PlaceId == local_data[2] then
         print("Im in the party")
         task.wait(3)
         task.spawn(function()
-            while task.wait(5) do
+            while task.wait(2) do
                 pcall(function()
-                    local get_my_room = GetCache(game.Players.LocalPlayer.Name)
+                    local get_my_room = GetCache(Username)
                      print(get_my_room["Success"])
                     if get_my_room["Success"] then
                         local val = HttpService:JSONDecode(get_my_room["Body"])["data"]
+
                         if tonumber(val["os"]) >= os.time() then
                             Join(val["type"],val["data"])
                         end
