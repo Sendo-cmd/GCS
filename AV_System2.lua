@@ -764,8 +764,10 @@ if game.PlaceId == local_data[2] then
     if IsKai then
         print("Im Host")
         task.spawn(function()
+            print("Im Host 1")
             local Looping = true
             while Looping do
+                 print("Im Host 2")
                 --pcall(function()
                     local get_my_order = GetCache(All_Key[IsGame] .. "-" .. Username)
                     local order_body = HttpService:JSONDecode(get_my_order["Body"])
