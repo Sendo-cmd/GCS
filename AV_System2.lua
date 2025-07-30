@@ -782,9 +782,9 @@ if game.PlaceId == local_data[2] then
                                 myproducttofarm = v["2"]
                             end 
                         end
-                        print(counting)
+                        print(counting,myproducttofarm)
                         if counting >= 1 and myproducttofarm then
-                            Register_Room(get_my_product["data"]["product_id"],order_body["data"])
+                            Register_Room(myproducttofarm,order_body["data"])
                             Looping = false
                             print("Breaking Loop!!!!!!!!!!!!!!!!!")
                         end
