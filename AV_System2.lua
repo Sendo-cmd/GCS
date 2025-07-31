@@ -516,7 +516,7 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
-                Settings["Auto Join Challenge"] = true,
+                Settings["Auto Join Challenge"] = true
             }
             end,
         }
