@@ -491,7 +491,7 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
+    ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
         Settings["Auto Join Challenge"] = true,
     end,
 }
