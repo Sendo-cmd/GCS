@@ -1,3 +1,4 @@
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["Macros"] = {
 		["Macro Retry Limit"] = 0,

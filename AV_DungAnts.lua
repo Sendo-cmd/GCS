@@ -1,4 +1,4 @@
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.Chat, false)
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Dungeon Joiner"] = {
