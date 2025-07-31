@@ -492,8 +492,8 @@ local Changes = {
     }
     end,
     ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Select Mode"] = "Story"
+        Settings["Auto Join Challenge"] = true,
+        Settings["Select Mode"] = "Story",
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "infinite",
@@ -503,7 +503,7 @@ local Changes = {
     }
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
-        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Challenge"] = true,
         Settings["Select Mode"] = "Story",
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
@@ -514,10 +514,10 @@ local Changes = {
     }
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Select Mode"] = "Story"
+        Settings["Auto Join Challenge"] = true,
+        Settings["Select Mode"] = "Story",
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal"
+        ["Difficulty"] = "Normal",
         ["Act"] = "infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
@@ -527,7 +527,7 @@ local Changes = {
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true,
         Settings["Auto Join Bounty"] = true,
-        Settings["Select Mode"] = "Story"
+        Settings["Select Mode"] = "Story",
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "infinite",
@@ -539,7 +539,7 @@ local Changes = {
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
         Settings["Auto Join Challenge"] = true,
         Settings["Auto Join Bounty"] = true,
-        Settings["Select Mode"] = "Story"
+        Settings["Select Mode"] = "Story",
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "infinite",
@@ -551,7 +551,7 @@ local Changes = {
     ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
         Settings["Auto Join Challenge"] = true,
         Settings["Auto Join Bounty"] = true,
-        Settings["Select Mode"] = "Story"
+        Settings["Select Mode"] = "Story",
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "infinite",
