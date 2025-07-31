@@ -588,7 +588,7 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
-                Settings["Select Mode"] == "World Line"
+                Settings["Select Mode"] = "World Line"
             end,
         }
         if Changes[myproduct] then
