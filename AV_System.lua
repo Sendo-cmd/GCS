@@ -493,14 +493,6 @@ local Changes = {
     end,
     ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
         Settings["Auto Join Challenge"] = true,
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
 }
 if _G.User[plr.Name] then
