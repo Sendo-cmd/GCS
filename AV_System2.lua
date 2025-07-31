@@ -587,6 +587,9 @@ local function Register_Room(myproduct,player)
                 ["FriendsOnly"] = false
             }
             end,
+            ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
+                Settings["Select Mode"] == "World Line"
+            end,
         }
         if Changes[myproduct] then
             Changes[myproduct]()
