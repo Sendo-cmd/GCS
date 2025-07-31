@@ -517,7 +517,7 @@ local function Register_Room(myproduct,player)
             end,
             ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
                 Settings["Auto Join Challenge"] = true,
-                Settings["Select Mode"] = "Story"
+                Settings["Select Mode"] = "Story",
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
