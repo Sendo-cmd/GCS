@@ -292,6 +292,7 @@ local Changes = {
     }
     end,
     ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
+        Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
@@ -302,6 +303,7 @@ local Changes = {
     }
     end,
     ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
+        Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
@@ -312,6 +314,7 @@ local Changes = {
     }
     end,
     ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
+        Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
@@ -558,6 +561,10 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
+    }
+    end,
+    ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
+        Settings["Select Mode"] == "World Line"
     }
     end,
 }
