@@ -145,7 +145,7 @@ getgenv().Config = {
 				["4"] = 4,
 				["6"] = 6
 			},
-			["Upgrade Method"] = "Randomize",
+			["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 			["Enable"] = true,
 			["Upgrade Limit"] = {
 				["1"] = 0,
@@ -165,8 +165,8 @@ getgenv().Config = {
 		},
 		["Place Limit"] = {
 			["1"] = 0,
-			["3"] = 2,
-			["2"] = 2,
+			["3"] = 0,
+			["2"] = 0,
 			["5"] = -1,
 			["4"] = -1,
 			["6"] = -1
