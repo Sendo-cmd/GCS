@@ -516,7 +516,7 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
-            Settings["Auto Join Challenge"] = true,
+            Settings["Auto Join Challenge"] = true
             Settings["Select Mode"] = "Story"
             Settings["Story Settings"] = {
             ["Difficulty"] = "Normal",
@@ -527,7 +527,7 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
-                Settings["Auto Join Challenge"] = true,
+                Settings["Auto Join Challenge"] = true
                 Settings["Select Mode"] = "Story"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
@@ -538,7 +538,7 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
-                Settings["Auto Join Challenge"] = true,
+                Settings["Auto Join Challenge"] = true
                 Settings["Select Mode"] = "Story"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
