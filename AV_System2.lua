@@ -515,17 +515,6 @@ local function Register_Room(myproduct,player)
                 ["FriendsOnly"] = false
             }
             end,
-            ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
-                Settings["Select Mode"] = "Story",
-                Settings["Auto Join Challenge"] = true,
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
-            end,
         }
         if Changes[myproduct] then
             Changes[myproduct]()
