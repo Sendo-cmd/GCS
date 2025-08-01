@@ -2,11 +2,9 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
-local Url = "https://api.championshop.date"
+local Url = "https://e8ee770b1fef.ngrok-free.app"
 local List = {
-    "Gems",
-    "Gold",
-    "Flowers"
+    "Gems"
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -41,7 +39,7 @@ local function GetSomeCurrency()
     local Field = {}
     for i,v in pairs(plr:GetAttributes()) do
         if table.find(List,i) then
-            -- print(i,v)
+            print(i,v)
             Field[i] = v
         end
     end
@@ -164,7 +162,7 @@ local function GetData()
                 end
             end
             Val_1 = true
-           print("Inventory Updated",os.time())
+            print("Inventory Updated",os.time())
         end)
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
             FamiliarTable = val
@@ -193,7 +191,7 @@ local function GetData()
         game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
             Inventory = {}
             for i,v in pairs(val1) do
-               print(os.time(),i,v)
+                print(os.time(),i,v)
                 if v then 
                     local call,err = pcall(function()
                         Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
@@ -202,15 +200,15 @@ local function GetData()
                     end) 
                 end
             end
-          print("Inventory Updated",os.time())
+            print("Inventory Updated",os.time())
         end)
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
             FamiliarTable = val
-          print("Family Updated",os.time())
+            print("Family Updated",os.time())
         end)
         game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
             SkinTable = val
-           print("Skin Updated",os.time())
+            print("Skin Updated",os.time())
         end)
 
     end
