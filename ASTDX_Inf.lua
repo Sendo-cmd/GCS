@@ -15,7 +15,7 @@ getgenv().Config = {
 	},
 	["Claimer"] = {
 		["Auto Claim Daily Rewards"] = true,
-		["Auto Claim Tasks"] = true
+		["Auto Claim Tasks"] = false
 	},
 	["Challenge Joiner"] = {
 		["Modifier"] = {
