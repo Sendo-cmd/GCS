@@ -27,7 +27,7 @@ local IsTimeChamber = game.PlaceId == 18219125606
 local function convertToField(index,value)
     return {
         ["name"] = index,
-        ["value"] = value
+        ["value"] = value or 1
     }
 end
 local function convertToField_(table_)

@@ -1490,8 +1490,8 @@ Accounts = {
     },
     ["KOW7Po"] = {
         "Log",
+        "Eren",
         "System",
-        "CidP",
     },
     ["PranlovelyP"] = {
         "Log",
