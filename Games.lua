@@ -2708,7 +2708,7 @@ Accounts = {
     },
     ["hdjuxjxbduxb"] = { 
         "Marco",
-        "Tzk",
+        "ChallengeEx",
     },
     ["snowmaple125"] = { 
         "Marco",
@@ -2765,7 +2765,7 @@ Accounts = {
     },
     ["Sirichot123za"] = {
         "Marco",
-        "Inf",
+        "Tzk",
     },
     ["lszlol"] = {
         "Marco",
