@@ -1,33 +1,50 @@
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
-	["AutoSave"] = true,
-	["Joiner Cooldown"] = 0,
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["Joiner Team Equipper"] = {
-			["Joiner Team"] = {
-				["Raid Joiner"] = 0,
+	["Auto Join Equipper"] = {
+		["Team Equipper"] = {
+			["Auto Join Team"] = {
 				["Boss Event Joiner"] = 0,
 				["Spring Portal Joiner"] = 0,
-				["Dungeon Joiner"] = 0,
+				["Legend Stage Joiner"] = 0,
+				["Stage Joiner"] = 0,
 				["Odyssey Joiner"] = 0,
+				["Dungeon Joiner"] = 0,
 				["Weekly Challenge Joiner"] = 0,
 				["Worldline Joiner"] = 0,
-				["Stage Joiner"] = 0,
+				["Limitless Odyssey Joiner"] = 0,
 				["Regular Challenge Joiner"] = 0,
+				["Raid Joiner"] = 0,
 				["Boss Bounties Joiner"] = 0,
+				["Daily Challenge Joiner"] = 0,
+				["Rift Joiner"] = 0
+			}
+		}
+	},
+	["AutoSave"] = true,
+	["Macros"] = {
+		["Joiner Team Equipper"] = {
+			["Joiner Team"] = {
+				["Boss Event Joiner"] = 0,
+				["Raid Joiner"] = 0,
+				["Spring Portal Joiner"] = 0,
+				["Odyssey Joiner"] = 0,
+				["Dungeon Joiner"] = 0,
+				["Weekly Challenge Joiner"] = 0,
+				["Stage Joiner"] = 0,
+				["Boss Bounties Joiner"] = 0,
+				["Regular Challenge Joiner"] = 0,
+				["Worldline Joiner"] = 0,
 				["Legend Stage Joiner"] = 0,
 				["Daily Challenge Joiner"] = 0,
 				["Rift Joiner"] = 0
 			}
 		},
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	},
-	["Legend Stage Joiner"] = {
-		["Stage"] = "Crystal Chapel",
-		["Auto Join"] = false,
-		["Act"] = "Act3"
+	["Stat Reroller"] = {
+		["Stat Potential"] = 100
 	},
 	["Odyssey Joiner"] = {
 		["Second Team"] = 2,
@@ -35,12 +52,20 @@ getgenv().Config = {
 		["Cash Out Floor"] = 5,
 		["First Team"] = 1
 	},
-	["AutoExecute"] = true,
+	["Claimer"] = {
+		["Auto Claim Quest"] = true,
+		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Milestone"] = true,
+		["Auto Claim Achievement"] = true,
+		["Auto Claim Collection"] = true,
+		["Auto Claim Enemy Index"] = true,
+		["Auto Claim Collection Milestone"] = true
+	},
 	["Gameplay"] = {
-		["Auto Use Ability"] = true,
 		["Auto Restart"] = {
 			["Wave"] = 1
 		},
+		["Auto Use Ability"] = true,
 		["Double Dungeon"] = {
 			["Upgrade Amount"] = 0,
 			["Leave Extra Money"] = 5000
@@ -52,10 +77,6 @@ getgenv().Config = {
 			["Use All Talisman"] = {
 				["Wave"] = 1
 			}
-		},
-		["Shibuya Station"] = {
-			["Leave Extra Money"] = 5000,
-			["Upgrade Amount"] = 0
 		},
 		["Ruined City"] = {
 			["Use Mount to Travel"] = true
@@ -72,60 +93,15 @@ getgenv().Config = {
 		["Auto Sell Farm"] = {
 			["Enable"] = true,
 			["Wave"] = 15
+		},
+		["Shibuya Station"] = {
+			["Leave Extra Money"] = 5000,
+			["Upgrade Amount"] = 0
 		}
 	},
 	["Misc"] = {
 		["Redeem Code"] = true,
 		["Max Camera Zoom"] = 40
-	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Delete Entities"] = true
-	},
-	["Match Finished"] = {
-		["Replay Amount"] = 0,
-		["Auto Replay"] = true
-	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
-		}
-	},
-	["Claimer"] = {
-		["Auto Claim Quest"] = true,
-		["Auto Claim Milestone"] = true,
-		["Auto Claim Achievement"] = true,
-		["Auto Claim Daily Reward"] = true,
-		["Auto Claim Collection"] = true,
-		["Auto Claim Enemy Index"] = true,
-		["Auto Claim Collection Milestone"] = true
-	},
-	["Stat Reroller"] = {
-		["Stat Potential"] = 100
-	},
-	["Crafter"] = {
-		["Essence Stone"] = {
-			["Pink Essence Stone"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true
-		},
-		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 50,
-			["Blue Essence Stone"] = 50,
-			["Red Essence Stone"] = 50,
-			["Yellow Essence Stone"] = 50,
-			["Purple Essence Stone"] = 50
-		}
-	},
-	["Unit Feeder"] = {
-		["Feed Level"] = 60
-	},
-	["Failsafe"] = {
-		["Disable Auto Teleport AFK Chamber"] = true,
-		["Auto Rejoin"] = true
 	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = true,
@@ -187,7 +163,7 @@ getgenv().Config = {
 			["Blood-Red Chamber"] = 2,
 			["Outer Walls"] = 2,
 			["Sand Village"] = 2,
-			["Shibuya Aftermath"] = 2,
+			["Shining Castle"] = 2,
 			["Mountain Shrine (Natural)"] = 2,
 			["Kuinshi Palace"] = 2,
 			["Land of the Gods"] = 2,
@@ -205,13 +181,61 @@ getgenv().Config = {
 			["Crystal Chapel"] = 2,
 			["Underground Church"] = 2,
 			["Spider Forest"] = 2,
-			["Shining Castle"] = 2
+			["Shibuya Aftermath"] = 2
 		}
+	},
+	["Match Finished"] = {
+		["Replay Amount"] = 0,
+		["Auto Replay"] = true
+	},
+	["Crafter"] = {
+		["Essence Stone"] = {
+			["Pink Essence Stone"] = true,
+			["Blue Essence Stone"] = true,
+			["Red Essence Stone"] = true,
+			["Yellow Essence Stone"] = true,
+			["Purple Essence Stone"] = true
+		},
+		["Essence Stone Limit"] = {
+			["Pink Essence Stone"] = 50,
+			["Blue Essence Stone"] = 50,
+			["Red Essence Stone"] = 50,
+			["Yellow Essence Stone"] = 50,
+			["Purple Essence Stone"] = 50
+		}
+	},
+	["AutoExecute"] = true,
+	["Legend Stage Joiner"] = {
+		["Stage"] = "Crystal Chapel",
+		["Act"] = "Act3"
+	},
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["Enable"] = true,
+			["FPS"] = 3
+		}
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Delete Entities"] = true
+	},
+	["Limitless Odyssey Joiner"] = {
+		["Leave Floor"] = 1,
+		["Intensity"] = 25
+	},
+	["Failsafe"] = {
+		["Auto Rejoin"] = true,
+		["Disable Auto Teleport AFK Chamber"] = true
+	},
+	["Unit Feeder"] = {
+		["Feed Level"] = 60
 	},
 	["Secure"] = {
 		["Walk Around"] = true,
 		["Random Offset"] = true
 	},
+	["Joiner Cooldown"] = 0,
 	["Modifier"] = {
 		["Restart Modifier"] = {
 			["Modifier"] = {
@@ -219,63 +243,63 @@ getgenv().Config = {
 			}
 		},
 		["Auto Modifier"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
 				["Strong"] = 0,
 				["Thrice"] = 97,
 				["Warding off Evil"] = 0,
 				["Champions"] = 0,
 				["Fast"] = 0,
-				["Planning Ahead"] = 0,
+				["Revitalize"] = 100,
 				["Immunity"] = 0,
 				["Exploding"] = 98,
 				["Dodge"] = 0,
 				["Slayer"] = 0,
 				["Fisticuffs"] = 0,
-				["Revitalize"] = 100,
+				["Planning Ahead"] = 0,
 				["Harvest"] = 0,
 				["Quake"] = 0,
 				["Range"] = 0,
-				["Lifeline"] = 0,
 				["No Trait No Problem"] = 0,
-				["Regen"] = 0,
+				["Drowsy"] = 0,
 				["King's Burden"] = 0,
+				["Regen"] = 0,
 				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
 				["Cooldown"] = 0,
-				["Drowsy"] = 0,
+				["Lifeline"] = 0,
 				["Press It"] = 0,
 				["Precise Attack"] = 0,
 				["Shielded"] = 0,
 				["Uncommon Loot"] = 0,
 				["Money Surge"] = 0
 			},
+			["Enable"] = true,
 			["Amount"] = {
 				["Strong"] = 0,
 				["Thrice"] = 0,
 				["Warding off Evil"] = 0,
 				["Champions"] = 0,
 				["Fast"] = 0,
-				["Planning Ahead"] = 0,
+				["Revitalize"] = 0,
 				["Immunity"] = 0,
 				["Exploding"] = 0,
 				["Dodge"] = 0,
 				["Slayer"] = 0,
 				["Fisticuffs"] = 0,
-				["Revitalize"] = 0,
+				["Planning Ahead"] = 0,
 				["Harvest"] = 0,
 				["Quake"] = 0,
 				["Range"] = 0,
-				["Lifeline"] = 0,
 				["No Trait No Problem"] = 0,
-				["Regen"] = 0,
+				["Drowsy"] = 0,
 				["King's Burden"] = 0,
+				["Regen"] = 0,
 				["Exterminator"] = 0,
 				["Damage"] = 0,
 				["Common Loot"] = 0,
 				["Cooldown"] = 0,
-				["Drowsy"] = 0,
+				["Lifeline"] = 0,
 				["Press It"] = 0,
 				["Precise Attack"] = 0,
 				["Shielded"] = 0,
@@ -285,7 +309,7 @@ getgenv().Config = {
 		}
 	},
 	["Spring Portal Joiner"] = {
-		["Auto Next"] = true,
+		["Tier Cap"] = 10,
 		["Portal Reward Picker"] = {
 			["Prioritize"] = {
 				["Edge of Heaven"] = 1,
@@ -294,7 +318,7 @@ getgenv().Config = {
 			},
 			["Enable"] = true
 		},
-		["Tier Cap"] = 10
+		["Auto Next"] = true
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , k7d27caec454d21cbd95104d]
