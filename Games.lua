@@ -2525,7 +2525,7 @@ Accounts = {
     },
     ["Pikachu_011105"] = { 
         "Marco",
-        "Story",
+        "Inf",
     },
     ["NemoKung001"] = { 
         "Marco",
@@ -2649,7 +2649,7 @@ Accounts = {
     },
     ["FiRe012365"] = { 
         "Marco",
-        "Tdw",
+        "Tzk",
     },
     ["jiwzanis"] = { 
         "Marco",
