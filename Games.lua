@@ -1491,8 +1491,8 @@ Accounts = {
     ["KOW7Po"] = {
         "Log",
         "Eren",
-        -- "System",
-        -- "System2",
+        "System",
+        "System2",
     },
     ["PranlovelyP"] = {
         "Log",
@@ -1702,8 +1702,8 @@ Accounts = {
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
         "Eren",
-        -- "System",
-        -- "System2",
+        "System",
+        "System2",
     },
     ["HN0U173rfP9Rej"] = {
         "Log",
