@@ -295,7 +295,7 @@ elseif IsMatch then
                 StageInfo["map"]["name"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
             end)
         end
-        --print("SendTo")
+        print("SendTo")
         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
     end)
