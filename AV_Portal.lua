@@ -176,7 +176,8 @@ getgenv().Config = {
 	},
 	["Performance Failsafe"] = {
 		["Teleport Lobby FPS below"] = {
-			["FPS"] = 5
+			["Enable"] = true,
+			["FPS"] = 1
 		}
 	},
 	["Joiner Cooldown"] = 0,
