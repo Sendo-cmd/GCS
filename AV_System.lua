@@ -590,7 +590,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
-    print(Data["Body"])
+    --print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
@@ -742,7 +742,7 @@ local function Auto_Config()
                 game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
                     Inventory = {}
                     for i,v in pairs(val1) do
-                        print(os.time(),i,v)
+                        --print(os.time(),i,v)
                         if v then 
                             local call,err = pcall(function()
                                 Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
@@ -751,15 +751,15 @@ local function Auto_Config()
                             end) 
                         end
                     end
-                    print("Inventory Updated",os.time())
+                    --print("Inventory Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
                     FamiliarTable = val
-                    print("Family Updated",os.time())
+                    --print("Family Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
                     SkinTable = val
-                    print("Skin Updated",os.time())
+                    --print("Skin Updated",os.time())
                 end)
 
             end
@@ -778,7 +778,7 @@ local function Auto_Config()
                     game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
                 end
                
-                print(Val_3 , Val_2 , Val_1)
+                --print(Val_3 , Val_2 , Val_1)
                 task.wait(1) 
             until Val_3 and Val_2 and Val_1
 

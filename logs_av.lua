@@ -202,15 +202,15 @@ local function GetData()
                     end) 
                 end
             end
-            print("Inventory Updated",os.time())
+            --print("Inventory Updated",os.time())
         end)
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
             FamiliarTable = val
-            print("Family Updated",os.time())
+            --print("Family Updated",os.time())
         end)
         game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
             SkinTable = val
-            print("Skin Updated",os.time())
+            --print("Skin Updated",os.time())
         end)
 
     end
@@ -229,7 +229,7 @@ local function GetData()
             game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
         end
         
-        print(Val_3 , Val_2 , Val_1)
+        --print(Val_3 , Val_2 , Val_1)
         task.wait(1) 
     until Val_3 and Val_2 and Val_1
 
@@ -295,7 +295,7 @@ elseif IsMatch then
                 StageInfo["map"]["name"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
             end)
         end
-        print("SendTo")
+        --print("SendTo")
         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
     end)
