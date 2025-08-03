@@ -68,7 +68,7 @@ getgenv().Config = {
 	},
 	["Claimer"] = {
 		["Auto Claim Daily Rewards"] = true,
-		["Auto Claim Tasks"] = false
+		["Auto Claim Tasks"] = true
 	},
 	["Macros"] = {
 		["Macro"] = "Tzk",

@@ -184,7 +184,7 @@ getgenv().Config = {
 	},
 	["Claimer"] = {
 		["Auto Claim Daily Rewards"] = true,
-		["Auto Claim Tasks"] = false
+		["Auto Claim Tasks"] = true
 	},
 	["Gameplay"] = {
 		["Auto Card"] = {
