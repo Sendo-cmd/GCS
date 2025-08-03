@@ -93,7 +93,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "Eren",
+        "Portal",
         "System",
         "System2",
     },
