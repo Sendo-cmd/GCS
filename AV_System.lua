@@ -241,6 +241,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -565,18 +575,6 @@ local Changes = {
     end,
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
-    end,
-    ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
 }
 if _G.User[plr.Name] then
