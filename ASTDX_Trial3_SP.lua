@@ -129,7 +129,7 @@ getgenv().Config = {
 		["Arc"] = "Arc 2"
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
+		["Walk Around"] = false,
 		["Random Offset"] = true
 	},
 	["Challenge Joiner"] = {
