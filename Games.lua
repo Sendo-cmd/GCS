@@ -1701,7 +1701,7 @@ Accounts = {
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
-        "Eren",
+        "Dungeon",
         "System",
         "System2",
     },
@@ -2791,6 +2791,12 @@ Accounts = {
     ["OpheliaBTfK"] = {
         "Log",
         "Portal",
+        "System",
+        "System2",
+    },
+    ["vLyaUWqd5163"] = {
+        "Log",
+        "Dungeon",
         "System",
         "System2",
     },
