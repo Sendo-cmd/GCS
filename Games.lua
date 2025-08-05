@@ -2322,9 +2322,7 @@ Accounts = {
         "BaseGem",
     },
     ["itzmemepoq"] = {
-        "Log",
-        "System",
-        "Portal",
+        "ChallengeEx",
     },
     ["euakungchannel"] = {
         "Log",
