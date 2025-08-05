@@ -73,6 +73,7 @@ Games = {
         ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
         ["Tdw2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW2.lua",
         ["Tzk"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial2_Zk.lua",
+        ["Tsp"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial3_SP.lua",
         ["dg"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
 
     }
