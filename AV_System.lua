@@ -172,7 +172,7 @@ local Settings ={
         ["Stage"] = "RumblingEvent",
     },
     ["Portal Settings"] = {
-        ["ID"] = 113, -- 113 Love , 87 Winter
+        ["ID"] = 113, -- 113 Love , 87 Winter , 190 Spring , 215 Summer
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -211,6 +211,36 @@ local Changes = {
         ["Ignore Modify"] = {},
     }
     end,
+    ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
     ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {

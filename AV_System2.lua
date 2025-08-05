@@ -235,6 +235,36 @@ local function Register_Room(myproduct,player)
                 ["Ignore Modify"] = {},
             }
             end,
+            ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            -- [""] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
             ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
                 Settings["Select Mode"] = "Story"
                 Settings["Story Settings"] = {
@@ -256,6 +286,16 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
                 Settings["Select Mode"] = "Story"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
