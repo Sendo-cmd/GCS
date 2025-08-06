@@ -61,7 +61,7 @@ end
 local function Fetch_data()
     local Data = Get(Api .. "/api/v1/shop/orders/" .. Username)
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
-    --print(Order_Data,Order_Data[1])
+    print(Order_Data,Order_Data[1])
     return Order_Data[1]
 end
 local function CreateBody(...)
@@ -676,6 +676,7 @@ local function Register_Room(myproduct,player)
             return ""
         end
         local function IndexToDisplay(arg)
+            print(arg)
             return StagesData["Story"][arg]["StageData"]["Name"]
         end
         Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
