@@ -172,7 +172,7 @@ local Settings ={
         ["Stage"] = "RumblingEvent",
     },
     ["Portal Settings"] = {
-        ["ID"] = 113, -- 113 Love , 87 Winter
+        ["ID"] = 113, -- 113 Love , 87 Winter , 190 Spring , 215 Summer
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -880,11 +880,10 @@ local function Auto_Config()
                 for i,v in pairs(OrderData["match_history"]) do
                     if tostring(v["win"]) == "true" then
                         Win = Win + 1
-                        if v["time"] then
-                            Time = v["time"] + Time
-                        end
                     end
-                   
+                    if v["time"] then
+                        Time = v["time"] + Time
+                    end
                 end
 
                 return type_ == "win" and Win or Time
@@ -915,7 +914,8 @@ local function Auto_Config()
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "hour" then
-                if OrderData[""] then
+                local AlreadyFarm = MatchProdunct("time")
+                if AlreadyFarm > (tonumber(Goal) * 60) * 60 then
                    Post(PathWay .. "finished", CreateBody())
                    OutParty()
                 end
