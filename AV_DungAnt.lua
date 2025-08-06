@@ -224,7 +224,7 @@ getgenv().Config = {
 			["6"] = 0
 		},
 		["Enable"] = true,
-		["Upgrade Method"] = "Randomize",
+		["Upgrade Method"] = "Lowest Level (Spread Upgrade)",
 		["Prefer Position"] = {
 			["Planet Namak (Spring)"] = "Middle",
 			["Double Dungeon"] = "Middle",
