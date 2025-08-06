@@ -28,6 +28,42 @@ getgenv().Config = {
 		["Auto Open Story Loot"] = false
 	},
 	["Joiner Cooldown"] = 0,
+	["Macros"] = {
+		["Auto Equip"] = true,
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["Macro"] = "Tsp",
+		["Play"] = true,
+		["No Ignore Sell Timing"] = true
+	},
+	["Match Finished"] = {
+		["Auto Return Lobby"] = false,
+		["Auto Next"] = false,
+		["Return Lobby Failsafe"] = true,
+		["Auto Replay"] = true,
+		["Return Lobby Defeat Count"] = 10
+	},
+	["Webhook"] = {
+		["Match Finished"] = false
+	},
+	["Infinite Joiner"] = {
+		["Classic Mode"] = false,
+		["Max Void Bag Action"] = "Do nothing",
+		["Auto Join"] = false,
+		["Auto Open Void Bag"] = false
+	},
+	["Raid Joiner"] = {
+		["Find Team"] = false,
+		["Strategist Mode"] = false,
+		["Auto Join"] = false,
+		["Element"] = {
+			["Blue"] = true,
+			["Green"] = true,
+			["Red"] = true,
+			["Orange"] = true,
+			["Purple"] = true
+		}
+	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = {
 			["Upgrade Order"] = {
@@ -77,42 +113,6 @@ getgenv().Config = {
 			["6"] = 0
 		}
 	},
-	["Match Finished"] = {
-		["Auto Return Lobby"] = false,
-		["Auto Next"] = false,
-		["Return Lobby Failsafe"] = false,
-		["Auto Replay"] = true,
-		["Return Lobby Defeat Count"] = 0
-	},
-	["Webhook"] = {
-		["Match Finished"] = false
-	},
-	["Infinite Joiner"] = {
-		["Classic Mode"] = false,
-		["Max Void Bag Action"] = "Do nothing",
-		["Auto Join"] = false,
-		["Auto Open Void Bag"] = false
-	},
-	["Raid Joiner"] = {
-		["Find Team"] = false,
-		["Strategist Mode"] = false,
-		["Auto Join"] = false,
-		["Element"] = {
-			["Blue"] = true,
-			["Green"] = true,
-			["Red"] = true,
-			["Orange"] = true,
-			["Purple"] = true
-		}
-	},
-	["Macros"] = {
-		["Auto Equip"] = true,
-		["Macro"] = "Tsp",
-		["Ignore Macro Timing"] = true,
-		["Macro Retry Limit"] = 0,
-		["Play"] = true,
-		["No Ignore Sell Timing"] = true
-	},
 	["Failsafe"] = {
 		["Teleport Lobby if Player"] = false
 	},
@@ -151,24 +151,24 @@ getgenv().Config = {
 			["Ghost I (Rainbow)"] = 0,
 			["Skill Orb I (Blue)"] = 0,
 			["Skill Orb II (Green)"] = 0,
-			["Skill Orb II (Pure)"] = 0,
+			["Skill Orb II (Red)"] = 0,
 			["Ghost III (Rainbow)"] = 0,
 			["Skill Orb II (Blue)"] = 0,
 			["Skill Orb I (Red)"] = 0,
 			["Skill Orb I (Green)"] = 0,
 			["Stat Dice"] = 0,
 			["Skill Orb I (Orange)"] = 0,
-			["Skill Orb II (Red)"] = 0,
-			["Trait Burner"] = 0,
+			["Skill Orb II (Pure)"] = 0,
 			["Skill Orb I (Pure)"] = 0,
+			["Trait Burner"] = 0,
 			["Ghost II (Rainbow)"] = 0,
 			["Skill Orb II (Purple)"] = 0
 		},
 		["Stage"] = {
-			["Giant Island"] = true,
-			["Future City (Ruins)"] = true,
-			["City of Voldstandig"] = true,
 			["Innovation Island"] = true,
+			["City of Voldstandig"] = true,
+			["Future City (Ruins)"] = true,
+			["Giant Island"] = true,
 			["City of York"] = true,
 			["Hidden Storm Village"] = true
 		},
@@ -179,31 +179,21 @@ getgenv().Config = {
 			["Ghost I (Rainbow)"] = false,
 			["Skill Orb I (Blue)"] = false,
 			["Skill Orb II (Green)"] = false,
-			["Skill Orb II (Pure)"] = false,
+			["Skill Orb II (Red)"] = false,
 			["Ghost III (Rainbow)"] = false,
 			["Skill Orb II (Blue)"] = false,
 			["Skill Orb I (Red)"] = false,
 			["Skill Orb I (Green)"] = false,
 			["Stat Dice"] = false,
 			["Skill Orb I (Orange)"] = false,
-			["Skill Orb II (Red)"] = false,
-			["Trait Burner"] = false,
+			["Skill Orb II (Pure)"] = false,
 			["Skill Orb I (Pure)"] = false,
+			["Trait Burner"] = false,
 			["Ghost II (Rainbow)"] = false,
 			["Skill Orb II (Purple)"] = false
 		}
 	},
 	["Transform"] = {
-		["Auto Transform Ghost Egg"] = {
-			["Enable"] = false,
-			["Transform Color"] = {
-				["Blue"] = true,
-				["Green"] = true,
-				["Red"] = true,
-				["Orange"] = true,
-				["Purple"] = true
-			}
-		},
 		["Auto Transform Skill Orb Pure"] = {
 			["Enable"] = false,
 			["Transform Color"] = {
@@ -214,8 +204,18 @@ getgenv().Config = {
 				["Purple"] = true
 			}
 		},
+		["Auto Transform Ghost Rainbow"] = false,
 		["Auto Transform EXP"] = false,
-		["Auto Transform Ghost Rainbow"] = false
+		["Auto Transform Ghost Egg"] = {
+			["Enable"] = false,
+			["Transform Color"] = {
+				["Blue"] = true,
+				["Green"] = true,
+				["Red"] = true,
+				["Orange"] = true,
+				["Purple"] = true
+			}
+		}
 	},
 	["Claimer"] = {
 		["Auto Claim Daily Rewards"] = true,
@@ -223,26 +223,26 @@ getgenv().Config = {
 	},
 	["Gameplay"] = {
 		["Auto Card"] = {
-			["Enable"] = true,
 			["Prioritize"] = {
-				["Binding Vow of Vitality"] = 1,
+				["Thunder Step"] = 9,
 				["Tsuku & Yomii"] = 2,
 				["Arise"] = 3,
 				["Red Spirit"] = 8,
 				["Revert to Null"] = 4,
 				["Binding Vow of Haste"] = 6,
-				["Thunder Step"] = 9,
+				["Binding Vow of Vitality"] = 1,
 				["Binding Vow of Aegis"] = 7,
 				["Sixth Sense"] = 10
 			},
+			["Enable"] = true,
 			["Amount"] = {
-				["Binding Vow of Vitality"] = 0,
+				["Thunder Step"] = 0,
 				["Tsuku & Yomii"] = 0,
 				["Arise"] = 0,
 				["Red Spirit"] = 0,
 				["Revert to Null"] = 0,
 				["Binding Vow of Haste"] = 0,
-				["Thunder Step"] = 0,
+				["Binding Vow of Vitality"] = 0,
 				["Binding Vow of Aegis"] = 0,
 				["Sixth Sense"] = 0
 			}
