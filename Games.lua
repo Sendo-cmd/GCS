@@ -1323,8 +1323,9 @@ Accounts = {
     },
     ["CigramGamerTV"] = {
         "Log",
+        "Portal",
         "System",
-        "CidP",
+        "System2",
     },
     ["Levid098508"] = {
         "Log",
@@ -1713,8 +1714,9 @@ Accounts = {
     },
     ["GVU257sFK8en2v"] = {
         "Log",
-        "System",
         "Portal",
+        "System",
+        "System2",
     },
     ["Embesna5706"] = {
         "System",
