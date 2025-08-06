@@ -296,8 +296,8 @@ Accounts = {
         "YomomataG"
     },
     ["junjai007"] = {
-        "Log",
-        "Reroll",
+        "Marco",
+        "Tsp",
     },
     ["Lawbana"] = {
         "Log",
