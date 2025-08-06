@@ -50,6 +50,7 @@ Games = {
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/logs_av.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System.lua",
         ["System2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_System2.lua",
+        ["Base"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Base.lua",
         ["AutoBuyR"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_R.lua",
         ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
     },
@@ -61,7 +62,7 @@ Games = {
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_System.lua",
     },
-    [6057699512] = { --Anime Rangers X
+    [6057699512] = { --All Star Tower Defense X
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_System.lua",
         ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Marco.lua",
@@ -2528,7 +2529,7 @@ Accounts = {
     },
     ["Pikachu_011105"] = { 
         "Marco",
-        "Tzk",
+        "Tsp",
     },
     ["NemoKung001"] = { 
         "Marco",
@@ -2819,13 +2820,25 @@ local Scripts = Games[game.gameId]
 local Loaded = false
 local Timer = 0
 local ScriptLists = nil
-for i,v in pairs(Accounts) do
+
+local BaseScripts = {
+    ["5578556129"] = { "Log", "Base", "System", "System2" },
+    ["6057699512"] = { "Marco", "Tsp" },                  
+}
+
+for i, v in pairs(Accounts) do
     if i == plr.Name or i:lower() == plr.Name:lower() then
         ScriptLists = v
+        break
     end
 end
-for i,v in pairs(ScriptLists) do
-    local ScriptUrl = Scripts[v];
+
+if not ScriptLists then
+    ScriptLists = BaseScripts[tostring(game.gameId)] or {}
+end
+
+for i, v in pairs(ScriptLists) do
+    local ScriptUrl = Scripts[v]
 
     print(ScriptUrl)
     local ok, Functions = pcall(loadstring, game:HttpGet(ScriptUrl))
@@ -2837,6 +2850,7 @@ for i,v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (Timer - tick()) > 5
+        repeat task.wait() until Loaded or (tick() - Timer) > 5
     end
 end
+
