@@ -410,7 +410,9 @@ Accounts = {
     },
     ["narabadee004"] = {
         "Log",
-        "PortalParty",
+        "Worldline",
+        "System",
+        "System2",
     },
     ["CAVIARHUB"] = {
         "Log",
@@ -2790,6 +2792,10 @@ Accounts = {
         "ChallengeEx",
     },
     ["el8lg0p"] = {
+        "Marco",
+        "ChallengeEx",
+    },
+    ["roblox_user_2837532941"] = {
         "Marco",
         "ChallengeEx",
     },
