@@ -885,7 +885,7 @@ getgenv().Config = {
 		["Enable"] = false
 	},
 	["Worldline Joiner"] = {
-		["Auto Join"] = true
+		["Auto Join"] = false
 	},
 	["Regular Challenge Joiner"] = {
 		["Ignore Act"] = {
