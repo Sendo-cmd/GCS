@@ -2800,6 +2800,10 @@ Accounts = {
         "Marco",
         "ChallengeEx",
     },
+    ["TEIICJSID"] = {
+        "Marco",
+        "Story",
+    },
     ["OpheliaBTfK"] = {
         "Log",
         "Portal",
