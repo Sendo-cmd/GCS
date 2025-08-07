@@ -235,6 +235,16 @@ local function Register_Room(myproduct,player)
                 ["Ignore Modify"] = {},
             }
             end,
+            ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
             ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
                 Settings["Select Mode"] = "Portal"
                 Settings["Portal Settings"] = {
@@ -246,6 +256,16 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
                 Settings["Select Mode"] = "Portal"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
