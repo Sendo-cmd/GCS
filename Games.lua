@@ -516,8 +516,9 @@ Accounts = {
     },
     ["icemateenoobth"] = {
         "Log",
+        "Portal",
         "System",
-        "CidP",
+        "System2",
     },
     ["tanjiroxfire"] = {
         "Log",
@@ -2769,8 +2770,10 @@ Accounts = {
         "Tdw",
     },
     ["Sirichot123za"] = {
-        "Marco",
-        "ChallengeEx",
+        "Log",
+        "Portal",
+        "System",
+        "System2",
     },
     ["lszlol"] = {
         "Marco",
