@@ -935,8 +935,8 @@ local function Auto_Config()
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "hour" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                local AlreadyFarm = MatchProdunct("time")
+                if AlreadyFarm > (tonumber(Goal) * 60) * 60 then
                    Post(PathWay .. "finished", CreateBody())
                    OutParty()
                 end
