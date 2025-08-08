@@ -909,7 +909,7 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
+            -- print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
                 local AlreadyFarm = Data["Gems"] - OldData["Gems"]
                 if AlreadyFarm > Goal then
@@ -935,8 +935,8 @@ local function Auto_Config()
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "hour" then
-                local AlreadyFarm = MatchProdunct("time")
-                if AlreadyFarm > (tonumber(Goal) * 60) * 60 then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= Goal then
                    Post(PathWay .. "finished", CreateBody())
                    OutParty()
                 end
