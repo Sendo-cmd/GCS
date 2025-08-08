@@ -27,15 +27,6 @@ getgenv().Config = {
 	["Gold Buyer"] = {
 		["Enable"] = false
 	},
-	["Dungeon Joiner"] = {
-		["Auto Join"] = false
-	},
-	["Stage Joiner"] = {
-		["Auto Join"] = false,
-		["Nightmare Mode"] = false,
-		["Join Highest"] = false,
-		["Join Lowest Clear"] = false
-	},
 	["Macros"] = {
 		["No Ignore Sell Timing"] = true,
 		["Macro Retry Limit"] = 0,
@@ -71,26 +62,6 @@ getgenv().Config = {
 		["Stage Finished"] = false,
 		["Stat Potential Rerolled"] = false,
 		["Match Restarted"] = false
-	},
-	["Stat Reroller"] = {
-		["Stat Potential"] = 100,
-		["Teleport Lobby reach Stat Potential"] = false,
-		["Enable"] = false,
-		["Type"] = {
-			["Damage"] = false,
-			["All"] = false,
-			["Range"] = false,
-			["SPA"] = false
-		},
-		["Stat"] = {
-			["神"] = false,
-			["Z+"] = false,
-			["S"] = false,
-			["Z"] = false
-		}
-	},
-	["Trait Reroller"] = {
-		["Enable"] = false
 	},
 	["Odyssey Joiner"] = {
 		["Second Team"] = 2,
