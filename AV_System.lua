@@ -935,6 +935,7 @@ local function Auto_Config()
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "hour" then
+                print(tonumber(OrderData["progress_value"]) , Goal)
                 if tonumber(OrderData["progress_value"]) >= Goal then
                    Post(PathWay .. "finished", CreateBody())
                    OutParty()
