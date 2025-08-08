@@ -640,7 +640,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
-    print(Data["Body"])
+    -- print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
