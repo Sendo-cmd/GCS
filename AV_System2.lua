@@ -1,3 +1,4 @@
+spawn(function()
 local All_Key = {
     ["AV"] = "Party-AV-1",
     ["AA"] = "Party-AA",
@@ -1011,3 +1012,5 @@ if game.PlaceId == local_data[2] then
 else
     print(":P")
 end
+
+end)
