@@ -613,6 +613,18 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
     end,
