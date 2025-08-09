@@ -2820,6 +2820,24 @@ Accounts = {
         "System",
         "System2",
     },
+    ["atkosaodaod"] = {
+        "Log",
+        "Dungeon",
+        "System",
+        "System2",
+    },
+    ["monezx_m"] = {
+        "Log",
+        "Dungeon",
+        "System",
+        "System2",
+    },
+    ["bananax67635"] = {
+        "Log",
+        "Dungeon",
+        "System",
+        "System2",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
