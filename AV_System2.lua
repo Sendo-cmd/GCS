@@ -638,7 +638,7 @@ local function Register_Room(myproduct,player)
                 ["FriendsOnly"] = false
             }
             end,
-            ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
+            ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = false
                 Settings["Select Mode"] = "Story"
