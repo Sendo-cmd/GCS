@@ -638,6 +638,18 @@ local function Register_Room(myproduct,player)
                 ["FriendsOnly"] = false
             }
             end,
+            ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = false
+                Settings["Select Mode"] = "Story"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
             ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
                 Settings["Select Mode"] = "World Line"
             end,
