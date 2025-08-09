@@ -1425,8 +1425,9 @@ Accounts = {
     },
     ["344t0sHCdw6oDK"] = {
         "Log",
-        "System",
         "Portal",
+        "System",
+        "System2",
     },
     ["traijo"] = {
         "Log",
@@ -1704,8 +1705,9 @@ Accounts = {
     },
     ["s0SoYQ84GXSc12"] = {
         "Log",
+        "IgrisAuto",
         "System",
-        "CdT2"
+        "System2",
     },
     ["R6W2iU8NY0Yt0y"] = {
         "Log",
