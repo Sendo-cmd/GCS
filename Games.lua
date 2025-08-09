@@ -2319,10 +2319,6 @@ Accounts = {
         "Log",
         "BaseGem",
     },
-    ["ninenew2015"] = {
-        "Marco",
-        "Inf",
-    },
     ["JINGJUNG59"] = {
         "Log",
         "System",
