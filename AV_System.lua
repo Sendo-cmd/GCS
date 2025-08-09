@@ -615,7 +615,7 @@ local Changes = {
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
+        Settings["Auto Join Bounty"] = false
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
