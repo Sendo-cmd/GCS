@@ -935,12 +935,13 @@ local function Auto_Config()
                    OutParty()
                 end
             elseif Product["condition"]["type"] == "character" then
-                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
-                if AlreadyFarm > Goal then
+               print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= Goal then
                     Post(PathWay .. "finished", CreateBody())
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "items" then
+                print(tonumber(OrderData["progress_value"]) , Goal)
                 if tonumber(OrderData["progress_value"]) >= Goal then
                     Post(PathWay .. "finished", CreateBody())
                     OutParty()
@@ -952,8 +953,8 @@ local function Auto_Config()
                    OutParty()
                 end
             elseif Product["condition"]["type"] == "round" then
-                local AlreadyFarm = MatchProdunct("win")
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= Goal then
                     Post(PathWay .. "finished", CreateBody())
                     OutParty()
                 end
