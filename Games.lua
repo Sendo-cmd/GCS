@@ -1669,7 +1669,7 @@ Accounts = {
     },
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
-        "RerollSuper",
+        "Dungeon",
         "System",
         "System2",
     },
