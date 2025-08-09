@@ -106,7 +106,7 @@ local function SendUUID(player,get_type,data)
         Post(Api .. MainSettings["Path_Cache"],{["index"] = v},{["value"] = {
             ["type"] = get_type,
             ["data"] = data,
-            ["os"] = os.time() + 120
+            ["os"] = os.time() + 200
         }})
     end
 end
