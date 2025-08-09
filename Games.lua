@@ -468,12 +468,6 @@ Accounts = {
         "Log",
         "Reroll",
     },
-    ["artyg111"] = {
-        "Log",
-        "Wordline",
-        "System",
-        "System2",
-    },
     ["Brutaroth"] = {
         "Log",
         "System",
