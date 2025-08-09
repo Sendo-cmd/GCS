@@ -470,8 +470,9 @@ Accounts = {
     },
     ["artyg111"] = {
         "Log",
+        "Wordline",
         "System",
-        "Portal",
+        "System2",
     },
     ["Brutaroth"] = {
         "Log",
