@@ -941,8 +941,7 @@ local function Auto_Config()
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "items" then
-                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
-                if AlreadyFarm > Goal then
+                if tonumber(OrderData["progress_value"]) >= Goal then
                     Post(PathWay .. "finished", CreateBody())
                     OutParty()
                 end
