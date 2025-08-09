@@ -1673,8 +1673,9 @@ Accounts = {
     },
     ["J9O0Eg0cQ03MCV"] = {
         "Log",
+        "RerollSuper",
         "System",
-        "Portal",
+        "System2",
     },
     ["c97m7VvHFTPZ19"] = {
         "Log",
