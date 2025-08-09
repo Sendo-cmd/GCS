@@ -722,7 +722,7 @@ local function Register_Room(myproduct,player)
                 SendUUID(player,"Normal",value["GUID"])
             end
         end)
-        local WaitTime = 300
+        local WaitTime = 240
         if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
             while true do
                 if AllPlayerInGame(player) then
