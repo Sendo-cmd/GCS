@@ -453,7 +453,7 @@ getgenv().Config = {
 			["Wave"] = 1
 		},
 		["Elemental Dimensions"] = {
-			["Enable"] = false,
+			["Enable"] = true,
 			["Order"] = {
 				["Fire"] = 1,
 				["Ice"] = 2,
@@ -485,7 +485,7 @@ getgenv().Config = {
 		},
 		["The System"] = {
 			["Auto Shadow"] = {
-				["Enable"] = true,
+				["Enable"] = false,
 				["Shadow"] = "Belu"
 			}
 		},
