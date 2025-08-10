@@ -1422,7 +1422,7 @@ getgenv().Config = {
 	},
 	["Performance Failsafe"] = {
 		["Teleport Lobby FPS below"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["FPS"] = 3
 		}
 	},
