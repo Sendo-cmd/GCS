@@ -261,8 +261,9 @@ Accounts = {
     },
     ["Estellburst"] = {
         "Log",
-        "System",
         "Portal",
+        "System",
+        "System2",
     },
     ["tahkrisda126"] = {
         "Log",
