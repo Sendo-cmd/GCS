@@ -2842,7 +2842,7 @@ Accounts = {
     },
     ["artyg111"] = {
         "Log",
-        "Wordline",
+        "Worldline",
         "System",
         "System2",
     },
