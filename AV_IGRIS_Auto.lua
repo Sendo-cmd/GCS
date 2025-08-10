@@ -21,7 +21,7 @@ getgenv().Config = {
 	},
 	["Legend Stage Joiner"] = {
 		["Stage"] = "Double Dungeon",
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Act"] = "Act3"
 	},
 	["Winter Portal Joiner"] = {
