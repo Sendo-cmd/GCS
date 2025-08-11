@@ -18,26 +18,26 @@ getgenv().Config = {
 		}
 	},
 	["Transform"] = {
-		["Auto Transform Ghost Rainbow"] = true,
+		["Auto Transform Ghost Rainbow"] = false,
 		["Auto Transform Ghost Egg"] = {
 			["Enable"] = false,
 			["Transform Color"] = {
-				["Blue"] = true,
-				["Green"] = true,
-				["Purple"] = true,
-				["Orange"] = true,
-				["Red"] = true
+				["Blue"] = false,
+				["Green"] = false,
+				["Purple"] = false,
+				["Orange"] = false,
+				["Red"] = false
 			}
 		},
 		["Auto Transform EXP"] = true,
 		["Auto Transform Skill Orb Pure"] = {
 			["Enable"] = false,
 			["Transform Color"] = {
-				["Blue"] = true,
-				["Green"] = true,
-				["Purple"] = true,
-				["Orange"] = true,
-				["Red"] = true
+				["Blue"] = false,
+				["Green"] = false,
+				["Purple"] = false,
+				["Orange"] = false,
+				["Red"] = false
 			}
 		}
 	},
