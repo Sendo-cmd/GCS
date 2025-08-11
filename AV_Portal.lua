@@ -1370,7 +1370,7 @@ getgenv().Config = {
 	},
 	["Secure"] = {
 		["Random Offset"] = true,
-		["Walk Around"] = true
+		["Walk Around"] = false
 	},
 	["Limitless Odyssey Joiner"] = {
 		["Leave Floor"] = 1,
