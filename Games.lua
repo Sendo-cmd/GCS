@@ -95,7 +95,7 @@ Accounts = {
     },
     ["GCshop2"] = {
         "Log",
-        "RerollSuper",
+        "Worldline",
         "System",
         "System2",
     },
