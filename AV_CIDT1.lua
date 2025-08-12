@@ -45,8 +45,14 @@ getgenv().Config = {
 			["Leave Extra Money"] = 5000
 		},
 		["Auto Sell"] = {
-			["Enable"] = false,
-			["Wave"] = 22
+			["Auto Sell Farm"] = {
+				["Enable"] = false,
+				["Wave"] = 20
+			},
+			["Auto Sell Unit"] = {
+				["Enable"] = false,
+				["Wave"] = 1
+			}
 		},
 		["Occult Hunt"] = {
 			["Use All Talisman"] = {
@@ -74,9 +80,6 @@ getgenv().Config = {
 		["Auto Use Ability"] = true,
 		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
-		["Auto Sell Farm"] = {
-			["Wave"] = 1
-		},
 		["Auto Restart"] = {
 			["Wave"] = 1
 		}
