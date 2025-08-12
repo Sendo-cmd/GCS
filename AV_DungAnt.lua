@@ -446,10 +446,6 @@ getgenv().Config = {
 				["Sand"] = 3
 			}
 		},
-		["Auto Sell"] = {
-			["Enable"] = false,
-			["Wave"] = 1
-		},
 		["Ant Island"] = {
 			["Auto Plug Ant Tunnel"] = true
 		},
