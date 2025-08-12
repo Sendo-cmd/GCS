@@ -1017,7 +1017,7 @@ getgenv().Config = {
 			["4"] = 0,
 			["6"] = 0
 		},
-		["Enable"] = false,
+		["Enable"] = true,
 		["Slot Position"] = {
 			["Planet Namak (Spring)"] = {
 				["1"] = "-179.81578063964844, 4.474977493286133, 79.28062438964844",
