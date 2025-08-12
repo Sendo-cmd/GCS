@@ -747,9 +747,15 @@ getgenv().Config = {
 			},
 			["Use Talisman on Crab"] = false
 		},
-		["Auto Sell Farm"] = {
-			["Enable"] = true,
-			["Wave"] = 30
+		["Auto Sell"] = {
+			["Auto Sell Farm"] = {
+				["Enable"] = true,
+				["Wave"] = 30
+			},
+			["Auto Sell Unit"] = {
+				["Enable"] = false,
+				["Wave"] = 1
+			}
 		},
 		["Auto Restart"] = {
 			["Enable"] = false,

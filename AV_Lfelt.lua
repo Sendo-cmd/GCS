@@ -44,9 +44,7 @@ getgenv().Config = {
 			["Upgrade Amount"] = 0,
 			["Leave Extra Money"] = 5000
 		},
-		["Auto Sell"] = {
-			["Wave"] = 1
-		},
+		
 		["Shibuya Station"] = {
 			["Leave Extra Money"] = 5000,
 			["Upgrade Amount"] = 0
@@ -73,10 +71,6 @@ getgenv().Config = {
 			}
 		},
 		["Auto Skip Wave"] = true,
-		["Auto Sell Farm"] = {
-			["Enable"] = true,
-			["Wave"] = 15
-		},
 		["Auto Restart"] = {
 			["Wave"] = 1
 		}
