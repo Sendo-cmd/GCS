@@ -75,6 +75,7 @@ getgenv().Config = {
 		["Macro Retry Limit"] = 0,
 		["No Ignore Sell Timing"] = true,
 		["Play"] = true,
+		["Auto Equip"] = true,
 		["Ignore Macro Timing"] = true
 	},
 	["Auto Play"] = {

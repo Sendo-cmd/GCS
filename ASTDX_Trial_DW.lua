@@ -38,6 +38,7 @@ getgenv().Config = {
 		["Macro"] = "Tdw",
 		["No Ignore Sell Timing"] = true,
 		["Ignore Macro Timing"] = true,
+		["Auto Equip"] = true,
 		["Play"] = true
 	},
 	["Performance"] = {
