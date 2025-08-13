@@ -2,7 +2,7 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
-local Url = "https://e8ee770b1fef.ngrok-free.app"
+local Url = "https://api.championshop.date"
 local List = {
     "IcedTea",
     "Flowers",
