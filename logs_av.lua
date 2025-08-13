@@ -96,7 +96,7 @@ if IsTimeChamber then
     SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField},{["state"] = {
                 ["map"] = {
                         ["name"] = "AFK Time Chamber",
-                        ["wave"] = "",
+                        ["chapter"] = "",
                         ["wave"] = "",
                         ["mode"] = "",
                         ["difficulty"] = ""
@@ -108,7 +108,7 @@ if IsTimeChamber then
          SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField},{["state"] = {
                 ["map"] = {
                         ["name"] = "AFK Time Chamber",
-                        ["wave"] = "",
+                        ["chapter"] = "",
                         ["wave"] = "",
                         ["mode"] = "",
                         ["difficulty"] = ""
