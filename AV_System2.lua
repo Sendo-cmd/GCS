@@ -189,15 +189,6 @@ task.spawn(function()
         end
         return Data
     end
-    local function DelCache(OrderId)
-        local Cache = Get(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId)
-        local Data = DecBody(Cache)
-        if not Cache["Success"] then
-            print("False")
-            return false
-        end
-        return Data
-    end
     local function UpdateCache(OrderId,...)
         local args = {...}
         local data = GetCache(OrderId)
@@ -229,7 +220,7 @@ task.spawn(function()
         if IsGame == "AV" then
             local Networking = ReplicatedStorage:WaitForChild("Networking")
             local Settings = {
-                ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty, AFK
+                ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty
                 ["Auto Join Rift"] = false,
                 ["Auto Join Bounty"] = false,
                 ["Auto Join Boss Event"] = false,
@@ -1037,6 +1028,7 @@ task.spawn(function()
                             {
                                 ["value"] = {
                                     ["last_online"] = os.time() + 200,
+                                    ["current_play"] = "",
                                     ["party_member"] = {},
                             }
                         }
@@ -1060,7 +1052,7 @@ task.spawn(function()
                                     ["join_time"] = os.time(),
                                     ["product_id"] = cache["product_id"],
                                     ["name"] = cache["name"],
-                                }
+                                } 
                                 UpdateCache(Username,{["party_member"] = old_party})
                                 UpdateCache(message["order"],{["party"] = Username})
                                 Current_Party[cache["name"]] = false
@@ -1074,7 +1066,8 @@ task.spawn(function()
                             Attempt = 0
                         end
                     end
-                end)
+                end) 
+                
                 -- Auto Clear Party
                 task.spawn(function()
                     while task.wait(1) do
@@ -1093,6 +1086,7 @@ task.spawn(function()
                         end
                     end
                 end)
+                
                 -- Get Product 
                 local Product = nil
                 while not Product do 
@@ -1108,6 +1102,7 @@ task.spawn(function()
                     Product = path
                     task.wait(2)
                 end 
+                UpdateCache(Username,{["current_play"] = Product}) 
                 local Counting = {} 
                 for i,v in pairs(Current_Party) do
                     Counting[v["name"]] = false
@@ -1172,7 +1167,7 @@ task.spawn(function()
                             if os.time() > kai_cache["last_online"] then
                                 continue;
                             end
-                            if #kai_cache["party_member"] >= 4 then
+                            if #kai_cache["party_member"] >= 3 then
                                 continue;
                             end
                             local kaiproduct = kai_cache["current_play"]

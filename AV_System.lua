@@ -708,8 +708,21 @@ local function is_in_party(order_id)
     local data = GetCache(order_id .. "_party")
     return data['Success'] , HttpService:JSONDecode(data)
 end
-
-
+local function DecBody(body)
+    return HttpService:JSONDecode(body["Body"])["data"]
+end
+local GetKai = Get(Api .. "api/v1/shop/accountskai")
+local IsKai = false
+if GetKai["Success"] then
+    for i, v in pairs(DecBody(GetKai)) do
+        if v["username"] == plr.Name then
+            IsKai = true
+        end 
+    end
+end
+if IsKai then
+    return false
+end
 local Auto_Configs = true
 local function Auto_Config()
     if Auto_Configs then
