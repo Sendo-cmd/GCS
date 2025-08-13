@@ -1035,10 +1035,18 @@ task.spawn(function()
                     )
                     task.wait(5)
                 end 
-
+                local function GetParty()
+                    local CParty = table.clone(GetCache(Username)["party_member"])
+                    local Insert = {}
+                    for i,v in pairs(CParty) do
+                        table.insert(Insert,v["name"])
+                    end
+                    return Insert
+                end
                 local Attempt = 0
                 local Last_Message = nil
-                local Current_Party = GetCache(Username)["party_member"]
+                local Current_Party = GetParty()
+               
                 -- Auto Accept Party
                 task.spawn(function()
                     while task.wait(1) do
@@ -1055,7 +1063,7 @@ task.spawn(function()
                                 } 
                                 UpdateCache(Username,{["party_member"] = old_party})
                                 UpdateCache(message["order"],{["party"] = Username})
-                                Current_Party["party_member"][cache["name"]] = false
+                                Current_Party = GetParty()
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1079,7 +1087,7 @@ task.spawn(function()
                                 old_party[message["order"]] = nil
                                 UpdateCache(Username,{["party_member"] = old_party})
                                 UpdateCache(message["order"],{["party"] = ""})
-                                Current_Party["party_member"][cache["name"]] = nil
+                                Current_Party = GetParty()
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1103,26 +1111,19 @@ task.spawn(function()
                     task.wait(2)
                 end 
                 UpdateCache(Username,{["current_play"] = Product}) 
-                local Counting = {} 
-                for i,v in pairs(Current_Party) do
-                    
-                    print(i,v)
-                    table.foreach(v,print)
-                    Counting[v["name"]] = false
-                end
+                local Counting = {}
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
-                    if type_ == "Create" and value_["InvitedBy"] then
-                        Counting[value_["InvitedBy"]] = true
+                    if type_ == "Create" and table.find(Current_Party,value_["InvitedBy"]) then
+                        Counting[value_["InvitedBy"]] = os.time() + 20
                     end
                 end)
-                Players.PlayerRemoving:Connect(function(v)
-                    if Counting[v["Name"]] then
-                        Counting[v["Name"]] = false
-                    end
-                end)
+
                 local function IsItTrue()
-                    for i,v in pairs(Counting) do
-                        if not v then
+                    for i,v in pairs(Current_Party) do
+                        if Counting[v] and os.time() > Counting[v] then
+                            return false
+                        end
+                        if not Counting[v] then
                             return false
                         end
                     end
