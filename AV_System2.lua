@@ -1105,8 +1105,9 @@ task.spawn(function()
                 UpdateCache(Username,{["current_play"] = Product}) 
                 local Counting = {} 
                 for i,v in pairs(Current_Party) do
-                    table.foreach(v,print)
+                    
                     print(i,v,v["name"])
+                    table.foreach(v,print)
                     Counting[v["name"]] = false
                 end
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
