@@ -99,7 +99,8 @@ if IsTimeChamber then
                         ["wave"] = "",
                         ["wave"] = "",
                         ["mode"] = "",
-                        ["difficulty"] = ""},
+                        ["difficulty"] = ""
+                        },
                 ["win"] = true,
             }},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
     while true do
@@ -110,7 +111,8 @@ if IsTimeChamber then
                         ["wave"] = "",
                         ["wave"] = "",
                         ["mode"] = "",
-                        ["difficulty"] = ""},
+                        ["difficulty"] = ""
+                        },
                 ["win"] = true,
             }},{["time"] = 120},{["currency"] = convertToField_(GetSomeCurrency())})
     end
