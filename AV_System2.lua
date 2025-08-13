@@ -1055,7 +1055,7 @@ task.spawn(function()
                                 } 
                                 UpdateCache(Username,{["party_member"] = old_party})
                                 UpdateCache(message["order"],{["party"] = Username})
-                                Current_Party[cache["name"]] = false
+                                Current_Party["party_member"][cache["name"]] = false
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1067,7 +1067,7 @@ task.spawn(function()
                         end
                     end
                 end) 
-                
+                local Last_Message = nil
                 -- Auto Clear Party
                 task.spawn(function()
                     while task.wait(1) do
@@ -1079,7 +1079,7 @@ task.spawn(function()
                                 old_party[message["order"]] = nil
                                 UpdateCache(Username,{["party_member"] = old_party})
                                 UpdateCache(message["order"],{["party"] = ""})
-                                Current_Party[cache["name"]] = nil
+                                Current_Party["party_member"][cache["name"]] = nil
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1106,7 +1106,7 @@ task.spawn(function()
                 local Counting = {} 
                 for i,v in pairs(Current_Party) do
                     
-                    print(i,v,v["name"])
+                    print(i,v)
                     table.foreach(v,print)
                     Counting[v["name"]] = false
                 end
