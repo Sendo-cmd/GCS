@@ -96,25 +96,25 @@ if IsTimeChamber then
     SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField_(GetSomeCurrency())},{["state"] = {
                 ["map"] = {
                         ["name"] = "AFK Time Chamber",
-                        ["chapter"] = "",
-                        ["wave"] = "",
-                        ["mode"] = "",
-                        ["difficulty"] = ""
+                        ["chapter"] = "AFK",
+                        ["wave"] = "0",
+                        ["mode"] = "AFK",
+                        ["difficulty"] = "AFK"
                         },
                 ["win"] = true,
             }},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
     while true do
-        task.wait(120)
+        task.wait(200)
          SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField_(GetSomeCurrency())},{["state"] = {
                 ["map"] = {
                         ["name"] = "AFK Time Chamber",
-                        ["chapter"] = "",
-                        ["wave"] = "",
-                        ["mode"] = "",
-                        ["difficulty"] = ""
+                        ["chapter"] = "AFK",
+                        ["wave"] = "0",
+                        ["mode"] = "AFK",
+                        ["difficulty"] = "AFK"
                         },
                 ["win"] = true,
-            }},{["time"] = 120},{["currency"] = convertToField_(GetSomeCurrency())})
+            }},{["time"] = 200},{["currency"] = convertToField_(GetSomeCurrency())})
     end
     
     return false
