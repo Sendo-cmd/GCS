@@ -1120,6 +1120,7 @@ task.spawn(function()
 
                 local function IsItTrue()
                     for i,v in pairs(Current_Party) do
+                        print(Counting[v])
                         if Counting[v] and os.time() > Counting[v] then
                             return false
                         end
@@ -1274,8 +1275,19 @@ task.spawn(function()
                 task.spawn(function()
                     while true do
                         local cache = GetCache(cache_["party"])
+                        if not cache then
+                            UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
+                            game:shutdown()
+                            break;
+                        end
+                        if not cache["party_member"][orderid .. "_cache"] then
+                            UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
+                            game:shutdown()
+                            break;
+                        end
                         if os.time() > cache["last_online"] then
-                            
+                            UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
+                            game:shutdown()
                         else
                             local args = {
                                 "Invite",
