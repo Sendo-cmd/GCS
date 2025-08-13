@@ -44,7 +44,7 @@ task.spawn(function()
             "66ace527-415a-4b1f-a512-9f3429f67067",
         },
         ["Boo"] = {
-            "12b453cd-7435-425e-977e-1ae97f04cc23	",
+            "12b453cd-7435-425e-977e-1ae97f04cc23",
             "9d07aae3-76ca-4976-a29c-9f6ece183ade",
             "ef2bf1de-f30f-46aa-98bb-4a34635a2ed8",
         },
@@ -1157,6 +1157,7 @@ task.spawn(function()
                 -- Find Party
                 while true do 
                     local cache = GetCache(orderid)
+                    print(cache)
                     if #cache["party"] > 2 then
                         print("In The Party")
                         break;
