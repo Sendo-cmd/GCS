@@ -93,22 +93,24 @@ local function SendTo(Url,...)
 end
 if IsTimeChamber then
     print("Time Chamber")
-    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
-                ["name"] = "AFK Time Chamber",
-                ["chapter"] = "",
-                ["wave"] = "",
-                ["mode"] = "",
-                ["difficulty"] = "",
+    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField}},{["state"] = {
+                ["map"] = {
+                        ["name"] = "AFK Time Chamber",
+                        ["wave"] = "",
+                        ["wave"] = "",
+                        ["mode"] = "",
+                        ["difficulty"] = ""},
                 ["win"] = true,
             }},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
     while true do
         task.wait(120)
-         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
-                ["name"] = "AFK Time Chamber",
-                ["chapter"] = "",
-                ["wave"] = "",
-                ["mode"] = "",
-                ["difficulty"] = "",
+         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField}},{["state"] = {
+                ["map"] = {
+                        ["name"] = "AFK Time Chamber",
+                        ["wave"] = "",
+                        ["wave"] = "",
+                        ["mode"] = "",
+                        ["difficulty"] = ""},
                 ["win"] = true,
             }},{["time"] = 120},{["currency"] = convertToField_(GetSomeCurrency())})
     end
