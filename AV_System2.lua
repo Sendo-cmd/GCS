@@ -1125,7 +1125,8 @@ task.spawn(function()
                     end
                     return true
                 end
-                while not IsItTrue() or not AllPlayerInGame(Counting)  do task.wait(1) end
+                while not IsItTrue() or not AllPlayerInGame(Counting) do print(IsItTrue() , AllPlayerInGame(Counting)) task.wait(1) end
+                print("Register_Room")
                 Register_Room(Product,Counting,IsItTrue)
             else
                 task.wait(math.random(5,10))
