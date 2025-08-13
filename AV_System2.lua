@@ -181,8 +181,10 @@ task.spawn(function()
         return response
     end
     local function GetCache(OrderId)
+         print(OrderId)
         local Cache = Get(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId)
         local Data = DecBody(Cache)
+        
         if not Cache["Success"] then
             print("False")
             return false
