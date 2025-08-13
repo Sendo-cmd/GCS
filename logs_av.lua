@@ -62,6 +62,7 @@ local function CreateBody(...)
             ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
     })
+    print(Data["Success"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     local body = {
         ["order_id"] = Order_Data[1]["id"],
@@ -92,10 +93,24 @@ local function SendTo(Url,...)
 end
 if IsTimeChamber then
     print("Time Chamber")
-    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {}},{["state"] = {["win"] = true}},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
+    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
+                ["name"] = "AFK Time Chamber",
+                ["chapter"] = "",
+                ["wave"] = "",
+                ["mode"] = "",
+                ["difficulty"] = "",
+                ["win"] = true,
+            }},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
     while true do
-        task.wait(60)
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {}},{["state"] = {["win"] = true}},{["time"] = 60},{["currency"] = convertToField_(GetSomeCurrency())})
+        task.wait(120)
+         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
+                ["name"] = "AFK Time Chamber",
+                ["chapter"] = "",
+                ["wave"] = "",
+                ["mode"] = "",
+                ["difficulty"] = "",
+                ["win"] = true,
+            }},{["time"] = 120},{["currency"] = convertToField_(GetSomeCurrency())})
     end
     
     return false
