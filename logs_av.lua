@@ -2,7 +2,7 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
-local Url = "https://api.championshop.date"
+local Url = "https://e8ee770b1fef.ngrok-free.app"
 local List = {
     "IcedTea",
     "Flowers",
@@ -25,6 +25,11 @@ local Modules = ReplicatedStorage:WaitForChild("Modules")
 
 task.wait(1.5)
 local IsTimeChamber = game.PlaceId == 18219125606
+local IsTimeChamber = game.PlaceId == 18219125606
+
+local url = "https://api.championshop.date/logs"
+print(game.PlaceId)
+
 local function convertToField(index,value)
     return {
         ["name"] = index,
@@ -81,35 +86,18 @@ local function SendTo(Url,...)
         ["Body"] = HttpService:JSONEncode(CreateBody(...))
     })
     for i,v in pairs(response) do
-        -- warn(i,v)
+        warn(i,v)
     end 
     return response
 end
 if IsTimeChamber then
     print("Time Chamber")
-    local PlayerData = plr:GetAttributes()
-    local function Send()
-        local response = request({
-            ["Url"] = url,
-            ["Method"] = "POST",
-            ["Headers"] = {
-                ["content-type"] = "application/json"
-            },
-            ["Body"] = HttpService:JSONEncode({
-                ["Method"] = "Update-AFK",
-                ["Time Chamber"] = true,
-                ["Username"] = plr.Name,
-                ["PlayerData"] = PlayerData,
-                ["GuildId"] = "467359347744309248",
-                ["DataKey"] = "GamingChampionShopAPI",
-            })
-        })
+    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {}},{["state"] = {["win"] = true}},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
+    while true do
+        task.wait(60)
+        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {}},{["state"] = {["win"] = true}},{["time"] = 60},{["currency"] = convertToField_(GetSomeCurrency())})
     end
     
-    Send()
-    game:GetService("Players").LocalPlayer:GetAttributeChangedSignal("GemsEarned"):Connect(function()
-        Send()
-    end)
     return false
 end
 local Networking = ReplicatedStorage:WaitForChild("Networking")
@@ -315,6 +303,7 @@ elseif IsMatch then
             end)
         end
         print("SendTo 5")
+        
         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
     end)

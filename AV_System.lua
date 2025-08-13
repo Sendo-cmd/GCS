@@ -128,7 +128,7 @@ local Inventory = {}
 
 local Settings ={
 
-    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty
+    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
     ["Auto Join Boss Event"] = false,
@@ -625,6 +625,12 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["723de53d-cedd-4972-a6e5-6c44bf8699e9"] = function()
+        Settings["Select Mode"] = "AFK"
+    end,
+    ["79183580-1d86-4c97-b3c5-5ac9aac1c755"] = function()
+        Settings["Select Mode"] = "AFK"
+    end,
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
     end,
@@ -652,7 +658,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
-    -- print(Data["Body"])
+    print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
@@ -716,11 +722,14 @@ local function Auto_Config()
         end
         local ConnectToEnd 
         local Order = Get(PathWay .. "cache/" .. Key)
-        print(OrderData["product_id"])
         if Changes[OrderData["product_id"]] then
             Changes[OrderData["product_id"]]()
             print("Changed Configs")
         end 
+        if Settings["Select Mode"] == "AFK" then
+            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("AFKEvent"):FireServer()
+            return false
+        end
         if OrderData["want_carry"] then
             Settings["Party Mode"] = true
         end
@@ -813,14 +822,17 @@ local function Auto_Config()
                             end) 
                         end
                     end
+                    Val_1 = true
                     print("Inventory Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
                     FamiliarTable = val
+                     Val_2 = true
                     print("Family Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
                     SkinTable = val
+                    Val_3 = true
                     print("Skin Updated",os.time())
                 end)
 
@@ -921,41 +933,41 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            -- print(Product["condition"]["type"],MatchProdunct("time"),Goal)
+            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
                 local AlreadyFarm = Data["Gems"] - OldData["Gems"]
                 if AlreadyFarm > Goal then
-                    Post(PathWay .. "finished", CreateBody()) 
+                    if _G.Leave_Party then _G.Leave_Party() end
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "Coins" then
                 local AlreadyFarm = Data["Coin"] - OldData["Coin"]
                 if AlreadyFarm > Goal then
-                   Post(PathWay .. "finished", CreateBody())
+                   if _G.Leave_Party then _G.Leave_Party() end
                    OutParty()
                 end
             elseif Product["condition"]["type"] == "character" then
-               print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
+                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
+                   if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
-                    OutParty()
                 end
             elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
-                    Post(PathWay .. "finished", CreateBody())
+                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
+                    if _G.Leave_Party then _G.Leave_Party() end
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "hour" then
                 print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
-                   Post(PathWay .. "finished", CreateBody())
+                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                   if _G.Leave_Party then _G.Leave_Party() end
                    OutParty()
                 end
             elseif Product["condition"]["type"] == "round" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
-                    Post(PathWay .. "finished", CreateBody())
+                local AlreadyFarm = MatchProdunct("win")
+                if AlreadyFarm > Goal then
+                    if _G.Leave_Party then _G.Leave_Party() end
                     OutParty()
                 end
             end
