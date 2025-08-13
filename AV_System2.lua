@@ -1053,6 +1053,10 @@ task.spawn(function()
                         local message = GetCache(Username .. "-message")
                         if message and Last_Message ~= message["message-id"] then
                             local cache = GetCache(Username)
+                            if not cache then
+                                game:shutdown()
+                                break;
+                            end
                             local old_party = table.clone(cache["party_member"])
                             if LenT(old_party) < 3 then
                                 local cache = GetCache(message["order"])
@@ -1082,6 +1086,10 @@ task.spawn(function()
                         local message = GetCache(Username .. "-message-2")
                         if message and Last_Message ~= message["message-id"] then
                             local cache = GetCache(Username)
+                            if not cache then
+                                game:shutdown()
+                                break;
+                            end
                             local old_party = table.clone(cache["party_member"])
                             if old_party[message["order"]] then
                                 old_party[message["order"]] = nil
