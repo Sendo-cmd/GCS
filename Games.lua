@@ -487,7 +487,7 @@ Accounts = {
     ["Kreovx"] = {
         "Log",
         "System",
-        "Portal",
+        "System2",
     },
     ["quk1lp"] = {
         "Log",
