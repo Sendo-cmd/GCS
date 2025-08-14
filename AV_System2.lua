@@ -196,7 +196,7 @@ task.spawn(function()
         if not data then warn("Cannot Update") return false end
         for i,v in pairs(args) do
             for i1,v1 in pairs(v) do
-                print(i1,v1)
+                -- print(i1,v1)
                 data[i1] = v1
             end
         end
