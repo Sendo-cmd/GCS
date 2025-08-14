@@ -1122,6 +1122,7 @@ task.spawn(function()
                 local Counting = {}
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                     if type_ == "Create" and table.find(Current_Party,value_["InvitedBy"]) then
+                        print("Add Time To",value_["InvitedBy"])
                         Counting[value_["InvitedBy"]] = os.time() + 20
                     end
                 end)
@@ -1139,7 +1140,20 @@ task.spawn(function()
                     return true
                 end
                 while not IsItTrue() or not AllPlayerInGame(Counting) do print(IsItTrue() , AllPlayerInGame(Counting)) task.wait(1) end
-                print("Register_Room")
+                task.spawn(function()
+                    while task.wait(1) do
+                        local cache = GetCache(Username)
+                        if not cache then
+                            game:shutdown()
+                            break;
+                        end
+                        if not cache["party_member"] then
+                            UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
+                            game:shutdown()
+                            break;
+                        end
+                    end
+                end)
                 Register_Room(Product,Counting,IsItTrue)
             else
                 task.wait(math.random(5,10))
@@ -1297,20 +1311,24 @@ task.spawn(function()
                             game:shutdown()
                             break;
                         end
-                        
+
                         if os.time() > cache["last_online"] then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
                             game:shutdown()
                         else
-                            local args = {
-                                "Invite",
-                                {
-                                    Players:WaitForChild(cache_["party"]),
-                                    {Difficulty = "Normal",StageType = "Story",Stage = "Stage1",Act = "Act1"}
+                            if Players:FindFirstChild(cache_["party"]) then
+                                 local args = {
+                                    "Invite",
+                                    {
+                                        Players:FindFirstChild(cache_["party"]),
+                                        {Difficulty = "Normal",StageType = "Story",Stage = "Stage1",Act = "Act1"}
+                                    }
                                 }
-                            }
-                            Networking:WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(unpack(args))
-                            warn("Host is Online!!")
+                                Networking:WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(unpack(args))
+                                warn("Host is Online!!")
+                            else
+                                warn("Host is Offline But Not Longer :D")
+                            end
                         end
                         task.wait(5)
                     end
