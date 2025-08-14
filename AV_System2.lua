@@ -1149,12 +1149,13 @@ task.spawn(function()
                             break;
                         end
                         if not cache["party_member"] then
-                            UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
+                            -- UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
                             game:shutdown()
                             break;
                         end
                     end
                 end)
+                print("Create Function Register_Room")
                 Register_Room(Product,Current_Party,IsItTrue)
             else
                 task.wait(math.random(5,10))
