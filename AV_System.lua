@@ -965,8 +965,8 @@ local function Auto_Config()
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
+            print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
             elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
