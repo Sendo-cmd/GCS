@@ -1111,6 +1111,11 @@ Accounts = {
         "System",
         "Dungeons",
     },
+    ["putinboots2548"] = {
+        "Log",
+        "System",
+        "System2",
+    },
     ["HaineToram2"] = {
         "Log",
         "IgrisAuto",
