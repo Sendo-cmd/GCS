@@ -948,38 +948,38 @@ local function Auto_Config()
             end
             print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    OutParty()
                 end
             elseif Product["condition"]["type"] == "character" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     OutParty()
                 end
             elseif Product["condition"]["type"] == "hour" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    OutParty()
                 end
             elseif Product["condition"]["type"] == "round" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     OutParty()
                 end
