@@ -196,7 +196,7 @@ task.spawn(function()
         if not data then warn("Cannot Update") return false end
         for i,v in pairs(args) do
             for i1,v1 in pairs(v) do
-                -- print(i1,v1)
+                print(i1,v1)
                 data[i1] = v1
             end
         end
@@ -1416,6 +1416,14 @@ task.spawn(function()
                         end
                     end
                 end)
+
+                local cache = GetCache(Username)
+                print(cache)
+                if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
+
+                    game:shutdown()
+                end
+
                 -- Check If End Game And Not Found A Player
                 Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                     local cache = GetCache(Username)
