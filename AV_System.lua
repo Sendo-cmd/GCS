@@ -946,7 +946,7 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+            print(Product["condition"]["type"],tonumber(OrderData["progress_value"]),tonumber(OrderData["target_value"]))
             if Product["condition"]["type"] == "Gems" then
                 print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
