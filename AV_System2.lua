@@ -1442,6 +1442,8 @@ task.spawn(function()
                     end
                 end)
             else
+                local data = Fetch_data() 
+                if not data["want_carry"] then return false end
                 local cache = GetCache(Username)
                 local host = cache["party"]
                 -- Check If No Host In Lobby 
