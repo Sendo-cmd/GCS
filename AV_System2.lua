@@ -1104,7 +1104,7 @@ task.spawn(function()
                         end
                     end
                 end)
-                task.wait(30)
+                task.wait(200)
                 -- Get Product 
                 local Product = nil
                 while not Product do 
