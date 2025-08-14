@@ -1104,7 +1104,7 @@ task.spawn(function()
                         end
                     end
                 end)
-                
+
                 -- Get Product 
                 local Product = nil
                 while not Product do 
@@ -1141,7 +1141,7 @@ task.spawn(function()
                     end
                     return true
                 end
-                while not IsItTrue() or not AllPlayerInGame(Counting) do print(IsItTrue() , AllPlayerInGame(Counting)) task.wait(1) end
+                while not IsItTrue() or not AllPlayerInGame(Current_Party) do print(IsItTrue() , AllPlayerInGame(Current_Party)) task.wait(1) end
                 task.spawn(function()
                     while task.wait(1) do
                         local cache = GetCache(Username)
