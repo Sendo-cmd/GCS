@@ -946,7 +946,7 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
+            print(Product["condition"]["type"],tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
             if Product["condition"]["type"] == "Gems" then
                 print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
@@ -965,8 +965,8 @@ local function Auto_Config()
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
-            print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
             elseif Product["condition"]["type"] == "items" then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
