@@ -794,6 +794,7 @@ task.spawn(function()
                     }
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(unpack(args))
+                task.wait(.3)
             end
             local function IndexToDisplay(arg)
                 return StagesData["Story"][arg]["StageData"]["Name"]
@@ -818,7 +819,7 @@ task.spawn(function()
                             )
                             task.wait(2)
                             for i,v in pairs(player) do
-                                Invite(i)
+                                Invite(v)
                             end
                             
                         end
@@ -870,7 +871,7 @@ task.spawn(function()
                             end
                             task.wait(2)
                             for i,v in pairs(player) do
-                                Invite(i)
+                                Invite(v)
                             end
                         end
                     end
@@ -891,7 +892,7 @@ task.spawn(function()
                             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                             task.wait(5)
                             for i,v in pairs(player) do
-                                Invite(i)
+                                Invite(v)
                             end
                             task.wait(5)
                             local args = {
@@ -918,7 +919,7 @@ task.spawn(function()
                             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                             task.wait(5)
                             for i,v in pairs(player) do
-                                Invite(i)
+                                Invite(v)
                             end
                             task.wait(5)
                             local args = {
@@ -945,7 +946,7 @@ task.spawn(function()
                             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                             task.wait(5)
                             for i,v in pairs(player) do
-                                Invite(i)
+                                Invite(v)
                             end
                             task.wait(5)
                             local args = {
@@ -972,7 +973,7 @@ task.spawn(function()
                             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                             task.wait(5)
                             for i,v in pairs(player) do
-                                Invite(i)
+                                Invite(v)
                             end
                             task.wait(5)
                             local args = {
@@ -1154,7 +1155,7 @@ task.spawn(function()
                         end
                     end
                 end)
-                Register_Room(Product,Counting,IsItTrue)
+                Register_Room(Product,Current_Party,IsItTrue)
             else
                 task.wait(math.random(5,10))
                 local data = Fetch_data() 
