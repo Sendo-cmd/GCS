@@ -1199,7 +1199,7 @@ task.spawn(function()
                             if os.time() > kai_cache["last_online"] then
                                 continue;
                             end
-                            if #kai_cache["party_member"] >= 3 then
+                            if LenT(kai_cache["party_member"]) >= 3 then
                                 continue;
                             end
                             local kaiproduct = kai_cache["current_play"]
