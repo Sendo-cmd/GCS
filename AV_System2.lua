@@ -84,6 +84,30 @@ task.spawn(function()
             "d92fceaa-8d18-4dc9-980f-452db4573ad9",
             "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         },
+        ["Gem"] = {
+            "c11bff94-13e6-45ec-a0ca-d1b19b2964ee",
+            "3c18df46-db36-4cd4-93b2-9f03926fdadb",
+        },
+        ["Gem Inf"] = {
+            "8d9c0691-0f1d-4a88-b361-d2140e622e82",
+            "efdc7d4b-1346-49d3-8823-4865ac02b6ae",
+        },
+        ["Worldline"] = {
+            "562e53d5-22c8-4337-a5bc-c36df924524b",
+        },
+        ["Green Essence"] = {
+            "ba6f3c6d-c503-4fe4-b06f-0326776ba349",
+            "4de82cf7-17ae-43ba-bf30-3a2048917a8f",
+        },
+        ["Cursed finger"] = {
+            "5e334be7-56c9-4bfa-96e1-4856755b3f23",
+            "68cd687d-0760-4550-a7d6-482f3c2ca9df",
+        },
+        ["AFK"] = {
+            "723de53d-cedd-4972-a6e5-6c44bf8699e9",
+            "79183580-1d86-4c97-b3c5-5ac9aac1c755",
+        },
+
     }
     local Players = game:GetService("Players")
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
