@@ -1213,6 +1213,7 @@ task.spawn(function()
                                         Product_Type_2 = i
                                     end
                                 end
+                                print(Product_Type_1 , Product_Type_2)
                                 if Product_Type_1 ~= Product_Type_2 then
                                     continue;
                                 end
