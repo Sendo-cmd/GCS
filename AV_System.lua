@@ -658,7 +658,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
-    -- print(Data["Body"])
+    print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
@@ -826,7 +826,7 @@ local function Auto_Config()
                 game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
                     Inventory = {}
                     for i,v in pairs(val1) do
-                        -- print(os.time(),i,v)
+                        print(os.time(),i,v)
                         if v then 
                             local call,err = pcall(function()
                                 Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
@@ -836,17 +836,17 @@ local function Auto_Config()
                         end
                     end
                     Val_1 = true
-                    -- print("Inventory Updated",os.time())
+                    print("Inventory Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
                     FamiliarTable = val
                      Val_2 = true
-                    -- print("Family Updated",os.time())
+                    print("Family Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
                     SkinTable = val
                     Val_3 = true
-                    -- print("Skin Updated",os.time())
+                    print("Skin Updated",os.time())
                 end)
 
             end
@@ -948,38 +948,38 @@ local function Auto_Config()
             end
             print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
-                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
-                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                local AlreadyFarm = Data["Gems"] - OldData["Gems"]
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
-                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "character" then
-                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
-                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
-                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "hour" then
-                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                print(tonumber(OrderData["progress_value"]) , Goal)
                 if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "round" then
-                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
-                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                local AlreadyFarm = MatchProdunct("win")
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
                 end
