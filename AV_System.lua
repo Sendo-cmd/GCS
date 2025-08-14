@@ -658,7 +658,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
-    print(Data["Body"])
+    -- print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
@@ -836,17 +836,17 @@ local function Auto_Config()
                         end
                     end
                     Val_1 = true
-                    print("Inventory Updated",os.time())
+                    -- print("Inventory Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
                     FamiliarTable = val
                      Val_2 = true
-                    print("Family Updated",os.time())
+                    -- print("Family Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
                     SkinTable = val
                     Val_3 = true
-                    print("Skin Updated",os.time())
+                    -- print("Skin Updated",os.time())
                 end)
 
             end
@@ -973,7 +973,7 @@ local function Auto_Config()
                 end
             elseif Product["condition"]["type"] == "hour" then
                 print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
