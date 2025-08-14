@@ -2805,12 +2805,6 @@ Accounts = {
         "System",
         "System2",
     },
-    ["vLyaUWqd5163"] = {
-        "Log",
-        "IgrisAuto",
-        "System",
-        "System2",
-    },
     ["atkosaodaod"] = {
         "Log",
         "Dungeon",
