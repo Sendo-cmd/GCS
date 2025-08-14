@@ -210,7 +210,7 @@ task.spawn(function()
     end
     local function AllPlayerInGame(data)
         for i,v in pairs(data) do
-            if not game:GetService("Players"):FindFirstChild(i) then
+            if not game:GetService("Players"):FindFirstChild(v) then
                 return false
             end
         end
@@ -856,6 +856,7 @@ task.spawn(function()
                 end
                 while true do
                     if AllPlayerInGame(player) and func() then
+                        print(AllPlayerInGame(player) and func())
                         Next_(WaitTime)
                         if AllPlayerInGame(player) and func() then
                             for i = 1,10 do task.wait(.2) 
