@@ -1242,7 +1242,9 @@ task.spawn(function()
                                     break;
                                 end
                             else
+                                print("Request To Make Party",AttemptToAlready)
                                 if AttemptToAlready < 5 then continue; end
+                                print("Create Party",AttemptToAlready)
                                 for i = 1,5 do
                                     SendCache(
                                         {
