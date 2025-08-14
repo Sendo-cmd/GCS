@@ -948,38 +948,38 @@ local function Auto_Config()
             end
             print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
-                local AlreadyFarm = Data["Gems"] - OldData["Gems"]
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "character" then
-                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) ,tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "items" then
-                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "hour" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"])/60/60)
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "round" then
-                local AlreadyFarm = MatchProdunct("win")
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , tonumber(OrderData["target_value"]))
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
                 end
