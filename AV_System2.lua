@@ -1121,9 +1121,9 @@ task.spawn(function()
                 UpdateCache(Username,{["current_play"] = Product}) 
                 local Counting = {}
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
-                    if type_ == "Create" and table.find(Current_Party,value_["InvitedBy"]) then
-                        print("Add Time To",value_["InvitedBy"])
-                        Counting[value_["InvitedBy"]] = os.time() + 20
+                    if type_ == "Create" and table.find(Current_Party,tostring(value_["InvitedBy"])) then
+                        print("Add Time To",tostring(value_["InvitedBy"]))
+                        Counting[tostring(value_["InvitedBy"])] = os.time() + 20
                     end
                 end)
 
@@ -1183,6 +1183,7 @@ task.spawn(function()
                     print("No Cache")
                     return false
                 end
+                local AttemptToAlready = 0
                 -- Find Party
                 while true do 
                     local cache = GetCache(orderid .. "_cache")
@@ -1239,6 +1240,7 @@ task.spawn(function()
                                     break;
                                 end
                             else
+                                if AttemptToAlready < 5 then continue; end
                                 for i = 1,5 do
                                     SendCache(
                                         {
@@ -1266,6 +1268,7 @@ task.spawn(function()
                             end
                         end
                     end
+                    AttemptToAlready = AttemptToAlready + 1
                     task.wait(5)
                 end 
                 print("i got party")
@@ -1335,7 +1338,7 @@ task.spawn(function()
                 end)
                 task.wait(3)
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
-                    if type_ == "Create" and value_["InvitedBy"] == cache_["party"] then
+                    if type_ == "Create" and tostring(value_["InvitedBy"]) == cache_["party"] then
                         local args = {
                             "AcceptInvite",
                             value_["GUID"]
