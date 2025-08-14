@@ -1195,6 +1195,7 @@ task.spawn(function()
                     end
                     for i, v in pairs(DecBody(GetKai)) do
                         local kai_cache = GetCache(v["username"])
+                        print(i,v,kai_cache)
                         if kai_cache then
                             if os.time() > kai_cache["last_online"] then
                                 continue;
