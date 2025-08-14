@@ -1128,7 +1128,7 @@ task.spawn(function()
 
                 local function IsItTrue()
                     for i,v in pairs(Current_Party) do
-                        print(Counting[v])
+                        print(v,Counting[v])
                         if Counting[v] and os.time() > Counting[v] then
                             return false
                         end
