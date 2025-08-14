@@ -1163,6 +1163,7 @@ task.spawn(function()
                     )
                     task.wait(5)
                 end 
+                print("Register")
                 task.wait(1.5)
                 if not GetCache(orderid .. "_cache") then
                     print("No Cache")
@@ -1253,12 +1254,13 @@ task.spawn(function()
                     end
                     task.wait(5)
                 end 
+                print("i got party")
                 local cache = GetCache(orderid .. "_cache")
                 if #cache["party"] <= 3 then
                     print("Where The Fuck Your Party")
                     return;
                 end
-                -- Waiting Party
+                
                 _G.Leave_Party = function()
                     local cache_ = GetCache(orderid .. "_cache")
                     if cache_ then
@@ -1279,6 +1281,7 @@ task.spawn(function()
                         end
                     end
                 end
+                -- Waiting Party
                 local cache_ = GetCache(orderid .. "_cache")
                 task.spawn(function()
                     while true do
@@ -1288,11 +1291,13 @@ task.spawn(function()
                             game:shutdown()
                             break;
                         end
+                        print(cache["party_member"][orderid .. "_cache"])
                         if not cache["party_member"][orderid .. "_cache"] then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
                             game:shutdown()
                             break;
                         end
+                        
                         if os.time() > cache["last_online"] then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
                             game:shutdown()
@@ -1305,7 +1310,7 @@ task.spawn(function()
                                 }
                             }
                             Networking:WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(unpack(args))
-                            print("Host is Online!!\nLast Online : ",os.time() - (cache["last_online"] - 200))
+                            warn("Host is Online!!")
                         end
                         task.wait(5)
                     end
