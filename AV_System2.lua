@@ -859,8 +859,9 @@ task.spawn(function()
                         print(AllPlayerInGame(player) and func())
                         Next_(WaitTime)
                         if AllPlayerInGame(player) and func() then
-                            for i = 1,10 do task.wait(.2) 
+                            for i = 1,3 do task.wait(.2) 
                                 local Portal = PortalSettings(GetItem(Settings_["ID"]))
+                              
                                 if Portal then
                                     local args = {
                                         [1] = "ActivatePortal",
@@ -868,11 +869,8 @@ task.spawn(function()
                                     }
                                     
                                     game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                                    task.wait(3)
                                 end
-                            end
-                            task.wait(2)
-                            for i,v in pairs(player) do
-                                Invite(v)
                             end
                         end
                     end
@@ -1020,6 +1018,8 @@ task.spawn(function()
                     -- This is check if kai disconnect for 200s 
                     if os.time() > cache["last_online"] then
                         DelCache(Username)
+                        print("Delete Cache")
+                        task.wait(5)
                     end
                 end
                 while not GetCache(Username) do 
@@ -1053,7 +1053,7 @@ task.spawn(function()
                 task.spawn(function()
                     while task.wait(1) do
                         local message = GetCache(Username .. "-message")
-                        if message and Last_Message ~= message["message-id"] then
+                        if message and Last_Message ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                             local cache = GetCache(Username)
                             if not cache then
                                 game:shutdown()
@@ -1086,7 +1086,7 @@ task.spawn(function()
                 task.spawn(function()
                     while task.wait(1) do
                         local message = GetCache(Username .. "-message-2")
-                        if message and Last_Message ~= message["message-id"] then
+                        if message and Last_Message ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                             local cache = GetCache(Username)
                             if not cache then
                                 game:shutdown()
@@ -1104,7 +1104,7 @@ task.spawn(function()
                         end
                     end
                 end)
-
+                
                 -- Get Product 
                 local Product = nil
                 while not Product do 
@@ -1228,7 +1228,8 @@ task.spawn(function()
                                         {
                                             ["value"] = {
                                                 ["order"] = orderid .. "_cache",
-                                                ["message-id"] = HttpService:GenerateGUID(false)
+                                                ["message-id"] = HttpService:GenerateGUID(false),
+                                                ["join"] = os.time() + 10,
                                             },
                                         }
                                     )
@@ -1256,7 +1257,8 @@ task.spawn(function()
                                         {
                                             ["value"] = {
                                                 ["order"] = orderid .. "_cache",
-                                                ["message-id"] = HttpService:GenerateGUID(false)
+                                                ["message-id"] = HttpService:GenerateGUID(false),
+                                                ["join"] = os.time() + 10,
                                             },
                                         }
                                     )
@@ -1296,7 +1298,8 @@ task.spawn(function()
                                 {
                                     ["value"] = {
                                         ["order"] = orderid .. "_cache",
-                                        ["message-id"] = HttpService:GenerateGUID(false)
+                                        ["message-id"] = HttpService:GenerateGUID(false),
+                                        ["join"] = os.time() + 10,
                                     },
                                 }
                             )
@@ -1346,12 +1349,22 @@ task.spawn(function()
                 task.wait(3)
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                     if type_ == "Create" and tostring(value_["InvitedBy"]) == cache_["party"] then
+                        print("Accept")
                         local args = {
                             "AcceptInvite",
                             value_["GUID"]
                         }
                         game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(unpack(args))
 
+                    end
+                end)
+                Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
+                    if index == "Replicate" and tostring(value["Owner"]) == cache_["party"] then
+                        task.wait(1)
+                        Networking:WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
+                            "JoinPortal",
+                            value["GUID"]
+                        )
                     end
                 end)
             end
