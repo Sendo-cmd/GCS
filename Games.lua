@@ -641,12 +641,6 @@ Accounts = {
         "Log",
         "BaseGemInf",
     },
-    ["Extercel_o"] = {
-        "Log",
-        "Reroll",
-        "System",
-        "System2",
-    },
     ["Koko08937"] = {
         "Log",
         "Dungeon",
@@ -2839,12 +2833,6 @@ Accounts = {
     ["ophgbnou8662"] = {
         "Log",
         "Worldline",
-        "System",
-        "System2",
-    },
-    ["Storc5835"] = {
-        "Log",
-        "Base",
         "System",
         "System2",
     },
