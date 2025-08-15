@@ -615,7 +615,7 @@ local Changes = {
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
+        Settings["Auto Join Bounty"] = false
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
@@ -966,20 +966,20 @@ local function Auto_Config()
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "character" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
@@ -990,8 +990,8 @@ local function Auto_Config()
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "round" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = MatchProdunct("win")
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
                 end
@@ -1029,7 +1029,7 @@ task.spawn(function()
         local ChallengesData = require(game:GetService('ReplicatedStorage').Modules.Data.Challenges.ChallengesData)
         local TraitChallenge = {}
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent.OnClientEvent:Connect(function(type_,value_)
-            if type_ == "ChallengeData" then 
+            if type_ == "ChallengeData" and #TraitChallenge == 0 then 
                 for i,v in pairs(value_) do
                     if ChallengesData.GetChallengeRewards(i)['Currencies'] and ChallengesData.GetChallengeRewards(i)['Currencies']['TraitRerolls'] then
                         table.insert(TraitChallenge,i)
@@ -1037,7 +1037,9 @@ task.spawn(function()
                 end 
             end 
         end)
+        task.wait(1)
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent:FireServer('ChallengeData')
+       
         if Settings["Party Mode"] then
             print("Im here 2")
             if not Settings["Party Member"]  then
@@ -1340,8 +1342,8 @@ task.spawn(function()
             if Settings["Auto Join Bounty"] then
                 local PlayerBountyDataHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Bounty.PlayerBountyDataHandler)
                 local BountyData = require(game:GetService('ReplicatedStorage').Modules.Data.BountyData)
-                local Created = PlayerBountyDataHandler.GetBountyFromSeed(BountyData.GetData()["BountySeed"])
-                
+                local Created = BountyData.GetBountyFromSeed(PlayerBountyDataHandler.GetData()["BountySeed"])
+
                 local args = {
                     "AddMatch",
                     {
