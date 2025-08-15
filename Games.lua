@@ -2836,6 +2836,18 @@ Accounts = {
         "System",
         "System2",
     },
+    ["Extercel_o"] = {
+        "Log",
+        "Reroll",
+        "System",
+        "System2",
+    },
+    ["Storc5835"] = {
+        "Log",
+        "RerollSuper",
+        "System",
+        "System2",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
