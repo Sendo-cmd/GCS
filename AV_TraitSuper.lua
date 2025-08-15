@@ -29,7 +29,7 @@ getgenv().Config = {
 	},
 	["Joiner Cooldown"] = 0,
 	["Stage Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Act"] = "Act1",
 		["Join Highest"] = false,
 		["Nightmare Mode"] = false,
@@ -767,7 +767,7 @@ getgenv().Config = {
 		}
 	},
 	["Daily Challenge Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
@@ -1365,7 +1365,7 @@ getgenv().Config = {
 			["[LegendStage] [Kuinshi Palace] Act1"] = false,
 			["[LegendStage] [Kuinshi Palace] Act2"] = false
 		},
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Reward"] = "Trait Reroll Challenge"
 	},
 	["Failsafe"] = {
@@ -1378,7 +1378,7 @@ getgenv().Config = {
 		["Feed Level"] = 60
 	},
 	["Weekly Challenge Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
@@ -1467,7 +1467,7 @@ getgenv().Config = {
 		["Random Offset"] = true
 	},
 	["Boss Bounties Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
