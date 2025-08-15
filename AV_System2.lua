@@ -84,30 +84,6 @@ task.spawn(function()
             "d92fceaa-8d18-4dc9-980f-452db4573ad9",
             "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         },
-        ["Gem"] = {
-            "c11bff94-13e6-45ec-a0ca-d1b19b2964ee",
-            "3c18df46-db36-4cd4-93b2-9f03926fdadb",
-        },
-        ["Gem Inf"] = {
-            "8d9c0691-0f1d-4a88-b361-d2140e622e82",
-            "efdc7d4b-1346-49d3-8823-4865ac02b6ae",
-        },
-        ["Worldline"] = {
-            "562e53d5-22c8-4337-a5bc-c36df924524b",
-        },
-        ["Green Essence"] = {
-            "ba6f3c6d-c503-4fe4-b06f-0326776ba349",
-            "4de82cf7-17ae-43ba-bf30-3a2048917a8f",
-        },
-        ["Cursed finger"] = {
-            "5e334be7-56c9-4bfa-96e1-4856755b3f23",
-            "68cd687d-0760-4550-a7d6-482f3c2ca9df",
-        },
-        ["AFK"] = {
-            "723de53d-cedd-4972-a6e5-6c44bf8699e9",
-            "79183580-1d86-4c97-b3c5-5ac9aac1c755",
-        },
-
     }
     local Players = game:GetService("Players")
     local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -302,7 +278,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
+                    ["Ignore Stage"] = {},
                     ["Ignore Modify"] = {},
                 }
                 end,
@@ -312,7 +288,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
+                    ["Ignore Stage"] = {},
                     ["Ignore Modify"] = {},
                 }
                 end,
@@ -322,7 +298,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
+                    ["Ignore Stage"] = {},
                     ["Ignore Modify"] = {},
                 }
                 end,
@@ -332,7 +308,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
+                    ["Ignore Stage"] = {},
                     ["Ignore Modify"] = {},
                 }
                 end,
@@ -1072,7 +1048,7 @@ task.spawn(function()
                 local Attempt = 0
                 local Last_Message = nil
                 local Current_Party = GetParty()
-               
+                local Waiting_Time = ot.time() + 150
                 -- Auto Accept Party
                 task.spawn(function()
                     while task.wait(1) do
@@ -1094,6 +1070,22 @@ task.spawn(function()
                                 UpdateCache(Username,{["party_member"] = old_party})
                                 UpdateCache(message["order"],{["party"] = Username})
                                 Current_Party = GetParty()
+
+                                local cache = GetCache(Username)
+                                local path = nil
+                                local lowest = math.huge
+                                for i,v in pairs(cache["party_member"]) do
+                                    if v["join_time"] < lowest then
+                                        path = v["product_id"]
+                                        lowest = v["join_time"]
+                                    end
+                                end
+                                if path then
+                                    UpdateCache(Username,{["current_play"] = path}) 
+                                else
+                                    UpdateCache(Username,{["current_play"] = ""}) 
+                                end
+                                Waiting_Time = Waiting_Time + 75
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1122,13 +1114,30 @@ task.spawn(function()
                                 UpdateCache(Username,{["party_member"] = old_party})
                                 UpdateCache(message["order"],{["party"] = ""})
                                 Current_Party = GetParty()
+
+                                local cache = GetCache(Username)
+                                local path = nil
+                                local lowest = math.huge
+                                for i,v in pairs(cache["party_member"]) do
+                                    if v["join_time"] < lowest then
+                                        path = v["product_id"]
+                                        lowest = v["join_time"]
+                                    end
+                                end
+                                if path then
+                                    UpdateCache(Username,{["current_play"] = path}) 
+                                else
+                                    UpdateCache(Username,{["current_play"] = ""}) 
+                                end
+                                Waiting_Time = Waiting_Time + 75
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
                         end
                     end
                 end)
-                task.wait(200)
+                
+                repeat task.wait(1) until os.time() >= Waiting_Time
                 -- Get Product 
                 local Product = nil
                 while not Product do 
