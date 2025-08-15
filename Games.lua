@@ -2843,8 +2843,8 @@ Accounts = {
         "System2",
     },
     ["Storc5835"] = {
-        "Log",
-        "RerollSuper",
+        "Log",S
+        "Base",
         "System",
         "System2",
     },
