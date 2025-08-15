@@ -740,7 +740,7 @@ local function Auto_Config()
             print("Changed Configs")
         end 
         if Settings["Select Mode"] == "AFK" then
-            task.wait(15)
+            task.wait(40)
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("AFKEvent"):FireServer()
             return false
         end
