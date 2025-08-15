@@ -163,9 +163,6 @@ getgenv().Config = {
 			["Leave Extra Money"] = 5000,
 			["Upgrade Amount"] = 2
 		},
-		["Auto Sell"] = {
-			["Wave"] = 1
-		},
 		["Occult Hunt"] = {
 			["Use All Talisman"] = {
 				["Wave"] = 1
@@ -188,9 +185,15 @@ getgenv().Config = {
 		},
 		["Auto Vote Start"] = true,
 		["Auto Skip Wave"] = true,
-		["Auto Sell Farm"] = {
-			["Enable"] = true,
-			["Wave"] = 15
+		["Auto Sell"] = {
+			["Auto Sell Farm"] = {
+				["Enable"] = true,
+				["Wave"] = 15
+			},
+			["Auto Sell Unit"] = {
+				["Enable"] = false,
+				["Wave"] = 1
+			}
 		},
 		["Shibuya Station"] = {
 			["Mohato Unit"] = {

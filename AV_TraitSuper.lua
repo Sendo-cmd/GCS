@@ -456,8 +456,14 @@ getgenv().Config = {
 			}
 		},
 		["Auto Sell"] = {
-			["Enable"] = false,
-			["Wave"] = 1
+			["Auto Sell Farm"] = {
+				["Enable"] = true,
+				["Wave"] = 15
+			},
+			["Auto Sell Unit"] = {
+				["Enable"] = false,
+				["Wave"] = 1
+			}
 		},
 		["Ant Island"] = {
 			["Auto Plug Ant Tunnel"] = false
@@ -756,10 +762,6 @@ getgenv().Config = {
 				["Wave"] = 1
 			},
 			["Use Talisman on Crab"] = false
-		},
-		["Auto Sell Farm"] = {
-			["Enable"] = true,
-			["Wave"] = 15
 		},
 		["Edge of Heaven"] = {
 			["Auto Join Lfelt Portal"] = false,
