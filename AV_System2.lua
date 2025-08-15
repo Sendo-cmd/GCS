@@ -302,7 +302,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {},
+                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
                     ["Ignore Modify"] = {},
                 }
                 end,
@@ -312,7 +312,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {},
+                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
                     ["Ignore Modify"] = {},
                 }
                 end,
@@ -322,7 +322,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {},
+                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
                     ["Ignore Modify"] = {},
                 }
                 end,
@@ -332,7 +332,7 @@ task.spawn(function()
                     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
                     ["Tier Cap"] = 10,
                     ["Method"] = "Highest", -- Highest , Lowest
-                    ["Ignore Stage"] = {},
+                    ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
                     ["Ignore Modify"] = {},
                 }
                 end,
