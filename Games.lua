@@ -643,7 +643,9 @@ Accounts = {
     },
     ["Extercel_o"] = {
         "Log",
-        "Dungeon",
+        "Reroll",
+        "System",
+        "System2",
     },
     ["Koko08937"] = {
         "Log",

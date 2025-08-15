@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Stage Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Act"] = "Act1",
 		["Stage"] = "Planet Namak"
 	},
@@ -293,14 +293,14 @@ getgenv().Config = {
 		}
 	},
 	["Daily Challenge Joiner"] = {
-		["Auto Join"] = false
+		["Auto Join"] = true
 	},
 	["Misc"] = {
 		["Max Camera Zoom"] = 40
 	},
 	["Regular Challenge Joiner"] = {
-		["Teleport Lobby new Challenge"] = false,
-		["Auto Join"] = false,
+		["Teleport Lobby new Challenge"] = true,
+		["Auto Join"] = true,
 		["Reward"] = "Trait Reroll Challenge"
 	},
 	["Performance"] = {
@@ -554,7 +554,7 @@ getgenv().Config = {
 		}
 	},
 	["Weekly Challenge Joiner"] = {
-		["Auto Join"] = false
+		["Auto Join"] = true
 	},
 	["Secure"] = {
 		["Walk Around"] = true,
