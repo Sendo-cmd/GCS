@@ -187,7 +187,6 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
         ["Ignore Modify"] = {},
     }
     end,
@@ -197,7 +196,6 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven" },
         ["Ignore Modify"] = {},
     }
     end,
@@ -207,7 +205,6 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
         ["Ignore Modify"] = {},
     }
     end,
@@ -217,7 +214,6 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
         ["Ignore Modify"] = {},
     }
     end,
@@ -227,7 +223,6 @@ local Changes = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
     }
     end,
@@ -237,7 +232,6 @@ local Changes = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
     }
     end,
@@ -247,7 +241,6 @@ local Changes = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
     }
     end,
@@ -1168,7 +1161,7 @@ task.spawn(function()
                     local AllPortal = {}
                     for i,v in pairs(tabl) do
                         
-                        if Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] and Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"]) then
+                        if Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
                             AllPortal[#AllPortal + 1] = {
                                 [1] = i,
                                 [2] = v["ExtraData"]["Tier"]
@@ -1381,7 +1374,7 @@ task.spawn(function()
                     local AllPortal = {}
                     for i,v in pairs(tabl) do
                         
-                        if  Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] and Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"]) then
+                        if  Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
                             AllPortal[#AllPortal + 1] = {
                                 [1] = i,
                                 [2] = v["ExtraData"]["Tier"]
