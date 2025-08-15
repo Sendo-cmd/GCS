@@ -197,7 +197,7 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven"},
+        ["Ignore Stage"] = {"Land of the Gods","Edge of Heaven" },
         ["Ignore Modify"] = {},
     }
     end,
@@ -602,6 +602,18 @@ local Changes = {
     }
     end,
     ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
         Settings["Select Mode"] = "Story"
@@ -1156,7 +1168,7 @@ task.spawn(function()
                     local AllPortal = {}
                     for i,v in pairs(tabl) do
                         
-                        if Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
+                        if Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] and Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"]) then
                             AllPortal[#AllPortal + 1] = {
                                 [1] = i,
                                 [2] = v["ExtraData"]["Tier"]
@@ -1369,7 +1381,7 @@ task.spawn(function()
                     local AllPortal = {}
                     for i,v in pairs(tabl) do
                         
-                        if  Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
+                        if  Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] and Settings_["Ignore Stage"],IndexToDisplay(v["ExtraData"]["Stage"]["Stage"]) then
                             AllPortal[#AllPortal + 1] = {
                                 [1] = i,
                                 [2] = v["ExtraData"]["Tier"]
