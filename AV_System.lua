@@ -613,30 +613,6 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
-    end,
     ["723de53d-cedd-4972-a6e5-6c44bf8699e9"] = function()
         Settings["Select Mode"] = "AFK"
     end,
