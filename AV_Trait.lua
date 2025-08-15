@@ -560,7 +560,7 @@ getgenv().Config = {
 		["Auto Join"] = true
 	},
 	["Secure"] = {
-		["Walk Around"] = true,
+		["Walk Around"] = false,
 		["Random Offset"] = true
 	},
 	["Joiner Cooldown"] = 0,
