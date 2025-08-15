@@ -29,7 +29,7 @@ getgenv().Config = {
 	},
 	["Joiner Cooldown"] = 0,
 	["Stage Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Act"] = "Act1",
 		["Join Highest"] = false,
 		["Nightmare Mode"] = false,

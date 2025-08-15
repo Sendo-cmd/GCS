@@ -615,7 +615,19 @@ local Changes = {
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = false
+        Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
@@ -658,7 +670,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
-    -- print(Data["Body"])
+    print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
@@ -740,7 +752,6 @@ local function Auto_Config()
             print("Changed Configs")
         end 
         if Settings["Select Mode"] == "AFK" then
-            task.wait(40)
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("AFKEvent"):FireServer()
             return false
         end
@@ -752,7 +763,7 @@ local function Auto_Config()
         local Modules = ReplicatedStorage:WaitForChild("Modules")
         local Utilities = Modules:WaitForChild("Utilities")
         local Networking = ReplicatedStorage:WaitForChild("Networking")
-
+        local UnitsData = require(Modules.Data.Entities.Units)
         local function GetData()
             local SkinTable = {}
             local FamiliarTable = {}
@@ -837,17 +848,17 @@ local function Auto_Config()
                         end
                     end
                     Val_1 = true
-                    -- print("Inventory Updated",os.time())
+                    print("Inventory Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
                     FamiliarTable = val
                      Val_2 = true
-                    -- print("Family Updated",os.time())
+                    print("Family Updated",os.time())
                 end)
                 game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
                     SkinTable = val
                     Val_3 = true
-                    -- print("Skin Updated",os.time())
+                    print("Skin Updated",os.time())
                 end)
 
             end
@@ -985,7 +996,6 @@ local function Auto_Config()
                      Post(PathWay .. "finished", CreateBody())
                 end
             end
-        end
             -- Post(PathWay .. "finished", {
             --     ["order_id"] = P_Key,
             -- })

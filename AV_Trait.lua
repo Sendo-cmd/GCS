@@ -3,7 +3,7 @@ game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["AutoSave"] = true,
 	["Stage Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Act"] = "Act1",
 		["Stage"] = "Planet Namak"
 	},
