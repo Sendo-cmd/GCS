@@ -175,6 +175,7 @@ local Settings ={
         ["ID"] = 113, -- 113 Love , 87 Winter
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
         ["Ignore Modify"] = {},
     },
 }
@@ -186,7 +187,8 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Modify"] = {}
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
     }
     end,
     ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
@@ -195,7 +197,8 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Modify"] = {}
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
     }
     end,
     ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
@@ -204,7 +207,8 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Modify"] = {}
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
     }
     end,
     ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
@@ -213,7 +217,8 @@ local Changes = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Modify"] = {}
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
     }
     end,
     ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
@@ -222,7 +227,8 @@ local Changes = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Modify"] = {}
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
     }
     end,
     ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
@@ -231,7 +237,8 @@ local Changes = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Modify"] = {}
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
     }
     end,
     ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
@@ -240,7 +247,8 @@ local Changes = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Modify"] = {}
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
     }
     end,
     ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
@@ -605,9 +613,9 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
+    ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
+        Settings["Auto Join Bounty"] = false
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
@@ -938,28 +946,28 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],tonumber(OrderData["progress_value"]),tonumber(OrderData["target_value"]))
+            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = Data["Gems"] - OldData["Gems"]
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "character" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
@@ -970,12 +978,13 @@ local function Auto_Config()
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "round" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = MatchProdunct("win")
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
                 end
             end
+        end
             -- Post(PathWay .. "finished", {
             --     ["order_id"] = P_Key,
             -- })
