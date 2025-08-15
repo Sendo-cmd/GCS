@@ -742,6 +742,7 @@ local function Auto_Config()
         if Settings["Select Mode"] == "AFK" then
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("AFKEvent"):FireServer()
             return false
+            task.wait(20)
         end
         if OrderData["want_carry"] then
             Settings["Party Mode"] = true
@@ -1115,7 +1116,7 @@ task.spawn(function()
                 end
                 return true
             end
-            local WaitTime = 120
+            local WaitTime = 200
             if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
                 while true do
                     if AllPlayerInGame() then
