@@ -32,7 +32,6 @@ task.spawn(function()
             "edbd1859-f374-4735-87c7-2b0487808665",
             "c480797f-3035-4b1f-99a3-d77181f338bf",
             "63c63616-134c-4450-a5d6-a73c7d44d537",
-            "d85e3e85-0893-4972-a145-d6ba42bac512",
         },
         ["Igros"] = {
             "c040bd90-d939-4f0c-b65d-1e0ace06a434",
@@ -1490,7 +1489,7 @@ task.spawn(function()
             else
                 local data = Fetch_data() 
                 if not data["want_carry"] then return false end
-                local cache = GetCache(Username .. "_cache")
+                local cache = GetCache(data["product_id"] .. "_cache")
                 local host = cache["party"]
                 -- Check If No Host In Lobby 
                 task.wait(30)
