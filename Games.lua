@@ -2838,13 +2838,13 @@ Accounts = {
     },
     ["Extercel_o"] = {
         "Log",
-        "Base",
+        "Reroll",
         "System",
         "System2",
     },
     ["Storc5835"] = {
         "Log",
-        "Base",
+        "RerollSuper",
         "System",
         "System2",
     },
