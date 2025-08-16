@@ -958,16 +958,16 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
+            print(Product["condition"]["type"],tonumber(OrderData["progress_value"]),tonumber(OrderData["target_value"]))
             if Product["condition"]["type"] == "Gems" then
-                local AlreadyFarm = Data["Gems"] - OldData["Gems"]
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
@@ -1133,8 +1133,7 @@ task.spawn(function()
                 end
                 local function PortalSettings(tabl)
                     local AllPortal = {}
-                    for i,v in pairs(tabl) do
-                        
+                    for i,v in pairs(tabl) do       
                         if  Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
                             AllPortal[#AllPortal + 1] = {
                                 [1] = i,
@@ -1146,10 +1145,11 @@ task.spawn(function()
                     table.sort(AllPortal, function(a, b)
                         return a[2] > b[2]
                     end)
-                    return AllPortal[1][1] or false
+                    return AllPortal[1] and AllPortal[1][1] or false
                 end
                 while true do
                     local Portal = PortalSettings(GetItem(Settings_["ID"]))
+                    print(Portal)
                     if Portal then
                         local args = {
                             [1] = "ActivatePortal",
