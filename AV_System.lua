@@ -72,43 +72,7 @@ local function LoadModule(path)
     print(path.Name,Module and "Found" or "Not Found","Module [SKYHUB]")
     return Module or {}
 end
--- All Modules
-local StagesData = LoadModule(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
 
-
--- All Functions
-local function DisplayToIndexStory(arg)
-    for i,v in pairs(StagesData["Story"]) do
-        if v["StageData"]["Name"] == arg then
-            return i
-        end
-    end 
-    return ""
-end
-local function DisplayToIndexLegend(arg)
-    for i,v in pairs(StagesData["LegendStage"]) do
-        if v["StageData"]["Name"] == arg then
-            return i
-        end
-    end 
-    return ""
-end
-local function DisplayToIndexDungeon(arg)
-    for i,v in pairs(StagesData["Dungeon"]) do
-        if v["StageData"]["Name"] == arg then
-            return i
-        end
-    end 
-    return ""
-end
-local function DisplayToIndexRaid(arg)
-    for i,v in pairs(StagesData["Raid"]) do
-        if v["StageData"]["Name"] == arg then
-            return i
-        end
-    end 
-    return ""
-end
 local function Len(tab)
     local count = 0
     for i,v in pairs(tab) do
@@ -116,9 +80,7 @@ local function Len(tab)
     end
     return count
 end
-local function IndexToDisplay(arg)
-    return StagesData["Story"][arg]["StageData"]["Name"]
-end
+
 
 -- All Variables
 -- local Key = "Onio_#@@421"
@@ -221,6 +183,16 @@ local Changes = {
         ["Ignore Modify"] = {},
     }
     end,
+    ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
     ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
@@ -242,6 +214,16 @@ local Changes = {
     }
     end,
     ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
@@ -625,7 +607,7 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
+    ["d85e3e85-0893-4972-a145-d6ba42bac512	"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
         Settings["Select Mode"] = "Story"
@@ -753,8 +735,20 @@ local function Auto_Config()
         end 
         if Settings["Select Mode"] == "AFK" then
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("AFKEvent"):FireServer()
+            local Product = OrderData["product"]
+            task.spawn(function()
+                while true do
+                    if Product["condition"]["type"] == "hour" then
+                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
+                            Post(PathWay .. "finished", CreateBody())
+                        end
+                    end
+                    task.wait(200)
+                end
+            end)
             return false
         end
+
         if OrderData["want_carry"] then
             Settings["Party Mode"] = true
         end
@@ -821,8 +815,6 @@ local function Auto_Config()
                 Battlepass =  BattlepassHandler:GetPlayerData()
             else
                 local UnitsHUD = require(game:GetService("StarterPlayer").Modules.Interface.Loader.HUD.Units)
-                local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
-                local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
                 local UnitWindowHandler = require(game:GetService('StarterPlayer').Modules.Interface.Loader.Windows.UnitWindowHandler)
                 for i, v in pairs(UnitWindowHandler["_Cache"]) do
                     if not v.UnitData then continue end
@@ -923,27 +915,6 @@ local function Auto_Config()
                 end
                 return #InsertItems
             end 
-            local function OutParty()
-                local val,orderp = is_in_party(Key)
-                if val then
-                    local Cache_ = GetCache(HttpService:JSONDecode(orderp['Body'])["data"]["join"])
-                    if Cache_["Success"] then
-                        local Cache = HttpService:JSONDecode(Cache_["Body"])
-                        local NewTable = {}
-                        local Replace = Cache['data']
-                        for i,v in pairs(Replace) do
-                            if i ~= plr.Name then
-                                NewTable[i] = v
-                            end
-                        end
-                        Post_(Api .. "/api/v1/shop/orders/cache",{
-                                ["index"] = orderp['Body']["join"],
-                                ["value"] = NewTable
-                            }
-                        )
-                    end
-                end
-            end
             local function MatchProdunct(type_)
                 local Win,Time = 0,0
                 for i,v in pairs(OrderData["match_history"]) do
@@ -958,28 +929,28 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],tonumber(OrderData["progress_value"]),tonumber(OrderData["target_value"]))
+            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
             if Product["condition"]["type"] == "Gems" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = Data["Gems"] - OldData["Gems"]
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "character" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
@@ -990,8 +961,8 @@ local function Auto_Config()
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "round" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                local AlreadyFarm = MatchProdunct("win")
+                if AlreadyFarm > Goal then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
                 end
@@ -1013,7 +984,46 @@ end
 
 Auto_Config()
 
+-- All Modules
+local StagesData = LoadModule(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
 
+
+-- All Functions
+local function DisplayToIndexStory(arg)
+    for i,v in pairs(StagesData["Story"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
+local function DisplayToIndexLegend(arg)
+    for i,v in pairs(StagesData["LegendStage"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
+local function DisplayToIndexDungeon(arg)
+    for i,v in pairs(StagesData["Dungeon"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
+local function DisplayToIndexRaid(arg)
+    for i,v in pairs(StagesData["Raid"]) do
+        if v["StageData"]["Name"] == arg then
+            return i
+        end
+    end 
+    return ""
+end
+local function IndexToDisplay(arg)
+    return StagesData["Story"][arg]["StageData"]["Name"]
+end
 if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
         Inventory = value

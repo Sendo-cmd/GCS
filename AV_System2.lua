@@ -74,6 +74,7 @@ task.spawn(function()
             "24cbfd35-8df6-4fc7-8c0f-5e9c4b921013",
             "0495121f-a579-4068-9494-4a1ac477613b",
             "6ace8ed9-915e-474a-af43-39328ea80a4f",
+            "1e3dd6cd-e3d2-4dae-810f-911df0ab4806",
         },
         ["Arin"] = {
             "89901139-d4b5-4555-8913-4900d176546c",
@@ -84,6 +85,7 @@ task.spawn(function()
             "c62223a2-17f9-4078-bbc0-bb45c484558f",
             "d92fceaa-8d18-4dc9-980f-452db4573ad9",
             "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
+            "c869c464-6864-4eb7-a98f-f78f3448b71c",
         },
     }
     local Players = game:GetService("Players")
