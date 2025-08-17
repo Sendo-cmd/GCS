@@ -1066,11 +1066,6 @@ Accounts = {
         "System",
         "Dungeon",
     },
-    ["canonA624"] = {
-        "Log",
-        "System",
-        "Portal",
-    },
     ["Skyfe0397"] = {
         "Story",
     },
