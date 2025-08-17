@@ -826,7 +826,7 @@ task.spawn(function()
             local function IndexToDisplay(arg)
                 return StagesData["Story"][arg]["StageData"]["Name"]
             end
-            local WaitTime = 30
+            local WaitTime = 60
             if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
                 while true do
                     if AllPlayerInGame(player) and func() then
@@ -1075,7 +1075,7 @@ task.spawn(function()
                 local Attempt = 0
                 local Last_Message = nil
                 local Current_Party = GetParty()
-                local Waiting_Time = os.time() + 150
+                local Waiting_Time = os.time() + 200
                 -- Auto Accept Party
                 task.spawn(function()
                     while task.wait(1) do
