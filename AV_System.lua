@@ -607,7 +607,7 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    ["d85e3e85-0893-4972-a145-d6ba42bac512	"] = function()
+    ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
         Settings["Select Mode"] = "Story"
