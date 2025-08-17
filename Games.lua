@@ -2206,9 +2206,6 @@ Accounts = {
         "System",
         "Cid",
     },
-    ["Wawawa_761"] = {
-        "Log",
-    },
     ["Nainklk"] = {
         "Log",
         "System",
