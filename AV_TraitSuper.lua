@@ -49,7 +49,7 @@ getgenv().Config = {
 			["Gears"] = false
 		}
 	},
-	["Joiner Cooldown"] = 0,
+	["Joiner Cooldown"] = 30,
 	["Stage Joiner"] = {
 		["Join Highest"] = false,
 		["Join Lowest Clear"] = false,
