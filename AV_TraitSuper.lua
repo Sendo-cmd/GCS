@@ -53,7 +53,7 @@ getgenv().Config = {
 	["Stage Joiner"] = {
 		["Join Highest"] = false,
 		["Join Lowest Clear"] = false,
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Nightmare Mode"] = false,
 		["Stage"] = "Planet Namak",
 		["Act"] = "Act1"
@@ -1005,7 +1005,7 @@ getgenv().Config = {
 		}
 	},
 	["Daily Challenge Joiner"] = {
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
@@ -1282,7 +1282,7 @@ getgenv().Config = {
 			["[Story] [Spirit Society] Act3"] = false,
 			["[Story] [Double Dungeon] Act5"] = false
 		},
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Teleport Lobby new Challenge"] = true
 	},
 	["Auto Play"] = {
@@ -1670,7 +1670,7 @@ getgenv().Config = {
 		["Intensity"] = 25
 	},
 	["Weekly Challenge Joiner"] = {
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
@@ -1759,7 +1759,7 @@ getgenv().Config = {
 		["Random Offset"] = true
 	},
 	["Boss Bounties Joiner"] = {
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
