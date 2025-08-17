@@ -652,7 +652,7 @@ local function Get(Api)
 end
 local function Fetch_data()
     local Data = Get(PathWay .. plr.Name)
-    print(Data["Body"])
+    -- print(Data["Body"])
     local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
     return Order_Data[1]
 end
@@ -869,7 +869,7 @@ local function Auto_Config()
                     game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
                 end
                
-                print(Val_3 , Val_2 , Val_1)
+                -- print(Val_3 , Val_2 , Val_1)
                 task.wait(1) 
             until Val_3 and Val_2 and Val_1
 
@@ -929,28 +929,28 @@ local function Auto_Config()
 
                 return type_ == "win" and Win or Time
             end
-            print(Product["condition"]["type"],MatchProdunct("time"),Goal)
+            print(Product["condition"]["type"],tonumber(OrderData["progress_value"]),tonumber(OrderData["target_value"]))
             if Product["condition"]["type"] == "Gems" then
-                local AlreadyFarm = Data["Gems"] - OldData["Gems"]
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "Coins" then
-                local AlreadyFarm = Data["Coin"] - OldData["Coin"]
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "character" then
-                local AlreadyFarm = GetUnit(Data["Units"],Product["condition"]["name"]) - GetUnit(OldData["Units"],Product["condition"]["name"])
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                    if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "items" then
-                local AlreadyFarm = GetItem(Data["Inventory"],Product["condition"]["name"]) - GetItem(OldData["Inventory"],Product["condition"]["name"])
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                     Post(PathWay .. "finished", CreateBody())
                 end
@@ -961,8 +961,8 @@ local function Auto_Config()
                    Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "round" then
-                local AlreadyFarm = MatchProdunct("win")
-                if AlreadyFarm > Goal then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
                 end

@@ -955,7 +955,7 @@ getgenv().Config = {
 		["Auto Use Ability"] = true
 	},
 	["Daily Challenge Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
@@ -1323,7 +1323,7 @@ getgenv().Config = {
 		["Auto Join"] = false
 	},
 	["Weekly Challenge Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
@@ -1412,7 +1412,7 @@ getgenv().Config = {
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Boss Bounties Joiner"] = {
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
@@ -1835,7 +1835,7 @@ getgenv().Config = {
 			["[Story] [Spirit Society] Act3"] = false,
 			["[Story] [Double Dungeon] Act5"] = false
 		},
-		["Auto Join"] = false,
+		["Auto Join"] = true,
 		["Teleport Lobby new Challenge"] = true
 	},
 	["Performance Failsafe"] = {
