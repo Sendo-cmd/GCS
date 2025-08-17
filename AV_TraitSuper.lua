@@ -1759,7 +1759,7 @@ getgenv().Config = {
 		["Random Offset"] = true
 	},
 	["Boss Bounties Joiner"] = {
-		["Auto Join"] = true,
+		["Auto Join"] = false,
 		["Ignore Act"] = {
 			["[LegendStage] [Shibuya Aftermath] Act1"] = false,
 			["[Story] [Planet Namak] Act6"] = false,
