@@ -483,14 +483,14 @@ getgenv().Config = {
 			}
 		},
 		["Burn Units"] = {
-			["Enable"] = false,
+			["Enable"] = true,
 			["Slots"] = {
-				["1"] = false,
-				["3"] = false,
-				["2"] = false,
-				["5"] = false,
-				["4"] = false,
-				["6"] = false
+				["1"] = true,
+				["3"] = true,
+				["2"] = true,
+				["5"] = true,
+				["4"] = true,
+				["6"] = true
 			}
 		},
 		["Auto Vote Start"] = false,
@@ -1017,7 +1017,7 @@ getgenv().Config = {
 			["1"] = 0,
 			["3"] = 0,
 			["2"] = 0,
-			["5"] = 0,
+			["5"] = 1,
 			["4"] = 0,
 			["6"] = -1
 		},
