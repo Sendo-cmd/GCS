@@ -723,10 +723,10 @@ Accounts = {
         "Log",
         "Portal",
     },
-    ["EstaB9895"] = {
-        "Log",
-        "LovePortal",
-    },
+    -- ["EstaB9895"] = {
+    --     "Log",
+    --     "LovePortal",
+    -- },
     ["NANO_SHOP04"] = { -- Cid ต้องเช็คแบบละเอียด
         "Log",
         "System",
