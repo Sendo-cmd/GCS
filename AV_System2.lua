@@ -826,7 +826,7 @@ task.spawn(function()
             local function IndexToDisplay(arg)
                 return StagesData["Story"][arg]["StageData"]["Name"]
             end
-            local WaitTime = 60
+            local WaitTime = 30
             if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
                 while true do
                     if AllPlayerInGame(player) and func() then
@@ -1024,6 +1024,11 @@ task.spawn(function()
             end 
         end
     end
+    for _, v in ipairs(getgc(true)) do
+        if type(v) == "table" and rawget(v, "LoadData") then
+            print(v)
+        end
+    end
     if ID[game.GameId][1] == "AV" then
 
         local Networking = ReplicatedStorage:WaitForChild("Networking")
@@ -1056,7 +1061,7 @@ task.spawn(function()
                             },
                             {
                                 ["value"] = {
-                                    ["last_online"] = os.time() + 200,
+                                    ["last_online"] = os.time() + 400,
                                     ["current_play"] = "",
                                     ["party_member"] = {},
                             }
@@ -1075,7 +1080,7 @@ task.spawn(function()
                 local Attempt = 0
                 local Last_Message = nil
                 local Current_Party = GetParty()
-                local Waiting_Time = os.time() + 200
+                local Waiting_Time = os.time() + 150
                 -- Auto Accept Party
                 task.spawn(function()
                     while task.wait(1) do
