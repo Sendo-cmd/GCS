@@ -23,7 +23,7 @@ getgenv().Config = {
 		}
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Teleport Lobby if Player"] = false
 	},
 	["Performance"] = {

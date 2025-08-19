@@ -45,7 +45,7 @@ getgenv().Config = {
 		["Auto Replay"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Teleport Lobby if Player"] = false
 	},
 	["Macros"] = {

@@ -29,7 +29,7 @@ getgenv().Config = {
 		["World"] = "Sacred Planet"
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Auto Play"] = {

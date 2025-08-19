@@ -193,7 +193,7 @@ getgenv().Config = {
 		["Replay Amount"] = 5
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Secure"] = {

@@ -1769,7 +1769,7 @@ getgenv().Config = {
 	},
 	["Failsafe"] = {
 		["Teleport Lobby if Player"] = false,
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Unit Feeder"] = {

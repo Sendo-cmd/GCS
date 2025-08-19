@@ -276,7 +276,7 @@ getgenv().Config = {
 		["No Ignore Sell Timing"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Secure"] = {

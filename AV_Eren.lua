@@ -345,7 +345,7 @@ getgenv().Config = {
 		["Intensity"] = 25
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Unit Feeder"] = {

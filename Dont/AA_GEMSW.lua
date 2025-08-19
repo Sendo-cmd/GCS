@@ -405,7 +405,7 @@ getgenv().Config = {
 		["World"] = "Shibuya District"
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Teleport Lobby if Player"] = true
 	},
 	["AutoSave"] = true,

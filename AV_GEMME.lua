@@ -58,7 +58,7 @@ getgenv().Config = {
 		["Teleport Lobby new Banner"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Macros"] = {

@@ -200,7 +200,7 @@ getgenv().Config = {
 		}
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Joiner Cooldown"] = 0,

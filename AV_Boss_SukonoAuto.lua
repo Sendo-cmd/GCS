@@ -199,7 +199,7 @@ getgenv().Config = {
 		["Auto Join"] = true
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true
 	},
 	["Unit Feeder"] = {

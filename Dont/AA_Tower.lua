@@ -52,7 +52,7 @@ getgenv().Config = {
 		["Black Screen"] = false
 	},
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Teleport Lobby if Player"] = false
 	},
 	["Secure"] = {

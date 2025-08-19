@@ -1405,7 +1405,7 @@ getgenv().Config = {
 	["Failsafe"] = {
 		["Teleport Lobby if Player"] = false,
 		["Disable Auto Teleport AFK Chamber"] = true,
-		["Auto Rejoin"] = true
+		["Auto Rejoin"] = false
 	},
 	["Weekly Challenge Joiner"] = {
 		["Auto Join"] = false,

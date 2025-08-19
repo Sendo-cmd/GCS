@@ -9,7 +9,7 @@ getgenv().Config = {
 	},
 	["Joiner Cooldown"] = 0,
 	["Failsafe"] = {
-		["Auto Rejoin"] = true,
+		["Auto Rejoin"] = false,
 		["Teleport Lobby if Player"] = false
 	},
 	["Claimer"] = {
