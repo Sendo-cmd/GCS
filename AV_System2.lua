@@ -1089,7 +1089,7 @@ task.spawn(function()
                         if message and Last_Message ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                             local cache = GetCache(Username)
                             if not cache then
-                                game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                                game:shutdown()
                                 break;
                             end
                             local old_party = table.clone(cache["party_member"])
@@ -1138,7 +1138,7 @@ task.spawn(function()
                         if message and Last_Message ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                             local cache = GetCache(Username)
                             if not cache then
-                                game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                                game:shutdown()
                                 break;
                             end
                             local old_party = table.clone(cache["party_member"])
@@ -1212,12 +1212,12 @@ task.spawn(function()
                     while task.wait(1) do
                         local cache = GetCache(Username)
                         if not cache then
-                            game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                            game:shutdown()
                             break;
                         end
                         if not cache["party_member"] then
                             -- UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                            game:shutdown()
                             break;
                         end
                     end
@@ -1381,19 +1381,19 @@ task.spawn(function()
                         local cache = GetCache(cache_["party"])
                         if not cache then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                            game:shutdown()
                             break;
                         end
                         print(cache["party_member"][orderid .. "_cache"])
                         if not cache["party_member"][orderid .. "_cache"] then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                            game:shutdown()
                             break;
                         end
 
                         if os.time() > cache["last_online"] then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                            game:shutdown()
                         else
                             if Players:FindFirstChild(cache_["party"]) then
                                  local args = {
@@ -1487,7 +1487,7 @@ task.spawn(function()
                 print(cache)
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
 
-                    game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                    game:shutdown()
                 end
 
                 -- Check If End Game And Not Found A Player
@@ -1495,7 +1495,7 @@ task.spawn(function()
                     local cache = GetCache(Username)
                     if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
 
-                        game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                        game:shutdown()
                     end
                 end)
                 -- Check If No Player In Lobby 
@@ -1503,7 +1503,7 @@ task.spawn(function()
                 task.spawn(function()
                     while task.wait(1) do
                         if #Players:GetChildren() <= 1 then
-                            game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                            game:shutdown()
                         end
                     end
                 end)
@@ -1518,7 +1518,7 @@ task.spawn(function()
                     while task.wait(1) do
                         if not Players:FindFirstChild(host) then
                             print("Not Found a Host")
-                            game:GetService("Players").LocalPlayer:Kick("Shutdown")
+                            game:shutdown()
                         else
                             print("Host stay at same lobby")
                         end
