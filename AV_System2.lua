@@ -1118,7 +1118,7 @@ task.spawn(function()
                                 else
                                     UpdateCache(Username,{["current_play"] = ""}) 
                                 end
-                                Waiting_Time = Waiting_Time + 120
+                                Waiting_Time = Waiting_Time + 100
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1162,7 +1162,7 @@ task.spawn(function()
                                 else
                                     UpdateCache(Username,{["current_play"] = ""}) 
                                 end
-                                Waiting_Time = Waiting_Time + 120
+                                Waiting_Time = Waiting_Time + 75
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
