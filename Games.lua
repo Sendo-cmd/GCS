@@ -93,12 +93,12 @@ Accounts = {
         "System",
         "FarmGem",
     },
-    ["GCshop2"] = {
-        "Log",
-        "Base",
-        "System",
-        "System2",
-    },
+    -- ["GCshop2"] = {
+    --     "Log",
+    --     "Base",
+    --     "System",
+    --     "System2",
+    -- },
     ["maser080"] = {
         "Log",
         "BaseGemInf",
