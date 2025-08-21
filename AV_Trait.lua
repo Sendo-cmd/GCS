@@ -1544,7 +1544,7 @@ getgenv().Config = {
 			}
 		},
 		["Auto Modifier"] = {
-			["Enable"] = false,
+			["Enable"] = true,
 			["Prioritize"] = {
 				["Champions"] = 12,
 				["Revitalize"] = 6,

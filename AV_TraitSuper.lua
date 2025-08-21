@@ -1203,7 +1203,7 @@ getgenv().Config = {
 				["Slayer"] = 16,
 				["No Trait No Problem"] = 23
 			},
-			["Enable"] = false,
+			["Enable"] = true,
 			["Amount"] = {
 				["Range"] = 0,
 				["Revitalize"] = 0,
