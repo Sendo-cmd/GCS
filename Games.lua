@@ -727,11 +727,6 @@ Accounts = {
     --     "Log",
     --     "LovePortal",
     -- },
-    -- ["NANO_SHOP04"] = { -- Cid ต้องเช็คแบบละเอียด
-    --     "Log",
-    --     "System",
-    --     "CidP",
-    -- },
     ["godre902"] = {
         "Log",
         "Marco",
