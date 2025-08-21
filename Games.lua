@@ -2850,7 +2850,7 @@ local Timer = 0
 local ScriptLists = nil
 
 local BaseScripts = {
-    ["5578556129"] = { "Log", "Base", "System", "System2" },
+    ["5578556129"] = { "Log", "System", "System2", "Base" },
     ["6057699512"] = { "Marco", "Tsp" },                  
 }
 
