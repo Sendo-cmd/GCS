@@ -1031,22 +1031,38 @@ task.spawn(function()
         end
     end
     if ID[game.GameId][1] == "AV" then
+    local Networking = ReplicatedStorage:WaitForChild("Networking")
 
-        local Networking = ReplicatedStorage:WaitForChild("Networking")
+    local PlayerModules = game:GetService("StarterPlayer"):WaitForChild("Modules")
+    local Modules = ReplicatedStorage:WaitForChild("Modules")
 
-        local PlayerModules = game:GetService("StarterPlayer"):WaitForChild("Modules")
-        local Modules = ReplicatedStorage:WaitForChild("Modules")
-
-        local SettingsHandler = require(PlayerModules.Gameplay.SettingsHandler)
-        local StagesData = require(Modules.Data.StagesData)
-        local UnitsData = require(Modules.Data.Entities.Units)
-        local ItemsData = require(Modules.Data.ItemsData)
-        repeat task.wait() until SettingsHandler.SettingsLoaded
-        if game.PlaceId == local_data[2] then
+    local SettingsHandler = require(PlayerModules.Gameplay.SettingsHandler)
+    local StagesData = require(Modules.Data.StagesData)
+    local UnitsData = require(Modules.Data.Entities.Units)
+    local ItemsData = require(Modules.Data.ItemsData)
+    repeat task.wait() until SettingsHandler.SettingsLoaded
+    if game.PlaceId == local_data[2] then
+        local StackOf = 0
+        local Connection = {}
+        local function Party()
+            StackOf = StackOf + 1
+            local CurrentStack = StackOf
+            local IsShutdown = false
+            
+            for i,v in pairs(Connection) do
+                v:Disconnect()
+            end
+            task.spawn(function()
+                while CurrentStack == StackOf do 
+                    task.wait(.1)
+                end
+                IsShutdown = true
+            end) 
             if IsKai then
                 task.wait(math.random(10,15))
                 -- Register Self
                 local cache = GetCache(Username)
+               
                 if cache then
                     -- This is check if kai disconnect for 200s 
                     if os.time() > cache["last_online"] then
@@ -1055,6 +1071,10 @@ task.spawn(function()
                         task.wait(5)
                     end
                 end
+                if IsShutdown then
+                    Party()
+                    return false
+                end 
                 while not GetCache(Username) do 
                     SendCache(
                             {
@@ -1070,6 +1090,10 @@ task.spawn(function()
                     )
                     task.wait(5)
                 end 
+                if IsShutdown then
+                    Party()
+                    return false
+                end 
                 local function GetParty()
                     local CParty = table.clone(GetCache(Username)["party_member"])
                     local Insert = {}
@@ -1081,15 +1105,15 @@ task.spawn(function()
                 local Attempt = 0
                 local Last_Message = nil
                 local Current_Party = GetParty()
-                local Waiting_Time = os.time() + 130
+                local Waiting_Time = os.time() + 150
                 -- Auto Accept Party
                 task.spawn(function()
-                    while task.wait(1) do
+                    while task.wait(1) and not IsShutdown do
                         local message = GetCache(Username .. "-message")
                         if message and Last_Message ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                             local cache = GetCache(Username)
                             if not cache then
-                                game:shutdown()
+                                Party()
                                 break;
                             end
                             local old_party = table.clone(cache["party_member"])
@@ -1118,7 +1142,7 @@ task.spawn(function()
                                 else
                                     UpdateCache(Username,{["current_play"] = ""}) 
                                 end
-                                Waiting_Time = Waiting_Time + 60
+                                Waiting_Time = Waiting_Time + 75
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1133,12 +1157,12 @@ task.spawn(function()
                 local Last_Message = nil
                 -- Auto Clear Party
                 task.spawn(function()
-                    while task.wait(1) do
+                    while task.wait(1) and not IsShutdown do
                         local message = GetCache(Username .. "-message-2")
                         if message and Last_Message ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                             local cache = GetCache(Username)
                             if not cache then
-                                game:shutdown()
+                                Party()
                                 break;
                             end
                             local old_party = table.clone(cache["party_member"])
@@ -1162,7 +1186,7 @@ task.spawn(function()
                                 else
                                     UpdateCache(Username,{["current_play"] = ""}) 
                                 end
-                                Waiting_Time = Waiting_Time + 60
+                                Waiting_Time = Waiting_Time + 75
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
@@ -1170,11 +1194,19 @@ task.spawn(function()
                     end
                 end)
                 
-                repeat task.wait(1) until os.time() >= Waiting_Time
+                repeat task.wait(1) until os.time() >= Waiting_Time or IsShutdown
+                if IsShutdown then
+                    Party()
+                    return true
+                end
                 -- Get Product 
                 local Product = nil
                 while not Product do 
                     local cache = GetCache(Username)
+                    if not cache then
+                        Party()
+                        break;
+                    end
                     local path = nil
                     local lowest = math.huge
                     for i,v in pairs(cache["party_member"]) do
@@ -1186,9 +1218,17 @@ task.spawn(function()
                     Product = path
                     task.wait(2)
                 end 
+                if IsShutdown then
+                    Party()
+                    return true
+                end
                 UpdateCache(Username,{["current_play"] = Product}) 
+                if IsShutdown then
+                    Party()
+                    return true
+                end
                 local Counting = {}
-                Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
+                Connection[#Connection + 1] = Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                     if type_ == "Create" and table.find(Current_Party,tostring(value_["InvitedBy"])) then
                         print("Add Time To",tostring(value_["InvitedBy"]))
                         Counting[tostring(value_["InvitedBy"])] = os.time() + 20
@@ -1197,7 +1237,6 @@ task.spawn(function()
 
                 local function IsItTrue()
                     for i,v in pairs(Current_Party) do
-                        print(v,Counting[v])
                         if Counting[v] and os.time() > Counting[v] then
                             return false
                         end
@@ -1207,17 +1246,21 @@ task.spawn(function()
                     end
                     return true
                 end
-                while not IsItTrue() or not AllPlayerInGame(Current_Party) do print(IsItTrue() , AllPlayerInGame(Current_Party)) task.wait(1) end
+                while (not IsItTrue() or not AllPlayerInGame(Current_Party)) and not IsShutdown do print(IsItTrue() , AllPlayerInGame(Current_Party)) task.wait(1) end
+                if IsShutdown then
+                    Party()
+                    return true
+                end
                 task.spawn(function()
-                    while task.wait(1) do
+                    while task.wait(1) and not IsShutdown do
                         local cache = GetCache(Username)
                         if not cache then
-                            game:shutdown()
+                            Party()
                             break;
                         end
                         if not cache["party_member"] then
                             -- UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:shutdown()
+                            Party()
                             break;
                         end
                     end
@@ -1231,7 +1274,7 @@ task.spawn(function()
                 local orderid = data["id"]
                 if not data["want_carry"] then return false end
                 -- Register Self
-                while not GetCache(orderid .. "_cache") do 
+                while not GetCache(orderid .. "_cache") or IsShutdown do 
                     SendCache(
                             {
                                 ["index"] = orderid .. "_cache"
@@ -1248,15 +1291,20 @@ task.spawn(function()
                 end 
                 print("Register")
                 task.wait(1.5)
-                if not GetCache(orderid .. "_cache") then
+                if not GetCache(orderid .. "_cache") or IsShutdown then
                     print("No Cache")
+                    Party()
                     return false
                 end
                 local AttemptToAlready = 0
                 -- Find Party
                 while true do 
                     local cache = GetCache(orderid .. "_cache")
-                    print(cache)
+                    if not cache or IsShutdown then
+                        print("No Cache")
+                        Party()
+                        return false
+                    end
                     if #cache["party"] > 2 then
                         print("In The Party")
                         break;
@@ -1348,7 +1396,8 @@ task.spawn(function()
                 end 
                 print("i got party")
                 local cache = GetCache(orderid .. "_cache")
-                if #cache["party"] <= 3 then
+                if not cache or #cache["party"] <= 3 then
+                    Party()
                     print("Where The Fuck Your Party")
                     return;
                 end
@@ -1381,22 +1430,22 @@ task.spawn(function()
                         local cache = GetCache(cache_["party"])
                         if not cache then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:shutdown()
-                            break;
+                            Party()
+                            break
                         end
-                        print(cache["party_member"][orderid .. "_cache"])
                         if not cache["party_member"][orderid .. "_cache"] then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:shutdown()
-                            break;
+                            Party()
+                            break
                         end
 
                         if os.time() > cache["last_online"] then
                             UpdateCache(orderid .. "_cache",{["party"] = ""}) task.wait(1)
-                            game:shutdown()
+                            Party()
+                            break
                         else
                             if Players:FindFirstChild(cache_["party"]) then
-                                 local args = {
+                                    local args = {
                                     "Invite",
                                     {
                                         Players:FindFirstChild(cache_["party"]),
@@ -1413,7 +1462,8 @@ task.spawn(function()
                     end
                 end)
                 task.wait(3)
-                Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
+                
+                Connection[#Connection + 1] = Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                     if type_ == "Create" and tostring(value_["InvitedBy"]) == cache_["party"] then
                         print("Accept")
                         local args = {
@@ -1424,7 +1474,7 @@ task.spawn(function()
 
                     end
                 end)
-                Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
+                Connection[#Connection + 1] = Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
                     if index == "Replicate" and tostring(value["Owner"]) == cache_["party"] then
                         task.wait(1)
                         Networking:WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
@@ -1434,97 +1484,97 @@ task.spawn(function()
                     end
                 end)
             end
-        else
-            if IsKai then
-                local Attempt = 0
-                local Last_Message = nil
-                -- Auto Accept Party
-               task.spawn(function()
-                    while task.wait(1) do
-                        local message = GetCache(Username .. "-message")
-                        if message and Last_Message ~= message["message-id"] then
-                            local cache = GetCache(Username)
-                            local old_party = table.clone(cache["party_member"])
-                            if LenT(old_party) < 3 then
-                                local cache = GetCache(message["order"])
-                                old_party[message["order"]] = {
-                                    ["join_time"] = os.time(),
-                                    ["product_id"] = cache["product_id"],
-                                    ["name"] = cache["name"],
-                                }
-                                UpdateCache(Username,{["party_member"] = old_party})
-                                UpdateCache(message["order"],{["party"] = Username})
-                            end
-                            Last_Message = message["message-id"]
-                            task.wait(3)
+        end
+        Party()
+    else
+        if IsKai then
+            local Attempt = 0
+            local Last_Message = nil
+            -- Auto Accept Party
+            task.spawn(function()
+                while task.wait(1) do
+                    local message = GetCache(Username .. "-message")
+                    if message and Last_Message ~= message["message-id"] then
+                        local cache = GetCache(Username)
+                        local old_party = table.clone(cache["party_member"])
+                        if LenT(old_party) < 3 then
+                            local cache = GetCache(message["order"])
+                            old_party[message["order"]] = {
+                                ["join_time"] = os.time(),
+                                ["product_id"] = cache["product_id"],
+                                ["name"] = cache["name"],
+                            }
+                            UpdateCache(Username,{["party_member"] = old_party})
+                            UpdateCache(message["order"],{["party"] = Username})
                         end
-                        Attempt = Attempt + 1
-                        if Attempt > 5 then
-                            UpdateCache(Username,{["last_online"] = os.time() + 200})
-                            Attempt = 0
-                        end
+                        Last_Message = message["message-id"]
+                        task.wait(3)
                     end
-                end)
-                -- Auto Clear Party
-                task.spawn(function()
-                    while task.wait(1) do
-                        local message = GetCache(Username .. "-message-2")
-                        if message and Last_Message ~= message["message-id"] then
-                            local cache = GetCache(Username)
-                            local old_party = table.clone(cache["party_member"])
-                            if old_party[message["order"]] then
-                                old_party[message["order"]] = nil
-                                UpdateCache(Username,{["party_member"] = old_party})
-                                UpdateCache(message["order"],{["party"] = ""})
-                            end
-                            Last_Message = message["message-id"]
-                            task.wait(3)
-                        end
+                    Attempt = Attempt + 1
+                    if Attempt > 5 then
+                        UpdateCache(Username,{["last_online"] = os.time() + 200})
+                        Attempt = 0
                     end
-                end)
+                end
+            end)
+            -- Auto Clear Party
+            task.spawn(function()
+                while task.wait(1) do
+                    local message = GetCache(Username .. "-message-2")
+                    if message and Last_Message ~= message["message-id"] then
+                        local cache = GetCache(Username)
+                        local old_party = table.clone(cache["party_member"])
+                        if old_party[message["order"]] then
+                            old_party[message["order"]] = nil
+                            UpdateCache(Username,{["party_member"] = old_party})
+                            UpdateCache(message["order"],{["party"] = ""})
+                        end
+                        Last_Message = message["message-id"]
+                        task.wait(3)
+                    end
+                end
+            end)
 
+            local cache = GetCache(Username)
+            print(cache)
+            if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
+                return
+            end
+
+            -- Check If End Game And Not Found A Player
+            Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 local cache = GetCache(Username)
-                print(cache)
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-
                     game:shutdown()
                 end
-
-                -- Check If End Game And Not Found A Player
-                Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                    local cache = GetCache(Username)
-                    if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-
+            end)
+            -- Check If No Player In Lobby 
+            task.wait(30)
+            task.spawn(function()
+                while task.wait(1) do
+                    if #Players:GetChildren() <= 1 then
                         game:shutdown()
                     end
-                end)
-                -- Check If No Player In Lobby 
-                task.wait(30)
-                task.spawn(function()
-                    while task.wait(1) do
-                        if #Players:GetChildren() <= 1 then
-                            game:shutdown()
-                        end
+                end
+            end)
+        else
+            local data = Fetch_data() 
+            if not data["want_carry"] then return false end
+            local cache = GetCache(data["id"] .. "_cache")
+            local host = cache["party"]
+            -- Check If No Host In Lobby 
+            task.wait(30)
+            task.spawn(function()
+                while task.wait(1) do
+                    if not Players:FindFirstChild(host) then
+                        print("Not Found a Host")
+                        game:shutdown()
+                    else
+                        print("Host stay at same lobby")
                     end
-                end)
-            else
-                local data = Fetch_data() 
-                if not data["want_carry"] then return false end
-                local cache = GetCache(data["id"] .. "_cache")
-                local host = cache["party"]
-                -- Check If No Host In Lobby 
-                task.wait(30)
-                task.spawn(function()
-                    while task.wait(1) do
-                        if not Players:FindFirstChild(host) then
-                            print("Not Found a Host")
-                            game:shutdown()
-                        else
-                            print("Host stay at same lobby")
-                        end
-                    end
-                end)
-            end
+                end
+            end)
         end
-    end 
+    end
+end
 end)
