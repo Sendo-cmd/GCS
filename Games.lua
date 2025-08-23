@@ -1410,12 +1410,12 @@ Accounts = {
         "System",
         "YomomataAuto",
     },
-    ["344t0sHCdw6oDK"] = {
-        "Log",
-        "Portal",
-        "System",
-        "System2",
-    },
+    -- ["344t0sHCdw6oDK"] = {
+    --     "Log",
+    --     "Portal",
+    --     "System",
+    --     "System2",
+    -- },
     ["traijo"] = {
         "Log",
         "System",
@@ -1685,29 +1685,29 @@ Accounts = {
         "System",
         "Dungeon",
     },
-    ["s0SoYQ84GXSc12"] = {
-        "Log",
-        "IgrisAuto",
-        "System",
-        "System2",
-    },
-    ["R6W2iU8NY0Yt0y"] = {
-        "Log",
-        "Eren",
-        "System",
-        "System2",
-    },
+    -- ["s0SoYQ84GXSc12"] = {
+    --     "Log",
+    --     "IgrisAuto",
+    --     "System",
+    --     "System2",
+    -- },
+    -- ["R6W2iU8NY0Yt0y"] = {
+    --     "Log",
+    --     "Eren",
+    --     "System",
+    --     "System2",
+    -- },
     ["HN0U173rfP9Rej"] = {
         "Log",
         "System",
         "CdT2",
     },
-    ["GVU257sFK8en2v"] = {
-        "Log",
-        "Portal",
-        "System",
-        "System2",
-    },
+    -- ["GVU257sFK8en2v"] = {
+    --     "Log",
+    --     "Portal",
+    --     "System",
+    --     "System2",
+    -- },
     ["Embesna5706"] = {
         "System",
         "PortalParty",
