@@ -1546,7 +1546,7 @@ task.spawn(function()
                 Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                     local cache = GetCache(Username)
                     if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-                        game:shutdown()
+                        game:GetService("ReplicatedStorage").Networking.TeleportEvent:FireServer("Lobby")
                     end
                 end)
                 -- Check If No Player In Lobby 
@@ -1554,7 +1554,7 @@ task.spawn(function()
                 task.spawn(function()
                     while task.wait(1) do
                         if #Players:GetChildren() <= 1 then
-                            game:shutdown()
+                            game:GetService("ReplicatedStorage").Networking.TeleportEvent:FireServer("Lobby")
                         end
                     end
                 end)
@@ -1569,7 +1569,7 @@ task.spawn(function()
                     while task.wait(1) do
                         if not Players:FindFirstChild(host) then
                             print("Not Found a Host")
-                            game:shutdown()
+                            game:GetService("ReplicatedStorage").Networking.TeleportEvent:FireServer("Lobby")
                         else
                             print("Host stay at same lobby")
                         end
