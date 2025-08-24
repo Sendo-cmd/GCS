@@ -26,14 +26,17 @@ task.spawn(function()
         ["Challenge"] = {
             "44013587-aa9e-4ca9-8c5a-8503fb61779b",
             "bc0fca7b-dde2-47a6-a50b-793d8782999b",
-            "39ce32e2-c34c-4479-8a52-5715e8645944",
-        },
-        ["Super Reroll"] = {
             "edbd1859-f374-4735-87c7-2b0487808665",
             "c480797f-3035-4b1f-99a3-d77181f338bf",
+        },
+        ["Super Reroll"] = {
+            "39ce32e2-c34c-4479-8a52-5715e8645944",
             "63c63616-134c-4450-a5d6-a73c7d44d537",
-            "d85e3e85-0893-4972-a145-d6ba42bac512",
             "5852f3ef-a949-4df5-931b-66ac0ac84625",
+            "d85e3e85-0893-4972-a145-d6ba42bac512",
+            "503237ef-99e7-4a53-b61a-1ac9ca8dee60",
+            "2a77cde0-0bab-4880-a01e-8bbe4b76956e",
+            "df999032-bd9e-4933-bba1-a037997ce505",
         },
         ["Igros"] = {
             "c040bd90-d939-4f0c-b65d-1e0ace06a434",
@@ -674,7 +677,6 @@ task.spawn(function()
                 end,
                 ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
                     Settings["Auto Join Challenge"] = true
-                    Settings["Auto Join Bounty"] = true
                     Settings["Select Mode"] = "Story"
                     Settings["Story Settings"] = {
                     ["Difficulty"] = "Normal",
@@ -685,6 +687,17 @@ task.spawn(function()
                 }
                 end,
                 ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
+                    Settings["Auto Join Challenge"] = true
+                    Settings["Select Mode"] = "Story"
+                    Settings["Story Settings"] = {
+                    ["Difficulty"] = "Normal",
+                    ["Act"] = "infinite",
+                    ["StageType"] = "Story",
+                    ["Stage"] = "Planet Namak",
+                    ["FriendsOnly"] = false
+                }
+                end,
+                ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
                     Settings["Auto Join Challenge"] = true
                     Settings["Auto Join Bounty"] = true
                     Settings["Select Mode"] = "Story"
@@ -720,7 +733,7 @@ task.spawn(function()
                     ["FriendsOnly"] = false
                 }
                 end,
-                ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
+                ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
                     Settings["Auto Join Challenge"] = true
                     Settings["Auto Join Bounty"] = true
                     Settings["Select Mode"] = "Story"
@@ -732,7 +745,31 @@ task.spawn(function()
                     ["FriendsOnly"] = false
                 }
                 end,
-                ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
+                ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
+                    Settings["Auto Join Challenge"] = true
+                    Settings["Auto Join Bounty"] = true
+                    Settings["Select Mode"] = "Story"
+                    Settings["Story Settings"] = {
+                    ["Difficulty"] = "Normal",
+                    ["Act"] = "infinite",
+                    ["StageType"] = "Story",
+                    ["Stage"] = "Planet Namak",
+                    ["FriendsOnly"] = false
+                }
+                end,
+                ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
+                    Settings["Auto Join Challenge"] = true
+                    Settings["Auto Join Bounty"] = true
+                    Settings["Select Mode"] = "Story"
+                    Settings["Story Settings"] = {
+                    ["Difficulty"] = "Normal",
+                    ["Act"] = "infinite",
+                    ["StageType"] = "Story",
+                    ["Stage"] = "Planet Namak",
+                    ["FriendsOnly"] = false
+                }
+                end,
+                ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
                     Settings["Auto Join Challenge"] = true
                     Settings["Auto Join Bounty"] = true
                     Settings["Select Mode"] = "Story"

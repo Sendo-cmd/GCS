@@ -561,7 +561,6 @@ local Changes = {
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
@@ -572,6 +571,17 @@ local Changes = {
     }
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
         Settings["Select Mode"] = "Story"
@@ -617,6 +627,42 @@ local Changes = {
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
+    }
+    end,
+    ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
+       Settings["Auto Join Challenge"] = true
+       Settings["Auto Join Bounty"] = true
+       Settings["Select Mode"] = "Story"
+       Settings["Story Settings"] = {
+       ["Difficulty"] = "Normal",
+       ["Act"] = "infinite",
+       ["StageType"] = "Story",
+       ["Stage"] = "Planet Namak",
+       ["FriendsOnly"] = false
     }
     end,
     ["723de53d-cedd-4972-a6e5-6c44bf8699e9"] = function()
