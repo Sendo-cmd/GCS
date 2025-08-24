@@ -573,8 +573,9 @@ Accounts = {
     },
     ["hdkjsksp"] = {
         "Log",
+        "RerollSuper",
         "System",
-        "Portal",
+        "System2",
     },
     ["Demonsun0601"] = {
         "Log",
