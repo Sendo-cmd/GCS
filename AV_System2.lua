@@ -1177,7 +1177,7 @@ task.spawn(function()
                 local Attempt = 0
                 local Last_Message = nil
                 local Current_Party = GetParty()
-                local Waiting_Time = os.time() + 160
+                local Waiting_Time = os.time() + 180
                 -- Auto Accept Party
                 task.spawn(function()
                     while task.wait(1) do
