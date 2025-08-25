@@ -64,6 +64,7 @@ task.spawn(function()
             "1c58db6a-b5d1-4d8d-8195-75aad0403c90",
         },
         ["Red Key"] = {
+            "e4ed794a-8569-4da6-976d-829ac43f423f",
             "cfbb32d7-64cb-4135-b1e3-1992e1800d07",
             "e1a0c37a-c004-4ff3-a064-2b7d55703c3e",
             "b752455d-18d7-4bb3-bd67-70269790500f",
@@ -74,6 +75,7 @@ task.spawn(function()
             "7d480a51-e6df-45e7-b0f8-9e34966ecc7e",
         },
         ["Spring Portal"] = {
+            "2e2a5d02-4d63-43a5-8b9a-6e7902581cfd",
             "960de970-ba26-4184-8d97-561ae8511e4b",
             "24cbfd35-8df6-4fc7-8c0f-5e9c4b921013",
             "0495121f-a579-4068-9494-4a1ac477613b",
@@ -86,6 +88,7 @@ task.spawn(function()
             "1e07ff1f-ab45-466b-8b36-ae0ff8b43198",
         },
         ["Summer Portal"] = {
+            "e206ec24-dfbf-4157-a380-9afabe115c29",
             "c62223a2-17f9-4078-bbc0-bb45c484558f",
             "d92fceaa-8d18-4dc9-980f-452db4573ad9",
             "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
@@ -279,6 +282,16 @@ task.spawn(function()
                 },
             }
             local Changes = {
+                ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
+                    Settings["Select Mode"] = "Portal"
+                    Settings["Portal Settings"] = {
+                    ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+                    ["Tier Cap"] = 10,
+                    ["Method"] = "Highest", -- Highest , Lowest
+                    ["Ignore Stage"] = {},
+                    ["Ignore Modify"] = {},
+                }
+                end,
                 ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
                     Settings["Select Mode"] = "Portal"
                     Settings["Portal Settings"] = {
@@ -319,6 +332,26 @@ task.spawn(function()
                     ["Ignore Modify"] = {},
                 }
                 end,
+                ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
+                    Settings["Select Mode"] = "Portal"
+                    Settings["Portal Settings"] = {
+                    ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+                    ["Tier Cap"] = 10,
+                    ["Method"] = "Highest", -- Highest , Lowest
+                    ["Ignore Stage"] = {},
+                    ["Ignore Modify"] = {},
+                }
+                end,
+                ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
+                    Settings["Select Mode"] = "Portal"
+                    Settings["Portal Settings"] = {
+                    ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                    ["Tier Cap"] = 10,
+                    ["Method"] = "Highest", -- Highest , Lowest
+                    ["Ignore Stage"] = {},
+                    ["Ignore Modify"] = {},
+                }
+                end,
                 ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
                     Settings["Select Mode"] = "Portal"
                     Settings["Portal Settings"] = {
@@ -340,6 +373,16 @@ task.spawn(function()
                 }
                 end,
                 ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
+                    Settings["Select Mode"] = "Portal"
+                    Settings["Portal Settings"] = {
+                    ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                    ["Tier Cap"] = 10,
+                    ["Method"] = "Highest", -- Highest , Lowest
+                    ["Ignore Stage"] = {},
+                    ["Ignore Modify"] = {},
+                }
+                end,
+                ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
                     Settings["Select Mode"] = "Portal"
                     Settings["Portal Settings"] = {
                     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
@@ -469,6 +512,16 @@ task.spawn(function()
                     ["Act"] = "Act1",
                     ["StageType"] = "Raid",
                     ["Stage"] = "Ruined City",
+                    ["FriendsOnly"] = false
+                }
+                end,
+                ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
+                    Settings["Select Mode"] = "Dungeon"
+                    Settings["Dungeon Settings"] = {
+                    ["Difficulty"] = "Nightmare",
+                    ["Act"] = "AntIsland",
+                    ["StageType"] = "Dungeon",
+                    ["Stage"] = "Ant Island",
                     ["FriendsOnly"] = false
                 }
                 end,
@@ -770,22 +823,28 @@ task.spawn(function()
                 }
                 end,
                 ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
-                    Settings["Auto Join Challenge"] = true
-                    Settings["Auto Join Bounty"] = true
-                    Settings["Select Mode"] = "Story"
-                    Settings["Story Settings"] = {
-                    ["Difficulty"] = "Normal",
-                    ["Act"] = "infinite",
-                    ["StageType"] = "Story",
-                    ["Stage"] = "Planet Namak",
-                    ["FriendsOnly"] = false
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Select Mode"] = "Story"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
                 }
+                end,
+                ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
+                    Settings["Select Mode"] = "AFK"
                 end,
                 ["723de53d-cedd-4972-a6e5-6c44bf8699e9"] = function()
                     Settings["Select Mode"] = "AFK"
                 end,
                 ["79183580-1d86-4c97-b3c5-5ac9aac1c755"] = function()
                     Settings["Select Mode"] = "AFK"
+                end,
+                ["1c335fe4-5fb6-4894-9c3e-83216bc419a9"] = function()
+                    Settings["Select Mode"] = "World Line"
                 end,
                 ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
                     Settings["Select Mode"] = "World Line"

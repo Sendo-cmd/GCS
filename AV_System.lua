@@ -143,6 +143,16 @@ local Settings ={
 }
 local Changes = {
     -- ถ้าต้องการสร้าง configs แบบไหนให้ order ก็เปลี่ยนแปลงเหมือนใส่ config ธรรมดาได้เลย สร้างครั้งนึงแล้วเหมือนกันทุก order
+    ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
     ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
@@ -187,6 +197,16 @@ local Changes = {
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
         ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -353,6 +373,16 @@ local Changes = {
         ["Act"] = "Act1",
         ["StageType"] = "Raid",
         ["Stage"] = "Ruined City",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "AntIsland",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Ant Island",
         ["FriendsOnly"] = false
     }
     end,
@@ -665,11 +695,17 @@ local Changes = {
        ["FriendsOnly"] = false
     }
     end,
+    ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
+        Settings["Select Mode"] = "AFK"
+    end,
     ["723de53d-cedd-4972-a6e5-6c44bf8699e9"] = function()
         Settings["Select Mode"] = "AFK"
     end,
     ["79183580-1d86-4c97-b3c5-5ac9aac1c755"] = function()
         Settings["Select Mode"] = "AFK"
+    end,
+    ["1c335fe4-5fb6-4894-9c3e-83216bc419a9"] = function()
+        Settings["Select Mode"] = "World Line"
     end,
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
