@@ -823,15 +823,15 @@ task.spawn(function()
                 }
                 end,
                 ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
-                Settings["Auto Join Challenge"] = true
-                Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
+                    Settings["Auto Join Challenge"] = true
+                    Settings["Auto Join Bounty"] = true
+                    Settings["Select Mode"] = "Story"
+                    Settings["Story Settings"] = {
+                    ["Difficulty"] = "Normal",
+                    ["Act"] = "infinite",
+                    ["StageType"] = "Story",
+                    ["Stage"] = "Planet Namak",
+                    ["FriendsOnly"] = false
                 }
                 end,
                 ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
@@ -1202,7 +1202,7 @@ task.spawn(function()
                     local Attempt = 0
                     local Last_Message = nil
                     local Current_Party = GetParty()
-                    local Waiting_Time = os.time() + 180
+                    local Waiting_Time = os.time() + 150
                     -- Auto Accept Party
                     task.spawn(function()
                         while task.wait(1) and not IsShutdown do
@@ -1215,16 +1215,6 @@ task.spawn(function()
                                 end
                                 local old_party = table.clone(cache["party_member"])
                                 if LenT(old_party) < 3 then
-                                    local cache = GetCache(message["order"])
-                                    old_party[message["order"]] = {
-                                        ["join_time"] = os.time(),
-                                        ["product_id"] = cache["product_id"],
-                                        ["name"] = cache["name"],
-                                    } 
-                                    UpdateCache(Username,{["party_member"] = old_party})
-                                    UpdateCache(message["order"],{["party"] = Username})
-                                    Current_Party = GetParty()
-
                                     local cache = GetCache(Username)
                                     local path = nil
                                     local lowest = math.huge
@@ -1234,6 +1224,41 @@ task.spawn(function()
                                             lowest = v["join_time"]
                                         end
                                     end
+                                    if path then
+                                        local Product_Type_1,Product_Type_2 = nil,nil
+                                        for i,v in pairs(Order_Type) do
+                                            if table.find(v,path) then
+                                                Product_Type_1 = i
+                                            end
+                                            if table.find(v,cache["product_id"]) then
+                                                Product_Type_2 = i
+                                            end
+                                        end
+                                        if Product_Type_1 == Product_Type_2 then
+                                            local cache = GetCache(message["order"])
+                                            old_party[message["order"]] = {
+                                                ["join_time"] = os.time(),
+                                                ["product_id"] = cache["product_id"],
+                                                ["name"] = cache["name"],
+                                            } 
+                                            UpdateCache(Username,{["party_member"] = old_party})
+                                            UpdateCache(message["order"],{["party"] = Username})
+                                            Current_Party = GetParty()
+                                        end
+                                    else
+                                        local cache = GetCache(message["order"])
+                                        old_party[message["order"]] = {
+                                            ["join_time"] = os.time(),
+                                            ["product_id"] = cache["product_id"],
+                                            ["name"] = cache["name"],
+                                        } 
+                                        UpdateCache(Username,{["party_member"] = old_party})
+                                        UpdateCache(message["order"],{["party"] = Username})
+                                        Current_Party = GetParty()
+                                    end
+                                   
+
+                                   
                                     if path then
                                         UpdateCache(Username,{["current_play"] = path}) 
                                     else
@@ -1324,6 +1349,7 @@ task.spawn(function()
                         Party()
                         return true
                     end
+                    warn("Invite Detecter")
                     local Counting = {}
                     Connection[#Connection + 1] = Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                         if type_ == "Create" and table.find(Current_Party,tostring(value_["InvitedBy"])) then
