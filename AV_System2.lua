@@ -1177,7 +1177,7 @@ task.spawn(function()
                 local Attempt = 0
                 local Last_Message = nil
                 local Current_Party = GetParty()
-                local Waiting_Time = os.time() + 240
+                local Waiting_Time = os.time() + 180
                 -- Auto Accept Party
                 task.spawn(function()
                     while task.wait(1) do
@@ -1214,7 +1214,7 @@ task.spawn(function()
                                 else
                                     UpdateCache(Username,{["current_play"] = ""}) 
                                 end
-                                Waiting_Time = Waiting_Time + 75
+                                Waiting_Time = Waiting_Time + 130
                             end
                             Last_Message = message["message-id"]
                             task.wait(3)
