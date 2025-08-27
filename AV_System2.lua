@@ -834,6 +834,27 @@ task.spawn(function()
                     ["FriendsOnly"] = false
                 }
                 end,
+                ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
+                    Settings["Select Mode"] = "Boss Event"
+                    Settings["Boss Event Settings"] = {
+                    ["Difficulty"] = "Normal",
+                    ["Stage"] = "SaberEvent",
+                }
+                end,
+                ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
+                    Settings["Select Mode"] = "Boss Event"
+                    Settings["Boss Event Settings"] = {
+                    ["Difficulty"] = "Normal",
+                    ["Stage"] = "SaberEvent",
+                }
+                end,
+                ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
+                    Settings["Select Mode"] = "Boss Event"
+                    Settings["Boss Event Settings"] = {
+                    ["Difficulty"] = "Normal",
+                    ["Stage"] = "SaberEvent",
+                }
+                end,
                 ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
                     Settings["Select Mode"] = "AFK"
                 end,
