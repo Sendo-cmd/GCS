@@ -347,7 +347,7 @@ getgenv().Config = {
 			["Enable"] = false,
 			["Spring Portal"] = 500
 		},
-		["Redeem Code"] = true,
+		["Redeem Code"] = false,
 		["Right Click Teleport"] = false
 	},
 	["Summoner"] = {
