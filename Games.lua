@@ -724,10 +724,12 @@ Accounts = {
         "Log",
         "Portal",
     },
-    -- ["EstaB9895"] = {
-    --     "Log",
-    --     "LovePortal",
-    -- },
+    ["EstaB9895"] = {
+        "Log",
+        "RerollSuper",
+        "System",
+        "System2",
+    },
     ["godre902"] = {
         "Log",
         "Marco",
