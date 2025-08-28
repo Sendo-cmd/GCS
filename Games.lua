@@ -2846,6 +2846,18 @@ Accounts = {
         "Log",
         "Base",
     },
+    ["fxgfangtangthai"] = {
+        "Log",
+        "Worldline",
+        "System",
+        "System2",
+    },
+    ["Kendradmm6112"] = {
+        "Log",
+        "IgrisAuto",
+        "System",
+        "System2",
+    },
 }
 repeat task.wait(5) until game:IsLoaded(5)
 
