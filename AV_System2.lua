@@ -1378,6 +1378,7 @@ task.spawn(function()
                         local player = (sender and game.Players:GetPlayerByUserId(sender.UserId) or nil)
                         if player and table.find(Current_Party,tostring(player.Name)) then
                             Counting[tostring(player.Name)] = os.time() + 20
+                            print("Add Time To ", player.Name)
                         end
                     end
 
@@ -1599,7 +1600,7 @@ task.spawn(function()
                                     warn("Host is Offline But Not Longer :D")
                                 end
                             end
-                            task.wait(5)
+                            task.wait(8)
                         end
                     end)
                     task.wait(3)
