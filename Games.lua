@@ -2313,11 +2313,11 @@ Accounts = {
     ["itzmemepoq"] = {
         "ChallengeEx",
     },
-    ["euakungchannel"] = {
-        "Log",
-        "System",
-        "CidP",
-    },
+    -- ["euakungchannel"] = {
+    --     "Log",
+    --     "System",
+    --     "CidP",
+    -- },
     ["zkiyt53dd"] = {
         "Log",
         "System",
