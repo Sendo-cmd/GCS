@@ -1376,6 +1376,7 @@ task.spawn(function()
                     TextChatService.OnIncomingMessage = function(message)
                         local sender = message.TextSource
                         local player = (sender and game.Players:GetPlayerByUserId(sender.UserId) or nil)
+                        print(message,player,sender)
                         if player and table.find(Current_Party,tostring(player.Name)) then
                             Counting[tostring(player.Name)] = os.time() + 20
                             print("Add Time To ", player.Name)
