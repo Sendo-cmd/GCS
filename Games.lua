@@ -1868,12 +1868,12 @@ Accounts = {
         "System",
         "CidP",
     },
-    ["PXDLKIG"] = {
-        "Log",
-        "Worldline",
-        "System",
-        "System2",
-    },
+    -- ["PXDLKIG"] = {
+    --     "Log",
+    --     "Worldline",
+    --     "System",
+    --     "System2",
+    -- },
     ["Biszhedter"] = {
         "Log",
         "BaseGemInf",
