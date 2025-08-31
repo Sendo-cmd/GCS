@@ -2644,10 +2644,10 @@ Accounts = {
         "Marco",
         "Challenge",
     },
-    ["S0u_lDik"] = { 
-        "Marco",
-        "Tdw",
-    },
+    -- ["S0u_lDik"] = { 
+    --     "Marco",
+    --     "Tdw",
+    -- },
     ["RebirthOfhacknot3377"] = { 
         "Marco",
         "Challenge",
