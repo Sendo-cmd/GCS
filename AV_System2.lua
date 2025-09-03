@@ -1167,6 +1167,7 @@ if ID[game.GameId][1] == "AV" then
                             -- Accept 
                             local message = GetCache(Username .. "-message")
                             if message and Last_Message_1 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
+                                print(message)
                                 local old_party = table.clone(cache["party_member"])
                                 if LenT(old_party) < 3 then
                                     local path = nil
@@ -1257,6 +1258,7 @@ if ID[game.GameId][1] == "AV" then
                                 Waiting_Time = os.time() + 150
                                 print("Add Time To Waiting Time")
                             else
+                                print(#Current_Party)
                                 if os.time() > Waiting_Time then
                                     if All_Players_Activated() and All_Players_Game() then
                                         local Product = nil
@@ -1307,6 +1309,7 @@ if ID[game.GameId][1] == "AV" then
                 ]]
                 local AttemptToAlready = 0
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
+                    print(cache_1["party"])
                     if type_ == "Create" and tostring(value_["InvitedBy"]) == cache_1["party"] then
                         print("Accept")
                         Networking:WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(
@@ -1317,6 +1320,7 @@ if ID[game.GameId][1] == "AV" then
                 end)
                 Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
                     if index == "Replicate" and tostring(value["Owner"]) == cache_1["party"] then
+                        print(cache_1["party"])
                         task.wait(1)
                         Networking:WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
                             "JoinPortal",
