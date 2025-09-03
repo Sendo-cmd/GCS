@@ -1334,7 +1334,6 @@ if ID[game.GameId][1] == "AV" then
                 end
                 while true do
                     local cache = GetCache(cache_key)
-                    cache_1 = table.clone(cache)
                     if not cache then
                         SendCache(
                             {
@@ -1349,6 +1348,7 @@ if ID[game.GameId][1] == "AV" then
                         }
                     )
                     else
+                        cache_1 = table.clone(cache)
                         if #cache["party"] > 1 then
                             local party = GetCache(cache["party"])
                             if not party then
@@ -1518,3 +1518,5 @@ if ID[game.GameId][1] == "AV" then
         end
     end
 end
+
+
