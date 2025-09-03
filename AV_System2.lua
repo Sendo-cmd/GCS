@@ -1244,7 +1244,7 @@ if ID[game.GameId][1] == "AV" then
                                 UpdateCache(Username,{["last_online"] = os.time() + 200})
                                 Attempt = 0
                             end
-                            if #Current_Party <= 0 then
+                            if not Current_Party or #Current_Party <= 0 then
                                 Waiting_Time = os.time() + 150
                                 print("Add Time To Waiting Time")
                             else
@@ -1518,5 +1518,3 @@ if ID[game.GameId][1] == "AV" then
         end
     end
 end
-
-
