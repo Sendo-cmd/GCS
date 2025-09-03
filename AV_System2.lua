@@ -1135,6 +1135,12 @@ if ID[game.GameId][1] == "AV" then
                     return true
                 end
                 function GetParty(cache)
+                    if type(cache) ~= "table" then
+                        return {}
+                    end
+                     if type(cache["party_member"]) ~= "table" then
+                        return {}
+                    end
                     local CParty = table.clone(cache["party_member"])
                     local Insert = {}
                     for i,v in pairs(CParty) do
@@ -1190,7 +1196,6 @@ if ID[game.GameId][1] == "AV" then
                                             } 
                                             UpdateCache(Username,{["party_member"] = old_party})
                                             UpdateCache(message["order"],{["party"] = Username})
-                                            Current_Party = GetParty(cache)
                                         end
                                     else
                                         local cache = GetCache(message["order"])
@@ -1201,7 +1206,7 @@ if ID[game.GameId][1] == "AV" then
                                         } 
                                         UpdateCache(Username,{["party_member"] = old_party})
                                         UpdateCache(message["order"],{["party"] = Username})
-                                        Current_Party = GetParty(cache)
+                                        
                                     end
                                     if path then
                                         UpdateCache(Username,{["current_play"] = path}) 
@@ -1241,6 +1246,8 @@ if ID[game.GameId][1] == "AV" then
                                 Last_Message_2 = message["message-id"]
                                 task.wait(3)
                             end
+                            cache = GetCache(cache_key)
+                            Current_Party = GetParty(cache)
                             Attempt = Attempt + 1
                             if Attempt > 5 then
                                 UpdateCache(Username,{["last_online"] = os.time() + 200})
