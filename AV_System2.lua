@@ -1353,10 +1353,13 @@ if ID[game.GameId][1] == "AV" then
                             local party = GetCache(cache["party"])
                             if not party then
                                 UpdateCache(cache_key,{["party"] = ""})
+                                warn("Not Found Party")
                             elseif not party["party_member"] or not party["party_member"][cache_key] then
                                 UpdateCache(cache_key,{["party"] = ""})
+                                warn("Not Found My Name In Party")
                             elseif os.time() > party["last_online"] then
                                 UpdateCache(cache_key,{["party"] = ""})
+                                warn("Not Active")
                             else
                                 if Players:FindFirstChild(cache["party"]) then
                                     channel:SendAsync(math.random(1,100)) 
@@ -1366,6 +1369,7 @@ if ID[game.GameId][1] == "AV" then
                                 end
                             end
                         else
+                            warn("Find Party")
                             for i, v in pairs(DecBody(GetKai)) do
                                 local kai_cache = GetCache(v["username"])
                                 if kai_cache then
