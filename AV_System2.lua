@@ -1158,6 +1158,7 @@ if ID[game.GameId][1] == "AV" then
                             print("Delete Cache")
                             task.wait(2.5)
                         else
+                            -- Accept 
                             local message = GetCache(Username .. "-message")
                             if message and Last_Message_1 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                                 local old_party = table.clone(cache["party_member"])
@@ -1212,6 +1213,7 @@ if ID[game.GameId][1] == "AV" then
                                 Last_Message_1 = message["message-id"]
                                 task.wait(3)
                             end
+                            -- Remove
                             local message = GetCache(Username .. "-message-2")
                             if message and Last_Message_2 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                                 local old_party = table.clone(cache["party_member"])
@@ -1248,16 +1250,20 @@ if ID[game.GameId][1] == "AV" then
                                 Waiting_Time = os.time() + 150
                                 print("Add Time To Waiting Time")
                             else
-                                if All_Players_Activated() and All_Players_Game() then
-                                    local Product = nil
-                                    local lowest = math.huge
-                                    for i,v in pairs(cache["party_member"]) do
-                                        if v["join_time"] < lowest then
-                                            Product = v["product_id"]
-                                            lowest = v["join_time"]
+                                if os.time() > Waiting_Time then
+                                    if All_Players_Activated() and All_Players_Game() then
+                                        local Product = nil
+                                        local lowest = math.huge
+                                        for i,v in pairs(cache["party_member"]) do
+                                            if v["join_time"] < lowest then
+                                                Product = v["product_id"]
+                                                lowest = v["join_time"]
+                                            end
                                         end
+                                        Register_Room(Product,Current_Party)
                                     end
-                                    Register_Room(Product,Current_Party)
+                                else
+                                    print("Waiting...",Waiting_Time - os.time())
                                 end
                             end
                         end
@@ -1480,7 +1486,12 @@ if ID[game.GameId][1] == "AV" then
                     end
                 end
             end)
-           
+            task.spawn(function()
+                while task.wait(10) do
+                    UpdateCache(Username,{["last_online"] = os.time() + 200})
+                end
+            end)
+            
             -- Check If End Game And Not Found A Player
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 local cache = GetCache(Username)
