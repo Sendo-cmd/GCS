@@ -190,6 +190,7 @@ local function DelCache(OrderId)
     return response
 end
 local function GetCache(OrderId)
+    print(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId,OrderId)
     local Cache = Get(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId)
     if not Cache["Success"] then
         return false
