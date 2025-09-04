@@ -1525,8 +1525,12 @@ if ID[game.GameId][1] == "AV" then
                 end
             end)
         else
+            
             local data = Fetch_data() 
             if not data["want_carry"] then return false end
+            local productid = data["product_id"]
+            local orderid = data["id"]
+            local cache_key = orderid .. "_cache_1"
             local cache = GetCache(data["id"] .. "_cache")
             local host = cache["party"]
             -- Check If No Host In Lobby 
