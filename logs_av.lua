@@ -87,7 +87,7 @@ local function SendTo(Url,...)
         ["Body"] = HttpService:JSONEncode(CreateBody(...))
     })
     for i,v in pairs(response) do
-        warn(i,v)
+        -- warn(i,v)
     end 
     return response
 end
@@ -250,7 +250,7 @@ local function GetData()
             game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
         end
         
-        print(Val_3 , Val_2 , Val_1)
+        -- print(Val_3 , Val_2 , Val_1)
         task.wait(1) 
     until Val_3 and Val_2 and Val_1
 
