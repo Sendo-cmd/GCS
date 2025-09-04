@@ -1309,7 +1309,7 @@ if ID[game.GameId][1] == "AV" then
                 ]]
                 local AttemptToAlready = 0
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
-                    print(cache_1["party"])
+                    print(cache_1["party"],value_["InvitedBy"])
                     if type_ == "Create" and tostring(value_["InvitedBy"]) == cache_1["party"] then
                         print("Accept")
                         Networking:WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(
@@ -1319,8 +1319,8 @@ if ID[game.GameId][1] == "AV" then
                     end
                 end)
                 Networking.Portals.PortalReplicationEvent.OnClientEvent:Connect(function(index,value)
+                    print(cache_1["party"],value["Owner"])
                     if index == "Replicate" and tostring(value["Owner"]) == cache_1["party"] then
-                        print(cache_1["party"])
                         task.wait(1)
                         Networking:WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(
                             "JoinPortal",
