@@ -191,11 +191,10 @@ local function DelCache(OrderId)
 end
 local function GetCache(OrderId)
     local Cache = Get(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId)
-    local Data = DecBody(Cache)
-    
     if not Cache["Success"] then
         return false
     end
+    local Data = DecBody(Cache)
     return Data
 end
 local function UpdateCache(OrderId,...)
