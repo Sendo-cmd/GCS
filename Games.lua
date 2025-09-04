@@ -1795,11 +1795,11 @@ Accounts = {
         "System",
         "PortalParty",
     },
-    ["sans_dee1134"] = {
-        "Log",
-        "System",
-        "PortalParty",
-    },
+    -- ["sans_dee1134"] = {
+    --     "Log",
+    --     "System",
+    --     "PortalParty",
+    -- },
     ["hiherbz22"] = {
         "Log",
         "IgrisAuto",
