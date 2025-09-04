@@ -1314,7 +1314,7 @@ if ID[game.GameId][1] == "AV" then
                         print("Accept")
                         Networking:WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(
                             "AcceptInvite",
-                            value["GUID"]
+                            value_["GUID"]
                         )
                     end
                 end)
@@ -1531,7 +1531,7 @@ if ID[game.GameId][1] == "AV" then
             local productid = data["product_id"]
             local orderid = data["id"]
             local cache_key = orderid .. "_cache_1"
-            local cache = GetCache(data["id"] .. "_cache")
+            local cache = GetCache(cache_key)
             local host = cache["party"]
             -- Check If No Host In Lobby 
             task.wait(30)
