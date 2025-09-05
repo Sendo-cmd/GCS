@@ -1311,6 +1311,8 @@ if ID[game.GameId][1] == "AV" then
                                             end
                                         end
                                         Register_Room(Product,Current_Party)
+                                    else
+                                        print("Not Found Member",All_Players_Activated() , All_Players_Game())
                                     end
                                 else
                                     print("Waiting...",Waiting_Time - os.time())
