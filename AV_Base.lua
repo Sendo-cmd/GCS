@@ -251,9 +251,9 @@ getgenv().Config = {
 			["Restart if no Rotara Earring"] = false
 		},
 		["Ruined City"] = {
-			["Use Mount to Travel"] = true,
-			["Active Tower"] = false,
-			["Unhandcuff"] = false
+			["Use Mount to Travel"] = false,
+			["Active Tower"] = true,
+			["Unhandcuff"] = true
 		},
 		["The System"] = {
 			["Auto Shadow"] = {
