@@ -948,7 +948,7 @@ local function Register_Room(myproduct,player)
                 GUID
             )
             task.wait(2)
-            for i,v in pairs(player) do
+            for i,v in pairs(player) do task.wait(1)
                 Invite(v)
             end
         end
@@ -1002,7 +1002,7 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do
+            for i,v in pairs(player) do task.wait(1)
                 Invite(v)
             end
             task.wait(5)
@@ -1021,7 +1021,7 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do
+            for i,v in pairs(player) do task.wait(1)
                 Invite(v)
             end
             task.wait(5)
@@ -1040,7 +1040,7 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do
+            for i,v in pairs(player) do task.wait(1)
                 Invite(v)
             end
             task.wait(5)
@@ -1059,7 +1059,7 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do
+            for i,v in pairs(player) do task.wait(1)
                 Invite(v)
             end
             task.wait(5)
