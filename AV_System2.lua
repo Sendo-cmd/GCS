@@ -1002,8 +1002,11 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do task.wait(1)
-                Invite(v)
+            for i = 1,2 do 
+                for i,v in pairs(player) do task.wait(2.5)
+                    print(i,v)
+                    Invite(v)
+                end 
             end
             task.wait(5)
             local args = {
@@ -1021,8 +1024,11 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do task.wait(1)
-                Invite(v)
+            for i = 1,2 do 
+                for i,v in pairs(player) do task.wait(2.5)
+                    print(i,v)
+                    Invite(v)
+                end 
             end
             task.wait(5)
             local args = {
@@ -1040,8 +1046,11 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do task.wait(1)
-                Invite(v)
+            for i = 1,2 do 
+                for i,v in pairs(player) do task.wait(2.5)
+                    print(i,v)
+                    Invite(v)
+                end 
             end
             task.wait(5)
             local args = {
@@ -1059,8 +1068,11 @@ local function Register_Room(myproduct,player)
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             task.wait(5)
-            for i,v in pairs(player) do task.wait(1)
-                Invite(v)
+            for i = 1,2 do 
+                for i,v in pairs(player) do task.wait(2.5)
+                    print(i,v)
+                    Invite(v)
+                end 
             end
             task.wait(5)
             local args = {
