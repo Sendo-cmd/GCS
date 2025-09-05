@@ -1103,7 +1103,7 @@ if ID[game.GameId][1] == "AV" then
             task.spawn(function()
                 local cache_key = Username
                 local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
-                local Waiting_Time = os.time() + 180
+                local Waiting_Time = os.time() + 150
                 local Attempt = 0
                 local Current_Party = nil
                 local Last_Message_1 = nil
@@ -1188,6 +1188,7 @@ if ID[game.GameId][1] == "AV" then
                                                 Product_Type_2 = i
                                             end
                                         end
+                                        print(Product_Type_1,Product_Type_2,cache["product_id"])
                                         if Product_Type_1 == Product_Type_2 then
                                             local cache = GetCache(message["order"])
                                             old_party[message["order"]] = {
@@ -1207,7 +1208,7 @@ if ID[game.GameId][1] == "AV" then
                                         } 
                                         UpdateCache(Username,{["party_member"] = old_party})
                                         UpdateCache(message["order"],{["party"] = Username})
-                                        
+                                         print("No Product")
                                     end
                                     if path then
                                         UpdateCache(Username,{["current_play"] = path}) 
@@ -1410,7 +1411,7 @@ if ID[game.GameId][1] == "AV" then
                                         if Product_Type_1 ~= Product_Type_2 then
                                             continue;
                                         end
-                                            SendCache(
+                                        SendCache(
                                             {
                                                 ["index"] = v["username"] .. "-message"
                                             },
@@ -1422,6 +1423,7 @@ if ID[game.GameId][1] == "AV" then
                                                 },
                                             }
                                         )
+                                        AttemptToAlready = 0
                                     else
                                         print("Request To Make Party",AttemptToAlready)
                                         if AttemptToAlready < 5 then continue; end
