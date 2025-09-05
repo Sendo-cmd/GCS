@@ -190,7 +190,6 @@ local function DelCache(OrderId)
     return response
 end
 local function GetCache(OrderId)
-    print(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId,OrderId)
     local Cache = Get(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId)
     if not Cache["Success"] then
         return false
@@ -980,18 +979,18 @@ local function Register_Room(myproduct,player)
                 end
                 return AllPortal[1] and AllPortal[1][1] or false
             end
-            while true do
-                local Portal = PortalSettings(GetItem(Settings_["ID"]))
-                if Portal then
-                    local args = {
-                        [1] = "ActivatePortal",
-                        [2] = Portal
-                    }
-                    
-                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
-                    task.wait(3)
-                end
-                task.wait(2)
+            local Portal = PortalSettings(GetItem(Settings_["ID"]))
+            if Portal then
+                print("Have a Portal")
+                local args = {
+                    [1] = "ActivatePortal",
+                    [2] = Portal
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                task.wait(3)
+            else
+                print("Dont have portal",Settings_["ID"])
             end
         elseif Settings["Select Mode"] == "Story" then
             local StorySettings = Settings["Story Settings"]
@@ -1156,20 +1155,27 @@ if ID[game.GameId][1] == "AV" then
                         print("Add Time To ", player.Name)
                     end
                 end
-                while true do
+                while true do task.wait(1)
                     local cache = GetCache(cache_key)
                     if cache then
+                        print(os.time() , cache["last_online"])
                         if os.time() > cache["last_online"] then
                             DelCache(Username)
                             print("Delete Cache")
                             task.wait(2.5)
                         else
+                            Attempt = Attempt + 1
+                            if Attempt > 5 then
+                                UpdateCache(Username,{["last_online"] = os.time() + 200})
+                                Attempt = 0
+                            end
                             -- Accept 
                             local message = GetCache(Username .. "-message")
                             if message and Last_Message_1 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                                 print(message)
                                 local old_party = table.clone(cache["party_member"])
                                 if LenT(old_party) < 3 then
+                                    local success = true
                                     local path = nil
                                     local lowest = math.huge
                                     for i,v in pairs(cache["party_member"]) do
@@ -1184,13 +1190,32 @@ if ID[game.GameId][1] == "AV" then
                                             if table.find(v,path) then
                                                 Product_Type_1 = i
                                             end
-                                            if table.find(v,cache["product_id"]) then
+                                            if table.find(v,cache["current_play"]) then
                                                 Product_Type_2 = i
                                             end
                                         end
-                                        print(Product_Type_1,Product_Type_2,cache["product_id"])
+                                        print(Product_Type_1,Product_Type_2,cache["current_play"])
                                         if Product_Type_1 == Product_Type_2 then
                                             local cache = GetCache(message["order"])
+                                            if cache then
+                                                old_party[message["order"]] = {
+                                                    ["join_time"] = os.time(),
+                                                    ["product_id"] = cache["product_id"],
+                                                    ["name"] = cache["name"],
+                                                } 
+                                                UpdateCache(Username,{["party_member"] = old_party})
+                                                UpdateCache(message["order"],{["party"] = Username})
+                                            else
+                                                 print("Cannot Get Cache 1")
+                                            end
+                                        else
+                                            print("Mismatch")
+                                            task.wait(3)
+                                            success = false
+                                        end
+                                    else
+                                        local cache = GetCache(message["order"])
+                                        if cache then
                                             old_party[message["order"]] = {
                                                 ["join_time"] = os.time(),
                                                 ["product_id"] = cache["product_id"],
@@ -1198,24 +1223,28 @@ if ID[game.GameId][1] == "AV" then
                                             } 
                                             UpdateCache(Username,{["party_member"] = old_party})
                                             UpdateCache(message["order"],{["party"] = Username})
+                                            cache = GetCache(cache_key)
+                                            path = nil
+                                            lowest = math.huge
+                                            for i,v in pairs(cache["party_member"]) do
+                                                if v["join_time"] < lowest then
+                                                    path = v["product_id"]
+                                                    lowest = v["join_time"]
+                                                end
+                                            end
+                                        else
+                                            print("Cannot Get Cache 2")
                                         end
-                                    else
-                                        local cache = GetCache(message["order"])
-                                        old_party[message["order"]] = {
-                                            ["join_time"] = os.time(),
-                                            ["product_id"] = cache["product_id"],
-                                            ["name"] = cache["name"],
-                                        } 
-                                        UpdateCache(Username,{["party_member"] = old_party})
-                                        UpdateCache(message["order"],{["party"] = Username})
-                                         print("No Product")
+                                        print("No Product")
                                     end
-                                    if path then
+                                    if path and success then
                                         UpdateCache(Username,{["current_play"] = path}) 
-                                    else
+                                    elseif not path then
                                         UpdateCache(Username,{["current_play"] = ""}) 
                                     end
-                                    Waiting_Time = Waiting_Time + 125
+                                    if success then
+                                        Waiting_Time = Waiting_Time + 125
+                                    end
                                 end
                                 Last_Message_1 = message["message-id"]
                                 task.wait(3)
@@ -1249,11 +1278,10 @@ if ID[game.GameId][1] == "AV" then
                                 task.wait(3)
                             end
                             cache = GetCache(cache_key)
-                            Current_Party = GetParty(cache)
-                            Attempt = Attempt + 1
-                            if Attempt > 5 then
-                                UpdateCache(Username,{["last_online"] = os.time() + 200})
-                                Attempt = 0
+                            if cache then
+                                Current_Party = GetParty(cache)
+                            else
+                                print("cannot get cache 3")
                             end
                             if not Current_Party or #Current_Party <= 0 then
                                 Waiting_Time = os.time() + 150
@@ -1312,7 +1340,7 @@ if ID[game.GameId][1] == "AV" then
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                     print(cache_1["party"],value_["InvitedBy"])
                     if type_ == "Create" and tostring(value_["InvitedBy"]) == cache_1["party"] then
-                        print("Accept")
+                        print("Accept") task.wait(1)
                         Networking:WaitForChild("Invites"):WaitForChild("InviteEvent"):FireServer(
                             "AcceptInvite",
                             value_["GUID"]
@@ -1350,7 +1378,7 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end
                 end
-                while true do
+                while true do task.wait(1)
                     local cache = GetCache(cache_key)
                     if not cache then
                         SendCache(
@@ -1372,12 +1400,15 @@ if ID[game.GameId][1] == "AV" then
                             if not party then
                                 UpdateCache(cache_key,{["party"] = ""})
                                 warn("Not Found Party")
+                                task.wait(2)
                             elseif not party["party_member"] or not party["party_member"][cache_key] then
                                 UpdateCache(cache_key,{["party"] = ""})
                                 warn("Not Found My Name In Party")
+                                task.wait(2)
                             elseif os.time() > party["last_online"] then
                                 UpdateCache(cache_key,{["party"] = ""})
                                 warn("Not Active")
+                                task.wait(2)
                             else
                                 if Players:FindFirstChild(cache["party"]) then
                                     channel:SendAsync(math.random(1,100)) 
@@ -1385,6 +1416,7 @@ if ID[game.GameId][1] == "AV" then
                                 else
                                     warn("Host is Offline But Not Longer :D")
                                 end
+                                task.wait(3)
                             end
                         else
                             warn("Find Party")
@@ -1392,9 +1424,11 @@ if ID[game.GameId][1] == "AV" then
                                 local kai_cache = GetCache(v["username"])
                                 if kai_cache then
                                     if os.time() > kai_cache["last_online"] then
+                                        print("Skip Time")
                                         continue;
                                     end
                                     if LenT(kai_cache["party_member"]) >= 3 then
+                                         print("Full Party")
                                         continue;
                                     end
                                     local kaiproduct = kai_cache["current_play"]
@@ -1408,6 +1442,7 @@ if ID[game.GameId][1] == "AV" then
                                                 Product_Type_2 = i
                                             end
                                         end
+                                        print(Product_Type_1,Product_Type_2)
                                         if Product_Type_1 ~= Product_Type_2 then
                                             continue;
                                         end
@@ -1444,6 +1479,7 @@ if ID[game.GameId][1] == "AV" then
                                     end
                                 end
                             end
+                            GetKai = Get(Api .. MainSettings["Path_Kai"])
                             AttemptToAlready = AttemptToAlready + 1
                         end
                     end
