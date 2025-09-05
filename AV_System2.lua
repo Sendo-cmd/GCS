@@ -1214,7 +1214,7 @@ if ID[game.GameId][1] == "AV" then
                                     else
                                         UpdateCache(Username,{["current_play"] = ""}) 
                                     end
-                                    Waiting_Time = Waiting_Time + 125
+                                    Waiting_Time = Waiting_Time + 160
                                 end
                                 Last_Message_1 = message["message-id"]
                                 task.wait(3)
