@@ -1214,7 +1214,7 @@ if ID[game.GameId][1] == "AV" then
                                     else
                                         UpdateCache(Username,{["current_play"] = ""}) 
                                     end
-                                    Waiting_Time = Waiting_Time + 160
+                                    Waiting_Time = Waiting_Time + 125
                                 end
                                 Last_Message_1 = message["message-id"]
                                 task.wait(3)
@@ -1534,7 +1534,7 @@ if ID[game.GameId][1] == "AV" then
             local cache = GetCache(cache_key)
             local host = cache["party"]
             -- Check If No Host In Lobby 
-            task.wait(180)
+            task.wait(30)
             task.spawn(function()
                 while task.wait(1) do
                     if not Players:FindFirstChild(host) then
