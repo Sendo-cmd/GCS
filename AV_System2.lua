@@ -1489,55 +1489,120 @@ if ID[game.GameId][1] == "AV" then
         end
     else
         if IsKai then
-            local Attempt = 0
-            local Last_Message = nil
+            local Last_Message_1 = nil
+            local Last_Message_2 = nil
             -- Auto Accept Party
             task.spawn(function()
-                while task.wait(1) do
+                 while true do task.wait(1)
+                    -- Accept 
                     local message = GetCache(Username .. "-message")
-                    if message and Last_Message ~= message["message-id"] then
-                        local cache = GetCache(Username)
+                    if message and Last_Message_1 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
+                        print(message)
                         local old_party = table.clone(cache["party_member"])
                         if LenT(old_party) < 3 then
-                            local cache = GetCache(message["order"])
-                            old_party[message["order"]] = {
-                                ["join_time"] = os.time(),
-                                ["product_id"] = cache["product_id"],
-                                ["name"] = cache["name"],
-                            }
-                            UpdateCache(Username,{["party_member"] = old_party})
-                            UpdateCache(message["order"],{["party"] = Username})
+                            local success = true
+                            local path = nil
+                            local lowest = math.huge
+                            for i,v in pairs(cache["party_member"]) do
+                                if v["join_time"] < lowest then
+                                    path = v["product_id"]
+                                    lowest = v["join_time"]
+                                end
+                            end
+                            if path then
+                                local Product_Type_1,Product_Type_2 = nil,nil
+                                for i,v in pairs(Order_Type) do
+                                    if table.find(v,path) then
+                                        Product_Type_1 = i
+                                    end
+                                    if table.find(v,cache["current_play"]) then
+                                        Product_Type_2 = i
+                                    end
+                                end
+                                print(Product_Type_1,Product_Type_2,cache["current_play"])
+                                if Product_Type_1 == Product_Type_2 then
+                                    local cache = GetCache(message["order"])
+                                    if cache then
+                                        old_party[message["order"]] = {
+                                            ["join_time"] = os.time(),
+                                            ["product_id"] = cache["product_id"],
+                                            ["name"] = cache["name"],
+                                        } 
+                                        UpdateCache(Username,{["party_member"] = old_party})
+                                        UpdateCache(message["order"],{["party"] = Username})
+                                    else
+                                            print("Cannot Get Cache 1")
+                                    end
+                                else
+                                    print("Mismatch")
+                                    task.wait(3)
+                                    success = false
+                                end
+                            else
+                                local cache = GetCache(message["order"])
+                                if cache then
+                                    old_party[message["order"]] = {
+                                        ["join_time"] = os.time(),
+                                        ["product_id"] = cache["product_id"],
+                                        ["name"] = cache["name"],
+                                    } 
+                                    UpdateCache(Username,{["party_member"] = old_party})
+                                    UpdateCache(message["order"],{["party"] = Username})
+                                    cache = GetCache(cache_key)
+                                    path = nil
+                                    lowest = math.huge
+                                    for i,v in pairs(cache["party_member"]) do
+                                        if v["join_time"] < lowest then
+                                            path = v["product_id"]
+                                            lowest = v["join_time"]
+                                        end
+                                    end
+                                else
+                                    print("Cannot Get Cache 2")
+                                end
+                                print("No Product")
+                            end
+                            if path and success then
+                                UpdateCache(Username,{["current_play"] = path}) 
+                            elseif not path then
+                                UpdateCache(Username,{["current_play"] = ""}) 
+                            end
                         end
-                        Last_Message = message["message-id"]
+                        Last_Message_1 = message["message-id"]
                         task.wait(3)
                     end
-                    Attempt = Attempt + 1
-                    if Attempt > 5 then
-                        UpdateCache(Username,{["last_online"] = os.time() + 200})
-                        Attempt = 0
-                    end
-                end
-            end)
-            -- Auto Clear Party
-            task.spawn(function()
-                while task.wait(1) do
+                    -- Remove
                     local message = GetCache(Username .. "-message-2")
-                    if message and Last_Message ~= message["message-id"] then
-                        local cache = GetCache(Username)
+                    if message and Last_Message_2 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                         local old_party = table.clone(cache["party_member"])
                         if old_party[message["order"]] then
                             old_party[message["order"]] = nil
                             UpdateCache(Username,{["party_member"] = old_party})
                             UpdateCache(message["order"],{["party"] = ""})
+                            Current_Party = GetParty(cache)
+                            local cache = GetCache(Username)
+                            local path = nil
+                            local lowest = math.huge
+                            for i,v in pairs(cache["party_member"]) do
+                                if v["join_time"] < lowest then
+                                    path = v["product_id"]
+                                    lowest = v["join_time"]
+                                end
+                            end
+                            if path then
+                                UpdateCache(Username,{["current_play"] = path}) 
+                            else
+                                UpdateCache(Username,{["current_play"] = ""}) 
+                            end
                         end
-                        Last_Message = message["message-id"]
+                        Last_Message_2 = message["message-id"]
                         task.wait(3)
                     end
                 end
             end)
             task.spawn(function()
                 while task.wait(10) do
-                    UpdateCache(Username,{["last_online"] = os.time() + 200})
+                    UpdateCache(Username,{["last_online"] = os.time() + 250})
                 end
             end)
             
@@ -1545,7 +1610,6 @@ if ID[game.GameId][1] == "AV" then
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 local cache = GetCache(Username)
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-
                     game:shutdown()
                 end
             end)
