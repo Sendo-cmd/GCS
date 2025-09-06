@@ -341,11 +341,11 @@ Accounts = {
         "Log",
         "Portal",
     },
-    ["petezero0"] = {
-        "Log",
-        "System",
-        "LovePortal",
-    },
+    -- ["petezero0"] = {
+    --     "Log",
+    --     "System",
+    --     "LovePortal",
+    -- },
     ["kk2804413"] = {
         "Log",
         "FarmGemSw",
