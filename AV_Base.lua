@@ -282,12 +282,12 @@ getgenv().Config = {
 				["Challenge"] = false,
 				["Portal"] = true,
 				["Worldline"] = false,
-				["Legend Stage"] = true,
+				["Legend Stage"] = false,
 				["BossEvent"] = true,
 				["Dungeon"] = false,
 				["Infinite"] = true,
 				["Rift"] = true,
-				["Story"] = true,
+				["Story"] = false,
 				["Raid"] = true
 			}
 		},
