@@ -716,6 +716,9 @@ local Changes = {
         ["Stage"] = "SaberEvent",
     }
     end,
+    ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
+        Settings["Auto Join Rift"] = true
+    end,
     ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
         Settings["Select Mode"] = "AFK"
     end,
