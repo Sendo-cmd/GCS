@@ -965,6 +965,25 @@ local function Register_Room(myproduct,player)
                 Invite(v)
             end
         end
+        if Settings["Auto Priority"] then
+            local function Priority(Model,ChangePriority)
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
+                    "ChangePriority",
+                    Model.Name,
+                    ChangePriority
+                }))
+            end
+            for i,v in pairs(workspace.Units:GetChildren()) do
+                if v:IsA("Model") then
+                    Priority(v,Settings["Priority"])
+                end
+            end
+            workspace.Units.ChildAdded:Connect(function(v)
+                v:WaitForChild("HumanoidRootPart")
+                task.wait(1)
+                Priority(v,Settings["Priority"])
+            end)
+        end
         if Settings["Select Mode"] == "Portal" then
             local Settings_ = Settings["Portal Settings"]
             local function Ignore(tab1,tab2)
