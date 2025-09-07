@@ -478,17 +478,22 @@ local function Register_Room(myproduct,player)
             ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
                 Settings["Auto Stun"] = true
                 Settings["Select Mode"] = "Raid"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
                 Settings["Raid Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act1",
                 ["StageType"] = "Raid",
                 ["Stage"] = "Ruined City",
                 ["FriendsOnly"] = false
+                
             }
             end,
             ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
                 Settings["Auto Stun"] = true
                 Settings["Select Mode"] = "Raid"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
                 Settings["Raid Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act1",
@@ -500,6 +505,8 @@ local function Register_Room(myproduct,player)
             ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
                 Settings["Auto Stun"] = true
                 Settings["Select Mode"] = "Raid"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
                 Settings["Raid Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act1",
