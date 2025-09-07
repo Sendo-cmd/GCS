@@ -93,6 +93,9 @@ local Order_Type = {
         "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         "c869c464-6864-4eb7-a98f-f78f3448b71c",
     },
+    ["Rift"] = {
+        "a551241f-b981-4b84-8b61-ce5ac449b9f0",
+    }
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -844,6 +847,9 @@ local function Register_Room(myproduct,player)
                 ["Difficulty"] = "Normal",
                 ["Stage"] = "SaberEvent",
             }
+            end,
+            ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
+                Settings["Auto Join Rift"] = true
             end,
             ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
                 Settings["Select Mode"] = "AFK"
