@@ -1413,12 +1413,6 @@ Accounts = {
         "System",
         "YomomataAuto",
     },
-    -- ["344t0sHCdw6oDK"] = {
-    --     "Log",
-    --     "Portal",
-    --     "System",
-    --     "System2",
-    -- },
     ["traijo"] = {
         "Log",
         "System",
