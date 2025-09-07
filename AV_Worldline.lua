@@ -257,8 +257,8 @@ getgenv().Config = {
 		},
 		["The System"] = {
 			["Auto Shadow"] = {
-				["Enable"] = false,
-				["Shadow"] = "Bear",
+				["Enable"] = true,
+				["Shadow"] = "Belu",
 				["Order"] = {
 					["Steel"] = 2,
 					["Bear"] = 1,
@@ -401,8 +401,8 @@ getgenv().Config = {
 				["1"] = 0,
 				["3"] = 0,
 				["2"] = 0,
-				["5"] = 7,
-				["4"] = 2,
+				["5"] = 0,
+				["4"] = 0,
 				["6"] = 0
 			}
 		},
