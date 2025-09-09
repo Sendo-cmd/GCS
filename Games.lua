@@ -2874,7 +2874,7 @@ Accounts = {
     --     "System2",
     -- },
 }
-repeat task.wait(5) until game:IsLoaded(5)
+repeat task.wait(1) until game:IsLoaded(2)
 
 local plr = game.Players.LocalPlayer
 local Scripts = Games[game.gameId]
@@ -2911,7 +2911,7 @@ for i, v in pairs(ScriptLists) do
             Loaded = true
         end)
 
-        repeat task.wait() until Loaded or (tick() - Timer) > 5
+        repeat task.wait() until Loaded or (tick() - Timer) > 2
     end
 end
 
