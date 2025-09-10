@@ -1915,12 +1915,12 @@ Accounts = {
         "System",
         "CidP",
     },
-    ["Coknwz"] = {
-        "Log",
-        "Portal",
-        "System",
-        "System2",
-    },
+    -- ["Coknwz"] = {
+    --     "Log",
+    --     "Portal",
+    --     "System",
+    --     "System2",
+    -- },
     ["Abfbtwekpjkkn"] = {
         "Log",
         "Reroll",
