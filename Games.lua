@@ -1452,11 +1452,11 @@ Accounts = {
         "Log",
         "BaseGem",
     },
-    ["scarygirl362"] = {
-        "Log",
-        "System",
-        "YomomataAuto",
-    },
+    -- ["scarygirl362"] = {
+    --     "Log",
+    --     "System",
+    --     "YomomataAuto",
+    -- },
     ["klopyodgiud"] = {
         "Log",
         "YomomataR",
