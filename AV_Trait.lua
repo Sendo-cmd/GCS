@@ -696,25 +696,25 @@ getgenv().Config = {
 		["Auto Join"] = false
 	},
 	["Auto Join Setting"] = {
-		["Joiner Cooldown"] = 30,
 		["Joiner Priority"] = {
-			["Boss Event Joiner"] = 5,
-			["Spring Portal Joiner"] = 9,
-			["Limitless Odyssey Joiner"] = 8,
-			["Odyssey Joiner"] = 7,
-			["Legend Stage Joiner"] = 2,
-			["Summer Portal Joiner"] = 11,
-			["Stage Joiner"] = 1,
-			["Dungeon Joiner"] = 4,
-			["Weekly Challenge Joiner"] = 15,
-			["Raid Joiner"] = 3,
-			["Worldline Joiner"] = 6,
-			["Regular Challenge Joiner"] = 13,
-			["Boss Bounties Joiner"] = 12,
-			["Summer Event Joiner"] = 10,
+			["Worldline Joiner"] = 9,
 			["Daily Challenge Joiner"] = 14,
-			["Rift Joiner"] = 16
-		}
+			["Limitless Odyssey Joiner"] = 10,
+			["Legend Stage Joiner"] = 11,
+			["Boss Event Joiner"] = 12,
+			["Weekly Challenge Joiner"] = 15,
+			["Boss Bounties Joiner"] = 16,
+			["Odyssey Joiner"] = 8,
+			["Summer Portal Joiner"] = 7,
+			["Raid Joiner"] = 6,
+			["Stage Joiner"] = 5,
+			["Regular Challenge Joiner"] = 13,
+			["Dungeon Joiner"] = 4,
+			["Summer Event Joiner"] = 3,
+			["Spring Portal Joiner"] = 2,
+			["Rift Joiner"] = 1
+		},
+		["Joiner Cooldown"] = 30
 	},
 	["Raid Joiner"] = {
 		["Auto Join"] = false
