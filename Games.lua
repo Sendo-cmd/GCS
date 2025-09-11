@@ -2867,6 +2867,12 @@ Accounts = {
         "System",
         "System2",
     },
+    ["moonqi_296414"] = {
+        "Log",
+        "RerollSuper",
+        "System",
+        "System2",
+    },
     -- ["whdjebdju4"] = {
     --     "Log",
     --     "Worldline",
