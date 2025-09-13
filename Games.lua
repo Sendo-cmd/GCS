@@ -2322,10 +2322,10 @@ Accounts = {
         "Log",
         "Worldline",
     },
-    ["Isudsmogj"] = { 
-        "Log",
-        "Reroll",
-    },
+    -- ["Isudsmogj"] = { 
+    --     "Log",
+    --     "Reroll",
+    -- },
     ["iamnewbie3p"] = { 
         "Marco",
         "dg",
