@@ -636,7 +636,7 @@ getgenv().Config = {
 	},
 	["Crafter"] = {
 		["Teleport Lobby full Essence"] = false,
-		["Enable"] = false,
+		["Enable"] = true,
 		["Essence Stone"] = {
 			["Pink Essence Stone"] = true,
 			["Blue Essence Stone"] = true,
