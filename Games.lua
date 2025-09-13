@@ -2703,8 +2703,10 @@ Accounts = {
         "Inf",
     },
     ["SPECTRAL_X2"] = { 
-        "Marco",
-        "ChallengeEx",
+        "Log",
+        "RerollSuper",
+        "System",
+        "System2",
     },
     ["baNk25523456"] = { 
         "Marco",
