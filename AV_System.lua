@@ -203,6 +203,26 @@ local Changes = {
         ["Ignore Modify"] = {},
     }
     end,
+    ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
     ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
@@ -244,6 +264,26 @@ local Changes = {
     }
     end,
     ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
         ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring

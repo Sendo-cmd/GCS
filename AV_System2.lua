@@ -80,6 +80,8 @@ local Order_Type = {
         "0495121f-a579-4068-9494-4a1ac477613b",
         "6ace8ed9-915e-474a-af43-39328ea80a4f",
         "1e3dd6cd-e3d2-4dae-810f-911df0ab4806",
+        "abc198e7-cdfc-497d-83d6-a5c9f88f3c22",
+        "69d6b35d-0dc0-46d5-96c6-be037b876cdd",
     },
     ["Arin"] = {
         "89901139-d4b5-4555-8913-4900d176546c",
@@ -92,6 +94,8 @@ local Order_Type = {
         "d92fceaa-8d18-4dc9-980f-452db4573ad9",
         "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         "c869c464-6864-4eb7-a98f-f78f3448b71c",
+        "fc7a340c-7c98-4da6-84aa-a7e3ce4790c1",
+        "d551991a-b8ec-4fe5-96f5-2fe6418a3e9a",
     },
 }
 local Players = game:GetService("Players")
@@ -323,6 +327,26 @@ local function Register_Room(myproduct,player)
                 ["Ignore Modify"] = {},
             }
             end,
+            ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
             ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
                 Settings["Select Mode"] = "Portal"
                 Settings["Portal Settings"] = {
@@ -374,6 +398,26 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
                 Settings["Select Mode"] = "Portal"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
