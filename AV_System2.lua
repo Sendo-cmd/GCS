@@ -100,7 +100,6 @@ local VirtualUser = game:GetService("VirtualUser")
 local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
 local TextChatService = game:GetService("TextChatService")
-local req = request or http_request or syn and syn.request
 
 local Client = Players.LocalPlayer
 local Username = Client.Name
@@ -129,7 +128,7 @@ local function LenT(var)
     return counting
 end
 local function Get(Api)
-    local Data = req({
+    local Data = request({
         ["Url"] = Api,
         ["Method"] = "GET",
         ["Headers"] = {
@@ -165,7 +164,7 @@ local function CreateBody(...)
 end
 
 local function Post(Url,...)
-    local response = req({
+    local response = request({
         ["Url"] = Url,
         ["Method"] = "POST",
         ["Headers"] = {
@@ -179,27 +178,16 @@ end
 local function SendCache(...)
     return Post(Api .. MainSettings["Path_Cache"],...)
 end
-local HasDeleted = false
-
 local function DelCache(OrderId)
-    if HasDeleted then
-        return { Success = true, Body = "Already deleted once" }
-    end
-
     local response = request({
         ["Url"] = Api .. MainSettings["Path_Cache"] .. "/" .. OrderId,
-        ["Method"] = "POST", -- Wave only supports GET/POST
+        ["Method"] = "POST",
         ["Headers"] = {
+            ["x-http-method-override"] = "DELETE",
             ["content-type"] = "application/json",
-            ["x-api-key"] = "none",
-            ["X-HTTP-Method-Override"] = "DELETE"
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4",
         },
     })
-
-    if response.Success then
-        HasDeleted = true -- prevent multiple deletions
-    end
-
     return response
 end
 local function GetCache(OrderId)
