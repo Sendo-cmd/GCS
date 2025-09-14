@@ -100,6 +100,7 @@ local VirtualUser = game:GetService("VirtualUser")
 local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
 local TextChatService = game:GetService("TextChatService")
+local req = request or http_request or syn and syn.request
 
 local Client = Players.LocalPlayer
 local Username = Client.Name
@@ -128,10 +129,10 @@ local function LenT(var)
     return counting
 end
 local function Get(Api)
-    local Data = request({
+    local Data = req({
         ["Url"] = Api,
-        ["Method"] = "GET",
         ["Headers"] = {
+            ["X-HTTP-Method-Override"] = "GET",
             ["content-type"] = "application/json",
             ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
@@ -164,10 +165,10 @@ local function CreateBody(...)
 end
 
 local function Post(Url,...)
-    local response = request({
+    local response = req({
         ["Url"] = Url,
-        ["Method"] = "POST",
         ["Headers"] = {
+            ["X-HTTP-Method-Override"] = "POST",
             ["content-type"] = "application/json",
             ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
@@ -179,10 +180,10 @@ local function SendCache(...)
     return Post(Api .. MainSettings["Path_Cache"],...)
 end
 local function DelCache(OrderId)
-    local response = request({
+    local response = req({
         ["Url"] = Api .. MainSettings["Path_Cache"] .. "/" .. OrderId,
-        ["Method"] = "DELETE",
         ["Headers"] = {
+            ["X-HTTP-Method-Override"] = "DELETE",
             ["content-type"] = "application/json",
             ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
@@ -1639,7 +1640,11 @@ if ID[game.GameId][1] == "AV" then
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 local cache = GetCache(Username)
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-                    game:shutdown()
+                    if game.Quit then
+                        game:Quit()  -- force close Roblox
+                    else
+                        game.Players.LocalPlayer:Kick("Party Adds") -- fallback
+                    end
                 end
             end)
             -- Check If No Player In Lobby 
