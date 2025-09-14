@@ -131,8 +131,8 @@ end
 local function Get(Api)
     local Data = req({
         ["Url"] = Api,
+        ["Method"] = "GET",
         ["Headers"] = {
-            ["X-HTTP-Method-Override"] = "GET",
             ["content-type"] = "application/json",
             ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
@@ -167,8 +167,8 @@ end
 local function Post(Url,...)
     local response = req({
         ["Url"] = Url,
+        ["Method"] = "POST",
         ["Headers"] = {
-            ["X-HTTP-Method-Override"] = "POST",
             ["content-type"] = "application/json",
             ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
@@ -179,15 +179,27 @@ end
 local function SendCache(...)
     return Post(Api .. MainSettings["Path_Cache"],...)
 end
+local HasDeleted = false
+
 local function DelCache(OrderId)
-    local response = req({
+    if HasDeleted then
+        return { Success = true, Body = "Already deleted once" }
+    end
+
+    local response = request({
         ["Url"] = Api .. MainSettings["Path_Cache"] .. "/" .. OrderId,
+        ["Method"] = "POST", -- Wave only supports GET/POST
         ["Headers"] = {
-            ["X-HTTP-Method-Override"] = "DELETE",
             ["content-type"] = "application/json",
-            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+            ["x-api-key"] = "none",
+            ["X-HTTP-Method-Override"] = "DELETE"
         },
     })
+
+    if response.Success then
+        HasDeleted = true -- prevent multiple deletions
+    end
+
     return response
 end
 local function GetCache(OrderId)
@@ -1640,11 +1652,7 @@ if ID[game.GameId][1] == "AV" then
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 local cache = GetCache(Username)
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-                    if game.Quit then
-                        game:Quit()  -- force close Roblox
-                    else
-                        game.Players.LocalPlayer:Kick("Party Adds") -- fallback
-                    end
+                    game:shutdown()
                 end
             end)
             -- Check If No Player In Lobby 
