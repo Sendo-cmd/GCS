@@ -73,16 +73,22 @@ local Order_Type = {
         "139a8d72-0bfb-478b-98e4-5dd152f01206",
         "7d480a51-e6df-45e7-b0f8-9e34966ecc7e",
     },
-    ["Spring Portal"] = {
+    ["Remote"] = {
         "2e2a5d02-4d63-43a5-8b9a-6e7902581cfd",
         "960de970-ba26-4184-8d97-561ae8511e4b",
         "24cbfd35-8df6-4fc7-8c0f-5e9c4b921013",
         "0495121f-a579-4068-9494-4a1ac477613b",
-        "6ace8ed9-915e-474a-af43-39328ea80a4f",
-        "1e3dd6cd-e3d2-4dae-810f-911df0ab4806",
-        "abc198e7-cdfc-497d-83d6-a5c9f88f3c22",
-        "69d6b35d-0dc0-46d5-96c6-be037b876cdd",
     },
+    -- ["Spring Portal"] = {
+    --     "2e2a5d02-4d63-43a5-8b9a-6e7902581cfd",
+    --     "960de970-ba26-4184-8d97-561ae8511e4b",
+    --     "24cbfd35-8df6-4fc7-8c0f-5e9c4b921013",
+    --     "0495121f-a579-4068-9494-4a1ac477613b",
+    --     "6ace8ed9-915e-474a-af43-39328ea80a4f",
+    --     "1e3dd6cd-e3d2-4dae-810f-911df0ab4806",
+    --     "abc198e7-cdfc-497d-83d6-a5c9f88f3c22",
+    --     "69d6b35d-0dc0-46d5-96c6-be037b876cdd",
+    -- },
     ["Arin"] = {
         "89901139-d4b5-4555-8913-4900d176546c",
         "7b29fe07-6313-48cb-a095-3680d4758ab6",
@@ -277,86 +283,86 @@ local function Register_Room(myproduct,player)
             },
         }
         local Changes = {
-            ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
-            ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
-            ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
-            ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
-            ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
-            ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
-            ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
-            ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
-                Settings["Select Mode"] = "Portal"
-                Settings["Portal Settings"] = {
-                ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-                ["Tier Cap"] = 10,
-                ["Method"] = "Highest", -- Highest , Lowest
-                ["Ignore Stage"] = {},
-                ["Ignore Modify"] = {},
-            }
-            end,
+            -- ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
             ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
                 Settings["Select Mode"] = "Portal"
                 Settings["Portal Settings"] = {
@@ -594,6 +600,46 @@ local function Register_Room(myproduct,player)
                 ["Act"] = "AntIsland",
                 ["StageType"] = "Dungeon",
                 ["Stage"] = "Ant Island",
+                ["FriendsOnly"] = false
+            }
+            end,
+            [""] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "",
                 ["FriendsOnly"] = false
             }
             end,
