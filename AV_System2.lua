@@ -233,7 +233,7 @@ local function Register_Room(myproduct,player)
 
             ["Auto Stun"] = true,
             ["Auto Priority"] = false,
-            ["Priority"] = "Closest", 
+            ["Priority"] = "Bosses", 
             ["Party Mode"] = false,
 
             ["Story Settings"] = {
