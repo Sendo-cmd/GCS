@@ -185,11 +185,10 @@ end
 local function DelCache(OrderId)
     local response = request({
         ["Url"] = Api .. MainSettings["Path_Cache"] .. "/" .. OrderId,
-        ["Method"] = "POST",
+        ["Method"] = "DELETE",
         ["Headers"] = {
-            ["x-http-method-override"] = "DELETE",
             ["content-type"] = "application/json",
-            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
     })
     return response
