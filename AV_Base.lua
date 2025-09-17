@@ -158,7 +158,8 @@ getgenv().Config = {
 				["Dawntay (Jackpot)"] = true,
 				["Kempache (Feral)"] = true,
 				["Astolfo (Rider of Black)"] = true,
-				["Lfelt (Love)"] = true
+				["Lfelt (Love)"] = true,
+				["The Struggler (Rampage)"] = true
 			},
 			["Leave Extra Money"] = 2000,
 			["Auto Statue"] = true
@@ -352,7 +353,8 @@ getgenv().Config = {
 				["Dawntay (Jackpot)"] = true,
 				["Kempache (Feral)"] = true,
 				["Astolfo (Rider of Black)"] = true,
-				["Lfelt (Love)"] = true
+				["Lfelt (Love)"] = true,
+				["The Struggler (Rampage)"] = true
 			},
 			["Auto Mohato"] = true,
 			["Leave Extra Money"] = 2000,
