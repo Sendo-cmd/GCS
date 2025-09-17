@@ -466,9 +466,9 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "",
+        ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "",
+        ["Stage"] = "Frozen Volcano",
         ["FriendsOnly"] = false
     }
     end,
@@ -476,9 +476,9 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "",
+        ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "",
+        ["Stage"] = "Frozen Volcano",
         ["FriendsOnly"] = false
     }
     end,
@@ -486,9 +486,9 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "",
+        ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "",
+        ["Stage"] = "Frozen Volcano",
         ["FriendsOnly"] = false
     }
     end,
@@ -496,9 +496,9 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "",
+        ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "",
+        ["Stage"] = "Frozen Volcano",
         ["FriendsOnly"] = false
     }
     end,

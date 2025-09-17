@@ -617,7 +617,7 @@ local function Register_Room(myproduct,player)
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
-                ["Act"] = "",
+                ["Act"] = "FrozenVolcano",
                 ["StageType"] = "Dungeon",
                 ["Stage"] = "",
                 ["FriendsOnly"] = false
@@ -627,9 +627,9 @@ local function Register_Room(myproduct,player)
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
-                ["Act"] = "",
+                ["Act"] = "FrozenVolcano",
                 ["StageType"] = "Dungeon",
-                ["Stage"] = "",
+                ["Stage"] = "Frozen Volcano",
                 ["FriendsOnly"] = false
             }
             end,
@@ -637,9 +637,9 @@ local function Register_Room(myproduct,player)
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
-                ["Act"] = "",
+                ["Act"] = "FrozenVolcano",
                 ["StageType"] = "Dungeon",
-                ["Stage"] = "",
+                ["Stage"] = "Frozen Volcano",
                 ["FriendsOnly"] = false
             }
             end,
