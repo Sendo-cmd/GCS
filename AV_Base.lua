@@ -1,3 +1,49 @@
+local function Press(args)
+    game:GetService('VirtualInputManager'):SendKeyEvent(
+        true,
+        args,
+        false,
+        game.Players.LocalPlayer.Character.HumanoidRootPart
+    )
+    wait()
+    game:GetService('VirtualInputManager'):SendKeyEvent(
+        false,
+        args,
+        false,
+        game.Players.LocalPlayer.Character.HumanoidRootPart
+    )
+end
+coroutine.resume(coroutine.create(function()
+    while wait() do
+        pcall(function()
+            Press('Space')
+            wait(1000)
+        end)
+    end
+end))
+
+task.spawn(function()
+    local IsLoading = false
+    while true do
+        for i, v in pairs(getgc(true)) do
+            if
+                type(v) == 'table'
+                and rawget(v, 'HandleLoadingScreen')
+                and rawget(v, 'FinishedLoading')
+            then
+                rawset(v, 'HandleLoadingScreen', function() end)
+                rawget(v, 'FinishedLoading'):Fire()
+                rawset(v, 'IsFinishedLoading', true)
+
+                require(
+                    game:GetService('ReplicatedFirst').BlackScreen.BlackScreenHandler
+                ).Close()
+                IsLoading = true
+            end
+        end
+        task.wait(1)
+    end
+end)
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["Auto Join Equipper"] = {
