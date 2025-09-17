@@ -462,7 +462,7 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    [""] = function()
+    ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
