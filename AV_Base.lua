@@ -209,9 +209,9 @@ getgenv().Config = {
 			}
 		},
 		["Frozen Volcano"] = {
-			["Upgrade Amount"] = 4,
+			["Upgrade Amount"] = 9,
 			["Auto Friezo"] = true,
-			["Leave Extra Money"] = 5000,
+			["Leave Extra Money"] = 6000,
 			["Auto Save Brolzi"] = true,
 			["Friezo Unit"] = {
 				["Ultimate Rohan"] = true,
@@ -478,7 +478,7 @@ getgenv().Config = {
 			["2"] = 0,
 			["5"] = 1,
 			["4"] = 0,
-			["6"] = 1
+			["6"] = -1
 		},
 		["Enable"] = true,
 		["Slot Position"] = {
