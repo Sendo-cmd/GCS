@@ -1,4 +1,27 @@
 repeat task.wait() until game:IsLoaded()
+task.spawn(function()
+    local IsLoading = false
+    while not IsLoading do
+        for i, v in pairs(getgc(true)) do
+            if
+                type(v) == 'table'
+                and rawget(v, 'HandleLoadingScreen')
+                and rawget(v, 'FinishedLoading')
+            then
+                rawset(v, 'HandleLoadingScreen', function() end)
+                rawget(v, 'FinishedLoading'):Fire()
+                rawset(v, 'IsFinishedLoading', true)
+
+                require(
+                    game:GetService('ReplicatedFirst').BlackScreen.BlackScreenHandler
+                ).Close()
+                IsLoading = true
+            end
+        end
+        task.wait(1)
+    end
+end)
+
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
@@ -7,6 +30,29 @@ local function Next_(var)
     local duration = tick() + var
     repeat task.wait() until tick() >= duration
 end
+coroutine.resume(coroutine.create(function()
+    local function Press(args)
+        game:GetService('VirtualInputManager'):SendKeyEvent(
+            true,
+            args,
+            false,
+            game.Players.LocalPlayer.Character.HumanoidRootPart
+        )
+        wait()
+        game:GetService('VirtualInputManager'):SendKeyEvent(
+            false,
+            args,
+            false,
+            game.Players.LocalPlayer.Character.HumanoidRootPart
+        )
+    end
+    while wait() do
+        pcall(function()
+            Press('Space')
+            wait(1000)
+        end)
+    end
+end))
 --[[
 Portal 
 Sand Village
