@@ -924,4 +924,4 @@ getgenv().Config = {
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" 
-repeat wait(2)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(1)until Joebiden
+repeat wait(1)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(1)until Joebiden
