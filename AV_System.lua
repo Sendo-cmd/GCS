@@ -1,26 +1,26 @@
-repeat task.wait() until game:IsLoaded()
-task.spawn(function()
-    local IsLoading = false
-    while not IsLoading do
-        for i, v in pairs(getgc(true)) do
-            if
-                type(v) == 'table'
-                and rawget(v, 'HandleLoadingScreen')
-                and rawget(v, 'FinishedLoading')
-            then
-                rawset(v, 'HandleLoadingScreen', function() end)
-                rawget(v, 'FinishedLoading'):Fire()
-                rawset(v, 'IsFinishedLoading', true)
+-- repeat task.wait() until game:IsLoaded()
+-- task.spawn(function()
+--     local IsLoading = false
+--     while not IsLoading do
+--         for i, v in pairs(getgc(true)) do
+--             if
+--                 type(v) == 'table'
+--                 and rawget(v, 'HandleLoadingScreen')
+--                 and rawget(v, 'FinishedLoading')
+--             then
+--                 rawset(v, 'HandleLoadingScreen', function() end)
+--                 rawget(v, 'FinishedLoading'):Fire()
+--                 rawset(v, 'IsFinishedLoading', true)
 
-                require(
-                    game:GetService('ReplicatedFirst').BlackScreen.BlackScreenHandler
-                ).Close()
-                IsLoading = true
-            end
-        end
-        task.wait(1)
-    end
-end)
+--                 require(
+--                     game:GetService('ReplicatedFirst').BlackScreen.BlackScreenHandler
+--                 ).Close()
+--                 IsLoading = true
+--             end
+--         end
+--         task.wait(1)
+--     end
+-- end)
 
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
