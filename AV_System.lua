@@ -379,6 +379,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
