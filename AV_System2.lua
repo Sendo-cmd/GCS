@@ -78,6 +78,10 @@ local Order_Type = {
         "960de970-ba26-4184-8d97-561ae8511e4b",
         "24cbfd35-8df6-4fc7-8c0f-5e9c4b921013",
         "0495121f-a579-4068-9494-4a1ac477613b",
+        "fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5",
+        "4c3e1a8b-02fd-42e7-9905-e44a073e3bbc",
+        "3f91fbcb-c0de-4251-8a27-df651f9933aa",
+        "f96ab092-314a-484b-a098-59209edccb0a",
     },
     -- ["Spring Portal"] = {
     --     "2e2a5d02-4d63-43a5-8b9a-6e7902581cfd",
@@ -634,6 +638,46 @@ local function Register_Room(myproduct,player)
             }
             end,
             ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
