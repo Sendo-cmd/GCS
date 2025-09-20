@@ -623,7 +623,7 @@ local function Register_Room(myproduct,player)
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
                 ["StageType"] = "Dungeon",
-                ["Stage"] = "",
+                ["Stage"] = "Frozen Volcano",
                 ["FriendsOnly"] = false
             }
             end,
@@ -663,7 +663,7 @@ local function Register_Room(myproduct,player)
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
                 ["StageType"] = "Dungeon",
-                ["Stage"] = "",
+                ["Stage"] = "Frozen Volcano",
                 ["FriendsOnly"] = false
             }
             end,
