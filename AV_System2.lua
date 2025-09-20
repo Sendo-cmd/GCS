@@ -1784,7 +1784,7 @@ if ID[game.GameId][1] == "AV" then
                 game:shutdown()
             end
             task.spawn(function()
-                while task.wait(20) do
+                while task.wait(1) do
                     if #Players:GetChildren() <= 1 then
                         game:shutdown()
                     end
