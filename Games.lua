@@ -83,21 +83,9 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "Inf",
      },
-    ["vAngdv68"] = {
-        "Log",
-        "RerollSuper",
-        "System",
-        "System2",
-    },
     ["Storc5835"] = {
         "Log",
         "Reroll",
-        "System",
-        "System2",
-    },
-    ["moonqi_296414"] = {
-        "Log",
-        "RerollSuper",
         "System",
         "System2",
     },
