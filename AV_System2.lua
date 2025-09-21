@@ -650,7 +650,7 @@ local function Register_Room(myproduct,player)
             ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -662,7 +662,7 @@ local function Register_Room(myproduct,player)
             ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -674,7 +674,7 @@ local function Register_Room(myproduct,player)
             ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -686,7 +686,7 @@ local function Register_Room(myproduct,player)
             ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -698,7 +698,7 @@ local function Register_Room(myproduct,player)
             ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -710,7 +710,7 @@ local function Register_Room(myproduct,player)
             ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -722,7 +722,7 @@ local function Register_Room(myproduct,player)
             ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -734,7 +734,7 @@ local function Register_Room(myproduct,player)
             ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
                 Settings["Select Mode"] = "Dungeon"
                 Settings["Auto Priority"] = true
-                Settings["Priority"] = "First"
+                Settings["Priority"] = "Bosses"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
