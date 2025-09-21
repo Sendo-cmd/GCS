@@ -369,6 +369,8 @@ local function Register_Room(myproduct,player)
             -- end,
             ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
                 Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
                 ["Tier Cap"] = 10,
@@ -379,6 +381,8 @@ local function Register_Room(myproduct,player)
             end,
             ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
                 Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
                 ["Tier Cap"] = 10,
@@ -389,6 +393,8 @@ local function Register_Room(myproduct,player)
             end,
             ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
                 Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
                 ["Tier Cap"] = 10,
@@ -399,6 +405,8 @@ local function Register_Room(myproduct,player)
             end,
             ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
                 Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
                 ["Tier Cap"] = 10,
@@ -409,6 +417,8 @@ local function Register_Room(myproduct,player)
             end,
             ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
                 Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
                 ["Tier Cap"] = 10,
@@ -419,6 +429,8 @@ local function Register_Room(myproduct,player)
             end,
             ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
                 Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
                 ["Tier Cap"] = 10,
@@ -429,6 +441,8 @@ local function Register_Room(myproduct,player)
             end,
             ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
                 Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Portal Settings"] = {
                 ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
                 ["Tier Cap"] = 10,
@@ -439,6 +453,8 @@ local function Register_Room(myproduct,player)
             end,
             ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "Act1",
@@ -449,6 +465,8 @@ local function Register_Room(myproduct,player)
             end,
             ["3c18df46-db36-4cd4-93b2-9f03926fdadb"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "Act1",
@@ -459,6 +477,8 @@ local function Register_Room(myproduct,player)
             end,
             ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
@@ -469,6 +489,8 @@ local function Register_Room(myproduct,player)
             end,
             ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
@@ -479,6 +501,8 @@ local function Register_Room(myproduct,player)
             end,
             ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "Act1",
@@ -489,6 +513,8 @@ local function Register_Room(myproduct,player)
             end,
             ["bc1be299-c561-4a41-964a-a055f8a8e436"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "Act1",
@@ -499,6 +525,8 @@ local function Register_Room(myproduct,player)
             end,
             ["1c58db6a-b5d1-4d8d-8195-75aad0403c90"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "Act1",
@@ -509,6 +537,8 @@ local function Register_Room(myproduct,player)
             end,
             ["5e334be7-56c9-4bfa-96e1-4856755b3f23"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "infinite",
@@ -519,6 +549,8 @@ local function Register_Room(myproduct,player)
             end,
             ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "infinite",
@@ -569,6 +601,8 @@ local function Register_Room(myproduct,player)
             end,
             ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "AntIsland",
@@ -579,6 +613,8 @@ local function Register_Room(myproduct,player)
             end,
             ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "AntIsland",
@@ -589,6 +625,8 @@ local function Register_Room(myproduct,player)
             end,
             ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "AntIsland",
@@ -599,6 +637,8 @@ local function Register_Room(myproduct,player)
             end,
             ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "AntIsland",
@@ -609,6 +649,8 @@ local function Register_Room(myproduct,player)
             end,
             ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -619,6 +661,8 @@ local function Register_Room(myproduct,player)
             end,
             ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -629,6 +673,8 @@ local function Register_Room(myproduct,player)
             end,
             ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -639,6 +685,8 @@ local function Register_Room(myproduct,player)
             end,
             ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -649,6 +697,8 @@ local function Register_Room(myproduct,player)
             end,
             ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -659,6 +709,8 @@ local function Register_Room(myproduct,player)
             end,
             ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -669,6 +721,8 @@ local function Register_Room(myproduct,player)
             end,
             ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -679,6 +733,8 @@ local function Register_Room(myproduct,player)
             end,
             ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
                 Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Dungeon Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "FrozenVolcano",
@@ -689,6 +745,8 @@ local function Register_Room(myproduct,player)
             end,
             ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act1",
@@ -699,6 +757,8 @@ local function Register_Room(myproduct,player)
             end,
             ["ba6f3c6d-c503-4fe4-b06f-0326776ba349"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act1",
@@ -709,6 +769,8 @@ local function Register_Room(myproduct,player)
             end,
             ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -719,6 +781,8 @@ local function Register_Room(myproduct,player)
             end,
             ["c4ca5b41-f68f-4e7b-a8e7-8b2ee7284d08"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -729,6 +793,8 @@ local function Register_Room(myproduct,player)
             end,
             ["5a2a67e9-7407-4437-bc2e-c332135cec53"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -739,6 +805,8 @@ local function Register_Room(myproduct,player)
             end,
             ["e7403190-850c-49e5-b2b0-b4949e477c47"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -749,6 +817,8 @@ local function Register_Room(myproduct,player)
             end,
             ["139a8d72-0bfb-478b-98e4-5dd152f01206"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -759,6 +829,8 @@ local function Register_Room(myproduct,player)
             end,
             ["7d480a51-e6df-45e7-b0f8-9e34966ecc7e"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -769,6 +841,8 @@ local function Register_Room(myproduct,player)
             end,
             ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -779,6 +853,8 @@ local function Register_Room(myproduct,player)
             end,
             ["9d07aae3-76ca-4976-a29c-9f6ece183ade"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -789,6 +865,8 @@ local function Register_Room(myproduct,player)
             end,
             ["ef2bf1de-f30f-46aa-98bb-4a34635a2ed8"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -799,6 +877,8 @@ local function Register_Room(myproduct,player)
             end,
             ["89901139-d4b5-4555-8913-4900d176546c"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -809,6 +889,8 @@ local function Register_Room(myproduct,player)
             end,
             ["7b29fe07-6313-48cb-a095-3680d4758ab6"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -819,6 +901,8 @@ local function Register_Room(myproduct,player)
             end,
             ["1e07ff1f-ab45-466b-8b36-ae0ff8b43198"] = function()
                 Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Legend Settings"] = {
                 ["Difficulty"] = "Nightmare",
                 ["Act"] = "Act3",
@@ -830,6 +914,8 @@ local function Register_Room(myproduct,player)
             ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
@@ -841,6 +927,8 @@ local function Register_Room(myproduct,player)
             ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
@@ -852,6 +940,8 @@ local function Register_Room(myproduct,player)
             ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
@@ -863,6 +953,8 @@ local function Register_Room(myproduct,player)
             ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
@@ -874,6 +966,8 @@ local function Register_Room(myproduct,player)
             ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Story Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Act"] = "infinite",
@@ -885,89 +979,49 @@ local function Register_Room(myproduct,player)
             ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
                 Settings["Auto Join Challenge"] = true
                 Settings["Auto Join Bounty"] = true
-                Settings["Select Mode"] = "Story"
-                Settings["Story Settings"] = {
-                ["Difficulty"] = "Normal",
-                ["Act"] = "infinite",
-                ["StageType"] = "Story",
-                ["Stage"] = "Planet Namak",
-                ["FriendsOnly"] = false
-            }
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
                 Settings["Select Mode"] = "Boss Event"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Boss Event Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Stage"] = "SaberEvent",
@@ -975,6 +1029,8 @@ local function Register_Room(myproduct,player)
             end,
             ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
                 Settings["Select Mode"] = "Boss Event"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Boss Event Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Stage"] = "SaberEvent",
@@ -982,6 +1038,8 @@ local function Register_Room(myproduct,player)
             end,
             ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
                 Settings["Select Mode"] = "Boss Event"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
                 Settings["Boss Event Settings"] = {
                 ["Difficulty"] = "Normal",
                 ["Stage"] = "SaberEvent",
@@ -989,6 +1047,8 @@ local function Register_Room(myproduct,player)
             end,
             ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
                 Settings["Auto Join Rift"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
             end,
             ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
                 Settings["Select Mode"] = "AFK"
