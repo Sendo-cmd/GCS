@@ -346,7 +346,7 @@ getgenv().Config = {
 			["Pause instead of Joining"] = false
 		},
 		["Frozen Volcano"] = {
-			["Sell Placed Friezo Unit"] = false,
+			["Sell Placed Friezo Unit"] = true,
 			["Auto Friezo"] = true,
 			["Auto Save Brolzi"] = true,
 			["Upgrade Amount"] = 15,
