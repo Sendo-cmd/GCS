@@ -49,7 +49,7 @@ coroutine.resume(coroutine.create(function()
     while wait() do
         pcall(function()
             Press('Space')
-            wait(99999)
+            wait(9999)
         end)
     end
 end))
