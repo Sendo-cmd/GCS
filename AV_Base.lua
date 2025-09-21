@@ -368,6 +368,7 @@ getgenv().Config = {
 				["Newsman (Forecast)"] = true,
 				["Dawntay (Jackpot)"] = true,
 				["Astolfo (Rider of Black)"] = true,
+				["Lord Friezo (Emperor)"] = true,
 				["Lfelt (Love)"] = true
 			},
 			["Leave Extra Money"] = 6000
