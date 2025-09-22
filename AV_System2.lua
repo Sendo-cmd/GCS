@@ -1874,6 +1874,7 @@ if ID[game.GameId][1] == "AV" then
         end
         task.spawn(function()
             pcall(function()
+                if Settings["Auto Priority"] then
                 local function Priority(Model,ChangePriority)
                     game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
                         "ChangePriority",
