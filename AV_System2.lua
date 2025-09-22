@@ -1872,57 +1872,59 @@ if ID[game.GameId][1] == "AV" then
                 end
             end)
         end
-        task.spawn(function()
-            pcall(function()
-            if Settings["Auto Priority"] then
-                local function Priority(Model,ChangePriority)
-                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
-                        "ChangePriority",
-                        Model.Name,
-                        ChangePriority
-                    }))
-                end
-                for i,v in pairs(workspace.Units:GetChildren()) do
-                    if v:IsA("Model") then
+        if Settings["Auto Priority"] then
+            task.spawn(function()
+                pcall(function()
+                    local function Priority(Model,ChangePriority)
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
+                            "ChangePriority",
+                            Model.Name,
+                            ChangePriority
+                        }))
+                    end
+                    for i,v in pairs(workspace.Units:GetChildren()) do
+                        if v:IsA("Model") then
+                            Priority(v,Settings["Priority"])
+                        end
+                    end
+                    workspace.Units.ChildAdded:Connect(function(v)
+                        v:WaitForChild("HumanoidRootPart")
+                        task.wait(1)
                         Priority(v,Settings["Priority"])
-                    end
-                end
-                workspace.Units.ChildAdded:Connect(function(v)
-                    v:WaitForChild("HumanoidRootPart")
-                    task.wait(1)
-                    Priority(v,Settings["Priority"])
-                end)
+                    end)
+                end) 
             end) 
-        end) 
-        task.spawn(function()
-            pcall(function()
-            if Settings["Auto Stun"] then
-                repeat wait() until game:IsLoaded()
-                local plr = game:GetService("Players").LocalPlayer
-                local Characters = workspace:WaitForChild("Characters")
+        end 
+        if Settings["Auto Stun"] then
+            task.spawn(function()
+                pcall(function()
+                    repeat wait() until game:IsLoaded()
+                    local plr = game:GetService("Players").LocalPlayer
+                    local Characters = workspace:WaitForChild("Characters")
 
-                local function ConnectToPrompt(c)
-                    if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
-                        c.ChildAdded:Connect(function(v)
-                            if v.Name == "CidStunPrompt" then
-                                plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
-                                task.wait(.5)
-                                fireproximityprompt(v)
-                                print(c.Name)
-                            end
-                        end)
-                        c:SetAttribute("connect_1",true)
+                    local function ConnectToPrompt(c)
+                        if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
+                            c.ChildAdded:Connect(function(v)
+                                if v.Name == "CidStunPrompt" then
+                                    plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                                    task.wait(.5)
+                                    fireproximityprompt(v)
+                                    print(c.Name)
+                                end
+                            end)
+                            c:SetAttribute("connect_1",true)
+                        end
                     end
-                end
 
-                for i,v in pairs(Characters:GetChildren()) do
-                    ConnectToPrompt(v)
-                end
-                Characters.ChildAdded:Connect(function(v)
-                    ConnectToPrompt(v)
-                end)
-                print("Executed")
+                    for i,v in pairs(Characters:GetChildren()) do
+                        ConnectToPrompt(v)
+                    end
+                    Characters.ChildAdded:Connect(function(v)
+                        ConnectToPrompt(v)
+                    end)
+                    print("Executed")
+                end) 
             end) 
-        end) 
+        end
     end
 end
