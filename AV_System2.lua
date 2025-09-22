@@ -1874,7 +1874,7 @@ if ID[game.GameId][1] == "AV" then
         end
         task.spawn(function()
             pcall(function()
-                if Settings["Auto Priority"] then
+            if Settings["Auto Priority"] then
                 local function Priority(Model,ChangePriority)
                     game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
                         "ChangePriority",
@@ -1896,6 +1896,7 @@ if ID[game.GameId][1] == "AV" then
         end) 
         task.spawn(function()
             pcall(function()
+            if Settings["Auto Stun"] then
                 repeat wait() until game:IsLoaded()
                 local plr = game:GetService("Players").LocalPlayer
                 local Characters = workspace:WaitForChild("Characters")
