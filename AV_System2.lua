@@ -1,5 +1,5 @@
 local All_Key = {
-    ["AV"] = "Party-AV",
+    ["AV"] = "Party-AV-1",
     ["AA"] = "Party-AA",
     ["ASTD X"] = "Party-ASTDX"
 }
@@ -231,719 +231,841 @@ local function UpdateCache(OrderId,...)
         ["value"] = data,
     })
 end
-local Settings ={
-
-    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey
-    ["Auto Join Rift"] = false,
-    ["Auto Join Bounty"] = false,
-    ["Auto Join Boss Event"] = false,
-    ["Auto Join Challenge"] = false,
-
-    ["Auto Stun"] = false,
-    ["Auto Priority"] = false,
-    ["Priority"] = "First", 
-    ["Party Mode"] = false,
-
-    ["Priority Multi"] = {
-        ["Enabled"] = false,
-        ["1"] = "First",
-        ["2"] = "First",
-        ["3"] = "First",
-        ["4"] = "First",
-        ["5"] = "First",
-        ["6"] = "First",
-    },
-    ["Odyssey Settings"] = {
-        ["Limiteless"] = false
-    },
-    ["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    },
-    ["Raid Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "Raid",
-        ["Stage"] = "Spider Forest",
-        ["FriendsOnly"] = false
-    },
-    ["Legend Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Sand Village",
-        ["FriendsOnly"] = false
-    },
-    ["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Mountain Shrine (Natural)",
-        ["FriendsOnly"] = false
-    },
-    ["Boss Event Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Stage"] = "RumblingEvent",
-    },
-    ["Portal Settings"] = {
-        ["ID"] = 113, -- 113 Love , 87 Winter
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    },
-}
-local Changes = {
-    -- ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["3c18df46-db36-4cd4-93b2-9f03926fdadb"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
-        ["StageType"] = "Story",
-        ["Stage"] = "Edge of Heaven",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["bc1be299-c561-4a41-964a-a055f8a8e436"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
-        ["StageType"] = "Story",
-        ["Stage"] = "Edge of Heaven",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["1c58db6a-b5d1-4d8d-8195-75aad0403c90"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
-        ["StageType"] = "Story",
-        ["Stage"] = "Edge of Heaven",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["5e334be7-56c9-4bfa-96e1-4856755b3f23"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Shibuya Station",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Shibuya Station",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
-        Settings["Auto Stun"] = true
-        Settings["Select Mode"] = "Raid"
-        Settings["Auto Priority"] = true
-        Settings["Priority Multi"] = {
-            ["Enabled"] = true,
-            ["1"] = "First",
-            ["2"] = "First",
-            ["3"] = "Bosses",
-            ["4"] = "Bosses",
-            ["5"] = "First",
-            ["6"] = "First",
-        }
-        Settings["Raid Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "Raid",
-        ["Stage"] = "Ruined City",
-        ["FriendsOnly"] = false
-        
-    }
-    end,
-    ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
-        Settings["Auto Stun"] = true
-        Settings["Select Mode"] = "Raid"
-        Settings["Auto Priority"] = true
-        Settings["Priority Multi"] = {
-            ["Enabled"] = true,
-            ["1"] = "First",
-            ["2"] = "First",
-            ["3"] = "Bosses",
-            ["4"] = "Bosses",
-            ["5"] = "First",
-            ["6"] = "First",
-        }
-        Settings["Raid Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "Raid",
-        ["Stage"] = "Ruined City",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
-        Settings["Auto Stun"] = true
-        Settings["Select Mode"] = "Raid"
-        Settings["Auto Priority"] = true
-        Settings["Priority Multi"] = {
-            ["Enabled"] = true,
-            ["1"] = "First",
-            ["2"] = "First",
-            ["3"] = "Bosses",
-            ["4"] = "Bosses",
-            ["5"] = "First",
-            ["6"] = "First",
-        }
-        Settings["Raid Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "Raid",
-        ["Stage"] = "Ruined City",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "AntIsland",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "AntIsland",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "AntIsland",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "AntIsland",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
-        Settings["Select Mode"] = "Dungeon"
-        Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "FrozenVolcano",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Double Dungeon",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["ba6f3c6d-c503-4fe4-b06f-0326776ba349"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act1",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Double Dungeon",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Double Dungeon",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["c4ca5b41-f68f-4e7b-a8e7-8b2ee7284d08"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Double Dungeon",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["5a2a67e9-7407-4437-bc2e-c332135cec53"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Double Dungeon",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["e7403190-850c-49e5-b2b0-b4949e477c47"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Kuinshi Palace",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["139a8d72-0bfb-478b-98e4-5dd152f01206"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Kuinshi Palace",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["7d480a51-e6df-45e7-b0f8-9e34966ecc7e"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Kuinshi Palace",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Land of the Gods",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["9d07aae3-76ca-4976-a29c-9f6ece183ade"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Land of the Gods",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["ef2bf1de-f30f-46aa-98bb-4a34635a2ed8"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Land of the Gods",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["89901139-d4b5-4555-8913-4900d176546c"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Crystal Chapel",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["7b29fe07-6313-48cb-a095-3680d4758ab6"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Crystal Chapel",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["1e07ff1f-ab45-466b-8b36-ae0ff8b43198"] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Crystal Chapel",
-        ["FriendsOnly"] = false
-    }
-    end,
-    ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
-        Settings["Auto Join Challenge"] = true
-    end,
-    ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
-        Settings["Auto Join Challenge"] = true
-    end,
-    ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
-        Settings["Auto Join Challenge"] = true
-    end,
-    ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
-        Settings["Auto Join Challenge"] = true
-    end,
-    ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
-        Settings["Auto Join Challenge"] = true
-    end,
-    ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
-    ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
-    ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
-    ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
-    ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
-    ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
-    ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
-    ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
-        Settings["Select Mode"] = "Boss Event"
-        Settings["Boss Event Settings"] = {
-        ["Difficulty"] = "Normal",
-    }
-    end,
-    ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
-        Settings["Select Mode"] = "Boss Event"
-        Settings["Boss Event Settings"] = {
-        ["Difficulty"] = "Normal",
-    }
-    end,
-    ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
-        Settings["Select Mode"] = "Boss Event"
-        Settings["Boss Event Settings"] = {
-        ["Difficulty"] = "Normal",
-    }
-    end,
-    ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
-        Settings["Auto Join Rift"] = true
-    end,
-    ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
-        Settings["Select Mode"] = "AFK"
-    end,
-    ["723de53d-cedd-4972-a6e5-6c44bf8699e9"] = function()
-        Settings["Select Mode"] = "AFK"
-    end,
-    ["79183580-1d86-4c97-b3c5-5ac9aac1c755"] = function()
-        Settings["Select Mode"] = "AFK"
-    end,
-    ["1c335fe4-5fb6-4894-9c3e-83216bc419a9"] = function()
-        Settings["Select Mode"] = "World Line"
-    end,
-    ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
-        Settings["Select Mode"] = "World Line"
-    end,
-}
 local function Register_Room(myproduct,player)
     if IsGame == "AV" then
         local Networking = ReplicatedStorage:WaitForChild("Networking")
+        local Settings = {
+            ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty
+            ["Auto Join Rift"] = false,
+            ["Auto Join Bounty"] = false,
+            ["Auto Join Boss Event"] = false,
+            ["Auto Join Challenge"] = false,
+
+            ["Auto Stun"] = true,
+            ["Auto Priority"] = false,
+            ["Priority"] = "Bosses", 
+            ["Party Mode"] = false,
+
+            ["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "Act1",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            },
+            ["Raid Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act1",
+                ["StageType"] = "Raid",
+                ["Stage"] = "Spider Forest",
+                ["FriendsOnly"] = false
+            },
+            ["Legend Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "Act1",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Sand Village",
+                ["FriendsOnly"] = false
+            },
+            ["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act1",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Mountain Shrine (Natural)",
+                ["FriendsOnly"] = false
+            },
+            ["Boss Event Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Stage"] = "RumblingEvent",
+            },
+            ["Portal Settings"] = {
+                ["ID"] = 113, -- 113 Love , 87 Winter
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            },
+        }
+        local Changes = {
+            -- ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            -- ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
+            --     Settings["Select Mode"] = "Portal"
+            --     Settings["Portal Settings"] = {
+            --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+            --     ["Tier Cap"] = 10,
+            --     ["Method"] = "Highest", -- Highest , Lowest
+            --     ["Ignore Stage"] = {},
+            --     ["Ignore Modify"] = {},
+            -- }
+            -- end,
+            ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
+                Settings["Select Mode"] = "Portal"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Portal Settings"] = {
+                ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+                ["Tier Cap"] = 10,
+                ["Method"] = "Highest", -- Highest , Lowest
+                ["Ignore Stage"] = {},
+                ["Ignore Modify"] = {},
+            }
+            end,
+            ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "Act1",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["3c18df46-db36-4cd4-93b2-9f03926fdadb"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "Act1",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "Act1",
+                ["StageType"] = "Story",
+                ["Stage"] = "Edge of Heaven",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["bc1be299-c561-4a41-964a-a055f8a8e436"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "Act1",
+                ["StageType"] = "Story",
+                ["Stage"] = "Edge of Heaven",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["1c58db6a-b5d1-4d8d-8195-75aad0403c90"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "Act1",
+                ["StageType"] = "Story",
+                ["Stage"] = "Edge of Heaven",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["5e334be7-56c9-4bfa-96e1-4856755b3f23"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Shibuya Station",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Shibuya Station",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
+                Settings["Auto Stun"] = true
+                Settings["Select Mode"] = "Raid"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Raid Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act1",
+                ["StageType"] = "Raid",
+                ["Stage"] = "Ruined City",
+                ["FriendsOnly"] = false
+                
+            }
+            end,
+            ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
+                Settings["Auto Stun"] = true
+                Settings["Select Mode"] = "Raid"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Raid Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act1",
+                ["StageType"] = "Raid",
+                ["Stage"] = "Ruined City",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
+                Settings["Auto Stun"] = true
+                Settings["Select Mode"] = "Raid"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Raid Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act1",
+                ["StageType"] = "Raid",
+                ["Stage"] = "Ruined City",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "AntIsland",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Ant Island",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "AntIsland",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Ant Island",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "AntIsland",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Ant Island",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "AntIsland",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Ant Island",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
+                Settings["Select Mode"] = "Dungeon"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "Bosses"
+                Settings["Dungeon Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "FrozenVolcano",
+                ["StageType"] = "Dungeon",
+                ["Stage"] = "Frozen Volcano",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act1",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Double Dungeon",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["ba6f3c6d-c503-4fe4-b06f-0326776ba349"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act1",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Double Dungeon",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Double Dungeon",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["c4ca5b41-f68f-4e7b-a8e7-8b2ee7284d08"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Double Dungeon",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["5a2a67e9-7407-4437-bc2e-c332135cec53"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Double Dungeon",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["e7403190-850c-49e5-b2b0-b4949e477c47"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Kuinshi Palace",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["139a8d72-0bfb-478b-98e4-5dd152f01206"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Kuinshi Palace",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["7d480a51-e6df-45e7-b0f8-9e34966ecc7e"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Kuinshi Palace",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Land of the Gods",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["9d07aae3-76ca-4976-a29c-9f6ece183ade"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Land of the Gods",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["ef2bf1de-f30f-46aa-98bb-4a34635a2ed8"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Land of the Gods",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["89901139-d4b5-4555-8913-4900d176546c"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Crystal Chapel",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["7b29fe07-6313-48cb-a095-3680d4758ab6"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Crystal Chapel",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["1e07ff1f-ab45-466b-8b36-ae0ff8b43198"] = function()
+                Settings["Select Mode"] = "Legend Stage"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Legend Settings"] = {
+                ["Difficulty"] = "Nightmare",
+                ["Act"] = "Act3",
+                ["StageType"] = "LegendStage",
+                ["Stage"] = "Crystal Chapel",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Select Mode"] = "Story"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Story Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Act"] = "infinite",
+                ["StageType"] = "Story",
+                ["Stage"] = "Planet Namak",
+                ["FriendsOnly"] = false
+            }
+            end,
+            ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
+                Settings["Auto Join Challenge"] = true
+                Settings["Auto Join Bounty"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
+                Settings["Select Mode"] = "Boss Event"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Boss Event Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Stage"] = "SaberEvent",
+            }
+            end,
+            ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
+                Settings["Select Mode"] = "Boss Event"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Boss Event Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Stage"] = "SaberEvent",
+            }
+            end,
+            ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
+                Settings["Select Mode"] = "Boss Event"
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+                Settings["Boss Event Settings"] = {
+                ["Difficulty"] = "Normal",
+                ["Stage"] = "SaberEvent",
+            }
+            end,
+            ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
+                Settings["Auto Join Rift"] = true
+                Settings["Auto Priority"] = true
+                Settings["Priority"] = "First"
+            end,
+            ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
+                Settings["Select Mode"] = "AFK"
+            end,
+            ["723de53d-cedd-4972-a6e5-6c44bf8699e9"] = function()
+                Settings["Select Mode"] = "AFK"
+            end,
+            ["79183580-1d86-4c97-b3c5-5ac9aac1c755"] = function()
+                Settings["Select Mode"] = "AFK"
+            end,
+            ["1c335fe4-5fb6-4894-9c3e-83216bc419a9"] = function()
+                Settings["Select Mode"] = "World Line"
+            end,
+            ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
+                Settings["Select Mode"] = "World Line"
+            end,
+        }
         if Changes[myproduct] then
             Changes[myproduct]()
             print("Configs has Changed ")
@@ -1018,76 +1140,6 @@ local function Register_Room(myproduct,player)
             return StagesData["Story"][arg]["StageData"]["Name"]
         end
         local WaitTime = 30
-        if Settings["Auto Join Challenge"] then
-            local Modules_R = ReplicatedStorage:WaitForChild("Modules")
-            local Modules_S = StarterPlayer:WaitForChild("Modules")
-
-            local ChallengesData = require(Modules_R:WaitForChild("Data"):WaitForChild("Challenges"):WaitForChild("ChallengesData"))
-            local ChallengesAttemptsHandler = require(Modules_S:WaitForChild("Gameplay"):WaitForChild("Challenges"):WaitForChild("ChallengesAttemptsHandler"))
-
-            for i, v in pairs(ChallengesData.GetChallengeTypes()) do
-                for i1, v1 in pairs(ChallengesData.GetChallengesOfType(v)) do
-                    local Type = v1.Type
-                    local Name = v1.Name
-                    if ChallengesData.GetChallengeRewards(Name)['Currencies'] and ChallengesData.GetChallengeRewards(Name)['Currencies']['TraitRerolls'] then
-                        local Seed = ChallengesAttemptsHandler.GetChallengeSeed(Type)
-                        ChallengesData.GetChallengeSeed(Name)
-                        local Reset = ChallengesData.GetNextReset(Type, Seed)
-                        if Reset == 0 then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("ChallengesEvent"):FireServer("StartChallenge",Name)
-                            task.wait(2)
-                            for i = 1,2 do 
-                                for i,v in pairs(player) do task.wait(2.5)
-                                    Invite(v)
-                                end 
-                            end 
-                            local args = {
-                                [1] = "StartMatch"
-                            }
-                            
-                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                        end
-                    end
-                end
-            end
-        end
-        if Settings["Auto Join Bounty"] then
-            task.spawn(function()
-                while true do
-                    local PlayerBountyDataHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Bounty.PlayerBountyDataHandler)
-                    local BountyData = require(game:GetService('ReplicatedStorage').Modules.Data.BountyData)
-                    local Created = BountyData.GetBountyFromSeed(PlayerBountyDataHandler.GetData()["BountySeed"])
-                    
-                    
-                    if PlayerBountyDataHandler.GetData()["BountiesLeft"] > 0 then
-                        local args = {
-                            "AddMatch",
-                            {
-                                Difficulty = "Nightmare",
-                                Act = Created["Act"],
-                                StageType = Created["StageType"],
-                                Stage = Created["Stage"],
-                                FriendsOnly = true
-                            }
-                        }
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                        for i = 1,2 do 
-                            for i,v in pairs(player) do task.wait(2.5)
-                                Invite(v)
-                            end 
-                        end 
-                        task.wait(2)
-                        local args = {
-                            [1] = "StartMatch"
-                        }
-                        
-                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                    end
-                    task.wait(5)
-                end
-            end)
-            task.wait(6)
-        end
         if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
             local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
             local GUID = nil
@@ -1167,46 +1219,6 @@ local function Register_Room(myproduct,player)
             }
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-        elseif Settings["Select Mode"] == "Summer" then
-            game:GetService("ReplicatedStorage").Networking.Summer.SummerLTMEvent:FireServer("Create")
-            task.wait(2)
-            for i = 1,2 do 
-                for i,v in pairs(player) do task.wait(2.5)
-                    Invite(v)
-                end 
-            end 
-            local args = {
-                [1] = "StartMatch"
-            }
-            
-            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-        elseif Settings["Select Mode"] == "Odyssey" then
-            local OdysseySettings = Settings["Odyssey Settings"]
-            if OdysseySettings["Limiteless"] then
-                game:GetService("ReplicatedStorage").Networking.Odyssey.OdysseyEvent:FireServer("Play","Journey")
-                for i = 1,2 do 
-                    for i,v in pairs(player) do task.wait(2.5)
-                        Invite(v)
-                    end 
-                end 
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-            else
-                game:GetService("ReplicatedStorage").Networking.Odyssey.OdysseyEvent:FireServer("Play","Limitless")
-                for i = 1,2 do 
-                    for i,v in pairs(player) do task.wait(2.5)
-                        Invite(v)
-                    end 
-                end 
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-            end
         elseif Settings["Select Mode"] == "Dungeon" then
             local DungeonSettings = Settings["Dungeon Settings"]
             DungeonSettings["Stage"] = DisplayToIndexDungeon(DungeonSettings["Stage"])
@@ -1222,7 +1234,7 @@ local function Register_Room(myproduct,player)
                     print(i,v)
                     Invite(v)
                 end 
-            end 
+            end
             task.wait(5)
             local args = {
                 [1] = "StartMatch"
@@ -1539,7 +1551,6 @@ if ID[game.GameId][1] == "AV" then
                 local productid = data["product_id"]
                 local orderid = data["id"]
                 local cache_key = orderid .. "_cache_1"
-                
                 local cache_1 = {}
                 local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
                 --[[
@@ -1699,11 +1710,6 @@ if ID[game.GameId][1] == "AV" then
         end
     else
         if IsKai then
-            local cache = GetCache(Username)
-            if Changes[cache["product_id"]] then
-                Changes[cache["product_id"]]()
-                print("Configs has Changed ")
-            end 
             local Last_Message_1 = nil
             local Last_Message_2 = nil
             -- Auto Accept Party
@@ -1830,17 +1836,6 @@ if ID[game.GameId][1] == "AV" then
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
                     game:shutdown()
                 end
-                if Results['StageType'] == "Challenge" then
-                    game:shutdown()
-                elseif _G.CHALLENGE_CHECKCD() then
-                    game:shutdown()
-                elseif task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") then
-                    if plr.PlayerGui.EndScreen.Holder.Buttons:FindFirstChild("Bounty") and plr.PlayerGui.EndScreen.Holder.Buttons.Bounty["Visible"] then
-
-                    else
-                        game:shutdown()
-                    end
-                end
             end)
             -- Check If No Player In Lobby 
             task.wait(30)
@@ -1855,80 +1850,6 @@ if ID[game.GameId][1] == "AV" then
                     end
                 end
             end)
-            if Settings["Auto Priority"] or Settings["Priority Multi"] then
-                local Setting = Settings["Priority Multi"]
-                local function Priority(Model,ChangePriority)
-                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
-                        "ChangePriority",
-                        Model.Name,
-                        ChangePriority
-                    }))
-                end
-                if Setting["Enabled"] then
-                    local UnitsHUD = require(game:GetService('StarterPlayer').Modules.Interface.Loader.HUD.Units)
-                    local ClientUnitHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Units.ClientUnitHandler)
-                    local ConvertUnitToNumber = {}
-                    for i, v in pairs(UnitsHUD._Cache) do
-                        if v == 'None' then
-                            continue
-                        end
-                        ConvertUnitToNumber[v['Data']['Name']] = i
-                    end
-                    for i, v in pairs(ClientUnitHandler['_ActiveUnits']) do
-                        if v['Player'] == game.Players.LocalPlayer then
-                            local Index = ConvertUnitToNumber[v['Name']]
-                            Priority(v["Model"],Setting[tostring(Index)]) 
-                        end
-                    end
-                    workspace.Units.ChildAdded:Connect(function(v)
-                        for i, v in pairs(ClientUnitHandler['_ActiveUnits']) do
-                            if v['Player'] == game.Players.LocalPlayer then
-                                local Index = ConvertUnitToNumber[v['Name']]
-                                Priority(v["Model"],Setting[tostring(Index)]) 
-                            end
-                        end
-                    end)
-                else
-                    
-                    for i,v in pairs(workspace.Units:GetChildren()) do
-                        if v:IsA("Model") then
-                            Priority(v,Settings["Priority"])
-                        end
-                    end
-                    workspace.Units.ChildAdded:Connect(function(v)
-                        v:WaitForChild("HumanoidRootPart")
-                        task.wait(1)
-                        Priority(v,Settings["Priority"])
-                    end)
-                end
-            end
-            if Settings["Auto Stun"] then
-                repeat wait() until game:IsLoaded()
-                
-                local Characters = workspace:WaitForChild("Characters")
-
-                local function ConnectToPrompt(c)
-                    if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
-                        c.ChildAdded:Connect(function(v)
-                            if v.Name == "CidStunPrompt" then
-                                plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
-                                task.wait(.5)
-                                fireproximityprompt(v)
-                                print(c.Name)
-                            end
-                        end)
-                        c:SetAttribute("connect_1",true)
-                    end
-                end
-
-                for i,v in pairs(Characters:GetChildren()) do
-                    ConnectToPrompt(v)
-                end
-                Characters.ChildAdded:Connect(function(v)
-                    ConnectToPrompt(v)
-                end)
-                print("Executed")
-            end
         else
             
             local data = Fetch_data() 
@@ -1938,11 +1859,6 @@ if ID[game.GameId][1] == "AV" then
             local cache_key = orderid .. "_cache_1"
             local cache = GetCache(cache_key)
             local host = cache["party"]
-            local cache__ = GetCache(host)
-            if Changes[cache__["product_id"]] then
-                Changes[cache__["product_id"]]()
-                print("Configs has Changed ")
-            end 
             -- Check If No Host In Lobby 
             task.wait(30)
             task.spawn(function()
@@ -1955,41 +1871,17 @@ if ID[game.GameId][1] == "AV" then
                     end
                 end
             end)
-            if Settings["Auto Priority"] or Settings["Priority Multi"] then
-                local Setting = Settings["Priority Multi"]
-                local function Priority(Model,ChangePriority)
-                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
-                        "ChangePriority",
-                        Model.Name,
-                        ChangePriority
-                    }))
-                end
-                if Setting["Enabled"] then
-                    local UnitsHUD = require(game:GetService('StarterPlayer').Modules.Interface.Loader.HUD.Units)
-                    local ClientUnitHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Units.ClientUnitHandler)
-                    local ConvertUnitToNumber = {}
-                    for i, v in pairs(UnitsHUD._Cache) do
-                        if v == 'None' then
-                            continue
-                        end
-                        ConvertUnitToNumber[v['Data']['Name']] = i
+        end
+        if Settings["Auto Priority"] then
+            task.spawn(function()
+                pcall(function()
+                    local function Priority(Model,ChangePriority)
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
+                            "ChangePriority",
+                            Model.Name,
+                            ChangePriority
+                        }))
                     end
-                    for i, v in pairs(ClientUnitHandler['_ActiveUnits']) do
-                        if v['Player'] == game.Players.LocalPlayer then
-                            local Index = ConvertUnitToNumber[v['Name']]
-                            Priority(v["Model"],Setting[tostring(Index)]) 
-                        end
-                    end
-                    workspace.Units.ChildAdded:Connect(function(v)
-                        for i, v in pairs(ClientUnitHandler['_ActiveUnits']) do
-                            if v['Player'] == game.Players.LocalPlayer then
-                                local Index = ConvertUnitToNumber[v['Name']]
-                                Priority(v["Model"],Setting[tostring(Index)]) 
-                            end
-                        end
-                    end)
-                else
-                    
                     for i,v in pairs(workspace.Units:GetChildren()) do
                         if v:IsA("Model") then
                             Priority(v,Settings["Priority"])
@@ -2000,35 +1892,39 @@ if ID[game.GameId][1] == "AV" then
                         task.wait(1)
                         Priority(v,Settings["Priority"])
                     end)
-                end
-            end
-            if Settings["Auto Stun"] then
-                repeat wait() until game:IsLoaded()
-                
-                local Characters = workspace:WaitForChild("Characters")
+                end) 
+            end) 
+        end 
+        if Settings["Auto Stun"] then
+            task.spawn(function()
+                pcall(function()
+                    repeat wait() until game:IsLoaded()
+                    local plr = game:GetService("Players").LocalPlayer
+                    local Characters = workspace:WaitForChild("Characters")
 
-                local function ConnectToPrompt(c)
-                    if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
-                        c.ChildAdded:Connect(function(v)
-                            if v.Name == "CidStunPrompt" then
-                                plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
-                                task.wait(.5)
-                                fireproximityprompt(v)
-                                print(c.Name)
-                            end
-                        end)
-                        c:SetAttribute("connect_1",true)
+                    local function ConnectToPrompt(c)
+                        if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
+                            c.ChildAdded:Connect(function(v)
+                                if v.Name == "CidStunPrompt" then
+                                    plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                                    task.wait(.5)
+                                    fireproximityprompt(v)
+                                    print(c.Name)
+                                end
+                            end)
+                            c:SetAttribute("connect_1",true)
+                        end
                     end
-                end
 
-                for i,v in pairs(Characters:GetChildren()) do
-                    ConnectToPrompt(v)
-                end
-                Characters.ChildAdded:Connect(function(v)
-                    ConnectToPrompt(v)
-                end)
-                print("Executed")
-            end
+                    for i,v in pairs(Characters:GetChildren()) do
+                        ConnectToPrompt(v)
+                    end
+                    Characters.ChildAdded:Connect(function(v)
+                        ConnectToPrompt(v)
+                    end)
+                    print("Executed")
+                end) 
+            end) 
         end
     end
 end

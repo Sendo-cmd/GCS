@@ -1,6 +1,6 @@
 -- repeat task.wait() until game:IsLoaded()
 -- task.spawn(function()
---     local IsLoading = nil
+--     local IsLoading = false
 --     while not IsLoading do
 --         for i, v in pairs(getgc(true)) do
 --             if
@@ -8,37 +8,29 @@
 --                 and rawget(v, 'HandleLoadingScreen')
 --                 and rawget(v, 'FinishedLoading')
 --             then
---                 IsLoading = v
+--                 rawset(v, 'HandleLoadingScreen', function() end)
+--                 rawget(v, 'FinishedLoading'):Fire()
+--                 rawset(v, 'IsFinishedLoading', true)
+
+--                 require(
+--                     game:GetService('ReplicatedFirst').BlackScreen.BlackScreenHandler
+--                 ).Close()
+--                 IsLoading = true
 --             end
 --         end
---         while not rawget(IsLoading, 'IsFinishedLoading')do
-
---         end
---         print("Done")
 --         task.wait(1)
 --     end
 -- end)
-
 
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-local function AntiAFK()
-    local StarterPlayer = game:GetService('StarterPlayer')
-    local Modules = StarterPlayer:WaitForChild('Modules')
-    if game.PlaceId == 16146832113 then
-        local Miscellaneous = Modules:WaitForChild('Miscellaneous')
-        local AFKChamberClient = Miscellaneous:WaitForChild('AFKChamberClient')
-        local Func = require(AFKChamberClient)['_Init']
-        task.spawn(function()
-            while true do
-                setupvalue(Func, 2, 99999999999999999)
-                task.wait()
-            end
-        end)
-        print('Anti Time Chamber')
-    end
+local function Next_(var)
+    local duration = tick() + var
+    repeat task.wait() until tick() >= duration
+end
+coroutine.resume(coroutine.create(function()
     local function Press(args)
         game:GetService('VirtualInputManager'):SendKeyEvent(
             true,
@@ -54,66 +46,13 @@ local function AntiAFK()
             game.Players.LocalPlayer.Character.HumanoidRootPart
         )
     end
-    task.spawn(function()
-        while true do
+    while wait() do
+        pcall(function()
             Press('Space')
-            task.wait(1000)
-        end
-    end)
-end
-function _G.CHALLENGE_CHECKCD()
-    local Closest = math.huge
-    local PATH_CDTIME = game.Players.LocalPlayer.Name .. '_CDTIME'
-    if game.PlaceId == 16146832113 then
-        local ReplicatedStorage = game:GetService('ReplicatedStorage')
-        local StarterPlayer = game:GetService('StarterPlayer')
-        local Modules_R = ReplicatedStorage:WaitForChild("Modules")
-        local Modules_S = StarterPlayer:WaitForChild("Modules")
-
-        local ChallengesData = require(Modules_R:WaitForChild("Data"):WaitForChild("Challenges"):WaitForChild("ChallengesData"))
-        local ChallengesAttemptsHandler = require(Modules_S:WaitForChild("Gameplay"):WaitForChild("Challenges"):WaitForChild("ChallengesAttemptsHandler"))
-        
-        for i, v in pairs(ChallengesData.GetChallengeTypes()) do
-            for i1, v1 in pairs(ChallengesData.GetChallengesOfType(v)) do
-                local Type = v1.Type
-                local Name = v1.Name
-                local Seed = ChallengesAttemptsHandler.GetChallengeSeed(Type)
-                ChallengesData.GetChallengeSeed(Name)
-                local Reset = ChallengesData.GetNextReset(Type, Seed)
-                if Reset < Closest then
-                    Closest = Reset
-                end
-            end
-        end
-        writefile(path, Closest + os.time() + 20)
-    else
-        local Time_ = isfile(PATH_CDTIME) and tonumber(readfile(PATH_CDTIME, Closest)) or 0
-        if os.time() > Time_ then
-            return true
-        end
+            wait(9999)
+        end)
     end
-    return false
-end
-function _G.BOSS_BOUNTY()
-    local index = game.PlaceId == 16146832113 and "Bounty" or "Bounties"
-    local bounty = require(game:GetService('StarterPlayer').Modules.Gameplay[index].PlayerBountyDataHandler)
-
-    if bounty.GetData()["BountiesLeft"] > 0 then
-        return true
-    end
-    return false
-end
-function _G.GET_BOSSRUSH()
-    local bossrush = require(game:GetService("ReplicatedStorage").Modules.Shared.BossRushDataHandler)
-    return bossrush.GetCurrentBossEvent()
-end
-task.spawn(AntiAFK)
-task.spawn(_G.CHALLENGE_CHECKCD)
-local function Next_(var)
-    local duration = tick() + var
-    repeat task.wait() until tick() >= duration
-end
-
+end))
 --[[
 Portal 
 Sand Village
@@ -197,29 +136,17 @@ local Inventory = {}
 
 local Settings ={
 
-    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey
+    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
 
-    ["Auto Stun"] = false,
+    ["Auto Stun"] = true,
     ["Auto Priority"] = false,
-    ["Priority"] = "First", 
+    ["Priority"] = "Bosses", 
     ["Party Mode"] = false,
 
-    ["Priority Multi"] = {
-        ["Enabled"] = false,
-        ["1"] = "First",
-        ["2"] = "First",
-        ["3"] = "First",
-        ["4"] = "First",
-        ["5"] = "First",
-        ["6"] = "First",
-    },
-    ["Odyssey Settings"] = {
-        ["Limiteless"] = false
-    },
     ["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -342,76 +269,76 @@ local Changes = {
     --     ["Ignore Modify"] = {},
     -- }
     -- end,
-    -- ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
+    ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
+    ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
+        Settings["Select Mode"] = "Portal"
+        Settings["Portal Settings"] = {
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["Tier Cap"] = 10,
+        ["Method"] = "Highest", -- Highest , Lowest
+        ["Ignore Stage"] = {},
+        ["Ignore Modify"] = {},
+    }
+    end,
     ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -435,8 +362,8 @@ local Changes = {
     ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
@@ -445,8 +372,18 @@ local Changes = {
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
@@ -486,7 +423,7 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "infinite",
+        ["Act"] = "Infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Shibuya Station",
         ["FriendsOnly"] = false
@@ -496,7 +433,7 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Nightmare",
-        ["Act"] = "infinite",
+        ["Act"] = "Infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Shibuya Station",
         ["FriendsOnly"] = false
@@ -506,15 +443,7 @@ local Changes = {
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
         Settings["Auto Priority"] = true
-        Settings["Priority Multi"] = {
-            ["Enabled"] = true,
-            ["1"] = "First",
-            ["2"] = "First",
-            ["3"] = "Bosses",
-            ["4"] = "Bosses",
-            ["5"] = "First",
-            ["6"] = "First",
-        }
+        Settings["Priority"] = "Bosses"
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -527,15 +456,7 @@ local Changes = {
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
         Settings["Auto Priority"] = true
-        Settings["Priority Multi"] = {
-            ["Enabled"] = true,
-            ["1"] = "First",
-            ["2"] = "First",
-            ["3"] = "Bosses",
-            ["4"] = "Bosses",
-            ["5"] = "First",
-            ["6"] = "First",
-        }
+        Settings["Priority"] = "Bosses"
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -548,15 +469,7 @@ local Changes = {
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
         Settings["Auto Priority"] = true
-        Settings["Priority Multi"] = {
-            ["Enabled"] = true,
-            ["1"] = "First",
-            ["2"] = "First",
-            ["3"] = "Bosses",
-            ["4"] = "Bosses",
-            ["5"] = "First",
-            ["6"] = "First",
-        }
+        Settings["Priority"] = "Bosses"
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -827,63 +740,162 @@ local Changes = {
     end,
     ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
        Settings["Auto Join Challenge"] = true
        Settings["Auto Join Bounty"] = true
+       Settings["Select Mode"] = "Story"
+       Settings["Story Settings"] = {
+       ["Difficulty"] = "Normal",
+       ["Act"] = "Infinite",
+       ["StageType"] = "Story",
+       ["Stage"] = "Planet Namak",
+       ["FriendsOnly"] = false
+    }
     end,
     ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
        Settings["Select Mode"] = "Boss Event"
        Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
+        ["Stage"] = "SaberEvent",
     }
     end,
     ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
        Settings["Select Mode"] = "Boss Event"
        Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
+        ["Stage"] = "SaberEvent",
     }
     end,
     ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
         Settings["Select Mode"] = "Boss Event"
         Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
+        ["Stage"] = "SaberEvent",
     }
     end,
 
@@ -1308,12 +1320,11 @@ if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
 end
 task.spawn(function()
-    if Settings["Party Mode"] then
-        return false
-    end
     task.wait(10)
     if game.PlaceId == 16146832113 then
-         
+        if Settings["Party Mode"] then
+            return false
+        end 
         local ChallengesData = require(game:GetService('ReplicatedStorage').Modules.Data.Challenges.ChallengesData)
         local TraitChallenge = {}
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent.OnClientEvent:Connect(function(type_,value_)
@@ -1328,60 +1339,135 @@ task.spawn(function()
         task.wait(1)
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent:FireServer('ChallengeData')
         task.wait(1)
-        
-        warn("Hello 2")
-        local function GetItem(ID)
-            game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
-            local Items = {}
-            for i,v in pairs(Inventory) do
-                if v["ID"] == ID then
-                    Items[i] = v
-                end
-            end
-            return Items
-        end
-        print(Settings["Auto Join Challenge"])
-        if Settings["Auto Join Challenge"] then
-            for i,v in pairs(TraitChallenge) do
-                print(i,v)
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("ChallengesEvent"):FireServer("StartChallenge",v)
-                task.wait(5)
-            end
-        end
-        if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
-            while true do
-                local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
-                local GUID = nil
-                for i,v in pairs(Rift.GetRifts()) do
-                    if Len(v["Players"]) and not v["Teleporting"] then
-                        GUID = v["GUID"]
+        if Settings["Party Mode"] then
+          
+        else
+            warn("Hello 2")
+            local function GetItem(ID)
+                game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
+                local Items = {}
+                for i,v in pairs(Inventory) do
+                    if v["ID"] == ID then
+                        Items[i] = v
                     end
                 end
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
-                    "Join",
-                    GUID
-                )
-                task.wait(2)
+                return Items
             end
-        end
-        task.spawn(function()
-            while Settings["Auto Join Bounty"] do
+            print(Settings["Auto Join Challenge"])
+            if Settings["Auto Join Challenge"] then
+                for i,v in pairs(TraitChallenge) do
+                    print(i,v)
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("ChallengesEvent"):FireServer("StartChallenge",v)
+                    task.wait(5)
+                end
+            end
+            if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
+                while true do
+                    local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                    local GUID = nil
+                    for i,v in pairs(Rift.GetRifts()) do
+                        if Len(v["Players"]) and not v["Teleporting"] then
+                            GUID = v["GUID"]
+                        end
+                    end
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                        "Join",
+                        GUID
+                    )
+                    task.wait(2)
+                end
+            end
+            if Settings["Auto Join Bounty"] then
                 local PlayerBountyDataHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Bounty.PlayerBountyDataHandler)
                 local BountyData = require(game:GetService('ReplicatedStorage').Modules.Data.BountyData)
                 local Created = BountyData.GetBountyFromSeed(PlayerBountyDataHandler.GetData()["BountySeed"])
+
+                local args = {
+                    "AddMatch",
+                    {
+                        Difficulty = "Nightmare",
+                        Act = Created["Act"],
+                        StageType = Created["StageType"],
+                        Stage = Created["Stage"],
+                        FriendsOnly = true
+                    }
+                }
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                task.wait(2)
+                local args = {
+                    [1] = "StartMatch"
+                }
                 
-                
-                if PlayerBountyDataHandler.GetData()["BountiesLeft"] > 0 then
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                task.wait(10)
+            end
+            if Settings["Select Mode"] == "World Line" then
+                while true do
+                    game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("Teleport","Traits")
+                    task.wait(10)
+                end
+            elseif Settings["Select Mode"] == "Boss Event" then
+                local Settings_ = Settings["Boss Event Settings"]
+                while true do
                     local args = {
-                        "AddMatch",
+                        "Start",
                         {
-                            Difficulty = "Nightmare",
-                            Act = Created["Act"],
-                            StageType = Created["StageType"],
-                            Stage = Created["Stage"],
-                            FriendsOnly = true
+                            Settings_["Stage"],
+                            Settings_["Difficulty"]
                         }
                     }
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("BossEvent"):WaitForChild("BossEvent"):FireServer(unpack(args))
+                    task.wait(15)
+                end
+                
+            elseif Settings["Select Mode"] == "Portal" then
+                local Settings_ = Settings["Portal Settings"]
+                local function Ignore(tab1,tab2)
+                    for i,v in pairs(tab1) do
+                        if table.find(tab2,v) then
+                            return false
+                        end 
+                    end
+                    return true
+                end
+                local function PortalSettings(tabl)
+                    local AllPortal = {}
+                    for i,v in pairs(tabl) do       
+                        if  Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
+                            AllPortal[#AllPortal + 1] = {
+                                [1] = i,
+                                [2] = v["ExtraData"]["Tier"]
+                            }
+                            
+                        end
+                    end
+                    table.sort(AllPortal, function(a, b)
+                        return a[2] > b[2]
+                    end)
+                    return AllPortal[1] and AllPortal[1][1] or false
+                end
+                while true do
+                    local Portal = PortalSettings(GetItem(Settings_["ID"]))
+                    print(Portal)
+                    if Portal then
+                        local args = {
+                            [1] = "ActivatePortal",
+                            [2] = Portal
+                        }
+                        
+                        game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                        task.wait(10)
+                    end
+                end
+            elseif Settings["Select Mode"] == "Story" then
+                while true do
+                    local StorySettings = Settings["Story Settings"]
+                    StorySettings["Stage"] = DisplayToIndexStory(StorySettings["Stage"])
+                    local args = {
+                        [1] = "AddMatch",
+                        [2] = StorySettings
+                    }
+                    
                     game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                     task.wait(2)
                     local args = {
@@ -1389,172 +1475,65 @@ task.spawn(function()
                     }
                     
                     game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(10)
                 end
-                task.wait(5)
-            end
-        end)
-        task.wait(6)
-        if Settings["Select Mode"] == "World Line" then
-            while true do
-                game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("Teleport","Traits")
-                task.wait(10)
-            end
-        elseif Settings["Select Mode"] == "Boss Event" then
-            local Settings_ = Settings["Boss Event Settings"]
-            while true do
-                local args = {
-                    "Start",
-                    {
-                        _G.GET_BOSSRUSH(),
-                        Settings_["Difficulty"]
-                    }
-                }
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("BossEvent"):WaitForChild("BossEvent"):FireServer(unpack(args))
-                task.wait(15)
-            end
-            
-        elseif Settings["Select Mode"] == "Portal" then
-            local Settings_ = Settings["Portal Settings"]
-            local function Ignore(tab1,tab2)
-                for i,v in pairs(tab1) do
-                    if table.find(tab2,v) then
-                        return false
-                    end 
-                end
-                return true
-            end
-            local function PortalSettings(tabl)
-                local AllPortal = {}
-                for i,v in pairs(tabl) do       
-                    if  Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
-                        AllPortal[#AllPortal + 1] = {
-                            [1] = i,
-                            [2] = v["ExtraData"]["Tier"]
-                        }
-                        
-                    end
-                end
-                table.sort(AllPortal, function(a, b)
-                    return a[2] > b[2]
-                end)
-                return AllPortal[1] and AllPortal[1][1] or false
-            end
-            while true do
-                local Portal = PortalSettings(GetItem(Settings_["ID"]))
-                print(Portal)
-                if Portal then
+            elseif Settings["Select Mode"] == "Dungeon" then
+                while true do
+                    local DungeonSettings = Settings["Dungeon Settings"]
+                    DungeonSettings["Stage"] = DisplayToIndexDungeon(DungeonSettings["Stage"])
                     local args = {
-                        [1] = "ActivatePortal",
-                        [2] = Portal
+                        [1] = "AddMatch",
+                        [2] = DungeonSettings
                     }
                     
-                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(2)
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(10)
+                end
+            elseif Settings["Select Mode"] == "Legend Stage" then
+                while true do
+                    local LegendSettings = Settings["Legend Settings"]
+                    LegendSettings["Stage"] = DisplayToIndexLegend(LegendSettings["Stage"])
+                    local args = {
+                        [1] = "AddMatch",
+                        [2] = LegendSettings
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(2)
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(10)
+                end
+            elseif Settings["Select Mode"] == "Raid" then
+                while true do
+                    local RaidSettings = Settings["Raid Settings"]
+                    RaidSettings["Stage"] = DisplayToIndexRaid(RaidSettings["Stage"])
+                    local args = {
+                        [1] = "AddMatch",
+                        [2] = RaidSettings
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(2)
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                     task.wait(10)
                 end
             end
-        elseif Settings["Select Mode"] == "Story" then
-            while true do
-                local StorySettings = Settings["Story Settings"]
-                StorySettings["Stage"] = DisplayToIndexStory(StorySettings["Stage"])
-                local args = {
-                    [1] = "AddMatch",
-                    [2] = StorySettings
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(2)
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(10)
-            end
-        elseif Settings["Select Mode"] == "Summer" then
-            game:GetService("ReplicatedStorage").Networking.Summer.SummerLTMEvent:FireServer("Create")
-            task.wait(2)
-            local args = {
-                [1] = "StartMatch"
-            }
-            
-            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-        elseif Settings["Select Mode"] == "Dungeon" then
-            while true do
-                local DungeonSettings = Settings["Dungeon Settings"]
-                DungeonSettings["Stage"] = DisplayToIndexDungeon(DungeonSettings["Stage"])
-                local args = {
-                    [1] = "AddMatch",
-                    [2] = DungeonSettings
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(2)
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(10)
-            end
-        elseif Settings["Select Mode"] == "Legend Stage" then
-            while true do
-                local LegendSettings = Settings["Legend Settings"]
-                LegendSettings["Stage"] = DisplayToIndexLegend(LegendSettings["Stage"])
-                local args = {
-                    [1] = "AddMatch",
-                    [2] = LegendSettings
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(2)
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(10)
-            end
-        elseif Settings["Select Mode"] == "Odyssey" then
-            local OdysseySettings = Settings["Odyssey Settings"]
-            if OdysseySettings["Limiteless"] then
-                game:GetService("ReplicatedStorage").Networking.Odyssey.OdysseyEvent:FireServer("Play","Journey")
-                task.wait(1)
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-            else
-                game:GetService("ReplicatedStorage").Networking.Odyssey.OdysseyEvent:FireServer("Play","Limitless")
-                task.wait(1)
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-            end
-        elseif Settings["Select Mode"] == "Raid" then
-            while true do
-                local RaidSettings = Settings["Raid Settings"]
-                RaidSettings["Stage"] = DisplayToIndexRaid(RaidSettings["Stage"])
-                local args = {
-                    [1] = "AddMatch",
-                    [2] = RaidSettings
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(2)
-                local args = {
-                    [1] = "StartMatch"
-                }
-                
-                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
-                task.wait(10)
-            end
         end
     else
-        local plr = game:GetService("Players").LocalPlayer
-        local Networking = game:GetService("ReplicatedStorage"):WaitForChild("Networking")
         task.spawn(function()
             while task.wait() do
                 if not Settings["Auto Join Rift"] then return end
@@ -1567,14 +1546,13 @@ task.spawn(function()
                     local GameData = GameHandler.GameData
 
                     if GameData.StageType ~= "Rift" and GameData.StageType ~= "Rifts" then
-                       Networking.TeleportEvent:FireServer("Lobby")
+                        game:GetService("ReplicatedStorage").Networking.TeleportEvent:FireServer("Lobby")
                     end
                 end
                 task.wait(30)
             end
         end) 
-        if Settings["Auto Priority"] or Settings["Priority Multi"] then
-            local Setting = Settings["Priority Multi"]
+        if Settings["Auto Priority"] then
             local function Priority(Model,ChangePriority)
                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("UnitEvent"):FireServer(unpack({
                     "ChangePriority",
@@ -1582,47 +1560,20 @@ task.spawn(function()
                     ChangePriority
                 }))
             end
-            if Setting["Enabled"] then
-                local UnitsHUD = require(game:GetService('StarterPlayer').Modules.Interface.Loader.HUD.Units)
-                local ClientUnitHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Units.ClientUnitHandler)
-                local ConvertUnitToNumber = {}
-                for i, v in pairs(UnitsHUD._Cache) do
-                    if v == 'None' then
-                        continue
-                    end
-                    ConvertUnitToNumber[v['Data']['Name']] = i
-                end
-                for i, v in pairs(ClientUnitHandler['_ActiveUnits']) do
-                    if v['Player'] == game.Players.LocalPlayer then
-                        local Index = ConvertUnitToNumber[v['Name']]
-                        Priority(v["Model"],Setting[tostring(Index)]) 
-                    end
-                end
-                workspace.Units.ChildAdded:Connect(function(v)
-                    for i, v in pairs(ClientUnitHandler['_ActiveUnits']) do
-                        if v['Player'] == game.Players.LocalPlayer then
-                            local Index = ConvertUnitToNumber[v['Name']]
-                            Priority(v["Model"],Setting[tostring(Index)]) 
-                        end
-                    end
-                end)
-            else
-                
-                for i,v in pairs(workspace.Units:GetChildren()) do
-                    if v:IsA("Model") then
-                        Priority(v,Settings["Priority"])
-                    end
-                end
-                workspace.Units.ChildAdded:Connect(function(v)
-                    v:WaitForChild("HumanoidRootPart")
-                    task.wait(1)
+            for i,v in pairs(workspace.Units:GetChildren()) do
+                if v:IsA("Model") then
                     Priority(v,Settings["Priority"])
-                end)
+                end
             end
+            workspace.Units.ChildAdded:Connect(function(v)
+                v:WaitForChild("HumanoidRootPart")
+                task.wait(1)
+                Priority(v,Settings["Priority"])
+            end)
         end
         if Settings["Auto Stun"] then
             repeat wait() until game:IsLoaded()
-            
+            local plr = game:GetService("Players").LocalPlayer
             local Characters = workspace:WaitForChild("Characters")
 
             local function ConnectToPrompt(c)
@@ -1647,18 +1598,6 @@ task.spawn(function()
             end)
             print("Executed")
         end
-        Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-            if Results['StageType'] == "Challenge" then
-                game:shutdown()
-            elseif _G.CHALLENGE_CHECKCD() then
-                game:shutdown()
-            elseif task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") then
-                if plr.PlayerGui.EndScreen.Holder.Buttons:FindFirstChild("Bounty") and plr.PlayerGui.EndScreen.Holder.Buttons.Bounty["Visible"] then
-
-                else
-                    game:shutdown()
-                end
-            end
-        end)
+        
     end    
 end)
