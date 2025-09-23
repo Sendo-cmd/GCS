@@ -80,15 +80,15 @@ Games = {
     }
 }
 Accounts = {
-    ["FireBlackDevilZ"] = {
-        "Inf",
-     },
-    ["Storc5835"] = {
-        "Log",
-        "Reroll",
-        "System",
-        "System2",
-    },
+    -- ["FireBlackDevilZ"] = {
+    --     "Inf",
+    --  },
+    -- ["Storc5835"] = {
+    --     "Log",
+    --     "Reroll",
+    --     "System",
+    --     "System2",
+    -- },
     -- ["whdjebdju4"] = {
     --     "Log",
     --     "Worldline",
