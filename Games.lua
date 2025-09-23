@@ -85,7 +85,7 @@ Accounts = {
      },
     ["Storc5835"] = {
         "Log",
-        "Reroll",
+        "RerollSuper",
         "System",
         "System2",
     },
