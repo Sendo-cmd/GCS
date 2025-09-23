@@ -1307,7 +1307,7 @@ if ID[game.GameId][1] == "AV" then
             task.spawn(function()
                 local cache_key = Username
                 local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
-                local Waiting_Time = os.time() + 200
+                local Waiting_Time = os.time() + 150
                 local Attempt = 0
                 local Current_Party = nil
                 local Last_Message_1 = nil
@@ -1489,7 +1489,7 @@ if ID[game.GameId][1] == "AV" then
                                 print("cannot get cache 3")
                             end
                             if not Current_Party or #Current_Party <= 0 then
-                                Waiting_Time = os.time() + 150
+                                Waiting_Time = os.time() + 200
                                 print("Add Time To Waiting Time")
                             else
                                 print(#Current_Party)
