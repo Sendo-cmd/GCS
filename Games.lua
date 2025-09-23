@@ -80,21 +80,21 @@ Games = {
     }
 }
 Accounts = {
-    -- ["FireBlackDevilZ"] = {
-    --     "Inf",
-    --  },
-    -- ["Storc5835"] = {
-    --     "Log",
-    --     "Reroll",
-    --     "System",
-    --     "System2",
-    -- },
-    -- ["whdjebdju4"] = {
-    --     "Log",
-    --     "Worldline",
-    --     "System",
-    --     "System2",
-    -- },
+    ["FireBlackDevilZ"] = {
+        "Inf",
+     },
+    ["Storc5835"] = {
+        "Log",
+        "Reroll",
+        "System",
+        "System2",
+    },
+    ["whdjebdju4"] = {
+        "Log",
+        "Worldline",
+        "System",
+        "System2",
+    },
 }
 repeat task.wait(1) until game:IsLoaded(2)
 
