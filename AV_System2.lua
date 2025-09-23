@@ -239,19 +239,19 @@ local Settings ={
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
 
-    ["Auto Stun"] = true,
+    ["Auto Stun"] = false,
     ["Auto Priority"] = false,
-    ["Priority"] = "Closest", 
+    ["Priority"] = "First", 
     ["Party Mode"] = false,
 
     ["Priority Multi"] = {
         ["Enabled"] = false,
-        ["1"] = "Closest",
-        ["2"] = "Closest",
-        ["3"] = "Closest",
-        ["4"] = "Closest",
-        ["5"] = "Closest",
-        ["6"] = "Closest",
+        ["1"] = "First",
+        ["2"] = "First",
+        ["3"] = "First",
+        ["4"] = "First",
+        ["5"] = "First",
+        ["6"] = "First",
     },
     ["Odyssey Settings"] = {
         ["Limiteless"] = false
