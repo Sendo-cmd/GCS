@@ -1,23 +1,23 @@
-repeat task.wait() until game:IsLoaded()
-task.spawn(function()
-    local IsLoading = nil
-    while not IsLoading do
-        for i, v in pairs(getgc(true)) do
-            if
-                type(v) == 'table'
-                and rawget(v, 'HandleLoadingScreen')
-                and rawget(v, 'FinishedLoading')
-            then
-                IsLoading = v
-            end
-        end
-        while not rawget(IsLoading, 'IsFinishedLoading')do
+-- repeat task.wait() until game:IsLoaded()
+-- task.spawn(function()
+--     local IsLoading = nil
+--     while not IsLoading do
+--         for i, v in pairs(getgc(true)) do
+--             if
+--                 type(v) == 'table'
+--                 and rawget(v, 'HandleLoadingScreen')
+--                 and rawget(v, 'FinishedLoading')
+--             then
+--                 IsLoading = v
+--             end
+--         end
+--         while not rawget(IsLoading, 'IsFinishedLoading')do
 
-        end
-        print("Done")
-        task.wait(1)
-    end
-end)
+--         end
+--         print("Done")
+--         task.wait(1)
+--     end
+-- end)
 
 
 repeat task.wait() until game:GetService("Players").LocalPlayer
