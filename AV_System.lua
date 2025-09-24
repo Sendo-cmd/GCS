@@ -1634,6 +1634,7 @@ task.spawn(function()
             print("Executed")
         end
         Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+            task.wait(2)
             if Results['StageType'] == "Challenge" then
                 Networking.TeleportEvent:FireServer("Lobby")
             elseif _G.CHALLENGE_CHECKCD() and Settings["Auto Join Challenge"] then
