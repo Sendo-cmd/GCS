@@ -42,7 +42,7 @@ local function AntiAFK()
     end)
 end
 function _G.CHALLENGE_CHECKCD()
-    local Closest = math.huge
+    
     local PATH_CDTIME = game.Players.LocalPlayer.Name .. '_CDTIME'
     if game.PlaceId == 16146832113 then
         local ReplicatedStorage = game:GetService('ReplicatedStorage')
@@ -55,6 +55,7 @@ function _G.CHALLENGE_CHECKCD()
         
         local function Checkings()
             local IsBreak = false
+            local Closest = math.huge
             for i, v in pairs(ChallengesData.GetChallengeTypes()) do
                 for i1, v1 in pairs(ChallengesData.GetChallengesOfType(v)) do
                     local Type = v1.Type
@@ -70,6 +71,7 @@ function _G.CHALLENGE_CHECKCD()
                    
                     ChallengesData.GetChallengeSeed(Name)
                     local Reset = ChallengesData.GetNextReset(Type, Seed) or 0
+                    print(Reset)
                     if Reset < Closest then
                         Closest = Reset
                     end
@@ -78,11 +80,13 @@ function _G.CHALLENGE_CHECKCD()
                     return false
                 end
             end
+            if not IsBreak then
+               writefile(PATH_CDTIME, Closest + os.time() + 20)
+            end
         end
         Checkings()
-        writefile(path, Closest + os.time() + 20)
     else
-        local Time_ = isfile(PATH_CDTIME) and tonumber(readfile(PATH_CDTIME, Closest)) or 0
+        local Time_ = isfile(PATH_CDTIME) and tonumber(readfile(PATH_CDTIME)) or 0
         if os.time() > Time_ then
             return true
         end
