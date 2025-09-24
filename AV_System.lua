@@ -837,10 +837,6 @@ local Changes = {
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
     end,
-    ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
-    end,
     ["503237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
