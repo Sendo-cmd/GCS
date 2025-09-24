@@ -253,6 +253,7 @@ local Settings ={
     },
     ["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
+        ["Stage"] = "RumblingEvent",
     },
     ["Portal Settings"] = {
         ["ID"] = 113, -- 113 Love , 87 Winter
@@ -1593,7 +1594,7 @@ task.spawn(function()
                         end
                     end
                 end)
-            else
+            elseif Settings["Auto Priority"] then
                 
                 for i,v in pairs(workspace.Units:GetChildren()) do
                     if v:IsA("Model") then

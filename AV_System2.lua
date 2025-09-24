@@ -1,5 +1,5 @@
 local All_Key = {
-    ["AV"] = "Party-AV-1",
+    ["AV"] = "Party-AV",
     ["AA"] = "Party-AA",
     ["ASTD X"] = "Party-ASTDX"
 }
@@ -239,19 +239,19 @@ local Settings ={
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
 
-    ["Auto Stun"] = true,
+    ["Auto Stun"] = false,
     ["Auto Priority"] = false,
-    ["Priority"] = "Closest", 
+    ["Priority"] = "First", 
     ["Party Mode"] = false,
 
     ["Priority Multi"] = {
         ["Enabled"] = false,
-        ["1"] = "Closest",
-        ["2"] = "Closest",
-        ["3"] = "Closest",
-        ["4"] = "Closest",
-        ["5"] = "Closest",
-        ["6"] = "Closest",
+        ["1"] = "First",
+        ["2"] = "First",
+        ["3"] = "First",
+        ["4"] = "First",
+        ["5"] = "First",
+        ["6"] = "First",
     },
     ["Odyssey Settings"] = {
         ["Limiteless"] = false
@@ -286,7 +286,6 @@ local Settings ={
     },
     ["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "RumblingEvent",
     },
     ["Portal Settings"] = {
         ["ID"] = 113, -- 113 Love , 87 Winter
@@ -633,7 +632,7 @@ local Changes = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "",
+        ["Stage"] = "Frozen Volcano",
         ["FriendsOnly"] = false
     }
     end,
@@ -648,6 +647,46 @@ local Changes = {
     }
     end,
     ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "FrozenVolcano",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Frozen Volcano",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "FrozenVolcano",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Frozen Volcano",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "FrozenVolcano",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Frozen Volcano",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "FrozenVolcano",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Frozen Volcano",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
@@ -828,7 +867,7 @@ local Changes = {
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
     end,
-    ["503237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
+    ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
     end,
@@ -844,21 +883,18 @@ local Changes = {
         Settings["Select Mode"] = "Boss Event"
         Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "SaberEvent",
     }
     end,
     ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
         Settings["Select Mode"] = "Boss Event"
         Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "SaberEvent",
     }
     end,
     ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
         Settings["Select Mode"] = "Boss Event"
         Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "SaberEvent",
     }
     end,
     ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
@@ -1927,8 +1963,7 @@ if ID[game.GameId][1] == "AV" then
                             end
                         end
                     end)
-                else
-                    
+                elseif Settings["Auto Priority"] then
                     for i,v in pairs(workspace.Units:GetChildren()) do
                         if v:IsA("Model") then
                             Priority(v,Settings["Priority"])
