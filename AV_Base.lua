@@ -805,7 +805,7 @@ getgenv().Config = {
 				["Tyrant Destroyer"] = 86,
 				["Range"] = 95,
 				["Planning Ahead"] = 0,
-				["Tyrant Arrives"] = 88,
+				["Tyrant Arrives"] = 87,
 				["High Class"] = 0,
 				["Immunity"] = 91,
 				["Harvest"] = 99,
@@ -838,7 +838,7 @@ getgenv().Config = {
 				["Revitalize"] = 89,
 				["Wild Card"] = 33,
 				["Slayer"] = 92,
-				["Sphere Finder"] = 87
+				["Sphere Finder"] = 86
 			},
 			["Amount"] = {
 				["Champions"] = 1,
