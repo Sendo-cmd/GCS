@@ -253,7 +253,6 @@ local Settings ={
     },
     ["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "RumblingEvent",
     },
     ["Portal Settings"] = {
         ["ID"] = 113, -- 113 Love , 87 Winter
@@ -1396,6 +1395,12 @@ task.spawn(function()
                     }
                 }
                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("BossEvent"):WaitForChild("BossEvent"):FireServer(unpack(args))
+                task.wait(4)
+                 local args = {
+                    [1] = "StartMatch"
+                }
+                
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                 task.wait(15)
             end
             
