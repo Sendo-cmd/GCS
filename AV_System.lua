@@ -62,17 +62,17 @@ function _G.CHALLENGE_CHECKCD()
                     local Name = v1.Name
                     local Seed = ChallengesAttemptsHandler.GetChallengeSeed(Type)
                     print(Type,Seed)
-                    if ChallengesData.GetChallengeRewards(Name)['Currencies'] and ChallengesData.GetChallengeRewards(Name)['Currencies']['TraitRerolls'] then
-                    else
-                        continue;
-                    end
-                    if not Type or not Seed then
+                    
+                    if not Type or not Seed or not Name then
                         IsBreak = true
                         task.wait(1)
                         Checkings()
                         return false
                     end
-                   
+                    if ChallengesData.GetChallengeRewards(Name)['Currencies'] and ChallengesData.GetChallengeRewards(Name)['Currencies']['TraitRerolls'] then
+                    else
+                        continue;
+                    end
                     ChallengesData.GetChallengeSeed(Name)
                     local Reset = ChallengesData.GetNextReset(Type, Seed) or 0
                     print(Reset)
