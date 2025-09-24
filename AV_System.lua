@@ -1,25 +1,5 @@
--- repeat task.wait() until game:IsLoaded()
--- task.spawn(function()
---     local IsLoading = nil
---     while not IsLoading do
---         for i, v in pairs(getgc(true)) do
---             if
---                 type(v) == 'table'
---                 and rawget(v, 'HandleLoadingScreen')
---                 and rawget(v, 'FinishedLoading')
---             then
---                 IsLoading = v
---             end
---         end
---         while not rawget(IsLoading, 'IsFinishedLoading')do
 
---         end
---         print("Done")
---         task.wait(1)
---     end
--- end)
-
-
+repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
@@ -80,13 +60,14 @@ function _G.CHALLENGE_CHECKCD()
                     local Type = v1.Type
                     local Name = v1.Name
                     local Seed = ChallengesAttemptsHandler.GetChallengeSeed(Type)
+                    print(Type,Seed)
                     if not Type or not Seed then
                         IsBreak = true
                         task.wait(1)
                         Checkings()
                         return false
                     end
-                    print(Type,Seed)
+                   
                     ChallengesData.GetChallengeSeed(Name)
                     local Reset = ChallengesData.GetNextReset(Type, Seed) or 0
                     if Reset < Closest then
