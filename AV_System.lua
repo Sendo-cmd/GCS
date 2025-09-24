@@ -806,162 +806,70 @@ local Changes = {
     end,
     ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+    
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
         Settings["Auto Join Challenge"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
     ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
     ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
     ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+    end,
+    ["503237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
     end,
     ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
     end,
     ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
        Settings["Auto Join Challenge"] = true
        Settings["Auto Join Bounty"] = true
-       Settings["Select Mode"] = "Story"
-       Settings["Story Settings"] = {
-       ["Difficulty"] = "Normal",
-       ["Act"] = "infinite",
-       ["StageType"] = "Story",
-       ["Stage"] = "Planet Namak",
-       ["FriendsOnly"] = false
-    }
     end,
     ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
        Settings["Select Mode"] = "Boss Event"
        Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "SaberEvent",
     }
     end,
     ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
        Settings["Select Mode"] = "Boss Event"
        Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "SaberEvent",
     }
     end,
     ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
         Settings["Select Mode"] = "Boss Event"
         Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "SaberEvent",
     }
     end,
 
