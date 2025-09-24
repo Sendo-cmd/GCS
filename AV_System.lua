@@ -206,7 +206,7 @@ local Settings ={
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
 
-    ["Auto Stun"] = true,
+    ["Auto Stun"] = false,
     ["Auto Priority"] = false,
     ["Priority"] = "First", 
     ["Party Mode"] = false,
@@ -835,6 +835,10 @@ local Changes = {
         Settings["Auto Join Bounty"] = true
     end,
     ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
+    end,
+    ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
     end,
@@ -1641,7 +1645,7 @@ task.spawn(function()
                 Networking.TeleportEvent:FireServer("Lobby")
             elseif _G.CHALLENGE_CHECKCD() and Settings["Auto Join Challenge"] then
                 Networking.TeleportEvent:FireServer("Lobby")
-            elseif task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") and Settings["Auto Join Bounty"]  then
+            elseif Settings["Auto Join Bounty"]  and task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") then
                 if plr.PlayerGui.EndScreen.Holder.Buttons:FindFirstChild("Bounty") and plr.PlayerGui.EndScreen.Holder.Buttons.Bounty["Visible"] then
 
                 else

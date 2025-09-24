@@ -1807,9 +1807,9 @@ if ID[game.GameId][1] == "AV" then
                 end
                 if Results['StageType'] == "Challenge" then
                     game:shutdown()
-                elseif _G.CHALLENGE_CHECKCD() then
+                elseif _G.CHALLENGE_CHECKCD() and Settings["Auto Join Challenge"] then
                     game:shutdown()
-                elseif task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") then
+                elseif Settings["Auto Join Bounty"] and task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") then
                     if plr.PlayerGui.EndScreen.Holder.Buttons:FindFirstChild("Bounty") and plr.PlayerGui.EndScreen.Holder.Buttons.Bounty["Visible"] then
 
                     else
