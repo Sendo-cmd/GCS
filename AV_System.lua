@@ -389,24 +389,10 @@ local Changes = {
         Settings["Select Mode"] = "Summer"
     end,
     ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
+        Settings["Select Mode"] = "Summer"
     end,
     ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
+        Settings["Select Mode"] = "Summer"
     end,
     ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
         Settings["Select Mode"] = "Story"
