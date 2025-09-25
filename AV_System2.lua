@@ -1261,7 +1261,7 @@ if ID[game.GameId][1] == "AV" then
             task.spawn(function()
                 local cache_key = Username
                 local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
-                local Waiting_Time = os.time() + 150
+                local Waiting_Time = os.time() + 200
                 local Attempt = 0
                 local Current_Party = nil
                 local Last_Message_1 = nil
