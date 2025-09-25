@@ -374,7 +374,7 @@ getgenv().Config = {
 				["Newsman (Forecast)"] = true,
 				["Lfelt (Love)"] = true
 			},
-			["Leave Extra Money"] = 6000
+			["Leave Extra Money"] = 5000
 		}
 	},
 	["Daily Challenge Joiner"] = {
