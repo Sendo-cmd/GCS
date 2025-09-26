@@ -92,22 +92,26 @@ local function SendTo(Url,...)
 end
 if IsTimeChamber then
     print("Time Chamber")
-    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
-                ["name"] = "AFK Time Chamber",
-                ["chapter"] = "",
-                ["wave"] = "",
-                ["mode"] = "",
-                ["difficulty"] = "",
+    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField_(GetSomeCurrency())},{["state"] = {
+                ["map"] = {
+                        ["name"] = "AFK Time Chamber",
+                        ["chapter"] = "AFK",
+                        ["wave"] = "0",
+                        ["mode"] = "AFK",
+                        ["difficulty"] = "AFK"
+                        },
                 ["win"] = true,
             }},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
     while true do
-        task.wait(120)
-         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
-                ["name"] = "AFK Time Chamber",
-                ["chapter"] = "",
-                ["wave"] = "",
-                ["mode"] = "",
-                ["difficulty"] = "",
+        task.wait(200)
+         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField_(GetSomeCurrency())},{["state"] = {
+                ["map"] = {
+                        ["name"] = "AFK Time Chamber",
+                        ["chapter"] = "AFK",
+                        ["wave"] = "0",
+                        ["mode"] = "AFK",
+                        ["difficulty"] = "AFK"
+                        },
                 ["win"] = true,
             }},{["time"] = 200},{["currency"] = convertToField_(GetSomeCurrency())})
     end
@@ -294,7 +298,7 @@ elseif IsMatch then
         end
          warn("SendTo 3")
         -- Create StageInfo
-        if Results["Status"] == "Finished" or Results["Act"] == "Infinite" or Results["Act"] == "LTM" then
+        if Results["Status"] == "Finished" then
             Times = Results["TimeTaken"]
             StageInfo["win"] = true
         else
