@@ -302,6 +302,7 @@ elseif IsMatch then
             Times = Results["TimeTaken"]
             StageInfo["win"] = true
         else
+            Times = Results["TimeTaken"]
             StageInfo["win"] = false
         end
          print("SendTo 4")
