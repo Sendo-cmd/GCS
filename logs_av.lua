@@ -25,7 +25,6 @@ local Modules = ReplicatedStorage:WaitForChild("Modules")
 
 task.wait(1.5)
 local IsTimeChamber = game.PlaceId == 18219125606
-local IsTimeChamber = game.PlaceId == 18219125606
 
 local url = "https://api.championshop.date/logs"
 print(game.PlaceId)
@@ -93,26 +92,22 @@ local function SendTo(Url,...)
 end
 if IsTimeChamber then
     print("Time Chamber")
-    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField_(GetSomeCurrency())},{["state"] = {
-                ["map"] = {
-                        ["name"] = "AFK Time Chamber",
-                        ["chapter"] = "AFK",
-                        ["wave"] = "0",
-                        ["mode"] = "AFK",
-                        ["difficulty"] = "AFK"
-                        },
+    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
+                ["name"] = "AFK Time Chamber",
+                ["chapter"] = "",
+                ["wave"] = "",
+                ["mode"] = "",
+                ["difficulty"] = "",
                 ["win"] = true,
             }},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
     while true do
-        task.wait(200)
-         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = convertToField_(GetSomeCurrency())},{["state"] = {
-                ["map"] = {
-                        ["name"] = "AFK Time Chamber",
-                        ["chapter"] = "AFK",
-                        ["wave"] = "0",
-                        ["mode"] = "AFK",
-                        ["difficulty"] = "AFK"
-                        },
+        task.wait(120)
+         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = {convertToField("Gems",20)}},{["state"] = {
+                ["name"] = "AFK Time Chamber",
+                ["chapter"] = "",
+                ["wave"] = "",
+                ["mode"] = "",
+                ["difficulty"] = "",
                 ["win"] = true,
             }},{["time"] = 200},{["currency"] = convertToField_(GetSomeCurrency())})
     end
@@ -211,7 +206,7 @@ local function GetData()
         game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
             Inventory = {}
             for i,v in pairs(val1) do
-                -- print(os.time(),i,v)
+                print(os.time(),i,v)
                 if v then 
                     local call,err = pcall(function()
                         Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
@@ -221,17 +216,17 @@ local function GetData()
                 end
             end
             Val_1 = true
-            -- print("Inventory Updated",os.time())
+            print("Inventory Updated",os.time())
         end)
         game:GetService("ReplicatedStorage").Networking.Familiars.RequestFamiliarsEvent.OnClientEvent:Connect(function(val)
             FamiliarTable = val
             Val_2 = true
-            -- print("Family Updated",os.time())
+            print("Family Updated",os.time())
         end)
         game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent.OnClientEvent:Connect(function(val)
             SkinTable = val
             Val_3 = true
-            -- print("Skin Updated",os.time())
+            print("Skin Updated",os.time())
         end)
 
     end
@@ -250,7 +245,7 @@ local function GetData()
             game:GetService("ReplicatedStorage").Networking.Skins.RequestSkinsEvent:FireServer()
         end
         
-        -- print(Val_3 , Val_2 , Val_1)
+        print(Val_3 , Val_2 , Val_1)
         task.wait(1) 
     until Val_3 and Val_2 and Val_1
 
@@ -299,7 +294,7 @@ elseif IsMatch then
         end
          warn("SendTo 3")
         -- Create StageInfo
-        if Results["Status"] == "Finished" then
+        if Results["Status"] == "Finished" or Results["Act"] == "Infinite" then
             Times = Results["TimeTaken"]
             StageInfo["win"] = true
         else
@@ -309,7 +304,7 @@ elseif IsMatch then
         if not StageInfo["map"] then
            
             local GameData = GameHandler.GameData
-        
+            
             StageInfo["map"] = {
                 ["name"] = Results["StageName"],
                 ["chapter"] = Results["Act"],
