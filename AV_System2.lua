@@ -549,6 +549,7 @@ local Changes = {
         ["FriendsOnly"] = false
         
     }
+    end,
     ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"

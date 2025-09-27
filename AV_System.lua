@@ -723,6 +723,7 @@ local Changes = {
         ["Stage"] = "Double Dungeon",
         ["FriendsOnly"] = false
     }
+    end,
     ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
