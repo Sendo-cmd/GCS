@@ -540,7 +540,7 @@ local Changes = {
             ["4"] = "Closest",
             ["5"] = "First",
             ["6"] = "First",
-        },
+        }
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -560,7 +560,7 @@ local Changes = {
             ["4"] = "Closest",
             ["5"] = "First",
             ["6"] = "First",
-        },
+        }
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -581,7 +581,7 @@ local Changes = {
             ["4"] = "Closest",
             ["5"] = "First",
             ["6"] = "First",
-        },
+        }
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -601,7 +601,7 @@ local Changes = {
             ["4"] = "Closest",
             ["5"] = "First",
             ["6"] = "First",
-        },
+        }
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
