@@ -452,7 +452,7 @@ local Changes = {
     ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
@@ -462,7 +462,17 @@ local Changes = {
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
