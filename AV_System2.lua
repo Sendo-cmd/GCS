@@ -43,6 +43,7 @@ local Order_Type = {
         "5a2a67e9-7407-4437-bc2e-c332135cec53",
     },
     ["Boss Event"] = {
+        "143f6820-6e5e-4f6e-b3f9-3de3e9586271",
         "abb151e9-5e2a-40d3-91fe-7da3ee03f1aa",
         "5a815e6f-7024-4e6e-9d30-50cda9a765bd",
         "66ace527-415a-4b1f-a512-9f3429f67067",
@@ -53,11 +54,13 @@ local Order_Type = {
         "ef2bf1de-f30f-46aa-98bb-4a34635a2ed8",
     },
     ["Delusional Boy"] = {
+        "427f560e-b78e-4ec9-b711-d451b0312306",
         "d8b5cc8c-effd-4521-9db9-04fb460cd225",
         "30a613fb-29c9-4b88-b18b-1b4231a5468d",
         "dfa9b68a-95d7-4227-b118-702cf45061c7",
     },
     ["Lfelt"] = {
+        "fed48f27-35a3-47a7-b937-5a4dc59c6d28",
         "785409b0-02f9-4bb8-8ad8-b383b59f6f54",
         "bc1be299-c561-4a41-964a-a055f8a8e436",
         "1c58db6a-b5d1-4d8d-8195-75aad0403c90",
@@ -94,6 +97,7 @@ local Order_Type = {
     --     "69d6b35d-0dc0-46d5-96c6-be037b876cdd",
     -- },
     ["Arin"] = {
+        "6eef0b60-b61d-47d1-aba5-22d6fea4cb8f",
         "89901139-d4b5-4555-8913-4900d176546c",
         "7b29fe07-6313-48cb-a095-3680d4758ab6",
         "1e07ff1f-ab45-466b-8b36-ae0ff8b43198",
@@ -465,6 +469,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Edge of Heaven",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -515,11 +529,38 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["427f560e-b78e-4ec9-b711-d451b0312306"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "First",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        },
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "Ruined City",
+        ["FriendsOnly"] = false
+        
+    }
     ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
-        Settings["Auto Priority"] = true
-        Settings["Priority"] = "Bosses"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "First",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        },
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -532,8 +573,15 @@ local Changes = {
     ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
-        Settings["Auto Priority"] = true
-        Settings["Priority"] = "Bosses"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "First",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        },
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -545,8 +593,15 @@ local Changes = {
     ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
-        Settings["Auto Priority"] = true
-        Settings["Priority"] = "Bosses"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "First",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        },
         Settings["Raid Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -695,6 +750,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    [""] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Double Dungeon",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -722,6 +787,16 @@ local Changes = {
         ["Act"] = "Act3",
         ["StageType"] = "LegendStage",
         ["Stage"] = "Double Dungeon",
+        ["FriendsOnly"] = false
+    }
+    end,
+    [""] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Kuinshi Palace",
         ["FriendsOnly"] = false
     }
     end,
@@ -755,6 +830,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    [""] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Land of the Gods",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -782,6 +867,16 @@ local Changes = {
         ["Act"] = "Act3",
         ["StageType"] = "LegendStage",
         ["Stage"] = "Land of the Gods",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["6eef0b60-b61d-47d1-aba5-22d6fea4cb8f"] = function()
+        Settings["Select Mode"] = "Legend Stage"
+        Settings["Legend Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act3",
+        ["StageType"] = "LegendStage",
+        ["Stage"] = "Crystal Chapel",
         ["FriendsOnly"] = false
     }
     end,
@@ -857,6 +952,12 @@ local Changes = {
     ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+    end,
+    ["143f6820-6e5e-4f6e-b3f9-3de3e9586271"] = function()
+        Settings["Select Mode"] = "Boss Event"
+        Settings["Boss Event Settings"] = {
+        ["Difficulty"] = "Normal",
+    }
     end,
     ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
         Settings["Select Mode"] = "Boss Event"
