@@ -106,6 +106,8 @@ local Order_Type = {
         "e206ec24-dfbf-4157-a380-9afabe115c29",
         "c62223a2-17f9-4078-bbc0-bb45c484558f",
         "d92fceaa-8d18-4dc9-980f-452db4573ad9",
+    },
+    ["Summer Inf"] = {
         "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         "c869c464-6864-4eb7-a98f-f78f3448b71c",
         "fc7a340c-7c98-4da6-84aa-a7e3ce4790c1",
