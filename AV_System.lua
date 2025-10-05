@@ -85,7 +85,7 @@ function _G.CHALLENGE_CHECKCD()
                 end
             end
             if not IsBreak then
-               writefile(PATH_CDTIME, Closest + os.time() + 20)
+               writefile(PATH_CDTIME, tostring(Closest + os.time() + 20))
             end
         end
         Checkings()
