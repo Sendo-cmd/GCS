@@ -1,4 +1,3 @@
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 getgenv().Config = {
 	["Auto Join Equipper"] = {
 		["Macro Equipper"] = {
