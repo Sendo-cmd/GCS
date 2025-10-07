@@ -12,6 +12,7 @@ local GuiService = game:GetService("GuiService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Settings = {
+    ["Duration"] = 2.5, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
     ["Method"] = "Normal", -- "Instant" , "Normal" , "Slow"
 }
 
@@ -77,7 +78,7 @@ local function Reeling(v)
                 end
             end
         elseif Settings["Method"] == "Normal" then
-            local t1 = tick() + 2.5
+            local t1 = tick() + Settings["Duration"]
             while v.Parent do task.wait()
                 plr.PlayerGui.reel.bar.playerbar.Size = UDim2.fromScale(1, 1)
                 if tick() >= t1 then
