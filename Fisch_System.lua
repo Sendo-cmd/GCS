@@ -104,7 +104,7 @@ plr.PlayerGui.ChildAdded:Connect(function(v)
         Reeling(v)
     end
 end)
-BypassTeleport(CFrame.new(-3614.44507, 134.806122, 554.73114, -0.162437394, 6.45406928e-08, 0.986718833, -1.02886357e-08, 1, -6.71031586e-08, -0.986718833, -2.10520543e-08, -0.162437394))
+
 task.spawn(function()
     while task.wait(.5) do
         pcall(function ()
@@ -113,6 +113,13 @@ task.spawn(function()
                 game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
                 task.wait(1.5)
             end
+        end)
+    end
+end)
+task.spawn(function()
+    while task.wait(3) do
+        pcall(function ()
+           BypassTeleport(CFrame.new(-3614.44507, 134.806122, 554.73114, -0.162437394, 6.45406928e-08, 0.986718833, -1.02886357e-08, 1, -6.71031586e-08, -0.986718833, -2.10520543e-08, -0.162437394))
         end)
     end
 end)
