@@ -12,7 +12,7 @@ local GuiService = game:GetService("GuiService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Settings = {
-    ["Method"] = "Instant", -- "Instant" , "Normal" , "Slow"
+    ["Method"] = "Normal", -- "Instant" , "Normal" , "Slow"
 }
 
 for i,v in pairs(getgc(true)) do
