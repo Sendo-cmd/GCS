@@ -77,10 +77,10 @@ Games = {
         ["Tsp"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial3_SP.lua",
         ["dg"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
 
-    }
+    },
     [5750914919] = { --Fisch
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
-        -- ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
     },
 }
 Accounts = {
