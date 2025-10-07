@@ -78,6 +78,10 @@ Games = {
         ["dg"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
 
     }
+    [5750914919] = { --Fisch
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
+    },
 }
 Accounts = {
     ["FireBlackDevilZ"] = {
@@ -106,7 +110,8 @@ local ScriptLists = nil
 
 local BaseScripts = {
     ["5578556129"] = { "Log", "Base", "System", "System2" },
-    ["6057699512"] = { "Marco", "Tsp" },       
+    ["6057699512"] = { "Marco", "Tsp" },
+    ["5750914919"] = { "System" },
 }
 
 for i, v in pairs(Accounts) do
