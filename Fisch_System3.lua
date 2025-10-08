@@ -59,6 +59,7 @@ local function Shaking(v)
     end
     local ConnectTo1 = safezone.ChildAdded:Connect(function(v1)
         if v1:IsA("ImageButton") then
+            task.wait(.15)
             Shake(v1)
         end
     end)

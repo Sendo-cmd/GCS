@@ -80,6 +80,8 @@ Games = {
     },
     [5750914919] = { --Fisch
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
+        ["System2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System2.lua",
+        ["System3"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System3.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
     },
 }
@@ -87,17 +89,14 @@ Accounts = {
     ["FireBlackDevilZ"] = {
         "Inf",
      },
-    ["Storc5835"] = {
-        "Log",
-        "RerollSuper",
+    ["Beltsnady778"] = {
         "System",
+    },
+    ["Dusinleoma919"] = {
         "System2",
     },
-    ["whdjebdju4"] = {
-        "Log",
-        "Worldline",
-        "System",
-        "System2",
+    ["Cenciminna3411"] = {
+        "System3",
     },
 }
 repeat task.wait(1) until game:IsLoaded(2)

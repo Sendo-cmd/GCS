@@ -59,6 +59,7 @@ local function Shaking(v)
     end
     local ConnectTo1 = safezone.ChildAdded:Connect(function(v1)
         if v1:IsA("ImageButton") then
+            task.wait(.13)
             Shake(v1)
         end
     end)
@@ -78,7 +79,7 @@ local function Reeling(v)
                 end
             end
         elseif Settings["Method"] == "Normal" then
-            local t1 = tick() + 3.5
+            local t1 = tick() + Settings["Duration"]
             while v.Parent do task.wait()
                 plr.PlayerGui.reel.bar.playerbar.Size = UDim2.fromScale(1, 1)
                 if tick() >= t1 then
