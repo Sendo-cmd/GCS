@@ -1,4 +1,4 @@
-repeat task.wait() until game:IsLoaded()
+repeat task.wait(30) until game:IsLoaded()
 
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
