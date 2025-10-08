@@ -1,26 +1,49 @@
-repeat task.wait() until game:IsLoaded()
+repeat  task.wait() until game:IsLoaded()
+game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+local VIM = game:GetService('VirtualInputManager')
+local tloading = tick() + 5
+local loading
+repeat task.wait()
+    loading = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("loading")
+until tick() >= tloading or loading
 
-repeat task.wait() until game:GetService("Players").LocalPlayer
-repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-
-
-
-
+while loading and loading.Enabled do task.wait()
+    if loading.Enabled and loading.loading.skip.Visible then
+        local skip = loading.loading.skip
+        skip.AnchorPoint = Vector2.new(.5,.5)
+        skip.Position = UDim2.fromScale(.5,.5)
+        skip.Size = UDim2.fromScale(9999,9999)
+        print("Skip")
+    end
+    local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
+    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
+    VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+end 
 
 local plr = game:GetService("Players").LocalPlayer
 local GuiService = game:GetService("GuiService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local FishCount = 0
+local BreakFish = 0
+local PleaseChange = false
 local Settings = {
     ["Duration"] = 2.5, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
-    ["Method"] = "Normal", -- "Instant" , "Normal" , "Slow"
+    ["Shake Delay"] = 0.133, -- For Config
+    ["Method"] = "Legit", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
+    ["Legit Configs"] = {
+        ["progress"] = 65, -- 65% of progress bar
+        ["shake"] = .25, 
+    }
 }
 
 for i,v in pairs(getgc(true)) do
     if type(v) == "table" and rawget(v,"power") then
         task.spawn(function()
             while task.wait() do
-                rawset(v,"power",math.random(950,1000)/10)
+                if PleaseChange then
+                     rawset(v,"power",FishCount >= 3 and math.random(500,700)/10 or math.random(900,1000)/10)
+                end
             end
         end)
     end
@@ -59,6 +82,11 @@ local function Shaking(v)
     end
     local ConnectTo1 = safezone.ChildAdded:Connect(function(v1)
         if v1:IsA("ImageButton") then
+            if Settings["Method"] == "Legit" then
+                task.wait(Settings["Legit Configs"]["shake"])
+            elseif Settings["Method"] == "Config" then
+                task.wait(Settings["Shake Delay"])
+            end
             Shake(v1)
         end
     end)
@@ -67,28 +95,56 @@ local function Shaking(v)
     end
     ConnectTo1:Disconnect()
 end
+local function DistanceWithoutY(vec1,vec2)
+    local Vect1 = Vector3.new(vec1.x,0,vec1.z)
+    local Vect2 = Vector3.new(vec2.x,0,vec2.z)
+    return (Vect1 - Vect2).Magnitude
+end
 local function Reeling(v)
     if v then
-        if Settings["Method"] == "Instant" then
-            local t1 = tick() + 1.5
-            while v.Parent do task.wait()
-                if tick() >= t1 then
-                    ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,true)
-                    t1 = tick() + .1
+        print(BreakFish)
+        local randomreel = math.random(1,5) == 1
+        if BreakFish >= 10 then
+            task.wait(1)
+            ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(10,false)
+        else
+            if Settings["Method"] == "Instant" then
+                local t1 = tick() + 1.5
+                while v.Parent do task.wait(.1)
+                    if tick() >= t1 then
+                        ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+                        t1 = tick() + .1
+                    end
                 end
-            end
-        elseif Settings["Method"] == "Normal" then
-            local t1 = tick() + 3.5
-            while v.Parent do task.wait()
-                plr.PlayerGui.reel.bar.playerbar.Size = UDim2.fromScale(1, 1)
-                if tick() >= t1 then
-                    ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,true)
-                    t1 = tick() + .1
+            elseif Settings["Method"] == "Normal" then
+                local t1 = tick() + 2.5
+                while v.Parent do task.wait(.1)
+                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+                    if tick() >= t1 then
+                        ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+                        t1 = tick() + .1
+                    end
+                end 
+            elseif Settings["Method"] == "Legit" then
+                while v.Parent do task.wait(.1)
+                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+                    if v.bar.progress.bar.Size.X.Scale >= Settings["Legit Configs"]["progress"]/100 then
+                        ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+                    end
+                end 
+            elseif Settings["Method"] == "Config" then
+               local t1 = tick() + Settings["Duration"]
+                while v.Parent do task.wait(.1)
+                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+                    if tick() >= t1 then
+                        ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+                        t1 = tick() + .1
+                    end
+                end 
+            elseif Settings["Method"] == "Slow" then
+                while v.Parent do task.wait()
+                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
                 end
-            end 
-        elseif Settings["Method"] == "Slow" then
-            while v.Parent do task.wait()
-                plr.PlayerGui.reel.bar.playerbar.Size = UDim2.fromScale(1, 1)
             end
         end
     end
@@ -104,7 +160,21 @@ plr.PlayerGui.ChildAdded:Connect(function(v)
         Reeling(v)
     end
 end)
+game:GetService("ReplicatedStorage").events.anno_catch.OnClientEvent:Connect(function(b)
+    FishCount = FishCount + 1
+    BreakFish = BreakFish + 1
+end)
+task.spawn(function()
+    while task.wait() do
+        pcall(function ()
+            if DistanceWithoutY(plr.Character.HumanoidRootPart.Position,Vector3.new(359.832642, 133.873108, 230.474777)) >= 5 then
+                BypassTeleport(CFrame.new(359.832642, 133.873108, 230.474777, -0.00131273316, -4.51925433e-12, 0.999999166, 3.2915657e-13, 1, 4.51969018e-12, -0.999999166, 3.35089432e-13, -0.00131273316))
+                task.wait(3)
+            end 
+        end)
 
+    end
+end)
 task.spawn(function()
     while task.wait(.5) do
         pcall(function ()
@@ -116,15 +186,8 @@ task.spawn(function()
         end)
     end
 end)
-task.spawn(function()
-    while task.wait(3) do
-        pcall(function ()
-           BypassTeleport(CFrame.new(-3614.44507, 134.806122, 554.73114, -0.162437394, 6.45406928e-08, 0.986718833, -1.02886357e-08, 1, -6.71031586e-08, -0.986718833, -2.10520543e-08, -0.162437394))
-        end)
-    end
-end)
+
 while task.wait() do
-    print(plr.Character , not plr.Character:GetAttribute("Fishing") , not plr.Character:GetAttribute("Reeling"))
     if plr.Character and not plr.Character:GetAttribute("Fishing") and plr.Character:FindFirstChildWhichIsA("Tool") then
         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
         VirtualInputManager:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1) task.wait(.1)
