@@ -1,3 +1,4 @@
+setfpscap(15)
 repeat  task.wait() until game:IsLoaded()
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local VIM = game:GetService('VirtualInputManager')
@@ -198,5 +199,6 @@ while task.wait() do
         local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
         VirtualInputManager:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1) task.wait(.1)
         VirtualInputManager:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
+        task.wait(.75)
     end
 end
