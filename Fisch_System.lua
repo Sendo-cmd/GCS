@@ -41,9 +41,9 @@ for i,v in pairs(getgc(true)) do
     if type(v) == "table" and rawget(v,"power") then
         task.spawn(function()
             while task.wait() do
-                if PleaseChange then
+                -- if PleaseChange then
                      rawset(v,"power",FishCount >= 3 and math.random(500,700)/10 or math.random(900,1000)/10)
-                end
+                -- end
             end
         end)
     end
@@ -107,6 +107,7 @@ local function Reeling(v)
         if BreakFish >= 10 then
             task.wait(1)
             ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(10,false)
+            BreakFish = 0
         else
             if Settings["Method"] == "Instant" then
                 local t1 = tick() + 1.5
@@ -162,6 +163,11 @@ plr.PlayerGui.ChildAdded:Connect(function(v)
 end)
 game:GetService("ReplicatedStorage").events.anno_catch.OnClientEvent:Connect(function(b)
     FishCount = FishCount + 1
+    if FishCount >= 3 then
+        task.delay(3,function()
+            FishCount = 0
+        end)
+    end
     BreakFish = BreakFish + 1
 end)
 task.spawn(function()
