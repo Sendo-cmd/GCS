@@ -7,7 +7,8 @@ local List = {
     "IcedTea",
     "DragonToken",
     "Gold",
-    "Gems"
+    "Gems",
+    "TraitRerolls"
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
