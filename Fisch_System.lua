@@ -19,131 +19,24 @@ while loading and loading.Enabled do task.wait()
     VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
     VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
 end 
-
-local plr = game:GetService("Players").LocalPlayer
-local GuiService = game:GetService("GuiService")
-local VirtualInputManager = game:GetService('VirtualInputManager')
-local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local ThrowBait = function ()
-    print("Nothing")
+local function Press(args)
+    game:GetService('VirtualInputManager'):SendKeyEvent(
+        true,
+        args,
+        false,
+        game.Players.LocalPlayer.Character.HumanoidRootPart
+    )
+    wait()
+    game:GetService('VirtualInputManager'):SendKeyEvent(
+        false,
+        args,
+        false,
+        game.Players.LocalPlayer.Character.HumanoidRootPart
+    )
 end
-local FishCount = 0
-local BreakFish = 0
-local PleaseChange = false
-local Settings = {
-    ["Duration"] = 1, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
-    ["Shake Delay"] = 0, -- For Config
-    ["Method"] = "Instant", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
-    ["Legit Configs"] = {
-        ["progress"] = 65, -- 65% of progress bar
-        ["shake"] = .25, 
-    }
-}
--- local Settings = {
---     ["Duration"] = 2.5, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
---     ["Shake Delay"] = 0.133, -- For Config
---     ["Method"] = "Legit", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
---     ["Legit Configs"] = {
---         ["progress"] = 65, -- 65% of progress bar
---         ["shake"] = .25, 
---     }
--- }
-
--- for i,v in pairs(getgc(true)) do
---     if type(v) == "table" and rawget(v,"power") then
---         task.spawn(function()
---             while task.wait() do
---                 -- if PleaseChange then
---                      rawset(v,"power",FishCount >= 3 and math.random(500,700)/10 or math.random(900,1000)/10)
---                 -- end
---             end
---         end)
---     end
--- end 
-
-local function BypassTeleport(cframe)
-    if plr.Character then
-        if plr.Character and not plr.Character.HumanoidRootPart:FindFirstChild("Body") then
-            local L_1 = Instance.new("BodyVelocity")
-            L_1.Name = "Body"
-            L_1.Parent = plr.Character.HumanoidRootPart 
-            L_1.MaxForce=Vector3.new(1000000000,1000000000,1000000000)
-            L_1.Velocity=Vector3.new(0,0,0) 
-        end
-        plr.Character:PivotTo(cframe) task.wait(.1)
-        if plr.Character and plr.Character.HumanoidRootPart:FindFirstChild("Body") then
-            plr.Character.HumanoidRootPart["Body"]:Destroy()
-        end
-    end
-end
-
-local function SendKey(key,dur)
-    VirtualInputManager:SendKeyEvent(true,key,false,game) task.wait(dur)
-    VirtualInputManager:SendKeyEvent(false,key,false,game)
-end
-local function Shake(obj)
-    while obj.Parent do task.wait(.01)
-        GuiService.SelectedCoreObject = obj
-        SendKey("Return",.01)
-    end
-end
-local function Shaking(v)
-    local safezone = v:WaitForChild("safezone")
-    local button = safezone:FindFirstChild("button")
-    if button then
-        Shake(button)
-    end
-    local ConnectTo1 = safezone.ChildAdded:Connect(function(v1)
-        if v1:IsA("ImageButton") then
-            if Settings["Method"] == "Legit" then
-                task.wait(Settings["Legit Configs"]["shake"])
-            elseif Settings["Method"] == "Config" then
-                task.wait(Settings["Shake Delay"])
-            end
-            Shake(v1)
-        end
-    end)
-    while v.Parent do task.wait()
-
-    end
-    ConnectTo1:Disconnect()
-end
-local library = require(ReplicatedStorage.shared.modules.library);
-for i,v in pairs(library.rods) do
-    if type(v) == "table" then
-       v["InstantCatch"] = true
-    end
-end
-local function DistanceWithoutY(vec1,vec2)
-    local Vect1 = Vector3.new(vec1.x,0,vec1.z)
-    local Vect2 = Vector3.new(vec2.x,0,vec2.z)
-    return (Vect1 - Vect2).Magnitude
-end
-
-
--- plr.PlayerGui.ChildAdded:Connect(function(v)
---     if v.Name == "shakeui" then
---         Shaking(v)
---     end
--- end)
-
 task.spawn(function()
-    while task.wait(.5) do
-        pcall(function ()
-            if not plr:GetAttribute("CurrentRod") or not plr.Character:FindFirstChild(plr:GetAttribute("CurrentRod")) then
-                game:GetService("VirtualInputManager"):SendKeyEvent(true,"One",false,plr.Character.HumanoidRootPart) task.wait(.1)
-                game:GetService("VirtualInputManager"):SendKeyEvent(false,"One",false,plr.Character.HumanoidRootPart)
-                task.wait(1.5)
-            end
-        end)
+    while true do
+        Press('Space')
+        task.wait(10)
     end
 end)
-
-while task.wait() do
-    if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
-        local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
-        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1) task.wait(1)
-        VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
-        task.wait(5)
-    end
-end
