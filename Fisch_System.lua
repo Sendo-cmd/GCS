@@ -121,11 +121,11 @@ local function DistanceWithoutY(vec1,vec2)
 end
 
 
-plr.PlayerGui.ChildAdded:Connect(function(v)
-    if v.Name == "shakeui" then
-        Shaking(v)
-    end
-end)
+-- plr.PlayerGui.ChildAdded:Connect(function(v)
+--     if v.Name == "shakeui" then
+--         Shaking(v)
+--     end
+-- end)
 
 task.spawn(function()
     while task.wait(.5) do
