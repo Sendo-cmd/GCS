@@ -73,7 +73,7 @@ local Changes = {
         ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
         ["Level"] = "10",
         ["Friend Only"] = false,
-    },
+    }
     end,
 }
 local Order_Type = {
