@@ -13,7 +13,7 @@ local Api = "https://api.championshop.date/" -- Api ใส่ / ลงท้า�
 local Key = "NO_ORDER" 
 local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
 local ID = {
-    [72829404259339] = {
+    [6884266247] = {
         [1] = "ARX",
         [2] = 1,
     },
@@ -65,7 +65,22 @@ local Settings = {
         ["Friend Only"] = true,
     },
 }
-
+local Changes = {
+    ["1b3ffdad-7ccc-431e-90da-ad62040eb2a3"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["World"] = "Voocha Village",
+        ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+        ["Level"] = "10",
+        ["Friend Only"] = false,
+    },
+    end,
+}
+local Order_Type = {
+    ["Gems"] = {
+        "1b3ffdad-7ccc-431e-90da-ad62040eb2a3",
+    },
+}
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -221,22 +236,7 @@ local function Post_(Url,data)
    
     return response
 end
-local Changes = {
-    ["1b3ffdad-7ccc-431e-90da-ad62040eb2a3"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["World"] = "Voocha Village",
-        ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
-        ["Level"] = "10",
-        ["Friend Only"] = false,
-    },
-    end,
-}
-local Order_Type = {
-    ["Gems"] = {
-        "1b3ffdad-7ccc-431e-90da-ad62040eb2a3",
-    },
-}
+
 local function Register_Room(myproduct,player)
     
 end
@@ -388,7 +388,7 @@ local function Auto_Config(id)
         if not Order["Success"] then
             Post_(PathWay .. "cache",{
                 ["index"] = Key,
-                ["value"] = GetData()
+                ["value"] = {}
             })
         else 
              local Product = OrderData["product"]
