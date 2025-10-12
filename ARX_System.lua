@@ -32,7 +32,7 @@ local Settings = {
         ["World"] = "Voocha Village",
         ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
         ["Level"] = "1",
-        ["Friend Only"] = true,
+        ["Friend Only"] = false,
     },
     ["Ranger Settings"] = {
         ["World"] = {
@@ -62,7 +62,7 @@ local Settings = {
                 [3] = "3",
             },
         },
-        ["Friend Only"] = true,
+        ["Friend Only"] = false,
     },
 }
 local Changes = {
