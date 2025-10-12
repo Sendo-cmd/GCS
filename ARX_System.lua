@@ -112,7 +112,9 @@ Easter Egg
 -- Service
 local HttpService = game:GetService("HttpService")
 local TextChatService = game:GetService("TextChatService")
-
+local Players = game:GetService("Players")
+local Client = Players.LocalPlayer
+local Username = Client.Name
 -- Unity
 local function LoadModule(path)
     local Tick = tick() + 5
@@ -261,7 +263,7 @@ local Worlds = LoadModule(game:GetService("ReplicatedStorage").Shared.Info.GameW
 
 local VisualEvent = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
-local Players = game:GetService("Players")
+
 local Remote = ReplicatedStorage:WaitForChild("Remote")
 local Values = ReplicatedStorage:WaitForChild("Values")
 local Server = Remote:WaitForChild("Server")
@@ -274,8 +276,6 @@ local MapIndexs = {}
 local Character = plr.Character or plr.CharacterAdded:Wait()
 
 
-local Client = Players.LocalPlayer
-local Username = Client.Name
 
 -- Call Function Sections
 for i,v in pairs(Worlds) do
