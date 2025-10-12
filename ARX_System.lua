@@ -13,7 +13,7 @@ local Api = "https://api.championshop.date/" -- Api ใส่ / ลงท้า�
 local Key = "NO_ORDER" 
 local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
 local ID = {
-    [6884266247] = {
+    [72829404259339] = {
         [1] = "ARX",
         [2] = 1,
     },
