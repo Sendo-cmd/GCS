@@ -32,7 +32,7 @@ local Settings = {
         ["World"] = "Voocha Village",
         ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
         ["Level"] = "1",
-        ["Friend Only"] = false,
+        ["Friend Only"] = true,
     },
     ["Ranger Settings"] = {
         ["World"] = {
@@ -62,7 +62,7 @@ local Settings = {
                 [3] = "3",
             },
         },
-        ["Friend Only"] = false,
+        ["Friend Only"] = true,
     },
 }
 local Changes = {
@@ -1124,10 +1124,10 @@ else
             local function AutoPlay()
                 RangerIsCD = IsRangerCD()
                 print(RangerIsCD ,Values.Game.Level.Value)
-                if RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
+                if  Settings["Ranger Enabled"] and RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
                     Join()
                     print("Join Debug 1")
-                elseif Values.Game.Gamemode.Value ~= CurrentIs then
+                elseif Settings["Ranger Enabled"]  and Values.Game.Gamemode.Value ~= CurrentIs then
                     print(Values.Game.Gamemode.Value,CurrentIs)
                     Join()
                     print("Join Debug 2")
@@ -1254,10 +1254,10 @@ else
                 local function AutoPlay()
                     RangerIsCD = IsRangerCD()
                     print(RangerIsCD ,Values.Game.Level.Value)
-                    if RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
+                    if  Settings["Ranger Enabled"]  and RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
                         Join()
                         print("Join Debug 1")
-                    elseif Values.Game.Gamemode.Value ~= CurrentIs then
+                    elseif Settings["Ranger Enabled"]  and Values.Game.Gamemode.Value ~= CurrentIs then
                         print(Values.Game.Gamemode.Value,CurrentIs)
                         Join()
                         print("Join Debug 2")
@@ -1382,10 +1382,10 @@ else
                 local function AutoPlay()
                     RangerIsCD = IsRangerCD()
                     print(RangerIsCD ,Values.Game.Level.Value)
-                    if RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
+                    if  Settings["Ranger Enabled"]  and RangerIsCD and RangerIsCD ~= Values.Game.Level.Value then
                         Join()
                         print("Join Debug 1")
-                    elseif Values.Game.Gamemode.Value ~= CurrentIs then
+                    elseif Settings["Ranger Enabled"]  and Values.Game.Gamemode.Value ~= CurrentIs  then
                         print(Values.Game.Gamemode.Value,CurrentIs)
                         Join()
                         print("Join Debug 2")
