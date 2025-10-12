@@ -75,10 +75,52 @@ local Changes = {
         ["Friend Only"] = false,
     }
     end,
+    ["4843042f-cee6-4948-a66e-9e7d53b2ac42"] = function()
+        Settings["Ranger Enabled"] = true
+        Settings["Ranger Settings"] = {
+        ["World"] = {
+            ["Voocha Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Green Planet"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Demon Forest"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Leaf Village"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Z City"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+        },
+        ["Friend Only"] = false,
+    }
+    end,
+    ["9a8aad29-02e6-462d-94c6-cb4a8e877e54"] = function()
+        Settings["Select Mode"] = "Challenge"
+    end,
 }
 local Order_Type = {
     ["Gems"] = {
         "1b3ffdad-7ccc-431e-90da-ad62040eb2a3",
+    },
+    ["Ranger"] = {
+        "4843042f-cee6-4948-a66e-9e7d53b2ac42",
+    },
+    ["Challenge"] = {
+        "9a8aad29-02e6-462d-94c6-cb4a8e877e54",
     },
 }
 repeat task.wait() until game:IsLoaded()
