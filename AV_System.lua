@@ -977,6 +977,24 @@ local Changes = {
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
     end,
+    [""] = function()
+        Settings["Select Mode"] = "Odyssey"
+        Settings["Odyssey Settings"] = {
+        ["Limiteless"] = false
+    }
+    end,
+    [""] = function()
+        Settings["Select Mode"] = "Odyssey"
+        Settings["Odyssey Settings"] = {
+        ["Limiteless"] = false
+    }
+    end,
+    ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
+        Settings["Select Mode"] = "Odyssey"
+        Settings["Odyssey Settings"] = {
+        ["Limiteless"] = false
+    }
+    end,
 }
 if _G.User[plr.Name] then
     for i,v in pairs(_G.User[plr.Name]) do
