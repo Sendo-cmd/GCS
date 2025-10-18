@@ -16,7 +16,7 @@ local Info = Shared:WaitForChild("Info")
 local All_Players = ReplicatedStorage:WaitForChild("Player_Data")
 local UnitData = require(Shared.Info.Units)
 
-local Player = All_Players[Client.Name]
+local Player = All_Players:WaitForChild(Client.Name,5)
 local LocalData = Player:WaitForChild("Data")
 local Collection = Player:WaitForChild("Collection")
 
@@ -186,8 +186,8 @@ else
                     for i,v in pairs(Rewards) do
                         ConvertResult[#ConvertResult + 1] = convertToField(v.Name,v.Amount.Value)
                     end
-                    -- setclipboard({["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_({["Gems"] = Data["Gem"],["Gold"] = Data["Gold"]})})
-                    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_({["Gems"] = Data["Gem"],["Gold"] = Data["Gold"]})})
+                    -- setclipboard({["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
+                    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
                     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
                 end)
             end
