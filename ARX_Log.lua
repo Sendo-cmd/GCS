@@ -26,7 +26,7 @@ print("Loading..")
 
 
 
-local Url = "https://api.championshop.date"
+local Url = "https://e8ee770b1fef.ngrok-free.app"
 local List = {
     "BattlepassLevel",
     "Gold",
@@ -166,7 +166,7 @@ else
             WinOrLose = Value ~= "Defeat" and true or false
             if not Sending then
                 Sending = true
-                task.delay(1.5,function()
+                task.delay(2,function()
                     
                     Sending = false
                     local RewardsUI = Client.PlayerGui:WaitForChild("RewardsUI"):WaitForChild("Main"):WaitForChild("LeftSide")
@@ -176,7 +176,7 @@ else
                         ["map"] = {
                             ["name"] = RewardsUI["World"]["Text"],
                             ["chapter"] = RewardsUI["Chapter"]["Text"],
-                            ["wave"] = 1,
+                            ["wave"] = "1",
                             ["mode"] = RewardsUI["Mode"]["Text"],
                             ["difficulty"] = RewardsUI["Difficulty"]["Text"],
                         },
@@ -186,14 +186,15 @@ else
                     for i,v in pairs(Rewards) do
                         ConvertResult[#ConvertResult + 1] = convertToField(v.Name,v.Amount.Value)
                     end
-                    -- setclipboard({["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
+                    -- setclipboard({["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_({["Gems"] = Data["Gem"],["Gold"] = Data["Gold"]})})
                     SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
                     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
+                    Times = 0
                 end)
             end
         elseif Type == "Update - EndedScreen" then
             Times = Value
-            Times = 0
+            
         end 
        
     end)
