@@ -659,7 +659,7 @@ local function Auto_Play()
             local func = nil
             local GameEndedUI = Clients:WaitForChild("UI"):WaitForChild("GameEndedUI").OnClientEvent:Connect(function(b1,b2)
                 if b1 == "GameEnded_TextAnimation" and b2 == "Defeat" then
-                    task.delay(2,function()
+                    task.delay(.5,function()
                          UseVote("VoteRetry") 
                     end)
                     Defeat = true
