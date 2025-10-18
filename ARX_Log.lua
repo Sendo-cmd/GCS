@@ -176,7 +176,7 @@ else
                         ["map"] = {
                             ["name"] = RewardsUI["World"]["Text"],
                             ["chapter"] = RewardsUI["Chapter"]["Text"],
-                            ["wave"] = "",
+                            ["wave"] = 1,
                             ["mode"] = RewardsUI["Mode"]["Text"],
                             ["difficulty"] = RewardsUI["Difficulty"]["Text"],
                         },
