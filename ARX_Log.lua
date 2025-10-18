@@ -36,7 +36,7 @@ local List = {
 }
 task.wait(1.5)
 
-local url = "https://api.championshop.date/logs"
+local Url = "https://api.championshop.date"
 
 
 local function convertToField(index,value)
