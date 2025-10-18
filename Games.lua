@@ -55,29 +55,29 @@ Games = {
         ["AutoBuyBE"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/AV_Shop_BE.lua",
     },
     [4509896324] = { --Anime-Last-Stand
-        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Reroll.lua",
-        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Reroll.lua",
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Log.lua",
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_System.lua",
     },
     [6884266247] = { --Anime Rangers X
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_Log.lua",
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_System.lua",
     },
-    [6057699512] = { --All Star Tower Defense X
-        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Log.lua",
-        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_System.lua",
-        ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Marco.lua",
-        ["Inf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf.lua",
-        ["Lvl"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_lvl.lua",
-        ["Challenge"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha.lua",
-        ["ChallengeEx"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_Expert.lua",
-        ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
-        ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
-        ["Tdw2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW2.lua",
-        ["Tzk"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial2_Zk.lua",
-        ["Tsp"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial3_SP.lua",
-        ["dg"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
+    -- [6057699512] = { --All Star Tower Defense X
+    --     ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Log.lua",
+    --     ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_System.lua",
+    --     ["Marco"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Marco.lua",
+    --     ["Inf"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Inf.lua",
+    --     ["Lvl"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_lvl.lua",
+    --     ["Challenge"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha.lua",
+    --     ["ChallengeEx"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Cha_Expert.lua",
+    --     ["Story"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Story.lua",
+    --     ["Tdw"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW.lua",
+    --     ["Tdw2"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial_DW2.lua",
+    --     ["Tzk"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial2_Zk.lua",
+    --     ["Tsp"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Trial3_SP.lua",
+    --     ["dg"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ASTDX_Dung.lua",
 
-    },
+    -- },
     [5750914919] = { --Fisch
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
@@ -94,7 +94,7 @@ local ScriptLists = nil
 
 local BaseScripts = {
     ["5578556129"] = { "Log", "Base", "System", "System2" },
-    ["6057699512"] = { "Marco", "Tsp" },
+    -- ["6057699512"] = { "Marco", "Tsp" },
     ["5750914919"] = { "System" },
     ["6884266247"] = { "Log", "System" },
 }
