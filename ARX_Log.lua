@@ -25,7 +25,6 @@ repeat task.wait() until Client:GetAttribute("ClientLoaded")
 print("Loading..") 
 
 local Url = "https://api.championshop.date"
-
 local List = {
     "BattlepassLevel",
     "Gold",
