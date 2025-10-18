@@ -442,6 +442,7 @@ local function Deploy(...)
 end
 local function UseVote(path,...)
     print(path)
+    task.wait(3)
     Server:WaitForChild("OnGame"):WaitForChild("Voting"):WaitForChild(path):FireServer(...)
 end
 local function Reverse_ID(id)
@@ -658,7 +659,7 @@ local function Auto_Play()
             local func = nil
             local GameEndedUI = Clients:WaitForChild("UI"):WaitForChild("GameEndedUI").OnClientEvent:Connect(function(b1,b2)
                 if b1 == "GameEnded_TextAnimation" and b2 == "Defeat" then
-                    task.delay(1,function()
+                    task.delay(6,function()
                          UseVote("VoteRetry") 
                     end)
                     Defeat = true
