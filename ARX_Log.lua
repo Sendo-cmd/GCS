@@ -28,10 +28,8 @@ print("Loading..")
 
 local Url = "https://api.championshop.date"
 local List = {
-    "BattlepassLevel",
     "Gold",
     "Gem",
-    "Level",
     "Magic Flower",
     "Raid Currency"
 }
