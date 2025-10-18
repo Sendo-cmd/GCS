@@ -96,7 +96,7 @@ local BaseScripts = {
     ["5578556129"] = { "Log", "Base", "System", "System2" },
     ["6057699512"] = { "Marco", "Tsp" },
     ["5750914919"] = { "System" },
-    ["6884266247"] = { "System" },
+    ["6884266247"] = { "Log", "System" },
 }
 
 for i, v in pairs(Accounts) do
