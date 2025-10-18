@@ -24,7 +24,7 @@ if game.GameId ~= 6884266247 then return warn("Doesn't match ID") end
 repeat task.wait() until Client:GetAttribute("ClientLoaded")
 print("Loading..") 
 
-
+local Url = "https://api.championshop.date"
 
 local List = {
     "BattlepassLevel",
@@ -35,9 +35,6 @@ local List = {
     "Raid Currency"
 }
 task.wait(1.5)
-
-local Url = "https://api.championshop.date"
-
 
 local function convertToField(index,value)
     return {
