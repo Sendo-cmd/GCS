@@ -26,7 +26,7 @@ print("Loading..")
 
 
 
-local Url = "https://e8ee770b1fef.ngrok-free.app"
+local Url = "https://api.championshop.date"
 local List = {
     "BattlepassLevel",
     "Gold",
