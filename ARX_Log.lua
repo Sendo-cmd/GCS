@@ -57,7 +57,7 @@ local function GetSomeCurrency()
     local Field = {}
     for i,v in pairs(LocalData:GetChildren()) do
         if table.find(List,v.Name) then
-            print(v.Name,v.Value)
+            -- print(v.Name,v.Value)
             Field[v.Name] = v.Value
         end
     end
@@ -115,7 +115,7 @@ local function GetAllData()
     for i,v in pairs(Collection:GetChildren()) do
         local CutShiny = v.Name:match("Shiny") and v.Name:split(":")[1] or v.Name
         local U_LocalData = UnitData[CutShiny]
-        print(U_LocalData,UnitData,UnitData[v.Name],v.Name)
+        -- print(U_LocalData,UnitData,UnitData[v.Name],v.Name)
         Units[v["Tag"].Value] = {
             ["Name"] = U_LocalData["DisplayName"],
             ["Rarity"] = U_LocalData["Rarity"],
