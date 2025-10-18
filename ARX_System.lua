@@ -15,6 +15,7 @@ The Graveyard
 Steel Blitz Rush
 
 ]]
+
 local ID = {
     [6884266247] = {
         [1] = "ARX",
@@ -29,23 +30,31 @@ local Settings = {
     ["Ranger Enabled"] = false,
     ["Party Mode"] = false,
 
-    ["Select End Method"] = "VoteRetry", -- VoteRetry , VoteNext , VotePlaying
+    ["Select End Method"] = "Return", -- VoteRetry , VoteNext , VotePlaying , Return
   
     ["Story Settings"] = {
         ["World"] = "Voocha Village",
         ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
         ["Level"] = "1",
-        ["Friend Only"] = false,
+        ["Friend Only"] = true,
         ["Auto Last Story"] = false,
+        ["Last Story"] = {
+            ["Enabled"] = false,
+            ["World"] = "Voocha Village",
+            ["Level"] = "1"
+        },
+    },
+    ["Infinity Castle"] = {
+        ["Floor cap"] = 50,
     },
     ["Infinite Settings"] = {
         ["World"] = "Voocha Village",
-        ["Friend Only"] = false,
+        ["Friend Only"] = true,
     },
     ["Raid Settings"] = {
         ["World"] = "The Gated City",
         ["Level"] = "1",
-        ["Friend Only"] = false,
+        ["Friend Only"] = true,
     },
     ["Ranger Settings"] = {
         ["World"] = {
@@ -75,7 +84,7 @@ local Settings = {
                 [3] = "3",
             },
         },
-        ["Friend Only"] = false,
+        ["Friend Only"] = true,
     },
 }
 
@@ -219,7 +228,8 @@ repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 if game.GameId ~= 6884266247 then return warn("Doesn't match ID") end
 repeat task.wait() until game:GetService("Players").LocalPlayer:GetAttribute("ClientLoaded")
-print("Loading..") task.wait(5)
+print("Loading..") 
+task.wait(3.5)
 
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Key = "NO_ORDER" 
@@ -372,9 +382,6 @@ local function Post_(Url,data)
     return response
 end
 
-local function Register_Room(myproduct,player)
-    
-end
 -- Check Am I Kai
 local GetKai = Get(Api .. MainSettings["Path_Kai"])
 local IsKai = false
@@ -385,13 +392,11 @@ if GetKai["Success"] then
         end 
     end
 end
-for _, v in ipairs(getgc(true)) do
-    if type(v) == "table" and rawget(v, "LoadData") then
-        print(v)
-    end
-end
--- Modules
-local Worlds = LoadModule(game:GetService("ReplicatedStorage").Shared.Info.GameWorld.World)
+-- for _, v in ipairs(getgc(true)) do
+--     if type(v) == "table" and rawget(v, "LoadData") then
+--         print(v)
+--     end
+-- end
 -- Variables
 
 local VisualEvent = game:GetService('VirtualInputManager')
@@ -402,11 +407,11 @@ local Values = ReplicatedStorage:WaitForChild("Values")
 local Shared = ReplicatedStorage:WaitForChild("Shared")
 local Player_Data_Folder = ReplicatedStorage:WaitForChild("Player_Data")
 local Server = Remote:WaitForChild("Server")
-local Client = Remote:WaitForChild("Client")
+local Clients = Remote:WaitForChild("Client")
 local Info = Shared:WaitForChild("Info")
 local GameWorld = Info and Info:WaitForChild("GameWorld",5) Shared:WaitForChild("GameWorld",5) 
 local plr = game.Players.LocalPlayer
-local Data = ReplicatedStorage.Player_Data[plr.Name]
+local Data = Player_Data_Folder[plr.Name]
 local LocalData = Data:WaitForChild("Data")
 local Collection = Data:WaitForChild("Collection")
 local Worlds = require(GameWorld.World);
@@ -504,9 +509,14 @@ local function Join(party)
         end
         if Settings["Select Mode"] == "Story" then
             local Setting = Settings[Settings["Select Mode"] .. " Settings"]
+            local last_story = Setting["Last Story"]
             Event("Create") task.wait(.2)
             if Setting["Friend Only"] then
                 Event("Change-FriendOnly") task.wait(.2)
+            end
+            if last_story["Enabled"] and ChapterLevels:FindFirstChild(MapIndexs[last_story["World"]] .. "_Chapter" .. last_story["Level"]) then
+                print("Unlocked World")
+                return false
             end
             if Setting["Auto Last Story"] then
                 local CurrentWorld_1,CurrentWorld_2 = LastRoom()
@@ -552,7 +562,18 @@ local function Join(party)
         elseif Settings["Select Mode"] == "Dungeon" then
             Event("Dungeon",{Difficulty = "Easy"})
         elseif Settings["Select Mode"] == "Infinite Castle" then
-            Event("Infinite-Castle",{Floor = 1})
+            local Floor = nil
+            for i = 1,Settings["Infinity Castle"]["Floor cap"] do
+                if not Data.InfinityCastleRewards:FindFirstChild(tostring(i)) then
+                    Floor = i
+                    break;
+                end
+            end
+            if not Floor then
+                -- Work done
+                task.wait(9e9)
+            end
+            Event("Infinity-Castle",{Floor = Floor})
         elseif Settings["Select Mode"] == "Boss Rush" then
             Event("BossRush")
         elseif Settings["Select Mode"] == "Rift Storm" then
@@ -594,8 +615,8 @@ local function Auto_Play()
         end)
         local function AutoPlay()
             RangerIsCD = IsRangerCD()
-            print(Settings["Ranger Enabled"]  , RangerIsCD , "Ranger Stage" ~= Values["Game"].Gamemode.Value)
-            print(Settings["Ranger Enabled"] , "Ranger Stage" == Values["Game"].Gamemode.Value , Player_Data.RangerStage:FindFirstChild(Values["Game"].Level.Value))
+            -- print(Settings["Ranger Enabled"]  , RangerIsCD , "Ranger Stage" ~= Values["Game"].Gamemode.Value)
+            -- print(Settings["Ranger Enabled"] , "Ranger Stage" == Values["Game"].Gamemode.Value , Player_Data.RangerStage:FindFirstChild(Values["Game"].Level.Value))
             if Settings["Ranger Enabled"]  and RangerIsCD and "Ranger Stage" ~= Values["Game"].Gamemode.Value then
                 print("Join Debug 1")
                 Join()
@@ -604,18 +625,26 @@ local function Auto_Play()
                 print("Join Debug 2")
                 Join()
                 -- game:GetService("ReplicatedStorage").Values.Game.World
+            elseif Settings["Select Mode"] == "Story" then
+                local storys = Settings["Story Settings"]
+                local last_story = storys["Last Story"]
+                if last_story["Enabled"] then
+                    if ChapterLevels:FindFirstChild(MapIndexs[last_story["World"]] .. "_Chapter" .. last_story["Level"]) then
+                        
+                    else
+                        print("Hey :D")
+                        Join()
+                    end
+                end
+                
             end
+
             print("Join Debug 3")
 
             local Enabled = true
             local GameCF = LoadModule(game:GetService("ReplicatedStorage").Shared.GAMEPLAY_CONFIG)
         
-            local LastGetPath = tick()
-            local LastPath = #workspace.WayPoint:GetChildren()
-            local LastPlace = tick()
-            local OneTimePlace = false
-            local FirstTime = false
-            local YenMax = false
+           
             local function GetTag(Id)
                 for i,v in pairs(Collection:GetChildren()) do
                     if v:FindFirstChild("Tag") and v.Tag.Value == Id then
@@ -624,32 +653,33 @@ local function Auto_Play()
                 end 
                 return false
             end
-            local function GetNearestPath(Id)
-                if tick() >= LastGetPath then
-                    local Near = 9999999
-                    for i,v in pairs(workspace.Agent.EnemyT:GetChildren()) do
-                        if v["Info"]:FindFirstChild("Node") and tonumber(v["Info"].Node.Value) < Near  then
-                            Near = tonumber(v["Info"].Node.Value)
-                        end
-                    end 
-                    LastPath = Near
-                    return Near
-                end
-                return LastPath
-            end
-            local function PlaceAccess()
-                if YenMax and tick() >= LastPlace then
-                    LastPlace = tick() + 10
-                    return true
-                end
-                return false 
-            end 
-            local GameEndedUI = Client:WaitForChild("UI"):WaitForChild("GameEndedUI").OnClientEvent:Connect(function()
-                task.delay(1,function()
-                    warn(Settings["Select End Method"])
-                    UseVote(Settings["Select End Method"])
-                end)
-                Enabled = false
+           
+            local Defeat = false
+            local func = nil
+            local GameEndedUI = Clients:WaitForChild("UI"):WaitForChild("GameEndedUI").OnClientEvent:Connect(function(b1,b2)
+                if b1 == "GameEnded_TextAnimation" and b2 == "Defeat" then
+                    task.delay(1,function()
+                         UseVote("VoteRetry") 
+                    end)
+                    Defeat = true
+                    Enabled = false
+                else
+                    if not func then
+                        task.delay(2.5,function()
+                            if not Defeat then
+                                if Settings["Select End Method"] == "VoteRetry" then
+                                    UseVote("VoteRetry")
+                                else
+                                    Join()
+                                end 
+                            end
+                            Enabled = false
+                        end)
+                        func = true
+                    end
+                    
+                end 
+              
                 -- task.delay
             end) 
             UseVote("VotePlaying") task.wait(.2)
@@ -658,50 +688,202 @@ local function Auto_Play()
             }
             game:GetService("ReplicatedStorage"):WaitForChild("Remote"):WaitForChild("SpeedGamepass"):FireServer(unpack(args))
 
-            task.spawn(function()
-                while Enabled do 
-                    if YenMax then 
-                        for i,v in pairs(plr.UnitsFolder:GetChildren()) do
-                            Server:WaitForChild("Units"):WaitForChild("Upgrade"):FireServer(v)
+           
+            
+            if workspace.WayPoint:FindFirstChild("many_ways") then
+                local Waypoints = workspace.WayPoint 
+                local LastGetPath = tick()
+                local LastPlace = tick()
+                local OneTimePlace = false
+                local FirstTime = false
+                local YenMax = false
+                local function ManyPath()
+                    for i,v in pairs(workspace.Agent.EnemyT:GetChildren()) do
+                        if v["Info"]:FindFirstChild("SPPNode") then
+                            local Folder = Waypoints["P" .. v["Info"].SPPNode.Value]
+                             if Folder:FindFirstChild("1") and (v.Position - Folder:FindFirstChild("1").Position).Magnitude < 60 and os.time() > (Folder:GetAttribute("Last") or 0) then
+                                print(Folder.Name)
+                                return Folder
+                            end
                         end
                     end 
-                    task.wait(1)
+                    return false
                 end
-            end)
-            while Enabled do
-                if not workspace.Agent.UnitT:FindFirstChildWhichIsA("Part") or GetNearestPath() < math.floor(LastPath/2) or PlaceAccess() or OneTimePlace then
-                    for i = 1,6 do 
-                        local UnitLoadout = LocalData["UnitLoadout" .. i].Value 
-                        if #UnitLoadout > 2 then
-                            local GetPath = GetTag(UnitLoadout)
-                            Deploy(GetPath) task.wait(.2)
-                        end 
+                 local function PlaceAccess()
+                    if YenMax and tick() >= LastPlace then
+                        LastPlace = tick() + 10
+                        return true
                     end
-                    if OneTimePlace then
-                        OneTimePlace = false
-                    end 
-                    if not FirstTime then
-                        print("Upgrade")
-                        task.delay(2.5,function()
-                            for i,v in pairs(plr.UnitsFolder:GetChildren()) do
-                                print(i,v)
-                                Server:WaitForChild("Units"):WaitForChild("Upgrade"):FireServer(v) task.wait(.2)
+                    return false 
+                end 
+                local function PlaceAll(arg)
+                    local ind = 1
+                    print(arg)
+                    if arg then
+                        local firstfolder = arg
+                        if firstfolder then
+                            firstfolder:SetAttribute("Last",os.time() + 3)
+                            Server:WaitForChild("Units"):WaitForChild("SelectWay"):FireServer(tonumber(firstfolder.Name:match("%d+")),true)
+                            task.wait(.65)
+                            local random = math.random(1,6)
+                            local UnitLoadout = LocalData["UnitLoadout" .. random].Value 
+                            if #UnitLoadout > 2 then
+                                local GetPath = GetTag(UnitLoadout)
+                                Deploy(GetPath) task.wait(.2)
+                            end 
+                        end
+                    else
+                        for i,v in pairs(workspace.WayPoint:GetChildren()) do
+                            if v:IsA("Folder") then
+                                if ind >= 6 then
+                                    ind = 1
+                                end
+                                Server:WaitForChild("Units"):WaitForChild("SelectWay"):FireServer(tonumber(v.Name:match("%d+")),true)
+                                task.wait(.65)
+                                -- Client.Character.HumanoidRootPart.CFrame = firstfolder.CFrame task.wait(.5)
+                                local UnitLoadout = LocalData["UnitLoadout" .. ind].Value 
+                                if #UnitLoadout > 2 then
+                                    print("Place",ind)
+                                    local GetPath = GetTag(UnitLoadout)
+                                    Deploy(GetPath) 
+                                    
+                                    ind = ind + 1
+                                    task.wait(.4)
+                                end
                             end
-                        end) 
-                        task.delay(14,function()
-                            OneTimePlace = true
-                        end) 
-                        FirstTime = true
+                        end
                     end
-                elseif GameCF.ingame_stats.YenMax > plr.YenMaxUpgrade.Value then
-                    Server:WaitForChild("Gameplay"):WaitForChild("StatsManager"):FireServer("MaximumYen") 
-                    task.delay(.25,function()
-                        if GameCF.ingame_stats.YenMax <= plr.YenMaxUpgrade.Value then
-                            YenMax = true
+                end
+                task.spawn(function()
+                    while Enabled do 
+                        if YenMax then 
+                            for i,v in pairs(plr.UnitsFolder:GetChildren()) do
+                                Server:WaitForChild("Units"):WaitForChild("Upgrade"):FireServer(v)
+                            end
+                        end 
+                        task.wait(1)
+                    end
+                end)
+                while Enabled do
+                    pcall(function()
+                        print(not workspace.Agent.UnitT:FindFirstChildWhichIsA("Part") , ManyPath() , PlaceAccess() , OneTimePlace , not FirstTime)
+                        if not workspace.Agent.UnitT:FindFirstChildWhichIsA("Part") or ManyPath() or PlaceAccess() or OneTimePlace or not FirstTime then
+                            if not FirstTime then
+                                print("This")
+                                PlaceAll()
+                                task.delay(1,function()
+                                    for i,v in pairs(plr.UnitsFolder:GetChildren()) do
+                                        print(i,v)
+                                        Server:WaitForChild("Units"):WaitForChild("Upgrade"):FireServer(v) task.wait(.2)
+                                    end
+                                end) 
+                                FirstTime = true
+                            else
+                                if OneTimePlace then
+                                    OneTimePlace = false
+                                    task.delay(14,function()
+                                        OneTimePlace = true
+                                    end) 
+                                end 
+                                local manypath = ManyPath()
+                                print(manypath)
+                                if manypath then
+                                    PlaceAll(manypath)
+                                else
+                                    PlaceAll()
+                                end
+                            end
+                        elseif GameCF.ingame_stats.YenMax > plr.YenMaxUpgrade.Value then
+                            Server:WaitForChild("Gameplay"):WaitForChild("StatsManager"):FireServer("MaximumYen") 
+                            task.delay(.25,function()
+                                if GameCF.ingame_stats.YenMax <= plr.YenMaxUpgrade.Value then
+                                    YenMax = true
+                                end
+                            end)
                         end
                     end)
+                    task.wait(.2)
                 end
-                task.wait(.2)
+                for i,v in pairs(Waypoints:GetChildren()) do
+                    v:SetAttribute("Last",nil)
+                end
+                print("A")
+                GameEndedUI:Disconnect()
+                task.wait(2.5)
+                AutoPlay()
+            else
+                local LastGetPath = tick()
+                local LastPath = workspace:FindFirstChild("WayPoint") and #workspace.WayPoint:GetChildren()
+                local LastPlace = tick()
+                local OneTimePlace = false
+                local FirstTime = false
+                local YenMax = false
+                local function GetNearestPath(Id)
+                    if tick() >= LastGetPath then
+                        local Near = 9999999
+                        for i,v in pairs(workspace.Agent.EnemyT:GetChildren()) do
+                            if v["Info"]:FindFirstChild("Node") and tonumber(v["Info"].Node.Value) < Near  then
+                                Near = tonumber(v["Info"].Node.Value)
+                            end
+                        end 
+                        LastPath = Near
+                        return Near
+                    end
+                    return LastPath
+                end
+                local function PlaceAccess()
+                    if YenMax and tick() >= LastPlace then
+                        LastPlace = tick() + 10
+                        return true
+                    end
+                    return false 
+                end 
+                task.spawn(function()
+                    while Enabled do 
+                        if YenMax then 
+                            for i,v in pairs(plr.UnitsFolder:GetChildren()) do
+                                Server:WaitForChild("Units"):WaitForChild("Upgrade"):FireServer(v)
+                            end
+                        end 
+                        task.wait(1)
+                    end
+                end)
+                while Enabled do
+                    if not workspace.Agent.UnitT:FindFirstChildWhichIsA("Part") or GetNearestPath() < math.floor(LastPath/2) or PlaceAccess() or OneTimePlace then
+                        for i = 1,6 do 
+                            local UnitLoadout = LocalData["UnitLoadout" .. i].Value 
+                            if #UnitLoadout > 2 then
+                                local GetPath = GetTag(UnitLoadout)
+                                Deploy(GetPath) task.wait(.2)
+                            end 
+                        end
+                        if OneTimePlace then
+                            OneTimePlace = false
+                            task.delay(14,function()
+                                OneTimePlace = true
+                            end) 
+                        end 
+                        if not FirstTime then
+                            print("Upgrade")
+                            task.delay(2.5,function()
+                                for i,v in pairs(plr.UnitsFolder:GetChildren()) do
+                                    print(i,v)
+                                    Server:WaitForChild("Units"):WaitForChild("Upgrade"):FireServer(v) task.wait(.2)
+                                end
+                            end) 
+                            FirstTime = true
+                        end
+                        
+                    elseif GameCF.ingame_stats.YenMax > plr.YenMaxUpgrade.Value then
+                        Server:WaitForChild("Gameplay"):WaitForChild("StatsManager"):FireServer("MaximumYen") 
+                        task.delay(.25,function()
+                            if GameCF.ingame_stats.YenMax <= plr.YenMaxUpgrade.Value then
+                                YenMax = true
+                            end
+                        end)
+                    end
+                    task.wait(.2)
+                end
             end
             GameEndedUI:Disconnect()
             task.wait(2.5)
@@ -787,7 +969,8 @@ local function Auto_Config(id)
 end
 
 
-if not Workspace:FindFirstChild("WayPoint")then
+if #game:GetService("ReplicatedStorage").Values.Game.World.Value == 0 then
+    print("lobbu")
     if IsKai then
         local cache_key = Username
         local Waiting_Time = os.time() + 150
@@ -1173,10 +1356,11 @@ if not Workspace:FindFirstChild("WayPoint")then
                 end
             end)
         else
-            Auto_Play()
+            Join()
         end
     end
 else
+    print("battle")
     if IsKai then
         local cache = GetCache(Username)
         if Changes[cache["product_id"]] then
@@ -1304,7 +1488,7 @@ else
         end)
         
         -- Check If End Game And Not Found A Player
-        Client:WaitForChild("UI"):WaitForChild("GameEndedUI").OnClientEvent:Connect(function()
+        Clients:WaitForChild("UI"):WaitForChild("GameEndedUI").OnClientEvent:Connect(function()
             local cache = GetCache(Username)
             if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
                 print("Party Member Request")
@@ -1354,7 +1538,7 @@ else
                     end
                 end
             end)
-            Auto_Play(Settings["Auto Play"])
+            Auto_Play()
         else
             Auto_Play()
         end
