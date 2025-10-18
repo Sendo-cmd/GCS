@@ -185,7 +185,7 @@ else
                         ConvertResult[#ConvertResult + 1] = convertToField(v.Name,v.Amount.Value)
                     end
                     -- setclipboard({["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_({["Gems"] = Data["Gem"],["Gold"] = Data["Gold"]})})
-                    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
+                    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times.TotalTime},{["currency"] = convertToField_(GetSomeCurrency())})
                     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
                     Times = 0
                 end)
