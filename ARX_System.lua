@@ -138,6 +138,56 @@ local Changes = {
                 [2] = "2",
                 [3] = "3",
             },
+            ["Ghoul City"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Night Colosseum"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Spirit Realm"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["The City"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Ruined Future City"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Virtual Sword"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Lake Of Sacrifice"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["S Rank Dungeon"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Wall of Infinite Eyes"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
+            ["Fantasy Beach"] = {
+                [1] = "1",
+                [2] = "2",
+                [3] = "3",
+            },
         },
         ["Friend Only"] = false,
     }
@@ -169,7 +219,22 @@ local Changes = {
         ["Friend Only"] = false,
     }
     end,
+    [""] = function()
+        Settings["Select Mode"] = "Raid"
+        Settings["Raid Settings"] = {
+        ["World"] = "Nazarick Library",
+        ["Level"] = "4",
+        ["Friend Only"] = false,
+    }
+    end,
     ["7f78c228-e3d8-4b0d-ac61-8438dc0937cf"] = function()
+        Settings["Select Mode"] = "Infinite"
+        Settings["Infinite Settings"] = {
+        ["World"] = "Voocha Village",
+        ["Friend Only"] = false,
+    }
+    end,
+    ["a8a35216-b37b-4735-a694-760d3cc2a31a"] = function()
         Settings["Select Mode"] = "Infinite"
         Settings["Infinite Settings"] = {
         ["World"] = "Voocha Village",
