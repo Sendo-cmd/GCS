@@ -90,6 +90,7 @@ local Settings = {
 
 local Changes = {
     ["1b3ffdad-7ccc-431e-90da-ad62040eb2a3"] = function()
+        Settings["Select End Method"] = "VoteRetry"
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["World"] = "Voocha Village",
@@ -99,6 +100,7 @@ local Changes = {
     }
     end,
     ["b04720de-2bb5-46a2-a7ff-a0e7ada74717"] = function()
+        Settings["Select End Method"] = "VoteRetry"
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["World"] = "Voocha Village",
@@ -194,6 +196,7 @@ local Changes = {
     end,
     ["9a8aad29-02e6-462d-94c6-cb4a8e877e54"] = function()
         Settings["Select Mode"] = "Challenge"
+        Settings["Select End Method"] = "VoteRetry"
     end,
     [""] = function()
         Settings["Select Mode"] = "Raid"
@@ -228,6 +231,7 @@ local Changes = {
     }
     end,
     ["7f78c228-e3d8-4b0d-ac61-8438dc0937cf"] = function()
+        Settings["Select End Method"] = "VoteRetry"
         Settings["Select Mode"] = "Infinite"
         Settings["Infinite Settings"] = {
         ["World"] = "Voocha Village",
@@ -235,6 +239,7 @@ local Changes = {
     }
     end,
     ["a8a35216-b37b-4735-a694-760d3cc2a31a"] = function()
+        Settings["Select End Method"] = "VoteRetry"
         Settings["Select Mode"] = "Infinite"
         Settings["Infinite Settings"] = {
         ["World"] = "Voocha Village",
@@ -249,6 +254,7 @@ local Changes = {
     end,
     ["b82222f4-ab48-4337-957a-88945f06e596"] = function()
         Settings["Select Mode"] = "Ascension Event"
+        Settings["Select End Method"] = "VoteRetry"
     end,
     ["5f012475-d420-44bb-b750-cd4eb5b15ecd"] = function()
         Settings["Select Mode"] = "Infinite Castle"
@@ -270,6 +276,7 @@ local Changes = {
     end,
     ["bb4c7192-1adf-4e08-b75d-25c82b48501c"] = function()
         Settings["Select Mode"] = "Expidition Mode"
+        Settings["Select End Method"] = "VoteRetry"
     end,
     ["f2740475-e0f5-4efe-9021-1bf0ed1b78e0"] = function()
         Settings["Select Mode"] = "Boss Rush"
@@ -282,6 +289,7 @@ local Changes = {
     end,
     ["6a4484f6-a380-487a-a955-08010bc69bca"] = function()
         Settings["Select Mode"] = "Fate Mode"
+        Settings["Select End Method"] = "VoteRetry"
     end,
 }
 local Order_Type = {
