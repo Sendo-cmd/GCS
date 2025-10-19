@@ -176,9 +176,9 @@ local Changes = {
         ["Friend Only"] = false,
     }
     end,
-    [""] = function()
-        Settings["Select Mode"] = "Infinite Mode"
-    end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Infinite Mode"
+    -- end,
     ["feeb6ea7-9291-4108-93e0-38a950a52856"] = function()
         Settings["Select Mode"] = "Swarm Event"
     end,
@@ -192,6 +192,15 @@ local Changes = {
         Settings["Select Mode"] = "Grail Dungeon"
     end,
     ["b388f7e6-f8c5-4399-a326-6893dda60ac1"] = function()
+        Settings["Select Mode"] = "Dungeon"
+    end,
+    ["bfa37a48-efdb-4e8d-9ae2-e68970fbaa50"] = function()
+        Settings["Select Mode"] = "Infinite Castle"
+    end,
+    ["dc7b3084-64b6-4981-a137-f02ec5ef9f01"] = function()
+        Settings["Select Mode"] = "Grail Dungeon"
+    end,
+    ["4f2f204a-38b3-4311-be37-73aeb1d4be29"] = function()
         Settings["Select Mode"] = "Dungeon"
     end,
     ["bb4c7192-1adf-4e08-b75d-25c82b48501c"] = function()
