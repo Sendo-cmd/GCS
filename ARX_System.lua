@@ -642,7 +642,7 @@ local function Join(party)
         elseif Settings["Select Mode"] == "Grail Dungeon" then
             Event("GrailDungeon",{Difficulty = "Easy"})
         elseif Settings["Select Mode"] == "Dungeon" then
-            Event("Dungeon",{Difficulty = "Easy"})
+            Event("Dungeon",{Difficulty = "Hell"})
         elseif Settings["Select Mode"] == "Infinite Castle" then
             local Floor = nil
             for i = 1,Settings["Infinity Castle"]["Floor cap"] do
