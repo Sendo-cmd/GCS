@@ -45,7 +45,7 @@ local Settings = {
         },
     },
     ["Infinity Castle"] = {
-        ["Floor cap"] = 50,
+        ["Floor cap"] = 100,
     },
     ["Infinite Settings"] = {
         ["World"] = "Voocha Village",
