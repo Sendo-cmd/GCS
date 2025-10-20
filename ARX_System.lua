@@ -100,14 +100,18 @@ local Changes = {
     }
     end,
     ["b04720de-2bb5-46a2-a7ff-a0e7ada74717"] = function()
-        Settings["Select End Method"] = "VoteRetry"
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["World"] = "Voocha Village",
-        ["Difficulty"] = "Nightmare", -- Normal , Hard , Nightmare
+        ["Difficulty"] = "Normal", -- Normal , Hard , Nightmare
         ["Level"] = "1",
         ["Friend Only"] = false,
         ["Auto Last Story"] = true,
+        ["Last Story"] = {
+            ["Enabled"] = false,
+            ["World"] = "Voocha Village",
+            ["Level"] = "1"
+        }
     }
     end,
     ["4843042f-cee6-4948-a66e-9e7d53b2ac42"] = function()
