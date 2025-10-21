@@ -989,7 +989,7 @@ local Changes = {
         ["Limiteless"] = false
     }
     end,
-    ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
+    [""] = function()
         Settings["Select Mode"] = "Odyssey"
         Settings["Odyssey Settings"] = {
         ["Limiteless"] = false
