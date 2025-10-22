@@ -56,7 +56,7 @@ Games = {
     },
     [4509896324] = { --Anime-Last-Stand
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Log.lua",
-        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_System.lua",
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ALS_Base.lua",
     },
     [6884266247] = { --Anime Rangers X
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/ARX_Log.lua",
@@ -97,6 +97,7 @@ local BaseScripts = {
     -- ["6057699512"] = { "Marco", "Tsp" },
     ["5750914919"] = { "System" },
     ["6884266247"] = { "Log", "System" },
+    ["4509896324"] = { "System" },
 }
 
 for i, v in pairs(Accounts) do
