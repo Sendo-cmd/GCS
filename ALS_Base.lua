@@ -1,29 +1,117 @@
 getgenv().Config = {
-	["Secure"] = {
-		["Walk Around"] = true
+	["Misc"] = {
+		["Redeem Code"] = true
 	},
-	["Macros"] = {
-		["No Ignore Sell Timing"] = true,
-		["Macro"] = "hallpat2",
-		["Macro Retry Limit"] = 0,
-		["Play"] = false,
-		["Ignore Macro Timing"] = true
+	["Webhook"] = {
+		["Match Finished"] = true
+	},
+	["Auto Join Setting"] = {
+		["Joiner Priority"] = {
+			["Final Expedition Joiner"] = 10,
+			["Infinity Castle Joiner"] = 8,
+			["Legend Stage Joiner"] = 2,
+			["Story Joiner"] = 1,
+			["Dungeon Joiner"] = 4,
+			["Siege Joiner"] = 6,
+			["Boss Rush Joiner"] = 7,
+			["Elemental Cavern Joiner"] = 12,
+			["Survival Joiner"] = 5,
+			["Event Joiner"] = 11,
+			["Raid Joiner"] = 3,
+			["Tournament Joiner"] = 9
+		},
+		["Joiner Cooldown"] = 0
 	},
 	["Game Finished"] = {
 		["Auto Return Lobby"] = false,
+		["Auto Next"] = false,
 		["Return Lobby Failsafe"] = false,
 		["Auto Replay"] = true,
-		["Auto Next"] = false
-	},
-	["Gameplay"] = {
-		["Auto Vote Start"] = true
+		["Seamless Stage"] = {
+			["Enable"] = false,
+			["Amount"] = 0
+		}
 	},
 	["Failsafe"] = {
 		["Teleport Lobby if Player"] = false
 	},
+	["Joiner"] = {
+		["Final Expedition Joiner"] = {
+			["Enable"] = false,
+			["Hard Mode"] = false
+		},
+		["Infinity Castle Joiner"] = {
+			["Enable"] = false,
+			["Hard Mode"] = false
+		},
+		["Legend Stage Joiner"] = {
+			["Enable"] = false
+		},
+		["Story Joiner"] = {
+			["Enable"] = false,
+			["Nightmare Mode"] = false
+		},
+		["Dungeon Joiner"] = {
+			["Enable"] = false
+		},
+		["Siege Joiner"] = {
+			["Enable"] = false
+		},
+		["Boss Rush Joiner"] = {
+			["Enable"] = false
+		},
+		["Elemental Cavern Joiner"] = {
+			["Enable"] = false
+		},
+		["Survival Joiner"] = {
+			["Enable"] = false
+		},
+		["Event Joiner"] = {
+			["Enable"] = true,
+			["Event"] = "Halloween P2"
+		},
+		["Raid Joiner"] = {
+			["Enable"] = false
+		},
+		["Tournament Joiner"] = {
+			["Enable"] = false,
+			["Traitless Mode"] = false
+		}
+	},
+	["Secure"] = {
+		["Walk Around"] = true
+	},
 	["Performance"] = {
-		["Black Screen"] = false,
-		["Boost FPS"] = true
+		["Boost FPS"] = true,
+		["Black Screen"] = false
+	},
+	["Gameplay"] = {
+		["Auto Vote Start"] = true,
+		["Auto Skip Wave"] = {
+			["Enable"] = true,
+			["Stop at Wave"] = 0
+		},
+		["Auto Restart"] = {
+			["Enable"] = true,
+			["Wave"] = 27
+		},
+		["Auto Sell"] = {
+			["Auto Sell Farm"] = {
+				["Enable"] = false,
+				["Wave"] = 1
+			},
+			["Auto Sell Unit"] = {
+				["Enable"] = false,
+				["Wave"] = 1
+			}
+		}
+	},
+	["Macros"] = {
+		["Play"] = true,
+		["Macro Retry Limit"] = 0,
+		["Macro"] = "halloweenpast2",
+		["Ignore Macro Timing"] = true,
+		["No Ignore Sell Timing"] = true
 	}
 }
 getgenv().Key = "k7d27caec454d21cbd95104d" 
