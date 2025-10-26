@@ -232,8 +232,8 @@ end)
 task.spawn(function()
     while task.wait() do
         pcall(function ()
-            if DistanceWithoutY(plr.Character.HumanoidRootPart.Position,Vector3.new(1375.06812, -603.640137, 2340.38184)) >= 1.5 then
-                BypassTeleport(CFrame.new(1375.06812, -603.640137, 2340.38184, 0.928720474, 5.22775885e-08, -0.370780617, -3.27635945e-08, 1, 5.89280162e-08, 0.370780617, -4.25795506e-08, 0.928720474))
+            if DistanceWithoutY(plr.Character.HumanoidRootPart.Position,Vector3.new(950.88324, -760.072144, 1455.11475)) >= 1.5 then
+                BypassTeleport(CFrame.new(950.88324, -760.072144, 1455.11475, -0.983053923, 2.03034887e-08, 0.183316663, -3.68314823e-09, 1, -1.30507615e-07, -0.183316663, -1.28971209e-07, -0.983053923))
                 task.wait(3)
             end 
         end)
