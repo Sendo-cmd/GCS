@@ -29,10 +29,6 @@ local DataController = require(LegacyControllers:WaitForChild("DataController"))
 local Url = "https://api.championshop.date"
 local List = {
     "coins",
-    "level",
-    "rod",
-    "xp",
-    "bait",
 }
 task.wait(1.5)
 
@@ -56,6 +52,25 @@ local Settings = {
         "Magic Thread",
         "Ancient Thread",
         "Lunar Thread",
+        "Elder Mossjaw",
+        "Mauve Pearl",
+        "Evil Sigil",
+        "Toxic Core",
+        "Murky Thread",
+        "Vine Line",
+        "Mossy Core",
+        "Blizzard Totem",
+        "Zeus Storm Totem",
+        "Poseidon Wrath Totem",
+        "Blue Moon Totem",
+        "Shiny Totem",
+        "Sparkling Totem",
+        "Mutation Totem",
+        "Starfall Totem",
+        "Rainbow Totem",
+        "Megalodon Hunt Totem",
+        "Kraken Hunt Totem",
+        "Scylla Hunt Totem",
         "Aurora Totem",
         "Eclipse Totem",
         "Meteor Totem",
