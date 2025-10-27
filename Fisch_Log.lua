@@ -1,4 +1,5 @@
 
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -10,19 +11,19 @@ local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
 local Client = Players.LocalPlayer
 -- Folder
-local PlayersStats = Workspace:WaitForChild("PlayersStats")
+local PlayersStats = Workspace:WaitForChild("PlayerStats")
 local Player_Folder = PlayersStats:WaitForChild(Client.Name)
 local Data = Player_Folder:WaitForChild("T"):WaitForChild(Client.Name)
 
-if game.GameId ~= 16732694052 then return warn("Doesn't match ID") end
+if game.GameId ~= 5750914919 then return warn("Doesn't match ID") end
 repeat task.wait() 
-    PlayersStats = Workspace:WaitForChild("PlayersStats",3)
-    Player_Folder = PlayersStats:WaitForChild(Client.Name,3)
-    Data = Player_Folder:WaitForChild("T"):WaitForChild(Client.Name,3)
+    PlayersStats = Workspace:WaitForChild("PlayerStats",3) print(PlayersStats)
+    Player_Folder = PlayersStats:WaitForChild(Client.Name,3) print(Player_Folder)
+    Data = Player_Folder:WaitForChild("T"):WaitForChild(Client.Name,3) print(Data)
 until Data
 print("Loading..") 
-local Client = game:GetService("ReplicatedStorage"):WaitForChild("client")
-local LegacyControllers = Client:WaitForChild("legacyControllers")
+local Client_= game:GetService("ReplicatedStorage"):WaitForChild("client")
+local LegacyControllers = Client_:WaitForChild("legacyControllers")
 local DataController = require(LegacyControllers:WaitForChild("DataController"))
 
 local Url = "https://api.championshop.date"
@@ -35,8 +36,38 @@ local List = {
 }
 task.wait(1.5)
 
-local url = "https://api.championshop.date/logs"
-
+-- local url = "https://api.championshop.date/logs"
+local Settings = {
+    ["Cooldown"] = 180,
+    ["Item List"] = {
+        "Amethyst",
+        "Ruby",
+        "Opal",
+        "Lapis Lazuli",
+        "Moonstone",
+        "Driftwood",
+        "Wood",
+        "Magic Thread",
+        "Ancient Thread",
+        "Lunar Thread",
+        "Golden Sea Pearl",
+        "Meg's Fang",
+        "Meg's Spine",
+        "Magic Thread",
+        "Ancient Thread",
+        "Lunar Thread",
+        "Aurora Totem",
+        "Eclipse Totem",
+        "Meteor Totem",
+        "Smokescreen Totem",
+        "Sundial Totem",
+        "Tempest Totem",
+        "Windset Totem",
+    },
+    ["Ignore Mutation"] = {
+        "",
+    },
+}
 
 local function convertToField(index,value)
     return {
@@ -105,7 +136,7 @@ local function GetAllData()
     local Rod_All = {}
     local FishCahce = {}
     
-    for i,v in pairs(DataController.fetch("Inventory"):GetChildren()) do
+    for i,v in pairs(DataController.fetch("Inventory")) do
         local data = v["sub"]
         if not table.find(Settings["Item List"],data["Name"]) then
             continue;
@@ -147,8 +178,17 @@ task.spawn(function ()
         for i,v in pairs(ReplicatedStorage.world:GetChildren()) do
             Weather[v.Name] = v.Value
         end
-        
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = Fishs},{["Weather"] = Weather},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
+        local StageInfo = {
+            ["win"] = true,
+            ["map"] = {
+                ["name"] = (Client.Character and Client.Character:FindFirstChild("zone") and Client.Character.zone.Value.Name) or "Died",
+                ["chapter"] = Weather,
+                ["wave"] = "1",
+                ["mode"] = "None",
+                ["difficulty"] = "None",
+            },
+        }
+        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = Fishs},{["state"] = StageInfo},{["time"] = 1},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
         Index = 0
         Fishs = {} 

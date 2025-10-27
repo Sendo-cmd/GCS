@@ -34,9 +34,7 @@ local List = {
     "Raid Currency"
 }
 task.wait(1.5)
-
-local url = "https://api.championshop.date/logs"
-
+-- local url = "https://api.championshop.date/logs"
 
 local function convertToField(index,value)
     return {
