@@ -80,7 +80,7 @@ Games = {
     -- },
     [5750914919] = { --Fisch
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
-        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/FISCH_Log.lua",
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_Log.lua",
     },
     [7750955984] = { --Fisch
         ["Base"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/HZ_Base.lua",
@@ -98,7 +98,7 @@ local ScriptLists = nil
 local BaseScripts = {
     ["5578556129"] = { "Log", "Base", "System", "System2" },
     -- ["6057699512"] = { "Marco", "Tsp" },
-    ["5750914919"] = { "System" },
+    ["5750914919"] = { "Log", "System" },
     ["6884266247"] = { "Log", "System" },
     ["4509896324"] = { "System" },
     ["7750955984"] = { "Base" },
