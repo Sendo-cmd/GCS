@@ -255,13 +255,13 @@ end)
 while task.wait() do
     if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
         if plr.Character:GetAttribute("Fishing") then
-            print("In #1")
+            -- print("In #1")
         elseif plr.PlayerGui:FindFirstChild("shakeui") then
             print("In #2")
         elseif plr.PlayerGui:FindFirstChild("reel") then
-            print("In #3")
+            -- print("In #3")
         else
-            print("Hehe")
+            -- print("Hehe")
             local args = {
                 math.random(900,1000)/10,
                 1
