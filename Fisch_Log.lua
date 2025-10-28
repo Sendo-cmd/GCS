@@ -34,7 +34,7 @@ task.wait(1.5)
 
 -- local url = "https://api.championshop.date/logs"
 local Settings = {
-    ["Cooldown"] = 1,
+    ["Cooldown"] = 10,
     ["Item List"] = {
         "Amethyst",
         "Ruby",
