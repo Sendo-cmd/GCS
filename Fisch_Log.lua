@@ -203,7 +203,7 @@ task.spawn(function ()
                 ["difficulty"] = Data["PlayerData"]["rod"],
             },
         }
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = Fishs},{["state"] = StageInfo},{["time"] = 1},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
+        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = Fishs},{["state"] = StageInfo},{["time"] = 1},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
         Index = 0
         Fishs = {} 
