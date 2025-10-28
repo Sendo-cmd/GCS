@@ -34,7 +34,7 @@ task.wait(1.5)
 
 -- local url = "https://api.championshop.date/logs"
 local Settings = {
-    ["Cooldown"] = 180,
+    ["Cooldown"] = 1,
     ["Item List"] = {
         "Amethyst",
         "Ruby",
@@ -198,12 +198,12 @@ task.spawn(function ()
             ["map"] = {
                 ["name"] = (Client.Character and Client.Character:FindFirstChild("zone") and Client.Character.zone.Value.Name) or "Died",
                 ["chapter"] = Weather,
-                ["wave"] = "1",
-                ["mode"] = "None",
-                ["difficulty"] = "None",
+                ["wave"] = "season",
+                ["mode"] = Data["PlayerData"]["level"],
+                ["difficulty"] = Data["PlayerData"]["rod"],
             },
         }
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = Fishs},{["state"] = StageInfo},{["time"] = 1},{["currency"] = convertToField_(GetSomeCurrency())})
+        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = Fishs},{["state"] = StageInfo},{["time"] = 1},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
         Index = 0
         Fishs = {} 
