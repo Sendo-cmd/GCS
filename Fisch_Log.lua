@@ -1,5 +1,3 @@
-
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -34,7 +32,7 @@ task.wait(1.5)
 
 -- local url = "https://api.championshop.date/logs"
 local Settings = {
-    ["Cooldown"] = 10,
+    ["Cooldown"] = 180,
     ["Item List"] = {
         "Amethyst",
         "Ruby",
@@ -52,25 +50,6 @@ local Settings = {
         "Magic Thread",
         "Ancient Thread",
         "Lunar Thread",
-        "Elder Mossjaw",
-        "Mauve Pearl",
-        "Evil Sigil",
-        "Toxic Core",
-        "Murky Thread",
-        "Vine Line",
-        "Mossy Core",
-        "Blizzard Totem",
-        "Zeus Storm Totem",
-        "Poseidon Wrath Totem",
-        "Blue Moon Totem",
-        "Shiny Totem",
-        "Sparkling Totem",
-        "Mutation Totem",
-        "Starfall Totem",
-        "Rainbow Totem",
-        "Megalodon Hunt Totem",
-        "Kraken Hunt Totem",
-        "Scylla Hunt Totem",
         "Aurora Totem",
         "Eclipse Totem",
         "Meteor Totem",
@@ -83,6 +62,18 @@ local Settings = {
         "",
     },
 }
+local names = {"K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dd", "Ud", "Dd", "Td", "Qad", "Qid", 
+	"Sxd", "Spd", "Ocd", "Nod", "Vg", "Uvg", "Dvg", "Tvg", "Qavg", "Qivg", "Sxvg", "Spvg", "Ocvg"}
+local pows = {}
+for i = 1, #names do table.insert(pows, 1000^i) end
+
+local function formatNumber(x)
+	local ab = math.abs(x)
+	if ab < 1000 then return tostring(x) end 
+	local p = math.min(math.floor(math.log10(ab)/3), #names)
+	local num = math.floor(ab/pows[p]*100)/100
+	return num*math.sign(x)..names[p]
+end
 
 local function convertToField(index,value)
     return {
@@ -97,11 +88,14 @@ local function convertToField_(table_)
     end
     return Field
 end
-local function GetSomeCurrency()
+local function GetSomeCurrency(tr)
     local Field = {}
     for i,v in pairs(Data["Stats"]:GetChildren()) do
         if table.find(List,v.Name) then
-            local NewVal = v.Name == "coins" and v
+            if not tr and type(v.Value) ~= "number" then
+                continue;
+            end
+            -- local NewVal = type(v.Value) == "number" and formatNumber(v.Value)
             Field[v.Name] = v.Value
         end
     end
@@ -147,7 +141,7 @@ local function SendTo(Url,...)
 end
 
 local function GetAllData()
-    local LocalData_ = GetSomeCurrency()
+    local LocalData_ = GetSomeCurrency(true)
     local Rod_All = {}
     local FishCahce = {}
     
@@ -182,31 +176,40 @@ SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
 
 task.spawn(function ()
     local Fishs = {}
-    local Index = 0
     ReplicatedStorage.events.anno_catch.OnClientEvent:Connect(function(b)
-        Fishs[tostring(Index)] = b
-        Index = Index + 1
+        Fishs[#Fishs + 1] = b
     end)
-    while true do task.wait(10)
-        local Data = GetAllData()
-        local Weather = {}
-        for i,v in pairs(ReplicatedStorage.world:GetChildren()) do
-            Weather[v.Name] = v.Value
+    while true do task.wait()
+        if #Fishs >= 10 then
+            local Data = GetAllData()
+            local ConvertFish = {}
+            local LastConvertFish = {}
+            
+            for i,v in pairs(Fishs) do
+                if ConvertFish[v.Name] then
+                    ConvertFish[v.Name] = ConvertFish[v.Name] + 1
+                else
+                    ConvertFish[v.Name] = 1
+                end
+            end
+            for i,v in pairs(ConvertFish) do
+                LastConvertFish[#LastConvertFish + 1] = convertToField(i,v)
+            end
+            print(Data["PlayerData"]["level"],Data["PlayerData"]["rod"])
+            local StageInfo = {
+                ["win"] = true,
+                ["map"] = {
+                    ["name"] = (Client.Character and Client.Character:FindFirstChild("zone") and Client.Character.zone.Value.Name) or "Died",
+                    ["chapter"] = game:GetService("ReplicatedStorage").world.weather.value,
+                    ["wave"] = "0",
+                    ["mode"] = tostring(Data["PlayerData"]["level"]),
+                    ["difficulty"] = tostring(Data["PlayerData"]["rod"]),
+                },
+            }
+            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertFish},{["state"] = StageInfo},{["time"] = 180},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
+            SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
+            Fishs = {} 
         end
-        local StageInfo = {
-            ["win"] = true,
-            ["map"] = {
-                ["name"] = (Client.Character and Client.Character:FindFirstChild("zone") and Client.Character.zone.Value.Name) or "Died",
-                ["chapter"] = Weather,
-                ["wave"] = "season",
-                ["mode"] = Data["PlayerData"]["level"],
-                ["difficulty"] = Data["PlayerData"]["rod"],
-            },
-        }
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = Fishs},{["state"] = StageInfo},{["time"] = 1},{["currency"] = convertToField_(GetSomeCurrency())})
-        SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
-        Index = 0
-        Fishs = {} 
     end
 end)
 
