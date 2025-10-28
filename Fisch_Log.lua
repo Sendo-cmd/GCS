@@ -202,8 +202,8 @@ task.spawn(function ()
                     ["name"] = (Client.Character and Client.Character:FindFirstChild("zone") and Client.Character.zone.Value.Name) or "Died",
                     ["chapter"] = game:GetService("ReplicatedStorage").world.weather.value,
                     ["wave"] = "0",
-                    ["mode"] = Data["PlayerData"]["level"],
-                    ["difficulty"] = Data["PlayerData"]["rod"],
+                    ["mode"] = tostring(Data["PlayerData"]["level"]),
+                    ["difficulty"] = tostring(Data["PlayerData"]["rod"]),
                 },
             }
             SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertFish},{["state"] = StageInfo},{["time"] = 180},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})

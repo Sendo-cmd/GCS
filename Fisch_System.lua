@@ -257,7 +257,7 @@ while task.wait() do
         if plr.Character:GetAttribute("Fishing") then
             -- print("In #1")
         elseif plr.PlayerGui:FindFirstChild("shakeui") then
-            print("In #2")
+            -- print("In #2")
         elseif plr.PlayerGui:FindFirstChild("reel") then
             -- print("In #3")
         else
