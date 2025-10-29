@@ -603,6 +603,26 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["a88f58e7-c086-4f90-95a2-898b2d2e813a"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "First",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act2",
+        ["StageType"] = "Raid",
+        ["Stage"] = "Ruined City",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
