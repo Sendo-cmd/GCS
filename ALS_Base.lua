@@ -109,7 +109,7 @@ getgenv().Config = {
 	["Macros"] = {
 		["Play"] = true,
 		["Macro Retry Limit"] = 0,
-		["Macro"] = "halloweenpast2",
+		["Macro"] = "Halloween2",
 		["Ignore Macro Timing"] = true,
 		["No Ignore Sell Timing"] = true
 	}
