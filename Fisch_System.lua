@@ -1,6 +1,38 @@
+local Island = {
+    ["General"] = CFrame.new(1375.06812, -603.640137, 2340.38184, 0.928720474, 5.22775885e-08, -0.370780617, -3.27635945e-08, 1, 5.89280162e-08, 0.370780617, -4.25795506e-08, 0.928720474),
+}
+local Settings = {
+    ["Duration"] = 1, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
+    ["Shake Delay"] = 0.1, -- For Config
+    ["Select Island"] = "General",
+    ["Method"] = "Instant", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
+    ["Legit Configs"] = {
+        ["progress"] = 65, -- 65% of progress bar
+        ["shake"] = .15, 
+    }
+}
+local Changes = {
+    ["1b3ffdad-7ccc-431e-90da-ad62040eb2a3"] = function()
+        
+    end,
+}
 repeat  task.wait() until game:IsLoaded()
+local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
+local Key = "NO_ORDER" 
+local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
+local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
+local IsGame = local_data[1]
+local Reeling_ = false
+local FishCount = 0
+local BreakFish = 0
+local PleaseChange = false
+
+local MainSettings = {
+    ["Path_Cache"] = "/api/v1/shop/orders/cache",
+    ["Path_Kai"] = "/api/v1/shop/accountskai",
+}
+
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
--- local VIM = game:GetService('VirtualInputManager')
 local tloading = tick() + 5
 local loading
 repeat task.wait()
@@ -14,9 +46,6 @@ while loading and loading.Parent and loading.Enabled do task.wait()
         print("Skip")
     end
     task.wait(1)
-    -- local Vector = {workspace.CurrentCamera.ViewportSize.X / 2, workspace.CurrentCamera.ViewportSize.Y / 2}
-    -- VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, true, game, 1)
-    -- VIM:SendMouseButtonEvent(Vector[1],Vector[2], 0, false, game, 1)
 end 
 
 local plr = game:GetService("Players").LocalPlayer
@@ -25,22 +54,221 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local Camera = workspace.CurrentCamera
 Camera.CameraType = Enum.CameraType.Custom
-local Reeling_ = false
-local ThrowBait = function ()
-    print("Nothing")
+
+
+
+local function Get(Api)
+    local Data = request({
+        ["Url"] = Api,
+        ["Method"] = "GET",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+    })
+    return Data
 end
-local FishCount = 0
-local BreakFish = 0
-local PleaseChange = false
-local Settings = {
-    ["Duration"] = 1, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
-    ["Shake Delay"] = 0, -- For Config
-    ["Method"] = "Instant", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
-    ["Legit Configs"] = {
-        ["progress"] = 65, -- 65% of progress bar
-        ["shake"] = .25, 
-    }
-}
+local function Fetch_data()
+    local Data = Get(Api .. "/api/v1/shop/orders/" .. plr.Name)
+    if not Data["Success"] then
+        return false
+    end
+    local Order_Data = HttpService:JSONDecode(Data["Body"])
+    return Order_Data["data"][1]
+end
+if not Fetch_data() then
+    plr:Kick("Cannot Get Data")
+end
+local function DecBody(body)
+    return HttpService:JSONDecode(body["Body"])["data"]
+end
+local function CreateBody(...)
+    local body = {}
+    local array = {...}
+    for i,v in pairs(array) do
+        for i1,v1 in pairs(v) do
+            body[i1] = v1
+        end
+    end
+    return body
+end
+local function Post(Url,...)
+    local response = request({
+        ["Url"] = Url,
+        ["Method"] = "POST",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+        ["Body"] = HttpService:JSONEncode(CreateBody(...))
+    })
+    return response
+end
+local function SendCache(...)
+    return Post(Api .. MainSettings["Path_Cache"],...)
+end
+local function DelCache(OrderId)
+    local response = request({
+        ["Url"] = Api .. MainSettings["Path_Cache"] .. "/" .. OrderId,
+        ["Method"] = "POST",
+        ["Headers"] = {
+            ["x-http-method-override"] = "DELETE",
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4",
+        },
+    })
+    return response
+end
+local function GetCache(OrderId)
+    local Cache = Get(Api .. MainSettings["Path_Cache"] .. "/" .. OrderId)
+    if not Cache["Success"] then
+        return false
+    end
+    local Data = DecBody(Cache)
+    return Data
+end
+local function UpdateCache(OrderId,...)
+    local args = {...}
+    local data = GetCache(OrderId)
+
+    if not data then warn("Cannot Update") return false end
+    for i,v in pairs(args) do
+        for i1,v1 in pairs(v) do
+            print(i1,v1)
+            data[i1] = v1
+        end
+    end
+    warn("Update Cache")
+    return SendCache({
+        ["index"] = OrderId
+    },
+    {
+        ["value"] = data,
+    })
+end
+local function Post_(Url,data)
+    local response = request({
+        ["Url"] = Url,
+        ["Method"] = "POST",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+        ["Body"] = HttpService:JSONEncode(data)
+    })
+   
+    return response
+end
+
+local function BypassTeleport(cframe)
+    if plr.Character then
+        if plr.Character and not plr.Character.HumanoidRootPart:FindFirstChild("Body") then
+            local L_1 = Instance.new("BodyVelocity")
+            L_1.Name = "Body"
+            L_1.Parent = plr.Character.HumanoidRootPart 
+            L_1.MaxForce=Vector3.new(1000000000,1000000000,1000000000)
+            L_1.Velocity=Vector3.new(0,0,0) 
+        end
+        plr.Character:PivotTo(cframe) task.wait(.1)
+        if plr.Character and plr.Character.HumanoidRootPart:FindFirstChild("Body") then
+            plr.Character.HumanoidRootPart["Body"]:Destroy()
+        end
+    end
+end
+
+local function SendKey(key,dur)
+    VirtualInputManager:SendKeyEvent(true,key,false,game) task.wait(dur)
+    VirtualInputManager:SendKeyEvent(false,key,false,game)
+end
+local function Shake(obj)
+    while obj.Parent do task.wait()
+        GuiService.SelectedCoreObject = obj task.wait(Settings["Shake Delay"] or 0.1)
+        SendKey("Return",.01)
+    end
+end
+local function Shaking(v)
+    local safezone = v:WaitForChild("safezone")
+    local button = safezone:FindFirstChild("button")
+    if button then
+        Shake(button)
+    end
+    local ConnectTo1 = safezone.ChildAdded:Connect(function(v1)
+        if v1:IsA("ImageButton") then
+            if Settings["Method"] == "Legit" then
+                task.wait(Settings["Legit Configs"]["shake"])
+            elseif Settings["Method"] == "Config" then
+                task.wait(Settings["Shake Delay"])
+            end
+            Shake(v1)
+        end
+    end)
+    while v.Parent do task.wait()
+
+    end
+    ConnectTo1:Disconnect()
+end
+
+local function Auto_Config()
+    local OrderData = Fetch_data()
+    if OrderData then
+        Key = OrderData["id"]
+    else
+        print("Cannot Fetch Data")
+        return false;
+    end
+    local ConnectToEnd 
+    local Order = Get(PathWay .. "cache/" .. Key)
+    if Changes[OrderData["product_id"]] then
+        Changes[OrderData["product_id"]]()
+        print("Changed Configs")
+    end
+    if not Order["Success"] then
+        Post_(PathWay .. "cache",{
+            ["index"] = Key,
+            ["value"] = {}
+        })
+    else 
+            local Product = OrderData["product"]
+        local Goal = Product["condition"]["value"]
+        if Product["condition"]["type"] == "Coins" then
+            print(tonumber(OrderData["progress_value"]) , Goal)
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                if _G.Leave_Party then _G.Leave_Party() end
+                Post(PathWay .. "finished", CreateBody())
+            end
+        elseif Product["condition"]["type"] == "hour" then
+            print(tonumber(OrderData["progress_value"]) , Goal)
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
+                if _G.Leave_Party then _G.Leave_Party() end
+                Post(PathWay .. "finished", CreateBody())
+            end
+        elseif Product["condition"]["type"] == "character" then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                   if _G.Leave_Party then _G.Leave_Party() end
+                    Post(PathWay .. "finished", CreateBody())
+                end
+        elseif Product["condition"]["type"] == "round" then
+            print(tonumber(OrderData["progress_value"]) , Goal)
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                if _G.Leave_Party then _G.Leave_Party() end
+                    Post(PathWay .. "finished", CreateBody())
+            end
+        end
+    end
+end
+
+
+
+
+Auto_Config()
+
+
+
+
+
+
+
 -- local Settings = {
 --     ["Duration"] = 2.5, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
 --     ["Shake Delay"] = 0.133, -- For Config
@@ -84,53 +312,7 @@ local Settings = {
 --     end
 -- end
 
-local function BypassTeleport(cframe)
-    if plr.Character then
-        if plr.Character and not plr.Character.HumanoidRootPart:FindFirstChild("Body") then
-            local L_1 = Instance.new("BodyVelocity")
-            L_1.Name = "Body"
-            L_1.Parent = plr.Character.HumanoidRootPart 
-            L_1.MaxForce=Vector3.new(1000000000,1000000000,1000000000)
-            L_1.Velocity=Vector3.new(0,0,0) 
-        end
-        plr.Character:PivotTo(cframe) task.wait(.1)
-        if plr.Character and plr.Character.HumanoidRootPart:FindFirstChild("Body") then
-            plr.Character.HumanoidRootPart["Body"]:Destroy()
-        end
-    end
-end
 
-local function SendKey(key,dur)
-    VirtualInputManager:SendKeyEvent(true,key,false,game) task.wait(dur)
-    VirtualInputManager:SendKeyEvent(false,key,false,game)
-end
-local function Shake(obj)
-    while obj.Parent do task.wait()
-        GuiService.SelectedCoreObject = obj task.wait(.45)
-        SendKey("Return",.01)
-    end
-end
-local function Shaking(v)
-    local safezone = v:WaitForChild("safezone")
-    local button = safezone:FindFirstChild("button")
-    if button then
-        Shake(button)
-    end
-    local ConnectTo1 = safezone.ChildAdded:Connect(function(v1)
-        if v1:IsA("ImageButton") then
-            if Settings["Method"] == "Legit" then
-                task.wait(Settings["Legit Configs"]["shake"])
-            elseif Settings["Method"] == "Config" then
-                task.wait(Settings["Shake Delay"])
-            end
-            Shake(v1)
-        end
-    end)
-    while v.Parent do task.wait()
-
-    end
-    ConnectTo1:Disconnect()
-end
 local library = require(ReplicatedStorage.shared.modules.library);
 for i,v in pairs(library.rods) do
     if type(v) == "table" then
@@ -142,84 +324,84 @@ local function DistanceWithoutY(vec1,vec2)
     local Vect2 = Vector3.new(vec2.x,0,vec2.z)
     return (Vect1 - Vect2).Magnitude
 end
-local function Reeling(v)
-    if v then
-        Reeling_ = true
-        task.wait(.35)
-        local randomreel = true
-        if BreakFish >= 10 then
-            task.wait(1)
-            v.bar.playerbar.Size = UDim2.fromScale(0, 0)
-            BreakFish = 0
-        else
-            if Settings["Method"] == "Instant" then
-                local t1 = tick() + 2
-                while v.Parent do task.wait(.1)
-                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
-                    if tick() >= t1 then
-                        -- ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
-                        t1 = tick() + .5
-                    end
-                end
-                -- Reeling_ = false
-                -- for i,v in pairs(getgc(true)) do
-                --     if type(v) == 'table' and rawget(v,"progress") then
-                --         task.delay(.001,function ()
-                --             local Stopped =false
-                --             while not Stopped do task.wait()
-                --                 if rawget(v,"ready") then
-                --                     ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel) task.wait(.25)
-                --                     Stopped = true
-                --                 end
-                --             end
-                --         end)
-                --         print(i,v)
-                --     end
-                -- end
-            elseif Settings["Method"] == "Normal" then
-                local t1 = tick() + 2.5
-                while v.Parent do task.wait(.1)
-                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
-                    if tick() >= t1 then
-                        ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
-                        t1 = tick() + .5
-                    end
-                end 
-            elseif Settings["Method"] == "Legit" then
-                while v.Parent do task.wait(.1)
-                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
-                    if v.bar.progress.bar.Size.X.Scale >= Settings["Legit Configs"]["progress"]/100 then
-                        ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
-                    end
-                end 
-            elseif Settings["Method"] == "Config" then
-               local t1 = tick() + Settings["Duration"]
-                while v.Parent do task.wait(.1)
-                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
-                    if tick() >= t1 then
-                        ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
-                        t1 = tick() + .1
-                    end
-                end 
-            elseif Settings["Method"] == "Slow" then
-                while v.Parent do task.wait()
-                    v.bar.playerbar.Size = UDim2.fromScale(1, 1)
-                end
-            end
-        end
-    end
-end
+-- local function Reeling(v)
+--     if v then
+--         Reeling_ = true
+--         task.wait(.35)
+--         local randomreel = true
+--         if BreakFish >= 10 then
+--             task.wait(1)
+--             v.bar.playerbar.Size = UDim2.fromScale(0, 0)
+--             BreakFish = 0
+--         else
+--             if Settings["Method"] == "Instant" then
+--                 local t1 = tick() + 2
+--                 while v.Parent do task.wait(.1)
+--                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+--                     if tick() >= t1 then
+--                         -- ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+--                         t1 = tick() + .5
+--                     end
+--                 end
+--                 -- Reeling_ = false
+--                 -- for i,v in pairs(getgc(true)) do
+--                 --     if type(v) == 'table' and rawget(v,"progress") then
+--                 --         task.delay(.001,function ()
+--                 --             local Stopped =false
+--                 --             while not Stopped do task.wait()
+--                 --                 if rawget(v,"ready") then
+--                 --                     ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel) task.wait(.25)
+--                 --                     Stopped = true
+--                 --                 end
+--                 --             end
+--                 --         end)
+--                 --         print(i,v)
+--                 --     end
+--                 -- end
+--             elseif Settings["Method"] == "Normal" then
+--                 local t1 = tick() + 2.5
+--                 while v.Parent do task.wait(.1)
+--                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+--                     if tick() >= t1 then
+--                         ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+--                         t1 = tick() + .5
+--                     end
+--                 end 
+--             elseif Settings["Method"] == "Legit" then
+--                 while v.Parent do task.wait(.1)
+--                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+--                     if v.bar.progress.bar.Size.X.Scale >= Settings["Legit Configs"]["progress"]/100 then
+--                         ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+--                     end
+--                 end 
+--             elseif Settings["Method"] == "Config" then
+--                local t1 = tick() + Settings["Duration"]
+--                 while v.Parent do task.wait(.1)
+--                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+--                     if tick() >= t1 then
+--                         ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
+--                         t1 = tick() + .1
+--                     end
+--                 end 
+--             elseif Settings["Method"] == "Slow" then
+--                 while v.Parent do task.wait()
+--                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
+--                 end
+--             end
+--         end
+--     end
+-- end
 
 plr.PlayerGui.ChildAdded:Connect(function(v)
     if v.Name == "shakeui" then
         Shaking(v)
     end
 end)
-plr.PlayerGui.ChildAdded:Connect(function(v)
-    if v.Name == "reel" then
-        -- Reeling(v)
-    end
-end)
+-- plr.PlayerGui.ChildAdded:Connect(function(v)
+--     if v.Name == "reel" then
+--         -- Reeling(v)
+--     end
+-- end)
 game:GetService("ReplicatedStorage").events.anno_catch.OnClientEvent:Connect(function(b)
     FishCount = FishCount + 1
     if FishCount >= 3 then
@@ -232,8 +414,8 @@ end)
 task.spawn(function()
     while task.wait() do
         pcall(function ()
-            if DistanceWithoutY(plr.Character.HumanoidRootPart.Position,Vector3.new(1375.06812, -603.640137, 2340.38184)) >= 1.5 then
-                BypassTeleport(CFrame.new(1375.06812, -603.640137, 2340.38184, 0.928720474, 5.22775885e-08, -0.370780617, -3.27635945e-08, 1, 5.89280162e-08, 0.370780617, -4.25795506e-08, 0.928720474))
+            if DistanceWithoutY(plr.Character.HumanoidRootPart.Position,Island[Settings["Select Island"]].Position) >= 1.5 then
+                BypassTeleport(Island[Settings["Select Island"]])
                 task.wait(3)
             end 
         end)
@@ -255,20 +437,19 @@ end)
 while task.wait() do
     if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
         if plr.Character:GetAttribute("Fishing") then
-            -- print("In #1")
+            print("In #1")
         elseif plr.PlayerGui:FindFirstChild("shakeui") then
-            -- print("In #2")
+            print("In #2")
         elseif plr.PlayerGui:FindFirstChild("reel") then
-            -- print("In #3")
+            print("In #3")
         else
-            -- print("Hehe")
+            print("Hehe")
             local args = {
                 math.random(900,1000)/10,
                 1
             }
             game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):WaitForChild("events"):WaitForChild("castAsync"):InvokeServer(unpack(args))
         end
-        
         task.wait(1.5)
     end
 end
