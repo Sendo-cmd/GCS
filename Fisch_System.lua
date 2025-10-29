@@ -34,7 +34,7 @@ local Changes = {
 repeat  task.wait() until game:IsLoaded()
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Key = "NO_ORDER" 
-local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
+local PathWay = Api .. "/api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
 local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
 local IsGame = local_data[1]
 local Reeling_ = false
