@@ -14,7 +14,7 @@ local Settings = {
 local Changes = {
     ["06cbaf4e-7e20-4ed0-b3d4-71d14315bacb"] = function()
         Settings["Method"] = "Instant"
-        Settings["Duration"] = 1
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
@@ -24,7 +24,7 @@ local Changes = {
     end,
     ["a5749994-eb20-4f3c-9f71-2d89adc90801"] = function()
         Settings["Method"] = "Instant"
-        Settings["Duration"] = 1
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
@@ -34,7 +34,7 @@ local Changes = {
     end,
     ["6fc8af97-d123-4979-afdf-cb4ea553cd9b"] = function()
         Settings["Method"] = "Instant"
-        Settings["Duration"] = 1
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
@@ -44,7 +44,7 @@ local Changes = {
     end,
     ["d8b8cc80-1d7a-485d-874b-874b223d2432"] = function()
         Settings["Method"] = "Instant"
-        Settings["Duration"] = 1
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
@@ -54,7 +54,7 @@ local Changes = {
     end,
     ["f14e5a6f-2ceb-4290-8989-06b4fd23fae3"] = function()
         Settings["Method"] = "Instant"
-        Settings["Duration"] = 1
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
@@ -64,7 +64,7 @@ local Changes = {
     end,
     ["94140562-f986-4a1f-b613-96091c09d34d"] = function()
         Settings["Method"] = "Instant"
-        Settings["Duration"] = 1
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
