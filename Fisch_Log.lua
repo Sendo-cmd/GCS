@@ -29,6 +29,10 @@ local DataController = require(LegacyControllers:WaitForChild("DataController"))
 local Url = "https://api.championshop.date"
 local List = {
     "coins",
+    "level",
+    "rod",
+    "xp",
+    "bait",
 }
 task.wait(1.5)
 
@@ -94,7 +98,7 @@ local function GetSomeCurrency(tr)
     local Field = {}
     for i,v in pairs(Data["Stats"]:GetChildren()) do
         if table.find(List,v.Name) then
-            if not tr and type(v.Value) ~= "number" then
+            if not tr and v.Name ~= "coins" then
                 continue;
             end
             -- local NewVal = type(v.Value) == "number" and formatNumber(v.Value)
