@@ -29,10 +29,6 @@ local DataController = require(LegacyControllers:WaitForChild("DataController"))
 local Url = "https://api.championshop.date"
 local List = {
     "coins",
-    "level",
-    "rod",
-    "xp",
-    "bait",
 }
 task.wait(1.5)
 
