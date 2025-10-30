@@ -182,7 +182,7 @@ task.spawn(function ()
         Fishs[#Fishs + 1] = b
     end)
     while true do task.wait()
-        print(#Fishs)
+        -- print(#Fishs)
         if #Fishs >= 10 then
             local Data = GetAllData()
             local ConvertFish = {}
@@ -199,7 +199,7 @@ task.spawn(function ()
                 LastConvertFish[#LastConvertFish + 1] = convertToField(i,v)
             end
             for i,v in pairs(Data["PlayerData"]) do
-                -- print(i,v)
+                print(i,v)
             end
             print(Data["PlayerData"]["level"],Data["PlayerData"]["rod"])
             local StageInfo = {
