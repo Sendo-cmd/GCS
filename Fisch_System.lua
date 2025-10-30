@@ -19,63 +19,63 @@ local Settings = {
 }
 local Changes = {
     ["06cbaf4e-7e20-4ed0-b3d4-71d14315bacb"] = function()
-        Settings["Method"] = "Config"
-        Settings["Duration"] = 0.05
+        Settings["Method"] = "Instant"
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["a5749994-eb20-4f3c-9f71-2d89adc90801"] = function()
-        Settings["Method"] = "Config"
-        Settings["Duration"] = 0.05
+        Settings["Method"] = "Instant"
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["6fc8af97-d123-4979-afdf-cb4ea553cd9b"] = function()
-        Settings["Method"] = "Config"
-        Settings["Duration"] = 0.05
+        Settings["Method"] = "Instant"
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["d8b8cc80-1d7a-485d-874b-874b223d2432"] = function()
-        Settings["Method"] = "Config"
-        Settings["Duration"] = 0.05
+        Settings["Method"] = "Instant"
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["f14e5a6f-2ceb-4290-8989-06b4fd23fae3"] = function()
-        Settings["Method"] = "Config"
-        Settings["Duration"] = 0.05
+        Settings["Method"] = "Instant"
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["94140562-f986-4a1f-b613-96091c09d34d"] = function()
-        Settings["Method"] = "Config"
-        Settings["Duration"] = 0.1
+        Settings["Method"] = "Instant"
+        Settings["Duration"] = 0.5
         Settings["Select Island"] = "General"
-        Settings["Shake Delay"] = 0.05
+        Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
 }
@@ -334,54 +334,6 @@ Auto_Config()
 
 
 
-
-
-
-
--- local Settings = {
---     ["Duration"] = 2.5, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
---     ["Shake Delay"] = 0.133, -- For Config
---     ["Method"] = "Legit", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
---     ["Legit Configs"] = {
---         ["progress"] = 65, -- 65% of progress bar
---         ["shake"] = .25, 
---     }
--- }
-
--- for i,v in pairs(getgc(true)) do
---     if type(v) == "table" and rawget(v,"power") then
---         task.spawn(function()
---             while task.wait() do
---                 -- if PleaseChange then
---                      rawset(v,"power",FishCount >= 3 and math.random(500,700)/10 or math.random(900,1000)/10)
---                 -- end
---             end
---         end)
---     end
--- end 
--- for i,v in pairs(getgc(true)) do
---     if type(v) == 'function' and getinfo(v) and getinfo(v).short_src:match("rod/client") then
---         local constants = getconstants(v)
---         if constants[3] == "ClientCutsceneRunning"then
---             replaceclosure(v,function(v74)
---                 if v74.UserInputType == Enum.UserInputType.MouseButton1 or v74 == "Bypass" then
---                     print("Bypass")
---                     local args = {
---                         math.random(800,1000)/10,
---                         1
---                     }
---                     game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):WaitForChild("events"):WaitForChild("castAsync"):InvokeServer(unpack(args))
---                 end
---             end)    
---             ThrowBait = v
---         end
---         if constants[11] == "startingcast" then
---             print("Bypass #1")
---         end
---     end
--- end
-
-
 local library = require(ReplicatedStorage.shared.modules.library);
 for i,v in pairs(library.rods) do
     if type(v) == "table" then
@@ -393,84 +345,12 @@ local function DistanceWithoutY(vec1,vec2)
     local Vect2 = Vector3.new(vec2.x,0,vec2.z)
     return (Vect1 - Vect2).Magnitude
 end
--- local function Reeling(v)
---     if v then
---         Reeling_ = true
---         task.wait(.35)
---         local randomreel = true
---         if BreakFish >= 10 then
---             task.wait(1)
---             v.bar.playerbar.Size = UDim2.fromScale(0, 0)
---             BreakFish = 0
---         else
---             if Settings["Method"] == "Instant" then
---                 local t1 = tick() + 2
---                 while v.Parent do task.wait(.1)
---                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
---                     if tick() >= t1 then
---                         -- ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
---                         t1 = tick() + .5
---                     end
---                 end
---                 -- Reeling_ = false
---                 -- for i,v in pairs(getgc(true)) do
---                 --     if type(v) == 'table' and rawget(v,"progress") then
---                 --         task.delay(.001,function ()
---                 --             local Stopped =false
---                 --             while not Stopped do task.wait()
---                 --                 if rawget(v,"ready") then
---                 --                     ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel) task.wait(.25)
---                 --                     Stopped = true
---                 --                 end
---                 --             end
---                 --         end)
---                 --         print(i,v)
---                 --     end
---                 -- end
---             elseif Settings["Method"] == "Normal" then
---                 local t1 = tick() + 2.5
---                 while v.Parent do task.wait(.1)
---                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
---                     if tick() >= t1 then
---                         ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
---                         t1 = tick() + .5
---                     end
---                 end 
---             elseif Settings["Method"] == "Legit" then
---                 while v.Parent do task.wait(.1)
---                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
---                     if v.bar.progress.bar.Size.X.Scale >= Settings["Legit Configs"]["progress"]/100 then
---                         ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
---                     end
---                 end 
---             elseif Settings["Method"] == "Config" then
---                local t1 = tick() + Settings["Duration"]
---                 while v.Parent do task.wait(.1)
---                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
---                     if tick() >= t1 then
---                         ReplicatedStorage:WaitForChild("events"):WaitForChild("reelfinished"):FireServer(100,randomreel)
---                         t1 = tick() + .1
---                     end
---                 end 
---             elseif Settings["Method"] == "Slow" then
---                 while v.Parent do task.wait()
---                     v.bar.playerbar.Size = UDim2.fromScale(1, 1)
---                 end
---             end
---         end
---     end
--- end
 
 plr.PlayerGui.ChildAdded:Connect(function(v)
     if v.Name == "shakeui" then
         Shaking(v)
     end
 end)
--- plr.PlayerGui.ChildAdded:Connect(function(v)
---     if v.Name == "reel" then
---         -- Reeling(v)
---     end
--- end)
 game:GetService("ReplicatedStorage").events.anno_catch.OnClientEvent:Connect(function(b)
     FishCount = FishCount + 1
     if FishCount >= 3 then
@@ -502,23 +382,25 @@ task.spawn(function()
         end)
     end
 end)
-
-while task.wait() do
-    if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
-        if plr.Character:GetAttribute("Fishing") then
-            -- print("In #1")
-        elseif plr.PlayerGui:FindFirstChild("shakeui") then
-            -- print("In #2")
-        elseif plr.PlayerGui:FindFirstChild("reel") then
-            -- print("In #3")
-        else
-            -- print("Hehe")
-            local args = {
-                math.random(900,1000)/10,
-                1
-            }
-            game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):WaitForChild("events"):WaitForChild("castAsync"):InvokeServer(unpack(args))
+task.spawn(function()
+    while task.wait() do
+        if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
+            if plr.Character:GetAttribute("Fishing") then
+                -- print("In #1")
+            elseif plr.PlayerGui:FindFirstChild("shakeui") then
+                -- print("In #2")
+            elseif plr.PlayerGui:FindFirstChild("reel") then
+                -- print("In #3")
+            else
+                -- print("Hehe")
+                local args = {
+                    math.random(900,1000)/10,
+                    1
+                }
+                game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):WaitForChild("events"):WaitForChild("castAsync"):InvokeServer(unpack(args))
+            end
+            task.wait(1.5)
         end
-        task.wait(1.5)
     end
-end
+end)
+print("LOADED")
