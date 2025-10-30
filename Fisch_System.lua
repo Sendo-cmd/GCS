@@ -2,7 +2,7 @@ local Island = {
     ["General"] = CFrame.new(1375.06812, -603.640137, 2340.38184, 0.928720474, 5.22775885e-08, -0.370780617, -3.27635945e-08, 1, 5.89280162e-08, 0.370780617, -4.25795506e-08, 0.928720474),
 }
 local Settings = {
-    ["Duration"] = 1, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
+    ["Duration"] = 0.5, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
     ["Shake Delay"] = 0.1, -- For Config
     ["Select Island"] = "General",
     ["Method"] = "Instant", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
