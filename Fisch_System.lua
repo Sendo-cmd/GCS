@@ -298,25 +298,21 @@ local function Auto_Config()
                     if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
                     end
-
                 elseif Product["condition"]["type"] == "hour" then
                     print(tonumber(OrderData["progress_value"]), Goal)
                     if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"]) / 60 / 60) then
                         Post(PathWay .. "finished", CreateBody())
                     end
-
                 elseif Product["condition"]["type"] == "items" then
                     print(tonumber(OrderData["progress_value"]), Goal)
                     if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
                     end
-
                 elseif Product["condition"]["type"] == "character" then
                     print(tonumber(OrderData["progress_value"]), Goal)
                     if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
                     end
-
                 elseif Product["condition"]["type"] == "round" then
                     print(tonumber(OrderData["progress_value"]), Goal)
                     if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
