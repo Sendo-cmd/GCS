@@ -25,7 +25,7 @@ local Changes = {
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["a5749994-eb20-4f3c-9f71-2d89adc90801"] = function()
@@ -35,7 +35,7 @@ local Changes = {
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["6fc8af97-d123-4979-afdf-cb4ea553cd9b"] = function()
@@ -45,7 +45,7 @@ local Changes = {
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["d8b8cc80-1d7a-485d-874b-874b223d2432"] = function()
@@ -55,7 +55,7 @@ local Changes = {
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["f14e5a6f-2ceb-4290-8989-06b4fd23fae3"] = function()
@@ -65,7 +65,7 @@ local Changes = {
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
     ["94140562-f986-4a1f-b613-96091c09d34d"] = function()
@@ -75,7 +75,7 @@ local Changes = {
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .05, 
+        ["shake"] = .1, 
     }
     end,
 }
