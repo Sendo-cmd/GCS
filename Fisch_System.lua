@@ -147,6 +147,10 @@ local function DecBody(body)
     return HttpService:JSONDecode(body["Body"])["data"]
 end
 local function CreateBody(...)
+    local Order_Data = Fetch_data()
+    local body = {
+        ["order_id"] = Order_Data["id"],
+    }
     local body = {
         ["order_id"] = Order_Data["id"]
     }
