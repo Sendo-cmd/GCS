@@ -1,6 +1,7 @@
 getgenv().Config = {
 	["Misc"] = {
-		["Redeem Code"] = true
+		["Redeem Code"] = true,
+		["Auto Spooky Bingo"] = true
 	},
 	["Webhook"] = {
 		["Match Finished"] = true

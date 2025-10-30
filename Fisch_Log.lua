@@ -29,6 +29,10 @@ local DataController = require(LegacyControllers:WaitForChild("DataController"))
 local Url = "https://api.championshop.date"
 local List = {
     "coins",
+    "level",
+    "rod",
+    "xp",
+    "bait",
 }
 task.wait(1.5)
 
@@ -199,7 +203,7 @@ task.spawn(function ()
                 LastConvertFish[#LastConvertFish + 1] = convertToField(i,v)
             end
             for i,v in pairs(Data["PlayerData"]) do
-                print(i,v)
+                -- print(i,v)
             end
             print(Data["PlayerData"]["level"],Data["PlayerData"]["rod"])
             local StageInfo = {
@@ -212,7 +216,7 @@ task.spawn(function ()
                     ["difficulty"] = tostring(Data["PlayerData"]["rod"]),
                 },
             }
-            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertFish},{["state"] = StageInfo},{["time"] = 180},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
+            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertFish},{["state"] = StageInfo},{["time"] = 1},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
             SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
             Fishs = {} 
         end
