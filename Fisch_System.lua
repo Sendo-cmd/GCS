@@ -299,8 +299,9 @@ local function Auto_Config()
                         Post(PathWay .. "finished", CreateBody())
                     end
                 elseif Product["condition"]["type"] == "hour" then
-                    print(tonumber(OrderData["progress_value"]), Goal)
+                    print(tonumber(OrderData["progress_value"]) , Goal ,OrderData["target_value"]/60/60,OrderData["target_value"])
                     if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
+                        print("Finish")
                         Post(PathWay .. "finished", CreateBody())
                     end
                 elseif Product["condition"]["type"] == "items" then
