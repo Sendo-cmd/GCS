@@ -42,7 +42,7 @@ local Changes = {
         Settings["Select Island"] = "General"
         Settings["Shake Delay"] = 0.1
     end,
-    ["94140562-f986-4a1f-b613-96091c09d34d	"] = function()
+    ["94140562-f986-4a1f-b613-96091c09d34d"] = function()
         Settings["Method"] = "Legit"
         Settings["Duration"] = 1
         Settings["Select Island"] = "General"
