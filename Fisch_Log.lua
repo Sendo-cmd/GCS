@@ -1,3 +1,5 @@
+
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -180,6 +182,7 @@ task.spawn(function ()
         Fishs[#Fishs + 1] = b
     end)
     while true do task.wait()
+        print(#Fishs)
         if #Fishs >= 10 then
             local Data = GetAllData()
             local ConvertFish = {}
@@ -195,6 +198,9 @@ task.spawn(function ()
             for i,v in pairs(ConvertFish) do
                 LastConvertFish[#LastConvertFish + 1] = convertToField(i,v)
             end
+            for i,v in pairs(Data["PlayerData"]) do
+                print(i,v)
+            end
             print(Data["PlayerData"]["level"],Data["PlayerData"]["rod"])
             local StageInfo = {
                 ["win"] = true,
@@ -206,7 +212,7 @@ task.spawn(function ()
                     ["difficulty"] = tostring(Data["PlayerData"]["rod"]),
                 },
             }
-            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertFish},{["state"] = StageInfo},{["time"] = 180},{["currency"] = convertToField_(GetSomeCurrency())})
+            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertFish},{["state"] = StageInfo},{["time"] = 180},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
             SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
             Fishs = {} 
         end
