@@ -278,42 +278,48 @@ local function Auto_Config()
         Key = OrderData["id"]
     else
         print("Cannot Fetch Data")
-        return false;
+        return false
     end
-    local ConnectToEnd 
+
     if Changes[OrderData["product_id"]] then
         Changes[OrderData["product_id"]]()
         print("Changed Configs")
     end
-    task.spawn(function ()
+
+    task.spawn(function()
         while true do
             local OrderData = Fetch_data()
             if OrderData then
                 local Product = OrderData["product"]
                 local Goal = Product["condition"]["value"]
+
                 if Product["condition"]["type"] == "coins" then
-                    print(tonumber(OrderData["progress_value"]) , Goal)
-                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                    print(tonumber(OrderData["progress_value"]), Goal)
+                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
                     end
+
                 elseif Product["condition"]["type"] == "hour" then
-                    print(tonumber(OrderData["progress_value"]) , Goal)
-                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
+                    print(tonumber(OrderData["progress_value"]), Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"]) / 60 / 60) then
                         Post(PathWay .. "finished", CreateBody())
                     end
-                if Product["condition"]["type"] == "items" then
-                    print(tonumber(OrderData["progress_value"]) , Goal)
-                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+
+                elseif Product["condition"]["type"] == "items" then
+                    print(tonumber(OrderData["progress_value"]), Goal)
+                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
                     end
-                if Product["condition"]["type"] == "character" then
-                    print(tonumber(OrderData["progress_value"]) , Goal)
-                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+
+                elseif Product["condition"]["type"] == "character" then
+                    print(tonumber(OrderData["progress_value"]), Goal)
+                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
                     end
+
                 elseif Product["condition"]["type"] == "round" then
-                    print(tonumber(OrderData["progress_value"]) , Goal)
-                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                    print(tonumber(OrderData["progress_value"]), Goal)
+                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
                     end
                 end
@@ -322,6 +328,8 @@ local function Auto_Config()
         end
     end)
 end
+
+
 
 
 
