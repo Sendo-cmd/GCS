@@ -151,9 +151,6 @@ local function CreateBody(...)
     local body = {
         ["order_id"] = Order_Data["id"],
     }
-    local body = {
-        ["order_id"] = Order_Data["id"]
-    }
     local array = {...}
     for i,v in pairs(array) do
         for i1,v1 in pairs(v) do
