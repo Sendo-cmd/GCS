@@ -75,7 +75,7 @@ local Changes = {
         Settings["Shake Delay"] = 0.1
         Settings["Legit Configs"] = {
         ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = ., 
+        ["shake"] = .1, 
     }
     end,
 }
