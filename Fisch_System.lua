@@ -7,34 +7,55 @@ local Settings = {
     ["Select Island"] = "General",
     ["Method"] = "Instant", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
     ["Legit Configs"] = {
-        ["progress"] = 65, -- 65% of progress bar
+        ["progress"] = 15, -- 65% of progress bar
         ["shake"] = .15, 
     }
 }
 local Changes = {
     ["06cbaf4e-7e20-4ed0-b3d4-71d14315bacb"] = function()
-        
+        Settings["Method"] = "Legit"
+        Settings["Duration"] = 1
+        Settings["Select Island"] = "General"
+        Settings["Shake Delay"] = 0.1
     end,
     ["a5749994-eb20-4f3c-9f71-2d89adc90801"] = function()
-        
+        Settings["Method"] = "Legit"
+        Settings["Duration"] = 1
+        Settings["Select Island"] = "General"
+        Settings["Shake Delay"] = 0.1
     end,
     ["6fc8af97-d123-4979-afdf-cb4ea553cd9b"] = function()
-        
+        Settings["Method"] = "Legit"
+        Settings["Duration"] = 1
+        Settings["Select Island"] = "General"
+        Settings["Shake Delay"] = 0.1
     end,
     ["d8b8cc80-1d7a-485d-874b-874b223d2432"] = function()
-        
+        Settings["Method"] = "Legit"
+        Settings["Duration"] = 1
+        Settings["Select Island"] = "General"
+        Settings["Shake Delay"] = 0.1
     end,
     ["f14e5a6f-2ceb-4290-8989-06b4fd23fae3"] = function()
-        
+        Settings["Method"] = "Legit"
+        Settings["Duration"] = 1
+        Settings["Select Island"] = "General"
+        Settings["Shake Delay"] = 0.1
     end,
     ["94140562-f986-4a1f-b613-96091c09d34d	"] = function()
-        
+        Settings["Method"] = "Legit"
+        Settings["Duration"] = 1
+        Settings["Select Island"] = "General"
+        Settings["Shake Delay"] = 0.1
     end,
 }
 repeat  task.wait() until game:IsLoaded()
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Key = "NO_ORDER" 
 local PathWay = Api .. "/api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
+local ID = {
+    [5750914919] = {"Fisch"},
+}
 local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
 local IsGame = local_data[1]
 local Reeling_ = false
@@ -64,6 +85,7 @@ while loading and loading.Parent and loading.Enabled do task.wait()
 end 
 
 local plr = game:GetService("Players").LocalPlayer
+local HttpService = game:GetService("HttpService")
 local GuiService = game:GetService("GuiService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -458,13 +480,13 @@ end)
 while task.wait() do
     if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
         if plr.Character:GetAttribute("Fishing") then
-            print("In #1")
+            -- print("In #1")
         elseif plr.PlayerGui:FindFirstChild("shakeui") then
-            print("In #2")
+            -- print("In #2")
         elseif plr.PlayerGui:FindFirstChild("reel") then
-            print("In #3")
+            -- print("In #3")
         else
-            print("Hehe")
+            -- print("Hehe")
             local args = {
                 math.random(900,1000)/10,
                 1
