@@ -1,14 +1,20 @@
 local Island = {
     ["General"] = CFrame.new(1375.06812, -603.640137, 2340.38184, 0.928720474, 5.22775885e-08, -0.370780617, -3.27635945e-08, 1, 5.89280162e-08, 0.370780617, -4.25795506e-08, 0.928720474),
 }
+local ID = {
+    [5750914919] = {
+        [1] = "Fisch",
+        [2] = 1,
+    },
+}
 local Settings = {
-    ["Duration"] = 0.5, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
+    ["Duration"] = 1, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
     ["Shake Delay"] = 0.1, -- For Config
     ["Select Island"] = "General",
     ["Method"] = "Instant", -- "Instant" , "Normal" , "Slow" , "Config" , "Legit"
     ["Legit Configs"] = {
-        ["progress"] = 15, -- 65% of progress bar
-        ["shake"] = .15, 
+        ["progress"] = 65, -- 65% of progress bar
+        ["shake"] = .25, 
     }
 }
 local Changes = {
@@ -77,9 +83,6 @@ repeat  task.wait() until game:IsLoaded()
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Key = "NO_ORDER" 
 local PathWay = Api .. "/api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
-local ID = {
-    [5750914919] = {"Fisch"},
-}
 local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
 local IsGame = local_data[1]
 local Reeling_ = false
@@ -278,51 +281,46 @@ local function Auto_Config()
         return false;
     end
     local ConnectToEnd 
-    local Order = Get(PathWay .. "cache/" .. Key)
     if Changes[OrderData["product_id"]] then
         Changes[OrderData["product_id"]]()
         print("Changed Configs")
     end
-    if not Order["Success"] then
-        Post_(PathWay .. "cache",{
-            ["index"] = Key,
-            ["value"] = {}
-        })
-    else 
-            local Product = OrderData["product"]
-        local Goal = Product["condition"]["value"]
-        if Product["condition"]["type"] == "Coins" then
-            print(tonumber(OrderData["progress_value"]) , Goal)
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                if _G.Leave_Party then _G.Leave_Party() end
-                Post(PathWay .. "finished", CreateBody())
-            end
-        elseif Product["condition"]["type"] == "hour" then
-            print(tonumber(OrderData["progress_value"]) , Goal)
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
-                if _G.Leave_Party then _G.Leave_Party() end
-                Post(PathWay .. "finished", CreateBody())
-            end
-        elseif Product["condition"]["type"] == "character" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                   if _G.Leave_Party then _G.Leave_Party() end
-                    Post(PathWay .. "finished", CreateBody())
+    task.spawn(function ()
+        while true do
+            local OrderData = Fetch_data()
+            if OrderData then
+                local Product = OrderData["product"]
+                local Goal = Product["condition"]["value"]
+                if Product["condition"]["type"] == "coins" then
+                    print(tonumber(OrderData["progress_value"]) , Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                        Post(PathWay .. "finished", CreateBody())
+                    end
+                elseif Product["condition"]["type"] == "hour" then
+                    print(tonumber(OrderData["progress_value"]) , Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
+                        Post(PathWay .. "finished", CreateBody())
+                    end
+                if Product["condition"]["type"] == "items" then
+                    print(tonumber(OrderData["progress_value"]) , Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                        Post(PathWay .. "finished", CreateBody())
+                    end
+                if Product["condition"]["type"] == "character" then
+                    print(tonumber(OrderData["progress_value"]) , Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                        Post(PathWay .. "finished", CreateBody())
+                    end
+                elseif Product["condition"]["type"] == "round" then
+                    print(tonumber(OrderData["progress_value"]) , Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                        Post(PathWay .. "finished", CreateBody())
+                    end
                 end
-        elseif Product["condition"]["type"] == "items" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                    if _G.Leave_Party then _G.Leave_Party() end
-                    Post(PathWay .. "finished", CreateBody())
-                end
-        elseif Product["condition"]["type"] == "round" then
-            print(tonumber(OrderData["progress_value"]) , Goal)
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                if _G.Leave_Party then _G.Leave_Party() end
-                    Post(PathWay .. "finished", CreateBody())
             end
+            task.wait(10)
         end
-    end
+    end)
 end
 
 
