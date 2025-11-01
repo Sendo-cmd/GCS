@@ -6,6 +6,7 @@ local Url = "https://api.championshop.date"
 local List = {
     "IcedTea",
     "DragonToken",
+    "CakeSlices",
     "Gold",
     "Gems",
     "TraitRerolls"
