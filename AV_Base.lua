@@ -129,7 +129,10 @@ getgenv().Config = {
 				["Sukono"] = true,
 				["Dawntay (Jackpot)"] = true,
 				["Astolfo (Rider of Black)"] = true,
-				["Lfelt (Love)"] = true
+				["Lfelt (Love)"] = true,
+				["Rogita (Super)"] = true,
+				["Monkey King (Awakened)"] = true,
+				["Smith John"] = true,
 			},
 			["Leave Extra Money"] = 2000,
 			["Auto Statue"] = true
