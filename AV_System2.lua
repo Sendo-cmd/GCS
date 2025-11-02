@@ -123,6 +123,9 @@ local Order_Type = {
         "983626d0-e545-4bb2-9623-fad3c4899f81",
         "d88ae3d8-3e47-4de0-b18c-ee598fb2bb83",
     },
+    ["Anniversary Test"] = {
+        "d88ae3d8-3e47-4de0-b18c-ee598fb2bb83",
+    },
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
