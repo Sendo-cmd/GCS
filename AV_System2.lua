@@ -123,7 +123,6 @@ local Order_Type = {
         "983626d0-e545-4bb2-9623-fad3c4899f81",
     },
 }
-}
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
