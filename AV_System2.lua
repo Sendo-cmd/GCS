@@ -121,6 +121,7 @@ local Order_Type = {
         "42b71690-3363-46bd-b933-046241c9a2cc",
         "bc3274e0-17fd-4cc3-b4e2-55323a734993",
         "983626d0-e545-4bb2-9623-fad3c4899f81",
+        "d88ae3d8-3e47-4de0-b18c-ee598fb2bb83",
     },
 }
 local Players = game:GetService("Players")
@@ -439,6 +440,16 @@ local Changes = {
     end,
     ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
         Settings["Select Mode"] = "Summer"
+    end,
+    ["d88ae3d8-3e47-4de0-b18c-ee598fb2bb83"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act1",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Anniversary Dungeon",
+        ["FriendsOnly"] = false
+    }
     end,
     ["c3795c09-07c3-4b30-ba13-067deb00b9dc"] = function()
         Settings["Select Mode"] = "Dungeon"

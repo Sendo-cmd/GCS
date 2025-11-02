@@ -394,6 +394,16 @@ local Changes = {
     ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
         Settings["Select Mode"] = "Summer"
     end,
+    ["d88ae3d8-3e47-4de0-b18c-ee598fb2bb83"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act7",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Anniversary Dungeon",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["c3795c09-07c3-4b30-ba13-067deb00b9dc"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
