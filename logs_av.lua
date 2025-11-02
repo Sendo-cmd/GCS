@@ -9,7 +9,8 @@ local List = {
     "CakeSlices",
     "Gold",
     "Gems",
-    "TraitRerolls"
+    "TraitRerolls",
+    "BattlePass",
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
