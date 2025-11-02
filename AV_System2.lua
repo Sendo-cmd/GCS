@@ -121,7 +121,6 @@ local Order_Type = {
         "42b71690-3363-46bd-b933-046241c9a2cc",
         "bc3274e0-17fd-4cc3-b4e2-55323a734993",
         "983626d0-e545-4bb2-9623-fad3c4899f81",
-        "d88ae3d8-3e47-4de0-b18c-ee598fb2bb83",
     },
     ["Anniversary Test"] = {
         "d88ae3d8-3e47-4de0-b18c-ee598fb2bb83",
