@@ -1085,6 +1085,16 @@ local Changes = {
         ["Limiteless"] = false
     }
     end,
+    ["0a0f6982-c75c-4a9b-bbae-1da2a3f99666"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
 }
 if _G.User[plr.Name] then
     for i,v in pairs(_G.User[plr.Name]) do

@@ -1098,6 +1098,16 @@ local Changes = {
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
     end,
+    ["0a0f6982-c75c-4a9b-bbae-1da2a3f99666"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
 }
 local function Register_Room(myproduct,player)
     if IsGame == "AV" then
