@@ -78,6 +78,16 @@ local Changes = {
         ["shake"] = .1, 
     }
     end,
+    ["f663a980-3cb5-4227-96b7-4b8eb5da1803"] = function()
+        Settings["Method"] = "Instant"
+        Settings["Duration"] = 0.001
+        Settings["Select Island"] = "General"
+        Settings["Shake Delay"] = 0.1
+        Settings["Legit Configs"] = {
+        ["progress"] = 15, -- 65% of progress bar
+        ["shake"] = .1, 
+    }
+    end,
 }
 repeat  task.wait() until game:IsLoaded()
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
@@ -317,6 +327,11 @@ local function Auto_Config()
                         Post(PathWay .. "finished", CreateBody())
                     end
                 elseif Product["condition"]["type"] == "round" then
+                    -- print(tonumber(OrderData["progress_value"]), Goal)
+                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                        Post(PathWay .. "finished", CreateBody())
+                    end
+                elseif Product["condition"]["type"] == "level" then
                     -- print(tonumber(OrderData["progress_value"]), Goal)
                     if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
                         Post(PathWay .. "finished", CreateBody())
