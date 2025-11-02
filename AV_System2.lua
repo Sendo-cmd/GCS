@@ -113,6 +113,16 @@ local Order_Type = {
         "fc7a340c-7c98-4da6-84aa-a7e3ce4790c1",
         "d551991a-b8ec-4fe5-96f5-2fe6418a3e9a",
     },
+    ["Anniversary"] = {
+        "c3795c09-07c3-4b30-ba13-067deb00b9dc",
+        "659d38ba-bfed-4d48-93b0-b015e19fad58",
+        "e99f1149-1c90-4997-a99c-87e9dd812fe9",
+        "ce0355ef-7f25-42b7-8f4a-14a47c257ff8",
+        "42b71690-3363-46bd-b933-046241c9a2cc",
+        "bc3274e0-17fd-4cc3-b4e2-55323a734993",
+        "983626d0-e545-4bb2-9623-fad3c4899f81",
+    },
+}
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
