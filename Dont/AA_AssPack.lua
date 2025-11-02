@@ -313,5 +313,5 @@ getgenv().Config = {
 		}
 	}
 }
-getgenv().Key = "PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
+getgenv().Key = "PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB" -- key main[k517c79e9160307a9b87210d , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
 repeat wait(5)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(6)until Joebiden

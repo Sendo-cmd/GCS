@@ -307,5 +307,5 @@ getgenv().Config = {
 		["Auto Vote Start"] = true
 	}
 }
-getgenv().Key = "PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB" -- key main[ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
+getgenv().Key = "PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB" -- key main[k517c79e9160307a9b87210d , PkaqtHwDxdKOeNHlsbAJXeFpOCYXbCQB]
 repeat wait(1)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(1)until Joebiden
