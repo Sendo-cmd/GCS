@@ -744,7 +744,7 @@ getgenv().Config = {
 	},
 	["Modifier"] = {
 		["Restart Modifier"] = {
-			["Enable"] = true,
+			["Enable"] = false,
 			["Stage Type"] = {
 				["Odyssey"] = false,
 				["Challenge"] = false,
