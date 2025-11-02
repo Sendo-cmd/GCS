@@ -1,4 +1,3 @@
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -10,7 +9,6 @@ local List = {
     "Gold",
     "Gems",
     "TraitRerolls",
-    "Battlepass",
 }
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
