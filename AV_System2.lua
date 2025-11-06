@@ -2088,7 +2088,6 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end)
                 elseif Settings["Auto Priority"] then
-                    
                     for i,v in pairs(workspace.Units:GetChildren()) do
                         if v:IsA("Model") then
                             Priority(v,Settings["Priority"])
