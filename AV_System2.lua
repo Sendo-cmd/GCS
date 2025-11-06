@@ -2087,7 +2087,7 @@ if ID[game.GameId][1] == "AV" then
                             end
                         end
                     end)
-                else
+                elseif Settings["Auto Priority"] then
                     
                     for i,v in pairs(workspace.Units:GetChildren()) do
                         if v:IsA("Model") then
