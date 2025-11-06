@@ -1,9 +1,9 @@
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+task.spawn(function ()
 local function AntiAFK()
     local StarterPlayer = game:GetService('StarterPlayer')
     local Modules = StarterPlayer:WaitForChild('Modules')
@@ -85,7 +85,7 @@ function _G.CHALLENGE_CHECKCD()
                 end
             end
             if not IsBreak then
-               writefile(PATH_CDTIME, tostring(Closest + os.time() + 20))
+               writefile(PATH_CDTIME, Closest + os.time() + 20)
             end
         end
         Checkings()
@@ -1202,6 +1202,7 @@ if GetKai["Success"] then
     end
 end
 if IsKai then
+    print("Host")
     return false
 end
 local Auto_Configs = true
@@ -1317,7 +1318,7 @@ local function Auto_Config()
                 game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
                     Inventory = {}
                     for i,v in pairs(val1) do
-                        print(os.time(),i,v)
+                        -- print(os.time(),i,v)
                         if v then 
                             local call,err = pcall(function()
                                 Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
@@ -1453,12 +1454,6 @@ local function Auto_Config()
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
                 end
-            elseif Product["condition"]["type"] == "level" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
-                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                    if _G.Leave_Party then _G.Leave_Party() end
-                     Post(PathWay .. "finished", CreateBody())
-                end
             end
         end
             -- Post(PathWay .. "finished", {
@@ -1474,9 +1469,11 @@ local function Auto_Config()
         end
     end
 end
-
 Auto_Config()
-
+if Settings["Party Mode"] then
+    print("Member")
+    return false
+end
 -- All Modules
 local StagesData = LoadModule(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
 
@@ -1524,9 +1521,7 @@ if game.PlaceId == 16146832113 then
     game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
 end
 task.spawn(function()
-    if Settings["Party Mode"] then
-        return false
-    end
+    
     task.wait(10)
     if game.PlaceId == 16146832113 then
          
@@ -1884,4 +1879,5 @@ task.spawn(function()
             end
         end)
     end    
+end)
 end)
