@@ -257,7 +257,7 @@ local Settings ={
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
 
-    ["Auto Stun"] = true,
+    ["Auto Stun"] = false,
     ["Auto Priority"] = false,
     ["Priority"] = "First", 
     ["Party Mode"] = false,
@@ -304,7 +304,6 @@ local Settings ={
     },
     ["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Stage"] = "RumblingEvent",
     },
     ["Portal Settings"] = {
         ["ID"] = 113, -- 113 Love , 87 Winter
@@ -1477,11 +1476,11 @@ if GetKai["Success"] then
         end 
     end
 end
--- for _, v in ipairs(getgc(true)) do
---     if type(v) == "table" and rawget(v, "LoadData") then
---         print(v)
---     end
--- end
+for _, v in ipairs(getgc(true)) do
+    if type(v) == "table" and rawget(v, "LoadData") then
+        print(v)
+    end
+end
 if ID[game.GameId][1] == "AV" then
     local Networking = ReplicatedStorage:WaitForChild("Networking")
 
@@ -1498,7 +1497,7 @@ if ID[game.GameId][1] == "AV" then
             task.spawn(function()
                 local cache_key = Username
                 local channel = TextChatService.TextChannels:FindFirstChild("RBXGeneral")
-                local Waiting_Time = os.time() + 150
+                local Waiting_Time = os.time() + 200
                 local Attempt = 0
                 local Current_Party = nil
                 local Last_Message_1 = nil
@@ -1893,7 +1892,7 @@ if ID[game.GameId][1] == "AV" then
             local cache = GetCache(Username)
             if Changes[cache["product_id"]] then
                 Changes[cache["product_id"]]()
-                print("Configs has Changed ",cache["product_id"])
+                print("Configs has Changed ")
             end 
             local Last_Message_1 = nil
             local Last_Message_2 = nil
@@ -2019,23 +2018,15 @@ if ID[game.GameId][1] == "AV" then
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 local cache = GetCache(Username)
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-                    print("Party Member Request")
-                    task.wait(2)
                     game:shutdown()
-                elseif Results['StageType'] == "Challenge" then
-                    print("It's Challenge")
-                    task.wait(2)
+                end
+                if Results['StageType'] == "Challenge" then
                     game:shutdown()
                 elseif _G.CHALLENGE_CHECKCD() and Settings["Auto Join Challenge"] then
-                    print("Challenge CD")
-                    task.wait(2)
                     game:shutdown()
                 elseif Settings["Auto Join Bounty"] and task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") then
-                    print("Bounty")
-                    task.wait(2)
-                    print(plr.PlayerGui.EndScreen.Holder.Buttons:FindFirstChild("Bounty") , plr.PlayerGui.EndScreen.Holder.Buttons.Bounty["Visible"])
                     if plr.PlayerGui.EndScreen.Holder.Buttons:FindFirstChild("Bounty") and plr.PlayerGui.EndScreen.Holder.Buttons.Bounty["Visible"] then
-                        print("Can play")
+
                     else
                         game:shutdown()
                     end
@@ -2087,7 +2078,8 @@ if ID[game.GameId][1] == "AV" then
                             end
                         end
                     end)
-                elseif Settings["Auto Priority"] then
+                else
+                    
                     for i,v in pairs(workspace.Units:GetChildren()) do
                         if v:IsA("Model") then
                             Priority(v,Settings["Priority"])
@@ -2139,7 +2131,7 @@ if ID[game.GameId][1] == "AV" then
             local cache__ = GetCache(host)
             if Changes[cache__["product_id"]] then
                 Changes[cache__["product_id"]]()
-                print("Configs has Changed ",cache__["product_id"])
+                print("Configs has Changed ")
             end 
             -- Check If No Host In Lobby 
             task.wait(30)
@@ -2153,6 +2145,7 @@ if ID[game.GameId][1] == "AV" then
                     end
                 end
             end)
+            print("EIEIEIEIEI",Settings["Auto Priority"] , Settings["Priority Multi"] and Settings["Priority Multi"]["Enabled"])
             if Settings["Auto Priority"] or Settings["Priority Multi"] then
                 local Setting = Settings["Priority Multi"]
                 local function Priority(Model,ChangePriority)
