@@ -1453,6 +1453,11 @@ local function Auto_Config()
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
+            elseif Product["condition"]["type"] == "level" then
+                print(tonumber(OrderData["progress_value"]) , Goal)
+                if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                    if _G.Leave_Party then _G.Leave_Party() end
+                     Post(PathWay .. "finished", CreateBody())
                 end
             end
         end
