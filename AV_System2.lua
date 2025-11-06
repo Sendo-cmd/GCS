@@ -259,7 +259,7 @@ local Settings ={
 
     ["Auto Stun"] = true,
     ["Auto Priority"] = false,
-    ["Priority"] = "Closest", 
+    ["Priority"] = "First", 
     ["Party Mode"] = false,
 
     ["Priority Multi"] = {

@@ -1,8 +1,7 @@
-
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
+
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -21,7 +20,7 @@ repeat task.wait()
     Player_Folder = PlayersStats:WaitForChild(Client.Name,3) print(Player_Folder)
     Data = Player_Folder:WaitForChild("T"):WaitForChild(Client.Name,3) print(Data)
 until Data
-print("Loading..") 
+print("Loading..")
 local Client_= game:GetService("ReplicatedStorage"):WaitForChild("client")
 local LegacyControllers = Client_:WaitForChild("legacyControllers")
 local DataController = require(LegacyControllers:WaitForChild("DataController"))
