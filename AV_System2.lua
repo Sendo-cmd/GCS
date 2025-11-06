@@ -1,7 +1,4 @@
 
-local All_Key = {
-    ["AV"] = "Party-AV"
-}
 local ID = {
     [5578556129] = {
         [1] = "AV",
@@ -1892,9 +1889,9 @@ if ID[game.GameId][1] == "AV" then
         if IsKai then
             local cache = GetCache(Username)
             print(cache["product_id"])
-            if Changes[cache["product_id"]] then
-                Changes[cache["product_id"]]()
-                print("Configs has Changed ",cache["product_id"])
+            if Changes[cache["current_play"]] then
+                Changes[cache["current_play"]]()
+                print("Configs has Changed ",cache["current_play"])
             end 
             local Last_Message_1 = nil
             local Last_Message_2 = nil
@@ -2135,15 +2132,14 @@ if ID[game.GameId][1] == "AV" then
             
             local data = Fetch_data() 
             if not data["want_carry"] then return false end
-            local productid = data["product_id"]
             local orderid = data["id"]
             local cache_key = orderid .. "_cache_1"
             local cache = GetCache(cache_key)
             local host = cache["party"]
             local cache__ = GetCache(host)
-            if Changes[cache__["product_id"]] then
-                Changes[cache__["product_id"]]()
-                print("Configs has Changed ",cache__["product_id"])
+            if Changes[cache__["current_play"]] then
+                Changes[cache__["current_play"]]()
+                print("Configs has Changed ",cache__["current_play"])
             end 
             -- Check If No Host In Lobby 
             task.wait(30)
