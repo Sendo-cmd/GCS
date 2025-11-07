@@ -3,7 +3,7 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-task.spawn(function ()
+task.spawn(function()
 local function AntiAFK()
     local StarterPlayer = game:GetService('StarterPlayer')
     local Modules = StarterPlayer:WaitForChild('Modules')
@@ -85,7 +85,7 @@ function _G.CHALLENGE_CHECKCD()
                 end
             end
             if not IsBreak then
-               writefile(PATH_CDTIME, Closest + os.time() + 20)
+               writefile(PATH_CDTIME, tostring(Closest + os.time() + 20))
             end
         end
         Checkings()
@@ -1443,17 +1443,18 @@ local function Auto_Config()
                     Post(PathWay .. "finished", CreateBody())
                 end
             elseif Product["condition"]["type"] == "hour" then
-                print(tonumber(OrderData["progress_value"]) , Goal)
+                print(tonumber(OrderData["progress_value"]) , Goal , tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) , tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60))
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
                    if _G.Leave_Party then _G.Leave_Party() end
                    Post(PathWay .. "finished", CreateBody())
                 end
-            elseif Product["condition"]["type"] == "round" then
+            elseif Product["condition"]["type"] == "level" then
                 print(tonumber(OrderData["progress_value"]) , Goal)
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
                      Post(PathWay .. "finished", CreateBody())
-            elseif Product["condition"]["type"] == "level" then
+                end
+            elseif Product["condition"]["type"] == "round" then
                 print(tonumber(OrderData["progress_value"]) , Goal)
                 if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                     if _G.Leave_Party then _G.Leave_Party() end
@@ -1883,6 +1884,6 @@ task.spawn(function()
                 end
             end
         end)
-    end    
+    end
 end)
 end)
