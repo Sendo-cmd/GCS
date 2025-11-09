@@ -1,3 +1,4 @@
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -25,7 +26,6 @@ local Modules = ReplicatedStorage:WaitForChild("Modules")
 
 
 task.wait(1.5)
-local IsTimeChamber = game.PlaceId == 18219125606
 local IsTimeChamber = game.PlaceId == 18219125606
 
 local url = "https://api.championshop.date/logs"
@@ -212,7 +212,7 @@ local function GetData()
         game:GetService("ReplicatedStorage").Networking.InventoryEvent.OnClientEvent:Connect(function(val,val1)
             Inventory = {}
             for i,v in pairs(val1) do
-                -- print(os.time(),i,v)
+                print(os.time(),i,v)
                 if v then 
                     local call,err = pcall(function()
                         Inventory[i]["NAME"] = ItemsData.GetItemDataByID(true,v["ID"])
@@ -237,7 +237,6 @@ local function GetData()
 
     end
     local PlayerData = plr:GetAttributes()
-    
 
     repeat 
         -- print("Stucking")
@@ -271,6 +270,7 @@ if IsMain then
     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
 elseif IsMatch then
     warn("IN Match")
+    local Level = tonumber(plr:GetAttribute("Level"))
     local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
     local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
     Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
@@ -298,20 +298,23 @@ elseif IsMatch then
                 ConvertResult[#ConvertResult + 1] = convertToField(i1,v1["Amount"])
             end
         end
+        if Level ~= tonumber(plr:GetAttribute("Level")) then
+            ConvertResult[#ConvertResult + 1] = convertToField("Level",1)
+            Level = tonumber(plr:GetAttribute("Level"))
+        end
          warn("SendTo 3")
         -- Create StageInfo
-        if Results["Status"] == "Finished" then
+        if Results["Status"] == "Finished" or Results["Act"] == "Infinite" then
             Times = Results["TimeTaken"]
             StageInfo["win"] = true
         else
-            Times = Results["TimeTaken"]
             StageInfo["win"] = false
         end
          print("SendTo 4")
         if not StageInfo["map"] then
            
             local GameData = GameHandler.GameData
-        
+            
             StageInfo["map"] = {
                 ["name"] = Results["StageName"],
                 ["chapter"] = Results["Act"],
