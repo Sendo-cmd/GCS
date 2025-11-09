@@ -520,6 +520,46 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["a0805ded-393d-46c5-9d9f-aa532e6f726b"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act9",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Anniversary Dungeon",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["636ecf68-cfb2-400b-93c0-3e217d011e8a"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act9",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Anniversary Dungeon",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["b74918bc-c060-4b9f-8caa-1323bbccdf4b	"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act9",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Anniversary Dungeon",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["b6e76418-6470-434e-badc-cb5ce7b18edb"] = function()
+        Settings["Select Mode"] = "Dungeon"
+        Settings["Dungeon Settings"] = {
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Act9",
+        ["StageType"] = "Dungeon",
+        ["Stage"] = "Anniversary Dungeon",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
