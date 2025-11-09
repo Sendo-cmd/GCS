@@ -494,7 +494,7 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    ["b74918bc-c060-4b9f-8caa-1323bbccdf4b	"] = function()
+    ["b74918bc-c060-4b9f-8caa-1323bbccdf4b"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
@@ -864,16 +864,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    [""] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Double Dungeon",
-        ["FriendsOnly"] = false
-    }
-    end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Legend Stage"
+    --     Settings["Legend Settings"] = {
+    --     ["Difficulty"] = "Nightmare",
+    --     ["Act"] = "Act3",
+    --     ["StageType"] = "LegendStage",
+    --     ["Stage"] = "Double Dungeon",
+    --     ["FriendsOnly"] = false
+    -- }
+    -- end,
     ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -904,16 +904,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    [""] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Kuinshi Palace",
-        ["FriendsOnly"] = false
-    }
-    end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Legend Stage"
+    --     Settings["Legend Settings"] = {
+    --     ["Difficulty"] = "Nightmare",
+    --     ["Act"] = "Act3",
+    --     ["StageType"] = "LegendStage",
+    --     ["Stage"] = "Kuinshi Palace",
+    --     ["FriendsOnly"] = false
+    -- }
+    -- end,
     ["e7403190-850c-49e5-b2b0-b4949e477c47"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
@@ -944,16 +944,16 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
-    [""] = function()
-        Settings["Select Mode"] = "Legend Stage"
-        Settings["Legend Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act3",
-        ["StageType"] = "LegendStage",
-        ["Stage"] = "Land of the Gods",
-        ["FriendsOnly"] = false
-    }
-    end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Legend Stage"
+    --     Settings["Legend Settings"] = {
+    --     ["Difficulty"] = "Nightmare",
+    --     ["Act"] = "Act3",
+    --     ["StageType"] = "LegendStage",
+    --     ["Stage"] = "Land of the Gods",
+    --     ["FriendsOnly"] = false
+    -- }
+    -- end,
     ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
         Settings["Select Mode"] = "Legend Stage"
         Settings["Legend Settings"] = {
