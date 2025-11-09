@@ -56,6 +56,7 @@ function _G.CHALLENGE_CHECKCD()
         local function Checkings()
             local IsBreak = false
             local Closest = math.huge
+            task.wait(.2)
             for i, v in pairs(ChallengesData.GetChallengeTypes()) do
                 for i1, v1 in pairs(ChallengesData.GetChallengesOfType(v)) do
                     local Type = v1.Type
@@ -1569,7 +1570,7 @@ task.spawn(function()
          
         local ChallengesData = require(game:GetService('ReplicatedStorage').Modules.Data.Challenges.ChallengesData)
         local TraitChallenge = {}
-        game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent.OnClientEvent:Connect(function(type_,value_)
+        local ccc = game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent.OnClientEvent:Connect(function(type_,value_)
             if type_ == "ChallengeData" and #TraitChallenge == 0 then 
                 for i,v in pairs(value_) do
                     if ChallengesData.GetChallengeRewards(i)['Currencies'] and ChallengesData.GetChallengeRewards(i)['Currencies']['TraitRerolls'] then
@@ -1581,7 +1582,7 @@ task.spawn(function()
         task.wait(1)
         game:GetService('ReplicatedStorage').Networking.ClientReplicationEvent:FireServer('ChallengeData')
         task.wait(1)
-        
+        ccc:Disconnect()
         warn("Hello 2")
         local function GetItem(ID)
             game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
@@ -1598,9 +1599,21 @@ task.spawn(function()
             for i,v in pairs(TraitChallenge) do
                 print(i,v)
                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("ChallengesEvent"):FireServer("StartChallenge",v)
-                task.wait(5)
+                -- game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("ChallengesEvent"):FireServer("StartMatch")
+                task.wait(2.5)
+                if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MiniLobbyInterface") then
+                    print("Found Room")
+                    local args = {
+                        [1] = "StartMatch"
+                    }
+                    
+                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+                    task.wait(20)
+                end
+                task.wait(2.5)
             end
         end
+        print("Out")
         if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
             while true do
                 local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
@@ -1618,6 +1631,11 @@ task.spawn(function()
             end
         end
         task.spawn(function()
+            print("In")
+            if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MiniLobbyInterface") then
+                task.wait(10)
+            end
+            print("In 1")
             while Settings["Auto Join Bounty"] do
                 local PlayerBountyDataHandler = require(game:GetService('StarterPlayer').Modules.Gameplay.Bounty.PlayerBountyDataHandler)
                 local BountyData = require(game:GetService('ReplicatedStorage').Modules.Data.BountyData)
@@ -1647,6 +1665,7 @@ task.spawn(function()
             end
         end)
         task.wait(6)
+        print(Settings["Select Mode"])
         if Settings["Select Mode"] == "World Line" then
             while true do
                 game:GetService("ReplicatedStorage").Networking.WorldlinesEvent:FireServer("Teleport","Traits")
