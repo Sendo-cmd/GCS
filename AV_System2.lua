@@ -310,6 +310,7 @@ local Settings ={
     },
 }
 local Changes = {
+    -- ถ้าต้องการสร้าง configs แบบไหนให้ order ก็เปลี่ยนแปลงเหมือนใส่ config ธรรมดาได้เลย สร้างครั้งนึงแล้วเหมือนกันทุก order
     -- ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
     --     Settings["Select Mode"] = "Portal"
     --     Settings["Portal Settings"] = {
@@ -360,6 +361,16 @@ local Changes = {
     --     ["Ignore Modify"] = {},
     -- }
     -- end,
+    -- ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
     -- ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
     --     Settings["Select Mode"] = "Portal"
     --     Settings["Portal Settings"] = {
@@ -371,16 +382,6 @@ local Changes = {
     -- }
     -- end,
     -- ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
     --     Settings["Select Mode"] = "Portal"
     --     Settings["Portal Settings"] = {
     --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
@@ -523,7 +524,7 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
+        ["Act"] = "Act7",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
@@ -533,7 +534,7 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
-        ["Act"] = "Act1",
+        ["Act"] = "Act7",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
@@ -647,7 +648,6 @@ local Changes = {
         ["StageType"] = "Raid",
         ["Stage"] = "Ruined City",
         ["FriendsOnly"] = false
-        
     }
     end,
     ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
@@ -668,7 +668,6 @@ local Changes = {
         ["StageType"] = "Raid",
         ["Stage"] = "Ruined City",
         ["FriendsOnly"] = false
-        
     }
     end,
     ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
@@ -1036,12 +1035,11 @@ local Changes = {
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
         Settings["Auto Join Challenge"] = true
-    end,
-    ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
-        Settings["Auto Join Challenge"] = true
+    
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
+
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1066,29 +1064,33 @@ local Changes = {
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
     end,
+    ["503237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
+        Settings["Auto Join Challenge"] = true
+        Settings["Auto Join Bounty"] = true
+    end,
     ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
     end,
     ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Auto Join Bounty"] = true
+       Settings["Auto Join Challenge"] = true
+       Settings["Auto Join Bounty"] = true
     end,
     ["143f6820-6e5e-4f6e-b3f9-3de3e9586271"] = function()
-        Settings["Select Mode"] = "Boss Event"
-        Settings["Boss Event Settings"] = {
+       Settings["Select Mode"] = "Boss Event"
+       Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
     }
     end,
     ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
-        Settings["Select Mode"] = "Boss Event"
-        Settings["Boss Event Settings"] = {
+       Settings["Select Mode"] = "Boss Event"
+       Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
     }
     end,
     ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
-        Settings["Select Mode"] = "Boss Event"
-        Settings["Boss Event Settings"] = {
+       Settings["Select Mode"] = "Boss Event"
+       Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
     }
     end,
@@ -1098,6 +1100,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
     }
     end,
+
     ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
         Settings["Auto Join Rift"] = true
     end,
@@ -1116,7 +1119,35 @@ local Changes = {
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
     end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Odyssey"
+    --     Settings["Odyssey Settings"] = {
+    --     ["Limiteless"] = false
+    -- }
+    -- end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Odyssey"
+    --     Settings["Odyssey Settings"] = {
+    --     ["Limiteless"] = false
+    -- }
+    -- end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Odyssey"
+    --     Settings["Odyssey Settings"] = {
+    --     ["Limiteless"] = false
+    -- }
+    -- end,
     ["0a0f6982-c75c-4a9b-bbae-1da2a3f99666"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["e7afcb6e-2418-4dfe-8eda-8339bd920012"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",

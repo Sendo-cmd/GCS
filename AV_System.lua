@@ -991,10 +991,6 @@ local Changes = {
         Settings["Auto Join Challenge"] = true
     
     end,
-    ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
-        Settings["Auto Join Challenge"] = true
-
-    end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
 
@@ -1077,24 +1073,24 @@ local Changes = {
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
     end,
-    [""] = function()
-        Settings["Select Mode"] = "Odyssey"
-        Settings["Odyssey Settings"] = {
-        ["Limiteless"] = false
-    }
-    end,
-    [""] = function()
-        Settings["Select Mode"] = "Odyssey"
-        Settings["Odyssey Settings"] = {
-        ["Limiteless"] = false
-    }
-    end,
-    [""] = function()
-        Settings["Select Mode"] = "Odyssey"
-        Settings["Odyssey Settings"] = {
-        ["Limiteless"] = false
-    }
-    end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Odyssey"
+    --     Settings["Odyssey Settings"] = {
+    --     ["Limiteless"] = false
+    -- }
+    -- end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Odyssey"
+    --     Settings["Odyssey Settings"] = {
+    --     ["Limiteless"] = false
+    -- }
+    -- end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Odyssey"
+    --     Settings["Odyssey Settings"] = {
+    --     ["Limiteless"] = false
+    -- }
+    -- end,
     ["0a0f6982-c75c-4a9b-bbae-1da2a3f99666"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
