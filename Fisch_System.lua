@@ -89,12 +89,11 @@ local Changes = {
     }
     end,
 }
+setfpscap(15)
 repeat  task.wait() until game:IsLoaded()
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Key = "NO_ORDER" 
-local PathWay = Api .. "/api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
-local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
-local IsGame = local_data[1]
+local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
 local Reeling_ = false
 local FishCount = 0
 local BreakFish = 0
@@ -104,6 +103,9 @@ local MainSettings = {
     ["Path_Cache"] = "/api/v1/shop/orders/cache",
     ["Path_Kai"] = "/api/v1/shop/accountskai",
 }
+
+
+
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 local tloading = tick() + 5
@@ -291,49 +293,33 @@ local function Auto_Config()
         Key = OrderData["id"]
     else
         print("Cannot Fetch Data")
-        return false
+        return false;
     end
-
+    local ConnectToEnd 
     if Changes[OrderData["product_id"]] then
         Changes[OrderData["product_id"]]()
         print("Changed Configs")
     end
-
-    task.spawn(function()
+    task.spawn(function ()
         while true do
             local OrderData = Fetch_data()
             if OrderData then
                 local Product = OrderData["product"]
                 local Goal = Product["condition"]["value"]
-
-                if Product["condition"]["type"] == "coins" then
-                    -- print(tonumber(OrderData["progress_value"]), Goal)
-                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                if Product["condition"]["type"] == "Coins" then
+                    print(tonumber(OrderData["progress_value"]) , Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                         Post(PathWay .. "finished", CreateBody())
                     end
                 elseif Product["condition"]["type"] == "hour" then
-                    -- print(tonumber(OrderData["progress_value"]) , Goal)
+                    print(tonumber(OrderData["progress_value"]) , Goal ,OrderData["target_value"]/60/60,OrderData["target_value"])
                     if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
-                        Post(PathWay .. "finished", CreateBody())
-                    end
-                elseif Product["condition"]["type"] == "items" then
-                    -- print(tonumber(OrderData["progress_value"]), Goal)
-                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
-                        Post(PathWay .. "finished", CreateBody())
-                    end
-                elseif Product["condition"]["type"] == "character" then
-                    -- print(tonumber(OrderData["progress_value"]), Goal)
-                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                        print("Finish")
                         Post(PathWay .. "finished", CreateBody())
                     end
                 elseif Product["condition"]["type"] == "round" then
-                    -- print(tonumber(OrderData["progress_value"]), Goal)
-                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
-                        Post(PathWay .. "finished", CreateBody())
-                    end
-                elseif Product["condition"]["type"] == "level" then
-                    -- print(tonumber(OrderData["progress_value"]), Goal)
-                    if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                    print(tonumber(OrderData["progress_value"]) , Goal)
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                         Post(PathWay .. "finished", CreateBody())
                     end
                 end
@@ -342,9 +328,7 @@ local function Auto_Config()
         end
     end)
 end
-
 Auto_Config()
-
 local library = require(ReplicatedStorage.shared.modules.library);
 for i,v in pairs(library.rods) do
     if type(v) == "table" then
@@ -356,7 +340,6 @@ local function DistanceWithoutY(vec1,vec2)
     local Vect2 = Vector3.new(vec2.x,0,vec2.z)
     return (Vect1 - Vect2).Magnitude
 end
-
 plr.PlayerGui.ChildAdded:Connect(function(v)
     if v.Name == "shakeui" then
         Shaking(v)
@@ -393,25 +376,25 @@ task.spawn(function()
         end)
     end
 end)
-task.spawn(function()
-    while task.wait() do
-        if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
-            if plr.Character:GetAttribute("Fishing") then
-                -- print("In #1")
-            elseif plr.PlayerGui:FindFirstChild("shakeui") then
-                -- print("In #2")
-            elseif plr.PlayerGui:FindFirstChild("reel") then
-                -- print("In #3")
-            else
-                -- print("Hehe")
+
+while task.wait() do
+    if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
+        if plr.Character:GetAttribute("Fishing") then
+            print("In #1")
+        elseif plr.PlayerGui:FindFirstChild("shakeui") then
+            print("In #2")
+        elseif plr.PlayerGui:FindFirstChild("reel") then
+            print("In #3")
+        else
+            print("Hehe")
+            task.delay(.01,function()
                 local args = {
                     math.random(900,1000)/10,
                     1
                 }
                 game:GetService("Players").LocalPlayer.Character:FindFirstChildWhichIsA("Tool"):WaitForChild("events"):WaitForChild("castAsync"):InvokeServer(unpack(args))
-            end
-            task.wait(1.5)
+            end)
         end
+        task.wait(1.5)
     end
-end)
-print("LOADED")
+end
