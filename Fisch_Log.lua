@@ -2,7 +2,6 @@ repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
-
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
@@ -20,7 +19,7 @@ repeat task.wait()
     Player_Folder = PlayersStats:WaitForChild(Client.Name,3) print(Player_Folder)
     Data = Player_Folder:WaitForChild("T"):WaitForChild(Client.Name,3) print(Data)
 until Data
-print("Loading..")
+print("Loading..") 
 local Client_= game:GetService("ReplicatedStorage"):WaitForChild("client")
 local LegacyControllers = Client_:WaitForChild("legacyControllers")
 local DataController = require(LegacyControllers:WaitForChild("DataController"))
@@ -30,8 +29,6 @@ local List = {
     "coins",
     "level",
     "rod",
-    "xp",
-    "bait",
 }
 task.wait(1.5)
 
@@ -177,6 +174,7 @@ local function GetAllData()
 end
 
 local Data = GetAllData()
+local StartLevel = Data["PlayerData"]["level"]
 SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
 
 task.spawn(function ()
@@ -201,8 +199,9 @@ task.spawn(function ()
             for i,v in pairs(ConvertFish) do
                 LastConvertFish[#LastConvertFish + 1] = convertToField(i,v)
             end
-            for i,v in pairs(Data["PlayerData"]) do
-                print(i,v)
+            if Data["PlayerData"]["level"]  ~=  StartLevel then
+                LastConvertFish[#LastConvertFish + 1] = convertToField("Level",1)
+                StartLevel = Data["PlayerData"]["level"]
             end
             print(Data["PlayerData"]["level"],Data["PlayerData"]["rod"])
             local StageInfo = {
