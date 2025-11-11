@@ -409,7 +409,7 @@ getgenv().Config = {
 		["Teleport Lobby new Challenge"] = false
 	},
 	["Performance"] = {
-		["Delete Map"] = true,
+		["Delete Map"] = false,
 		["Boost FPS"] = true,
 		["Black Screen"] = false,
 		["Delete Entities"] = true
@@ -502,7 +502,7 @@ getgenv().Config = {
 		["Auto Join"] = false
 	},
 	["Secure"] = {
-		["Random Offset"] = true,
+		["Random Offset"] = false,
 		["Walk Around"] = false
 	},
 	["Boss Bounties Joiner"] = {
