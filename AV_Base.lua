@@ -409,7 +409,7 @@ getgenv().Config = {
 		["Teleport Lobby new Challenge"] = false
 	},
 	["Performance"] = {
-		["Delete Map"] = false,
+		["Delete Map"] = true,
 		["Boost FPS"] = true,
 		["Black Screen"] = false,
 		["Delete Entities"] = true
