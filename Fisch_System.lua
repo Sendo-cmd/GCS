@@ -317,6 +317,10 @@ local function Auto_Config()
                         print("Finish")
                         Post(PathWay .. "finished", CreateBody())
                     end
+                elseif Product["condition"]["type"] == "level" then
+                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                        Post(PathWay .. "finished", CreateBody())
+                    end
                 elseif Product["condition"]["type"] == "round" then
                     print(tonumber(OrderData["progress_value"]) , Goal)
                     if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
