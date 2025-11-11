@@ -309,6 +309,7 @@ elseif IsMatch then
             StageInfo["win"] = true
         else
             StageInfo["win"] = false
+            Times = Results["TimeTaken"]
         end
          print("SendTo 4")
         if not StageInfo["map"] then
