@@ -139,13 +139,13 @@ getgenv().Config = {
 		},
 		["Saber Event"] = {
 			["Servant"] = "Berserker",
-			["Auto Select Servant"] = false
+			["Auto Select Servant"] = true
 		},
 		["Steel Ball Run"] = {
-			["Collect Steel Ball"] = false
+			["Collect Steel Ball"] = true
 		},
 		["Random Sacrifice Domain"] = {
-			["Sell Units on Event"] = false
+			["Sell Units on Event"] = true
 		},
 		["Auto Vote Start"] = false,
 		["Auto Skip Wave"] = {
