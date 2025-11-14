@@ -1,1 +1,0 @@
-loadstring(game:HttpGet('https://raw.githubusercontent.com/aresZee7/ZeeHub/refs/heads/main/HZ.lua'))()

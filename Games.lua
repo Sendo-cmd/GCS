@@ -82,8 +82,9 @@ Games = {
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_System.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/Fisch_Log.lua",
     },
-    [7750955984] = { --Fisch
-        ["Base"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/HZ_Base.lua",
+    [7750955984] = { --Hz
+        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/HZ_System.lua",
+        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/HZ_Log.lua",
     }
 }
 Accounts = {}
@@ -101,7 +102,7 @@ local BaseScripts = {
     ["5750914919"] = { "Log", "System" },
     ["6884266247"] = { "Log", "System" },
     ["4509896324"] = { "System" },
-    ["7750955984"] = { "Base" },
+    ["7750955984"] = { "Log", "System" },
 }
 
 for i, v in pairs(Accounts) do
