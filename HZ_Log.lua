@@ -126,8 +126,8 @@ task.spawn(function ()
             ["win"] = val,
             ["map"] = {
                 ["name"] = tostring(workspace:GetAttribute("Mapname")),
-                ["chapter"] = "0",
-                ["wave"] = "0",
+                ["chapter"] = "hello",
+                ["wave"] = "season",
                 ["mode"] = tostring(workspace:GetAttribute("Mode")),
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
             },
@@ -139,7 +139,7 @@ task.spawn(function ()
     if Client:GetAttribute("escaped") then
         local drop = {}
         for i,v in pairs(HttpService:JSONDecode(Client:GetAttribute("drops"))) do
-            drop = convertToField(i,v)
+            drop[#drop + 1] = convertToField(i,v)
         end
         Send(true,drop)
     else
