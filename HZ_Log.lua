@@ -1,3 +1,5 @@
+
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -129,7 +131,7 @@ task.spawn(function ()
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
             },
         }
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = val and data or {"No Reward"}},{["state"] = StageInfo},{["time"] = timetaken},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
+        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = val and data or {}},{["state"] = StageInfo},{["time"] = timetaken},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
     end
     if Client:GetAttribute("escaped") then
