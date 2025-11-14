@@ -100,6 +100,7 @@ local function SendTo(Url,...)
         },
         ["Body"] = HttpService:JSONEncode(CreateBody(...))
     })
+    setclipboard(HttpService:JSONEncode(CreateBody(...)))
     for i,v in pairs(response) do
         warn(i,v)
     end 
