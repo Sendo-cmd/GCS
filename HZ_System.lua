@@ -354,60 +354,6 @@ local function Post(Url,...)
     })
     return response
 end
-local function SendCache(...)
-    return Post(Url .. MainSettings["Path_Cache"],...)
-end
-local function DelCache(OrderId)
-    local response = request({
-        ["Url"] = Url .. MainSettings["Path_Cache"] .. OrderId,
-        ["Method"] = "POST",
-        ["Headers"] = {
-            ["x-http-method-override"] = "DELETE",
-            ["content-type"] = "application/json",
-            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4",
-        },
-    })
-    return response
-end
-local function GetCache(OrderId)
-    local Cache = Get(Url .. MainSettings["Path_Cache"] .. OrderId)
-    if not Cache["Success"] then
-        return false
-    end
-    local Data = DecBody(Cache)
-    return Data
-end
-local function UpdateCache(OrderId,...)
-    local args = {...}
-    local data = GetCache(OrderId)
-
-    if not data then warn("Cannot Update") return false end
-    for i,v in pairs(args) do
-        for i1,v1 in pairs(v) do
-            data[i1] = v1
-        end
-    end
-    warn("Update Cache")
-    return SendCache({
-        ["index"] = OrderId
-    },
-    {
-        ["value"] = data,
-    })
-end
-local function Post_(Url,data)
-    local response = request({
-        ["Url"] = Url,
-        ["Method"] = "POST",
-        ["Headers"] = {
-            ["content-type"] = "application/json",
-            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
-        },
-        ["Body"] = HttpService:JSONEncode(data)
-    })
-   
-    return response
-end
 local function Auto_Config(id)
     if Auto_Configs and not IsTest then
         local OrderData = Fetch_data()
@@ -417,8 +363,6 @@ local function Auto_Config(id)
             print("Cannot Fetch Data")
             return false;
         end
-        local ConnectToEnd 
-        local Order = Get(MainSettings["Path_Cache"] .. Key)
         if id then
             if Changes[id] then
                 Changes[id]()
