@@ -118,7 +118,7 @@ task.spawn(function ()
     
     local gamestart = workspace:GetAttribute("gamestart") or 0
     repeat task.wait() until workspace:GetAttribute("gameend")
-    local timetaken = (workspace:GetAttribute("gameend") or workspace:GetServerTimeNow()) - v18gamestart7
+    local timetaken = (workspace:GetAttribute("gameend") or workspace:GetServerTimeNow()) - gamestart
     
     local function Send(val,data)
         local StageInfo = {
