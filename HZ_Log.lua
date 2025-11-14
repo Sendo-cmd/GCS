@@ -100,7 +100,7 @@ local function SendTo(Url,...)
         },
         ["Body"] = HttpService:JSONEncode(CreateBody(...))
     })
-    setclipboard(HttpService:JSONEncode(CreateBody(...)))
+    -- setclipboard(HttpService:JSONEncode(CreateBody(...)))
     for i,v in pairs(response) do
         warn(i,v)
     end 
@@ -132,6 +132,7 @@ task.spawn(function ()
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
             },
         }
+        setclipboard({["logs"] = val and data or {}},{["state"] = StageInfo},{["time"] = timetaken},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = val and data or {}},{["state"] = StageInfo},{["time"] = timetaken},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
     end
