@@ -1,52 +1,3 @@
--- local client = game:GetService("Players").LocalPlayer
--- local attacks = {[1] = "\t\006\001",[2] = "\t\004\001",[3] = "\t\a\001",[4] = "\t\t\001"}
--- local anims = game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Core"):WaitForChild("Animations")
--- while task.wait() do
---     if client.Character then
---         for i,v in pairs(attacks) do
---             if client.Character and client.Character:FindFirstChildWhichIsA("Tool") then
---                 local Attack_id = client.Character:FindFirstChildWhichIsA("Tool").Name .. "Attack" .. i
---                 if Attack_id then
---                     -- local Load = client.Character.Humanoid:LoadAnimation(anims[Attack_id])
---                     -- Load:AdjustSpeed(999)
---                     -- Load:Play()
---                     game:GetService("ReplicatedStorage"):WaitForChild("ByteNetReliable"):FireServer(buffer.fromstring(v),{workspace:GetServerTimeNow()}) 
---                     -- task.wait(.1)
---                 end
---             end
---         end
---     end
--- end
--- -- game:GetService("ReplicatedStorage").external.ReplicateService
-
--- -- local a = require(game:GetService("ReplicatedStorage").Client.ReplicateService)
--- -- for i,v in pairs(a.GetData()) do
--- --     print(i,v)
--- -- end
--- local client = game:GetService("Players").LocalPlayer
--- local old = client.Character.HumanoidRootPart.CFrame
--- for i,v in pairs(workspace.School.Doors:GetChildren()) do
---     client.Character.HumanoidRootPart.CFrame = v["DoorL"]:GetPivot() task.wait(.1)
--- end
--- -- while task.wait() do
--- client.Character.HumanoidRootPart.CFrame = old 
--- -- end
-
--- task.spawn(function ()
---     while true do 
---         local p,c = pcall(function()
---             if workspace.Entities.Zombie:FindFirstChildWhichIsA("Model") then
-                
---             end
---         end)
---         task.wait()
---     end
--- end)
-    
-
-
-
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -55,7 +6,7 @@ repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:Fi
 
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
-local IsTest = true
+local IsTest = false
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
@@ -74,7 +25,6 @@ local Settings = {
         ["Select Mode"] = "Raid", -- Campaign , Raid
     },
 }
-_G.LOG = {[1] = Settings["Select Mode"],[2] = Settings[Settings["Select Mode"] .." Room Settings"]}
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
         Settings["Select Mode"] = "Normal"
@@ -238,7 +188,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "Shogun Castle",
@@ -251,7 +201,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "Shogun Castle",
@@ -264,7 +214,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "Shogun Castle",
@@ -277,7 +227,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "ReaperTrial",
@@ -290,7 +240,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "ReaperTrial",
@@ -303,7 +253,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "ReaperTrial",
@@ -316,7 +266,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "ReaperTrial",
@@ -329,7 +279,7 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
         }
-        Settings["Select Mode"] = "Normal",
+        Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "ReaperTrial",
@@ -476,6 +426,7 @@ local function Auto_Config(id)
             end 
             return false
         else
+            print(OrderData["product_id"],Changes[OrderData["product_id"]])
             if Changes[OrderData["product_id"]] then
                 Changes[OrderData["product_id"]]()
                 print("Changed Configs")
@@ -486,7 +437,7 @@ local function Auto_Config(id)
         end
         local Product = OrderData["product"]
         local Goal = Product["condition"]["value"]
-        elseif Product["condition"]["type"] == "level" then
+        if Product["condition"]["type"] == "level" then
             if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                 Post(MainSettings["Path"] .. "finished", CreateBody())
             end
@@ -510,7 +461,7 @@ local function Auto_Config(id)
     end
 end
 
-task.spawn(Auto_Config)
+Auto_Config()
 
 
 local attacks = {[1] = "\t\006\001",[2] = "\t\004\001",[3] = "\t\a\001",[4] = "\t\t\001"}
@@ -530,26 +481,28 @@ if IsFolder then
         local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
         while true do task.wait()
             if Client.PlayerGui.GUI.StartPlaceRedo.Visible then
+                print(Setting)
                 local Content = Client.PlayerGui.GUI.StartPlaceRedo.Content.iContent
                 clicking(Content.options.buttons.friendonly) task.wait(.1)
                 clicking(Content.options.buttons.choosemodes)
                 for i,v in pairs(Content["upmodes"]:GetChildren()) do
                     if v:IsA("TextButton") and v:FindFirstChild("TextLabel") and v["Visible"] and v["TextLabel"]["Text"] == Setting["Select Mode"] then
-                        --  warn(i,v) 
+                         warn(i,v) 
                         clicking(v)
                     end
                 end
                 clicking(Content.options.buttons.choosemap) task.wait(.1)
                 for i,v in pairs(Content["maps"]:GetChildren()) do
+                    
                     if v:IsA("TextButton") and v:FindFirstChild("TextLabel") and v["Visible"] and v["TextLabel"]["Text"] == Setting["Select Map"] then
-                        -- warn(i,v)
+                        warn(i,v)
                         clicking(v)
                     end
                 end
                 clicking(Content.options.buttons.choosediffs) task.wait(.1)
                 for i,v in pairs(Content["modes"]:GetChildren()) do
                     if v:IsA("TextButton") and v:FindFirstChild("TextLabel") and v["Visible"] and v["TextLabel"]["Text"] == Setting["Select Difficulty"] then
-                        --   warn(i,v)
+                          warn(i,v)
                         clicking(v)
                     end
                 end
