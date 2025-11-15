@@ -419,7 +419,19 @@ local function clicking(path)
     game:GetService("GuiService").SelectedCoreObject = path task.wait(0.1)
     SendKey("Return",.01) task.wait(0.1)
 end
+task.wait(2)
+if Client.PlayerGui:FindFirstChild("LOADING") then
+    task.spawn(function()
+        for i = 1,5 do task.wait()
+            if Client.PlayerGui:FindFirstChild("LOADING") then
+                clicking(lient.PlayerGui:FindFirstChild("LOADING").Frame.SkipButton)
+            end
+        end
+    end)
+end
+
 if IsFolder then
+    task.wait(10)
     local ReplicateService =  require(ReplicatedStorage:WaitForChild("Client"):WaitForChild("ReplicateService"))
     if Settings["Select Mode"] == "Normal" then
         local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -510,6 +522,10 @@ else
             print("Nothing To do")
         elseif game:GetService("ReplicatedStorage").gameStats.LevelObject.Value.Name == "Shogun Castle" then
              Character.HumanoidRootPart.CFrame = workspace["Shogun Castle"].Rooms.IdleRoom.Building.C2.CFrame
+        elseif game:GetService("ReplicatedStorage").gameStats.LevelObject.Value.Name == "ReaperTrial" then
+             Character.HumanoidRootPart.CFrame = workspace["ReaperTrial"].Rooms.IdleRoom.Building.C2.CFrame
+       
+       
         end
         
         task.spawn(function ()
@@ -521,7 +537,7 @@ else
             end
         end)
         task.spawn(function ()          
-            print("Next 3")                                     
+            -- print("Next 3")                                     
             while Current == Countings do task.wait()
                 local p,c = pcall(function ()
                     for i,v in pairs(Entities["entities"]) do
@@ -531,10 +547,10 @@ else
                     end
                 end)
                 if not p then
-                    print(c)
+                    -- print(c)
                 end
             end
-            print("Next 4")
+            -- print("Next 4")
         end)
         task.spawn(function ()
             task.wait(2)
@@ -572,9 +588,11 @@ else
         repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
 
         task.wait(2)
-        for i,v in pairs(workspace.DropItems:GetChildren()) do task.wait(.05)
-            Client.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,-5.5,.8)   
-        end 
+        for _ = 1,3 do task.wait()
+            for i,v in pairs(workspace.DropItems:GetChildren()) do task.wait(.12)
+                Client.Character.HumanoidRootPart.CFrame = v.CFrame * CFrame.new(0,-5.5,.8)   
+            end 
+        end
         task.wait(2)
 
         local Current = Countings
