@@ -87,7 +87,7 @@ local function SendTo(Url,...)
     })
     -- setclipboard(HttpService:JSONEncode(CreateBody(...)))
     for i,v in pairs(response) do
-        warn(i,v)
+        -- warn(i,v)
     end 
     return response
 end
@@ -114,8 +114,8 @@ task.spawn(function ()
             ["win"] = val,
             ["map"] = {
                 ["name"] = tostring(workspace:GetAttribute("Mapname")),
-                ["chapter"] = "hello",
-                ["wave"] = "season",
+                ["chapter"] = "0",
+                ["wave"] = "0",
                 ["mode"] = tostring(workspace:GetAttribute("Mode")),
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
             },
