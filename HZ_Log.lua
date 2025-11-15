@@ -15,15 +15,15 @@ local ReplicateService =  require(ReplicatedStorage:FindFirstChild("ReplicateSer
 
 
 local Url = "https://api.championshop.date"
-local List = {
-    "Coin",
-    "BattlePasses",
-    "Exps",
-}
-local Lists = {
-    ["BattlePasses"] = "Level",
-    ["Exps"] = {"Level","Exp"},
-}
+-- local List = {
+--     "Coin",
+--     "BattlePasses",
+--     "Exps",
+-- }
+-- local Lists = {
+--     ["BattlePasses"] = "Level",
+--     ["Exps"] = {"Level","Exp"},
+-- }
 task.wait(1.5)
 
 
@@ -41,30 +41,15 @@ local function convertToField_(table_)
     return Field
 end
 local function GetSomeCurrency()
-    local Field = {}
-    for i,v in pairs(ReplicateService.GetData()) do
-        if table.find(List,i) then
-            -- local NewVal = type(v.Value) == "number" and formatNumber(v.Value)
-            local value = v
-            if type(v) == "table" then
-                -- print(i,v)
-                -- print(i,v[Lists[i]],Lists[i])
-                if type(Lists[i]) == "table" then
-                    -- warn(i,v)
-                    for i1,v1 in pairs(v) do
-                        if table.find(Lists[i],i1) then
-                            Field[i1] = v1
-                        end
-                    end
-                    continue;
-                else
-                    value = v[Lists[i]]
-                end
-               
-            end
-            Field[i] = value
-        end
-    end
+    local Data = ReplicateService.GetData()
+    local Field = {
+        ["BattlePass Level"] = Data["BattlePasses"]["Level"],
+        ["Level"] = Data["Exps"]["Level"],
+        ["Exp"] = Data["Exps"]["Exp"],
+        ["Coin"] = Data["Coin"],
+    } 
+    
+    
     return Field
 end
 local function CreateBody(...)
@@ -116,11 +101,14 @@ local Data = GetAllData()
 SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
 
 task.spawn(function ()
-    
+    local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
+    local MasteryLevel_ = Tool_:GetAttribute("MasteryLevel") or 1
+    local MasteryExp_ = Tool_:GetAttribute("MasteryExp") or 0
+    local MasteryMaxExp_ = Tool_:GetAttribute("MasteryMaxExp") or 0
+    local LevelP_ = GetSomeCurrency()["Level"]
     local gamestart = workspace:GetAttribute("gamestart") or 0
     repeat task.wait() until workspace:GetAttribute("gameend")
     local timetaken = (workspace:GetAttribute("gameend") or workspace:GetServerTimeNow()) - gamestart
-    
     local function Send(val,data)
         local StageInfo = {
             ["win"] = val,
@@ -132,14 +120,43 @@ task.spawn(function ()
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
             },
         }
-        setclipboard(HttpService:JSONEncode({["logs"] = val and data or {}},{["state"] = StageInfo},{["time"] = timetaken},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())}))
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = val and data or {}},{["state"] = StageInfo},{["time"] = timetaken},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
+        -- setclipboard(HttpService:JSONEncode({["logs"] = val and data or {}},{["state"] = StageInfo},{["time"] = timetaken},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())}))
+        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = val and data or {}},{["state"] = StageInfo},{["time"] = math.floor(timetaken)},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
     end
     if Client:GetAttribute("escaped") then
         local drop = {}
+        local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
+        local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
+        local MasteryExp = Tool_:GetAttribute("MasteryExp") or 0
+        local MasteryMaxExp = Tool_:GetAttribute("MasteryMaxExp") or 0
+        local LevelP = GetSomeCurrency()["Level"]
+        local Earned_Mastery = 0
+        if (MasteryExp - MasteryExp_) > 0 then
+            Earned_Mastery = (MasteryExp - MasteryExp_)
+        else
+            local c = (MasteryMaxExp_ - MasteryExp_)
+            Earned_Mastery = c + MasteryExp
+        end 
         for i,v in pairs(HttpService:JSONDecode(Client:GetAttribute("drops"))) do
-            drop[#drop + 1] = convertToField(i,v)
+            if v:find("item_") then
+                local s = v:gsub("item_","")
+                drop[#drop + 1] = convertToField(s,v)
+            else
+                drop[#drop + 1] = convertToField(i,v)
+            end
+        end
+        for i,v in pairs(HttpService:JSONDecode(Client:GetAttribute("stats"))) do
+            if table.find({"cash","exp"}) then
+                 drop[#drop + 1] = convertToField(i,v)
+            end
+        end
+        drop[#drop + 1] = convertToField("Mastery",Earned_Mastery)
+        if MasteryLevel_ ~= MasteryLevel then
+            drop[#drop + 1] = convertToField("Level Mastery",Earned_Mastery)
+        end
+        if LevelP_ ~= LevelP then
+            drop[#drop + 1] = convertToField("Level",1)
         end
         Send(true,drop)
     else
