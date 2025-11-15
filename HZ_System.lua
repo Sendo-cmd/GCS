@@ -684,10 +684,10 @@ else
                         while v["health"] > 0 and v["model"] do task.wait()
                              if tick() > DodgeTicks then
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-5,1)
-                                print("D")
+                                -- print("D")
                             else
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-50,50)
-                                print("D1")
+                                -- print("D1")
                             end
                         end
                     end
@@ -705,10 +705,10 @@ else
                         while v["health"] > 0 and v["model"] do task.wait()
                             if tick() > DodgeTicks then
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-5,1)
-                                print("22")
+                                -- print("22")
                             else
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-50,50)
-                                print("221")
+                                -- print("221")
                             end
                         end
                     end
