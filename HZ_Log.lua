@@ -148,12 +148,12 @@ task.spawn(function ()
         end
         for i,v in pairs(HttpService:JSONDecode(Client:GetAttribute("stats"))) do
             if table.find({"cash","exp"},i) then
-                 drop[#drop + 1] = convertToField(i,v)
+                 drop[#drop + 1] = convertToField(i,math.floor(v))
             end
         end
         drop[#drop + 1] = convertToField("Mastery",Earned_Mastery)
         if MasteryLevel_ ~= MasteryLevel then
-            drop[#drop + 1] = convertToField("Level Mastery",Earned_Mastery)
+            drop[#drop + 1] = convertToField("Level Mastery",1)
         end
         if LevelP_ ~= LevelP then
             drop[#drop + 1] = convertToField("Level",1)
