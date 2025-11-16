@@ -87,7 +87,7 @@ local function SendTo(Url,...)
     })
     -- setclipboard(HttpService:JSONEncode(CreateBody(...)))
     for i,v in pairs(response) do
-        -- warn(i,v)
+        warn(i,v)
     end 
     return response
 end
@@ -139,7 +139,7 @@ task.spawn(function ()
             Earned_Mastery = c + MasteryExp
         end 
         for i,v in pairs(HttpService:JSONDecode(Client:GetAttribute("drops"))) do
-            if v:find("item_") then
+            if type(i) == "string" and i:find("item_") then
                 local s = v:gsub("item_","")
                 drop[#drop + 1] = convertToField(s,v)
             else
