@@ -104,7 +104,26 @@ task.spawn(function ()
     local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
     local MasteryLevel_ = Tool_:GetAttribute("MasteryLevel") or 1
     local MasteryExp_ = Tool_:GetAttribute("MasteryExp") or 0
-    local MasteryMaxExp_ = Tool_:GetAttribute("MasteryMaxExp") or 0
+    local EarnedMas = 0
+    local EarnedLev = 0
+    
+    Tool_:GetAttributeChangedSignal("MasteryLevel"):Connect(function()
+        local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
+        if MasteryLevel_ ~= MasteryLevel then
+            EarnedLev = EarnedLev + 1
+            MasteryLevel_ = MasteryLevel
+        end
+    end)
+    Tool_:GetAttributeChangedSignal("MasteryExp"):Connect(function()
+        local MasteryExp = Tool_:GetAttribute("MasteryExp") or 0
+        if MasteryExp_ ~= MasteryExp then
+            local minus = (MasteryExp - MasteryExp_)
+            local Earned = minus < 0 and MasteryExp or minus
+            EarnedMas = EarnedMas + Earned
+            MasteryExp_ = MasteryExp
+        end
+    end)
+
     local LevelP_ = GetSomeCurrency()["Level"]
     local gamestart = workspace:GetAttribute("gamestart") or 0
     repeat task.wait() until workspace:GetAttribute("gameend")
@@ -125,19 +144,8 @@ task.spawn(function ()
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
     end
     if Client:GetAttribute("escaped") then
-        local drop = {}
-        local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
-        local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
-        local MasteryExp = Tool_:GetAttribute("MasteryExp") or 0
-        local MasteryMaxExp = Tool_:GetAttribute("MasteryMaxExp") or 0
+        local drop = {}   
         local LevelP = GetSomeCurrency()["Level"]
-        local Earned_Mastery = 0
-        if (MasteryExp - MasteryExp_) > 0 then
-            Earned_Mastery = (MasteryExp - MasteryExp_)
-        else
-            local c = (MasteryMaxExp_ - MasteryExp_)
-            Earned_Mastery = c + MasteryExp
-        end 
         for i,v in pairs(HttpService:JSONDecode(Client:GetAttribute("drops"))) do
             if type(i) == "string" and i:find("item_") then
                 local s = i:gsub("item_","")
@@ -151,9 +159,9 @@ task.spawn(function ()
                  drop[#drop + 1] = convertToField(i,math.floor(v))
             end
         end
-        drop[#drop + 1] = convertToField("Mastery",Earned_Mastery)
-        if MasteryLevel_ ~= MasteryLevel then
-            drop[#drop + 1] = convertToField("Level Mastery",1)
+        drop[#drop + 1] = convertToField("Mastery",EarnedMas)
+        if EarnedLev >= 1 then
+            drop[#drop + 1] = convertToField("Level Mastery",EarnedLev)
         end
         if LevelP_ ~= LevelP then
             drop[#drop + 1] = convertToField("Level",1)
