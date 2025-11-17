@@ -1,8 +1,11 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
-task.wait(3)
-repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
+task.wait(1)
+repeat task.wait() until getrenv()["shared"]["loaded"]
+if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
+    repeat task.wait() until not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
+end
 
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
@@ -459,6 +462,7 @@ end
 if IsFolder then
     task.wait(10)
     local ReplicateService =  require(ReplicatedStorage:WaitForChild("Client"):WaitForChild("ReplicateService"))
+    _G.IMDONE =true
     if Settings["Select Mode"] == "Normal" then
         local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
         while true do task.wait()
@@ -710,10 +714,10 @@ else
                         while v["health"] > 0 and v["model"] do task.wait()
                              if tick() > DodgeTicks then
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-5,1)
-                                -- print("D")
+                                print("D")
                             else
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-50,50)
-                                -- print("D1")
+                                print("D1")
                             end
                         end
                     end
@@ -731,10 +735,10 @@ else
                         while v["health"] > 0 and v["model"] do task.wait()
                             if tick() > DodgeTicks then
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-5,1)
-                                -- print("22")
+                                print("22")
                             else
                                 Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-50,50)
-                                -- print("221")
+                                print("221")
                             end
                         end
                     end
@@ -785,6 +789,7 @@ else
         game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
     end)
     game:GetService("ReplicatedStorage").gameStats:GetAttributeChangedSignal("levelName"):Connect(Start)
+    _G.IMDONE =true
     task.spawn(function ()
         repeat
             task.wait()
