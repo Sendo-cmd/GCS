@@ -5,14 +5,16 @@ task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"]
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     local function checker()
-        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")then
-            return not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING").Enabled == false
+        print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
+            print("X")
+            return not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING").Enabled
         end
         return true
     end
     repeat task.wait() until checker()
 end
-
+print("A")
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
 local IsTest = false
@@ -20,19 +22,6 @@ local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
     ["Path_Kai"] = "/api/v1/shop/accountskai/",
-}
-local Settings = {
-    ["Farm Settings"] = {
-        ["Offset"] = CFrame.new(0,-5,0),
-        ["Camera Viewer"] = false,
-        ["Auto Skill"] = true,
-    },
-    ["Select Mode"] = "Normal",
-    ["Normal Room Settings"] = {
-        ["Select Difficulty"] = "Normal", -- Normal , Nightmare
-        ["Select Map"] = "Shogun Castle",
-        ["Select Mode"] = "Raid", -- Campaign , Raid
-    },
 }
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
@@ -44,7 +33,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -57,7 +46,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -70,7 +59,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -83,7 +72,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -96,7 +85,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -109,7 +98,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -122,7 +111,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -135,7 +124,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -148,7 +137,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -161,7 +150,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -174,7 +163,7 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
@@ -187,14 +176,40 @@ local Changes = {
         }
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
+            ["Auto Skill"] = true,
+        }
+    end,
+    ["485e425d-a98c-4139-bd3b-e4bf78a51bdb"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Island",
+            ["Select Mode"] = "Campaign",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = true,
+            ["Auto Skill"] = true,
+        }
+    end,
+    ["e81687f4-87cc-4682-83ef-2e56f9eedee9"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Island",
+            ["Select Mode"] = "Campaign",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
     end,
     ["64dfd949-3f2f-4ec0-b519-57185b9a64ae"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
@@ -207,7 +222,7 @@ local Changes = {
     ["f7d88ab0-6302-4a61-a5d0-fa59d5570ae7"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
@@ -220,7 +235,7 @@ local Changes = {
     ["e1328886-da89-45c8-8d20-d1586b6bfe8b"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
@@ -233,7 +248,7 @@ local Changes = {
     ["fe344d0c-29e2-483a-b47a-5e8910d8ea01"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
@@ -246,7 +261,7 @@ local Changes = {
     ["ae7733f-ee3b-4a2d-a380-4e6829123dc7"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
@@ -259,7 +274,7 @@ local Changes = {
     ["7b082a2e-0df5-4039-9116-f3bd50581b27"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
@@ -272,7 +287,7 @@ local Changes = {
     ["34b5794b-95e0-4aa5-93dd-9b19fb3fa5c1"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
@@ -285,7 +300,7 @@ local Changes = {
     ["11ea8126-a38b-45aa-97d5-a1d1a413125a	"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
+            ["Camera Viewer"] = true,
             ["Auto Skill"] = true,
         }
         Settings["Select Mode"] = "Normal"
