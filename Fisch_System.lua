@@ -1,11 +1,5 @@
 local Island = {
-    ["General"] = CFrame.new(1375.06812, -603.640137, 2340.38184, 0.928720474, 5.22775885e-08, -0.370780617, -3.27635945e-08, 1, 5.89280162e-08, 0.370780617, -4.25795506e-08, 0.928720474),
-}
-local ID = {
-    [5750914919] = {
-        [1] = "Fisch",
-        [2] = 1,
-    },
+    ["General"] = CFrame.new(359.832642, 133.873108, 230.474777, -0.00131273316, -4.51925433e-12, 0.999999166, 3.2915657e-13, 1, 4.51969018e-12, -0.999999166, 3.35089432e-13, -0.00131273316),
 }
 local Settings = {
     ["Duration"] = 1, -- Instant 1.5 - Normal 2.5 , Slow Depend on Fish
@@ -314,11 +308,6 @@ local function Auto_Config()
                 elseif Product["condition"]["type"] == "hour" then
                     print(tonumber(OrderData["progress_value"]) , Goal ,OrderData["target_value"]/60/60,OrderData["target_value"])
                     if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
-                        Post(PathWay .. "finished", CreateBody())
-                    end
-                elseif Product["condition"]["type"] == "level" then
-                    print(tonumber(OrderData["progress_value"]) , Goal)
-                    if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
                         print("Finish")
                         Post(PathWay .. "finished", CreateBody())
                     end
@@ -381,7 +370,7 @@ task.spawn(function()
         end)
     end
 end)
-
+_G.IMDONE =true
 while task.wait() do
     if plr.Character and plr.Character:FindFirstChildWhichIsA("Tool") then
         if plr.Character:GetAttribute("Fishing") then
