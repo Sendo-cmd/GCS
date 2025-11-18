@@ -3,23 +3,37 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
-repeat task.wait() until getrenv()["shared"]["loaded"]
-if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    local function checker()
-        print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
-        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
-            print("X")
-            return not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING").Enabled
-        end
-        return true
-    end
-    repeat task.wait() until checker()
-end
+repeat task.wait() until getrenv()["shared"]["loaded"] or  game:GetService("ReplicatedFirst"):FindFirstChild("Loading")
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
 local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
+local VirtualInputManager = game:GetService('VirtualInputManager')
+
+local function SendKey(key,dur)
+    VirtualInputManager:SendKeyEvent(true,key,false,game) task.wait(dur)
+    VirtualInputManager:SendKeyEvent(false,key,false,game)
+end
+local function clicking(path)
+    game:GetService("GuiService").SelectedCoreObject = path task.wait(0.1)
+    SendKey("Return",.01) task.wait(0.1)
+end
+if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
+    local function checker()
+        print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
+            local LOADING =  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
+            if LOADING:FindFirstChildWhichIsA("TextButton",true) then
+                clicking(LOADING:FindFirstChildWhichIsA("TextButton",true))
+            end
+            return not LOADING.Enabled
+        end
+        return true
+    end
+    repeat task.wait() until checker()
+end
+
 local Client = Players.LocalPlayer
 -- Folder
 local ReplicateService =  require(ReplicatedStorage:FindFirstChild("ReplicateService",true))
