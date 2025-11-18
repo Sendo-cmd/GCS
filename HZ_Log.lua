@@ -3,7 +3,18 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
-
+repeat task.wait() until getrenv()["shared"]["loaded"]
+if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
+    local function checker()
+        print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
+        if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
+            print("X")
+            return not game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING").Enabled
+        end
+        return true
+    end
+    repeat task.wait() until checker()
+end
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
@@ -133,8 +144,8 @@ task.spawn(function ()
             ["win"] = val,
             ["map"] = {
                 ["name"] = tostring(workspace:GetAttribute("Mapname")),
-                ["chapter"] = "hello",
-                ["wave"] = "season",
+                ["chapter"] = "0",
+                ["wave"] = "0",
                 ["mode"] = tostring(workspace:GetAttribute("Mode")),
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
             },
