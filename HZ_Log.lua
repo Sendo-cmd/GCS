@@ -13,7 +13,7 @@ local HttpService = game:GetService("HttpService")
 local Client = Players.LocalPlayer
 -- Folder
 local ReplicateService =  require(ReplicatedStorage:FindFirstChild("ReplicateService",true))
-setfpscap(11)
+
 
 local Url = "https://api.championshop.date"
 -- local List = {

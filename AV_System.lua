@@ -4,6 +4,7 @@ repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 task.spawn(function()
+setfpscap(11)
 local function AntiAFK()
     local StarterPlayer = game:GetService('StarterPlayer')
     local Modules = StarterPlayer:WaitForChild('Modules')

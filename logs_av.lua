@@ -27,7 +27,6 @@ local Modules = ReplicatedStorage:WaitForChild("Modules")
 
 task.wait(1.5)
 local IsTimeChamber = game.PlaceId == 18219125606
-setfpscap(11)
 
 local url = "https://api.championshop.date/logs"
 print(game.PlaceId)

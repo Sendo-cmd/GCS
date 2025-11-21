@@ -33,6 +33,7 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     repeat task.wait() until checker()
 end
 print("A")
+setfpscap(11)
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
 local IsTest = false
