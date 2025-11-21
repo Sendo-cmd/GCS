@@ -22,7 +22,8 @@ local Collection = Player:WaitForChild("Collection")
 
 if game.GameId ~= 6884266247 then return warn("Doesn't match ID") end
 repeat task.wait() until Client:GetAttribute("ClientLoaded")
-print("Loading..") 
+print("Loading..")
+setfpscap(11)
 
 
 
