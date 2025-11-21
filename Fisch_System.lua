@@ -83,7 +83,6 @@ local Changes = {
     }
     end,
 }
-setfpscap(15)
 repeat  task.wait() until game:IsLoaded()
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Key = "NO_ORDER" 
