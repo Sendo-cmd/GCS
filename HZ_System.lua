@@ -1,3 +1,4 @@
+setfpscap(11)
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
 local IsTest = false
