@@ -731,7 +731,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                Character.HumanoidRootPart.CFrame = Pipe:GetPivot() * Settings["Payload"]["Pipe Offset"]
+                                Character.HumanoidRootPart.CFrame = Pipe:GetPivot() * Settings["Farm Settings"]["Payload"]["Pipe Offset"]
                                 Enemy = true
                             else
                                 Enemy = nil
@@ -776,7 +776,7 @@ else
             end
         end)
         task.spawn(function ()                                             
-            while Settings["Payload"]["Kill"] do task.wait()
+            while Settings["Farm Settings"]["Payload"]["Kill"] do task.wait()
                local p,c = pcall(function ()
                     if tick() >= BreakToKill or Client.PlayerGui.Plyload.BUFF.Visible then
                         print("Killing Mob")
@@ -787,7 +787,7 @@ else
                             while v["health"] > 0 and v["model"] and KillMob > tick() do task.wait()
                                 if not Pickup then
                                     _G.Attacks()
-                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * Settings["Payload"]["Monster Offset"]
+                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * Settings["Farm Settings"]["Payload"]["Monster Offset"]
                                 end
                             end
                         end
