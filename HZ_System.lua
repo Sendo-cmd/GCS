@@ -363,7 +363,108 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
 end
 
 _G.IMDONE =true
--- workspace.City.Rooms.Spawn.BASE
+local function Get(Url)
+    local Data = request({
+        ["Url"] = Url,
+        ["Method"] = "GET",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+    })
+    return Data
+end
+local function Fetch_data()
+    local Data = Get(Url ..MainSettings["Path"] .. Username)
+    if not Data["Success"] then
+        return false
+    end
+    local Order_Data = HttpService:JSONDecode(Data["Body"])
+    return Order_Data["data"][1]
+end
+if not Fetch_data() and not IsTest then
+    Client:Kick("Cannot Get Data")
+end
+local function DecBody(body)
+    return HttpService:JSONDecode(body["Body"])["data"]
+end
+local function CreateBody(...)
+    local Order_Data = Fetch_data()
+    local body = {
+        ["order_id"] = Order_Data["id"],
+    }
+    local array = {...}
+    for i,v in pairs(array) do
+        for i1,v1 in pairs(v) do
+            body[i1] = v1
+        end
+    end
+    return body
+end
+local function Post(Url,...)
+    local response = request({
+        ["Url"] = Url,
+        ["Method"] = "POST",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+        ["Body"] = HttpService:JSONEncode(CreateBody(...))
+    })
+    return response
+end
+local function Auto_Config(id)
+    if Auto_Configs and not IsTest then
+        local OrderData = Fetch_data()
+        if OrderData then
+            Key = OrderData["id"]
+        else
+            print("Cannot Fetch Data")
+            return false;
+        end
+        if id then
+            if Changes[id] then
+                Changes[id]()
+                print("Changed Configs")
+            end 
+            return false
+        else
+            print(OrderData["product_id"],Changes[OrderData["product_id"]])
+            if Changes[OrderData["product_id"]] then
+                Changes[OrderData["product_id"]]()
+                print("Changed Configs")
+            end 
+        end
+        if OrderData["want_carry"] then
+            Settings["Party Mode"] = true
+        end
+        local Product = OrderData["product"]
+        local Goal = Product["condition"]["value"]
+        if Product["condition"]["type"] == "level" then
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                Post(Url..MainSettings["Path"] .. "finished")
+            end
+        elseif Product["condition"]["type"] == "character" then
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                Post(Url..MainSettings["Path"] .. "finished")
+            end
+        elseif Product["condition"]["type"] == "items" then
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                Post(Url..MainSettings["Path"] .. "finished")
+            end
+        elseif Product["condition"]["type"] == "hour" then
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
+                Post(Url..MainSettings["Path"] .. "finished")
+            end
+        elseif Product["condition"]["type"] == "round" then
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                Post(Url..MainSettings["Path"] .. "finished")
+            end
+        end
+    end
+end
+
+Auto_Config()
 
 if getrenv()["shared"]["loaded"] then
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
