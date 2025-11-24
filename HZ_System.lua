@@ -1,4 +1,3 @@
-setfpscap(11)
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
 local IsTest = false
@@ -626,6 +625,7 @@ if getrenv()["shared"]["loaded"] then
                 if v.Name == "Part" and v.MatchBoard.InfoLabel.Text == "Start Here" then
                     Client.Character.HumanoidRootPart.CFrame = v.CFrame
                     firetouchinterest(Client.Character.HumanoidRootPart,v,true)
+                    task.wait(1)
                 end
             end
         end
@@ -836,7 +836,9 @@ else
             end
         end)
     else
-        print("H3")
+        task.delay(240,function()
+        
+        end)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
@@ -1062,7 +1064,3 @@ else
         end)
     end)
 end
-
-
-
-
