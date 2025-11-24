@@ -32,11 +32,17 @@ local MainSettings = {
 --         ["Select Mode"] = "Campaign", -- Campaign , Raid
 --     },
 -- }
+
 local Settings = {
     ["Farm Settings"] = {
         ["Offset"] = CFrame.new(0,-5,0),
         ["Camera Viewer"] = false,
         ["Auto Skill"] = true,
+        ["Payload"] = {
+            ["Monster Offset"] = CFrame.new(0,0,2.5),
+            ["Pipe Offset"] = CFrame.new(0,0,3),
+            ["Kill"] = true,
+        },
     },
     ["Select Mode"] = "Normal",
     ["Normal Room Settings"] = {
@@ -609,7 +615,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                Character.HumanoidRootPart.CFrame = Pipe:GetPivot()
+                                Character.HumanoidRootPart.CFrame = Pipe:GetPivot() * Settings["Payload"]["Pipe Offset"]
                                 Enemy = true
                             else
                                 Enemy = nil
@@ -654,7 +660,7 @@ else
             end
         end)
         task.spawn(function ()                                             
-            while true do task.wait()
+            while Settings["Payload"]["Kill"] do task.wait()
                local p,c = pcall(function ()
                     if tick() >= BreakToKill or Client.PlayerGui.Plyload.BUFF.Visible then
                         print("Killing Mob")
@@ -665,7 +671,7 @@ else
                             while v["health"] > 0 and v["model"] and KillMob > tick() do task.wait()
                                 if not Pickup then
                                     _G.Attacks()
-                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * CFrame.new(0,0,2.5)
+                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * Settings["Payload"]["Monster Offset"]
                                 end
                             end
                         end
