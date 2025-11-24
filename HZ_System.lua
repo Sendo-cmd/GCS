@@ -411,6 +411,7 @@ else
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
+    local CanSkill = true
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
@@ -466,11 +467,11 @@ else
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
         local PauseToTakeItem = false
+        local Pickup = false
+        local BreakToKill = tick() + 10
+        local BreakToKill_ = false
         local Base = Workspace:FindFirstChild("BASE",true)
-        -- workspace.Items:GetChildren()[4]
-        -- workspace.Items:GetChildren()[3].PickupHitbox
-        -- workspace.Terrain.Wheel
-        -- workspace.Props.Pipe
+
         local function NearestPipe()
             for i,v in pairs(workspace.Props:GetChildren()) do
                 if v.Name == "Pipe" and (v:GetPivot().Position - Base:GetPivot().Position).Magnitude < 25 then
@@ -488,17 +489,30 @@ else
                         PauseToTakeItem = true
                         local Wheel = workspace.Terrain.Wheel
                         while Wheel.Parent do
-                            Character.HumanoidRootPart.CFrame = Wheel:GetPivot()
-                            if Wheel:FindFirstChildWhichIsA("ProximityPrompt") then
-                                fireproximityprompt(Wheel:FindFirstChildWhichIsA("ProximityPrompt"))
+                            if not Pickup and not BreakToKill_ then
+                                Character.HumanoidRootPart.CFrame = Wheel:GetPivot()
+                                if Wheel:FindFirstChildWhichIsA("ProximityPrompt",true) then
+                                    local Prompt = Wheel:FindFirstChildWhichIsA("ProximityPrompt",true)
+                                    Prompt.GamepadKeyCode = Enum.KeyCode.E
+                                    Prompt.RequiresLineOfSight = false
+                                    Prompt.MaxActivationDistance = 150
+                                    Prompt.HoldDuration = 0
+                                    print(Prompt)
+                                    sendkey("E",.01)
+                                end
                             end
                             task.wait()
                         end
                     elseif NearestPipe() then
                         local Pipe = NearestPipe()
+                        PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
-                            Character.HumanoidRootPart.CFrame = Pipe:GetPivot()
-                            Enemy = true
+                            if not Pickup and not BreakToKill_ then
+                                Character.HumanoidRootPart.CFrame = Pipe:GetPivot()
+                                Enemy = true
+                            else
+                                Enemy = nil
+                            end
                         end
                         Enemy = nil
                     else
@@ -507,14 +521,65 @@ else
                     end
                end)
                 if not p then
+                    print(p,c)
                 end
             end
         end)
-
+        task.spawn(function ()                                             
+            while true do task.wait()
+               local p,c = pcall(function ()
+                    if Client.PlayerGui.Plyload.BUFF.Visible then
+                        task.wait(1)
+                        for i,v in pairs(Client.PlayerGui.Plyload.BUFF.Items:GetChildren()) do
+                            if v:IsA("TextButton") and v.Name:match("Strength") then
+                                clicking(v)
+                                return false
+                            end
+                        end
+                        task.wait(1)
+                        if Client.PlayerGui.Plyload.BUFF.Visible then
+                            for i,v in pairs(Client.PlayerGui.Plyload.BUFF.Items:GetChildren()) do
+                                if v:IsA("TextButton") then
+                                    clicking(v)
+                                    return false
+                                end
+                            end
+                        end
+                       
+                    end
+               end)
+                if not p then
+                end
+            end
+        end)
+        task.spawn(function ()                                             
+            while true do task.wait()
+               local p,c = pcall(function ()
+                    if tick() >= BreakToKill or Client.PlayerGui.Plyload.BUFF.Visible then
+                        print("Killing Mob")
+                        local Character = GetCharacter()
+                        local KillMob = tick() + 10 
+                        BreakToKill_ = true
+                        for i,v in pairs(Entities["entities"]) do
+                            while v["health"] > 0 and v["model"] and KillMob > tick() do task.wait()
+                                if not Pickup then
+                                    _G.Attacks()
+                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * CFrame.new(0,0,2.5)
+                                end
+                            end
+                        end
+                        print("Stop Kill Mob")
+                        BreakToKill_ = false
+                        BreakToKill = tick() + 15
+                    end
+               end)
+                if not p then
+                end
+            end
+        end)
+        
         task.spawn(function ()      
-            local realfolder = nil
-            
-                    
+            local realfolder = nil     
             while not realfolder do task.wait(.2)
                 for i,v in pairs(workspace:GetChildren()) do
                     if v.Name == "Items" and v:FindFirstChildWhichIsA("MeshPart") then
@@ -525,25 +590,21 @@ else
             end
             while true do task.wait()
                 local p,c = pcall(function ()
-                    if not PauseToTakeItem then
-                        local Character = GetCharacter()
-                        for i,v in pairs(realfolder:GetChildren()) do
-                            if v:IsA("MeshPart") then
-                                if PauseToTakeItem then
-                                    continue;
-                                end
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame
-                            end
+                    local Character = GetCharacter()
+                    for i,v in pairs(realfolder:GetChildren()) do
+                        if v:IsA("MeshPart") then
+                            Pickup = true
+                            Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.1)
+                            Pickup = false
                         end
                     end
-                  
                 end)
             end
         end)
         task.spawn(function ()                                             
             while true do task.wait()
                 local p,c = pcall(function ()
-                    if not PauseToTakeItem then
+                    if not PauseToTakeItem and not BreakToKill_ and not Pickup then
                         local Character = GetCharacter()
                         Character.HumanoidRootPart.CFrame = Base:GetPivot()
                     end
@@ -695,7 +756,14 @@ else
             end
             return Can_Attack
         end
-
+        function _G.Attacks()
+            local Character = GetCharacter()
+            local CurrentWeapon = GetWeapon(Character)
+            local GetAttack = GetAttackCD(CurrentWeapon)
+            if GetAttack then
+                ByteNetReliable:FireServer(GetAttack,{workspace:GetServerTimeNow()}) 
+            end
+        end
         -- Insert DATA
         local Character = GetCharacter()
         local Backpack = Client.Backpack
@@ -754,7 +822,7 @@ else
                         elseif GetPassiveSkill then
                             -- warn("Pass")
                             ByteNetReliable:FireServer(buffer.fromstring("\014"))
-                        elseif tick() >= LastUsedSkill and GetSkill then
+                        elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
                             -- warn("Skill",GetSkill)
                             ByteNetReliable:FireServer(GetSkill,{workspace:GetServerTimeNow()}) 
                         elseif GetAttack then
