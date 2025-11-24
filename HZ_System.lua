@@ -299,7 +299,7 @@ local Changes = {
             ["Select Mode"] = "Raid", -- Campaign , Raid
         }
     end,
-    ["11ea8126-a38b-45aa-97d5-a1d1a413125a	"] = function()
+    ["11ea8126-a38b-45aa-97d5-a1d1a413125a"] = function()
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
@@ -310,6 +310,122 @@ local Changes = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
             ["Select Map"] = "ReaperTrial",
             ["Select Mode"] = "Raid", -- Campaign , Raid
+        }
+    end,
+    ["ba80bf27-aab2-488f-8681-485092926a8c"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Normal",
+            ["Select Map"] = "City",
+            ["Select Mode"] = "Payload",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Payload"] = {
+                ["Monster Offset"] = CFrame.new(0,0,2.5),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
+                ["Kill"] = true,
+            },
+        }
+    end,
+    ["92382bbd-6a2c-472b-b158-4faff6e1d048"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Normal",
+            ["Select Map"] = "City",
+            ["Select Mode"] = "Payload",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Payload"] = {
+                ["Monster Offset"] = CFrame.new(0,0,2.5),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
+                ["Kill"] = true,
+            },
+        }
+    end,
+    ["57b04420-9f1b-4977-b8bf-d615a4fbcc60"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Normal",
+            ["Select Map"] = "City",
+            ["Select Mode"] = "Payload",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Payload"] = {
+                ["Monster Offset"] = CFrame.new(0,0,2.5),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
+                ["Kill"] = true,
+            },
+        }
+    end,
+    ["9f352955-b8d0-491e-a3cf-03f0717b6920"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Normal",
+            ["Select Map"] = "City",
+            ["Select Mode"] = "Payload",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Payload"] = {
+                ["Monster Offset"] = CFrame.new(0,0,2.5),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
+                ["Kill"] = true,
+            },
+        }
+    end,
+    ["01e7b9c6-1ebc-49e5-a503-36f0f29d844e"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Normal",
+            ["Select Map"] = "City",
+            ["Select Mode"] = "Payload",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Payload"] = {
+                ["Monster Offset"] = CFrame.new(0,0,2.5),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
+                ["Kill"] = true,
+            },
+        }
+    end,
+    ["485e425d-a98c-4139-bd3b-e4bf78a51bdb"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Island",
+            ["Select Mode"] = "Campaign",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+        }
+    end,
+    ["e81687f4-87cc-4682-83ef-2e56f9eedee9"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Island",
+            ["Select Mode"] = "Campaign",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
         }
     end,
 }
