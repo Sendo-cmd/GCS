@@ -48,6 +48,9 @@ local function GetSomeCurrency()
         ["Level"] = Data["Exps"]["Level"],
         ["Exp"] = Data["Exps"]["Exp"],
         ["Coin"] = Data["Coin"],
+        ["Payload"] = Data["Payload"],
+        ["SkillPoint"] = Data["RaidCoin"],
+        ["PetCoin"] = Data["PetCoin"],
     } 
     
     
