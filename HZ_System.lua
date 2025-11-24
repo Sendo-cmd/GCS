@@ -381,7 +381,7 @@ local function Get(Url)
     return Data
 end
 local function Fetch_data()
-    local Data = Get(Url ..MainSettings["Path"] .. Username)
+    local Data = Get(Url ..MainSettings["Path"] .. Client.Name)
     if not Data["Success"] then
         return false
     end
