@@ -910,7 +910,7 @@ else
                         for i,v in pairs(Entities["entities"]) do
                             while v["health"] > 0 and v["model"] do task.wait()
                                 if v["data"]["abilityData"] == "Boomie" then
-                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * _G.GetOffset()
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,0)
                                     task.wait(.5)
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
                                     task.wait(1)
