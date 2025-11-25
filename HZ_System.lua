@@ -693,11 +693,11 @@ else
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
         task.spawn(function ()                                             
             while true do task.wait()
-                local p,c = pcall(function ()
+               -- local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("C2",true).CFrame task.wait(1)
-                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("C2",true).CFrame * CFrame.new(0,50,0)
+                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
+                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
                         for i,v in pairs(Entities["entities"]) do
                             while v["health"] > 0 and v["model"] do task.wait()
@@ -707,7 +707,7 @@ else
                             Enemy = nil
                         end
                     end  
-                end)
+               -- end)
                 if not p then
                 end
             end
@@ -992,7 +992,7 @@ else
                 if At >= char:GetAttribute("maxPerkMeter") then
                     Perk = true
                 end
-            elseif workspace:GetServerTimeNow() >= (char:GetAttribute("lastPerk") + char:GetAttribute("perkCooldown")) then
+            elseif char:GetAttribute("lastPerk") and char:GetAttribute("perkCooldown") and workspace:GetServerTimeNow() >= (char:GetAttribute("lastPerk") + char:GetAttribute("perkCooldown")) then
                 Perk = true
             end
             return not char:GetAttribute("perkActiveUntil") and Perk
@@ -1018,7 +1018,7 @@ else
 
         local WeaponTool = {
             GetWeapon(Character),
-            GetWeapon(Backpack)
+            GetWeapon(Backpack)                                                                     
         }
         for i,v in pairs(WeaponTool) do
             local data = WeaponModule(v.Name)
@@ -1098,7 +1098,3 @@ else
         end)
     end)
 end
-
-
-
-
