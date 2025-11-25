@@ -693,7 +693,7 @@ else
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
         task.spawn(function ()                                             
             while true do task.wait()
-               -- local p,c = pcall(function ()
+               local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
@@ -702,12 +702,12 @@ else
                         for i,v in pairs(Entities["entities"]) do
                             while v["health"] > 0 and v["model"] do task.wait()
                                 Enemy = v
-                                Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-5,2)
+                                Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,0) * _G.GetOffset()
                             end
                             Enemy = nil
                         end
                     end  
-               -- end)
+               end)
                 if not p then
                 end
             end
@@ -1098,3 +1098,7 @@ else
         end)
     end)
 end
+
+
+
+
