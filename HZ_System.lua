@@ -1022,9 +1022,6 @@ else
         }
         for i,v in pairs(WeaponTool) do
             local data = WeaponModule(v.Name)
-            for i,v in pairs(data["hitboxes"]["sp1"]) do
-                print(i,v)
-            end
             OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])/1.5
             print( (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])/1.5)
             for i1,v1 in pairs(data["abilityIndexes"]) do
