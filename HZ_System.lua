@@ -587,12 +587,15 @@ local function Auto_Config(id)
 end
 
 Auto_Config()
-
+local function GetCharacter()
+    return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
+end
 if getrenv()["shared"]["loaded"] then
+    setfpscap(60) task.wait()
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
+    local Rooms = nil
     while true do task.wait()
         if Client.PlayerGui.GUI.StartPlaceRedo.Visible then
-            print(Setting)
             local Content = Client.PlayerGui.GUI.StartPlaceRedo.Content.iContent
             clicking(Content.options.buttons.friendonly) task.wait(.1)
             clicking(Content.options.buttons.choosemodes)
@@ -618,19 +621,41 @@ if getrenv()["shared"]["loaded"] then
             for i = 1,6 do
                 clicking(Content.options.playerselect.F.l) 
             end
+            if Rooms then
+                local Ticks = tick() + 4
+               
+                Client.Character:PivotTo(CFrame.new(96.75548553466797, 79.99999237060547, -0.1660837084054947)) task.wait(.8)
+                Client.Character.Humanoid:MoveTo(Vector3.new( 128.5325164794922, 79.99999237060547, 0.5542399883270264)) task.wait(.75)
+                Client.Character.Humanoid:MoveTo(Rooms.Position)
+                repeat
+                    task.wait()
+                    print((Client.Character.HumanoidRootPart.Position - Rooms.Position).Magnitude)
+                until (Client.Character.HumanoidRootPart.Position - Rooms.Position).Magnitude < 9 or tick() >= Ticks
+                Client.Character.Humanoid:MoveTo(Client.Character.HumanoidRootPart.Position)
+                task.wait(1.5)
+            end
+            
+            task.wait()
             clicking(Content.Button)
             task.wait(10)
         else
             for i,v in pairs(workspace.Match:GetChildren()) do
-                if v.Name == "Part" and v.MatchBoard.InfoLabel.Text == "Start Here" then
-                    Client.Character.HumanoidRootPart.CFrame = v.CFrame
+                if v.Name == "Part" and v.MatchBoard.InfoLabel.Text == "Start Here" and not Client.PlayerGui.GUI.StartPlaceRedo.Visible then
+                    local oldf = v.CFrame
+                    v.CFrame = Client.Character.HumanoidRootPart.CFrame 
                     firetouchinterest(Client.Character.HumanoidRootPart,v,true)
-                    task.wait(1)
-                end
+                    task.wait(.85)
+                    if Client.PlayerGui.GUI.StartPlaceRedo.Visible then
+                        Rooms = v
+                    end
+                    v.CFrame = oldf 
+                end 
             end
         end
     end
+
 else
+    setfpscap(11)
     print("H")
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
@@ -656,9 +681,7 @@ else
         task.wait(7.5)
         game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
     end)
-    local function GetCharacter()
-        return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
-    end
+    
     for i,v in pairs(Doors.Parent:GetDescendants()) do
         if v:IsA("BasePart") then
             v.Transparency = .9
@@ -1064,3 +1087,7 @@ else
         end)
     end)
 end
+
+
+
+
