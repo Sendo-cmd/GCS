@@ -54,8 +54,8 @@ local function GetSomeCurrency()
         ["Exp"] = Data["Exps"]["Exp"],
         ["Coin"] = Data["Coin"],
         ["Payload"] = Data["Currency"]["Payload"],
-        ["SkillPoint"] = Data["Currency"]["SkillPoint"],
-        ["PetCoin"] = Data["Currency"]["PetCoin"],
+        ["Skill Point"] = Data["Currency"]["SkillPoint"],
+        ["Pet Coin"] = Data["Currency"]["PetCoin"],
     } 
     return Field
 end
