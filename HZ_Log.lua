@@ -49,7 +49,7 @@ end
 local function GetSomeCurrency()
     local Data = ReplicateService.GetData()
     local Field = {
-        ["BattlePass Level"] = Data["BattlePasses"]["Level"],
+        ["BP Level"] = Data["BattlePasses"]["Level"],
         ["Level"] = Data["Exps"]["Level"],
         ["Exp"] = Data["Exps"]["Exp"],
         ["Coin"] = Data["Coin"],
@@ -57,8 +57,6 @@ local function GetSomeCurrency()
         ["SkillPoint"] = Data["Currency"]["SkillPoint"],
         ["PetCoin"] = Data["Currency"]["PetCoin"],
     } 
-    
-    
     return Field
 end
 local function CreateBody(...)
