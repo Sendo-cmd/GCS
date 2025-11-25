@@ -10,10 +10,15 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
 local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
+local VirtualInputManager = game:GetService('VirtualInputManager')
 local Client = Players.LocalPlayer
 -- Folder
 local ReplicateService =  require(ReplicatedStorage:FindFirstChild("ReplicateService",true))
 
+local function sendkey(key,dur)
+    VirtualInputManager:SendKeyEvent(true,key,false,game) task.wait(dur)
+    VirtualInputManager:SendKeyEvent(false,key,false,game)
+end
 
 local Url = "https://api.championshop.date"
 -- local List = {
@@ -48,9 +53,6 @@ local function GetSomeCurrency()
         ["Level"] = Data["Exps"]["Level"],
         ["Exp"] = Data["Exps"]["Exp"],
         ["Coin"] = Data["Coin"],
-        ["Payload"] = Data["Currency"]["Payload"],
-        ["SkillPoint"] = Data["Currency"]["SkillPoint"],
-        ["PetCoin"] = Data["Currency"]["PetCoin"],
     } 
     
     
@@ -103,8 +105,54 @@ end
 
 local Data = GetAllData()
 SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
+--[[
+local Tool_ = nil
+local MasteryLevel_ = 1
+local MasteryExp_ = 0
+local EarnedMas = 0
+local EarnedLev = 0
+local function settools(Tool_)
+    print(Tool_)
+    MasteryLevel_ = Tool_:GetAttribute("MasteryLevel") or 1
+    MasteryExp_ = Tool_:GetAttribute("MasteryExp") or 0
+    EarnedMas = 0
+    EarnedLev = 0
 
+    Tool_:GetAttributeChangedSignal("MasteryLevel"):Connect(function()
+        local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
+        if MasteryLevel_ ~= MasteryLevel then
+            EarnedLev = EarnedLev + 1
+            MasteryLevel_ = MasteryLevel
+        end
+    end)
+    Tool_:GetAttributeChangedSignal("MasteryExp"):Connect(function()
+        local MasteryExp = Tool_:GetAttribute("MasteryExp") or 0
+        if MasteryExp_ ~= MasteryExp then
+            local minus = (MasteryExp - MasteryExp_)
+            local Earned = minus < 0 and MasteryExp or minus
+            EarnedMas = EarnedMas + Earned
+            MasteryExp_ = MasteryExp
+        end
+    end)
+end
+
+task.spawn(function()
+    while task.wait() do
+        if Tool_ ~= Client.Character:FindFirstChildWhichIsA("Tool") then
+            Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
+            settools(Tool_)
+        end
+        task.wait(1)
+    end
+end)
+]]
 task.spawn(function ()
+    if Data["Slots"]["Weapon"][1] ~= Data["selectedSlot"]["Weapons"] then
+        print("Swap")
+        sendkey("One",.1)
+    end
+
+    task.wait(.5)
     local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
     local MasteryLevel_ = Tool_:GetAttribute("MasteryLevel") or 1
     local MasteryExp_ = Tool_:GetAttribute("MasteryExp") or 0
