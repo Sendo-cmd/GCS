@@ -38,6 +38,7 @@ local Settings = {
         ["Offset"] = CFrame.new(0,-5,0),
         ["Camera Viewer"] = false,
         ["Auto Skill"] = true,
+        ["Custom Offset"] = false,
         ["Payload"] = {
             ["Monster Offset"] = CFrame.new(0,0,2.5),
             ["Pipe Offset"] = CFrame.new(0,0,3),
@@ -673,13 +674,12 @@ else
     L_1.Parent = Client.Character.HumanoidRootPart 
     L_1.MaxForce=Vector3.new(1000000000,1000000000,1000000000)
     L_1.Velocity=Vector3.new(0,0,0) 
-    game:GetService("Players").LocalPlayer.PlayerGui.MainScreen.DeathScreen:GetPropertyChangedSignal("Visible"):Connect(function()
-        task.wait(7.5)
-        game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
-    end)
-    game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.EndScreen:GetPropertyChangedSignal("Visible"):Connect(function()
-        task.wait(7.5)
-        game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
+    task.spawn(function()
+        repeat task.wait() until workspace:GetAttribute("gameend")
+        task.wait(4.5)
+        for i = 1,25 do task.wait(.1) 
+            game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
+        end
     end)
     
     for i,v in pairs(Doors.Parent:GetDescendants()) do
@@ -687,6 +687,7 @@ else
             v.Transparency = .9
         end
     end
+
     if Workspace:FindFirstChild("IdleRoom",true) then
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
@@ -755,7 +756,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                Character.HumanoidRootPart.CFrame = Pipe:GetPivot() * Settings["Farm Settings"]["Payload"]["Pipe Offset"]
+                                Character.HumanoidRootPart.CFrame = Pipe:GetPivot() * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"])
                                 Enemy = true
                             else
                                 Enemy = nil
@@ -811,7 +812,7 @@ else
                             while v["health"] > 0 and v["model"] and KillMob > tick() do task.wait()
                                 if not Pickup then
                                     _G.Attacks()
-                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * Settings["Farm Settings"]["Payload"]["Monster Offset"]
+                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Monster Offset"])
                                 end
                             end
                         end
@@ -859,9 +860,6 @@ else
             end
         end)
     else
-        task.delay(240,function()
-        
-        end)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
@@ -912,13 +910,13 @@ else
                         for i,v in pairs(Entities["entities"]) do
                             while v["health"] > 0 and v["model"] do task.wait()
                                 if v["data"]["abilityData"] == "Boomie" then
-                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-5,1)
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * _G.GetOffset()
                                     task.wait(.5)
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
                                     task.wait(1)
                                 else
                                     if tick() > DodgeTicks then
-                                        Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-5,1)
+                                        Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * _G.GetOffset()
                                         -- print("D")
                                         Enemy = v
                                     else
@@ -956,6 +954,7 @@ else
 
         local insertforWP = {}
         local insertforSkill = {}
+        local OffsetInsert = {}
         local WeaponModule = function(name)
             return require(GameCore.Shared.AbilityService.CombatData[name])
         end
@@ -1023,6 +1022,11 @@ else
         }
         for i,v in pairs(WeaponTool) do
             local data = WeaponModule(v.Name)
+            for i,v in pairs(data["hitboxes"]["sp1"]) do
+                print(i,v)
+            end
+            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])/1.5
+            print( (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])/1.5)
             for i1,v1 in pairs(data["abilityIndexes"]) do
                 if v1:find("l") then
                     if not insertforWP[v.Name] then
@@ -1053,6 +1057,16 @@ else
                     end
                 end
             end
+        end
+        function _G.GetOffset()
+            local Character = GetCharacter()
+            local CurrentWeapon = GetWeapon(Character)
+            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name]) or Settings["Farm Settings"]["Offset"]
+        end
+        function _G.PayloadOffset()
+            local Character = GetCharacter()
+            local CurrentWeapon = GetWeapon(Character)
+            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name])
         end
         task.spawn(function ()
             local LastUsedSkill = tick()
