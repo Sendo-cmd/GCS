@@ -593,6 +593,19 @@ local function GetCharacter()
 end
 if getrenv()["shared"]["loaded"] then
     setfpscap(60) task.wait()
+    task.delay(60,function()
+        local Http = game:GetService("HttpService") 
+	    local TPS = game:GetService("TeleportService") 
+        local Api = "https://games.roblox.com/v1/games/" 
+        local _place = game.PlaceId local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100" 
+        function ListServers(cursor) 
+            local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or "")) 
+            return Http:JSONDecode(Raw) 
+        end 
+        local Server, Next; 
+        repeat local Servers = ListServers(Next) Server = Servers.data[1] Next = Servers.nextPageCursor 
+        until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+    end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
     local Rooms = nil
     while true do task.wait()
@@ -687,10 +700,11 @@ else
             v.Transparency = .9
         end
     end
-
+    _G.X = CFrame.Angles(0,0,0)
     if Workspace:FindFirstChild("IdleRoom",true) then
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
+       
         task.spawn(function ()                                             
             while true do task.wait()
                local p,c = pcall(function ()
@@ -700,10 +714,12 @@ else
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
                         for i,v in pairs(Entities["entities"]) do
+                            workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
                             while v["health"] > 0 and v["model"] do task.wait()
                                 Enemy = v
-                                Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,0) * _G.GetOffset()
+                                Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * CFrame.new(0,-3,1.5) * _G.GetOffset()
                             end
+                            workspace.Camera.CameraSubject = Character.Humanoid
                             Enemy = nil
                         end
                     end  
@@ -1098,7 +1114,3 @@ else
         end)
     end)
 end
-
-
-
-
