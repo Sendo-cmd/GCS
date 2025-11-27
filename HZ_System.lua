@@ -1,6 +1,7 @@
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
 local IsTest = false
+local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
@@ -485,7 +486,7 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     end
     repeat task.wait() until checker()
 end
-
+task.wait(Delay or 0)
 _G.IMDONE =true
 local function Get(Url)
     local Data = request({
