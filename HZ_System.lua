@@ -472,6 +472,7 @@ end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     local function checker()
+        task.wait(1)
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
             local LOADING =  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
@@ -733,6 +734,7 @@ else
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
+        local StartToKeepItem = tick() + 6
         local BreakToKill_ = false
         local Base = Workspace:FindFirstChild("BASE",true)
 
@@ -843,7 +845,11 @@ else
         end)
         
         task.spawn(function ()      
-            local realfolder = nil     
+            local realfolder = nil 
+            local lasttake = tick()    
+            repeat
+                task.wait()
+            until tick() >= StartToKeepItem
             while not realfolder do task.wait(.2)
                 for i,v in pairs(workspace:GetChildren()) do
                     if v.Name == "Items" and v:FindFirstChildWhichIsA("MeshPart") then
@@ -854,14 +860,22 @@ else
             end
             while true do task.wait()
                 local p,c = pcall(function ()
-                    local Character = GetCharacter()
-                    for i,v in pairs(realfolder:GetChildren()) do
-                        if v:IsA("MeshPart") then
-                            Pickup = true
-                            Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.1)
-                            Pickup = false
+                    if tick() >= lasttake then
+                        local Character = GetCharacter()
+                        for i,v in pairs(realfolder:GetChildren()) do
+                            if v:IsA("MeshPart") then
+                                if lasttake >= tick() then
+                                    return false;
+                                end
+                                Pickup = true
+                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.8)
+                                Pickup = false
+                                lasttake = tick() + 1
+                            end
                         end
+                        lasttake = tick() + 1
                     end
+                    
                 end)
             end
         end)
