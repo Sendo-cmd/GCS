@@ -690,7 +690,7 @@ else
     L_1.Velocity=Vector3.new(0,0,0) 
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(4.5)
+        task.wait(3.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -868,7 +868,7 @@ else
                                     return false;
                                 end
                                 Pickup = true
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.5)
+                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.3)
                                 Pickup = false
                                 lasttake = tick() + .1
                             end
