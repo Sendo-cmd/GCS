@@ -593,7 +593,7 @@ local function GetCharacter()
     return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
 end
 if getrenv()["shared"]["loaded"] then
-    -- setfpscap(60) task.wait()
+    task.wait()
     task.delay(60,function()
         local Http = game:GetService("HttpService") 
 	    local TPS = game:GetService("TeleportService") 
