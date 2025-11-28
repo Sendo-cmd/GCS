@@ -1,6 +1,7 @@
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
 local IsTest = false
+local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
@@ -485,7 +486,7 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     end
     repeat task.wait() until checker()
 end
-
+task.wait(Delay or 0)
 _G.IMDONE =true
 local function Get(Url)
     local Data = request({
@@ -593,7 +594,7 @@ local function GetCharacter()
     return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
 end
 if getrenv()["shared"]["loaded"] then
-    task.wait()
+    setfpscap(30) task.wait()
     task.delay(60,function()
         local Http = game:GetService("HttpService") 
 	    local TPS = game:GetService("TeleportService") 
@@ -690,7 +691,7 @@ else
     L_1.Velocity=Vector3.new(0,0,0) 
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(3.5)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -703,6 +704,7 @@ else
     end
     _G.X = CFrame.Angles(0,0,0)
     if Workspace:FindFirstChild("IdleRoom",true) then
+          setfpscap(60)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -717,11 +719,11 @@ else
                         for i,v in pairs(Entities["entities"]) do
                             workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
                             while v["health"] > 0 and v["model"] do task.wait()
-                                Enemy = v
-                                Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * CFrame.new(0,-3,1.5) * _G.GetOffset()
+                                -- _G.Attacks()
+                                Enemy = true
+                                Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,1) * _G.GetOffset()
                             end
                             workspace.Camera.CameraSubject = Character.Humanoid
-                            Enemy = nil
                         end
                     end  
                end)
@@ -870,10 +872,10 @@ else
                                 Pickup = true
                                 Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.25)
                                 Pickup = false
-                                lasttake = tick() + .1
+                                lasttake = tick() + 0.1
                             end
                         end
-                        lasttake = tick() + .1
+                        lasttake = tick() + 0.1
                     end
                     
                 end)
@@ -1000,10 +1002,10 @@ else
             local WP = insertforWP[weapon.Name]
             for i,v in pairs(attacks) do
                 -- print(i,WP[tostring(i)])
-                if workspace:GetServerTimeNow() >=  (weapon:GetAttribute("lastActivated"..tostring(WP[tostring(i)][2])) or 0) + 2 then
+                if workspace:GetServerTimeNow() >=  (weapon:GetAttribute("lastActivated"..tostring(WP[tostring(i)][2])) or 0) + 1.1 then
                     return buffer.fromstring(v)
                 end
-            end
+            end  
             return false
         end
         local function GetSkillCD(weapon)
@@ -1035,12 +1037,7 @@ else
             return Can_Attack
         end
         function _G.Attacks()
-            local Character = GetCharacter()
-            local CurrentWeapon = GetWeapon(Character)
-            local GetAttack = GetAttackCD(CurrentWeapon)
-            if GetAttack then
-                ByteNetReliable:FireServer(GetAttack,{workspace:GetServerTimeNow()}) 
-            end
+            ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .62}) 
         end
         -- Insert DATA
         local Character = GetCharacter()
@@ -1095,6 +1092,7 @@ else
             local CurrentWeapon = GetWeapon(Character)
             return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name])
         end
+        local CanSkill = false
         task.spawn(function ()
             local LastUsedSkill = tick()
             while true do 
@@ -1106,7 +1104,7 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        if GetUlt then
+                        if GetUlt and CanSkill then
                             ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
                         elseif GetPassiveSkill then
@@ -1115,11 +1113,12 @@ else
                         elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
                             -- warn("Skill",GetSkill)
                             ByteNetReliable:FireServer(GetSkill,{workspace:GetServerTimeNow()}) 
-                        elseif GetAttack then
-                            -- warn("Atk",GetAttack)
-                            ByteNetReliable:FireServer(GetAttack,{workspace:GetServerTimeNow()}) 
                         else
-                            -- print("Nothing")
+                            task.spawn(function()
+                                for i = 1,3 do task.wait()
+                                    ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .62}) 
+                                end
+                            end)
                         end
                     end
                 end)
@@ -1128,3 +1127,7 @@ else
         end)
     end)
 end
+
+
+
+
