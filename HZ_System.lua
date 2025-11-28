@@ -594,7 +594,7 @@ local function GetCharacter()
     return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
 end
 if getrenv()["shared"]["loaded"] then
-    setfpscap(30) task.wait()
+    task.wait()
     task.delay(60,function()
         local Http = game:GetService("HttpService") 
 	    local TPS = game:GetService("TeleportService") 
@@ -691,7 +691,7 @@ else
     L_1.Velocity=Vector3.new(0,0,0) 
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(4.5)
+        task.wait(3.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
