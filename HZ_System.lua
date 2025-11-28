@@ -381,7 +381,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,2.7),
+                ["Pipe Offset"] = CFrame.new(0,0,2),
                 ["Kill"] = false,
             },
         }
