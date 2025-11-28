@@ -676,7 +676,7 @@ else
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
-    local CanSkill = true
+    local CanSkill = false
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
@@ -776,14 +776,18 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
+                                CanSkill = true
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe:GetPivot().Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,5,5)
                                 Enemy = true
                             else
+                                CanSkill = false
                                 Enemy = nil
                             end
                         end
+                        CanSkill = false
                         Enemy = nil
                     else
+                        CanSkill = false
                         Enemy = nil
                         PauseToTakeItem = false
                     end
@@ -1092,7 +1096,6 @@ else
             local CurrentWeapon = GetWeapon(Character)
             return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name])
         end
-        local CanSkill = false
         task.spawn(function ()
             local LastUsedSkill = tick()
             while true do 
