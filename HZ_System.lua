@@ -42,7 +42,7 @@ local Settings = {
         ["Custom Offset"] = false,
         ["Payload"] = {
             ["Monster Offset"] = CFrame.new(0,0,2.5),
-            ["Pipe Offset"] = CFrame.new(0,0,2),
+            ["Pipe Offset"] = CFrame.new(0,0,1.8),
             ["Kill"] = true,
         },
     },
@@ -327,7 +327,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,2),
+                ["Pipe Offset"] = CFrame.new(0,0,1.8),
                 ["Kill"] = false,
             },
         }
@@ -345,7 +345,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,2),
+                ["Pipe Offset"] = CFrame.new(0,0,1.8),
                 ["Kill"] = false,
             },
         }
@@ -363,7 +363,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,2),
+                ["Pipe Offset"] = CFrame.new(0,0,1.8),
                 ["Kill"] = false,
             },
         }
@@ -381,7 +381,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,2),
+                ["Pipe Offset"] = CFrame.new(0,0,1.8),
                 ["Kill"] = false,
             },
         }
@@ -399,7 +399,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,2),
+                ["Pipe Offset"] = CFrame.new(0,0,1.8),
                 ["Kill"] = false,
             },
         }
