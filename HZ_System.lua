@@ -645,7 +645,7 @@ local function GetCharacter()
     return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
 end
 if getrenv()["shared"]["loaded"] then
-    task.wait()
+    setfpscap(30) task.wait()
     task.delay(60,function()
         local Http = game:GetService("HttpService") 
 	    local TPS = game:GetService("TeleportService") 
@@ -754,6 +754,195 @@ else
         end
     end
     _G.X = CFrame.Angles(0,0,0)
+     task.spawn(function()
+
+        local attacks = {
+            [1] = "\t\006\001",
+            [2] = "\t\004\001",
+            [3] = "\t\a\001",
+            [4] = "\t\t\001"
+        }
+        local skills = {
+            [1] = "\t\002\001",
+            [2] = "\t\005\001",
+            [3] = "\t\001\001",
+            [4] = "\t\b\001",
+        }
+        
+       
+        local function GetTool(Character)
+            if Character then
+                local Plus = 2
+                local BeforePlus = 0
+                local Tool = Character:FindFirstChildWhichIsA("Tool")
+                Tool:SetAttribute("lastActivated6",nil)
+                for i = .7,.5,-0.005 do task.wait()
+                    if BeforePlus >= Plus then
+                        
+                        Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),i)
+                        return i
+                    end
+                    ByteNetReliable:FireServer(buffer.fromstring("\t\006\001"),{workspace:GetServerTimeNow() - i}) task.wait(.01)
+                    if Tool:GetAttribute("lastActivated6") then
+                        BeforePlus = BeforePlus + 1
+                    end
+                end
+               Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.4)
+            end
+        end
+
+        local insertforWP = {}
+        local insertforSkill = {}
+        local OffsetInsert = {}
+        local WeaponModule = function(name)
+            return require(GameCore.Shared.AbilityService.CombatData[name])
+        end
+        local function GetWeapon(parent)
+            if not parent then return false end
+            local Tool = parent:FindFirstChildWhichIsA("Tool")
+            if Tool then
+                return Tool
+            end
+            return nil
+        end
+        local function GetAttackCD(weapon)
+            local WP = insertforWP[weapon.Name]
+            for i,v in pairs(attacks) do
+                -- print(i,WP[tostring(i)])
+                if workspace:GetServerTimeNow() >=  (weapon:GetAttribute("lastActivated"..tostring(WP[tostring(i)][2])) or 0) + 1.1 then
+                    return buffer.fromstring(v)
+                end
+            end  
+            return false
+        end
+        local function GetSkillCD(weapon)
+            for i,v in pairs(insertforSkill[weapon.Name]) do
+                if workspace:GetServerTimeNow() >= (weapon:GetAttribute("lastActivated"..tostring(v[2])) or 0) + v[3] then
+                    -- warn(v[1])
+                    return buffer.fromstring(skills[tonumber(v[1])])
+                end
+            end
+            return false
+        end
+        local function GetPerkCD(char)
+            local Perk = false
+            local At = char:GetAttribute("perkMeter")
+            if At then
+                if At >= char:GetAttribute("maxPerkMeter") then
+                    Perk = true
+                end
+            elseif char:GetAttribute("lastPerk") and char:GetAttribute("perkCooldown") and workspace:GetServerTimeNow() >= (char:GetAttribute("lastPerk") + char:GetAttribute("perkCooldown")) then
+                Perk = true
+            end
+            return not char:GetAttribute("perkActiveUntil") and Perk
+        end
+        local function GetUlt(weapon)
+            local Can_Attack = nil
+            if weapon:GetAttribute("AwakenMeter") >= weapon:GetAttribute("MaxAwakenMeter") then
+                Can_Attack = true
+            end
+            return Can_Attack
+        end
+        function _G.Attacks()
+            local Character = GetCharacter()
+            local CurrentWeapon = GetWeapon(Character)
+            if CurrentWeapon and Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID")) then
+                ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - (tonumber(Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID"))) or .4)}) 
+            else
+                task.wait(.4)
+                _G.Setup()
+            end 
+        end
+        function _G.Setup()
+            local Character = GetCharacter()
+            local CurrentWeapon = GetWeapon(Character)
+            if CurrentWeapon then
+                GetTool(Character)
+            end 
+        end
+        _G.Setup()
+        -- Insert DATA
+        local Character = GetCharacter()
+        local Backpack = Client.Backpack
+
+        local WeaponTool = {
+            GetWeapon(Character),
+            GetWeapon(Backpack)                                                                     
+        }
+        for i,v in pairs(WeaponTool) do
+            local data = WeaponModule(v.Name)
+            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])
+            print(not data["hitboxes"]["l1"] and 5)
+            for i1,v1 in pairs(data["abilityIndexes"]) do
+                if v1:find("l") then
+                    if not insertforWP[v.Name] then
+                        insertforWP[v.Name] = {}
+                    end
+                    if attacks[tonumber(v1:match("%d+"))] then
+                        insertforWP[v.Name][v1:match("%d+")] = {
+                            [1] = v1:match("%d+"),
+                            [2] = tonumber(i1),
+                            [3] = .87
+                        }
+                    end
+                end
+                if v1:find("sp") and v1:find("%d+") then
+                    if not insertforSkill[v.Name] then
+                        insertforSkill[v.Name] = {}
+                    end
+                    if skills[tonumber(v1:match("%d+"))] then
+                        if tonumber(v1:match("%d+")) == 4 and tonumber(v:GetAttribute("MasteryLevel")) < 100 then
+                            continue;
+                        end
+                        insertforSkill[v.Name][v1:match("%d+")] = {
+                            [1] = v1:match("%d+"),
+                            [2] = tonumber(i1),
+                            [3] = data["abilities"][v1]["cooldown"],
+                        }
+                    end
+                end
+            end
+        end
+        
+        function _G.GetOffset()
+            local Character = GetCharacter()
+            local CurrentWeapon = GetWeapon(Character)
+            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name]) or Settings["Farm Settings"]["Offset"]
+        end
+        function _G.PayloadOffset()
+            local Character = GetCharacter()
+            local CurrentWeapon = GetWeapon(Character)
+            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name])
+        end
+        task.spawn(function ()
+            local LastUsedSkill = tick()
+            while true do 
+                pcall(function()
+                    if Enemy then
+                        local Character = GetCharacter()
+                        local CurrentWeapon = GetWeapon(Character)
+                        local GetAttack = GetAttackCD(CurrentWeapon)
+                        local GetSkill = GetSkillCD(CurrentWeapon)
+                        local GetPassiveSkill = GetPerkCD(Character)
+                        local GetUlt = GetUlt(CurrentWeapon)
+                        if GetUlt and CanSkill then
+                            ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
+                            -- warn("Ult")
+                        elseif GetPassiveSkill then
+                            -- warn("Pass")
+                            ByteNetReliable:FireServer(buffer.fromstring("\014"))
+                        elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
+                            -- warn("Skill",GetSkill)
+                            ByteNetReliable:FireServer(GetSkill,{workspace:GetServerTimeNow()}) 
+                        else   
+                            _G.Attacks()
+                        end
+                    end
+                end)
+                task.wait()
+            end
+        end)
+    end)
     if Workspace:FindFirstChild("IdleRoom",true) then
           setfpscap(60)
         print("H1")
@@ -779,12 +968,12 @@ else
                                 -- _G.Attacks()
                                 Enemy = true
                                 if tick() > DodgeTicks then
-                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,1) * _G.GetOffset()
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-((v["model"].HumanoidRootPart.Size.Y/2) + 3),1) * _G.GetOffset()
                                     -- print("D")
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    -- print("D1")
+                                    print("D1")
                                     Enemy = nil
                                 end
                             end
@@ -841,7 +1030,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = true
+                                CanSkill = false
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe:GetPivot().Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,5,5)
                                 Enemy = true
                             else
@@ -1022,7 +1211,7 @@ else
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                        -- print("D1")
+                                        print("D1")
                                         Enemy = nil
                                     end
                                 end
@@ -1039,161 +1228,7 @@ else
             end
         end)
     end
-    task.spawn(function()
-        local attacks = {
-            [1] = "\t\006\001",
-            [2] = "\t\004\001",
-            [3] = "\t\a\001",
-            [4] = "\t\t\001"
-        }
-        local skills = {
-            [1] = "\t\002\001",
-            [2] = "\t\005\001",
-            [3] = "\t\001\001",
-            [4] = "\t\b\001",
-        }
-
-        local insertforWP = {}
-        local insertforSkill = {}
-        local OffsetInsert = {}
-        local WeaponModule = function(name)
-            return require(GameCore.Shared.AbilityService.CombatData[name])
-        end
-        local function GetWeapon(parent)
-            if not parent then return false end
-            local Tool = parent:FindFirstChildWhichIsA("Tool")
-            if Tool then
-                return Tool
-            end
-            return nil
-        end
-        local function GetAttackCD(weapon)
-            local WP = insertforWP[weapon.Name]
-            for i,v in pairs(attacks) do
-                -- print(i,WP[tostring(i)])
-                if workspace:GetServerTimeNow() >=  (weapon:GetAttribute("lastActivated"..tostring(WP[tostring(i)][2])) or 0) + 1.1 then
-                    return buffer.fromstring(v)
-                end
-            end  
-            return false
-        end
-        local function GetSkillCD(weapon)
-            for i,v in pairs(insertforSkill[weapon.Name]) do
-                if workspace:GetServerTimeNow() >= (weapon:GetAttribute("lastActivated"..tostring(v[2])) or 0) + v[3] then
-                    -- warn(v[1])
-                    return buffer.fromstring(skills[tonumber(v[1])])
-                end
-            end
-            return false
-        end
-        local function GetPerkCD(char)
-            local Perk = false
-            local At = char:GetAttribute("perkMeter")
-            if At then
-                if At >= char:GetAttribute("maxPerkMeter") then
-                    Perk = true
-                end
-            elseif char:GetAttribute("lastPerk") and char:GetAttribute("perkCooldown") and workspace:GetServerTimeNow() >= (char:GetAttribute("lastPerk") + char:GetAttribute("perkCooldown")) then
-                Perk = true
-            end
-            return not char:GetAttribute("perkActiveUntil") and Perk
-        end
-        local function GetUlt(weapon)
-            local Can_Attack = nil
-            if weapon:GetAttribute("AwakenMeter") >= weapon:GetAttribute("MaxAwakenMeter") then
-                Can_Attack = true
-            end
-            return Can_Attack
-        end
-        function _G.Attacks()
-            ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .7}) 
-        end
-        -- Insert DATA
-        local Character = GetCharacter()
-        local Backpack = Client.Backpack
-
-        local WeaponTool = {
-            GetWeapon(Character),
-            GetWeapon(Backpack)                                                                     
-        }
-        for i,v in pairs(WeaponTool) do
-            local data = WeaponModule(v.Name)
-            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])
-            print( (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])/1.5)
-            for i1,v1 in pairs(data["abilityIndexes"]) do
-                if v1:find("l") then
-                    if not insertforWP[v.Name] then
-                        insertforWP[v.Name] = {}
-                    end
-                    if attacks[tonumber(v1:match("%d+"))] then
-                        insertforWP[v.Name][v1:match("%d+")] = {
-                            [1] = v1:match("%d+"),
-                            [2] = tonumber(i1),
-                            [3] = .87
-                        }
-                    end
-                end
-                if v1:find("sp") and v1:find("%d+") then
-                    if not insertforSkill[v.Name] then
-                        insertforSkill[v.Name] = {}
-                    end
-
-                    if skills[tonumber(v1:match("%d+"))] then
-                        if tonumber(v1:match("%d+")) == 4 and tonumber(v:GetAttribute("MasteryLevel")) < 100 then
-                            continue;
-                        end
-                        insertforSkill[v.Name][v1:match("%d+")] = {
-                            [1] = v1:match("%d+"),
-                            [2] = tonumber(i1),
-                            [3] = data["abilities"][v1]["cooldown"],
-                        }
-                    end
-                end
-            end
-        end
-        function _G.GetOffset()
-            local Character = GetCharacter()
-            local CurrentWeapon = GetWeapon(Character)
-            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name]) or Settings["Farm Settings"]["Offset"]
-        end
-        function _G.PayloadOffset()
-            local Character = GetCharacter()
-            local CurrentWeapon = GetWeapon(Character)
-            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,0,OffsetInsert[CurrentWeapon.Name])
-        end
-        task.spawn(function ()
-            local LastUsedSkill = tick()
-            while true do 
-                pcall(function()
-                    if Enemy then
-                        local Character = GetCharacter()
-                        local CurrentWeapon = GetWeapon(Character)
-                        local GetAttack = GetAttackCD(CurrentWeapon)
-                        local GetSkill = GetSkillCD(CurrentWeapon)
-                        local GetPassiveSkill = GetPerkCD(Character)
-                        local GetUlt = GetUlt(CurrentWeapon)
-                        if GetUlt and CanSkill then
-                            ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
-                            -- warn("Ult")
-                        elseif GetPassiveSkill then
-                            -- warn("Pass")
-                            ByteNetReliable:FireServer(buffer.fromstring("\014"))
-                        elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
-                            -- warn("Skill",GetSkill)
-                            ByteNetReliable:FireServer(GetSkill,{workspace:GetServerTimeNow()}) 
-                        else
-                            task.spawn(function()
-                                for i = 1,3 do task.wait()
-                                    ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .7}) 
-                                end
-                            end)
-                        end
-                    end
-                end)
-                task.wait()
-            end
-        end)
-    end)
+   
 end
 
 
