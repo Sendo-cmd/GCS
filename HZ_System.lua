@@ -297,7 +297,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
-            ["Select Map"] = "ReaperTrial",
+            ["Select Map"] = "Shogun Castle",
             ["Select Mode"] = "Raid", -- Campaign , Raid
         }
     end,
