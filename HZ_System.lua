@@ -645,7 +645,7 @@ local function GetCharacter()
     return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
 end
 if getrenv()["shared"]["loaded"] then
-    setfpscap(30) task.wait()
+    task.wait()
     task.delay(60,function()
         local Http = game:GetService("HttpService") 
 	    local TPS = game:GetService("TeleportService") 
@@ -944,7 +944,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-          setfpscap(60)
+          setfpscap(20)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
