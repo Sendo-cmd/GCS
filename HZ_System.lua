@@ -755,7 +755,7 @@ else
     end
     _G.X = CFrame.Angles(0,0,0)
     if Workspace:FindFirstChild("IdleRoom",true) then
-          setfpscap(60)
+        --   setfpscap(60)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
