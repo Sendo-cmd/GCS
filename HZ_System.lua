@@ -1,6 +1,6 @@
 local Url = "https://api.championshop.date"
-local Auto_Configs = true
-local IsTest = false
+local Auto_Configs = false
+local IsTest = true
 local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
@@ -42,15 +42,15 @@ local Settings = {
         ["Custom Offset"] = false,
         ["Payload"] = {
             ["Monster Offset"] = CFrame.new(0,0,2.5),
-            ["Pipe Offset"] = CFrame.new(0,0,1.9),
-            ["Kill"] = true,
+            ["Pipe Offset"] = CFrame.new(0,0,3),
+            ["Kill"] = false,
         },
     },
     ["Select Mode"] = "Normal",
     ["Normal Room Settings"] = {
         ["Select Difficulty"] = "Normal", -- Normal , Nightmare
-        ["Select Map"] = "City",
-        ["Select Mode"] = "Payload", -- Campaign , Raid
+        ["Select Map"] = "JokerTrial",
+        ["Select Mode"] = "Raid", -- Campaign , Raid
     },
 }
 local Changes = {
@@ -297,7 +297,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal", -- Normal , Nightmare
-            ["Select Map"] = "Shogun Castle",
+            ["Select Map"] = "ReaperTrial",
             ["Select Mode"] = "Raid", -- Campaign , Raid
         }
     end,
@@ -327,7 +327,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
                 ["Kill"] = false,
             },
         }
@@ -345,7 +345,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
                 ["Kill"] = false,
             },
         }
@@ -363,7 +363,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
                 ["Kill"] = false,
             },
         }
@@ -381,7 +381,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
                 ["Kill"] = false,
             },
         }
@@ -399,7 +399,7 @@ local Changes = {
             ["Auto Skill"] = true,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
+                ["Pipe Offset"] = CFrame.new(0,0,3),
                 ["Kill"] = false,
             },
         }
@@ -430,16 +430,67 @@ local Changes = {
             ["Auto Skill"] = true,
         }
     end,
+    ["2581f809-8acf-4702-b4e9-bd7ca3438bfd"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "JokerTrial",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+        }
+    end,
+    ["7aa5c58e-7e95-4453-bf22-a338e04621bc	"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "JokerTrial",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+        }
+    end,
+    ["33b3f285-bd5e-4373-af97-9b3425805812"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "JokerTrial",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+        }
+    end,
 }
 local Dodges = {
     -- ["rbxassetid://92458311611550"] = 50, -- chef
     ["rbxassetid://128397076452919"] = 1.5, -- bomber
     ["rbxassetid://89583666176634"] = 1, -- vam
     ["rbxassetid://94540545977068"] = 1.5, -- toxic
+    ["rbxassetid://78650224475112"] = 2, -- joker
+    -- ["rbxassetid://138771108745381"] = 1.8, -- joker2
+    ["rbxassetid://106365109856284"] = 2, -- joker3
+    ["rbxassetid://98820961038661"] = 2.5, -- joker4
+    ["rbxassetid://139296956484290"] = 3.8, -- joker5
+    ["rbxassetid://106776037986081"] = 1.5, -- joker6
+    ["rbxassetid://136975909094773"] = 2, -- jokerUtl
+    ["rbxassetid://101583135016982"] = 2, -- jokerAtk1
+    ["rbxassetid://137705191651007"] = 2, -- jokerAtk2
+    ["rbxassetid://101850837481325"] = 2, -- jokerAtk3
+    ["rbxassetid://126893675519882"] = 2, -- jokerATk4
 }
 local GameType = {
     ["Shogun Castle"] = "Raid",
     ["ReaperTrial"] = "Raid",
+    ["JokerTrial"] = "Raid",
     ["City"] = "Payload"
 }
 
@@ -691,7 +742,7 @@ else
     L_1.Velocity=Vector3.new(0,0,0) 
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(3.5)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -717,13 +768,27 @@ else
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
                         for i,v in pairs(Entities["entities"]) do
-                            workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
+                            -- workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
+                            v["model"]["AnimationController"]["AnimationPlayed"]:Connect(function(track)
+                                if Dodges[tostring(track.Animation.AnimationId)] then
+                                    print(Dodges[tostring(track.Animation.AnimationId)])
+                                    DodgeTicks = tick() + Dodges[tostring(track.Animation.AnimationId)]
+                                end
+                            end)
                             while v["health"] > 0 and v["model"] do task.wait()
                                 -- _G.Attacks()
                                 Enemy = true
-                                Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,1) * _G.GetOffset()
+                                if tick() > DodgeTicks then
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,1) * _G.GetOffset()
+                                    -- print("D")
+                                    Enemy = v
+                                else
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
+                                    print("D1")
+                                    Enemy = nil
+                                end
                             end
-                            workspace.Camera.CameraSubject = Character.Humanoid
+                            -- workspace.Camera.CameraSubject = Character.Humanoid
                         end
                     end  
                end)
@@ -874,12 +939,12 @@ else
                                     return false;
                                 end
                                 Pickup = true
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.25)
+                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.8)
                                 Pickup = false
-                                lasttake = tick() + .1
+                                lasttake = tick() + 1
                             end
                         end
-                        lasttake = tick() + .1
+                        lasttake = tick() + 1
                     end
                     
                 end)
@@ -957,7 +1022,7 @@ else
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                        -- print("D1")
+                                        print("D1")
                                         Enemy = nil
                                     end
                                 end
@@ -1041,7 +1106,7 @@ else
             return Can_Attack
         end
         function _G.Attacks()
-            ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .62}) 
+            ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .7}) 
         end
         -- Insert DATA
         local Character = GetCharacter()
@@ -1053,7 +1118,7 @@ else
         }
         for i,v in pairs(WeaponTool) do
             local data = WeaponModule(v.Name)
-            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])/1.5
+            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])
             print( (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])/1.5)
             for i1,v1 in pairs(data["abilityIndexes"]) do
                 if v1:find("l") then
@@ -1119,7 +1184,7 @@ else
                         else
                             task.spawn(function()
                                 for i = 1,3 do task.wait()
-                                    ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .62}) 
+                                    ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - .7}) 
                                 end
                             end)
                         end
