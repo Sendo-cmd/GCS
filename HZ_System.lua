@@ -1,6 +1,6 @@
 local Url = "https://api.championshop.date"
-local Auto_Configs = true
-local IsTest = false
+local Auto_Configs = false
+local IsTest = true
 local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
@@ -15,25 +15,11 @@ local MainSettings = {
 --     },
 --     ["Select Mode"] = "Normal",
 --     ["Normal Room Settings"] = {
---         ["Select Difficulty"] = "Normal", -- Normal , Nightmare
---         ["Select Map"] = "Shogun Castle",
---         ["Select Mode"] = "Raid", -- Campaign , Raid
---     },
--- }
--- local Settings = {
---     ["Farm Settings"] = {
---         ["Offset"] = CFrame.new(0,-5,0),
---         ["Camera Viewer"] = false,
---         ["Auto Skill"] = true,
---     },
---     ["Select Mode"] = "Normal",
---     ["Normal Room Settings"] = {
 --         ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
 --         ["Select Map"] = "Island",
 --         ["Select Mode"] = "Campaign", -- Campaign , Raid
 --     },
 -- }
-
 local Settings = {
     ["Farm Settings"] = {
         ["Offset"] = CFrame.new(0,-5,0),
@@ -43,16 +29,35 @@ local Settings = {
         ["Payload"] = {
             ["Monster Offset"] = CFrame.new(0,0,2.5),
             ["Pipe Offset"] = CFrame.new(0,0,1.9),
-            ["Kill"] = false,
+            ["Kill"] = true,
         },
     },
     ["Select Mode"] = "Normal",
     ["Normal Room Settings"] = {
         ["Select Difficulty"] = "Normal", -- Normal , Nightmare
-        ["Select Map"] = "JokerTrial",
-        ["Select Mode"] = "Raid", -- Campaign , Raid
+        ["Select Map"] = "City",
+        ["Select Mode"] = "Payload", -- Campaign , Raid
     },
 }
+-- local Settings = {
+--     ["Farm Settings"] = {
+--         ["Offset"] = CFrame.new(0,-5,0),
+--         ["Camera Viewer"] = false,
+--         ["Auto Skill"] = true,
+--         ["Custom Offset"] = false,
+--         ["Payload"] = {
+--             ["Monster Offset"] = CFrame.new(0,0,2.5),
+--             ["Pipe Offset"] = CFrame.new(0,0,1.9),
+--             ["Kill"] = false,
+--         },
+--     },
+--     ["Select Mode"] = "Normal",
+--     ["Normal Room Settings"] = {
+--         ["Select Difficulty"] = "Normal", -- Normal , Nightmare
+--         ["Select Map"] = "JokerTrial",
+--         ["Select Mode"] = "Raid", -- Campaign , Raid
+--     },
+-- }
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
         Settings["Select Mode"] = "Normal"
@@ -645,7 +650,7 @@ local function GetCharacter()
     return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
 end
 if getrenv()["shared"]["loaded"] then
-    task.wait()
+    setfpscap(30) task.wait()
     task.delay(60,function()
         local Http = game:GetService("HttpService") 
 	    local TPS = game:GetService("TeleportService") 
@@ -722,7 +727,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    setfpscap(12)
+    setfpscap(11)
     print("H")
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
@@ -742,7 +747,7 @@ else
     L_1.Velocity=Vector3.new(0,0,0) 
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(3)
+        task.wait(3.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -944,7 +949,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-            setfpscap(15)
+          setfpscap(60)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -1031,7 +1036,7 @@ else
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
                                 CanSkill = true
-                                Character.HumanoidRootPart.CFrame = CFrame.new(Pipe:GetPivot().Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,5,5)
+                                Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
                                 CanSkill = false
@@ -1230,7 +1235,3 @@ else
     end
    
 end
-
-
-
-
