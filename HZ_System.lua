@@ -930,10 +930,11 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        if GetUlt and CanSkill then
-                            ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
+                        -- if GetUlt and CanSkill then
+                        --     ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
-                        elseif GetPassiveSkill then
+                            -- อย่าลืมใส่ elseif GetPassiveSkill then
+                        if GetPassiveSkill then
                             -- warn("Pass")
                             ByteNetReliable:FireServer(buffer.fromstring("\014"))
                         elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
