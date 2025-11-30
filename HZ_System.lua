@@ -950,7 +950,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-          setfpscap(15)
+          setfpscap(16)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
