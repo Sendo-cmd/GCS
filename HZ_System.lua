@@ -732,7 +732,7 @@ else
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
-    local CanSkill = false
+    local CanSkill = true
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
