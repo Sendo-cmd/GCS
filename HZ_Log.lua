@@ -51,7 +51,7 @@ local function GetSomeCurrency()
     local Field = {
         ["BP Level"] = Data["BattlePasses"]["Level"],
         ["Level"] = Data["Exps"]["Level"],
-        ["Exp"] = Data["Exps"]["Exp"],
+        ["Joker Coin"] = Data["Currency"]["RaidCoin4"],
         ["Coin"] = Data["Coin"],
         ["Payload"] = Data["Currency"]["Payload"],
         ["Skill Point"] = Data["Currency"]["SkillPoint"],
