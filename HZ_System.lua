@@ -448,7 +448,7 @@ local Changes = {
             ["Auto Skill"] = true,
         }
     end,
-    ["7aa5c58e-7e95-4453-bf22-a338e04621bc	"] = function()
+    ["7aa5c58e-7e95-4453-bf22-a338e04621bc"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
