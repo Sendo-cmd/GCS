@@ -186,7 +186,7 @@ task.spawn(function ()
             ["win"] = val,
             ["map"] = {
                 ["name"] = tostring(workspace:GetAttribute("Mapname")),
-                ["chapter"] = tostring(MasteryLevel_),
+                ["chapter"] = tostring(Tool_:GetAttribute("MasteryLevel")),
                 ["wave"] = "0",
                 ["mode"] = tostring(workspace:GetAttribute("Mode")),
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
