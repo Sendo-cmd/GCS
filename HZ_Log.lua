@@ -181,13 +181,12 @@ task.spawn(function ()
     local gamestart = workspace:GetAttribute("gamestart") or 0
     repeat task.wait() until workspace:GetAttribute("gameend")
     local timetaken = (workspace:GetAttribute("gameend") or workspace:GetServerTimeNow()) - gamestart
-    local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
     local function Send(val,data)
         local StageInfo = {
             ["win"] = val,
             ["map"] = {
                 ["name"] = tostring(workspace:GetAttribute("Mapname")),
-                ["chapter"] = tostring(MasteryLevel),
+                ["chapter"] = "0",
                 ["wave"] = "0",
                 ["mode"] = tostring(workspace:GetAttribute("Mode")),
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
