@@ -664,7 +664,7 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    setfpscap(20) task.wait(1)
+    task.wait(1) --setfpscap(20)
     task.delay(60,function()
       Teleport_()
     end)
