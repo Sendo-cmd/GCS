@@ -727,7 +727,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    setfpscap(10)
+    setfpscap(7)
     print("H")
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
