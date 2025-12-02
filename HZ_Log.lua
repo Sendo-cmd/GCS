@@ -148,11 +148,16 @@ task.spawn(function()
 end)
 ]]
 task.spawn(function ()
-    if Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["selectedSlot"]["Weapons"] then
-        print("Swap")
-        sendkey("One",.1)
-        _G.Setup()
-    end
+    task.spawn(function()
+        while true do 
+            if  Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
+                print("Swap")
+                sendkey("One",.1)
+                 _G.Setup()
+            end
+            task.wait(.5)
+        end
+    end)
     local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
     local MasteryLevel_ = Tool_:GetAttribute("MasteryLevel") or 1
     local MasteryExp_ = Tool_:GetAttribute("MasteryExp") or 0
