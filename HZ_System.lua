@@ -649,23 +649,47 @@ Auto_Config()
 local function GetCharacter()
     return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
 end
+local function Teleport_()
+    local Http = game:GetService("HttpService") 
+    local TPS = game:GetService("TeleportService") 
+    local Api = "https://games.roblox.com/v1/games/" 
+    local _place = 103754275310547 local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100" 
+    function ListServers(cursor) 
+        local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or "")) 
+        return Http:JSONDecode(Raw) 
+    end 
+    local Server, Next; 
+    repeat local Servers = ListServers(Next) Server = Servers.data[1] Next = Servers.nextPageCursor 
+    until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+end
+
 if getrenv()["shared"]["loaded"] then
-    task.wait()
+    setfpscap(30) task.wait()
     task.delay(60,function()
-        local Http = game:GetService("HttpService") 
-	    local TPS = game:GetService("TeleportService") 
-        local Api = "https://games.roblox.com/v1/games/" 
-        local _place = game.PlaceId local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100" 
-        function ListServers(cursor) 
-            local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or "")) 
-            return Http:JSONDecode(Raw) 
-        end 
-        local Server, Next; 
-        repeat local Servers = ListServers(Next) Server = Servers.data[1] Next = Servers.nextPageCursor 
-        until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+      Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
     local Rooms = nil
+    local ReplicateService =  require(ReplicatedStorage:WaitForChild("Client"):WaitForChild("ReplicateService"))
+
+    game:GetService("ReplicatedStorage"):WaitForChild("Packets"):WaitForChild("Rebirth"):InvokeServer()
+
+    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
+        if v.Name == "ToggleElement" then
+            game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
+                [v.Label.Text] = true
+            })
+        end
+    end
+    for i,v in pairs(ReplicateService.GetData()["Quests"]) do
+        local process = v["process"]
+        if process["current"] >= process["max"] then
+            local status = ReplicatedStorage:WaitForChild("Packets"):WaitForChild("ClaimQuest"):InvokeServer(i)
+            if status then
+                print("Claim")
+            end
+        end
+    end
     while true do task.wait()
         if Client.PlayerGui.GUI.StartPlaceRedo.Visible then
             local Content = Client.PlayerGui.GUI.StartPlaceRedo.Content.iContent
@@ -727,12 +751,12 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    -- setfpscap(14)
+    setfpscap(11)
     print("H")
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
-    local CanSkill = true
+    local CanSkill = false
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
@@ -745,9 +769,17 @@ else
     L_1.Parent = Client.Character.HumanoidRootPart 
     L_1.MaxForce=Vector3.new(1000000000,1000000000,1000000000)
     L_1.Velocity=Vector3.new(0,0,0) 
+    if #Players:GetChildren() > 1 then
+       Teleport_()
+    end
+    task.delay(5,function()
+        if #Players:GetChildren() > 1 then
+        Teleport_()
+        end
+    end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(3.5)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -758,6 +790,24 @@ else
             v.Transparency = .9
         end
     end
+    for i,v in pairs(workspace.Entities.Zombie:GetChildren()) do
+        if v:IsA("Model") then
+            for i1,v1 in pairs(v:GetDescendants()) do
+                if v1:IsA("BasePart") then
+                    v1.Transparency = 1
+                end
+            end
+        end
+    end
+    workspace.Entities.Zombie.ChildAdded:Connect(function(v)
+        if v:IsA("Model") then
+            for i1,v1 in pairs(v:GetDescendants()) do
+                if v1:IsA("BasePart") then
+                    v1.Transparency = 1
+                end
+            end
+        end
+    end)
     _G.X = CFrame.Angles(0,0,0)
      task.spawn(function()
 
@@ -930,11 +980,10 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        -- if GetUlt and CanSkill then
-                        --     ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
+                        if GetUlt and CanSkill then
+                            ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
-                            -- อย่าลืมใส่ elseif GetPassiveSkill then
-                        if GetPassiveSkill then
+                        elseif GetPassiveSkill then
                             -- warn("Pass")
                             ByteNetReliable:FireServer(buffer.fromstring("\014"))
                         elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
@@ -950,7 +999,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-        --   setfpscap(15)
+        setfpscap(15)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -979,7 +1028,7 @@ else
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    -- print("D1")
+                                    print("D1")
                                     Enemy = nil
                                 end
                             end
@@ -993,6 +1042,7 @@ else
         end)
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
+        setfpscap(15)
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
@@ -1036,7 +1086,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = true
+                                CanSkill = false
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
@@ -1156,6 +1206,7 @@ else
             end
         end)
     else
+        setfpscap(9)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
@@ -1217,7 +1268,7 @@ else
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                        -- print("D1")
+                                        print("D1")
                                         Enemy = nil
                                     end
                                 end
@@ -1236,3 +1287,7 @@ else
     end
    
 end
+
+
+
+
