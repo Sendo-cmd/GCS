@@ -664,7 +664,7 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    setfpscap(30) task.wait()
+    setfpscap(30) task.wait(1)
     task.delay(60,function()
       Teleport_()
     end)
@@ -751,8 +751,14 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    setfpscap(10)
-    print("H")
+    setfpscap(11)
+    for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
+        if v.Name == "ToggleElement" then
+            game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
+                [v.Label.Text] = true
+            })
+        end
+    end
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
@@ -999,7 +1005,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-        setfpscap(12)
+        setfpscap(15)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -1206,7 +1212,7 @@ else
             end
         end)
     else
-        setfpscap(9)
+        setfpscap(11)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
