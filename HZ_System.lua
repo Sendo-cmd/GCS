@@ -756,7 +756,7 @@ else
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
-    local CanSkill = false
+    local CanSkill = true
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
@@ -980,10 +980,10 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        if GetUlt and CanSkill then
-                            ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
+                        -- if GetUlt and CanSkill then
+                        --     ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
-                        elseif GetPassiveSkill then
+                        if GetPassiveSkill then
                             -- warn("Pass")
                             ByteNetReliable:FireServer(buffer.fromstring("\014"))
                         elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
@@ -1028,7 +1028,7 @@ else
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    print("D1")
+                                    -- print("D1")
                                     Enemy = nil
                                 end
                             end
@@ -1086,7 +1086,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = false
+                                CanSkill = true
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
