@@ -148,17 +148,32 @@ task.spawn(function()
 end)
 ]]
 task.spawn(function ()
-    if Data["Slots"]["Weapon"][1] ~= Data["selectedSlot"]["Weapons"] then
-        print("Swap")
-        sendkey("One",.1)
-    end
-
-    task.wait(.5)
+    task.spawn(function()
+        while true do task.wait(.2)
+            if Data["Slots"]["Weapon"][1] ~= Data["selectedSlot"]["Weapons"] then
+                print("Swap")
+                sendkey("One",.1)
+            end
+        end
+    end)
     local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
     local MasteryLevel_ = Tool_:GetAttribute("MasteryLevel") or 1
     local MasteryExp_ = Tool_:GetAttribute("MasteryExp") or 0
     local EarnedMas = 0
     local EarnedLev = 0
+    task.spawn(function()
+        while true do task.wait(.2)
+            if Data["Slots"]["Weapon"][1] ~= Data["selectedSlot"]["Weapons"] then
+                print("Swap")
+                sendkey("One",.1)
+                 _G.Setup()
+            end
+        end
+    end)
+    
+    task.wait(.5)
+   
+   
     
     Tool_:GetAttributeChangedSignal("MasteryLevel"):Connect(function()
         local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
@@ -186,8 +201,8 @@ task.spawn(function ()
             ["win"] = val,
             ["map"] = {
                 ["name"] = tostring(workspace:GetAttribute("Mapname")),
-                ["chapter"] = "0",
-                ["wave"] = "0",
+                ["chapter"] = Client.Character and Client.Character:FindFirstChildWhichIsA("Tool") and Client.Character:FindFirstChildWhichIsA("Tool").Name or Tool_ and Tool_.Name or "None",
+                ["wave"] = Client.Character and Client.Character:FindFirstChildWhichIsA("Tool") and Client.Character:FindFirstChildWhichIsA("Tool"):GetAttribute("MasteryLevel") or Tool_ and Tool_:GetAttribute("MasteryLevel") or "1",
                 ["mode"] = tostring(workspace:GetAttribute("Mode")),
                 ["difficulty"] = tostring(workspace:GetAttribute("Gamemode")),
             },
