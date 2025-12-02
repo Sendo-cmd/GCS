@@ -1048,7 +1048,7 @@ else
         end)
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
-        setfpscap(12)
+        setfpscap(11)
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
