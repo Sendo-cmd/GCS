@@ -163,7 +163,7 @@ task.spawn(function ()
     local EarnedLev = 0
     task.spawn(function()
         while true do task.wait(.2)
-            if Data["Slots"]["Weapon"][1] ~= Data["selectedSlot"]["Weapons"] then
+            if  Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["selectedSlot"]["Weapons"] then
                 print("Swap")
                 sendkey("One",.1)
                  _G.Setup()
