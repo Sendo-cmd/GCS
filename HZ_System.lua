@@ -1134,7 +1134,7 @@ else
                                     return false;
                                 end
                                 Pickup = true
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.6)
+                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.55)
                                 Pickup = false
                                 lasttake = tick() + .75
                             end
