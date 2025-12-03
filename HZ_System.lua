@@ -1045,7 +1045,6 @@ else
                             end)
                             while v["health"] > 0 and v["model"] do task.wait()
                                 -- _G.Attacks()
-                                CanSkill = false
                                 Enemy = true
                                 if tick() > DodgeTicks then
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-((v["model"].HumanoidRootPart.Size.Y/2) + 3),1) * _G.GetOffset()
