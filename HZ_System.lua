@@ -769,7 +769,7 @@ else
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
-    local CanSkill = true
+    local CanSkill = false
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
@@ -993,10 +993,10 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        -- if GetUlt and CanSkill then
-                        --     ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
-                            -- warn("Ult")
-                        if GetPassiveSkill then
+                        if GetUlt and CanSkill then
+                            ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
+                            warn("Ult")
+                        elseif GetPassiveSkill then
                             -- warn("Pass")
                             ByteNetReliable:FireServer(buffer.fromstring("\014"))
                         elseif tick() >= LastUsedSkill and GetSkill and CanSkill then
