@@ -521,8 +521,6 @@ local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
-local GuiService = game:GetService("GuiService")
-
 
 task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
@@ -675,12 +673,6 @@ local function Teleport_()
     until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
 end
 
-GuiService.ErrorMessageChanged:Connect(function(errorMessage)
-    if errorMessage and errorMessage ~= "" then
-        Teleport_() 
-    end
-end)
-
 if getrenv()["shared"]["loaded"] then
     task.wait(1)
     task.delay(60,function()
@@ -769,7 +761,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    setfpscap(11)
+    -- setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -1023,7 +1015,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-        setfpscap(14)
+        -- setfpscap(14)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -1066,7 +1058,7 @@ else
         end)
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
-        setfpscap(12)
+        -- setfpscap(12)
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
@@ -1230,7 +1222,7 @@ else
             end
         end)
     else
-        setfpscap(11)
+        -- setfpscap(11)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
