@@ -663,6 +663,12 @@ local function Teleport_()
     until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
 end
 
+GuiService.ErrorMessageChanged:Connect(function(errorMessage)
+    if errorMessage and errorMessage ~= "" then
+        Teleport_() 
+    end
+end)
+
 if getrenv()["shared"]["loaded"] then
     task.wait(1)
     task.delay(60,function()
