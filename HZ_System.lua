@@ -510,6 +510,7 @@ local CollectionService = game:GetService("CollectionService")
 local HttpService = game:GetService("HttpService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
+local GuiService = game:GetService("GuiService")
 
 
 task.wait(1)
