@@ -220,6 +220,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -233,6 +234,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -246,6 +248,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -259,6 +262,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -272,6 +276,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -285,6 +290,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -298,6 +304,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -311,6 +318,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -446,6 +454,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
     end,
     ["7aa5c58e-7e95-4453-bf22-a338e04621bc"] = function()
@@ -459,6 +468,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
     end,
     ["33b3f285-bd5e-4373-af97-9b3425805812"] = function()
@@ -472,6 +482,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
         }
     end,
 }
@@ -993,7 +1004,7 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        if GetUlt and CanSkill then
+                        if Settings["Farm Settings"]["Auto Ult"] and GetUlt and CanSkill then
                             ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
                         elseif GetPassiveSkill then
