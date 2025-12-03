@@ -219,7 +219,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -232,7 +232,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -245,7 +245,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -258,7 +258,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -271,7 +271,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -284,7 +284,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -297,7 +297,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -310,7 +310,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -329,7 +329,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
@@ -347,7 +347,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
@@ -365,7 +365,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
@@ -383,7 +383,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
@@ -401,7 +401,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
@@ -445,7 +445,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
     end,
     ["7aa5c58e-7e95-4453-bf22-a338e04621bc"] = function()
@@ -458,7 +458,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
     end,
     ["33b3f285-bd5e-4373-af97-9b3425805812"] = function()
@@ -471,7 +471,7 @@ local Changes = {
         Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
-            ["Auto Skill"] = true,
+            ["Auto Skill"] = false,
         }
     end,
 }
