@@ -769,7 +769,7 @@ else
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
-    local CanSkill = false
+    local CanSkill = true
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
@@ -1034,6 +1034,7 @@ else
                             end)
                             while v["health"] > 0 and v["model"] do task.wait()
                                 -- _G.Attacks()
+                                CanSkill = false
                                 Enemy = true
                                 if tick() > DodgeTicks then
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-((v["model"].HumanoidRootPart.Size.Y/2) + 3),1) * _G.GetOffset()
@@ -1281,7 +1282,7 @@ else
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                        print("D1")
+                                        -- print("D1")
                                         Enemy = nil
                                     end
                                 end
