@@ -333,7 +333,7 @@ local Changes = {
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = false,
+                ["Kill"] = true,
             },
         }
     end,
@@ -351,7 +351,7 @@ local Changes = {
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = false,
+                ["Kill"] = true,
             },
         }
     end,
@@ -369,7 +369,7 @@ local Changes = {
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = false,
+                ["Kill"] = true,
             },
         }
     end,
@@ -387,7 +387,7 @@ local Changes = {
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = false,
+                ["Kill"] = true,
             },
         }
     end,
@@ -405,7 +405,7 @@ local Changes = {
             ["Payload"] = {
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
                 ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = false,
+                ["Kill"] = true,
             },
         }
     end,
