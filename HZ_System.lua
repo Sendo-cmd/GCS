@@ -1005,7 +1005,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-        setfpscap(15)
+        setfpscap(14)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -1048,7 +1048,7 @@ else
         end)
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
-        setfpscap(15)
+        setfpscap(13)
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
