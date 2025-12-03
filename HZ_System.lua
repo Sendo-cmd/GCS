@@ -995,7 +995,7 @@ else
                         local GetUlt = GetUlt(CurrentWeapon)
                         if GetUlt and CanSkill then
                             ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
-                            warn("Ult")
+                            -- warn("Ult")
                         elseif GetPassiveSkill then
                             -- warn("Pass")
                             ByteNetReliable:FireServer(buffer.fromstring("\014"))
