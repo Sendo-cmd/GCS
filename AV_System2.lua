@@ -2149,15 +2149,15 @@ if ID[game.GameId][1] == "AV" then
                 if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
                     print("Party Member Request")
                     task.wait(2)
-                    game:shutdown()
+                    -- game:shutdown()
                 elseif Results['StageType'] == "Challenge" then
                     print("It's Challenge")
                     task.wait(2)
-                    game:shutdown()
+                    -- game:shutdown()
                 elseif _G.CHALLENGE_CHECKCD() and Settings["Auto Join Challenge"] then
                     print("Challenge CD")
                     task.wait(2)
-                    game:shutdown()
+                    -- game:shutdown()
                 elseif Settings["Auto Join Bounty"] and task.wait(.5) and _G.BOSS_BOUNTY() and plr.PlayerGui:FindFirstChild("EndScreen") then
                     print("Bounty")
                     task.wait(2)
@@ -2165,7 +2165,7 @@ if ID[game.GameId][1] == "AV" then
                     if plr.PlayerGui.EndScreen.Holder.Buttons:FindFirstChild("Bounty") and plr.PlayerGui.EndScreen.Holder.Buttons.Bounty["Visible"] then
                         print("Can play")
                     else
-                        game:shutdown()
+                        -- game:shutdown()
                     end
                 end
             end)
@@ -2173,12 +2173,12 @@ if ID[game.GameId][1] == "AV" then
             task.wait(30)
             local cache = GetCache(Username)
             if #Players:GetChildren() ~= LenT(cache["party_member"]) + 1 then
-                game:shutdown()
+                -- game:shutdown()
             end
             task.spawn(function()
                 while task.wait(1) do
                     if #Players:GetChildren() <= 1 then
-                        game:shutdown()
+                        -- game:shutdown()
                     end
                 end
             end)
