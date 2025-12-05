@@ -675,7 +675,7 @@ end
 
 if getrenv()["shared"]["loaded"] then
     task.wait(1)
-    task.delay(60,function()
+    task.delay(70,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
