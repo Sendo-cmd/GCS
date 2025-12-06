@@ -502,6 +502,10 @@ local Dodges = {
     ["rbxassetid://137705191651007"] = 2.2, -- jokerAtk2
     ["rbxassetid://101850837481325"] = 2.2, -- jokerAtk3
     ["rbxassetid://126893675519882"] = 2.2, -- jokerATk4
+    ["rbxassetid://86074872148944"] = 1.8, -- sukunaAtk1
+    ["rbxassetid://99938949059937"] = 1.8, -- sukunaAtk2
+    ["rbxassetid://115329018679939"] = 1.8, -- sukunaAtkdom1
+    ["rbxassetid://85704738545021"] = 1.8, -- sukunaAtkdom2
 }
 local GameType = {
     ["Shogun Castle"] = "Raid",
