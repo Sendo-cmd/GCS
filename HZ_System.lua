@@ -485,6 +485,48 @@ local Changes = {
             ["Auto Ult"] = false,
         }
     end,
+    ["fa5cd742-8a01-4095-ab8e-c50c7c13f880"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Shibuya",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
+        }
+    end,
+    ["81918182-15d9-4aa9-9873-45ff606adaaf"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Shibuya",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
+        }
+    end,
+    ["0160cf72-0564-4a7d-baa9-7d1ce4bf4928"] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Shibuya",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
+        }
+    end,
 }
 local Dodges = {
     -- ["rbxassetid://92458311611550"] = 50, -- chef
@@ -511,6 +553,7 @@ local GameType = {
     ["Shogun Castle"] = "Raid",
     ["ReaperTrial"] = "Raid",
     ["JokerTrial"] = "Raid",
+    ["Shibuya"] = "Raid",
     ["City"] = "Payload"
 }
 
