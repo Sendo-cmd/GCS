@@ -569,6 +569,7 @@ local HttpService = game:GetService("HttpService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
+
 task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
 
@@ -600,6 +601,16 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     repeat task.wait() until checker()
 end
 task.wait(Delay or 0)
+
+task.spawn(function()
+    while task.wait() do
+        pcall(function()
+            sendkey("W",.01) task.wait(0.1)
+            sendkey("W",.01) task.wait(0.1)
+            -- print("space")
+        end)
+    end
+end)
 _G.IMDONE =true
 local function Get(Url)
     local Data = request({
@@ -842,7 +853,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(3.2)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -967,8 +978,10 @@ else
             if CurrentWeapon and Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID")) then
                 ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - (tonumber(Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID"))) or .4)}) 
             else
-                task.wait(.4)
-                _G.Setup()
+                if CurrentWeapon and CurrentWeapon:GetAttribute("EIEI") then
+                    task.wait(.4)
+                    _G.Setup()
+                end
             end 
         end
         function _G.Setup()
@@ -1091,7 +1104,7 @@ else
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    -- print("D1")
+                                    print("D1")
                                     Enemy = nil
                                 end
                             end

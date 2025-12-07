@@ -154,9 +154,17 @@ task.spawn(function ()
     task.spawn(function()
         while true do 
             if GetCharacter() and Client.Character:FindFirstChildWhichIsA("Tool") and Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
-                print("Swap")
-                sendkey("One",.1)
-                 _G.Setup()
+                if Client.Character:FindFirstChildWhichIsA("Tool") then
+                    if Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
+                        sendkey("One",.1) task.wait(.4)
+                    else
+                        Client.Character:FindFirstChildWhichIsA("Tool"):SetAttribute("EIEI",true)
+                    end
+                else
+                    sendkey("One",.1)
+                    task.wait(1)
+                end
+             
             end
             task.wait(.5)
         end
