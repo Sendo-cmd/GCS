@@ -1104,7 +1104,7 @@ else
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    print("D1")
+                                    -- print("D1")
                                     Enemy = nil
                                 end
                             end
