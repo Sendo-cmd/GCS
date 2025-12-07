@@ -733,7 +733,7 @@ end
 
 if getrenv()["shared"]["loaded"] then
     task.wait(1)
-    task.delay(60,function()
+    task.delay(65,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -978,10 +978,10 @@ else
             if CurrentWeapon and Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID")) then
                 ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - (tonumber(Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID"))) or .4)}) 
             else
-                if CurrentWeapon and CurrentWeapon:GetAttribute("EIEI") then
+                -- if CurrentWeapon and CurrentWeapon:GetAttribute("EIEI") then
                     task.wait(.4)
                     _G.Setup()
-                end
+                -- end
             end 
         end
         function _G.Setup()
