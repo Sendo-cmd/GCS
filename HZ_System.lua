@@ -1084,6 +1084,7 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
+                        task.wait(5)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
@@ -1091,7 +1092,7 @@ else
                             -- workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
                             v["model"]["AnimationController"]["AnimationPlayed"]:Connect(function(track)
                                 if Dodges[tostring(track.Animation.AnimationId)] then
-                                    print(Dodges[tostring(track.Animation.AnimationId)])
+                                    -- print(Dodges[tostring(track.Animation.AnimationId)])
                                     DodgeTicks = tick() + Dodges[tostring(track.Animation.AnimationId)]
                                 end
                             end)
@@ -1151,7 +1152,7 @@ else
                                     Prompt.RequiresLineOfSight = false
                                     Prompt.MaxActivationDistance = 150
                                     Prompt.HoldDuration = 0
-                                    -- print(Prompt)
+                                    print(Prompt)
                                     sendkey("E",.01)
                                 end
                             end
@@ -1214,7 +1215,7 @@ else
             while Settings["Farm Settings"]["Payload"]["Kill"] do task.wait()
                local p,c = pcall(function ()
                     if tick() >= BreakToKill or Client.PlayerGui.Plyload.BUFF.Visible then
-                        print("Killing Mob")
+                        -- print("Killing Mob")
                         local Character = GetCharacter()
                         local KillMob = tick() + 10 
                         BreakToKill_ = true
@@ -1226,7 +1227,7 @@ else
                                 end
                             end
                         end
-                        print("Stop Kill Mob")
+                        -- print("Stop Kill Mob")
                         BreakToKill_ = false
                         BreakToKill = tick() + 15
                     end
