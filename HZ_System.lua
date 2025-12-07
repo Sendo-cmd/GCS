@@ -556,7 +556,6 @@ local GameType = {
     ["Shibuya"] = "Raid",
     ["City"] = "Payload"
 }
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -608,6 +607,7 @@ task.spawn(function()
             sendkey("W",.01) task.wait(0.1)
             sendkey("W",.01) task.wait(0.1)
             -- print("space")
+            task.wait(1000)
         end)
     end
 end)
@@ -732,8 +732,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    task.wait(1)
-    task.delay(65,function()
+    setfpscap(30) task.wait(1)
+    task.delay(60,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -819,7 +819,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    -- setfpscap(11)
+    setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -1162,7 +1162,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = true
+                                CanSkill = false
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
@@ -1282,7 +1282,7 @@ else
             end
         end)
     else
-        setfpscap(10)
+        setfpscap(11)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
@@ -1363,7 +1363,3 @@ else
     end
    
 end
-
-
-
-
