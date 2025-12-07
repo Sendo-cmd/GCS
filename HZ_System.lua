@@ -978,10 +978,10 @@ else
             if CurrentWeapon and Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID")) then
                 ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - (tonumber(Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID"))) or .4)}) 
             else
-                if CurrentWeapon and CurrentWeapon:GetAttribute("EIEI") then
+                -- if CurrentWeapon and CurrentWeapon:GetAttribute("EIEI") then
                     task.wait(.4)
                     _G.Setup()
-                end
+                -- end
             end 
         end
         function _G.Setup()
@@ -1151,7 +1151,7 @@ else
                                     Prompt.RequiresLineOfSight = false
                                     Prompt.MaxActivationDistance = 150
                                     Prompt.HoldDuration = 0
-                                    print(Prompt)
+                                    -- print(Prompt)
                                     sendkey("E",.01)
                                 end
                             end
