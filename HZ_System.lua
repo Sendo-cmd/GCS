@@ -732,7 +732,7 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    setfpscap(30) task.wait(1)
+    task.wait(1)
     task.delay(60,function()
       Teleport_()
     end)
@@ -1282,7 +1282,7 @@ else
             end
         end)
     else
-        setfpscap(11)
+        -- setfpscap(11)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
