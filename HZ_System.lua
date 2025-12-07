@@ -1162,7 +1162,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = false
+                                CanSkill = true
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
