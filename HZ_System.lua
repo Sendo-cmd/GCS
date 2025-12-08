@@ -1075,7 +1075,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-        -- setfpscap(15)
+        setfpscap(15)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -1119,7 +1119,7 @@ else
         end)
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
-        -- setfpscap(15)
+        setfpscap(15)
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
@@ -1283,7 +1283,7 @@ else
             end
         end)
     else
-        -- setfpscap(15)
+        setfpscap(15)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
