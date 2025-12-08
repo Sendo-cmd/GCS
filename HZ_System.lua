@@ -605,7 +605,7 @@ task.spawn(function()
     while task.wait() do
         pcall(function()
             sendkey("W",.01) task.wait(0.1)
-            sendkey("W",.01) task.wait(0.1)
+            -- sendkey("W",.01) task.wait(0.1)
             -- print("space")
             task.wait(1000)
         end)
@@ -1084,7 +1084,7 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        task.wait(5)
+                        task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
