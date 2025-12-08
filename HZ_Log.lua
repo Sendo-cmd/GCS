@@ -153,7 +153,7 @@ task.spawn(function ()
     end
     task.spawn(function()
         while true do 
-            if GetCharacter() and Client.Character:FindFirstChildWhichIsA("Tool") and Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
+            if GetCharacter() then
                 if Client.Character:FindFirstChildWhichIsA("Tool") then
                     if Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
                         sendkey("One",.1) task.wait(.4)

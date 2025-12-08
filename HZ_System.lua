@@ -978,10 +978,10 @@ else
             if CurrentWeapon and Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID")) then
                 ByteNetReliable:FireServer(buffer.fromstring(attacks[1]),{workspace:GetServerTimeNow() - (tonumber(Workspace:GetAttribute(CurrentWeapon:GetAttribute("DATA_ID"))) or .4)}) 
             else
-                -- if CurrentWeapon and CurrentWeapon:GetAttribute("EIEI") then
+                if CurrentWeapon and CurrentWeapon:GetAttribute("EIEI") then
                     task.wait(.4)
                     _G.Setup()
-                -- end
+                end
             end 
         end
         function _G.Setup()
@@ -1075,7 +1075,7 @@ else
         end)
     end)
     if Workspace:FindFirstChild("IdleRoom",true) then
-        setfpscap(15)
+        -- setfpscap(15)
         print("H1")
         local IdleRoom = Workspace:FindFirstChild("IdleRoom",true)
        
@@ -1119,7 +1119,7 @@ else
         end)
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
-        setfpscap(15)
+        -- setfpscap(15)
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
@@ -1283,7 +1283,7 @@ else
             end
         end)
     else
-        setfpscap(15)
+        -- setfpscap(15)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
