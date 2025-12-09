@@ -699,8 +699,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    setfpscap(30) task.wait(1)
-    task.delay(60,function()
+    task.wait()
+    task.delay(70,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -786,7 +786,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    setfpscap(11)
+    -- setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
