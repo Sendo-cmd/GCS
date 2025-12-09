@@ -1,6 +1,6 @@
 local Url = "https://api.championshop.date"
-local Auto_Configs = true
-local IsTest = false
+local Auto_Configs = false
+local IsTest = true
 local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
@@ -20,6 +20,7 @@ local MainSettings = {
 --         ["Select Mode"] = "Campaign", -- Campaign , Raid
 --     },
 -- }
+
 local Settings = {
     ["Farm Settings"] = {
         ["Offset"] = CFrame.new(0,-5,0),
@@ -596,8 +597,12 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
             return not LOADING.Enabled
         end
         return true
-    end
+    end 
     repeat task.wait() until checker()
+end
+local FocusNavigation = game:GetService("CoreGui").RobloxGui.FocusNavigationCoreScriptsWrapper
+if FocusNavigation:FindFirstChildWhichIsA("ImageButton") then
+    clicking(FocusNavigation.Prompt.AlertContents.Footer.Buttons["1"])
 end
 task.wait(Delay or 0)
 
@@ -732,8 +737,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    task.wait(1)
-    task.delay(70,function()
+    setfpscap(30) task.wait(1)
+    task.delay(60,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -853,7 +858,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(2.5)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -1092,7 +1097,7 @@ else
                             -- workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
                             v["model"]["AnimationController"]["AnimationPlayed"]:Connect(function(track)
                                 if Dodges[tostring(track.Animation.AnimationId)] then
-                                    -- print(Dodges[tostring(track.Animation.AnimationId)])
+                                    print(Dodges[tostring(track.Animation.AnimationId)])
                                     DodgeTicks = tick() + Dodges[tostring(track.Animation.AnimationId)]
                                 end
                             end)
@@ -1164,7 +1169,7 @@ else
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
                                 CanSkill = true
-                                Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
+                                Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
                                 CanSkill = false
@@ -1212,10 +1217,10 @@ else
             end
         end)
         task.spawn(function ()                                             
-            while Settings["Farm Settings"]["Payload"]["Kill"] do task.wait()
+            while Settings["Payload"]["Kill"] do task.wait()
                local p,c = pcall(function ()
                     if tick() >= BreakToKill or Client.PlayerGui.Plyload.BUFF.Visible then
-                        -- print("Killing Mob")
+                        print("Killing Mob")
                         local Character = GetCharacter()
                         local KillMob = tick() + 10 
                         BreakToKill_ = true
@@ -1223,11 +1228,11 @@ else
                             while v["health"] > 0 and v["model"] and KillMob > tick() do task.wait()
                                 if not Pickup then
                                     _G.Attacks()
-                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * (_G.PayloadOffset() or Settings["Farm Settings"]["Payload"]["Monster Offset"])
+                                    Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * (_G.PayloadOffset() or Settings["Payload"]["Monster Offset"])
                                 end
                             end
                         end
-                        -- print("Stop Kill Mob")
+                        print("Stop Kill Mob")
                         BreakToKill_ = false
                         BreakToKill = tick() + 15
                     end
@@ -1240,6 +1245,7 @@ else
         task.spawn(function ()      
             local realfolder = nil 
             local lasttake = tick()    
+            local CanTakeHealth = tick()
             repeat
                 task.wait()
             until tick() >= StartToKeepItem
@@ -1255,8 +1261,13 @@ else
                 local p,c = pcall(function ()
                     if tick() >= lasttake then
                         local Character = GetCharacter()
+                        local Percent = (workspace:GetAttribute("BaseMaxHealth") or 1)/100 * Settings["Payload"]["Health Percent"]
+                        local Health =  (workspace:GetAttribute("BasseHealth") or 1) < Percent
                         for i,v in pairs(realfolder:GetChildren()) do
                             if v:IsA("MeshPart") then
+                                if v.Name == "Health" and not Health then
+                                    continue;
+                                end
                                 if lasttake >= tick() then
                                     return false;
                                 end
@@ -1283,7 +1294,7 @@ else
             end
         end)
     else
-        setfpscap(15)
+        setfpscap(11)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
@@ -1364,3 +1375,7 @@ else
     end
    
 end
+
+
+
+
