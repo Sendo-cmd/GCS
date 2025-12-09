@@ -586,6 +586,7 @@ end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     local function checker()
+        task.wait(1)
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
             local LOADING =  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
@@ -852,7 +853,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(3)
+        task.wait(2.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
