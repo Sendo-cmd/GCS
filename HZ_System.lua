@@ -1,6 +1,6 @@
 local Url = "https://api.championshop.date"
-local Auto_Configs = true
-local IsTest = false
+local Auto_Configs = false
+local IsTest = true
 local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
@@ -596,8 +596,12 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
             return not LOADING.Enabled
         end
         return true
-    end
+    end 
     repeat task.wait() until checker()
+end
+local FocusNavigation = game:GetService("CoreGui").RobloxGui.FocusNavigationCoreScriptsWrapper
+if FocusNavigation:FindFirstChildWhichIsA("ImageButton") then
+    clicking(FocusNavigation.Prompt.AlertContents.Footer.Buttons["1"])
 end
 task.wait(Delay or 0)
 
@@ -606,7 +610,7 @@ task.spawn(function()
         pcall(function()
             sendkey("W",.01) task.wait(0.1)
             sendkey("W",.01) task.wait(0.1)
-            -- print("space")
+            print("space")
             task.wait(1000)
         end)
     end
@@ -732,8 +736,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    task.wait(1)
-    task.delay(70,function()
+    task.wait()
+    task.delay(60,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -853,7 +857,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(2.5)
+        task.wait(3)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -1084,7 +1088,6 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
@@ -1092,7 +1095,7 @@ else
                             -- workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
                             v["model"]["AnimationController"]["AnimationPlayed"]:Connect(function(track)
                                 if Dodges[tostring(track.Animation.AnimationId)] then
-                                    -- print(Dodges[tostring(track.Animation.AnimationId)])
+                                    print(Dodges[tostring(track.Animation.AnimationId)])
                                     DodgeTicks = tick() + Dodges[tostring(track.Animation.AnimationId)]
                                 end
                             end)
@@ -1215,7 +1218,7 @@ else
             while Settings["Farm Settings"]["Payload"]["Kill"] do task.wait()
                local p,c = pcall(function ()
                     if tick() >= BreakToKill or Client.PlayerGui.Plyload.BUFF.Visible then
-                        -- print("Killing Mob")
+                        print("Killing Mob")
                         local Character = GetCharacter()
                         local KillMob = tick() + 10 
                         BreakToKill_ = true
@@ -1227,7 +1230,7 @@ else
                                 end
                             end
                         end
-                        -- print("Stop Kill Mob")
+                        print("Stop Kill Mob")
                         BreakToKill_ = false
                         BreakToKill = tick() + 15
                     end
@@ -1240,6 +1243,7 @@ else
         task.spawn(function ()      
             local realfolder = nil 
             local lasttake = tick()    
+            local CanTakeHealth = tick()
             repeat
                 task.wait()
             until tick() >= StartToKeepItem
@@ -1255,8 +1259,13 @@ else
                 local p,c = pcall(function ()
                     if tick() >= lasttake then
                         local Character = GetCharacter()
+                        local Percent = (workspace:GetAttribute("BaseMaxHealth") or 1)/100 * 50
+                        local Health =  (workspace:GetAttribute("BasseHealth") or 1) < Percent
                         for i,v in pairs(realfolder:GetChildren()) do
                             if v:IsA("MeshPart") then
+                                if v.Name == "Health" and not Health then
+                                    continue;
+                                end
                                 if lasttake >= tick() then
                                     return false;
                                 end
@@ -1283,7 +1292,7 @@ else
             end
         end)
     else
-        setfpscap(15)
+        setfpscap(11)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
