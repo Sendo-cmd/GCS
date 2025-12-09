@@ -7,19 +7,19 @@ local MainSettings = {
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
     ["Path_Kai"] = "/api/v1/shop/accountskai/",
 }
--- local Settings = {
---     ["Farm Settings"] = {
---         ["Offset"] = CFrame.new(0,-5,0),
---         ["Camera Viewer"] = false,
---         ["Auto Skill"] = true,
---     },
---     ["Select Mode"] = "Normal",
---     ["Normal Room Settings"] = {
---         ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
---         ["Select Map"] = "Island",
---         ["Select Mode"] = "Campaign", -- Campaign , Raid
---     },
--- }
+local Settings = {
+    ["Farm Settings"] = {
+        ["Offset"] = CFrame.new(0,-5,0),
+        ["Camera Viewer"] = false,
+        ["Auto Skill"] = true,
+    },
+    ["Select Mode"] = "Normal",
+    ["Normal Room Settings"] = {
+        ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
+        ["Select Map"] = "Island",
+        ["Select Mode"] = "Campaign", -- Campaign , Raid
+    },
+}
 
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
