@@ -15,7 +15,7 @@ local Settings = {
         ["Custom Offset"] = false,
     },
     ["Payload"] = {
-        ["Health Percent"] = 50,
+        ["Health Percent"] = 70,
         ["Monster Offset"] = CFrame.new(0,0,2.5),
         ["Pipe Offset"] = CFrame.new(0,0,1.9),
         ["Kill"] = true,
@@ -322,7 +322,7 @@ local Changes = {
             ["Auto Skill"] = false,
         } 
         Settings["Payload"] = {
-            ["Health Percent"] = 50,
+            ["Health Percent"] = 70,
             ["Monster Offset"] = CFrame.new(0,0,2.5),
             ["Pipe Offset"] = CFrame.new(0,0,1.9),
             ["Kill"] = true,
@@ -341,7 +341,7 @@ local Changes = {
             ["Auto Skill"] = false,
         } 
         Settings["Payload"] = {
-            ["Health Percent"] = 50,
+            ["Health Percent"] = 70,
             ["Monster Offset"] = CFrame.new(0,0,2.5),
             ["Pipe Offset"] = CFrame.new(0,0,1.9),
             ["Kill"] = true,
@@ -360,7 +360,7 @@ local Changes = {
             ["Auto Skill"] = false,
         } 
         Settings["Payload"] = {
-            ["Health Percent"] = 50,
+            ["Health Percent"] = 70,
             ["Monster Offset"] = CFrame.new(0,0,2.5),
             ["Pipe Offset"] = CFrame.new(0,0,1.9),
             ["Kill"] = true,
@@ -379,7 +379,7 @@ local Changes = {
             ["Auto Skill"] = false,
         } 
         Settings["Payload"] = {
-            ["Health Percent"] = 50,
+            ["Health Percent"] = 70,
             ["Monster Offset"] = CFrame.new(0,0,2.5),
             ["Pipe Offset"] = CFrame.new(0,0,1.9),
             ["Kill"] = true,
@@ -398,7 +398,7 @@ local Changes = {
             ["Auto Skill"] = false,
         } 
         Settings["Payload"] = {
-            ["Health Percent"] = 50,
+            ["Health Percent"] = 70,
             ["Monster Offset"] = CFrame.new(0,0,2.5),
             ["Pipe Offset"] = CFrame.new(0,0,1.9),
             ["Kill"] = true,
@@ -516,7 +516,7 @@ local Changes = {
     end,
 }
 local Dodges = {
-    -- ["rbxassetid://92458311611550"] = 50, -- chef
+    -- ["rbxassetid://92458311611550"] = 70, -- chef
     ["rbxassetid://128397076452919"] = 1.7, -- bomber
     ["rbxassetid://89583666176634"] = 1.2, -- vam
     ["rbxassetid://94540545977068"] = 1.7, -- toxic
@@ -1077,7 +1077,7 @@ else
                     if #Entities["entities"] <= 0 then
                         task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
-                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
+                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,70,0) task.wait(1)
                     else
                         for i,v in pairs(Entities["entities"]) do
                             -- workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
@@ -1095,7 +1095,7 @@ else
                                     -- print("D")
                                     Enemy = v
                                 else
-                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,70,60)
                                     -- print("D1")
                                     Enemy = nil
                                 end
@@ -1333,7 +1333,7 @@ else
                                 if v["data"]["abilityData"] == "Boomie" then
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,0)
                                     task.wait(.5)
-                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,70,60)
                                     task.wait(1)
                                 else
                                     if tick() > DodgeTicks then
@@ -1341,7 +1341,7 @@ else
                                         -- print("D")
                                         Enemy = v
                                     else
-                                        Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
+                                        Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,70,60)
                                         -- print("D1")
                                         Enemy = nil
                                     end
