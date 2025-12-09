@@ -572,6 +572,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
+    task.wait(2.5)
     local function checker()
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
@@ -579,7 +580,7 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
             if LOADING:FindFirstChildWhichIsA("TextButton",true) then
                 clicking(LOADING:FindFirstChildWhichIsA("TextButton",true))
             end
-            return not LOADING.Enableda
+            return not LOADING.Enabled
         end
         return true
     end 
@@ -594,9 +595,9 @@ task.wait(Delay or 0)
 task.spawn(function()
     while task.wait() do
         pcall(function()
-            sendkey("S",.01) task.wait(0.1)
-            sendkey("S",.01) task.wait(0.1)
-            -- print("space")
+            sendkey("W",.01) task.wait(0.1)
+            sendkey("W",.01) task.wait(0.1)
+            print("space")
             task.wait(1000)
         end)
     end
@@ -722,8 +723,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    task.wait()
-    task.delay(70,function()
+    setfpscap(30) task.wait(1)
+    task.delay(60,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -843,7 +844,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(2.7)
+        task.wait(3)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -851,7 +852,7 @@ else
     
     for i,v in pairs(Doors.Parent:GetDescendants()) do
         if v:IsA("BasePart") then
-            v.Transparency = .9
+            v:Destroy()
         end
     end
     for i,v in pairs(workspace.Entities.Zombie:GetChildren()) do
@@ -1076,7 +1077,7 @@ else
                     if #Entities["entities"] <= 0 then
                         task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
-                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,70,0) task.wait(1)
+                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
                         for i,v in pairs(Entities["entities"]) do
                             -- workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
@@ -1094,7 +1095,7 @@ else
                                     -- print("D")
                                     Enemy = v
                                 else
-                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,70,60)
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
                                     -- print("D1")
                                     Enemy = nil
                                 end
@@ -1248,12 +1249,13 @@ else
                         local Character = GetCharacter()
                         local Percent = (workspace:GetAttribute("BaseMaxHealth") or 1)/100 * Settings["Payload"]["Health Percent"]
                         local Health =  (workspace:GetAttribute("BasseHealth") or 1) < Percent
+                        print(Percent,(workspace:GetAttribute("BasseHealth") or 1),Health)
                         for i,v in pairs(realfolder:GetChildren()) do
                             if v:IsA("MeshPart") then
                                 if v.Name == "Health" and not Health then
                                     continue;
                                 end
-                                if lasttake >= tick() then
+                                if lasttake >= tick() and not Health then
                                     return false;
                                 end
                                 Pickup = true
@@ -1332,7 +1334,7 @@ else
                                 if v["data"]["abilityData"] == "Boomie" then
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-3,0)
                                     task.wait(.5)
-                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,70,60)
+                                    Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
                                     task.wait(1)
                                 else
                                     if tick() > DodgeTicks then
@@ -1340,7 +1342,7 @@ else
                                         -- print("D")
                                         Enemy = v
                                     else
-                                        Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,70,60)
+                                        Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
                                         -- print("D1")
                                         Enemy = nil
                                     end
