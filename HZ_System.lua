@@ -1263,13 +1263,13 @@ else
                                 Pickup = true
                                 Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.32)
                                 Pickup = false
-                                lasttake = tick() + .75
+                                lasttake = tick() + .6
                                 if Health then
                                     task.wait(.75)
                                 end
                             end
                         end
-                        lasttake = tick() + .75
+                        lasttake = tick() + .6
                     end
                     
                 end)
