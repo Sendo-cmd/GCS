@@ -605,7 +605,7 @@ task.spawn(function()
     while task.wait() do
         pcall(function()
             sendkey("W",.01) task.wait(0.1)
-            -- sendkey("W",.01) task.wait(0.1)
+            sendkey("W",.01) task.wait(0.1)
             -- print("space")
             task.wait(1000)
         end)

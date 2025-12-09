@@ -203,7 +203,8 @@ local Inventory = {}
 
 local Settings ={
 
-    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey
+    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey , Fall Regular , Fall Infinite
+    ["Auto Join AFK"] = false,
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
     ["Auto Join Boss Event"] = false,
@@ -378,24 +379,36 @@ local Changes = {
         ["Ignore Modify"] = {},
     }
     end,
-    ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
-        Settings["Select Mode"] = "Portal"
-        Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
-        ["Tier Cap"] = 10,
-        ["Method"] = "Highest", -- Highest , Lowest
-        ["Ignore Stage"] = {},
-        ["Ignore Modify"] = {},
-    }
-    end,
-    ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
-        Settings["Select Mode"] = "Summer"
-    end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Fall Regular"
+    -- end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Fall Regular"
+    -- end,
+    -- [""] = function()
+    --     Settings["Select Mode"] = "Fall Regular"
+    -- end,
     ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
-        Settings["Select Mode"] = "Summer"
+        Settings["Select Mode"] = "Fall Infinite"
     end,
     ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
-        Settings["Select Mode"] = "Summer"
+        Settings["Select Mode"] = "Fall Infinite"
+    end,
+    ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
+        Settings["Select Mode"] = "Fall Infinite"
+    end,
+    ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
+        Settings["Select Mode"] = "Fall Infinite"
     end,
     ["d88ae3d8-3e47-4de0-b18c-ee598fb2bb83"] = function()
         Settings["Select Mode"] = "Dungeon"
@@ -1841,6 +1854,22 @@ end
                     [1] = "StartMatch"
                 }
                 
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+            elseif Settings["Select Mode"] == "Fall Regular" then
+                game:GetService("ReplicatedStorage").Networking.Fall.FallLTMEvent:FireServer("Create")
+                task.wait(2)
+                local args = {
+                   [1] = "StartMatch"
+                }
+
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+            elseif Settings["Select Mode"] == "Fall Infinite" then
+                game:GetService("ReplicatedStorage").Networking.Fall.FallLTMEvent:FireServer("Create","Infinite")
+                task.wait(2)
+                local args = {
+                   [1] = "StartMatch"
+                }
+
                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
             elseif Settings["Select Mode"] == "Dungeon" then
                 while true do
