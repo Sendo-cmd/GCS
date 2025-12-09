@@ -558,6 +558,7 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 task.wait()
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
 local Client = Players.LocalPlayer
 
