@@ -574,7 +574,8 @@ end
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     task.wait(2.5)
     local function checker()
-        print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
+        
+        print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
             local LOADING =  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
             if LOADING:FindFirstChildWhichIsA("TextButton",true) then
@@ -723,8 +724,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    setfpscap(30) task.wait(1)
-    task.delay(60,function()
+    task.wait()
+    task.delay(70,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -810,7 +811,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    -- setfpscap(11)
+    setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -852,7 +853,7 @@ else
     
     for i,v in pairs(Doors.Parent:GetDescendants()) do
         if v:IsA("BasePart") then
-            v:Destroy()
+            v.Transparency = 1
         end
     end
     for i,v in pairs(workspace.Entities.Zombie:GetChildren()) do
@@ -1075,6 +1076,7 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
+                        task.wait(3.8)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
@@ -1261,6 +1263,9 @@ else
                                 Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.32)
                                 Pickup = false
                                 lasttake = tick() + .1
+                                if Health then
+                                    task.wait(.75)
+                                end
                             end
                         end
                         lasttake = tick() + .1
