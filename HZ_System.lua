@@ -572,7 +572,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    task.wait(2.5)
+    task.wait(1)
     local function checker()
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
