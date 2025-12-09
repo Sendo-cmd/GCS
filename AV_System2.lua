@@ -1509,6 +1509,22 @@ local function Register_Room(myproduct,player)
             }
             
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+        elseif Settings["Select Mode"] == "Fall Regular" then
+                game:GetService("ReplicatedStorage").Networking.Fall.FallLTMEvent:FireServer("Create")
+                task.wait(2)
+                local args = {
+                   [1] = "StartMatch"
+                }
+
+                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
+        elseif Settings["Select Mode"] == "Fall Infinite" then
+            game:GetService("ReplicatedStorage").Networking.Fall.FallLTMEvent:FireServer("Create","Infinite")
+            task.wait(2)
+            local args = {
+                [1] = "StartMatch"
+            }
+
+            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
         elseif Settings["Select Mode"] == "Odyssey" then
             local OdysseySettings = Settings["Odyssey Settings"]
             if OdysseySettings["Limiteless"] then
