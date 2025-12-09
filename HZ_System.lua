@@ -20,7 +20,6 @@ local Settings = {
         ["Select Mode"] = "Campaign", -- Campaign , Raid
     },
 }
-
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
         Settings["Select Mode"] = "Normal"
