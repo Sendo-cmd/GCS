@@ -1,6 +1,6 @@
 local Url = "https://api.championshop.date"
-local Auto_Configs = false
-local IsTest = true
+local Auto_Configs = true
+local IsTest = false
 local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
