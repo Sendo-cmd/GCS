@@ -556,7 +556,7 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 
-task.wait(1)
+task.wait()
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
 
 local Client = Players.LocalPlayer
