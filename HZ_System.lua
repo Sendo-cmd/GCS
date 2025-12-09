@@ -595,7 +595,7 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
             end
             return not LOADING.Enabled
         end
-        return false
+        return true
     end
     repeat task.wait() until checker()
 end
