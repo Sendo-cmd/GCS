@@ -573,14 +573,13 @@ end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     local function checker()
-        task.wait()
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
             local LOADING =  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
             if LOADING:FindFirstChildWhichIsA("TextButton",true) then
                 clicking(LOADING:FindFirstChildWhichIsA("TextButton",true))
             end
-            return not LOADING.Enabled
+            return not LOADING.Enableda
         end
         return true
     end 
