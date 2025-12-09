@@ -300,12 +300,12 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            ["Payload"] = {
-                ["Health Percent"] = 50,
-                ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = true,
-            },
+        } 
+        Settings["Payload"] = {
+            ["Health Percent"] = 50,
+            ["Monster Offset"] = CFrame.new(0,0,2.5),
+            ["Pipe Offset"] = CFrame.new(0,0,1.9),
+            ["Kill"] = true,
         }
     end,
     ["92382bbd-6a2c-472b-b158-4faff6e1d048"] = function()
@@ -319,12 +319,12 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            ["Payload"] = {
-                ["Health Percent"] = 50,
-                ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = true,
-            },
+        } 
+        Settings["Payload"] = {
+            ["Health Percent"] = 50,
+            ["Monster Offset"] = CFrame.new(0,0,2.5),
+            ["Pipe Offset"] = CFrame.new(0,0,1.9),
+            ["Kill"] = true,
         }
     end,
     ["57b04420-9f1b-4977-b8bf-d615a4fbcc60"] = function()
@@ -338,12 +338,12 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            ["Payload"] = {
-                ["Health Percent"] = 50,
-                ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = true,
-            },
+        } 
+        Settings["Payload"] = {
+            ["Health Percent"] = 50,
+            ["Monster Offset"] = CFrame.new(0,0,2.5),
+            ["Pipe Offset"] = CFrame.new(0,0,1.9),
+            ["Kill"] = true,
         }
     end,
     ["9f352955-b8d0-491e-a3cf-03f0717b6920"] = function()
@@ -357,12 +357,12 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            ["Payload"] = {
-                ["Health Percent"] = 50,
-                ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = true,
-            },
+        } 
+        Settings["Payload"] = {
+            ["Health Percent"] = 50,
+            ["Monster Offset"] = CFrame.new(0,0,2.5),
+            ["Pipe Offset"] = CFrame.new(0,0,1.9),
+            ["Kill"] = true,
         }
     end,
     ["01e7b9c6-1ebc-49e5-a503-36f0f29d844e"] = function()
@@ -376,12 +376,12 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            ["Payload"] = {
-                ["Health Percent"] = 50,
-                ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = true,
-            },
+        } 
+        Settings["Payload"] = {
+            ["Health Percent"] = 50,
+            ["Monster Offset"] = CFrame.new(0,0,2.5),
+            ["Pipe Offset"] = CFrame.new(0,0,1.9),
+            ["Kill"] = true,
         }
     end,
     ["485e425d-a98c-4139-bd3b-e4bf78a51bdb"] = function()
