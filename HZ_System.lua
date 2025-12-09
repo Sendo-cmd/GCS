@@ -570,9 +570,9 @@ task.wait(Delay or 0)
 task.spawn(function()
     while task.wait() do
         pcall(function()
-            sendkey("W",.01) task.wait(0.1)
-            sendkey("W",.01) task.wait(0.1)
-            print("space")
+            sendkey("S",.01) task.wait(0.1)
+            sendkey("S",.01) task.wait(0.1)
+            -- print("space")
             task.wait(1000)
         end)
     end
