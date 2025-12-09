@@ -1,6 +1,6 @@
 local Url = "https://api.championshop.date"
-local Auto_Configs = true
-local IsTest = false
+local Auto_Configs = false
+local IsTest = true
 local Delay = 0
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
@@ -21,44 +21,6 @@ local MainSettings = {
 --     },
 -- }
 
-local Settings = {
-    ["Farm Settings"] = {
-        ["Offset"] = CFrame.new(0,-5,0),
-        ["Camera Viewer"] = false,
-        ["Auto Skill"] = true,
-        ["Custom Offset"] = false,
-        ["Payload"] = {
-            ["Monster Offset"] = CFrame.new(0,0,2.5),
-            ["Pipe Offset"] = CFrame.new(0,0,1.9),
-            ["Kill"] = true,
-        },
-    },
-    ["Select Mode"] = "Normal",
-    ["Normal Room Settings"] = {
-        ["Select Difficulty"] = "Normal", -- Normal , Nightmare
-        ["Select Map"] = "City",
-        ["Select Mode"] = "Payload", -- Campaign , Raid
-    },
-}
--- local Settings = {
---     ["Farm Settings"] = {
---         ["Offset"] = CFrame.new(0,-5,0),
---         ["Camera Viewer"] = false,
---         ["Auto Skill"] = true,
---         ["Custom Offset"] = false,
---         ["Payload"] = {
---             ["Monster Offset"] = CFrame.new(0,0,2.5),
---             ["Pipe Offset"] = CFrame.new(0,0,1.9),
---             ["Kill"] = false,
---         },
---     },
---     ["Select Mode"] = "Normal",
---     ["Normal Room Settings"] = {
---         ["Select Difficulty"] = "Normal", -- Normal , Nightmare
---         ["Select Map"] = "JokerTrial",
---         ["Select Mode"] = "Raid", -- Campaign , Raid
---     },
--- }
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
         Settings["Select Mode"] = "Normal"
@@ -600,19 +562,10 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     end 
     repeat task.wait() until checker()
 end
-local FocusNavigation = game:GetService("CoreGui"):FindFirstChild("RobloxGui") 
-    and game:GetService("CoreGui").RobloxGui:FindFirstChild("FocusNavigationCoreScriptsWrapper")
-
-if FocusNavigation and FocusNavigation:FindFirstChildWhichIsA("ImageButton", true) then
-    local alert = FocusNavigation:FindFirstChild("Prompt", true)
-    if alert and alert:FindFirstChild("AlertContents", true) then
-        local footer = alert.AlertContents:FindFirstChild("Footer", true)
-        if footer and footer:FindFirstChild("Buttons", true) and footer.Buttons:FindFirstChild("1") then
-            clicking(footer.Buttons["1"])
-        end
-    end
+local FocusNavigation = game:GetService("CoreGui").RobloxGui:FindFirstChild("FocusNavigationCoreScriptsWrapper")
+if FocusNavigation and FocusNavigation:FindFirstChildWhichIsA("ImageButton") then
+    clicking(FocusNavigation.Prompt.AlertContents.Footer.Buttons["1"])
 end
-
 task.wait(Delay or 0)
 
 task.spawn(function()
@@ -620,7 +573,7 @@ task.spawn(function()
         pcall(function()
             sendkey("W",.01) task.wait(0.1)
             sendkey("W",.01) task.wait(0.1)
-            -- print("space")
+            print("space")
             task.wait(1000)
         end)
     end
@@ -833,7 +786,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    -- setfpscap(11)
+    setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -867,7 +820,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(4.5)
+        task.wait(2.7)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -1384,7 +1337,3 @@ else
     end
    
 end
-
-
-
-
