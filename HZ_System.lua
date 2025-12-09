@@ -300,10 +300,6 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            Settings["Farm Settings"] = {
-            ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
-            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Health Percent"] = 50,
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
@@ -342,10 +338,6 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            Settings["Farm Settings"] = {
-            ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
-            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Health Percent"] = 50,
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
@@ -365,10 +357,6 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
-            Settings["Farm Settings"] = {
-            ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
-            ["Auto Skill"] = false,
             ["Payload"] = {
                 ["Health Percent"] = 50,
                 ["Monster Offset"] = CFrame.new(0,0,2.5),
@@ -385,10 +373,6 @@ local Changes = {
             ["Select Mode"] = "Payload",
         }
         Settings["Farm Settings"] = {
-            ["Offset"] = CFrame.new(0,-5,0),
-            ["Camera Viewer"] = false,
-            ["Auto Skill"] = false,
-            Settings["Farm Settings"] = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
@@ -1243,12 +1227,7 @@ else
                 local p,c = pcall(function ()
                     if tick() >= lasttake then
                         local Character = GetCharacter()
-                        local Percent = (workspace:GetAttribute("BaseMaxHealth") or 1)/100 * Settings["Payload"]["Payload"] = {
-                ["Health Percent"] = 50,
-                ["Monster Offset"] = CFrame.new(0,0,2.5),
-                ["Pipe Offset"] = CFrame.new(0,0,1.9),
-                ["Kill"] = true,
-            },
+                        local Percent = (workspace:GetAttribute("BaseMaxHealth") or 1)/100 * Settings["Payload"]["Health Percent"]
                         local Health =  (workspace:GetAttribute("BasseHealth") or 1) < Percent
                         for i,v in pairs(realfolder:GetChildren()) do
                             if v:IsA("MeshPart") then
