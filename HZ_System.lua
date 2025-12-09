@@ -556,7 +556,7 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 
-task.wait(1)
+task.wait()
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
 
 local Client = Players.LocalPlayer
@@ -577,6 +577,7 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
+            print("CLick")
             local LOADING =  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
             if LOADING:FindFirstChildWhichIsA("TextButton",true) then
                 clicking(LOADING:FindFirstChildWhichIsA("TextButton",true))
@@ -598,7 +599,7 @@ task.spawn(function()
         pcall(function()
             sendkey("S",.01) task.wait(0.1)
             sendkey("S",.01) task.wait(0.1)
-            -- print("space")
+            print("space")
             task.wait(1000)
         end)
     end
@@ -1076,7 +1077,7 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        task.wait(3.8)
+                        task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
@@ -1264,7 +1265,7 @@ else
                                 Pickup = false
                                 lasttake = tick() + .1
                                 if Health then
-                                    task.wait(.75)
+                                    task.wait(.32)
                                 end
                             end
                         end
