@@ -600,10 +600,19 @@ if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     end 
     repeat task.wait() until checker()
 end
-local FocusNavigation = game:GetService("CoreGui").RobloxGui.FocusNavigationCoreScriptsWrapper
-if FocusNavigation:FindFirstChildWhichIsA("ImageButton") then
-    clicking(FocusNavigation.Prompt.AlertContents.Footer.Buttons["1"])
+local FocusNavigation = game:GetService("CoreGui"):FindFirstChild("RobloxGui") 
+    and game:GetService("CoreGui").RobloxGui:FindFirstChild("FocusNavigationCoreScriptsWrapper")
+
+if FocusNavigation and FocusNavigation:FindFirstChildWhichIsA("ImageButton", true) then
+    local alert = FocusNavigation:FindFirstChild("Prompt", true)
+    if alert and alert:FindFirstChild("AlertContents", true) then
+        local footer = alert.AlertContents:FindFirstChild("Footer", true)
+        if footer and footer:FindFirstChild("Buttons", true) and footer.Buttons:FindFirstChild("1") then
+            clicking(footer.Buttons["1"])
+        end
+    end
 end
+
 task.wait(Delay or 0)
 
 task.spawn(function()
