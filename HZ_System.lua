@@ -812,7 +812,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    setfpscap(11)
+    -- setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -1112,7 +1112,7 @@ else
         end)
     elseif GameType[LevelObject.Value.Name] == "Payload" then
         print("H2")
-        setfpscap(15)
+        setfpscap(12)
         local PauseToTakeItem = false
         local Pickup = false
         local BreakToKill = tick() + 10
