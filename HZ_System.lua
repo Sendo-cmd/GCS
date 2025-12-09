@@ -586,7 +586,7 @@ end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
     local function checker()
-        task.wait(1)
+        task.wait(0)
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"))
         if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING") then
             local LOADING =  game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING")
