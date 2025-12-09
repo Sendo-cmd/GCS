@@ -12,14 +12,34 @@ local Settings = {
         ["Offset"] = CFrame.new(0,-5,0),
         ["Camera Viewer"] = false,
         ["Auto Skill"] = true,
+        ["Custom Offset"] = false,
+    },
+    ["Payload"] = {
+        ["Health Percent"] = 50,
+        ["Monster Offset"] = CFrame.new(0,0,2.5),
+        ["Pipe Offset"] = CFrame.new(0,0,1.9),
+        ["Kill"] = true,
     },
     ["Select Mode"] = "Normal",
     ["Normal Room Settings"] = {
-        ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
-        ["Select Map"] = "Island",
-        ["Select Mode"] = "Campaign", -- Campaign , Raid
+        ["Select Difficulty"] = "Normal", -- Normal , Nightmare
+        ["Select Map"] = "City",
+        ["Select Mode"] = "Payload", -- Campaign , Raid
     },
 }
+-- local Settings = {
+--     ["Farm Settings"] = {
+--         ["Offset"] = CFrame.new(0,-5,0),
+--         ["Camera Viewer"] = false,
+--         ["Auto Skill"] = true,
+--     },
+--     ["Select Mode"] = "Normal",
+--     ["Normal Room Settings"] = {
+--         ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
+--         ["Select Map"] = "Island",
+--         ["Select Mode"] = "Campaign", -- Campaign , Raid
+--     },
+-- }
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
         Settings["Select Mode"] = "Normal"
