@@ -102,7 +102,7 @@ local Order_Type = {
         "c62223a2-17f9-4078-bbc0-bb45c484558f",
         "d92fceaa-8d18-4dc9-980f-452db4573ad9",
     },
-    ["Summer Inf"] = {
+    ["Fall Inf"] = {
         "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         "c869c464-6864-4eb7-a98f-f78f3448b71c",
         "fc7a340c-7c98-4da6-84aa-a7e3ce4790c1",
@@ -1270,6 +1270,134 @@ local Changes = {
     }
     end,
 }
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local Modules = ReplicatedStorage:WaitForChild("Modules")
+local Utilities = Modules:WaitForChild("Utilities")
+local Networking = ReplicatedStorage:WaitForChild("Networking")
+local UnitsData = require(Modules.Data.Entities.Units)
+local ItemsData = require(Modules.Data.ItemsData)
+local TableUtils = require(Utilities.TableUtils)
+
+local function GetData()
+    local SkinTable = {}
+    local FamiliarTable = {}
+    local Inventory = {}
+    local EquippedUnits = {}
+    local Units = {}
+    local Battlepass = 0
+
+    local InventoryEvent = game:GetService("StarterPlayer"):FindFirstChild("OwnedItemsHandler",true) or game:GetService("ReplicatedStorage").Networking:WaitForChild("InventoryEvent",2)
+    local FamiliarsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedFamiliarsHandler",true) or game:GetService("StarterPlayer"):FindFirstChild("FamiliarsDataHandler",true)
+    local SkinsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedSkinsHandler",true) or game:GetService("StarterPlayer"):FindFirstChild("SkinDataHandler",true)
+    local UnitsModule = game:GetService("StarterPlayer"):FindFirstChild("OwnedUnitsHandler",true)
+    local EquippedUnitsModule = game:GetService("StarterPlayer"):FindFirstChild("OwnedUnitsHandler",true) 
+    local BattlepassHandler = game:GetService("StarterPlayer"):FindFirstChild("BattlepassHandler",true) and require(game:GetService("StarterPlayer").Modules.Interface.Loader.Windows.BattlepassHandler):GetPlayerData() or function() return 0 end
+
+    
+
+    local ReqFamiliarsHandler = require(FamiliarsHandler)
+    local ReqSkins = require(SkinsHandler)
+
+    local ItemHandler = nil
+    local FamiliarHandler = nil
+    local SkinHandler = nil
+    local UnitHandler = nil
+    local EquippedUnitsHandler = nil
+
+    print(InventoryEvent.Name)
+    if InventoryEvent.Name == "OwnedItemsHandler" then
+        ItemHandler = function()
+            local Inventory_ = {}
+            for i,v in pairs(require(InventoryEvent).GetItems()) do
+                if v then 
+                    local call,err = pcall(function()
+                        Inventory_[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                        Inventory_[i]["ID"] = v["ID"]
+                        Inventory_[i]["AMOUNT"] = v["Amount"]
+                    end) 
+                end
+            end
+            return Inventory_
+        end
+    elseif InventoryEvent.Name == "InventoryEvent" then
+        local Inventory_ = {}
+        InventoryEvent.OnClientEvent:Connect(function(a,b)
+            if a == "UpdateAll" then
+                for i,v in pairs(b) do
+                    if v then 
+                        local call,err = pcall(function()
+                            Inventory_[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                            Inventory_[i]["ID"] = v["ID"]
+                            Inventory_[i]["AMOUNT"] = v["Amount"]
+                        end) 
+                    end
+                end
+            end
+        end)
+        task.wait(1.5)
+        InventoryEvent:FireServer("OwnedItems")
+        ItemHandler = function()
+            return Inventory_
+        end
+    end
+    if FamiliarsHandler.Name == "OwnedFamiliarsHandler" then
+        FamiliarHandler = ReqFamiliarsHandler.GetOwnedFamiliars
+    elseif FamiliarsHandler.Name == "FamiliarsDataHandler" then
+        FamiliarHandler = ReqFamiliarsHandler.GetFamiliarsData
+    end
+    if SkinsHandler.Name == "OwnedSkinsHandler" then
+        SkinHandler = ReqSkins.GetOwnedSkins
+    elseif SkinsHandler.Name == "SkinDataHandler" then
+        SkinHandler = ReqSkins.GetPlayerSkins
+    end
+    
+    UnitHandler = function()
+        local Units_ = {}
+        for i, v in pairs(require(UnitsModule).GetUnits()) do
+            if not v.UnitData then continue end
+            Units_[i] = TableUtils.DeepCopy(v) 
+            Units_[i].Name = v.UnitData.Name
+
+            Units_[i].UnitData = nil
+        end
+        return Units_
+    end
+    EquippedUnitsHandler = function()
+        local EquippedUnits_ = {}
+        local units = UnitHandler()
+        local Handler = nil
+        for i,v in pairs(require(EquippedUnitsModule).GetEquippedUnits()) do
+            if v == "None" then continue end
+            print(i,v)
+            local v1 = units[v]
+            EquippedUnits_[v1.UniqueIdentifier] = TableUtils.DeepCopy(v1)
+
+            EquippedUnits_[v1.UniqueIdentifier].Name = UnitsData:GetUnitDataFromID(v1.Identifier).Name
+        end
+        return EquippedUnits_
+    end
+
+
+    Battlepass =  BattlepassHandler
+    Units = UnitHandler()
+    EquippedUnits = EquippedUnitsHandler()
+    FamiliarTable = FamiliarHandler()
+    Inventory = ItemHandler()
+    SkinTable = SkinHandler()
+
+    local PlayerData = plr:GetAttributes()
+
+    return {
+        ["Units"] = Units,
+        ["Skins"] = SkinTable,
+        ["Familiars"] = FamiliarTable,
+        ["Inventory"] = Inventory,
+        ["Username"] = plr.Name,
+        ["Battlepass"] = Battlepass,
+        ["PlayerData"] = PlayerData,
+        ["EquippedUnits"] = EquippedUnits,
+    }
+end
 local function Register_Room(myproduct,player)
     if IsGame == "AV" then
         local Networking = ReplicatedStorage:WaitForChild("Networking")
@@ -1277,16 +1405,13 @@ local function Register_Room(myproduct,player)
             Changes[myproduct]()
             print("Configs has Changed ")
         end 
-        local Inventory = {}
-        game:GetService("ReplicatedStorage").Networking.RequestInventory.OnClientEvent:Connect(function(value)
-            Inventory = value
-        end)
-        game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
+        local Inventory = GetData()["Inventory"]
+
         -- All Modules
         local StagesData = LoadModule(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
         -- All Functions
         local function GetItem(ID)
-            game:GetService("ReplicatedStorage").Networking.RequestInventory:FireServer("RequestData")
+            Inventory = GetData()["Inventory"]
             local Items = {}
             for i,v in pairs(Inventory) do
                 if v["ID"] == ID then
