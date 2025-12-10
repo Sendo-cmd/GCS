@@ -600,7 +600,7 @@ task.spawn(function()
         pcall(function()
             sendkey("S",.01) task.wait(0.1)
             sendkey("S",.01) task.wait(0.1)
-            print("space")
+            -- print("space")
             task.wait(1000)
         end)
     end
@@ -867,6 +867,16 @@ else
             end
         end
     end
+    for i,v in pairs(game:GetService("ReplicatedStorage").SharedAssets.Core.Particles:GetDescendants()) do
+        if v:IsA("ParticleEmitter") or v:IsA("Beam") or v:IsA("Trail") or v:IsA("Smoke") or v:IsA("Fire") or v:IsA("Sparkles") or v:IsA("Sparkles") then
+            local Ins = Instance.new(v.ClassName,v.Parent)
+            Ins.Name = v.Name
+            if Ins.Enabled then
+                Ins.Enabled = false
+            end
+            v:Destroy()
+        end
+    end
     workspace.Entities.Zombie.ChildAdded:Connect(function(v)
         if v:IsA("Model") then
             for i1,v1 in pairs(v:GetDescendants()) do
@@ -1129,6 +1139,7 @@ else
             end 
             return false
         end
+        
         task.spawn(function ()                                             
             while true do task.wait(.2)
                local p,c = pcall(function ()
