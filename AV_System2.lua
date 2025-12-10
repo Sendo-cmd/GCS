@@ -848,7 +848,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
+        ["Stage"] = "Stage2",
         ["FriendsOnly"] = false
     }
     end,
@@ -858,7 +858,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
+        ["Stage"] = "Stage2",
         ["FriendsOnly"] = false
     }
     end,
@@ -868,7 +868,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
+        ["Stage"] = "Stage2",
         ["FriendsOnly"] = false
     }
     end,
@@ -878,7 +878,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Ant Island",
+        ["Stage"] = "Stage2",
         ["FriendsOnly"] = false
     }
     end,
@@ -888,7 +888,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
@@ -898,7 +898,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
@@ -908,7 +908,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
@@ -918,7 +918,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
@@ -928,7 +928,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
@@ -938,7 +938,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
@@ -948,7 +948,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
@@ -958,7 +958,7 @@ local Changes = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
-        ["Stage"] = "Frozen Volcano",
+        ["Stage"] = "Stage3",
         ["FriendsOnly"] = false
     }
     end,
