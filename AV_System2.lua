@@ -1304,7 +1304,7 @@ local function GetData()
     local UnitHandler = nil
     local EquippedUnitsHandler = nil
 
-    print(InventoryEvent.Name)
+    -- print(InventoryEvent.Name)
     if InventoryEvent.Name == "OwnedItemsHandler" then
         ItemHandler = function()
             local Inventory_ = {}
@@ -1368,7 +1368,7 @@ local function GetData()
         local Handler = nil
         for i,v in pairs(require(EquippedUnitsModule).GetEquippedUnits()) do
             if v == "None" then continue end
-            print(i,v)
+            -- print(i,v)
             local v1 = units[v]
             EquippedUnits_[v1.UniqueIdentifier] = TableUtils.DeepCopy(v1)
 
