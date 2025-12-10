@@ -97,7 +97,7 @@ local Order_Type = {
         "7b29fe07-6313-48cb-a095-3680d4758ab6",
         "1e07ff1f-ab45-466b-8b36-ae0ff8b43198",
     },
-    ["Summer Portal"] = {
+    ["Fall Portal"] = {
         "e206ec24-dfbf-4157-a380-9afabe115c29",
         "c62223a2-17f9-4078-bbc0-bb45c484558f",
         "d92fceaa-8d18-4dc9-980f-452db4573ad9",
@@ -394,7 +394,7 @@ local Changes = {
     ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -404,7 +404,7 @@ local Changes = {
     ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -414,7 +414,7 @@ local Changes = {
     ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
-        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+        ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -424,7 +424,7 @@ local Changes = {
     -- [""] = function()
     --     Settings["Select Mode"] = "Portal"
     --     Settings["Portal Settings"] = {
-    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
+    --     ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
     --     ["Tier Cap"] = 10,
     --     ["Method"] = "Highest", -- Highest , Lowest
     --     ["Ignore Stage"] = {},
