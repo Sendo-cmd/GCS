@@ -166,26 +166,28 @@ local function GetData()
     print(InventoryEvent.Name)
     if InventoryEvent.Name == "OwnedItemsHandler" then
         ItemHandler = function()
+            local Inventory_ = {}
             for i,v in pairs(require(InventoryEvent).GetItems()) do
                 if v then 
                     local call,err = pcall(function()
-                        Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
-                        Inventory[i]["ID"] = v["ID"]
-                        Inventory[i]["AMOUNT"] = v["Amount"]
+                        Inventory_[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                        Inventory_[i]["ID"] = v["ID"]
+                        Inventory_[i]["AMOUNT"] = v["Amount"]
                     end) 
                 end
             end
+            return Inventory_
         end
     elseif InventoryEvent.Name == "InventoryEvent" then
-        local Inventory = {}
+        local Inventory_ = {}
         InventoryEvent.OnClientEvent:Connect(function(a,b)
             if a == "UpdateAll" then
                 for i,v in pairs(b) do
                     if v then 
                         local call,err = pcall(function()
-                            Inventory[i] = ItemsData.GetItemDataByID(true,v["ID"])
-                            Inventory[i]["ID"] = v["ID"]
-                            Inventory[i]["AMOUNT"] = v["Amount"]
+                            Inventory_[i] = ItemsData.GetItemDataByID(true,v["ID"])
+                            Inventory_[i]["ID"] = v["ID"]
+                            Inventory_[i]["AMOUNT"] = v["Amount"]
                         end) 
                     end
                 end
@@ -194,7 +196,7 @@ local function GetData()
         task.wait(1.5)
         InventoryEvent:FireServer("OwnedItems")
         ItemHandler = function()
-            return Inventory
+            return Inventory_
         end
     end
     if FamiliarsHandler.Name == "OwnedFamiliarsHandler" then
