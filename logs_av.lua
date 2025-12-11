@@ -257,7 +257,7 @@ local function GetData()
         ["EquippedUnits"] = EquippedUnits,
     }
 end
-setclipboard(HttpService:JSONEncode(GetData()))
+-- setclipboard(HttpService:JSONEncode(GetData()))
 if IsMain then
     local Data = GetData()
     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
