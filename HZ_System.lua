@@ -1342,7 +1342,7 @@ else
                                 
                                 lasttake = tick() + .75
                                 if Health then
-                                    task.wait(.8)
+                                    task.wait(.77)
                                 else
                                     Pickup = false
                                 end
