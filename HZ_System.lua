@@ -534,7 +534,7 @@ local Changes = {
             ["Auto Ult"] = false,
         }
     end,
-    [""] = function()
+    ["9502113f-c052-402d-a383-ffaa1b275fd8"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
@@ -548,7 +548,7 @@ local Changes = {
             ["Auto Ult"] = true,
         }
     end,
-    [""] = function()
+    ["48bb5f0b-6598-4494-babe-f76c60e6e83c"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
@@ -562,7 +562,7 @@ local Changes = {
             ["Auto Ult"] = true,
         }
     end,
-    [""] = function()
+    ["1465a8cf-9f80-418f-ac31-2a8b3c527c21"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
