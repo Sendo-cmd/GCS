@@ -13,6 +13,7 @@ local Settings = {
         ["Camera Viewer"] = false,
         ["Auto Skill"] = true,
         ["Custom Offset"] = false,
+        ["Auto Ult"] = true,
     },
     ["Payload"] = {
         ["Health Percent"] = 70,
@@ -52,6 +53,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["6f405b16-3153-4fec-946d-f9bf9427fdff"] = function()
@@ -65,6 +67,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["ae780025-8baa-4344-8697-073bba2849bc"] = function()
@@ -78,6 +81,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["d68720e0-2c37-42e0-a796-d2707166e461"] = function()
@@ -91,6 +95,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["423fdbdb-a645-432d-abe9-3af912068fce"] = function()
@@ -104,6 +109,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["fbc6bc9b-9d6c-4c0d-85f4-124c48a3688a"] = function()
@@ -117,6 +123,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["2684ff9b-e717-46f9-9bb9-f7e41e3f8b4a"] = function()
@@ -130,6 +137,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["14c809ea-0369-421d-89c6-60cd7af5de8e"] = function()
@@ -143,6 +151,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["6061c064-0d35-4f8d-8ab7-502e01fded20"] = function()
@@ -156,6 +165,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["447f6ef9-40ea-45e3-a6c5-c07563fc4ae3"] = function()
@@ -169,6 +179,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["1295b8db-959b-4426-8af6-f1263f8d6216	"] = function()
@@ -182,6 +193,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["6d347435-c0b1-4c33-aac6-6eb1e8a264c7"] = function()
@@ -195,6 +207,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["64dfd949-3f2f-4ec0-b519-57185b9a64ae"] = function()
@@ -320,6 +333,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = true,
         } 
         Settings["Payload"] = {
             ["Health Percent"] = 70,
@@ -339,6 +353,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = true,
         } 
         Settings["Payload"] = {
             ["Health Percent"] = 70,
@@ -358,6 +373,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = true,
         } 
         Settings["Payload"] = {
             ["Health Percent"] = 70,
@@ -377,6 +393,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = true,
         } 
         Settings["Payload"] = {
             ["Health Percent"] = 70,
@@ -396,6 +413,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
+            ["Auto Ult"] = true,
         } 
         Settings["Payload"] = {
             ["Health Percent"] = 70,
@@ -415,6 +433,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["e81687f4-87cc-4682-83ef-2e56f9eedee9"] = function()
@@ -428,6 +447,7 @@ local Changes = {
             ["Offset"] = CFrame.new(0,-5,0),
             ["Camera Viewer"] = false,
             ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
     ["2581f809-8acf-4702-b4e9-bd7ca3438bfd"] = function()
@@ -512,6 +532,48 @@ local Changes = {
             ["Camera Viewer"] = false,
             ["Auto Skill"] = false,
             ["Auto Ult"] = false,
+        }
+    end,
+    [""] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Island",
+            ["Select Mode"] = "Endless",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
+        }
+    end,
+    [""] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Island",
+            ["Select Mode"] = "Endless",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
+        }
+    end,
+    [""] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "Island",
+            ["Select Mode"] = "Endless",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = true,
+            ["Auto Ult"] = true,
         }
     end,
 }
