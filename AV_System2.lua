@@ -97,12 +97,12 @@ local Order_Type = {
         "7b29fe07-6313-48cb-a095-3680d4758ab6",
         "1e07ff1f-ab45-466b-8b36-ae0ff8b43198",
     },
-    ["Fall Portal"] = {
+    ["Summer Portal"] = {
         "e206ec24-dfbf-4157-a380-9afabe115c29",
         "c62223a2-17f9-4078-bbc0-bb45c484558f",
         "d92fceaa-8d18-4dc9-980f-452db4573ad9",
     },
-    ["Fall Inf"] = {
+    ["Summer Inf"] = {
         "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         "c869c464-6864-4eb7-a98f-f78f3448b71c",
         "fc7a340c-7c98-4da6-84aa-a7e3ce4790c1",
@@ -232,7 +232,7 @@ local function UpdateCache(OrderId,...)
     if not data then warn("Cannot Update") return false end
     for i,v in pairs(args) do
         for i1,v1 in pairs(v) do
-            print(i1,v1)
+            -- print(i1,v1)
             data[i1] = v1
         end
     end
@@ -394,7 +394,7 @@ local Changes = {
     ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
-        ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -404,7 +404,7 @@ local Changes = {
     ["c62223a2-17f9-4078-bbc0-bb45c484558f"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
-        ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -414,7 +414,7 @@ local Changes = {
     ["d92fceaa-8d18-4dc9-980f-452db4573ad9"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
-        ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
+        ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
         ["Tier Cap"] = 10,
         ["Method"] = "Highest", -- Highest , Lowest
         ["Ignore Stage"] = {},
@@ -424,7 +424,7 @@ local Changes = {
     -- [""] = function()
     --     Settings["Select Mode"] = "Portal"
     --     Settings["Portal Settings"] = {
-    --     ["ID"] = 280, -- 113 Love , 87 Winter , 190 Spring , 280 Fall Portal
+    --     ["ID"] = 215, -- 113 Love , 87 Winter , 190 Spring
     --     ["Tier Cap"] = 10,
     --     ["Method"] = "Highest", -- Highest , Lowest
     --     ["Ignore Stage"] = {},
@@ -845,7 +845,7 @@ local Changes = {
     ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Ant Island",
@@ -855,7 +855,7 @@ local Changes = {
     ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Ant Island",
@@ -865,7 +865,7 @@ local Changes = {
     ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Ant Island",
@@ -875,7 +875,7 @@ local Changes = {
     ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "AntIsland",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Ant Island",
@@ -885,7 +885,7 @@ local Changes = {
     ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -895,7 +895,7 @@ local Changes = {
     ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -905,7 +905,7 @@ local Changes = {
     ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -915,7 +915,7 @@ local Changes = {
     ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -925,7 +925,7 @@ local Changes = {
     ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -935,7 +935,7 @@ local Changes = {
     ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -945,7 +945,7 @@ local Changes = {
     ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -955,7 +955,7 @@ local Changes = {
     ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Normal",
+        ["Difficulty"] = "Nightmare",
         ["Act"] = "FrozenVolcano",
         ["StageType"] = "Dungeon",
         ["Stage"] = "Frozen Volcano",
@@ -1286,6 +1286,7 @@ local function GetData()
     local Units = {}
     local Battlepass = 0
 
+    local plr = game:GetService("Players").LocalPlayer
     local InventoryEvent = game:GetService("StarterPlayer"):FindFirstChild("OwnedItemsHandler",true) or game:GetService("ReplicatedStorage").Networking:WaitForChild("InventoryEvent",2)
     local FamiliarsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedFamiliarsHandler",true) or game:GetService("StarterPlayer"):FindFirstChild("FamiliarsDataHandler",true)
     local SkinsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedSkinsHandler",true) or game:GetService("StarterPlayer"):FindFirstChild("SkinDataHandler",true)
@@ -1472,6 +1473,7 @@ local function Register_Room(myproduct,player)
             return StagesData["Story"][arg]["StageData"]["Name"]
         end
         local WaitTime = 30
+        print("A")
         if Settings["Auto Join Challenge"] then
             local Modules_R = ReplicatedStorage:WaitForChild("Modules")
             local Modules_S = StarterPlayer:WaitForChild("Modules")
@@ -1505,6 +1507,7 @@ local function Register_Room(myproduct,player)
                 end
             end
         end
+        print("AB")
         if Settings["Auto Join Bounty"] then
             task.spawn(function()
                 while true do
@@ -1542,6 +1545,7 @@ local function Register_Room(myproduct,player)
             end)
             task.wait(6)
         end
+        print("ABC")
         if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
             local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
             local GUID = nil
@@ -1559,6 +1563,7 @@ local function Register_Room(myproduct,player)
                 Invite(v)
             end
         end
+        print(Settings["Select Mode"])
         if Settings["Select Mode"] == "Portal" then
             local Settings_ = Settings["Portal Settings"]
             local function Ignore(tab1,tab2)
@@ -1976,6 +1981,9 @@ if ID[game.GameId][1] == "AV" then
                                         local p,c = pcall(function()
                                             Register_Room(Product,Current_Party)
                                         end)
+                                        if not p then
+                                            print(p,c)
+                                        end
                                     else
                                         print("Not Found Member",All_Players_Activated() , All_Players_Game())
                                     end
