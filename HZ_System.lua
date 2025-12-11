@@ -618,7 +618,7 @@ local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 
-task.wait()
+task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
 game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
@@ -875,7 +875,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    -- setfpscap(11)
+
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -909,7 +909,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(3.1)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -1331,18 +1331,24 @@ else
                                 if v.Name == "Health" and not Health then
                                     continue;
                                 end
+                                if Health and v.Name ~= "Health" then
+                                    continue;
+                                end
                                 if lasttake >= tick() and not Health then
                                     return false;
                                 end
-                                Pickup = true
+                                Pickup = true task.wait(.01)
                                 Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.8)
-                                Pickup = false
+                                
                                 lasttake = tick() + .75
                                 if Health then
-                                    task.wait(.75)
+                                    task.wait(1)
+                                else
+                                    Pickup = false
                                 end
                             end
                         end
+                        Pickup = false
                         lasttake = tick() + .75
                     end
                     
