@@ -97,12 +97,12 @@ local Order_Type = {
         "7b29fe07-6313-48cb-a095-3680d4758ab6",
         "1e07ff1f-ab45-466b-8b36-ae0ff8b43198",
     },
-    ["Fall Portal"] = {
+    ["Summer Portal"] = {
         "e206ec24-dfbf-4157-a380-9afabe115c29",
         "c62223a2-17f9-4078-bbc0-bb45c484558f",
         "d92fceaa-8d18-4dc9-980f-452db4573ad9",
     },
-    ["Fall Inf"] = {
+    ["Summer Inf"] = {
         "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         "c869c464-6864-4eb7-a98f-f78f3448b71c",
         "fc7a340c-7c98-4da6-84aa-a7e3ce4790c1",
@@ -232,7 +232,7 @@ local function UpdateCache(OrderId,...)
     if not data then warn("Cannot Update") return false end
     for i,v in pairs(args) do
         for i1,v1 in pairs(v) do
-            -- print(i1,v1)
+            print(i1,v1)
             data[i1] = v1
         end
     end
@@ -1278,6 +1278,8 @@ local UnitsData = require(Modules.Data.Entities.Units)
 local ItemsData = require(Modules.Data.ItemsData)
 local TableUtils = require(Utilities.TableUtils)
 
+local InventoryEvent = game:GetService("StarterPlayer"):FindFirstChild("OwnedItemsHandler",true) or game:GetService("ReplicatedStorage").Networking:WaitForChild("InventoryEvent",2)
+
 local function GetData()
     local SkinTable = {}
     local FamiliarTable = {}
@@ -1287,7 +1289,6 @@ local function GetData()
     local Battlepass = 0
 
     local plr = game:GetService("Players").LocalPlayer
-    local InventoryEvent = game:GetService("StarterPlayer"):FindFirstChild("OwnedItemsHandler",true) or game:GetService("ReplicatedStorage").Networking:WaitForChild("InventoryEvent",2)
     local FamiliarsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedFamiliarsHandler",true) or game:GetService("StarterPlayer"):FindFirstChild("FamiliarsDataHandler",true)
     local SkinsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedSkinsHandler",true) or game:GetService("StarterPlayer"):FindFirstChild("SkinDataHandler",true)
     local UnitsModule = game:GetService("StarterPlayer"):FindFirstChild("OwnedUnitsHandler",true)
@@ -1305,7 +1306,7 @@ local function GetData()
     local UnitHandler = nil
     local EquippedUnitsHandler = nil
 
-    -- print(InventoryEvent.Name)
+    print(InventoryEvent.Name)
     if InventoryEvent.Name == "OwnedItemsHandler" then
         ItemHandler = function()
             local Inventory_ = {}
@@ -1369,7 +1370,7 @@ local function GetData()
         local Handler = nil
         for i,v in pairs(require(EquippedUnitsModule).GetEquippedUnits()) do
             if v == "None" then continue end
-            -- print(i,v)
+            print(i,v)
             local v1 = units[v]
             EquippedUnits_[v1.UniqueIdentifier] = TableUtils.DeepCopy(v1)
 
@@ -1412,7 +1413,7 @@ local function Register_Room(myproduct,player)
         local StagesData = LoadModule(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
         -- All Functions
         local function GetItem(ID)
-            Inventory = GetData()["Inventory"]
+            Inventory = require(InventoryEvent).GetItems()
             local Items = {}
             for i,v in pairs(Inventory) do
                 if v["ID"] == ID then
@@ -1577,7 +1578,7 @@ local function Register_Room(myproduct,player)
             local function PortalSettings(tabl)
                 local AllPortal = {}
                 for i,v in pairs(tabl) do
-                    if Ignore(v["ExtraData"]["Modifiers"],Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
+                    if v["ExtraData"] and Ignore(v["ExtraData"]["Modifiers"] or {},Settings_["Ignore Modify"]) and Settings_["Tier Cap"] >= v["ExtraData"]["Tier"] then
                         AllPortal[#AllPortal + 1] = {
                             [1] = i,
                             [2] = v["ExtraData"]["Tier"]

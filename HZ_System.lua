@@ -620,7 +620,6 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
 local Client = Players.LocalPlayer
 
@@ -635,7 +634,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    task.wait(1)
+    task.wait(2.5)
     local function checker()
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
@@ -660,9 +659,9 @@ task.wait(Delay or 0)
 task.spawn(function()
     while task.wait() do
         pcall(function()
-            sendkey("S",.01) task.wait(0.1)
-            sendkey("S",.01) task.wait(0.1)
-            -- print("space")
+            sendkey("W",.01) task.wait(0.1)
+            sendkey("W",.01) task.wait(0.1)
+            print("space")
             task.wait(1000)
         end)
     end
@@ -788,8 +787,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-    task.wait()
-    task.delay(70,function()
+    setfpscap(30) task.wait(1)
+    task.delay(60,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -875,7 +874,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-
+    setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -886,7 +885,7 @@ else
     local Doors = Workspace:FindFirstChild("Doors",true)
     local Rooms = Workspace:FindFirstChild("Rooms",true)
     local Enemy = nil
-    local CanSkill = true
+    local CanSkill = false
     local DodgeTicks = tick()
     local GameStats = ReplicatedStorage:WaitForChild("gameStats")
     local LevelObject = GameStats:WaitForChild("LevelObject")
@@ -971,7 +970,7 @@ else
                 local BeforePlus = 0
                 local Tool = Character:FindFirstChildWhichIsA("Tool")
                 Tool:SetAttribute("lastActivated6",nil)
-                for i = .7,.5,-0.005 do task.wait()
+                for i = .7,.3,-0.005 do task.wait()
                     if BeforePlus >= Plus then
                         
                         Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),i)
@@ -982,7 +981,7 @@ else
                         BeforePlus = BeforePlus + 1
                     end
                 end
-               Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.4)
+               Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.25)
             end
         end
 
@@ -1122,7 +1121,7 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        if Settings["Farm Settings"]["Auto Ult"] and GetUlt and CanSkill then
+                        if GetUlt and CanSkill then
                             ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
                         elseif GetPassiveSkill then
@@ -1150,7 +1149,6 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
@@ -1171,7 +1169,7 @@ else
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    -- print("D1")
+                                    print("D1")
                                     Enemy = nil
                                 end
                             end
@@ -1230,7 +1228,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = true
+                                CanSkill = false
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
@@ -1342,7 +1340,7 @@ else
                                 
                                 lasttake = tick() + .75
                                 if Health then
-                                    task.wait(.75)
+                                    task.wait(1)
                                 else
                                     Pickup = false
                                 end
@@ -1428,7 +1426,7 @@ else
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                        -- print("D1")
+                                        print("D1")
                                         Enemy = nil
                                     end
                                 end
@@ -1447,3 +1445,7 @@ else
     end
    
 end
+
+
+
+
