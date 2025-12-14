@@ -635,7 +635,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    task.wait(1)
+    task.wait()
     local function checker()
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
@@ -1337,7 +1337,7 @@ else
                                     return false;
                                 end
                                 Pickup = true task.wait(.01)
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.8)
+                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.75)
                                 
                                 lasttake = tick() + .75
                                 if Health then
