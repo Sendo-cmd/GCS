@@ -635,7 +635,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    task.wait()
+    task.wait(1)
     local function checker()
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
@@ -660,9 +660,9 @@ task.wait(Delay or 0)
 task.spawn(function()
     while task.wait() do
         pcall(function()
-            sendkey("W",.01) task.wait(0.1)
-            sendkey("W",.01) task.wait(0.1)
-            print("space")
+            sendkey("S",.01) task.wait(0.1)
+            sendkey("S",.01) task.wait(0.1)
+            -- print("space")
             task.wait(1000)
         end)
     end
@@ -789,7 +789,7 @@ end
 
 if getrenv()["shared"]["loaded"] then
     task.wait()
-    task.delay(60,function()
+    task.delay(70,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -971,7 +971,7 @@ else
                 local BeforePlus = 0
                 local Tool = Character:FindFirstChildWhichIsA("Tool")
                 Tool:SetAttribute("lastActivated6",nil)
-                for i = .7,.3,-0.005 do task.wait()
+                for i = .7,.355,-0.005 do task.wait()
                     if BeforePlus >= Plus then
                         
                         Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),i)
@@ -982,10 +982,7 @@ else
                         BeforePlus = BeforePlus + 1
                     end
                 end
-                if not Tool:GetAttribute("DATA_ID") then
-                    Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.3)
-                end
-               
+               Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.3)
             end
         end
 
@@ -1153,6 +1150,7 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
+                        task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
@@ -1340,7 +1338,7 @@ else
                                     return false;
                                 end
                                 Pickup = true task.wait(.01)
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.7)
+                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.8)
                                 
                                 lasttake = tick() + .75
                                 if Health then
@@ -1449,7 +1447,3 @@ else
     end
    
 end
-
-
-
-
