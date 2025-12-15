@@ -635,7 +635,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    task.wait(1)
+    task.wait()
     local function checker()
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
@@ -875,7 +875,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-
+    setfpscap(11)
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -982,7 +982,10 @@ else
                         BeforePlus = BeforePlus + 1
                     end
                 end
-               Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.3)
+                if not Workspace:GetAttribute("DATA_ID") then
+                    Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.3)
+                end
+               
             end
         end
 
@@ -1150,7 +1153,6 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
@@ -1307,7 +1309,6 @@ else
         task.spawn(function ()      
             local realfolder = nil 
             local lasttake = tick()    
-            local CanTakeHealth = tick()
             repeat
                 task.wait()
             until tick() >= StartToKeepItem
@@ -1323,33 +1324,18 @@ else
                 local p,c = pcall(function ()
                     if tick() >= lasttake then
                         local Character = GetCharacter()
-                        local Percent = (workspace:GetAttribute("BaseMaxHealth") or 1)/100 * Settings["Payload"]["Health Percent"]
-                        local Health =  (workspace:GetAttribute("BasseHealth") or 1) < Percent
-                        print(Percent,(workspace:GetAttribute("BasseHealth") or 1),Health)
                         for i,v in pairs(realfolder:GetChildren()) do
                             if v:IsA("MeshPart") then
-                                if v.Name == "Health" and not Health then
-                                    continue;
-                                end
-                                if Health and v.Name ~= "Health" then
-                                    continue;
-                                end
-                                if lasttake >= tick() and not Health then
+                                if lasttake >= tick() then
                                     return false;
                                 end
-                                Pickup = true task.wait(.01)
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.8)
-                                
-                                lasttake = tick() + .75
-                                if Health then
-                                    task.wait(.75)
-                                else
-                                    Pickup = false
-                                end
+                                Pickup = true
+                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.35)
+                                Pickup = false
+                                lasttake = tick() + .1
                             end
                         end
-                        Pickup = false
-                        lasttake = tick() + .75
+                        lasttake = tick() + .1
                     end
                     
                 end)
@@ -1447,3 +1433,7 @@ else
     end
    
 end
+
+
+
+
