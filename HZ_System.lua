@@ -660,9 +660,9 @@ task.wait(Delay or 0)
 task.spawn(function()
     while task.wait() do
         pcall(function()
-            sendkey("S",.01) task.wait(0.1)
-            sendkey("S",.01) task.wait(0.1)
-            -- print("space")
+            sendkey("W",.01) task.wait(0.1)
+            sendkey("W",.01) task.wait(0.1)
+            print("space")
             task.wait(1000)
         end)
     end
@@ -788,8 +788,8 @@ local function Teleport_()
 end
 
 if getrenv()["shared"]["loaded"] then
-task.wait()
-    task.delay(70,function()
+    task.wait()
+    task.delay(60,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -875,6 +875,7 @@ task.wait()
     end
 
 else
+
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -908,7 +909,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(2.7)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -981,7 +982,10 @@ else
                         BeforePlus = BeforePlus + 1
                     end
                 end
-               Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.3)
+                if not Tool:GetAttribute("DATA_ID") then
+                    Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.3)
+                end
+               
             end
         end
 
@@ -1149,7 +1153,6 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        task.wait(4)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
                         Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
