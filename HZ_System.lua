@@ -971,7 +971,7 @@ else
                 local BeforePlus = 0
                 local Tool = Character:FindFirstChildWhichIsA("Tool")
                 Tool:SetAttribute("lastActivated6",nil)
-                for i = .7,.345,-0.005 do task.wait()
+                for i = .7,.3,-0.005 do task.wait()
                     if BeforePlus >= Plus then
                         
                         Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),i)
