@@ -326,7 +326,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal",
-            ["Select Map"] = "City",
+            ["Select Map"] = "Christmas Village",
             ["Select Mode"] = "Payload",
         }
         Settings["Farm Settings"] = {
@@ -346,7 +346,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal",
-            ["Select Map"] = "City",
+            ["Select Map"] = "Christmas Village",
             ["Select Mode"] = "Payload",
         }
         Settings["Farm Settings"] = {
@@ -366,7 +366,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal",
-            ["Select Map"] = "City",
+            ["Select Map"] = "Christmas Village",
             ["Select Mode"] = "Payload",
         }
         Settings["Farm Settings"] = {
@@ -386,7 +386,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal",
-            ["Select Map"] = "City",
+            ["Select Map"] = "Christmas Village",
             ["Select Mode"] = "Payload",
         }
         Settings["Farm Settings"] = {
@@ -406,7 +406,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Normal",
-            ["Select Map"] = "City",
+            ["Select Map"] = "Christmas Village",
             ["Select Mode"] = "Payload",
         }
         Settings["Farm Settings"] = {
@@ -631,7 +631,7 @@ local Dodges = {
     ["rbxassetid://139296956484290"] = 4.2, -- joker5
     ["rbxassetid://106776037986081"] = 2.4, -- joker6
     ["rbxassetid://136975909094773"] = 2.2, -- jokerUtl
-    ["rbxassetid://101583135016982"] = 2.2, -- jokerAtk1
+    ["rbxassetid://101583135016982"] = 2.2, -- jokersAtk1
     ["rbxassetid://137705191651007"] = 2.2, -- jokerAtk2
     ["rbxassetid://101850837481325"] = 2.2, -- jokerAtk3
     ["rbxassetid://126893675519882"] = 2.2, -- jokerATk4
@@ -677,7 +677,6 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
 local Client = Players.LocalPlayer
 
@@ -932,7 +931,7 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    setfpscap(11)
+    
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -966,7 +965,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(4.5)
+        task.wait(2.7)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -977,15 +976,15 @@ else
             v.Transparency = 1
         end
     end
-    for i,v in pairs(workspace.Entities.Zombie:GetChildren()) do
-        if v:IsA("Model") then
-            for i1,v1 in pairs(v:GetDescendants()) do
-                if v1:IsA("BasePart") then
-                    v1.Transparency = 1
-                end
-            end
-        end
-    end
+    -- for i,v in pairs(workspace.Entities.Zombie:GetChildren()) do
+    --     if v:IsA("Model") then
+    --         for i1,v1 in pairs(v:GetDescendants()) do
+    --             if v1:IsA("BasePart") then
+    --                 v1.Transparency = 1
+    --             end
+    --         end
+    --     end
+    -- end
     for i,v in pairs(game:GetService("ReplicatedStorage").SharedAssets.Core.Particles:GetDescendants()) do
         if v:IsA("ParticleEmitter") or v:IsA("Beam") or v:IsA("Trail") or v:IsA("Smoke") or v:IsA("Fire") or v:IsA("Sparkles") or v:IsA("Sparkles") then
             local Ins = Instance.new(v.ClassName,v.Parent)
@@ -996,15 +995,15 @@ else
             v:Destroy()
         end
     end
-    workspace.Entities.Zombie.ChildAdded:Connect(function(v)
-        if v:IsA("Model") then
-            for i1,v1 in pairs(v:GetDescendants()) do
-                if v1:IsA("BasePart") then
-                    v1.Transparency = 1
-                end
-            end
-        end
-    end)
+    -- workspace.Entities.Zombie.ChildAdded:Connect(function(v)
+    --     if v:IsA("Model") then
+    --         for i1,v1 in pairs(v:GetDescendants()) do
+    --             if v1:IsA("BasePart") then
+    --                 v1.Transparency = 1
+    --             end
+    --         end
+    --     end
+    -- end)
     _G.X = CFrame.Angles(0,0,0)
      task.spawn(function()
 
@@ -1210,8 +1209,10 @@ else
                local p,c = pcall(function ()
                     local Character = GetCharacter()
                     if #Entities["entities"] <= 0 then
-                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame task.wait(1)
-                        Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
+                        game:GetService("TweenService"):Create(Character.HumanoidRootPart,TweenInfo.new(1,Enum.EasingStyle.Linear),{CFrame = IdleRoom:FindFirstChild("ZoneWait",true).CFrame}):Play() task.wait(1)
+                        game:GetService("TweenService"):Create(Character.HumanoidRootPart,TweenInfo.new(1,Enum.EasingStyle.Linear),{CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame}):Play() task.wait(1)
+                        -- Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("ZoneWait",true).CFrame task.wait(1)
+                        -- Character.HumanoidRootPart.CFrame = IdleRoom:FindFirstChild("StarterDoor",true).CFrame * CFrame.new(0,50,0) task.wait(1)
                     else
                         for i,v in pairs(Entities["entities"]) do
                             -- workspace.Camera.CameraSubject = v["model"]["HumanoidRootPart"]
@@ -1242,7 +1243,7 @@ else
                 end
             end
         end)
-    elseif GameType[LevelObject.Value.Name] == "Payload" then
+    elseif Workspace:GetAttribute("Gamemode") == "Payload" then
         print("H2")
         setfpscap(15)
         local PauseToTakeItem = false
@@ -1251,10 +1252,9 @@ else
         local StartToKeepItem = tick() + 6
         local BreakToKill_ = false
         local Base = Workspace:FindFirstChild("BASE",true)
-
         local function NearestPipe()
             for i,v in pairs(workspace.Props:GetChildren()) do
-                if v.Name == "Pipe" and (v:GetPivot().Position - Base:GetPivot().Position).Magnitude < 25 then
+                if v.Name == "Pipe" and (v:GetPivot().Position - Base:GetPivot().Position).Magnitude < 34 then
                     return v
                 end
             end 
@@ -1383,16 +1383,21 @@ else
                         local Character = GetCharacter()
                         for i,v in pairs(realfolder:GetChildren()) do
                             if v:IsA("MeshPart") then
+                                local dist = (Character.HumanoidRootPart.Position - v.PickupHitbox.Position).Magnitude
                                 if lasttake >= tick() then
                                     return false;
                                 end
+                                if dist > 140 then
+                                    continue;
+                                end
                                 Pickup = true
-                                Character.HumanoidRootPart.CFrame = v.PickupHitbox.CFrame task.wait(.35)
+                                game:GetService("TweenService"):Create(Character.HumanoidRootPart,TweenInfo.new(.2,Enum.EasingStyle.Linear),{CFrame = v.PickupHitbox.CFrame}):Play()
+                                task.wait(.2)
                                 Pickup = false
-                                lasttake = tick() + .1
+                                lasttake = tick() + .2
                             end
                         end
-                        lasttake = tick() + .1
+                        lasttake = tick() + .2
                     end
                     
                 end)
@@ -1490,7 +1495,3 @@ else
     end
    
 end
-
-
-
-
