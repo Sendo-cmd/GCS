@@ -1040,7 +1040,7 @@ else
                     end
                 end
                 if not Workspace:GetAttribute("DATA_ID") then
-                    Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.25)
+                    Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.3)
                 end
                
             end
