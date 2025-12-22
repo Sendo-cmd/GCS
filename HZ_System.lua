@@ -1349,6 +1349,7 @@ else
                             while v["health"] > 0 and v["model"] and KillMob > tick() do task.wait()
                                 if not Pickup then
                                     _G.Attacks()
+                                    CanSkill = true
                                     Character.HumanoidRootPart.CFrame = v["model"].HumanoidRootPart.CFrame * (_G.PayloadOffset() or Settings["Payload"]["Monster Offset"])
                                 end
                             end
