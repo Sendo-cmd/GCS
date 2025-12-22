@@ -7,40 +7,40 @@ local MainSettings = {
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
     ["Path_Kai"] = "/api/v1/shop/accountskai/",
 }
-local Settings = {
-    ["Farm Settings"] = {
-        ["Offset"] = CFrame.new(0,-5,0),
-        ["Camera Viewer"] = false,
-        ["Auto Skill"] = true,
-        ["Custom Offset"] = false,
-        ["Auto Ult"] = true,
-    },
-    ["Payload"] = {
-        ["Health Percent"] = 70,
-        ["Monster Offset"] = CFrame.new(0,0,2.5),
-        ["Pipe Offset"] = CFrame.new(0,0,1.9),
-        ["Kill"] = true,
-    },
-    ["Select Mode"] = "Normal",
-    ["Normal Room Settings"] = {
-        ["Select Difficulty"] = "Normal", -- Normal , Nightmare
-        ["Select Map"] = "City",
-        ["Select Mode"] = "Payload", -- Campaign , Raid
-    },
-}
 -- local Settings = {
 --     ["Farm Settings"] = {
 --         ["Offset"] = CFrame.new(0,-5,0),
 --         ["Camera Viewer"] = false,
 --         ["Auto Skill"] = true,
+--         ["Custom Offset"] = false,
+--         ["Auto Ult"] = true,
+--     },
+--     ["Payload"] = {
+--         ["Health Percent"] = 70,
+--         ["Monster Offset"] = CFrame.new(0,0,2.5),
+--         ["Pipe Offset"] = CFrame.new(0,0,1.9),
+--         ["Kill"] = true,
 --     },
 --     ["Select Mode"] = "Normal",
 --     ["Normal Room Settings"] = {
---         ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
---         ["Select Map"] = "Island",
---         ["Select Mode"] = "Campaign", -- Campaign , Raid
+--         ["Select Difficulty"] = "Normal", -- Normal , Nightmare
+--         ["Select Map"] = "City",
+--         ["Select Mode"] = "Payload", -- Campaign , Raid
 --     },
 -- }
+local Settings = {
+    ["Farm Settings"] = {
+        ["Offset"] = CFrame.new(0,-5,0),
+        ["Camera Viewer"] = false,
+        ["Auto Skill"] = true,
+    },
+    ["Select Mode"] = "Normal",
+    ["Normal Room Settings"] = {
+        ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
+        ["Select Map"] = "North Pole",
+        ["Select Mode"] = "Raid", -- Campaign , Raid
+    },
+}
 local Changes = {
     ["5cb79005-75bd-4488-a38e-248be54326f5"] = function()
         Settings["Select Mode"] = "Normal"
@@ -534,6 +534,48 @@ local Changes = {
             ["Auto Ult"] = false,
         }
     end,
+    [""] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "North Pole",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
+        }
+    end,
+    [""] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "North Pole",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
+        }
+    end,
+    [""] = function()
+        Settings["Select Mode"] = "Normal"
+        Settings["Normal Room Settings"] = {
+            ["Select Difficulty"] = "Nightmare",
+            ["Select Map"] = "North Pole",
+            ["Select Mode"] = "Raid",
+        }
+        Settings["Farm Settings"] = {
+            ["Offset"] = CFrame.new(0,-5,0),
+            ["Camera Viewer"] = false,
+            ["Auto Skill"] = false,
+            ["Auto Ult"] = false,
+        }
+    end,
     ["9502113f-c052-402d-a383-ffaa1b275fd8"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
@@ -597,12 +639,27 @@ local Dodges = {
     ["rbxassetid://99938949059937"] = 1.8, -- sukunaAtk2
     ["rbxassetid://115329018679939"] = 1.8, -- sukunaAtkdom1
     ["rbxassetid://85704738545021"] = 1.8, -- sukunaAtkdom2
+    ["rbxassetid://85083948971901"] = 1.8, -- KrampusAtk
+    ["rbxassetid://102703560541100"] = 1.8, -- KrampusAtk
+    ["rbxassetid://106145988908655"] = 1.8, -- KrampusAtk
+    ["rbxassetid://118016733973465"] = 1.8, -- KrampusAtk
+    ["rbxassetid://83778542111453"] = 1.8, -- KrampusAtk
+    ["rbxassetid://108012487212288"] = 1.8,-- KrampusAtk
+    ["rbxassetid://124977466366719"] = 1.8, -- KrampusAtk
+    ["rbxassetid://140438550623777"] = 2.2, -- KrampusUlt
+    ["rbxassetid://87086930814365"] = 2.2, -- KrampusUlt
+    ["rbxassetid://94418095037820"] = 2.2, -- KrampusUlt
+    ["rbxassetid://71496056104706"] = 2.2, -- GrabSkill
+    ["rbxassetid://140558856170437"] = 2.2, -- GrabVictim
+    ["rbxassetid://129831067462935"] = 2.2, -- IceAbility
 }
 local GameType = {
     ["Shogun Castle"] = "Raid",
     ["ReaperTrial"] = "Raid",
     ["JokerTrial"] = "Raid",
     ["Shibuya"] = "Raid",
+    ["North Pole"] = "Raid",
+    ["Christmas Village"] = "Payload",
     ["City"] = "Payload"
 }
 repeat task.wait() until game:IsLoaded()
