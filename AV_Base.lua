@@ -364,7 +364,7 @@ getgenv().Config = {
 			["God (Standless)"] = {
 				["Reality Rewrite"] = {
 					["Enable"] = true,
-					["Status Effect"] = "Slow"
+					["Status Effect"] = "Bleed"
 				}
 			}
 		},
