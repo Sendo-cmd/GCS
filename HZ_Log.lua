@@ -49,10 +49,10 @@ end
 local function GetSomeCurrency()
     local Data = ReplicateService.GetData()
     local Field = {
-        ["BP Level"] = Data["BattlePasses"]["Level"],
+        ["BP"] = Data["BattlePasses"]["Level"],
         ["Level"] = Data["Exps"]["Level"],
         ["Coin"] = Data["Coin"],
-    } 
+    }
     return Field
 end
 local function CreateBody(...)
@@ -169,11 +169,11 @@ task.spawn(function ()
     --     end
     -- end)
     local function ConnectToWeapons(char)
-        local Tool = Client.Character:FindFirstChildWhichIsA("Tool")
+        local Tool = char:FindFirstChildWhichIsA("Tool")
         if not Tool then
             repeat task.wait()
-                Tool = Client.Character:FindFirstChildWhichIsA("Tool")
-            until Tool
+                Tool = char:FindFirstChildWhichIsA("Tool")
+            until Tool and Tool.Name == Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"]
         end
         if not MasteryLevel_ then
             MasteryLevel_  = Tool:GetAttribute("MasteryLevel")
@@ -205,30 +205,24 @@ task.spawn(function ()
     end
   
     repeat task.wait() until GetCharacter() and Client.Character:FindFirstChildWhichIsA("Tool")
-    local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
-   
-   
-    
+    -- local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
     task.wait(.5)
-   
-   
-    
-    Tool_:GetAttributeChangedSignal("MasteryLevel"):Connect(function()
-        local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
-        if MasteryLevel_ ~= MasteryLevel then
-            EarnedLev = EarnedLev + 1
-            MasteryLevel_ = MasteryLevel
-        end
-    end)
-    Tool_:GetAttributeChangedSignal("MasteryExp"):Connect(function()
-        local MasteryExp = Tool_:GetAttribute("MasteryExp") or 0
-        if MasteryExp_ ~= MasteryExp then
-            local minus = (MasteryExp - MasteryExp_)
-            local Earned = minus < 0 and MasteryExp or minus
-            EarnedMas = EarnedMas + Earned
-            MasteryExp_ = MasteryExp
-        end
-    end)
+    -- Tool_:GetAttributeChangedSignal("MasteryLevel"):Connect(function()
+    --     local MasteryLevel = Tool_:GetAttribute("MasteryLevel") or 1
+    --     if MasteryLevel_ ~= MasteryLevel then
+    --         EarnedLev = EarnedLev + 1
+    --         MasteryLevel_ = MasteryLevel
+    --     end
+    -- end)
+    -- Tool_:GetAttributeChangedSignal("MasteryExp"):Connect(function()
+    --     local MasteryExp = Tool_:GetAttribute("MasteryExp") or 0
+    --     if MasteryExp_ ~= MasteryExp then
+    --         local minus = (MasteryExp - MasteryExp_)
+    --         local Earned = minus < 0 and MasteryExp or minus
+    --         EarnedMas = EarnedMas + Earned
+    --         MasteryExp_ = MasteryExp
+    --     end
+    -- end)
 
     local LevelP_ = GetSomeCurrency()["Level"]
     local gamestart = workspace:GetAttribute("gamestart") or 0

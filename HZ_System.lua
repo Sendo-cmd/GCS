@@ -692,7 +692,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    task.wait()
+    task.wait(2.5)
     local function checker()
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
@@ -842,6 +842,7 @@ local function Teleport_()
     repeat local Servers = ListServers(Next) Server = Servers.data[1] Next = Servers.nextPageCursor 
     until Server TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
 end
+local ReplicateService =  require(game.ReplicatedStorage:FindFirstChild("ReplicateService",true))
 
 if getrenv()["shared"]["loaded"] then
     task.wait()
@@ -850,7 +851,6 @@ if getrenv()["shared"]["loaded"] then
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
     local Rooms = nil
-    local ReplicateService =  require(ReplicatedStorage:WaitForChild("Client"):WaitForChild("ReplicateService"))
 
     game:GetService("ReplicatedStorage"):WaitForChild("Packets"):WaitForChild("Rebirth"):InvokeServer()
 
@@ -964,7 +964,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(2.7)
+        task.wait(4.5)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -1110,8 +1110,26 @@ else
         end
         -- Swap 
         local Character = GetCharacter()
-        sendkey("One",.1) task.wait()
-        sendkey("One",.1)
+        local loadweapon = false
+        task.spawn(function()
+            while true do 
+                if GetCharacter() then
+                    if Client.Character:FindFirstChildWhichIsA("Tool") then
+                        if Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
+                            sendkey("One",.1) task.wait(.4)
+                        else
+                            loadweapon = true
+                        end
+                    else
+                        sendkey("One",.1)
+                        task.wait(1)
+                    end
+                
+                end
+                task.wait(.5)
+            end
+        end)
+        repeat task.wait() until loadweapon
         function _G.Setup()
             local Character = GetCharacter()
             local CurrentWeapon = GetWeapon(Character)
@@ -1234,7 +1252,7 @@ else
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    print("D1")
+                                    -- print("D1")
                                     Enemy = nil
                                 end
                             end
@@ -1499,3 +1517,7 @@ else
     end
    
 end
+
+
+
+
