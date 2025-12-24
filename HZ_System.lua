@@ -719,7 +719,6 @@ task.spawn(function()
         pcall(function()
             sendkey("S",.01) task.wait(0.1)
             sendkey("S",.01) task.wait(0.1)
-            -- print("space")
             task.wait(1000)
         end)
     end
@@ -976,15 +975,15 @@ else
             v.Transparency = 1
         end
     end
-    -- for i,v in pairs(workspace.Entities.Zombie:GetChildren()) do
-    --     if v:IsA("Model") then
-    --         for i1,v1 in pairs(v:GetDescendants()) do
-    --             if v1:IsA("BasePart") then
-    --                 v1.Transparency = 1
-    --             end
-    --         end
-    --     end
-    -- end
+    for i,v in pairs(workspace.Entities.Zombie:GetChildren()) do
+        if v:IsA("Model") then
+            for i1,v1 in pairs(v:GetDescendants()) do
+                if v1:IsA("BasePart") then
+                    v1.Transparency = 1
+                end
+            end
+        end
+    end
     for i,v in pairs(game:GetService("ReplicatedStorage").SharedAssets.Core.Particles:GetDescendants()) do
         if v:IsA("ParticleEmitter") or v:IsA("Beam") or v:IsA("Trail") or v:IsA("Smoke") or v:IsA("Fire") or v:IsA("Sparkles") or v:IsA("Sparkles") then
             local Ins = Instance.new(v.ClassName,v.Parent)
@@ -995,15 +994,15 @@ else
             v:Destroy()
         end
     end
-    -- workspace.Entities.Zombie.ChildAdded:Connect(function(v)
-    --     if v:IsA("Model") then
-    --         for i1,v1 in pairs(v:GetDescendants()) do
-    --             if v1:IsA("BasePart") then
-    --                 v1.Transparency = 1
-    --             end
-    --         end
-    --     end
-    -- end)
+    workspace.Entities.Zombie.ChildAdded:Connect(function(v)
+        if v:IsA("Model") then
+            for i1,v1 in pairs(v:GetDescendants()) do
+                if v1:IsA("BasePart") then
+                    v1.Transparency = 1
+                end
+            end
+        end
+    end)
     _G.X = CFrame.Angles(0,0,0)
      task.spawn(function()
 
@@ -1235,7 +1234,7 @@ else
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
-                                    -- print("D1")
+                                    print("D1")
                                     Enemy = nil
                                 end
                             end
@@ -1293,7 +1292,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = false
+                                CanSkill = true
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else
