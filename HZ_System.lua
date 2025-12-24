@@ -964,7 +964,7 @@ else
     end)
     task.spawn(function()
         repeat task.wait() until workspace:GetAttribute("gameend")
-        task.wait(4.5)
+        task.wait(2.7)
         for i = 1,25 do task.wait(.1) 
             game:GetService("ReplicatedStorage").external.Packets.voteReplay:FireServer()
         end
@@ -1112,6 +1112,7 @@ else
         local Character = GetCharacter()
         local loadweapon = false
         task.spawn(function()
+            local Data = ReplicateService.GetData()
             while true do 
                 if GetCharacter() then
                     if Client.Character:FindFirstChildWhichIsA("Tool") then
@@ -1129,7 +1130,8 @@ else
                 task.wait(.5)
             end
         end)
-        repeat task.wait() until loadweapon
+        repeat task.wait() print("loop") until loadweapon
+        
         function _G.Setup()
             local Character = GetCharacter()
             local CurrentWeapon = GetWeapon(Character)
@@ -1517,7 +1519,3 @@ else
     end
    
 end
-
-
-
-
