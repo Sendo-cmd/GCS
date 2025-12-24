@@ -677,6 +677,7 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
 local Client = Players.LocalPlayer
 
@@ -931,7 +932,6 @@ if getrenv()["shared"]["loaded"] then
     end
 
 else
-    
     for i,v in pairs(game:GetService("Players").LocalPlayer.PlayerGui.MainScreen_Sibling.WindowElement.Contents:GetChildren()) do
         if v.Name == "ToggleElement" then
             game:GetService("ReplicatedStorage"):WaitForChild("SharedAssets"):WaitForChild("Packets"):WaitForChild("changeSettings"):FireServer({
@@ -1039,7 +1039,7 @@ else
                     end
                 end
                 if not Workspace:GetAttribute("DATA_ID") then
-                    Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.26)
+                    Workspace:SetAttribute(Tool:GetAttribute("DATA_ID"),.25)
                 end
                
             end
@@ -1109,6 +1109,10 @@ else
                 end
             end 
         end
+        -- Swap 
+        local Character = GetCharacter()
+        sendkey("One",.1) task.wait()
+        sendkey("One",.1)
         function _G.Setup()
             local Character = GetCharacter()
             local CurrentWeapon = GetWeapon(Character)
@@ -1118,7 +1122,7 @@ else
         end
         _G.Setup()
         -- Insert DATA
-        local Character = GetCharacter()
+       
         local Backpack = Client.Backpack
 
         local WeaponTool = {
@@ -1127,7 +1131,7 @@ else
         }
         for i,v in pairs(WeaponTool) do
             local data = WeaponModule(v.Name)
-            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]) or data["hitboxes"]["l1"]["size"])
+            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and (data["hitboxes"]["l1"]["size"]["X"] > data["hitboxes"]["l1"]["size"]["Z"] and data["hitboxes"]["l1"]["size"]["X"] or data["hitboxes"]["l1"]["size"]["Z"])) or data["hitboxes"]["l1"]["size"])
             print(not data["hitboxes"]["l1"] and 5)
             for i1,v1 in pairs(data["abilityIndexes"]) do
                 if v1:find("l") then
@@ -1289,7 +1293,7 @@ else
                         PauseToTakeItem = true
                         while Pipe.Parent do task.wait()
                             if not Pickup and not BreakToKill_ then
-                                CanSkill = true
+                                CanSkill = false
                                 Character.HumanoidRootPart.CFrame = CFrame.new(Pipe.Root.Position) * (_G.PayloadOffset() or Settings["Payload"]["Pipe Offset"]) * CFrame.new(0,0,2.5)
                                 Enemy = true
                             else

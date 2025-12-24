@@ -51,11 +51,7 @@ local function GetSomeCurrency()
     local Field = {
         ["BP Level"] = Data["BattlePasses"]["Level"],
         ["Level"] = Data["Exps"]["Level"],
-        ["Joker Coin"] = Data["Currency"]["RaidCoin4"],
         ["Coin"] = Data["Coin"],
-        ["Payload"] = Data["Currency"]["Payload"],
-        ["Skill Point"] = Data["Currency"]["SkillPoint"],
-        ["Pet Coin"] = Data["Currency"]["PetCoin"],
     } 
     return Field
 end
@@ -151,30 +147,66 @@ task.spawn(function ()
     local function GetCharacter()
         return Client.Character or (Client.CharacterAdded:Wait() and Client.Character)
     end
-    task.spawn(function()
-        while true do 
-            if GetCharacter() then
-                if Client.Character:FindFirstChildWhichIsA("Tool") then
-                    if Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
-                        sendkey("One",.1) task.wait(.4)
-                    else
-                        Client.Character:FindFirstChildWhichIsA("Tool"):SetAttribute("EIEI",true)
-                    end
-                else
-                    sendkey("One",.1)
-                    task.wait(1)
-                end
-             
-            end
-            task.wait(.5)
-        end
-    end)
-    repeat task.wait() until GetCharacter() and Client.Character:FindFirstChildWhichIsA("Tool")
-    local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
-    local MasteryLevel_ = Tool_:GetAttribute("MasteryLevel") or 1
-    local MasteryExp_ = Tool_:GetAttribute("MasteryExp") or 0
+    local MasteryLevel_ = nil
+    local MasteryExp_ = nil
     local EarnedMas = 0
     local EarnedLev = 0
+    -- task.spawn(function()
+    --     while true do 
+    --         if GetCharacter() then
+    --             if Client.Character:FindFirstChildWhichIsA("Tool") then
+    --                 print(Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] , Client.Character:FindFirstChildWhichIsA("Tool").Name , Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"])
+    --                 if Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
+    --                     sendkey("One",.1) task.wait(.4)
+    --                 end
+    --             else
+    --                 sendkey("One",.1)
+    --                 task.wait(1)
+    --             end
+             
+    --         end
+    --         task.wait(.5)
+    --     end
+    -- end)
+    local function ConnectToWeapons(char)
+        local Tool = Client.Character:FindFirstChildWhichIsA("Tool")
+        if not Tool then
+            repeat task.wait()
+                Tool = Client.Character:FindFirstChildWhichIsA("Tool")
+            until Tool
+        end
+        if not MasteryLevel_ then
+            MasteryLevel_  = Tool:GetAttribute("MasteryLevel")
+        end
+        if not MasteryExp_ then
+            MasteryExp_  = Tool:GetAttribute("MasteryExp")
+        end
+        Tool:GetAttributeChangedSignal("MasteryLevel"):Connect(function()
+            local MasteryLevel = Tool:GetAttribute("MasteryLevel") or 1
+            if MasteryLevel_ ~= MasteryLevel then
+                EarnedLev = EarnedLev + 1
+                MasteryLevel_ = MasteryLevel
+            end
+        end)
+        Tool:GetAttributeChangedSignal("MasteryExp"):Connect(function()
+            local MasteryExp = Tool:GetAttribute("MasteryExp") or 0
+            if MasteryExp_ ~= MasteryExp then
+                local minus = (MasteryExp - MasteryExp_)
+                local Earned = minus < 0 and MasteryExp or minus
+                EarnedMas = EarnedMas + Earned
+                MasteryExp_ = MasteryExp
+            end
+        end)
+    end
+    if Client.Character then
+        ConnectToWeapons(Client.Character)
+    else
+        Client.CharacterAdded:Connect(ConnectToWeapons)
+    end
+  
+    repeat task.wait() until GetCharacter() and Client.Character:FindFirstChildWhichIsA("Tool")
+    local Tool_ = Client.Character:FindFirstChildWhichIsA("Tool")
+   
    
     
     task.wait(.5)
