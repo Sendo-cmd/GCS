@@ -230,7 +230,7 @@ getgenv().Config = {
 			},
 			["Auto Sell Unit"] = {
 				["Enable"] = true,
-				["Wave"] = 22,
+				["Wave"] = 30,
 				["Stage Type"] = {
 					["Odyssey"] = false,
 					["Challenge"] = false,
