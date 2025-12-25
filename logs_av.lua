@@ -255,13 +255,12 @@ local function GetData()
         ["EquippedUnits"] = EquippedUnits,
     }
 end
-setclipboard(HttpService:JSONEncode(GetData()))
+-- setclipboard(HttpService:JSONEncode(GetData()))
 if IsMain then
     local Data = GetData()
     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
 elseif IsMatch then
     warn("IN Match")
-    local HUD = plr.PlayerGui:FindFirstChild("HUD")
     local Level = tonumber(plr:GetAttribute("Level"))
     local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
     local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
@@ -272,26 +271,16 @@ elseif IsMatch then
         local Times = 0
         local Data = GetData()
         local BattlePassXp = 0
-        local LeavesPoint = nil
         local BPPlay = BattlepassText.Play
         BattlepassText.Play = function(self, data)
             BattlePassXp += data[1]
             return BPPlay(self, data)
         end
-        if HUD then
-            local Map = HUD:WaitForChild("Map")
-            local StageRewards = Map:WaitForChild("StageRewards")
-            local Leaves = StageRewards:WaitForChild("Leaves")
-            print("Leaves",Leaves.Visible)
-            if Leaves.Visible == true then
-                LeavesPoint = tonumber(Leaves.Amount.Text:split("x")[2])
-            end
-              print("Leaves",LeavesPoint)
-        end
          warn("SendTo 2")
         if BattlePassXp > 0 and Results.Rewards then
             Results.Rewards["Pass Xp"] = { ["Amount"] = BattlePassXp }
         end
+        
         for i,v in pairs(Results["Rewards"]) do
             if v["Amount"] then
                 ConvertResult[#ConvertResult + 1] = convertToField(i,v["Amount"])
@@ -302,11 +291,22 @@ elseif IsMatch then
             end
         end
         if Level ~= tonumber(plr:GetAttribute("Level")) then
-            ConvertResult[#ConvertResult + 1] = convertToField("Leaves",LeavesPoint)
+            ConvertResult[#ConvertResult + 1] = convertToField("Level",1)
             Level = tonumber(plr:GetAttribute("Level"))
         end
+        if plr.PlayerGui:FindFirstChild("HUD") then
+            print("Meee")
+            local Map = plr.PlayerGui:FindFirstChild("HUD"):WaitForChild("Map")
+            local StageRewards = Map:WaitForChild("StageRewards")
+            local Leaves = StageRewards:WaitForChild("Leaves")
+            print("Leaves",Leaves.Visible)
+            if Leaves.Visible == true then
+                LeavesPoint = tonumber(Leaves.Amount.Text:split("x")[2])
+            end
+              print("Leaves",LeavesPoint)
+        end
         if LeavesPoint then
-            ConvertResult[#ConvertResult + 1] = convertToField("Level",1)
+            ConvertResult[#ConvertResult + 1] = convertToField("Leave",LeavesPoint)
         end
          warn("SendTo 3")
         -- Create StageInfo
