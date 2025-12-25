@@ -4,9 +4,7 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 local Url = "https://api.championshop.date"
 local List = {
-    "Leaves",
     "Level",
-    "CakeSlices",
     "Gold",
     "Gems",
     "TraitRerolls",
@@ -257,12 +255,13 @@ local function GetData()
         ["EquippedUnits"] = EquippedUnits,
     }
 end
--- setclipboard(HttpService:JSONEncode(GetData()))
+setclipboard(HttpService:JSONEncode(GetData()))
 if IsMain then
     local Data = GetData()
     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
 elseif IsMatch then
     warn("IN Match")
+    local HUD = plr.PlayerGui:FindFirstChild("HUD")
     local Level = tonumber(plr:GetAttribute("Level"))
     local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
     local BattlepassText = require(game:GetService("StarterPlayer").Modules.Visuals.Misc.Texts.BattlepassText)
@@ -273,10 +272,19 @@ elseif IsMatch then
         local Times = 0
         local Data = GetData()
         local BattlePassXp = 0
+        local LeavesPoint = nil
         local BPPlay = BattlepassText.Play
         BattlepassText.Play = function(self, data)
             BattlePassXp += data[1]
             return BPPlay(self, data)
+        end
+        if HUD then
+            local Map = HUD:WaitForChild("Map")
+            local StageRewards = Map:WaitForChild("StageRewards")
+            local Leaves = StageRewards:WaitForChild("Leaves")
+            if Leaves.Visible == true then
+                LeavesPoint = tonumber(Leaves.Amount.Text:split("x")[2])
+            end
         end
          warn("SendTo 2")
         if BattlePassXp > 0 and Results.Rewards then
@@ -292,8 +300,11 @@ elseif IsMatch then
             end
         end
         if Level ~= tonumber(plr:GetAttribute("Level")) then
-            ConvertResult[#ConvertResult + 1] = convertToField("Level",1)
+            ConvertResult[#ConvertResult + 1] = convertToField("Leaves",LeavesPoint)
             Level = tonumber(plr:GetAttribute("Level"))
+        end
+        if LeavesPoint then
+            ConvertResult[#ConvertResult + 1] = convertToField("Level",1)
         end
          warn("SendTo 3")
         -- Create StageInfo
