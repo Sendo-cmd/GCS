@@ -282,9 +282,11 @@ elseif IsMatch then
             local Map = HUD:WaitForChild("Map")
             local StageRewards = Map:WaitForChild("StageRewards")
             local Leaves = StageRewards:WaitForChild("Leaves")
+            print("Leaves",Leaves.Visible)
             if Leaves.Visible == true then
                 LeavesPoint = tonumber(Leaves.Amount.Text:split("x")[2])
             end
+              print("Leaves",LeavesPoint)
         end
          warn("SendTo 2")
         if BattlePassXp > 0 and Results.Rewards then
