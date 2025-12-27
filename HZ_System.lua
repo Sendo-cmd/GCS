@@ -37,8 +37,8 @@ local Settings = {
     ["Select Mode"] = "Normal",
     ["Normal Room Settings"] = {
         ["Select Difficulty"] = "Nightmare", -- Normal , Nightmare
-        ["Select Map"] = "North Pole",
-        ["Select Mode"] = "Raid", -- Campaign , Raid
+        ["Select Map"] = "Island",
+        ["Select Mode"] = "Campaign", -- Campaign , Raid
     },
 }
 local Changes = {
@@ -719,6 +719,7 @@ task.spawn(function()
         pcall(function()
             sendkey("S",.01) task.wait(0.1)
             sendkey("S",.01) task.wait(0.1)
+            print("space")
             task.wait(1000)
         end)
     end
@@ -845,8 +846,8 @@ end
 local ReplicateService =  require(game.ReplicatedStorage:FindFirstChild("ReplicateService",true))
 
 if getrenv()["shared"]["loaded"] then
-    task.wait()
-    task.delay(70,function()
+    setfpscap(30) task.wait(1)
+    task.delay(60,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -1116,7 +1117,8 @@ else
             while true do 
                 if GetCharacter() then
                     if Client.Character:FindFirstChildWhichIsA("Tool") then
-                        if Client.Character:FindFirstChildWhichIsA("Tool").Name ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"] then
+                        print(Client.Character:FindFirstChildWhichIsA("Tool"):GetAttribute("DATA_ID") , Data["Weapons"][Data["selectedSlot"]["Weapons"]]["ID"])
+                        if Client.Character:FindFirstChildWhichIsA("Tool") and Client.Character:FindFirstChildWhichIsA("Tool"):GetAttribute("DATA_ID") ~= Data["Weapons"][Data["selectedSlot"]["Weapons"]]["ID"] then
                             sendkey("One",.1) task.wait(.4)
                         else
                             loadweapon = true
@@ -1188,12 +1190,12 @@ else
         function _G.GetOffset()
             local Character = GetCharacter()
             local CurrentWeapon = GetWeapon(Character)
-            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,-1,OffsetInsert[CurrentWeapon.Name]) or Settings["Farm Settings"]["Offset"]
+            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,-.5,OffsetInsert[CurrentWeapon.Name]) or Settings["Farm Settings"]["Offset"]
         end
         function _G.PayloadOffset()
             local Character = GetCharacter()
             local CurrentWeapon = GetWeapon(Character)
-            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,-1,OffsetInsert[CurrentWeapon.Name])
+            return not Settings["Farm Settings"]["Custom Offset"] and CFrame.new(0,-.5,OffsetInsert[CurrentWeapon.Name])
         end
         task.spawn(function ()
             local LastUsedSkill = tick()
@@ -1206,7 +1208,7 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                        if Settings["Farm Settings"]["Auto Ult"] and GetUlt and CanSkill then
+                       if Settings["Farm Settings"]["Auto Ult"] and GetUlt and CanSkill then
                             ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
                         elseif GetPassiveSkill then

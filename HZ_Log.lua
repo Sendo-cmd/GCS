@@ -1,5 +1,3 @@
-
-
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -49,10 +47,11 @@ end
 local function GetSomeCurrency()
     local Data = ReplicateService.GetData()
     local Field = {
-        ["BP"] = Data["BattlePasses"]["Level"],
+        ["BattlePass"] = Data["BattlePasses"]["Level"],
         ["Level"] = Data["Exps"]["Level"],
+        ["Exp"] = Data["Exps"]["Exp"],
         ["Coin"] = Data["Coin"],
-    }
+    } 
     return Field
 end
 local function CreateBody(...)
@@ -173,8 +172,9 @@ task.spawn(function ()
         if not Tool then
             repeat task.wait()
                 Tool = char:FindFirstChildWhichIsA("Tool")
-            until Tool and Tool.Name == Data["Weapons"][Data["selectedSlot"]["Weapons"]]["WeaponName"]
+            until Tool and Tool:GetAttribute("DATA_ID") == Data["Weapons"][Data["selectedSlot"]["Weapons"]]["ID"] 
         end
+         
         if not MasteryLevel_ then
             MasteryLevel_  = Tool:GetAttribute("MasteryLevel")
         end
