@@ -1497,6 +1497,7 @@ else
                                     if tick() > DodgeTicks then
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * _G.GetOffset()
                                         -- print("D")
+                                        CanSkill = true
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
