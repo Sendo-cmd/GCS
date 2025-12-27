@@ -534,7 +534,7 @@ local Changes = {
             ["Auto Ult"] = false,
         }
     end,
-    [""] = function()
+    ["da0af645-2728-43f3-a956-e8f214b712a4"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
@@ -548,7 +548,7 @@ local Changes = {
             ["Auto Ult"] = false,
         }
     end,
-    [""] = function()
+    ["47b44b8a-e4de-4d28-bcfd-2f7803a1b2c1"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
@@ -562,7 +562,7 @@ local Changes = {
             ["Auto Ult"] = false,
         }
     end,
-    [""] = function()
+    ["87cd500b-4cb3-4720-9d5e-cf229b10650a"] = function()
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
@@ -677,7 +677,6 @@ local ReplicatedFirst = game:GetService("ReplicatedFirst")
 
 task.wait(1)
 repeat task.wait() until getrenv()["shared"]["loaded"] or ReplicatedFirst:FindFirstChild("Loading")
-game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
 local Client = Players.LocalPlayer
 
@@ -692,7 +691,7 @@ local function clicking(path)
 end
 
 if game:GetService("ReplicatedFirst"):FindFirstChild("Loading") then
-    task.wait(2.5)
+    task.wait()
     local function checker()
         
         print(game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("LOADING"),"Load")
@@ -1150,8 +1149,10 @@ else
         }
         for i,v in pairs(WeaponTool) do
             local data = WeaponModule(v.Name)
-            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and (data["hitboxes"]["l1"]["size"]["X"] > data["hitboxes"]["l1"]["size"]["Z"] and data["hitboxes"]["l1"]["size"]["X"] or data["hitboxes"]["l1"]["size"]["Z"])) or data["hitboxes"]["l1"]["size"])
-            print(not data["hitboxes"]["l1"] and 5)
+            OffsetInsert[v.Name] = (not data["hitboxes"]["l1"] and 5 or (typeof(data["hitboxes"]["l1"]["size"]) == "Vector3" and data["hitboxes"]["l1"]["size"]["Z"]/1.25) or data["hitboxes"]["l1"]["size"])
+            if OffsetInsert[v.Name] < 3.5 then
+                OffsetInsert[v.Name] = 3.5
+            end
             for i1,v1 in pairs(data["abilityIndexes"]) do
                 if v1:find("l") then
                     if not insertforWP[v.Name] then
