@@ -1438,7 +1438,7 @@ else
             end
         end)
     else
-        setfpscap(15)
+        setfpscap(20)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
