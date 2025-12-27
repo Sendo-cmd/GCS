@@ -1438,7 +1438,7 @@ else
             end
         end)
     else
-        setfpscap(20)
+        setfpscap(11)
         local PauseToTakeItem = false
         local function Checker()
             repeat task.wait() until not Client.PlayerGui.LoadingMapGUI.Enabled
@@ -1497,7 +1497,6 @@ else
                                     if tick() > DodgeTicks then
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * _G.GetOffset()
                                         -- print("D")
-                                        CanSkill = true
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
