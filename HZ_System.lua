@@ -580,7 +580,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
-            ["Select Map"] = "Island",
+            ["Select Map"] = "Castle",
             ["Select Mode"] = "Endless",
         }
         Settings["Farm Settings"] = {
@@ -594,7 +594,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
-            ["Select Map"] = "Island",
+            ["Select Map"] = "Castle",
             ["Select Mode"] = "Endless",
         }
         Settings["Farm Settings"] = {
@@ -608,7 +608,7 @@ local Changes = {
         Settings["Select Mode"] = "Normal"
         Settings["Normal Room Settings"] = {
             ["Select Difficulty"] = "Nightmare",
-            ["Select Map"] = "Island",
+            ["Select Map"] = "Castle",
             ["Select Mode"] = "Endless",
         }
         Settings["Farm Settings"] = {
@@ -659,6 +659,7 @@ local GameType = {
     ["JokerTrial"] = "Raid",
     ["Shibuya"] = "Raid",
     ["North Pole"] = "Raid",
+    ["Castle"] = "Endless",
     ["Christmas Village"] = "Payload",
     ["City"] = "Payload"
 }
