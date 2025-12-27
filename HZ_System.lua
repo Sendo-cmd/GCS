@@ -719,7 +719,7 @@ task.spawn(function()
         pcall(function()
             sendkey("S",.01) task.wait(0.1)
             sendkey("S",.01) task.wait(0.1)
-            print("space")
+            -- print("space")
             task.wait(1000)
         end)
     end
@@ -846,8 +846,8 @@ end
 local ReplicateService =  require(game.ReplicatedStorage:FindFirstChild("ReplicateService",true))
 
 if getrenv()["shared"]["loaded"] then
-    setfpscap(30) task.wait(1)
-    task.delay(60,function()
+    task.wait()
+    task.delay(70,function()
       Teleport_()
     end)
     local Setting = Settings[Settings["Select Mode"] .." Room Settings"]
@@ -1200,7 +1200,7 @@ else
         task.spawn(function ()
             local LastUsedSkill = tick()
             while true do 
-                pcall(function()
+                local p,c = pcall(function()
                     if Enemy then
                         local Character = GetCharacter()
                         local CurrentWeapon = GetWeapon(Character)
@@ -1208,7 +1208,7 @@ else
                         local GetSkill = GetSkillCD(CurrentWeapon)
                         local GetPassiveSkill = GetPerkCD(Character)
                         local GetUlt = GetUlt(CurrentWeapon)
-                       if Settings["Farm Settings"]["Auto Ult"] and GetUlt and CanSkill then
+                        if Settings["Farm Settings"]["Auto Ult"] and GetUlt and CanSkill then
                             ByteNetReliable:FireServer(buffer.fromstring("\t\003\001"),{workspace:GetServerTimeNow()}) 
                             -- warn("Ult")
                         elseif GetPassiveSkill then
@@ -1250,11 +1250,11 @@ else
                                 end
                             end)
                             while v["health"] > 0 and v["model"] do task.wait()
-                                -- _G.Attacks()
+                                _G.Attacks()
                                 Enemy = true
                                 if tick() > DodgeTicks then
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,-((v["model"].HumanoidRootPart.Size.Y/2) + 3),1) * _G.GetOffset()
-                                    -- print("D")
+                                    print("D")
                                     Enemy = v
                                 else
                                     Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
@@ -1267,6 +1267,7 @@ else
                     end  
                end)
                 if not p then
+                    print(p,c)
                 end
             end
         end)
@@ -1500,7 +1501,7 @@ else
                                 else
                                     if tick() > DodgeTicks then
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * _G.GetOffset()
-                                        -- print("D")
+                                        _G.Attacks()
                                         Enemy = v
                                     else
                                         Character.HumanoidRootPart.CFrame = CFrame.new(v["model"].HumanoidRootPart.Position) * CFrame.new(0,50,60)
