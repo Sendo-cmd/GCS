@@ -62,7 +62,7 @@ repeat
     task.wait()
 until getrenv()._G.ClientIsReady
 _G.IMDONE = true
-task.wait(2)
+task.wait(15)
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
