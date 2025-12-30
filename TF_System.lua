@@ -35,7 +35,6 @@ local Changes = {
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
-setfpscap(15)
 
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
@@ -157,7 +156,6 @@ Auto_Config()
 local Plr = game:GetService("Players").LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
-local Char = Plr.Character
 
 local Inventory = require(ReplicatedStorage.Controllers.UIController.Inventory)
 local Knit = require(ReplicatedStorage.Shared.Packages.Knit)
@@ -268,6 +266,7 @@ end
 task.spawn(function()
     while true do task.wait()
         pcall(function()
+            local Char = Plr.Character
             if Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
                 local Rock = getnearest(Char)
                 local LastAttack = 0
