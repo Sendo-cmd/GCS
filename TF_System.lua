@@ -301,25 +301,44 @@ local function Forge(Recipe)
     local Equipments = PlayerController.Replica.Data.Inventory["Equipments"]
     print("Total Equipments:", #Equipments)
     
+    -- รวม GUID ทั้งหมดที่จะขาย
+    local SellBasket = {}
     for i,v in pairs(Equipments) do
         print("Checking Equipment:", i, v["GUID"], "In Original:", table.find(InsertEquipments, v["GUID"]))
         if v["GUID"] and not table.find(InsertEquipments, v["GUID"]) then
-            print("Selling:", v["GUID"])
-            local success, err = pcall(function()
-                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm",
-                {
-                    Basket = {
-                        [v["GUID"]] = true,
-                    }
-                })
-            end)
-            if not success then
-                print("Sell Error:", err)
-            else
-                print("Sold:", v["GUID"])
-            end
-            task.wait(0.5)
+            SellBasket[v["GUID"]] = true
+            print("Added to basket:", v["GUID"])
         end
+    end
+    
+    -- ขายทีเดียวทั้ง Basket
+    if next(SellBasket) then
+        print("Selling basket...")
+        
+        -- ลองวิธีที่ 1: SellConfirm
+        pcall(function()
+            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
+                Basket = SellBasket
+            })
+        end)
+        task.wait(1)
+        
+        -- ลองวิธีที่ 2: Sell
+        pcall(function()
+            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("Sell", {
+                Basket = SellBasket
+            })
+        end)
+        task.wait(1)
+        
+        -- ลองวิธีที่ 3: InventoryService
+        pcall(function()
+            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("InventoryService"):WaitForChild("RF"):WaitForChild("SellItems"):InvokeServer(SellBasket)
+        end)
+        
+        print("Sell commands sent")
+    else
+        print("Nothing to sell")
     end
     print("Finish Selling")
 end
