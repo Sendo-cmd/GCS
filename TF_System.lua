@@ -11,8 +11,8 @@ local Settings = {
 }
 
 local Url = "https://api.championshop.date"
-local Auto_Configs = true
-local IsTest = false
+local Auto_Configs = false
+local IsTest = true
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
@@ -36,6 +36,12 @@ repeat task.wait(30) until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
+repeat
+    task.wait()
+until getrenv()._G.ClientIsReady
+_G.IMDONE = true
+task.wait(2)
+
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
@@ -44,7 +50,6 @@ local HttpService = game:GetService("HttpService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local Client = Players.LocalPlayer
-setfpscap(15)
 
 local function Get(Url)
     local Data = request({
@@ -165,11 +170,14 @@ local Ores = require(ReplicatedStorage.Shared.Data.Ore)
 
 local PlayerController = Knit.GetController("PlayerController")
 local ChangeSequence = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("ChangeSequence")
--- print(pc)
+local InsertEquipments = {}
+for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
+    table.insert(InsertEquipments,v["GUID"])
+end
 PlayerController.Replica:OnWrite("GiveItem", function(t, v)
     print(t,v)
     if type(t) == "table" then
-        task.wait(1)
+        task.wait(2)
         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer( "SellConfirm",
         {
             Basket = {
@@ -286,7 +294,7 @@ task.spawn(function()
                                     LastAttack = tick() + .2
                                 end
                             end)
-                            Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,Rock:GetExtentsSize().Y + 1,0)) * CFrame.Angles( -math.rad(90), 0,0) 
+                            Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,0,2))
                         else
                             LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
                             LastTween:Play()
@@ -299,6 +307,16 @@ task.spawn(function()
                 local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
                 if Magnitude < 5 then
                     Char.HumanoidRootPart.CFrame = CFrame.new(Position)
+                    for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do task.wait(1)
+                        if not table.find(InsertEquipments,v["GUID"]) then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer( "SellConfirm",
+                            {
+                                Basket = {
+                                    [v["GUID"]] = true,
+                                }
+                            })
+                        end
+                    end
                     while CanForge do task.wait()
                         print("Here")
                         local Recipe = GetRecipe()
