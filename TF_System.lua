@@ -11,8 +11,8 @@ local Settings = {
 }
 
 local Url = "https://api.championshop.date"
-local Auto_Configs = false
-local IsTest = true
+local Auto_Configs = true
+local IsTest = false
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
@@ -21,6 +21,28 @@ local MainSettings = {
 
 local Changes = {
     ["865c696c-6751-4a38-a1c0-f64bd1d6dbee"] = function()
+        Settings["Select Rocks"] = {"Pebble"}
+        Settings["Ignore Forge Rarity"] = {
+            "Legendary",
+            "Mythic",
+            "Relic",
+            "Exotic",
+            "Divine",
+            "Unobtainable",
+        }
+    end,
+    ["648b89ea-cddf-4a95-9c9a-3ee57e70a369"] = function()
+        Settings["Select Rocks"] = {"Pebble"}
+        Settings["Ignore Forge Rarity"] = {
+            "Legendary",
+            "Mythic",
+            "Relic",
+            "Exotic",
+            "Divine",
+            "Unobtainable",
+        }
+    end,
+    ["764ccf8c-78dd-4701-b529-2dc3ea6446cc"] = function()
         Settings["Select Rocks"] = {"Pebble"}
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
