@@ -295,10 +295,17 @@ local function Forge(Recipe)
     pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
     print("Finish Forging")
     
-    task.wait(1)
-    for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
-        if v["GUID"] and not table.find(InsertEquipments,v["GUID"]) then
-            pcall(function()
+    task.wait(2) -- รอนานขึ้นให้ไอเทมเข้า Inventory
+    
+    -- ขาย Equipment ทั้งหมดที่ไม่ใช่ของเดิม
+    local Equipments = PlayerController.Replica.Data.Inventory["Equipments"]
+    print("Total Equipments:", #Equipments)
+    
+    for i,v in pairs(Equipments) do
+        print("Checking Equipment:", i, v["GUID"], "In Original:", table.find(InsertEquipments, v["GUID"]))
+        if v["GUID"] and not table.find(InsertEquipments, v["GUID"]) then
+            print("Selling:", v["GUID"])
+            local success, err = pcall(function()
                 game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm",
                 {
                     Basket = {
@@ -306,6 +313,11 @@ local function Forge(Recipe)
                     }
                 })
             end)
+            if not success then
+                print("Sell Error:", err)
+            else
+                print("Sold:", v["GUID"])
+            end
             task.wait(0.5)
         end
     end
