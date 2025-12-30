@@ -295,9 +295,34 @@ local function Forge(Recipe)
     pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
     print("Finish")
 end
+
+local function IsAlive()
+    local Char = Plr.Character
+    if not Char then return false end
+    local Humanoid = Char:FindFirstChildOfClass("Humanoid")
+    if not Humanoid then return false end
+    if Humanoid.Health <= 0 then return false end
+    local HRP = Char:FindFirstChild("HumanoidRootPart")
+    if not HRP then return false end
+    return true
+end
+
+local function WaitForRespawn()
+    print("Player died, waiting for respawn...")
+    repeat task.wait(0.5) until IsAlive()
+    task.wait(1) -- รอให้ตัวละครพร้อมหลังฟื้น
+    print("Player respawned, resuming mining...")
+end
+
 task.spawn(function()
     while true do task.wait()
         pcall(function()
+            -- ตรวจสอบว่าตัวละครยังมีชีวิตอยู่หรือไม่
+            if not IsAlive() then
+                WaitForRespawn()
+                return -- ออกจาก pcall แล้ววนลูปใหม่
+            end
+            
             local Char = Plr.Character
             if Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
                 local Rock = getnearest(Char)
@@ -305,14 +330,15 @@ task.spawn(function()
                 local LastTween = nil
                 if Rock then
                     local Position = Rock:GetAttribute("OriginalCFrame").Position
-                    while Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do task.wait()
+                    while Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() and IsAlive() do task.wait()
+                        if not IsAlive() then break end -- ออกจาก loop ทันทีเมื่อตาย
                         local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
                         if Magnitude < 15 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
                             task.delay(.01,function ()
-                                if tick() > LastAttack then
+                                if tick() > LastAttack and IsAlive() then
                                     game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RF"):WaitForChild("ToolActivated"):InvokeServer("Pickaxe")
                                     LastAttack = tick() + .2
                                 end
