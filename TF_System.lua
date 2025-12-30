@@ -293,54 +293,7 @@ local function Forge(Recipe)
     task.wait(.5)
     ChangeSequence:InvokeServer("OreSelect",{})
     pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
-    print("Finish Forging")
-    
-    task.wait(2) -- รอนานขึ้นให้ไอเทมเข้า Inventory
-    
-    -- ขาย Equipment ทั้งหมดที่ไม่ใช่ของเดิม
-    local Equipments = PlayerController.Replica.Data.Inventory["Equipments"]
-    print("Total Equipments:", #Equipments)
-    
-    -- รวม GUID ทั้งหมดที่จะขาย
-    local SellBasket = {}
-    for i,v in pairs(Equipments) do
-        print("Checking Equipment:", i, v["GUID"], "In Original:", table.find(InsertEquipments, v["GUID"]))
-        if v["GUID"] and not table.find(InsertEquipments, v["GUID"]) then
-            SellBasket[v["GUID"]] = true
-            print("Added to basket:", v["GUID"])
-        end
-    end
-    
-    -- ขายทีเดียวทั้ง Basket
-    if next(SellBasket) then
-        print("Selling basket...")
-        
-        -- ลองวิธีที่ 1: SellConfirm
-        pcall(function()
-            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
-                Basket = SellBasket
-            })
-        end)
-        task.wait(1)
-        
-        -- ลองวิธีที่ 2: Sell
-        pcall(function()
-            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("Sell", {
-                Basket = SellBasket
-            })
-        end)
-        task.wait(1)
-        
-        -- ลองวิธีที่ 3: InventoryService
-        pcall(function()
-            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("InventoryService"):WaitForChild("RF"):WaitForChild("SellItems"):InvokeServer(SellBasket)
-        end)
-        
-        print("Sell commands sent")
-    else
-        print("Nothing to sell")
-    end
-    print("Finish Selling")
+    print("Finish")
 end
 
 local function IsAlive()
