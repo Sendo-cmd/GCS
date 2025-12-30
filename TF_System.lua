@@ -21,15 +21,15 @@ local MainSettings = {
 
 local Changes = {
     ["865c696c-6751-4a38-a1c0-f64bd1d6dbee"] = function()
-    Settings["Select Rocks"] = {"Pebble"},
-    Settings["Ignore Forge Rarity"] = {
-        "Legendary",
-        "Mythic",
-        "Relic",
-        "Exotic",
-        "Divine",
-        "Unobtainable",
-    }
+        Settings["Select Rocks"] = {"Pebble"}
+        Settings["Ignore Forge Rarity"] = {
+            "Legendary",
+            "Mythic",
+            "Relic",
+            "Exotic",
+            "Divine",
+            "Unobtainable",
+        }
     end,
 }
 repeat task.wait() until game:IsLoaded()
