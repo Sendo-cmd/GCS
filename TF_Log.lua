@@ -1,0 +1,168 @@
+
+
+repeat task.wait() until game:IsLoaded()
+repeat task.wait() until game:GetService("Players").LocalPlayer
+repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
+
+local Players = game:GetService("Players")
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+local VirtualUser = game:GetService("VirtualUser")
+local CollectionService = game:GetService("CollectionService")
+local HttpService = game:GetService("HttpService")
+local Client = Players.LocalPlayer
+
+local Inventory = require(ReplicatedStorage.Controllers.UIController.Inventory)
+local Knit = require(ReplicatedStorage.Shared.Packages.Knit)
+local Ores = require(ReplicatedStorage.Shared.Data.Ore)
+local PlayerController = Knit.GetController("PlayerController")
+-- Folder
+print("Loading..") 
+
+local Url = "https://api.championshop.date"
+local List = {
+    "Gold",
+    "Level",
+    "Exp",
+}
+task.wait(1.5)
+local names = {"K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dd", "Ud", "Dd", "Td", "Qad", "Qid", 
+	"Sxd", "Spd", "Ocd", "Nod", "Vg", "Uvg", "Dvg", "Tvg", "Qavg", "Qivg", "Sxvg", "Spvg", "Ocvg"}
+local pows = {}
+for i = 1, #names do table.insert(pows, 1000^i) end
+
+local function formatNumber(x)
+	local ab = math.abs(x)
+	if ab < 1000 then return tostring(x) end 
+	local p = math.min(math.floor(math.log10(ab)/3), #names)
+	local num = math.floor(ab/pows[p]*100)/100
+	return num*math.sign(x)..names[p]
+end
+
+local function convertToField(index,value)
+    return {
+        ["name"] = index,
+        ["value"] = value or 1
+    }
+end
+local function convertToField_(table_)
+    local Field = {}
+    for i,v in pairs(table_) do
+        Field[#Field + 1] = convertToField(i,v)
+    end
+    return Field
+end
+local function GetSomeCurrency(data)
+    local Field = {}
+    for i,v in pairs(data) do
+        if table.find(List,i) then
+            -- local NewVal = type(v.Value) == "number" and formatNumber(v.Value)
+            Field[i] = v
+        end
+    end
+    return Field
+end
+local function CreateBody(...)
+    local Data = request({
+        ["Url"] = Url .. "/api/v1/shop/orders/" .. Client.Name,
+        ["Method"] = "GET",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+    })
+    print(Data["Success"])
+    local Order_Data = HttpService:JSONDecode(Data["Body"])["data"]
+    local body = {
+        ["order_id"] = Order_Data[1]["id"],
+    }
+    local array = {...}
+    for i,v in pairs(array) do
+        for i1,v1 in pairs(v) do
+            body[i1] = v1
+        end
+    end
+    return body
+end
+local function SendTo(Url,...)
+    warn("Hi")
+    local response = request({
+        ["Url"] = Url,
+        ["Method"] = "POST",
+        ["Headers"] = {
+            ["content-type"] = "application/json",
+            ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+        },
+        ["Body"] = HttpService:JSONEncode(CreateBody(...))
+    })
+    for i,v in pairs(response) do
+        warn(i,v)
+    end 
+    return response
+end
+
+local function GetAllData()
+    local Data = PlayerController["Replica"]["Data"]
+    local LocalData_ = GetSomeCurrency(Data)
+    
+    return {
+        ["Inventory"] = Data["Inventory"],
+        ["PlayerData"] = LocalData_,
+        ["Username"] = Client.Name,
+        ["Pickaxe"] = Data["Equipped"]["Pickaxe"]["Name"]
+    }
+end
+
+local Data = GetAllData()
+local StartLevel = Data["PlayerData"]["Level"]
+SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
+
+task.spawn(function ()
+    local Ores = {}
+    PlayerController.Replica:OnWrite("GiveItem", function(t, v)
+        if type(t) == "string" then
+            Ores[#Ores + 1] = {
+                ["Name"] = t,
+                ["Value"] = v,
+            }
+        end
+    end)
+    while true do task.wait()
+        -- print(#Fishs)
+        if #Ores >= 10 then
+            local Data = GetAllData()
+            local ConvertOres = {}
+            local LastConvertOres = {}
+            
+            for i,v in pairs(Ores) do
+                if ConvertOres[v["Name"]] then
+                    ConvertOres[v["Name"]] = ConvertOres[v["Name"]] + v["Value"]
+                else
+                    ConvertOres[v["Name"]] = v["Value"]
+                end
+            end
+            for i,v in pairs(ConvertOres) do
+                LastConvertOres[#LastConvertOres + 1] = convertToField(i,v)
+            end
+            if Data["PlayerData"]["Level"]  ~=  StartLevel then
+                LastConvertOres[#LastConvertOres + 1] = convertToField("Level",1)
+                StartLevel = Data["PlayerData"]["Level"]
+            end
+
+            local StageInfo = {
+                ["win"] = true,
+                ["map"] = {
+                    ["name"] = Data["PlayerData"]["CurrentIsland"],
+                    ["chapter"] = tostring(Data["PlayerData"]["Race"]),
+                    ["wave"] = "0",
+                    ["mode"] = tostring(Data["PlayerData"]["Level"]),
+                    ["difficulty"] = tostring(Data["Pickaxe"]),
+                },
+            }
+            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertOres},{["state"] = StageInfo},{["time"] = 120},{["Data"] = Data},{["currency"] = convertToField_(Data["PlayerData"])})
+            SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
+            Ores = {} 
+        end
+    end
+end)
+
+-- GetSomeCurrency()
