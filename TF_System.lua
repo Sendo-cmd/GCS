@@ -308,13 +308,15 @@ task.spawn(function()
                 if Magnitude < 5 then
                     Char.HumanoidRootPart.CFrame = CFrame.new(Position)
                     for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do task.wait(1)
-                        if not table.find(InsertEquipments,v["GUID"]) then
-                            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer( "SellConfirm",
-                            {
-                                Basket = {
-                                    [v["GUID"]] = true,
-                                }
-                            })
+                        if v["GUID"] and not table.find(InsertEquipments,v["GUID"]) then
+                            task.spawn(function()
+                                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer( "SellConfirm",
+                                {
+                                    Basket = {
+                                        [v["GUID"]] = true,
+                                    }
+                                })
+                            end)
                         end
                     end
                     while CanForge do task.wait()
