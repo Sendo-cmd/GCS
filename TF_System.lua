@@ -158,9 +158,9 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 local Char = Plr.Character
 
-local Inventory = require(ReplicatedStorage:WaitForChild("Controllers"):WaitForChild("UIController"):WaitForChild("Inventory"))
-local Knit = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"))
-local Ores = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Data"):WaitForChild("Ore"))
+local Inventory = require(ReplicatedStorage.Controllers.UIController.Inventory)
+local Knit = require(ReplicatedStorage.Shared.Packages.Knit)
+local Ores = require(ReplicatedStorage.Shared.Data.Ore)
 
 
 local PlayerController = Knit.GetController("PlayerController")
