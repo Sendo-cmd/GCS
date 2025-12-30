@@ -44,6 +44,7 @@ local HttpService = game:GetService("HttpService")
 local VirtualInputManager = game:GetService('VirtualInputManager')
 local ReplicatedFirst = game:GetService("ReplicatedFirst")
 local Client = Players.LocalPlayer
+setfpscap(15)
 
 local function Get(Url)
     local Data = request({
