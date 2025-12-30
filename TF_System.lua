@@ -57,6 +57,7 @@ local Changes = {
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
+game.StarterGui:SetCoreGuiEnabled(Enum.CoreGuiType.All, false)
 
 repeat
     task.wait(15)
