@@ -309,50 +309,81 @@ end
 
 local function WaitForRespawn()
     print("Player died, waiting for respawn...")
-    repeat task.wait(0.5) until IsAlive()
-    task.wait(1) -- รอให้ตัวละครพร้อมหลังฟื้น
+    while not IsAlive() do
+        task.wait(0.5)
+    end
+    task.wait(2) -- รอให้ตัวละครพร้อมหลังฟื้น
     print("Player respawned, resuming mining...")
 end
 
 task.spawn(function()
-    while true do task.wait()
-        pcall(function()
+    while true do task.wait(0.1)
+        local success, err = pcall(function()
             -- ตรวจสอบว่าตัวละครยังมีชีวิตอยู่หรือไม่
             if not IsAlive() then
                 WaitForRespawn()
-                return -- ออกจาก pcall แล้ววนลูปใหม่
+                return
             end
             
             local Char = Plr.Character
+            if not Char or not Char:FindFirstChild("HumanoidRootPart") then
+                return
+            end
+            
             if Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
                 local Rock = getnearest(Char)
                 local LastAttack = 0
                 local LastTween = nil
                 if Rock then
                     local Position = Rock:GetAttribute("OriginalCFrame").Position
-                    while Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() and IsAlive() do task.wait()
-                        if not IsAlive() then break end -- ออกจาก loop ทันทีเมื่อตาย
+                    while Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do 
+                        task.wait(0.1)
+                        
+                        -- เช็คทุก loop ว่ายังมีชีวิตอยู่
+                        if not IsAlive() then 
+                            if LastTween then LastTween:Cancel() end
+                            return -- ออกจาก function ทันที
+                        end
+                        
+                        -- ดึง Char ใหม่ทุกครั้งเพื่อป้องกัน reference เก่า
+                        Char = Plr.Character
+                        if not Char or not Char:FindFirstChild("HumanoidRootPart") then
+                            return
+                        end
+                        
                         local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
                         if Magnitude < 15 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
-                            task.delay(.01,function ()
-                                if tick() > LastAttack and IsAlive() then
+                            if tick() > LastAttack and IsAlive() then
+                                pcall(function()
                                     game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RF"):WaitForChild("ToolActivated"):InvokeServer("Pickaxe")
-                                    LastAttack = tick() + .2
-                                end
-                            end)
-                            Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,0,2))
+                                end)
+                                LastAttack = tick() + .2
+                            end
+                            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                                Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,0,2))
+                            end
                         else
-                            LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
-                            LastTween:Play()
+                            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                                LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
+                                LastTween:Play()
+                            end
                         end
                     end
                 end
             else
+                if not IsAlive() then return end
+                
                 local CanForge = true
                 local Position = workspace.Proximity.Forge.Position
+                
+                Char = Plr.Character
+                if not Char or not Char:FindFirstChild("HumanoidRootPart") then
+                    return
+                end
+                
                 local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
                 if Magnitude < 5 then
                     Char.HumanoidRootPart.CFrame = CFrame.new(Position)
@@ -369,6 +400,7 @@ task.spawn(function()
                         end
                     end
                     while CanForge do task.wait()
+                        if not IsAlive() then return end
                         print("Here")
                         local Recipe = GetRecipe()
                          print(Recipe)
@@ -379,8 +411,10 @@ task.spawn(function()
                         end
                     end
                 else
-                    LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
-                    LastTween:Play()
+                    if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                        local ForgeTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
+                        ForgeTween:Play()
+                    end
                 end
             end
         end)
@@ -390,13 +424,17 @@ if _G.Stepped then
     _G.Stepped:Disconnect()
 end
 _G.Stepped = game:GetService("RunService").Stepped:Connect(function()
-    if not Plr.Character.HumanoidRootPart:FindFirstChild("Body") then
-        local L_1 = Instance.new("BodyVelocity")
-        L_1.Name = "Body"
-        L_1.Parent = Plr.Character.HumanoidRootPart 
-        L_1.MaxForce=Vector3.new(1000000000,1000000000,1000000000)
-        L_1.Velocity=Vector3.new(0,0,0) 
-    end
+    if not IsAlive() then return end -- ไม่ทำอะไรถ้าตาย
+    
+    pcall(function()
+        if not Plr.Character.HumanoidRootPart:FindFirstChild("Body") then
+            local L_1 = Instance.new("BodyVelocity")
+            L_1.Name = "Body"
+            L_1.Parent = Plr.Character.HumanoidRootPart 
+            L_1.MaxForce=Vector3.new(1000000000,1000000000,1000000000)
+            L_1.Velocity=Vector3.new(0,0,0) 
+        end
+    end)
     pcall(function ()
         local character = Plr.Character
         for _, v in pairs(character:GetDescendants()) do
