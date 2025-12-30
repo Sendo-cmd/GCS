@@ -158,7 +158,7 @@ task.spawn(function ()
                     ["difficulty"] = tostring(Data["Pickaxe"]),
                 },
             }
-            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertOres},{["state"] = StageInfo},{["time"] = 60},{["Data"] = Data},{["currency"] = convertToField_(Data["PlayerData"])})
+            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertOres},{["state"] = StageInfo},{["time"] = 120},{["Data"] = Data},{["currency"] = convertToField_(Data["PlayerData"])})
             SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
             Ores = {} 
         end
