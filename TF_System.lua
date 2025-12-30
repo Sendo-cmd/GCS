@@ -293,7 +293,23 @@ local function Forge(Recipe)
     task.wait(.5)
     ChangeSequence:InvokeServer("OreSelect",{})
     pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
-    print("Finish")
+    print("Finish Forging")
+    
+    task.wait(1)
+    for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
+        if v["GUID"] and not table.find(InsertEquipments,v["GUID"]) then
+            pcall(function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm",
+                {
+                    Basket = {
+                        [v["GUID"]] = true,
+                    }
+                })
+            end)
+            task.wait(0.5)
+        end
+    end
+    print("Finish Selling")
 end
 
 local function IsAlive()
