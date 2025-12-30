@@ -86,10 +86,10 @@ Games = {
         ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/HZ_System.lua",
         ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/HZ_Log.lua",
     },
-    [7671049560] = { --TF
-        ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/TF_System.lua",
-        ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/TF_Log.lua",
-    },
+    -- [7671049560] = { --TF
+    --     ["System"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/TF_System.lua",
+    --     ["Log"] = "https://raw.githubusercontent.com/Sendo-cmd/GCS/main/TF_Log.lua",
+    -- },
 }
 Accounts = {}
 repeat task.wait(1) until game:IsLoaded(2)
@@ -107,7 +107,7 @@ local BaseScripts = {
     ["6884266247"] = { "Log", "System" },
     ["4509896324"] = { "System" },
     ["7750955984"] = { "Log", "System" },
-    ["7671049560"] = { "Log", "System" },
+    -- ["7671049560"] = { "Log", "System" },
 }
 
 for i, v in pairs(Accounts) do
