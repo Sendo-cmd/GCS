@@ -286,7 +286,7 @@ task.spawn(function()
                                     LastAttack = tick() + .2
                                 end
                             end)
-                            Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,Rock:GetExtentsSize().Y + 2,0)) * CFrame.Angles( -math.rad(90), 0,0) 
+                            Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,Rock:GetExtentsSize().Y + 1,0)) * CFrame.Angles( -math.rad(90), 0,0) 
                         else
                             LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
                             LastTween:Play()
