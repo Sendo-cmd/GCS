@@ -23,8 +23,8 @@ local List = {
     "Gold",
     "Level",
     "Exp",
+    "CurrentIsland",
     "Race",
-    "CurrentIsland"
 }
 task.wait(1.5)
 local names = {"K", "M", "B", "T", "Qa", "Qi", "Sx", "Sp", "Oc", "No", "Dd", "Ud", "Dd", "Td", "Qad", "Qid", 
@@ -42,22 +42,26 @@ end
 
 local function convertToField(index,value)
     return {
-        ["name"] = index,
-        ["value"] = value or 1
+        ["name"] = tostring(index),
+        ["value"] = tonumber(value) or 0
     }
 end
 local function convertToField_(table_)
     local Field = {}
     for i,v in pairs(table_) do
-        Field[#Field + 1] = convertToField(i,v)
+        Field[#Field + 1] = convertToField(i, v)
     end
     return Field
 end
-local function GetSomeCurrency(data)
+local function GetSomeCurrency(tr)
+    local Data = PlayerController["Replica"]["Data"]
     local Field = {}
-    for i,v in pairs(data) do
+    for i,v in pairs(Data) do
         if table.find(List,i) then
-            -- local NewVal = type(v.Value) == "number" and formatNumber(v.Value)
+            -- ถ้าไม่ใช่ tr และไม่ใช่ Gold ให้ข้าม (สำหรับ currency)
+            if not tr and i ~= "Gold" then
+                continue
+            end
             Field[i] = v
         end
     end
@@ -104,7 +108,7 @@ end
 
 local function GetAllData()
     local Data = PlayerController["Replica"]["Data"]
-    local LocalData_ = GetSomeCurrency(Data)
+    local LocalData_ = GetSomeCurrency(true)
     
     return {
         ["Inventory"] = Data["Inventory"],
@@ -116,6 +120,7 @@ end
 
 local Data = GetAllData()
 local StartLevel = Data["PlayerData"]["Level"]
+local StartGold = Data["PlayerData"]["Gold"] or 0
 SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
 
 task.spawn(function ()
@@ -150,6 +155,13 @@ task.spawn(function ()
                 StartLevel = Data["PlayerData"]["Level"]
             end
 
+            local CurrentGold = Data["PlayerData"]["Gold"] or 0
+            if CurrentGold > StartGold then
+                local GoldGained = CurrentGold - StartGold
+                LastConvertOres[#LastConvertOres + 1] = convertToField("Gold", GoldGained)
+                StartGold = CurrentGold
+            end
+
             local StageInfo = {
                 ["win"] = true,
                 ["map"] = {
@@ -160,7 +172,7 @@ task.spawn(function ()
                     ["difficulty"] = tostring(Data["Pickaxe"]),
                 },
             }
-            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertOres},{["state"] = StageInfo},{["time"] = 60},{["Data"] = Data},{["currency"] = convertToField_(Data["PlayerData"])})
+            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = LastConvertOres},{["state"] = StageInfo},{["time"] = 120},{["Data"] = Data},{["currency"] = convertToField_(GetSomeCurrency())})
             SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = Data})
             Ores = {} 
         end
