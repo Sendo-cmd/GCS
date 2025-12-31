@@ -1,4 +1,6 @@
 local Settings = {
+    ["Farm Mode"] = "Rock",
+    ["Select Mobs"] = {"Zombie"},
     ["Select Rocks"] = {"Pebble"},
     ["Ignore Forge Rarity"] = {
         "Legendary",
@@ -7,7 +9,7 @@ local Settings = {
         "Exotic",
         "Divine",
         "Unobtainable",
-    }
+    },
 }
 
 local Url = "https://api.championshop.date"
@@ -21,6 +23,7 @@ local MainSettings = {
 
 local Changes = {
     ["865c696c-6751-4a38-a1c0-f64bd1d6dbee"] = function()
+        Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
@@ -32,6 +35,7 @@ local Changes = {
         }
     end,
     ["648b89ea-cddf-4a95-9c9a-3ee57e70a369"] = function()
+        Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
@@ -43,6 +47,7 @@ local Changes = {
         }
     end,
     ["764ccf8c-78dd-4701-b529-2dc3ea6446cc"] = function()
+        Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
@@ -52,6 +57,18 @@ local Changes = {
             "Divine",
             "Unobtainable",
         }
+    end,
+    [""] = function()
+        Settings["Farm Mode"] = "Mob"
+        Settings["Select Mobs"] = {"Zombie"}
+    end,
+    [""] = function()
+        Settings["Farm Mode"] = "Mob"
+        Settings["Select Mobs"] = {"Zombie"}
+    end,
+    [""] = function()
+        Settings["Farm Mode"] = "Mob"
+        Settings["Select Mobs"] = {"Zombie"}
     end,
 }
 repeat task.wait() until game:IsLoaded()
@@ -65,7 +82,6 @@ until getrenv()._G.ClientIsReady
 _G.IMDONE = true
 task.wait(2)
 
--- Auto Claim Daily Login (รับทุกช่อง 1-7) แล้วปิด UI
 task.spawn(function()
     pcall(function()
         local ClaimRemote = game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DailyLoginService"):WaitForChild("RF"):WaitForChild("Claim")
@@ -86,7 +102,6 @@ task.spawn(function()
     end)
 end)
 
--- Anti-Idle: จำลอง input ทุก 30 วินาที
 task.spawn(function()
     local VirtualUser = game:GetService("VirtualUser")
     while true do
@@ -187,6 +202,7 @@ local function Auto_Config(id)
         end
         if #Insert > 0 then
             Settings["Select Rocks"] = Insert
+            Settings["Select Mobs"] = Insert
         end
         local Product = OrderData["product"]
         local Goal = Product["condition"]["value"]
@@ -309,19 +325,67 @@ local function getnearest(P_Char)
     end
     return path
 end
-local function Forge(Recipe)
+
+local function getNearestMob(P_Char)
+    local path = nil
+    local dis = math.huge
+    local p_pos = P_Char["HumanoidRootPart"]["Position"]
+    
+    local Living = workspace:FindFirstChild("Living")
+    if not Living then return nil end
+    
+    for _, mob in pairs(Living:GetChildren()) do
+        if mob:IsA("Model") then
+            local Humanoid = mob:FindFirstChildOfClass("Humanoid")
+            local HRP = mob:FindFirstChild("HumanoidRootPart") or mob:FindFirstChild("Torso") or mob.PrimaryPart
+            
+            if Humanoid and HRP and Humanoid.Health > 0 then
+                local canFarm = false
+                
+                if #Settings["Select Mobs"] == 0 then
+                    canFarm = true
+                else
+                    for _, targetName in pairs(Settings["Select Mobs"]) do
+                        if string.sub(mob.Name, 1, #targetName) == targetName then
+                            canFarm = true
+                            break
+                        end
+                    end
+                end
+                
+                if canFarm then
+                    local EqPos = (HRP.Position - p_pos).Magnitude
+                    if dis > EqPos then
+                        path = mob
+                        dis = EqPos
+                    end
+                end
+            end
+        end
+    end
+    return path
+end
+
+local function AttackMob()
+    pcall(function()
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RF"):WaitForChild("ToolActivated"):InvokeServer("Weapon")
+    end)
+end
+
+local function Forge(Recipe, ItemType)
+    ItemType = ItemType or "Weapon" -- default เป็น Weapon
     game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("StartForge"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Forge"))
     ChangeSequence:InvokeServer("Melt",
         {
             FastForge = true,
-            ItemType = "Weapon"
+            ItemType = ItemType
         }
     )
     task.wait(1)
     local Melt = ChangeSequence:InvokeServer("Melt",
         {
             FastForge = true,
-            ItemType = "Weapon",
+            ItemType = ItemType,
             Ores = Recipe
         }
     )
@@ -342,7 +406,54 @@ local function Forge(Recipe)
     task.wait(.5)
     ChangeSequence:InvokeServer("OreSelect",{})
     pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
-    print("Finish")
+    print("Finish Forging", ItemType)
+end
+
+local function TalkToMarbles()
+    if HasTalkedToMarbles then return end
+    
+    pcall(function()
+        local marbles = workspace:WaitForChild("Proximity"):WaitForChild("Marbles")
+        local marblesPos
+        if marbles.PrimaryPart then
+            marblesPos = marbles.PrimaryPart.Position
+        elseif marbles:FindFirstChild("HumanoidRootPart") then
+            marblesPos = marbles.HumanoidRootPart.Position
+        else
+            local part = marbles:FindFirstChildWhichIsA("BasePart")
+            if part then marblesPos = part.Position end
+        end
+        if marblesPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
+            local dist = (Plr.Character.HumanoidRootPart.Position - marblesPos).Magnitude
+            local tweenTime = math.max(dist / 80, 0.5)
+            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), {CFrame = CFrame.new(marblesPos)})
+            tween:Play()
+            tween.Completed:Wait()
+        end
+        task.wait(0.3)
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Dialogue"):InvokeServer(marbles)
+        task.wait(0.2)
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
+        task.wait(0.5)
+        HasTalkedToMarbles = true
+        print("Talked to Marbles")
+    end)
+end
+
+local function SellEquipments()
+    for i, v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
+        task.wait(0.5)
+        if v["GUID"] and not table.find(InsertEquipments, v["GUID"]) then
+            pcall(function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
+                    Basket = {
+                        [v["GUID"]] = true,
+                    }
+                })
+                print("Sold Equipment:", v["GUID"])
+            end)
+        end
+    end
 end
 
 local function IsAlive()
@@ -360,6 +471,7 @@ local function WaitForRespawn()
     while not IsAlive() do
         task.wait(0.5)
     end
+    HasTalkedToMarbles = false
     task.wait(2)
 end
 
@@ -376,7 +488,62 @@ task.spawn(function()
                 return
             end
             
-            if Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
+            if Settings["Farm Mode"] == "Mob" then
+                local Mob = getNearestMob(Char)
+                local LastAttack = 0
+                local LastTween = nil
+                
+                if Mob then
+                    print("Found Mob:", Mob.Name)
+                    local MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
+                    local MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
+                    
+                    while MobHumanoid and MobHRP and MobHumanoid.Health > 0 do
+                        task.wait(0.05)
+                        
+                        if not IsAlive() then
+                            if LastTween then LastTween:Cancel() end
+                            return
+                        end
+                        
+                        Char = Plr.Character
+                        if not Char or not Char:FindFirstChild("HumanoidRootPart") then
+                            return
+                        end
+                        
+                        MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
+                        if not MobHRP then break end
+                        
+                        local MobPosition = MobHRP.Position
+                        local MyPosition = Char.HumanoidRootPart.Position
+                        local Magnitude = (MyPosition - MobPosition).Magnitude
+                        
+                        local FloatHeight = 6
+                        local SafePosition = MobPosition + Vector3.new(0, FloatHeight, 0)
+                        
+                        if Magnitude < 25 then
+                            if LastTween then
+                                LastTween:Cancel()
+                            end
+                            if tick() > LastAttack and IsAlive() then
+                                AttackMob()
+                                LastAttack = tick() + 0.2
+                            end
+                            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                                Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition)
+                            end
+                        else
+                            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(MobPosition)})
+                                LastTween:Play()
+                            end
+                        end
+                    end
+                else
+                    task.wait(1)
+                end
+                
+            elseif Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
                 local Rock = getnearest(Char)
                 local LastAttack = 0
                 local LastTween = nil
@@ -385,10 +552,9 @@ task.spawn(function()
                     while Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do 
                         task.wait(0.1)
                         
-                        -- เช็คทุก loop ว่ายังมีชีวิตอยู่
                         if not IsAlive() then 
                             if LastTween then LastTween:Cancel() end
-                            return -- ออกจาก function ทันที
+                            return
                         end
                         
                         Char = Plr.Character
@@ -421,36 +587,6 @@ task.spawn(function()
             else
                 if not IsAlive() then return end
                 
-                -- ไปคุยกับ NPC Marbles ครั้งเดียว (ถ้ายังไม่เคยคุย)
-                if not HasTalkedToMarbles then
-                    pcall(function()
-                        local marbles = workspace:WaitForChild("Proximity"):WaitForChild("Marbles")
-                        local marblesPos
-                        if marbles.PrimaryPart then
-                            marblesPos = marbles.PrimaryPart.Position
-                        elseif marbles:FindFirstChild("HumanoidRootPart") then
-                            marblesPos = marbles.HumanoidRootPart.Position
-                        else
-                            local part = marbles:FindFirstChildWhichIsA("BasePart")
-                            if part then marblesPos = part.Position end
-                        end
-                        if marblesPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
-                            -- ใช้ Tween แทน teleport ตรงๆ เพื่อหลีก Anti-TP
-                            local dist = (Plr.Character.HumanoidRootPart.Position - marblesPos).Magnitude
-                            local tweenTime = math.max(dist / 80, 0.5)
-                            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), {CFrame = CFrame.new(marblesPos)})
-                            tween:Play()
-                            tween.Completed:Wait()
-                        end
-                        task.wait(0.3)
-                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Dialogue"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Marbles"))
-                        task.wait(0.2)
-                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
-                        task.wait(2) -- รอ 2 วินาทีก่อนไป Forge
-                        HasTalkedToMarbles = true
-                    end)
-                end
-                
                 local CanForge = true
                 local Position = workspace.Proximity.Forge.Position
                 
@@ -462,32 +598,41 @@ task.spawn(function()
                 local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
                 if Magnitude < 5 then
                     Char.HumanoidRootPart.CFrame = CFrame.new(Position)
-                    for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do task.wait(1)
-                        if v["GUID"] and not table.find(InsertEquipments,v["GUID"]) then
-                            task.spawn(function()
-                                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer( "SellConfirm",
-                                {
-                                    Basket = {
-                                        [v["GUID"]] = true,
-                                    }
-                                })
-                            end)
-                        end
-                    end
-                    while CanForge do task.wait()
+                    
+                    local ForgeCount = 0
+                    local CurrentType = "Weapon"
+                    
+                    while CanForge do 
+                        task.wait()
                         if not IsAlive() then return end
-                        print("Here")
+                        
                         local Recipe = GetRecipe()
-                         print(Recipe)
                         if Recipe then
-                            Forge(Recipe)
+                            print("Forging:", CurrentType)
+                            Forge(Recipe, CurrentType)
+                            ForgeCount = ForgeCount + 1
+                            
+                            if CurrentType == "Weapon" then
+                                CurrentType = "Armor"
+                            else
+                                CurrentType = "Weapon"
+                            end
                         else
                             CanForge = false
                         end
                     end
+                    
+                    if ForgeCount > 0 then
+                        print("Forge done, talking to Marbles...")
+                        TalkToMarbles()
+                        task.wait(0.5)
+                        
+                        print("Selling equipments...")
+                        SellEquipments()
+                    end
                 else
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                        local ForgeTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
+                        local ForgeTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
                         ForgeTween:Play()
                     end
                 end
@@ -499,7 +644,7 @@ if _G.Stepped then
     _G.Stepped:Disconnect()
 end
 _G.Stepped = game:GetService("RunService").Stepped:Connect(function()
-    if not IsAlive() then return end -- ไม่ทำอะไรถ้าตาย
+    if not IsAlive() then return end
     
     pcall(function()
         if not Plr.Character.HumanoidRootPart:FindFirstChild("Body") then
@@ -510,6 +655,7 @@ _G.Stepped = game:GetService("RunService").Stepped:Connect(function()
             L_1.Velocity=Vector3.new(0,0,0) 
         end
     end)
+    
     pcall(function ()
         local character = Plr.Character
         for _, v in pairs(character:GetDescendants()) do
