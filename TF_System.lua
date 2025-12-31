@@ -65,6 +65,19 @@ until getrenv()._G.ClientIsReady
 _G.IMDONE = true
 task.wait(2)
 
+-- Anti-Idle: จำลอง input ทุก 30 วินาที
+task.spawn(function()
+    local VirtualUser = game:GetService("VirtualUser")
+    while true do
+        task.wait(30)
+        pcall(function()
+            VirtualUser:Button2Down(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+            task.wait(0.1)
+            VirtualUser:Button2Up(Vector2.new(0, 0), workspace.CurrentCamera.CFrame)
+        end)
+    end
+end)
+
 local Players = game:GetService("Players")
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local VirtualUser = game:GetService("VirtualUser")
@@ -401,7 +414,7 @@ task.spawn(function()
                         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Dialogue"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Marbles"))
                         task.wait(0.2)
                         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
-                        task.wait(0.3)
+                        task.wait(2) -- รอ 2 วินาทีก่อนไป Forge
                         HasTalkedToMarbles = true
                     end)
                 end
