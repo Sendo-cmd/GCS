@@ -601,7 +601,6 @@ task.spawn(function()
                     Char.HumanoidRootPart.CFrame = CFrame.new(Position)
                     
                     local ForgeCount = 0
-                    local CurrentType = "Weapon"
                     
                     while CanForge do 
                         task.wait()
@@ -609,15 +608,9 @@ task.spawn(function()
                         
                         local Recipe = GetRecipe()
                         if Recipe then
-                            print("Forging:", CurrentType)
-                            Forge(Recipe, CurrentType)
+                            print("Forging: Weapon")
+                            Forge(Recipe, "Weapon")
                             ForgeCount = ForgeCount + 1
-                            
-                            if CurrentType == "Weapon" then
-                                CurrentType = "Armor"
-                            else
-                                CurrentType = "Weapon"
-                            end
                         else
                             CanForge = false
                         end
