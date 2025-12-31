@@ -209,29 +209,49 @@ local function Auto_Config(id)
             Settings["Select Rocks"] = Insert
             Settings["Select Mobs"] = Insert
         end
-        local Product = OrderData["product"]
-        local Goal = Product["condition"]["value"]
-        if Product["condition"]["type"] == "level" then
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["targaet_value"])) then
-                Post(Url..MainSettings["Path"] .. "finished")
+        
+        task.spawn(function()
+            while true do
+                local OrderData = Fetch_data()
+                if OrderData then
+                    local Product = OrderData["product"]
+                    local Goal = Product["condition"]["value"]
+                    
+                    if Product["condition"]["type"] == "Coins" then
+                        print(tonumber(OrderData["progress_value"]), Goal)
+                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                            Post(Url..MainSettings["Path"] .. "finished")
+                        end
+                    elseif Product["condition"]["type"] == "level" then
+                        print(tonumber(OrderData["progress_value"]), Goal)
+                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                            Post(Url..MainSettings["Path"] .. "finished")
+                        end
+                    elseif Product["condition"]["type"] == "character" then
+                        print(tonumber(OrderData["progress_value"]), Goal)
+                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                            Post(Url..MainSettings["Path"] .. "finished")
+                        end
+                    elseif Product["condition"]["type"] == "items" then
+                        print(tonumber(OrderData["progress_value"]), Goal)
+                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                            Post(Url..MainSettings["Path"] .. "finished")
+                        end
+                    elseif Product["condition"]["type"] == "hour" then
+                        print(tonumber(OrderData["progress_value"]), Goal, OrderData["target_value"]/60/60, OrderData["target_value"])
+                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
+                            Post(Url..MainSettings["Path"] .. "finished")
+                        end
+                    elseif Product["condition"]["type"] == "round" then
+                        print(tonumber(OrderData["progress_value"]), Goal)
+                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+                            Post(Url..MainSettings["Path"] .. "finished")
+                        end
+                    end
+                end
+                task.wait(10)
             end
-        elseif Product["condition"]["type"] == "character" then
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                Post(Url..MainSettings["Path"] .. "finished")
-            end
-        elseif Product["condition"]["type"] == "items" then
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                Post(Url..MainSettings["Path"] .. "finished")
-            end
-        elseif Product["condition"]["type"] == "hour" then
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
-                Post(Url..MainSettings["Path"] .. "finished")
-            end
-        elseif Product["condition"]["type"] == "round" then
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
-                Post(Url..MainSettings["Path"] .. "finished")
-            end
-        end
+        end)
     end
 end
 
