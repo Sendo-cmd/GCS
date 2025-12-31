@@ -13,8 +13,8 @@ local Settings = {
 }
 
 local Url = "https://api.championshop.date"
-local Auto_Configs = false
-local IsTest = true
+local Auto_Configs = true
+local IsTest = false
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
