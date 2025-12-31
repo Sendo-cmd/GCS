@@ -157,7 +157,7 @@ local function Auto_Config(id)
         local Product = OrderData["product"]
         local Goal = Product["condition"]["value"]
         if Product["condition"]["type"] == "level" then
-            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])) then
+            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["targaet_value"])) then
                 Post(Url..MainSettings["Path"] .. "finished")
             end
         elseif Product["condition"]["type"] == "character" then
@@ -197,6 +197,10 @@ local InsertEquipments = {}
 for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
     table.insert(InsertEquipments,v["GUID"])
 end
+
+-- Flag เพื่อไม่ให้คุยซ้ำ
+local HasTalkedToMarbles = false
+
 PlayerController.Replica:OnWrite("GiveItem", function(t, v)
     print(t,v)
     if type(t) == "table" then
@@ -308,18 +312,15 @@ local function IsAlive()
 end
 
 local function WaitForRespawn()
-    print("Player died, waiting for respawn...")
     while not IsAlive() do
         task.wait(0.5)
     end
-    task.wait(2) -- รอให้ตัวละครพร้อมหลังฟื้น
-    print("Player respawned, resuming mining...")
+    task.wait(2)
 end
 
 task.spawn(function()
     while true do task.wait(0.1)
         local success, err = pcall(function()
-            -- ตรวจสอบว่าตัวละครยังมีชีวิตอยู่หรือไม่
             if not IsAlive() then
                 WaitForRespawn()
                 return
@@ -345,7 +346,6 @@ task.spawn(function()
                             return -- ออกจาก function ทันที
                         end
                         
-                        -- ดึง Char ใหม่ทุกครั้งเพื่อป้องกัน reference เก่า
                         Char = Plr.Character
                         if not Char or not Char:FindFirstChild("HumanoidRootPart") then
                             return
@@ -375,6 +375,36 @@ task.spawn(function()
                 end
             else
                 if not IsAlive() then return end
+                
+                -- ไปคุยกับ NPC Marbles ครั้งเดียว (ถ้ายังไม่เคยคุย)
+                if not HasTalkedToMarbles then
+                    pcall(function()
+                        local marbles = workspace:WaitForChild("Proximity"):WaitForChild("Marbles")
+                        local marblesPos
+                        if marbles.PrimaryPart then
+                            marblesPos = marbles.PrimaryPart.Position
+                        elseif marbles:FindFirstChild("HumanoidRootPart") then
+                            marblesPos = marbles.HumanoidRootPart.Position
+                        else
+                            local part = marbles:FindFirstChildWhichIsA("BasePart")
+                            if part then marblesPos = part.Position end
+                        end
+                        if marblesPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
+                            -- ใช้ Tween แทน teleport ตรงๆ เพื่อหลีก Anti-TP
+                            local dist = (Plr.Character.HumanoidRootPart.Position - marblesPos).Magnitude
+                            local tweenTime = math.max(dist / 80, 0.5)
+                            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), {CFrame = CFrame.new(marblesPos)})
+                            tween:Play()
+                            tween.Completed:Wait()
+                        end
+                        task.wait(0.3)
+                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Dialogue"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Marbles"))
+                        task.wait(0.2)
+                        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
+                        task.wait(0.3)
+                        HasTalkedToMarbles = true
+                    end)
+                end
                 
                 local CanForge = true
                 local Position = workspace.Proximity.Forge.Position
