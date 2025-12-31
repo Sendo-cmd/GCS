@@ -10,6 +10,13 @@ local Settings = {
         "Divine",
         "Unobtainable",
     },
+    ["Ignore Ore Rarity"] = {
+        "Mythic",
+        "Relic",
+        "Exotic",
+        "Divine",
+        "Unobtainable",
+    },
 }
 
 local Url = "https://api.championshop.date"
@@ -58,15 +65,15 @@ local Changes = {
             "Unobtainable",
         }
     end,
-    [""] = function()
+    ["3a1fae3e-1efe-4df9-88c5-af1b36077692"] = function()
         Settings["Farm Mode"] = "Mob"
         Settings["Select Mobs"] = {"Zombie"}
     end,
-    [""] = function()
+    ["0f7ac08a-4267-44d7-a235-6fd0ae26e723"] = function()
         Settings["Farm Mode"] = "Mob"
         Settings["Select Mobs"] = {"Zombie"}
     end,
-    [""] = function()
+    ["00f8cd69-bfbe-4dce-9289-ed01082bc60f"] = function()
         Settings["Farm Mode"] = "Mob"
         Settings["Select Mobs"] = {"Zombie"}
     end,
@@ -414,21 +421,33 @@ local function TalkToMarbles()
     pcall(function()
         local marbles = workspace:WaitForChild("Proximity"):WaitForChild("Marbles")
         local marblesPos
-        if marbles.PrimaryPart then
+        
+        -- หาตำแหน่ง NPC
+        if marbles:IsA("BasePart") then
+            marblesPos = marbles.Position
+        elseif marbles.PrimaryPart then
             marblesPos = marbles.PrimaryPart.Position
         elseif marbles:FindFirstChild("HumanoidRootPart") then
             marblesPos = marbles.HumanoidRootPart.Position
+        elseif marbles:FindFirstChild("Torso") then
+            marblesPos = marbles.Torso.Position
         else
             local part = marbles:FindFirstChildWhichIsA("BasePart")
-            if part then marblesPos = part.Position end
+            if part then 
+                marblesPos = part.Position 
+            else
+                -- ใช้ GetPivot ถ้าไม่มี BasePart
+                marblesPos = marbles:GetPivot().Position
+            end
         end
+        
         if marblesPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
-            local dist = (Plr.Character.HumanoidRootPart.Position - marblesPos).Magnitude
-            local tweenTime = math.max(dist / 80, 0.5)
-            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), {CFrame = CFrame.new(marblesPos)})
-            tween:Play()
-            tween.Completed:Wait()
+            -- วาร์ปไปตรงๆ แทน Tween เพื่อความแน่นอน
+            Plr.Character.HumanoidRootPart.CFrame = CFrame.new(marblesPos + Vector3.new(0, 0, 5))
+            print("วาร์ปไปหา Marbles เรียบร้อย")
+            task.wait(0.5)
         end
+        
         task.wait(0.3)
         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Dialogue"):InvokeServer(marbles)
         task.wait(0.2)
@@ -452,6 +471,101 @@ local function SellEquipments()
                 print("Sold Equipment:", v["GUID"])
             end)
         end
+    end
+end
+
+-- Function เช็คว่า Ore Rarity นี้ควรขายหรือไม่
+local function ShouldSellOre(Rarity)
+    return not table.find(Settings["Ignore Ore Rarity"], Rarity)
+end
+
+-- Function เช็คว่า Item ถูก Favorite หรือไม่
+local function IsFavorited(ItemName)
+    local PlayerInventory = PlayerController.Replica.Data.Inventory
+    local FavoritedItems = PlayerInventory.FavoritedItems
+    
+    if FavoritedItems and type(FavoritedItems) == "table" then
+        return FavoritedItems[ItemName] == true or table.find(FavoritedItems, ItemName) ~= nil
+    end
+    return false
+end
+
+-- Function คุยกับ NPC Greedy Cey สำหรับขาย Ore
+local function TalkToGreedyCey()
+    pcall(function()
+        local greedyCey = workspace:WaitForChild("Proximity"):WaitForChild("Greedy Cey")
+        local greedyPos
+        
+        -- หาตำแหน่ง NPC
+        if greedyCey:IsA("BasePart") then
+            greedyPos = greedyCey.Position
+        elseif greedyCey.PrimaryPart then
+            greedyPos = greedyCey.PrimaryPart.Position
+        elseif greedyCey:FindFirstChild("HumanoidRootPart") then
+            greedyPos = greedyCey.HumanoidRootPart.Position
+        elseif greedyCey:FindFirstChild("Torso") then
+            greedyPos = greedyCey.Torso.Position
+        else
+            local part = greedyCey:FindFirstChildWhichIsA("BasePart")
+            if part then 
+                greedyPos = part.Position 
+            else
+                greedyPos = greedyCey:GetPivot().Position
+            end
+        end
+        
+        if greedyPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
+            -- วาร์ปไปหา NPC
+            Plr.Character.HumanoidRootPart.CFrame = CFrame.new(greedyPos + Vector3.new(0, 0, 5))
+            print("วาร์ปไปหา Greedy Cey เรียบร้อย")
+            task.wait(0.5)
+        end
+        
+        task.wait(0.3)
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Dialogue"):InvokeServer(greedyCey)
+        task.wait(0.2)
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
+        task.wait(0.5)
+        print("Talked to Greedy Cey")
+    end)
+end
+
+-- Function ขาย Ore ทั้งหมดที่ไม่อยู่ใน Ignore list และไม่ถูก Favorite
+local function SellOres()
+    local PlayerInventory = PlayerController.Replica.Data.Inventory
+    local Basket = {}
+    local SoldCount = 0
+    
+    for OreName, Amount in pairs(PlayerInventory) do
+        if type(Amount) == "number" and Amount > 0 then
+            local OreData = GetOre(OreName)
+            if OreData and ShouldSellOre(OreData["Rarity"]) then
+                if not IsFavorited(OreName) then
+                    Basket[OreName] = Amount
+                    SoldCount = SoldCount + Amount
+                    print(string.format("จะขาย Ore: %s x%d", OreName, Amount))
+                else
+                    print(string.format("⭐ ข้าม (Favorite): %s x%d", OreName, Amount))
+                end
+            end
+        end
+    end
+    
+    if SoldCount > 0 then
+        -- คุยกับ Greedy Cey ก่อนขาย
+        print("กำลังคุยกับ Greedy Cey...")
+        TalkToGreedyCey()
+        task.wait(0.5)
+        
+        print(string.format("กำลังขาย Ore รวม: %d ชิ้น", SoldCount))
+        pcall(function()
+            game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
+                Basket = Basket
+            })
+        end)
+        print("ขาย Ore เสร็จสิ้น")
+    else
+        print("ไม่มี Ore ที่ต้องขาย")
     end
 end
 
@@ -622,6 +736,10 @@ task.spawn(function()
                         
                         print("Selling equipments...")
                         SellEquipments()
+                        task.wait(0.5)
+                        
+                        print("Selling ores...")
+                        SellOres()
                     end
                 else
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
