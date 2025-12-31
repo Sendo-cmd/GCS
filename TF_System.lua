@@ -97,7 +97,6 @@ task.spawn(function()
             end)
             task.wait(0.3)
         end
-        -- ปิด UI DailyLogin
         task.wait(0.5)
         pcall(function()
             local DailyLoginUI = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("DailyLogin")
@@ -242,16 +241,27 @@ local Plr = game:GetService("Players").LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 
-local DailyLogin = require(game:GetService("ReplicatedStorage"):WaitForChild("Controllers"):WaitForChild("UIController"):WaitForChild("DailyLogin"))
-
--- ลองเช็คว่ามี function อะไรบ้าง
-for k, v in pairs(DailyLogin) do
-    print(k, typeof(v))
+local _ok, _res = pcall(function()
+    return require(game:GetService("ReplicatedStorage"):WaitForChild("Controllers"):WaitForChild("UIController"):WaitForChild("DailyLogin"))
+end)
+local DailyLogin = nil
+if _ok then
+    DailyLogin = _res
+else
+    warn("[TF_System] Failed to require DailyLogin:", _res)
 end
 
--- ถ้ามี Close
-if DailyLogin.Close then
-    DailyLogin.Close()
+if DailyLogin then
+    for k, v in pairs(DailyLogin) do
+        print(k, typeof(v))
+    end
+
+    -- ถ้ามี Close ให้เรียกแบบ pcall เพื่อกัน error จากการทำงานภายใน
+    if type(DailyLogin.Close) == "function" then
+        pcall(function()
+            DailyLogin.Close()
+        end)
+    end
 end
 
 local Inventory = require(ReplicatedStorage:WaitForChild("Controllers"):WaitForChild("UIController"):WaitForChild("Inventory"))
