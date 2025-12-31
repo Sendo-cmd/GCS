@@ -1,6 +1,6 @@
 local Settings = {
-    ["Farm Mode"] = "Rock",
-    ["Select Mobs"] = {"Zombie"},
+    ["Farm Mode"] = "Mob",
+    ["Select Mobs"] = {"Skeleton Rogue"},
     ["Select Rocks"] = {"Pebble"},
     ["Ignore Forge Rarity"] = {
         "Legendary",
@@ -13,8 +13,8 @@ local Settings = {
 }
 
 local Url = "https://api.championshop.date"
-local Auto_Configs = true
-local IsTest = false
+local Auto_Configs = false
+local IsTest = true
 local MainSettings = {
     ["Path"] = "/api/v1/shop/orders/",
     ["Path_Cache"] = "/api/v1/shop/orders/cache/",
@@ -518,10 +518,11 @@ task.spawn(function()
                         local MyPosition = Char.HumanoidRootPart.Position
                         local Magnitude = (MyPosition - MobPosition).Magnitude
                         
-                        local FloatHeight = 6
-                        local SafePosition = MobPosition + Vector3.new(0, FloatHeight, 0)
+                        local MobHeight = Mob:GetExtentsSize().Y
+                        local SafePosition = MobPosition + Vector3.new(0, MobHeight + 2, 0)
+                        local LookAtMob = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
                         
-                        if Magnitude < 25 then
+                        if Magnitude < 15 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
@@ -530,7 +531,7 @@ task.spawn(function()
                                 LastAttack = tick() + 0.2
                             end
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition)
+                                Char.HumanoidRootPart.CFrame = LookAtMob
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
