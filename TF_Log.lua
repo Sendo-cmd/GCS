@@ -58,8 +58,8 @@ local function GetSomeCurrency(tr)
     local Field = {}
     for i,v in pairs(Data) do
         if table.find(List,i) then
-            -- ถ้าไม่ใช่ tr และไม่ใช่ Gold ให้ข้าม (สำหรับ currency)
-            if not tr and i ~= "Gold" then
+            -- ถ้าไม่ใช่ tr ให้ดึงเฉพาะ Gold และ Exp (สำหรับ currency)
+            if not tr and i ~= "Gold" and i ~= "Exp" then
                 continue
             end
             Field[i] = v
