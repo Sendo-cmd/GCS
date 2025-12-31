@@ -372,20 +372,19 @@ local function AttackMob()
     end)
 end
 
-local function Forge(Recipe, ItemType)
-    ItemType = ItemType or "Weapon" -- default เป็น Weapon
+local function Forge(Recipe)
     game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("StartForge"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Forge"))
     ChangeSequence:InvokeServer("Melt",
         {
             FastForge = true,
-            ItemType = ItemType
+            ItemType = "Weapon"
         }
     )
     task.wait(1)
     local Melt = ChangeSequence:InvokeServer("Melt",
         {
             FastForge = true,
-            ItemType = ItemType,
+            ItemType = "Weapon",
             Ores = Recipe
         }
     )
@@ -406,7 +405,7 @@ local function Forge(Recipe, ItemType)
     task.wait(.5)
     ChangeSequence:InvokeServer("OreSelect",{})
     pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
-    print("Finish Forging", ItemType)
+    print("Finish")
 end
 
 local function TalkToMarbles()
@@ -608,8 +607,8 @@ task.spawn(function()
                         
                         local Recipe = GetRecipe()
                         if Recipe then
-                            print("Forging: Weapon")
-                            Forge(Recipe, "Weapon")
+                            print("Forging")
+                            Forge(Recipe)
                             ForgeCount = ForgeCount + 1
                         else
                             CanForge = false
