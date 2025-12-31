@@ -65,6 +65,27 @@ until getrenv()._G.ClientIsReady
 _G.IMDONE = true
 task.wait(2)
 
+-- Auto Claim Daily Login (รับทุกช่อง 1-7) แล้วปิด UI
+task.spawn(function()
+    pcall(function()
+        local ClaimRemote = game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DailyLoginService"):WaitForChild("RF"):WaitForChild("Claim")
+        for i = 1, 7 do
+            pcall(function()
+                ClaimRemote:InvokeServer(i)
+            end)
+            task.wait(0.3)
+        end
+        -- ปิด UI DailyLogin
+        task.wait(0.5)
+        pcall(function()
+            local DailyLoginUI = game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("DailyLogin")
+            if DailyLoginUI then
+                DailyLoginUI:Destroy()
+            end
+        end)
+    end)
+end)
+
 -- Anti-Idle: จำลอง input ทุก 30 วินาที
 task.spawn(function()
     local VirtualUser = game:GetService("VirtualUser")
@@ -199,9 +220,21 @@ local Plr = game:GetService("Players").LocalPlayer
 local ReplicatedStorage = game:GetService("ReplicatedStorage")
 local TweenService = game:GetService("TweenService")
 
-local Inventory = require(ReplicatedStorage.Controllers.UIController.Inventory)
-local Knit = require(ReplicatedStorage.Shared.Packages.Knit)
-local Ores = require(ReplicatedStorage.Shared.Data.Ore)
+local DailyLogin = require(game:GetService("ReplicatedStorage"):WaitForChild("Controllers"):WaitForChild("UIController"):WaitForChild("DailyLogin"))
+
+-- ลองเช็คว่ามี function อะไรบ้าง
+for k, v in pairs(DailyLogin) do
+    print(k, typeof(v))
+end
+
+-- ถ้ามี Close
+if DailyLogin.Close then
+    DailyLogin.Close()
+end
+
+local Inventory = require(ReplicatedStorage:WaitForChild("Controllers"):WaitForChild("UIController"):WaitForChild("Inventory"))
+local Knit = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"))
+local Ores = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Data"):WaitForChild("Ore"))
 
 
 local PlayerController = Knit.GetController("PlayerController")
@@ -211,7 +244,6 @@ for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
     table.insert(InsertEquipments,v["GUID"])
 end
 
--- Flag เพื่อไม่ให้คุยซ้ำ
 local HasTalkedToMarbles = false
 
 PlayerController.Replica:OnWrite("GiveItem", function(t, v)
