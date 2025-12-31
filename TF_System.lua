@@ -3,7 +3,6 @@ local Settings = {
     ["Select Mobs"] = {"Skeleton Rogue"},
     ["Select Rocks"] = {"Pebble"},
     ["Ignore Forge Rarity"] = {
-        "Legendary",
         "Mythic",
         "Relic",
         "Exotic",
@@ -436,7 +435,6 @@ local function TalkToMarbles()
             if part then 
                 marblesPos = part.Position 
             else
-                -- ใช้ GetPivot ถ้าไม่มี BasePart
                 marblesPos = marbles:GetPivot().Position
             end
         end
