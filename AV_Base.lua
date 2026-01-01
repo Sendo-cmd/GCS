@@ -1009,7 +1009,7 @@ getgenv().Config = {
 		["Hop Server if no Rift Portal"] = false
 	}
 }
-getgenv().Key = "k517c79e9160307a9b87210d" 
+getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" 
 repeat wait(1)spawn(function()loadstring(game:HttpGet("https://nousigi.com/loader.lua"))()end)wait(2)until Joebiden
 
 
