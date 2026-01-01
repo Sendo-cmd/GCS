@@ -288,6 +288,7 @@ for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
 end
 
 local HasTalkedToMarbles = false
+local HasTalkedToGreedyCey = false
 
 PlayerController.Replica:OnWrite("GiveItem", function(t, v)
     print(t,v)
@@ -463,7 +464,6 @@ local function TalkToMarbles()
         if marblesPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
             -- วาร์ปไปตรงๆ แทน Tween เพื่อความแน่นอน
             Plr.Character.HumanoidRootPart.CFrame = CFrame.new(marblesPos + Vector3.new(0, 0, 5))
-            print("วาร์ปไปหา Marbles เรียบร้อย")
             task.wait(0.5)
         end
         
@@ -473,7 +473,6 @@ local function TalkToMarbles()
         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
         task.wait(0.5)
         HasTalkedToMarbles = true
-        print("Talked to Marbles")
     end)
 end
 
@@ -511,6 +510,8 @@ end
 
 -- Function คุยกับ NPC Greedy Cey สำหรับขาย Ore
 local function TalkToGreedyCey()
+    if HasTalkedToGreedyCey then return end
+    
     pcall(function()
         local greedyCey = workspace:WaitForChild("Proximity"):WaitForChild("Greedy Cey")
         local greedyPos
@@ -536,7 +537,6 @@ local function TalkToGreedyCey()
         if greedyPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
             -- วาร์ปไปหา NPC
             Plr.Character.HumanoidRootPart.CFrame = CFrame.new(greedyPos + Vector3.new(0, 0, 5))
-            print("วาร์ปไปหา Greedy Cey เรียบร้อย")
             task.wait(0.5)
         end
         
@@ -545,7 +545,7 @@ local function TalkToGreedyCey()
         task.wait(0.2)
         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
         task.wait(0.5)
-        print("Talked to Greedy Cey")
+        HasTalkedToGreedyCey = true
     end)
 end
 
@@ -562,29 +562,17 @@ local function SellOres()
                 if not IsFavorited(OreName) then
                     Basket[OreName] = Amount
                     SoldCount = SoldCount + Amount
-                    print(string.format("จะขาย Ore: %s x%d", OreName, Amount))
-                else
-                    print(string.format("⭐ ข้าม (Favorite): %s x%d", OreName, Amount))
                 end
             end
         end
     end
     
     if SoldCount > 0 then
-        -- คุยกับ Greedy Cey ก่อนขาย
-        print("กำลังคุยกับ Greedy Cey...")
-        TalkToGreedyCey()
-        task.wait(0.5)
-        
-        print(string.format("กำลังขาย Ore รวม: %d ชิ้น", SoldCount))
         pcall(function()
             game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
                 Basket = Basket
             })
         end)
-        print("ขาย Ore เสร็จสิ้น")
-    else
-        print("ไม่มี Ore ที่ต้องขาย")
     end
 end
 
@@ -604,6 +592,7 @@ local function WaitForRespawn()
         task.wait(0.5)
     end
     HasTalkedToMarbles = false
+    HasTalkedToGreedyCey = false
     task.wait(2)
 end
 
@@ -749,16 +738,20 @@ task.spawn(function()
                     end
                     
                     if ForgeCount > 0 then
-                        print("Forge done, talking to Marbles...")
                         TalkToMarbles()
                         task.wait(0.5)
                         
-                        print("Selling equipments...")
                         SellEquipments()
                         task.wait(0.5)
                         
-                        print("Selling ores...")
+                        TalkToGreedyCey()
+                        task.wait(0.5)
+                        
                         SellOres()
+                        
+                        -- Reset flags หลังขายเสร็จ เพื่อให้รอบหน้าคุยใหม่ได้
+                        HasTalkedToMarbles = false
+                        HasTalkedToGreedyCey = false
                     end
                 else
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
