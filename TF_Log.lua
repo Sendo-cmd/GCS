@@ -131,6 +131,11 @@ task.spawn(function ()
                 ["Name"] = t,
                 ["Value"] = v,
             }
+        elseif type(t) == "table" and t["Name"] then
+            Ores[#Ores + 1] = {
+                ["Name"] = t["Name"],
+                ["Value"] = t["Amount"] or t["Value"] or v or 1,
+            }
         end
     end)
     while true do task.wait()
