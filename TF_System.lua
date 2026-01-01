@@ -632,31 +632,42 @@ task.spawn(function()
                             return
                         end
                         
+                        -- เช็ค Mob ยังอยู่ไหม
+                        if not Mob or not Mob.Parent then break end
+                        
                         MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
                         if not MobHRP then break end
+                        
+                        MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
+                        if not MobHumanoid or MobHumanoid.Health <= 0 then break end
                         
                         local MobPosition = MobHRP.Position
                         local MyPosition = Char.HumanoidRootPart.Position
                         local Magnitude = (MyPosition - MobPosition).Magnitude
                         
-                        local MobHeight = Mob:GetExtentsSize().Y
-                        local SafePosition = MobPosition + Vector3.new(0, MobHeight + 2, 0)
-                        local LookAtMob = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
+                        -- คำนวณขนาด Mob เพื่อหาระยะที่เหมาะสม
+                        local MobSize = Mob:GetExtentsSize()
+                        local MobHeight = MobSize.Y
                         
-                        if Magnitude < 15 then
+                        -- ตำแหน่งที่ปลอดภัย: อยู่เหนือ Mob เล็กน้อย ใกล้พอจะตีโดน
+                        local SafeHeight = math.min(MobHeight * 0.8, 8) -- ไม่เกิน 8 studs
+                        local SafePosition = MobPosition + Vector3.new(0, SafeHeight, 0)
+                        local LookAtMob = CFrame.new(SafePosition, MobPosition)
+                        
+                        if Magnitude < 25 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
                             if tick() > LastAttack and IsAlive() then
                                 AttackMob()
-                                LastAttack = tick() + 0.2
+                                LastAttack = tick() + 0.1
                             end
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
                                 Char.HumanoidRootPart.CFrame = LookAtMob
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(MobPosition)})
+                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/120, Enum.EasingStyle.Linear), {CFrame = CFrame.new(SafePosition)})
                                 LastTween:Play()
                             end
                         end
