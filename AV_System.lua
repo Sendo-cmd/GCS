@@ -2616,6 +2616,7 @@ end
                 local GK_DIFFICULTIES = {"Easy", "Medium", "Hard", "Expert"}
                 local gkSongIndex = 1
                 local gkDiffIndex = 1
+                local gkFirstRun = true
                 
                 -- ฟังก์ชันปิด GUI Guitar
                 local function closeGuitarUI()
@@ -2643,14 +2644,27 @@ end
                     local diff = GK_DIFFICULTIES[gkDiffIndex]
                     print("[Guitar King] Playing:", song, "-", diff)
                     
-                    -- ปิด GUI เก่าก่อน
-                    closeGuitarUI()
-                    task.wait(1)
-                    
-                    -- เปิดใหม่
-                    pcall(function()
-                        JamSessionHandler.StartMinigame(song, diff)
-                    end)
+                    if gkFirstRun then
+                        gkFirstRun = false
+                        print("[Guitar King] First run - Open, Close, Open")
+                        
+                        pcall(function()
+                            JamSessionHandler.StartMinigame(song, diff)
+                        end)
+                        task.wait(1)
+                        
+                        closeGuitarUI()
+                        task.wait(1)
+                        
+                        pcall(function()
+                            JamSessionHandler.StartMinigame(song, diff)
+                        end)
+                    else
+                        -- ครั้งถัดไป: เปิดปกติ
+                        pcall(function()
+                            JamSessionHandler.StartMinigame(song, diff)
+                        end)
+                    end
                 end
                 
                 GuitarMinigame.MinigameEnded:Connect(function(score)
