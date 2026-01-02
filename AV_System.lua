@@ -2642,7 +2642,6 @@ end
                         if gkSongIndex > #GK_SONGS then
                             gkSongIndex = 1
                             print("[Guitar King] All songs completed!")
-                            -- รอให้ logs ส่งไปก่อน แล้วเช็ค condition ด้วย Auto_Config เดิม
                             task.delay(5, function()
                                 Auto_Config()
                             end)
