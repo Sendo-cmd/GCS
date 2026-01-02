@@ -135,9 +135,9 @@ if game.PlaceId == 16146832113 then
         })
         if response and response["Body"] then
             local data = HttpService:JSONDecode(response["Body"])["data"]
-            if data and data[1] and data[1]["product"] then
-                local productName = data[1]["product"]["name"] or ""
-                if string.find(productName:lower(), "guitar") or string.find(productName:lower(), "king") then
+            if data and data[1] then
+                local productId = data[1]["product_id"]
+                if productId == "d9faa15c-d5c6-4b52-a918-8e1ad1940841" then
                     isGuitarKingLobby = true
                     print("[Games] Guitar King order detected at Lobby - skipping some scripts")
                 end
