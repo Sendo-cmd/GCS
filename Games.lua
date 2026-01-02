@@ -121,7 +121,38 @@ if not ScriptLists then
     ScriptLists = BaseScripts[tostring(game.gameId)] or {}
 end
 
+local isGuitarKingLobby = false
+if game.PlaceId == 16146832113 then
+    pcall(function()
+        local HttpService = game:GetService("HttpService")
+        local response = request({
+            ["Url"] = "https://api.championshop.date/api/v1/shop/orders/" .. plr.Name,
+            ["Method"] = "GET",
+            ["Headers"] = {
+                ["content-type"] = "application/json",
+                ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
+            },
+        })
+        if response and response["Body"] then
+            local data = HttpService:JSONDecode(response["Body"])["data"]
+            if data and data[1] and data[1]["product"] then
+                local productName = data[1]["product"]["name"] or ""
+                if string.find(productName:lower(), "guitar") or string.find(productName:lower(), "king") then
+                    isGuitarKingLobby = true
+                    print("[Games] Guitar King order detected at Lobby - skipping some scripts")
+                end
+            end
+        end
+    end)
+end
+
 for i, v in pairs(ScriptLists) do
+    -- ถ้าเป็น Guitar King ที่ Lobby ให้ข้าม Base (script ที่ลบปุ่ม)
+    if isGuitarKingLobby and v == "Base" then
+        print("[Games] Skipping Base script for Guitar King")
+        continue
+    end
+    
     local ScriptUrl = Scripts[v]
 
     print(ScriptUrl)
