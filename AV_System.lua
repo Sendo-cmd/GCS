@@ -2631,7 +2631,6 @@ end
                     end)
                 end
                 
-                -- Hook MinigameEnded
                 GuitarMinigame.MinigameEnded:Connect(function(score)
                     print("[Guitar King] Song ended! Score:", score or 0)
                     
