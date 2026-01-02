@@ -2683,6 +2683,10 @@ end
                     local diff = GK_DIFFICULTIES[gkDiffIndex]
                     print("[Guitar King] Playing:", song, "-", diff)
                     
+                    -- ปิด GUI ก่อนเล่นทุกครั้ง
+                    closeGuitarUI()
+                    task.wait(0.5)
+                    
                     if gkFirstRun then
                         gkFirstRun = false
                         print("[Guitar King] First run - Open, Close, Open")
@@ -2690,9 +2694,13 @@ end
                         pcall(function()
                             JamSessionHandler.StartMinigame(song, diff)
                         end)
-                        task.wait(1)
+                        task.wait(1.5)
                         
-                        closeGuitarUI()
+                        -- ปิดหลายรอบให้แน่ใจ
+                        for i = 1, 3 do
+                            closeGuitarUI()
+                            task.wait(0.3)
+                        end
                         task.wait(1)
                         
                         pcall(function()
@@ -2709,6 +2717,10 @@ end
                 GuitarMinigame.MinigameEnded:Connect(function(score)
                     print("[Guitar King] Song ended! Score:", score or 0)
                     
+                    -- ปิด GUI ทุกครั้งที่เพลงจบ
+                    closeGuitarUI()
+                    task.wait(0.5)
+                    
                     gkDiffIndex = gkDiffIndex + 1
                     if gkDiffIndex > #GK_DIFFICULTIES then
                         gkDiffIndex = 1
@@ -2716,6 +2728,7 @@ end
                         if gkSongIndex > #GK_SONGS then
                             gkSongIndex = 1
                             print("[Guitar King] All songs completed!")
+                            closeGuitarUI() -- ปิด GUI อีกครั้งตอนจบทั้งหมด
                             task.delay(5, function()
                                 Auto_Config()
                             end)

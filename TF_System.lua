@@ -472,8 +472,6 @@ local function Forge(Recipe)
 end
 
 local function TalkToMarbles()
-    if HasTalkedToMarbles then return end
-    
     pcall(function()
         local marbles = workspace:WaitForChild("Proximity"):WaitForChild("Marbles")
         local marblesPos
@@ -507,13 +505,36 @@ local function TalkToMarbles()
         task.wait(0.2)
         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
         task.wait(0.5)
-        HasTalkedToMarbles = true
+        print("[TF_System] Talked to Marbles")
     end)
 end
 
+-- Function ขาย Equipment พร้อมคุยกับ NPC Marbles
+local function SellEquipmentsWithNPC()
+    -- คุยกับ Marbles ก่อน
+    TalkToMarbles()
+    task.wait(0.5)
+    
+    -- ขาย Equipments
+    for i, v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
+        task.wait(0.3)
+        if v["GUID"] and not table.find(InsertEquipments, v["GUID"]) then
+            pcall(function()
+                game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
+                    Basket = {
+                        [v["GUID"]] = true,
+                    }
+                })
+                print("Sold Equipment:", v["GUID"])
+            end)
+        end
+    end
+end
+
+-- Function ขาย Equipment (ไม่คุยกับ NPC - ใช้เมื่อคุยแล้ว)
 local function SellEquipments()
     for i, v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
-        task.wait(0.5)
+        task.wait(0.3)
         if v["GUID"] and not table.find(InsertEquipments, v["GUID"]) then
             pcall(function()
                 game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
@@ -545,8 +566,6 @@ end
 
 -- Function คุยกับ NPC Greedy Cey สำหรับขาย Ore
 local function TalkToGreedyCey()
-    if HasTalkedToGreedyCey then return end
-    
     pcall(function()
         local greedyCey = workspace:WaitForChild("Proximity"):WaitForChild("Greedy Cey")
         local greedyPos
@@ -580,7 +599,7 @@ local function TalkToGreedyCey()
         task.wait(0.2)
         game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent"):FireServer("Opened")
         task.wait(0.5)
-        HasTalkedToGreedyCey = true
+        print("[TF_System] Talked to Greedy Cey")
     end)
 end
 
@@ -742,7 +761,7 @@ task.spawn(function()
                                 LastAttack = tick() + .2
                             end
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,0,2))
+                                Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,0,0.75))
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
