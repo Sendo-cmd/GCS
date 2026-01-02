@@ -2633,6 +2633,122 @@ end
                 end)
                 print("Executed")
             end
+            -- Auto Modifier System (New - Based on AV_AutoModifier)
+            if Settings["Auto Modifier"] then
+                local plr = game:GetService("Players").LocalPlayer
+                local lastChoice = nil
+                local isChoosing = false
+                local chosenModifiers = {}
+                local currentWave = 0
+
+                local function ChooseModifier(modifierName)
+                    pcall(function()
+                        Networking.ModifierEvent:FireServer("Choose", modifierName)
+                    end)
+                end
+
+                local function VoteRestart()
+                    pcall(function()
+                        Networking.MatchRestartSettingEvent:FireServer("Vote")
+                    end)
+                end
+
+                local function GetAvailableModifiers()
+                    local available = {}
+                    pcall(function()
+                        local ModifiersGui = plr.PlayerGui:FindFirstChild("Modifiers")
+                        if ModifiersGui then
+                            local ModifiersFrame = ModifiersGui:FindFirstChild("Modifiers")
+                            if ModifiersFrame then
+                                local MainFrame = ModifiersFrame:FindFirstChild("Main")
+                                if MainFrame and MainFrame.Visible then
+                                    for _, child in pairs(MainFrame:GetChildren()) do
+                                        if child:IsA("Frame") or child:IsA("TextButton") or child:IsA("ImageButton") or child:IsA("TextLabel") then
+                                            if child.Visible then
+                                                table.insert(available, child.Name)
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                    return available
+                end
+
+                local function GetBestModifier(availableModifiers)
+                    local bestModifier = nil
+                    local highestPriority = -999
+                    
+                    for _, modName in ipairs(availableModifiers) do
+                        local priority = Settings["Modifier Priority"][modName] or 0
+                        if priority > highestPriority then
+                            highestPriority = priority
+                            bestModifier = modName
+                        end
+                    end
+                    
+                    return bestModifier
+                end
+
+                local function HasChosenRequiredModifier()
+                    for _, required in ipairs(Settings["Select Modifier"]) do
+                        for _, chosen in ipairs(chosenModifiers) do
+                            if string.lower(chosen) == string.lower(required) then
+                                return true
+                            end
+                        end
+                    end
+                    return false
+                end
+
+                -- Wave Tracker
+                local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
+                    if eventType == "Wave" and data and data.Waves then
+                        currentWave = data.Waves
+                        -- print("[Auto Modifier] Wave:", currentWave)
+                        
+                        if currentWave == 0 then
+                            chosenModifiers = {}
+                            lastChoice = nil
+                        end
+                        
+                        if Settings["Restart Modifier"] and currentWave >= 1 then
+                            if not HasChosenRequiredModifier() then
+                                -- print("[Auto Modifier] Required modifier not found, voting restart...")
+                                VoteRestart()
+                            end
+                        end
+                    end
+                end)
+
+                -- Main Loop
+                task.spawn(function()
+                    while task.wait(0.5) do
+                        if isChoosing then continue end
+                        
+                        local availableModifiers = GetAvailableModifiers()
+                        if #availableModifiers == 0 then 
+                            lastChoice = nil
+                            continue 
+                        end
+                        
+                        local bestModifier = GetBestModifier(availableModifiers)
+                        
+                        if bestModifier and bestModifier ~= lastChoice then
+                            isChoosing = true
+                            -- print("[Auto Modifier] Choosing:", bestModifier)
+                            ChooseModifier(bestModifier)
+                            lastChoice = bestModifier
+                            table.insert(chosenModifiers, bestModifier)
+                            task.wait(0.5)
+                            isChoosing = false
+                        end
+                    end
+                end)
+                print("[Auto Modifier] Loaded!")
+            end
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 task.wait(2)
                 if Results['StageType'] == "Challenge" then

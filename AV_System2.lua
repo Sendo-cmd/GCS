@@ -3291,7 +3291,7 @@ if ID[game.GameId][1] == "AV" then
                 InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
                     if eventType == "Wave" and data and data.Waves then
                         currentWave = data.Waves
-                        print("[Auto Modifier] Wave:", currentWave)
+                        -- print("[Auto Modifier] Wave:", currentWave)
                         
                         if currentWave == 0 then
                             chosenModifiers = {}
@@ -3300,7 +3300,7 @@ if ID[game.GameId][1] == "AV" then
                         
                         if Settings["Restart Modifier"] and currentWave >= 1 then
                             if not HasChosenRequiredModifier() then
-                                print("[Auto Modifier] Required modifier not found, voting restart...")
+                                -- print("[Auto Modifier] Required modifier not found, voting restart...")
                                 VoteRestart()
                             end
                         end
@@ -3322,7 +3322,7 @@ if ID[game.GameId][1] == "AV" then
                         
                         if bestModifier and bestModifier ~= lastChoice then
                             isChoosing = true
-                            print("[Auto Modifier] Choosing:", bestModifier)
+                            -- print("[Auto Modifier] Choosing:", bestModifier)
                             ChooseModifier(bestModifier)
                             lastChoice = bestModifier
                             table.insert(chosenModifiers, bestModifier)
