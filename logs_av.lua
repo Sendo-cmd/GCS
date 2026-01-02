@@ -145,28 +145,50 @@ local function sendJamSessionCompleteLog()
     
     print("[JamSession] All songs completed! Sending log...")
     
-    SendTo(Url .. "/api/v1/shop/orders/logs",
-        {["logs"] = {convertToField("Guitar King Complete", tostring(getJamSessionPlayedCount()))}},
-        {["state"] = {
-            ["map"] = {
-                ["name"] = "Guitar King Complete",
-                ["chapter"] = "Music",
-                ["wave"] = tostring(getJamSessionPlayedCount()),
-                ["mode"] = "JamSession",
-                ["difficulty"] = "All"
-            },
-            ["win"] = true,
-        }},
-        {["time"] = math.floor(JamSessionTotalTime)},
-        {["currency"] = convertToField_(GetSomeCurrency())}
-    )
-    
-    -- print("[JamSession] Log sent! Total time:", math.floor(JamSessionTotalTime), "seconds")
+    pcall(function()
+        SendTo(Url .. "/api/v1/shop/orders/logs",
+            {["logs"] = {convertToField("Guitar King Complete", tostring(getJamSessionPlayedCount()))}},
+            {["state"] = {
+                ["map"] = {
+                    ["name"] = "Guitar King Complete",
+                    ["chapter"] = "Music",
+                    ["wave"] = tostring(getJamSessionPlayedCount()),
+                    ["mode"] = "JamSession",
+                    ["difficulty"] = "All"
+                },
+                ["win"] = true,
+            }},
+            {["time"] = math.floor(JamSessionTotalTime)},
+            {["currency"] = convertToField_(GetSomeCurrency())}
+        )
+        print("[JamSession] Log sent successfully!")
+    end)
     
     -- Reset
     JamSessionPlayed = {}
     JamSessionTotalTime = 0
     JamSessionStartTime = 0
+end
+
+-- Function ส่ง log ทุกครั้งที่เล่นเพลงจบ
+local function sendSingleSongLog(songName, difficulty, score)
+    pcall(function()
+        SendTo(Url .. "/api/v1/shop/orders/logs",
+            {["logs"] = {convertToField(songName .. " - " .. difficulty, tostring(score or 0))}},
+            {["state"] = {
+                ["map"] = {
+                    ["name"] = songName,
+                    ["chapter"] = "Guitar King",
+                    ["wave"] = tostring(getJamSessionPlayedCount()),
+                    ["mode"] = "JamSession",
+                    ["difficulty"] = difficulty
+                },
+                ["win"] = true,
+            }},
+            {["time"] = 0},
+            {["currency"] = convertToField_(GetSomeCurrency())}
+        )
+    end)
 end
 
 task.spawn(function()
@@ -195,7 +217,9 @@ task.spawn(function()
             local diffIdx = ((playCount - 1) % #JamSessionDifficulties) + 1
             
             if songIdx <= #JamSessionSongs then
-                local key = JamSessionSongs[songIdx] .. "_" .. JamSessionDifficulties[diffIdx]
+                local songName = JamSessionSongs[songIdx]
+                local difficulty = JamSessionDifficulties[diffIdx]
+                local key = songName .. "_" .. difficulty
                 
                 if JamSessionStartTime == 0 then
                     JamSessionStartTime = os.clock()
@@ -206,7 +230,7 @@ task.spawn(function()
                     print("[JamSession] Recorded:", key, "| Total:", getJamSessionPlayedCount(), "/ 12")
                 end
                 
-                -- เช็คว่าครบหมดยัง
+                -- เช็คว่าครบหมดยัง - ส่ง log เฉพาะตอนครบ 12 เพลง
                 if isJamSessionComplete() then
                     JamSessionTotalTime = os.clock() - JamSessionStartTime
                     task.delay(1, sendJamSessionCompleteLog)
@@ -357,6 +381,22 @@ end
 -- setclipboard(HttpService:JSONEncode(GetData()))
 if IsMain then
     local Data = GetData()
+    -- ส่ง logs เมื่ออยู่ที่ Lobby
+    SendTo(Url .. "/api/v1/shop/orders/logs",
+        {["logs"] = convertToField_(GetSomeCurrency())},
+        {["state"] = {
+            ["map"] = {
+                ["name"] = "Lobby",
+                ["chapter"] = "Main",
+                ["wave"] = "0",
+                ["mode"] = "Lobby",
+                ["difficulty"] = "None"
+            },
+            ["win"] = true,
+        }},
+        {["time"] = 0},
+        {["currency"] = convertToField_(GetSomeCurrency())}
+    )
     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
 elseif IsMatch then
     warn("IN Match")
