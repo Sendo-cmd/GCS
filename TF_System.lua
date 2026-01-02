@@ -213,6 +213,41 @@ local function Auto_Config(id)
         task.spawn(function()
             while true do
                 pcall(function()
+                    local UpdatedOrderData = Fetch_data()
+                    if UpdatedOrderData and UpdatedOrderData["selected_items"] then
+                        local NewInsert = {}
+                        for i,v in pairs(UpdatedOrderData["selected_items"]) do
+                            table.insert(NewInsert, v.name)
+                        end
+                        if #NewInsert > 0 then
+                            -- เช็คว่ามีการเปลี่ยนแปลงหรือไม่
+                            local hasChanged = false
+                            if #NewInsert ~= #Settings["Select Rocks"] then
+                                hasChanged = true
+                            else
+                                for i, name in ipairs(NewInsert) do
+                                    if Settings["Select Rocks"][i] ~= name then
+                                        hasChanged = true
+                                        break
+                                    end
+                                end
+                            end
+                            
+                            if hasChanged then
+                                Settings["Select Rocks"] = NewInsert
+                                Settings["Select Mobs"] = NewInsert
+                                print("[Auto_Config] Updated selected_items:", table.concat(NewInsert, ", "))
+                            end
+                        end
+                    end
+                end)
+                task.wait(10) -- เช็คทุก 10 วินาที (ปรับได้ตามต้องการ)
+            end
+        end)
+        
+        task.spawn(function()
+            while true do
+                pcall(function()
                     local OrderData = Fetch_data()
                     if OrderData then
                         local Product = OrderData["product"]
@@ -649,25 +684,25 @@ task.spawn(function()
                         local MobSize = Mob:GetExtentsSize()
                         local MobHeight = MobSize.Y
                         
-                        -- ตำแหน่งที่ปลอดภัย: อยู่เหนือ Mob เล็กน้อย ใกล้พอจะตีโดน
-                        local SafeHeight = math.min(MobHeight * 0.8, 8) -- ไม่เกิน 8 studs
-                        local SafePosition = MobPosition + Vector3.new(0, SafeHeight, 0)
-                        local LookAtMob = CFrame.new(SafePosition, MobPosition)
+                        -- ตำแหน่งที่ปลอดภัย: อยู่เหนือ Mob และหันหน้าลงมาตี (เหมือน Rock)
+                        local SafePosition = MobPosition + Vector3.new(0, MobHeight + 2, 0)
                         
                         if Magnitude < 25 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
-                            if tick() > LastAttack and IsAlive() then
-                                AttackMob()
-                                LastAttack = tick() + 0.1
-                            end
+                            task.delay(.01, function()
+                                if tick() > LastAttack and IsAlive() then
+                                    AttackMob()
+                                    LastAttack = tick() + 0.1
+                                end
+                            end)
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                Char.HumanoidRootPart.CFrame = LookAtMob
+                                Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/120, Enum.EasingStyle.Linear), {CFrame = CFrame.new(SafePosition)})
+                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(MobPosition)})
                                 LastTween:Play()
                             end
                         end
