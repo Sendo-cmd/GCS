@@ -215,6 +215,49 @@ local Settings ={
     ["Priority"] = "First", 
     ["Party Mode"] = false,
 
+    -- Auto Modifier Settings
+    ["Auto Modifier"] = false,
+    ["Restart Modifier"] = false,
+    ["Select Modifier"] = {"Sphere Finder", "Champions", "Money Surge"},
+    ["Modifier Priority"] = {
+        ["Money Surge"] = 100,
+        ["Harvest"] = 99,
+        ["Uncommon Loot"] = 98,
+        ["Common Loot"] = 97,
+        ["Damage"] = 96,
+        ["Range"] = 95,
+        ["Press It"] = 94,
+        ["Cooldown"] = 93,
+        ["Slayer"] = 92,
+        ["Immunity"] = 91,
+        ["Champions"] = 90,
+        ["Revitalize"] = 89,
+        ["Sphere Finder"] = 87,
+        ["Tyrant Destroyer"] = 86,
+        ["Tyrant Arrives"] = 86,
+        ["Wild Card"] = 33,
+        ["Evolution"] = 32,
+        ["Unit Draw"] = 31,
+        ["Nighttime"] = 30,
+        ["Exploding"] = 4,
+        ["Planning Ahead"] = 0,
+        ["High Class"] = 0,
+        ["Lifeline"] = 0,
+        ["Exterminator"] = 0,
+        ["Shielded"] = 0,
+        ["Strong"] = 0,
+        ["Thrice"] = 0,
+        ["Warding off Evil"] = 0,
+        ["Quake"] = 0,
+        ["Fast"] = 0,
+        ["Dodge"] = 0,
+        ["Fisticuffs"] = 0,
+        ["Precise Attack"] = 0,
+        ["No Trait No Problem"] = 0,
+        ["Drowsy"] = 0,
+        ["King's Burden"] = 0,
+        ["Regen"] = 0,
+    },
     ["Priority Multi"] = {
         ["Enabled"] = false,
         ["1"] = "First",
@@ -413,12 +456,12 @@ local Changes = {
     ["d88ae3d8-3e47-4de0-b18c-ee598fb2bb83"] = function()
         Settings["Select Mode"] = "Dungeon"
         Settings["Dungeon Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Act5",
-        ["StageType"] = "Dungeon",
-        ["Stage"] = "Anniversary Dungeon",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Act5",
+            ["StageType"] = "Dungeon",
+            ["Stage"] = "Anniversary Dungeon",
+            ["FriendsOnly"] = false
+        }
     end,
     ["c3795c09-07c3-4b30-ba13-067deb00b9dc"] = function()
         Settings["Select Mode"] = "Dungeon"
@@ -802,6 +845,48 @@ local Changes = {
     end,
     ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = false
+        Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
@@ -812,6 +897,48 @@ local Changes = {
     end,
     ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
@@ -822,6 +949,48 @@ local Changes = {
     end,
     ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
@@ -832,6 +1001,48 @@ local Changes = {
     end,
     ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "AntIsland",
@@ -842,6 +1053,48 @@ local Changes = {
     end,
     ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -852,6 +1105,48 @@ local Changes = {
     end,
     ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -862,6 +1157,48 @@ local Changes = {
     end,
     ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -872,6 +1209,48 @@ local Changes = {
     end,
     ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -882,6 +1261,48 @@ local Changes = {
     end,
     ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -892,6 +1313,48 @@ local Changes = {
     end,
     ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -902,6 +1365,48 @@ local Changes = {
     end,
     ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -912,6 +1417,48 @@ local Changes = {
     end,
     ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Modifier Priority"] = {
+            ["Money Surge"] = 100,
+            ["Harvest"] = 99,
+            ["Uncommon Loot"] = 98,
+            ["Common Loot"] = 97,
+            ["Damage"] = 96,
+            ["Range"] = 95,
+            ["Press It"] = 94,
+            ["Cooldown"] = 93,
+            ["Slayer"] = 92,
+            ["Immunity"] = 91,
+            ["Champions"] = 90,
+            ["Revitalize"] = 89,
+            ["Sphere Finder"] = 87,
+            ["Tyrant Destroyer"] = 86,
+            ["Tyrant Arrives"] = 86,
+            ["Wild Card"] = 33,
+            ["Evolution"] = 32,
+            ["Unit Draw"] = 31,
+            ["Nighttime"] = 30,
+            ["Exploding"] = 4,
+            ["Planning Ahead"] = 0,
+            ["High Class"] = 0,
+            ["Lifeline"] = 0,
+            ["Exterminator"] = 0,
+            ["Shielded"] = 0,
+            ["Strong"] = 0,
+            ["Thrice"] = 0,
+            ["Warding off Evil"] = 0,
+            ["Quake"] = 0,
+            ["Fast"] = 0,
+            ["Dodge"] = 0,
+            ["Fisticuffs"] = 0,
+            ["Precise Attack"] = 0,
+            ["No Trait No Problem"] = 0,
+            ["Drowsy"] = 0,
+            ["King's Burden"] = 0,
+            ["Regen"] = 0,
+        }
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "FrozenVolcano",
@@ -922,6 +1469,9 @@ local Changes = {
     end,
     ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -932,6 +1482,8 @@ local Changes = {
     end,
     ["ba6f3c6d-c503-4fe4-b06f-0326776ba349"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -952,6 +1504,8 @@ local Changes = {
     -- end,
     ["c040bd90-d939-4f0c-b65d-1e0ace06a434"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -962,6 +1516,8 @@ local Changes = {
     end,
     ["c4ca5b41-f68f-4e7b-a8e7-8b2ee7284d08"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -972,6 +1528,8 @@ local Changes = {
     end,
     ["5a2a67e9-7407-4437-bc2e-c332135cec53"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -992,6 +1550,8 @@ local Changes = {
     -- end,
     ["e7403190-850c-49e5-b2b0-b4949e477c47"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1002,6 +1562,8 @@ local Changes = {
     end,
     ["139a8d72-0bfb-478b-98e4-5dd152f01206"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1012,6 +1574,8 @@ local Changes = {
     end,
     ["7d480a51-e6df-45e7-b0f8-9e34966ecc7e"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1032,6 +1596,8 @@ local Changes = {
     -- end,
     ["12b453cd-7435-425e-977e-1ae97f04cc23"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1042,6 +1608,8 @@ local Changes = {
     end,
     ["9d07aae3-76ca-4976-a29c-9f6ece183ade"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1052,6 +1620,8 @@ local Changes = {
     end,
     ["ef2bf1de-f30f-46aa-98bb-4a34635a2ed8"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1062,6 +1632,8 @@ local Changes = {
     end,
     ["6eef0b60-b61d-47d1-aba5-22d6fea4cb8f"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1072,6 +1644,8 @@ local Changes = {
     end,
     ["89901139-d4b5-4555-8913-4900d176546c"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1082,6 +1656,8 @@ local Changes = {
     end,
     ["7b29fe07-6313-48cb-a095-3680d4758ab6"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1092,6 +1668,8 @@ local Changes = {
     end,
     ["1e07ff1f-ab45-466b-8b36-ae0ff8b43198"] = function()
         Settings["Select Mode"] = "Legend Stage"
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1102,49 +1680,71 @@ local Changes = {
     end,
     ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
         Settings["Auto Join Challenge"] = true
-    
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
-
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["503237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
        Settings["Auto Join Challenge"] = true
        Settings["Auto Join Bounty"] = true
+       Settings["Restart Modifier"] = true
+        Settings["Select Modifier"] = {"Exploding"}
     end,
     ["143f6820-6e5e-4f6e-b3f9-3de3e9586271"] = function()
        Settings["Select Mode"] = "Boss Event"
@@ -2033,6 +2633,103 @@ end
                     ConnectToPrompt(v)
                 end)
                 print("Executed")
+            end
+            -- Auto Modifier System
+            if Settings["Auto Modifier"] then
+                local chosenModifiersCache = {}
+                local availableModifiersCache = {}
+                local lastChoice = nil
+                local isChoosing = false
+
+                local function ChooseModifier(modifierName)
+                    pcall(function()
+                        Networking.ModifierEvent:FireServer("Choose", modifierName)
+                    end)
+                end
+
+                local function VoteRestart()
+                    Networking.MatchRestartSettingEvent:FireServer("Vote")
+                end
+
+                local function HasChosenRequiredModifier(requiredList)
+                    for _, required in ipairs(requiredList) do
+                        for _, modName in ipairs(chosenModifiersCache) do
+                            if string.lower(modName) == string.lower(required) then
+                                return true
+                            end
+                        end
+                    end
+                    return false
+                end
+
+                pcall(function()
+                    local ModifierDisplayEvent = Networking:WaitForChild("ClientListeners"):WaitForChild("ModifierDisplayEvent")
+                    ModifierDisplayEvent.OnClientEvent:Connect(function(...)
+                        local args = {...}
+                        availableModifiersCache = {}
+                        for _, arg in ipairs(args) do
+                            if type(arg) == "table" then
+                                for k, v in pairs(arg) do
+                                    if type(k) == "string" then
+                                        table.insert(availableModifiersCache, k)
+                                    elseif type(v) == "string" then
+                                        table.insert(availableModifiersCache, v)
+                                    end
+                                end
+                            elseif type(arg) == "string" then
+                                table.insert(availableModifiersCache, arg)
+                            end
+                        end
+                    end)
+                end)
+
+                task.spawn(function()
+                    while task.wait(3) do
+                        if #availableModifiersCache == 0 and #chosenModifiersCache > 0 then
+                            task.wait(5)
+                            if #availableModifiersCache == 0 then
+                                lastChoice = nil
+                                chosenModifiersCache = {}
+                            end
+                        end
+                    end
+                end)
+
+                task.spawn(function()
+                    while task.wait(0.1) do
+                        if isChoosing then continue end
+                        
+                        if Settings["Restart Modifier"] and #chosenModifiersCache > 0 then
+                            if not HasChosenRequiredModifier(Settings["Select Modifier"]) then
+                                VoteRestart()
+                                continue
+                            end
+                        end
+                        
+                        if #availableModifiersCache == 0 then continue end
+                        
+                        local bestModifier = nil
+                        local highestPriority = -999
+                        
+                        for _, modName in ipairs(availableModifiersCache) do
+                            local priority = Settings["Modifier Priority"][modName] or 0
+                            if priority > highestPriority then
+                                highestPriority = priority
+                                bestModifier = modName
+                            end
+                        end
+                        
+                        if bestModifier and bestModifier ~= lastChoice then
+                            isChoosing = true
+                            ChooseModifier(bestModifier)
+                            lastChoice = bestModifier
+                            table.insert(chosenModifiersCache, bestModifier)
+                            availableModifiersCache = {}
+                            task.wait(0.3)
+                            isChoosing = false
+                        end
+                    end
+                end)
             end
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 task.wait(2)
