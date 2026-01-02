@@ -2617,15 +2617,37 @@ end
                 local gkSongIndex = 1
                 local gkDiffIndex = 1
                 
+                -- ฟังก์ชันปิด GUI Guitar
+                local function closeGuitarUI()
+                    pcall(function()
+                        -- หาและปิด GUI ทั้งหมดที่เกี่ยวกับ Guitar/JamSession
+                        for _, gui in pairs(PlayerGui:GetChildren()) do
+                            if gui:IsA("ScreenGui") then
+                                if string.find(gui.Name:lower(), "guitar") or 
+                                   string.find(gui.Name:lower(), "jam") or 
+                                   string.find(gui.Name:lower(), "minigame") or
+                                   string.find(gui.Name:lower(), "music") then
+                                    gui.Enabled = false
+                                    gui:Destroy()
+                                    print("[Guitar King] Closed GUI:", gui.Name)
+                                end
+                            end
+                        end
+                        -- ลอง StopMinigame ด้วย
+                        JamSessionHandler.StopMinigame()
+                    end)
+                end
+                
                 local function playNextGuitarSong()
                     local song = GK_SONGS[gkSongIndex]
                     local diff = GK_DIFFICULTIES[gkDiffIndex]
                     print("[Guitar King] Playing:", song, "-", diff)
                     
-                    pcall(function()
-                        JamSessionHandler.StopMinigame()
-                    end)
-                    task.wait(0.5)
+                    -- ปิด GUI เก่าก่อน
+                    closeGuitarUI()
+                    task.wait(1)
+                    
+                    -- เปิดใหม่
                     pcall(function()
                         JamSessionHandler.StartMinigame(song, diff)
                     end)
