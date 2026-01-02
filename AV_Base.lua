@@ -577,7 +577,7 @@ getgenv().Config = {
 			}
 		},
 		["Auto Modifier"] = {
-			["Enable"] = false,
+			["Enable"] = true,
 			["Prioritize"] = {
 				["Tyrant Destroyer"] = 86,
 				["Range"] = 95,
