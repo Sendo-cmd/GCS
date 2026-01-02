@@ -2616,60 +2616,31 @@ end
                 local GK_DIFFICULTIES = {"Easy", "Medium", "Hard", "Expert"}
                 local gkSongIndex = 1
                 local gkDiffIndex = 1
-                local gkFirstRun = true
+                local gkFirstRun = true  -- ครั้งแรกต้องเปิดซ้ำ
                 
-                -- ฟังก์ชันปิด GUI Guitar
-                local function closeGuitarUI()
-                    pcall(function()
-                        -- หาและปิด GUI ทั้งหมดที่เกี่ยวกับ Guitar/JamSession
-                        for _, gui in pairs(PlayerGui:GetChildren()) do
-                            if gui:IsA("ScreenGui") then
-                                if string.find(gui.Name:lower(), "guitar") or 
-                                   string.find(gui.Name:lower(), "jam") or 
-                                   string.find(gui.Name:lower(), "minigame") or
-                                   string.find(gui.Name:lower(), "music") then
-                                    gui.Enabled = false
-                                    gui:Destroy()
-                                    print("[Guitar King] Closed GUI:", gui.Name)
-                                end
-                            end
-                        end
-                        -- ลอง StopMinigame ด้วย
-                        JamSessionHandler.StopMinigame()
-                    end)
-                end
-                
-                local function playNextGuitarSong()
+                local function playGuitarSong()
                     local song = GK_SONGS[gkSongIndex]
                     local diff = GK_DIFFICULTIES[gkDiffIndex]
                     print("[Guitar King] Playing:", song, "-", diff)
                     
-                    if gkFirstRun then
-                        gkFirstRun = false
-                        print("[Guitar King] First run - Open, Close, Open")
-                        
-                        pcall(function()
-                            JamSessionHandler.StartMinigame(song, diff)
-                        end)
-                        task.wait(1)
-                        
-                        closeGuitarUI()
-                        task.wait(1)
-                        
-                        pcall(function()
-                            JamSessionHandler.StartMinigame(song, diff)
-                        end)
-                    else
-                        -- ครั้งถัดไป: เปิดปกติ
-                        pcall(function()
-                            JamSessionHandler.StartMinigame(song, diff)
-                        end)
-                    end
+                    pcall(function()
+                        JamSessionHandler.StartMinigame(song, diff)
+                    end)
                 end
                 
+                -- Hook MinigameEnded
                 GuitarMinigame.MinigameEnded:Connect(function(score)
-                    print("[Guitar King] Song ended! Score:", score or 0)
+                    print("[Guitar King] MinigameEnded, score:", score or 0)
                     
+                    if gkFirstRun then
+                        -- ครั้งแรก score=0: รอแล้วเปิดซ้ำเพลงเดิม
+                        gkFirstRun = false
+                        print("[Guitar King] First run ended, reopening same song...")
+                        task.delay(1, playGuitarSong)
+                        return
+                    end
+                    
+                    -- ครั้งถัดไป: ไปเพลง/ระดับถัดไป
                     gkDiffIndex = gkDiffIndex + 1
                     if gkDiffIndex > #GK_DIFFICULTIES then
                         gkDiffIndex = 1
@@ -2677,19 +2648,17 @@ end
                         if gkSongIndex > #GK_SONGS then
                             gkSongIndex = 1
                             print("[Guitar King] All songs completed!")
-                            task.delay(5, function()
-                                Auto_Config()
-                            end)
+                            task.delay(5, Auto_Config)
                             return
                         end
                     end
                     
-                    task.delay(2, playNextGuitarSong)
+                    task.delay(2, playGuitarSong)
                 end)
                 
                 -- Start first song
-                print("[Guitar King] Starting all songs...")
-                task.delay(1, playNextGuitarSong)
+                print("[Guitar King] Starting...")
+                task.delay(1, playGuitarSong)
             end
         else
             local plr = game:GetService("Players").LocalPlayer
