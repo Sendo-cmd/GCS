@@ -2633,10 +2633,10 @@ end
                     print("[Guitar King] MinigameEnded, score:", score or 0)
                     
                     if gkFirstRun then
-                        -- ครั้งแรก score=0: รอแล้วเปิดซ้ำเพลงเดิม
+                        -- ครั้งแรก score=0: รอนานขึ้นแล้วเปิดซ้ำเพลงเดิม
                         gkFirstRun = false
-                        print("[Guitar King] First run ended, reopening same song...")
-                        task.delay(1, playGuitarSong)
+                        print("[Guitar King] First run ended, waiting 3s then reopening...")
+                        task.delay(3, playGuitarSong)
                         return
                     end
                     
