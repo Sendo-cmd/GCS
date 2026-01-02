@@ -940,8 +940,8 @@ local Changes = {
     end,
     ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Money Surge"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -992,8 +992,8 @@ local Changes = {
     end,
     ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Money Surge"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1044,8 +1044,8 @@ local Changes = {
     end,
     ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Money Surge"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1096,8 +1096,8 @@ local Changes = {
     end,
     ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1148,8 +1148,8 @@ local Changes = {
     end,
     ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1200,8 +1200,8 @@ local Changes = {
     end,
     ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1252,8 +1252,8 @@ local Changes = {
     end,
     ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1304,8 +1304,8 @@ local Changes = {
     end,
     ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1356,8 +1356,8 @@ local Changes = {
     end,
     ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1408,8 +1408,8 @@ local Changes = {
     end,
     ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1460,8 +1460,8 @@ local Changes = {
     end,
     ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1512,8 +1512,8 @@ local Changes = {
     end,
     ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
         Settings["Select Mode"] = "Legend Stage"
-        Settings["Auto Modifier"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
@@ -1722,23 +1722,23 @@ local Changes = {
     }
     end,
     ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
-        Settings["Auto Join Challenge"] = true
-        Settings["Restart Modifier"] = true
+        Settings["Auto Join Challenge"] = false
+        Settings["Restart Modifier"] = false
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
