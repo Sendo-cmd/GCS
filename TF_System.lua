@@ -230,7 +230,7 @@ local function Auto_Config(id)
                                 Post(Url..MainSettings["Path"] .. "finished")
                             end
                         elseif Product["condition"]["type"] == "hour" then
-                            if tonumber(OrderData["progress_value"]) >= tonumber(OrderData["target_value"]) then
+                            if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
                                 Post(Url..MainSettings["Path"] .. "finished")
                             end
                         elseif Product["condition"]["type"] == "round" then
