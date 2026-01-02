@@ -2622,6 +2622,11 @@ end
                     local diff = GK_DIFFICULTIES[gkDiffIndex]
                     print("[Guitar King] Playing:", song, "-", diff)
                     
+                    -- ปิดแล้วเปิดใหม่ก่อนเล่น
+                    pcall(function()
+                        JamSessionHandler.StopMinigame()
+                    end)
+                    task.wait(0.5)
                     pcall(function()
                         JamSessionHandler.StartMinigame(song, diff)
                     end)
