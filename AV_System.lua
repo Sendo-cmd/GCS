@@ -2592,7 +2592,7 @@ end
                 local GuitarMinigame = require(GuitarMinigameModule)
                 local ScoreHandler = require(GuitarMinigameModule:WaitForChild("ScoreHandler"))
                 
-                -- Hook ScoreHandler
+                -- Hook ScoreHandler - ทุก hit เป็น Perfect, ทุก miss เป็น Perfect hit
                 local originalHitNote = ScoreHandler.HitNote
                 local originalMissNote = ScoreHandler.MissNote
                 
@@ -2610,6 +2610,45 @@ end
                         return
                     end
                 end
+                
+                -- Auto-hit: Hook PullNote เพื่อ auto-hit ทุก note ที่ spawn
+                local originalPullNote = GuitarMinigame.PullNote
+                if originalPullNote then
+                    GuitarMinigame.PullNote = function(...)
+                        local note = originalPullNote(...)
+                        -- Auto-hit note ทันทีที่มัน spawn (delay เล็กน้อยให้ timing ถูก)
+                        if note then
+                            task.delay(0.1, function()
+                                pcall(function()
+                                    if originalHitNote then
+                                        originalHitNote(true)
+                                    end
+                                end)
+                            end)
+                        end
+                        return note
+                    end
+                end
+                
+                -- Auto-hit: Loop เช็ค notes ที่อยู่ใน hit zone แล้ว hit อัตโนมัติ
+                task.spawn(function()
+                    while true do
+                        task.wait(0.05) -- Check ทุก 50ms
+                        pcall(function()
+                            if GuitarMinigame.IsActive and GuitarMinigame.IsActive() then
+                                -- หา notes ที่ใกล้ hit zone แล้ว hit ให้
+                                if GuitarMinigame.GetNoteById then
+                                    for i = 1, 100 do
+                                        local note = GuitarMinigame.GetNoteById(i)
+                                        if note and originalHitNote then
+                                            originalHitNote(true)
+                                        end
+                                    end
+                                end
+                            end
+                        end)
+                    end
+                end)
                 
                 -- Songs and Difficulties
                 local GK_SONGS = {"Skele King's Theme", "Vanguards!", "Selfish Intentions"}
