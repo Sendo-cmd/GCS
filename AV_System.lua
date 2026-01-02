@@ -42,6 +42,43 @@ local function AntiAFK()
         end
     end)
 end
+
+local function AutoCloseUpdateLog()
+    local PlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+    
+    local function destroyUpdateLog()
+        pcall(function()
+            local Main = PlayerGui:FindFirstChild("Main")
+            if Main then
+                for _, child in pairs(Main:GetDescendants()) do
+                    if child.Name == "UpdateLog" or child.Name == "UpdateLogFrame" then
+                        child.Visible = false
+                        child:Destroy()
+                    end
+                end
+            end
+            local UpdateLogGui = PlayerGui:FindFirstChild("UpdateLog")
+            if UpdateLogGui then
+                UpdateLogGui.Enabled = false
+                UpdateLogGui:Destroy()
+            end
+        end)
+    end
+    
+    task.delay(0.5, destroyUpdateLog)
+    task.delay(1, destroyUpdateLog)
+    task.delay(2, destroyUpdateLog)
+    
+    PlayerGui.DescendantAdded:Connect(function(descendant)
+        if string.find(descendant.Name:lower(), "update") then
+            task.wait(0.1)
+            destroyUpdateLog()
+        end
+    end)
+end
+
+task.spawn(AutoCloseUpdateLog)
+
 function _G.CHALLENGE_CHECKCD()
     
     local PATH_CDTIME = game.Players.LocalPlayer.Name .. '_CDTIME'
@@ -194,16 +231,14 @@ local function Len(tab)
     return count
 end
 
-
--- All Variables
--- local Key = "Onio_#@@421"
 local plr = game.Players.LocalPlayer
 local Character = plr.Character or plr.CharacterAdded:Wait()
 local Inventory = {}
 
 local Settings ={
 
-    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey , Fall Regular , Fall Infinite
+    ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey , Fall Regular , Fall Infinite , Guitar King
+    ["Auto Next"] = false,
     ["Auto Join AFK"] = false,
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
@@ -1784,9 +1819,11 @@ local Changes = {
     end,
     ["1c335fe4-5fb6-4894-9c3e-83216bc419a9"] = function()
         Settings["Select Mode"] = "World Line"
+        Settings["Auto Next"] = true
     end,
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
+        Settings["Auto Next"] = true
     end,
     -- [""] = function()
     --     Settings["Select Mode"] = "Odyssey"
@@ -1825,6 +1862,9 @@ local Changes = {
         ["Stage"] = "Planet Namak",
         ["FriendsOnly"] = false
     }
+    end,
+    ["d9faa15c-d5c6-4b52-a918-8e1ad1940841"] = function()
+        Settings["Select Mode"] = "Guitar King"
     end,
 }
 if _G.User[plr.Name] then
@@ -2537,6 +2577,77 @@ end
                     game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("LobbyEvent"):FireServer(unpack(args))
                     task.wait(10)
                 end
+            elseif Settings["Select Mode"] == "Guitar King" then
+                local StarterPlayer = game:GetService("StarterPlayer")
+                local PlayerGui = plr:WaitForChild("PlayerGui")
+                
+                local GuitarMinigameModule = StarterPlayer:WaitForChild("Modules")
+                    :WaitForChild("Interface")
+                    :WaitForChild("Loader")
+                    :WaitForChild("Events")
+                    :WaitForChild("JamSessionHandler")
+                    :WaitForChild("GuitarMinigame")
+                
+                local JamSessionHandler = require(StarterPlayer.Modules.Interface.Loader.Events.JamSessionHandler)
+                local GuitarMinigame = require(GuitarMinigameModule)
+                local ScoreHandler = require(GuitarMinigameModule:WaitForChild("ScoreHandler"))
+                
+                -- Hook ScoreHandler
+                local originalHitNote = ScoreHandler.HitNote
+                local originalMissNote = ScoreHandler.MissNote
+                
+                if originalHitNote then
+                    ScoreHandler.HitNote = function(isPerfect, ...)
+                        return originalHitNote(true, ...)
+                    end
+                end
+                
+                if originalMissNote then
+                    ScoreHandler.MissNote = function(...)
+                        if originalHitNote then
+                            return originalHitNote(true)
+                        end
+                        return
+                    end
+                end
+                
+                -- Songs and Difficulties
+                local GK_SONGS = {"Skele King's Theme", "Vanguards!", "Selfish Intentions"}
+                local GK_DIFFICULTIES = {"Easy", "Medium", "Hard", "Expert"}
+                local gkSongIndex = 1
+                local gkDiffIndex = 1
+                
+                local function playNextGuitarSong()
+                    local song = GK_SONGS[gkSongIndex]
+                    local diff = GK_DIFFICULTIES[gkDiffIndex]
+                    print("[Guitar King] Playing:", song, "-", diff)
+                    
+                    pcall(function()
+                        JamSessionHandler.StartMinigame(song, diff)
+                    end)
+                end
+                
+                -- Hook MinigameEnded
+                GuitarMinigame.MinigameEnded:Connect(function(score)
+                    print("[Guitar King] Song ended! Score:", score or 0)
+                    
+                    gkDiffIndex = gkDiffIndex + 1
+                    if gkDiffIndex > #GK_DIFFICULTIES then
+                        gkDiffIndex = 1
+                        gkSongIndex = gkSongIndex + 1
+                        if gkSongIndex > #GK_SONGS then
+                            gkSongIndex = 1
+                            print("[Guitar King] All songs completed! Stopping.")
+                            return
+                        end
+                    end
+                    
+                    task.delay(2, playNextGuitarSong)
+                end)
+                
+                -- Start first song
+                print("[Guitar King] Starting all songs...")
+                task.delay(1, playNextGuitarSong)
             end
         else
             local plr = game:GetService("Players").LocalPlayer
@@ -2750,6 +2861,15 @@ end
                 print("[Auto Modifier] Loaded!")
             end
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+                -- Auto Next Vote
+                if Settings["Auto Next"] then
+                    task.delay(1, function()
+                        pcall(function()
+                            Networking.EndScreen.VoteEvent:FireServer("Next")
+                        end)
+                    end)
+                end
+                
                 task.wait(2)
                 if Results['StageType'] == "Challenge" then
                     Networking.TeleportEvent:FireServer("Lobby")

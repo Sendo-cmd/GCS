@@ -118,6 +118,105 @@ if IsTimeChamber then
     
     return false
 end
+
+-- ==========================================
+-- Jam Session (Guitar King) Tracking
+-- ==========================================
+local JamSessionSongs = {"Skele King's Theme", "Vanguards!", "Selfish Intentions"}
+local JamSessionDifficulties = {"Easy", "Medium", "Hard", "Expert"}
+local JamSessionPlayed = {}
+local JamSessionStartTime = 0
+local JamSessionTotalTime = 0
+
+local function getJamSessionPlayedCount()
+    local count = 0
+    for _, _ in pairs(JamSessionPlayed) do
+        count = count + 1
+    end
+    return count
+end
+
+local function isJamSessionComplete()
+    return getJamSessionPlayedCount() >= (#JamSessionSongs * #JamSessionDifficulties)
+end
+
+local function sendJamSessionCompleteLog()
+    if not isJamSessionComplete() then return end
+    
+    print("[JamSession] All songs completed! Sending log...")
+    
+    SendTo(Url .. "/api/v1/shop/orders/logs",
+        {["logs"] = {convertToField("Guitar King Complete", tostring(getJamSessionPlayedCount()))}},
+        {["state"] = {
+            ["map"] = {
+                ["name"] = "Guitar King Complete",
+                ["chapter"] = "Music",
+                ["wave"] = tostring(getJamSessionPlayedCount()),
+                ["mode"] = "JamSession",
+                ["difficulty"] = "All"
+            },
+            ["win"] = true,
+        }},
+        {["time"] = math.floor(JamSessionTotalTime)},
+        {["currency"] = convertToField_(GetSomeCurrency())}
+    )
+    
+    -- print("[JamSession] Log sent! Total time:", math.floor(JamSessionTotalTime), "seconds")
+    
+    -- Reset
+    JamSessionPlayed = {}
+    JamSessionTotalTime = 0
+    JamSessionStartTime = 0
+end
+
+task.spawn(function()
+    local StarterPlayer = game:GetService("StarterPlayer")
+    
+    local success, GuitarMinigameModule = pcall(function()
+        return StarterPlayer:WaitForChild("Modules", 10)
+            :WaitForChild("Interface", 5)
+            :WaitForChild("Loader", 5)
+            :WaitForChild("Events", 5)
+            :WaitForChild("JamSessionHandler", 5)
+            :WaitForChild("GuitarMinigame", 5)
+    end)
+    
+    if not success or not GuitarMinigameModule then
+        return
+    end
+    
+    local GuitarMinigame = require(GuitarMinigameModule)
+    
+    if GuitarMinigame and GuitarMinigame.MinigameEnded then
+        GuitarMinigame.MinigameEnded:Connect(function(score)
+            -- บันทึกเพลงที่เล่น
+            local playCount = getJamSessionPlayedCount() + 1
+            local songIdx = math.ceil(playCount / #JamSessionDifficulties)
+            local diffIdx = ((playCount - 1) % #JamSessionDifficulties) + 1
+            
+            if songIdx <= #JamSessionSongs then
+                local key = JamSessionSongs[songIdx] .. "_" .. JamSessionDifficulties[diffIdx]
+                
+                if JamSessionStartTime == 0 then
+                    JamSessionStartTime = os.clock()
+                end
+                
+                if not JamSessionPlayed[key] then
+                    JamSessionPlayed[key] = {score = score or 0}
+                    print("[JamSession] Recorded:", key, "| Total:", getJamSessionPlayedCount(), "/ 12")
+                end
+                
+                -- เช็คว่าครบหมดยัง
+                if isJamSessionComplete() then
+                    JamSessionTotalTime = os.clock() - JamSessionStartTime
+                    task.delay(1, sendJamSessionCompleteLog)
+                end
+            end
+        end)
+        print("[JamSession] Tracking enabled!")
+    end
+end)
+
 local Networking = ReplicatedStorage:WaitForChild("Networking")
 
 local SettingsHandler = require(PlayerModules.Gameplay.SettingsHandler)
@@ -329,6 +428,25 @@ elseif IsMatch then
                 ["mode"] = Results["StageType"],
                 ["difficulty"] = Results["Difficulty"],
             }
+            
+            -- World Line: ถ้าเจอ Floor ใน StageAct ให้ใช้แทน chapter
+            pcall(function()
+                local Guides = plr.PlayerGui:FindFirstChild("Guides")
+                if Guides and Guides:FindFirstChild("List") then
+                    local StageInfo_UI = Guides.List:FindFirstChild("StageInfo")
+                    if StageInfo_UI and StageInfo_UI:FindFirstChild("StageFrame") then
+                        local StageAct = StageInfo_UI.StageFrame:FindFirstChild("StageAct")
+                        if StageAct and StageAct:IsA("TextLabel") then
+                            local text = StageAct.Text
+                            if text and string.find(text:lower(), "floor") then
+                                StageInfo["map"]["chapter"] = text
+                                StageInfo["map"]["name"] = "Worldlines"
+                            end
+                        end
+                    end
+                end
+            end)
+            
             local bool,err = pcall(function()
                 StageInfo["map"]["name"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
             end)
