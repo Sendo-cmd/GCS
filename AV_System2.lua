@@ -282,23 +282,23 @@ local Settings ={
         ["Unit Draw"] = 31,
         ["Nighttime"] = 30,
         ["Exploding"] = 4,
-        ["Planning Ahead"] = 0,
-        ["High Class"] = 0,
-        ["Lifeline"] = 0,
-        ["Exterminator"] = 0,
-        ["Shielded"] = 0,
-        ["Strong"] = 0,
-        ["Thrice"] = 0,
-        ["Warding off Evil"] = 0,
-        ["Quake"] = 0,
-        ["Fast"] = 0,
-        ["Dodge"] = 0,
-        ["Fisticuffs"] = 0,
-        ["Precise Attack"] = 0,
-        ["No Trait No Problem"] = 0,
-        ["Drowsy"] = 0,
-        ["King's Burden"] = 0,
-        ["Regen"] = 0,
+        ["Planning Ahead"] = 1,
+        ["High Class"] = 1,
+        ["Lifeline"] = 1,
+        ["Exterminator"] = 1,
+        ["Shielded"] = 1,
+        ["Strong"] = 1,
+        ["Thrice"] = 1,
+        ["Warding off Evil"] = 1,
+        ["Quake"] = 1,
+        ["Fast"] = 1,
+        ["Dodge"] = 1,
+        ["Fisticuffs"] = 1,
+        ["Precise Attack"] = 1,
+        ["No Trait No Problem"] = 1,
+        ["Drowsy"] = 1,
+        ["King's Burden"] = 1,
+        ["Regen"] = 1,
     },
 
     ["Priority Multi"] = {
@@ -888,8 +888,8 @@ local Changes = {
     end,
     ["e4ed794a-8569-4da6-976d-829ac43f423f"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -940,8 +940,8 @@ local Changes = {
     end,
     ["cfbb32d7-64cb-4135-b1e3-1992e1800d07"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -992,8 +992,8 @@ local Changes = {
     end,
     ["e1a0c37a-c004-4ff3-a064-2b7d55703c3e"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1044,8 +1044,8 @@ local Changes = {
     end,
     ["b752455d-18d7-4bb3-bd67-70269790500f"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1096,8 +1096,8 @@ local Changes = {
     end,
     ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1148,8 +1148,8 @@ local Changes = {
     end,
     ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1200,8 +1200,8 @@ local Changes = {
     end,
     ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1252,8 +1252,8 @@ local Changes = {
     end,
     ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1304,8 +1304,8 @@ local Changes = {
     end,
     ["fb02fc4d-29d3-4158-b6f1-6a7d8fa3a2f5"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1356,8 +1356,8 @@ local Changes = {
     end,
     ["4c3e1a8b-02fd-42e7-9905-e44a073e3bbc"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1408,8 +1408,8 @@ local Changes = {
     end,
     ["3f91fbcb-c0de-4251-8a27-df651f9933aa"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1460,8 +1460,8 @@ local Changes = {
     end,
     ["f96ab092-314a-484b-a098-59209edccb0a"] = function()
         Settings["Select Mode"] = "Dungeon"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
@@ -1512,8 +1512,8 @@ local Changes = {
     end,
     ["4de82cf7-17ae-43ba-bf30-3a2048917a8f"] = function()
         Settings["Select Mode"] = "Legend Stage"
-        Settings["Auto Modifier"] = false
-        Settings["Restart Modifier"] = false
+        Settings["Auto Modifier"] = true
+        Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
@@ -3217,12 +3217,13 @@ if ID[game.GameId][1] == "AV" then
                 end)
                 print("Executed")
             end
-            -- Auto Modifier System (Carry)
+            -- Auto Modifier System (New - Based on AV_AutoModifier)
             if Settings["Auto Modifier"] then
-                local chosenModifiersCache = {}
-                local availableModifiersCache = {}
+                local plr = game:GetService("Players").LocalPlayer
                 local lastChoice = nil
                 local isChoosing = false
+                local chosenModifiers = {}
+                local currentWave = 0
 
                 local function ChooseModifier(modifierName)
                     pcall(function()
@@ -3231,13 +3232,53 @@ if ID[game.GameId][1] == "AV" then
                 end
 
                 local function VoteRestart()
-                    Networking.MatchRestartSettingEvent:FireServer("Vote")
+                    pcall(function()
+                        Networking.MatchRestartSettingEvent:FireServer("Vote")
+                    end)
                 end
 
-                local function HasChosenRequiredModifier(requiredList)
-                    for _, required in ipairs(requiredList) do
-                        for _, modName in ipairs(chosenModifiersCache) do
-                            if string.lower(modName) == string.lower(required) then
+                local function GetAvailableModifiers()
+                    local available = {}
+                    pcall(function()
+                        local ModifiersGui = plr.PlayerGui:FindFirstChild("Modifiers")
+                        if ModifiersGui then
+                            local ModifiersFrame = ModifiersGui:FindFirstChild("Modifiers")
+                            if ModifiersFrame then
+                                local MainFrame = ModifiersFrame:FindFirstChild("Main")
+                                if MainFrame and MainFrame.Visible then
+                                    for _, child in pairs(MainFrame:GetChildren()) do
+                                        if child:IsA("Frame") or child:IsA("TextButton") or child:IsA("ImageButton") or child:IsA("TextLabel") then
+                                            if child.Visible then
+                                                table.insert(available, child.Name)
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                    return available
+                end
+
+                local function GetBestModifier(availableModifiers)
+                    local bestModifier = nil
+                    local highestPriority = -999
+                    
+                    for _, modName in ipairs(availableModifiers) do
+                        local priority = Settings["Modifier Priority"][modName] or 0
+                        if priority > highestPriority then
+                            highestPriority = priority
+                            bestModifier = modName
+                        end
+                    end
+                    
+                    return bestModifier
+                end
+
+                local function HasChosenRequiredModifier()
+                    for _, required in ipairs(Settings["Select Modifier"]) do
+                        for _, chosen in ipairs(chosenModifiers) do
+                            if string.lower(chosen) == string.lower(required) then
                                 return true
                             end
                         end
@@ -3245,74 +3286,52 @@ if ID[game.GameId][1] == "AV" then
                     return false
                 end
 
-                pcall(function()
-                    local ModifierDisplayEvent = Networking:WaitForChild("ClientListeners"):WaitForChild("ModifierDisplayEvent")
-                    ModifierDisplayEvent.OnClientEvent:Connect(function(...)
-                        local args = {...}
-                        availableModifiersCache = {}
-                        for _, arg in ipairs(args) do
-                            if type(arg) == "table" then
-                                for k, v in pairs(arg) do
-                                    if type(k) == "string" then
-                                        table.insert(availableModifiersCache, k)
-                                    elseif type(v) == "string" then
-                                        table.insert(availableModifiersCache, v)
-                                    end
-                                end
-                            elseif type(arg) == "string" then
-                                table.insert(availableModifiersCache, arg)
-                            end
+                -- Wave Tracker
+                local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
+                    if eventType == "Wave" and data and data.Waves then
+                        currentWave = data.Waves
+                        print("[Auto Modifier] Wave:", currentWave)
+                        
+                        if currentWave == 0 then
+                            chosenModifiers = {}
+                            lastChoice = nil
                         end
-                    end)
-                end)
-
-                task.spawn(function()
-                    while task.wait(3) do
-                        if #availableModifiersCache == 0 and #chosenModifiersCache > 0 then
-                            task.wait(5)
-                            if #availableModifiersCache == 0 then
-                                lastChoice = nil
-                                chosenModifiersCache = {}
+                        
+                        if Settings["Restart Modifier"] and currentWave >= 1 then
+                            if not HasChosenRequiredModifier() then
+                                print("[Auto Modifier] Required modifier not found, voting restart...")
+                                VoteRestart()
                             end
                         end
                     end
                 end)
 
+                -- Main Loop
                 task.spawn(function()
-                    while task.wait(0.1) do
+                    while task.wait(0.5) do
                         if isChoosing then continue end
                         
-                        if Settings["Restart Modifier"] and #chosenModifiersCache > 0 then
-                            if not HasChosenRequiredModifier(Settings["Select Modifier"]) then
-                                VoteRestart()
-                                continue
-                            end
+                        local availableModifiers = GetAvailableModifiers()
+                        if #availableModifiers == 0 then 
+                            lastChoice = nil
+                            continue 
                         end
                         
-                        if #availableModifiersCache == 0 then continue end
-                        
-                        local bestModifier = nil
-                        local highestPriority = -999
-                        
-                        for _, modName in ipairs(availableModifiersCache) do
-                            local priority = Settings["Modifier Priority"][modName] or 0
-                            if priority > highestPriority then
-                                highestPriority = priority
-                                bestModifier = modName
-                            end
-                        end
+                        local bestModifier = GetBestModifier(availableModifiers)
                         
                         if bestModifier and bestModifier ~= lastChoice then
                             isChoosing = true
+                            print("[Auto Modifier] Choosing:", bestModifier)
                             ChooseModifier(bestModifier)
                             lastChoice = bestModifier
-                            table.insert(chosenModifiersCache, bestModifier)
-                            availableModifiersCache = {}
-                            task.wait(0.3)
+                            table.insert(chosenModifiers, bestModifier)
+                            task.wait(0.5)
                             isChoosing = false
                         end
                     end
                 end)
+                print("[Auto Modifier] Loaded!")
             end
         end
     end
