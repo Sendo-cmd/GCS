@@ -3005,7 +3005,48 @@ end
                 if Settings["Auto Next"] then
                     task.delay(1, function()
                         pcall(function()
-                            Networking.EndScreen.VoteEvent:FireServer("Next")
+                            -- วิธี 1: ลองหลาย path
+                            local success = false
+                            
+                            -- ลอง Networking.EndScreen.VoteEvent
+                            if not success then
+                                success = pcall(function()
+                                    Networking.EndScreen.VoteEvent:FireServer("Next")
+                                end)
+                            end
+                            
+                            -- ลอง Networking.VoteEvent
+                            if not success then
+                                success = pcall(function()
+                                    Networking.VoteEvent:FireServer("Next")
+                                end)
+                            end
+                            
+                            -- ลอง EndScreenEvent
+                            if not success then
+                                success = pcall(function()
+                                    Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
+                                end)
+                            end
+                            
+                            -- วิธี 2: กดปุ่ม Next โดยตรงจาก GUI
+                            if not success then
+                                pcall(function()
+                                    local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                                    if EndScreenGui then
+                                        local NextBtn = EndScreenGui:FindFirstChild("Next", true) or 
+                                                       EndScreenGui:FindFirstChild("NextButton", true)
+                                        if NextBtn then
+                                            -- ลอง fire connections
+                                            for _, conn in pairs(getconnections(NextBtn.Activated)) do
+                                                conn:Fire()
+                                            end
+                                        end
+                                    end
+                                end)
+                            end
+                            
+                            print("[Auto Next] Vote sent!")
                         end)
                     end)
                 end
