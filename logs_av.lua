@@ -119,9 +119,6 @@ if IsTimeChamber then
     return false
 end
 
--- ==========================================
--- Jam Session (Guitar King) Tracking
--- ==========================================
 local JamSessionSongs = {"Skele King's Theme", "Vanguards!", "Selfish Intentions"}
 local JamSessionDifficulties = {"Easy", "Medium", "Hard", "Expert"}
 local JamSessionPlayed = {}
@@ -379,25 +376,7 @@ local function GetData()
     }
 end
 -- setclipboard(HttpService:JSONEncode(GetData()))
-if IsMain then
-    local Data = GetData()
-    -- ส่ง logs เมื่ออยู่ที่ Lobby
-    SendTo(Url .. "/api/v1/shop/orders/logs",
-        {["logs"] = convertToField_(GetSomeCurrency())},
-        {["state"] = {
-            ["map"] = {
-                ["name"] = "Lobby",
-                ["chapter"] = "Main",
-                ["wave"] = "0",
-                ["mode"] = "Lobby",
-                ["difficulty"] = "None"
-            },
-            ["win"] = true,
-        }},
-        {["time"] = 0},
-        {["currency"] = convertToField_(GetSomeCurrency())}
-    )
-    SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
+
 elseif IsMatch then
     warn("IN Match")
     local Level = tonumber(plr:GetAttribute("Level"))

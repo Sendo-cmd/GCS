@@ -667,6 +667,9 @@ task.spawn(function()
                 local Mob = getNearestMob(Char)
                 local LastAttack = 0
                 local LastTween = nil
+                local LastHP = Char:FindFirstChildOfClass("Humanoid").Health
+                local HitCount = 0
+                local CheckTime = tick()
                 
                 if Mob then
                     print("Found Mob:", Mob.Name)
@@ -686,6 +689,29 @@ task.spawn(function()
                             return
                         end
                         
+                        local MyHumanoid = Char:FindFirstChildOfClass("Humanoid")
+                        if not MyHumanoid then return end
+                        
+                        -- ตรวจสอบว่าโดนตีหรือไม่ (HP ลดลง)
+                        local CurrentHP = MyHumanoid.Health
+                        if CurrentHP < LastHP then
+                            HitCount = HitCount + 1
+                            -- โดนตี! เพิ่มระยะห่าง
+                            _G.SafeHeightOffset = (_G.SafeHeightOffset or 2) + 1
+                            print("[Farm] โดนตี! เพิ่มระยะเป็น +", _G.SafeHeightOffset, "studs")
+                        end
+                        LastHP = CurrentHP
+                        
+                        -- ถ้าไม่โดนตี 5 วินาที และ offset > 2 ลองลดลง
+                        if tick() - CheckTime > 5 then
+                            if HitCount == 0 and (_G.SafeHeightOffset or 2) > 2 then
+                                _G.SafeHeightOffset = _G.SafeHeightOffset - 0.5
+                                print("[Farm] ไม่โดนตี ลดระยะเป็น +", _G.SafeHeightOffset, "studs")
+                            end
+                            HitCount = 0
+                            CheckTime = tick()
+                        end
+                        
                         -- เช็ค Mob ยังอยู่ไหม
                         if not Mob or not Mob.Parent then break end
                         
@@ -699,14 +725,13 @@ task.spawn(function()
                         local MyPosition = Char.HumanoidRootPart.Position
                         local Magnitude = (MyPosition - MobPosition).Magnitude
                         
-                        -- คำนวณขนาด Mob เพื่อหาระยะที่เหมาะสม
                         local MobSize = Mob:GetExtentsSize()
                         local MobHeight = MobSize.Y
                         
-                        -- ตำแหน่งที่ปลอดภัย: อยู่เหนือ Mob และหันหน้าลงมาตี (เหมือน Rock)
-                        local SafePosition = MobPosition + Vector3.new(0, MobHeight + 2, 0)
+                        -- ใช้ SafeHeightOffset ที่ปรับอัตโนมัติ
+                        local SafePosition = MobPosition + Vector3.new(0, MobHeight/2 + (_G.SafeHeightOffset or 2), 0)
                         
-                        if Magnitude < 25 then
+                        if Magnitude < 20 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
