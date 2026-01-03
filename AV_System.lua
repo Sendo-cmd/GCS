@@ -2592,20 +2592,59 @@ end
                 local GuitarMinigame = require(GuitarMinigameModule)
                 local ScoreHandler = require(GuitarMinigameModule:WaitForChild("ScoreHandler"))
                 
-                -- Hook ScoreHandler - ทุก hit เป็น Perfect, ทุก miss เป็น Perfect hit
+                -- ===== SCORE TRACKING + FORCE END AT 100K =====
+                local TARGET_SCORE = 100000
+                local hasEndedCurrentSong = false
+                local hitCount = 0
+                
+                -- ฟังก์ชัน Force End
+                local function tryForceEnd()
+                    if hasEndedCurrentSong then return end
+                    
+                    local score = 0
+                    pcall(function()
+                        if ScoreHandler.GetCurrentScore then
+                            score = ScoreHandler.GetCurrentScore() or 0
+                        end
+                    end)
+                    
+                    -- Print ทุก 50 hits
+                    hitCount = hitCount + 1
+                    if hitCount % 50 == 0 then
+                        print("[Guitar King] Hits:", hitCount, "Score:", score)
+                    end
+                    
+                    if score >= TARGET_SCORE then
+                        hasEndedCurrentSong = true
+                        print("[Guitar King] SCORE", score, ">= 100k - FORCE END NOW!")
+                        
+                        pcall(function()
+                            if GuitarMinigame.Cleanup then
+                                GuitarMinigame.Cleanup(true)
+                            end
+                        end)
+                    end
+                end
+                
+                -- ===== AUTO-HIT + CHECK SCORE =====
                 local originalHitNote = ScoreHandler.HitNote
                 local originalMissNote = ScoreHandler.MissNote
                 
                 if originalHitNote then
                     ScoreHandler.HitNote = function(isPerfect, ...)
-                        return originalHitNote(true, ...)
+                        local result = originalHitNote(true, ...)
+                        -- เช็ค score หลังทุก hit
+                        tryForceEnd()
+                        return result
                     end
                 end
                 
                 if originalMissNote then
                     ScoreHandler.MissNote = function(...)
                         if originalHitNote then
-                            return originalHitNote(true)
+                            local result = originalHitNote(true)
+                            tryForceEnd()
+                            return result
                         end
                         return
                     end
@@ -2616,12 +2655,12 @@ end
                 if originalPullNote then
                     GuitarMinigame.PullNote = function(...)
                         local note = originalPullNote(...)
-                        -- Auto-hit note ทันทีที่มัน spawn (delay เล็กน้อยให้ timing ถูก)
                         if note then
                             task.delay(0.1, function()
                                 pcall(function()
                                     if originalHitNote then
                                         originalHitNote(true)
+                                        tryForceEnd()
                                     end
                                 end)
                             end)
@@ -2630,21 +2669,23 @@ end
                     end
                 end
                 
-                -- Auto-hit: Loop เช็ค notes ที่อยู่ใน hit zone แล้ว hit อัตโนมัติ
+                -- ===== FAST AUTO-HIT LOOP =====
                 task.spawn(function()
                     while true do
-                        task.wait(0.05) -- Check ทุก 50ms
+                        task.wait(0.03) -- เร็วมาก 30ms
                         pcall(function()
-                            if GuitarMinigame.IsActive and GuitarMinigame.IsActive() then
-                                -- หา notes ที่ใกล้ hit zone แล้ว hit ให้
-                                if GuitarMinigame.GetNoteById then
-                                    for i = 1, 100 do
-                                        local note = GuitarMinigame.GetNoteById(i)
-                                        if note and originalHitNote then
-                                            originalHitNote(true)
-                                        end
-                                    end
+                            -- เช็คว่า minigame active อยู่ไหม
+                            local isActive = GuitarMinigame._isActive or GuitarMinigame.Active or false
+                            if type(GuitarMinigame.IsActive) == "function" then
+                                isActive = GuitarMinigame.IsActive()
+                            end
+                            
+                            if isActive and originalHitNote then
+                                -- Hit หลายครั้งเพื่อให้ไม่พลาด
+                                for i = 1, 5 do
+                                    originalHitNote(true)
                                 end
+                                tryForceEnd()
                             end
                         end)
                     end
@@ -2655,7 +2696,6 @@ end
                 local GK_DIFFICULTIES = {"Easy", "Medium", "Hard", "Expert"}
                 local gkSongIndex = 1
                 local gkDiffIndex = 1
-                local gkFirstRun = true
                 
                 -- ฟังก์ชันปิด GUI Guitar
                 local function closeGuitarUI()
@@ -2679,47 +2719,25 @@ end
                 end
                 
                 local function playNextGuitarSong()
+                    -- Reset flags ก่อนเริ่มเพลงใหม่
+                    hasEndedCurrentSong = false
+                    hitCount = 0
+                    
                     local song = GK_SONGS[gkSongIndex]
                     local diff = GK_DIFFICULTIES[gkDiffIndex]
                     print("[Guitar King] Playing:", song, "-", diff)
                     
-                    -- ปิด GUI ก่อนเล่นทุกครั้ง
-                    closeGuitarUI()
-                    task.wait(0.5)
-                    
-                    if gkFirstRun then
-                        gkFirstRun = false
-                        print("[Guitar King] First run - Open, Close, Open")
-                        
-                        pcall(function()
-                            JamSessionHandler.StartMinigame(song, diff)
-                        end)
-                        task.wait(1.5)
-                        
-                        -- ปิดหลายรอบให้แน่ใจ
-                        for i = 1, 3 do
-                            closeGuitarUI()
-                            task.wait(0.3)
-                        end
-                        task.wait(1)
-                        
-                        pcall(function()
-                            JamSessionHandler.StartMinigame(song, diff)
-                        end)
-                    else
-                        -- ครั้งถัดไป: เปิดปกติ
-                        pcall(function()
-                            JamSessionHandler.StartMinigame(song, diff)
-                        end)
-                    end
+                    pcall(function()
+                        JamSessionHandler.StartMinigame(song, diff)
+                    end)
                 end
                 
                 GuitarMinigame.MinigameEnded:Connect(function(score)
                     print("[Guitar King] Song ended! Score:", score or 0)
                     
-                    -- ปิด GUI ทุกครั้งที่เพลงจบ
-                    closeGuitarUI()
-                    task.wait(0.5)
+                    -- Reset flags
+                    hasEndedCurrentSong = false
+                    hitCount = 0
                     
                     gkDiffIndex = gkDiffIndex + 1
                     if gkDiffIndex > #GK_DIFFICULTIES then
@@ -2727,21 +2745,49 @@ end
                         gkSongIndex = gkSongIndex + 1
                         if gkSongIndex > #GK_SONGS then
                             gkSongIndex = 1
-                            print("[Guitar King] All songs completed!")
-                            closeGuitarUI() -- ปิด GUI อีกครั้งตอนจบทั้งหมด
-                            task.delay(5, function()
-                                Auto_Config()
+                            print("[Guitar King] All 12 songs completed! Waiting for server to update progress...")
+                            
+                            -- หยุดเล่น แล้ว Loop เช็คจนกว่า progress จะถึง target
+                            task.spawn(function()
+                                while true do
+                                    task.wait(5) -- เช็คทุก 5 วินาที
+                                    
+                                    -- ดึงข้อมูล order ใหม่
+                                    local success, newOrderData = pcall(function()
+                                        return Get(PathWay .. "check")
+                                    end)
+                                    
+                                    if success and newOrderData then
+                                        local progress = tonumber(newOrderData["progress_value"]) or 0
+                                        local target = tonumber(newOrderData["target_value"]) or 1
+                                        
+                                        print("[Guitar King] Waiting... Progress:", progress, "/", target)
+                                        
+                                        if progress >= target then
+                                            print("[Guitar King] Target reached! Finishing order...")
+                                            if _G.Leave_Party then _G.Leave_Party() end
+                                            Post(PathWay .. "finished", CreateBody())
+                                            task.delay(3, function()
+                                                Auto_Config()
+                                            end)
+                                            return -- จบ loop
+                                        end
+                                    else
+                                        print("[Guitar King] Failed to check progress, retrying...")
+                                    end
+                                    -- ไม่เล่นเพลงใหม่ แค่รอ loop เช็คต่อ
+                                end
                             end)
-                            return
+                            return -- ไม่เล่นเพลงต่อ
                         end
                     end
                     
                     task.delay(2, playNextGuitarSong)
                 end)
                 
-                -- Start first song
-                print("[Guitar King] Starting all songs...")
-                task.delay(1, playNextGuitarSong)
+                -- Start first song ทันที (ไม่ต้อง delay)
+                print("[Guitar King] Starting first song...")
+                playNextGuitarSong()
             end
         else
             local plr = game:GetService("Players").LocalPlayer

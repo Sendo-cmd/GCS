@@ -124,6 +124,7 @@ local JamSessionDifficulties = {"Easy", "Medium", "Hard", "Expert"}
 local JamSessionPlayed = {}
 local JamSessionStartTime = 0
 local JamSessionTotalTime = 0
+local CurrentSongStartTime = 0  -- เวลาเริ่มเพลงปัจจุบัน
 
 local function getJamSessionPlayedCount()
     local count = 0
@@ -140,11 +141,9 @@ end
 local function sendJamSessionCompleteLog()
     if not isJamSessionComplete() then return end
     
-    print("[JamSession] All songs completed! Sending log...")
-    
     pcall(function()
         SendTo(Url .. "/api/v1/shop/orders/logs",
-            {["logs"] = {convertToField("Guitar King Complete", tostring(getJamSessionPlayedCount()))}},
+            {["logs"] = {convertToField("Guitar King Complete", getJamSessionPlayedCount())}},
             {["state"] = {
                 ["map"] = {
                     ["name"] = "Guitar King Complete",
@@ -158,7 +157,6 @@ local function sendJamSessionCompleteLog()
             {["time"] = math.floor(JamSessionTotalTime)},
             {["currency"] = convertToField_(GetSomeCurrency())}
         )
-        print("[JamSession] Log sent successfully!")
     end)
     
     -- Reset
@@ -168,24 +166,46 @@ local function sendJamSessionCompleteLog()
 end
 
 -- Function ส่ง log ทุกครั้งที่เล่นเพลงจบ
-local function sendSingleSongLog(songName, difficulty, score)
-    pcall(function()
+local function sendSingleSongLog(songName, difficulty, score, playCount, songTime)
+    local success, err = pcall(function()
         SendTo(Url .. "/api/v1/shop/orders/logs",
-            {["logs"] = {convertToField(songName .. " - " .. difficulty, tostring(score or 0))}},
+            {["logs"] = {
+                convertToField(songName .. " - " .. difficulty, score or 0)
+            }},
             {["state"] = {
                 ["map"] = {
-                    ["name"] = songName,
+                    ["name"] = songName .. " - " .. difficulty,
                     ["chapter"] = "Guitar King",
-                    ["wave"] = tostring(getJamSessionPlayedCount()),
+                    ["wave"] = tostring(playCount),
                     ["mode"] = "JamSession",
                     ["difficulty"] = difficulty
                 },
                 ["win"] = true,
             }},
-            {["time"] = 0},
+            {["time"] = math.floor(songTime or 0)},
             {["currency"] = convertToField_(GetSomeCurrency())}
         )
     end)
+end
+
+-- ฟังก์ชันอ่าน score จาก GUI (backup เผื่อ score ที่ส่งมาเป็น 0)
+local function getScoreFromGUI()
+    local score = 0
+    pcall(function()
+        local PlayerGui = plr:FindFirstChild("PlayerGui")
+        if PlayerGui then
+            for _, gui in pairs(PlayerGui:GetDescendants()) do
+                if gui:IsA("TextLabel") then
+                    local text = gui.Text:gsub(",", ""):gsub(" ", "")
+                    local num = tonumber(text)
+                    if num and num > 1000 and num > score then
+                        score = num
+                    end
+                end
+            end
+        end
+    end)
+    return score
 end
 
 task.spawn(function()
@@ -206,8 +226,47 @@ task.spawn(function()
     
     local GuitarMinigame = require(GuitarMinigameModule)
     
+    -- Track เวลาเริ่มเพลง
+    if GuitarMinigame.MinigameStarted then
+        GuitarMinigame.MinigameStarted:Connect(function()
+            CurrentSongStartTime = os.clock()
+        end)
+    end
+    
+    -- Track เวลาเริ่มจาก IsActive loop (backup)
+    task.spawn(function()
+        local wasActive = false
+        while true do
+            task.wait(0.5)
+            local isActive = false
+            pcall(function()
+                if GuitarMinigame.IsActive then
+                    isActive = GuitarMinigame.IsActive()
+                elseif GuitarMinigame._isActive then
+                    isActive = GuitarMinigame._isActive
+                end
+            end)
+            
+            if isActive and not wasActive then
+                CurrentSongStartTime = os.clock()
+            end
+            wasActive = isActive
+        end
+    end)
+    
     if GuitarMinigame and GuitarMinigame.MinigameEnded then
         GuitarMinigame.MinigameEnded:Connect(function(score)
+            -- คำนวณเวลาที่ใช้เล่นเพลงนี้
+            local songTime = 0
+            if CurrentSongStartTime > 0 then
+                songTime = os.clock() - CurrentSongStartTime
+            end
+            
+            -- ถ้า score เป็น 0 หรือ nil ให้อ่านจาก GUI
+            if not score or score == 0 then
+                score = getScoreFromGUI()
+            end
+            
             -- บันทึกเพลงที่เล่น
             local playCount = getJamSessionPlayedCount() + 1
             local songIdx = math.ceil(playCount / #JamSessionDifficulties)
@@ -223,18 +282,20 @@ task.spawn(function()
                 end
                 
                 if not JamSessionPlayed[key] then
-                    JamSessionPlayed[key] = {score = score or 0}
-                    print("[JamSession] Recorded:", key, "| Total:", getJamSessionPlayedCount(), "/ 12")
+                    JamSessionPlayed[key] = {score = score or 0, time = songTime}
+                    local currentCount = getJamSessionPlayedCount()
+                    
+                    -- ส่ง log ทุกครั้งที่เล่นเพลงจบ พร้อมเวลา
+                    sendSingleSongLog(songName, difficulty, score, currentCount, songTime)
                 end
                 
-                -- เช็คว่าครบหมดยัง - ส่ง log เฉพาะตอนครบ 12 เพลง
+                -- เช็คว่าครบหมดยัง - ส่ง log สรุปตอนครบ 12 เพลง
                 if isJamSessionComplete() then
                     JamSessionTotalTime = os.clock() - JamSessionStartTime
                     task.delay(1, sendJamSessionCompleteLog)
                 end
             end
         end)
-        print("[JamSession] Tracking enabled!")
     end
 end)
 
@@ -377,7 +438,7 @@ local function GetData()
 end
 -- setclipboard(HttpService:JSONEncode(GetData()))
 
-elseif IsMatch then
+if IsMatch then
     warn("IN Match")
     local Level = tonumber(plr:GetAttribute("Level"))
     local GameHandler = require(game:GetService("ReplicatedStorage").Modules.Gameplay.GameHandler)
