@@ -3021,12 +3021,13 @@ if ID[game.GameId][1] == "AV" then
                 end)
                 print("Executed")
             end
-            -- Auto Modifier System (Host)
+            -- Auto Modifier System (Host) - ใช้วิธีเดียวกับ Member
             if Settings["Auto Modifier"] then
-                local chosenModifiersCache = {}
-                local availableModifiersCache = {}
+                local plr = game:GetService("Players").LocalPlayer
                 local lastChoice = nil
                 local isChoosing = false
+                local chosenModifiers = {}
+                local currentWave = 0
 
                 local function ChooseModifier(modifierName)
                     pcall(function()
@@ -3035,13 +3036,53 @@ if ID[game.GameId][1] == "AV" then
                 end
 
                 local function VoteRestart()
-                    Networking.MatchRestartSettingEvent:FireServer("Vote")
+                    pcall(function()
+                        Networking.MatchRestartSettingEvent:FireServer("Vote")
+                    end)
                 end
 
-                local function HasChosenRequiredModifier(requiredList)
-                    for _, required in ipairs(requiredList) do
-                        for _, modName in ipairs(chosenModifiersCache) do
-                            if string.lower(modName) == string.lower(required) then
+                local function GetAvailableModifiers()
+                    local available = {}
+                    pcall(function()
+                        local ModifiersGui = plr.PlayerGui:FindFirstChild("Modifiers")
+                        if ModifiersGui then
+                            local ModifiersFrame = ModifiersGui:FindFirstChild("Modifiers")
+                            if ModifiersFrame then
+                                local MainFrame = ModifiersFrame:FindFirstChild("Main")
+                                if MainFrame and MainFrame.Visible then
+                                    for _, child in pairs(MainFrame:GetChildren()) do
+                                        if child:IsA("Frame") or child:IsA("TextButton") or child:IsA("ImageButton") or child:IsA("TextLabel") then
+                                            if child.Visible then
+                                                table.insert(available, child.Name)
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                    return available
+                end
+
+                local function GetBestModifier(availableModifiers)
+                    local bestModifier = nil
+                    local highestPriority = -999
+                    
+                    for _, modName in ipairs(availableModifiers) do
+                        local priority = Settings["Modifier Priority"][modName] or 0
+                        if priority > highestPriority then
+                            highestPriority = priority
+                            bestModifier = modName
+                        end
+                    end
+                    
+                    return bestModifier
+                end
+
+                local function HasChosenRequiredModifier()
+                    for _, required in ipairs(Settings["Select Modifier"]) do
+                        for _, chosen in ipairs(chosenModifiers) do
+                            if string.lower(chosen) == string.lower(required) then
                                 return true
                             end
                         end
@@ -3049,70 +3090,48 @@ if ID[game.GameId][1] == "AV" then
                     return false
                 end
 
+                -- Wave Tracker
                 pcall(function()
-                    local ModifierDisplayEvent = Networking:WaitForChild("ClientListeners"):WaitForChild("ModifierDisplayEvent")
-                    ModifierDisplayEvent.OnClientEvent:Connect(function(...)
-                        local args = {...}
-                        availableModifiersCache = {}
-                        for _, arg in ipairs(args) do
-                            if type(arg) == "table" then
-                                for k, v in pairs(arg) do
-                                    if type(k) == "string" then
-                                        table.insert(availableModifiersCache, k)
-                                    elseif type(v) == "string" then
-                                        table.insert(availableModifiersCache, v)
-                                    end
+                    local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                    InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
+                        if eventType == "Wave" and data and data.Waves then
+                            currentWave = data.Waves
+                            
+                            if currentWave == 0 then
+                                chosenModifiers = {}
+                                lastChoice = nil
+                            end
+                            
+                            if Settings["Restart Modifier"] and currentWave >= 1 then
+                                if not HasChosenRequiredModifier() then
+                                    print("[Auto Modifier Host] Required modifier not found, voting restart...")
+                                    VoteRestart()
                                 end
-                            elseif type(arg) == "string" then
-                                table.insert(availableModifiersCache, arg)
                             end
                         end
                     end)
                 end)
 
+                -- Main Loop
                 task.spawn(function()
-                    while task.wait(3) do
-                        if #availableModifiersCache == 0 and #chosenModifiersCache > 0 then
-                            task.wait(5)
-                            if #availableModifiersCache == 0 then
-                                lastChoice = nil
-                                chosenModifiersCache = {}
-                            end
-                        end
-                    end
-                end)
-
-                task.spawn(function()
-                    while task.wait(0.1) do
+                    while task.wait(0.3) do
                         if isChoosing then continue end
                         
-                        if Settings["Restart Modifier"] and #chosenModifiersCache > 0 then
-                            if not HasChosenRequiredModifier(Settings["Select Modifier"]) then
-                                VoteRestart()
-                                continue
-                            end
+                        local availableModifiers = GetAvailableModifiers()
+                        if #availableModifiers == 0 then 
+                            lastChoice = nil
+                            continue 
                         end
                         
-                        if #availableModifiersCache == 0 then continue end
-                        
-                        local bestModifier = nil
-                        local highestPriority = -999
-                        
-                        for _, modName in ipairs(availableModifiersCache) do
-                            local priority = Settings["Modifier Priority"][modName] or 0
-                            if priority > highestPriority then
-                                highestPriority = priority
-                                bestModifier = modName
-                            end
-                        end
+                        local bestModifier = GetBestModifier(availableModifiers)
                         
                         if bestModifier and bestModifier ~= lastChoice then
                             isChoosing = true
+                            print("[Auto Modifier Host] Choosing:", bestModifier)
                             ChooseModifier(bestModifier)
                             lastChoice = bestModifier
-                            table.insert(chosenModifiersCache, bestModifier)
-                            availableModifiersCache = {}
-                            task.wait(0.3)
+                            table.insert(chosenModifiers, bestModifier)
+                            task.wait(0.5)
                             isChoosing = false
                         end
                     end
