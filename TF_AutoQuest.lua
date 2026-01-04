@@ -433,6 +433,63 @@ local function SellOres()
 end
 
 -- ===== QUEST FUNCTIONS =====
+
+-- ดึงชื่อ NPC จาก Quest Template หรือจาก Quest ID
+local function GetQuestNPC(questId, questTemplate)
+    -- 1. ถ้า Template มี Npc field ให้ใช้เลย
+    if questTemplate and questTemplate.Npc then
+        return questTemplate.Npc
+    end
+    
+    -- 2. ถ้าไม่มี ให้ดึงจากชื่อ Quest (เช่น "Captain Rowan 4" -> "Captain Rowan")
+    if questId then
+        -- ตัดตัวเลขท้ายออก
+        local npcName = questId:match("^(.-)%s*%d*$")
+        if npcName and npcName ~= "" then
+            return npcName
+        end
+        return questId
+    end
+    
+    return nil
+end
+
+-- ตรวจสอบว่า Quest เสร็จทุก objectives หรือยัง (แต่ยังไม่ได้ turn in)
+local function IsQuestAllObjectivesComplete(questInfo)
+    if not questInfo then return false end
+    
+    local replica = PlayerController and PlayerController.Replica
+    if not replica or not replica.Data or not replica.Data.Quests then return false end
+    
+    local freshProgress = replica.Data.Quests[questInfo.Id]
+    if not freshProgress then return false end
+    
+    local progressTable = freshProgress.Progress
+    if not progressTable then return false end
+    
+    local objectives = questInfo.Template.Objectives
+    
+    for i, objective in ipairs(objectives) do
+        local objData = progressTable[i]
+        local currentProgress = 0
+        local requiredAmount = objective.Amount or 1
+        
+        if objData and type(objData) == "table" then
+            currentProgress = objData.currentProgress or 0
+            requiredAmount = objData.requiredAmount or requiredAmount
+        elseif objData and type(objData) == "number" then
+            currentProgress = objData
+        end
+        
+        -- ถ้ามี objective ที่ยังไม่เสร็จ
+        if currentProgress < requiredAmount then
+            return false
+        end
+    end
+    
+    return true
+end
+
 local function GetActiveQuestInfo()
     -- ดึง quest data สดๆ จาก PlayerController ทุกครั้ง
     local replica = PlayerController and PlayerController.Replica
@@ -761,9 +818,8 @@ end
 local function ProcessAllKillObjectives(questInfo)
     if not questInfo then return end
     
-    -- เก็บ NPC เจ้าของ Quest (ดึงจาก questId เช่น "Captain Rowan 4" -> "Captain Rowan")
-    local questId = questInfo.Id or ""
-    CurrentQuestNPC = questId:match("^(.-)%s*%d*$") or questId
+    -- เก็บ NPC เจ้าของ Quest (ใช้ฟังก์ชัน GetQuestNPC ที่รองรับทั้ง Template.Npc และดึงจากชื่อ Quest)
+    CurrentQuestNPC = GetQuestNPC(questInfo.Id, questInfo.Template)
     print("[Quest] NPC เจ้าของ Quest:", CurrentQuestNPC)
     
     -- รวบรวม mob ทั้งหมดที่ต้องฆ่า
@@ -1065,10 +1121,9 @@ local function ProcessObjective(objectiveInfo, questInfo)
     if not objectiveInfo then return end
     local objType = objectiveInfo.Objective.Type
     
-    -- เก็บ NPC เจ้าของ Quest (ดึงจาก questId เช่น "Captain Rowan 4" -> "Captain Rowan")
-    if questInfo and questInfo.Id then
-        local questId = questInfo.Id or ""
-        CurrentQuestNPC = questId:match("^(.-)%s*%d*$") or questId
+    -- เก็บ NPC เจ้าของ Quest (ใช้ฟังก์ชัน GetQuestNPC ที่รองรับทั้ง Template.Npc และดึงจากชื่อ Quest)
+    if questInfo then
+        CurrentQuestNPC = GetQuestNPC(questInfo.Id, questInfo.Template)
     end
     
     if objType == "Talk" then
@@ -1109,17 +1164,53 @@ local function MainLoop()
                 if objective then
                     ProcessObjective(objective, questInfo)
                 else
-                    print("[System] Quest completed, checking next...")
-                    task.wait(2)
+                    -- Quest เสร็จทุก objectives แล้ว -> กลับไปคุยกับ NPC เพื่อ turn in
+                    print("[System] Quest completed, talking to NPC to turn in...")
+                    
+                    local npcName = GetQuestNPC(questInfo.Id, questInfo.Template)
+                    if npcName then
+                        print("[System] Going to NPC:", npcName)
+                        TalkToNPC(npcName)
+                        task.wait(1)
+                    else
+                        print("[System] Cannot find NPC for quest:", questInfo.Id)
+                        task.wait(2)
+                    end
                 end
             else
-                -- ไม่มี Quest = ฟาร์มหินอัตโนมัติ
-                print("[System] No quest, auto farming...")
+                -- ไม่มี Quest = ลองไปคุย NPC ที่มี Quest Available
+                print("[System] No quest, checking for available quests...")
                 
-                if Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
-                    FarmRock(nil)
-                else
-                    DoForgeAndSell()
+                -- หา NPC ที่มี Quest ใหม่ให้
+                local foundQuest = false
+                for questId, questTemplate in pairs(QuestData) do
+                    -- ข้าม Quest ที่ทำไปแล้ว
+                    local completedQuests = PlayerController.Replica.Data.CompletedQuests or {}
+                    local cooldownQuests = PlayerController.Replica.Data.CooldownQuests or {}
+                    
+                    if not completedQuests[questId] and not cooldownQuests[questId] then
+                        local npcName = GetQuestNPC(questId, questTemplate)
+                        if npcName then
+                            -- ตรวจสอบว่า NPC นี้อยู่ใน workspace.Proximity หรือไม่
+                            local npc = workspace:FindFirstChild("Proximity") and workspace.Proximity:FindFirstChild(npcName)
+                            if npc then
+                                print("[System] Found available quest NPC:", npcName)
+                                TalkToNPC(npcName)
+                                task.wait(1)
+                                foundQuest = true
+                                break
+                            end
+                        end
+                    end
+                end
+                
+                -- ถ้าไม่เจอ Quest ใหม่ ให้ฟาร์มหิน
+                if not foundQuest then
+                    if Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
+                        FarmRock(nil)
+                    else
+                        DoForgeAndSell()
+                    end
                 end
             end
         end)

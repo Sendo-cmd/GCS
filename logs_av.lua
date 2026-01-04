@@ -124,7 +124,7 @@ local JamSessionDifficulties = {"Easy", "Medium", "Hard", "Expert"}
 local JamSessionPlayed = {}
 local JamSessionStartTime = 0
 local JamSessionTotalTime = 0
-local CurrentSongStartTime = 0  -- เวลาเริ่มเพลงปัจจุบัน
+local CurrentSongStartTime = 0
 
 local function getJamSessionPlayedCount()
     local count = 0
@@ -165,7 +165,6 @@ local function sendJamSessionCompleteLog()
     JamSessionStartTime = 0
 end
 
--- Function ส่ง log ทุกครั้งที่เล่นเพลงจบ
 local function sendSingleSongLog(songName, difficulty, score, playCount, songTime)
     local success, err = pcall(function()
         SendTo(Url .. "/api/v1/shop/orders/logs",
@@ -188,7 +187,6 @@ local function sendSingleSongLog(songName, difficulty, score, playCount, songTim
     end)
 end
 
--- ฟังก์ชันอ่าน score จาก GUI (backup เผื่อ score ที่ส่งมาเป็น 0)
 local function getScoreFromGUI()
     local score = 0
     pcall(function()
@@ -225,20 +223,83 @@ task.spawn(function()
     end
     
     local GuitarMinigame = require(GuitarMinigameModule)
+    local ScoreHandler = nil
+    pcall(function()
+        ScoreHandler = require(GuitarMinigameModule:WaitForChild("ScoreHandler"))
+    end)
     
-    -- Track เวลาเริ่มเพลง
-    if GuitarMinigame.MinigameStarted then
-        GuitarMinigame.MinigameStarted:Connect(function()
-            CurrentSongStartTime = os.clock()
-        end)
+    local lastLoggedCount = 0 
+    
+    -- ฟังก์ชันส่ง log เพลง
+    local function logCurrentSong(score)
+        local playCount = getJamSessionPlayedCount() + 1
+        
+        if playCount <= lastLoggedCount then
+            -- print("[Guitar Log] Skipping duplicate log for count:", playCount)
+            return
+        end
+        
+        local songIdx = math.ceil(playCount / #JamSessionDifficulties)
+        local diffIdx = ((playCount - 1) % #JamSessionDifficulties) + 1
+        
+        if songIdx > #JamSessionSongs then
+            songIdx = 1
+            diffIdx = 1
+        end
+        
+        local songName = JamSessionSongs[songIdx]
+        local difficulty = JamSessionDifficulties[diffIdx]
+        local key = songName .. "_" .. difficulty
+        
+        if not score or score == 0 then
+            pcall(function()
+                if ScoreHandler and ScoreHandler.GetCurrentScore then
+                    score = ScoreHandler.GetCurrentScore() or 0
+                end
+            end)
+        end
+        if not score or score == 0 then
+            score = getScoreFromGUI()
+        end
+        
+        -- คำนวณเวลา
+        local songTime = 0
+        if CurrentSongStartTime > 0 then
+            songTime = os.clock() - CurrentSongStartTime
+        end
+        
+        if JamSessionStartTime == 0 then
+            JamSessionStartTime = os.clock()
+        end
+        
+        if not JamSessionPlayed[key] then
+            JamSessionPlayed[key] = {score = score or 0, time = songTime}
+            lastLoggedCount = playCount
+            
+            print("[Guitar Log] Logging:", songName, "-", difficulty, "Score:", score, "Time:", math.floor(songTime))
+            sendSingleSongLog(songName, difficulty, score, playCount, songTime)
+        end
+        
+        -- Reset เวลาเริ่มเพลง
+        CurrentSongStartTime = 0
+        
+        -- เช็คว่าครบหมดยัง
+        if isJamSessionComplete() then
+            JamSessionTotalTime = os.clock() - JamSessionStartTime
+            task.delay(1, sendJamSessionCompleteLog)
+        end
     end
     
-    -- Track เวลาเริ่มจาก IsActive loop (backup)
+    local wasActive = false
+    local lastScore = 0
+    
     task.spawn(function()
-        local wasActive = false
         while true do
-            task.wait(0.5)
+            task.wait(0.3)
+            
             local isActive = false
+            local currentScore = 0
+            
             pcall(function()
                 if GuitarMinigame.IsActive then
                     isActive = GuitarMinigame.IsActive()
@@ -247,54 +308,41 @@ task.spawn(function()
                 end
             end)
             
+            pcall(function()
+                if ScoreHandler and ScoreHandler.GetCurrentScore then
+                    currentScore = ScoreHandler.GetCurrentScore() or 0
+                end
+            end)
+            
+            -- เริ่มเพลงใหม่
             if isActive and not wasActive then
                 CurrentSongStartTime = os.clock()
+                lastScore = 0
+                print("[Guitar Log] Song started, tracking time...")
             end
+            
+            if wasActive and not isActive then
+                -- print("[Guitar Log] Song ended detected via IsActive, score:", lastScore)
+                task.delay(0.5, function()
+                    logCurrentSong(lastScore)
+                end)
+            end
+            
+            if currentScore > lastScore then
+                lastScore = currentScore
+            end
+            
             wasActive = isActive
         end
     end)
     
+    -- MinigameEnded event (backup)
     if GuitarMinigame and GuitarMinigame.MinigameEnded then
         GuitarMinigame.MinigameEnded:Connect(function(score)
-            -- คำนวณเวลาที่ใช้เล่นเพลงนี้
-            local songTime = 0
-            if CurrentSongStartTime > 0 then
-                songTime = os.clock() - CurrentSongStartTime
-            end
-            
-            -- ถ้า score เป็น 0 หรือ nil ให้อ่านจาก GUI
-            if not score or score == 0 then
-                score = getScoreFromGUI()
-            end
-            
-            -- บันทึกเพลงที่เล่น
-            local playCount = getJamSessionPlayedCount() + 1
-            local songIdx = math.ceil(playCount / #JamSessionDifficulties)
-            local diffIdx = ((playCount - 1) % #JamSessionDifficulties) + 1
-            
-            if songIdx <= #JamSessionSongs then
-                local songName = JamSessionSongs[songIdx]
-                local difficulty = JamSessionDifficulties[diffIdx]
-                local key = songName .. "_" .. difficulty
-                
-                if JamSessionStartTime == 0 then
-                    JamSessionStartTime = os.clock()
-                end
-                
-                if not JamSessionPlayed[key] then
-                    JamSessionPlayed[key] = {score = score or 0, time = songTime}
-                    local currentCount = getJamSessionPlayedCount()
-                    
-                    -- ส่ง log ทุกครั้งที่เล่นเพลงจบ พร้อมเวลา
-                    sendSingleSongLog(songName, difficulty, score, currentCount, songTime)
-                end
-                
-                -- เช็คว่าครบหมดยัง - ส่ง log สรุปตอนครบ 12 เพลง
-                if isJamSessionComplete() then
-                    JamSessionTotalTime = os.clock() - JamSessionStartTime
-                    task.delay(1, sendJamSessionCompleteLog)
-                end
-            end
+            print("[Guitar Log] MinigameEnded fired, score:", score)
+            task.delay(0.3, function()
+                logCurrentSong(score)
+            end)
         end)
     end
 end)
@@ -509,7 +557,6 @@ if IsMatch then
                 ["difficulty"] = Results["Difficulty"],
             }
             
-            -- World Line: ถ้าเจอ Floor ใน StageAct ให้ใช้แทน chapter
             pcall(function()
                 local Guides = plr.PlayerGui:FindFirstChild("Guides")
                 if Guides and Guides:FindFirstChild("List") then
