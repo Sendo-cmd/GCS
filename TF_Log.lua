@@ -229,7 +229,7 @@ task.spawn(function ()
                     end
                 end
                 for npcName, count in pairs(QuestCounts) do
-                    LastConvertOres[#LastConvertOres + 1] = convertToField(npcName .. " Complete", count)
+                    LastConvertOres[#LastConvertOres + 1] = convertToField("Complete Quest", count)
                 end
                 -- Clear the log after sending
                 _G.CompletedQuestsLog = {}
