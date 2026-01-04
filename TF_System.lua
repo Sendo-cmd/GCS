@@ -1,7 +1,8 @@
 local Settings = {
-    ["Farm Mode"] = "Mob",
+    ["Farm Mode"] = "Mob",  -- "Mob", "Rock", "Quest"
     ["Select Mobs"] = {"Skeleton Rogue"},
     ["Select Rocks"] = {"Pebble"},
+    ["Select Quest"] = "",  -- ใส่ชื่อ NPC หรือ Special Quest เช่น "Greedy Cey", "Prismatic Pickaxe", "Dragon Head Pickaxe"
     ["Ignore Forge Rarity"] = {
         "Mythic",
         "Relic",
@@ -208,6 +209,7 @@ local function Auto_Config(id)
         if #Insert > 0 then
             Settings["Select Rocks"] = Insert
             Settings["Select Mobs"] = Insert
+            Settings["Select Quest"] = Insert
         end
         
         task.spawn(function()
@@ -317,6 +319,22 @@ local Ores = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Data
 
 local PlayerController = Knit.GetController("PlayerController")
 local ChangeSequence = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("ChangeSequence")
+
+-- ===== REMOTES =====
+local ToolActivated = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RF"):WaitForChild("ToolActivated")
+local DialogueRemote = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Dialogue")
+local DialogueEvent = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RE"):WaitForChild("DialogueEvent")
+local RunCommand = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand")
+local PurchaseRemote = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Purchase")
+local PartyActivate = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("PartyService"):WaitForChild("RF"):WaitForChild("Activate")
+local ProximityFunctionals = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ProximityService"):WaitForChild("RF"):WaitForChild("Functionals")
+
+-- ===== QUEST DATA =====
+local QuestData = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Data"):WaitForChild("Quests"))
+
+-- ===== QUEST COMPLETION TRACKING =====
+_G.CompletedQuestsLog = _G.CompletedQuestsLog or {}  -- เก็บ Quest ที่เสร็จแล้วสำหรับ TF_Log
+
 local InsertEquipments = {}
 for i,v in pairs(PlayerController.Replica.Data.Inventory["Equipments"]) do
     table.insert(InsertEquipments,v["GUID"])
@@ -325,12 +343,15 @@ end
 local HasTalkedToMarbles = false
 local HasTalkedToGreedyCey = false
 
+-- ===== SAFE HEIGHT FOR MOB FARM =====
+local SafeHeightOffset = 0
+local MAX_SAFE_HEIGHT = 5
+
 PlayerController.Replica:OnWrite("GiveItem", function(t, v)
     print(t,v)
     if type(t) == "table" then
         task.wait(2)
-        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer( "SellConfirm",
-        {
+        RunCommand:InvokeServer("SellConfirm", {
             Basket = {
                 [t["GUID"]] = true,
             }
@@ -431,8 +452,1486 @@ end
 
 local function AttackMob()
     pcall(function()
-        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RF"):WaitForChild("ToolActivated"):InvokeServer("Weapon")
+        ToolActivated:InvokeServer("Weapon")
     end)
+end
+
+local function AttackRock()
+    pcall(function()
+        ToolActivated:InvokeServer("Pickaxe")
+    end)
+end
+
+-- ===== QUEST SYSTEM FUNCTIONS =====
+local function GetNPCPosition(npc)
+    if not npc then return nil end
+    
+    if npc:IsA("BasePart") then
+        return npc.Position
+    elseif npc:FindFirstChild("HumanoidRootPart") then
+        return npc.HumanoidRootPart.Position
+    elseif npc.PrimaryPart then
+        return npc.PrimaryPart.Position
+    else
+        local part = npc:FindFirstChildWhichIsA("BasePart")
+        if part then 
+            return part.Position 
+        else
+            return npc:GetPivot().Position
+        end
+    end
+end
+
+local function GetActiveQuestInfo()
+    local replica = PlayerController and PlayerController.Replica
+    if not replica or not replica.Data then return nil end
+    local quests = replica.Data.Quests
+    if not quests then return nil end
+    
+    for questId, questProgress in pairs(quests) do
+        local questTemplate = QuestData[questId]
+        if questTemplate then
+            return {
+                Id = questId,
+                Template = questTemplate,
+                Progress = questProgress
+            }
+        end
+    end
+    return nil
+end
+
+local function GetCurrentObjective(questInfo)
+    if not questInfo then return nil end
+    
+    local replica = PlayerController and PlayerController.Replica
+    if not replica or not replica.Data or not replica.Data.Quests then return nil end
+    
+    local freshProgress = replica.Data.Quests[questInfo.Id]
+    if not freshProgress then return nil end
+    
+    local progressTable = freshProgress.Progress
+    if not progressTable then return nil end
+    
+    for i, objData in ipairs(progressTable) do
+        if objData and type(objData) == "table" then
+            local currentProgress = objData.currentProgress or 0
+            local requiredAmount = objData.requiredAmount or 1
+            local objType = objData.questType or objData.Type or objData.type or "Unknown"
+            local objTarget = objData.target or objData.Target or "Unknown"
+            
+            if currentProgress < requiredAmount then
+                return {
+                    Index = i,
+                    Objective = {
+                        Type = objType,
+                        Target = objTarget,
+                        Amount = requiredAmount
+                    },
+                    Current = currentProgress,
+                    Required = requiredAmount
+                }
+            end
+        end
+    end
+    
+    return nil
+end
+
+local function GetAllIncompleteObjectives(questInfo)
+    if not questInfo then return {} end
+    
+    local replica = PlayerController and PlayerController.Replica
+    if not replica or not replica.Data or not replica.Data.Quests then return {} end
+    
+    local freshProgress = replica.Data.Quests[questInfo.Id]
+    if not freshProgress then return {} end
+    
+    local progressTable = freshProgress.Progress
+    if not progressTable then return {} end
+    
+    local incomplete = {}
+    
+    for i, objData in ipairs(progressTable) do
+        if objData and type(objData) == "table" then
+            local currentProgress = objData.currentProgress or 0
+            local requiredAmount = objData.requiredAmount or 1
+            local objType = objData.questType or objData.Type or objData.type or "Unknown"
+            local objTarget = objData.target or objData.Target or "Unknown"
+            
+            if currentProgress < requiredAmount then
+                table.insert(incomplete, {
+                    Index = i,
+                    Objective = {
+                        Type = objType,
+                        Target = objTarget,
+                        Amount = requiredAmount
+                    },
+                    Current = currentProgress,
+                    Required = requiredAmount
+                })
+            end
+        end
+    end
+    
+    return incomplete
+end
+
+local function IsQuestAllObjectivesComplete(questInfo)
+    if not questInfo then return false end
+    
+    local replica = PlayerController and PlayerController.Replica
+    if not replica or not replica.Data or not replica.Data.Quests then return false end
+    
+    local freshProgress = replica.Data.Quests[questInfo.Id]
+    if not freshProgress then return false end
+    
+    local progressTable = freshProgress.Progress
+    if not progressTable then return false end
+    
+    for _, objData in ipairs(progressTable) do
+        if objData and type(objData) == "table" then
+            local currentProgress = objData.currentProgress or 0
+            local requiredAmount = objData.requiredAmount or 1
+            if currentProgress < requiredAmount then
+                return false
+            end
+        end
+    end
+    
+    return true
+end
+
+local function GetQuestNPC(questId, questTemplate)
+    if questTemplate and questTemplate.Npc then
+        return questTemplate.Npc
+    end
+    
+    if questId then
+        local npcName = questId:match("^(%a+%s*%a*)")
+        if npcName then
+            npcName = npcName:gsub("%s*%d+$", "")
+            return npcName
+        end
+        return questId
+    end
+    
+    return nil
+end
+
+-- ===== TALK TO NPC (Quest) =====
+local function TalkToQuestNPC(npcName)
+    local success, err = pcall(function()
+        local npc = workspace:FindFirstChild("Proximity") and workspace.Proximity:FindFirstChild(npcName)
+        if not npc then
+            for _, obj in pairs(workspace:GetDescendants()) do
+                if obj.Name == npcName and (obj:IsA("Model") or obj:IsA("BasePart")) then
+                    npc = obj
+                    break
+                end
+            end
+        end
+        if not npc then 
+            print("[Quest] NPC not found:", npcName)
+            return 
+        end
+        
+        local npcPos = GetNPCPosition(npc)
+        
+        if npcPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
+            local targetPos = npcPos + Vector3.new(0, 0, 5)
+            local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
+            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(dist/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+            tween:Play()
+            tween.Completed:Wait()
+            task.wait(0.5)
+        end
+        
+        -- เก็บ Quest ID เดิม
+        local originalQuestId = nil
+        local originalQuest = GetActiveQuestInfo()
+        if originalQuest then
+            originalQuestId = originalQuest.Id
+        end
+        
+        -- เริ่มบทสนทนา
+        print("[Quest] Opening dialogue with", npcName)
+        DialogueRemote:InvokeServer(npc)
+        task.wait(1.5)
+        
+        -- รอให้ DialogueUI โหลด
+        local PlayerGui = Plr:FindFirstChild("PlayerGui")
+        local dialogueUI = nil
+        for i = 1, 30 do
+            dialogueUI = PlayerGui and PlayerGui:FindFirstChild("DialogueUI")
+            if dialogueUI and dialogueUI.Enabled then
+                break
+            end
+            task.wait(0.1)
+        end
+        
+        if not dialogueUI then
+            print("[Quest] DialogueUI not found!")
+            return
+        end
+        
+        -- ฟังก์ชันหาปุ่มที่ต้องกด
+        local function findTargetButton()
+            local responseBillboard = dialogueUI:FindFirstChild("ResponseBillboard")
+            if not responseBillboard then return nil, nil end
+            
+            local list = responseBillboard:FindFirstChild("List")
+            if not list then return nil, nil end
+            
+            local options = {}
+            for _, frame in pairs(list:GetChildren()) do
+                if frame:IsA("Frame") and frame.Visible then
+                    local button = frame:FindFirstChild("Button")
+                    if button and button:IsA("TextButton") and button.Text ~= "" then
+                        local layoutOrder = frame.LayoutOrder or 0
+                        table.insert(options, {
+                            Frame = frame,
+                            Button = button,
+                            Text = button.Text,
+                            LayoutOrder = layoutOrder
+                        })
+                    end
+                end
+            end
+            
+            table.sort(options, function(a, b) return a.LayoutOrder < b.LayoutOrder end)
+            
+            for i, opt in ipairs(options) do
+                local lowerText = opt.Text:lower()
+                if string.find(lowerText, "finished") or 
+                   string.find(lowerText, "i've finished") or
+                   string.find(lowerText, "ready to serve") or
+                   string.find(lowerText, "completed") or
+                   string.find(lowerText, "done") then
+                    return opt.Button, i
+                end
+            end
+            
+            if #options > 0 then
+                return options[1].Button, 1
+            end
+            
+            return nil, nil
+        end
+        
+        -- ฟังก์ชันกดปุ่ม
+        local function clickButton(button)
+            if not button or not button.Parent then return false end
+            
+            local vim = game:GetService("VirtualInputManager")
+            local guiInset = game:GetService("GuiService"):GetGuiInset()
+            local pos = button.AbsolutePosition
+            local size = button.AbsoluteSize
+            local centerX = pos.X + size.X / 2
+            local centerY = pos.Y + size.Y / 2 + guiInset.Y
+            
+            pcall(function()
+                vim:SendMouseMoveEvent(centerX, centerY, game, false)
+                task.wait(0.1)
+                vim:SendMouseButtonEvent(centerX, centerY, 0, true, game, 1)
+                task.wait(0.05)
+                vim:SendMouseButtonEvent(centerX, centerY, 0, false, game, 1)
+            end)
+            
+            return true
+        end
+        
+        -- วน loop กดเลือก
+        local maxAttempts = 30
+        local questTurnedIn = false
+        local noOptionsCount = 0
+        
+        for attempt = 1, maxAttempts do
+            local currentQuest = GetActiveQuestInfo()
+            if not currentQuest then
+                print("[Quest] ✓ Quest turned in! (no quest)")
+                questTurnedIn = true
+                break
+            elseif originalQuestId and currentQuest.Id ~= originalQuestId then
+                print("[Quest] ✓ Quest changed! New:", currentQuest.Id)
+                questTurnedIn = true
+                break
+            end
+            
+            local dUI = PlayerGui:FindFirstChild("DialogueUI")
+            if not dUI or not dUI.Enabled then
+                noOptionsCount = noOptionsCount + 1
+                if noOptionsCount >= 3 then
+                    break
+                end
+                DialogueRemote:InvokeServer(npc)
+                task.wait(1)
+                continue
+            end
+            
+            local targetButton, optionIndex = findTargetButton()
+            
+            if targetButton then
+                noOptionsCount = 0
+                print("[Quest] Clicking option", optionIndex)
+                clickButton(targetButton)
+                task.wait(0.5)
+                
+                for i = 1, 5 do
+                    local checkQuest = GetActiveQuestInfo()
+                    if not checkQuest or (originalQuestId and checkQuest.Id ~= originalQuestId) then
+                        questTurnedIn = true
+                        break
+                    end
+                    
+                    local checkUI = PlayerGui:FindFirstChild("DialogueUI")
+                    if not checkUI or not checkUI.Enabled then
+                        break
+                    end
+                    
+                    DialogueEvent:FireServer("Next")
+                    task.wait(0.3)
+                end
+                
+                if questTurnedIn then break end
+            else
+                noOptionsCount = noOptionsCount + 1
+                if noOptionsCount >= 5 then
+                    break
+                end
+                DialogueEvent:FireServer("Next")
+                task.wait(0.4)
+            end
+        end
+        
+        DialogueEvent:FireServer("Closed")
+        task.wait(0.3)
+        
+        if questTurnedIn then
+            print("[Quest] ✓ Done!", npcName)
+            -- บันทึกว่า Quest นี้เสร็จแล้ว สำหรับ TF_Log
+            table.insert(_G.CompletedQuestsLog, {
+                NPC = npcName,
+                QuestId = originalQuestId,
+                Time = tick()
+            })
+        end
+    end)
+    
+    if not success then
+        warn("[Quest] ERROR:", err)
+    end
+end
+
+-- ===== PURCHASE FUNCTION =====
+local function PurchaseItem(itemName, quantity)
+    quantity = quantity or 1
+    local success, result = pcall(function()
+        return PurchaseRemote:InvokeServer(itemName, quantity)
+    end)
+    
+    if success then
+        print("[Purchase] ✓ ซื้อ", itemName, "x", quantity, "สำเร็จ!")
+        return true
+    else
+        print("[Purchase] ✗ ซื้อ", itemName, "ล้มเหลว:", result)
+        return false
+    end
+end
+
+-- ===== ICEBERG FARMING (สำหรับ Prismatic Pickaxe Quest) =====
+local function FarmIceberg()
+    print("[Mono7] เริ่มตี Iceberg...")
+    
+    local icebergFolder = workspace:FindFirstChild("Rocks") and workspace.Rocks:FindFirstChild("Iceberg")
+    if not icebergFolder then
+        print("[Mono7] ไม่เจอ Iceberg folder!")
+        return false
+    end
+    
+    local function findIceberg()
+        for _, child in pairs(icebergFolder:GetChildren()) do
+            local model = child:FindFirstChildWhichIsA("Model")
+            if model and model:GetAttribute("Health") and model:GetAttribute("Health") > 0 then
+                return model
+            end
+        end
+        return nil
+    end
+    
+    local iceberg = findIceberg()
+    if not iceberg then
+        print("[Mono7] ไม่มี Iceberg ที่ตีได้!")
+        return false
+    end
+    
+    print("[Mono7] พบ Iceberg! Health:", iceberg:GetAttribute("Health"))
+    
+    local LastAttack = 0
+    local LastTween = nil
+    local Position = iceberg:GetAttribute("OriginalCFrame") and iceberg:GetAttribute("OriginalCFrame").Position or iceberg:GetPivot().Position
+    
+    while iceberg:GetAttribute("Health") > 0 do
+        task.wait(0.1)
+        
+        if not IsAlive() then
+            if LastTween then LastTween:Cancel() end
+            WaitForRespawn()
+            iceberg = findIceberg()
+            if not iceberg then break end
+            Position = iceberg:GetAttribute("OriginalCFrame") and iceberg:GetAttribute("OriginalCFrame").Position or iceberg:GetPivot().Position
+        end
+        
+        local Char = Plr.Character
+        if not Char or not Char:FindFirstChild("HumanoidRootPart") then continue end
+        
+        local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
+        
+        if Magnitude < 15 then
+            if LastTween then LastTween:Cancel() end
+            if tick() > LastAttack and IsAlive() then
+                AttackRock()
+                LastAttack = tick() + 0.2
+            end
+            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.75))
+            end
+        else
+            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+                LastTween:Play()
+            end
+        end
+    end
+    
+    print("[Mono7] ✓ Iceberg ถูกทำลาย!")
+    return true
+end
+
+-- ===== PRISMATIC PICKAXE SPECIAL QUEST (Mono 7) =====
+local function HandlePrismaticPickaxeQuest()
+    print("[Mono7] ========================================")
+    print("[Mono7] เริ่ม Prismatic Pickaxe Special Quest")
+    print("[Mono7] ========================================")
+    
+    -- ขั้นตอน 1: ตี Iceberg
+    print("[Mono7] ขั้นตอน 1: ตี Iceberg")
+    local icebergSuccess = FarmIceberg()
+    
+    if not icebergSuccess then
+        print("[Mono7] ตี Iceberg ไม่สำเร็จ!")
+        return false
+    end
+    
+    -- ขั้นตอน 2: ซื้อ Prismatic Pickaxe
+    print("[Mono7] ขั้นตอน 2: ซื้อ Prismatic Pickaxe")
+    
+    local function tryPurchase()
+        return PurchaseItem("Prismatic pickaxe", 1)
+    end
+    
+    if tryPurchase() then
+        print("[Mono7] ✓ ซื้อ Prismatic Pickaxe สำเร็จ!")
+        table.insert(_G.CompletedQuestsLog, {
+            NPC = "Prismatic Pickaxe",
+            QuestId = "Mono7_PrismaticPickaxe",
+            Time = tick()
+        })
+        return true
+    end
+    
+    -- ถ้าซื้อไม่ได้ -> ฟาร์ม mob
+    print("[Mono7] เงินไม่พอ! ต้องฟาร์ม mob ก่อน...")
+    
+    while true do
+        print("[Mono7] กำลังฟาร์ม mob...")
+        
+        for i = 1, 20 do
+            if not IsAlive() then
+                WaitForRespawn()
+            end
+            
+            if Inventory:CalculateTotal("Stash") >= Inventory:GetBagCapacity() then
+                -- ไปขาย
+                break
+            end
+            
+            local Char = Plr.Character
+            if Char and Char:FindFirstChild("HumanoidRootPart") then
+                local Mob = getNearestMob(Char)
+                if Mob then
+                    -- ใช้ระบบฟาร์ม Mob แบบใหม่
+                    local MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
+                    local MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
+                    
+                    if MobHumanoid and MobHRP and MobHumanoid.Health > 0 then
+                        local MobPosition = MobHRP.Position
+                        local MobSize = Mob:GetExtentsSize()
+                        local BaseHeight = MobSize.Y / 2 + 2
+                        local SafePosition = MobPosition + Vector3.new(0, BaseHeight + SafeHeightOffset, 0)
+                        
+                        Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
+                        
+                        for j = 1, 10 do
+                            AttackMob()
+                        end
+                    end
+                end
+            end
+            task.wait(0.1)
+        end
+        
+        -- ไปขายแล้วกลับมาลองซื้อ
+        if Inventory:CalculateTotal("Stash") >= Inventory:GetBagCapacity() then
+            -- Forge และขาย
+            local Position = workspace.Proximity.Forge.Position
+            local Char = Plr.Character
+            if Char and Char:FindFirstChild("HumanoidRootPart") then
+                local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+                tween:Play()
+                tween.Completed:Wait()
+            end
+            
+            local CanForge = true
+            while CanForge do
+                task.wait()
+                if not IsAlive() then break end
+                local Recipe = GetRecipe()
+                if Recipe then
+                    Forge(Recipe)
+                else
+                    CanForge = false
+                end
+            end
+            
+            TalkToMarbles()
+            task.wait(0.5)
+            SellEquipments()
+            task.wait(0.5)
+            TalkToGreedyCey()
+            task.wait(0.5)
+            SellOres()
+        end
+        
+        task.wait(1)
+        
+        -- ลองซื้ออีกครั้ง
+        print("[Mono7] ลองซื้อ Prismatic Pickaxe อีกครั้ง...")
+        if tryPurchase() then
+            print("[Mono7] ✓ ซื้อ Prismatic Pickaxe สำเร็จ!")
+            table.insert(_G.CompletedQuestsLog, {
+                NPC = "Prismatic Pickaxe",
+                QuestId = "Mono7_PrismaticPickaxe",
+                Time = tick()
+            })
+            return true
+        end
+        
+        print("[Mono7] ยังเงินไม่พอ ฟาร์มต่อ...")
+    end
+    
+    return false
+end
+
+-- ===== DRAGON HEAD PICKAXE SPECIAL QUEST =====
+-- ขั้นตอน: Raven quest (ถึง Raven 2) -> Red Cave key -> เปิด Red Cave -> Auron -> Mjelatkhan -> Morveth -> ซื้อ Dragon Head Pickaxe
+local function HandleDragonHeadPickaxeQuest()
+    print("[DragonHead] ========================================")
+    print("[DragonHead] เริ่ม Dragon Head Pickaxe Special Quest")
+    print("[DragonHead] ========================================")
+    
+    local Char = Plr.Character
+    
+    -- ฟังก์ชันเช็คว่ามี item หรือยัง
+    local function hasItem(itemName)
+        local replica = PlayerController and PlayerController.Replica
+        if not replica or not replica.Data or not replica.Data.Inventory then return false end
+        
+        for _, item in pairs(replica.Data.Inventory) do
+            if type(item) == "table" and item.Name then
+                if string.find(string.lower(item.Name), string.lower(itemName)) then
+                    return true
+                end
+            elseif type(item) == "string" then
+                if string.find(string.lower(item), string.lower(itemName)) then
+                    return true
+                end
+            end
+        end
+        return false
+    end
+    
+    -- ฟังก์ชันเช็คว่าเปิด Red Cave แล้วหรือยัง
+    local function isRedCaveOpened()
+        -- เช็คจาก PlayerController.Replica.Data หรือ workspace
+        local replica = PlayerController and PlayerController.Replica
+        if replica and replica.Data then
+            -- เช็คจาก UnlockedAreas หรือ similar
+            if replica.Data.UnlockedAreas then
+                for _, area in pairs(replica.Data.UnlockedAreas) do
+                    if string.find(string.lower(tostring(area)), "red cave") then
+                        return true
+                    end
+                end
+            end
+            -- เช็คจาก CompletedQuests
+            if replica.Data.CompletedQuests then
+                for questId, _ in pairs(replica.Data.CompletedQuests) do
+                    if string.find(string.lower(tostring(questId)), "raven") and 
+                       (string.find(tostring(questId), "3") or string.find(tostring(questId), "2")) then
+                        return true
+                    end
+                end
+            end
+        end
+        return false
+    end
+    
+    -- ฟังก์ชันเช็คว่าทำ Raven quest ถึงไหนแล้ว
+    local function getRavenProgress()
+        local replica = PlayerController and PlayerController.Replica
+        if not replica or not replica.Data then return 0 end
+        
+        -- เช็คจาก CompletedQuests
+        local completedQuests = replica.Data.CompletedQuests or {}
+        local ravenLevel = 0
+        
+        for questId, _ in pairs(completedQuests) do
+            local qId = string.lower(tostring(questId))
+            if string.find(qId, "raven") then
+                -- หาตัวเลขหลัง raven
+                local num = qId:match("raven%s*(%d)")
+                if num then
+                    local n = tonumber(num)
+                    if n and n > ravenLevel then
+                        ravenLevel = n
+                    end
+                elseif not qId:match("%d") then
+                    -- Raven 1 (ไม่มีเลข)
+                    if ravenLevel < 1 then ravenLevel = 1 end
+                end
+            end
+        end
+        
+        return ravenLevel
+    end
+    
+    -- ฟังก์ชันหา NPC ใน workspace
+    local function findNPC(npcName)
+        -- ค้นหาใน workspace.Proximity หรือ workspace.NPCs
+        local searchFolders = {
+            workspace:FindFirstChild("Proximity"),
+            workspace:FindFirstChild("NPCs"),
+            workspace:FindFirstChild("NPC"),
+            workspace
+        }
+        
+        for _, folder in pairs(searchFolders) do
+            if folder then
+                for _, child in pairs(folder:GetDescendants()) do
+                    if child.Name and string.find(string.lower(child.Name), string.lower(npcName)) then
+                        if child:IsA("Model") or child:IsA("BasePart") then
+                            return child
+                        end
+                    end
+                end
+            end
+        end
+        return nil
+    end
+    
+    -- ฟังก์ชันไปหา NPC และคุย
+    local function goToAndTalkNPC(npcName)
+        print("[DragonHead] ไปหา", npcName)
+        
+        local npc = findNPC(npcName)
+        if not npc then
+            print("[DragonHead] ไม่พบ NPC:", npcName)
+            return false
+        end
+        
+        local npcPos
+        if npc:IsA("Model") then
+            if npc.PrimaryPart then
+                npcPos = npc.PrimaryPart.Position
+            elseif npc:FindFirstChild("HumanoidRootPart") then
+                npcPos = npc.HumanoidRootPart.Position
+            elseif npc:FindFirstChild("Torso") then
+                npcPos = npc.Torso.Position
+            else
+                local part = npc:FindFirstChildWhichIsA("BasePart")
+                if part then npcPos = part.Position end
+            end
+        elseif npc:IsA("BasePart") then
+            npcPos = npc.Position
+        end
+        
+        if not npcPos then
+            print("[DragonHead] ไม่พบตำแหน่ง NPC:", npcName)
+            return false
+        end
+        
+        -- วาร์ปไปหา NPC
+        Char = Plr.Character
+        if Char and Char:FindFirstChild("HumanoidRootPart") then
+            local tween = TweenService:Create(
+                Char.HumanoidRootPart, 
+                TweenInfo.new(2, Enum.EasingStyle.Linear), 
+                {CFrame = CFrame.new(npcPos + Vector3.new(0, 0, 3))}
+            )
+            tween:Play()
+            tween.Completed:Wait()
+            task.wait(0.5)
+        end
+        
+        -- คุยกับ NPC
+        TalkToQuestNPC(npcName)
+        task.wait(1)
+        
+        return true
+    end
+    
+    -- ฟังก์ชันเปิด Red Cave
+    local function openRedCave()
+        print("[DragonHead] ไปเปิด Red Cave (Heart Door)...")
+        
+        -- หา Heart Door ใน workspace.Assets
+        local heartDoor = nil
+        local assets = workspace:FindFirstChild("Assets")
+        if assets then
+            heartDoor = assets:FindFirstChild("Heart Door")
+        end
+        
+        if not heartDoor then
+            print("[DragonHead] ไม่พบ Heart Door ใน Assets! ลองหาทั่วไป...")
+            for _, child in pairs(workspace:GetDescendants()) do
+                if child.Name == "Heart Door" then
+                    heartDoor = child
+                    break
+                end
+            end
+        end
+        
+        if heartDoor then
+            print("[DragonHead] พบ Heart Door!")
+            
+            local pos
+            if heartDoor:IsA("Model") then
+                pos = heartDoor:GetPivot().Position
+            elseif heartDoor:IsA("BasePart") then
+                pos = heartDoor.Position
+            end
+            
+            if pos then
+                Char = Plr.Character
+                if Char and Char:FindFirstChild("HumanoidRootPart") then
+                    Char.HumanoidRootPart.CFrame = CFrame.new(pos + Vector3.new(0, 0, 3))
+                    task.wait(1)
+                    
+                    -- ลอง interact กับ Heart Door
+                    pcall(function()
+                        DialogueRemote:InvokeServer(heartDoor)
+                    end)
+                    task.wait(1)
+                    
+                    pcall(function()
+                        ProximityFunctionals:InvokeServer(heartDoor)
+                    end)
+                    task.wait(1)
+                end
+            end
+            
+            print("[DragonHead] ✓ เปิด Heart Door สำเร็จ!")
+        else
+            print("[DragonHead] ไม่พบ Heart Door!")
+        end
+        
+        return true
+    end
+    
+    -- ฟังก์ชันฟาร์มและขาย
+    local function farmAndSell()
+        print("[DragonHead] ฟาร์มเงิน...")
+        
+        for i = 1, 30 do
+            if not IsAlive() then WaitForRespawn() end
+            
+            if Inventory:CalculateTotal("Stash") >= Inventory:GetBagCapacity() then
+                break
+            end
+            
+            Char = Plr.Character
+            if Char and Char:FindFirstChild("HumanoidRootPart") then
+                local Mob = getNearestMob(Char)
+                if Mob then
+                    local MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
+                    local MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
+                    
+                    if MobHumanoid and MobHRP and MobHumanoid.Health > 0 then
+                        local MobPosition = MobHRP.Position
+                        local MobSize = Mob:GetExtentsSize()
+                        local BaseHeight = MobSize.Y / 2 + 2
+                        local SafePosition = MobPosition + Vector3.new(0, BaseHeight + SafeHeightOffset, 0)
+                        
+                        Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
+                        
+                        for j = 1, 10 do
+                            AttackMob()
+                        end
+                    end
+                end
+            end
+            task.wait(0.1)
+        end
+        
+        -- Forge และขาย
+        if Inventory:CalculateTotal("Stash") >= Inventory:GetBagCapacity() then
+            local Position = workspace.Proximity.Forge.Position
+            Char = Plr.Character
+            if Char and Char:FindFirstChild("HumanoidRootPart") then
+                local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+                tween:Play()
+                tween.Completed:Wait()
+            end
+            
+            local CanForge = true
+            while CanForge do
+                task.wait()
+                if not IsAlive() then break end
+                local Recipe = GetRecipe()
+                if Recipe then
+                    Forge(Recipe)
+                else
+                    CanForge = false
+                end
+            end
+            
+            TalkToMarbles()
+            task.wait(0.5)
+            SellEquipments()
+            task.wait(0.5)
+            TalkToGreedyCey()
+            task.wait(0.5)
+            SellOres()
+        end
+    end
+    
+    -- ===== เริ่มขั้นตอน =====
+    
+    -- เช็คว่า Raven 3 แล้วหรือยัง (ข้ามได้เลย)
+    local ravenProgress = getRavenProgress()
+    print("[DragonHead] Raven Progress:", ravenProgress)
+    
+    if ravenProgress >= 3 or isRedCaveOpened() then
+        print("[DragonHead] ✓ Raven 3 หรือเปิด Red Cave แล้ว! ข้ามไปขั้นตอนคุย NPC")
+    else
+        -- ขั้นตอน 1: ทำ Raven quest ถึง Raven 2
+        print("[DragonHead] ขั้นตอน 1: ทำ Raven quest")
+        
+        while ravenProgress < 2 do
+            print("[DragonHead] Raven Progress:", ravenProgress, "- ต้องทำถึง 2")
+            
+            -- ไปหา Raven
+            goToAndTalkNPC("Raven")
+            task.wait(2)
+            
+            -- เช็ค Quest
+            local questInfo = GetActiveQuestInfo()
+            if questInfo then
+                local questId = string.lower(tostring(questInfo.Id))
+                if string.find(questId, "raven") then
+                    print("[DragonHead] กำลังทำ Raven quest:", questInfo.Id)
+                    
+                    -- Process Quest objectives
+                    while true do
+                        if not IsAlive() then WaitForRespawn() end
+                        
+                        questInfo = GetActiveQuestInfo()
+                        if not questInfo then break end
+                        
+                        if IsQuestAllObjectivesComplete(questInfo) then
+                            -- ส่ง Quest
+                            goToAndTalkNPC("Raven")
+                            task.wait(1)
+                            break
+                        end
+                        
+                        local objective = GetCurrentObjective(questInfo)
+                        if not objective then break end
+                        
+                        local objType = objective.Objective.Type
+                        local objTarget = objective.Objective.Target
+                        
+                        if objType == "Kill" then
+                            -- ฟาร์ม Mob
+                            Char = Plr.Character
+                            if Char then
+                                local Mob = getNearestMob(Char)
+                                if Mob then
+                                    FarmMobImproved(Mob)
+                                end
+                            end
+                        elseif objType == "Mine" then
+                            -- ขุดหิน
+                            Char = Plr.Character
+                            if Char then
+                                local Rock = getnearest(Char)
+                                if Rock then
+                                    local Position = Rock:GetAttribute("OriginalCFrame") and Rock:GetAttribute("OriginalCFrame").Position or Rock:GetPivot().Position
+                                    while Rock and Rock:GetAttribute("Health") and Rock:GetAttribute("Health") > 0 do
+                                        task.wait(0.1)
+                                        if not IsAlive() then break end
+                                        Char = Plr.Character
+                                        if not Char or not Char:FindFirstChild("HumanoidRootPart") then break end
+                                        Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.75))
+                                        AttackRock()
+                                    end
+                                end
+                            end
+                        elseif objType == "Talk" then
+                            goToAndTalkNPC(objTarget)
+                        else
+                            task.wait(1)
+                        end
+                        
+                        task.wait(0.1)
+                    end
+                end
+            else
+                -- ไม่มี Quest - รับ Quest ใหม่
+                goToAndTalkNPC("Raven")
+                task.wait(1)
+            end
+            
+            ravenProgress = getRavenProgress()
+            task.wait(1)
+        end
+        
+        print("[DragonHead] ✓ Raven 2 เสร็จ! ได้ Red Cave key")
+        
+        -- ขั้นตอน 2: เปิด Red Cave
+        print("[DragonHead] ขั้นตอน 2: เปิด Red Cave")
+        openRedCave()
+        task.wait(2)
+    end
+    
+    -- ขั้นตอน 3: คุยกับ Auron -> Mjelatkhan -> Morveth
+    print("[DragonHead] ขั้นตอน 3: คุย NPCs (Auron -> Mjelatkhan -> Morveth)")
+    
+    local npcsToTalk = {"Auron", "Mjelatkhan", "Morveth"}
+    
+    for _, npcName in ipairs(npcsToTalk) do
+        print("[DragonHead] คุยกับ", npcName)
+        goToAndTalkNPC(npcName)
+        task.wait(2)
+    end
+    
+    -- ขั้นตอน 4: ซื้อ Dragon Head Pickaxe
+    print("[DragonHead] ขั้นตอน 4: ซื้อ Dragon Head Pickaxe")
+    
+    local function tryPurchaseDragonHead()
+        return PurchaseItem("Dragon Head Pickaxe", 1)
+    end
+    
+    if tryPurchaseDragonHead() then
+        print("[DragonHead] ✓ ซื้อ Dragon Head Pickaxe สำเร็จ!")
+        table.insert(_G.CompletedQuestsLog, {
+            NPC = "Dragon Head Pickaxe",
+            QuestId = "DragonHead_Pickaxe",
+            Time = tick()
+        })
+        return true
+    end
+    
+    -- ถ้าซื้อไม่ได้ -> ฟาร์มเงิน
+    print("[DragonHead] เงินไม่พอ! ต้องฟาร์มก่อน...")
+    
+    while true do
+        farmAndSell()
+        task.wait(1)
+        
+        print("[DragonHead] ลองซื้อ Dragon Head Pickaxe อีกครั้ง...")
+        if tryPurchaseDragonHead() then
+            print("[DragonHead] ✓ ซื้อ Dragon Head Pickaxe สำเร็จ!")
+            table.insert(_G.CompletedQuestsLog, {
+                NPC = "Dragon Head Pickaxe",
+                QuestId = "DragonHead_Pickaxe",
+                Time = tick()
+            })
+            return true
+        end
+        
+        print("[DragonHead] ยังเงินไม่พอ ฟาร์มต่อ...")
+    end
+    
+    return false
+end
+
+-- ===== GOLEM DUNGEON SPECIAL QUEST =====
+local function HandleGolemQuest()
+    print("[Golem] ========================================")
+    print("[Golem] เริ่มเข้า Golem Dungeon")
+    print("[Golem] ========================================")
+    
+    local Char = Plr.Character
+    
+    -- ขั้นตอน 1: Activate Party
+    print("[Golem] ขั้นตอน 1: Activate Party")
+    pcall(function()
+        PartyActivate:InvokeServer()
+    end)
+    task.wait(1)
+    
+    -- ขั้นตอน 2: Create Party
+    print("[Golem] ขั้นตอน 2: Create Party")
+    local CreateParty = workspace:FindFirstChild("Proximity") and workspace.Proximity:FindFirstChild("CreateParty")
+    if CreateParty then
+        pcall(function()
+            ProximityFunctionals:InvokeServer(CreateParty)
+        end)
+        task.wait(1)
+        
+        -- เรียกอีกครั้งเพื่อความแน่นอน
+        pcall(function()
+            ProximityFunctionals:InvokeServer(CreateParty)
+        end)
+        task.wait(1)
+    else
+        print("[Golem] ไม่พบ CreateParty!")
+    end
+    
+    -- ขั้นตอน 3: หา Golem entrance และเข้า
+    print("[Golem] ขั้นตอน 3: เข้า Golem Dungeon")
+    
+    local golemEntrance = nil
+    
+    -- ค้นหา Golem entrance
+    for _, child in pairs(workspace:GetDescendants()) do
+        if child.Name and string.find(string.lower(child.Name), "golem") then
+            if child:IsA("Model") or child:IsA("BasePart") then
+                golemEntrance = child
+                break
+            end
+        end
+    end
+    
+    -- ลองหาใน Proximity
+    if not golemEntrance then
+        local proximity = workspace:FindFirstChild("Proximity")
+        if proximity then
+            for _, child in pairs(proximity:GetDescendants()) do
+                if child.Name and string.find(string.lower(child.Name), "golem") then
+                    golemEntrance = child
+                    break
+                end
+            end
+        end
+    end
+    
+    if golemEntrance then
+        print("[Golem] พบ Golem entrance:", golemEntrance.Name)
+        
+        local pos
+        if golemEntrance:IsA("Model") then
+            pos = golemEntrance:GetPivot().Position
+        elseif golemEntrance:IsA("BasePart") then
+            pos = golemEntrance.Position
+        end
+        
+        if pos then
+            Char = Plr.Character
+            if Char and Char:FindFirstChild("HumanoidRootPart") then
+                -- วาร์ปไป Golem
+                local tween = TweenService:Create(
+                    Char.HumanoidRootPart, 
+                    TweenInfo.new(2, Enum.EasingStyle.Linear), 
+                    {CFrame = CFrame.new(pos + Vector3.new(0, 0, 3))}
+                )
+                tween:Play()
+                tween.Completed:Wait()
+                task.wait(0.5)
+                
+                -- Interact กับ Golem entrance
+                pcall(function()
+                    ProximityFunctionals:InvokeServer(golemEntrance)
+                end)
+                task.wait(1)
+                
+                pcall(function()
+                    DialogueRemote:InvokeServer(golemEntrance)
+                end)
+                task.wait(1)
+            end
+        end
+    else
+        print("[Golem] ไม่พบ Golem entrance!")
+    end
+    
+    print("[Golem] ✓ เข้า Golem Dungeon เสร็จ!")
+    table.insert(_G.CompletedQuestsLog, {
+        NPC = "Golem",
+        QuestId = "Golem_Dungeon",
+        Time = tick()
+    })
+    
+    return true
+end
+
+-- Forward declaration for FarmMobImproved (จะถูก define ทีหลัง)
+local FarmMobImproved
+
+-- ===== PROCESS QUEST (Main Quest Handler) =====
+-- ===== SPECIAL QUEST LIST =====
+local SpecialQuests = {
+    ["prismatic pickaxe"] = HandlePrismaticPickaxeQuest,
+    ["dragon head pickaxe"] = HandleDragonHeadPickaxeQuest,
+    ["golem"] = HandleGolemQuest,
+}
+
+local function ProcessQuest()
+    local questNPCName = Settings["Select Quest"]
+    
+    -- ถ้าไม่มี Quest ที่เลือก
+    if not questNPCName or questNPCName == "" then
+        print("[Quest] กรุณาตั้งค่า Settings[\"Select Quest\"] ก่อน!")
+        task.wait(3)
+        return
+    end
+    
+    -- เช็คว่าเป็น Special Quest หรือไม่
+    local lowerQuestName = string.lower(questNPCName)
+    if SpecialQuests[lowerQuestName] then
+        print("[Quest] Starting Special Quest:", questNPCName)
+        SpecialQuests[lowerQuestName]()
+        return
+    end
+    
+    -- ถ้าไม่ใช่ Special Quest -> ทำ Quest ปกติ
+    -- เช็คว่ามี Quest อยู่หรือไม่
+    local questInfo = GetActiveQuestInfo()
+    
+    if not questInfo then
+        -- ไม่มี Quest -> ไปรับ Quest ใหม่
+        print("[Quest] ไม่มี Quest! ไปรับ Quest จาก", questNPCName)
+        TalkToQuestNPC(questNPCName)
+        task.wait(1)
+        return
+    end
+    
+    -- มี Quest อยู่ -> เช็คว่าทำเสร็จหรือยัง
+    if IsQuestAllObjectivesComplete(questInfo) then
+        print("[Quest] ✓ Quest ครบแล้ว! ไปส่ง Quest")
+        TalkToQuestNPC(questNPCName)
+        task.wait(1)
+        return
+    end
+    
+    -- ยังทำไม่เสร็จ -> หา Objective ที่ยังไม่เสร็จ
+    local objective = GetCurrentObjective(questInfo)
+    
+    if not objective then
+        print("[Quest] ไม่มี Objective!")
+        task.wait(1)
+        return
+    end
+    
+    local objectiveType = objective[1]
+    local targetName = objective[2]
+    local currentProgress = objective[3]
+    local requiredAmount = objective[4]
+    
+    print("[Quest] Processing:", objectiveType, "-", targetName, currentProgress .. "/" .. requiredAmount)
+    
+    -- เช็คว่า objective เกี่ยวกับ Golem หรือไม่ (ต้องเปิด Dungeon ก่อน)
+    local lowerTarget = string.lower(targetName)
+    if string.find(lowerTarget, "golem") then
+        print("[Quest] Objective เกี่ยวกับ Golem - ต้องเปิด Dungeon ก่อน!")
+        HandleGolemQuest()
+        task.wait(2)
+    end
+    
+    if objectiveType == "Kill" then
+        -- ฟาร์ม Mob
+        local Char = Plr.Character
+        if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
+        
+        -- หา Mob ที่ต้องการ
+        local function findTargetMob()
+            local closestDist = math.huge
+            local closestMob = nil
+            
+            for _, mobFolder in pairs(workspace:GetChildren()) do
+                if mobFolder:IsA("Folder") and mobFolder.Name == "Enemies" then
+                    for _, mob in pairs(mobFolder:GetChildren()) do
+                        if mob:IsA("Model") then
+                            local mobHumanoid = mob:FindFirstChildOfClass("Humanoid")
+                            local mobHRP = mob:FindFirstChild("HumanoidRootPart") or mob:FindFirstChild("Torso") or mob.PrimaryPart
+                            
+                            if mobHumanoid and mobHRP and mobHumanoid.Health > 0 then
+                                -- เช็คชื่อ
+                                if string.find(string.lower(mob.Name), string.lower(targetName)) or 
+                                   string.find(string.lower(targetName), string.lower(mob.Name)) then
+                                    local dist = (Char.HumanoidRootPart.Position - mobHRP.Position).Magnitude
+                                    if dist < closestDist then
+                                        closestDist = dist
+                                        closestMob = mob
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+            
+            -- ถ้าหา Mob ตามชื่อไม่เจอ ก็ตี Mob ที่ใกล้ที่สุด
+            if not closestMob then
+                closestMob = getNearestMob(Char)
+            end
+            
+            return closestMob
+        end
+        
+        local mob = findTargetMob()
+        if mob then
+            FarmMobImproved(mob)
+        else
+            print("[Quest] ไม่พบ Mob:", targetName)
+            task.wait(1)
+        end
+        
+    elseif objectiveType == "Mine" then
+        -- ขุดหิน
+        local Char = Plr.Character
+        if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
+        
+        local Rock = getnearest(Char)
+        if Rock then
+            local LastAttack = 0
+            local LastTween = nil
+            local Position = Rock:GetAttribute("OriginalCFrame") and Rock:GetAttribute("OriginalCFrame").Position or Rock:GetPivot().Position
+            
+            while Rock and Rock:GetAttribute("Health") and Rock:GetAttribute("Health") > 0 do
+                task.wait(0.1)
+                
+                if not IsAlive() then
+                    if LastTween then LastTween:Cancel() end
+                    return
+                end
+                
+                -- เช็ค Quest progress
+                local checkQuest = GetActiveQuestInfo()
+                if checkQuest then
+                    local checkObj = GetCurrentObjective(checkQuest)
+                    if not checkObj or checkObj[1] ~= "Mine" then
+                        break
+                    end
+                end
+                
+                Char = Plr.Character
+                if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
+                
+                local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
+                
+                if Magnitude < 15 then
+                    if LastTween then LastTween:Cancel() end
+                    if tick() > LastAttack and IsAlive() then
+                        AttackRock()
+                        LastAttack = tick() + 0.2
+                    end
+                    if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                        Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.75))
+                    end
+                else
+                    if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                        LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+                        LastTween:Play()
+                    end
+                end
+            end
+        else
+            print("[Quest] ไม่เจอหินที่จะขุด!")
+            task.wait(1)
+        end
+        
+    elseif objectiveType == "Forge" then
+        -- Forge Equipment
+        print("[Quest] Forging...")
+        
+        local Char = Plr.Character
+        if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
+        
+        local Position = workspace.Proximity.Forge.Position
+        local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+        tween:Play()
+        tween.Completed:Wait()
+        
+        local Recipe = GetRecipe()
+        if Recipe then
+            Forge(Recipe)
+        else
+            print("[Quest] ไม่มี Recipe!")
+            -- ต้องไปขุดแร่
+            task.wait(1)
+        end
+        
+    elseif objectiveType == "Talk" then
+        -- คุยกับ NPC
+        print("[Quest] Talking to NPC:", targetName)
+        TalkToQuestNPC(targetName)
+        task.wait(1)
+        
+    elseif objectiveType == "Sell" then
+        -- ขาย Equipment
+        print("[Quest] Selling equipment...")
+        
+        TalkToMarbles()
+        task.wait(0.5)
+        SellEquipments()
+        task.wait(0.5)
+        TalkToGreedyCey()
+        task.wait(0.5)
+        SellOres()
+        
+    else
+        print("[Quest] Unknown objective type:", objectiveType)
+        task.wait(1)
+    end
+end
+
+-- ===== IMPROVED MOB FARM (ลอยตี นอนตี เหมือน TF_AutoQuest) =====
+FarmMobImproved = function(Mob)
+    if not Mob then return end
+    if not IsAlive() then return end
+    
+    local Char = Plr.Character
+    local MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
+    local MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
+    
+    if not MobHumanoid or not MobHRP or MobHumanoid.Health <= 0 then return end
+    
+    local LastHP = Char:FindFirstChildOfClass("Humanoid").Health
+    local HitCount = 0
+    local CheckTime = tick()
+    local LastTweenTime = 0
+    local FarmTween = nil
+    local IsNearMob = false
+    
+    print("[Farm] Found Mob:", Mob.Name)
+    
+    while MobHumanoid and MobHRP and MobHumanoid.Health > 0 do
+        task.wait(0.05)
+        
+        if not IsAlive() then
+            if FarmTween then FarmTween:Cancel() end
+            return
+        end
+        
+        -- เช็ค Mob ยังอยู่ไหม
+        if not Mob or not Mob.Parent then break end
+        MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
+        if not MobHRP then break end
+        MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
+        if not MobHumanoid or MobHumanoid.Health <= 0 then break end
+        
+        Char = Plr.Character
+        if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
+        
+        local MyHumanoid = Char:FindFirstChildOfClass("Humanoid")
+        if not MyHumanoid then return end
+        
+        -- ตรวจสอบว่าโดนตีหรือไม่
+        local CurrentHP = MyHumanoid.Health
+        if CurrentHP < LastHP then
+            HitCount = HitCount + 1
+            SafeHeightOffset = math.min(SafeHeightOffset + 0.5, MAX_SAFE_HEIGHT)
+            print("[Farm] โดนตี! เพิ่มระยะเป็น +", string.format("%.1f", SafeHeightOffset), "studs")
+        end
+        LastHP = CurrentHP
+        
+        -- ถ้าไม่โดนตี 5 วินาที ลองลดระยะ
+        if tick() - CheckTime > 5 then
+            if HitCount == 0 and SafeHeightOffset > 0 then
+                SafeHeightOffset = math.max(0, SafeHeightOffset - 0.2)
+                print("[Farm] ไม่โดนตี ลดระยะ:", string.format("%.1f", SafeHeightOffset))
+            end
+            HitCount = 0
+            CheckTime = tick()
+        end
+        
+        local MobPosition = MobHRP.Position
+        local MyPosition = Char.HumanoidRootPart.Position
+        
+        local MobSize = Mob:GetExtentsSize()
+        local BaseHeight = MobSize.Y / 2 + 2
+        
+        local SafePosition = MobPosition + Vector3.new(0, BaseHeight + SafeHeightOffset, 0)
+        local DistToSafe = (MyPosition - SafePosition).Magnitude
+        
+        -- ปิด AutoRotate เพื่อให้นอนค้าง
+        if MyHumanoid then
+            MyHumanoid.AutoRotate = false
+        end
+        
+        -- ท่านอน (หันหน้าลง)
+        local LyingCFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
+        
+        if DistToSafe > 50 then
+            -- อยู่ไกลมาก: ใช้ Tween
+            IsNearMob = false
+            if tick() - LastTweenTime > 0.5 then
+                LastTweenTime = tick()
+                if FarmTween then FarmTween:Cancel() end
+                local tweenTime = DistToSafe / 80
+                FarmTween = TweenService:Create(
+                    Char.HumanoidRootPart, 
+                    TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), 
+                    {CFrame = LyingCFrame}
+                )
+                FarmTween:Play()
+            end
+            Char.HumanoidRootPart.CFrame = CFrame.new(Char.HumanoidRootPart.Position) * CFrame.Angles(-math.rad(90), 0, 0)
+        elseif DistToSafe > 15 then
+            -- อยู่ใกล้พอสมควร
+            IsNearMob = false
+            if tick() - LastTweenTime > 0.3 then
+                LastTweenTime = tick()
+                if FarmTween then FarmTween:Cancel() end
+                local tweenTime = DistToSafe / 80
+                FarmTween = TweenService:Create(
+                    Char.HumanoidRootPart, 
+                    TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), 
+                    {CFrame = LyingCFrame}
+                )
+                FarmTween:Play()
+            end
+            Char.HumanoidRootPart.CFrame = CFrame.new(Char.HumanoidRootPart.Position) * CFrame.Angles(-math.rad(90), 0, 0)
+        else
+            -- อยู่ใกล้แล้ว
+            IsNearMob = true
+            if FarmTween then FarmTween:Cancel() FarmTween = nil end
+            if Char:FindFirstChild("HumanoidRootPart") then
+                Char.HumanoidRootPart.CFrame = LyingCFrame
+            end
+        end
+        
+        -- โจมตีเมื่ออยู่ในระยะ
+        if IsNearMob or DistToSafe < 20 then
+            for i = 1, 10 do
+                coroutine.wrap(function()
+                    pcall(function() AttackMob() end)
+                end)()
+            end
+        end
+    end
+    
+    -- เปิด AutoRotate กลับ
+    pcall(function()
+        if Plr.Character and Plr.Character:FindFirstChildOfClass("Humanoid") then
+            Plr.Character:FindFirstChildOfClass("Humanoid").AutoRotate = true
+        end
+    end)
+    
+    if FarmTween then FarmTween:Cancel() FarmTween = nil end
 end
 
 local function Forge(Recipe)
@@ -663,7 +2162,11 @@ task.spawn(function()
                 return
             end
             
-            if Settings["Farm Mode"] == "Mob" then
+            if Settings["Farm Mode"] == "Quest" then
+                -- Quest Mode
+                ProcessQuest()
+                
+            elseif Settings["Farm Mode"] == "Mob" then
                 local Mob = getNearestMob(Char)
                 local LastAttack = 0
                 local LastTween = nil

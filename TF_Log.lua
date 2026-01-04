@@ -110,11 +110,61 @@ local function GetAllData()
     local Data = PlayerController["Replica"]["Data"]
     local LocalData_ = GetSomeCurrency(true)
     
+    -- ดึงชื่อจาก workspace.Rocks
+    local RockNames = {}
+    pcall(function()
+        local Rocks = workspace:FindFirstChild("Rocks")
+        if Rocks then
+            for _, folder in pairs(Rocks:GetChildren()) do
+                if folder:IsA("Folder") then
+                    if not table.find(RockNames, folder.Name) then
+                        table.insert(RockNames, folder.Name)
+                    end
+                end
+            end
+        end
+    end)
+    
+    -- ดึงชื่อจาก workspace.Living (Mobs)
+    local MobNames = {}
+    pcall(function()
+        local Living = workspace:FindFirstChild("Living")
+        if Living then
+            for _, mob in pairs(Living:GetChildren()) do
+                if mob:IsA("Model") then
+                    if not table.find(MobNames, mob.Name) then
+                        table.insert(MobNames, mob.Name)
+                    end
+                end
+            end
+        end
+    end)
+    
+    -- ดึงชื่อ NPC จาก workspace.Proximity
+    local NPCNames = {}
+    pcall(function()
+        local Proximity = workspace:FindFirstChild("Proximity")
+        if Proximity then
+            for _, npc in pairs(Proximity:GetChildren()) do
+                -- ข้าม object ที่ไม่ใช่ NPC (เช่น Forge, CreateParty)
+                local skipNames = {"Forge", "CreateParty", "Anvil", "Furnace", "Workbench"}
+                if not table.find(skipNames, npc.Name) then
+                    if not table.find(NPCNames, npc.Name) then
+                        table.insert(NPCNames, npc.Name)
+                    end
+                end
+            end
+        end
+    end)
+    
     return {
         ["Inventory"] = Data["Inventory"],
         ["PlayerData"] = LocalData_,
         ["Username"] = Client.Name,
-        ["Pickaxe"] = Data["Equipped"]["Pickaxe"]["Name"]
+        ["Pickaxe"] = Data["Equipped"]["Pickaxe"]["Name"],
+        ["Rocks"] = RockNames,
+        ["Mobs"] = MobNames,
+        ["NPCs"] = NPCNames
     }
 end
 
@@ -165,6 +215,24 @@ task.spawn(function ()
                 local GoldGained = CurrentGold - StartGold
                 LastConvertOres[#LastConvertOres + 1] = convertToField("Gold", GoldGained)
                 StartGold = CurrentGold
+            end
+
+            -- เพิ่ม Quest Completed logs จาก _G.CompletedQuestsLog
+            if _G.CompletedQuestsLog and #_G.CompletedQuestsLog > 0 then
+                local QuestCounts = {}
+                for _, quest in pairs(_G.CompletedQuestsLog) do
+                    local npcName = quest.NPC or "Unknown"
+                    if QuestCounts[npcName] then
+                        QuestCounts[npcName] = QuestCounts[npcName] + 1
+                    else
+                        QuestCounts[npcName] = 1
+                    end
+                end
+                for npcName, count in pairs(QuestCounts) do
+                    LastConvertOres[#LastConvertOres + 1] = convertToField(npcName .. " Complete", count)
+                end
+                -- Clear the log after sending
+                _G.CompletedQuestsLog = {}
             end
 
             local StageInfo = {
