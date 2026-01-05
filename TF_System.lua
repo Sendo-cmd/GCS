@@ -3,6 +3,7 @@ local Settings = {
     ["Select Mobs"] = {"Skeleton Rogue"},
     ["Select Rocks"] = {"Pebble"},
     ["Select Quest"] = "",  -- ใส่ชื่อ NPC หรือ Special Quest เช่น "Greedy Cey", "Prismatic Pickaxe", "Dragon Head Pickaxe"
+    ["Use Potions"] = true,  -- เปิด/ปิดใช้ Potion อัตโนมัติ
     ["Ignore Forge Rarity"] = {
         "Mythic",
         "Relic",
@@ -76,6 +77,10 @@ local Changes = {
     ["00f8cd69-bfbe-4dce-9289-ed01082bc60f"] = function()
         Settings["Farm Mode"] = "Mob"
         Settings["Select Mobs"] = {"Zombie"}
+    end,
+    ["a218ed37-e05b-427c-9a00-cb878ad09039"] = function()
+        Settings["Farm Mode"] = "Quest"
+        Settings["Select Quest"] = ""
     end,
 }
 repeat task.wait() until game:IsLoaded()
@@ -366,26 +371,50 @@ local function GetOre(Name)
     end
     return false
 end
+
 local function GetRecipe()
-    local Repipe = {}
+    local Recipe = {}
     local Count = 0
     local HowMany = 0
-    for i,v in pairs(PlayerController.Replica.Data.Inventory) do
-        local Ore = GetOre(i)
-        
-        if Ore and not table.find(Settings["Ignore Forge Rarity"],Ore["Rarity"]) then
-            Repipe[i] = v
-            Count = Count + v
-            HowMany = HowMany + 1
-            if HowMany >= 4 then
-                break;
+    
+    -- เก็บแร่ที่ใช้ได้ทั้งหมดพร้อมจำนวน
+    local availableOres = {}
+    for oreName, oreAmount in pairs(PlayerController.Replica.Data.Inventory) do
+        if type(oreAmount) == "number" and oreAmount > 0 then
+            local Ore = GetOre(oreName)
+            if Ore then
+                local rarity = Ore["Rarity"]
+                -- เช็คว่าไม่อยู่ใน Ignore list
+                if not table.find(Settings["Ignore Forge Rarity"], rarity) then
+                    table.insert(availableOres, {
+                        name = oreName,
+                        amount = oreAmount,
+                        rarity = rarity
+                    })
+                end
             end
         end
     end
+    
+    -- เรียงตามจำนวนมากไปน้อย (ใช้แร่ที่มีมากก่อน)
+    table.sort(availableOres, function(a, b)
+        return a.amount > b.amount
+    end)
+    
+    -- เลือกแร่มากสุด 4 ชนิด
+    for _, oreData in ipairs(availableOres) do
+        if HowMany >= 4 then break end
+        
+        Recipe[oreData.name] = oreData.amount
+        Count = Count + oreData.amount
+        HowMany = HowMany + 1
+    end
+    
+    -- ต้องมีแร่อย่างน้อย 3 ชิ้น
     if Count < 3 then
         return false
     else
-        return Repipe
+        return Recipe
     end
 end
 local function getnearest(P_Char)
@@ -460,6 +489,104 @@ local function AttackRock()
     pcall(function()
         ToolActivated:InvokeServer("Pickaxe")
     end)
+end
+
+-- ===== POTION SYSTEM =====
+-- Potion Buff Tracking
+local PotionBuffs = {
+    Health = { lastUsed = 0, duration = 5 },        -- Health Potion (5 วินาที)
+    Damage = { lastUsed = 0, duration = 60 },       -- Damage Potion (1 นาที)
+    Miner = { lastUsed = 0, duration = 300 },       -- Miner Potion (5 นาที)
+    Luck = { lastUsed = 0, duration = 300 },        -- Luck Potion (5 นาที)
+}
+
+-- Potion Names ที่ใช้กับ ToolActivated และ Purchase
+local PotionNames = {
+    Health = "HealthPotion2",      -- Health Potion II
+    Damage = "DamagePotion1",      -- Damage Potion I
+    Miner = "MinerPotion1",        -- Miner Potion I
+    Luck = "LuckPotion1",          -- Luck Potion I
+}
+
+-- จำนวน Potion ที่ซื้อทีละครั้ง
+local PotionBuyAmount = 5
+
+local function GetPotionCount(potionName)
+    local replica = PlayerController and PlayerController.Replica
+    if not replica or not replica.Data then return 0 end
+    
+    local misc = replica.Data.Misc
+    if not misc then return 0 end
+    
+    return misc[potionName] or 0
+end
+
+local function BuyPotion(potionName, amount)
+    amount = amount or 1
+    local success = pcall(function()
+        PurchaseRemote:InvokeServer(potionName, amount)
+    end)
+    if success then
+        print("[Potion] ซื้อ", potionName, "x", amount, "สำเร็จ!")
+    end
+    return success
+end
+
+local function UsePotion(potionType)
+    if not Settings["Use Potions"] then return false end
+    
+    local buff = PotionBuffs[potionType]
+    local potionName = PotionNames[potionType]
+    
+    if not buff or not potionName then return false end
+    
+    -- เช็คว่า buff หมดหรือยัง
+    local currentTime = tick()
+    if currentTime - buff.lastUsed < buff.duration then
+        return false -- buff ยังอยู่
+    end
+    
+    -- เช็คว่ามี Potion หรือไม่ ถ้าหมดให้ซื้อ
+    local potionCount = GetPotionCount(potionName)
+    if potionCount <= 0 then
+        print("[Potion]", potionType, "หมด! กำลังซื้อเพิ่ม...")
+        BuyPotion(potionName, PotionBuyAmount)
+        task.wait(0.5)
+    end
+    
+    -- ใช้ Potion
+    local success = pcall(function()
+        ToolActivated:InvokeServer(potionName)
+    end)
+    
+    if success then
+        buff.lastUsed = currentTime
+        print("[Potion] ใช้", potionType, "Potion สำเร็จ!")
+        return true
+    end
+    
+    return false
+end
+
+local function UsePotionsForMode(mode)
+    if not Settings["Use Potions"] then return end
+    
+    -- Health Potion ใช้ได้ทุกโหมด
+    UsePotion("Health")
+    
+    if mode == "Rock" then
+        -- Rock Mode: Miner + Luck
+        UsePotion("Miner")
+        UsePotion("Luck")
+    elseif mode == "Mob" then
+        -- Mob Mode: Damage
+        UsePotion("Damage")
+    elseif mode == "Quest" then
+        -- Quest Mode: ใช้ทั้งหมดตามความจำเป็น
+        UsePotion("Damage")
+        UsePotion("Miner")
+        UsePotion("Luck")
+    end
 end
 
 -- ===== QUEST SYSTEM FUNCTIONS =====
@@ -1195,6 +1322,16 @@ local function HandleDragonHeadPickaxeQuest()
     local function openRedCave()
         print("[DragonHead] ไปเปิด Red Cave (Heart Door)...")
         
+        -- เช็คว่าเปิด Red Cave แล้วหรือยัง
+        local replica = PlayerController and PlayerController.Replica
+        if replica and replica.Data then
+            local miscDialogues = replica.Data.MiscDialogues
+            if miscDialogues and miscDialogues.UnlockedRedCaveDoor then
+                print("[DragonHead] ✓ Red Cave เปิดแล้ว!")
+                return true
+            end
+        end
+        
         -- หา Heart Door ใน workspace.Assets
         local heartDoor = nil
         local assets = workspace:FindFirstChild("Assets")
@@ -1228,14 +1365,9 @@ local function HandleDragonHeadPickaxeQuest()
                     Char.HumanoidRootPart.CFrame = CFrame.new(pos + Vector3.new(0, 0, 3))
                     task.wait(1)
                     
-                    -- ลอง interact กับ Heart Door
+                    -- ใช้ Key เปิด Red Cave Door (ตามโค้ด decompile)
                     pcall(function()
-                        DialogueRemote:InvokeServer(heartDoor)
-                    end)
-                    task.wait(1)
-                    
-                    pcall(function()
-                        ProximityFunctionals:InvokeServer(heartDoor)
+                        replica:Write("RemoveMiscItem", "RedCaveKey", 1)
                     end)
                     task.wait(1)
                 end
@@ -2162,6 +2294,9 @@ task.spawn(function()
                 return
             end
             
+            -- ใช้ Potion ตามโหมดที่ฟาร์ม
+            UsePotionsForMode(Settings["Farm Mode"])
+            
             if Settings["Farm Mode"] == "Quest" then
                 -- Quest Mode
                 ProcessQuest()
@@ -2258,13 +2393,13 @@ task.spawn(function()
                     task.wait(1)
                 end
                 
-            elseif Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
+            elseif Settings["Farm Mode"] == "Rock" and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
                 local Rock = getnearest(Char)
                 local LastAttack = 0
                 local LastTween = nil
                 if Rock then
                     local Position = Rock:GetAttribute("OriginalCFrame").Position
-                    while Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do 
+                    while Rock and Rock.Parent and Rock:GetAttribute("Health") and Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do 
                         task.wait(0.1)
                         
                         if not IsAlive() then 

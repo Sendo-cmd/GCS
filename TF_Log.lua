@@ -110,46 +110,73 @@ local function GetAllData()
     local Data = PlayerController["Replica"]["Data"]
     local LocalData_ = GetSomeCurrency(true)
     
-    -- ดึงชื่อจาก workspace.Rocks
+    -- ดึงชื่อจาก workspace.Rocks (ดึงชื่อ Rock จาก Model ข้างใน)
     local RockNames = {}
     pcall(function()
         local Rocks = workspace:FindFirstChild("Rocks")
         if Rocks then
             for _, folder in pairs(Rocks:GetChildren()) do
                 if folder:IsA("Folder") then
-                    if not table.find(RockNames, folder.Name) then
-                        table.insert(RockNames, folder.Name)
+                    for _, rockContainer in pairs(folder:GetChildren()) do
+                        -- ดึงชื่อ Rock จาก Model ข้างใน
+                        for _, rockModel in pairs(rockContainer:GetChildren()) do
+                            if rockModel:IsA("Model") then
+                                local rockName = rockModel.Name
+                                if not table.find(RockNames, rockName) then
+                                    table.insert(RockNames, rockName)
+                                end
+                            end
+                        end
                     end
                 end
             end
         end
     end)
     
-    -- ดึงชื่อจาก workspace.Living (Mobs)
+    -- ดึงชื่อจาก workspace.Living (Mobs) - เอาเลขและชื่อซ้ำออก
     local MobNames = {}
     pcall(function()
         local Living = workspace:FindFirstChild("Living")
         if Living then
             for _, mob in pairs(Living:GetChildren()) do
                 if mob:IsA("Model") then
-                    if not table.find(MobNames, mob.Name) then
-                        table.insert(MobNames, mob.Name)
+                    -- เอาเลขท้ายชื่อออก (เช่น "Zombie 1" -> "Zombie")
+                    local mobName = mob.Name:gsub("%s*%d+$", "")
+                    if mobName ~= "" and not table.find(MobNames, mobName) then
+                        table.insert(MobNames, mobName)
                     end
                 end
             end
         end
     end)
     
-    -- ดึงชื่อ NPC จาก workspace.Proximity
+    -- ดึงชื่อ NPC จาก workspace.Proximity (เฉพาะที่มี Model และ Humanoid)
     local NPCNames = {}
     pcall(function()
         local Proximity = workspace:FindFirstChild("Proximity")
         if Proximity then
             for _, npc in pairs(Proximity:GetChildren()) do
-                -- ข้าม object ที่ไม่ใช่ NPC (เช่น Forge, CreateParty)
-                local skipNames = {"Forge", "CreateParty", "Anvil", "Furnace", "Workbench"}
-                if not table.find(skipNames, npc.Name) then
-                    if not table.find(NPCNames, npc.Name) then
+                -- ข้าม object ที่ไม่ใช่ NPC
+                local skipNames = {"Forge", "CreateParty", "Anvil", "Furnace", "Workbench", "Portal", "Door", "Gate", "Chest", "Crate"}
+                local isSkip = false
+                for _, skipName in pairs(skipNames) do
+                    if string.find(npc.Name, skipName) then
+                        isSkip = true
+                        break
+                    end
+                end
+                
+                -- เช็คว่าเป็น NPC จริง (มี Model หรือ Humanoid)
+                if not isSkip then
+                    local isNPC = false
+                    if npc:IsA("Model") then
+                        -- เช็คว่ามี Humanoid หรือ HumanoidRootPart
+                        if npc:FindFirstChildOfClass("Humanoid") or npc:FindFirstChild("HumanoidRootPart") or npc:FindFirstChild("Torso") or npc:FindFirstChild("Head") then
+                            isNPC = true
+                        end
+                    end
+                    
+                    if isNPC and not table.find(NPCNames, npc.Name) then
                         table.insert(NPCNames, npc.Name)
                     end
                 end
@@ -229,7 +256,7 @@ task.spawn(function ()
                     end
                 end
                 for npcName, count in pairs(QuestCounts) do
-                    LastConvertOres[#LastConvertOres + 1] = convertToField("Complete Quest", count)
+                    LastConvertOres[#LastConvertOres + 1] = convertToField(npcName .. " Complete", count)
                 end
                 -- Clear the log after sending
                 _G.CompletedQuestsLog = {}
