@@ -364,10 +364,15 @@ PlayerController.Replica:OnWrite("GiveItem", function(t, v)
     end
 end)
 local function GetOre(Name)
-    for i,v in pairs(Ores) do
+    -- ลองหาจาก Name ก่อน
+    for i, v in pairs(Ores) do
         if v["Name"] == Name then
             return v
-        end 
+        end
+    end
+    -- ลองหาจาก key (ID)
+    if Ores[Name] then
+        return Ores[Name]
     end
     return false
 end
@@ -391,6 +396,14 @@ local function GetRecipe()
                         amount = oreAmount,
                         rarity = rarity
                     })
+                    print("[Forge] Found ore:", oreName, "x", oreAmount, "[", rarity, "]")
+                else
+                    print("[Forge] Ignored ore:", oreName, "x", oreAmount, "[", rarity, "] - in ignore list")
+                end
+            else
+                -- Debug: แสดง item ที่ไม่พบใน Ore data
+                if oreName ~= "Equipments" and oreName ~= "FavoritedItems" then
+                    print("[Forge] Unknown item:", oreName, "x", oreAmount, "- not in Ore data")
                 end
             end
         end
@@ -408,7 +421,10 @@ local function GetRecipe()
         Recipe[oreData.name] = oreData.amount
         Count = Count + oreData.amount
         HowMany = HowMany + 1
+        print("[Forge] Selected:", oreData.name, "x", oreData.amount)
     end
+    
+    print("[Forge] Total:", Count, "ores from", HowMany, "types")
     
     -- ต้องมีแร่อย่างน้อย 3 ชิ้น
     if Count < 3 then
@@ -2240,24 +2256,39 @@ local function SellOres()
     local Basket = {}
     local SoldCount = 0
     
+    print("[SellOres] Checking inventory...")
+    
     for OreName, Amount in pairs(PlayerInventory) do
         if type(Amount) == "number" and Amount > 0 then
             local OreData = GetOre(OreName)
-            if OreData and ShouldSellOre(OreData["Rarity"]) then
-                if not IsFavorited(OreName) then
-                    Basket[OreName] = Amount
-                    SoldCount = SoldCount + Amount
+            if OreData then
+                local rarity = OreData["Rarity"]
+                if ShouldSellOre(rarity) then
+                    if not IsFavorited(OreName) then
+                        Basket[OreName] = Amount
+                        SoldCount = SoldCount + Amount
+                        print("[SellOres] Will sell:", OreName, "x", Amount, "[", rarity, "]")
+                    else
+                        print("[SellOres] Skipped (favorited):", OreName)
+                    end
+                else
+                    print("[SellOres] Skipped (ignored rarity):", OreName, "[", rarity, "]")
                 end
             end
         end
     end
+    
+    print("[SellOres] Total to sell:", SoldCount, "ores")
     
     if SoldCount > 0 then
         pcall(function()
             game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("DialogueService"):WaitForChild("RF"):WaitForChild("RunCommand"):InvokeServer("SellConfirm", {
                 Basket = Basket
             })
+            print("[SellOres] Sold!")
         end)
+    else
+        print("[SellOres] Nothing to sell")
     end
 end
 
