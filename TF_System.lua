@@ -33,6 +33,7 @@ local Changes = {
     ["865c696c-6751-4a38-a1c0-f64bd1d6dbee"] = function()
         Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
+        ["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
             "Mythic",
@@ -45,6 +46,7 @@ local Changes = {
     ["648b89ea-cddf-4a95-9c9a-3ee57e70a369"] = function()
         Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
+        ["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
             "Mythic",
@@ -57,6 +59,7 @@ local Changes = {
     ["764ccf8c-78dd-4701-b529-2dc3ea6446cc"] = function()
         Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
+        Settings["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
             "Mythic",
@@ -69,18 +72,22 @@ local Changes = {
     ["3a1fae3e-1efe-4df9-88c5-af1b36077692"] = function()
         Settings["Farm Mode"] = "Mob"
         Settings["Select Mobs"] = {"Zombie"}
+        Settings["Use Potions"] = true
     end,
     ["0f7ac08a-4267-44d7-a235-6fd0ae26e723"] = function()
         Settings["Farm Mode"] = "Mob"
         Settings["Select Mobs"] = {"Zombie"}
+        Settings["Use Potions"] = true
     end,
     ["00f8cd69-bfbe-4dce-9289-ed01082bc60f"] = function()
         Settings["Farm Mode"] = "Mob"
         Settings["Select Mobs"] = {"Zombie"}
+        Settings["Use Potions"] = true
     end,
     ["a218ed37-e05b-427c-9a00-cb878ad09039"] = function()
         Settings["Farm Mode"] = "Quest"
         Settings["Select Quest"] = ""
+        Settings["Use Potions"] = true
     end,
 }
 repeat task.wait() until game:IsLoaded()
@@ -525,7 +532,20 @@ local PotionNames = {
 }
 
 -- จำนวน Potion ที่ซื้อทีละครั้ง
-local PotionBuyAmount = 5
+local PotionBuyAmount = {
+    Health = 3,
+    Damage = 5,
+    Miner = 5,
+    Luck = 5,
+}
+
+-- Map potion names to display names in world
+local PotionDisplayNames = {
+    ["HealthPotion2"] = "Health Potion II",
+    ["DamagePotion1"] = "Damage Potion I",
+    ["MinerPotion1"] = "Miner Potion I",
+    ["LuckPotion1"] = "Luck Potion I",
+}
 
 local function GetPotionCount(potionName)
     local replica = PlayerController and PlayerController.Replica
@@ -537,15 +557,59 @@ local function GetPotionCount(potionName)
     return misc[potionName] or 0
 end
 
+local function FindPotionInWorld(potionName)
+    local displayName = PotionDisplayNames[potionName] or potionName
+    
+    for _, obj in pairs(workspace:GetDescendants()) do
+        local name = obj.Name
+        if name == potionName or name == displayName or 
+           string.find(name:lower(), potionName:lower()) or
+           string.find(name:lower(), displayName:lower()) then
+            if obj:IsA("BasePart") or obj:IsA("Model") then
+                if obj:IsA("Model") and obj.PrimaryPart then
+                    return obj.PrimaryPart
+                elseif obj:IsA("Model") then
+                    return obj:FindFirstChildWhichIsA("BasePart")
+                else
+                    return obj
+                end
+            end
+        end
+    end
+    return nil
+end
+
 local function BuyPotion(potionName, amount)
     amount = amount or 1
-    local success = pcall(function()
-        PurchaseRemote:InvokeServer(potionName, amount)
-    end)
-    if success then
-        print("[Potion] ซื้อ", potionName, "x", amount, "สำเร็จ!")
+    
+    local Char = Plr.Character
+    if not Char or not Char:FindFirstChild("HumanoidRootPart") then return false end
+    
+    -- Find and teleport to Potion
+    local potionPart = FindPotionInWorld(potionName)
+    if potionPart then
+        local potionPos = potionPart.Position
+        local targetPos = potionPos + Vector3.new(0, 0, 2)
+        Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
+        task.wait(0.3)
     end
-    return success
+    
+    -- Buy via Remote
+    local countBefore = GetPotionCount(potionName)
+    for i = 1, amount do
+        pcall(function()
+            PurchaseRemote:InvokeServer(potionName, 1)
+        end)
+        task.wait(0.1)
+    end
+    task.wait(0.3)
+    local countAfter = GetPotionCount(potionName)
+    
+    local bought = countAfter - countBefore
+    if bought > 0 then
+        print("[Potion] ซื้อ", potionName, "x", bought, "สำเร็จ!")
+    end
+    return bought > 0
 end
 
 local function UsePotion(potionType)
@@ -566,7 +630,8 @@ local function UsePotion(potionType)
     local potionCount = GetPotionCount(potionName)
     if potionCount <= 0 then
         print("[Potion]", potionType, "หมด! กำลังซื้อเพิ่ม...")
-        BuyPotion(potionName, PotionBuyAmount)
+        local buyAmount = PotionBuyAmount[potionType] or 5
+        BuyPotion(potionName, buyAmount)
         task.wait(0.5)
     end
     
