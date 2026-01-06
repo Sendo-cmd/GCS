@@ -33,7 +33,7 @@ local Changes = {
     ["865c696c-6751-4a38-a1c0-f64bd1d6dbee"] = function()
         Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
-        ["Use Potions"] = true
+        Settings["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
             "Mythic",
@@ -46,7 +46,7 @@ local Changes = {
     ["648b89ea-cddf-4a95-9c9a-3ee57e70a369"] = function()
         Settings["Farm Mode"] = "Rock"
         Settings["Select Rocks"] = {"Pebble"}
-        ["Use Potions"] = true
+        Settings["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
             "Legendary",
             "Mythic",
