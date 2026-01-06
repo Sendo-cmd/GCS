@@ -532,18 +532,36 @@ local function GetPotionCount(potionName)
     if not replica or not replica.Data then return 0 end
     
     local misc = replica.Data.Misc
-    if not misc then return 0 end
+    if not misc then 
+        print("[Potion] Misc data not found!")
+        return 0 
+    end
+    
+    -- Debug: แสดง Misc data ทั้งหมด (ครั้งแรกเท่านั้น)
+    if not _G.PotionDebugShown then
+        _G.PotionDebugShown = true
+        print("[Potion] === MISC DATA ===")
+        for k, v in pairs(misc) do
+            if type(v) == "number" then
+                print("[Potion]", k, ":", v)
+            end
+        end
+        print("[Potion] ==================")
+    end
     
     return misc[potionName] or 0
 end
 
 local function BuyPotion(potionName, amount)
     amount = amount or 1
-    local success = pcall(function()
-        PurchaseRemote:InvokeServer(potionName, amount)
+    print("[Potion] กำลังซื้อ", potionName, "x", amount, "...")
+    local success, result = pcall(function()
+        return PurchaseRemote:InvokeServer(potionName, amount)
     end)
     if success then
-        print("[Potion] ซื้อ", potionName, "x", amount, "สำเร็จ!")
+        print("[Potion] ซื้อ", potionName, "x", amount, "สำเร็จ! Result:", result)
+    else
+        print("[Potion] ซื้อ", potionName, "ไม่สำเร็จ! Error:", result)
     end
     return success
 end
@@ -564,6 +582,8 @@ local function UsePotion(potionType)
     
     -- เช็คว่ามี Potion หรือไม่ ถ้าหมดให้ซื้อ
     local potionCount = GetPotionCount(potionName)
+    print("[Potion]", potionType, "count:", potionCount)
+    
     if potionCount <= 0 then
         print("[Potion]", potionType, "หมด! กำลังซื้อเพิ่ม...")
         BuyPotion(potionName, PotionBuyAmount)
