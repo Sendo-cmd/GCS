@@ -526,7 +526,7 @@ local PotionBuffs = {
 -- Potion Names ที่ใช้กับ ToolActivated และ Purchase
 local PotionNames = {
     Health = "HealthPotion2",      -- Health Potion II
-    Damage = "DamagePotion1",      -- Damage Potion I
+    Damage = "AttackDamagePotion1",      -- Damage Potion I
     Miner = "MinerPotion1",        -- Miner Potion I
     Luck = "LuckPotion1",          -- Luck Potion I
 }
@@ -539,22 +539,59 @@ local PotionBuyAmount = {
     Luck = 5,
 }
 
+-- Potion Stack Limit (รวมทุกชนิด)
+local POTION_STACK_LIMIT = 16
+
 -- Map potion names to display names in world
 local PotionDisplayNames = {
     ["HealthPotion2"] = "Health Potion II",
-    ["DamagePotion1"] = "Damage Potion I",
+    ["AttackDamagePotion1"] = "Damage Potion I",
     ["MinerPotion1"] = "Miner Potion I",
     ["LuckPotion1"] = "Luck Potion I",
+}
+
+-- เฉพาะ Potion ที่เราใช้ (4 ชนิด)
+local OurPotionNames = {
+    "HealthPotion2",
+    "AttackDamagePotion1",
+    "MinerPotion1",
+    "LuckPotion1",
 }
 
 local function GetPotionCount(potionName)
     local replica = PlayerController and PlayerController.Replica
     if not replica or not replica.Data then return 0 end
     
-    local misc = replica.Data.Misc
-    if not misc then return 0 end
+    -- ลอง Inventory.Misc ก่อน (array of tables)
+    local invMisc = replica.Data.Inventory and replica.Data.Inventory.Misc
+    if invMisc then
+        for _, item in pairs(invMisc) do
+            if type(item) == "table" and item.Name == potionName then
+                return item.Quantity or 1
+            end
+        end
+    end
     
-    return misc[potionName] or 0
+    -- ลอง Data.Misc (key-value)
+    local dataMisc = replica.Data.Misc
+    if dataMisc and dataMisc[potionName] then
+        return dataMisc[potionName]
+    end
+    
+    return 0
+end
+
+local function GetTotalPotionCount()
+    -- นับเฉพาะ 4 Potion ที่เราใช้
+    local total = 0
+    for _, potionName in ipairs(OurPotionNames) do
+        total = total + GetPotionCount(potionName)
+    end
+    return total
+end
+
+local function GetAvailablePotionSlots()
+    return POTION_STACK_LIMIT - GetTotalPotionCount()
 end
 
 local function FindPotionInWorld(potionName)
@@ -585,29 +622,61 @@ local function BuyPotion(potionName, amount)
     local Char = Plr.Character
     if not Char or not Char:FindFirstChild("HumanoidRootPart") then return false end
     
-    -- Find and teleport to Potion
-    local potionPart = FindPotionInWorld(potionName)
-    if potionPart then
-        local potionPos = potionPart.Position
-        local targetPos = potionPos + Vector3.new(0, 0, 2)
-        Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
-        task.wait(0.3)
+    -- Check available slots
+    local availableSlots = GetAvailablePotionSlots()
+    if availableSlots <= 0 then
+        print("[Potion] Inventory เต็ม! (", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
+        return false
     end
     
-    -- Buy via Remote
+    -- Limit amount to available slots
+    local actualAmount = math.min(amount, availableSlots)
+    if actualAmount < amount then
+        print("[Potion] ซื้อได้แค่", actualAmount, "ขวด (เหลือที่", availableSlots, ")")
+    end
+    
+    -- Find Potion in world
+    local potionPart = FindPotionInWorld(potionName)
+    if not potionPart then
+        print("[Potion] ไม่พบ", potionName, "ใน world")
+        return false
+    end
+    
+    local potionPos = potionPart.Position
+    local targetPos = potionPos + Vector3.new(0, 0, 2)
+    
+    -- Calculate distance and tween time (same as mob/rock farming)
+    local currentPos = Char.HumanoidRootPart.Position
+    local Magnitude = (targetPos - currentPos).Magnitude
+    local tweenTime = Magnitude / 80
+    
+    -- Tween to Potion (same speed as mob/rock farming)
+    local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), {
+        CFrame = CFrame.new(targetPos, potionPos)
+    })
+    tween:Play()
+    tween.Completed:Wait()
+    task.wait(0.5)
+    
+    -- Buy via Remote (slower, more reliable)
     local countBefore = GetPotionCount(potionName)
-    for i = 1, amount do
+    print("[Potion] กำลังซื้อ", potionName, "x", actualAmount, "... (มี", countBefore, "อยู่แล้ว, รวม", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
+    
+    for i = 1, actualAmount do
         pcall(function()
             PurchaseRemote:InvokeServer(potionName, 1)
         end)
-        task.wait(0.1)
+        task.wait(0.5) -- Wait longer between each purchase
     end
-    task.wait(0.3)
+    
+    task.wait(0.5)
     local countAfter = GetPotionCount(potionName)
     
     local bought = countAfter - countBefore
     if bought > 0 then
-        print("[Potion] ซื้อ", potionName, "x", bought, "สำเร็จ!")
+        print("[Potion] ซื้อ", potionName, "x", bought, "สำเร็จ! (รวม", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
+    else
+        print("[Potion] ซื้อ", potionName, "ไม่สำเร็จ!")
     end
     return bought > 0
 end
@@ -626,13 +695,50 @@ local function UsePotion(potionType)
         return false -- buff ยังอยู่
     end
     
-    -- เช็คว่ามี Potion หรือไม่ ถ้าหมดให้ซื้อ
+    -- เช็คว่ามี Potion หรือไม่
     local potionCount = GetPotionCount(potionName)
+    
+    -- ถ้ามี Potion อยู่แล้ว ใช้เลย
+    if potionCount > 0 then
+        local success = pcall(function()
+            ToolActivated:InvokeServer(potionName)
+        end)
+        
+        if success then
+            buff.lastUsed = currentTime
+            return true
+        end
+        return false
+    end
+    
+    -- ไม่มี Potion ต้องซื้อ
+    -- เช็คว่า inventory เต็มหรือยัง
+    local availableSlots = GetAvailablePotionSlots()
+    if availableSlots <= 0 then
+        return false
+    end
+    
+    -- Health Potion ให้ซื้อได้ปกติ (ไม่หยุดพยายาม)
+    -- Potion อื่นๆ ถ้าซื้อไม่ได้ หยุด 60 วินาที
+    local buyAmount = math.min(PotionBuyAmount[potionType] or 5, availableSlots)
+    local buySuccess = BuyPotion(potionName, buyAmount)
+    
+    if not buySuccess then
+        if potionType ~= "Health" then
+            -- Potion อื่นๆ หยุดพยายาม 60 วินาที
+            buff.lastUsed = currentTime - buff.duration + 60
+        end
+        return false
+    end
+    
+    task.wait(1)
+    potionCount = GetPotionCount(potionName)
+    
     if potionCount <= 0 then
-        print("[Potion]", potionType, "หมด! กำลังซื้อเพิ่ม...")
-        local buyAmount = PotionBuyAmount[potionType] or 5
-        BuyPotion(potionName, buyAmount)
-        task.wait(0.5)
+        if potionType ~= "Health" then
+            buff.lastUsed = currentTime - buff.duration + 60
+        end
+        return false
     end
     
     -- ใช้ Potion
@@ -642,7 +748,6 @@ local function UsePotion(potionType)
     
     if success then
         buff.lastUsed = currentTime
-        print("[Potion] ใช้", potionType, "Potion สำเร็จ!")
         return true
     end
     
@@ -652,8 +757,14 @@ end
 local function UsePotionsForMode(mode)
     if not Settings["Use Potions"] then return end
     
-    -- Health Potion ใช้ได้ทุกโหมด
-    UsePotion("Health")
+    -- Health Potion ใช้เฉพาะตอน HP ลดลง (ต่ำกว่า 70%)
+    local Char = Plr.Character
+    if Char then
+        local Humanoid = Char:FindFirstChildOfClass("Humanoid")
+        if Humanoid and Humanoid.Health < Humanoid.MaxHealth * 0.5 then
+            UsePotion("Health")
+        end
+    end
     
     if mode == "Rock" then
         -- Rock Mode: Miner + Luck
@@ -2486,6 +2597,7 @@ task.spawn(function()
                         end
                     end
                 else
+                    print("[Mob] ไม่พบมอนสเตอร์ที่อยู่ใน list รอหา...")
                     task.wait(1)
                 end
                 
@@ -2529,6 +2641,8 @@ task.spawn(function()
                             end
                         end
                     end
+                else
+                    task.wait(2)
                 end
             else
                 if not IsAlive() then return end
