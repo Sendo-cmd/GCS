@@ -2995,18 +2995,33 @@ if ID[game.GameId][1] == "AV" then
                 end
             end
             if Settings["Auto Stun"] then
-                repeat wait() until game:IsLoaded()
-                
                 local Characters = workspace:WaitForChild("Characters")
 
                 local function ConnectToPrompt(c)
                     if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
+                        -- เช็ค Prompt ที่มีอยู่แล้วทันที
+                        local existingPrompt = c:FindFirstChild("CidStunPrompt")
+                        if existingPrompt then
+                            task.spawn(function()
+                                if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and c:FindFirstChild("HumanoidRootPart") then
+                                    plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                                    task.wait(0.3)
+                                    fireproximityprompt(existingPrompt)
+                                    print("[Auto Stun]", c.Name, "(existing)")
+                                end
+                            end)
+                        end
+                        -- รอ Prompt ใหม่
                         c.ChildAdded:Connect(function(v)
                             if v.Name == "CidStunPrompt" then
-                                plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
-                                task.wait(.5)
-                                fireproximityprompt(v)
-                                print(c.Name)
+                                task.spawn(function()
+                                    if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and c:FindFirstChild("HumanoidRootPart") then
+                                        plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                                        task.wait(0.3)
+                                        fireproximityprompt(v)
+                                        print("[Auto Stun]", c.Name)
+                                    end
+                                end)
                             end
                         end)
                         c:SetAttribute("connect_1",true)
@@ -3019,9 +3034,8 @@ if ID[game.GameId][1] == "AV" then
                 Characters.ChildAdded:Connect(function(v)
                     ConnectToPrompt(v)
                 end)
-                print("Executed")
+                print("[Auto Stun] Executed (Host)")
             end
-            -- Auto Modifier System (Host) - ใช้วิธีเดียวกับ Member
             if Settings["Auto Modifier"] then
                 local plr = game:GetService("Players").LocalPlayer
                 local lastChoice = nil
@@ -3210,18 +3224,33 @@ if ID[game.GameId][1] == "AV" then
                 end
             end
             if Settings["Auto Stun"] then
-                repeat wait() until game:IsLoaded()
-                
                 local Characters = workspace:WaitForChild("Characters")
 
                 local function ConnectToPrompt(c)
                     if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
+                        -- เช็ค Prompt ที่มีอยู่แล้วทันที
+                        local existingPrompt = c:FindFirstChild("CidStunPrompt")
+                        if existingPrompt then
+                            task.spawn(function()
+                                if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and c:FindFirstChild("HumanoidRootPart") then
+                                    plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                                    task.wait(0.3)
+                                    fireproximityprompt(existingPrompt)
+                                    print("[Auto Stun]", c.Name, "(existing)")
+                                end
+                            end)
+                        end
+                        -- รอ Prompt ใหม่
                         c.ChildAdded:Connect(function(v)
                             if v.Name == "CidStunPrompt" then
-                                plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
-                                task.wait(.5)
-                                fireproximityprompt(v)
-                                print(c.Name)
+                                task.spawn(function()
+                                    if plr.Character and plr.Character:FindFirstChild("HumanoidRootPart") and c:FindFirstChild("HumanoidRootPart") then
+                                        plr.Character.HumanoidRootPart.CFrame = c.HumanoidRootPart.CFrame * CFrame.new(0,5,0)
+                                        task.wait(0.3)
+                                        fireproximityprompt(v)
+                                        print("[Auto Stun]", c.Name)
+                                    end
+                                end)
                             end
                         end)
                         c:SetAttribute("connect_1",true)
@@ -3234,7 +3263,7 @@ if ID[game.GameId][1] == "AV" then
                 Characters.ChildAdded:Connect(function(v)
                     ConnectToPrompt(v)
                 end)
-                print("Executed")
+                print("[Auto Stun] Executed (Member)")
             end
             -- Auto Modifier System (New - Based on AV_AutoModifier)
             if Settings["Auto Modifier"] then
