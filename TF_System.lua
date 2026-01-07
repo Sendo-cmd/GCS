@@ -606,7 +606,7 @@ end
 -- ===== POTION SYSTEM =====
 -- Potion Buff Tracking
 local PotionBuffs = {
-    Health = { lastUsed = 0, duration = 5 },        -- Health Potion (5 วินาที)
+    Health = { lastUsed = 0, duration = 3 },        -- Health Potion (3 วินาที - เช็คบ่อย)
     Damage = { lastUsed = 0, duration = 60 },       -- Damage Potion (1 นาที)
     Miner = { lastUsed = 0, duration = 300 },       -- Miner Potion (5 นาที)
     Luck = { lastUsed = 0, duration = 300 },        -- Luck Potion (5 นาที)
@@ -622,7 +622,7 @@ local PotionNames = {
 
 -- จำนวน Potion ที่ซื้อทีละครั้ง
 local PotionBuyAmount = {
-    Health = 3,
+    Health = 5,  -- เพิ่มจาก 3 เป็น 5 เพราะใช้บ่อย
     Damage = 5,
     Miner = 5,
     Luck = 5,
@@ -809,15 +809,19 @@ local function UsePotion(potionType)
         
         if success then
             buff.lastUsed = currentTime
+            print("[Potion] ใช้", potionType, "Potion สำเร็จ! (เหลือ", potionCount - 1, ")")
             return true
         end
         return false
     end
     
     -- ไม่มี Potion ต้องซื้อ
+    print("[Potion] ไม่มี", potionType, "Potion! กำลังซื้อ...")
+    
     -- เช็คว่า inventory เต็มหรือยัง
     local availableSlots = GetAvailablePotionSlots()
     if availableSlots <= 0 then
+        print("[Potion] Inventory เต็ม! ไม่สามารถซื้อ Potion ได้")
         return false
     end
     
@@ -827,9 +831,13 @@ local function UsePotion(potionType)
     local buySuccess = BuyPotion(potionName, buyAmount)
     
     if not buySuccess then
+        print("[Potion] ซื้อ", potionType, "Potion ไม่สำเร็จ!")
         if potionType ~= "Health" then
             -- Potion อื่นๆ หยุดพยายาม 60 วินาที
             buff.lastUsed = currentTime - buff.duration + 60
+        else
+            -- Health Potion ลองใหม่ทุก 5 วินาที
+            buff.lastUsed = currentTime - buff.duration + 5
         end
         return false
     end
@@ -838,8 +846,11 @@ local function UsePotion(potionType)
     potionCount = GetPotionCount(potionName)
     
     if potionCount <= 0 then
+        print("[Potion] ซื้อแล้วแต่ยังไม่มี Potion!")
         if potionType ~= "Health" then
             buff.lastUsed = currentTime - buff.duration + 60
+        else
+            buff.lastUsed = currentTime - buff.duration + 5
         end
         return false
     end
@@ -851,6 +862,7 @@ local function UsePotion(potionType)
     
     if success then
         buff.lastUsed = currentTime
+        print("[Potion] ซื้อและใช้", potionType, "Potion สำเร็จ!")
         return true
     end
     
@@ -860,11 +872,11 @@ end
 local function UsePotionsForMode(mode)
     if not Settings["Use Potions"] then return end
     
-    -- Health Potion ใช้เฉพาะตอน HP ลดลง (ต่ำกว่า 70%)
+    -- Health Potion: ใช้เมื่อเลือดลดลงต่ำกว่า 95% (ใช้บ่อยๆ)
     local Char = Plr.Character
     if Char then
         local Humanoid = Char:FindFirstChildOfClass("Humanoid")
-        if Humanoid and Humanoid.Health < Humanoid.MaxHealth * 0.5 then
+        if Humanoid and Humanoid.Health < Humanoid.MaxHealth * 0.55 then
             UsePotion("Health")
         end
     end
@@ -874,7 +886,7 @@ local function UsePotionsForMode(mode)
         UsePotion("Miner")
         UsePotion("Luck")
     elseif mode == "Mob" then
-        -- Mob Mode: Damage
+        -- Mob Mode: Damage + Health
         UsePotion("Damage")
     elseif mode == "Quest" then
         -- Quest Mode: ใช้ทั้งหมดตามความจำเป็น
@@ -2627,6 +2639,10 @@ local function WaitForRespawn()
     
     -- ซื้อ Potion ตามโหมด
     if Settings["Use Potions"] then
+        -- ซื้อ Health Potion ก่อนเสมอ (สำคัญที่สุด!)
+        UsePotion("Health")
+        task.wait(0.5)
+        
         if Settings["Farm Mode"] == "Rock" then
             UsePotion("Miner")
             task.wait(0.5)
