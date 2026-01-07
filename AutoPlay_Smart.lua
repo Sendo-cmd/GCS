@@ -1,4 +1,4 @@
---[[
+﻿--[[
     AutoPlay_Smart.lua
     ระบบ Auto Play อัจฉริยะ v2.0
     
@@ -28,7 +28,7 @@ local DEBUG = true
 local ACTION_COOLDOWN = 0.5        -- วินาทีระหว่าง Action
 local UNIT_SPACING = 4             -- ระยะห่างระหว่าง Unit
 local PATH_MARGIN = 10             -- ระยะห่างจาก Path (Income)
-local MAX_UPGRADE_LEVEL = 10       -- อัพเกรดสูงสุด
+-- MAX_UPGRADE_LEVEL ถูกลบออก - ใช้ GetMaxUpgradeLevel(unit) หาจาก Unit Data อัตโนมัติ
 local VOTE_SKIP_COOLDOWN = 2       -- Cooldown Vote Skip
 local AUTO_START_INTERVAL = 3      -- เช็ค Auto Start ทุกกี่วินาที
 local EMERGENCY_SELL_DELAY = 3     -- ขาย Emergency Units หลังเคลียร์ (วินาที)
@@ -305,7 +305,7 @@ local function GetMapPath()
     return path
 end
 
--- หา EnemyBase (ปลายทางของ enemy)
+-- หา EnemyBase (จุดเริ่มต้นของ enemy - ตรงข้าม Player)
 local function GetEnemyBase()
     local Map = workspace:FindFirstChild("Map")
     if Map then
@@ -325,7 +325,36 @@ local function GetEnemyBase()
         end
     end
     
-    -- Fallback: ใช้จุดสุดท้ายของ path
+    -- Fallback: ใช้จุดแรกของ path (Enemy spawn point)
+    local path = GetMapPath()
+    if #path > 0 then
+        return path[1].Position
+    end
+    
+    return nil
+end
+
+-- หา PlayerBase (ฐานของผู้เล่นที่ต้องป้องกัน - จุดสุดท้ายของ path)
+local function GetPlayerBase()
+    local Map = workspace:FindFirstChild("Map")
+    if Map then
+        local Bases = Map:FindFirstChild("Bases")
+        if Bases then
+            local playerBase = Bases:FindFirstChild("PlayerBase") or Bases:FindFirstChild("Base")
+            if playerBase then
+                if playerBase:IsA("BasePart") then
+                    return playerBase.Position
+                elseif playerBase:IsA("Model") then
+                    local primary = playerBase.PrimaryPart or playerBase:FindFirstChildWhichIsA("BasePart")
+                    if primary then
+                        return primary.Position
+                    end
+                end
+            end
+        end
+    end
+    
+    -- Fallback: ใช้จุดสุดท้ายของ path (Player Base = จุดที่ Enemy พยายามจะเข้า)
     local path = GetMapPath()
     if #path > 0 then
         return path[#path].Position
@@ -1204,11 +1233,10 @@ local function GetDamagePosition(unitRange)
         return positions[1]
     end
     
-    DebugPrint(string.format("🎯 หา Damage Position | Range: %.1f", unitRange))
+    DebugPrint(string.format("⚔️ หา Normal Damage Position | Range: %.1f", unitRange))
     
-    -- ===== หามุมโค้งของ path =====
-    local insideCorners = {}
-    local outsideCorners = {}
+    -- ===== หามุมโค้งของ path (2D detection - XZ plane) =====
+    local corners = {}
     
     for i = 2, #path - 1 do
         local prev = path[i-1].Position
@@ -1217,43 +1245,38 @@ local function GetDamagePosition(unitRange)
         
         local dir1 = (curr - prev).Unit
         local dir2 = (next - curr).Unit
-        local crossProduct = dir1:Cross(dir2)
-        local angle = math.deg(math.acos(math.clamp(dir1:Dot(dir2), -1, 1)))
         
-        if angle >= 25 then
-            -- เช็คว่าเป็น Inside หรือ Outside Corner
-            -- crossProduct.Y > 0 = Left Turn (Inside Corner)
-            -- crossProduct.Y < 0 = Right Turn (Outside Corner)
-            if crossProduct.Y > 0 then
-                table.insert(insideCorners, {Position = curr, Angle = angle})
-            else
-                table.insert(outsideCorners, {Position = curr, Angle = angle})
-            end
+        -- คำนวณมุม
+        local dotProduct = dir1:Dot(dir2)
+        local angle = math.deg(math.acos(math.clamp(dotProduct, -1, 1)))
+        
+        -- ถ้ามีมุมโค้ง (>= 20 degrees)
+        if angle >= 20 then
+            -- Cross product แบบ 2D (XZ plane) เพื่อหาทิศทาง
+            local cross = dir1.X * dir2.Z - dir1.Z * dir2.X
+            
+            table.insert(corners, {
+                Position = curr,
+                Angle = angle,
+                PathIndex = i,
+                IsLeftTurn = cross > 0,
+                IsRightTurn = cross < 0
+            })
         end
     end
+    
+    DebugPrint(string.format("📍 พบมุมโค้ง: %d มุม", #corners))
     
     local bestPos = nil
     local bestScore = -math.huge
     
-    -- ===== ประเมินแต่ละตำแหน่ง =====
+    -- ===== ประเมินแต่ละตำแหน่ง (Scoring: Paths + Time + Corners) =====
     for _, pos in pairs(positions) do
         local distToPath = GetDistanceToPath(pos)
         
-        -- ===== เช็ค Outside Corner (ห้ามวาง) =====
-        local isOutsideCorner = false
-        for _, corner in ipairs(outsideCorners) do
-            if (pos - corner.Position).Magnitude <= unitRange then
-                isOutsideCorner = true
-                DebugPrint("🚫 SKIP: Outside Corner detected!")
-                break
-            end
-        end
-        
-        if isOutsideCorner then
-            -- ข้ามตำแหน่งนี้
-        elseif distToPath <= unitRange then
-            -- เช็คว่าอยู่ในระยะยิง
-            -- ===== 1. นับ Path Nodes ที่ยิงได้ (NumberOfPathsHit) =====
+        -- เช็คว่าอยู่ในระยะยิง
+        if distToPath <= unitRange then
+            -- ===== 1. นับ Path Nodes ที่ยิงได้ (PathsHit) =====
             local pathsHit = 0
             for _, node in ipairs(path) do
                 if (pos - node.Position).Magnitude <= unitRange then
@@ -1262,135 +1285,223 @@ local function GetDamagePosition(unitRange)
             end
             
             -- ===== 2. คำนวณ TimeInRange =====
-            -- สมมติว่า enemy เดิน 10 studs/วินาที
             local enemySpeed = 10
-            local timeInRange = (pathsHit * 3) / enemySpeed  -- ระยะทาง / ความเร็ว
+            local timeInRange = (pathsHit * 3) / enemySpeed
             
-            -- ===== Hard Stop: TimeInRange < 1 วินาที → ห้ามวาง =====
-            if timeInRange >= 1 then
-                -- ===== 3. เช็ค Inside Corner Bonus =====
-                local insideCornerBonus = 0
-                for _, corner in ipairs(insideCorners) do
-                    if (pos - corner.Position).Magnitude <= unitRange then
-                        insideCornerBonus = insideCornerBonus + 150  -- Bonus ตามที่กำหนด
+            -- Hard Stop ที่ 0.5s (ยืดหยุ่น)
+            if timeInRange >= 0.5 then
+                -- ===== 3. Corner Bonus (Left Turn = Inside Corner ดีกว่า) =====
+                local cornerBonus = 0
+                local nearCornerCount = 0
+                
+                for _, corner in ipairs(corners) do
+                    local distToCorner = (pos - corner.Position).Magnitude
+                    if distToCorner <= unitRange then
+                        nearCornerCount = nearCornerCount + 1
+                        if corner.IsLeftTurn then
+                            cornerBonus = cornerBonus + 200  -- Left Turn (Inside)
+                        else
+                            cornerBonus = cornerBonus + 100  -- Right Turn (Outside)
+                        end
                     end
                 end
                 
-                -- ===== คำนวณ PlacementScore =====
-                local score = (pathsHit * 200) + (timeInRange * 100) + insideCornerBonus
+                -- ===== คำนวณ PlacementScore (ไม่มี Base Penalty) =====
+                local score = (pathsHit * 200) + (timeInRange * 100) + cornerBonus
                 
-                DebugPrint(string.format("📊 Pos Score: %.0f | PathsHit: %d | Time: %.1fs | Corner: %d", 
-                    score, pathsHit, timeInRange, insideCornerBonus))
+                if nearCornerCount > 0 then
+                    DebugPrint(string.format("📊 Score: %.0f | Paths: %d | Time: %.1fs | Corners: %d", 
+                        score, pathsHit, timeInRange, nearCornerCount))
+                end
                 
                 if score > bestScore then
                     bestScore = score
                     bestPos = pos
                 end
-            else
-                DebugPrint(string.format("⏱️ SKIP: TimeInRange = %.1fs (< 1s)", timeInRange))
             end
         end
     end
     
     if bestPos then
-        DebugPrint(string.format("⚔️ Damage Position | Score: %.0f", bestScore))
+        DebugPrint(string.format("✅ Normal Damage Position | Score: %.0f", bestScore))
     else
-        DebugPrint("❌ ไม่พบตำแหน่ง Damage ที่ผ่าน Hard Stop!")
+        DebugPrint("⚠️ ไม่พบตำแหน่ง Damage ที่ผ่าน Hard Stop (0.5s)")
         bestPos = positions[1]  -- fallback
     end
     
     return bestPos
 end
 
--- 3.2.1 วาง Damage เมื่อ Emergency (enemy > 60%) - วางที่ Inside Corner ใกล้ Enemy Base
-local function GetEmergencyDamagePosition(unitRange)
+-- 3.2.1 WAVE-BASED PLACEMENT SYSTEM - ระบบวางแบบอัตโนมัติตาม Wave/MaxWave
+-- ใช EnemyBase (จุดเกิดของ enemy) แทน PlayerBase เพื่อวางยูนิตตามกลยุทธ์
+
+local function GetWaveBasedDamagePosition(unitRange)
     unitRange = unitRange or 25
     local positions = GetPlaceablePositions()
-    
     if #positions == 0 then return nil end
     
-    local enemyBase = GetEnemyBase()
     local path = GetMapPath()
-    
-    if not enemyBase or #path == 0 then
-        DebugPrint("⚠️ ไม่พบ Enemy Base หรือ Path, ใช้ตำแหน่งปกติ")
-        return GetDamagePosition(unitRange)
+    if #path == 0 then
+        return #positions > 0 and positions[1] or nil
     end
     
-    DebugPrint(string.format("🚨 Emergency Mode | Range: %.1f", unitRange))
+    -- อ่านข้อมูล Wave ปัจจุบัน
+    GetWaveFromUI()
+    local currentWave = CurrentWave
+    local maxWave = MaxWave
     
-    -- ===== หา Inside Corners เท่านั้น =====
-    local insideCorners = {}
+    DebugPrint(string.format("=== WAVE-BASED PLACEMENT | Wave: %d/%d ===", currentWave, maxWave))
+    DebugPrint(string.format("[WAVE] Range: %.1f | Total Positions: %d", unitRange, #positions))
     
-    for i = 2, #path - 1 do
-        local prev = path[i-1].Position
-        local curr = path[i].Position
-        local next = path[i+1].Position
+    -- หา EnemyBase (จุดเกิดของ enemy = จุดแรกของ path)
+    local enemyBase = GetEnemyBase()
+    if not enemyBase then
+        DebugPrint("[WAVE] EnemyBase not found, using first path node")
+        enemyBase = path[1].Position
+    else
+        DebugPrint(string.format("[WAVE] EnemyBase: %.1f, %.1f, %.1f", enemyBase.X, enemyBase.Y, enemyBase.Z))
+    end
+    
+    -- คำนวณ Wave Progress (0.0 - 1.0)
+    local waveProgress = 0.5 -- Default: middle strategy
+    if maxWave > 0 and currentWave > 0 then
+        waveProgress = currentWave / maxWave
+    end
+    
+    DebugPrint(string.format("[WAVE] Progress: %.1f%% (%d/%d)", waveProgress * 100, currentWave, maxWave))
+    
+    -- ===== PHASE 1: Early Waves (0-40%) - โจมตีที่ EnemyBase (Front-load) =====
+    -- วาง unit ใกล้จุดเกิด enemy เพื่อฆ่าตั้งแต่ต้นทาง
+    local frontPathPercent = 0.4  -- 40% แรกของ path
+    
+    -- ===== PHASE 2: Mid Waves (40-70%) - กระจายตาม Path (Mid Coverage) =====
+    local midPathStart = 0.2
+    local midPathEnd = 0.8
+    
+    -- ===== PHASE 3: Late Waves (70-100%) - ป้องกันท้าย + PlayerBase (Defense) =====
+    local latePathPercent = 0.7  -- 70% ท้ายของ path
+    
+    -- เลือกกลยุทธ์ตาม Wave Progress
+    local targetNodes = {}
+    local strategyName = ""
+    
+    if waveProgress <= 0.4 then
+        -- Early Phase: โฟกัส Front (EnemyBase + 40% แรก)
+        strategyName = "FRONT LOAD (Early)"
+        local endIndex = math.max(1, math.floor(#path * frontPathPercent))
+        for i = 1, endIndex do
+            table.insert(targetNodes, {
+                Position = path[i].Position,
+                PathIndex = i,
+                DistFromBase = (path[i].Position - enemyBase).Magnitude,
+                Priority = 3 - (i / endIndex)  -- ยิ่งใกล้ EnemyBase priority สูง
+            })
+        end
         
-        local dir1 = (curr - prev).Unit
-        local dir2 = (next - curr).Unit
-        local crossProduct = dir1:Cross(dir2)
-        local angle = math.deg(math.acos(math.clamp(dir1:Dot(dir2), -1, 1)))
+    elseif waveProgress <= 0.7 then
+        -- Mid Phase: กระจาย Coverage (20-80%)
+        strategyName = "MID COVERAGE"
+        local startIndex = math.max(1, math.floor(#path * midPathStart))
+        local endIndex = math.min(#path, math.floor(#path * midPathEnd))
+        for i = startIndex, endIndex do
+            table.insert(targetNodes, {
+                Position = path[i].Position,
+                PathIndex = i,
+                DistFromBase = (path[i].Position - enemyBase).Magnitude,
+                Priority = 2  -- ความสำคัญปานกลาง
+            })
+        end
         
-        if angle >= 25 then
-            -- crossProduct.Y > 0 = Left Turn (Inside Corner)
-            if crossProduct.Y > 0 then
-                local distToBase = (curr - enemyBase).Magnitude
-                table.insert(insideCorners, {
-                    Position = curr, 
-                    Angle = angle,
-                    DistToBase = distToBase
-                })
-            end
+    else
+        -- Late Phase: ป้องกันท้าย (70% ท้าย + PlayerBase)
+        strategyName = "DEFENSE MODE (Late)"
+        local playerBase = GetPlayerBase()
+        local startIndex = math.max(1, math.floor(#path * latePathPercent))
+        for i = startIndex, #path do
+            local distFromPlayer = playerBase and (path[i].Position - playerBase).Magnitude or 0
+            table.insert(targetNodes, {
+                Position = path[i].Position,
+                PathIndex = i,
+                DistFromBase = distFromPlayer,  -- ใช้ระยะห่างจาก PlayerBase ในโหมดนี้
+                Priority = 3 + (#path - i) / #path  -- ยิ่งใกล้ PlayerBase priority สูง
+            })
         end
     end
     
-    -- เรียงตาม ใกล้ Enemy Base ที่สุด
-    table.sort(insideCorners, function(a, b) 
-        return a.DistToBase < b.DistToBase 
-    end)
+    DebugPrint(string.format("[WAVE] Strategy: %s | Target Nodes: %d", strategyName, #targetNodes))
+    
+    -- เรียงตาม Priority
+    table.sort(targetNodes, function(a, b) return a.Priority > b.Priority end)
     
     local bestPos = nil
     local bestScore = -math.huge
+    local bestDistToBase = math.huge
     
-    -- หาตำแหน่งที่ดีที่สุดใกล้ Inside Corner + ใกล้ Enemy Base
+    -- ===== ประเมินตำแหน่ง =====
     for _, pos in pairs(positions) do
-        local distToBase = (pos - enemyBase).Magnitude
-        
-        -- ต้องยิงถึง Enemy Base
-        if distToBase <= unitRange then
-            local score = 0
+        local distToPath = GetDistanceToPath(pos)
+        if distToPath <= unitRange then
+            local distToEnemyBase = (pos - enemyBase).Magnitude
             
-            -- Bonus ถ้าอยู่ใกล้ Inside Corner
-            for _, corner in ipairs(insideCorners) do
-                local distToCorner = (pos - corner.Position).Magnitude
-                if distToCorner <= unitRange then
-                    score = score + 500 - distToCorner  -- ยิ่งใกล้ยิ่งดี
+            -- นับ Target Nodes ที่ยิงได้
+            local nodesHit = 0
+            local prioritySum = 0
+            for _, node in ipairs(targetNodes) do
+                if (pos - node.Position).Magnitude <= unitRange then
+                    nodesHit = nodesHit + 1
+                    prioritySum = prioritySum + node.Priority
                 end
             end
             
-            -- Penalty ถ้าไกล Enemy Base (อยากให้ใกล้)
-            score = score - distToBase
+            -- ===== คำนวณ Score (แตกต่างตาม Phase) =====
+            local score = 0
+            
+            if waveProgress <= 0.4 then
+                -- Early: เน้นใกล้ EnemyBase + Nodes Hit
+                local baseBonus = math.max(0, 3000 - (distToEnemyBase * 15))  -- ยิ่งใกล้ EnemyBase ยิ่งดี
+                local nodesBonus = nodesHit * 600
+                local priorityBonus = prioritySum * 100
+                score = baseBonus + nodesBonus + priorityBonus
+                
+            elseif waveProgress <= 0.7 then
+                -- Mid: เน้น Coverage + Balanced
+                local coverageBonus = nodesHit * 500
+                local balanceBonus = prioritySum * 150
+                local pathProximity = math.max(0, 1000 - (distToPath * 30))  -- ใกล้ path พอดี
+                score = coverageBonus + balanceBonus + pathProximity
+                
+            else
+                -- Late: เน้นป้องกันท้าย + PlayerBase
+                local playerBase = GetPlayerBase()
+                local distToPlayer = playerBase and (pos - playerBase).Magnitude or 0
+                local defenseBonus = math.max(0, 3500 - (distToPlayer * 20))  -- ยิ่งใกล้ PlayerBase ยิ่งดี
+                local lateNodesBonus = nodesHit * 700
+                local latePathPenalty = distToPath * 15  -- ต้องไม่ไกล path มาก
+                score = defenseBonus + lateNodesBonus - latePathPenalty
+            end
+            
+            DebugPrint(string.format("  [Score] Pos[%.1f,%.1f] Dist=%.1f Nodes=%d Priority=%.1f Score=%.0f", 
+                pos.X, pos.Z, distToEnemyBase, nodesHit, prioritySum, score))
             
             if score > bestScore then
                 bestScore = score
                 bestPos = pos
+                bestDistToBase = distToEnemyBase
             end
         end
     end
     
     if bestPos then
-        local dist = (bestPos - enemyBase).Magnitude
-        DebugPrint(string.format("🎯 Emergency: ใกล้ Enemy Base %.1f studs | Score: %.0f", dist, bestScore))
+        DebugPrint(string.format("[WAVE BEST] %s | Dist=%.1f | Score=%.0f | Pos: %.1f,%.1f,%.1f", 
+            strategyName, bestDistToBase, bestScore, bestPos.X, bestPos.Y, bestPos.Z))
     else
-        DebugPrint("⚠️ ไม่พบตำแหน่ง Emergency, ใช้ตำแหน่งปกติ")
-        bestPos = GetDamagePosition(unitRange)
+        -- Fallback: ใช้ Normal Damage Position
+        DebugPrint("[WAVE] No optimal position, using fallback")
+        bestPos = positions[1]
     end
     
     return bestPos
 end
-
--- 3.3 วางตัวบัพ: หา position ที่อยู่ในระยะบัพ Unit อื่นมากที่สุด
 local function GetBuffPosition(buffRange)
     local positions = GetPlaceablePositions()
     if #positions == 0 then return nil end
@@ -1487,6 +1598,16 @@ local function GetActiveUnits()
                 local unitType = ClassifyUnit(unitData.Data or unitData)
                 local canSell = CheckIfSellable(unitData)
                 
+                -- หา CurrentUpgrade จากหลายที่
+                local currentUpgrade = 0
+                if unitData.CurrentUpgrade then
+                    currentUpgrade = unitData.CurrentUpgrade
+                elseif unitData.Data and unitData.Data.CurrentUpgrade then
+                    currentUpgrade = unitData.Data.CurrentUpgrade
+                elseif unitData.Data and unitData.Data.Data and unitData.Data.Data.CurrentUpgrade then
+                    currentUpgrade = unitData.Data.Data.CurrentUpgrade
+                end
+                
                 units[guid] = {
                     GUID = guid,
                     Model = unitData.Model,
@@ -1494,7 +1615,7 @@ local function GetActiveUnits()
                     Position = pos,
                     Data = unitData,
                     Type = unitType,
-                    CurrentUpgrade = unitData.Data and unitData.Data.CurrentUpgrade or 0,
+                    CurrentUpgrade = currentUpgrade,
                     CanUpgrade = true, -- จะเช็คภายหลัง
                     CanSell = canSell,
                 }
@@ -1650,34 +1771,38 @@ local function PlaceUnit(slot, position)
         return false
     end
     
-    -- รอสักครู่แล้วเช็คว่าวางจริงหรือไม่
-    task.wait(0.3)
-    
-    local unitCountAfter = 0
+    -- เก็บ GUID ที่มีอยู่ก่อนวาง (ไม่ต้องนับซ้ำ - ใช้ unitCountBefore ที่นับไว้แล้ว)
+    local guidsBefore = {}
     if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
         for guid, data in pairs(ClientUnitHandler._ActiveUnits) do
             if data.Player == plr then
-                unitCountAfter = unitCountAfter + 1
+                guidsBefore[guid] = true
             end
         end
     end
     
-    local actuallyPlaced = unitCountAfter > unitCountBefore
+    -- รอสักครู่แล้วเช็คว่าวางจริงหรือไม่
+    task.wait(0.3)
+    
+    local unitCountAfter = 0
     local newUnitGUID = nil
     
-    -- หา GUID ของ unit ที่เพิ่งวาง
-    if actuallyPlaced and ClientUnitHandler and ClientUnitHandler._ActiveUnits then
-        local newestTime = 0
+    if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
         for guid, data in pairs(ClientUnitHandler._ActiveUnits) do
             if data.Player == plr then
-                local spawnTime = data.SpawnTime or data.PlaceTime or 0
-                if spawnTime > newestTime then
-                    newestTime = spawnTime
+                unitCountAfter = unitCountAfter + 1
+                -- หา GUID ใหม่ที่ไม่อยู่ใน guidsBefore
+                if not guidsBefore[guid] then
                     newUnitGUID = guid
                 end
             end
         end
     end
+    
+    DebugPrint(string.format("🔢 Unit Count: Before=%d, After=%d, NewGUID=%s", 
+        unitCountBefore, unitCountAfter, tostring(newUnitGUID)))
+    
+    local actuallyPlaced = unitCountAfter > unitCountBefore
     
     if actuallyPlaced then
         -- Track placement
@@ -1743,6 +1868,40 @@ local function GetUpgradeCost(unit)
     return math.huge
 end
 
+local function GetMaxUpgradeLevel(unit)
+    -- ค่า Default สำหรับกรณีหาไม่ได้
+    local DEFAULT_MAX_LEVEL = 15  -- ค่า Default สูงพอที่จะครอบคลุม Unit ส่วนใหญ่
+    
+    if not unit then return DEFAULT_MAX_LEVEL end
+    
+    local data = unit.Data
+    if not data then return DEFAULT_MAX_LEVEL end
+    
+    -- หา upgrades table
+    local upgrades = nil
+    if data.Upgrades then
+        upgrades = data.Upgrades
+    elseif data.Data and data.Data.Upgrades then
+        upgrades = data.Data.Upgrades
+    end
+    
+    -- ถ้ามี Upgrades array → นับจำนวน
+    if upgrades and type(upgrades) == "table" then
+        local maxLevel = 0
+        for level, _ in pairs(upgrades) do
+            if type(level) == "number" and level > maxLevel then
+                maxLevel = level
+            end
+        end
+        if maxLevel > 0 then
+            return maxLevel
+        end
+    end
+    
+    -- Fallback: ใช้ค่า Default
+    return DEFAULT_MAX_LEVEL
+end
+
 local function GetStrongestUnit(units)
     local best = nil
     local bestScore = -math.huge
@@ -1777,9 +1936,10 @@ local function UpgradeUnit(unit)
         return false
     end
     
-    -- เช็ค max level
-    if unit.CurrentUpgrade >= MAX_UPGRADE_LEVEL then
-        DebugPrint("❌ ถึง max level แล้ว")
+    -- เช็ค max level (ใช้ GetMaxUpgradeLevel แทน MAX_UPGRADE_LEVEL)
+    local maxLevel = GetMaxUpgradeLevel(unit)
+    if unit.CurrentUpgrade >= maxLevel then
+        DebugPrint(string.format("❌ ถึง max level แล้ว (%d/%d)", unit.CurrentUpgrade, maxLevel))
         return false
     end
     
@@ -1953,12 +2113,13 @@ local function DecideAction()
         -- อัพเกรด Economy ทุกตัวที่ยังไม่เต็ม
         local allEconomyMaxed = true
         for _, unit in pairs(PlacedEconomyUnits) do
-            if unit.CurrentUpgrade < MAX_UPGRADE_LEVEL then
+            local maxLevel = GetMaxUpgradeLevel(unit)
+            if unit.CurrentUpgrade < maxLevel then
                 allEconomyMaxed = false
                 local cost = GetUpgradeCost(unit)
                 if cost < math.huge and CanAfford(cost) then
                     DebugPrint(string.format("💰 อัพเกรด Economy: %s [%d/%d] | Cost: %d", 
-                        unit.Name, unit.CurrentUpgrade, MAX_UPGRADE_LEVEL, cost))
+                        unit.Name, unit.CurrentUpgrade, maxLevel, cost))
                     if UpgradeUnit(unit) then
                         return  -- อัพเกรดทีละตัว
                     end
@@ -1976,12 +2137,21 @@ local function DecideAction()
     
     -- เช็คว่า Economy ทุกตัวอัพเกรดเต็มหรือยัง
     local allEconomyMaxed = true
-    for _, unit in pairs(PlacedEconomyUnits) do
-        if unit.CurrentUpgrade < MAX_UPGRADE_LEVEL then
+    local economyUpgradeStatus = {}
+    
+    for guid, unit in pairs(PlacedEconomyUnits) do
+        local currentLevel = unit.CurrentUpgrade or 0
+        local maxLevel = GetMaxUpgradeLevel(unit)
+        table.insert(economyUpgradeStatus, string.format("%s: %d/%d", 
+            unit.Name or "Unknown", currentLevel, maxLevel))
+        
+        if currentLevel < maxLevel then
             allEconomyMaxed = false
-            break
         end
     end
+    
+    DebugPrint(string.format("💰 Economy Upgrade Status: %s", table.concat(economyUpgradeStatus, " | ")))
+    DebugPrint(string.format("✅ All Economy Maxed: %s", tostring(allEconomyMaxed)))
     
     -- Emergency Mode: วางแค่ 1-2 ตัว หลังรอ EMERGENCY_DELAY วินาที (ใช้ GetEmergencyDamagePosition)
     if IsEmergency and not EmergencyActivated then
@@ -1997,22 +2167,35 @@ local function DecideAction()
                 local slot, unit, remaining = GetNextDamageSlot()
                 if slot and unit and CanAfford(unit.Price) then
                     local unitRange = unit.Range or 20
-                    DebugPrint(string.format("🚨 EMERGENCY! วาง Damage %d/%d: %s (Range: %.1f)", 
-                        emergencyCount + 1, MAX_EMERGENCY_UNITS, unit.Name, unitRange))
+                    DebugPrint(string.format("🚨 WAVE-BASED EMERGENCY! วาง Damage %d/%d: %s (Range: %.1f) [Wave: %d/%d]", 
+                        emergencyCount + 1, MAX_EMERGENCY_UNITS, unit.Name, unitRange, CurrentWave, MaxWave))
                     
-                    -- ใช้ Emergency Position (Inside Corner ใกล้ Enemy Base)
-                    local pos = GetEmergencyDamagePosition(unitRange)
+                    -- ใช้ Wave-Based Position (ปรับกลยุทธ์ตาม Wave ปัจจุบัน: Early=EnemyBase, Mid=Coverage, Late=PlayerBase)
+                    local pos = GetWaveBasedDamagePosition(unitRange)
                     if pos then
-                        DebugPrint(string.format("🚨 Emergency Position: %.1f, %.1f, %.1f", pos.X, pos.Y, pos.Z))
+                        DebugPrint(string.format("🚨 Wave-Based Emergency Position: %.1f, %.1f, %.1f [Wave %.0f%%]", 
+                            pos.X, pos.Y, pos.Z, (CurrentWave / math.max(MaxWave, 1)) * 100))
                         local success, newGUID = PlaceUnit(slot, pos)
-                        if success and newGUID then
-                            EmergencyUnits[newGUID] = true
-                            DebugPrint(string.format("🚨 Track Emergency GUID: %s (Total: %d)", newGUID, emergencyCount + 1))
+                        DebugPrint(string.format("🔍 PlaceUnit Result: success=%s, newGUID=%s", tostring(success), tostring(newGUID)))
+                        
+                        if success then
+                            if newGUID then
+                                EmergencyUnits[newGUID] = true
+                                DebugPrint(string.format("✅ Track Emergency GUID: %s", tostring(newGUID)))
+                            else
+                                DebugPrint("⚠️ WARNING: PlaceUnit success แต่ไม่มี GUID!")
+                            end
+                            
                             LastEmergencyTime = tick()
                             
                             -- เช็คอีกครั้งว่าครบหรือยัง
                             local newCount = 0
-                            for _ in pairs(EmergencyUnits) do newCount = newCount + 1 end
+                            for guid in pairs(EmergencyUnits) do 
+                                newCount = newCount + 1
+                                DebugPrint(string.format("  📌 Emergency Unit: %s", tostring(guid)))
+                            end
+                            
+                            DebugPrint(string.format("🚨 Emergency Count Updated: %d / %d", newCount, MAX_EMERGENCY_UNITS))
                             
                             if newCount >= MAX_EMERGENCY_UNITS then
                                 EmergencyActivated = true
@@ -2039,17 +2222,34 @@ local function DecideAction()
     end
     
     -- Normal Mode: วาง Damage ปกติ (หลัง Economy ครบ + อัพเกรดเต็มทุกตัว) - ใช้ Scoring System
-    if not damageFull and economyFull and allEconomyMaxed and not (IsEmergency and not EmergencyActivated) then
+    -- ถ้า EmergencyActivated = true แสดงว่าผ่าน Emergency แล้ว สามารถวางปกติได้
+    local canPlaceNormalDamage = not damageFull and economyFull and allEconomyMaxed and (not IsEmergency or EmergencyActivated)
+    
+    DebugPrint(string.format("🔍 Normal Damage Check: damageFull=%s, economyFull=%s, allMaxed=%s, IsEmergency=%s, EmergencyActivated=%s, CanPlace=%s",
+        tostring(damageFull), tostring(economyFull), tostring(allEconomyMaxed), 
+        tostring(IsEmergency), tostring(EmergencyActivated), tostring(canPlaceNormalDamage)))
+    
+    if canPlaceNormalDamage then
         local slot, unit, remaining = GetNextDamageSlot()
         
+        DebugPrint(string.format("🔍 GetNextDamageSlot: slot=%s, unit=%s, remaining=%s", 
+            tostring(slot), unit and unit.Name or "nil", tostring(remaining)))
+        
         if slot and unit then
+            DebugPrint(string.format("💰 Yen Check: Have=%d, Need=%d, CanAfford=%s", 
+                GetYen(), unit.Price, tostring(CanAfford(unit.Price))))
+            
             if CanAfford(unit.Price) then
                 local unitRange = unit.Range or 20
                 DebugPrint(string.format("⚔️ [NORMAL MODE] วาง Damage: %s (slot %d, range %.1f, เหลือ %d)", 
                     unit.Name, slot, unitRange, remaining))
                 
-                -- ใช้ Normal Damage Position (Scoring System + Inside Corner + ห้าม Outside Corner)
+                -- ใช้ Normal Damage Position (Scoring: Paths + Time + Corners - ไม่เกี่ยว Base)
+                DebugPrint("🔍 กำลังหาตำแหน่ง Normal Damage...")
                 local pos = GetDamagePosition(unitRange)
+                
+                DebugPrint(string.format("🔍 GetDamagePosition Result: pos=%s", tostring(pos)))
+                
                 if pos then
                     DebugPrint(string.format("⚔️ Normal Position: %.1f, %.1f, %.1f", pos.X, pos.Y, pos.Z))
                     local success, newGUID = PlaceUnit(slot, pos)
@@ -2387,7 +2587,7 @@ return {
     DEBUG = DEBUG,
     ACTION_COOLDOWN = ACTION_COOLDOWN,
     UNIT_SPACING = UNIT_SPACING,
-    MAX_UPGRADE_LEVEL = MAX_UPGRADE_LEVEL,
+    -- MAX_UPGRADE_LEVEL ถูกลบออก - ใช้ GetMaxUpgradeLevel(unit) แทน
     
     UnitType = UnitType,
     

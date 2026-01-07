@@ -35,7 +35,13 @@ local Changes = {
         Settings["Select Rocks"] = {"Pebble"}
         Settings["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
-            "Legendary",
+            "Mythic",
+            "Relic",
+            "Exotic",
+            "Divine",
+            "Unobtainable",
+        }
+        Settings["Ignore Ore Rarity"] = {
             "Mythic",
             "Relic",
             "Exotic",
@@ -48,7 +54,13 @@ local Changes = {
         Settings["Select Rocks"] = {"Pebble"}
         Settings["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
-            "Legendary",
+            "Mythic",
+            "Relic",
+            "Exotic",
+            "Divine",
+            "Unobtainable",
+        }
+        Settings["Ignore Ore Rarity"] = {
             "Mythic",
             "Relic",
             "Exotic",
@@ -61,7 +73,13 @@ local Changes = {
         Settings["Select Rocks"] = {"Pebble"}
         Settings["Use Potions"] = true
         Settings["Ignore Forge Rarity"] = {
-            "Legendary",
+            "Mythic",
+            "Relic",
+            "Exotic",
+            "Divine",
+            "Unobtainable",
+        }
+        Settings["Ignore Ore Rarity"] = {
             "Mythic",
             "Relic",
             "Exotic",
