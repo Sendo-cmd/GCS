@@ -22,36 +22,18 @@ local CollectionService = game:GetService("CollectionService")
 local plr = Players.LocalPlayer
 local PlayerGui = plr:WaitForChild("PlayerGui")
 
--- ===== SETTINGS =====
-local Settings = {
-    -- ระบบหลัก
-    ["Enabled"] = true,
-    ["Debug"] = true,
-    
-    -- ===== AUTO START / VOTE SKIP =====
-    ["Auto Start"] = true,              -- เริ่มเกมอัตโนมัติ
-    ["Auto Vote Skip"] = true,          -- กด Vote Skip อัตโนมัติ
-    ["Vote Skip Cooldown"] = 2,         -- Cooldown ระหว่าง Vote Skip (วินาที)
-    ["Auto Start Check Interval"] = 3,  -- เช็ค Auto Start ทุกกี่วินาที
-    
-    -- Timing
-    ["ActionCooldown"] = 0.5,           -- รอกี่วินาทีระหว่าง Action
-    ["YenCheckInterval"] = 0.2,         -- เช็คเงินทุกกี่วินาที
-    
-    -- Emergency threshold
-    ["EmergencyPathPercent"] = 60,      -- ถ้า enemy เกิน 60% ของ path = ฉุกเฉิน
-    
-    -- Unit Spacing
-    ["UnitSpacing"] = 4,
-    ["PathMargin"] = 10,                -- ระยะห่างจาก path สำหรับ Income Unit
-    
-    -- Emergency Settings
-    ["MaxEmergencyUnits"] = 2,          -- จำนวน Emergency units สูงสุด
-    ["EmergencySellDelay"] = 3,         -- รอกี่วินาทีหลัง emergency หมดถึงจะขาย
-    
-    -- Max Upgrades
-    ["MaxUpgradeLevel"] = 10,
-}
+-- ===== AUTO CONFIGURATION (Hard-coded) =====
+local ENABLED = true
+local DEBUG = true
+local ACTION_COOLDOWN = 0.5        -- วินาทีระหว่าง Action
+local UNIT_SPACING = 4             -- ระยะห่างระหว่าง Unit
+local PATH_MARGIN = 10             -- ระยะห่างจาก Path (Income)
+local MAX_UPGRADE_LEVEL = 10       -- อัพเกรดสูงสุด
+local VOTE_SKIP_COOLDOWN = 2       -- Cooldown Vote Skip
+local AUTO_START_INTERVAL = 3      -- เช็ค Auto Start ทุกกี่วินาที
+local EMERGENCY_SELL_DELAY = 3     -- ขาย Emergency Units หลังเคลียร์ (วินาที)
+local EMERGENCY_DELAY = 2          -- รอกี่วินาทีก่อนเริ่ม Emergency Mode
+local MAX_EMERGENCY_UNITS = 2      -- วางได้สูงสุด 1-2 ตัวใน Emergency Mode
 
 -- ===== UNIT CLASSIFICATION =====
 -- ประเภทของ Unit (Economy / Damage / Buff)
@@ -122,9 +104,11 @@ local PlacedDamageUnits = {}     -- {GUID = UnitData}
 local PlacedBuffUnits = {}       -- {GUID = UnitData}
 local PlacedPositions = {}       -- {Position}
 
--- Emergency Units (ตัวที่วางแบบ Emergency ต้องขายทิ้งหลังเคลียร์)
-local EmergencyUnits = {}        -- {GUID = true}
-local LastEmergencyTime = 0
+-- Emergency Tracking
+local EmergencyUnits = {}        -- {GUID = true} - Units ที่วางตอน Emergency
+local LastEmergencyTime = 0      -- Track เวลาที่ Emergency เริ่ม
+local EmergencyStartTime = 0     -- เวลาที่ Enemy ถึง 60% ครั้งแรก
+local EmergencyActivated = false -- ว่าได้วาง Emergency units แล้วหรือยัง
 
 -- Slot Tracking
 local SlotPlaceCount = {}        -- {[slot] = count}
@@ -138,15 +122,15 @@ local AllSlotsPlaced = {}        -- {[slot] = true} ถ้าวางครบ 
 
 -- ===== UTILITY FUNCTIONS =====
 local function DebugPrint(...)
-    if Settings["Debug"] then
+    if DEBUG then
         print("[AutoPlay Smart]", ...)
     end
 end
 
 local function WaitForCooldown()
     local now = tick()
-    if now - LastActionTime < Settings["ActionCooldown"] then
-        task.wait(Settings["ActionCooldown"] - (now - LastActionTime))
+    if now - LastActionTime < ACTION_COOLDOWN then
+        task.wait(ACTION_COOLDOWN - (now - LastActionTime))
     end
     LastActionTime = tick()
 end
@@ -537,28 +521,26 @@ local function CheckEmergency()
     local enemies = GetEnemies()
     local progress = GetEnemyProgress()
     
-    -- Debug: แสดงสถานะ enemy ทุกครั้ง
-    DebugPrint(string.format("👁️ Check Emergency: Enemies=%d | Progress=%.0f%% | Threshold=%.0f%%", 
-        #enemies, progress, Settings["EmergencyPathPercent"]))
+    -- Emergency = enemy progress >= 60%
+    local wasEmergency = IsEmergency
+    IsEmergency = progress >= 60
     
-    if #enemies == 0 then
-        -- หา enemies ไม่เจอ - ลองแสดงว่าหาจากที่ไหนได้บ้าง
-        local debugInfo = "   -> ไม่พบ enemies: "
-        if ClientEnemyHandler then
-            debugInfo = debugInfo .. "มี ClientEnemyHandler "
-        else
-            debugInfo = debugInfo .. "ไม่มี ClientEnemyHandler "
-        end
-        if workspace:FindFirstChild("Enemies") then
-            debugInfo = debugInfo .. "| มี workspace.Enemies (" .. #workspace.Enemies:GetChildren() .. " children)"
-        end
-        DebugPrint(debugInfo)
+    -- ถ้าเพิ่งเข้า Emergency Mode ครั้งแรก
+    if IsEmergency and not wasEmergency then
+        EmergencyStartTime = tick()
+        EmergencyActivated = false
+        DebugPrint("🚨 EMERGENCY MODE TRIGGERED! เริ่มนับถอยหลัง", EMERGENCY_DELAY, "วินาที...")
     end
     
-    IsEmergency = progress >= Settings["EmergencyPathPercent"]
+    -- ถ้าออกจาก Emergency
+    if not IsEmergency and wasEmergency then
+        DebugPrint("✅ Emergency Mode สิ้นสุด")
+        EmergencyStartTime = 0
+        EmergencyActivated = false
+    end
     
     if IsEmergency then
-        DebugPrint("🚨 EMERGENCY TRIGGERED! Progress:", math.floor(progress), "%")
+        DebugPrint("🚨 EMERGENCY! Enemy Progress:", math.floor(progress), "%")
     end
     
     return IsEmergency
@@ -966,7 +948,7 @@ end
 
 -- ตรวจสอบว่าตำแหน่งถูกใช้แล้วหรือยัง (เช็คจาก Unit จริงๆ)
 local function IsPositionOccupied(position, minDistance)
-    minDistance = minDistance or Settings["UnitSpacing"]
+    minDistance = minDistance or UNIT_SPACING
     
     -- เช็คจาก PlacedPositions ที่เราติดตามไว้
     for _, placedPos in pairs(PlacedPositions) do
@@ -994,7 +976,7 @@ end
 
 local function GetPlaceablePositions()
     local positions = {}
-    local spacing = Settings["UnitSpacing"]
+    local spacing = UNIT_SPACING
     
     local Map = workspace:FindFirstChild("Map")
     if Map then
@@ -1214,164 +1196,115 @@ local function GetDamagePosition(unitRange)
         return nil 
     end
     
-    unitRange = unitRange or 20  -- fallback
-    
-    -- ระยะที่ดีที่สุดจาก path คือ 40-70% ของ range
-    local minDistFromPath = 2
-    local maxDistFromPath = unitRange * 0.9  -- ต้องยิงถึง
-    local idealDistFromPath = unitRange * 0.55  -- ระยะดีที่สุด
-    
-    DebugPrint(string.format("🎯 หา Damage Position | Range: %.1f | IdealDist: %.1f | Positions: %d", 
-        unitRange, idealDistFromPath, #positions))
-    
-    -- หา EnemyBase และ Path
-    local enemyBase = GetEnemyBase()
+    unitRange = unitRange or 25
     local path = GetMapPath()
     
     if #path == 0 then
         DebugPrint("❌ ไม่พบ Path!")
-        return positions[1]  -- fallback
+        return positions[1]
     end
     
-    -- ===== หามุมโค้งของ path (มุม > 25°) =====
-    local corners = {}
+    DebugPrint(string.format("🎯 หา Damage Position | Range: %.1f", unitRange))
+    
+    -- ===== หามุมโค้งของ path =====
+    local insideCorners = {}
+    local outsideCorners = {}
+    
     for i = 2, #path - 1 do
         local prev = path[i-1].Position
         local curr = path[i].Position
         local next = path[i+1].Position
         
-        local dir1 = Vector3.new(curr.X - prev.X, 0, curr.Z - prev.Z)
-        local dir2 = Vector3.new(next.X - curr.X, 0, next.Z - curr.Z)
+        local dir1 = (curr - prev).Unit
+        local dir2 = (next - curr).Unit
+        local crossProduct = dir1:Cross(dir2)
+        local angle = math.deg(math.acos(math.clamp(dir1:Dot(dir2), -1, 1)))
         
-        if dir1.Magnitude > 0.1 and dir2.Magnitude > 0.1 then
-            dir1 = dir1.Unit
-            dir2 = dir2.Unit
-            local dot = math.clamp(dir1.X * dir2.X + dir1.Z * dir2.Z, -1, 1)
-            local angle = math.deg(math.acos(dot))
-            
-            if angle >= 25 then  -- มุมเกิน 25° = มุมโค้ง
-                local progress = (i / #path) * 100
-                -- คำนวณทิศทางด้านนอกมุม (ที่ดีที่สุดในการวาง)
-                local outward = -(dir1 + dir2)
-                if outward.Magnitude > 0.1 then
-                    outward = outward.Unit
-                else
-                    outward = Vector3.new(0, 0, 0)
-                end
-                
-                table.insert(corners, {
-                    Position = curr,
-                    Index = i,
-                    Angle = angle,
-                    Progress = progress,
-                    OutwardDir = outward,
-                    Dir1 = dir1,
-                    Dir2 = dir2
-                })
+        if angle >= 25 then
+            -- เช็คว่าเป็น Inside หรือ Outside Corner
+            -- crossProduct.Y > 0 = Left Turn (Inside Corner)
+            -- crossProduct.Y < 0 = Right Turn (Outside Corner)
+            if crossProduct.Y > 0 then
+                table.insert(insideCorners, {Position = curr, Angle = angle})
+            else
+                table.insert(outsideCorners, {Position = curr, Angle = angle})
             end
         end
     end
-    
-    DebugPrint(string.format("📐 พบมุมโค้ง: %d จุด", #corners))
     
     local bestPos = nil
     local bestScore = -math.huge
     
-    -- ===== ให้คะแนนแต่ละตำแหน่ง =====
+    -- ===== ประเมินแต่ละตำแหน่ง =====
     for _, pos in pairs(positions) do
-        local score = 0
         local distToPath = GetDistanceToPath(pos)
         
-        -- ===== เช็คระยะจาก path - ต้องยิงถึง! =====
-        if distToPath < minDistFromPath or distToPath > maxDistFromPath then
-            -- ระยะไม่ผ่าน - ให้คะแนนต่ำมาก
-            score = -10000
-        else
-            -- ===== 1. ระยะจาก path ที่ดี (ใกล้ idealDistFromPath) =====
-            local distScore = 100 - math.abs(distToPath - idealDistFromPath) * 5
-            score = score + distScore
-            
-            -- ===== 2. ใกล้ EnemyBase = สำคัญมาก! =====
-            if enemyBase then
-                local distToBase = (pos - enemyBase).Magnitude
-                score = score + math.max(0, 500 - distToBase * 3)
-            end
-            
-            -- ===== 3. นับ path nodes ที่ยิงถึง (ยิ่งมากยิ่งดี) =====
-            local nodesHit = 0
-            local directionsHit = {}  -- เก็บทิศทางที่ยิงได้
-            
-            for idx, node in ipairs(path) do
-                local distToNode = (pos - node.Position).Magnitude
-                if distToNode <= unitRange then
-                    nodesHit = nodesHit + 1
-                    
-                    -- หาทิศทางของ node นี้เทียบกับตำแหน่งวาง
-                    local dirToNode = (node.Position - pos).Unit
-                    -- เช็คว่าทิศทางนี้ต่างจากที่มีอยู่มั้ย (ยิงได้หลายมุม)
-                    local isNewDirection = true
-                    for _, existingDir in pairs(directionsHit) do
-                        local dotProduct = dirToNode:Dot(existingDir)
-                        if dotProduct > 0.7 then  -- ทิศทางใกล้เคียงกัน
-                            isNewDirection = false
-                            break
-                        end
-                    end
-                    if isNewDirection then
-                        table.insert(directionsHit, dirToNode)
-                    end
-                end
-            end
-            
-            score = score + nodesHit * 8
-            score = score + #directionsHit * 50  -- Bonus สำหรับยิงได้หลายทิศทาง
-            
-            -- ===== 4. ยิงโดนมุมโค้ง = ดีมาก (ยิงได้ทั้ง 2 ด้าน) =====
-            for _, corner in ipairs(corners) do
-                local distToCorner = (pos - corner.Position).Magnitude
-                if distToCorner <= unitRange then
-                    -- Bonus ตามมุม (มุมมากยิ่งดี)
-                    score = score + corner.Angle * 2
-                    -- Bonus ถ้าอยู่ใกล้ EnemyBase
-                    score = score + corner.Progress * 1.5
-                    
-                    -- Bonus ถ้าอยู่ด้านนอกมุม (ยิงได้ทั้ง 2 ทิศทาง)
-                    if corner.OutwardDir.Magnitude > 0.1 then
-                        local dirToPos = (pos - corner.Position)
-                        if dirToPos.Magnitude > 0.1 then
-                            dirToPos = dirToPos.Unit
-                            local alignment = dirToPos:Dot(corner.OutwardDir)
-                            if alignment > 0 then
-                                score = score + alignment * 80
-                            end
-                        end
-                    end
-                end
+        -- ===== เช็ค Outside Corner (ห้ามวาง) =====
+        local isOutsideCorner = false
+        for _, corner in ipairs(outsideCorners) do
+            if (pos - corner.Position).Magnitude <= unitRange then
+                isOutsideCorner = true
+                DebugPrint("🚫 SKIP: Outside Corner detected!")
+                break
             end
         end
         
-        if score > bestScore then
-            bestScore = score
-            bestPos = pos
+        if isOutsideCorner then
+            -- ข้ามตำแหน่งนี้
+        elseif distToPath <= unitRange then
+            -- เช็คว่าอยู่ในระยะยิง
+            -- ===== 1. นับ Path Nodes ที่ยิงได้ (NumberOfPathsHit) =====
+            local pathsHit = 0
+            for _, node in ipairs(path) do
+                if (pos - node.Position).Magnitude <= unitRange then
+                    pathsHit = pathsHit + 1
+                end
+            end
+            
+            -- ===== 2. คำนวณ TimeInRange =====
+            -- สมมติว่า enemy เดิน 10 studs/วินาที
+            local enemySpeed = 10
+            local timeInRange = (pathsHit * 3) / enemySpeed  -- ระยะทาง / ความเร็ว
+            
+            -- ===== Hard Stop: TimeInRange < 1 วินาที → ห้ามวาง =====
+            if timeInRange >= 1 then
+                -- ===== 3. เช็ค Inside Corner Bonus =====
+                local insideCornerBonus = 0
+                for _, corner in ipairs(insideCorners) do
+                    if (pos - corner.Position).Magnitude <= unitRange then
+                        insideCornerBonus = insideCornerBonus + 150  -- Bonus ตามที่กำหนด
+                    end
+                end
+                
+                -- ===== คำนวณ PlacementScore =====
+                local score = (pathsHit * 200) + (timeInRange * 100) + insideCornerBonus
+                
+                DebugPrint(string.format("📊 Pos Score: %.0f | PathsHit: %d | Time: %.1fs | Corner: %d", 
+                    score, pathsHit, timeInRange, insideCornerBonus))
+                
+                if score > bestScore then
+                    bestScore = score
+                    bestPos = pos
+                end
+            else
+                DebugPrint(string.format("⏱️ SKIP: TimeInRange = %.1fs (< 1s)", timeInRange))
+            end
         end
     end
     
     if bestPos then
-        local distToPath = GetDistanceToPath(bestPos)
-        local distToBase = enemyBase and (bestPos - enemyBase).Magnitude or 0
-        DebugPrint(string.format("⚔️ Damage: ห่าง path %.1f | ห่าง base %.1f | score %.0f", 
-            distToPath, distToBase, bestScore))
+        DebugPrint(string.format("⚔️ Damage Position | Score: %.0f", bestScore))
     else
-        DebugPrint("❌ ไม่พบตำแหน่ง Damage!")
+        DebugPrint("❌ ไม่พบตำแหน่ง Damage ที่ผ่าน Hard Stop!")
         bestPos = positions[1]  -- fallback
     end
     
     return bestPos
 end
 
--- 3.2.1 วาง Damage เมื่อ Emergency (enemy > 60%) - วางใกล้ EnemyBase ที่สุด
+-- 3.2.1 วาง Damage เมื่อ Emergency (enemy > 60%) - วางที่ Inside Corner ใกล้ Enemy Base
 local function GetEmergencyDamagePosition(unitRange)
-    unitRange = unitRange or 20  -- fallback สำหรับ Emergency
+    unitRange = unitRange or 25
     local positions = GetPlaceablePositions()
     
     if #positions == 0 then return nil end
@@ -1379,39 +1312,65 @@ local function GetEmergencyDamagePosition(unitRange)
     local enemyBase = GetEnemyBase()
     local path = GetMapPath()
     
-    DebugPrint(string.format("🚨 Emergency | Range: %.1f | Positions: %d", unitRange, #positions))
+    if not enemyBase or #path == 0 then
+        DebugPrint("⚠️ ไม่พบ Enemy Base หรือ Path, ใช้ตำแหน่งปกติ")
+        return GetDamagePosition(unitRange)
+    end
+    
+    DebugPrint(string.format("🚨 Emergency Mode | Range: %.1f", unitRange))
+    
+    -- ===== หา Inside Corners เท่านั้น =====
+    local insideCorners = {}
+    
+    for i = 2, #path - 1 do
+        local prev = path[i-1].Position
+        local curr = path[i].Position
+        local next = path[i+1].Position
+        
+        local dir1 = (curr - prev).Unit
+        local dir2 = (next - curr).Unit
+        local crossProduct = dir1:Cross(dir2)
+        local angle = math.deg(math.acos(math.clamp(dir1:Dot(dir2), -1, 1)))
+        
+        if angle >= 25 then
+            -- crossProduct.Y > 0 = Left Turn (Inside Corner)
+            if crossProduct.Y > 0 then
+                local distToBase = (curr - enemyBase).Magnitude
+                table.insert(insideCorners, {
+                    Position = curr, 
+                    Angle = angle,
+                    DistToBase = distToBase
+                })
+            end
+        end
+    end
+    
+    -- เรียงตาม ใกล้ Enemy Base ที่สุด
+    table.sort(insideCorners, function(a, b) 
+        return a.DistToBase < b.DistToBase 
+    end)
     
     local bestPos = nil
     local bestScore = -math.huge
     
+    -- หาตำแหน่งที่ดีที่สุดใกล้ Inside Corner + ใกล้ Enemy Base
     for _, pos in pairs(positions) do
-        local distToPath = GetDistanceToPath(pos)
+        local distToBase = (pos - enemyBase).Magnitude
         
-        -- ต้องยิงถึง path (2 - unitRange studs)
-        if distToPath >= 2 and distToPath <= unitRange then
+        -- ต้องยิงถึง Enemy Base
+        if distToBase <= unitRange then
             local score = 0
             
-            -- 1. ใกล้ EnemyBase = สำคัญที่สุด!
-            if enemyBase then
-                local distToBase = (pos - enemyBase).Magnitude
-                score = score + (600 - distToBase * 4)  -- weight สูงมากๆ
-            end
-            
-            -- 2. นับ path nodes ใกล้ base (80-100% progress) ที่ยิงถึง
-            local nodesHit = 0
-            for i, node in ipairs(path) do
-                local progress = (i / #path) * 100
-                if progress >= 80 then
-                    if (pos - node.Position).Magnitude <= unitRange then
-                        nodesHit = nodesHit + 1
-                    end
+            -- Bonus ถ้าอยู่ใกล้ Inside Corner
+            for _, corner in ipairs(insideCorners) do
+                local distToCorner = (pos - corner.Position).Magnitude
+                if distToCorner <= unitRange then
+                    score = score + 500 - distToCorner  -- ยิ่งใกล้ยิ่งดี
                 end
             end
-            score = score + nodesHit * 40
             
-            -- 3. ระยะจาก path ที่ดี (กลางๆ)
-            local idealDist = unitRange * 0.5
-            score = score + (50 - math.abs(distToPath - idealDist) * 3)
+            -- Penalty ถ้าไกล Enemy Base (อยากให้ใกล้)
+            score = score - distToBase
             
             if score > bestScore then
                 bestScore = score
@@ -1421,14 +1380,14 @@ local function GetEmergencyDamagePosition(unitRange)
     end
     
     if bestPos then
-        local distToBase = enemyBase and (bestPos - enemyBase).Magnitude or 0
-        local distToPath = GetDistanceToPath(bestPos)
-        DebugPrint(string.format("🚨 Emergency: ห่าง base %.1f | ห่าง path %.1f", distToBase, distToPath))
+        local dist = (bestPos - enemyBase).Magnitude
+        DebugPrint(string.format("🎯 Emergency: ใกล้ Enemy Base %.1f studs | Score: %.0f", dist, bestScore))
     else
-        DebugPrint("🚨 ไม่พบตำแหน่ง Emergency!")
+        DebugPrint("⚠️ ไม่พบตำแหน่ง Emergency, ใช้ตำแหน่งปกติ")
+        bestPos = GetDamagePosition(unitRange)
     end
     
-    return bestPos or GetDamagePosition(unitRange)
+    return bestPos
 end
 
 -- 3.3 วางตัวบัพ: หา position ที่อยู่ในระยะบัพ Unit อื่นมากที่สุด
@@ -1562,7 +1521,18 @@ local function UpdatePlacedUnits()
         end
     end
     
-    DebugPrint("📊 Units: Economy", #PlacedEconomyUnits, "| Damage", #PlacedDamageUnits, "| Buff", #PlacedBuffUnits)
+    -- นับจำนวนจริงจาก table
+    local economyCount = 0
+    for _ in pairs(PlacedEconomyUnits) do economyCount = economyCount + 1 end
+    
+    local damageCount = 0
+    for _ in pairs(PlacedDamageUnits) do damageCount = damageCount + 1 end
+    
+    local buffCount = 0
+    for _ in pairs(PlacedBuffUnits) do buffCount = buffCount + 1 end
+    
+    DebugPrint(string.format("📊 Units: Economy %d | Damage %d | Buff %d", 
+        economyCount, damageCount, buffCount))
 end
 
 -- ===== SECTION 9: PLACE UNIT =====
@@ -1570,7 +1540,7 @@ end
 -- หาตำแหน่งวางที่ห่างจากตำแหน่งเดิมออกไป
 local function FindAlternativePosition(originalPosition, unitName, attempts)
     attempts = attempts or 10
-    local spacing = Settings["UnitSpacing"]
+    local spacing = UNIT_SPACING
     
     -- ลองหาตำแหน่งที่ห่างออกไปเรื่อยๆ
     for attempt = 1, attempts do
@@ -1619,7 +1589,7 @@ local function PlaceUnit(slot, position)
     local validPosition = nil
     
     -- ลอง 1: ใช้ตำแหน่งที่ส่งมา
-    if not IsPositionOccupied(position, Settings["UnitSpacing"]) then
+    if not IsPositionOccupied(position, UNIT_SPACING) then
         validPosition = GetValidPlacementPosition(unit.Name, position)
     end
     
@@ -1808,7 +1778,7 @@ local function UpgradeUnit(unit)
     end
     
     -- เช็ค max level
-    if unit.CurrentUpgrade >= Settings["MaxUpgradeLevel"] then
+    if unit.CurrentUpgrade >= MAX_UPGRADE_LEVEL then
         DebugPrint("❌ ถึง max level แล้ว")
         return false
     end
@@ -1851,6 +1821,13 @@ local function SellUnit(unit)
     
     if success then
         DebugPrint("💸 ขาย", unit.Name)
+        
+        -- ลบออกจาก Tracking
+        PlacedUnits[unit.GUID] = nil
+        PlacedEconomyUnits[unit.GUID] = nil
+        PlacedDamageUnits[unit.GUID] = nil
+        PlacedBuffUnits[unit.GUID] = nil
+        EmergencyUnits[unit.GUID] = nil  -- ลบออกจาก Emergency tracking ด้วย
     end
     
     return success
@@ -1899,15 +1876,21 @@ local function DecideAction()
     
     -- ===== CHECK: ถึง Max Wave หรือยัง =====
     if IsMaxWave() then
+        DebugPrint("🏁 MAX WAVE! ขายตัวเงิน + อัพเกรด Damage")
+        
         -- ขายตัวเงินทั้งหมด
         SellAllEconomyUnits()
         
-        -- อัพเกรด Damage ตัวที่แรงที่สุด
+        -- อัพเกรด Damage ตัวที่แรงที่สุด (ไม่วางตัวใหม่)
         local strongest = GetStrongestUnit(PlacedDamageUnits)
         if strongest then
-            UpgradeUnit(strongest)
+            local cost = GetUpgradeCost(strongest)
+            if CanAfford(cost) then
+                DebugPrint("⚔️ Max Wave - อัพเกรด:", strongest.Name)
+                UpgradeUnit(strongest)
+            end
         end
-        return
+        return  -- ไม่ทำอะไรต่อ (ไม่วางตัวใหม่)
     end
     
     -- ===== CHECK: มีเงินพอหรือไม่ =====
@@ -1919,12 +1902,12 @@ local function DecideAction()
     -- ===== PRIORITY 1: วางตัวเงินก่อน (จนกว่าจะครบ limit) =====
     local economyFull = AllEconomySlotsFull()
     
-    if not economyFull and not IsEmergency then
+    if not economyFull then
         local slot, unit, remaining = GetNextEconomySlot()
         
         if slot and unit then
             if CanAfford(unit.Price) then
-                DebugPrint(string.format("� พยายามวาง Economy: %s (slot %d, เหลือ %d)", unit.Name, slot, remaining))
+                DebugPrint(string.format("💰 พยายามวาง Economy: %s (slot %d, เหลือ %d)", unit.Name, slot, remaining))
                 local pos = GetEconomyPosition()
                 
                 if pos then
@@ -1937,73 +1920,15 @@ local function DecideAction()
                 end
             else
                 DebugPrint("⏳ รอเงินสำหรับ Economy:", unit.Price)
-            end
-        end
-    end
-    
-    -- ===== EMERGENCY MODE: วางดักหน้า enemy (จำกัด 1-2 ตัว) =====
-    if IsEmergency then
-        local progress = GetEnemyProgress()
-        local emergencyCount = 0
-        for _ in pairs(EmergencyUnits) do emergencyCount = emergencyCount + 1 end
-        
-        DebugPrint(string.format("🚨 EMERGENCY MODE! Enemy: %.0f%% | Emergency Units: %d/%d", 
-            progress, emergencyCount, Settings["MaxEmergencyUnits"]))
-        
-        -- วางได้ไม่เกิน MaxEmergencyUnits ตัว
-        if emergencyCount < Settings["MaxEmergencyUnits"] then
-            local slot, unit, remaining = GetNextDamageSlot()
-            if slot and unit and CanAfford(unit.Price) then
-                local unitRange = unit.Range or 20  -- fallback สำหรับ Emergency
-                DebugPrint(string.format("🚨 พยายามวาง Emergency Unit: %s (Range: %.1f)", unit.Name, unitRange))
-                
-                local pos = GetEmergencyDamagePosition(unitRange)
-                if pos then
-                    local success, newGUID = PlaceUnit(slot, pos)
-                    if success then
-                        -- Track GUID เป็น Emergency unit
-                        if newGUID then
-                            EmergencyUnits[newGUID] = true
-                            DebugPrint("🚨 Track Emergency GUID:", newGUID)
-                        end
-                        LastEmergencyTime = tick()
-                        return
-                    else
-                        DebugPrint("🚨 วาง Emergency ไม่สำเร็จ!")
-                    end
-                else
-                    DebugPrint("🚨 ไม่พบตำแหน่ง Emergency!")
-                end
-            else
-                if not slot then
-                    DebugPrint("🚨 ไม่มี Damage slot ที่วางได้")
-                elseif not unit then
-                    DebugPrint("🚨 ไม่พบ unit data")
-                else
-                    DebugPrint("🚨 เงินไม่พอ:", GetYen(), "<", unit.Price)
-                end
-            end
-        else
-            DebugPrint("🚨 Emergency units ครบแล้ว! รออัพเกรดแทน")
-        end
-        
-        -- ถ้าวาง Damage ไม่ได้ ให้อัพเกรด Damage ที่มีอยู่
-        local strongest = GetStrongestUnit(PlacedDamageUnits)
-        if strongest then
-            local cost = GetUpgradeCost(strongest)
-            if cost < math.huge and CanAfford(cost) then
-                DebugPrint("🚨 Emergency Upgrade:", strongest.Name)
-                if UpgradeUnit(strongest) then
-                    return
-                end
+                return  -- รอเงิน ไม่ทำอะไรต่อ
             end
         end
     end
     
     -- ===== CHECK: ขาย Emergency Units หลังเคลียร์ =====
-    if not IsEmergency and LastEmergencyTime > 0 then
+    if not IsEmergency and LastEmergencyTime > 0 and EmergencyActivated then
         local timeSinceEmergency = tick() - LastEmergencyTime
-        if timeSinceEmergency > Settings["EmergencySellDelay"] then
+        if timeSinceEmergency > EMERGENCY_SELL_DELAY then
             -- ขาย Emergency units ทั้งหมด
             local soldCount = 0
             for guid, _ in pairs(EmergencyUnits) do
@@ -2011,7 +1936,6 @@ local function DecideAction()
                 if unit and unit.CanSell then
                     DebugPrint("🗑️ ขาย Emergency Unit:", unit.Name)
                     SellUnit(unit)
-                    EmergencyUnits[guid] = nil
                     soldCount = soldCount + 1
                 end
             end
@@ -2019,65 +1943,139 @@ local function DecideAction()
                 DebugPrint(string.format("🗑️ ขาย Emergency Units: %d ตัว", soldCount))
             end
             LastEmergencyTime = 0
+            EmergencyActivated = false
+            table.clear(EmergencyUnits)
         end
     end
     
-    -- ===== PRIORITY 2: อัพเกรดตัวเงิน (ถ้าวางครบแล้ว และไม่ Emergency) =====
-    if economyFull and not IsEmergency then
-        -- หา Economy unit ที่อัพเกรดได้
-        local upgradedAny = false
+    -- ===== PRIORITY 2: อัพเกรดตัวเงินให้เต็มทุกตัว (ถ้าวางครบแล้ว) =====
+    if economyFull then
+        -- อัพเกรด Economy ทุกตัวที่ยังไม่เต็ม
+        local allEconomyMaxed = true
         for _, unit in pairs(PlacedEconomyUnits) do
-            local cost = GetUpgradeCost(unit)
-            if cost < math.huge and CanAfford(cost) then
-                DebugPrint("💰 อัพเกรด Economy:", unit.Name, "| Cost:", cost)
-                if UpgradeUnit(unit) then
-                    upgradedAny = true
-                    return
+            if unit.CurrentUpgrade < MAX_UPGRADE_LEVEL then
+                allEconomyMaxed = false
+                local cost = GetUpgradeCost(unit)
+                if cost < math.huge and CanAfford(cost) then
+                    DebugPrint(string.format("💰 อัพเกรด Economy: %s [%d/%d] | Cost: %d", 
+                        unit.Name, unit.CurrentUpgrade, MAX_UPGRADE_LEVEL, cost))
+                    if UpgradeUnit(unit) then
+                        return  -- อัพเกรดทีละตัว
+                    end
                 end
             end
         end
         
-        if not upgradedAny then
-            DebugPrint("📊 Economy units ไม่สามารถอัพเกรดได้ (max level หรือเงินไม่พอ)")
+        if allEconomyMaxed then
+            DebugPrint("✅ Economy units ทั้งหมดอัพเกรดเต็มแล้ว!")
         end
     end
     
-    -- ===== PRIORITY 3: วางตัวดาเมจ (จนกว่าจะครบ limit) =====
+    -- ===== PRIORITY 3: วางตัวดาเมจ (หลัง Economy อัพเกรดเต็มทุกตัว หรือ Emergency) =====
     local damageFull = AllDamageSlotsFull()
     
-    if not damageFull then
+    -- เช็คว่า Economy ทุกตัวอัพเกรดเต็มหรือยัง
+    local allEconomyMaxed = true
+    for _, unit in pairs(PlacedEconomyUnits) do
+        if unit.CurrentUpgrade < MAX_UPGRADE_LEVEL then
+            allEconomyMaxed = false
+            break
+        end
+    end
+    
+    -- Emergency Mode: วางแค่ 1-2 ตัว หลังรอ EMERGENCY_DELAY วินาที (ใช้ GetEmergencyDamagePosition)
+    if IsEmergency and not EmergencyActivated then
+        local timeSinceEmergency = tick() - EmergencyStartTime
+        if timeSinceEmergency >= EMERGENCY_DELAY then
+            -- นับจำนวน Emergency Units ที่วางแล้ว
+            local emergencyCount = 0
+            for _ in pairs(EmergencyUnits) do emergencyCount = emergencyCount + 1 end
+            
+            DebugPrint(string.format("🚨 Emergency Count: %d / %d", emergencyCount, MAX_EMERGENCY_UNITS))
+            
+            if emergencyCount < MAX_EMERGENCY_UNITS then
+                local slot, unit, remaining = GetNextDamageSlot()
+                if slot and unit and CanAfford(unit.Price) then
+                    local unitRange = unit.Range or 20
+                    DebugPrint(string.format("🚨 EMERGENCY! วาง Damage %d/%d: %s (Range: %.1f)", 
+                        emergencyCount + 1, MAX_EMERGENCY_UNITS, unit.Name, unitRange))
+                    
+                    -- ใช้ Emergency Position (Inside Corner ใกล้ Enemy Base)
+                    local pos = GetEmergencyDamagePosition(unitRange)
+                    if pos then
+                        DebugPrint(string.format("🚨 Emergency Position: %.1f, %.1f, %.1f", pos.X, pos.Y, pos.Z))
+                        local success, newGUID = PlaceUnit(slot, pos)
+                        if success and newGUID then
+                            EmergencyUnits[newGUID] = true
+                            DebugPrint(string.format("🚨 Track Emergency GUID: %s (Total: %d)", newGUID, emergencyCount + 1))
+                            LastEmergencyTime = tick()
+                            
+                            -- เช็คอีกครั้งว่าครบหรือยัง
+                            local newCount = 0
+                            for _ in pairs(EmergencyUnits) do newCount = newCount + 1 end
+                            
+                            if newCount >= MAX_EMERGENCY_UNITS then
+                                EmergencyActivated = true
+                                DebugPrint(string.format("✅ วาง Emergency Units ครบ %d ตัวแล้ว! กลับสู่โหมดปกติ", newCount))
+                            end
+                            return
+                        else
+                            DebugPrint("❌ วาง Emergency ไม่สำเร็จ")
+                        end
+                    else
+                        DebugPrint("❌ ไม่พบตำแหน่ง Emergency!")
+                    end
+                else
+                    DebugPrint("⏳ รอเงินสำหรับ Emergency")
+                end
+            else
+                EmergencyActivated = true
+                DebugPrint(string.format("✅ Emergency Units ครบ %d ตัวแล้ว", emergencyCount))
+            end
+        else
+            DebugPrint(string.format("⏳ รอ Emergency Mode... (%.1fs / %.1fs)", 
+                timeSinceEmergency, EMERGENCY_DELAY))
+        end
+    end
+    
+    -- Normal Mode: วาง Damage ปกติ (หลัง Economy ครบ + อัพเกรดเต็มทุกตัว) - ใช้ Scoring System
+    if not damageFull and economyFull and allEconomyMaxed and not (IsEmergency and not EmergencyActivated) then
         local slot, unit, remaining = GetNextDamageSlot()
         
         if slot and unit then
             if CanAfford(unit.Price) then
-                local unitRange = unit.Range or 20  -- fallback
-                DebugPrint(string.format("⚔️ พยายามวาง Damage: %s (slot %d, range %.1f, เหลือ %d)", 
+                local unitRange = unit.Range or 20
+                DebugPrint(string.format("⚔️ [NORMAL MODE] วาง Damage: %s (slot %d, range %.1f, เหลือ %d)", 
                     unit.Name, slot, unitRange, remaining))
-                local pos = GetDamagePosition(unitRange)
                 
+                -- ใช้ Normal Damage Position (Scoring System + Inside Corner + ห้าม Outside Corner)
+                local pos = GetDamagePosition(unitRange)
                 if pos then
-                    if PlaceUnit(slot, pos) then
-                        DebugPrint("✅ วาง Damage สำเร็จ!")
+                    DebugPrint(string.format("⚔️ Normal Position: %.1f, %.1f, %.1f", pos.X, pos.Y, pos.Z))
+                    local success, newGUID = PlaceUnit(slot, pos)
+                    if success then
+                        DebugPrint("✅ วาง Damage (Normal Mode) สำเร็จ!")
                         return
                     end
                 else
                     DebugPrint("❌ ไม่พบตำแหน่งวาง Damage!")
                 end
             else
-                DebugPrint("❌ เงินไม่พอ Damage:", yen, "<", unit.Price)
+                DebugPrint("⏳ รอเงินสำหรับ Damage:", unit.Price)
             end
-        else
-            DebugPrint("❌ ไม่พบ Damage slot ที่วางได้ (damageFull:", damageFull, ")")
         end
     end
     
-    -- ===== PRIORITY 4: อัพเกรดตัวดาเมจ (ตัวที่แรงที่สุด) =====
-    local strongest = GetStrongestUnit(PlacedDamageUnits)
-    if strongest then
-        local cost = GetUpgradeCost(strongest)
-        if CanAfford(cost) then
-            if UpgradeUnit(strongest) then
-                return
+    -- ===== PRIORITY 4: อัพเกรดตัวดาเมจ (หลังอัพเกรด Economy เต็มแล้ว) =====
+    if economyFull and damageFull then
+        local strongest = GetStrongestUnit(PlacedDamageUnits)
+        if strongest then
+            local cost = GetUpgradeCost(strongest)
+            if CanAfford(cost) then
+                if UpgradeUnit(strongest) then
+                    DebugPrint("⚔️ อัพเกรด Damage:", strongest.Name)
+                    return
+                end
             end
         end
     end
@@ -2124,10 +2122,10 @@ end
 -- ===== SECTION 13: AUTO START / VOTE SKIP SYSTEM =====
 
 local function AutoVoteSkip()
-    if not Settings["Auto Vote Skip"] then return end
+    -- Vote Skip เปิดอยู่ตลอด
     
     local currentTime = tick()
-    if currentTime - LastVoteSkipTime < Settings["Vote Skip Cooldown"] then return end
+    if currentTime - LastVoteSkipTime < VOTE_SKIP_COOLDOWN then return end
     
     -- วิธี 1: ใช้ SkipWaveEvent
     if SkipWaveEvent then
@@ -2187,7 +2185,7 @@ local function AutoVoteSkip()
 end
 
 local function TryStartGame()
-    if not Settings["Auto Start"] then return false end
+    -- Auto Start เปิดอยู่ตลอด
     
     local success = false
     DebugPrint("🎮 TryStartGame called!")
@@ -2309,7 +2307,7 @@ local function TryStartGame()
 end
 
 local function InitAutoStart()
-    if not Settings["Auto Start"] and not Settings["Auto Vote Skip"] then return end
+    -- Auto Start & Vote Skip เปิดอยู่ตลอดเวลา
     
     DebugPrint("🚀 Initializing Auto Start / Vote Skip...")
     DebugPrint("  SkipWaveEvent:", SkipWaveEvent and "Found" or "Not found")
@@ -2347,8 +2345,8 @@ local function InitAutoStart()
     
     -- Auto Start Loop
     task.spawn(function()
-        while Settings["Auto Start"] or Settings["Auto Vote Skip"] do
-            task.wait(Settings["Auto Start Check Interval"])
+        while true do  -- ทำงานตลอด
+            task.wait(AUTO_START_INTERVAL)
             
             if not MatchStarted and not MatchEnded then
                 TryStartGame()
@@ -2371,12 +2369,12 @@ local function MainLoop()
     InitYenTracking()
     InitAutoStart()
     
-    while Settings["Enabled"] do
+    while ENABLED do
         pcall(function()
             DecideAction()
         end)
         
-        task.wait(Settings["ActionCooldown"])
+        task.wait(ACTION_COOLDOWN)
     end
 end
 
@@ -2385,7 +2383,12 @@ task.spawn(MainLoop)
 
 -- ===== RETURN MODULE =====
 return {
-    Settings = Settings,
+    -- Constants
+    DEBUG = DEBUG,
+    ACTION_COOLDOWN = ACTION_COOLDOWN,
+    UNIT_SPACING = UNIT_SPACING,
+    MAX_UPGRADE_LEVEL = MAX_UPGRADE_LEVEL,
+    
     UnitType = UnitType,
     
     -- Functions
@@ -2432,13 +2435,15 @@ return {
     PlacedEconomyUnits = PlacedEconomyUnits,
     PlacedDamageUnits = PlacedDamageUnits,
     PlacedBuffUnits = PlacedBuffUnits,
+    EmergencyUnits = EmergencyUnits,      -- NEW: Emergency Units tracking
+    LastEmergencyTime = LastEmergencyTime, -- NEW: Emergency Timer
     MatchStarted = MatchStarted,
     MatchEnded = MatchEnded,
     SkipWaveActive = SkipWaveActive,
     
     -- Control
     Start = MainLoop,
-    Stop = function() Settings["Enabled"] = false end,
-    Enable = function() Settings["Enabled"] = true end,
-    Disable = function() Settings["Enabled"] = false end,
+    Stop = function() ENABLED = false end,
+    Enable = function() ENABLED = true end,
+    Disable = function() ENABLED = false end,
 }

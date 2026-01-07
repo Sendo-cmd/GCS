@@ -622,8 +622,8 @@ local PotionNames = {
 
 -- จำนวน Potion ที่ซื้อทีละครั้ง
 local PotionBuyAmount = {
-    Health = 5,  -- เพิ่มจาก 3 เป็น 5 เพราะใช้บ่อย
-    Damage = 5,
+    Health = 8,  -- ซื้อเยอะเพราะใช้บ่อยมากในโหมด Mob
+    Damage = 8,  -- ซื้อเยอะเพราะสำคัญในโหมด Mob
     Miner = 5,
     Luck = 5,
 }
@@ -709,7 +709,10 @@ local function BuyPotion(potionName, amount)
     amount = amount or 1
     
     local Char = Plr.Character
-    if not Char or not Char:FindFirstChild("HumanoidRootPart") then return false end
+    if not Char or not Char:FindFirstChild("HumanoidRootPart") then 
+        print("[Potion] ไม่มีตัวละคร - ยกเลิกการซื้อ")
+        return false 
+    end
     
     -- Check available slots
     local availableSlots = GetAvailablePotionSlots()
@@ -721,18 +724,21 @@ local function BuyPotion(potionName, amount)
     -- Limit amount to available slots
     local actualAmount = math.min(amount, availableSlots)
     if actualAmount < amount then
-        print("[Potion] ซื้อได้แค่", actualAmount, "ขวด (เหลือที่", availableSlots, ")")
+        print("[Potion] ปรับจำนวนเป็น", actualAmount, "ขวด (เหลือที่ว่าง", availableSlots, ")")
     end
     
     -- บันทึกตำแหน่งก่อนไปซื้อ
     local returnPos = Char.HumanoidRootPart.Position
+    print("[Potion] บันทึกตำแหน่งเดิม:", returnPos)
     
     -- Find Potion in world
     local potionPart = FindPotionInWorld(potionName)
     if not potionPart then
-        print("[Potion] ไม่พบ", potionName, "ใน world")
+        print("[Potion] ❌ ไม่พบ", potionName, "ใน world!")
         return false
     end
+    
+    print("[Potion] ✓ พบ", potionName, "ใน world - กำลังวาร์ปไปซื้อ...")
     
     local potionPos = potionPart.Position
     local targetPos = potionPos + Vector3.new(0, 0, 2)
@@ -752,7 +758,7 @@ local function BuyPotion(potionName, amount)
     
     -- Buy via Remote (slower, more reliable)
     local countBefore = GetPotionCount(potionName)
-    print("[Potion] กำลังซื้อ", potionName, "x", actualAmount, "... (มี", countBefore, "อยู่แล้ว, รวม", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
+    print("[Potion] 🛒 กำลังซื้อ", potionName, "x", actualAmount, "... (มี", countBefore, "อยู่แล้ว, รวม", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
     
     for i = 1, actualAmount do
         pcall(function()
@@ -766,19 +772,21 @@ local function BuyPotion(potionName, amount)
     
     local bought = countAfter - countBefore
     if bought > 0 then
-        print("[Potion] ซื้อ", potionName, "x", bought, "สำเร็จ! (รวม", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
+        print("[Potion] ✅ ซื้อ", potionName, "x", bought, "สำเร็จ! (รวม", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
     else
-        print("[Potion] ซื้อ", potionName, "ไม่สำเร็จ!")
+        print("[Potion] ⚠️ ซื้อ", potionName, "ไม่สำเร็จ! (อาจหมด หรือ เงินไม่พอ)")
     end
     
-    -- กลับไปตำแหน่งเดิมหลังซื้อเสร็จ (สำหรับ Rock Mode)
-    if Settings["Farm Mode"] == "Rock" and Char and Char:FindFirstChild("HumanoidRootPart") then
+    -- กลับไปตำแหน่งเดิมหลังซื้อเสร็จ (ทุกโหมด รวม Mob)
+    if Char and Char:FindFirstChild("HumanoidRootPart") then
+        print("[Potion] 🔄 กำลังกลับตำแหน่งเดิม...")
         local returnTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear), {
             CFrame = CFrame.new(returnPos)
         })
         returnTween:Play()
         returnTween.Completed:Wait()
         task.wait(0.2)
+        print("[Potion] ✓ กลับตำแหน่งเดิมแล้ว - พร้อมฟาร์มต่อ!")
     end
     
     return bought > 0
@@ -822,22 +830,25 @@ local function UsePotion(potionType)
     local availableSlots = GetAvailablePotionSlots()
     if availableSlots <= 0 then
         print("[Potion] Inventory เต็ม! ไม่สามารถซื้อ Potion ได้")
+        -- หยุดพยายาม 30 วินาที
+        buff.lastUsed = currentTime - buff.duration + 30
         return false
     end
     
-    -- Health Potion ให้ซื้อได้ปกติ (ไม่หยุดพยายาม)
-    -- Potion อื่นๆ ถ้าซื้อไม่ได้ หยุด 60 วินาที
+    -- ซื้อเท่าที่ซื้อได้ (เต็ม slot ที่ว่าง)
     local buyAmount = math.min(PotionBuyAmount[potionType] or 5, availableSlots)
+    print("[Potion] พยายามซื้อ", buyAmount, "ขวด (มี slot ว่าง", availableSlots, ")")
+    
     local buySuccess = BuyPotion(potionName, buyAmount)
     
     if not buySuccess then
-        print("[Potion] ซื้อ", potionType, "Potion ไม่สำเร็จ!")
-        if potionType ~= "Health" then
+        print("[Potion] ซื้อ", potionType, "Potion ไม่สำเร็จ! (อาจหมด หรือ มีปัญหา)")
+        if potionType == "Health" then
+            -- Health Potion สำคัญ ลองใหม่เร็วๆ (5 วินาที)
+            buff.lastUsed = currentTime - buff.duration + 5
+        else
             -- Potion อื่นๆ หยุดพยายาม 60 วินาที
             buff.lastUsed = currentTime - buff.duration + 60
-        else
-            -- Health Potion ลองใหม่ทุก 5 วินาที
-            buff.lastUsed = currentTime - buff.duration + 5
         end
         return false
     end
@@ -846,24 +857,33 @@ local function UsePotion(potionType)
     potionCount = GetPotionCount(potionName)
     
     if potionCount <= 0 then
-        print("[Potion] ซื้อแล้วแต่ยังไม่มี Potion!")
-        if potionType ~= "Health" then
-            buff.lastUsed = currentTime - buff.duration + 60
-        else
-            buff.lastUsed = currentTime - buff.duration + 5
+        print("[Potion] ⚠️ ซื้อแล้วแต่ยังไม่มี Potion! (อาจมีดีเลย์)")
+        task.wait(1) -- รอเพิ่ม
+        potionCount = GetPotionCount(potionName)
+        
+        if potionCount <= 0 then
+            print("[Potion] ยังไม่มี Potion จริงๆ - หยุดพยายาม")
+            if potionType == "Health" then
+                buff.lastUsed = currentTime - buff.duration + 5
+            else
+                buff.lastUsed = currentTime - buff.duration + 60
+            end
+            return false
         end
-        return false
     end
     
     -- ใช้ Potion
+    print("[Potion] กำลังใช้", potionType, "Potion (มี", potionCount, "ขวด)")
     local success = pcall(function()
         ToolActivated:InvokeServer(potionName)
     end)
     
     if success then
         buff.lastUsed = currentTime
-        print("[Potion] ซื้อและใช้", potionType, "Potion สำเร็จ!")
+        print("[Potion] ✓ ซื้อและใช้", potionType, "Potion สำเร็จ! (เหลือ", potionCount - 1, ")")
         return true
+    else
+        print("[Potion] ✗ ใช้ Potion ล้มเหลว!")
     end
     
     return false
@@ -872,7 +892,7 @@ end
 local function UsePotionsForMode(mode)
     if not Settings["Use Potions"] then return end
     
-    -- Health Potion: ใช้เมื่อเลือดลดลงต่ำกว่า 95% (ใช้บ่อยๆ)
+    -- Health Potion: ใช้เมื่อเลือดลดลงต่ำกว่า 95% (ตรวจสอบบ่อยๆ)
     local Char = Plr.Character
     if Char then
         local Humanoid = Char:FindFirstChildOfClass("Humanoid")
@@ -886,7 +906,7 @@ local function UsePotionsForMode(mode)
         UsePotion("Miner")
         UsePotion("Luck")
     elseif mode == "Mob" then
-        -- Mob Mode: Damage + Health
+        -- Mob Mode: Damage + Health (สำคัญมากในโหมดนี้!)
         UsePotion("Damage")
     elseif mode == "Quest" then
         -- Quest Mode: ใช้ทั้งหมดตามความจำเป็น
@@ -2634,31 +2654,38 @@ local function WaitForRespawn()
     HasTalkedToGreedyCey = false
     
     -- ซื้อ Potion หลังฟื้น
-    print("[Respawn] ฟื้นแล้ว - ซื้อ Potion...")
+    print("[Respawn] 💀 ฟื้นแล้ว - กำลังซื้อ Potion เตรียมพร้อม...")
     task.wait(2)
     
-    -- ซื้อ Potion ตามโหมด
+    -- ซื้อ Potion ตามโหมด (ซื้อเต็มที่!)
     if Settings["Use Potions"] then
         -- ซื้อ Health Potion ก่อนเสมอ (สำคัญที่สุด!)
+        print("[Respawn] ซื้อ Health Potion...")
         UsePotion("Health")
-        task.wait(0.5)
+        task.wait(1)
         
         if Settings["Farm Mode"] == "Rock" then
+            print("[Respawn] ซื้อ Miner + Luck Potion...")
             UsePotion("Miner")
-            task.wait(0.5)
+            task.wait(1)
             UsePotion("Luck")
         elseif Settings["Farm Mode"] == "Mob" then
+            print("[Respawn] ซื้อ Damage Potion...")
             UsePotion("Damage")
+            task.wait(1)
+            -- ซื้อ Health เพิ่มเพื่อให้มีเยอะพอ
+            UsePotion("Health")
         elseif Settings["Farm Mode"] == "Quest" then
+            print("[Respawn] ซื้อ Damage + Miner + Luck Potion...")
             UsePotion("Damage")
-            task.wait(0.5)
+            task.wait(1)
             UsePotion("Miner")
-            task.wait(0.5)
+            task.wait(1)
             UsePotion("Luck")
         end
     end
     
-    print("[Respawn] พร้อมฟาร์มต่อ!")
+    print("[Respawn] ✅ พร้อมฟาร์มต่อ!")
 end
 
 task.spawn(function()
