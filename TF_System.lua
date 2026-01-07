@@ -355,9 +355,10 @@ end
 local HasTalkedToMarbles = false
 local HasTalkedToGreedyCey = false
 
--- ===== SAFE HEIGHT FOR MOB FARM =====
-local SafeHeightOffset = 0
-local MAX_SAFE_HEIGHT = 5
+-- ===== SAFE HEIGHT FOR MOB FARM (ปรับให้หลบดีขึ้น) =====
+local SafeHeightOffset = 3
+local MAX_SAFE_HEIGHT = 10
+local MIN_SAFE_HEIGHT = 2
 
 PlayerController.Replica:OnWrite("GiveItem", function(t, v)
     print(t,v)
@@ -460,6 +461,24 @@ local function getnearest(P_Char)
         end
     end
     return path
+end
+
+-- ตำแหน่งหลบ mob (Safe Zone) - ปรับตามแมพ
+local SafeZonePosition = Vector3.new(0, 1000, 0)
+
+local function GoToSafeZone()
+    local Char = Plr.Character
+    if not Char or not Char:FindFirstChild("HumanoidRootPart") then return end
+    
+    print("[Farm] ไม่มีหินตาม list ที่ตีได้ในแมพ - ไปยืนหลบ mob")
+    
+    local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear), {
+        CFrame = CFrame.new(SafeZonePosition)
+    })
+    tween:Play()
+    tween.Completed:Wait()
+    print("[Farm] ยืนหลบ mob รอหินเกิดใหม่...")
+    task.wait(3)
 end
 
 local function getNearestMob(P_Char)
@@ -678,8 +697,23 @@ local function BuyPotion(potionName, amount)
     else
         print("[Potion] ซื้อ", potionName, "ไม่สำเร็จ!")
     end
+    
+    -- กลับไปตำแหน่งที่ฟาร์มอยู่หลังซื้อเสร็จ
+    if _G.LastFarmPosition and Char and Char:FindFirstChild("HumanoidRootPart") then
+        print("[Potion] กลับไปตำแหน่งฟาร์ม...")
+        local returnTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear), {
+            CFrame = CFrame.new(_G.LastFarmPosition)
+        })
+        returnTween:Play()
+        returnTween.Completed:Wait()
+        task.wait(0.3)
+    end
+    
     return bought > 0
 end
+
+-- ตำแหน่งที่จะกลับไปหลังซื้อ Potion
+_G.LastFarmPosition = _G.LastFarmPosition or nil
 
 local function UsePotion(potionType)
     if not Settings["Use Potions"] then return false end
@@ -716,6 +750,12 @@ local function UsePotion(potionType)
     local availableSlots = GetAvailablePotionSlots()
     if availableSlots <= 0 then
         return false
+    end
+    
+    -- บันทึกตำแหน่งปัจจุบันก่อนไปซื้อ
+    local Char = Plr.Character
+    if Char and Char:FindFirstChild("HumanoidRootPart") then
+        _G.LastFarmPosition = Char.HumanoidRootPart.Position
     end
     
     -- Health Potion ให้ซื้อได้ปกติ (ไม่หยุดพยายาม)
@@ -2485,7 +2525,27 @@ local function WaitForRespawn()
     end
     HasTalkedToMarbles = false
     HasTalkedToGreedyCey = false
+    
+    -- Reset Potion buffs เมื่อตาย
+    for potionType, buff in pairs(PotionBuffs) do
+        buff.lastUsed = 0
+    end
+    
     task.wait(2)
+    
+    -- กลับไปตำแหน่งที่ฟาร์มอยู่ก่อนตาย
+    if _G.LastFarmPosition then
+        local Char = Plr.Character
+        if Char and Char:FindFirstChild("HumanoidRootPart") then
+            print("[Respawn] กลับไปตำแหน่งฟาร์ม...")
+            local returnTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(2, Enum.EasingStyle.Linear), {
+                CFrame = CFrame.new(_G.LastFarmPosition)
+            })
+            returnTween:Play()
+            returnTween.Completed:Wait()
+            task.wait(0.5)
+        end
+    end
 end
 
 task.spawn(function()
@@ -2510,92 +2570,10 @@ task.spawn(function()
                 
             elseif Settings["Farm Mode"] == "Mob" then
                 local Mob = getNearestMob(Char)
-                local LastAttack = 0
-                local LastTween = nil
-                local LastHP = Char:FindFirstChildOfClass("Humanoid").Health
-                local HitCount = 0
-                local CheckTime = tick()
                 
                 if Mob then
-                    print("Found Mob:", Mob.Name)
-                    local MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
-                    local MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
-                    
-                    while MobHumanoid and MobHRP and MobHumanoid.Health > 0 do
-                        task.wait(0.05)
-                        
-                        if not IsAlive() then
-                            if LastTween then LastTween:Cancel() end
-                            return
-                        end
-                        
-                        Char = Plr.Character
-                        if not Char or not Char:FindFirstChild("HumanoidRootPart") then
-                            return
-                        end
-                        
-                        local MyHumanoid = Char:FindFirstChildOfClass("Humanoid")
-                        if not MyHumanoid then return end
-                        
-                        -- ตรวจสอบว่าโดนตีหรือไม่ (HP ลดลง)
-                        local CurrentHP = MyHumanoid.Health
-                        if CurrentHP < LastHP then
-                            HitCount = HitCount + 1
-                            -- โดนตี! เพิ่มระยะห่าง
-                            _G.SafeHeightOffset = (_G.SafeHeightOffset or 2) + 1
-                            print("[Farm] โดนตี! เพิ่มระยะเป็น +", _G.SafeHeightOffset, "studs")
-                        end
-                        LastHP = CurrentHP
-                        
-                        -- ถ้าไม่โดนตี 5 วินาที และ offset > 2 ลองลดลง
-                        if tick() - CheckTime > 5 then
-                            if HitCount == 0 and (_G.SafeHeightOffset or 2) > 2 then
-                                _G.SafeHeightOffset = _G.SafeHeightOffset - 0.5
-                                print("[Farm] ไม่โดนตี ลดระยะเป็น +", _G.SafeHeightOffset, "studs")
-                            end
-                            HitCount = 0
-                            CheckTime = tick()
-                        end
-                        
-                        -- เช็ค Mob ยังอยู่ไหม
-                        if not Mob or not Mob.Parent then break end
-                        
-                        MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
-                        if not MobHRP then break end
-                        
-                        MobHumanoid = Mob:FindFirstChildOfClass("Humanoid")
-                        if not MobHumanoid or MobHumanoid.Health <= 0 then break end
-                        
-                        local MobPosition = MobHRP.Position
-                        local MyPosition = Char.HumanoidRootPart.Position
-                        local Magnitude = (MyPosition - MobPosition).Magnitude
-                        
-                        local MobSize = Mob:GetExtentsSize()
-                        local MobHeight = MobSize.Y
-                        
-                        -- ใช้ SafeHeightOffset ที่ปรับอัตโนมัติ
-                        local SafePosition = MobPosition + Vector3.new(0, MobHeight/2 + (_G.SafeHeightOffset or 2), 0)
-                        
-                        if Magnitude < 20 then
-                            if LastTween then
-                                LastTween:Cancel()
-                            end
-                            task.delay(.01, function()
-                                if tick() > LastAttack and IsAlive() then
-                                    AttackMob()
-                                    LastAttack = tick() + 0.1
-                                end
-                            end)
-                            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
-                            end
-                        else
-                            if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(MobPosition)})
-                                LastTween:Play()
-                            end
-                        end
-                    end
+                    -- ใช้ฟังก์ชัน FarmMobImproved แทน
+                    FarmMobImproved(Mob)
                 else
                     print("[Mob] ไม่พบมอนสเตอร์ที่อยู่ใน list รอหา...")
                     task.wait(1)
@@ -2607,6 +2585,10 @@ task.spawn(function()
                 local LastTween = nil
                 if Rock then
                     local Position = Rock:GetAttribute("OriginalCFrame").Position
+                    
+                    -- บันทึกตำแหน่งฟาร์ม
+                    _G.LastFarmPosition = Position
+                    
                     while Rock and Rock.Parent and Rock:GetAttribute("Health") and Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do 
                         task.wait(0.1)
                         
@@ -2642,7 +2624,8 @@ task.spawn(function()
                         end
                     end
                 else
-                    task.wait(2)
+                    -- ไม่มีหินตาม list ที่ตีได้ในแมพ - ไปหลบ mob
+                    GoToSafeZone()
                 end
             else
                 if not IsAlive() then return end
