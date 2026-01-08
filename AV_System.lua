@@ -3022,71 +3022,51 @@ end
                 print("[Auto Modifier] Loaded!")
             end
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                -- Auto Next Vote (Loop จนกว่าจะไม่เจอปุ่ม Next)
                 if Settings["Auto Next"] then
                     task.spawn(function()
-                        task.wait(1)
-                        
-                        local maxAttempts = 30 -- กดสูงสุด 30 ครั้ง (30 วินาที)
-                        local attempts = 0
-                        
-                        while attempts < maxAttempts do
-                            attempts = attempts + 1
-                            
-                            -- เช็คว่ายังมี EndScreen อยู่ไหม
-                            local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                            if not EndScreenGui or not EndScreenGui:FindFirstChild("Holder") then
-                                -- print("[Auto Next] EndScreen closed, stopping loop")
-                                break
-                            end
-                            
-                            local voteSent = false
-                            
-                            -- วิธี 1: ลองหลาย Remote path
+                        while Settings["Auto Next"] do
                             pcall(function()
-                                Networking.EndScreen.VoteEvent:FireServer("Next")
-                                voteSent = true
-                            end)
+                                local success = false
+                                
+
+                                if not success then
+                                    success = pcall(function()
+                                        Networking.EndScreen.VoteEvent:FireServer("Next")
+                                    end)
+                                end
+                                
+
+                                if not success then
+                                    success = pcall(function()
+                                        Networking.VoteEvent:FireServer("Next")
+                                    end)
+                                end
+                                
+
+                                if not success then
+                                    success = pcall(function()
+                                        Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
+                                    end)
+                                end
                             
-                            pcall(function()
-                                Networking.VoteEvent:FireServer("Next")
-                                voteSent = true
-                            end)
-                            
-                            pcall(function()
-                                Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
-                                voteSent = true
-                            end)
-                            
-                            -- วิธี 2: กดปุ่ม Next โดยตรงจาก GUI
-                            pcall(function()
-                                local NextBtn = EndScreenGui:FindFirstChild("Next", true) or 
-                                               EndScreenGui:FindFirstChild("NextButton", true)
-                                if NextBtn and NextBtn.Visible then
-                                    -- ลอง fire connections
-                                    if getconnections then
-                                        for _, conn in pairs(getconnections(NextBtn.Activated)) do
-                                            conn:Fire()
+                                if not success then
+                                    pcall(function()
+                                        local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                                        if EndScreenGui then
+                                            local NextBtn = EndScreenGui:FindFirstChild("Next", true) or 
+                                                           EndScreenGui:FindFirstChild("NextButton", true)
+                                            if NextBtn then
+                                                for _, conn in pairs(getconnections(NextBtn.Activated)) do
+                                                    conn:Fire()
+                                                end
+                                            end
                                         end
-                                    end
-                                    -- ลอง MouseButton1Click
-                                    if NextBtn.MouseButton1Click then
-                                        for _, conn in pairs(getconnections(NextBtn.MouseButton1Click)) do
-                                            conn:Fire()
-                                        end
-                                    end
-                                    voteSent = true
+                                    end)
                                 end
                             end)
                             
-                            if voteSent then
-                                -- print("[Auto Next] Vote sent! Attempt:", attempts)
-                            end
-                            
-                            task.wait(1) -- รอ 1 วินาทีแล้วลองใหม่
+                            task.wait(3)
                         end
-                        
-                        -- print("[Auto Next] Loop ended after", attempts, "attempts")
                     end)
                 end
                 
