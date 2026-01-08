@@ -3024,48 +3024,80 @@ end
             Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
                 if Settings["Auto Next"] then
                     task.spawn(function()
-                        while Settings["Auto Next"] do
+                        -- ตรวจสอบว่า EndScreen ยังแสดงอยู่หรือไม่
+                        local function isEndScreenVisible()
+                            local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                            if EndScreenGui then
+                                local Holder = EndScreenGui:FindFirstChild("Holder")
+                                if Holder and Holder.Visible then
+                                    return true
+                                end
+                                -- ตรวจสอบ visibility ของ EndScreen เอง
+                                if EndScreenGui.Enabled ~= false then
+                                    return true
+                                end
+                            end
+                            return false
+                        end
+                        
+                        -- ตรวจสอบว่ามี remote หรือปุ่มที่ใช้ได้
+                        local function getAvailableMethod()
+                            -- ลอง VoteEvent
+                            if Networking.EndScreen:FindFirstChild("VoteEvent") then
+                                return "VoteEvent"
+                            end
+                            -- ลอง VoteEvent ตรง
+                            if Networking:FindFirstChild("VoteEvent") then
+                                return "NetworkingVoteEvent"
+                            end
+                            -- ลอง EndScreenEvent
+                            if Networking.EndScreen:FindFirstChild("EndScreenEvent") then
+                                return "EndScreenEvent"
+                            end
+                            -- ลองหาปุ่ม
+                            local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                            if EndScreenGui then
+                                local NextBtn = EndScreenGui:FindFirstChild("Next", true) or 
+                                               EndScreenGui:FindFirstChild("NextButton", true)
+                                if NextBtn then
+                                    return "Button", NextBtn
+                                end
+                            end
+                            return nil
+                        end
+                        
+                        -- รอจนกว่าจะเจอ method ที่ใช้ได้
+                        local method, btn = nil, nil
+                        local waitCount = 0
+                        while not method and waitCount < 10 do
+                            method, btn = getAvailableMethod()
+                            if not method then
+                                task.wait(0.5)
+                                waitCount = waitCount + 1
+                            end
+                        end
+                        
+                        if not method then
+                            warn("[Auto Next] ไม่เจอ remote หรือปุ่ม")
+                            return
+                        end
+                        
+                        -- กดจนกว่า EndScreen จะหายไป
+                        while Settings["Auto Next"] and isEndScreenVisible() do
                             pcall(function()
-                                local success = false
-                                
-
-                                if not success then
-                                    success = pcall(function()
-                                        Networking.EndScreen.VoteEvent:FireServer("Next")
-                                    end)
-                                end
-                                
-
-                                if not success then
-                                    success = pcall(function()
-                                        Networking.VoteEvent:FireServer("Next")
-                                    end)
-                                end
-                                
-
-                                if not success then
-                                    success = pcall(function()
-                                        Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
-                                    end)
-                                end
-                            
-                                if not success then
-                                    pcall(function()
-                                        local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                                        if EndScreenGui then
-                                            local NextBtn = EndScreenGui:FindFirstChild("Next", true) or 
-                                                           EndScreenGui:FindFirstChild("NextButton", true)
-                                            if NextBtn then
-                                                for _, conn in pairs(getconnections(NextBtn.Activated)) do
-                                                    conn:Fire()
-                                                end
-                                            end
-                                        end
-                                    end)
+                                if method == "VoteEvent" then
+                                    Networking.EndScreen.VoteEvent:FireServer("Next")
+                                elseif method == "NetworkingVoteEvent" then
+                                    Networking.VoteEvent:FireServer("Next")
+                                elseif method == "EndScreenEvent" then
+                                    Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
+                                elseif method == "Button" and btn then
+                                    for _, conn in pairs(getconnections(btn.Activated)) do
+                                        conn:Fire()
+                                    end
                                 end
                             end)
-                            
-                            task.wait(3)
+                            task.wait(1)
                         end
                     end)
                 end
