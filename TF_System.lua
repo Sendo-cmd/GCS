@@ -20,6 +20,8 @@ local Settings = {
     },
 }
 
+_G.IsForging = false
+
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
 local IsTest = false
@@ -409,30 +411,48 @@ local function GetRecipe()
     
     -- เก็บแร่ที่ใช้ได้ทั้งหมดพร้อมจำนวน
     local availableOres = {}
+    
+    print("[Forge] ========== Scanning Inventory ==========")
+    print("[Forge] Ignore Forge Rarity:", table.concat(Settings["Ignore Forge Rarity"], ", "))
+    
     for oreName, oreAmount in pairs(PlayerController.Replica.Data.Inventory) do
         if type(oreAmount) == "number" and oreAmount > 0 then
             local Ore = GetOre(oreName)
             if Ore then
-                local rarity = Ore["Rarity"]
-                -- เช็คว่าไม่อยู่ใน Ignore list
-                if not table.find(Settings["Ignore Forge Rarity"], rarity) then
+                local rarity = Ore["Rarity"] or "Unknown"
+                
+                -- Debug: แสดง Rarity ที่พบ
+                print("[Forge] Checking:", oreName, "x", oreAmount, "| Rarity:", rarity)
+                
+                -- เช็คว่าไม่อยู่ใน Ignore list (case-insensitive)
+                local isIgnored = false
+                for _, ignoredRarity in ipairs(Settings["Ignore Forge Rarity"]) do
+                    if string.lower(rarity) == string.lower(ignoredRarity) then
+                        isIgnored = true
+                        break
+                    end
+                end
+                
+                if not isIgnored then
                     table.insert(availableOres, {
                         name = oreName,
                         amount = oreAmount,
                         rarity = rarity
                     })
-                    print("[Forge] Found ore:", oreName, "x", oreAmount, "[", rarity, "]")
+                    print("[Forge] ✓ Added ore:", oreName, "x", oreAmount, "[", rarity, "]")
                 else
-                    print("[Forge] Ignored ore:", oreName, "x", oreAmount, "[", rarity, "] - in ignore list")
+                    print("[Forge] ✗ Ignored ore:", oreName, "x", oreAmount, "[", rarity, "] - in ignore list")
                 end
             else
                 -- Debug: แสดง item ที่ไม่พบใน Ore data
-                if oreName ~= "Equipments" and oreName ~= "FavoritedItems" then
-                    print("[Forge] Unknown item:", oreName, "x", oreAmount, "- not in Ore data")
+                if oreName ~= "Equipments" and oreName ~= "FavoritedItems" and oreName ~= "Misc" then
+                    print("[Forge] ⚠️ Unknown item:", oreName, "x", oreAmount, "- not in Ore data")
                 end
             end
         end
     end
+    
+    print("[Forge] ========== Available Ores:", #availableOres, "==========")
     
     -- เรียงตามจำนวนมากไปน้อย (ใช้แร่ที่มีมากก่อน)
     table.sort(availableOres, function(a, b)
@@ -446,15 +466,17 @@ local function GetRecipe()
         Recipe[oreData.name] = oreData.amount
         Count = Count + oreData.amount
         HowMany = HowMany + 1
-        print("[Forge] Selected:", oreData.name, "x", oreData.amount)
+        print("[Forge] 📦 Selected:", oreData.name, "x", oreData.amount, "[", oreData.rarity, "]")
     end
     
     print("[Forge] Total:", Count, "ores from", HowMany, "types")
     
     -- ต้องมีแร่อย่างน้อย 3 ชิ้น
     if Count < 3 then
+        print("[Forge] ❌ ไม่พอ Forge! ต้องมีแร่อย่างน้อย 3 ชิ้น")
         return false
     else
+        print("[Forge] ✅ Recipe พร้อม Forge!")
         return Recipe
     end
 end
@@ -726,6 +748,12 @@ end
 local function BuyPotion(potionName, amount)
     amount = amount or 1
     
+    -- เช็คว่ากำลัง Forge อยู่หรือไม่ - ถ้า Forge อยู่ไม่ซื้อ
+    if _G.IsForging then
+        print("[Potion] ⏸️ กำลัง Forge อยู่ - ยกเลิกการซื้อ Potion")
+        return false
+    end
+    
     local Char = Plr.Character
     if not Char or not Char:FindFirstChild("HumanoidRootPart") then 
         print("[Potion] ไม่มีตัวละคร - ยกเลิกการซื้อ")
@@ -812,6 +840,11 @@ end
 
 local function UsePotion(potionType)
     if not Settings["Use Potions"] then return false end
+    
+    -- เช็คว่ากำลัง Forge อยู่หรือไม่
+    if _G.IsForging then
+        return false -- ไม่ทำอะไรถ้ากำลัง Forge
+    end
     
     local buff = PotionBuffs[potionType]
     local potionName = PotionNames[potionType]
@@ -910,7 +943,10 @@ end
 local function UsePotionsForMode(mode)
     if not Settings["Use Potions"] then return end
     
-    -- Health Potion: ใช้เมื่อเลือดลดลงต่ำกว่า 95% (ตรวจสอบบ่อยๆ)
+    -- เช็คว่ากำลัง Forge อยู่หรือไม่ - ถ้า Forge อยู่ไม่ใช้ Potion
+    if _G.IsForging then return end
+    
+    -- Health Potion: ใช้เมื่อเลือดลดลงต่ำกว่า 55% (ตรวจสอบบ่อยๆ)
     local Char = Plr.Character
     if Char then
         local Humanoid = Char:FindFirstChildOfClass("Humanoid")
@@ -2444,39 +2480,74 @@ FarmMobImproved = function(Mob)
 end
 
 local function Forge(Recipe)
-    game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("StartForge"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Forge"))
-    ChangeSequence:InvokeServer("Melt",
-        {
-            FastForge = true,
-            ItemType = "Weapon"
-        }
-    )
-    task.wait(1)
-    local Melt = ChangeSequence:InvokeServer("Melt",
-        {
-            FastForge = true,
-            ItemType = "Weapon",
-            Ores = Recipe
-        }
-    )
-    task.wait(Melt["MinigameData"]["RequiredTime"])
-    local Pour = ChangeSequence:InvokeServer( "Pour",
-        {
-            ClientTime = workspace:GetServerTimeNow()
-        }
-    )
-    task.wait(Pour["MinigameData"]["RequiredTime"])
-    local Hammer = ChangeSequence:InvokeServer("Hammer",{ClientTime = workspace:GetServerTimeNow()})
-    task.wait(Hammer["MinigameData"]["RequiredTime"])
-    task.spawn(function()
-        ChangeSequence:InvokeServer("Water",{ClientTime = workspace:GetServerTimeNow() })
+    -- Set flag ว่ากำลัง Forge อยู่
+    _G.IsForging = true
+    print("[Forge] 🔨 เริ่ม Forge - หยุดซื้อ Potion ชั่วคราว")
+    
+    local success, err = pcall(function()
+        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("StartForge"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Forge"))
+        ChangeSequence:InvokeServer("Melt",
+            {
+                FastForge = true,
+                ItemType = "Weapon"
+            }
+        )
+        task.wait(1)
+        local Melt = ChangeSequence:InvokeServer("Melt",
+            {
+                FastForge = true,
+                ItemType = "Weapon",
+                Ores = Recipe
+            }
+        )
+        
+        if not Melt or not Melt["MinigameData"] then
+            error("Melt failed - MinigameData is nil")
+        end
+        
+        task.wait(Melt["MinigameData"]["RequiredTime"])
+        local Pour = ChangeSequence:InvokeServer( "Pour",
+            {
+                ClientTime = workspace:GetServerTimeNow()
+            }
+        )
+        
+        if not Pour or not Pour["MinigameData"] then
+            error("Pour failed - MinigameData is nil")
+        end
+        
+        task.wait(Pour["MinigameData"]["RequiredTime"])
+        local Hammer = ChangeSequence:InvokeServer("Hammer",{ClientTime = workspace:GetServerTimeNow()})
+        
+        if not Hammer or not Hammer["MinigameData"] then
+            error("Hammer failed - MinigameData is nil")
+        end
+        
+        task.wait(Hammer["MinigameData"]["RequiredTime"])
+        task.spawn(function()
+            ChangeSequence:InvokeServer("Water",{ClientTime = workspace:GetServerTimeNow() })
+        end)
+        task.wait(1)
+        ChangeSequence:InvokeServer("Showcase",{})
+        task.wait(.5)
+        ChangeSequence:InvokeServer("OreSelect",{})
+        pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
     end)
-    task.wait(1)
-    ChangeSequence:InvokeServer("Showcase",{})
-    task.wait(.5)
-    ChangeSequence:InvokeServer("OreSelect",{})
-    pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
-    print("Finish")
+    
+    -- Reset flag ไม่ว่าจะสำเร็จหรือไม่
+    _G.IsForging = false
+    
+    if success then
+        print("[Forge] ✅ Forge เสร็จสมบูรณ์!")
+    else
+        warn("[Forge] ❌ Forge ล้มเหลว:", err)
+        -- ปิด Forge UI ถ้าเปิดอยู่
+        pcall(function()
+            require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close()
+        end)
+    end
+    
+    print("[Forge] 🔓 กลับสู่โหมดปกติ - สามารถซื้อ Potion ได้")
 end
 
 local function TalkToMarbles()
