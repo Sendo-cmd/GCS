@@ -1,7 +1,7 @@
 local Settings = {
     ["Farm Mode"] = "Mob",  -- "Mob", "Rock", "Quest"
     ["Select Mobs"] = {"Skeleton Rogue"},
-    ["Select Rocks"] = {"Pebble"},
+    ["Select Rocks"] = {"Basalt Core", "Basalt Rock"},
     ["Select Quest"] = "",  -- ใส่ชื่อ NPC หรือ Special Quest เช่น "Greedy Cey", "Prismatic Pickaxe", "Dragon Head Pickaxe"
     ["Use Potions"] = true,  -- เปิด/ปิดใช้ Potion อัตโนมัติ
     ["Ignore Forge Rarity"] = {
@@ -19,8 +19,6 @@ local Settings = {
         "Unobtainable",
     },
 }
-
-_G.IsForging = false
 
 local Url = "https://api.championshop.date"
 local Auto_Configs = true
@@ -110,6 +108,26 @@ local Changes = {
         Settings["Use Potions"] = true
     end,
 }
+
+-- Rarity Ranking Table (สูงกว่า = ดีกว่า)
+local RarityRank = {
+    ["Common"] = 1,
+    ["Uncommon"] = 2,
+    ["Rare"] = 3,
+    ["Epic"] = 4,
+    ["Legendary"] = 5,
+    ["Mythic"] = 6,
+    ["Relic"] = 7,
+    ["Exotic"] = 8,
+    ["Divine"] = 9,
+    ["Unobtainable"] = 10,
+}
+
+-- Function หา Rarity Rank (ถ้าไม่รู้จักให้ return 0)
+local function GetRarityRank(rarity)
+    return RarityRank[rarity] or 0
+end
+
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
@@ -411,48 +429,30 @@ local function GetRecipe()
     
     -- เก็บแร่ที่ใช้ได้ทั้งหมดพร้อมจำนวน
     local availableOres = {}
-    
-    print("[Forge] ========== Scanning Inventory ==========")
-    print("[Forge] Ignore Forge Rarity:", table.concat(Settings["Ignore Forge Rarity"], ", "))
-    
     for oreName, oreAmount in pairs(PlayerController.Replica.Data.Inventory) do
         if type(oreAmount) == "number" and oreAmount > 0 then
             local Ore = GetOre(oreName)
             if Ore then
-                local rarity = Ore["Rarity"] or "Unknown"
-                
-                -- Debug: แสดง Rarity ที่พบ
-                print("[Forge] Checking:", oreName, "x", oreAmount, "| Rarity:", rarity)
-                
-                -- เช็คว่าไม่อยู่ใน Ignore list (case-insensitive)
-                local isIgnored = false
-                for _, ignoredRarity in ipairs(Settings["Ignore Forge Rarity"]) do
-                    if string.lower(rarity) == string.lower(ignoredRarity) then
-                        isIgnored = true
-                        break
-                    end
-                end
-                
-                if not isIgnored then
+                local rarity = Ore["Rarity"]
+                -- เช็คว่าไม่อยู่ใน Ignore list
+                if not table.find(Settings["Ignore Forge Rarity"], rarity) then
                     table.insert(availableOres, {
                         name = oreName,
                         amount = oreAmount,
                         rarity = rarity
                     })
-                    print("[Forge] ✓ Added ore:", oreName, "x", oreAmount, "[", rarity, "]")
+                    -- print("[Forge] Found ore:", oreName, "x", oreAmount, "[", rarity, "]")
                 else
-                    print("[Forge] ✗ Ignored ore:", oreName, "x", oreAmount, "[", rarity, "] - in ignore list")
+                    -- print("[Forge] Ignored ore:", oreName, "x", oreAmount, "[", rarity, "] - in ignore list")
                 end
             else
                 -- Debug: แสดง item ที่ไม่พบใน Ore data
-                if oreName ~= "Equipments" and oreName ~= "FavoritedItems" and oreName ~= "Misc" then
-                    print("[Forge] ⚠️ Unknown item:", oreName, "x", oreAmount, "- not in Ore data")
-                end
+                -- if oreName ~= "Equipments" and oreName ~= "FavoritedItems" then
+                --     print("[Forge] Unknown item:", oreName, "x", oreAmount, "- not in Ore data")
+                -- end
             end
         end
     end
-    
-    print("[Forge] ========== Available Ores:", #availableOres, "==========")
     
     -- เรียงตามจำนวนมากไปน้อย (ใช้แร่ที่มีมากก่อน)
     table.sort(availableOres, function(a, b)
@@ -466,17 +466,15 @@ local function GetRecipe()
         Recipe[oreData.name] = oreData.amount
         Count = Count + oreData.amount
         HowMany = HowMany + 1
-        print("[Forge] 📦 Selected:", oreData.name, "x", oreData.amount, "[", oreData.rarity, "]")
+        -- print("[Forge] Selected:", oreData.name, "x", oreData.amount)
     end
     
-    print("[Forge] Total:", Count, "ores from", HowMany, "types")
+    -- print("[Forge] Total:", Count, "ores from", HowMany, "types")
     
     -- ต้องมีแร่อย่างน้อย 3 ชิ้น
     if Count < 3 then
-        print("[Forge] ❌ ไม่พอ Forge! ต้องมีแร่อย่างน้อย 3 ชิ้น")
         return false
     else
-        print("[Forge] ✅ Recipe พร้อม Forge!")
         return Recipe
     end
 end
@@ -660,16 +658,49 @@ local PotionNames = {
     Luck = "LuckPotion1",          -- Luck Potion I
 }
 
--- จำนวน Potion ที่ซื้อทีละครั้ง
-local PotionBuyAmount = {
-    Health = 8,  -- ซื้อเยอะเพราะใช้บ่อยมากในโหมด Mob
-    Damage = 8,  -- ซื้อเยอะเพราะสำคัญในโหมด Mob
-    Miner = 5,
-    Luck = 5,
-}
-
 -- Potion Stack Limit (รวมทุกชนิด)
 local POTION_STACK_LIMIT = 16
+
+-- จำนวน Potion ที่ต้องการมีเป้าหมาย (Target)
+-- ⚠️ รวมกันต้องไม่เกิน POTION_STACK_LIMIT (16)
+local PotionTargetAmount = {
+    Health = 6,  -- ต้องการมี Health Potion 6 ขวดเสมอ
+    Damage = 4,  -- ต้องการมี Damage Potion 4 ขวดเสมอ
+    Miner = 3,   -- ต้องการมี Miner Potion 3 ขวดเสมอ
+    Luck = 3,    -- ต้องการมี Luck Potion 3 ขวดเสมอ
+}
+-- Total Target = 6 + 4 + 3 + 3 = 16 ✅
+
+-- เช็คว่า Target รวมกันไม่เกิน Max Limit
+local function ValidatePotionTargets()
+    local totalTarget = 0
+    for potionType, target in pairs(PotionTargetAmount) do
+        totalTarget = totalTarget + target
+    end
+    
+    if totalTarget > POTION_STACK_LIMIT then
+        warn("[Potion] ⚠️ WARNING: Total Target (" .. totalTarget .. ") เกิน Max Limit (" .. POTION_STACK_LIMIT .. ")!")
+        warn("[Potion] กำลังปรับ Target อัตโนมัติ...")
+        
+        -- ปรับลด Target ตามสัดส่วน
+        local ratio = POTION_STACK_LIMIT / totalTarget
+        for potionType, target in pairs(PotionTargetAmount) do
+            local newTarget = math.floor(target * ratio)
+            if newTarget < 1 then newTarget = 1 end
+            PotionTargetAmount[potionType] = newTarget
+            print("[Potion] ปรับ", potionType, ":", target, "->", newTarget)
+        end
+        
+        -- คำนวนใหม่หลังปรับ
+        totalTarget = 0
+        for _, target in pairs(PotionTargetAmount) do
+            totalTarget = totalTarget + target
+        end
+    end
+    
+    print("[Potion] ✅ Total Target:", totalTarget, "/", POTION_STACK_LIMIT)
+    return true
+end
 
 -- Map potion names to display names in world
 local PotionDisplayNames = {
@@ -723,6 +754,45 @@ local function GetAvailablePotionSlots()
     return POTION_STACK_LIMIT - GetTotalPotionCount()
 end
 
+-- คำนวนจำนวน Potion ที่ต้องซื้อเพิ่ม (Auto Calculate)
+local function CalculatePotionToBuy(potionType)
+    local potionName = PotionNames[potionType]
+    local targetAmount = PotionTargetAmount[potionType] or 5
+    local currentAmount = GetPotionCount(potionName)
+    local availableSlots = GetAvailablePotionSlots()
+    
+    -- ถ้ามีเกิน/เท่ากับ target แล้ว ไม่ต้องซื้อ
+    if currentAmount >= targetAmount then
+        return 0
+    end
+    
+    -- คำนวนจำนวนที่ต้องซื้อเติม
+    local needToBuy = targetAmount - currentAmount
+    
+    -- จำกัดตาม slot ที่ว่าง
+    local actualBuy = math.min(needToBuy, availableSlots)
+    
+    print("[Potion] 📊", potionType, "- มี:", currentAmount, "| เป้า:", targetAmount, "| ต้องซื้อ:", needToBuy, "| ซื้อได้:", actualBuy, "(slot ว่าง", availableSlots, ")")
+    
+    return actualBuy
+end
+
+-- แสดงสถานะ Potion ทั้งหมด
+local function PrintPotionStatus()
+    print("========== POTION STATUS ==========")
+    for potionType, potionName in pairs(PotionNames) do
+        local current = GetPotionCount(potionName)
+        local target = PotionTargetAmount[potionType] or 5
+        local status = current >= target and "✅" or "⚠️"
+        print(status, potionType, ":", current, "/", target)
+    end
+    print("Total:", GetTotalPotionCount(), "/", POTION_STACK_LIMIT)
+    print("====================================")
+end
+
+-- เรียก Validate ตอนเริ่มต้น
+ValidatePotionTargets()
+
 local function FindPotionInWorld(potionName)
     local displayName = PotionDisplayNames[potionName] or potionName
     
@@ -748,12 +818,6 @@ end
 local function BuyPotion(potionName, amount)
     amount = amount or 1
     
-    -- เช็คว่ากำลัง Forge อยู่หรือไม่ - ถ้า Forge อยู่ไม่ซื้อ
-    if _G.IsForging then
-        print("[Potion] ⏸️ กำลัง Forge อยู่ - ยกเลิกการซื้อ Potion")
-        return false
-    end
-    
     local Char = Plr.Character
     if not Char or not Char:FindFirstChild("HumanoidRootPart") then 
         print("[Potion] ไม่มีตัวละคร - ยกเลิกการซื้อ")
@@ -773,10 +837,6 @@ local function BuyPotion(potionName, amount)
         print("[Potion] ปรับจำนวนเป็น", actualAmount, "ขวด (เหลือที่ว่าง", availableSlots, ")")
     end
     
-    -- บันทึกตำแหน่งก่อนไปซื้อ
-    local returnPos = Char.HumanoidRootPart.Position
-    print("[Potion] บันทึกตำแหน่งเดิม:", returnPos)
-    
     -- Find Potion in world
     local potionPart = FindPotionInWorld(potionName)
     if not potionPart then
@@ -789,20 +849,11 @@ local function BuyPotion(potionName, amount)
     local potionPos = potionPart.Position
     local targetPos = potionPos + Vector3.new(0, 0, 2)
     
-    -- Calculate distance and tween time (same as mob/rock farming)
-    local currentPos = Char.HumanoidRootPart.Position
-    local Magnitude = (targetPos - currentPos).Magnitude
-    local tweenTime = Magnitude / 80
+    -- วาร์ปไปซื้อยาทันที (ไม่ Tween)
+    Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
+    task.wait(0.3)
     
-    -- Tween to Potion (same speed as mob/rock farming)
-    local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), {
-        CFrame = CFrame.new(targetPos, potionPos)
-    })
-    tween:Play()
-    tween.Completed:Wait()
-    task.wait(0.5)
-    
-    -- Buy via Remote (slower, more reliable)
+    -- Buy via Remote
     local countBefore = GetPotionCount(potionName)
     print("[Potion] 🛒 กำลังซื้อ", potionName, "x", actualAmount, "... (มี", countBefore, "อยู่แล้ว, รวม", GetTotalPotionCount(), "/", POTION_STACK_LIMIT, ")")
     
@@ -810,10 +861,10 @@ local function BuyPotion(potionName, amount)
         pcall(function()
             PurchaseRemote:InvokeServer(potionName, 1)
         end)
-        task.wait(0.5) -- Wait longer between each purchase
+        task.wait(0.3)
     end
     
-    task.wait(0.5)
+    task.wait(0.3)
     local countAfter = GetPotionCount(potionName)
     
     local bought = countAfter - countBefore
@@ -823,28 +874,11 @@ local function BuyPotion(potionName, amount)
         print("[Potion] ⚠️ ซื้อ", potionName, "ไม่สำเร็จ! (อาจหมด หรือ เงินไม่พอ)")
     end
     
-    -- กลับไปตำแหน่งเดิมหลังซื้อเสร็จ (ทุกโหมด รวม Mob)
-    if Char and Char:FindFirstChild("HumanoidRootPart") then
-        print("[Potion] 🔄 กำลังกลับตำแหน่งเดิม...")
-        local returnTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(1, Enum.EasingStyle.Linear), {
-            CFrame = CFrame.new(returnPos)
-        })
-        returnTween:Play()
-        returnTween.Completed:Wait()
-        task.wait(0.2)
-        print("[Potion] ✓ กลับตำแหน่งเดิมแล้ว - พร้อมฟาร์มต่อ!")
-    end
-    
     return bought > 0
 end
 
 local function UsePotion(potionType)
     if not Settings["Use Potions"] then return false end
-    
-    -- เช็คว่ากำลัง Forge อยู่หรือไม่
-    if _G.IsForging then
-        return false -- ไม่ทำอะไรถ้ากำลัง Forge
-    end
     
     local buff = PotionBuffs[potionType]
     local potionName = PotionNames[potionType]
@@ -874,21 +908,19 @@ local function UsePotion(potionType)
         return false
     end
     
-    -- ไม่มี Potion ต้องซื้อ
-    print("[Potion] ไม่มี", potionType, "Potion! กำลังซื้อ...")
+    -- ไม่มี Potion ต้องซื้อ - คำนวนอัตโนมัติ
+    print("[Potion] ไม่มี", potionType, "Potion! กำลังคำนวนและซื้อ...")
     
-    -- เช็คว่า inventory เต็มหรือยัง
-    local availableSlots = GetAvailablePotionSlots()
-    if availableSlots <= 0 then
-        print("[Potion] Inventory เต็ม! ไม่สามารถซื้อ Potion ได้")
-        -- หยุดพยายาม 30 วินาที
+    -- คำนวนจำนวนที่ต้องซื้อ (Auto Calculate)
+    local buyAmount = CalculatePotionToBuy(potionType)
+    
+    if buyAmount <= 0 then
+        print("[Potion] ❌ ไม่สามารถซื้อ", potionType, "ได้ (inventory เต็มหรือมีพอแล้ว)")
         buff.lastUsed = currentTime - buff.duration + 30
         return false
     end
     
-    -- ซื้อเท่าที่ซื้อได้ (เต็ม slot ที่ว่าง)
-    local buyAmount = math.min(PotionBuyAmount[potionType] or 5, availableSlots)
-    print("[Potion] พยายามซื้อ", buyAmount, "ขวด (มี slot ว่าง", availableSlots, ")")
+    print("[Potion] 🛒 คำนวนแล้ว - จะซื้อ", potionType, "x", buyAmount, "ขวด")
     
     local buySuccess = BuyPotion(potionName, buyAmount)
     
@@ -943,10 +975,7 @@ end
 local function UsePotionsForMode(mode)
     if not Settings["Use Potions"] then return end
     
-    -- เช็คว่ากำลัง Forge อยู่หรือไม่ - ถ้า Forge อยู่ไม่ใช้ Potion
-    if _G.IsForging then return end
-    
-    -- Health Potion: ใช้เมื่อเลือดลดลงต่ำกว่า 55% (ตรวจสอบบ่อยๆ)
+    -- Health Potion: ใช้เมื่อเลือดลดลงต่ำกว่า 95% (ตรวจสอบบ่อยๆ)
     local Char = Plr.Character
     if Char then
         local Humanoid = Char:FindFirstChildOfClass("Humanoid")
@@ -1402,7 +1431,7 @@ local function FarmIceberg()
                 LastAttack = tick() + 0.2
             end
             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.75))
+                Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.765))
             end
         else
             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
@@ -2479,75 +2508,103 @@ FarmMobImproved = function(Mob)
     if FarmTween then FarmTween:Cancel() FarmTween = nil end
 end
 
+local _G_ForgeItemType = "Weapon"  -- สลับระหว่าง "Weapon" / "Armor"
+
 local function Forge(Recipe)
-    -- Set flag ว่ากำลัง Forge อยู่
-    _G.IsForging = true
-    print("[Forge] 🔨 เริ่ม Forge - หยุดซื้อ Potion ชั่วคราว")
+    -- วาปไป Forge ก่อน
+    local Char = Plr.Character
+    if Char and Char:FindFirstChild("HumanoidRootPart") then
+        local ForgePos = workspace.Proximity.Forge.Position
+        local distance = (Char.HumanoidRootPart.Position - ForgePos).Magnitude
+        
+        if distance > 10 then
+            Char.HumanoidRootPart.CFrame = CFrame.new(ForgePos)
+            task.wait(0.3)
+        end
+    end
+    
+    -- สลับ ItemType ทุกครั้งที่ Forge
+    local currentItemType = _G_ForgeItemType
+    if _G_ForgeItemType == "Weapon" then
+        _G_ForgeItemType = "Armor"
+    else
+        _G_ForgeItemType = "Weapon"
+    end
+    
+    print("[Forge] 🔨 กำลัง Forge:", currentItemType)
     
     local success, err = pcall(function()
-        game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("StartForge"):InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Forge"))
-        ChangeSequence:InvokeServer("Melt",
-            {
-                FastForge = true,
-                ItemType = "Weapon"
-            }
-        )
-        task.wait(1)
-        local Melt = ChangeSequence:InvokeServer("Melt",
-            {
-                FastForge = true,
-                ItemType = "Weapon",
-                Ores = Recipe
-            }
-        )
+        -- Start Forge
+        local StartForge = game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("StartForge")
+        StartForge:InvokeServer(workspace:WaitForChild("Proximity"):WaitForChild("Forge"))
+        task.wait(0.3)
         
-        if not Melt or not Melt["MinigameData"] then
-            error("Melt failed - MinigameData is nil")
+        -- Melt (Init + ใส่แร่รวมกัน)
+        local Melt = nil
+        for attempt = 1, 5 do
+            local ok, result = pcall(function()
+                return ChangeSequence:InvokeServer("Melt", {
+                    FastForge = true,
+                    ItemType = currentItemType,  -- ใช้ Weapon หรือ Armor
+                    Ores = Recipe
+                })
+            end)
+            
+            if ok and result and type(result) == "table" and result["MinigameData"] and result["MinigameData"]["RequiredTime"] then
+                Melt = result
+                break
+            end
+            task.wait(0.2)
+        end
+        
+        if not Melt then
+            error("Melt failed")
         end
         
         task.wait(Melt["MinigameData"]["RequiredTime"])
-        local Pour = ChangeSequence:InvokeServer( "Pour",
-            {
-                ClientTime = workspace:GetServerTimeNow()
-            }
-        )
         
-        if not Pour or not Pour["MinigameData"] then
-            error("Pour failed - MinigameData is nil")
+        -- Pour
+        local Pour = ChangeSequence:InvokeServer("Pour", {
+            ClientTime = workspace:GetServerTimeNow()
+        })
+        if Pour and Pour["MinigameData"] and Pour["MinigameData"]["RequiredTime"] then
+            task.wait(Pour["MinigameData"]["RequiredTime"])
         end
         
-        task.wait(Pour["MinigameData"]["RequiredTime"])
-        local Hammer = ChangeSequence:InvokeServer("Hammer",{ClientTime = workspace:GetServerTimeNow()})
-        
-        if not Hammer or not Hammer["MinigameData"] then
-            error("Hammer failed - MinigameData is nil")
+        -- Hammer
+        local Hammer = ChangeSequence:InvokeServer("Hammer", {
+            ClientTime = workspace:GetServerTimeNow()
+        })
+        if Hammer and Hammer["MinigameData"] and Hammer["MinigameData"]["RequiredTime"] then
+            task.wait(Hammer["MinigameData"]["RequiredTime"])
         end
         
-        task.wait(Hammer["MinigameData"]["RequiredTime"])
+        -- Water (spawn)
         task.spawn(function()
-            ChangeSequence:InvokeServer("Water",{ClientTime = workspace:GetServerTimeNow() })
+            pcall(function()
+                ChangeSequence:InvokeServer("Water", {
+                    ClientTime = workspace:GetServerTimeNow()
+                })
+            end)
         end)
-        task.wait(1)
-        ChangeSequence:InvokeServer("Showcase",{})
-        task.wait(.5)
-        ChangeSequence:InvokeServer("OreSelect",{})
+        task.wait(0.5)
+        
+        -- Showcase
+        pcall(function() ChangeSequence:InvokeServer("Showcase", {}) end)
+        task.wait(0.3)
+        
+        -- OreSelect (กลับหน้าเลือกแร่)
+        pcall(function() ChangeSequence:InvokeServer("OreSelect", {}) end)
+        
+        -- Close UI
         pcall(require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close)
     end)
     
-    -- Reset flag ไม่ว่าจะสำเร็จหรือไม่
-    _G.IsForging = false
-    
     if success then
-        print("[Forge] ✅ Forge เสร็จสมบูรณ์!")
+        print("[Forge] ✅ Forge สำเร็จ!")
     else
         warn("[Forge] ❌ Forge ล้มเหลว:", err)
-        -- ปิด Forge UI ถ้าเปิดอยู่
-        pcall(function()
-            require(game:GetService("ReplicatedStorage").Controllers.UIController.Forge).Close()
-        end)
     end
-    
-    print("[Forge] 🔓 กลับสู่โหมดปกติ - สามารถซื้อ Potion ได้")
 end
 
 local function TalkToMarbles()
@@ -2682,35 +2739,62 @@ local function TalkToGreedyCey()
     end)
 end
 
--- Function ขาย Ore ทั้งหมดที่ไม่อยู่ใน Ignore list และไม่ถูก Favorite
+-- Function ขาย Ore แบบ Dynamic - หาของดีที่สุดแล้วขายทุกอันที่ต่ำกว่า
 local function SellOres()
     local PlayerInventory = PlayerController.Replica.Data.Inventory
     local Basket = {}
     local SoldCount = 0
+    local HighestRarity = 0
+    local HighestRarityName = "None"
+    local AllOres = {}
     
-    print("[SellOres] Checking inventory...")
+    print("[SellOres] Scanning inventory for best rarity...")
     
+    -- Step 1: หา Rarity สูงสุดใน Inventory ก่อน
     for OreName, Amount in pairs(PlayerInventory) do
         if type(Amount) == "number" and Amount > 0 then
             local OreData = GetOre(OreName)
             if OreData then
                 local rarity = OreData["Rarity"]
-                if ShouldSellOre(rarity) then
-                    if not IsFavorited(OreName) then
-                        Basket[OreName] = Amount
-                        SoldCount = SoldCount + Amount
-                        print("[SellOres] Will sell:", OreName, "x", Amount, "[", rarity, "]")
-                    else
-                        print("[SellOres] Skipped (favorited):", OreName)
-                    end
-                else
-                    print("[SellOres] Skipped (ignored rarity):", OreName, "[", rarity, "]")
+                local rank = GetRarityRank(rarity)
+                
+                -- เก็บข้อมูล Ore ไว้ใช้ตอน Step 2
+                table.insert(AllOres, {
+                    Name = OreName,
+                    Amount = Amount,
+                    Rarity = rarity,
+                    Rank = rank
+                })
+                
+                -- อัพเดท Highest Rarity
+                if rank > HighestRarity then
+                    HighestRarity = rank
+                    HighestRarityName = rarity
                 end
             end
         end
     end
     
-    print("[SellOres] Total to sell:", SoldCount, "ores")
+    print("[SellOres] 🏆 Best rarity found:", HighestRarityName, "(Rank:", HighestRarity, ")")
+    
+    -- Step 2: ขายทุกอันที่ต่ำกว่า Rarity สูงสุด (เก็บเฉพาะของดีที่สุด)
+    for _, OreInfo in ipairs(AllOres) do
+        if OreInfo.Rank < HighestRarity then
+            -- Rarity ต่ำกว่า = ขาย
+            if not IsFavorited(OreInfo.Name) then
+                Basket[OreInfo.Name] = OreInfo.Amount
+                SoldCount = SoldCount + OreInfo.Amount
+                print("[SellOres] 💰 Will sell:", OreInfo.Name, "x", OreInfo.Amount, "[", OreInfo.Rarity, "] - Lower than best")
+            else
+                print("[SellOres] ⭐ Skipped (favorited):", OreInfo.Name)
+            end
+        else
+            -- Rarity เท่ากับสูงสุด = เก็บไว้
+            print("[SellOres] 🔒 Keep:", OreInfo.Name, "x", OreInfo.Amount, "[", OreInfo.Rarity, "] - Best rarity!")
+        end
+    end
+    
+    print("[SellOres] 📊 Total to sell:", SoldCount, "ores | Keeping:", HighestRarityName, "ores")
     
     if SoldCount > 0 then
         pcall(function()
