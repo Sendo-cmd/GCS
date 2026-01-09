@@ -2820,15 +2820,35 @@ local function IsAlive()
 end
 
 local function WaitForRespawn()
+    print("[Respawn] ⏳ รอฟื้น...")
+    
+    -- รอให้ฟื้นและตัวละครโหลดเสร็จสมบูรณ์
     while not IsAlive() do
         task.wait(0.5)
     end
+    
+    -- รอให้ Character โหลดเสร็จ 100%
+    local Char = Plr.Character
+    while not Char or not Char:FindFirstChild("HumanoidRootPart") or not Char:FindFirstChildOfClass("Humanoid") do
+        task.wait(0.3)
+        Char = Plr.Character
+    end
+    
+    -- รอให้ HumanoidRootPart มี CFrame ที่ถูกต้อง (ไม่ใช่ 0,0,0)
+    local HRP = Char:FindFirstChild("HumanoidRootPart")
+    while HRP and (HRP.Position - Vector3.new(0,0,0)).Magnitude < 10 do
+        task.wait(0.3)
+        HRP = Char:FindFirstChild("HumanoidRootPart")
+    end
+    
+    print("[Respawn] ✅ ฟื้นแล้ว - เตรียมพร้อม...")
+    task.wait(1.5) -- รออีกนิดให้ระบบเกมเสถียร
+    
     HasTalkedToMarbles = false
     HasTalkedToGreedyCey = false
     
     -- ซื้อ Potion หลังฟื้น
-    print("[Respawn] 💀 ฟื้นแล้ว - กำลังซื้อ Potion เตรียมพร้อม...")
-    task.wait(2)
+    print("[Respawn] 🧪 กำลังซื้อ Potion...")
     
     -- ซื้อ Potion ตามโหมด (ซื้อเต็มที่!)
     if Settings["Use Potions"] then
@@ -2859,6 +2879,7 @@ local function WaitForRespawn()
     end
     
     print("[Respawn] ✅ พร้อมฟาร์มต่อ!")
+    task.wait(1) -- รออีกนิดก่อนกลับไปลูปหลัก
 end
 
 task.spawn(function()
