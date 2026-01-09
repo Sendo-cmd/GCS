@@ -526,6 +526,8 @@ end
 
 local _G_LastWorldTeleport = 0 -- cooldown สำหรับ TeleportToWorld
 local _G_CurrentWorld = "Main" -- เก็บโลกปัจจุบัน
+local _G_LockedTarget = nil -- เป้าหมายที่ล็อคไว้ (Rock/Mob)
+local _G_LastTargetTime = 0 -- เวลาที่ล็อคเป้าหมายล่าสุด
 
 local function TeleportToWorld(worldName)
     if worldName == "Main" then return true end
@@ -2883,6 +2885,8 @@ local function WaitForRespawn()
     HasTalkedToGreedyCey = false
     _G_CurrentWorld = "Main" -- รีเซ็ตโลกหลังฟื้น (เพราะจะถูกส่งกลับมา Main)
     _G_TweenSpeedMultiplier = 0.4 -- ลดความเร็ว Tween ลง 60% หลังตาย
+    _G_LockedTarget = nil -- เคลียร์เป้าหมายล็อค
+    _G_LastTargetTime = 0
     
     -- ซื้อ Potion หลังฟื้น
     print("[Respawn] 🧪 กำลังซื้อ Potion...")
@@ -2927,11 +2931,20 @@ local function WaitForRespawn()
     end)
 end
 
+local _G_IsProcessing = false -- ป้องกันการทำงานซ้อน
+
 task.spawn(function()
-    while true do task.wait(0.1)
+    while true do 
+        task.wait(0.2) -- เพิ่มจาก 0.1 เป็น 0.2
+        
+        -- ถ้ากำลังประมวลผลอยู่ ข้าม
+        if _G_IsProcessing then continue end
+        
         local success, err = pcall(function()
             if not IsAlive() then
+                _G_IsProcessing = true
                 WaitForRespawn()
+                _G_IsProcessing = false
                 return
             end
             
@@ -3046,7 +3059,7 @@ task.spawn(function()
                     end
                 else
                     print("[Mob] ไม่พบมอนสเตอร์ที่อยู่ใน list รอหา...")
-                    task.wait(1)
+                    task.wait(2) -- เพิ่มเวลารอ
                 end
                 
             elseif Settings["Farm Mode"] == "Rock" and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
@@ -3065,18 +3078,33 @@ task.spawn(function()
                 
                 if needWorldChange then
                     TeleportToWorld(targetWorld)
+                    task.wait(1) -- รอหลังวาร์ป
                 end
                 
-                local Rock = getnearest(Char)
+                -- ใช้เป้าหมายที่ล็อคไว้ถ้ายังใช้ได้
+                local Rock = nil
+                if _G_LockedTarget and _G_LockedTarget.Parent and _G_LockedTarget:GetAttribute("Health") and _G_LockedTarget:GetAttribute("Health") > 0 then
+                    Rock = _G_LockedTarget
+                else
+                    Rock = getnearest(Char)
+                    if Rock then
+                        _G_LockedTarget = Rock
+                        _G_LastTargetTime = tick()
+                        print("[Rock] ล็อคเป้าหมายใหม่:", Rock.Name)
+                    end
+                end
+                
                 local LastAttack = 0
                 local LastTween = nil
                 if Rock then
+                    _G_IsProcessing = true -- ล็อคไม่ให้ลูปซ้อน
                     local Position = Rock:GetAttribute("OriginalCFrame").Position
                     while Rock and Rock.Parent and Rock:GetAttribute("Health") and Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do 
                         task.wait(0.1)
                         
                         if not IsAlive() then 
                             if LastTween then LastTween:Cancel() end
+                            _G_IsProcessing = false
                             return
                         end
                         
@@ -3109,9 +3137,14 @@ task.spawn(function()
                             end
                         end
                     end
+                    
+                    -- หินหมด เคลียร์ล็อค
+                    _G_LockedTarget = nil
+                    _G_IsProcessing = false
                 else
-                    -- ไม่มีหินตาม list ที่ตีได้ในแมพ - ไปหลบ mob
-                    GoToSafeZone()
+                    -- ไม่มีหินตาม list ที่ตีได้ในแมพ - รอหินเกิดใหม่
+                    print("[Rock] ไม่พบหินที่อยู่ใน list รอหา...")
+                    task.wait(2)
                 end
             else
                 if not IsAlive() then return end
