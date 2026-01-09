@@ -1714,71 +1714,83 @@ local Changes = {
     end,
     ["44013587-aa9e-4ca9-8c5a-8503fb61779b"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
         Settings["Auto Join Challenge"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["503237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Join Bounty"] = true
+        Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
     end,
     ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
        Settings["Auto Join Challenge"] = true
        Settings["Auto Join Bounty"] = true
+       Settings["Auto Modifier"] = true
        Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Exploding"}
+       Settings["Select Modifier"] = {"Exploding"}
     end,
     ["143f6820-6e5e-4f6e-b3f9-3de3e9586271"] = function()
        Settings["Select Mode"] = "Boss Event"

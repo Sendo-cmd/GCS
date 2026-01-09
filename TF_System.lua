@@ -524,8 +524,19 @@ local function GetRockWorld(rockName)
     return WorldPortals[rockName] or "Main"
 end
 
+local _G_LastWorldTeleport = 0 -- cooldown สำหรับ TeleportToWorld
+local _G_CurrentWorld = "Main" -- เก็บโลกปัจจุบัน
+
 local function TeleportToWorld(worldName)
     if worldName == "Main" then return true end
+    
+    -- ถ้าอยู่โลกเดิมแล้ว ไม่ต้องวาร์ป
+    if _G_CurrentWorld == worldName then return true end
+    
+    -- ถ้ายังอยู่ใน cooldown ไม่ต้องวาร์ป
+    if tick() < _G_LastWorldTeleport then 
+        return true 
+    end
     
     print("[World] วาร์ปไป", worldName)
     
@@ -564,6 +575,8 @@ local function TeleportToWorld(worldName)
                             connection:Fire()
                         end
                     end)
+                    _G_CurrentWorld = worldName
+                    _G_LastWorldTeleport = tick() + 10 -- cooldown 10 วินาที
                     task.wait(3)
                     return true
                 end
@@ -571,6 +584,7 @@ local function TeleportToWorld(worldName)
         end
     end
     
+    _G_LastWorldTeleport = tick() + 5 -- cooldown 5 วินาทีถ้าวาร์ปไม่สำเร็จ
     return true
 end
 
@@ -1178,7 +1192,8 @@ local function TalkToQuestNPC(npcName)
         if npcPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
             local targetPos = npcPos + Vector3.new(0, 0, 5)
             local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
-            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(dist/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+            local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
+            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
             tween:Play()
             tween.Completed:Wait()
             task.wait(0.5)
@@ -1435,7 +1450,8 @@ local function FarmIceberg()
             end
         else
             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+                local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
                 LastTween:Play()
             end
         end
@@ -2285,7 +2301,8 @@ local function ProcessQuest()
                     end
                 else
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                        LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+                        local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                        LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
                         LastTween:Play()
                     end
                 end
@@ -2808,6 +2825,10 @@ local function SellOres()
     end
 end
 
+local _G_RespawnCooldown = 0 -- cooldown หลังฟื้น
+local _G_CurrentTweens = {} -- เก็บ Tweens ที่กำลังทำงาน
+local _G_TweenSpeedMultiplier = 1 -- ตัวคูณความเร็ว Tween (ปกติ = 1, หลังตาย = 0.3-0.5)
+
 local function IsAlive()
     local Char = Plr.Character
     if not Char then return false end
@@ -2819,8 +2840,22 @@ local function IsAlive()
     return true
 end
 
+local function CancelAllTweens()
+    for _, tween in pairs(_G_CurrentTweens) do
+        pcall(function()
+            if tween then
+                tween:Cancel()
+            end
+        end)
+    end
+    _G_CurrentTweens = {}
+end
+
 local function WaitForRespawn()
     print("[Respawn] ⏳ รอฟื้น...")
+    
+    -- ยกเลิก Tweens ทั้งหมดที่กำลังทำงาน
+    CancelAllTweens()
     
     -- รอให้ฟื้นและตัวละครโหลดเสร็จสมบูรณ์
     while not IsAlive() do
@@ -2842,10 +2877,12 @@ local function WaitForRespawn()
     end
     
     print("[Respawn] ✅ ฟื้นแล้ว - เตรียมพร้อม...")
-    task.wait(1.5) -- รออีกนิดให้ระบบเกมเสถียร
+    task.wait(3) -- รอให้นานขึ้นเพื่อให้ระบบเกมเสถียรสมบูรณ์
     
     HasTalkedToMarbles = false
     HasTalkedToGreedyCey = false
+    _G_CurrentWorld = "Main" -- รีเซ็ตโลกหลังฟื้น (เพราะจะถูกส่งกลับมา Main)
+    _G_TweenSpeedMultiplier = 0.4 -- ลดความเร็ว Tween ลง 60% หลังตาย
     
     -- ซื้อ Potion หลังฟื้น
     print("[Respawn] 🧪 กำลังซื้อ Potion...")
@@ -2879,7 +2916,15 @@ local function WaitForRespawn()
     end
     
     print("[Respawn] ✅ พร้อมฟาร์มต่อ!")
-    task.wait(1) -- รออีกนิดก่อนกลับไปลูปหลัก
+    task.wait(3) -- รออีกนิดก่อนกลับไปลูปหลัก (เพิ่มเป็น 3 วิ)
+    _G_RespawnCooldown = tick() + 5 -- ห้ามวาร์ป 5 วินาทีหลังฟื้น (เพิ่มเป็น 5 วิ)
+    
+    -- ค่อยๆ เพิ่มความเร็ว Tween กลับมาปกติในอีก 15 วินาที
+    task.spawn(function()
+        task.wait(15)
+        _G_TweenSpeedMultiplier = 1
+        print("[Respawn] 🚀 ความเร็วฟาร์มกลับมาปกติแล้ว")
+    end)
 end
 
 task.spawn(function()
@@ -2887,6 +2932,11 @@ task.spawn(function()
         local success, err = pcall(function()
             if not IsAlive() then
                 WaitForRespawn()
+                return
+            end
+            
+            -- ถ้ายังอยู่ใน cooldown หลังฟื้น ให้รอก่อน
+            if tick() < _G_RespawnCooldown then
                 return
             end
             
@@ -2986,8 +3036,11 @@ task.spawn(function()
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(MobPosition)})
+                                -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
+                                local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(MobPosition)})
                                 LastTween:Play()
+                                table.insert(_G_CurrentTweens, LastTween) -- เก็บ reference
                             end
                         end
                     end
@@ -3048,8 +3101,11 @@ task.spawn(function()
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(Magnitude/80,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
+                                -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
+                                local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                                LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(tweenSpeed,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
                                 LastTween:Play()
+                                table.insert(_G_CurrentTweens, LastTween) -- เก็บ reference
                             end
                         end
                     end
@@ -3106,8 +3162,11 @@ task.spawn(function()
                     end
                 else
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                        local ForgeTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(Magnitude/80, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
+                        -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
+                        local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                        local ForgeTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
                         ForgeTween:Play()
+                        table.insert(_G_CurrentTweens, ForgeTween) -- เก็บ reference
                     end
                 end
             end
