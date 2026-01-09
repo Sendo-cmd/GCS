@@ -864,9 +864,18 @@ local function BuyPotion(potionName, amount)
     
     local potionPos = potionPart.Position
     local targetPos = potionPos + Vector3.new(0, 0, 2)
+    local dist = (Char.HumanoidRootPart.Position - targetPos).Magnitude
     
-    -- วาร์ปไปซื้อยาทันที (ไม่ Tween)
-    Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
+    -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
+    if dist > 50 then
+        print("[Potion] ระยะไกล", math.floor(dist), "studs - ใช้ Tween")
+        local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
+        local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+        tween:Play()
+        tween.Completed:Wait()
+    else
+        Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
+    end
     task.wait(0.3)
     
     -- Buy via Remote
@@ -2537,7 +2546,16 @@ local function Forge(Recipe)
         local distance = (Char.HumanoidRootPart.Position - ForgePos).Magnitude
         
         if distance > 10 then
-            Char.HumanoidRootPart.CFrame = CFrame.new(ForgePos)
+            -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
+            if distance > 50 then
+                print("[Forge] ระยะไกล", math.floor(distance), "studs - ใช้ Tween")
+                local tweenSpeed = (distance/80) / (_G_TweenSpeedMultiplier or 1)
+                local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(ForgePos)})
+                tween:Play()
+                tween.Completed:Wait()
+            else
+                Char.HumanoidRootPart.CFrame = CFrame.new(ForgePos)
+            end
             task.wait(0.3)
         end
     end
@@ -2650,8 +2668,19 @@ local function TalkToMarbles()
         end
         
         if marblesPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
-            -- วาร์ปไปตรงๆ แทน Tween เพื่อความแน่นอน
-            Plr.Character.HumanoidRootPart.CFrame = CFrame.new(marblesPos + Vector3.new(0, 0, 5))
+            local targetPos = marblesPos + Vector3.new(0, 0, 5)
+            local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
+            
+            -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
+            if dist > 50 then
+                print("[TalkToMarbles] ระยะไกล", math.floor(dist), "studs - ใช้ Tween")
+                local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+                tween:Play()
+                tween.Completed:Wait()
+            else
+                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
+            end
             task.wait(0.5)
         end
         
@@ -2744,8 +2773,19 @@ local function TalkToGreedyCey()
         end
         
         if greedyPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
-            -- วาร์ปไปหา NPC
-            Plr.Character.HumanoidRootPart.CFrame = CFrame.new(greedyPos + Vector3.new(0, 0, 5))
+            local targetPos = greedyPos + Vector3.new(0, 0, 5)
+            local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
+            
+            -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
+            if dist > 50 then
+                print("[TalkToGreedyCey] ระยะไกล", math.floor(dist), "studs - ใช้ Tween")
+                local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+                tween:Play()
+                tween.Completed:Wait()
+            else
+                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
+            end
             task.wait(0.5)
         end
         
