@@ -3603,7 +3603,7 @@ task.spawn(function()
                         if CurrentHP < LastHP then
                             HitCount = HitCount + 1
                             -- โดนตี! เพิ่มระยะห่าง
-                            _G.SafeHeightOffset = (_G.SafeHeightOffset or 2) + 1.5
+                            _G.SafeHeightOffset = (_G.SafeHeightOffset or 2) + 1
                             print("[Farm] โดนตี! เพิ่มระยะเป็น +", _G.SafeHeightOffset, "studs")
                             CheckTime = tick() -- รีเซ็ตเวลา
                         end
