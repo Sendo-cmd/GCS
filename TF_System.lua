@@ -482,6 +482,8 @@ local function getnearest(P_Char)
     local path = nil
     local dis = math.huge
     local p_pos = P_Char["HumanoidRootPart"]["Position"]
+    local maxDist = _G_MaxTeleportDistance or 9999 -- จำกัดระยะ
+    
     for _,v in pairs(workspace.Rocks:GetChildren()) do
         if v:IsA("Folder") then
             for i1,v1 in pairs(v:GetChildren()) do
@@ -489,13 +491,18 @@ local function getnearest(P_Char)
                 if Model and Model:GetAttribute("Health") > 0 and table.find(Settings["Select Rocks"],Model.Name) then
                     local Pos = Model:GetAttribute("OriginalCFrame").Position
                     local EqPos = (Pos - p_pos).Magnitude
-                    if dis > EqPos then
+                    -- เช็คว่าอยู่ในระยะที่อนุญาต
+                    if EqPos <= maxDist and dis > EqPos then
                         path = Model
                         dis = EqPos
                     end
                 end
             end
         end
+    end
+    
+    if path then
+        print("[getnearest] พบหิน:", path.Name, "ระยะ:", math.floor(dis), "studs (max:", maxDist, ")")
     end
     return path
 end
@@ -609,6 +616,7 @@ local function getNearestMob(P_Char)
     local path = nil
     local dis = math.huge
     local p_pos = P_Char["HumanoidRootPart"]["Position"]
+    local maxDist = _G_MaxTeleportDistance or 9999 -- จำกัดระยะ
     
     local Living = workspace:FindFirstChild("Living")
     if not Living then return nil end
@@ -634,13 +642,18 @@ local function getNearestMob(P_Char)
                 
                 if canFarm then
                     local EqPos = (HRP.Position - p_pos).Magnitude
-                    if dis > EqPos then
+                    -- เช็คว่าอยู่ในระยะที่อนุญาต
+                    if EqPos <= maxDist and dis > EqPos then
                         path = mob
                         dis = EqPos
                     end
                 end
             end
         end
+    end
+    
+    if path then
+        print("[getNearestMob] พบ:", path.Name, "ระยะ:", math.floor(dis), "studs (max:", maxDist, ")")
     end
     return path
 end
@@ -860,11 +873,18 @@ local function BuyPotion(potionName, amount)
         return false
     end
     
-    print("[Potion] ✓ พบ", potionName, "ใน world - กำลังวาร์ปไปซื้อ...")
-    
     local potionPos = potionPart.Position
     local targetPos = potionPos + Vector3.new(0, 0, 2)
     local dist = (Char.HumanoidRootPart.Position - targetPos).Magnitude
+    local maxDist = _G_MaxTeleportDistance or 9999
+    
+    -- เช็คระยะก่อนวาร์ป
+    if dist > maxDist then
+        print("[Potion] ⚠️ ร้าน Potion อยู่ไกลเกินไป (", math.floor(dist), "studs) - ข้ามไปก่อน")
+        return false
+    end
+    
+    print("[Potion] ✓ พบ", potionName, "ระยะ", math.floor(dist), "studs - กำลังวาร์ปไปซื้อ...")
     
     -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
     if dist > 50 then
@@ -2670,10 +2690,17 @@ local function TalkToMarbles()
         if marblesPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
             local targetPos = marblesPos + Vector3.new(0, 0, 5)
             local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
+            local maxDist = _G_MaxTeleportDistance or 9999
             
-            -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
-            if dist > 50 then
-                print("[TalkToMarbles] ระยะไกล", math.floor(dist), "studs - ใช้ Tween")
+            -- เช็คระยะก่อนวาร์ป
+            if dist > maxDist then
+                print("[TalkToMarbles] ⚠️ NPC อยู่ไกลเกินไป (", math.floor(dist), "studs) - ข้ามไปก่อน")
+                return
+            end
+            
+            -- ใช้ Tween เสมอถ้าระยะ > 20 studs
+            if dist > 20 then
+                print("[TalkToMarbles] ระยะ", math.floor(dist), "studs - ใช้ Tween")
                 local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
                 local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
                 tween:Play()
@@ -2775,10 +2802,17 @@ local function TalkToGreedyCey()
         if greedyPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
             local targetPos = greedyPos + Vector3.new(0, 0, 5)
             local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
+            local maxDist = _G_MaxTeleportDistance or 9999
             
-            -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
-            if dist > 50 then
-                print("[TalkToGreedyCey] ระยะไกล", math.floor(dist), "studs - ใช้ Tween")
+            -- เช็คระยะก่อนวาร์ป
+            if dist > maxDist then
+                print("[TalkToGreedyCey] ⚠️ NPC อยู่ไกลเกินไป (", math.floor(dist), "studs) - ข้ามไปก่อน")
+                return
+            end
+            
+            -- ใช้ Tween เสมอถ้าระยะ > 20 studs
+            if dist > 20 then
+                print("[TalkToGreedyCey] ระยะ", math.floor(dist), "studs - ใช้ Tween")
                 local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
                 local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
                 tween:Play()
@@ -2870,6 +2904,7 @@ end
 local _G_RespawnCooldown = 0 -- cooldown หลังฟื้น
 local _G_CurrentTweens = {} -- เก็บ Tweens ที่กำลังทำงาน
 local _G_TweenSpeedMultiplier = 1 -- ตัวคูณความเร็ว Tween (ปกติ = 1, หลังตาย = 0.3-0.5)
+local _G_MaxTeleportDistance = 9999 -- ระยะสูงสุดที่อนุญาตให้วาร์ป (หลังตายจะลดลง)
 
 local function IsAlive()
     local Char = Plr.Character
@@ -2918,18 +2953,26 @@ local function WaitForRespawn()
         HRP = Char:FindFirstChild("HumanoidRootPart")
     end
     
-    print("[Respawn] ✅ ฟื้นแล้ว - เตรียมพร้อม...")
-    task.wait(3) -- รอให้นานขึ้นเพื่อให้ระบบเกมเสถียรสมบูรณ์
+    -- บันทึกตำแหน่ง spawn
+    local spawnPosition = HRP and HRP.Position or Vector3.new(0, 0, 0)
+    print("[Respawn] ✅ ฟื้นแล้ว ที่ตำแหน่ง:", spawnPosition)
+    
+    -- รอให้นานมากขึ้น เพื่อให้ระบบเกมเสถียรสมบูรณ์
+    print("[Respawn] ⏳ รอให้เกมเสถียร 5 วินาที...")
+    task.wait(5)
     
     HasTalkedToMarbles = false
     HasTalkedToGreedyCey = false
     _G_CurrentWorld = "Main" -- รีเซ็ตโลกหลังฟื้น (เพราะจะถูกส่งกลับมา Main)
-    _G_TweenSpeedMultiplier = 0.4 -- ลดความเร็ว Tween ลง 60% หลังตาย
+    _G_TweenSpeedMultiplier = 0.3 -- ลดความเร็ว Tween ลง 70% หลังตาย
+    _G_MaxTeleportDistance = 100 -- จำกัดระยะวาร์ปเป็น 100 studs หลังตาย
     _G_LockedTarget = nil -- เคลียร์เป้าหมายล็อค
     _G_LastTargetTime = 0
     
-    -- ซื้อ Potion หลังฟื้น
-    print("[Respawn] 🧪 กำลังซื้อ Potion...")
+    print("[Respawn] ⚠️ จำกัดระยะวาร์ปเป็น 100 studs ชั่วคราว")
+    
+    -- ไม่ซื้อ Potion ทันที - ให้ฟาร์มใกล้ๆ ก่อน
+    print("[Respawn] 🎯 พร้อมฟาร์ม - จะหา Rock/Mob ใกล้ๆ ก่อน")
     
     -- ซื้อ Potion ตามโหมด (ซื้อเต็มที่!)
     if Settings["Use Potions"] then
@@ -2960,14 +3003,19 @@ local function WaitForRespawn()
     end
     
     print("[Respawn] ✅ พร้อมฟาร์มต่อ!")
-    task.wait(3) -- รออีกนิดก่อนกลับไปลูปหลัก (เพิ่มเป็น 3 วิ)
-    _G_RespawnCooldown = tick() + 5 -- ห้ามวาร์ป 5 วินาทีหลังฟื้น (เพิ่มเป็น 5 วิ)
+    task.wait(2) -- รออีกนิดก่อนกลับไปลูปหลัก
+    _G_RespawnCooldown = tick() + 8 -- ห้ามทำงานอื่น 8 วินาทีหลังฟื้น
     
-    -- ค่อยๆ เพิ่มความเร็ว Tween กลับมาปกติในอีก 15 วินาที
+    -- ค่อยๆ เพิ่มระยะวาร์ปกลับมาปกติ
     task.spawn(function()
-        task.wait(15)
+        task.wait(10)
+        _G_MaxTeleportDistance = 300
+        print("[Respawn] 📍 เพิ่มระยะวาร์ปเป็น 300 studs")
+        
+        task.wait(10)
+        _G_MaxTeleportDistance = 9999
         _G_TweenSpeedMultiplier = 1
-        print("[Respawn] 🚀 ความเร็วฟาร์มกลับมาปกติแล้ว")
+        print("[Respawn] 🚀 ระยะวาร์ปและความเร็วกลับมาปกติแล้ว")
     end)
 end
 
