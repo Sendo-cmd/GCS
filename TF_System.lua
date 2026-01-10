@@ -1,6 +1,6 @@
 local Settings = {
     ["Farm Mode"] = "Mob",  -- "Mob", "Rock", "Quest"
-    ["Select Mobs"] = {"Skeleton Rogue"},
+    ["Select Mobs"] = {"Yeti", "Diamond Spider", "Prismarine Spider"},
     ["Select Rocks"] = {"Basalt Core", "Basalt Rock"},
     ["Select Quest"] = "",  -- ใส่ชื่อ NPC หรือ Special Quest เช่น "Greedy Cey", "Prismatic Pickaxe", "Dragon Head Pickaxe"
     ["Use Potions"] = true,  -- เปิด/ปิดใช้ Potion อัตโนมัติ
@@ -368,7 +368,107 @@ local Ores = require(ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Data
 
 
 local PlayerController = Knit.GetController("PlayerController")
+local PlayerService = Knit.GetService("PlayerService")
 local ChangeSequence = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ForgeService"):WaitForChild("RF"):WaitForChild("ChangeSequence")
+
+-- ===== TWEEN SPEED CONFIG =====
+local TWEEN_SPEED = 100  -- studs/วินาที (ลดจาก 150 เพื่อหลีก Anti-TP)
+
+-- ===== ANTI-EXPLOIT BYPASS =====
+-- หา PlayerController ที่มี Replica.Data
+local function BypassAntiExploit()
+    pcall(function()
+        -- ใช้แค่ BypassTime เท่านั้น ไม่ยุ่งกับ AntiTP
+        if PlayerController and PlayerController.Replica and PlayerController.Replica.Data then
+            if PlayerController.Replica.Data.SessionData and PlayerController.Replica.Data.SessionData.AntiExploit then
+                PlayerController.Replica.Data.SessionData.AntiExploit.BypassTime = time()
+            end
+        end
+    end)
+end
+
+-- ฟังก์ชันเดินทีละนิด (Step Teleport) เพื่อหลีก AntiExploit
+local function StepTeleport(targetPos, stepSize)
+    stepSize = stepSize or 20  -- ขยับทีละ 20 studs
+    local character = Client.Character
+    if not character then return false end
+    local hrp = character:FindFirstChild("HumanoidRootPart")
+    if not hrp then return false end
+    
+    local startPos = hrp.Position
+    local direction = (targetPos - startPos).Unit
+    local distance = (targetPos - startPos).Magnitude
+    local steps = math.ceil(distance / stepSize)
+    
+    for i = 1, steps do
+        if not character or not character.Parent then return false end
+        hrp = character:FindFirstChild("HumanoidRootPart")
+        if not hrp then return false end
+        
+        local nextPos
+        if i == steps then
+            nextPos = targetPos
+        else
+            nextPos = startPos + direction * (stepSize * i)
+        end
+        
+        BypassAntiExploit()
+        hrp.CFrame = CFrame.new(nextPos)
+        task.wait(0.03)  -- รอสั้นๆ ระหว่างแต่ละ step
+    end
+    
+    return true
+end
+
+-- ฟังก์ชัน Tween แบบ Safe (bypass ตลอดทาง)
+local function SafeTween(targetCFrame, speed)
+    local character = Client.Character
+    if not character then return false end
+    local hrp = character:FindFirstChild("HumanoidRootPart")
+    if not hrp then return false end
+    
+    speed = speed or TWEEN_SPEED
+    local distance = (targetCFrame.Position - hrp.Position).Magnitude
+    local tweenTime = distance / speed
+    
+    -- Bypass ก่อนเริ่ม Tween
+    BypassAntiExploit()
+    
+    local tween = TweenService:Create(hrp, TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), {CFrame = targetCFrame})
+    
+    -- Bypass ตลอดเวลาที่ Tween
+    local bypassConnection
+    bypassConnection = game:GetService("RunService").Heartbeat:Connect(function()
+        BypassAntiExploit()
+    end)
+    
+    tween:Play()
+    tween.Completed:Wait()
+    
+    -- หยุด bypass
+    if bypassConnection then
+        bypassConnection:Disconnect()
+    end
+    
+    -- Bypass อีกครั้งหลัง Tween เสร็จ
+    BypassAntiExploit()
+    
+    return true
+end
+
+-- Wrapper function สำหรับ teleport แบบ safe
+local function SafeTeleport(targetCFrame)
+    local character = Client.Character
+    if not character then return false end
+    local hrp = character:FindFirstChild("HumanoidRootPart")
+    if not hrp then return false end
+    
+    BypassAntiExploit()
+    task.wait(0.05)  -- รอให้ bypass มีผล
+    hrp.CFrame = targetCFrame
+    BypassAntiExploit()  -- bypass อีกครั้งหลัง teleport
+    return true
+end
 
 -- ===== REMOTES =====
 local ToolActivated = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RF"):WaitForChild("ToolActivated")
@@ -512,45 +612,251 @@ local SafeZonePosition = Vector3.new(0, 1000, 0)
 
 -- World/Portal System
 local WorldPortals = {
-    ["Pebble"] = "Main",
-    ["Stone"] = "Main",
-    ["Coal"] = "Main",
-    ["Iron"] = "Main",
-    ["Gold"] = "Main",
-    ["Diamond"] = "Main",
-    ["Platinum"] = "Main",
-    ["Meteorite"] = "Main",
-    ["Uranium"] = "Main",
-    ["Black Diamond"] = "Main",
-    ["Frozen Layers"] = "Portal1", -- Frozen World
-    ["Iceberg"] = "Portal1",
-    ["Glacier"] = "Portal1",
+    -- STONEWAKE'S CROSS (Main World)
+    ["Pebble"] = "Stonewake's Cross",
+    ["Rock"] = "Stonewake's Cross",
+    ["Boulder"] = "Stonewake's Cross",
+    ["Basalt Rock"] = "Stonewake's Cross",
+    ["Basalt Core"] = "Stonewake's Cross",
+    ["Basalt Vein"] = "Stonewake's Cross",
+    ["Volcanic Rock"] = "Stonewake's Cross",
+    ["Stone"] = "Stonewake's Cross",
+    ["Coal"] = "Stonewake's Cross",
+    ["Iron"] = "Stonewake's Cross",
+    ["Gold"] = "Stonewake's Cross",
+    ["Diamond"] = "Stonewake's Cross",
+    ["Platinum"] = "Stonewake's Cross",
+    ["Meteorite"] = "Stonewake's Cross",
+    ["Uranium"] = "Stonewake's Cross",
+    ["Black Diamond"] = "Stonewake's Cross",
+    ["Lucky Block"] = "Stonewake's Cross",
+    
+    -- FROSTSPIRE EXPANSE (Ice Valley)
+    ["Icy Pebble"] = "Frostspire Expanse",
+    ["Icy Rock"] = "Frostspire Expanse",
+    ["Icy Boulder"] = "Frostspire Expanse",
+    ["Small Ice Crystal"] = "Frostspire Expanse",
+    ["Medium Ice Crystal"] = "Frostspire Expanse",
+    ["Large Ice Crystal"] = "Frostspire Expanse",
+    ["Floating Crystal"] = "Frostspire Expanse",
+    ["Frozen Layers"] = "Frostspire Expanse",
+    ["Iceberg"] = "Frostspire Expanse",
+    ["Glacier"] = "Frostspire Expanse",
+    
+    -- FORGOTTEN KINGDOM (The Peak / Red Crystals)
+    ["Small Red Crystal"] = "Forgotten Kingdom",
+    ["Medium Red Crystal"] = "Forgotten Kingdom",
+    ["Large Red Crystal"] = "Forgotten Kingdom",
+    ["Heart Of The Island Crystal"] = "Forgotten Kingdom",
+    
+    -- GOBLIN CAVE (ถ้ามี Rock เพิ่ม)
+    -- ["Goblin Rock"] = "Goblin Cave",
+    
+    -- RAVEN CAVE (ถ้ามี Rock เพิ่ม)
+    -- ["Raven Rock"] = "Raven Cave",
+}
+
+-- Mob World Mapping (ตาม forgewiki.org/wiki/Enemies)
+local MobWorlds = {
+    -- STONEWAKE'S CROSS (Main World / Iron Valley)
+    ["Zombie"] = "Stonewake's Cross",
+    ["Delver Zombie"] = "Stonewake's Cross",
+    ["Elite Zombie"] = "Stonewake's Cross",
+    ["Brute Zombie"] = "Stonewake's Cross",
+    ["Bomber"] = "Stonewake's Cross",
+    ["Skeleton Rogue"] = "Stonewake's Cross",
+    ["Axe Skeleton"] = "Stonewake's Cross",
+    ["Deathaxe Skeleton"] = "Stonewake's Cross",
+    ["Elite Rogue Skeleton"] = "Stonewake's Cross",
+    ["Elite Deathaxe Skeleton"] = "Stonewake's Cross",
+    ["Blight Pyromancer"] = "Stonewake's Cross",
+    ["Reaper"] = "Stonewake's Cross",
+    ["Slime"] = "Stonewake's Cross",
+    ["Blazing Slime"] = "Stonewake's Cross",
+    
+    -- FROSTSPIRE EXPANSE (Ice Valley / Portal1)
+    ["Crystal Spider"] = "Frostspire Expanse",
+    ["Diamond Spider"] = "Frostspire Expanse",
+    ["Prismarine Spider"] = "Frostspire Expanse",
+    ["Common Orc"] = "Frostspire Expanse",
+    ["Elite Orc"] = "Frostspire Expanse",
+    ["Yeti"] = "Frostspire Expanse",
+    ["Crystal Golem"] = "Frostspire Expanse",
+    ["Golem"] = "Frostspire Expanse",
+    
+    -- FORGOTTEN KINGDOM (ถ้ามี Mob ให้เพิ่มตรงนี้)
 }
 
 local function GetRockWorld(rockName)
-    return WorldPortals[rockName] or "Main"
+    -- เช็คจากชื่อหินตรงๆ ก่อน
+    if WorldPortals[rockName] then
+        return WorldPortals[rockName]
+    end
+    
+    -- ถ้าไม่เจอ ลองเช็คบางส่วนของชื่อ
+    local lowerRockName = string.lower(rockName)
+    if string.find(lowerRockName, "icy") or string.find(lowerRockName, "ice") or string.find(lowerRockName, "crystal") then
+        return "Frostspire Expanse"
+    elseif string.find(lowerRockName, "red") or string.find(lowerRockName, "heart") then
+        return "Forgotten Kingdom"
+    elseif string.find(lowerRockName, "basalt") or string.find(lowerRockName, "volcanic") then
+        return "Stonewake's Cross"
+    end
+    
+    return "Stonewake's Cross" -- default เป็น Main World
+end
+
+local function GetMobWorld(mobName)
+    return MobWorlds[mobName]
+end
+
+-- ฟังก์ชันตรวจสอบโลกปัจจุบันจากเกมจริง
+local function GetCurrentWorld()
+    local currentWorld = nil -- ไม่มี default ต้องตรวจสอบจากเกมเท่านั้น
+    
+    -- เช็คจาก workspace หรือ ReplicatedStorage
+    pcall(function()
+        -- วิธีที่ 1: เช็คจาก PlayerData
+        local PlayerService = game:GetService("ReplicatedStorage"):FindFirstChild("Shared")
+        if PlayerService then
+            local Packages = PlayerService:FindFirstChild("Packages")
+            if Packages then
+                local Knit = Packages:FindFirstChild("Knit")
+                if Knit then
+                    local Services = Knit:FindFirstChild("Services")
+                    if Services then
+                        local PlayerService = Services:FindFirstChild("PlayerService")
+                        if PlayerService then
+                            local PlayerController = require(game:GetService("ReplicatedStorage").Controllers.PlayerController)
+                            if PlayerController and PlayerController.Replica and PlayerController.Replica.Data then
+                                local worldData = PlayerController.Replica.Data.World
+                                if worldData then
+                                    currentWorld = worldData
+                                    return
+                                end
+                            end
+                        end
+                    end
+                end
+            end
+        end
+        
+        -- วิธีที่ 2: เช็คจากชื่อหินในแมพ
+        local Rocks = workspace:FindFirstChild("Rocks")
+        if Rocks then
+            local hasIcyRock = false
+            local hasRedRock = false
+            local hasNormalRock = false
+            
+            for _, rock in pairs(Rocks:GetChildren()) do
+                local rockName = string.lower(rock.Name)
+                
+                if string.find(rockName, "icy") or string.find(rockName, "ice") or 
+                   (string.find(rockName, "crystal") and not string.find(rockName, "red")) then
+                    hasIcyRock = true
+                    break
+                elseif string.find(rockName, "red") or string.find(rockName, "heart") then
+                    hasRedRock = true
+                    break
+                elseif string.find(rockName, "basalt") or string.find(rockName, "volcanic") or 
+                       string.find(rockName, "pebble") or string.find(rockName, "boulder") then
+                    hasNormalRock = true
+                end
+            end
+            
+            if hasIcyRock then
+                currentWorld = "Frostspire Expanse"
+                return
+            elseif hasRedRock then
+                currentWorld = "Forgotten Kingdom"
+                return
+            elseif hasNormalRock then
+                currentWorld = "Stonewake's Cross"
+                return
+            end
+        end
+        
+        -- วิธีที่ 3: เช็คจาก Mob ที่มีในแมพ
+        local Living = workspace:FindFirstChild("Living")
+        if Living then
+            for _, mob in pairs(Living:GetChildren()) do
+                local mobName = mob.Name
+                
+                -- Frostspire Expanse Mobs
+                if string.find(mobName, "Spider") or string.find(mobName, "Yeti") or 
+                   string.find(mobName, "Orc") or string.find(mobName, "Golem") then
+                    currentWorld = "Frostspire Expanse"
+                    return
+                end
+                
+                -- Stonewake's Cross Mobs
+                if string.find(mobName, "Zombie") or string.find(mobName, "Skeleton") or 
+                   string.find(mobName, "Bomber") or string.find(mobName, "Reaper") or
+                   string.find(mobName, "Slime") then
+                    currentWorld = "Stonewake's Cross"
+                    return
+                end
+            end
+        end
+    end)
+    
+    -- ถ้าตรวจสอบไม่ได้เลย ให้ return nil
+    if not currentWorld then
+        print("[World] ⚠️ ไม่สามารถตรวจสอบโลกปัจจุบันได้")
+    end
+    
+    return currentWorld
 end
 
 local _G_LastWorldTeleport = 0 -- cooldown สำหรับ TeleportToWorld
-local _G_CurrentWorld = "Main" -- เก็บโลกปัจจุบัน
+local _G_CurrentWorld = "Stonewake's Cross" -- เก็บโลกปัจจุบัน (backup)
 local _G_LockedTarget = nil -- เป้าหมายที่ล็อคไว้ (Rock/Mob)
 local _G_LastTargetTime = 0 -- เวลาที่ล็อคเป้าหมายล่าสุด
+local _G_LastWorldCheck = 0 -- เวลาที่เช็คโลกล่าสุด
 
 local function TeleportToWorld(worldName)
-    if worldName == "Main" then return true end
+    -- เช็กโลกปัจจุบันจากเกมจริง
+    local actualCurrentWorld = GetCurrentWorld()
     
-    -- ถ้าอยู่โลกเดิมแล้ว ไม่ต้องวาร์ป
-    if _G_CurrentWorld == worldName then return true end
-    
-    -- ถ้ายังอยู่ใน cooldown ไม่ต้องวาร์ป
-    if tick() < _G_LastWorldTeleport then 
-        return true 
+    -- ถ้าตรวจสอบโลกไม่ได้ ให้ลองวาร์ปเลย
+    if not actualCurrentWorld then
+        print("[World] ⚠️ ไม่สามารถตรวจสอบโลกปัจจุบัน ลองวาร์ปเลย...")
+    else
+        -- ถ้าอยู่โลกเดิมแล้ว ไม่ต้องวาร์ป
+        if actualCurrentWorld == worldName then 
+            print("[World] ✅ อยู่ที่", worldName, "อยู่แล้ว")
+            return true 
+        end
+        
+        if worldName == "Stonewake's Cross" or worldName == "Main" then 
+            if actualCurrentWorld == "Stonewake's Cross" then
+                return true
+            end
+        end
+    end 
     end
     
-    print("[World] วาร์ปไป", worldName)
+    -- ถ้ายังอยู่ใน cooldown ให้รอ (เพิ่มเป็น 20 วินาที)
+    local cooldownRemaining = _G_LastWorldTeleport - tick()
+    if cooldownRemaining > 0 then 
+        print("[World] ⏳ รอ cooldown อีก", math.ceil(cooldownRemaining), "วินาที")
+        return false 
+    end
+    
+    -- ถ้ายังอยู่ใน respawn cooldown ห้ามวาร์ป
+    if tick() < _G_RespawnCooldown then
+        print("[World] ⏳ ยังอยู่ใน respawn cooldown ห้ามวาร์ป")
+        return false
+    end
+    
+    print("[World] 🌍 เริ่มวาร์ปไป:", worldName, "| จาก:", actualCurrentWorld)
     
     local Char = Plr.Character
     if not Char or not Char:FindFirstChild("HumanoidRootPart") then return false end
+    
+    -- Bypass AntiExploit ก่อนวาร์ป
+    BypassAntiExploit()
+    task.wait(0.5)
     
     -- หา Portal ใน Hotbar
     local portalSlot = nil
@@ -569,32 +875,65 @@ local function TeleportToWorld(worldName)
     pcall(function()
         ToolActivated:InvokeServer("Portal")
     end)
-    task.wait(1)
+    task.wait(1.5) -- เพิ่มเวลารอ
     
     -- คลิก World ใน UI
     local PlayerGui = Plr:FindFirstChild("PlayerGui")
     if PlayerGui then
         local WorldUI = PlayerGui:FindFirstChild("WorldSelection") or PlayerGui:FindFirstChild("Portal")
         if WorldUI then
-            -- หาปุ่ม world ที่ต้องการ
+            print("[World] 🔍 กำลังหาปุ่มโลก:", worldName)
+            
+            -- หาปุ่ม world ที่ต้องการ (ลองหลายวิธี)
             for _, button in pairs(WorldUI:GetDescendants()) do
-                if button:IsA("TextButton") and string.find(string.lower(button.Text or ""), string.lower(worldName)) then
-                    pcall(function()
-                        for _, connection in pairs(getconnections(button.MouseButton1Click)) do
-                            connection:Fire()
-                        end
-                    end)
-                    _G_CurrentWorld = worldName
-                    _G_LastWorldTeleport = tick() + 10 -- cooldown 10 วินาที
-                    task.wait(3)
-                    return true
+                if button:IsA("TextButton") then
+                    local buttonText = button.Text or ""
+                    
+                    -- Debug: แสดงปุ่มทั้งหมด
+                    if buttonText ~= "" then
+                        print("[World] 🔘 พบปุ่ม:", buttonText)
+                    end
+                    
+                    -- เช็คทั้งชื่อเต็มและบางส่วน (ยืดหยุ่นมากขึ้น)
+                    local match = false
+                    local lowerButtonText = string.lower(buttonText)
+                    local lowerWorldName = string.lower(worldName)
+                    
+                    -- เช็คหลายแบบ
+                    if string.find(lowerButtonText, lowerWorldName) then
+                        match = true
+                    elseif worldName == "Stonewake's Cross" and (string.find(lowerButtonText, "stonewake") or string.find(lowerButtonText, "cross") or string.find(lowerButtonText, "main")) then
+                        match = true
+                    elseif worldName == "Frostspire Expanse" and (string.find(lowerButtonText, "frostspire") or string.find(lowerButtonText, "expanse") or string.find(lowerButtonText, "ice") or string.find(lowerButtonText, "frost")) then
+                        match = true
+                    elseif worldName == "Forgotten Kingdom" and (string.find(lowerButtonText, "forgotten") or string.find(lowerButtonText, "kingdom")) then
+                        match = true
+                    end
+                    
+                    if match then
+                        print("[World] ✅ พบปุ่มโลกที่ต้องการ:", buttonText)
+                        pcall(function()
+                            for _, connection in pairs(getconnections(button.MouseButton1Click)) do
+                                connection:Fire()
+                            end
+                        end)
+                        _G_CurrentWorld = worldName
+                        _G_LastWorldTeleport = tick() + 20 -- cooldown 20 วินาที (เพิ่มจาก 10)
+                        print("[World] ⏳ รอให้วาร์ปเสร็จ 5 วินาที...")
+                        task.wait(5) -- เพิ่มเวลารอจาก 3 เป็น 5
+                        print("[World] 🎯 วาร์ปสำเร็จไป:", worldName)
+                        return true
+                    end
                 end
             end
+        else
+            print("[World] ⚠️ ไม่พบ WorldUI")
         end
     end
     
-    _G_LastWorldTeleport = tick() + 5 -- cooldown 5 วินาทีถ้าวาร์ปไม่สำเร็จ
-    return true
+    print("[World] ⚠️ ไม่พบปุ่มโลก:", worldName)
+    _G_LastWorldTeleport = tick() + 10 -- cooldown 10 วินาทีถ้าวาร์ปไม่สำเร็จ
+    return false
 end
 
 local function GoToSafeZone()
@@ -886,19 +1225,16 @@ local function BuyPotion(potionName, amount)
     
     print("[Potion] ✓ พบ", potionName, "ระยะ", math.floor(dist), "studs - กำลังวาร์ปไปซื้อ...")
     
-    -- ใช้ Tween เสมอถ้าระยะ > 20 studs และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
+    -- ใช้ Tween เสมอถ้าระยะ > 20 studs
     if dist > 20 then
         print("[Potion] ระยะ", math.floor(dist), "studs - ใช้ Tween")
-        local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
-        -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
-        local flyHeight = 50
-        local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
-        local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
+        local tweenSpeed = (dist/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
+        BypassAntiExploit()
+        local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
         tween:Play()
         tween.Completed:Wait()
-        -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
-        Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
     else
+        BypassAntiExploit()
         Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
     end
     task.wait(0.3)
@@ -1228,18 +1564,16 @@ local function TalkToQuestNPC(npcName)
         if npcPos and Plr.Character and Plr.Character:FindFirstChild("HumanoidRootPart") then
             local targetPos = npcPos + Vector3.new(0, 0, 5)
             local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
-            local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
+            local tweenSpeed = (dist/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
             
-            -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween เพื่อไม่ให้ชนแมพ
+            -- ใช้ Tween ถ้าระยะ > 20 studs
             if dist > 20 then
-                local flyHeight = 50
-                local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
-                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
+                BypassAntiExploit()
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
                 tween:Play()
                 tween.Completed:Wait()
-                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
-                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             else
+                BypassAntiExploit()
                 Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             end
             task.wait(0.5)
@@ -1492,11 +1826,13 @@ local function FarmIceberg()
                 LastAttack = tick() + 0.2
             end
             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                BypassAntiExploit()
                 Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.765))
             end
         else
             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                BypassAntiExploit()
+                local tweenSpeed = (Magnitude/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
                 LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
                 LastTween:Play()
             end
@@ -1569,6 +1905,7 @@ local function HandlePrismaticPickaxeQuest()
                         local BaseHeight = MobSize.Y / 2 + 2
                         local SafePosition = MobPosition + Vector3.new(0, BaseHeight + SafeHeightOffset, 0)
                         
+                        BypassAntiExploit()
                         Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
                         
                         for j = 1, 10 do
@@ -1834,6 +2171,7 @@ local function HandleDragonHeadPickaxeQuest()
             if pos then
                 Char = Plr.Character
                 if Char and Char:FindFirstChild("HumanoidRootPart") then
+                    BypassAntiExploit()
                     Char.HumanoidRootPart.CFrame = CFrame.new(pos + Vector3.new(0, 0, 3))
                     task.wait(1)
                     
@@ -1877,6 +2215,7 @@ local function HandleDragonHeadPickaxeQuest()
                         local BaseHeight = MobSize.Y / 2 + 2
                         local SafePosition = MobPosition + Vector3.new(0, BaseHeight + SafeHeightOffset, 0)
                         
+                        BypassAntiExploit()
                         Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
                         
                         for j = 1, 10 do
@@ -1987,6 +2326,7 @@ local function HandleDragonHeadPickaxeQuest()
                                         if not IsAlive() then break end
                                         Char = Plr.Character
                                         if not Char or not Char:FindFirstChild("HumanoidRootPart") then break end
+                                        BypassAntiExploit()
                                         Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.75))
                                         AttackRock()
                                     end
@@ -2068,6 +2408,94 @@ local function HandleDragonHeadPickaxeQuest()
         print("[DragonHead] ยังเงินไม่พอ ฟาร์มต่อ...")
     end
     
+    return false
+end
+
+-- ===== GOLEM DOOR OPENER (สำหรับ Mob Farm) =====
+local _G_GolemDoorOpened = false  -- ติดตามว่าเปิดประตู Golem แล้วหรือยัง
+
+local function OpenGolemDoor()
+    if _G_GolemDoorOpened then
+        return true  -- เปิดแล้ว ไม่ต้องเปิดซ้ำ
+    end
+    
+    print("[Golem] ========================================")
+    print("[Golem] กำลังเปิดประตู Golem Dungeon...")
+    print("[Golem] ========================================")
+    
+    -- หาประตู CreateParty
+    local CreateParty = workspace:FindFirstChild("Proximity") and workspace.Proximity:FindFirstChild("CreateParty")
+    if not CreateParty then
+        print("[Golem] ไม่พบประตู CreateParty!")
+        return false
+    end
+    
+    -- หาตำแหน่งประตู
+    local doorPos
+    if CreateParty:IsA("Model") then
+        doorPos = CreateParty:GetPivot().Position
+    elseif CreateParty:IsA("BasePart") then
+        doorPos = CreateParty.Position
+    else
+        local part = CreateParty:FindFirstChildWhichIsA("BasePart")
+        if part then
+            doorPos = part.Position
+        end
+    end
+    
+    if not doorPos then
+        print("[Golem] ไม่พบตำแหน่งประตู!")
+        return false
+    end
+    
+    local targetPos = doorPos + Vector3.new(0, 0, 3)
+    
+    -- ใช้ Tween ธรรมชาติแทนการวาร์ป
+    print("[Golem] กำลังเดินไปที่ประตู...")
+    local Char = Plr.Character
+    if Char and Char:FindFirstChild("HumanoidRootPart") then
+        local dist = (Char.HumanoidRootPart.Position - targetPos).Magnitude
+        local tweenSpeed = dist / TWEEN_SPEED
+        
+        BypassAntiExploit()
+        local tween = TweenService:Create(
+            Char.HumanoidRootPart, 
+            TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), 
+            {CFrame = CFrame.new(targetPos)}
+        )
+        tween:Play()
+        tween.Completed:Wait()
+        task.wait(0.3)
+    end
+    
+    -- Activate Party
+    print("[Golem] Activate Party...")
+    pcall(function()
+        PartyActivate:InvokeServer()
+    end)
+    task.wait(0.5)
+    
+    -- Interact กับประตู CreateParty
+    print("[Golem] เปิดประตู...")
+    pcall(function()
+        ProximityFunctionals:InvokeServer(CreateParty)
+    end)
+    task.wait(0.5)
+    
+    _G_GolemDoorOpened = true
+    print("[Golem] ✓ เปิดประตู Golem Dungeon สำเร็จ!")
+    return true
+end
+
+-- ฟังก์ชันเช็คว่าเลือก Golem หรือไม่
+local function IsGolemSelected()
+    if Settings["Select Mobs"] then
+        for _, mobName in pairs(Settings["Select Mobs"]) do
+            if string.find(string.lower(mobName), "golem") then
+                return true
+            end
+        end
+    end
     return false
 end
 
@@ -2343,11 +2771,13 @@ local function ProcessQuest()
                         LastAttack = tick() + 0.2
                     end
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                        BypassAntiExploit()
                         Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0, 0, 0.75))
                     end
                 else
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                        local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                        BypassAntiExploit()
+                        local tweenSpeed = (Magnitude/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
                         LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
                         LastTween:Play()
                     end
@@ -2518,7 +2948,8 @@ FarmMobImproved = function(Mob)
             if tick() - LastTweenTime > 0.5 then
                 LastTweenTime = tick()
                 if FarmTween then FarmTween:Cancel() end
-                local tweenTime = DistToSafe / 80
+                local tweenTime = DistToSafe / TWEEN_SPEED
+                BypassAntiExploit()
                 FarmTween = TweenService:Create(
                     Char.HumanoidRootPart, 
                     TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), 
@@ -2526,6 +2957,7 @@ FarmMobImproved = function(Mob)
                 )
                 FarmTween:Play()
             end
+            BypassAntiExploit()
             Char.HumanoidRootPart.CFrame = CFrame.new(Char.HumanoidRootPart.Position) * CFrame.Angles(-math.rad(90), 0, 0)
         elseif DistToSafe > 15 then
             -- อยู่ใกล้พอสมควร
@@ -2533,7 +2965,8 @@ FarmMobImproved = function(Mob)
             if tick() - LastTweenTime > 0.3 then
                 LastTweenTime = tick()
                 if FarmTween then FarmTween:Cancel() end
-                local tweenTime = DistToSafe / 80
+                local tweenTime = DistToSafe / TWEEN_SPEED
+                BypassAntiExploit()
                 FarmTween = TweenService:Create(
                     Char.HumanoidRootPart, 
                     TweenInfo.new(tweenTime, Enum.EasingStyle.Linear), 
@@ -2541,12 +2974,14 @@ FarmMobImproved = function(Mob)
                 )
                 FarmTween:Play()
             end
+            BypassAntiExploit()
             Char.HumanoidRootPart.CFrame = CFrame.new(Char.HumanoidRootPart.Position) * CFrame.Angles(-math.rad(90), 0, 0)
         else
             -- อยู่ใกล้แล้ว
             IsNearMob = true
             if FarmTween then FarmTween:Cancel() FarmTween = nil end
             if Char:FindFirstChild("HumanoidRootPart") then
+                BypassAntiExploit()
                 Char.HumanoidRootPart.CFrame = LyingCFrame
             end
         end
@@ -2581,19 +3016,16 @@ local function Forge(Recipe)
         local distance = (Char.HumanoidRootPart.Position - ForgePos).Magnitude
         
         if distance > 10 then
-            -- ใช้ Tween เสมอถ้าระยะไกล และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
+            -- ใช้ Tween เสมอถ้าระยะไกล
             if distance > 30 then
                 print("[Forge] ระยะ", math.floor(distance), "studs - ใช้ Tween")
-                local tweenSpeed = (distance/80) / (_G_TweenSpeedMultiplier or 1)
-                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
-                local flyHeight = 50
-                local targetWithHeight = ForgePos + Vector3.new(0, flyHeight, 0)
-                local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
+                local tweenSpeed = (distance/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
+                BypassAntiExploit()
+                local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(ForgePos)})
                 tween:Play()
                 tween.Completed:Wait()
-                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
-                Char.HumanoidRootPart.CFrame = CFrame.new(ForgePos)
             else
+                BypassAntiExploit()
                 Char.HumanoidRootPart.CFrame = CFrame.new(ForgePos)
             end
             task.wait(0.3)
@@ -2718,19 +3150,16 @@ local function TalkToMarbles()
                 return
             end
             
-            -- ใช้ Tween เสมอถ้าระยะ > 20 studs และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
+            -- ใช้ Tween เสมอถ้าระยะ > 20 studs
             if dist > 20 then
                 print("[TalkToMarbles] ระยะ", math.floor(dist), "studs - ใช้ Tween")
-                local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
-                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
-                local flyHeight = 50
-                local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
-                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
+                local tweenSpeed = (dist/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
+                BypassAntiExploit()
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
                 tween:Play()
                 tween.Completed:Wait()
-                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
-                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             else
+                BypassAntiExploit()
                 Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             end
             task.wait(0.5)
@@ -2835,19 +3264,16 @@ local function TalkToGreedyCey()
                 return
             end
             
-            -- ใช้ Tween เสมอถ้าระยะ > 20 studs และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
+            -- ใช้ Tween เสมอถ้าระยะ > 20 studs
             if dist > 20 then
                 print("[TalkToGreedyCey] ระยะ", math.floor(dist), "studs - ใช้ Tween")
-                local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
-                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
-                local flyHeight = 50
-                local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
-                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
+                local tweenSpeed = (dist/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
+                BypassAntiExploit()
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
                 tween:Play()
                 tween.Completed:Wait()
-                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
-                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             else
+                BypassAntiExploit()
                 Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             end
             task.wait(0.5)
@@ -2993,7 +3419,7 @@ local function WaitForRespawn()
     
     HasTalkedToMarbles = false
     HasTalkedToGreedyCey = false
-    _G_CurrentWorld = "Main" -- รีเซ็ตโลกหลังฟื้น (เพราะจะถูกส่งกลับมา Main)
+    -- ไม่ต้องรีเซ็ต _G_CurrentWorld เพราะจะเช็คจากเกมจริง
     _G_TweenSpeedMultiplier = 0.3 -- ลดความเร็ว Tween ลง 70% หลังตาย
     _G_MaxTeleportDistance = 100 -- จำกัดระยะวาร์ปเป็น 100 studs หลังตาย
     _G_LockedTarget = nil -- เคลียร์เป้าหมายล็อค
@@ -3084,6 +3510,68 @@ task.spawn(function()
                 ProcessQuest()
                 
             elseif Settings["Farm Mode"] == "Mob" then
+                -- เช็คว่ามี Mob ที่เลือกในแมพหรือไม่
+                local foundMobInMap = false
+                if Settings["Select Mobs"] and #Settings["Select Mobs"] > 0 then
+                    local Living = workspace:FindFirstChild("Living")
+                    if Living then
+                        for _, mob in pairs(Living:GetChildren()) do
+                            if mob:IsA("Model") then
+                                for _, targetMobName in pairs(Settings["Select Mobs"]) do
+                                    if string.find(mob.Name, targetMobName) then
+                                        foundMobInMap = true
+                                        break
+                                    end
+                                end
+                                if foundMobInMap then break end
+                            end
+                        end
+                    end
+                end
+                
+                -- ถ้าไม่มี Mob ในแมพ และยังไม่ได้เช็คโลกใน 30 วินาที ให้ลองวาร์ป
+                if not foundMobInMap and Settings["Select Mobs"] and #Settings["Select Mobs"] > 0 and tick() > _G_LastWorldCheck then
+                    local targetMobName = Settings["Select Mobs"][1]
+                    local requiredWorld = GetMobWorld(targetMobName)
+                    local actualCurrentWorld = GetCurrentWorld()
+                    
+                    print("[Mob] ไม่พบ", targetMobName, "ในแมพ")
+                    print("[Mob] โลกปัจจุบัน:", actualCurrentWorld or "ไม่ทราบ")
+                    print("[Mob] โลกที่ต้องการ:", requiredWorld)
+                    
+                    -- ถ้าไม่รู้โลกปัจจุบัน หรืออยู่โลกผิด ให้วาร์ป
+                    if not actualCurrentWorld or requiredWorld ~= actualCurrentWorld then
+                        print("[Mob] ลองวาร์ปไป:", requiredWorld)
+                        local success = TeleportToWorld(requiredWorld)
+                        
+                        -- ตั้ง cooldown ไม่ว่าจะสำเร็จหรือไม่
+                        if success then
+                            _G_LastWorldCheck = tick() + 30 -- ห้ามเช็คอีก 30 วินาที
+                            task.wait(3) -- รอให้วาร์ปเสร็จ
+                        else
+                            _G_LastWorldCheck = tick() + 20 -- ถ้าล้มเหลว รออีก 20 วินาที (เพิ่มจาก 10)
+                            print("[Mob] ⚠️ วาร์ปล้มเหลว รออีก 20 วินาที")
+                        end
+                        return -- ให้รอบนี้จบ ไม่ฟาร์ม
+                    else
+                        -- อยู่โลกถูกแล้ว แต่ไม่มี Mob อาจจะยังไม่ spawn
+                        _G_LastWorldCheck = tick() + 15
+                        print("[Mob] อยู่โลกถูกแล้ว รอ Mob spawn...")
+                    end
+                elseif not foundMobInMap then
+                    -- ไม่มี Mob แต่ยังอยู่ใน cooldown
+                    -- ไม่ต้องพิมพ์ log เพราะจะ spam
+                    task.wait(2) -- รออีก 2 วินาที
+                end
+                end
+                
+                -- ถ้าเลือก Golem ต้องเปิดประตูก่อน
+                if IsGolemSelected() and not _G_GolemDoorOpened then
+                    print("[Mob] ตรวจพบ Golem ใน Select Mobs - กำลังเปิดประตู...")
+                    OpenGolemDoor()
+                    task.wait(1)
+                end
+                
                 local Mob = getNearestMob(Char)
                 local LastAttack = 0
                 local LastTween = nil
@@ -3097,7 +3585,7 @@ task.spawn(function()
                     local MobHRP = Mob:FindFirstChild("HumanoidRootPart") or Mob:FindFirstChild("Torso") or Mob.PrimaryPart
                     
                     while MobHumanoid and MobHRP and MobHumanoid.Health > 0 do
-                        task.wait(0.05)
+                        task.wait(0.1) -- เพิ่มจาก 0.05 เป็น 0.1
                         
                         if not IsAlive() then
                             if LastTween then LastTween:Cancel() end
@@ -3144,35 +3632,44 @@ task.spawn(function()
                         
                         local MobPosition = MobHRP.Position
                         local MyPosition = Char.HumanoidRootPart.Position
-                        local Magnitude = (MyPosition - MobPosition).Magnitude
+                        -- เช็คระยะ XZ เท่านั้น (ไม่รวมแกน Y) เพื่อให้ทำงานตอนลอยอยู่ข้างบน
+                        local MagnitudeXZ = (Vector3.new(MyPosition.X, 0, MyPosition.Z) - Vector3.new(MobPosition.X, 0, MobPosition.Z)).Magnitude
                         
                         local MobSize = Mob:GetExtentsSize()
                         local MobHeight = MobSize.Y
                         
-                        -- ใช้ SafeHeightOffset ที่ปรับอัตโนมัติ
-                        local SafePosition = MobPosition + Vector3.new(0, MobHeight/2 + (_G.SafeHeightOffset or 2), 0)
+                        -- ท่านอนใต้ดิน (อยู่ใต้ Mob แล้วตีขึ้นมา)
+                        local SafePosition = MobPosition - Vector3.new(0, MobHeight/2 + (_G.SafeHeightOffset or 2), 0)
                         
-                        if Magnitude < 20 then
+                        if MagnitudeXZ < 20 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
                             task.delay(.01, function()
                                 if tick() > LastAttack and IsAlive() then
                                     AttackMob()
-                                    LastAttack = tick() + 0.1
+                                    LastAttack = tick() + 0.15 -- เพิ่มจาก 0.1 เป็น 0.15
                                 end
                             end)
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
-                                Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(-math.rad(90), 0, 0)
+                                BypassAntiExploit()
+                                -- ท่านอนหงาย (หันหน้าขึ้น) เพื่อตี Mob ที่อยู่ข้างบน
+                                Char.HumanoidRootPart.CFrame = CFrame.new(SafePosition) * CFrame.Angles(math.rad(90), 0, 0)
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
                                 -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
-                                local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
-                                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween เพื่อไม่ให้ชนแมพ
-                                local flyHeight = 50
-                                local targetWithHeight = MobPosition + Vector3.new(0, flyHeight, 0)
-                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
+                                local tweenSpeed = (MagnitudeXZ/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
+                                
+                                -- ถ้า Tween เร็วเกินไป (< 0.5 วินาที) ให้ปรับให้ช้าลง
+                                if tweenSpeed < 0.5 then
+                                    tweenSpeed = 0.5
+                                end
+                                
+                                BypassAntiExploit()
+                                task.wait(0.05) -- delay เล็กน้อยก่อน Tween
+                                -- Tween ไป Mob พร้อมท่านอนหงาย (อยู่ใต้ Mob)
+                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(SafePosition) * CFrame.Angles(math.rad(90), 0, 0)})
                                 LastTween:Play()
                                 table.insert(_G_CurrentTweens, LastTween) -- เก็บ reference
                             end
@@ -3184,22 +3681,59 @@ task.spawn(function()
                 end
                 
             elseif Settings["Farm Mode"] == "Rock" and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() then
-                -- เช็คว่าต้องวาร์ปโลกหรือไม่
-                local needWorldChange = false
-                local targetWorld = "Main"
-                
-                for _, rockName in ipairs(Settings["Select Rocks"]) do
-                    local rockWorld = GetRockWorld(rockName)
-                    if rockWorld ~= "Main" then
-                        needWorldChange = true
-                        targetWorld = rockWorld
-                        break
+                -- เช็คว่ามีหินที่เลือกในแมพหรือไม่
+                local foundRockInMap = false
+                if Settings["Select Rocks"] and #Settings["Select Rocks"] > 0 then
+                    local Rocks = workspace:FindFirstChild("Rocks")
+                    if Rocks then
+                        for _, rock in pairs(Rocks:GetChildren()) do
+                            if rock:IsA("Model") and rock:GetAttribute("Health") then
+                                for _, targetRockName in pairs(Settings["Select Rocks"]) do
+                                    if string.find(rock.Name, targetRockName) then
+                                        foundRockInMap = true
+                                        break
+                                    end
+                                end
+                                if foundRockInMap then break end
+                            end
+                        end
                     end
                 end
                 
-                if needWorldChange then
-                    TeleportToWorld(targetWorld)
-                    task.wait(1) -- รอหลังวาร์ป
+                -- ถ้าไม่มีหินในแมพ และยังไม่ได้เช็คโลกใน 30 วินาที ให้ลองวาร์ป
+                if not foundRockInMap and Settings["Select Rocks"] and #Settings["Select Rocks"] > 0 and tick() > _G_LastWorldCheck then
+                    local targetRockName = Settings["Select Rocks"][1]
+                    local requiredWorld = GetRockWorld(targetRockName)
+                    local actualCurrentWorld = GetCurrentWorld()
+                    
+                    print("[Rock] ไม่พบ", targetRockName, "ในแมพ")
+                    print("[Rock] โลกปัจจุบัน:", actualCurrentWorld or "ไม่ทราบ")
+                    print("[Rock] โลกที่ต้องการ:", requiredWorld)
+                    
+                    -- ถ้าไม่รู้โลกปัจจุบัน หรืออยู่โลกผิด ให้วาร์ป
+                    if not actualCurrentWorld or requiredWorld ~= actualCurrentWorld then
+                        print("[Rock] ลองวาร์ปไป:", requiredWorld)
+                        local success = TeleportToWorld(requiredWorld)
+                        
+                        -- ตั้ง cooldown ไม่ว่าจะสำเร็จหรือไม่
+                        if success then
+                            _G_LastWorldCheck = tick() + 30 -- ห้ามเช็คอีก 30 วินาที
+                            task.wait(3) -- รอให้วาร์ปเสร็จ
+                        else
+                            _G_LastWorldCheck = tick() + 20 -- ถ้าล้มเหลว รออีก 20 วินาที (เพิ่มจาก 10)
+                            print("[Rock] ⚠️ วาร์ปล้มเหลว รออีก 20 วินาที")
+                        end
+                        return -- ให้รอบนี้จบ ไม่ฟาร์ม
+                    else
+                        -- อยู่โลกถูกแล้ว แต่ไม่มีหิน อาจจะยังไม่ spawn
+                        _G_LastWorldCheck = tick() + 15
+                        print("[Rock] อยู่โลกถูกแล้ว รอหิน spawn...")
+                    end
+                elseif not foundRockInMap then
+                    -- ไม่มีหิน แต่ยังอยู่ใน cooldown
+                    -- ไม่ต้องพิมพ์ log เพราะจะ spam
+                    task.wait(2) -- รออีก 2 วินาที
+                end
                 end
                 
                 -- ใช้เป้าหมายที่ล็อคไว้ถ้ายังใช้ได้
@@ -3221,7 +3755,7 @@ task.spawn(function()
                     _G_IsProcessing = true -- ล็อคไม่ให้ลูปซ้อน
                     local Position = Rock:GetAttribute("OriginalCFrame").Position
                     while Rock and Rock.Parent and Rock:GetAttribute("Health") and Rock:GetAttribute("Health") > 0 and Inventory:CalculateTotal("Stash") < Inventory:GetBagCapacity() do 
-                        task.wait(0.1)
+                        task.wait(0.15) -- เพิ่มจาก 0.1 เป็น 0.15
                         
                         if not IsAlive() then 
                             if LastTween then LastTween:Cancel() end
@@ -3234,8 +3768,11 @@ task.spawn(function()
                             return
                         end
                         
-                        local Magnitude = (Char.HumanoidRootPart.Position - Position).Magnitude
-                        if Magnitude < 15 then
+                        local MyPosition = Char.HumanoidRootPart.Position
+                        -- เช็คระยะ XZ เท่านั้น (ไม่รวมแกน Y) เพื่อให้ทำงานตอนลอยอยู่ข้างบน
+                        local MagnitudeXZ = (Vector3.new(MyPosition.X, 0, MyPosition.Z) - Vector3.new(Position.X, 0, Position.Z)).Magnitude
+                        
+                        if MagnitudeXZ < 15 then
                             if LastTween then
                                 LastTween:Cancel()
                             end
@@ -3243,19 +3780,25 @@ task.spawn(function()
                                 pcall(function()
                                     game:GetService("ReplicatedStorage"):WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("ToolService"):WaitForChild("RF"):WaitForChild("ToolActivated"):InvokeServer("Pickaxe")
                                 end)
-                                LastAttack = tick() + .2
+                                LastAttack = tick() + .25 -- เพิ่มจาก 0.2 เป็น 0.25
                             end
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
+                                BypassAntiExploit()
                                 Char.HumanoidRootPart.CFrame = CFrame.new(Position + Vector3.new(0,0,0.75))
                             end
                         else
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
                                 -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
-                                local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
-                                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween เพื่อไม่ให้ชนแมพ
-                                local flyHeight = 50
-                                local targetWithHeight = Position + Vector3.new(0, flyHeight, 0)
-                                LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(tweenSpeed,Enum.EasingStyle.Linear),{CFrame = CFrame.new(targetWithHeight)})
+                                local tweenSpeed = (MagnitudeXZ/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
+                                
+                                -- ถ้า Tween เร็วเกินไป (< 0.5 วินาที) ให้ปรับให้ช้าลง
+                                if tweenSpeed < 0.5 then
+                                    tweenSpeed = 0.5
+                                end
+                                
+                                BypassAntiExploit()
+                                task.wait(0.05) -- delay เล็กน้อยก่อน Tween
+                                LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(tweenSpeed,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
                                 LastTween:Play()
                                 table.insert(_G_CurrentTweens, LastTween) -- เก็บ reference
                             end
@@ -3320,7 +3863,7 @@ task.spawn(function()
                 else
                     if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
                         -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
-                        local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
+                        local tweenSpeed = (Magnitude/TWEEN_SPEED) / (_G_TweenSpeedMultiplier or 1)
                         local ForgeTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(Position)})
                         ForgeTween:Play()
                         table.insert(_G_CurrentTweens, ForgeTween) -- เก็บ reference
