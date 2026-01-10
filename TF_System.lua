@@ -833,7 +833,6 @@ local function TeleportToWorld(worldName)
                 return true
             end
         end
-    end 
     end
     
     -- ถ้ายังอยู่ใน cooldown ให้รอ (เพิ่มเป็น 20 วินาที)
@@ -3563,7 +3562,6 @@ task.spawn(function()
                     -- ไม่ต้องพิมพ์ log เพราะจะ spam
                     task.wait(2) -- รออีก 2 วินาที
                 end
-                end
                 
                 -- ถ้าเลือก Golem ต้องเปิดประตูก่อน
                 if IsGolemSelected() and not _G_GolemDoorOpened then
@@ -3733,7 +3731,6 @@ task.spawn(function()
                     -- ไม่มีหิน แต่ยังอยู่ใน cooldown
                     -- ไม่ต้องพิมพ์ log เพราะจะ spam
                     task.wait(2) -- รออีก 2 วินาที
-                end
                 end
                 
                 -- ใช้เป้าหมายที่ล็อคไว้ถ้ายังใช้ได้
