@@ -886,13 +886,18 @@ local function BuyPotion(potionName, amount)
     
     print("[Potion] ✓ พบ", potionName, "ระยะ", math.floor(dist), "studs - กำลังวาร์ปไปซื้อ...")
     
-    -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
-    if dist > 50 then
-        print("[Potion] ระยะไกล", math.floor(dist), "studs - ใช้ Tween")
+    -- ใช้ Tween เสมอถ้าระยะ > 20 studs และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
+    if dist > 20 then
+        print("[Potion] ระยะ", math.floor(dist), "studs - ใช้ Tween")
         local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
-        local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+        -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
+        local flyHeight = 50
+        local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
+        local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
         tween:Play()
         tween.Completed:Wait()
+        -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
+        Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
     else
         Char.HumanoidRootPart.CFrame = CFrame.new(targetPos, potionPos)
     end
@@ -1224,9 +1229,19 @@ local function TalkToQuestNPC(npcName)
             local targetPos = npcPos + Vector3.new(0, 0, 5)
             local dist = (Plr.Character.HumanoidRootPart.Position - targetPos).Magnitude
             local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
-            local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
-            tween:Play()
-            tween.Completed:Wait()
+            
+            -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween เพื่อไม่ให้ชนแมพ
+            if dist > 20 then
+                local flyHeight = 50
+                local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
+                tween:Play()
+                tween.Completed:Wait()
+                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
+                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
+            else
+                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
+            end
             task.wait(0.5)
         end
         
@@ -2566,13 +2581,18 @@ local function Forge(Recipe)
         local distance = (Char.HumanoidRootPart.Position - ForgePos).Magnitude
         
         if distance > 10 then
-            -- ถ้าระยะไกลกว่า 50 studs ใช้ Tween, ถ้าไม่ใช้ CFrame โดยตรง
-            if distance > 50 then
-                print("[Forge] ระยะไกล", math.floor(distance), "studs - ใช้ Tween")
+            -- ใช้ Tween เสมอถ้าระยะไกล และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
+            if distance > 30 then
+                print("[Forge] ระยะ", math.floor(distance), "studs - ใช้ Tween")
                 local tweenSpeed = (distance/80) / (_G_TweenSpeedMultiplier or 1)
-                local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(ForgePos)})
+                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
+                local flyHeight = 50
+                local targetWithHeight = ForgePos + Vector3.new(0, flyHeight, 0)
+                local tween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
                 tween:Play()
                 tween.Completed:Wait()
+                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
+                Char.HumanoidRootPart.CFrame = CFrame.new(ForgePos)
             else
                 Char.HumanoidRootPart.CFrame = CFrame.new(ForgePos)
             end
@@ -2698,13 +2718,18 @@ local function TalkToMarbles()
                 return
             end
             
-            -- ใช้ Tween เสมอถ้าระยะ > 20 studs
+            -- ใช้ Tween เสมอถ้าระยะ > 20 studs และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
             if dist > 20 then
                 print("[TalkToMarbles] ระยะ", math.floor(dist), "studs - ใช้ Tween")
                 local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
-                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
+                local flyHeight = 50
+                local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
                 tween:Play()
                 tween.Completed:Wait()
+                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
+                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             else
                 Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             end
@@ -2810,13 +2835,18 @@ local function TalkToGreedyCey()
                 return
             end
             
-            -- ใช้ Tween เสมอถ้าระยะ > 20 studs
+            -- ใช้ Tween เสมอถ้าระยะ > 20 studs และยกตัวขึ้นสูงเพื่อไม่ให้ชนแมพ
             if dist > 20 then
                 print("[TalkToGreedyCey] ระยะ", math.floor(dist), "studs - ใช้ Tween")
                 local tweenSpeed = (dist/80) / (_G_TweenSpeedMultiplier or 1)
-                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetPos)})
+                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween
+                local flyHeight = 50
+                local targetWithHeight = targetPos + Vector3.new(0, flyHeight, 0)
+                local tween = TweenService:Create(Plr.Character.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
                 tween:Play()
                 tween.Completed:Wait()
+                -- หลัง Tween เสร็จ วาร์ปลงมาที่ตำแหน่งจริง
+                Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             else
                 Plr.Character.HumanoidRootPart.CFrame = CFrame.new(targetPos)
             end
@@ -3139,7 +3169,10 @@ task.spawn(function()
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
                                 -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
                                 local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
-                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(MobPosition)})
+                                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween เพื่อไม่ให้ชนแมพ
+                                local flyHeight = 50
+                                local targetWithHeight = MobPosition + Vector3.new(0, flyHeight, 0)
+                                LastTween = TweenService:Create(Char.HumanoidRootPart, TweenInfo.new(tweenSpeed, Enum.EasingStyle.Linear), {CFrame = CFrame.new(targetWithHeight)})
                                 LastTween:Play()
                                 table.insert(_G_CurrentTweens, LastTween) -- เก็บ reference
                             end
@@ -3219,7 +3252,10 @@ task.spawn(function()
                             if IsAlive() and Char:FindFirstChild("HumanoidRootPart") then
                                 -- ใช้ TweenSpeedMultiplier เพื่อควบคุมความเร็ว
                                 local tweenSpeed = (Magnitude/80) / (_G_TweenSpeedMultiplier or 1)
-                                LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(tweenSpeed,Enum.EasingStyle.Linear),{CFrame = CFrame.new(Position)})
+                                -- ยกตัวละครขึ้นสูง 50 studs ขณะ Tween เพื่อไม่ให้ชนแมพ
+                                local flyHeight = 50
+                                local targetWithHeight = Position + Vector3.new(0, flyHeight, 0)
+                                LastTween = TweenService:Create(Char.HumanoidRootPart,TweenInfo.new(tweenSpeed,Enum.EasingStyle.Linear),{CFrame = CFrame.new(targetWithHeight)})
                                 LastTween:Play()
                                 table.insert(_G_CurrentTweens, LastTween) -- เก็บ reference
                             end
