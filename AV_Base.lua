@@ -18,17 +18,121 @@ getgenv().Config = {
 		}
 	},
 	["Dungeon Joiner"] = {
-		["Auto Join"] = false,
 		["Stage"] = "Ant Island",
+		["Auto Join"] = false,
 		["Act"] = "AntIsland"
 	},
 	["Stage Joiner"] = {
-		["Nightmare Mode"] = false,
 		["Join Highest"] = false,
 		["Auto Join"] = false,
+		["Nightmare Mode"] = false,
 		["Join Lowest Clear"] = false
 	},
 	["Fall Portal Joiner"] = {
+		["Buy if out of Portal"] = false,
+		["Tier Cap"] = 10,
+		["Auto Join"] = false,
+		["Ignore Modifier"] = {
+			["Strong"] = false,
+			["Thrice"] = false,
+			["Regen"] = false,
+			["Fast"] = false,
+			["Revitalize"] = false,
+			["Drowsy"] = false,
+			["Exploding"] = false,
+			["Dodge"] = false,
+			["Quake"] = false,
+			["Immunity"] = false,
+			["Shielded"] = false,
+			["Champions"] = false
+		},
+		["Auto Next"] = true,
+		["Portal Reward Picker"] = {
+			["Enable"] = true,
+			["Ignore Modifier"] = {
+				["Strong"] = false,
+				["Thrice"] = false,
+				["Regen"] = false,
+				["Fast"] = false,
+				["Revitalize"] = false,
+				["Drowsy"] = false,
+				["Exploding"] = false,
+				["Dodge"] = false,
+				["Quake"] = false,
+				["Immunity"] = false,
+				["Shielded"] = false,
+				["Champions"] = false
+			}
+		}
+	},
+	["Macros"] = {
+		["Macro Retry Limit"] = 0,
+		["Ignore Macro Timing"] = true,
+		["Joiner Team Equipper"] = {
+			["Joiner Team"] = {
+				["Legend Stage Joiner"] = 0,
+				["Spring Portal Joiner"] = 0,
+				["Raid Joiner"] = 0,
+				["Boss Event Joiner"] = 0,
+				["Stage Joiner"] = 0,
+				["Odyssey Joiner"] = 0,
+				["Weekly Challenge Joiner"] = 0,
+				["Winter Portal Joiner"] = 0,
+				["Worldline Joiner"] = 0,
+				["Regular Challenge Joiner"] = 0,
+				["Boss Bounties Joiner"] = 0,
+				["Dungeon Joiner"] = 0,
+				["Daily Challenge Joiner"] = 0,
+				["Rift Joiner"] = 0
+			}
+		},
+		["Auto Equip"] = false,
+		["Play"] = false,
+		["No Ignore Sell Timing"] = true
+	},
+	["Summer Event"] = {
+		["Summer Event Joiner"] = {
+			["Auto Join"] = false
+		}
+	},
+	["Webhook"] = {
+		["Unit Summoned"] = false,
+		["Trait Rerolled"] = false,
+		["Match Restarted"] = false,
+		["Stage Finished"] = false,
+		["Stat Potential Rerolled"] = false,
+		["Unit Stat Potential"] = false
+	},
+	["Stat Reroller"] = {
+		["Stat Potential"] = 100,
+		["Teleport Lobby reach Stat Potential"] = false,
+		["Enable"] = false,
+		["Type"] = {
+			["SPA"] = false,
+			["All"] = false,
+			["Range"] = false,
+			["Damage"] = false
+		},
+		["Stat"] = {
+			["S"] = false,
+			["Z"] = false,
+			["ç¥ž"] = false,
+			["Ã§Â¥Å¾"] = false,
+			["Z+"] = false,
+			["ÃƒÂ§Ã‚Â¥Ã…Â¾"] = false
+		}
+	},
+	["Trait Reroller"] = {
+		["Enable"] = false
+	},
+	["Odyssey Joiner"] = {
+		["Second Team"] = 2,
+		["Intensity"] = 200,
+		["First Team"] = 1,
+		["Auto Join"] = false,
+		["Cash Out Floor"] = 5
+	},
+	["Summer Portal Joiner"] = {
 		["Buy if out of Portal"] = false,
 		["Tier Cap"] = 10,
 		["Auto Join"] = false,
@@ -47,126 +151,23 @@ getgenv().Config = {
 			["Thrice"] = false
 		},
 		["Portal Reward Picker"] = {
-			["Enable"] = false,
+			["Enable"] = true,
 			["Ignore Modifier"] = {
 				["Strong"] = false,
 				["Drowsy"] = false,
 				["Regen"] = false,
-				["Fast"] = false,
+				["Fast"] = true,
 				["Revitalize"] = false,
 				["Champions"] = false,
 				["Exploding"] = false,
 				["Dodge"] = false,
-				["Shielded"] = false,
 				["Immunity"] = false,
+				["Shielded"] = true,
 				["Quake"] = false,
 				["Thrice"] = false
 			}
 		},
-		["Auto Next"] = false
-	},
-	["Macros"] = {
-		["Macro Retry Limit"] = 0,
-		["Ignore Macro Timing"] = true,
-		["No Ignore Sell Timing"] = true,
-		["Auto Equip"] = false,
-		["Play"] = false,
-		["Joiner Team Equipper"] = {
-			["Joiner Team"] = {
-				["Raid Joiner"] = 0,
-				["Daily Challenge Joiner"] = 0,
-				["Legend Stage Joiner"] = 0,
-				["Dungeon Joiner"] = 0,
-				["Stage Joiner"] = 0,
-				["Odyssey Joiner"] = 0,
-				["Weekly Challenge Joiner"] = 0,
-				["Regular Challenge Joiner"] = 0,
-				["Worldline Joiner"] = 0,
-				["Winter Portal Joiner"] = 0,
-				["Boss Bounties Joiner"] = 0,
-				["Boss Event Joiner"] = 0,
-				["Spring Portal Joiner"] = 0,
-				["Rift Joiner"] = 0
-			}
-		}
-	},
-	["Summer Event"] = {
-		["Summer Event Joiner"] = {
-			["Auto Join"] = false
-		}
-	},
-	["Webhook"] = {
-		["Unit Summoned"] = false,
-		["Trait Rerolled"] = false,
-		["Unit Stat Potential"] = false,
-		["Stage Finished"] = false,
-		["Stat Potential Rerolled"] = false,
-		["Match Restarted"] = false
-	},
-	["Stat Reroller"] = {
-		["Stat Potential"] = 100,
-		["Teleport Lobby reach Stat Potential"] = false,
-		["Enable"] = false,
-		["Type"] = {
-			["Damage"] = false,
-			["All"] = false,
-			["Range"] = false,
-			["SPA"] = false
-		},
-		["Stat"] = {
-			["S"] = false,
-			["Z"] = false,
-			["ç¥ž"] = false,
-			["Ã§Â¥Å¾"] = false,
-			["Z+"] = false
-		}
-	},
-	["Trait Reroller"] = {
-		["Enable"] = false
-	},
-	["Odyssey Joiner"] = {
-		["Second Team"] = 2,
-		["Intensity"] = 200,
-		["Cash Out Floor"] = 5,
-		["Auto Join"] = false,
-		["First Team"] = 1
-	},
-	["Summer Portal Joiner"] = {
-		["Buy if out of Portal"] = false,
-		["Tier Cap"] = 10,
-		["Auto Join"] = false,
-		["Ignore Modifier"] = {
-			["Strong"] = false,
-			["Thrice"] = false,
-			["Regen"] = false,
-			["Fast"] = false,
-			["Revitalize"] = false,
-			["Drowsy"] = false,
-			["Exploding"] = false,
-			["Dodge"] = false,
-			["Quake"] = false,
-			["Shielded"] = false,
-			["Immunity"] = false,
-			["Champions"] = false
-		},
-		["Auto Next"] = true,
-		["Portal Reward Picker"] = {
-			["Enable"] = true,
-			["Ignore Modifier"] = {
-				["Strong"] = false,
-				["Thrice"] = false,
-				["Regen"] = false,
-				["Fast"] = true,
-				["Revitalize"] = false,
-				["Drowsy"] = false,
-				["Exploding"] = false,
-				["Dodge"] = false,
-				["Quake"] = false,
-				["Immunity"] = false,
-				["Shielded"] = true,
-				["Champions"] = false
-			}
-		}
+		["Auto Next"] = true
 	},
 	["AutoExecute"] = true,
 	["Gameplay"] = {
@@ -202,8 +203,8 @@ getgenv().Config = {
 			["Auto Statue"] = true
 		},
 		["Saber Event"] = {
-			["Servant"] = "Berserker",
-			["Auto Select Servant"] = true
+			["Auto Select Servant"] = true,
+			["Servant"] = "Berserker"
 		},
 		["Steel Ball Run"] = {
 			["Collect Steel Ball"] = true
@@ -224,8 +225,8 @@ getgenv().Config = {
 				["Dungeon"] = true,
 				["Infinite"] = true,
 				["Rift"] = true,
-				["Story"] = true,
-				["Raid"] = true
+				["Raid"] = true,
+				["Story"] = true
 			},
 			["Stop at Wave"] = 0
 		},
@@ -242,38 +243,17 @@ getgenv().Config = {
 				["Dungeon"] = true,
 				["Infinite"] = true,
 				["Rift"] = true,
-				["Story"] = true,
-				["Raid"] = true
+				["Raid"] = true,
+				["Story"] = true
 			}
 		},
-		["Frozen Volcano"] = {
-			["Upgrade Amount"] = 15,
-			["Auto Friezo"] = true,
-			["Leave Extra Money"] = 5000,
-			["Auto Save Brolzi"] = true,
-			["Friezo Unit"] = {
-				["Roku (Super 3)"] = true,
-				["Vogita Super (Awakened)"] = true,
-				["Slime (King)"] = true,
-				["Gujo (Infinity)"] = true,
-				["Byeken (Ronin)"] = true,
-				["Reimu (Shrine Maid)"] = true,
-				["Ichiga (Savior)"] = true,
-				["The Struggler (Rampage)"] = true,
-				["Saber (King of Knights)"] = true,
-				["Dawntay (Jackpot)"] = true,
-				["Eizan (Aura)"] = true,
-				["Newsman (Forecast)"] = true,
-				["Astolfo (Rider of Black)"] = true,
-				["Hercool and Mr Boo"] = true,
-				["Lord Friezo (Emperor)"] = true,
-				["Sakuya (Time Maid)"] = true,
-				["Ultimate Rohan"] = true,
-				["Sukono"] = true,
-				["Rogita (Super 4)"] = true,
-				["Lfelt (Love)"] = true
-			},
-			["Sell Placed Friezo Unit"] = false
+		["Elemental Dimensions"] = {
+			["Enable"] = true,
+			["Order"] = {
+				["Fire"] = 1,
+				["Sand"] = 3,
+				["Ice"] = 2
+			}
 		},
 		["Auto Sell"] = {
 			["Auto Sell Farm"] = {
@@ -289,8 +269,8 @@ getgenv().Config = {
 					["Dungeon"] = false,
 					["Infinite"] = true,
 					["Rift"] = true,
-					["Story"] = true,
-					["Raid"] = true
+					["Raid"] = true,
+					["Story"] = true
 				}
 			},
 			["Auto Sell Unit"] = {
@@ -306,13 +286,18 @@ getgenv().Config = {
 					["Dungeon"] = false,
 					["Infinite"] = true,
 					["Rift"] = false,
-					["Story"] = false,
-					["Raid"] = false
+					["Raid"] = false,
+					["Story"] = false
 				}
 			}
 		},
-		["Ant Island"] = {
-			["Auto Plug Ant Tunnel"] = true
+		["Occult Hunt"] = {
+			["Use All Talisman"] = {
+				["Enable"] = false,
+				["Wave"] = 1
+			},
+			["Collect Talisman"] = false,
+			["Use Talisman on Crab"] = false
 		},
 		["Martial Island"] = {
 			["Auto Join God Portal"] = false,
@@ -331,19 +316,14 @@ getgenv().Config = {
 				["Shadow"] = "Bear",
 				["Order"] = {
 					["Steel"] = 2,
-					["Bear"] = 1,
+					["Belu"] = 4,
 					["Healer"] = 3,
-					["Belu"] = 4
+					["Bear"] = 1
 				}
 			}
 		},
-		["Elemental Dimensions"] = {
-			["Enable"] = true,
-			["Order"] = {
-				["Fire"] = 1,
-				["Ice"] = 2,
-				["Sand"] = 3
-			}
+		["Ant Island"] = {
+			["Auto Plug Ant Tunnel"] = true
 		},
 		["Burn Units"] = {
 			["Enable"] = true,
@@ -365,23 +345,20 @@ getgenv().Config = {
 				["Dungeon"] = false,
 				["Infinite"] = true,
 				["Rift"] = true,
-				["Story"] = false,
-				["Raid"] = true
+				["Raid"] = true,
+				["Story"] = false
 			}
 		},
-		["Edge of Heaven"] = {
-			["Auto Join Lfelt Portal"] = false,
-			["Pause instead of Joining"] = false
-		},
+		["Auto Use Ability"] = true,
 		["Auto Ability"] = {
 			["Song Jinwu and Igros"] = {
 				["Auto Shadow"] = {
 					["Enable"] = false,
 					["Order"] = {
 						["Steel"] = 2,
-						["Bear"] = 1,
+						["Belu"] = 4,
 						["Healer"] = 3,
-						["Belu"] = 4
+						["Bear"] = 1
 					}
 				}
 			},
@@ -410,8 +387,8 @@ getgenv().Config = {
 						["Dungeon"] = true,
 						["Infinite"] = true,
 						["Rift"] = true,
-						["Story"] = true,
-						["Raid"] = true
+						["Raid"] = true,
+						["Story"] = true
 					}
 				},
 				["Ultimate"] = {
@@ -423,18 +400,18 @@ getgenv().Config = {
 					["Enable"] = true,
 					["Order"] = {
 						["Fire"] = 1,
-						["Ice"] = 2,
-						["Sand"] = 3
+						["Sand"] = 3,
+						["Ice"] = 2
 					}
 				}
 			},
+			["Auto Use Ability"] = true,
 			["God (Standless)"] = {
 				["Reality Rewrite"] = {
 					["Enable"] = true,
 					["Status Effect"] = "Bleed"
 				}
 			},
-			["Auto Use Ability"] = true,
 			["Skele King (Rock)"] = {
 				["Auto Guitar"] = {
 					["Enable"] = false,
@@ -443,6 +420,7 @@ getgenv().Config = {
 			}
 		},
 		["Shibuya Station"] = {
+			["Auto Mohato"] = true,
 			["Mohato Unit"] = {
 				["Tuji (Sorcerer Killer)"] = true,
 				["Noruto (Six Tails)"] = true,
@@ -455,7 +433,7 @@ getgenv().Config = {
 				["The Struggler (Rampage)"] = true,
 				["Dawntay (Jackpot)"] = true,
 				["Eizan (Aura)"] = true,
-				["Ackers (Levy)"] = true,
+				["Sukono"] = true,
 				["Saiko (Spirit Medium)"] = true,
 				["Medusa (Gorgon)"] = true,
 				["Goblin Killer (Trapper)"] = true,
@@ -463,21 +441,44 @@ getgenv().Config = {
 				["Valentine (Love Train)"] = true,
 				["Gazelle (Zombie)"] = true,
 				["Sosora (Puppeteer)"] = true,
-				["Sukono"] = true,
+				["Ackers (Levy)"] = true,
 				["Lfelt (Love)"] = true
 			},
-			["Auto Mohato"] = true,
 			["Leave Extra Money"] = 2000,
 			["Upgrade Amount"] = 2
 		},
-		["Auto Use Ability"] = true,
-		["Occult Hunt"] = {
-			["Use All Talisman"] = {
-				["Enable"] = false,
-				["Wave"] = 1
+		["Edge of Heaven"] = {
+			["Auto Join Lfelt Portal"] = false,
+			["Pause instead of Joining"] = false
+		},
+		["Frozen Volcano"] = {
+			["Sell Placed Friezo Unit"] = false,
+			["Auto Friezo"] = true,
+			["Auto Save Brolzi"] = true,
+			["Upgrade Amount"] = 15,
+			["Friezo Unit"] = {
+				["Roku (Super 3)"] = true,
+				["Rogita (Super 4)"] = true,
+				["Vogita Super (Awakened)"] = true,
+				["Slime (King)"] = true,
+				["Astolfo (Rider of Black)"] = true,
+				["Gujo (Infinity)"] = true,
+				["Byeken (Ronin)"] = true,
+				["Reimu (Shrine Maid)"] = true,
+				["Ichiga (Savior)"] = true,
+				["The Struggler (Rampage)"] = true,
+				["Saber (King of Knights)"] = true,
+				["Dawntay (Jackpot)"] = true,
+				["Eizan (Aura)"] = true,
+				["Newsman (Forecast)"] = true,
+				["Hercool and Mr Boo"] = true,
+				["Lord Friezo (Emperor)"] = true,
+				["Sakuya (Time Maid)"] = true,
+				["Ultimate Rohan"] = true,
+				["Sukono"] = true,
+				["Lfelt (Love)"] = true
 			},
-			["Collect Talisman"] = false,
-			["Use Talisman on Crab"] = false
+			["Leave Extra Money"] = 5000
 		}
 	},
 	["Daily Challenge Joiner"] = {
@@ -487,14 +488,14 @@ getgenv().Config = {
 		["Auto Open Gift Boxes"] = false,
 		["Right Click Move"] = false,
 		["Max Camera Zoom"] = 40,
-		["Redeem Code"] = true,
-		["Right Click Teleport"] = false,
 		["Auto Delete Portal"] = {
 			["Summer Portal"] = 500,
 			["Fall Portal"] = 500,
 			["Enable"] = false,
 			["Spring Portal"] = 500
-		}
+		},
+		["Right Click Teleport"] = false,
+		["Redeem Code"] = true
 	},
 	["Summoner"] = {
 		["Unselect if Summoned"] = false,
@@ -508,7 +509,7 @@ getgenv().Config = {
 		},
 		["Teleport Lobby new Banner"] = false,
 		["Auto Summon Special"] = false,
-		["Auto Summon Fall"] = false,
+		["Auto Summon Anniversary"] = false,
 		["Normalize Rarity"] = {
 			["Exclusive"] = false,
 			["Epic"] = false,
@@ -518,7 +519,7 @@ getgenv().Config = {
 		},
 		["Auto Summon Summer"] = false,
 		["Auto Summon Spring"] = false,
-		["Auto Summon Anniversary"] = false,
+		["Auto Summon Fall"] = false,
 		["Delete Shiny Rarity"] = {
 			["Legendary"] = false,
 			["Mythic"] = false,
@@ -554,26 +555,26 @@ getgenv().Config = {
 				["Dungeon"] = true,
 				["Infinite"] = false,
 				["Rift"] = false,
-				["Story"] = false,
-				["Raid"] = false
+				["Raid"] = false,
+				["Story"] = false
 			},
 			["Modifier"] = {
 				["Tyrant Destroyer"] = false,
-				["Money Surge"] = true,
+				["Sphere Finder"] = true,
 				["Drowsy"] = false,
 				["No Trait No Problem"] = false,
-				["Immunity"] = false,
+				["Fisticuffs"] = false,
 				["Warding off Evil"] = false,
 				["Champions"] = true,
-				["Quake"] = false,
+				["King's Burden"] = false,
 				["Exterminator"] = false,
 				["Tyrant Arrives"] = false,
 				["High Class"] = false,
 				["Dodge"] = false,
-				["King's Burden"] = false,
-				["Fisticuffs"] = false,
+				["Quake"] = false,
+				["Immunity"] = false,
 				["Lifeline"] = false,
-				["Sphere Finder"] = true
+				["Money Surge"] = true
 			}
 		},
 		["Auto Modifier"] = {
@@ -582,10 +583,10 @@ getgenv().Config = {
 				["Tyrant Destroyer"] = 86,
 				["Range"] = 95,
 				["Planning Ahead"] = 11,
-				["Unit Draw"] = 31,
-				["Exploding"] = 4,
+				["Tyrant Arrives"] = 86,
+				["High Class"] = 10,
 				["Immunity"] = 91,
-				["Restize"] = 34,
+				["Harvest"] = 99,
 				["Lifeline"] = 62,
 				["Evolution"] = 32,
 				["Exterminator"] = 14,
@@ -598,29 +599,29 @@ getgenv().Config = {
 				["Thrice"] = 2,
 				["Warding off Evil"] = 1,
 				["Quake"] = 0,
-				["Baroot"] = 35,
-				["Mobilize"] = 38,
-				["Slayer"] = 92,
-				["Dodge"] = 7,
-				["Harvest"] = 99,
-				["Fisticuffs"] = 22,
-				["Precise Attack"] = 12,
-				["Taxation"] = 37,
-				["Regen"] = 3,
 				["Fast"] = 45,
-				["Speech"] = 39,
+				["Mobilize"] = 38,
+				["Uncommon Loot"] = 98,
+				["Dodge"] = 7,
+				["Restize"] = 34,
+				["Fisticuffs"] = 22,
+				["Exploding"] = 4,
+				["Taxation"] = 37,
+				["Unit Draw"] = 31,
 				["Drowsy"] = 8,
+				["Speech"] = 39,
+				["No Trait No Problem"] = 55,
 				["Wild Card"] = 33,
-				["Revitalize"] = 89,
-				["King's Burden"] = 15,
 				["Champions"] = 90,
+				["King's Burden"] = 15,
+				["Revitalize"] = 89,
 				["Common Loot"] = 97,
 				["Stave Theocracy"] = 36,
-				["No Trait No Problem"] = 55,
-				["Tyrant Arrives"] = 86,
-				["High Class"] = 10,
+				["Baroot"] = 35,
 				["Damage"] = 96,
-				["Uncommon Loot"] = 98,
+				["Regen"] = 3,
+				["Precise Attack"] = 12,
+				["Slayer"] = 92,
 				["Sphere Finder"] = 87
 			},
 			["Amount"] = {
@@ -638,59 +639,6 @@ getgenv().Config = {
 			}
 		}
 	},
-	["Performance"] = {
-		["Delete Map"] = true,
-		["Boost FPS"] = true,
-		["Black Screen"] = false,
-		["Delete Entities"] = true
-	},
-	["Love Portal Joiner"] = {
-		["Tier Cap"] = 10,
-		["Portal Reward Picker"] = {
-			["Prioritize"] = {
-				["Double Dungeon"] = 3,
-				["Planet Namak"] = 1,
-				["Spirit Society"] = 6,
-				["Shibuya Station"] = 4,
-				["Underground Church"] = 5,
-				["Sand Village"] = 2
-			}
-		}
-	},
-	["Match Finished"] = {
-		["Auto Return Lobby"] = false,
-		["Auto Next"] = false,
-		["Replay Amount"] = 0,
-		["Return Lobby Failsafe"] = false,
-		["Auto Replay"] = true
-	},
-	["Crafter"] = {
-		["Teleport Lobby full Essence"] = false,
-		["Enable"] = true,
-		["Essence Stone"] = {
-			["Pink Essence Stone"] = true,
-			["Blue Essence Stone"] = true,
-			["Red Essence Stone"] = true,
-			["Yellow Essence Stone"] = true,
-			["Purple Essence Stone"] = true
-		},
-		["Essence Stone Limit"] = {
-			["Pink Essence Stone"] = 50,
-			["Blue Essence Stone"] = 50,
-			["Red Essence Stone"] = 50,
-			["Yellow Essence Stone"] = 50,
-			["Purple Essence Stone"] = 50
-		}
-	},
-	["Performance Failsafe"] = {
-		["Teleport Lobby FPS below"] = {
-			["Enable"] = false,
-			["FPS"] = 5
-		}
-	},
-	["Legend Stage Joiner"] = {
-		["Auto Join"] = false
-	},
 	["Auto Play"] = {
 		["Auto Upgrade"] = {
 			["Upgrade Order"] = {
@@ -704,7 +652,6 @@ getgenv().Config = {
 			["Place and Upgrade"] = false,
 			["Enable"] = true,
 			["Focus on Farm"] = true,
-			["Upgrade Method"] = "Customize upgrade order (Set below)",
 			["Upgrade Limit"] = {
 				["1"] = 0,
 				["3"] = 0,
@@ -712,7 +659,8 @@ getgenv().Config = {
 				["5"] = 0,
 				["4"] = 0,
 				["6"] = 0
-			}
+			},
+			["Upgrade Method"] = "Customize upgrade order (Set below)"
 		},
 		["Place Limit"] = {
 			["1"] = 0,
@@ -730,13 +678,6 @@ getgenv().Config = {
 				["2"] = "-179.81578063964844, 4.474977493286133, 79.28062438964844",
 				["5"] = "-232.0775604248047, 4.474977493286133, 81.67100524902344",
 				["4"] = "-195.3408203125, 4.474977493286133, 103.27470397949219"
-			},
-			["Planet Namak"] = {
-				["1"] = "500.27032470703125, 2.062572717666626, -315.8484802246094",
-				["3"] = "475.77581787109375, 2.062572717666626, -328.9787292480469",
-				["2"] = "500.27032470703125, 2.062572717666626, -315.8484802246094",
-				["5"] = "456.77398681640625, 2.062572717666626, -335.5212707519531",
-				["4"] = "444.7925720214844, 2.062572717666626, -340.7905578613281"
 			},
 			["Sand Village"] = {
 				["1"] = "-215.588623046875, 180.48907470703125, -187.5686492919922",
@@ -788,13 +729,20 @@ getgenv().Config = {
 				["5"] = "-267.29034423828125, 0.10069097578525543, -117.80968475341797",
 				["4"] = "-273.69866943359375, 0.10069097578525543, -131.36167907714844"
 			},
-			["Burning Spirit Tree"] = {
-				["1"] = "207.5626983642578, 0.5131978988647461, -191.70925903320312",
-				["3"] = "235.9824981689453, 0.5131978988647461, -215.14682006835938",
-				["2"] = "195.8192596435547, 0.5131978988647461, -198.67872619628906",
-				["5"] = "244.51007080078125, 0.5131978988647461, -213.92210388183594",
-				["4"] = "253.53794860839844, 0.5131978988647461, -217.4495086669922",
-				["6"] = "245.15574645996094, 0.5131978988647461, -192.70277404785156"
+			["Lebereo Raid"] = {
+				["1"] = "131.16702270507812, 35.98725509643555, -362.08734130859375",
+				["3"] = "131.42922973632812, 35.98725509643555, -317.7830810546875",
+				["2"] = "131.16702270507812, 35.98725509643555, -362.08734130859375",
+				["5"] = "127.52284240722656, 35.98725509643555, -297.4350891113281",
+				["4"] = "127.52284240722656, 35.98725509643555, -297.4350891113281"
+			},
+			["Hill of Swords"] = {
+				["1"] = "30.016399383544922, 116.84236145019531, 102.57625579833984",
+				["3"] = "10.967857360839844, 116.84236145019531, 122.07147979736328",
+				["2"] = "35.810508728027344, 116.84236145019531, 111.67268371582031",
+				["5"] = "0.8885884284973145, 116.84236145019531, 100.81619262695312",
+				["4"] = "7.610741138458252, 116.84236145019531, 109.36640930175781",
+				["6"] = "-5.704272747039795, 116.84236145019531, 76.40074920654297"
 			},
 			["Shining Castle"] = {
 				["1"] = "8.990348815917969, 177.0242919921875, 94.46527862548828",
@@ -804,13 +752,12 @@ getgenv().Config = {
 				["4"] = "30.236909866333008, 177.0242919921875, 93.9733657836914",
 				["6"] = "24.314983367919922, 177.0242919921875, 94.10115814208984"
 			},
-			["Land of the Gods"] = {
-				["1"] = "-150.5404052734375, -1.7785316705703735, 151.85302734375",
-				["3"] = "-155.99818420410156, -1.7785316705703735, 120.15088653564453",
-				["2"] = "-151.9019012451172, -1.7785316705703735, 148.51901245117188",
-				["5"] = "-165.17893981933594, -1.7785316705703735, 122.95716094970703",
-				["4"] = "-165.17893981933594, -1.7785316705703735, 122.95716094970703",
-				["6"] = "-165.17893981933594, -1.7785316705703735, 122.95716094970703"
+			["Sun Temple"] = {
+				["1"] = "-287.7659606933594, 17, -43.65013885498047",
+				["3"] = "-272.98138427734375, 17, -21.578874588012695",
+				["2"] = "-287.7659606933594, 17, -43.65013885498047",
+				["5"] = "-250.30592346191406, 17, -20.356889724731445",
+				["4"] = "-250.30592346191406, 17, -20.356889724731445"
 			},
 			["Golden Castle"] = {
 				["1"] = "-100.731201171875, -0.16030120849609375, -198.10171508789062",
@@ -849,20 +796,20 @@ getgenv().Config = {
 				["5"] = "-765.84130859375, 9.356081008911133, -77.7351303100586",
 				["4"] = "-768.3870239257812, 9.356081008911133, -75.20946502685547"
 			},
-			["Lebereo Raid"] = {
-				["1"] = "131.16702270507812, 35.98725509643555, -362.08734130859375",
-				["3"] = "131.42922973632812, 35.98725509643555, -317.7830810546875",
-				["2"] = "131.16702270507812, 35.98725509643555, -362.08734130859375",
-				["5"] = "127.52284240722656, 35.98725509643555, -297.4350891113281",
-				["4"] = "127.52284240722656, 35.98725509643555, -297.4350891113281"
+			["Planet Namak"] = {
+				["1"] = "500.27032470703125, 2.062572717666626, -315.8484802246094",
+				["3"] = "475.77581787109375, 2.062572717666626, -328.9787292480469",
+				["2"] = "500.27032470703125, 2.062572717666626, -315.8484802246094",
+				["5"] = "456.77398681640625, 2.062572717666626, -335.5212707519531",
+				["4"] = "444.7925720214844, 2.062572717666626, -340.7905578613281"
 			},
-			["Hill of Swords"] = {
-				["1"] = "30.016399383544922, 116.84236145019531, 102.57625579833984",
-				["3"] = "10.967857360839844, 116.84236145019531, 122.07147979736328",
-				["2"] = "35.810508728027344, 116.84236145019531, 111.67268371582031",
-				["5"] = "0.8885884284973145, 116.84236145019531, 100.81619262695312",
-				["4"] = "7.610741138458252, 116.84236145019531, 109.36640930175781",
-				["6"] = "-5.704272747039795, 116.84236145019531, 76.40074920654297"
+			["Burning Spirit Tree"] = {
+				["1"] = "207.5626983642578, 0.5131978988647461, -191.70925903320312",
+				["3"] = "235.9824981689453, 0.5131978988647461, -215.14682006835938",
+				["2"] = "195.8192596435547, 0.5131978988647461, -198.67872619628906",
+				["5"] = "244.51007080078125, 0.5131978988647461, -213.92210388183594",
+				["4"] = "253.53794860839844, 0.5131978988647461, -217.4495086669922",
+				["6"] = "245.15574645996094, 0.5131978988647461, -192.70277404785156"
 			},
 			["Kuinshi Palace"] = {
 				["1"] = "435.494140625, 268.38262939453125, 126.87104034423828",
@@ -871,12 +818,13 @@ getgenv().Config = {
 				["5"] = "391.6142272949219, 268.38262939453125, 116.22864532470703",
 				["4"] = "391.6142272949219, 268.38262939453125, 116.2286376953125"
 			},
-			["Sun Temple"] = {
-				["1"] = "-287.7659606933594, 17, -43.65013885498047",
-				["3"] = "-272.98138427734375, 17, -21.578874588012695",
-				["2"] = "-287.7659606933594, 17, -43.65013885498047",
-				["5"] = "-250.30592346191406, 17, -20.356889724731445",
-				["4"] = "-250.30592346191406, 17, -20.356889724731445"
+			["Land of the Gods"] = {
+				["1"] = "-150.5404052734375, -1.7785316705703735, 151.85302734375",
+				["3"] = "-155.99818420410156, -1.7785316705703735, 120.15088653564453",
+				["2"] = "-151.9019012451172, -1.7785316705703735, 148.51901245117188",
+				["5"] = "-165.17893981933594, -1.7785316705703735, 122.95716094970703",
+				["4"] = "-165.17893981933594, -1.7785316705703735, 122.95716094970703",
+				["6"] = "-165.17893981933594, -1.7785316705703735, 122.95716094970703"
 			},
 			["Underground Church"] = {
 				["1"] = "154.14126586914062, 0.30062153935432434, 81.40592956542969",
@@ -901,14 +849,6 @@ getgenv().Config = {
 				["4"] = "-373.097412109375, 136.8050537109375, -451.88714599609375"
 			}
 		},
-		["Place Order"] = {
-			["1"] = 1,
-			["3"] = 3,
-			["2"] = 2,
-			["5"] = 5,
-			["4"] = 4,
-			["6"] = 6
-		},
 		["Place Wave"] = {
 			["1"] = 0,
 			["3"] = 0,
@@ -916,30 +856,91 @@ getgenv().Config = {
 			["5"] = 0,
 			["4"] = 0,
 			["6"] = 0
+		},
+		["Place Order"] = {
+			["1"] = 1,
+			["3"] = 3,
+			["2"] = 2,
+			["5"] = 5,
+			["4"] = 4,
+			["6"] = 6
 		}
 	},
+	["Love Portal Joiner"] = {
+		["Portal Reward Picker"] = {
+			["Prioritize"] = {
+				["Double Dungeon"] = 3,
+				["Planet Namak"] = 1,
+				["Spirit Society"] = 6,
+				["Shibuya Station"] = 4,
+				["Underground Church"] = 5,
+				["Sand Village"] = 2
+			}
+		},
+		["Tier Cap"] = 10
+	},
+	["Match Finished"] = {
+		["Auto Return Lobby"] = false,
+		["Auto Next"] = false,
+		["Replay Amount"] = 0,
+		["Return Lobby Failsafe"] = false,
+		["Auto Replay"] = true
+	},
+	["Crafter"] = {
+		["Teleport Lobby full Essence"] = false,
+		["Enable"] = true,
+		["Essence Stone"] = {
+			["Pink Essence Stone"] = true,
+			["Blue Essence Stone"] = true,
+			["Red Essence Stone"] = true,
+			["Yellow Essence Stone"] = true,
+			["Purple Essence Stone"] = true
+		},
+		["Essence Stone Limit"] = {
+			["Pink Essence Stone"] = 50,
+			["Blue Essence Stone"] = 50,
+			["Red Essence Stone"] = 50,
+			["Yellow Essence Stone"] = 50,
+			["Purple Essence Stone"] = 50
+		}
+	},
+	["Performance Failsafe"] = {
+		["Teleport Lobby FPS below"] = {
+			["Enable"] = false,
+			["FPS"] = 5
+		}
+	},
+	["Legend Stage Joiner"] = {
+		["Auto Join"] = false
+	},
+	["Performance"] = {
+		["Delete Map"] = true,
+		["Boost FPS"] = true,
+		["Black Screen"] = false,
+		["Delete Entities"] = true
+	},
 	["Auto Join Setting"] = {
-		["Joiner Cooldown"] = 0,
 		["Joiner Priority"] = {
 			["Dungeon Joiner"] = 4,
 			["Worldline Joiner"] = 6,
 			["Fall Portal Joiner"] = 10,
 			["Summer Event Joiner"] = 10,
 			["Regular Challenge Joiner"] = 13,
-			["Spring Portal Joiner"] = 9,
-			["Legend Stage Joiner"] = 2,
-			["Weekly Challenge Joiner"] = 15,
-			["Boss Bounties Joiner"] = 12,
+			["Daily Challenge Joiner"] = 14,
+			["Raid Joiner"] = 3,
+			["Boss Event Joiner"] = 5,
+			["Stage Joiner"] = 1,
 			["Odyssey Joiner"] = 7,
 			["Summer Portal Joiner"] = 11,
-			["Raid Joiner"] = 3,
+			["Legend Stage Joiner"] = 2,
 			["Limitless Odyssey Joiner"] = 8,
-			["Boss Event Joiner"] = 5,
+			["Boss Bounties Joiner"] = 12,
 			["Fall Event Joiner"] = 9,
-			["Stage Joiner"] = 1,
-			["Daily Challenge Joiner"] = 14,
+			["Weekly Challenge Joiner"] = 15,
+			["Spring Portal Joiner"] = 9,
 			["Rift Joiner"] = 16
-		}
+		},
+		["Joiner Cooldown"] = 0
 	},
 	["Raid Joiner"] = {
 		["Auto Join"] = false
@@ -948,8 +949,8 @@ getgenv().Config = {
 		["Auto Force Skip Wave"] = false,
 		["Auto Join"] = false,
 		["Force Skip Wave"] = 1,
-		["Intensity"] = 25,
-		["Leave Floor"] = 1
+		["Leave Floor"] = 1,
+		["Intensity"] = 25
 	},
 	["Failsafe"] = {
 		["Teleport Lobby if Player"] = false,
@@ -964,18 +965,18 @@ getgenv().Config = {
 		["Feed Level"] = 60
 	},
 	["Secure"] = {
-		["Random Offset"] = false,
-		["Walk Around"] = false
+		["Walk Around"] = false,
+		["Random Offset"] = false
 	},
 	["Boss Bounties Joiner"] = {
 		["Auto Join"] = false
 	},
 	["Claimer"] = {
-		["Auto Claim Battle Pass"] = true,
-		["Auto Claim Quest"] = true,
 		["Auto Claim Milestone"] = true,
-		["Auto Claim Achievement"] = true,
+		["Auto Claim Quest"] = true,
+		["Auto Claim Battle Pass"] = true,
 		["Auto Claim Daily Reward"] = true,
+		["Auto Claim Achievement"] = true,
 		["Auto Claim Collection"] = true,
 		["Auto Claim Enemy Index"] = true,
 		["Auto Claim Collection Milestone"] = true
@@ -994,71 +995,71 @@ getgenv().Config = {
 		["Auto Next"] = true,
 		["Ignore Modifier"] = {
 			["Strong"] = false,
-			["Thrice"] = false,
+			["Drowsy"] = false,
 			["Regen"] = false,
 			["Fast"] = false,
 			["Revitalize"] = false,
-			["Drowsy"] = false,
+			["Champions"] = false,
 			["Exploding"] = false,
 			["Dodge"] = false,
-			["Quake"] = false,
 			["Shielded"] = false,
 			["Immunity"] = false,
-			["Champions"] = false
+			["Quake"] = false,
+			["Thrice"] = false
 		},
-		["Teleport Lobby full Iced Box"] = false,
+		["Buy if out of Portal"] = false,
 		["Ignore Act"] = {
 			["[Land of the Gods] Act2"] = false,
 			["[Planet Namak] Act3"] = false,
-			["[Planet Namak] Act6"] = false,
+			["[Edge of Heaven] Act5"] = false,
 			["[Planet Namak] Act5"] = false,
 			["[Edge of Heaven] Act2"] = false,
 			["[Planet Namak] Act1"] = false,
 			["[Edge of Heaven] Act6"] = false,
 			["[Land of the Gods] Act3"] = false,
 			["[Edge of Heaven] Act3"] = false,
-			["[Edge of Heaven] Act1"] = false,
+			["[Edge of Heaven] Act4"] = false,
 			["[Planet Namak] Act2"] = false,
 			["[Planet Namak] Act4"] = false,
-			["[Edge of Heaven] Act4"] = false,
+			["[Edge of Heaven] Act1"] = false,
 			["[Land of the Gods] Act1"] = false,
-			["[Edge of Heaven] Act5"] = false
+			["[Planet Namak] Act6"] = false
 		},
 		["Auto Join"] = false,
 		["Portal Reward Picker"] = {
 			["Enable"] = true,
 			["Ignore Modifier"] = {
 				["Strong"] = false,
-				["Thrice"] = false,
+				["Drowsy"] = false,
 				["Regen"] = false,
 				["Fast"] = true,
 				["Revitalize"] = false,
-				["Drowsy"] = false,
+				["Champions"] = false,
 				["Exploding"] = false,
 				["Dodge"] = false,
-				["Quake"] = false,
 				["Immunity"] = false,
 				["Shielded"] = true,
-				["Champions"] = false
+				["Quake"] = false,
+				["Thrice"] = false
 			},
 			["Prioritize"] = {
-				["Land of the Gods"] = 1,
+				["Edge of Heaven"] = 3,
 				["Planet Namak"] = 2,
-				["Edge of Heaven"] = 3
+				["Land of the Gods"] = 1
 			}
 		},
-		["Teleport Lobby full Wooden Chest"] = false,
-		["Buy if out of Portal"] = false
+		["Teleport Lobby full Iced Box"] = false,
+		["Teleport Lobby full Wooden Chest"] = false
 	},
 	["Rift Joiner"] = {
-		["Hop Server if no Rift Portal"] = false,
-		["Join Solo Only"] = false,
-		["Auto Join"] = false,
 		["Teleport Lobby Rift spawn"] = {
 			["Enable"] = false,
 			["Force teleport"] = false,
 			["Extra Time"] = 60
-		}
+		},
+		["Join Solo Only"] = false,
+		["Auto Join"] = false,
+		["Hop Server if no Rift Portal"] = false
 	}
 }
 getgenv().Key = "ElIsfyTzBhioWvdmAjNPUaUaCHtnQvwH" 
