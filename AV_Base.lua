@@ -4699,23 +4699,53 @@ local function UseAbilityV3(unit, abilityName, abilityInfo)
                 print("[FORCED]   → ❌ UnitEvent not available!")
             end
             
-        -- 🔵 TYPE 3: CLONE abilities (Monkey King's Fur, Valentine) - ใช้ AbilityEvent เป็นหลัก
+        -- 🔵 TYPE 3: CLONE abilities (Monkey King's Fur, Valentine) - ใช้ GetBestPlacementPosition เหมือน Normal mode
         elseif abilityLower:find("fur") or abilityLower:find("clone") or abilityLower:find("another me") then
-            print("[FORCED]   → TYPE: CLONE ability - using AbilityEvent (game handles clone spawn)")
+            print("[FORCED]   → TYPE: CLONE ability - using GetBestPlacementPosition (Normal mode style)")
             
-            -- ⭐⭐⭐ FIX: ใช้ AbilityEvent เป็นหลัก (ให้เกมจัดการ clone เอง)
-            -- เกมจะแสดง "Select where to place..." และวาง clone ให้
+            -- ⭐⭐⭐ FIX: ใช้ GetBestPlacementPosition เหมือน Normal mode
+            local clonePos = nil
+            
+            -- Priority 1: GetBestPlacementPosition (U-center system เหมือน Normal mode)
+            pcall(function()
+                clonePos = GetBestPlacementPosition(unitRange, GetGamePhase(), unitName, unit and unit.Data)
+            end)
+            
+            -- Priority 2: ใกล้ศัตรูหน้าสุด
+            if not clonePos then
+                local frontEnemy = GetFrontmostEnemy and GetFrontmostEnemy()
+                if frontEnemy and frontEnemy.Position then
+                    local offset = 12
+                    local angle = math.random() * math.pi * 2
+                    clonePos = frontEnemy.Position + Vector3.new(math.cos(angle) * offset, 0, math.sin(angle) * offset)
+                end
+            end
+            
+            -- Priority 3: ใกล้ unit เจ้าของ
+            if not clonePos and unit and unit.Model then
+                local hrp = unit.Model:FindFirstChild("HumanoidRootPart")
+                if hrp then
+                    local offset = 10
+                    local angle = math.random() * math.pi * 2
+                    clonePos = hrp.Position + Vector3.new(math.cos(angle) * offset, 0, math.sin(angle) * offset)
+                end
+            end
+            
+            -- Fallback
+            if not clonePos then
+                clonePos = targetPos
+            end
+            
             if AbilityEvent then
-                print(string.format("[FORCED]   → Activating %s with AbilityEvent...", abilityName))
-                print(string.format("[FORCED]   → Position: (%.1f, %.1f, %.1f)", targetPos.X, targetPos.Y, targetPos.Z))
+                print(string.format("[FORCED]   → Clone position: (%.1f, %.1f, %.1f)", clonePos.X, clonePos.Y, clonePos.Z))
                 
                 success, err = pcall(function()
-                    AbilityEvent:FireServer("Activate", guid, abilityName, targetPos)
+                    AbilityEvent:FireServer("Activate", guid, abilityName, clonePos)
                 end)
                 
                 if success then
                     AbilityLastUsed[abilityKey] = tick()
-                    print(string.format("[FORCED]   → ✅ %s activated! Game will handle clone placement.", abilityName))
+                    print(string.format("[FORCED]   → ✅ %s clone placed!", abilityName))
                 else
                     print(string.format("[FORCED]   → ❌ AbilityEvent failed: %s", tostring(err)))
                 end
@@ -8300,19 +8330,7 @@ local function AutoPlaceLoop()
             continue
         end
         
-        -- ⭐⭐⭐ CHECK: Normal Mode Only - ข้าม Challenge/Odyssey/Worldlines
-        if not IsNormalMode() then
-            if not normalModeLogged then
-                print("[FORCED] ⚠️ ไม่ใช่ Normal Mode - หยุด Auto Place (Challenge/Odyssey/Worldlines)")
-                normalModeLogged = true
-            end
-            task.wait(5)
-            -- ยังคงรัน Auto Skill อยู่
-            pcall(AutoUseAbilitiesV3)
-            continue
-        else
-            normalModeLogged = false
-        end
+        -- ⭐⭐⭐ NOTE: Auto Place ทำงานทุกด่าน (ไม่บล็อค Challenge/Odyssey/Worldlines อีกต่อไป)
         local success, err = pcall(function()
             local yen = GetYen()
             local gamePhase = GetGamePhase()
@@ -9375,7 +9393,7 @@ local function AutoVoteReplay()
         end
     end)
     
-    -- ทำงานเมื่อเจอปุ่ม Retry/Replay
+    -- ทำงานเมื่อเจอปุ่ม Retry/Replay เท่านั้น (ไม่ spam)
     if found and targetBtn then
         LastReplayVoteTime = now
         print("[AutoReplay] 🔄 Found Retry/Replay button - activating...")
@@ -9383,20 +9401,6 @@ local function AutoVoteReplay()
         pcall(function()
             if targetBtn.Activate then
                 targetBtn:Activate()
-            end
-        end)
-        
-        -- ⭐ Fallback: ใช้ SkipWaveEvent
-        pcall(function()
-            if SkipWaveEvent then
-                SkipWaveEvent:FireServer("Restart")
-            end
-        end)
-
-        -- ⭐ Fallback: ใช้ VoteEvent (ตาม Decom)
-        pcall(function()
-            if _G.VoteEvent then
-                _G.VoteEvent:FireServer("Retry")
             end
         end)
     end
