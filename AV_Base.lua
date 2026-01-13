@@ -3610,6 +3610,24 @@ local function LoadSpecialAbilityEvents()
         print(string.format("[FORCED]   → NumberPadEvent: %s", NumberPadEvent and "✅ Found" or "❌ NIL"))
     end)
     
+    -- ⭐⭐⭐ Auto Replay/Next Event (EndScreen.VoteEvent)
+    pcall(function()
+        _G.VoteEvent = Networking.EndScreen.VoteEvent
+        print(string.format("[FORCED]   → VoteEvent: %s", _G.VoteEvent and "✅ Found" or "❌ NIL"))
+    end)
+    
+    -- ⭐⭐⭐ Portal Play Event (สำหรับ Auto Portal)
+    pcall(function()
+        _G.PortalPlayEvent = Networking.PortalPlayEvent
+        print(string.format("[FORCED]   → PortalPlayEvent: %s", _G.PortalPlayEvent and "✅ Found" or "❌ NIL"))
+    end)
+    
+    -- ⭐⭐⭐ Teleport Event (สำหรับ Leave/Lobby)
+    pcall(function()
+        _G.TeleportEvent = Networking.TeleportEvent
+        print(string.format("[FORCED]   → TeleportEvent: %s", _G.TeleportEvent and "✅ Found" or "❌ NIL"))
+    end)
+    
     -- Lich Spells (Arcane Knowledge) - Element Selection
     local lichSuccess, lichErr = pcall(function()
         print("[FORCED] 🔧 Loading Lich Spells...")
@@ -3663,6 +3681,9 @@ local function LoadSpecialAbilityEvents()
     print(string.format("[FORCED]   UnitElementsData: %s", UnitElementsData and "✅" or "❌"))
     print(string.format("[FORCED]   Reality Rewrite: %s", RealityRewriteEvent and "✅" or "❌"))
     print(string.format("[FORCED]   RealityRewriteData: %s", RealityRewriteData and "✅" or "❌"))
+    print(string.format("[FORCED]   VoteEvent (Replay): %s", _G.VoteEvent and "✅" or "❌"))
+    print(string.format("[FORCED]   PortalPlayEvent: %s", _G.PortalPlayEvent and "✅" or "❌"))
+    print(string.format("[FORCED]   TeleportEvent: %s", _G.TeleportEvent and "✅" or "❌"))
     print("[FORCED] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 end
 
@@ -5170,20 +5191,25 @@ local function AutoNumberPad()
     if _G.NumberPad.CodeAccepted then return end
     if not NumberPadEvent then return end
     
-    -- เช็คว่าเป็นด่าน Imprisoned Island หรือไม่ (ใช้ workspace.Map.Name โดยตรง)
-    local isImprisonedIsland = false
+    -- เช็คว่ามี NumberPadInteract หรือไม่ (แทนการเช็คชื่อด่าน)
+    local hasNumberPad = false
     pcall(function()
-        local mapName = workspace:FindFirstChild("Map") and workspace.Map.Name or ""
-        isImprisonedIsland = mapName:lower():find("imprisoned") or mapName:lower():find("island")
+        local map = workspace:FindFirstChild("Map")
+        if map then
+            local models = map:FindFirstChild("Models")
+            if models then
+                hasNumberPad = models:FindFirstChild("NumberPadInteract") ~= nil
+            end
+        end
         
-        -- Debug: แสดงชื่อ Map
+        -- Debug: แสดงสถานะ
         if not _G.NumberPad.MapLogged then
-            print(string.format("[NumberPad] 📍 Map: %s, IsImprisoned: %s", mapName, tostring(isImprisonedIsland ~= nil)))
+            print(string.format("[NumberPad] 📍 HasNumberPad: %s", tostring(hasNumberPad)))
             _G.NumberPad.MapLogged = true
         end
     end)
     
-    if not isImprisonedIsland then return end
+    if not hasNumberPad then return end
     
     local now = tick()
     
@@ -5247,6 +5273,69 @@ pcall(function()
         end)
     end
 end)
+
+-- ===== AUTO REPLAY SYSTEM =====
+_G.AutoReplay = {
+    LastVote = 0,
+    VoteCooldown = 1,
+}
+
+local function AutoVoteReplay_Legacy()
+    if not _G.VoteEvent then return end
+    local now = tick()
+    if now - _G.AutoReplay.LastVote < _G.AutoReplay.VoteCooldown then return end
+    _G.AutoReplay.LastVote = now
+    pcall(function()
+        _G.VoteEvent:FireServer("Retry")
+        print("[AutoReplay] 🔄 Voted for Replay/Retry")
+    end)
+end
+
+-- ===== AUTO PORTAL SYSTEM =====
+_G.AutoPortal = {
+    LastAction = 0,
+    ActionCooldown = 2,
+}
+
+-- ฟังก์ชันเลือก Portal อัตโนมัติ (เลือกตัวที่ดีที่สุด)
+local function AutoSelectPortal()
+    if not _G.PortalPlayEvent then return end
+    
+    local now = tick()
+    if now - _G.AutoPortal.LastAction < _G.AutoPortal.ActionCooldown then return end
+    
+    -- เช็คว่ามี Portal Data หรือไม่
+    local hasPortalData = false
+    local portalGUID = nil
+    
+    pcall(function()
+        local GameHandler = require(ReplicatedStorage.Modules.Gameplay.GameHandler)
+        if GameHandler and GameHandler.GameData and GameHandler.GameData.PortalData then
+            hasPortalData = true
+            
+            -- หา Portal ที่ดีที่สุดจาก PortalStorageHandler
+            local PortalStorage = require(ReplicatedStorage.Modules.Gameplay.Portals.PortalStorageHandler)
+            if PortalStorage and PortalStorage.GetPortals then
+                local portals = PortalStorage.GetPortals()
+                if portals then
+                    -- เลือก Portal แรกที่เจอ (หรือสามารถปรับให้เลือกตาม Rarity)
+                    for guid, portal in pairs(portals) do
+                        portalGUID = guid
+                        break
+                    end
+                end
+            end
+        end
+    end)
+    
+    if hasPortalData and portalGUID then
+        _G.AutoPortal.LastAction = now
+        pcall(function()
+            _G.PortalPlayEvent:FireServer("Select", portalGUID)
+            print(string.format("[AutoPortal] 🌀 Selected Portal: %s", tostring(portalGUID)))
+        end)
+    end
+end
 
 -- ===== LEGACY FUNCTIONS (เก็บไว้เพื่อ compatibility) =====
 local function EnableAutoSkill()
@@ -8253,6 +8342,12 @@ local function AutoPlaceLoop()
             -- 🔢 AUTO NUMBER PAD: ลองรหัสอัตโนมัติ (Imprisoned Island)
             pcall(AutoNumberPad)
             
+            -- 🔄 AUTO REPLAY: Vote Replay อัตโนมัติ
+            pcall(AutoVoteReplay)
+            
+            -- 🌀 AUTO PORTAL: เลือก Portal อัตโนมัติ
+            pcall(AutoSelectPortal)
+            
             -- ⭐⭐⭐ NEW: Auto Swap Check (Roku/Vogita, Smith John/Lord of Shadows)
             pcall(function()
                 if _G.ToggleAutoSwapEvent and ClientUnitHandler and ClientUnitHandler._ActiveUnits then
@@ -9241,42 +9336,37 @@ end)
 
 -- ===== AUTO REPLAY SYSTEM =====
 -- ⭐ Auto Vote Restart เมื่อเกมจบ
-local AUTO_REPLAY_ENABLED = true
 local LastReplayVoteTime = 0
 local REPLAY_VOTE_COOLDOWN = 5
 
 local function AutoVoteReplay()
-    if not AUTO_REPLAY_ENABLED or not ENABLED then return end
-    
     local now = tick()
     if now - LastReplayVoteTime < REPLAY_VOTE_COOLDOWN then return end
     
-    -- ⭐⭐⭐ FIX: หา "Replay" button เท่านั้นถึงจะทำงาน
-    local replayBtn = nil
-    local replayFound = false
+    -- หา "Retry"/"Replay" button บน EndScreen
+    local targetBtn = nil
+    local found = false
     
     pcall(function()
         local playerGui = plr:FindFirstChild("PlayerGui")
         if playerGui then
-            -- หา Replay button ใน UI ทั้งหมด
             for _, gui in pairs(playerGui:GetChildren()) do
                 if gui:IsA("ScreenGui") and gui.Enabled then
-                    -- ⭐ หาเฉพาะปุ่มที่ชื่อ "Replay" เท่านั้น
-                    local btn = gui:FindFirstChild("Replay", true)
+                    local btn = gui:FindFirstChild("Retry", true) or gui:FindFirstChild("Replay", true)
                     if btn then
                         -- เช็คว่าเป็น Button และ Visible
                         if btn:IsA("GuiButton") or btn:IsA("TextButton") or btn:IsA("ImageButton") then
                             if btn.Visible then
-                                replayBtn = btn
-                                replayFound = true
+                                targetBtn = btn
+                                found = true
                                 break
                             end
                         end
                         -- ถ้าเป็น Frame ที่มี Button ข้างใน
                         local innerBtn = btn:FindFirstChildOfClass("TextButton") or btn:FindFirstChildOfClass("ImageButton")
                         if innerBtn and innerBtn.Visible then
-                            replayBtn = innerBtn
-                            replayFound = true
+                            targetBtn = innerBtn
+                            found = true
                             break
                         end
                     end
@@ -9285,23 +9375,14 @@ local function AutoVoteReplay()
         end
     end)
     
-    -- ⭐ ทำงานเฉพาะเมื่อเจอ Replay button
-    if replayFound and replayBtn then
+    -- ทำงานเมื่อเจอปุ่ม Retry/Replay
+    if found and targetBtn then
         LastReplayVoteTime = now
-        print("[AutoReplay] 🔄 Found Replay button - clicking...")
-        
-        -- กดปุ่ม Replay
-        pcall(function()
-            -- วิธี 1: Fire Activated event
-            if replayBtn.Activated then
-                replayBtn.Activated:Fire()
-            end
-        end)
+        print("[AutoReplay] 🔄 Found Retry/Replay button - activating...")
         
         pcall(function()
-            -- วิธี 2: Fire MouseButton1Click
-            if replayBtn.MouseButton1Click then
-                replayBtn.MouseButton1Click:Fire()
+            if targetBtn.Activate then
+                targetBtn:Activate()
             end
         end)
         
@@ -9311,6 +9392,13 @@ local function AutoVoteReplay()
                 SkipWaveEvent:FireServer("Restart")
             end
         end)
+
+        -- ⭐ Fallback: ใช้ VoteEvent (ตาม Decom)
+        pcall(function()
+            if _G.VoteEvent then
+                _G.VoteEvent:FireServer("Retry")
+            end
+        end)
     end
 end
 
@@ -9318,24 +9406,26 @@ end
 task.spawn(function()
     while true do
         task.wait(2)
-        if ENABLED then pcall(AutoVoteReplay) end
+        pcall(AutoVoteReplay)
     end
 end)
 
 -- ===== AUTO ANT SWARM SYSTEM =====
 -- ตาม Decom: Auto close tunnel เมื่อเข้าใกล้ Swarm
-local AntSwarmData = {}
-local TunnelClosedEvent = nil
+_G.AntSwarm = {
+    Data = {},
+    TunnelClosedEvent = nil,
+}
 
 pcall(function()
-    TunnelClosedEvent = game:GetService("ReplicatedStorage").Networking.StageMechanics.TunnelClosed
+    _G.AntSwarm.TunnelClosedEvent = game:GetService("ReplicatedStorage").Networking.StageMechanics.TunnelClosed
 end)
 
 task.spawn(function()
     while true do
         task.wait(0.1)  -- Heartbeat equivalent
         
-        if not ENABLED or not TunnelClosedEvent then
+        if not ENABLED or not _G.AntSwarm.TunnelClosedEvent then
             task.wait(1)
             continue
         end
@@ -9358,7 +9448,7 @@ task.spawn(function()
                                 if dist <= 7 then
                                     -- Close tunnel
                                     pcall(function()
-                                        TunnelClosedEvent:FireServer(child.Name)
+                                        _G.AntSwarm.TunnelClosedEvent:FireServer(child.Name)
                                     end)
                                     areaHelper.Enabled = false
                                     print(string.format("[AntSwarm] 🐜 Closed tunnel: %s", child.Name))

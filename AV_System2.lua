@@ -2665,9 +2665,7 @@ if ID[game.GameId][1] == "AV" then
                                 print("cannot get cache 3")
                             end
                             if not Current_Party or #Current_Party <= 0 then
-                                Waiting_Time = os.time() + 150
-                                print("Add Time To Waiting Time")
-                                -- Host Auto Config: ถ้าไม่มี want_carry และไม่มี party member ให้ใช้ auto config ได้
+                                -- Host Auto Config: ถ้าไม่มี want_carry และไม่มี party member ให้เข้าเล่น auto config ได้
                                 if Use_API then
                                     local hostData = Fetch_data()
                                     if hostData and hostData["product_id"] then
@@ -2685,12 +2683,9 @@ if ID[game.GameId][1] == "AV" then
                                         end
                                         
                                         if not hasWantCarry then
-                                            -- ไม่มี want_carry - ใช้ auto config ตามปกติ
-                                            if Changes[hostData["product_id"]] then
-                                                Changes[hostData["product_id"]]()
-                                                print("[Host Auto Config] Using config for:", hostData["product_id"])
-                                            end
-                                            -- Auto Select Items จาก selected_items (แบบเดียวกับ TF_System.lua)
+                                            -- ไม่มี want_carry - เข้าเล่น auto config เลย (ไม่ต้องรอ member)
+                                            print("[Host Auto Config] No member request - starting auto config for:", hostData["product_id"])
+                                            -- Auto Select Items จาก selected_items
                                             if hostData["selected_items"] then
                                                 local Insert = {}
                                                 for _, v in pairs(hostData["selected_items"]) do
@@ -2703,10 +2698,26 @@ if ID[game.GameId][1] == "AV" then
                                                     print("[Host Auto Config] Selected items:", table.concat(Insert, ", "))
                                                 end
                                             end
+                                            -- เรียก Register_Room เพื่อเข้าเล่นจริง (ไม่มี party member)
+                                            local p, c = pcall(function()
+                                                Register_Room(hostData["product_id"], {})
+                                            end)
+                                            if not p then
+                                                print("[Host Auto Config] Error:", c)
+                                            end
                                         else
+                                            -- มีคนกด want_carry - รอรับ member
+                                            Waiting_Time = os.time() + 150
                                             print("[Host] มีคน want_carry - รอรับ member")
+                                            print("Add Time To Waiting Time")
                                         end
+                                    else
+                                        Waiting_Time = os.time() + 150
+                                        print("Add Time To Waiting Time - No host data")
                                     end
+                                else
+                                    Waiting_Time = os.time() + 150
+                                    print("Add Time To Waiting Time - API disabled")
                                 end
                             else
                                 print(#Current_Party)
