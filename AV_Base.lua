@@ -230,7 +230,7 @@ local GlobalMatchSettings, UnitsData, UnitsModule, MohatoHealthEvent, EntityIDHa
 local GetEnemies, GetActiveUnits, GetFrontmostEnemy, IsBossEnemy, IsIncomeUnit
 local IsBuffUnit, GetMapPath, GetTotalPathDistance, GetCurrentWaveForSkill
 
-_G.LoadModules = function()
+local function LoadModules()
     local success, err
     
     success, err = pcall(function() UnitsHUD = require(StarterPlayer.Modules.Interface.Loader.HUD.Units) end)
@@ -292,7 +292,7 @@ _G.LoadModules = function()
     print("[FORCED] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 end
 
-_G.LoadModules()
+LoadModules()
 
 -- ===== NETWORKING =====
 local Networking = ReplicatedStorage:WaitForChild("Networking")
@@ -310,7 +310,7 @@ pcall(function()
     GameHandler = require(ReplicatedStorage.Modules.Gameplay.GameHandler)
 end)
 
-_G.GetGameHandler = function()
+local function GetGameHandler()
     return GameHandler
 end
 
@@ -325,7 +325,7 @@ local EmergencyMode = {
 }
 
 -- หา Stun units
-_G.GetStunUnits = function()
+local function GetStunUnits()
     if not UnitInventory then return {} end
     
     local stunUnits = {}
@@ -358,7 +358,7 @@ _G.GetStunUnits = function()
 end
 
 -- เช็คว่าควร activate Emergency Mode หรือไม่
-_G.ShouldActivateEmergencyMode = function()
+local function ShouldActivateEmergencyMode()
     local now = tick()
     if now - EmergencyMode.LastCheck < EmergencyMode.CHECK_INTERVAL then
         return EmergencyMode.Active
@@ -367,7 +367,8 @@ _G.ShouldActivateEmergencyMode = function()
     EmergencyMode.LastCheck = now
     
     -- เช็ค enemy ใกล้เป้าหมาย
-    local enemies = _G.GetEnemies()
+    if not GetEnemies then return false end  -- ⭐ FIX: เช็คว่าฟังก์ชันถูก define แล้ว
+    local enemies = GetEnemies()
     if not enemies then 
         -- ⭐ ถ้าไม่มี enemy → หยุด Emergency Mode
         EmergencyMode.Active = false
@@ -390,7 +391,7 @@ _G.ShouldActivateEmergencyMode = function()
     -- ⭐⭐⭐ FIX: ถ้าไม่มี enemy เลย หรือไม่มี enemy ใกล้เป้าหมาย → หยุด Emergency Mode
     if totalEnemies == 0 or criticalEnemies == 0 then
         if EmergencyMode.Active then
-            _G.DebugPrint("✅ Emergency Mode STOPPED - No enemies near goal")
+            DebugPrint("✅ Emergency Mode STOPPED - No enemies near goal")
         end
         EmergencyMode.Active = false
         return false
@@ -401,9 +402,9 @@ _G.ShouldActivateEmergencyMode = function()
     
     -- ⭐ Log เมื่อสถานะเปลี่ยน
     if shouldActivate and not EmergencyMode.Active then
-        _G.DebugPrint(string.format("🚨 EMERGENCY MODE ACTIVATED: %d enemies near goal!", criticalEnemies))
+        DebugPrint(string.format("🚨 EMERGENCY MODE ACTIVATED: %d enemies near goal!", criticalEnemies))
     elseif not shouldActivate and EmergencyMode.Active then
-        _G.DebugPrint("✅ Emergency Mode DEACTIVATED - situation improved")
+        DebugPrint("✅ Emergency Mode DEACTIVATED - situation improved")
     end
     
     EmergencyMode.Active = shouldActivate
@@ -411,7 +412,7 @@ _G.ShouldActivateEmergencyMode = function()
 end
 
 -- วาง Stun units (Emergency Mode)
-_G.PlaceStunUnitsEmergency = function()
+local function PlaceStunUnitsEmergency()
     if not EmergencyMode.Active then return 0 end
     
     local now = tick()
@@ -421,9 +422,9 @@ _G.PlaceStunUnitsEmergency = function()
     
     EmergencyMode.LastPlacementAttempt = now
     
-    local stunUnits = _G.GetStunUnits()
+    local stunUnits = GetStunUnits()
     if #stunUnits == 0 then
-        _G.DebugPrint("🚨 Emergency: No stun units available")
+        DebugPrint("🚨 Emergency: No stun units available")
         return 0
     end
     
@@ -431,7 +432,8 @@ _G.PlaceStunUnitsEmergency = function()
     local placedCount = 0
     
     -- หา enemy ที่ใกล้เป้าหมายที่สุด
-    local enemies = _G.GetEnemies()
+    if not GetEnemies then return 0 end  -- ⭐ FIX: เช็คว่าฟังก์ชันถูก define แล้ว
+    local enemies = GetEnemies()
     local nearestEnemy = nil
     local minDistance = math.huge
     
@@ -445,11 +447,11 @@ _G.PlaceStunUnitsEmergency = function()
     end
     
     if not nearestEnemy then
-        _G.DebugPrint("🚨 Emergency: No enemy found")
+        DebugPrint("🚨 Emergency: No enemy found")
         return 0
     end
     
-    _G.DebugPrint(string.format("🚨 Emergency: Placing %d stun units (7-12 studs away from enemy)", targetCount))
+    DebugPrint(string.format("🚨 Emergency: Placing %d stun units (7-12 studs away from enemy)", targetCount))
     
     -- วาง stun units ห่างจาก enemy 7-12 studs
     for i, unitData in ipairs(stunUnits) do
@@ -472,10 +474,10 @@ _G.PlaceStunUnitsEmergency = function()
         )
         
         -- พยายามวาง
-        local placeSuccess = _G.PlaceUnit(unitData.Name, targetPos)
+        local placeSuccess = PlaceUnit(unitData.Name, targetPos)
         if placeSuccess then
             placedCount = placedCount + 1
-            _G.DebugPrint(string.format("   🛡️ Stun: %s (%.1f studs from enemy, Lvl: %d)", 
+            DebugPrint(string.format("   🛡️ Stun: %s (%.1f studs from enemy, Lvl: %d)", 
                 unitData.Name, 
                 distance,
                 unitData.Level or 0
@@ -488,7 +490,7 @@ _G.PlaceStunUnitsEmergency = function()
     end
     
     EmergencyMode.StunUnitsPlaced = EmergencyMode.StunUnitsPlaced + placedCount
-    _G.DebugPrint(string.format("🚨 Emergency: Placed %d/%d stun units (Total: %d)", 
+    DebugPrint(string.format("🚨 Emergency: Placed %d/%d stun units (Total: %d)", 
         placedCount, 
         targetCount,
         EmergencyMode.StunUnitsPlaced
@@ -571,7 +573,7 @@ local SetPriority, GetBestPlacementPosition, GetCurrentUpgradeLevel, GetMaxUpgra
 local LastEmergencyUpgradeTime = 0
 local EMERGENCY_UPGRADE_COOLDOWN = 2
 
-_G.UpgradeUnitsEmergency = function()
+local function UpgradeUnitsEmergency()
     -- ใช้ทั้ง 2 ระบบ Emergency: EmergencyMode.Active หรือ IsEmergency
     if not EmergencyMode.Active and not IsEmergency then return false end
     
@@ -588,13 +590,13 @@ _G.UpgradeUnitsEmergency = function()
     local damageUnits = {}
     for guid, unit in pairs(ClientUnitHandler._ActiveUnits) do
         if unit and unit.Name then
-            local isIncome = _G.IsIncomeUnit(unit.Name, unit.Data or {})
-            local isBuff = _G.IsBuffUnit(unit.Name, unit.Data or {})
+            local isIncome = IsIncomeUnit and IsIncomeUnit(unit.Name, unit.Data or {})
+            local isBuff = IsBuffUnit and IsBuffUnit(unit.Name, unit.Data or {})
             
             if not isIncome and not isBuff then
-                local currentLevel = _G.GetCurrentUpgradeLevel(unit) or 0
-                local maxLevel = _G.GetMaxUpgradeLevel(unit) or 10
-                local cost = _G.GetUpgradeCost(unit) or math.huge
+                local currentLevel = GetCurrentUpgradeLevel and GetCurrentUpgradeLevel(unit) or 0
+                local maxLevel = GetMaxUpgradeLevel and GetMaxUpgradeLevel(unit) or 10
+                local cost = GetUpgradeCost and GetUpgradeCost(unit) or math.huge
                 
                 if currentLevel < maxLevel and cost < math.huge then
                     table.insert(damageUnits, {
@@ -620,10 +622,10 @@ _G.UpgradeUnitsEmergency = function()
     end)
     
     -- อัพเกรด 1 ตัวที่ afford ได้
-    local yen = _G.GetYen() or 0
+    local yen = GetYen and GetYen() or 0
     for _, unitData in ipairs(damageUnits) do
         if yen >= unitData.Cost then
-            local success = _G.UpgradeUnit(unitData.Unit)
+            local success = UpgradeUnit and UpgradeUnit(unitData.Unit)
             if success then
                 LastEmergencyUpgradeTime = now
                 print(string.format("[Emergency] ⬆️ %s (%d→%d)", 
@@ -637,7 +639,7 @@ _G.UpgradeUnitsEmergency = function()
 end
 
 -- ===== UTILITY =====
-_G.DebugPrint = function(...)
+local function DebugPrint(...)
     if DEBUG then
         -- 🔥 แสดงเฉพาะ Emergency Mode logs เท่านั้น
         local msg = table.concat({...}, " ")
@@ -652,7 +654,7 @@ _G.DebugPrint = function(...)
 end
 
 -- ===== YEN SYSTEM =====
-_G.GetYen = function()
+GetYen = function()
     -- วิธี 1: PlayerYenHandler
     if PlayerYenHandler then
         local yen = nil
@@ -710,7 +712,7 @@ end
 local CurrentWave = 0
 local MaxWave = 0
 
-_G.GetWaveFromUI = function()
+local function GetWaveFromUI()
     pcall(function()
         local HUD = PlayerGui:FindFirstChild("HUD")
         if HUD then
@@ -732,8 +734,8 @@ _G.GetWaveFromUI = function()
     return CurrentWave, MaxWave
 end
 
-_G.GetGamePhase = function()
-    _G.GetWaveFromUI()
+local function GetGamePhase()
+    GetWaveFromUI()
     if MaxWave <= 0 then return "early" end
     
     local progress = CurrentWave / MaxWave
@@ -746,7 +748,7 @@ end
 local PathCache = nil
 local PathCacheTime = 0
 
-_G.GetMapPath = function()
+GetMapPath = function()
     if PathCache and (tick() - PathCacheTime) < 5 then
         return PathCache
     end
@@ -791,7 +793,7 @@ end
 -- หา Max DistanceToStart จาก EnemyPathHandler.Nodes (ระยะทางรวมของ path)
 local TotalPathDistanceCache = nil
 local TotalPathDistanceCacheTime = 0
-_G.GetTotalPathDistance = function()
+GetTotalPathDistance = function()
     if TotalPathDistanceCache and (tick() - TotalPathDistanceCacheTime) < 10 then
         return TotalPathDistanceCache
     end
@@ -814,7 +816,7 @@ end
 -- จาก Decom: UnitType == "Farm" = ตัวเงิน
 -- จาก Decom: UnitType == "Support" = Buff
 
-_G.IsIncomeUnit = function(unitName, unitData)
+IsIncomeUnit = function(unitName, unitData)
     -- ⭐ จาก Decom: UnitType == "Farm"
     if unitData then
         if unitData.UnitType == "Farm" then return true end
@@ -832,7 +834,7 @@ _G.IsIncomeUnit = function(unitName, unitData)
     return false
 end
 
-_G.IsBuffUnit = function(unitName, unitData)
+IsBuffUnit = function(unitName, unitData)
     -- ⭐ จาก Decom: UnitType == "Support"
     if unitData then
         if unitData.UnitType == "Support" then return true end
@@ -860,7 +862,7 @@ _G.IsBuffUnit = function(unitName, unitData)
 end
 
 -- ===== หา Unit ที่มี Passive ต้องตี Enemy ก่อนถึง Summon (เช่น Wonderous You) =====
-_G.IsPassiveSummonUnit = function(unitName, unitData)
+local function IsPassiveSummonUnit(unitName, unitData)
     if not unitData then return false end
     
     -- ✅ เช็คจาก Passive.Name
@@ -903,7 +905,7 @@ end
 
 -- ⭐ เช็คว่ายูนิตมี Trait จำกัดจำนวนหรือไม่ (แบบ Auto หาจาก GlobalMatchSettings.GetUnitTrait)
 local GlobalMatchSettings = nil
-_G.GetGlobalMatchSettings = function()
+local function GetGlobalMatchSettings()
     if GlobalMatchSettings then return GlobalMatchSettings end
     
     local success, result = pcall(function()
@@ -929,13 +931,13 @@ _G.GetGlobalMatchSettings = function()
 end
 
 -- ⭐⭐⭐ ฟังก์ชันเช็ค Unit Placement Limit (ตาม Decom.lua line 6692-6703)
-_G.GetUnitPlacementLimit = function(unitName, unitData)
+local function GetUnitPlacementLimit(unitName, unitData)
     if not unitName then 
         return math.huge 
     end
     
     local trait = nil
-    local GMS = _G.GetGlobalMatchSettings()
+    local GMS = GetGlobalMatchSettings()
     
     -- 🔍 Step 1: หา Trait จาก GlobalMatchSettings.GetUnitTrait() (ตาม Decom.lua line 6697)
     if GMS and GMS.GetUnitTrait then
@@ -1015,10 +1017,10 @@ _G.GetUnitPlacementLimit = function(unitName, unitData)
 end
 
 -- ⭐ นับจำนวนยูนิตชนิดนี้ที่วางไปแล้ว
-_G.CountPlacedUnits = function(unitName)
+local function CountPlacedUnits(unitName)
     local count = 0
-    if not _G.GetActiveUnits then return 0 end
-    local activeUnits = _G.GetActiveUnits()
+    if not GetActiveUnits then return 0 end  -- ⭐ FIX: เช็คว่าฟังก์ชันถูก define แล้ว
+    local activeUnits = GetActiveUnits()
     
     for _, unit in pairs(activeUnits) do
         if unit.Name == unitName then
@@ -1030,9 +1032,9 @@ _G.CountPlacedUnits = function(unitName)
 end
 
 -- ⭐ เช็คว่ายังวางยูนิตนี้ได้อีกไหม
-_G.CanPlaceMoreUnits = function(unitName, unitData)
-    local limit = _G.GetUnitPlacementLimit(unitName, unitData)
-    local placed = _G.CountPlacedUnits(unitName)
+local function CanPlaceMoreUnits(unitName, unitData)
+    local limit = GetUnitPlacementLimit(unitName, unitData)
+    local placed = CountPlacedUnits(unitName)
     
     if placed >= limit then
         return false
@@ -1048,7 +1050,7 @@ pcall(function()
     ClientEnemyHandler = require(StarterPlayer.Modules.Gameplay.ClientEnemyHandler)
 end)
 
-_G.GetEnemies = function()
+GetEnemies = function()
     local enemies = {}
     
     -- วิธี 1: ClientEnemyHandler._ActiveEnemies (ตาม AutoPlay_Smart.lua)
@@ -1197,7 +1199,7 @@ _G.GetEnemies = function()
                         summary[key].count = summary[key].count + 1
                     end
                     
-                    _G.DebugPrint("🚫 [FILTER SUMMARY] สรุป Summons ที่กรองออกในรอบ 10 วินาทีนี้:")
+                    DebugPrint("🚫 [FILTER SUMMARY] สรุป Summons ที่กรองออกในรอบ 10 วินาทีนี้:")
                     for name, data in pairs(summary) do
                         local typeInfo = ""
                         if data.type then
@@ -1207,10 +1209,10 @@ _G.GetEnemies = function()
                             typeInfo = typeInfo .. string.format(" | SummonType: %s", data.summonType)
                         end
                         
-                        _G.DebugPrint(string.format("   🔹 %s: %d ตัว | เหตุผล: %s%s", 
+                        DebugPrint(string.format("   🔹 %s: %d ตัว | เหตุผล: %s%s", 
                             name, data.count, data.reason, typeInfo))
                     end
-                    _G.DebugPrint(string.format("   📊 Total Summons Filtered: %d", #_G.FilteredSummonsThisCycle))
+                    DebugPrint(string.format("   📊 Total Summons Filtered: %d", #_G.FilteredSummonsThisCycle))
                 end
                 
                 _G.LastSummonSummaryLog = now
@@ -1245,15 +1247,15 @@ _G.GetEnemies = function()
     return enemies
 end
 
-_G.GetEnemyProgress = function()
+local function GetEnemyProgress()
     local success, result = pcall(function()
-        -- ⭐⭐⭐ CRITICAL: ใช้ _G.GetEnemies() ที่กรอง Summon ออกแล้ว
-        local enemies = _G.GetEnemies()
+        -- ⭐⭐⭐ CRITICAL: ใช้ GetEnemies() ที่กรอง Summon ออกแล้ว
+        local enemies = GetEnemies()
         
         if #enemies == 0 then return 0 end
         
         -- ใช้ TotalPathDistance จาก EnemyPathHandler.Nodes โดยตรง
-        local totalDist = _G.GetTotalPathDistance()
+        local totalDist = GetTotalPathDistance()
         if totalDist <= 0 then return 0 end
         
         local maxProgress = 0
@@ -1289,8 +1291,8 @@ _G.GetEnemyProgress = function()
 end
 
 -- ===== หาศัตรูข้างหน้าสุด (progress สูงสุด) =====
-_G.GetFrontmostEnemy = function()
-    local enemies = _G.GetEnemies()
+GetFrontmostEnemy = function()
+    local enemies = GetEnemies()
     if #enemies == 0 then return nil end
     
     local frontEnemy = nil
@@ -1328,8 +1330,8 @@ end
 
 -- ===== หาตำแหน่งวางใกล้ EnemyBase (สำหรับ Summon Unit ใน Emergency) =====
 -- ⭐ FIX: วางใกล้ EnemyBase แทน Spawn เพื่อให้ Summon ทำงานได้ดีกว่า
-_G.GetSummonUnitPlacementPosition = function(unitRange, unitName, unitData)
-    local path = _G.GetMapPath()
+local function GetSummonUnitPlacementPosition(unitRange, unitName, unitData)
+    local path = GetMapPath()
     
     if #path == 0 then
         return nil
@@ -1375,8 +1377,8 @@ end
 
 -- ===== หาตำแหน่งวางดักหน้าศัตรู (INTERCEPT) =====
 -- ⭐⭐⭐ FIX: วางดักหน้าศัตรู (ตามทิศทางที่เดิน) ไม่ใช่วางรอบๆ
-_G.GetEmergencyPlacementPosition = function(unitRange, unitName, unitData)
-    local frontEnemy, frontDist = _G.GetFrontmostEnemy()
+local function GetEmergencyPlacementPosition(unitRange, unitName, unitData)
+    local frontEnemy, frontDist = GetFrontmostEnemy()
     
     if not frontEnemy or not frontEnemy.Position then
         return nil
@@ -1430,7 +1432,7 @@ _G.GetEmergencyPlacementPosition = function(unitRange, unitName, unitData)
         if attackSpeed > 1.5 then
             -- Unit ตีช้า → วางไกลขึ้น (ระยะปานกลาง)
             interceptDistance = unitRange * 0.8
-            _G.DebugPrint(string.format("🎯 [Intercept] %s ตีช้า (%.1fs) → วางไกลขึ้น", unitName or "Unit", attackSpeed))
+            DebugPrint(string.format("🎯 [Intercept] %s ตีช้า (%.1fs) → วางไกลขึ้น", unitName or "Unit", attackSpeed))
         end
     end
     
@@ -1440,7 +1442,7 @@ _G.GetEmergencyPlacementPosition = function(unitRange, unitName, unitData)
     -- ปรับ Y ให้เท่ากับพื้น
     interceptPos = Vector3.new(interceptPos.X, enemyPos.Y, interceptPos.Z)
     
-    _G.DebugPrint(string.format("🎯 [Intercept] วางดักหน้าศัตรู: (%.1f, %.1f, %.1f) ระยะ %.1f studs", 
+    DebugPrint(string.format("🎯 [Intercept] วางดักหน้าศัตรู: (%.1f, %.1f, %.1f) ระยะ %.1f studs", 
         interceptPos.X, interceptPos.Y, interceptPos.Z, interceptDistance))
     
     return interceptPos
@@ -1449,15 +1451,15 @@ end
 _G.APState.LastEmergencyCheckLog = 0
 local LastEmergencyCheckLog = _G.APState.LastEmergencyCheckLog
 
-_G.CheckEmergency = function()
-    local progress = _G.GetEnemyProgress()
+local function CheckEmergency()
+    local progress = GetEnemyProgress()
     
     -- Debug: แสดง progress ทุก 10 วินาที (แม้ progress = 0)
     local now = tick()
     if now - LastEmergencyCheckLog >= 10 then
         -- ⭐⭐⭐ CRITICAL: นับ enemies ที่กรอง Summon ออกแล้ว (จาก GetEnemies)
-        -- _G.GetEnemies() = Real Enemies เท่านั้น (ไม่รวม Summon)
-        local filteredEnemies = _G.GetEnemies()  -- ⭐⭐⭐ ไม่รวม Summon
+        -- GetEnemies() = Real Enemies เท่านั้น (ไม่รวม Summon)
+        local filteredEnemies = GetEnemies()  -- ⭐⭐⭐ ไม่รวม Summon
         local enemyCount = #filteredEnemies
         local emergencyCount = 0
         local clearEnemyCount = 0
@@ -1482,12 +1484,12 @@ _G.CheckEmergency = function()
         local summonCount = totalActiveEnemies - enemyCount
         
         -- ⭐⭐⭐ Log พร้อมข้อมูลชัดเจน
-        _G.DebugPrint(string.format("📊 [CHECK] Progress: %.1f%% | Real Enemies: %d | Summons: %d (กรองออก) | Emergency: %d | ClearEnemy: %d | Threshold: 60%%", 
+        DebugPrint(string.format("📊 [CHECK] Progress: %.1f%% | Real Enemies: %d | Summons: %d (กรองออก) | Emergency: %d | ClearEnemy: %d | Threshold: 60%%", 
             progress, enemyCount, summonCount, emergencyCount, clearEnemyCount))
         
         -- ⭐⭐⭐ ยืนยันว่า Progress คำนวณจาก Real Enemies เท่านั้น
         if summonCount > 0 then
-            _G.DebugPrint(string.format("✅ [SUMMON FILTER] ระบบกรอง Summon %d ตัวออกจากการคำนวณ Progress (Total: %d - Real: %d = Summons: %d)", 
+            DebugPrint(string.format("✅ [SUMMON FILTER] ระบบกรอง Summon %d ตัวออกจากการคำนวณ Progress (Total: %d - Real: %d = Summons: %d)", 
                 summonCount, totalActiveEnemies, enemyCount, summonCount))
             
             -- ⭐⭐⭐ ดึงรายละเอียด Summons ที่ถูกกรอง (จาก _G.FilteredSummonsThisCycle)
@@ -1502,9 +1504,9 @@ _G.CheckEmergency = function()
                 end
                 
                 if next(summary) then
-                    _G.DebugPrint("   📝 รายละเอียด Summons ที่กรอง:")
+                    DebugPrint("   📝 รายละเอียด Summons ที่กรอง:")
                     for name, data in pairs(summary) do
-                        _G.DebugPrint(string.format("      - %s: %d ตัว (%s)", name, data.count, data.reason))
+                        DebugPrint(string.format("      - %s: %d ตัว (%s)", name, data.count, data.reason))
                     end
                 end
             end
@@ -1525,12 +1527,12 @@ _G.CheckEmergency = function()
     if IsEmergency and not wasEmergency then
         EmergencyStartTime = tick()
         EmergencyActivated = false
-        _G.DebugPrint(string.format("🚨 EMERGENCY MODE ACTIVATED! Progress: %.1f%%", progress))
+        DebugPrint(string.format("🚨 EMERGENCY MODE ACTIVATED! Progress: %.1f%%", progress))
     end
     
     -- ✅ FIX: ขาย Emergency Units เฉพาะเมื่อ progress < 30% (ปลอดภัยแล้ว)
     if next(EmergencyUnits) and progress < 30 then
-        _G.DebugPrint(string.format("💸💸💸 [EMERGENCY SELL] Progress ต่ำ (%.1f%% < 30%%) → กำลังขาย Emergency Units", progress))
+        DebugPrint(string.format("💸💸💸 [EMERGENCY SELL] Progress ต่ำ (%.1f%% < 30%%) → กำลังขาย Emergency Units", progress))
         local soldCount = 0
         local failedCount = 0
         
@@ -1551,36 +1553,36 @@ _G.CheckEmergency = function()
                         CanSell = true
                     }
                     
-                    _G.DebugPrint(string.format("💸 พยายามขาย Emergency Unit: %s (GUID: %s)", emergencyUnit.Name, tostring(guid)))
+                    DebugPrint(string.format("💸 พยายามขาย Emergency Unit: %s (GUID: %s)", emergencyUnit.Name, tostring(guid)))
                     
                     -- ลองขาย
-                    local sellSuccess = _G.SellUnit(unitWrapper)
+                    local sellSuccess = SellUnit(unitWrapper)
                     if sellSuccess then
                         soldCount = soldCount + 1
                         EmergencyUnits[guid] = nil  -- ลบทันทีเมื่อขายสำเร็จ
-                        _G.DebugPrint(string.format("✅✅✅ ขาย Emergency Unit สำเร็จ: %s", emergencyUnit.Name))
+                        DebugPrint(string.format("✅✅✅ ขาย Emergency Unit สำเร็จ: %s", emergencyUnit.Name))
                     else
                         failedCount = failedCount + 1
-                        _G.DebugPrint(string.format("❌ ขาย Emergency Unit ล้มเหลว: %s", emergencyUnit.Name))
+                        DebugPrint(string.format("❌ ขาย Emergency Unit ล้มเหลว: %s", emergencyUnit.Name))
                     end
                 else
                     -- Unit ไม่อยู่ใน ActiveUnits แล้ว (ถูกขายไปแล้ว?)
                     EmergencyUnits[guid] = nil
-                    _G.DebugPrint(string.format("⚠️ Emergency Unit ไม่พบใน ActiveUnits (GUID: %s) - ลบออกจาก table", tostring(guid)))
+                    DebugPrint(string.format("⚠️ Emergency Unit ไม่พบใน ActiveUnits (GUID: %s) - ลบออกจาก table", tostring(guid)))
                 end
             end
         end
         
         -- สรุปผล + ✅ รีเซ็ต Emergency Mode ให้วางตัวปกติได้
         if soldCount > 0 then
-            _G.DebugPrint(string.format("🎯🎯🎯 ขาย Emergency Units สำเร็จ %d ตัว (ล้มเหลว %d ตัว) - Progress: %.1f%%", soldCount, failedCount, progress))
+            DebugPrint(string.format("🎯🎯🎯 ขาย Emergency Units สำเร็จ %d ตัว (ล้มเหลว %d ตัว) - Progress: %.1f%%", soldCount, failedCount, progress))
             
             -- ✅ รีเซ็ตเพื่อให้วางตัวปกติได้
             EmergencyActivated = false
             IsEmergency = false
             EmergencyStartTime = 0
         else
-            _G.DebugPrint(string.format("❌❌❌ ไม่สามารถขาย Emergency Units ได้เลย! (มี %d ตัว ใน table)", failedCount))
+            DebugPrint(string.format("❌❌❌ ไม่สามารถขาย Emergency Units ได้เลย! (มี %d ตัว ใน table)", failedCount))
         end
     end
     
@@ -1595,8 +1597,8 @@ _G.CheckEmergency = function()
 end
 
 -- ===== RESET SYSTEM (รีเซ็ตหลังจบด่าน/เริ่มใหม่) =====
-_G.ResetGameState = function()
-    _G.DebugPrint("🔄 _G.ResetGameState() called - Clearing all tracking data")
+local function ResetGameState()
+    DebugPrint("🔄 ResetGameState() called - Clearing all tracking data")
     
     -- Reset Emergency Mode
     IsEmergency = false
@@ -1627,7 +1629,7 @@ _G.ResetGameState = function()
     
     -- 🎯 Reload special ability events (กรณี reconnect)
     task.delay(1, function()
-        _G.LoadSpecialAbilityEvents()
+        LoadSpecialAbilityEvents()
     end)
     
     -- Reset Global Position Tracking
@@ -1659,7 +1661,7 @@ _G.ResetGameState = function()
         _G.NumberPad.LastDebug = 0
     end
     
-    _G.DebugPrint("✅ _G.ResetGameState() complete - All data cleared (including Auto Skill)")
+    DebugPrint("✅ ResetGameState() complete - All data cleared (including Auto Skill)")
 end
 
 -- ===== CLEAR ENEMY MODE (IsStatic Only - ใช้ _G เพื่อลด register) =====
@@ -1691,9 +1693,9 @@ local MohatoHealthData = _G.APClear.MohatoHealthData
 local StaticEnemyLastState = {}  -- {EntityId = {WavesElapsed, Position, IsVulnerable}}
 
 -- ⭐⭐⭐ NEW: Setup MohatoHealthEvent Listener (ตาม Decom.lua line 9876-9897)
-_G.SetupMohatoHealthListener = function()
+local function SetupMohatoHealthListener()
     if not MohatoHealthEvent then
-        _G.DebugPrint("⚠️ MohatoHealthEvent not found - using manual wave calculation")
+        DebugPrint("⚠️ MohatoHealthEvent not found - using manual wave calculation")
         return
     end
     
@@ -1707,7 +1709,7 @@ _G.SetupMohatoHealthListener = function()
                 WavesNeeded = data.WavesNeeded or 3,  -- ค่า default ถ้า server ไม่ส่ง
                 GUID = data.GUID
             }
-            _G.DebugPrint(string.format("✅ Mohato Clone spawned (GUID: %s) - Waves: %d/%d", 
+            DebugPrint(string.format("✅ Mohato Clone spawned (GUID: %s) - Waves: %d/%d", 
                 guid, data.WavesElapsed or 0, data.WavesNeeded or 3))
                 
         elseif action == "Update" then
@@ -1720,7 +1722,7 @@ _G.SetupMohatoHealthListener = function()
                 -- Log เมื่อครบ waves
                 local needed = MohatoHealthData[guid].WavesNeeded
                 if data.WavesElapsed >= needed then
-                    _G.DebugPrint(string.format("🔥 Mohato Clone VULNERABLE! (GUID: %s) Waves: %d/%d", 
+                    DebugPrint(string.format("🔥 Mohato Clone VULNERABLE! (GUID: %s) Waves: %d/%d", 
                         guid, data.WavesElapsed, needed))
                 end
             end
@@ -1730,33 +1732,33 @@ _G.SetupMohatoHealthListener = function()
             local guid = tostring(data.GUID)
             if MohatoHealthData[guid] then
                 MohatoHealthData[guid] = nil
-                _G.DebugPrint(string.format("💀 Mohato Clone removed (GUID: %s)", guid))
+                DebugPrint(string.format("💀 Mohato Clone removed (GUID: %s)", guid))
             end
         end
     end)
     
-    _G.DebugPrint("✅ MohatoHealthEvent listener setup complete")
+    DebugPrint("✅ MohatoHealthEvent listener setup complete")
 end
 
 -- เรียกใช้ setup listener
-task.spawn(_G.SetupMohatoHealthListener)
+task.spawn(SetupMohatoHealthListener)
 
 -- 🔥 ฟังก์ชันใหม่: หาตำแหน่งจริงของ Mohato Clone โดยเช็ค ID สูงสุด (= ตัวล่าสุด)
 -- คืนค่า: {position = Vector3, id = number, enemy = table} หรือ nil
-_G.GetRealMohatoPosition = function(enemyName)
-    _G.DebugPrint(string.format("🔍 [GetRealMohatoPosition] เริ่มค้นหา '%s'...", enemyName))
+local function GetRealMohatoPosition(enemyName)
+    DebugPrint(string.format("🔍 [GetRealMohatoPosition] เริ่มค้นหา '%s'...", enemyName))
     
     if not ClientEnemyHandler then
-        _G.DebugPrint("❌ [GetRealMohatoPosition] ClientEnemyHandler = nil")
+        DebugPrint("❌ [GetRealMohatoPosition] ClientEnemyHandler = nil")
         return nil
     end
     
     if not ClientEnemyHandler._ActiveEnemies then
-        _G.DebugPrint("❌ [GetRealMohatoPosition] _ActiveEnemies = nil")
+        DebugPrint("❌ [GetRealMohatoPosition] _ActiveEnemies = nil")
         return nil
     end
     
-    _G.DebugPrint(string.format("✅ [GetRealMohatoPosition] ClientEnemyHandler พร้อม, เริ่ม scan..."))
+    DebugPrint(string.format("✅ [GetRealMohatoPosition] ClientEnemyHandler พร้อม, เริ่ม scan..."))
     
     -- 📊 หา Mohato ทั้งหมดใน _ActiveEnemies และเก็บ ID + Position
     local mohatoList = {}  -- {{id = number, position = Vector3, enemy = enemy}}
@@ -1842,7 +1844,7 @@ _G.GetRealMohatoPosition = function(enemyName)
                     })
                     
                     -- 🔍 DEBUG: Log แต่ละตัวที่เจอ พร้อม source
-                    _G.DebugPrint(string.format("🔍 พบ %s ID: %d ที่ (%.1f, %.1f, %.1f) [%s]", 
+                    DebugPrint(string.format("🔍 พบ %s ID: %d ที่ (%.1f, %.1f, %.1f) [%s]", 
                         enemy.Name, uniqueId, position.X, position.Y, position.Z, positionSource))
                 end
             end
@@ -1851,7 +1853,7 @@ _G.GetRealMohatoPosition = function(enemyName)
     
     -- 🔍 หา ID ที่สูงที่สุด (= ตัวล่าสุด/จริง)
     if #mohatoList == 0 then
-        _G.DebugPrint(string.format("⚠️ [ID CHECK] ไม่พบ %s ใน _ActiveEnemies!", enemyName))
+        DebugPrint(string.format("⚠️ [ID CHECK] ไม่พบ %s ใน _ActiveEnemies!", enemyName))
         return nil
     end
     
@@ -1867,7 +1869,7 @@ _G.GetRealMohatoPosition = function(enemyName)
             data.id, data.position.X, data.position.Y, data.position.Z))
     end
     
-    _G.DebugPrint(string.format("🎯 [ID CHECK] พบ %s %d ตัว: [%s] | เลือก ID สูงสุด: %d → %.1f, %.1f, %.1f", 
+    DebugPrint(string.format("🎯 [ID CHECK] พบ %s %d ตัว: [%s] | เลือก ID สูงสุด: %d → %.1f, %.1f, %.1f", 
         enemyName, #mohatoList, table.concat(allIds, ", "),
         latest.id, latest.position.X, latest.position.Y, latest.position.Z))
     
@@ -1883,7 +1885,7 @@ end
 _G.APClear.LastStaticEnemyCount = 0
 _G.APClear.LastStaticEnemyCheck = 0
 
-_G.CheckClearEnemyMode = function()
+local function CheckClearEnemyMode()
     -- ✅ FIX: เช็คจาก ClientEnemyHandler._ActiveEnemies[id].Data.IsStatic = true เท่านั้น
     -- ไม่เช็ค BossIcon เพราะจะไปจับ enemy ธรรมดาที่เดินตาม path
     
@@ -1901,9 +1903,9 @@ _G.CheckClearEnemyMode = function()
                             CanSell = true
                         }
                         
-                        if _G.SellUnit(unitWrapper) then
+                        if SellUnit(unitWrapper) then
                             soldCount = soldCount + 1
-                            _G.DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s", clearUnit.Name))
+                            DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s", clearUnit.Name))
                         end
                     end
                 end
@@ -1917,7 +1919,7 @@ _G.CheckClearEnemyMode = function()
                 ClearEnemyFoundDamageLogged = {}  -- ✅ รีเซ็ต log tracking
                 ClearEnemyPlacedCount = {}  -- ✅ รีเซ็ต placed count
                 StaticEnemySpawnWave = {}  -- ✅ รีเซ็ต spawn wave
-                _G.DebugPrint(string.format("✅ เคลียร์ ClearEnemy Units ทั้งหมด %d ตัว", soldCount))
+                DebugPrint(string.format("✅ เคลียร์ ClearEnemy Units ทั้งหมด %d ตัว", soldCount))
             end
         end
         return
@@ -1970,7 +1972,7 @@ _G.CheckClearEnemyMode = function()
                         local bestMohato = mohatoByName[enemyName]
                         if bestMohato and entityIdNumber ~= bestMohato.maxId then
                             -- นี่คือ Mohato Clone ตัวเก่า (ID ต่ำกว่า) → ข้าม!
-                            _G.DebugPrint(string.format("⏭️ ข้าม %s ID %d (มี ID สูงกว่า: %d)", 
+                            DebugPrint(string.format("⏭️ ข้าม %s ID %d (มี ID สูงกว่า: %d)", 
                                 enemyName, entityIdNumber, bestMohato.maxId))
                             shouldSkip = true
                         end
@@ -1997,7 +1999,7 @@ _G.CheckClearEnemyMode = function()
                         if MohatoHealthData[entityId] then
                             MohatoHealthData[entityId] = nil
                         end
-                        _G.DebugPrint(string.format("🗑️ %s วาร์ปไปแล้ว → ลบออกจาก tracking", enemy.Name or "StaticEnemy"))
+                        DebugPrint(string.format("🗑️ %s วาร์ปไปแล้ว → ลบออกจาก tracking", enemy.Name or "StaticEnemy"))
                         -- ข้ามไป ไม่เพิ่มใน staticEnemies
                         -- continue to next enemy
                     else
@@ -2022,7 +2024,7 @@ _G.CheckClearEnemyMode = function()
                         local wavesNeeded = 3  -- default fallback
                         
                         -- ⭐ ใช้ global CurrentWave ที่อัพเดทจาก GetWaveFromUI()
-                        _G.GetWaveFromUI()  -- อัพเดท CurrentWave
+                        GetWaveFromUI()  -- อัพเดท CurrentWave
                         local currentWave = CurrentWave
                         
                         -- ⭐ ถ้าเป็น Mohato Clone → เช็คจาก MohatoHealthEvent หรือ manual calculation
@@ -2036,7 +2038,7 @@ _G.CheckClearEnemyMode = function()
                                 wavesNeeded = MohatoHealthData[guid].WavesNeeded or 3  -- ใช้จาก server
                                 isVulnerable = (wavesElapsed >= wavesNeeded)
                                 
-                                _G.DebugPrint(string.format("📊 [EVENT] Mohato %s: Waves %d/%d → %s", 
+                                DebugPrint(string.format("📊 [EVENT] Mohato %s: Waves %d/%d → %s", 
                                     guid, wavesElapsed, wavesNeeded, 
                                     isVulnerable and "✅ VULNERABLE" or "⏸️ WAITING"))
                             else
@@ -2044,7 +2046,7 @@ _G.CheckClearEnemyMode = function()
                                 wavesNeeded = 3  -- fallback default
                                 if not StaticEnemySpawnWave[entityId] then
                                     StaticEnemySpawnWave[entityId] = currentWave
-                                    _G.DebugPrint(string.format("📝 [MANUAL] Mohato spawn ที่ Wave %d (รอถึง Wave %d)", 
+                                    DebugPrint(string.format("📝 [MANUAL] Mohato spawn ที่ Wave %d (รอถึง Wave %d)", 
                                         currentWave, currentWave + wavesNeeded))
                                 end
                                 
@@ -2059,7 +2061,7 @@ _G.CheckClearEnemyMode = function()
                                 
                                 isVulnerable = (wavesElapsed >= wavesNeeded)
                                 
-                                _G.DebugPrint(string.format("📊 [MANUAL] Mohato spawn Wave %d, current %d → elapsed %d/%d → %s", 
+                                DebugPrint(string.format("📊 [MANUAL] Mohato spawn Wave %d, current %d → elapsed %d/%d → %s", 
                                     spawnWave, currentWave, wavesElapsed, wavesNeeded,
                                     isVulnerable and "✅ VULNERABLE" or "⏸️ WAITING"))
                             end
@@ -2102,7 +2104,7 @@ _G.CheckClearEnemyMode = function()
 
                         -- ถ้ายังไม่มีตำแหน่งเลย -> ข้าม
                         if not realTimePos then
-                            _G.DebugPrint(string.format("⚠️ %s ไม่มีตำแหน่ง → ข้าม", enemy.Name or "StaticEnemy"))
+                            DebugPrint(string.format("⚠️ %s ไม่มีตำแหน่ง → ข้าม", enemy.Name or "StaticEnemy"))
                             -- continue to next enemy
                         else
                             -- ⭐ Detect spawn position: ถ้ายังไม่มี spawn pos เก็บไว้
@@ -2141,7 +2143,7 @@ _G.CheckClearEnemyMode = function()
                                 if found then
                                     realTimePos = found
                                     enemy.Position = found
-                                    _G.DebugPrint(string.format("🔁 %s: ใช้ตำแหน่งสำรองแทน spawn (%.1f, %.1f, %.1f)", enemy.Name or "StaticEnemy", found.X, found.Y, found.Z))
+                                    DebugPrint(string.format("🔁 %s: ใช้ตำแหน่งสำรองแทน spawn (%.1f, %.1f, %.1f)", enemy.Name or "StaticEnemy", found.X, found.Y, found.Z))
                                 end
                             end
                         end
@@ -2200,7 +2202,7 @@ _G.CheckClearEnemyMode = function()
                                 statusIcon = "⏸️"
                             end
                             
-                            _G.DebugPrint(string.format("� %s UPDATE: %s ที่ %.1f, %.1f, %.1f (HP: %.0f/%.0f) | %s", 
+                            DebugPrint(string.format("� %s UPDATE: %s ที่ %.1f, %.1f, %.1f (HP: %.0f/%.0f) | %s", 
                                 statusIcon,
                                 enemy.Name or "Unknown", 
                                 realTimePos.X, 
@@ -2247,9 +2249,9 @@ _G.CheckClearEnemyMode = function()
                             CanSell = true
                         }
                         
-                        if _G.SellUnit(unitWrapper) then
+                        if SellUnit(unitWrapper) then
                             soldCount = soldCount + 1
-                            _G.DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s (Static Enemy ตายแล้ว)", clearUnit.Name))
+                            DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s (Static Enemy ตายแล้ว)", clearUnit.Name))
                         end
                     end
                 end
@@ -2262,7 +2264,7 @@ _G.CheckClearEnemyMode = function()
             end
             
             if soldCount > 0 then
-                _G.DebugPrint(string.format("✅ ขาย ClearEnemy Units %d ตัว (Static Enemy ตายแล้ว)", soldCount))
+                DebugPrint(string.format("✅ ขาย ClearEnemy Units %d ตัว (Static Enemy ตายแล้ว)", soldCount))
             end
         end
     end
@@ -2290,7 +2292,7 @@ _G.CheckClearEnemyMode = function()
                 skipThisEnemy = true
                 -- Log แค่ครั้งแรก
                 if not ClearEnemySlotFullLogged[staticEnemy.EntityId .. "_max"] then
-                    _G.DebugPrint(string.format("⏹️ ClearEnemy: วางครบ %d ตัวแล้วสำหรับ %s → ข้าม", 
+                    DebugPrint(string.format("⏹️ ClearEnemy: วางครบ %d ตัวแล้วสำหรับ %s → ข้าม", 
                         CLEAR_ENEMY_MAX_UNITS, staticEnemy.Name))
                     ClearEnemySlotFullLogged[staticEnemy.EntityId .. "_max"] = true
                 end
@@ -2304,7 +2306,7 @@ _G.CheckClearEnemyMode = function()
                     local targetWave = (staticEnemy.SpawnWave or 0) + (staticEnemy.WavesNeeded or 3)
                     local waitMsg = string.format("รอ Wave %d (ปัจจุบัน: %d, ผ่านแล้ว: %d/%d)", 
                         targetWave, staticEnemy.CurrentWave or 0, staticEnemy.WavesElapsed or 0, staticEnemy.WavesNeeded or 3)
-                    _G.DebugPrint(string.format("⏸️ ClearEnemy: %s ยังไม่พร้อมโจมตี (%s)", 
+                    DebugPrint(string.format("⏸️ ClearEnemy: %s ยังไม่พร้อมโจมตี (%s)", 
                         staticEnemy.Name, waitMsg))
                     ClearEnemySlotFullLogged[staticEnemy.EntityId .. "_notready"] = true
                 end
@@ -2315,20 +2317,20 @@ _G.CheckClearEnemyMode = function()
                 -- ✅ Clear log flag เมื่อพร้อมโจมตี
                 if ClearEnemySlotFullLogged[staticEnemy.EntityId .. "_notready"] then
                     ClearEnemySlotFullLogged[staticEnemy.EntityId .. "_notready"] = nil
-                    _G.DebugPrint(string.format("✅ ClearEnemy: %s พร้อมโจมตีแล้ว! (Wave %d ครบแล้ว) → พยายามวาง", 
+                    DebugPrint(string.format("✅ ClearEnemy: %s พร้อมโจมตีแล้ว! (Wave %d ครบแล้ว) → พยายามวาง", 
                         staticEnemy.Name, staticEnemy.CurrentWave or 0))
                 end
                 
                 -- ✅ ถ้าเคยข้ามเพราะ "ยังไม่พร้อม" → RESET skipThisEnemy เพื่อให้ลองวางได้
                 if skipThisEnemy and (ClearEnemySlotFullLogged[staticEnemy.EntityId .. "_max"] == nil) then
                     skipThisEnemy = false
-                    _G.DebugPrint(string.format("🔄 RESET skipThisEnemy: %s (เปลี่ยนจากไม่พร้อม → พร้อม)", staticEnemy.Name))
+                    DebugPrint(string.format("🔄 RESET skipThisEnemy: %s (เปลี่ยนจากไม่พร้อม → พร้อม)", staticEnemy.Name))
                 end
             end
             
             if not skipThisEnemy then
                 -- ✅✅✅ FIX: หา damage unit ที่ราคาใกล้เงินที่มีที่สุด (affordable)
-                local hotbar = _G.GetHotbarUnits()
+                local hotbar = GetHotbarUnits()
                 local cheapestSlot = nil
                 local cheapestUnit = nil
                 local cheapestBasePrice = math.huge
@@ -2338,8 +2340,8 @@ _G.CheckClearEnemyMode = function()
                 local damageUnits = {}
                 
                 for slot, unit in pairs(hotbar) do
-                    local isEconomy = _G.IsIncomeUnit(unit.Name, unit.Data or {})
-                    local isBuff = _G.IsBuffUnit(unit.Name, unit.Data or {})
+                    local isEconomy = IsIncomeUnit and IsIncomeUnit(unit.Name, unit.Data or {})
+                    local isBuff = IsBuffUnit and IsBuffUnit(unit.Name, unit.Data or {})
                     local isDamage = not isEconomy and not isBuff
                     
                     if isDamage then
@@ -2352,7 +2354,7 @@ _G.CheckClearEnemyMode = function()
                         end
                         
                         -- ⭐ เช็ค Trait limit
-                        local canPlaceMore = _G.CanPlaceMoreUnits(unit.Name, unit.UnitObject)
+                        local canPlaceMore = CanPlaceMoreUnits(unit.Name, unit.UnitObject)
                         
                         if canPlaceMore then
                             table.insert(damageUnits, {
@@ -2369,7 +2371,7 @@ _G.CheckClearEnemyMode = function()
                 
                 -- 🔥 สำรองเงินไว้สำหรับ Auto Place ปกติ
                 local RESERVE_YEN = 500
-                local currentYen = _G.GetYen()
+                local currentYen = GetYen()
                 local availableYen = math.max(0, currentYen - RESERVE_YEN)
                 
                 -- ⭐ หาตัวที่ affordable (มีเงินพอ) หรือถูกที่สุด
@@ -2385,7 +2387,7 @@ _G.CheckClearEnemyMode = function()
                     -- 🔥 หาตัวที่ affordable (ใช้ availableYen แทน currentYen)
                     if not affordableUnit and availableYen >= data.price then
                         -- เช็ค slot limit ด้วย
-                        local limit, current = _G.GetSlotLimit(data.slot)
+                        local limit, current = GetSlotLimit(data.slot)
                         if current < limit then
                             affordableUnit = data
                         end
@@ -2406,35 +2408,35 @@ _G.CheckClearEnemyMode = function()
                 -- ⭐⭐⭐ ถ้าไม่พบ Damage Unit เลยใน Hotbar → ข้าม
                 if not cheapestUnit then
                     if not ClearEnemyFoundDamageLogged[staticEnemy.EntityId] then
-                        _G.DebugPrint("⚠️ ClearEnemy: ไม่พบ Damage Unit ใน Hotbar (Trait limit หมด)")
+                        DebugPrint("⚠️ ClearEnemy: ไม่พบ Damage Unit ใน Hotbar (Trait limit หมด)")
                         ClearEnemyFoundDamageLogged[staticEnemy.EntityId] = "none"
                     end
                     skipThisEnemy = true
                 else
                     -- ⭐ Log ทุกครั้งเมื่อหา unit ได้ (เพื่อเช็คว่า slot เปลี่ยนหรือไม่)
                     local affordable = (availableYen >= cheapestBasePrice) and "✓" or "✗"
-                    local limit, current = _G.GetSlotLimit(cheapestSlot)
+                    local limit, current = GetSlotLimit(cheapestSlot)
                     
                     -- ⭐⭐⭐ FIX: Log ทุกครั้งเพื่อเห็นการเปลี่ยน slot
                     local lastLoggedSlot = ClearEnemyFoundDamageLogged[staticEnemy.EntityId]
                     local currentSlotInfo = string.format("Slot%d:%s", cheapestSlot, cheapestUnit.Name)
                     
                     if lastLoggedSlot ~= currentSlotInfo then
-                        _G.DebugPrint(string.format("✅ ClearEnemy: เลือก %s (slot %d, ราคา %d, เงินมี %d, ใช้ได้ %d %s, %d/%d)", 
+                        DebugPrint(string.format("✅ ClearEnemy: เลือก %s (slot %d, ราคา %d, เงินมี %d, ใช้ได้ %d %s, %d/%d)", 
                             cheapestUnit.Name, cheapestSlot, cheapestBasePrice, currentYen, availableYen, affordable, current, limit))
                         ClearEnemyFoundDamageLogged[staticEnemy.EntityId] = currentSlotInfo
                     end
                 end
                 
-                _G.DebugPrint("🔥 [TEST] ก่อนถึง CRITICAL log")
+                DebugPrint("🔥 [TEST] ก่อนถึง CRITICAL log")
                 
                 -- 🔍🔍🔍 CRITICAL DEBUG: Log OUTSIDE the if block
-                _G.DebugPrint(string.format("🔍🔍🔍 [CRITICAL] After unit selection - skipThisEnemy=%s, cheapestUnit=%s", 
+                DebugPrint(string.format("🔍🔍🔍 [CRITICAL] After unit selection - skipThisEnemy=%s, cheapestUnit=%s", 
                     tostring(skipThisEnemy), cheapestUnit and cheapestUnit.Name or "nil"))
                 
                 -- ⭐ Step 2: เช็ค slot limit ว่าวางได้หรือไม่
                 if not skipThisEnemy then
-                    local limit, current = _G.GetSlotLimit(cheapestSlot)
+                    local limit, current = GetSlotLimit(cheapestSlot)
                     if current >= limit then
                         slotIsFull = true
                         
@@ -2448,29 +2450,29 @@ _G.CheckClearEnemyMode = function()
                             else
                                 -- Log แค่ครั้งแรกต่อ enemy
                                 if not ClearEnemySlotFullLogged[staticEnemy.EntityId] then
-                                    _G.DebugPrint(string.format("🔒 ClearEnemy: Slot %d เต็ม (%d/%d) - ไม่มีตัวให้ขาย → ข้าม", cheapestSlot, current, limit))
+                                    DebugPrint(string.format("🔒 ClearEnemy: Slot %d เต็ม (%d/%d) - ไม่มีตัวให้ขาย → ข้าม", cheapestSlot, current, limit))
                                     ClearEnemySlotFullLogged[staticEnemy.EntityId] = true
                                 end
                             end
                             skipThisEnemy = true
                         else
-                            _G.DebugPrint(string.format("🔒 ClearEnemy: Slot %d เต็ม (%d/%d) → ต้องขายก่อน", cheapestSlot, current, limit))
+                            DebugPrint(string.format("🔒 ClearEnemy: Slot %d เต็ม (%d/%d) → ต้องขายก่อน", cheapestSlot, current, limit))
                         end
                     else
                         -- ✅ Slot ว่าง → reset flag เพื่อให้วางตัวต่อได้
                         if ClearEnemySlotFullLogged[staticEnemy.EntityId] then
                             ClearEnemySlotFullLogged[staticEnemy.EntityId] = nil
-                            _G.DebugPrint(string.format("🔓 ClearEnemy: Slot %d ว่างแล้ว (%d/%d) → พยายามวางต่อ", cheapestSlot, current, limit))
+                            DebugPrint(string.format("🔓 ClearEnemy: Slot %d ว่างแล้ว (%d/%d) → พยายามวางต่อ", cheapestSlot, current, limit))
                         end
                     end
                 end
                 
                 -- 🔍🔍🔍 DEBUG: Log ก่อนเข้า if not skipThisEnemy
-                _G.DebugPrint(string.format("🔍 [BEFORE-BLOCK] skipThisEnemy=%s สำหรับ %s (ID: %s)", 
+                DebugPrint(string.format("🔍 [BEFORE-BLOCK] skipThisEnemy=%s สำหรับ %s (ID: %s)", 
                     tostring(skipThisEnemy), staticEnemy.Name, staticEnemy.EntityId))
                 
                 if not skipThisEnemy then
-                    _G.DebugPrint(string.format("🔍 [INSIDE-BLOCK] เข้า if not skipThisEnemy แล้ว สำหรับ %s", staticEnemy.Name))
+                    DebugPrint(string.format("🔍 [INSIDE-BLOCK] เข้า if not skipThisEnemy แล้ว สำหรับ %s", staticEnemy.Name))
                     
                     -- ⭐ NEW: เช็คว่าขายไปแล้วหรือยัง (ขายแค่ครั้งเดียวต่อ Static Enemy)
                     local hasSoldForThisEnemy = ClearEnemySoldForEnemy[staticEnemy.EntityId] or false
@@ -2482,13 +2484,13 @@ _G.CheckClearEnemyMode = function()
                     
                     -- 🔥 สำรองเงินไว้สำหรับ Auto Place ปกติ (อย่าให้ ClearEnemy ใช้หมด!)
                     local RESERVE_YEN = 500  -- สำรองเงินไว้ 500 สำหรับวาง units ปกติ
-                    local currentYen = _G.GetYen()
+                    local currentYen = GetYen()
                     local availableYen = math.max(0, currentYen - RESERVE_YEN)
                     
                     -- ⭐ ถ้าเลือก affordableUnit ได้ = มีเงินพอ + slot ว่าง แล้ว
                     -- ถ้าเลือก cheapestOverall = ต้องขายหรือรอเงิน
                     local isAffordable = (availableYen >= cheapestBasePrice)  -- 🔥 ใช้ availableYen แทน GetYen()
-                    local limit, current = _G.GetSlotLimit(cheapestSlot)
+                    local limit, current = GetSlotLimit(cheapestSlot)
                     local slotHasSpace = (current < limit)
                     
                     if not isAffordable then
@@ -2509,7 +2511,7 @@ _G.CheckClearEnemyMode = function()
                     -- ✅ FIX: ขายแค่ครั้งเดียวต่อ Static Enemy
                     if not skipThisEnemy and needSell and not hasSoldForThisEnemy then
                         
-                        local activeUnits = _G.GetActiveUnits()
+                        local activeUnits = GetActiveUnits()
                         local sellableUnits = {}
                         
                         -- ⭐ FIX: เหตุผลที่ต้องขาย (slotFull vs noMoney)
@@ -2520,14 +2522,14 @@ _G.CheckClearEnemyMode = function()
                         -- ถ้าเงินไม่พอ → ขาย Damage ตัวถูกสุดได้ (ไม่รวม ClearEnemy)
                         local sellSameTypeOnly = slotFullSell
                         
-                        _G.DebugPrint(sellReason .. " → ขาย 2 ตัวถูกสุดเพื่อ ClearEnemy" .. (sellSameTypeOnly and " (ขายเฉพาะ " .. cheapestUnitName .. ")" or ""))
+                        DebugPrint(sellReason .. " → ขาย 2 ตัวถูกสุดเพื่อ ClearEnemy" .. (sellSameTypeOnly and " (ขายเฉพาะ " .. cheapestUnitName .. ")" or ""))
                         
                         for _, unit in pairs(activeUnits) do
                             if unit.CanSell ~= false then
                                 local isClearEnemy = ClearEnemyUnits[unit.GUID] ~= nil
                                 local isEmergencyUnit = EmergencyUnits[unit.GUID] ~= nil  -- ⭐ เช็คว่าเป็น Emergency Unit
-                                local isEconomy = _G.IsIncomeUnit(unit.Name, unit.Data or {})
-                                local isBuff = _G.IsBuffUnit(unit.Name, unit.Data or {})
+                                local isEconomy = IsIncomeUnit(unit.Name, unit.Data or {})
+                                local isBuff = IsBuffUnit(unit.Name, unit.Data or {})
                                 local isDamage = not isEconomy and not isBuff
                                 
                                 -- ⭐⭐⭐ CRITICAL FIX: ไม่ขาย Emergency Units เด็ดขาด!
@@ -2583,9 +2585,9 @@ _G.CheckClearEnemyMode = function()
                         -- ⭐ FIX: ถ้าไม่มีตัวให้ขาย → ข้าม + set global flag
                         if #sellableUnits == 0 then
                             if sellSameTypeOnly then
-                                _G.DebugPrint("⚠️ ClearEnemy: ไม่มีตัวให้ขาย (same type only) → รอเงินเพิ่ม")
+                                DebugPrint("⚠️ ClearEnemy: ไม่มีตัวให้ขาย (same type only) → รอเงินเพิ่ม")
                             else
-                                _G.DebugPrint(string.format("⚠️ ClearEnemy: ไม่มีตัวให้ขาย (ต้องการ %d มี %d) → รอเงินเพิ่ม", cheapestBasePrice, _G.GetYen()))
+                                DebugPrint(string.format("⚠️ ClearEnemy: ไม่มีตัวให้ขาย (ต้องการ %d มี %d) → รอเงินเพิ่ม", cheapestBasePrice, GetYen()))
                             end
                             -- ⭐ ไม่ set ClearEnemySoldForEnemy เพื่อให้ลองใหม่ได้เมื่อมีเงินพอ
                             skipThisEnemy = true
@@ -2596,15 +2598,15 @@ _G.CheckClearEnemyMode = function()
                             local soldCount = 0
                             for i = 1, math.min(1, #sellableUnits) do
                                 local unitInfo = sellableUnits[i]
-                                if _G.SellUnit(unitInfo.unit) then
+                                if SellUnit(unitInfo.unit) then
                                     soldCount = soldCount + 1
                                     -- ⭐ ลบออกจาก ClearEnemyUnits ถ้าเคยเป็น
                                     if unitInfo.isClearEnemy then
                                         ClearEnemyUnits[unitInfo.unit.GUID] = nil
-                                        _G.DebugPrint(string.format("💸 ขาย ClearEnemy เก่า: %s Lv.%d (มูลค่า %.0f) → เปิด slot ใหม่", 
+                                        DebugPrint(string.format("💸 ขาย ClearEnemy เก่า: %s Lv.%d (มูลค่า %.0f) → เปิด slot ใหม่", 
                                             unitInfo.unit.Name, unitInfo.upgradeLevel, unitInfo.value))
                                     else
-                                        _G.DebugPrint(string.format("💸 ขายเพื่อ ClearEnemy: %s Lv.%d (มูลค่า %.0f)", 
+                                        DebugPrint(string.format("💸 ขายเพื่อ ClearEnemy: %s Lv.%d (มูลค่า %.0f)", 
                                             unitInfo.unit.Name, unitInfo.upgradeLevel, unitInfo.value))
                                     end
                                 end
@@ -2612,12 +2614,12 @@ _G.CheckClearEnemyMode = function()
                             
                             if soldCount > 0 then
                                 ClearEnemySoldForEnemy[staticEnemy.EntityId] = true
-                                _G.DebugPrint(string.format("✅ ขายแล้ว %d ตัว (เงินใหม่: %d)", soldCount, _G.GetYen()))
+                                DebugPrint(string.format("✅ ขายแล้ว %d ตัว (เงินใหม่: %d)", soldCount, GetYen()))
                                 task.wait(0.3)
                                 
                                 -- ⭐ หลังจากขายแล้ว ลองวางทันที
-                                if _G.GetYen() >= cheapestBasePrice then
-                                    local limit, current = _G.GetSlotLimit(cheapestSlot)
+                                if GetYen() >= cheapestBasePrice then
+                                    local limit, current = GetSlotLimit(cheapestSlot)
                                     if current < limit then
                                         canPlace = true
                                         needSell = false
@@ -2633,15 +2635,15 @@ _G.CheckClearEnemyMode = function()
                     end
                     
                     -- ⭐ ลองวาง unit ถ้ามีเงินพอและ slot ว่าง
-                    _G.DebugPrint(string.format("🔍 [PRE-CHECK] skipThisEnemy=%s, canPlace=%s สำหรับ %s", 
+                    DebugPrint(string.format("🔍 [PRE-CHECK] skipThisEnemy=%s, canPlace=%s สำหรับ %s", 
                         tostring(skipThisEnemy), tostring(canPlace), staticEnemy.Name))
                     
                     if not skipThisEnemy and canPlace then
-                        _G.DebugPrint(string.format("🔍 [PLACEMENT-START] เข้า placement block แล้ว!"))
+                        DebugPrint(string.format("🔍 [PLACEMENT-START] เข้า placement block แล้ว!"))
                         -- 🔥 NEW: ใช้ GetRealMohatoPosition เพื่อหา ID และตำแหน่งที่ถูกต้อง
-                        _G.DebugPrint(string.format("🔍 [START] เริ่มหาตำแหน่งสำหรับ %s...", staticEnemy.Name))
+                        DebugPrint(string.format("🔍 [START] เริ่มหาตำแหน่งสำหรับ %s...", staticEnemy.Name))
                         
-                        local mohatoData = _G.GetRealMohatoPosition(staticEnemy.Name)
+                        local mohatoData = GetRealMohatoPosition(staticEnemy.Name)
                         local targetPos = nil
                         local correctEntityId = staticEnemy.EntityId
                         local correctEntityIdNumber = staticEnemy.EntityIdNumber
@@ -2659,10 +2661,10 @@ _G.CheckClearEnemyMode = function()
                             staticEnemy.EntityIdNumber = correctEntityIdNumber
                             
                             -- 🔍 DEBUG: Log ตำแหน่งที่จะใช้วาง
-                            _G.DebugPrint(string.format("🎯 [POSITION] จะวางที่: %.1f, %.1f, %.1f (จาก %s, ID: %d)", 
+                            DebugPrint(string.format("🎯 [POSITION] จะวางที่: %.1f, %.1f, %.1f (จาก %s, ID: %d)", 
                                 targetPos.X, targetPos.Y, targetPos.Z, positionSource, correctEntityIdNumber))
                         else
-                            _G.DebugPrint(string.format("⚠️ [FALLBACK] GetRealMohatoPosition() คืนค่า nil → ใช้ fallback"))
+                            DebugPrint(string.format("⚠️ [FALLBACK] GetRealMohatoPosition() คืนค่า nil → ใช้ fallback"))
                             
                             -- Fallback: ใช้ activeEnemy.Position ถ้า scan ไม่เจอ
                             if ClientEnemyHandler and ClientEnemyHandler._ActiveEnemies then
@@ -2670,20 +2672,20 @@ _G.CheckClearEnemyMode = function()
                                 if activeEnemy and activeEnemy.Position then
                                     targetPos = activeEnemy.Position
                                     positionSource = "activeEnemy.Position (fallback)"
-                                    _G.DebugPrint(string.format("⚠️ [FALLBACK] ใช้ตำแหน่งจาก activeEnemy: %.1f, %.1f, %.1f (ID: %d)", 
+                                    DebugPrint(string.format("⚠️ [FALLBACK] ใช้ตำแหน่งจาก activeEnemy: %.1f, %.1f, %.1f (ID: %d)", 
                                         targetPos.X, targetPos.Y, targetPos.Z, staticEnemy.EntityIdNumber))
                                 else
-                                    _G.DebugPrint(string.format("❌ [FALLBACK] ไม่พบ activeEnemy สำหรับ ID: %d", staticEnemy.EntityIdNumber))
+                                    DebugPrint(string.format("❌ [FALLBACK] ไม่พบ activeEnemy สำหรับ ID: %d", staticEnemy.EntityIdNumber))
                                 end
                             else
-                                _G.DebugPrint("❌ [FALLBACK] ClientEnemyHandler ไม่พร้อม")
+                                DebugPrint("❌ [FALLBACK] ClientEnemyHandler ไม่พร้อม")
                             end
                         end
                         
                         if not targetPos then
                             -- Log เฉพาะครั้งแรก
                             if not ClearEnemySlotFullLogged[correctEntityId .. "_nopos"] then
-                                _G.DebugPrint(string.format("⚠️ ไม่พบตำแหน่งสำหรับ %s (ID: %s) → ข้าม", 
+                                DebugPrint(string.format("⚠️ ไม่พบตำแหน่งสำหรับ %s (ID: %s) → ข้าม", 
                                     staticEnemy.Name, correctEntityId))
                                 ClearEnemySlotFullLogged[correctEntityId .. "_nopos"] = true
                             end
@@ -2694,16 +2696,16 @@ _G.CheckClearEnemyMode = function()
                         -- ⭐⭐⭐ Lich King (Ruler) → วางหน้าประตูเสมอ (ClearEnemy mode)
                         local isLichKingRuler = cheapestUnit.Name:lower():find("lich") and cheapestUnit.Name:lower():find("ruler")
                         if isLichKingRuler then
-                            local unitRange = _G.GetUnitRange(cheapestUnit.Data) or 25
-                            local frontPos = _G.GetBestFrontPosition(unitRange)
+                            local unitRange = GetUnitRange(cheapestUnit.Data) or 25
+                            local frontPos = GetBestFrontPosition(unitRange)
                             if frontPos then
                                 print(string.format("[ClearEnemy] 👑 Lich King (Ruler) → วางหน้าประตู"))
-                                local success = _G.PlaceUnit(cheapestSlot, frontPos)
+                                local success = PlaceUnit(cheapestSlot, frontPos)
                                 if success then
-                                    _G.DebugPrint(string.format("✅ วาง Lich King (Ruler) หน้าประตูสำเร็จ!"))
+                                    DebugPrint(string.format("✅ วาง Lich King (Ruler) หน้าประตูสำเร็จ!"))
                                     ClearEnemyPlacedCount[correctEntityId] = (ClearEnemyPlacedCount[correctEntityId] or 0) + 1
                                     task.wait(0.3)
-                                    local activeUnits = _G.GetActiveUnits()
+                                    local activeUnits = GetActiveUnits()
                                     for _, unit in pairs(activeUnits) do
                                         if unit.Name == cheapestUnit.Name and unit.Position and (unit.Position - frontPos).Magnitude < 10 then
                                             if not ClearEnemyUnits[unit.GUID] then
@@ -2754,7 +2756,7 @@ _G.CheckClearEnemyMode = function()
                             local distance = (testPos - targetPos).Magnitude
                             
                             -- ⭐⭐⭐ เช็คว่าวางได้จริงหรือไม่
-                            if _G.CanPlaceAtPosition(cheapestUnit.Name, testPos) then
+                            if CanPlaceAtPosition(cheapestUnit.Name, testPos) then
                                 table.insert(validPositions, {
                                     position = testPos,
                                     distance = distance
@@ -2770,11 +2772,11 @@ _G.CheckClearEnemyMode = function()
                         
                         -- ⭐ Log เฉพาะเมื่อพบตำแหน่งหรือล้มเหลว (ไม่ spam)
                         if #validPositions > 0 then
-                            _G.DebugPrint(string.format("✅ พบ %d ตำแหน่งว่าง รอบ %s (ID: %d) | ใกล้ที่สุด: %.1f studs → ตำแหน่งวาง: %.1f, %.1f, %.1f", 
+                            DebugPrint(string.format("✅ พบ %d ตำแหน่งว่าง รอบ %s (ID: %d) | ใกล้ที่สุด: %.1f studs → ตำแหน่งวาง: %.1f, %.1f, %.1f", 
                                 #validPositions, staticEnemy.Name, correctEntityIdNumber, bestDistance,
                                 bestPos.X, bestPos.Y, bestPos.Z))
                         else
-                            _G.DebugPrint(string.format("⚠️ ไม่พบตำแหน่งว่าง → ใช้ตำแหน่ง Enemy โดยตรง: %.1f, %.1f, %.1f", 
+                            DebugPrint(string.format("⚠️ ไม่พบตำแหน่งว่าง → ใช้ตำแหน่ง Enemy โดยตรง: %.1f, %.1f, %.1f", 
                                 targetPos.X, targetPos.Y, targetPos.Z))
                         end
                         
@@ -2783,19 +2785,19 @@ _G.CheckClearEnemyMode = function()
                             bestPos = targetPos
                         end
                         
-                        local success = _G.PlaceUnit(cheapestSlot, bestPos)
+                        local success = PlaceUnit(cheapestSlot, bestPos)
                         if success then
-                            _G.DebugPrint(string.format("✅ วาง %s สำเร็จสำหรับ %s (ID: %d)!", 
+                            DebugPrint(string.format("✅ วาง %s สำเร็จสำหรับ %s (ID: %d)!", 
                                 cheapestUnit.Name, staticEnemy.Name, correctEntityIdNumber))
                             
                             -- ⭐⭐⭐ FIX: อัพเดท count ทันทีหลังวาง (ก่อนรอ) - ใช้ correctEntityId
                             ClearEnemyPlacedCount[correctEntityId] = (ClearEnemyPlacedCount[correctEntityId] or 0) + 1
                             local currentPlacedCount = ClearEnemyPlacedCount[correctEntityId]
-                            _G.DebugPrint(string.format("🎯 บันทึก ClearEnemy #%d/%d: %s สำหรับ %s (ID: %d)", 
+                            DebugPrint(string.format("🎯 บันทึก ClearEnemy #%d/%d: %s สำหรับ %s (ID: %d)", 
                                 currentPlacedCount, CLEAR_ENEMY_MAX_UNITS, cheapestUnit.Name, staticEnemy.Name, correctEntityIdNumber))
                             
                             task.wait(0.3)
-                            local activeUnits = _G.GetActiveUnits()
+                            local activeUnits = GetActiveUnits()
                             local placed = false
                             
                             -- ⭐⭐⭐ FIX: หาเฉพาะตัวที่ชื่อตรงกับ cheapestUnit.Name + ตำแหน่งใกล้ + ไม่เคยบันทึกแล้ว
@@ -2810,38 +2812,38 @@ _G.CheckClearEnemyMode = function()
                                     -- ⭐⭐⭐ FIX: ตั้ง Priority เป็น "Closest" สำหรับ ClearEnemy Units (ตาม Decom.lua)
                                     task.wait(0.1)  -- รอให้ unit spawn เสร็จ
                                     
-                                    local prioritySuccess = _G.SetPriority(unit, "Closest")
+                                    local prioritySuccess = SetPriority(unit, "Closest")
                                     if prioritySuccess then
-                                        _G.DebugPrint(string.format("🎯 [ClearEnemy] Priority: %s → Closest (Target ID: %d)", 
+                                        DebugPrint(string.format("🎯 [ClearEnemy] Priority: %s → Closest (Target ID: %d)", 
                                             unit.Name, correctEntityIdNumber))
                                     else
-                                        _G.DebugPrint(string.format("⚠️ [ClearEnemy] ไม่สามารถตั้ง Priority: %s", unit.Name))
+                                        DebugPrint(string.format("⚠️ [ClearEnemy] ไม่สามารถตั้ง Priority: %s", unit.Name))
                                     end
                                     
                                     -- ⭐⭐⭐ FIX: อัพเกรด unit ที่วาง + Log อัพเดท
                                     task.wait(0.1)
                                     
                                     -- เช็ค level ก่อนอัพเกรด
-                                    local beforeLevel = _G.GetCurrentUpgradeLevel(unit)
-                                    local maxLevel = _G.GetMaxUpgradeLevel(unit)
+                                    local beforeLevel = GetCurrentUpgradeLevel(unit)
+                                    local maxLevel = GetMaxUpgradeLevel(unit)
                                     
-                                    local cost = _G.GetUpgradeCost(unit)
-                                    if cost < math.huge and _G.GetYen() >= cost then
-                                        local success = _G.UpgradeUnit(unit)
+                                    local cost = GetUpgradeCost(unit)
+                                    if cost < math.huge and GetYen() >= cost then
+                                        local success = UpgradeUnit(unit)
                                         if success then
                                             -- ⭐ อัพเดท level หลังอัพเกรด
                                             task.wait(0.1)
-                                            local afterLevel = _G.GetCurrentUpgradeLevel(unit)
+                                            local afterLevel = GetCurrentUpgradeLevel(unit)
                                             
-                                            _G.DebugPrint(string.format("⬆️ อัพเกรด ClearEnemy: %s [Lv.%d → Lv.%d/%d] (Cost: %d)", 
+                                            DebugPrint(string.format("⬆️ อัพเกรด ClearEnemy: %s [Lv.%d → Lv.%d/%d] (Cost: %d)", 
                                                 unit.Name, beforeLevel, afterLevel, maxLevel, cost))
                                         else
-                                            _G.DebugPrint(string.format("❌ อัพเกรดล้มเหลว: %s (Cost: %d, Yen: %d)", 
-                                                unit.Name, cost, _G.GetYen()))
+                                            DebugPrint(string.format("❌ อัพเกรดล้มเหลว: %s (Cost: %d, Yen: %d)", 
+                                                unit.Name, cost, GetYen()))
                                         end
                                     else
-                                        _G.DebugPrint(string.format("💰 ไม่มีเงินอัพเกรด: %s (ต้องการ: %d, มี: %d)", 
-                                            unit.Name, cost, _G.GetYen()))
+                                        DebugPrint(string.format("💰 ไม่มีเงินอัพเกรด: %s (ต้องการ: %d, มี: %d)", 
+                                            unit.Name, cost, GetYen()))
                                     end
                                     
                                     placed = true
@@ -2850,7 +2852,7 @@ _G.CheckClearEnemyMode = function()
                             end
                             
                             if not placed then
-                                _G.DebugPrint(string.format("⚠️ ไม่พบ %s ที่ตำแหน่ง (%.1f, %.1f, %.1f) ในระยะ 5 studs", 
+                                DebugPrint(string.format("⚠️ ไม่พบ %s ที่ตำแหน่ง (%.1f, %.1f, %.1f) ในระยะ 5 studs", 
                                     cheapestUnit.Name, bestPos.X, bestPos.Y, bestPos.Z))
                             end
                             
@@ -2862,12 +2864,12 @@ _G.CheckClearEnemyMode = function()
                             -- ⭐⭐⭐ FIX: วางครบ LIMIT แล้ว → break ออกจาก loop ทันที
                             local currentPlaced = ClearEnemyPlacedCount[staticEnemy.EntityId] or 0
                             if currentPlaced >= CLEAR_ENEMY_MAX_UNITS then
-                                _G.DebugPrint(string.format("✅ วางครบ %d/%d ตัวแล้วสำหรับ %s → หยุดวาง", 
+                                DebugPrint(string.format("✅ วางครบ %d/%d ตัวแล้วสำหรับ %s → หยุดวาง", 
                                     currentPlaced, CLEAR_ENEMY_MAX_UNITS, staticEnemy.Name))
                                 break  -- ⭐ ออกจาก for staticEnemy loop
                             end
                         else
-                            _G.DebugPrint(string.format("❌ วาง %s ล้มเหลว!", cheapestUnit.Name))
+                            DebugPrint(string.format("❌ วาง %s ล้มเหลว!", cheapestUnit.Name))
                             -- ⭐ วางล้มเหลว → reset flag เพื่อให้ลองขายใหม่ได้
                             ClearEnemySoldForEnemy[staticEnemy.EntityId] = nil
                             ClearEnemyFoundDamageLogged[staticEnemy.EntityId] = nil
@@ -2914,7 +2916,7 @@ _G.CheckClearEnemyMode = function()
                 -- Log เฉพาะครั้งแรก (ป้องกัน spam)
                 if not _G.LoggedEnemyNotFound then _G.LoggedEnemyNotFound = {} end
                 if not _G.LoggedEnemyNotFound[enemyId] then
-                    _G.DebugPrint(string.format("🔍 ClearEnemy Check: Enemy ID %s ไม่เจอใน _ActiveEnemies → ตายแล้ว", enemyId))
+                    DebugPrint(string.format("🔍 ClearEnemy Check: Enemy ID %s ไม่เจอใน _ActiveEnemies → ตายแล้ว", enemyId))
                     _G.LoggedEnemyNotFound[enemyId] = true
                 end
             else
@@ -2925,7 +2927,7 @@ _G.CheckClearEnemyMode = function()
                 local hpChanged = math.abs(currentHealth - lastValue) > (currentMaxHealth * 0.1)  -- เปลี่ยน > 10%
                 
                 if hpChanged or enemyDead then
-                    _G.DebugPrint(string.format("🔍 ClearEnemy Check: Enemy ID %s มี HP = %.0f/%.0f (ตาย: %s)", 
+                    DebugPrint(string.format("🔍 ClearEnemy Check: Enemy ID %s มี HP = %.0f/%.0f (ตาย: %s)", 
                         enemyId, currentHealth, currentMaxHealth, tostring(enemyDead)))
                     lastHP[hpKey] = currentHealth
                     _G.LastEnemyHP = lastHP
@@ -2943,8 +2945,8 @@ _G.CheckClearEnemyMode = function()
                             CanSell = true
                         }
                         
-                        if _G.SellUnit(unitWrapper) then
-                            _G.DebugPrint(string.format("💀 Static Enemy ตาย (HP: %.0f/%.0f) → ขาย ClearEnemy Unit: %s", 
+                        if SellUnit(unitWrapper) then
+                            DebugPrint(string.format("💀 Static Enemy ตาย (HP: %.0f/%.0f) → ขาย ClearEnemy Unit: %s", 
                                 currentHealth, currentMaxHealth, clearUnit.Name))
                             table.insert(guidsToRemove, guid)  -- ⭐⭐ บันทึกว่าจะลบ
                             
@@ -2979,9 +2981,9 @@ _G.CheckClearEnemyMode = function()
                             CanSell = true
                         }
                         
-                        if _G.SellUnit(unitWrapper) then
+                        if SellUnit(unitWrapper) then
                             soldCount = soldCount + 1
-                            _G.DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s", clearUnit.Name))
+                            DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s", clearUnit.Name))
                         end
                     end
                 end
@@ -2993,7 +2995,7 @@ _G.CheckClearEnemyMode = function()
                 ClearEnemyNoMoreSellable = false  -- ✅ รีเซ็ต global flag
                 ClearEnemySlotFullLogged = {}  -- ✅ รีเซ็ต log tracking
                 ClearEnemyFoundDamageLogged = {}  -- ✅ รีเซ็ต log tracking
-                _G.DebugPrint(string.format("✅ Static Enemy หมดแล้ว - ขาย ClearEnemy Units %d ตัว", soldCount))
+                DebugPrint(string.format("✅ Static Enemy หมดแล้ว - ขาย ClearEnemy Units %d ตัว", soldCount))
             end
         end
     end
@@ -3010,7 +3012,7 @@ local ActiveAbilityData = nil
 local AbilityEvent = nil
 local UnitsData = nil  -- สำหรับดึงข้อมูล DPS จริง
 
-_G.LoadAutoSkillModules = function()
+local function LoadAutoSkillModules()
     -- โหลด ActiveAbilityData (สำหรับวิเคราะห์ ability)
     pcall(function()
         ActiveAbilityData = require(ReplicatedStorage.Modules.Data.ActiveAbilityData)
@@ -3027,14 +3029,14 @@ _G.LoadAutoSkillModules = function()
     print(string.format("[FORCED]   → AbilityEvent: %s", AbilityEvent and "✅ Found" or "❌ NIL"))
 end
 
-_G.LoadAutoSkillModules()
+LoadAutoSkillModules()
 
 -- ===== PLACEMENT ZONE ANALYSIS =====
 local PlacementZoneCache = {}
 local StageAnalysisCache = {}
 
 -- ⭐⭐⭐ CHECK: เช็คว่าเป็น Normal Mode หรือไม่ (ไม่ใช่ Challenge/Odyssey/Worldlines)
-_G.IsNormalMode = function()
+local function IsNormalMode()
     -- เช็คจาก workspace attributes
     local isChallenge = workspace:GetAttribute("IsChallenge") or false
     local isOdyssey = workspace:GetAttribute("IsOdyssey") or false
@@ -3046,12 +3048,12 @@ _G.IsNormalMode = function()
 end
 
 -- วิเคราะห์ประเภทของด่าน
-_G.AnalyzeStageType = function()
+local function AnalyzeStageType()
     if StageAnalysisCache.Type then
         return StageAnalysisCache.Type
     end
     
-    _G.GetWaveFromUI()
+    GetWaveFromUI()
     
     local stageInfo = {
         Type = "Normal",  -- Normal, Boss, Raid, Challenge, Story
@@ -3061,7 +3063,7 @@ _G.AnalyzeStageType = function()
         IsShortStage = false,
         RequiresRepulse = false,
         RequiresDPS = true,
-        IsNormalMode = _G.IsNormalMode()  -- ⭐ เพิ่ม flag
+        IsNormalMode = IsNormalMode()  -- ⭐ เพิ่ม flag
     }
     
     -- เช็คจาก MaxWave
@@ -3072,12 +3074,14 @@ _G.AnalyzeStageType = function()
     end
     
     -- เช็ค Boss Stage (จากชื่อด่านหรือ enemy)
-    local enemies = _G.GetEnemies() or {}
-    for _, enemy in pairs(enemies) do
-        if _G.IsBossEnemy(enemy) then
-            stageInfo.HasBoss = true
-            stageInfo.Type = "Boss"
-            break
+    local enemies = GetEnemies and GetEnemies() or nil
+    if enemies and IsBossEnemy then
+        for _, enemy in pairs(enemies) do
+            if IsBossEnemy(enemy) then
+                stageInfo.HasBoss = true
+                stageInfo.Type = "Boss"
+                break
+            end
         end
     end
     
@@ -3085,7 +3089,7 @@ _G.AnalyzeStageType = function()
     StageAnalysisCache.Type = stageInfo.Type
     StageAnalysisCache.Info = stageInfo
     
-    _G.DebugPrint(string.format("🗺️ Stage Analysis: Type=%s, MaxWave=%d, Boss=%s", 
+    DebugPrint(string.format("🗺️ Stage Analysis: Type=%s, MaxWave=%d, Boss=%s", 
         stageInfo.Type, 
         stageInfo.MaxWave,
         tostring(stageInfo.HasBoss)
@@ -3095,7 +3099,7 @@ _G.AnalyzeStageType = function()
 end
 
 -- หา DPS จริงจาก Units Data (ไม่ใช้ Rarity)
-_G.GetUnitRealDPS = function(unitName, unitLevel)
+local function GetUnitRealDPS(unitName, unitLevel)
     if not UnitsData then return 0 end
     
     local unitData = nil
@@ -3118,7 +3122,7 @@ _G.GetUnitRealDPS = function(unitName, unitLevel)
 end
 
 -- ตรวจสอบว่า unit เป็น Repulse หรือไม่
-_G.IsRepulseUnit = function(unitName)
+local function IsRepulseUnit(unitName)
     if not UnitsData then return false end
     
     local repulseUnits = {
@@ -3151,7 +3155,7 @@ _G.IsRepulseUnit = function(unitName)
 end
 
 -- วิเคราะห์ placement zones
-_G.AnalyzePlacementZones = function()
+local function AnalyzePlacementZones()
     if PlacementZoneCache.Analyzed then
         return PlacementZoneCache
     end
@@ -3189,8 +3193,8 @@ local LastAutoSkillCheck = 0
 local AUTO_SKILL_CHECK_INTERVAL = 0.1
 
 -- ===== WAVE CHECKING (สำหรับ MinWave) =====
-_G.GetCurrentWaveForSkill = function()
-    _G.GetWaveFromUI()
+GetCurrentWaveForSkill = function()
+    GetWaveFromUI()
     return CurrentWave
 end
 
@@ -3208,7 +3212,7 @@ end
         Type = string,            -- "Damage", "Buff", "Summon", "Utility", etc.
     }
 ]]
-_G.AnalyzeAbility = function(abilityName)
+local function AnalyzeAbility(abilityName)
     -- เช็ค cache ก่อน
     if AbilityAnalysisCache[abilityName] then
         return AbilityAnalysisCache[abilityName]
@@ -3346,7 +3350,7 @@ _G.AnalyzeAbility = function(abilityName)
     
     -- 📊 Log เฉพาะครั้งแรกที่วิเคราะห์ (cache miss)
     if DEBUG then
-        _G.DebugPrint(string.format("📊 [Ability] %s: CD=%.1fs, OneTime=%s, MinWave=%d",
+        DebugPrint(string.format("📊 [Ability] %s: CD=%.1fs, OneTime=%s, MinWave=%d",
             abilityName,
             abilityInfo.Cooldown,
             tostring(abilityInfo.IsOneTime),
@@ -3358,7 +3362,7 @@ _G.AnalyzeAbility = function(abilityName)
 end
 
 -- ===== ABILITY USAGE CONDITIONS =====
-_G.CanUseAbility = function(unit, abilityName, abilityInfo)
+local function CanUseAbility(unit, abilityName, abilityInfo)
     local guid = unit.UniqueIdentifier or unit.GUID
     local abilityKey = guid .. "_" .. abilityName
     local unitName = unit.Name or ""
@@ -3385,15 +3389,18 @@ _G.CanUseAbility = function(unit, abilityName, abilityInfo)
         end
         
         -- OneTime ability ควรใช้กับ Boss หรือ Critical Situation
-        local enemies = _G.GetEnemies() or {}
+        local enemies = GetEnemies and GetEnemies() or {}
         local hasBoss = false
-        local currentWave = _G.GetCurrentWaveForSkill()
+        local currentWave = GetCurrentWaveForSkill()
         local isCriticalWave = (currentWave >= 45)  -- Wave 45+ = Critical
         
-        for _, enemy in pairs(enemies) do
-            if _G.IsBossEnemy(enemy) then
-                hasBoss = true
-                break
+        -- ⭐ FIX: เช็คว่า IsBossEnemy ถูก define แล้ว
+        if IsBossEnemy then
+            for _, enemy in pairs(enemies) do
+                if IsBossEnemy(enemy) then
+                    hasBoss = true
+                    break
+                end
             end
         end
         
@@ -3409,7 +3416,7 @@ _G.CanUseAbility = function(unit, abilityName, abilityInfo)
         end
         
         -- ⭐ FIX: ใช้ได้ทันทีเมื่อมี enemy (ไม่ต้องรอ Boss หรือ Critical Wave)
-        local enemies = _G.GetEnemies() or {}
+        local enemies = GetEnemies and GetEnemies() or {}
         if #enemies == 0 then
             return false, "No enemies found"
         end
@@ -3440,7 +3447,7 @@ _G.CanUseAbility = function(unit, abilityName, abilityInfo)
     -- ช่วงแรก: Equip ธาตุ (Arcane Knowledge) เท่านั้น
     -- ช่วงกลาง-ท้าย: ใช้ God Arrives ตาม cooldown
     if abilityName:find("God Arrives") then
-        local currentWave, maxWave = _G.GetWaveFromUI()
+        local currentWave, maxWave = GetWaveFromUI()
         local waveProgress = 0
         if maxWave and maxWave > 0 then
             waveProgress = (currentWave or 0) / maxWave
@@ -3460,13 +3467,15 @@ _G.CanUseAbility = function(unit, abilityName, abilityInfo)
     -- ⭐⭐⭐ FIX: OneTime abilities ต้องใช้กับ Boss เท่านั้น
     -- ยกเว้น Reality Rewrite ที่ใช้ได้ทันที
     if abilityInfo.IsOneTime and not abilityName:find("Reality Rewrite") then
-        local enemies = _G.GetEnemies() or {}
+        local enemies = GetEnemies and GetEnemies() or {}
         local hasBoss = false
         
-        for _, enemy in pairs(enemies) do
-            if _G.IsBossEnemy(enemy) then
-                hasBoss = true
-                break
+        if IsBossEnemy then
+            for _, enemy in pairs(enemies) do
+                if IsBossEnemy(enemy) then
+                    hasBoss = true
+                    break
+                end
             end
         end
         
@@ -3521,7 +3530,7 @@ local LastSelectedSpells = _G.APEvents.LastSelectedSpells
 local AUTO_SWAP_UNITS = _G.APEvents.AUTO_SWAP_UNITS
 local AutoSwapEnabled = _G.APEvents.AutoSwapEnabled
 
-_G.LoadSpecialAbilityEvents = function()
+local function LoadSpecialAbilityEvents()
     -- Koguro Dimensions (Koguro_DomainEvent ตาม decom)
     local koguroSuccess, koguroErr = pcall(function()
         print("[FORCED] 🔧 Loading Koguro Domain Event...")
@@ -3678,317 +3687,7 @@ _G.LoadSpecialAbilityEvents = function()
     print("[FORCED] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
 end
 
-_G.LoadSpecialAbilityEvents()
-
--- ===== BOSS ABILITY PROTECTION SYSTEM =====
--- ระบบป้องกัน Units จาก Boss Abilities เช่น Gates of Babylon (Gilgamesh)
--- จะขาย Units ก่อนถูกลบ และวางกลับหลัง Ability จบ
-
-local BossAbilityProtection = {
-    Enabled = true,
-    IsActive = false,
-    SavedUnits = {},  -- {name, position, upgradeLevel, slot}
-    AbilityDuration = 3.0,  -- ระยะเวลา ability (วินาที)
-    ProtectedAbilities = {
-        ["Gates of Babylon"] = true,
-        ["Enuma Elish"] = true,
-    }
-}
-
--- ฟังก์ชันขาย Unit แบบ Force
-_G.ForceSelUnit = function(unitGUID)
-    if not UnitEvent then return false end
-    local success = false
-    pcall(function()
-        UnitEvent:FireServer("Sell", unitGUID)
-        success = true
-    end)
-    return success
-end
-
--- ฟังก์ชันบันทึก Unit Info ก่อนขาย
-_G.SaveUnitInfo = function(unitGUID)
-    if not ClientUnitHandler or not ClientUnitHandler._ActiveUnits then return nil end
-    
-    local unit = ClientUnitHandler._ActiveUnits[unitGUID]
-    if not unit then return nil end
-    
-    -- เก็บข้อมูล unit
-    local unitInfo = {
-        GUID = unitGUID,
-        Name = unit.Name,
-        Position = unit.Position,
-        UpgradeLevel = unit.Data and unit.Data.CurrentUpgrade or 0,
-        IsDamageUnit = not _G.IsIncomeUnit(unit.Name, unit.Data),
-        SavedAt = tick()
-    }
-    
-    return unitInfo
-end
-
--- ฟังก์ชันวาง Unit กลับ
-_G.ReplaceUnits = function()
-    if #BossAbilityProtection.SavedUnits == 0 then return end
-    
-    print("[BossProtect] 🔄 กำลังวาง Units กลับ...")
-    
-    for _, savedUnit in ipairs(BossAbilityProtection.SavedUnits) do
-        -- เฉพาะ Damage Units เท่านั้น
-        if savedUnit.IsDamageUnit then
-            -- หา slot ที่มี unit นี้
-            local hotbar = _G.GetHotbarUnits()
-            local targetSlot = nil
-            
-            for slot, unit in pairs(hotbar) do
-                if unit and unit.Name == savedUnit.Name then
-                    targetSlot = slot
-                    break
-                end
-            end
-            
-            if targetSlot then
-                -- วาง unit กลับ
-                local success = _G.PlaceUnit(targetSlot, savedUnit.Position)
-                if success then
-                    print(string.format("[BossProtect] ✅ วาง %s กลับที่ตำแหน่งเดิม", savedUnit.Name))
-                else
-                    print(string.format("[BossProtect] ⚠️ วาง %s ไม่สำเร็จ", savedUnit.Name))
-                end
-            else
-                print(string.format("[BossProtect] ⚠️ ไม่พบ %s ใน hotbar", savedUnit.Name))
-            end
-        end
-    end
-    
-    -- ล้าง saved units
-    BossAbilityProtection.SavedUnits = {}
-    BossAbilityProtection.IsActive = false
-end
-
--- ฟังก์ชันป้องกัน Units จาก Boss Ability
-_G.ProtectUnitsFromAbility = function(abilityName, targetedUnitGUIDs)
-    if not BossAbilityProtection.Enabled then return end
-    if not BossAbilityProtection.ProtectedAbilities[abilityName] then return end
-    
-    print(string.format("[BossProtect] ⚠️ ตรวจพบ %s! กำลังป้องกัน Units...", abilityName))
-    BossAbilityProtection.IsActive = true
-    BossAbilityProtection.SavedUnits = {}
-    
-    -- บันทึกและขาย units ที่ถูก target
-    for _, unitGUID in ipairs(targetedUnitGUIDs) do
-        local unitInfo = _G.SaveUnitInfo(unitGUID)
-        if unitInfo and unitInfo.IsDamageUnit then
-            -- เก็บ info ก่อนขาย
-            table.insert(BossAbilityProtection.SavedUnits, unitInfo)
-            
-            -- ขาย unit เพื่อได้เงินคืน
-            local sold = _G.ForceSelUnit(unitGUID)
-            if sold then
-                print(string.format("[BossProtect] 💰 ขาย %s (GUID: %s) เพื่อป้องกัน", unitInfo.Name, unitGUID))
-            end
-        end
-    end
-    
-    -- ตั้ง timer วาง units กลับหลัง ability จบ
-    if #BossAbilityProtection.SavedUnits > 0 then
-        task.delay(BossAbilityProtection.AbilityDuration + 0.5, function()
-            _G.ReplaceUnits()
-        end)
-    end
-end
-
--- ⭐ ฟัง Enemy Ability Events
-local EnemyAbilityEvent = nil
-pcall(function()
-    EnemyAbilityEvent = Networking:FindFirstChild("EnemyAbilityEvent") or
-                       Networking.ClientListeners and Networking.ClientListeners:FindFirstChild("EnemyAbility")
-    print(string.format("[FORCED]   → EnemyAbilityEvent: %s", EnemyAbilityEvent and "✅ Found" or "❌ NIL"))
-end)
-
-if EnemyAbilityEvent then
-    EnemyAbilityEvent.OnClientEvent:Connect(function(action, data)
-        if action == "Attack" and data then
-            local abilityName = data.ExtraData and data.ExtraData.Name
-            local targetedUnits = data.Units or {}
-            
-            if abilityName and BossAbilityProtection.ProtectedAbilities[abilityName] then
-                _G.ProtectUnitsFromAbility(abilityName, targetedUnits)
-            end
-        end
-    end)
-end
-
--- Export to _G
-_G.BossAbilityProtection = BossAbilityProtection
-_G.ProtectUnitsFromAbility = ProtectUnitsFromAbility
-
--- ===== MAP PLACEMENT ZONE SYSTEM =====
--- ระบบวิเคราะห์ตำแหน่งวางเฉพาะด่าน
--- Yellow = Income only (ห่างจาก Path)
--- Red = Damage only (ใกล้ Path เพื่อโจมตี)
--- White = No placement (พื้นที่ห้ามวาง)
-
-local MapZoneSystem = {
-    Enabled = true,
-    Zones = {
-        Income = {},   -- Yellow zones (ห่าง path >= 20)
-        Damage = {},   -- Red zones (ใกล้ path < 20)
-        Blocked = {},  -- White zones (InvalidPlacement)
-    },
-    LastAnalysis = 0,
-    AnalysisCooldown = 5,  -- วิเคราะห์ใหม่ทุก 5 วินาที
-}
-
--- วิเคราะห์ตำแหน่งและจัดประเภท
-_G.AnalyzeMapZones = function()
-    local now = tick()
-    if now - MapZoneSystem.LastAnalysis < MapZoneSystem.AnalysisCooldown then
-        return MapZoneSystem.Zones
-    end
-    
-    -- ⭐ FIX: เช็คว่าฟังก์ชันถูก define แล้ว
-    if not _G.GetMapPath or not _G.GetPlaceablePositions then
-        return MapZoneSystem.Zones
-    end
-    
-    MapZoneSystem.LastAnalysis = now
-    MapZoneSystem.Zones = { Income = {}, Damage = {}, Blocked = {} }
-    
-    local path = _G.GetMapPath()
-    local positions = _G.GetPlaceablePositions()
-    
-    if #path == 0 or #positions == 0 then
-        return MapZoneSystem.Zones
-    end
-    
-    for _, pos in ipairs(positions) do
-        -- หาระยะห่างจาก Path
-        local minDistToPath = math.huge
-        for _, node in ipairs(path) do
-            local dist = (pos - node).Magnitude
-            minDistToPath = math.min(minDistToPath, dist)
-        end
-        
-        -- จัดประเภทตามระยะห่าง
-        if minDistToPath >= 20 then
-            -- Yellow Zone: Income only (ห่างจาก path)
-            table.insert(MapZoneSystem.Zones.Income, {
-                Position = pos,
-                DistFromPath = minDistToPath,
-                Type = "Income"
-            })
-        elseif minDistToPath >= 5 then
-            -- Red Zone: Damage only (ใกล้ path พอให้โจมตีได้)
-            table.insert(MapZoneSystem.Zones.Damage, {
-                Position = pos,
-                DistFromPath = minDistToPath,
-                Type = "Damage"
-            })
-        else
-            -- White Zone: Too close to path (ห้ามวาง)
-            table.insert(MapZoneSystem.Zones.Blocked, {
-                Position = pos,
-                DistFromPath = minDistToPath,
-                Type = "Blocked"
-            })
-        end
-    end
-    
-    _G.DebugPrint(string.format("📊 Map Zones: Income=%d, Damage=%d, Blocked=%d",
-        #MapZoneSystem.Zones.Income,
-        #MapZoneSystem.Zones.Damage,
-        #MapZoneSystem.Zones.Blocked))
-    
-    return MapZoneSystem.Zones
-end
-
--- หาตำแหน่งที่ดีที่สุดสำหรับ Income Unit
-_G.GetBestIncomeZonePosition = function(activeUnits)
-    if not _G.AnalyzeMapZones then return nil end
-    local zones = _G.AnalyzeMapZones()
-    if not zones or not zones.Income or #zones.Income == 0 then return nil end
-    
-    local bestPos = nil
-    local bestScore = -math.huge
-    
-    for _, zone in ipairs(zones.Income) do
-        local pos = zone.Position
-        local score = zone.DistFromPath * 10  -- ยิ่งไกล path ยิ่งดี
-        
-        -- ลดคะแนนถ้าใกล้ unit อื่น
-        for _, unit in pairs(activeUnits) do
-            if unit.Position then
-                local dist = (pos - unit.Position).Magnitude
-                if dist < 5 then
-                    score = score - 200  -- ใกล้เกินไป
-                elseif dist < 10 then
-                    score = score - 50
-                end
-            end
-        end
-        
-        if score > bestScore then
-            bestScore = score
-            bestPos = pos
-        end
-    end
-    
-    return bestPos
-end
-
--- หาตำแหน่งที่ดีที่สุดสำหรับ Damage Unit
-_G.GetBestDamageZonePosition = function(unitRange, activeUnits)
-    if not _G.AnalyzeMapZones or not _G.GetMapPath then return nil end
-    local zones = _G.AnalyzeMapZones()
-    if not zones or not zones.Damage or #zones.Damage == 0 then return nil end
-    
-    local bestPos = nil
-    local bestScore = -math.huge
-    local path = _G.GetMapPath()
-    
-    for _, zone in ipairs(zones.Damage) do
-        local pos = zone.Position
-        local score = 0
-        
-        -- ตำแหน่งที่ครอบคลุม path หลายจุด = ดี
-        local pathCoverage = 0
-        for _, node in ipairs(path) do
-            local dist = (pos - node).Magnitude
-            if dist <= unitRange then
-                pathCoverage = pathCoverage + 1
-            end
-        end
-        score = score + pathCoverage * 20
-        
-        -- ใกล้ path พอดี (ไม่ใกล้เกินไป)
-        if zone.DistFromPath >= 8 and zone.DistFromPath <= 15 then
-            score = score + 100
-        end
-        
-        -- ลดคะแนนถ้าใกล้ unit อื่น
-        for _, unit in pairs(activeUnits) do
-            if unit.Position then
-                local dist = (pos - unit.Position).Magnitude
-                if dist < 5 then
-                    score = score - 200
-                end
-            end
-        end
-        
-        if score > bestScore then
-            bestScore = score
-            bestPos = pos
-        end
-    end
-    
-    return bestPos
-end
-
--- Export
-_G.MapZoneSystem = MapZoneSystem
-_G.AnalyzeMapZones = AnalyzeMapZones
-_G.GetBestIncomeZonePosition = GetBestIncomeZonePosition
-_G.GetBestDamageZonePosition = GetBestDamageZonePosition
+LoadSpecialAbilityEvents()
 
 -- ===== ENEMY ANALYSIS FOR REALITY REWRITE =====
 -- Fallback status list (ถ้า RealityRewriteData ไม่โหลด)
@@ -4004,12 +3703,12 @@ local REALITY_REWRITE_STATUSES = {
     "Bubbled"    -- Permanent
 }
 
-_G.AnalyzeEnemiesForStatus = function()
+local function AnalyzeEnemiesForStatus()
     -- วิเคราะห์ enemies ทั้งหมดเพื่อเลือก status ที่เหมาะสม
     -- รวมถึง passives, abilities, และ immunities ของ enemy
-    local enemies = _G.GetEnemies() or {}
+    local enemies = GetEnemies and GetEnemies() or {}
     if not enemies or #enemies == 0 then
-        _G.DebugPrint("🌈 [Reality Rewrite] No enemies found, using default: Burn")
+        DebugPrint("🌈 [Reality Rewrite] No enemies found, using default: Burn")
         return "Burn"  -- Default
     end
     
@@ -4091,7 +3790,7 @@ _G.AnalyzeEnemiesForStatus = function()
             end
             
             -- Boss Check
-            if _G.IsBossEnemy(enemy) then
+            if IsBossEnemy and IsBossEnemy(enemy) then
                 analysis.hasBoss = true
             end
             
@@ -4237,15 +3936,15 @@ _G.AnalyzeEnemiesForStatus = function()
     end
     
     -- แสดงข้อมูล enemies
-    _G.DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    _G.DebugPrint(string.format("🌈 [Analysis] Total: %d enemies | Fast: %d | Tank: %d | Flying: %d | Boss: %s", 
+    DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    DebugPrint(string.format("🌈 [Analysis] Total: %d enemies | Fast: %d | Tank: %d | Flying: %d | Boss: %s", 
         analysis.totalEnemies,
         analysis.fastEnemies,
         analysis.tankEnemies,
         analysis.flyingEnemies,
         tostring(analysis.hasBoss)
     ))
-    _G.DebugPrint(string.format("🌈 [Analysis] Avg Speed: %.1f | Avg HP: %.0f", 
+    DebugPrint(string.format("🌈 [Analysis] Avg Speed: %.1f | Avg HP: %.0f", 
         analysis.avgSpeed, analysis.avgHealth))
     
     -- แสดง immunities ที่ตรวจพบ
@@ -4257,14 +3956,14 @@ _G.AnalyzeEnemiesForStatus = function()
     if analysis.hasBleedImmunity then table.insert(immuneList, "Bleed") end
     
     if #immuneList > 0 then
-        _G.DebugPrint(string.format("🌈 [Immunities] ⚠️ Enemy immune to: %s", table.concat(immuneList, ", ")))
+        DebugPrint(string.format("🌈 [Immunities] ⚠️ Enemy immune to: %s", table.concat(immuneList, ", ")))
     end
     
     if analysis.hasRegen then
-        _G.DebugPrint("🌈 [Passive] ⚠️ Enemy has Regeneration - prioritize DoT")
+        DebugPrint("🌈 [Passive] ⚠️ Enemy has Regeneration - prioritize DoT")
     end
     if analysis.hasShield then
-        _G.DebugPrint("🌈 [Passive] ⚠️ Enemy has Shield/Barrier")
+        DebugPrint("🌈 [Passive] ⚠️ Enemy has Shield/Barrier")
     end
     
     -- ⭐ NEW Priority: Enemy has Regeneration → ใช้ Burn/Bleed (DoT) เพื่อ counter heal
@@ -4345,16 +4044,16 @@ _G.AnalyzeEnemiesForStatus = function()
     end
     
     -- แสดงผลการเลือก
-    _G.DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    _G.DebugPrint(string.format("🌈 ✅ เลือก: %s (Priority: %d)", selectedStatus, priority))
-    _G.DebugPrint(string.format("🌈 📝 เหตุผล: %s", reason))
-    _G.DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
+    DebugPrint(string.format("🌈 ✅ เลือก: %s (Priority: %d)", selectedStatus, priority))
+    DebugPrint(string.format("🌈 📝 เหตุผล: %s", reason))
+    DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     
     return selectedStatus
 end
 
 -- ===== USE ABILITY (Smart Detection) =====
-_G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
+local function UseAbilityV3(unit, abilityName, abilityInfo)
     local guid = unit.UniqueIdentifier or unit.GUID
     local abilityKey = guid .. "_" .. abilityName
     local unitName = unit.Name or ""
@@ -4369,7 +4068,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
         
         local selectedStatus = "Burn"
         local analyzeSuccess, analyzeResult = pcall(function()
-            return _G.AnalyzeEnemiesForStatus()
+            return AnalyzeEnemiesForStatus()
         end)
         
         if analyzeSuccess and analyzeResult then
@@ -4415,7 +4114,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             
             if success then
                 AbilityUsedOnce[abilityKey] = true  -- Starting Uses = 1
-                _G.DebugPrint("💀 The Goal of All Life is Death activated")
+                DebugPrint("💀 The Goal of All Life is Death activated")
             end
         end
     
@@ -4450,7 +4149,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             
             -- นับธาตุจาก Units._Cache (ตาม decom)
             if UnitsModule and UnitsModule._Cache then
-                _G.DebugPrint(string.format("🔮 [Cache Check] Found %d units in cache", 
+                DebugPrint(string.format("🔮 [Cache Check] Found %d units in cache", 
                     (function()
                         local count = 0
                         for _ in pairs(UnitsModule._Cache) do count = count + 1 end
@@ -4480,12 +4179,12 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                     end
                 end
             else
-                _G.DebugPrint("🔮 [Cache Check] UnitsModule._Cache not found!")
+                DebugPrint("🔮 [Cache Check] UnitsModule._Cache not found!")
             end
             
             -- เพิ่ม Unknown ให้ทุกธาตุ (ตาม decom)
             if elementCounts.Unknown then
-                _G.DebugPrint("🔮 [Unknown Boost] Adding +1 to all elements")
+                DebugPrint("🔮 [Unknown Boost] Adding +1 to all elements")
                 for elem in pairs(elementCounts) do
                     elementCounts[elem] = elementCounts[elem] + 1
                 end
@@ -4498,7 +4197,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             end
             table.sort(elementList)
             
-            _G.DebugPrint(string.format("🔮 [Elements] Unlocked: %s", 
+            DebugPrint(string.format("🔮 [Elements] Unlocked: %s", 
                 #elementList > 0 and table.concat(elementList, ", ") or "None"
             ))
             
@@ -4525,7 +4224,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             selectedElement = bestElement
         end
         
-        _G.DebugPrint(string.format("🔮 [Element Selection] Selected: %s (Count: %d)", 
+        DebugPrint(string.format("🔮 [Element Selection] Selected: %s (Count: %d)", 
             selectedElement,
             maxCount
         ))
@@ -4538,8 +4237,8 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             for _ in pairs(LichData.Spells) do
                 spellCount = spellCount + 1
             end
-            _G.DebugPrint(string.format("🔮 [LichData] Found %d spells", spellCount))
-            _G.DebugPrint(string.format("🔮 [Spell Check] Checking spells for element: %s", selectedElement))
+            DebugPrint(string.format("🔮 [LichData] Found %d spells", spellCount))
+            DebugPrint(string.format("🔮 [Spell Check] Checking spells for element: %s", selectedElement))
             
             -- หา spells ที่ตรงกับธาตุ (เช็คทุก spell)
             for spellId, spellData in pairs(LichData.Spells) do
@@ -4550,7 +4249,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                 local reqCount = 0
                 for elem, count in pairs(requirements) do
                     reqCount = reqCount + 1
-                    _G.DebugPrint(string.format("🔮     [%s] Requires: %d %s", spellName, count, elem))
+                    DebugPrint(string.format("🔮     [%s] Requires: %d %s", spellName, count, elem))
                 end
                 
                 -- เช็คว่า spell นี้ใช้ได้กับธาตุที่เลือกหรือไม่
@@ -4559,7 +4258,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                 if selectedElement == "Elementless" and reqCount == 0 then
                     -- Elementless spells (no requirements)
                     canUse = true
-                    _G.DebugPrint(string.format("🔮   ✅ %s (Elementless - No requirements)", spellName))
+                    DebugPrint(string.format("🔮   ✅ %s (Elementless - No requirements)", spellName))
                 elseif requirements[selectedElement] then
                     -- ต้องเช็คว่าปลดล็อคแล้ว (มีธาตุพอ)
                     local requiredCount = requirements[selectedElement]
@@ -4567,14 +4266,14 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                     
                     if actualCount >= requiredCount then
                         canUse = true
-                        _G.DebugPrint(string.format("🔮   ✅ %s (Req: %d %s, Has: %d)", 
+                        DebugPrint(string.format("🔮   ✅ %s (Req: %d %s, Has: %d)", 
                             spellName, 
                             requiredCount, 
                             selectedElement,
                             actualCount
                         ))
                     else
-                        _G.DebugPrint(string.format("🔮   ❌ %s (Req: %d %s, Has: %d - LOCKED)", 
+                        DebugPrint(string.format("🔮   ❌ %s (Req: %d %s, Has: %d - LOCKED)", 
                             spellName, 
                             requiredCount, 
                             selectedElement,
@@ -4583,7 +4282,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                     end
                 else
                     -- Spell ต้องการธาตุอื่น
-                    _G.DebugPrint(string.format("🔮   ⏭️ %s (Wrong element)", spellName))
+                    DebugPrint(string.format("🔮   ⏭️ %s (Wrong element)", spellName))
                 end
                 
                 if canUse then
@@ -4595,17 +4294,17 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                 end
             end
         else
-            _G.DebugPrint("🔮 [ERROR] LichData or LichData.Spells not found!")
+            DebugPrint("🔮 [ERROR] LichData or LichData.Spells not found!")
             if not LichData then
-                _G.DebugPrint("🔮   → LichData is nil")
+                DebugPrint("🔮   → LichData is nil")
             elseif not LichData.Spells then
-                _G.DebugPrint("🔮   → LichData.Spells is nil")
+                DebugPrint("🔮   → LichData.Spells is nil")
             end
         end
         
         -- ถ้าไม่มี spell ให้หา Elementless spells
         if #selectedSpells == 0 then
-            _G.DebugPrint("🔮 [Fallback] No spells for selected element, trying Elementless...")
+            DebugPrint("🔮 [Fallback] No spells for selected element, trying Elementless...")
             
             -- หา Elementless spells (requirements = empty)
             if LichData and LichData.Spells then
@@ -4621,7 +4320,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                             id = spellId,
                             name = spellData.Name or spellId
                         })
-                        _G.DebugPrint(string.format("🔮   → Found Elementless: %s", spellData.Name))
+                        DebugPrint(string.format("🔮   → Found Elementless: %s", spellData.Name))
                     end
                 end
             end
@@ -4644,28 +4343,28 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
         if selectedElement == "Elementless" then
             -- Elementless = ปลดล็อคทุก slot
             unlockedSlots = maxSpells
-            _G.DebugPrint("🔮 [Slots] Elementless → All slots unlocked")
+            DebugPrint("🔮 [Slots] Elementless → All slots unlocked")
         else
             -- ธาตุอื่น = จำนวน slot ตามจำนวนธาตุที่มี (max = maxSpells)
             unlockedSlots = math.min(elementCount, maxSpells)
-            _G.DebugPrint(string.format("🔮 [Slots] %s: %d units → %d slots unlocked", 
+            DebugPrint(string.format("🔮 [Slots] %s: %d units → %d slots unlocked", 
                 selectedElement, elementCount, unlockedSlots))
         end
         
         -- ⭐ ถ้าไม่มี slot ปลดล็อค → ใช้แค่ 1 slot (Undead Control)
         if unlockedSlots <= 0 then
             unlockedSlots = 1
-            _G.DebugPrint("🔮 [Slots] No unlocked slots → Use 1 slot only (Elementless)")
+            DebugPrint("🔮 [Slots] No unlocked slots → Use 1 slot only (Elementless)")
         end
         
         -- ⭐ SLOT 1: เลือก spell แรกที่ใช้ได้
         local firstSpell = nil
         if #selectedSpells > 0 then
             firstSpell = selectedSpells[1]
-            _G.DebugPrint(string.format("🔮 [Slot 1] เลือก: %s (ID: %d)", firstSpell.name, firstSpell.id))
+            DebugPrint(string.format("🔮 [Slot 1] เลือก: %s (ID: %d)", firstSpell.name, firstSpell.id))
         else
             firstSpell = {id = 1, name = "Undead Control"}
-            _G.DebugPrint("🔮 [Slot 1] ไม่มี spell ปลดล็อค → ใช้ Undead Control (default)")
+            DebugPrint("🔮 [Slot 1] ไม่มี spell ปลดล็อค → ใช้ Undead Control (default)")
         end
         
         table.insert(finalSpells, firstSpell.id)
@@ -4693,16 +4392,16 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             
             -- ถ้าไม่มี spell ใหม่ → หยุด (ไม่เติม filler ซ้ำ)
             if not addedSpell then
-                _G.DebugPrint(string.format("🔮 [Slot %d] No more unique spells → Stop filling", i))
+                DebugPrint(string.format("🔮 [Slot %d] No more unique spells → Stop filling", i))
                 break
             end
         end
         
-        _G.DebugPrint(string.format("🔮 [Final] %d spells selected (max unlocked: %d)", #finalSpells, unlockedSlots))
+        DebugPrint(string.format("🔮 [Final] %d spells selected (max unlocked: %d)", #finalSpells, unlockedSlots))
         
-        _G.DebugPrint(string.format("🔮 [Final Selection] %d/%d spells selected:", #finalSpells, maxSpells))
+        DebugPrint(string.format("🔮 [Final Selection] %d/%d spells selected:", #finalSpells, maxSpells))
         for i, spellName in ipairs(finalSpellNames) do
-            _G.DebugPrint(string.format("   Slot %d: %s (ID: %d)", i, spellName, finalSpells[i]))
+            DebugPrint(string.format("   Slot %d: %s (ID: %d)", i, spellName, finalSpells[i]))
         end
         
         -- เช็คว่า spell ที่จะเลือกเหมือนกับที่เลือกไว้แล้วหรือไม่
@@ -4850,12 +4549,12 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
         
         -- Fallback: GetBestPlacementPosition
         if not targetPos then
-            targetPos = _G.GetBestPlacementPosition(unitRange, _G.GetGamePhase(), unitName, unit and unit.Data)
+            targetPos = GetBestPlacementPosition(unitRange, GetGamePhase(), unitName, unit and unit.Data)
         end
         
         -- Fallback: frontmost enemy
         if not targetPos then
-            local frontEnemy = _G.GetFrontmostEnemy()
+            local frontEnemy = GetFrontmostEnemy()
             if frontEnemy and frontEnemy.Position then
                 local offset = 12
                 local angle = math.random() * math.pi * 2
@@ -4892,7 +4591,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             -- ⭐ หาตำแหน่งไกลจากตำแหน่งปัจจุบัน (50 studs ขึ้นไป)
             if currentPos then
                 -- หาตำแหน่งใกล้ศัตรูหน้าสุด
-                local frontEnemy = _G.GetFrontmostEnemy()
+                local frontEnemy = GetFrontmostEnemy and GetFrontmostEnemy()
                 if frontEnemy and frontEnemy.Position then
                     -- เทเลพอร์ตไปใกล้ศัตรู (offset 10 studs)
                     local dirToEnemy = (frontEnemy.Position - currentPos).Unit
@@ -5009,12 +4708,12 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
             
             -- Priority 1: GetBestPlacementPosition (U-center system เหมือน Normal mode)
             pcall(function()
-                clonePos = _G.GetBestPlacementPosition(unitRange, _G.GetGamePhase(), unitName, unit and unit.Data)
+                clonePos = GetBestPlacementPosition(unitRange, GetGamePhase(), unitName, unit and unit.Data)
             end)
             
             -- Priority 2: ใกล้ศัตรูหน้าสุด
             if not clonePos then
-                local frontEnemy = _G.GetFrontmostEnemy()
+                local frontEnemy = GetFrontmostEnemy and GetFrontmostEnemy()
                 if frontEnemy and frontEnemy.Position then
                     local offset = 12
                     local angle = math.random() * math.pi * 2
@@ -5081,8 +4780,8 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
         end
         
         local itemToUse = nil
-        local stageInfo = _G.AnalyzeStageType()
-        _G.GetWaveFromUI()
+        local stageInfo = AnalyzeStageType()
+        GetWaveFromUI()
         local isMaxWave = (CurrentWave >= MaxWave - 1)
         
         print(string.format("[Skill] 🔍 World Item Check: CaloricStoneEvent=%s, Wave=%d/%d", 
@@ -5122,8 +4821,8 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                         
                         if unitName ~= "" then
                             local isLich = unitName:lower():find("lich") or unitName:lower():find("ruler")
-                            local isIncome = _G.IsIncomeUnit(unitName, unitData or {})
-                            local isBuff = _G.IsBuffUnit(unitName, unitData or {})
+                            local isIncome = IsIncomeUnit and IsIncomeUnit(unitName, unitData or {})
+                            local isBuff = IsBuffUnit and IsBuffUnit(unitName, unitData or {})
                             local isDamage = not isLich and not isIncome and not isBuff
                             
                             if isDamage then
@@ -5181,7 +4880,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                     end
                 end)
                 
-                local currentYen = _G.GetYen()
+                local currentYen = GetYen()
                 if unitPrice > 0 and currentYen < unitPrice then
                     print(string.format("[Skill] ⏸️ Caloric Stone - เงินไม่พอ (มี %d, ต้องการ %d) - รอเงิน...", currentYen, unitPrice))
                     return false
@@ -5232,7 +4931,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                         -- ⭐⭐⭐ PRIORITY: Caloric Stone Clone → วางหน้าประตูเสมอ (ทุกด่าน)
                         print(string.format("[Analysis] 🔍 Caloric Clone: %s - วางหน้าประตู (Range: %d)", unitName, unitRange))
                         pcall(function()
-                            targetPos = _G.GetBestFrontPosition(unitRange)
+                            targetPos = GetBestFrontPosition(unitRange)
                             if targetPos then
                                 print(string.format("[Analysis] ✅ Caloric Clone พบตำแหน่งหน้าประตู: (%.1f, %.1f, %.1f)", 
                                     targetPos.X, targetPos.Y, targetPos.Z))
@@ -5242,7 +4941,7 @@ _G.UseAbilityV3 = function(unit, abilityName, abilityInfo)
                         -- ⭐ Fallback วิธี 1: ใช้ GetBestPlacementPosition (U-center system)
                         if not targetPos then
                             pcall(function()
-                                targetPos = _G.GetBestPlacementPosition(unitRange, _G.GetGamePhase(), unitName, bestUnit.Data)
+                                targetPos = GetBestPlacementPosition(unitRange, GetGamePhase(), unitName, bestUnit.Data)
                             end)
                         end
                         
@@ -5400,7 +5099,7 @@ end
 -- ===== AUTO USE ABILITIES (MAIN LOOP) =====
 local MAX_ABILITIES_PER_CHECK = 5  -- ⏱️ ใช้ได้สูงสุด 5 abilities ต่อรอบเช็ค
 
-_G.AutoUseAbilitiesV3 = function()
+local function AutoUseAbilitiesV3()
     -- ⏱️ Throttle
     local now = tick()
     if now - LastAutoSkillCheck < AUTO_SKILL_CHECK_INTERVAL then
@@ -5467,11 +5166,11 @@ _G.AutoUseAbilitiesV3 = function()
             
             abilitiesChecked = abilitiesChecked + 1
             
-            local abilityInfo = _G.AnalyzeAbility(abilityName)
-            local canUse, reason = _G.CanUseAbility(unit, abilityName, abilityInfo)
+            local abilityInfo = AnalyzeAbility(abilityName)
+            local canUse, reason = CanUseAbility(unit, abilityName, abilityInfo)
             
             if canUse then
-                local success = _G.UseAbilityV3(unit, abilityName, abilityInfo)
+                local success = UseAbilityV3(unit, abilityName, abilityInfo)
                 
                 if success then
                     abilitiesUsed = abilitiesUsed + 1
@@ -5496,7 +5195,7 @@ _G.NumberPad = {
 }
 
 -- ฟังก์ชันเช็คสีเขียวจาก WavesAmount UI
-_G.CheckBossWaveFromUI = function()
+local function CheckBossWaveFromUI()
     local success, result = pcall(function()
         local wavesAmount = plr.PlayerGui.HUD.Map.WavesAmount
         if wavesAmount and wavesAmount.Text then
@@ -5508,7 +5207,7 @@ _G.CheckBossWaveFromUI = function()
 end
 
 -- ฟังก์ชันดึง wave number จาก text (เช่น "<stroke...>7</font>..." → 7)
-_G.ExtractWaveNumber = function(text)
+local function ExtractWaveNumber(text)
     if not text then return nil end
     -- หา pattern: <font transparency="0">NUMBER</font>
     local wave = text:match('<font transparency="0">(%d+)</font>')
@@ -5518,7 +5217,7 @@ _G.ExtractWaveNumber = function(text)
     return nil
 end
 
-_G.AutoNumberPad = function()
+local function AutoNumberPad()
     if _G.NumberPad.CodeAccepted then return end
     if not NumberPadEvent then return end
     
@@ -5548,7 +5247,7 @@ _G.AutoNumberPad = function()
     if now - _G.NumberPad.LastCheck < 0.5 then return end
     _G.NumberPad.LastCheck = now
     
-    local waveText = _G.CheckBossWaveFromUI()
+    local waveText = CheckBossWaveFromUI()
     if not waveText then return end
     
     -- Debug: แสดง wave text ทุก 10 วินาที
@@ -5562,7 +5261,7 @@ _G.AutoNumberPad = function()
     
     if isBossWave and waveText ~= _G.NumberPad.LastWaveText then
         -- Boss wave ใหม่! ดึง wave number
-        local waveNum = _G.ExtractWaveNumber(waveText)
+        local waveNum = ExtractWaveNumber(waveText)
         if waveNum and not table.find(_G.NumberPad.BossWaves, waveNum) then
             table.insert(_G.NumberPad.BossWaves, waveNum)
             table.sort(_G.NumberPad.BossWaves)
@@ -5611,7 +5310,7 @@ _G.AutoReplay = {
     VoteCooldown = 1,
 }
 
-_G.AutoVoteReplay_Legacy = function()
+local function AutoVoteReplay_Legacy()
     if not _G.VoteEvent then return end
     local now = tick()
     if now - _G.AutoReplay.LastVote < _G.AutoReplay.VoteCooldown then return end
@@ -5629,7 +5328,7 @@ _G.AutoPortal = {
 }
 
 -- ฟังก์ชันเลือก Portal อัตโนมัติ (เลือกตัวที่ดีที่สุด)
-_G.AutoSelectPortal = function()
+local function AutoSelectPortal()
     if not _G.PortalPlayEvent then return end
     
     local now = tick()
@@ -5669,12 +5368,12 @@ _G.AutoSelectPortal = function()
 end
 
 -- ===== LEGACY FUNCTIONS (เก็บไว้เพื่อ compatibility) =====
-_G.EnableAutoSkill = function()
+local function EnableAutoSkill()
     -- ไม่ต้องทำอะไร - ใช้ AutoUseAbilitiesV3() แทน
 end
 
 -- ===== AUTO SKILL V2 (OLD - เก็บไว้เพื่อ fallback) =====
-_G.GetAbilityType = function(abilityData)
+local function GetAbilityType(abilityData)
     if not abilityData then return "Unknown", 0, false end
     
     -- 🔍 อ่านข้อมูลจาก ability data จริง
@@ -5714,7 +5413,7 @@ _G.GetAbilityType = function(abilityData)
     return "AutoCast", cooldown, false
 end
 
-_G.IsBossEnemy = function(enemy)
+IsBossEnemy = function(enemy)
     if not enemy then return false end
     
     -- เช็คจาก Data.IsBoss
@@ -5733,7 +5432,7 @@ _G.IsBossEnemy = function(enemy)
     return false
 end
 
-_G.UseAbilityV2 = function(unit, abilityData, targetPosition)
+local function UseAbilityV2(unit, abilityData, targetPosition)
     if not unit or not abilityData then return false end
     
     local networking = ReplicatedStorage:FindFirstChild("Networking")
@@ -5754,7 +5453,7 @@ _G.UseAbilityV2 = function(unit, abilityData, targetPosition)
     return success
 end
 
-_G.AutoUseAbilities = function()
+local function AutoUseAbilities()
     if not ClientUnitHandler or not ClientUnitHandler._ActiveUnits then return end
     
     local currentTime = tick()
@@ -5773,23 +5472,23 @@ _G.AutoUseAbilities = function()
                 if not shouldSkip then
                     -- เช็ค cooldown
                     local lastUsedTime = AbilityLastUsed[abilityKey] or 0
-                    local abilityType, cooldown, requiresTarget = _G.GetAbilityType(abilityData)
+                    local abilityType, cooldown, requiresTarget = GetAbilityType(abilityData)
                     
                     if currentTime - lastUsedTime >= cooldown then
                         -- ใช้ ability ตามประเภท
                         if abilityType == "OneTime" then
                             -- ใช้เฉพาะกับ Boss
-                            local enemies = _G.GetEnemies()
+                            local enemies = GetEnemies()
                             for _, enemy in ipairs(enemies) do
-                                if _G.IsBossEnemy(enemy) then
+                                if IsBossEnemy(enemy) then
                                     local targetPos = enemy.Position or (enemy.Model and enemy.Model:GetPivot().Position)
                                     if targetPos then
-                                        local success = _G.UseAbilityV2(unit, abilityData, requiresTarget and targetPos or nil)
+                                        local success = UseAbilityV2(unit, abilityData, requiresTarget and targetPos or nil)
                                         if success then
                                             AbilityUsedOnce[abilityKey] = true
                                             AbilityLastUsed[abilityKey] = currentTime
                                             skillsUsed = skillsUsed + 1
-                                            _G.DebugPrint(string.format("💥 [Boss Skill] %s → %s (Type: %s)", 
+                                            DebugPrint(string.format("💥 [Boss Skill] %s → %s (Type: %s)", 
                                                 abilityName, enemy.Name, abilityData.Type or "Unknown"))
                                         end
                                         break
@@ -5799,7 +5498,7 @@ _G.AutoUseAbilities = function()
                             
                         elseif abilityType == "Target" then
                             -- ใช้กับ enemy ที่แข็งแรงที่สุด
-                            local enemies = _G.GetEnemies()
+                            local enemies = GetEnemies()
                             if #enemies > 0 then
                                 local strongestEnemy = nil
                                 local maxHealth = 0
@@ -5813,11 +5512,11 @@ _G.AutoUseAbilities = function()
                                 if strongestEnemy then
                                     local targetPos = strongestEnemy.Position or (strongestEnemy.Model and strongestEnemy.Model:GetPivot().Position)
                                     if targetPos then
-                                        local success = _G.UseAbilityV2(unit, abilityData, targetPos)
+                                        local success = UseAbilityV2(unit, abilityData, targetPos)
                                         if success then
                                             AbilityLastUsed[abilityKey] = currentTime
                                             skillsUsed = skillsUsed + 1
-                                            _G.DebugPrint(string.format("🎯 [Target Skill] %s → %s (Type: %s, CD: %.1fs)", 
+                                            DebugPrint(string.format("🎯 [Target Skill] %s → %s (Type: %s, CD: %.1fs)", 
                                                 abilityName, strongestEnemy.Name, abilityData.Type or "Unknown", cooldown))
                                         end
                                     end
@@ -5826,11 +5525,11 @@ _G.AutoUseAbilities = function()
                             
                         elseif abilityType == "AutoCast" then
                             -- ใช้ได้ทันที (ไม่ต้องระบุ target)
-                            local success = _G.UseAbilityV2(unit, abilityData, nil)
+                            local success = UseAbilityV2(unit, abilityData, nil)
                             if success then
                                 AbilityLastUsed[abilityKey] = currentTime
                                 skillsUsed = skillsUsed + 1
-                                _G.DebugPrint(string.format("⚡ [Auto Skill] %s (Unit: %s, Type: %s, CD: %.1fs)", 
+                                DebugPrint(string.format("⚡ [Auto Skill] %s (Unit: %s, Type: %s, CD: %.1fs)", 
                                     abilityName, unit.Name, abilityData.Type or "Unknown", cooldown))
                             end
                         end
@@ -5842,7 +5541,7 @@ _G.AutoUseAbilities = function()
 end
 
 -- ===== HOTBAR SYSTEM =====
-_G.GetUnitRange = function(unitData)
+local function GetUnitRange(unitData)
     -- ===== ดึงระยะยิงจาก UnitData เท่านั้น (ไม่ print log เพื่อลด spam) =====
     if not unitData then 
         return nil 
@@ -5903,7 +5602,7 @@ _G.GetUnitRange = function(unitData)
     return range
 end
 
-_G.GetHotbarUnits = function()
+GetHotbarUnits = function()
     local units = {}
     
     if UnitsHUD and UnitsHUD._Cache then
@@ -5911,9 +5610,9 @@ _G.GetHotbarUnits = function()
             if v ~= "None" and v ~= nil then
                 local unitData = v.Data or v
                 local price = unitData.Cost or unitData.Price or v.Cost or 0
-                local isIncome = _G.IsIncomeUnit(unitData.Name or v.Name, unitData)
-                local isBuff = _G.IsBuffUnit(unitData.Name or v.Name, unitData)
-                local unitRange = _G.GetUnitRange(unitData)
+                local isIncome = IsIncomeUnit(unitData.Name or v.Name, unitData)
+                local isBuff = IsBuffUnit(unitData.Name or v.Name, unitData)
+                local unitRange = GetUnitRange(unitData)
                 
                 units[i] = {
                     Slot = i,
@@ -5934,9 +5633,9 @@ _G.GetHotbarUnits = function()
     return units
 end
 
-_G.GetSlotLimit = function(slot)
+GetSlotLimit = function(slot)
     -- หาข้อมูล unit จาก hotbar
-    local hotbar = _G.GetHotbarUnits()
+    local hotbar = GetHotbarUnits()
     local unit = hotbar[slot]
     
     if not unit then 
@@ -5971,8 +5670,8 @@ _G.GetSlotLimit = function(slot)
     return maxLimit, currentCount
 end
 
-_G.CanPlaceSlot = function(slot)
-    local limit, current = _G.GetSlotLimit(slot)
+local function CanPlaceSlot(slot)
+    local limit, current = GetSlotLimit(slot)
     return current < limit
 end
 
@@ -5981,7 +5680,7 @@ end
 -- จาก Decom: unit.Data.CurrentUpgrade = level ปัจจุบัน
 -- จาก Decom: unit.Data.UnitType = "Farm" / "Support" / อื่นๆ
 
-_G.GetActiveUnits = function()
+GetActiveUnits = function()
     local units = {}
     
     if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
@@ -6013,14 +5712,14 @@ end
 -- ===== PRIORITY SYSTEM =====
 -- ⭐⭐⭐ ฟังก์ชันสำหรับตั้ง Priority ของ Unit
 -- Priority modes: "First", "Closest", "Last", "Strongest", "Weakest", "Bosses"
-_G.SetPriority = function(unit, priorityMode)
+SetPriority = function(unit, priorityMode)
     if not unit then
-        _G.DebugPrint("⚠️ SetPriority: ไม่มี unit")
+        DebugPrint("⚠️ SetPriority: ไม่มี unit")
         return false
     end
     
     if not priorityMode then
-        _G.DebugPrint("⚠️ SetPriority: ไม่มี priorityMode")
+        DebugPrint("⚠️ SetPriority: ไม่มี priorityMode")
         return false
     end
     
@@ -6037,10 +5736,10 @@ _G.SetPriority = function(unit, priorityMode)
             )
             
             success = true
-            _G.DebugPrint(string.format("✅ SetPriority: %s (Model: %s) → %s", 
+            DebugPrint(string.format("✅ SetPriority: %s (Model: %s) → %s", 
                 unit.Name, unit.Model.Name, priorityMode))
         else
-            _G.DebugPrint(string.format("⚠️ SetPriority: ไม่พบ Model.Name สำหรับ %s", unit.Name or "Unknown"))
+            DebugPrint(string.format("⚠️ SetPriority: ไม่พบ Model.Name สำหรับ %s", unit.Name or "Unknown"))
         end
     end)
     
@@ -6048,7 +5747,7 @@ _G.SetPriority = function(unit, priorityMode)
 end
 
 -- ===== PLACEABLE POSITIONS =====
-_G.GetPlaceablePositions = function()
+local function GetPlaceablePositions()
     local positions = {}
     local spacing = 4  -- Hard-coded spacing
     
@@ -6079,7 +5778,7 @@ _G.GetPlaceablePositions = function()
                             
                             -- เช็คกับ Units ที่วางอยู่แล้ว
                             if not occupied then
-                                local activeUnits = _G.GetActiveUnits()
+                                local activeUnits = GetActiveUnits()
                                 for _, unit in pairs(activeUnits) do
                                     if unit.Position and (unit.Position - worldPos).Magnitude < spacing then
                                         occupied = true
@@ -6121,7 +5820,7 @@ _G.GetPlaceablePositions = function()
     
     -- วิธี 3: Fallback - รอบๆ path
     if #positions == 0 then
-        local path = _G.GetMapPath()
+        local path = GetMapPath()
         if #path > 0 then
             for _, pathPos in pairs(path) do
                 for offset = -10, 10, 5 do
@@ -6151,7 +5850,7 @@ _G.GetPlaceablePositions = function()
 end
 
 -- ===== คำนวณ U-Shape Centers (แยกออกมาเพื่อ cache) =====
-_G.CalculateUShapeCenters = function(path, unitRange)
+local function CalculateUShapeCenters(path, unitRange)
     local corners = {}
     
     -- หามุมโค้ง (เก็บทิศทางด้านใน)
@@ -6286,7 +5985,7 @@ end
 
 -- ===== 🟠 คำนวณ Optimal Zones (จุดส้ม - พื้นที่ว่างระหว่าง Path) =====
 -- ตามรูปที่วาด: หา pocket spaces ระหว่าง Path segments
-_G.CalculateOptimalZones = function(path, unitRange)
+local function CalculateOptimalZones(path, unitRange)
     local optimalZones = {}
     
     if #path < 4 then return optimalZones end
@@ -6459,10 +6158,10 @@ _G.CalculateOptimalZones = function(path, unitRange)
         return a.Score > b.Score
     end)
     
-    _G.DebugPrint(string.format("🟠 Optimal Zones พบ: %d จุด", #uniqueZones))
+    DebugPrint(string.format("🟠 Optimal Zones พบ: %d จุด", #uniqueZones))
     for i = 1, math.min(3, #uniqueZones) do
         local zone = uniqueZones[i]
-        _G.DebugPrint(string.format("   #%d: (%.1f, %.1f) | dist=%.1f, nodes=%d, score=%.0f", 
+        DebugPrint(string.format("   #%d: (%.1f, %.1f) | dist=%.1f, nodes=%d, score=%.0f", 
             i, zone.Position.X, zone.Position.Z, zone.DistToPath, zone.NodesInRange, zone.Score))
     end
     
@@ -6470,7 +6169,7 @@ _G.CalculateOptimalZones = function(path, unitRange)
 end
 
 -- ===== คำนวณ Circular/Loop Path Center (จุดศูนย์กลางของแมพ - พื้นที่ว่างนอก path) =====
-_G.CalculateCircularCenters = function(path, unitRange)
+local function CalculateCircularCenters(path, unitRange)
     local circularCenters = {}
     
     if #path < 4 then return circularCenters end
@@ -6479,8 +6178,8 @@ _G.CalculateCircularCenters = function(path, unitRange)
     local spawnPoint = path[1]        -- จุดเริ่มต้น (สีเขียว)
     local basePoint = path[#path]     -- จุดจบ (สีแดง)
     
-    _G.DebugPrint(string.format("🟢 Spawn: (%.1f, %.1f)", spawnPoint.X, spawnPoint.Z))
-    _G.DebugPrint(string.format("🔴 Base: (%.1f, %.1f)", basePoint.X, basePoint.Z))
+    DebugPrint(string.format("🟢 Spawn: (%.1f, %.1f)", spawnPoint.X, spawnPoint.Z))
+    DebugPrint(string.format("🔴 Base: (%.1f, %.1f)", basePoint.X, basePoint.Z))
     
     -- ===== คำนวณ Bounding Box ของ path =====
     local minX, minY, minZ = math.huge, math.huge, math.huge
@@ -6505,7 +6204,7 @@ _G.CalculateCircularCenters = function(path, unitRange)
     local mapHeight = maxZ - minZ
     local avgY = totalY / #path
     
-    _G.DebugPrint(string.format("📐 ขนาดแมพ: %.1f x %.1f", mapWidth, mapHeight))
+    DebugPrint(string.format("📐 ขนาดแมพ: %.1f x %.1f", mapWidth, mapHeight))
     
     -- ===== ฟังก์ชันตรวจสอบ =====
     local function IsOnPath(point, threshold)
@@ -6624,7 +6323,7 @@ _G.CalculateCircularCenters = function(path, unitRange)
         end
     end
     
-    _G.DebugPrint(string.format("� หาจุดใกล้ Base: พบ %d จุด", #circularCenters))
+    DebugPrint(string.format("� หาจุดใกล้ Base: พบ %d จุด", #circularCenters))
     local midSpawnBase = Vector3.new(
         (spawnPoint.X + basePoint.X) / 2,
         avgY,
@@ -6645,7 +6344,7 @@ _G.CalculateCircularCenters = function(path, unitRange)
                     Used = false,
                     Type = "mid_spawn_base",
                 })
-                _G.DebugPrint(string.format("✅ Mid Spawn-Base: nodes=%d, dirs=%d, score=%.0f", nodes, dirs, score + 200))
+                DebugPrint(string.format("✅ Mid Spawn-Base: nodes=%d, dirs=%d, score=%.0f", nodes, dirs, score + 200))
             end
         end
     end
@@ -6667,7 +6366,7 @@ _G.CalculateCircularCenters = function(path, unitRange)
                     Used = false,
                     Type = "centroid",
                 })
-                _G.DebugPrint(string.format("✅ Centroid: nodes=%d, dirs=%d, score=%.0f", nodes, dirs, score + 150))
+                DebugPrint(string.format("✅ Centroid: nodes=%d, dirs=%d, score=%.0f", nodes, dirs, score + 150))
             end
         end
     end
@@ -6697,7 +6396,7 @@ _G.CalculateCircularCenters = function(path, unitRange)
                         Used = false,
                         Type = "bbox_center",
                     })
-                    _G.DebugPrint(string.format("✅ BBox Center: nodes=%d, dirs=%d, score=%.0f", nodes, dirs, score + 100))
+                    DebugPrint(string.format("✅ BBox Center: nodes=%d, dirs=%d, score=%.0f", nodes, dirs, score + 100))
                 end
             end
         end
@@ -6821,19 +6520,19 @@ _G.CalculateCircularCenters = function(path, unitRange)
             table.insert(filtered, center)
             local distBase = center.DistToBase or (center.Position - basePoint).Magnitude
             if #filtered <= 5 then
-                _G.DebugPrint(string.format("🎯 #%d: %s | nodes=%d, dirs=%d, distBase=%.0f, score=%.0f", 
+                DebugPrint(string.format("🎯 #%d: %s | nodes=%d, dirs=%d, distBase=%.0f, score=%.0f", 
                     #filtered, center.Type, center.NodesInRange, center.DirectionsHit or 0, distBase, center.Score))
             end
         end
     end
     
-    _G.DebugPrint(string.format("📊 พบตำแหน่งที่ดี %d จุด (เน้นใกล้ Base/จุดจบ)", #filtered))
+    DebugPrint(string.format("📊 พบตำแหน่งที่ดี %d จุด (เน้นใกล้ Base/จุดจบ)", #filtered))
     
     return filtered
 end
 
 -- ===== หา U-Center ที่ยังไม่ได้ใช้และเหมาะกับ unit range =====
-_G.GetAvailableUCenter = function(uShapeCenters, unitRange)
+local function GetAvailableUCenter(uShapeCenters, unitRange)
     for _, uCenter in ipairs(uShapeCenters) do
         if not uCenter.Used then
             -- เช็คว่า unit range นี้ยิงถึงทั้ง 2 ฝั่งหรือไม่ (ต้องตีถึงแน่นอน!)
@@ -6846,7 +6545,7 @@ _G.GetAvailableUCenter = function(uShapeCenters, unitRange)
 end
 
 -- ===== หาตำแหน่งสำหรับ Income Unit (แยกออกจาก Path) =====
-_G.GetIncomePosition = function(positions, path, activeUnits)
+local function GetIncomePosition(positions, path, activeUnits)
     local bestPos = nil
     local bestScore = -math.huge
     
@@ -6896,7 +6595,7 @@ _G.GetIncomePosition = function(positions, path, activeUnits)
         for _, node in ipairs(path) do
             minDist = math.min(minDist, (bestPos - node).Magnitude)
         end
-        _G.DebugPrint(string.format("✅ Income Position: (%.1f, %.1f) | DistFromPath: %.0f", 
+        DebugPrint(string.format("✅ Income Position: (%.1f, %.1f) | DistFromPath: %.0f", 
             bestPos.X, bestPos.Z, minDist))
     end
     
@@ -6904,7 +6603,7 @@ _G.GetIncomePosition = function(positions, path, activeUnits)
 end
 
 -- ===== หา U-Center ที่ยังไม่ได้ใช้และเหมาะกับ unit range (เดิม) =====
-_G.GetAvailableUCenter2 = function(uShapeCenters, unitRange)
+local function GetAvailableUCenter(uShapeCenters, unitRange)
     for _, uCenter in ipairs(uShapeCenters) do
         if not uCenter.Used then
             -- เช็คว่า unit range นี้ยิงถึงทั้ง 2 ฝั่งหรือไม่
@@ -6917,14 +6616,14 @@ _G.GetAvailableUCenter2 = function(uShapeCenters, unitRange)
 end
 
 -- ===== BEST PLACEMENT POSITION =====
-_G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
+GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
     -- ต้องมี unitRange จาก UnitData ถึงจะทำงาน
     if not unitRange then
         return nil
     end
     
-    local path = _G.GetMapPath()
-    local positions = _G.GetPlaceablePositions()
+    local path = GetMapPath()
+    local positions = GetPlaceablePositions()
     gamePhase = gamePhase or "early"
     
     -- คำนวณ Safe Range ตาม Base Range
@@ -6939,7 +6638,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
         safeRange = unitRange * 1.05  -- Range สูง +5%
     end
     
-    _G.DebugPrint(string.format("🔍 %s | Base=%.1f | Safe=%.1f (+%.0f%%)", 
+    DebugPrint(string.format("🔍 %s | Base=%.1f | Safe=%.1f (+%.0f%%)", 
         unitName or "Unknown", unitRange, safeRange, ((safeRange/unitRange - 1) * 100)))
     
     if #path == 0 then
@@ -6947,20 +6646,20 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
     end
     
     -- ===== เช็คว่าเป็น Income Unit หรือไม่ =====
-    if _G.IsIncomeUnit(unitName, unitData) then
-        local activeUnits = _G.GetActiveUnits()
-        return _G.GetIncomePosition(positions, path, activeUnits)
+    if IsIncomeUnit(unitName, unitData) then
+        local activeUnits = GetActiveUnits()
+        return GetIncomePosition(positions, path, activeUnits)
     end
     
     local bestPos = nil
     local bestScore = -math.huge
-    local activeUnits = _G.GetActiveUnits()
+    local activeUnits = GetActiveUnits()
     
     -- ===== กำหนด Spawn Point (จุดเริ่มต้น) =====
     local spawnPoint = path[1]  -- 🟢 สีเขียว = จุดเริ่มต้น
     local basePoint = path[#path]  -- 🔴 สีแดง = จุดจบ
     
-    _G.DebugPrint(string.format("🟢 Spawn: (%.1f, %.1f) | 🔴 Base: (%.1f, %.1f)", 
+    DebugPrint(string.format("🟢 Spawn: (%.1f, %.1f) | 🔴 Base: (%.1f, %.1f)", 
         spawnPoint.X, spawnPoint.Z, basePoint.X, basePoint.Z))
     
     -- ===== หา "กลุ่มศูนย์กลาง" - ตำแหน่งที่มี Units วางอยู่แล้ว =====
@@ -6988,7 +6687,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
     
     if unitsPlaced > 0 then
         groupCenter = Vector3.new(totalX / unitsPlaced, totalY / unitsPlaced, totalZ / unitsPlaced)
-        _G.DebugPrint(string.format("👥 Group Center: (%.1f, %.1f) | Units: %d", 
+        DebugPrint(string.format("👥 Group Center: (%.1f, %.1f) | Units: %d", 
             groupCenter.X, groupCenter.Z, unitsPlaced))
     end
     
@@ -6999,7 +6698,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
     local lateStart = math.floor(#path * 0.6)
     
     -- ===== 🟠 คำนวณ Optimal Zones (จุดส้ม - พื้นที่เหมาะสม) =====
-    local optimalZones = _G.CalculateOptimalZones(path, unitRange)
+    local optimalZones = CalculateOptimalZones(path, unitRange)
     
     -- ===== คำนวณ U-Shape Centers (ใช้ Base Range เพื่อให้ตีถึงแน่นอน) =====
     local uShapeCenters, corners
@@ -7009,15 +6708,15 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
         uShapeCenters = CachedUCenters
         corners = {}
         else
-        uShapeCenters, corners = _G.CalculateUShapeCenters(path, unitRange)
+        uShapeCenters, corners = CalculateUShapeCenters(path, unitRange)
         CachedUCenters = uShapeCenters
         end
     
     -- ===== คำนวณ Circular Centers (จุดศูนย์กลางของ path วงกลม) =====
-    local circularCenters = _G.CalculateCircularCenters(path, unitRange)
+    local circularCenters = CalculateCircularCenters(path, unitRange)
     
     if #circularCenters > 0 then
-        _G.DebugPrint(string.format("⭕ Circular Centers พบ: %d | Best: avgDist=%.1f, nodes=%d, score=%.0f", 
+        DebugPrint(string.format("⭕ Circular Centers พบ: %d | Best: avgDist=%.1f, nodes=%d, score=%.0f", 
             #circularCenters, 
             circularCenters[1].AvgDistance, 
             circularCenters[1].NodesInRange, 
@@ -7048,7 +6747,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
                 circCenter.Used = true
                 table.insert(UsedUCenters, circCenter.Position)
                 
-                _G.DebugPrint(string.format("⭕⭐ ใช้ CIRCULAR CENTER! (%.1f, %.1f) | avgDist=%.1f, nodes=%d | range=%.1f", 
+                DebugPrint(string.format("⭕⭐ ใช้ CIRCULAR CENTER! (%.1f, %.1f) | avgDist=%.1f, nodes=%d | range=%.1f", 
                     circCenter.Position.X, circCenter.Position.Z, 
                     circCenter.AvgDistance, circCenter.NodesInRange, unitRange))
                 
@@ -7080,7 +6779,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
             if not isOccupied then
                 optZone.Used = true
                 
-                _G.DebugPrint(string.format("🟠⭐ ใช้ OPTIMAL ZONE! (%.1f, %.1f) | dist=%.1f, nodes=%d | range=%.1f", 
+                DebugPrint(string.format("🟠⭐ ใช้ OPTIMAL ZONE! (%.1f, %.1f) | dist=%.1f, nodes=%d | range=%.1f", 
                     optZone.Position.X, optZone.Position.Z, 
                     optZone.DistToPath, optZone.NodesInRange, unitRange))
                 
@@ -7090,7 +6789,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
     end
     
     -- ===== Priority 1: หา U-Center ที่ยังไม่ได้ใช้และเหมาะกับ unit range นี้ =====
-    local availableUCenter = _G.GetAvailableUCenter(uShapeCenters, unitRange)
+    local availableUCenter = GetAvailableUCenter(uShapeCenters, unitRange)
     
     if availableUCenter then
         -- เช็คว่าตำแหน่งนี้ยังว่างอยู่หรือไม่
@@ -7114,7 +6813,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
             availableUCenter.Used = true
             table.insert(UsedUCenters, availableUCenter.Position)
             
-            _G.DebugPrint(string.format("⭐⭐ ใช้ U-CENTER! (%.1f, %.1f) | dist1=%.1f, dist2=%.1f | range=%.1f", 
+            DebugPrint(string.format("⭐⭐ ใช้ U-CENTER! (%.1f, %.1f) | dist1=%.1f, dist2=%.1f | range=%.1f", 
                 availableUCenter.Position.X, availableUCenter.Position.Z, 
                 availableUCenter.DistToCorner1, availableUCenter.DistToCorner2, unitRange))
             
@@ -7124,7 +6823,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
     end
     
     -- ===== ถ้าไม่มี Circular/U-Center ว่าง ให้หาตำแหน่งปกติ =====
-    _G.DebugPrint(string.format("📐 U-Centers: %d | Circular: %d | Available: %d", 
+    DebugPrint(string.format("📐 U-Centers: %d | Circular: %d | Available: %d", 
         #uShapeCenters, #circularCenters,
         (#uShapeCenters + #circularCenters) - #UsedUCenters))
     
@@ -7204,7 +6903,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
         end
     end
     
-    _G.DebugPrint(string.format("📍 Path Coverage: Uncovered=%d / Total=%d", uncoveredCount, #path))
+    DebugPrint(string.format("📍 Path Coverage: Uncovered=%d / Total=%d", uncoveredCount, #path))
     
     -- ===== ฟังก์ชันคำนวณความคุ้มค่าของตำแหน่ง =====
     local function CalculatePositionValue(pos, range)
@@ -7417,7 +7116,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
                     -- ยิ่งยิงได้มาก nodes ยิ่งดี
                     circBonus = circBonus + nodesHit * 30
                     
-                    _G.DebugPrint(string.format("⭕ Circular bonus: +%.0f (nodes=%d)", circBonus, nodesHit))
+                    DebugPrint(string.format("⭕ Circular bonus: +%.0f (nodes=%d)", circBonus, nodesHit))
                     score = score + math.max(0, circBonus)
                 elseif distToCircCenter <= unitRange * 0.5 then
                     local circBonus = 400 - distToCircCenter * 10
@@ -7448,13 +7147,13 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
                         -- อยู่ตรงกลางพอดี! ให้ Bonus สูงสุด
                         local centerBonus = 600 - distDiff * 100
                         uBonus = uBonus + centerBonus
-                        _G.DebugPrint(string.format("⭐⭐ U-CENTER! dist1=%.1f, dist2=%.1f, diff=%.1f", dist1, dist2, distDiff))
+                        DebugPrint(string.format("⭐⭐ U-CENTER! dist1=%.1f, dist2=%.1f, diff=%.1f", dist1, dist2, distDiff))
                     elseif distDiff < 5 then
                         uBonus = uBonus + 400
-                        _G.DebugPrint(string.format("⭐ ใกล้ศูนย์กลาง U! dist1=%.1f, dist2=%.1f, diff=%.1f", dist1, dist2, distDiff))
+                        DebugPrint(string.format("⭐ ใกล้ศูนย์กลาง U! dist1=%.1f, dist2=%.1f, diff=%.1f", dist1, dist2, distDiff))
                     else
                         uBonus = uBonus + 200
-                        _G.DebugPrint(string.format("🎯 ยิงได้ 2 ฝั่ง U! dist1=%.1f, dist2=%.1f", dist1, dist2))
+                        DebugPrint(string.format("🎯 ยิงได้ 2 ฝั่ง U! dist1=%.1f, dist2=%.1f", dist1, dist2))
                     end
                 elseif dist1 <= unitRange or dist2 <= unitRange then
                     uBonus = uBonus + 50
@@ -7608,7 +7307,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
                     end
                 end
                 
-                _G.DebugPrint(string.format("📊 ตำแหน่งใหม่ดีกว่า: (%.1f, %.1f) | nodes=%d, same=%d, score=%.0f", 
+                DebugPrint(string.format("📊 ตำแหน่งใหม่ดีกว่า: (%.1f, %.1f) | nodes=%d, same=%d, score=%.0f", 
                     pos.X, pos.Z, nodesHit, sameNearby, score))
             end
         end
@@ -7651,7 +7350,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
             end
         end
         
-        _G.DebugPrint(string.format("✅ Best: (%.1f, %.1f) | Coverage: %.1f%% (%d/%d) | Same: %d | DistBase: %.0f", 
+        DebugPrint(string.format("✅ Best: (%.1f, %.1f) | Coverage: %.1f%% (%d/%d) | Same: %d | DistBase: %.0f", 
             bestPos.X, bestPos.Z, coveragePercent, nodesInSafeRange, #path, sameNearby, distBase))
     else
         bestPos = #positions > 0 and positions[1] or nil
@@ -7661,7 +7360,7 @@ _G.GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
 end
 
 -- ===== PLACEMENT VALIDATION =====
-_G.CanPlaceAtPosition = function(unitName, position)
+CanPlaceAtPosition = function(unitName, position)
     if PlacementValidationHandler and PlacementValidationHandler.CanFitUnit then
         local canPlace = false
         pcall(function()
@@ -7677,12 +7376,12 @@ _G.CanPlaceAtPosition = function(unitName, position)
 end
 
 -- ===== PLACE UNIT =====
-_G.PlaceUnit = function(slot, position)
+PlaceUnit = function(slot, position)
     if not position then 
         return false 
     end
     
-    local hotbar = _G.GetHotbarUnits()
+    local hotbar = GetHotbarUnits()
     if not hotbar then
         return false
     end
@@ -7697,32 +7396,32 @@ _G.PlaceUnit = function(slot, position)
     if timeSinceLastPlace < 1.0 then
         -- Debug: log เฉพาะเมื่อครั้งแรกที่โดน cooldown block (ลด spam)
         if not _G.LastCooldownBlock or (tick() - _G.LastCooldownBlock) > 2 then
-            _G.DebugPrint(string.format("⏱️ Cooldown: รอ %.1f วินาทีก่อนวางตัวถัดไป", 1.0 - timeSinceLastPlace))
+            DebugPrint(string.format("⏱️ Cooldown: รอ %.1f วินาทีก่อนวางตัวถัดไป", 1.0 - timeSinceLastPlace))
             _G.LastCooldownBlock = tick()
         end
         return false
     end
     
     -- เช็คเงิน
-    local yen = _G.GetYen()
+    local yen = GetYen()
     if unit.Price > 0 and yen < unit.Price then
         return false
     end
     
     -- เช็ค slot limit
-    if not _G.CanPlaceSlot(slot) then
-        local limit, current = _G.GetSlotLimit(slot)
-        _G.DebugPrint(string.format("⚠️ ไม่สามารถวาง %s - ถึงขีดจำกัดแล้ว (%d/%d)", unit.Name, current, limit))
+    if not CanPlaceSlot(slot) then
+        local limit, current = GetSlotLimit(slot)
+        DebugPrint(string.format("⚠️ ไม่สามารถวาง %s - ถึงขีดจำกัดแล้ว (%d/%d)", unit.Name, current, limit))
         return false
     end
     
     local validPosition = position
-    local canPlaceOriginal = _G.CanPlaceAtPosition(unit.Name, position)
+    local canPlaceOriginal = CanPlaceAtPosition(unit.Name, position)
     
     if not canPlaceOriginal then
         -- Debug: log เมื่อตำแหน่งถูกใช้แล้ว
         if not _G.LastPositionOccupied or (tick() - _G.LastPositionOccupied) > 2 then
-            _G.DebugPrint(string.format("⚠️ ตำแหน่ง (%.1f, %.1f, %.1f) ถูกใช้แล้ว - กำลังหาตำแหน่งใกล้ๆ", 
+            DebugPrint(string.format("⚠️ ตำแหน่ง (%.1f, %.1f, %.1f) ถูกใช้แล้ว - กำลังหาตำแหน่งใกล้ๆ", 
                 position.X, position.Y, position.Z))
             _G.LastPositionOccupied = tick()
         end
@@ -7735,10 +7434,10 @@ _G.PlaceUnit = function(slot, position)
         local foundAlternative = false
         for _, offset in ipairs(offsets) do
             local testPos = position + offset
-            if _G.CanPlaceAtPosition(unit.Name, testPos) then
+            if CanPlaceAtPosition(unit.Name, testPos) then
                 validPosition = testPos
                 foundAlternative = true
-                _G.DebugPrint(string.format("✅ พบตำแหน่งใหม่: (%.1f, %.1f, %.1f)", 
+                DebugPrint(string.format("✅ พบตำแหน่งใหม่: (%.1f, %.1f, %.1f)", 
                     testPos.X, testPos.Y, testPos.Z))
                 break
             end
@@ -7751,7 +7450,7 @@ _G.PlaceUnit = function(slot, position)
     
     local unitID = unit.ID or (unit.Data and unit.Data.ID) or slot
     
-    _G.DebugPrint(string.format("🎯 วาง %s (slot %d) ที่ %.1f, %.1f, %.1f", 
+    DebugPrint(string.format("🎯 วาง %s (slot %d) ที่ %.1f, %.1f, %.1f", 
         unit.Name, slot, validPosition.X, validPosition.Y, validPosition.Z))
     
     -- ⭐ แปลง ID เป็นตัวเลข (ตาม Remote format)
@@ -7803,7 +7502,7 @@ _G.PlaceUnit = function(slot, position)
                     local dist = (activeUnit.Position - validPosition).Magnitude
                     if dist < 5 and activeUnit.Name == unit.Name then
                         realGUID = guid
-                        _G.DebugPrint(string.format("🔍 พบ Real GUID: %s สำหรับ %s", guid, unit.Name))
+                        DebugPrint(string.format("🔍 พบ Real GUID: %s สำหรับ %s", guid, unit.Name))
                         break
                     end
                 end
@@ -7811,7 +7510,7 @@ _G.PlaceUnit = function(slot, position)
         end
         
         if not realGUID then
-            _G.DebugPrint(string.format("⚠️ ไม่พบ Real GUID สำหรับ %s ที่ (%.1f, %.1f, %.1f)", unit.Name, validPosition.X, validPosition.Y, validPosition.Z))
+            DebugPrint(string.format("⚠️ ไม่พบ Real GUID สำหรับ %s ที่ (%.1f, %.1f, %.1f)", unit.Name, validPosition.X, validPosition.Y, validPosition.Z))
         end
         
         return true, realGUID
@@ -7829,7 +7528,7 @@ end
 -- - #unit.Data.Upgrades = max level
 
 -- ⭐ Helper: หา UnitData จาก UnitsHUD โดยใช้ชื่อ unit (สำหรับ Upgrades)
-_G.GetUnitDataFromHUD = function(unitName)
+local function GetUnitDataFromHUD(unitName)
     if not UnitsHUD or not UnitsHUD._Cache then return nil end
     for _, v in pairs(UnitsHUD._Cache) do
         if v and v ~= "None" then
@@ -7843,7 +7542,7 @@ _G.GetUnitDataFromHUD = function(unitName)
 end
 
 -- ⭐ Helper: ดึง unit.Data จาก ClientUnitHandler โดยใช้ GUID
-_G.GetUnitDataFromActiveUnits = function(guid)
+local function GetUnitDataFromActiveUnits(guid)
     if not ClientUnitHandler or not ClientUnitHandler._ActiveUnits then return nil end
     local unit = ClientUnitHandler._ActiveUnits[guid]
     if unit then
@@ -7853,11 +7552,11 @@ _G.GetUnitDataFromActiveUnits = function(guid)
 end
 
 -- หา Upgrade Cost (ตาม Decom: Upgrades[level].Price)
-_G.GetUpgradeCost = function(unit)
+GetUpgradeCost = function(unit)
     if not unit then return math.huge end
     
     -- ⭐ ดึง unit.Data จาก ClientUnitHandler (real-time)
-    local data = _G.GetUnitDataFromActiveUnits(unit.GUID)
+    local data = GetUnitDataFromActiveUnits(unit.GUID)
     if not data then
         data = unit.Data
     end
@@ -7872,7 +7571,7 @@ _G.GetUpgradeCost = function(unit)
     
     -- ถ้าไม่มี Upgrades ใน Data → ลองหาจาก UnitsHUD
     if not upgrades then
-        local hudData = _G.GetUnitDataFromHUD(unit.Name)
+        local hudData = GetUnitDataFromHUD(unit.Name)
         if hudData then
             upgrades = hudData.Upgrades
         end
@@ -7898,11 +7597,11 @@ _G.GetUpgradeCost = function(unit)
 end
 
 -- หา Max Upgrade Level (ตาม Decom: #data.Upgrades)
-_G.GetMaxUpgradeLevel = function(unit)
+GetMaxUpgradeLevel = function(unit)
     if not unit then return 0 end
     
     -- ⭐ ดึง unit.Data จาก ClientUnitHandler (real-time)
-    local data = _G.GetUnitDataFromActiveUnits(unit.GUID)
+    local data = GetUnitDataFromActiveUnits(unit.GUID)
     if not data then
         data = unit.Data
     end
@@ -7914,7 +7613,7 @@ _G.GetMaxUpgradeLevel = function(unit)
     
     -- ถ้าไม่มี Upgrades ใน Data → ลองหาจาก UnitsHUD
     if not upgrades then
-        local hudData = _G.GetUnitDataFromHUD(unit.Name)
+        local hudData = GetUnitDataFromHUD(unit.Name)
         if hudData then
             upgrades = hudData.Upgrades
         end
@@ -7928,11 +7627,11 @@ _G.GetMaxUpgradeLevel = function(unit)
 end
 
 -- หา Current Upgrade Level (ตาม Decom: data.CurrentUpgrade)
-_G.GetCurrentUpgradeLevel = function(unit)
+GetCurrentUpgradeLevel = function(unit)
     if not unit then return 0 end
     
     -- ⭐ ดึง unit.Data จาก ClientUnitHandler (real-time)
-    local data = _G.GetUnitDataFromActiveUnits(unit.GUID)
+    local data = GetUnitDataFromActiveUnits(unit.GUID)
     if not data then
         data = unit.Data
     end
@@ -7944,14 +7643,14 @@ _G.GetCurrentUpgradeLevel = function(unit)
 end
 
 -- เช็คว่า Unit อัพ MAX แล้วหรือยัง (ตาม Decom: CurrentUpgrade >= #Upgrades)
-_G.IsUnitMaxed = function(unit)
-    local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-    local maxLevel = _G.GetMaxUpgradeLevel(unit)
+local function IsUnitMaxed(unit)
+    local currentLevel = GetCurrentUpgradeLevel(unit)
+    local maxLevel = GetMaxUpgradeLevel(unit)
     return currentLevel >= maxLevel
 end
 
 -- หา Unit ที่แรงที่สุด (ใช้ Base Damage จาก Decom.lua)
-_G.GetStrongestUnit = function(units)
+local function GetStrongestUnit(units)
     local best = nil
     local bestDamage = -math.huge
     
@@ -7967,7 +7666,7 @@ _G.GetStrongestUnit = function(units)
         
         -- ถ้าไม่เจอ ลองเช็คจาก ClientUnitHandler
         if baseDamage == 0 then
-            local data = _G.GetUnitDataFromActiveUnits(unit.GUID)
+            local data = GetUnitDataFromActiveUnits(unit.GUID)
             if data then
                 baseDamage = data.Damage or 0
             end
@@ -7988,32 +7687,32 @@ _G.GetStrongestUnit = function(units)
 end
 
 -- Upgrade Unit (ระบบจาก Decom)
-_G.UpgradeUnit = function(unit)
+UpgradeUnit = function(unit)
     if not unit or not unit.GUID then return false end
     
     -- เช็ค cooldown
     if tick() - LastUpgradeTime < 0.5 then return false end
     
     -- ⭐ ใช้ฟังก์ชันจาก Decom
-    local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-    local maxLevel = _G.GetMaxUpgradeLevel(unit)
+    local currentLevel = GetCurrentUpgradeLevel(unit)
+    local maxLevel = GetMaxUpgradeLevel(unit)
     
     -- เช็ค max level (ตาม Decom: CurrentUpgrade >= #Upgrades)
     if currentLevel >= maxLevel then
-        _G.DebugPrint(string.format("✅ %s อัพ MAX แล้ว (%d/%d)", unit.Name, currentLevel, maxLevel))
+        DebugPrint(string.format("✅ %s อัพ MAX แล้ว (%d/%d)", unit.Name, currentLevel, maxLevel))
         return false
     end
     
-    local cost = _G.GetUpgradeCost(unit)
+    local cost = GetUpgradeCost(unit)
     
     -- ⭐ เช็คว่า cost valid หรือไม่ (ไม่ใช่ math.huge)
     if cost >= math.huge then
-        _G.DebugPrint(string.format("❌ ไม่พบ Upgrade cost สำหรับ %s", unit.Name or "Unknown"))
+        DebugPrint(string.format("❌ ไม่พบ Upgrade cost สำหรับ %s", unit.Name or "Unknown"))
         return false
     end
     
     -- เช็คเงิน
-    local yen = _G.GetYen()
+    local yen = GetYen()
     if yen < cost then
         return false
     end
@@ -8027,7 +7726,7 @@ _G.UpgradeUnit = function(unit)
     if success then
         LastUpgradeTime = tick()
         CurrentYen = yen - cost
-        _G.DebugPrint(string.format("⬆️ Upgrade %s [%d→%d] Cost: %d", 
+        DebugPrint(string.format("⬆️ Upgrade %s [%d→%d] Cost: %d", 
             unit.Name or "Unknown", currentLevel, currentLevel + 1, cost))
     end
     
@@ -8035,7 +7734,7 @@ _G.UpgradeUnit = function(unit)
 end
 
 -- ===== SELL UNIT =====
-_G.SellUnit = function(unit)
+SellUnit = function(unit)
     if not unit or not unit.GUID then return false end
     
     -- ⭐⭐⭐ NEVER SELL: Lich King (Ruler) - ทุกด่าน
@@ -8072,10 +7771,10 @@ _G.SellUnit = function(unit)
 end
 
 -- ===== SELL ALL MONEY UNITS (Max Wave) =====
-_G.HasSoldMoneyUnits = false  -- ป้องกันไม่ให้ขายซ้ำ
+local HasSoldMoneyUnits = false  -- ป้องกันไม่ให้ขายซ้ำ
 
-_G.SellAllMoneyUnits = function()
-    local activeUnits = _G.GetActiveUnits()
+local function SellAllMoneyUnits()
+    local activeUnits = GetActiveUnits()
     local soldCount = 0
     local unsellableCount = 0
     
@@ -8085,7 +7784,7 @@ _G.SellAllMoneyUnits = function()
     for _, unit in pairs(activeUnits) do
         -- ✅ FIX: เช็คว่าเป็นตัวเงินจริงๆ (IsIncomeUnit) หรือ ClearEnemy Unit
         -- ⭐ FIX: ใช้ unit.Data or {} เพื่อป้องกัน nil
-        local isEconomy = _G.IsIncomeUnit(unit.Name, unit.Data or {})
+        local isEconomy = IsIncomeUnit(unit.Name, unit.Data or {})
         local isClearEnemy = ClearEnemyUnits[unit.GUID] ~= nil
         
         -- ขายทั้งตัวเงินและ ClearEnemy Units
@@ -8103,7 +7802,7 @@ _G.SellAllMoneyUnits = function()
         end
     end
     
-    _G.DebugPrint(string.format("📋 พบ %d units ที่ต้องขาย (Economy + ClearEnemy)", #unitsToSell))
+    DebugPrint(string.format("📋 พบ %d units ที่ต้องขาย (Economy + ClearEnemy)", #unitsToSell))
     
     -- ⭐ ขายทีละตัว
     for _, info in ipairs(unitsToSell) do
@@ -8114,16 +7813,16 @@ _G.SellAllMoneyUnits = function()
             CanSell = true
         }
         
-        if _G.SellUnit(unitWrapper) then
+        if SellUnit(unitWrapper) then
             soldCount = soldCount + 1
             if info.isClearEnemy then
-                _G.DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s", unit.Name))
+                DebugPrint(string.format("💸 ขาย ClearEnemy Unit: %s", unit.Name))
                 ClearEnemyUnits[unit.GUID] = nil
             else
-                _G.DebugPrint(string.format("💸 ขายตัวเงิน %s", unit.Name))
+                DebugPrint(string.format("💸 ขายตัวเงิน %s", unit.Name))
             end
         else
-            _G.DebugPrint(string.format("❌ ขายไม่สำเร็จ: %s (GUID=%s)", unit.Name, unit.GUID or "nil"))
+            DebugPrint(string.format("❌ ขายไม่สำเร็จ: %s (GUID=%s)", unit.Name, unit.GUID or "nil"))
         end
         
         -- ⭐ FIX: รอ 0.55 วินาที (มากกว่า cooldown 0.5 วินาที)
@@ -8131,7 +7830,7 @@ _G.SellAllMoneyUnits = function()
     end
     
     if soldCount > 0 then
-        _G.DebugPrint(string.format("🏆 MAX WAVE! ขายทุกอย่างที่เกี่ยวกับตัวเงิน %d ตัว (ข้าม %d UNSELLABLE)", soldCount, unsellableCount))
+        DebugPrint(string.format("🏆 MAX WAVE! ขายทุกอย่างที่เกี่ยวกับตัวเงิน %d ตัว (ข้าม %d UNSELLABLE)", soldCount, unsellableCount))
         -- รีเซ็ตการติดตาม ClearEnemy
         ClearEnemyUnits = {}
         ClearEnemySoldForEnemy = {}
@@ -8139,15 +7838,15 @@ _G.SellAllMoneyUnits = function()
         ClearEnemySlotFullLogged = {}  -- ✅ รีเซ็ต log tracking
         ClearEnemyFoundDamageLogged = {}  -- ✅ รีเซ็ต log tracking
     else
-        _G.DebugPrint(string.format("⚠️ ไม่ได้ขายอะไรเลย (พบ %d ตัว, UNSELLABLE %d ตัว)", #unitsToSell, unsellableCount))
+        DebugPrint(string.format("⚠️ ไม่ได้ขายอะไรเลย (พบ %d ตัว, UNSELLABLE %d ตัว)", #unitsToSell, unsellableCount))
     end
 end
 
 -- ===== GET NEXT ECONOMY SLOT =====
 _G.APState.LastLoggedEconomySlot = {slot = -1, current = -1, price = -1, yen = -1}
 
-_G.GetNextEconomySlot = function()
-    local hotbar = _G.GetHotbarUnits()
+local function GetNextEconomySlot()
+    local hotbar = GetHotbarUnits()
     local placePriority = {1, 2, 3, 4, 5, 6}  -- Hard-coded priority
     
     -- Debug: แสดงจำนวน units ใน hotbar
@@ -8162,15 +7861,15 @@ _G.GetNextEconomySlot = function()
         local unit = hotbar[slotNum]
         if unit then
             -- เช็คจาก flag หรือ UnitData
-            local isEconomy = unit.IsIncome or (unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data))
+            local isEconomy = unit.IsIncome or (unit.Data and IsIncomeUnit(unit.Name, unit.Data))
             
             if isEconomy then
                 -- ⭐⭐⭐ เช็ค Trait limit (ส่ง UnitObject ที่มี .Trait)
-                local canPlaceMore = _G.CanPlaceMoreUnits(unit.Name, unit.UnitObject)
+                local canPlaceMore = CanPlaceMoreUnits(unit.Name, unit.UnitObject)
                 
-                local limit, current = _G.GetSlotLimit(slotNum)
+                local limit, current = GetSlotLimit(slotNum)
                 local canPlace = current < limit
-                local yen = _G.GetYen()
+                local yen = GetYen()
                 local hasEnoughMoney = yen >= unit.Price
                 
                 -- Debug log เฉพาะเมื่อมีการเปลี่ยนแปลง
@@ -8179,7 +7878,7 @@ _G.GetNextEconomySlot = function()
                    lastLog.current ~= current or 
                    lastLog.price ~= unit.Price or 
                    math.abs((lastLog.yen or 0) - yen) > 50 then
-                    _G.DebugPrint(string.format("💵 Economy Slot %d: %s | %d/%d | Price: %d | Yen: %d | CanPlace: %s | TraitLimit: %s", 
+                    DebugPrint(string.format("💵 Economy Slot %d: %s | %d/%d | Price: %d | Yen: %d | CanPlace: %s | TraitLimit: %s", 
                         slotNum, unit.Name, current, limit, unit.Price, yen, tostring(canPlace and hasEnoughMoney), tostring(canPlaceMore)))
                     _G.APState.LastLoggedEconomySlot = {slot = slotNum, current = current, price = unit.Price, yen = yen}
                 end
@@ -8195,56 +7894,19 @@ _G.GetNextEconomySlot = function()
 end
 
 -- ===== GET STAGE/MAP NAME =====
-_G.GetCurrentStageName = function()
+local function GetCurrentStageName()
     local stageName = "Unknown"
     pcall(function()
-        -- วิธี 1: จาก workspace.Map.Name (ชื่อจริงของ Map)
+        -- วิธี 1: จาก workspace.Map.Name
         if workspace:FindFirstChild("Map") then
             stageName = workspace.Map.Name
         end
-        
-        -- วิธี 2: จาก ReplicatedStorage.Modules.Data.StagesData
-        if stageName == "Unknown" or stageName == "Map" then
-            local RS = game:GetService("ReplicatedStorage")
-            local modules = RS:FindFirstChild("Modules")
-            if modules then
-                local dataFolder = modules:FindFirstChild("Data")
-                if dataFolder then
-                    local stagesData = dataFolder:FindFirstChild("StagesData")
-                    if stagesData then
-                        local success, data = pcall(function()
-                            return require(stagesData)
-                        end)
-                        if success and data then
-                            -- หา current stage จาก GameData
-                            local gameData = RS:FindFirstChild("GameData")
-                            if gameData then
-                                local stageType = gameData:FindFirstChild("StageType")
-                                local stage = gameData:FindFirstChild("Stage")
-                                if stageType and stage then
-                                    local stageTypeVal = stageType.Value or stageType:GetAttribute("Value")
-                                    local stageVal = stage.Value or stage:GetAttribute("Value")
-                                    if data[stageTypeVal] and data[stageTypeVal][stageVal] then
-                                        local stageInfo = data[stageTypeVal][stageVal]
-                                        if stageInfo.StageData and stageInfo.StageData.Name then
-                                            stageName = stageInfo.StageData.Name
-                                        end
-                                    end
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-        
-        -- วิธี 3: จาก Attribute
+        -- วิธี 2: จาก Attribute
         if stageName == "Unknown" or stageName == "Map" then
             local attr = workspace:GetAttribute("StageName") or workspace:GetAttribute("MapName")
             if attr then stageName = attr end
         end
-        
-        -- วิธี 4: จาก ReplicatedStorage.GameData StringValue
+        -- วิธี 3: จาก ReplicatedStorage.GameData
         if stageName == "Unknown" or stageName == "Map" then
             local gameData = game:GetService("ReplicatedStorage"):FindFirstChild("GameData")
             if gameData then
@@ -8254,32 +7916,13 @@ _G.GetCurrentStageName = function()
                 end
             end
         end
-        
-        -- วิธี 5: จาก Map children names (ค้นหาชื่อที่มี Burning, Golden, etc.)
-        if stageName == "Unknown" or stageName == "Map" then
-            if workspace:FindFirstChild("Map") then
-                for _, child in pairs(workspace.Map:GetChildren()) do
-                    local name = child.Name:lower()
-                    if name:find("burning") or name:find("golden") or name:find("spirit") or name:find("castle") then
-                        stageName = child.Name
-                        break
-                    end
-                end
-            end
-        end
     end)
-    
-    -- Debug log สำหรับ special stages
-    if stageName:lower():find("burning") or stageName:lower():find("golden") then
-        print(string.format("[StageName] 🌟 Detected: %s", stageName))
-    end
-    
     return stageName
 end
 
 -- ===== GET GATE/ENTRANCE POSITION (จุดเริ่มต้น path - หน้าประตู) =====
-_G.GetGatePosition = function()
-    local path = _G.GetMapPath()
+local function GetGatePosition()
+    local path = GetMapPath()
     if path and #path > 0 then
         return path[1]  -- จุดเริ่มต้น = หน้าประตู (สีเขียว)
     end
@@ -8288,8 +7931,8 @@ end
 
 -- ===== GET IMPRISONED ISLAND SPECIFIC POSITION =====
 -- ⭐ ตำแหน่งเฉพาะสำหรับ Imprisoned Island (ตามรูปที่ user ให้มา)
-_G.GetImprisonedIslandPosition = function()
-    local path = _G.GetMapPath()
+local function GetImprisonedIslandPosition()
+    local path = GetMapPath()
     if not path or #path < 3 then return nil end
     
     -- ⭐ Imprisoned Island: วางใกล้จุดเริ่มต้น path แต่อยู่ข้างทาง (ไม่กีดขวาง)
@@ -8314,22 +7957,22 @@ _G.GetImprisonedIslandPosition = function()
 end
 
 -- ===== GET BEST FRONT POSITION (ใกล้ประตูที่สุด) =====
-_G.GetBestFrontPosition = function(unitRange, forceImprisonedIsland)
+local function GetBestFrontPosition(unitRange, forceImprisonedIsland)
     -- ⭐⭐⭐ Imprisoned Island: ใช้ตำแหน่งเฉพาะ
-    local stageName = _G.GetCurrentStageName()
+    local stageName = GetCurrentStageName()
     local isImprisonedIsland = stageName:lower():find("imprisoned") or stageName:lower():find("island")
     
     if isImprisonedIsland or forceImprisonedIsland then
-        local specificPos = _G.GetImprisonedIslandPosition()
+        local specificPos = GetImprisonedIslandPosition()
         if specificPos then
             return specificPos
         end
     end
     
-    local gatePos = _G.GetGatePosition()
+    local gatePos = GetGatePosition()
     if not gatePos then return nil end
     
-    local path = _G.GetMapPath()
+    local path = GetMapPath()
     if not path or #path < 2 then return nil end
     
     -- หาตำแหน่งที่ดีที่สุดใกล้ประตู (ใน range ของ unit)
@@ -8373,8 +8016,8 @@ end
 
 -- ===== GET NEXT DAMAGE SLOT =====
 _G.APState._LastDamageSlotCheck = ""
-_G.GetNextDamageSlot = function()
-    local hotbar = _G.GetHotbarUnits()
+local function GetNextDamageSlot()
+    local hotbar = GetHotbarUnits()
     local placePriority = {1, 2, 3, 4, 5, 6}  -- Hard-coded priority
     
     local logData = {}
@@ -8387,20 +8030,20 @@ _G.GetNextDamageSlot = function()
         local unit = hotbar[slotNum]
         if unit then
             -- ข้าม Economy units
-            local isEconomy = unit.IsIncome or (unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data))
-            local isBuff = unit.IsBuff or (unit.Data and _G.IsBuffUnit(unit.Name, unit.Data))
+            local isEconomy = unit.IsIncome or (unit.Data and IsIncomeUnit(unit.Name, unit.Data))
+            local isBuff = unit.IsBuff or (unit.Data and IsBuffUnit(unit.Name, unit.Data))
             local isDamage = not isEconomy and not isBuff
             
             -- ⭐⭐⭐ ข้าม Unit ที่มี Passive ต้องตี Enemy ก่อน
-            local isPassiveSummon = unit.Data and _G.IsPassiveSummonUnit(unit.Name, unit.Data)
+            local isPassiveSummon = unit.Data and IsPassiveSummonUnit(unit.Name, unit.Data)
             
             -- ⭐⭐⭐ เช็คว่ายังวางได้อีกไหม (Trait limit - ส่ง UnitObject)
-            local canPlaceMore = _G.CanPlaceMoreUnits(unit.Name, unit.UnitObject)
+            local canPlaceMore = CanPlaceMoreUnits(unit.Name, unit.UnitObject)
             
             if isDamage and not isPassiveSummon and canPlaceMore then
-                local limit, current = _G.GetSlotLimit(slotNum)
+                local limit, current = GetSlotLimit(slotNum)
                 local canPlace = current < limit
-                local yen = _G.GetYen()
+                local yen = GetYen()
                 
                 local status = string.format("Slot%d:%s(%d/%d,Y%d/%d,%s)", 
                     slotNum, unit.Name, current, limit, yen, unit.Price, canPlace and "✓" or "✗")
@@ -8429,9 +8072,9 @@ _G.GetNextDamageSlot = function()
 end
 
 -- ===== GET CHEAPEST DAMAGE SLOT (สำหรับ Normal Mode - check limit) =====
-_G.GetCheapestDamageSlot = function()
-    local hotbar = _G.GetHotbarUnits()
-    local yen = _G.GetYen()
+local function GetCheapestDamageSlot()
+    local hotbar = GetHotbarUnits()
+    local yen = GetYen()
     local cheapestSlot = nil
     local cheapestUnit = nil
     local cheapestPrice = math.huge
@@ -8440,15 +8083,15 @@ _G.GetCheapestDamageSlot = function()
         local unit = hotbar[slotNum]
         if unit then
             -- ข้าม Economy units
-            local isEconomy = unit.IsIncome or (unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data))
-            local isBuff = unit.IsBuff or (unit.Data and _G.IsBuffUnit(unit.Name, unit.Data))
+            local isEconomy = unit.IsIncome or (unit.Data and IsIncomeUnit(unit.Name, unit.Data))
+            local isBuff = unit.IsBuff or (unit.Data and IsBuffUnit(unit.Name, unit.Data))
             local isDamage = not isEconomy and not isBuff
             
             -- ⭐ ข้าม Passive Summon Unit
-            local isPassiveSummon = unit.Data and _G.IsPassiveSummonUnit(unit.Name, unit.Data)
+            local isPassiveSummon = unit.Data and IsPassiveSummonUnit(unit.Name, unit.Data)
             
             if isDamage and not isPassiveSummon then
-                local limit, current = _G.GetSlotLimit(slotNum)
+                local limit, current = GetSlotLimit(slotNum)
                 local canPlace = current < limit
                 
                 if canPlace and yen >= unit.Price and unit.Price < cheapestPrice then
@@ -8461,7 +8104,7 @@ _G.GetCheapestDamageSlot = function()
     end
     
     if cheapestSlot then
-        _G.DebugPrint(string.format("💰 พบ Damage ถูกที่สุด: %s (slot %d, ราคา %d)", 
+        DebugPrint(string.format("💰 พบ Damage ถูกที่สุด: %s (slot %d, ราคา %d)", 
             cheapestUnit.Name, cheapestSlot, cheapestPrice))
     end
     
@@ -8469,13 +8112,13 @@ _G.GetCheapestDamageSlot = function()
 end
 
 -- ===== เช็คว่ามี Summon Unit ใน Hotbar หรือไม่ =====
-_G.HasSummonUnitInHotbar = function()
-    local hotbar = _G.GetHotbarUnits()
+local function HasSummonUnitInHotbar()
+    local hotbar = GetHotbarUnits()
     
     for slotNum = 1, 6 do
         local unit = hotbar[slotNum]
         if unit and unit.Data then
-            if _G.IsPassiveSummonUnit(unit.Name, unit.Data) then
+            if IsPassiveSummonUnit(unit.Name, unit.Data) then
                 return true, slotNum, unit
             end
         end
@@ -8485,23 +8128,23 @@ _G.HasSummonUnitInHotbar = function()
 end
 
 -- ===== GET SUMMON UNIT SLOT (สำหรับ Emergency Mode with Summon) =====
-_G.GetSummonUnitSlot = function()
-    local hotbar = _G.GetHotbarUnits()
-    local yen = _G.GetYen()
+local function GetSummonUnitSlot()
+    local hotbar = GetHotbarUnits()
+    local yen = GetYen()
     
     for slotNum = 1, 6 do
         local unit = hotbar[slotNum]
         if unit and unit.Data then
-            local isPassiveSummon = _G.IsPassiveSummonUnit(unit.Name, unit.Data)
+            local isPassiveSummon = IsPassiveSummonUnit(unit.Name, unit.Data)
             
             -- ⭐⭐⭐ เช็ค Trait limit (ส่ง UnitObject)
-            local canPlaceMore = _G.CanPlaceMoreUnits(unit.Name, unit.UnitObject)
+            local canPlaceMore = CanPlaceMoreUnits(unit.Name, unit.UnitObject)
             
             if isPassiveSummon and canPlaceMore and yen >= unit.Price then
-                local limit, current = _G.GetSlotLimit(slotNum)
+                local limit, current = GetSlotLimit(slotNum)
                 
                 -- ⚠️ ไม่ check slot limit - Emergency Mode bypass slot limit แต่เคารพ Trait limit
-                _G.DebugPrint(string.format("🎯 พบ Summon Unit: %s (slot %d) | %d/%d | ราคา %d", 
+                DebugPrint(string.format("🎯 พบ Summon Unit: %s (slot %d) | %d/%d | ราคา %d", 
                     unit.Name, slotNum, current, limit, unit.Price))
                 return slotNum, unit
             end
@@ -8512,9 +8155,9 @@ _G.GetSummonUnitSlot = function()
 end
 
 -- ===== GET CHEAPEST DAMAGE SLOT NO LIMIT (สำหรับ Emergency Mode - bypass limit) =====
-_G.GetCheapestDamageSlotNoLimit = function()
-    local hotbar = _G.GetHotbarUnits()
-    local yen = _G.GetYen()
+GetCheapestDamageSlotNoLimit = function()
+    local hotbar = GetHotbarUnits()
+    local yen = GetYen()
     local cheapestSlot = nil
     local cheapestUnit = nil
     local cheapestPrice = math.huge
@@ -8522,15 +8165,15 @@ _G.GetCheapestDamageSlotNoLimit = function()
     for slotNum = 1, 6 do
         local unit = hotbar[slotNum]
         if unit then
-            local isEconomy = unit.IsIncome or (unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data))
-            local isBuff = unit.IsBuff or (unit.Data and _G.IsBuffUnit(unit.Name, unit.Data))
+            local isEconomy = unit.IsIncome or (unit.Data and IsIncomeUnit(unit.Name, unit.Data))
+            local isBuff = unit.IsBuff or (unit.Data and IsBuffUnit(unit.Name, unit.Data))
             local isDamage = not isEconomy and not isBuff
             
             -- ⭐ ข้าม Passive Summon Unit (แม้ Emergency ก็ไม่ควรวาง)
-            local isPassiveSummon = unit.Data and _G.IsPassiveSummonUnit(unit.Name, unit.Data)
+            local isPassiveSummon = unit.Data and IsPassiveSummonUnit(unit.Name, unit.Data)
             
             -- ⭐⭐⭐ เช็ค Trait limit (ส่ง UnitObject - แม้เป็น Emergency ก็ต้องเคารพ Trait limit)
-            local canPlaceMore = _G.CanPlaceMoreUnits(unit.Name, unit.UnitObject)
+            local canPlaceMore = CanPlaceMoreUnits(unit.Name, unit.UnitObject)
             
             -- ⚠️ ไม่ check slot limit - Emergency Mode bypass slot limit แต่ยังเคารพ Trait limit
             if isDamage and not isPassiveSummon and canPlaceMore and yen >= unit.Price and unit.Price < cheapestPrice then
@@ -8539,13 +8182,13 @@ _G.GetCheapestDamageSlotNoLimit = function()
                 cheapestPrice = unit.Price
             elseif isDamage and not canPlaceMore then
                 -- 🚨 Log เฉพาะกรณีที่ถูกบล็อกเพราะ Trait limit
-                _G.DebugPrint(string.format("🚫 Emergency BLOCKED: %s ถึง Trait Limit แล้ว!", unit.Name))
+                DebugPrint(string.format("🚫 Emergency BLOCKED: %s ถึง Trait Limit แล้ว!", unit.Name))
             end
         end
     end
     
     if cheapestSlot then
-        _G.DebugPrint(string.format("🚨 Emergency พบ Damage: %s (slot %d, ราคา %d)", 
+        DebugPrint(string.format("🚨 Emergency พบ Damage: %s (slot %d, ราคา %d)", 
             cheapestUnit.Name, cheapestSlot, cheapestPrice))
     end
     
@@ -8553,29 +8196,41 @@ _G.GetCheapestDamageSlotNoLimit = function()
 end
 
 -- ===== CHECK: มีตัวเงินใน Hotbar หรือไม่ =====
--- ⭐ FIX: ใช้ _G แทน local เพื่อลด register count (ไม่สร้าง local alias)
-_G.HasEconomyUnitInHotbar = function()
-    local hotbar = _G.GetHotbarUnits()
-    for _, unit in pairs(hotbar) do
-        if unit.IsIncome then return true end
-        if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) then return true end
+local function HasEconomyUnitInHotbar()
+    local hotbar = GetHotbarUnits()
+    local count = 0
+    for _ in pairs(hotbar) do count = count + 1 end
+    
+    if count == 0 then
+        return false
+    end
+    
+    for slot, unit in pairs(hotbar) do
+        -- เช็คจาก flag IsIncome หรือจาก UnitData (ไม่ print เพื่อลด spam)
+        if unit.IsIncome then
+            return true
+        end
+        -- เช็คจาก UnitData ด้วย
+        if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
+            return true
+        end
     end
     return false
 end
 
 -- ===== CHECK: ตัวเงินอัพเกรดเต็มทุกตัวหรือยัง =====
-_G.AllEconomyUnitsMaxed = function()
-    local activeUnits = _G.GetActiveUnits()
+local function AllEconomyUnitsMaxed()
+    local activeUnits = GetActiveUnits()
     local hasEconomyUnit = false
     local allMaxed = true
     local economyStatus = {}
     
     for _, unit in pairs(activeUnits) do
-        if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) then
+        if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
             hasEconomyUnit = true
             -- ⭐ ใช้ฟังก์ชันจาก Decom
-            local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-            local maxLevel = _G.GetMaxUpgradeLevel(unit)
+            local currentLevel = GetCurrentUpgradeLevel(unit)
+            local maxLevel = GetMaxUpgradeLevel(unit)
             
             table.insert(economyStatus, string.format("%s Lv.%d/%d", unit.Name, currentLevel, maxLevel))
             
@@ -8589,7 +8244,7 @@ _G.AllEconomyUnitsMaxed = function()
     local now = tick()
     if now - (AllEconomyUnitsMaxed.lastLog or 0) >= 30 then
         if #economyStatus > 0 then
-            _G.DebugPrint(string.format("💰 Economy Status: %s", table.concat(economyStatus, ", ")))
+            DebugPrint(string.format("💰 Economy Status: %s", table.concat(economyStatus, ", ")))
         end
         AllEconomyUnitsMaxed.lastLog = now
     end
@@ -8603,23 +8258,23 @@ _G.AllEconomyUnitsMaxed = function()
 end
 
 -- ===== MAIN AUTO PLACE LOOP =====
-_G.AutoPlaceLoop = function()
+local function AutoPlaceLoop()
 -- ⭐ ฟัง MatchControl Events (จับเกมจบ/รีเซ็ต)
     if MatchControl then
         -- MatchEnded Event (เกมจบ - ชนะหรือแพ้)
         if MatchControl.MatchEnded then
             MatchControl.MatchEnded:Connect(function()
-                _G.DebugPrint("🏁 Match Ended - หยุดระบบทั้งหมด")
+                DebugPrint("🏁 Match Ended - หยุดระบบทั้งหมด")
                 _G.MatchEnded = true  -- ⭐⭐⭐ FLAG: หยุดระบบทั้งหมด
-                _G.ResetGameState()
+                ResetGameState()
             end)
         end
 
         if MatchControl.MatchStarted then
             MatchControl.MatchStarted:Connect(function()
-                _G.DebugPrint("🏁 Match Started - เริ่มระบบใหม่")
+                DebugPrint("🏁 Match Started - เริ่มระบบใหม่")
                 _G.MatchEnded = false  -- ⭐ เริ่มใหม่
-                _G.ResetGameState()
+                ResetGameState()
                 task.wait(3)  -- รอ 3 วินาทีก่อนเริ่มใหม่
             end)
         end
@@ -8627,13 +8282,13 @@ _G.AutoPlaceLoop = function()
         -- MatchRestarted Event (เกมรีเซ็ต)
         if MatchControl.MatchRestarted then
             MatchControl.MatchRestarted:Connect(function()
-                _G.DebugPrint("🔄 Match Restarted - เริ่มระบบใหม่")
+                DebugPrint("🔄 Match Restarted - เริ่มระบบใหม่")
                 _G.MatchEnded = false  -- ⭐ เริ่มใหม่
-                _G.ResetGameState()
+                ResetGameState()
             end)
         end
     else
-        _G.DebugPrint("⚠️ MatchControl not found")
+        DebugPrint("⚠️ MatchControl not found")
     end
     
     -- ⭐ รอให้ UnitsHUD._Cache โหลดเสร็จก่อน
@@ -8644,7 +8299,7 @@ _G.AutoPlaceLoop = function()
             local count = 0
             for _ in pairs(UnitsHUD._Cache) do count = count + 1 end
             if count > 0 then
-                _G.DebugPrint(string.format("✅ Hotbar พร้อม! มี %d units", count))
+                DebugPrint(string.format("✅ Hotbar พร้อม! มี %d units", count))
                 hotbarReady = true
                 break
             end
@@ -8652,7 +8307,7 @@ _G.AutoPlaceLoop = function()
     end
     
     if not hotbarReady then
-        _G.DebugPrint("⚠️ Hotbar ไม่พร้อมหลังจากรอ 30 วินาที")
+        DebugPrint("⚠️ Hotbar ไม่พร้อมหลังจากรอ 30 วินาที")
     end
     
     -- Reset cache เมื่อเริ่มเกมใหม่
@@ -8677,39 +8332,39 @@ _G.AutoPlaceLoop = function()
         
         -- ⭐⭐⭐ NOTE: Auto Place ทำงานทุกด่าน (ไม่บล็อค Challenge/Odyssey/Worldlines อีกต่อไป)
         local success, err = pcall(function()
-            local yen = _G.GetYen()
-            local gamePhase = _G.GetGamePhase()
+            local yen = GetYen()
+            local gamePhase = GetGamePhase()
             
             -- ⭐⭐⭐ เช็คว่ามีตัวเงินหรือไม่ (เช็คทุก 30 วินาที)
             if not incomeCheckDone or (tick() % 30 < 0.5) then
-                hasAnyIncomeUnit = _G.HasEconomyUnitInHotbar()  -- ⭐ FIX: ใช้ _G
+                hasAnyIncomeUnit = HasEconomyUnitInHotbar()  -- ⭐ FIX: ใช้ชื่อฟังก์ชันที่ถูกต้อง
                 incomeCheckDone = true
             end
             
             -- 🚨 Emergency Mode: ตรวจสอบและวาง Stun units
-            if _G.ShouldActivateEmergencyMode() then
-                _G.PlaceStunUnitsEmergency()
+            if ShouldActivateEmergencyMode() then
+                PlaceStunUnitsEmergency()
             end
             
             -- ตรวจสอบ Emergency Mode เดิม (compatibility)
-            _G.CheckEmergency()
+            CheckEmergency()
             
             -- ⬆️ อัพเกรด 1 ขั้นเมื่อ Emergency (ทั้ง 2 ระบบ)
             if IsEmergency or EmergencyMode.Active then
-                _G.UpgradeUnitsEmergency()
+                UpgradeUnitsEmergency()
             end
             
             -- 🎯 AUTO SKILL V3: ใช้ Ability อัตโนมัติ
-            _G.AutoUseAbilitiesV3()
+            AutoUseAbilitiesV3()
             
             -- 🔢 AUTO NUMBER PAD: ลองรหัสอัตโนมัติ (Imprisoned Island)
-            pcall(_G.AutoNumberPad)
+            pcall(AutoNumberPad)
             
             -- 🔄 AUTO REPLAY: Vote Replay อัตโนมัติ
-            pcall(_G.AutoVoteReplay)
+            pcall(AutoVoteReplay)
             
             -- 🌀 AUTO PORTAL: เลือก Portal อัตโนมัติ
-            pcall(_G.AutoSelectPortal)
+            pcall(AutoSelectPortal)
             
             -- ⭐⭐⭐ NEW: Auto Swap Check (Roku/Vogita, Smith John/Lord of Shadows)
             pcall(function()
@@ -8766,19 +8421,19 @@ _G.AutoPlaceLoop = function()
             end)
             
             -- 🔍 ClearEnemy Mode (นอก path เท่านั้น)
-            _G.CheckClearEnemyMode()
+            CheckClearEnemyMode()
             
             -- 🏆 เช็ค Max Wave → ขายตัวเงินทั้งหมด (⭐ เฉพาะเมื่อมีตัวเงิน)
             if hasAnyIncomeUnit and CurrentWave > 0 and CurrentWave >= MaxWave and MaxWave > 0 and not MaxWaveSellTriggered then
-                _G.DebugPrint(string.format("WAVE MAX REACHED! (%d >= %d) -> SELLING ALL MONEY UNITS!", CurrentWave, MaxWave))
-                _G.SellAllMoneyUnits()
+                DebugPrint(string.format("WAVE MAX REACHED! (%d >= %d) -> SELLING ALL MONEY UNITS!", CurrentWave, MaxWave))
+                SellAllMoneyUnits()
                 MaxWaveSellTriggered = true
             end
             
             -- ⭐ ตรวจจับ Replay: ถ้า wave ลดลงมาก (เช่น จาก 20 กลับเป็น 1) → เริ่มเกมใหม่
             if PreviousWave > 5 and CurrentWave > 0 and CurrentWave < PreviousWave - 3 then
-                _G.DebugPrint(string.format("🔄 REPLAY DETECTED! Wave dropped from %d to %d - Resetting state", PreviousWave, CurrentWave))
-                _G.ResetGameState()
+                DebugPrint(string.format("🔄 REPLAY DETECTED! Wave dropped from %d to %d - Resetting state", PreviousWave, CurrentWave))
+                ResetGameState()
             end
             PreviousWave = CurrentWave  -- อัพเดท wave ก่อนหน้า
             
@@ -8794,8 +8449,8 @@ _G.AutoPlaceLoop = function()
             local emergencyChanged = (IsEmergency ~= LastLoggedEmergency)
             
             if yenChanged or waveChanged or phaseChanged or emergencyChanged then
-                _G.DebugPrint(string.format("━━━━━━━━━━━━━━━━━━━━━━━━━━"))
-                _G.DebugPrint(string.format("💰 Yen: %d | Wave: %d/%d | Phase: %s%s", 
+                DebugPrint(string.format("━━━━━━━━━━━━━━━━━━━━━━━━━━"))
+                DebugPrint(string.format("💰 Yen: %d | Wave: %d/%d | Phase: %s%s", 
                     yen, CurrentWave, MaxWave, gamePhase,
                     IsEmergency and " 🚨 EMERGENCY" or ""))
                 
@@ -8806,7 +8461,7 @@ _G.AutoPlaceLoop = function()
             end
             
             -- ===== CHECK: ขาย Emergency Units เมื่อ progress < 30% =====
-            local progress = _G.GetEnemyProgress()
+            local progress = GetEnemyProgress()
             
             -- เช็คว่ามี Emergency Units ไหม
             local emergencyCount = 0
@@ -8814,26 +8469,26 @@ _G.AutoPlaceLoop = function()
             
             if emergencyCount > 0 and progress < 30 and EmergencyActivated then
                 local soldCount = 0
-                local activeUnits = _G.GetActiveUnits()
-                local hasSummon = _G.HasSummonUnitInHotbar()
+                local activeUnits = GetActiveUnits()
+                local hasSummon = HasSummonUnitInHotbar()
                 
-                _G.DebugPrint(string.format("💸 เริ่มขาย Emergency Units (progress=%.1f%%, มี %d ตัว)", progress, emergencyCount))
+                DebugPrint(string.format("💸 เริ่มขาย Emergency Units (progress=%.1f%%, มี %d ตัว)", progress, emergencyCount))
                 
                 for guid, _ in pairs(EmergencyUnits) do
                     for _, unit in pairs(activeUnits) do
                         if unit.GUID == guid then
                             -- ⭐⭐⭐ ถ้ามี Summon ใน Hotbar → ไม่ขาย Summon Unit (เก็บไว้อัพเกรด)
-                            local isSummonUnit = unit.Data and _G.IsPassiveSummonUnit(unit.Name, unit.Data)
+                            local isSummonUnit = unit.Data and IsPassiveSummonUnit(unit.Name, unit.Data)
                             
                             if hasSummon and isSummonUnit then
-                                _G.DebugPrint(string.format("🎯 เก็บ Summon Unit ไว้: %s (ไม่ขาย)", unit.Name))
+                                DebugPrint(string.format("🎯 เก็บ Summon Unit ไว้: %s (ไม่ขาย)", unit.Name))
                                 -- ไม่ขาย แต่ลบออกจาก EmergencyUnits เพื่อให้กลายเป็น unit ปกติ
                                 EmergencyUnits[guid] = nil
                             else
                                 -- ขาย unit ปกติ
-                                if _G.SellUnit(unit) then
+                                if SellUnit(unit) then
                                     soldCount = soldCount + 1
-                                    _G.DebugPrint(string.format("💸 ขาย Emergency Unit ตอน progress %.1f%%: %s", progress, unit.Name))
+                                    DebugPrint(string.format("💸 ขาย Emergency Unit ตอน progress %.1f%%: %s", progress, unit.Name))
                                 end
                             end
                             break
@@ -8845,7 +8500,7 @@ _G.AutoPlaceLoop = function()
                     EmergencyUnits = {}
                     EmergencyActivated = false
                     LastEmergencyTime = 0
-                    _G.DebugPrint(string.format("✅ ขาย Emergency Units ครบ %d ตัวแล้ว", soldCount))
+                    DebugPrint(string.format("✅ ขาย Emergency Units ครบ %d ตัวแล้ว", soldCount))
                 end
             end
             
@@ -8858,19 +8513,19 @@ _G.AutoPlaceLoop = function()
                 end
                 
                 -- ⭐ เช็คว่ามี Summon Unit ใน Hotbar หรือไม่
-                local hasSummon, summonSlotNum, summonUnitData = _G.HasSummonUnitInHotbar()
+                local hasSummon, summonSlotNum, summonUnitData = HasSummonUnitInHotbar()
                 
                 if hasSummon then
-                    _G.DebugPrint(string.format("🎯 Emergency Mode (Summon Strategy): วางแล้ว %d/1 ตัว", emergencyCount))
+                    DebugPrint(string.format("🎯 Emergency Mode (Summon Strategy): วางแล้ว %d/1 ตัว", emergencyCount))
                 else
-                    _G.DebugPrint(string.format("🚨 Emergency Mode (Normal): วางแล้ว %d/2 ตัว", emergencyCount))
+                    DebugPrint(string.format("🚨 Emergency Mode (Normal): วางแล้ว %d/2 ตัว", emergencyCount))
                 end
                 
                 -- ⭐ LIMIT: ถ้า hasSummon → วางแค่ 1 ตัว, ไม่มี Summon → วาง 2 ตัว
                 local maxEmergencyUnits = hasSummon and 1 or 2
                 
                 if emergencyCount >= maxEmergencyUnits then
-                    _G.DebugPrint(string.format("✅ Emergency Units ครบ %d ตัวแล้ว - หยุดวาง", maxEmergencyUnits))
+                    DebugPrint(string.format("✅ Emergency Units ครบ %d ตัวแล้ว - หยุดวาง", maxEmergencyUnits))
                     EmergencyActivated = true
                     IsEmergency = false  -- ⭐ Reset เพื่อให้ World Item ทำงานได้
                 else
@@ -8879,43 +8534,41 @@ _G.AutoPlaceLoop = function()
                         local slot, unit, pos
                         
                         -- ⭐⭐⭐ ถ้ามี Summon Unit → วาง Summon ใกล้ Spawn
-                        if hasSummon and _G.GetSummonUnitSlot then
-                            slot, unit = _G.GetSummonUnitSlot()
+                        if hasSummon then
+                            slot, unit = GetSummonUnitSlot()
                             
                             if slot and unit then
-                                local unitRange = (_G.GetUnitRange and _G.GetUnitRange(unit.Data)) or 25
-                                if _G.GetSummonUnitPlacementPosition then
-                                    pos = _G.GetSummonUnitPlacementPosition(unitRange, unit.Name, unit.Data)
-                                end
+                                local unitRange = GetUnitRange(unit.Data) or 25
+                                pos = GetSummonUnitPlacementPosition(unitRange, unit.Name, unit.Data)
                                 
                                 -- Fallback
-                                if not pos and _G.GetBestPlacementPosition then
-                                    pos = _G.GetBestPlacementPosition(unitRange, "early", unit.Name, unit.Data)
+                                if not pos then
+                                    pos = GetBestPlacementPosition(unitRange, "early", unit.Name, unit.Data)
                                 end
                             end
-                        elseif not hasSummon and _G.GetCheapestDamageSlotNoLimit then
+                        else
                             -- ⭐ ไม่มี Summon → วางตัวดาเมจปกติใกล้ศัตรู
-                            slot, unit = _G.GetCheapestDamageSlotNoLimit()
+                            slot, unit = GetCheapestDamageSlotNoLimit()
                             
                             if slot and unit and yen >= unit.Price then
-                                local unitRange = (_G.GetUnitRange and _G.GetUnitRange(unit.Data)) or 18
+                                local unitRange = GetUnitRange(unit.Data)
                                 local unitName = unit.Name or ""
                                 
                                 -- ⭐⭐⭐ Lich King (Ruler) → วางหน้าประตูเสมอ (ทุก mode)
                                 local isLichKingRuler = unitName:lower():find("lich") and unitName:lower():find("ruler")
                                 
                                 if unitRange then
-                                    if isLichKingRuler and _G.GetBestFrontPosition then
+                                    if isLichKingRuler then
                                         -- Lich King → หน้าประตู
-                                        pos = _G.GetBestFrontPosition(unitRange)
+                                        pos = GetBestFrontPosition(unitRange)
                                         print(string.format("[Emergency] 👑 Lich King (Ruler) → วางหน้าประตู"))
-                                    elseif _G.GetEmergencyPlacementPosition then
-                                        pos = _G.GetEmergencyPlacementPosition(unitRange, unit.Name, unit.Data)
+                                    else
+                                        pos = GetEmergencyPlacementPosition(unitRange, unit.Name, unit.Data)
                                     end
                                     
                                     -- Fallback
-                                    if not pos and _G.GetBestPlacementPosition then
-                                        pos = _G.GetBestPlacementPosition(unitRange, "late", unit.Name, unit.Data)
+                                    if not pos then
+                                        pos = GetBestPlacementPosition(unitRange, "late", unit.Name, unit.Data)
                                     end
                                 end
                             end
@@ -8923,33 +8576,33 @@ _G.AutoPlaceLoop = function()
                         
                         -- วาง Unit
                         if slot and unit and pos then
-                            local success, newGUID = _G.PlaceUnit(slot, pos)
+                            local success, newGUID = PlaceUnit(slot, pos)
                             if success and newGUID then
                                 EmergencyUnits[newGUID] = true
                                 LastEmergencyTime = tick()
                                 emergencyCount = emergencyCount + 1
                                 
                                 if hasSummon then
-                                    _G.DebugPrint(string.format("🎯 วาง Summon Unit: %s (ใกล้ Spawn)", unit.Name))
+                                    DebugPrint(string.format("🎯 วาง Summon Unit: %s (ใกล้ Spawn)", unit.Name))
                                 else
-                                    _G.DebugPrint(string.format("🚨 วาง Emergency Unit #%d: %s", emergencyCount, unit.Name))
+                                    DebugPrint(string.format("🚨 วาง Emergency Unit #%d: %s", emergencyCount, unit.Name))
                                 end
                             
                                 if emergencyCount >= maxEmergencyUnits then
-                                    _G.DebugPrint(string.format("✅ Emergency Units ครบ %d ตัวแล้ว!", maxEmergencyUnits))
+                                    DebugPrint(string.format("✅ Emergency Units ครบ %d ตัวแล้ว!", maxEmergencyUnits))
                                     EmergencyActivated = true
                                     IsEmergency = false  -- ⭐ Reset เพื่อให้ World Item ทำงานได้
                                 end
                             else
-                                _G.DebugPrint("⚠️ วาง Emergency Unit ไม่สำเร็จ")
+                                DebugPrint("⚠️ วาง Emergency Unit ไม่สำเร็จ")
                             end
                         else
                             if not slot then
-                                _G.DebugPrint("⚠️ Emergency: ไม่มี Damage Unit ให้วาง")
+                                DebugPrint("⚠️ Emergency: ไม่มี Damage Unit ให้วาง")
                                 EmergencyActivated = true
                             else
                                 -- ⭐ มี Unit แต่เงินไม่พอ → รอจนกว่าจะมีเงินพอ (ไม่ข้าม!)
-                                _G.DebugPrint(string.format("⏳ Emergency: เงินไม่พอ (มี %d, ต้องการ %d) - รอเงิน...", yen, unit.Price))
+                                DebugPrint(string.format("⏳ Emergency: เงินไม่พอ (มี %d, ต้องการ %d) - รอเงิน...", yen, unit.Price))
                             end
                         end
                     end
@@ -8985,83 +8638,40 @@ _G.AutoPlaceLoop = function()
                 _G.LastCanPlaceNormal = canPlaceNormal
                 
                 if canPlaceNormal then
-                    local hasEconomyInHotbar = hasAnyIncomeUnit and _G.HasEconomyUnitInHotbar()  -- ⭐ ใช้ _G
-                    local activeUnits = _G.GetActiveUnits()
-                    
-                    -- ⭐ เช็คชื่อด่านสำหรับ special handling (เช็คก่อน)
-                    local stageName = (_G.GetCurrentStageName and _G.GetCurrentStageName()) or "Unknown"
-                    local stageNameLower = stageName:lower()
-                    -- ⭐ ตรวจจับแบบยืดหยุ่น: "burning" หรือ "spirit" หรือ "golden" หรือ "castle"
-                    local isBurningSpiritTree = stageNameLower:find("burning") or stageNameLower:find("spirit")
-                    local isGoldenCastle = stageNameLower:find("golden") or stageNameLower:find("castle")
-                    local isSpecialStage = isBurningSpiritTree or isGoldenCastle
-                    
-                    -- Debug log ทุกครั้งที่เช็ค (1 ครั้งต่อ 10 วิ)
-                    if not _G.LastStageLogTime or (tick() - _G.LastStageLogTime) > 10 then
-                        print(string.format("[Stage] 🗺️ Current: '%s' | Special: %s", stageName, tostring(isSpecialStage)))
-                        _G.LastStageLogTime = tick()
-                    end
+                    local hasEconomyInHotbar = hasAnyIncomeUnit and HasEconomyUnitInHotbar()  -- ⭐ ใช้ flag
+                    local activeUnits = GetActiveUnits()
                 
                     -- ===== STEP 1: วางตัวเงินก่อน (⭐ เฉพาะเมื่อมีตัวเงิน + ไม่ใช่ MaxWave) =====
-                    -- ⭐⭐⭐ FIX: ใช้ Zone System หาตำแหน่ง Yellow Zone (ห่างจาก Path)
-                    -- ⭐⭐⭐ SPECIAL: Burning Spirit Tree / Golden Castle → วางตัวเงินเสมอ (bypass hasAnyIncomeUnit check)
-                    local shouldPlaceIncome = (hasAnyIncomeUnit or isSpecialStage) and not MaxWaveSellTriggered
-                    if shouldPlaceIncome then
-                        local ecoSlot, ecoUnit = _G.GetNextEconomySlot()
-                        
-                        -- Debug log สำหรับ special stages
-                        if isSpecialStage and not ecoSlot then
-                            print(string.format("[Income] 🌟 [%s] hasAnyIncomeUnit=%s, ecoSlot=%s", 
-                                stageName, tostring(hasAnyIncomeUnit), tostring(ecoSlot)))
-                        end
-                        
+                    -- ⭐⭐⭐ FIX: ข้ามทั้งหมดถ้าไม่มีตัวเงิน
+                    if hasAnyIncomeUnit and not MaxWaveSellTriggered then
+                        local ecoSlot, ecoUnit = GetNextEconomySlot()
                         if ecoSlot and ecoUnit then
-                            
-                            -- ⭐ ใช้ MapZoneSystem หาตำแหน่ง Income Zone (Yellow)
-                            local bestPos = nil
-                            if _G.GetBestIncomeZonePosition then
-                                bestPos = _G.GetBestIncomeZonePosition(activeUnits)
-                            end
-                            
-                            -- Fallback: ใช้ GetIncomePosition เดิม
-                            if not bestPos and _G.GetPlaceablePositions and _G.GetMapPath and _G.GetIncomePosition then
-                                local positions = _G.GetPlaceablePositions()
-                                local path = _G.GetMapPath()
-                                if #positions > 0 then
-                                    bestPos = _G.GetIncomePosition(positions, path, activeUnits)
+                            local positions = GetPlaceablePositions()
+                            if #positions > 0 then
+                                -- ลองหาตำแหน่งว่างจาก list
+                                local placed = false
+                                for i, pos in ipairs(positions) do
+                                    if i > 20 then break end  -- จำกัดไม่เกิน 20 ตำแหน่ง
+                                
+                                -- เช็คว่าตำแหน่งนี้ว่างหรือไม่
+                                if CanPlaceAtPosition(ecoUnit.Name, pos) then
+                                    DebugPrint(string.format("🎯 วาง %s (slot %d) ที่ %.1f, %.1f, %.1f (ตำแหน่ง #%d)", 
+                                        ecoUnit.Name, ecoSlot, pos.X, pos.Y, pos.Z, i))
+                                    local success = PlaceUnit(ecoSlot, pos)
+                                    if success then
+                                        placed = true
+                                        break
+                                    end
                                 end
                             end
                             
-                            -- ⭐⭐⭐ SPECIAL FALLBACK: Burning Spirit Tree / Golden Castle
-                            -- ใช้ GetBestPlacementPosition ถ้าหาตำแหน่ง Income ไม่เจอ
-                            if not bestPos and isSpecialStage and _G.GetBestPlacementPosition and _G.GetGamePhase then
-                                local unitRange = (_G.GetUnitRange and _G.GetUnitRange(ecoUnit.Data)) or 10
-                                bestPos = _G.GetBestPlacementPosition(unitRange, _G.GetGamePhase(), ecoUnit.Name, ecoUnit.Data)
-                                if bestPos then
-                                    _G.DebugPrint(string.format("🌟 [%s] ใช้ Fallback Position สำหรับ Income", stageName))
-                                end
+                            if not placed then
+                                DebugPrint(string.format("⚠️ ไม่สามารถวาง %s ได้ (ทดสอบ %d ตำแหน่ง)", ecoUnit.Name, math.min(20, #positions)))
                             end
-                            
-                            -- ⭐⭐⭐ FINAL FALLBACK: ใช้ตำแหน่งแรกที่วางได้
-                            if not bestPos and isSpecialStage and _G.GetPlaceablePositions then
-                                local positions = _G.GetPlaceablePositions()
-                                if positions and #positions > 0 then
-                                    bestPos = positions[1]
-                                    _G.DebugPrint(string.format("🌟 [%s] ใช้ First Available Position สำหรับ Income", stageName))
-                                end
-                            end
-                            
-                            if bestPos then
-                                _G.DebugPrint(string.format("🟡 วาง Income %s (slot %d) ที่ %.1f, %.1f, %.1f (Yellow Zone)", 
-                                    ecoUnit.Name, ecoSlot, bestPos.X, bestPos.Y, bestPos.Z))
-                                local success = _G.PlaceUnit(ecoSlot, bestPos)
-                                if not success then
-                                    _G.DebugPrint(string.format("⚠️ วาง %s ไม่สำเร็จ", ecoUnit.Name))
-                                end
-                            else
-                                _G.DebugPrint("⚠️ ไม่พบ Yellow Zone สำหรับ Income")
-                            end
+                        else
+                            DebugPrint("⚠️ ไม่พบตำแหน่งที่วางได้")
                         end
+                    end
                     end  -- ⭐ END: if not MaxWaveSellTriggered (วาง Economy)
                     
                     -- ===== STEP 2: ถ้าวางตัวเงินครบแล้ว → อัพเกรดตัวเงินให้ MAX ก่อน (Multiple Upgrade) =====
@@ -9073,13 +8683,13 @@ _G.AutoPlaceLoop = function()
                     for _, unit in pairs(activeUnits) do
                         -- ⭐ ข้ามถ้าไม่มีตัวเงิน
                         if not hasAnyIncomeUnit then break end
-                        if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) then
-                            local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-                            local maxLevel = _G.GetMaxUpgradeLevel(unit)
+                        if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
+                            local currentLevel = GetCurrentUpgradeLevel(unit)
+                            local maxLevel = GetMaxUpgradeLevel(unit)
                             
                             if currentLevel < maxLevel then
                                 economyNeedsUpgrade = true
-                                local cost = _G.GetUpgradeCost(unit)
+                                local cost = GetUpgradeCost(unit)
                                 if cost < math.huge then
                                     table.insert(upgradeableEconomyUnits, {
                                         unit = unit,
@@ -9087,7 +8697,7 @@ _G.AutoPlaceLoop = function()
                                         currentLevel = currentLevel
                                     })
                                 else
-                                    _G.DebugPrint(string.format("⚠️ ไม่มี upgrade cost สำหรับ %s", unit.Name))
+                                    DebugPrint(string.format("⚠️ ไม่มี upgrade cost สำหรับ %s", unit.Name))
                                 end
                             end
                         end
@@ -9104,17 +8714,17 @@ _G.AutoPlaceLoop = function()
                         local cost = upgradeData.cost
                         local currentLevel = upgradeData.currentLevel
                         
-                        if _G.GetYen() >= cost then
-                            _G.DebugPrint(string.format("⬆️ อัพเกรดตัวเงิน: %s [%d→%d] cost=%d, Yen: %d", 
-                                unit.Name, currentLevel, currentLevel+1, cost, _G.GetYen()))
+                        if GetYen() >= cost then
+                            DebugPrint(string.format("⬆️ อัพเกรดตัวเงิน: %s [%d→%d] cost=%d, Yen: %d", 
+                                unit.Name, currentLevel, currentLevel+1, cost, GetYen()))
                             
-                            local upgradeSuccess = _G.UpgradeUnit(unit)
+                            local upgradeSuccess = UpgradeUnit(unit)
                             if upgradeSuccess then
                                 economyUpgraded = true
                                 -- ⭐⭐⭐ FIX: ไม่ต้องรอ - อัพเกรดต่อทันที
-                                _G.DebugPrint(string.format("✅ อัพเกรดสำเร็จ: %s", unit.Name))
+                                DebugPrint(string.format("✅ อัพเกรดสำเร็จ: %s", unit.Name))
                             else
-                                _G.DebugPrint(string.format("❌ อัพเกรดล้มเหลว: %s", unit.Name))
+                                DebugPrint(string.format("❌ อัพเกรดล้มเหลว: %s", unit.Name))
                             end
                         else
                             -- หยุดเมื่อเงินไม่พอ
@@ -9124,15 +8734,15 @@ _G.AutoPlaceLoop = function()
                     
                     -- ⭐⭐⭐ FIX: เช็คอีกครั้งหลังอัพเกรด (ไม่ต้องรอ)
                     if economyUpgraded then
-                        activeUnits = _G.GetActiveUnits()
+                        activeUnits = GetActiveUnits()
                         
                         economyNeedsUpgrade = false  -- รีเซ็ตก่อน
                         local economyStatus = {}
                         
                         for _, unit in pairs(activeUnits) do
-                            if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) then
-                                local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-                                local maxLevel = _G.GetMaxUpgradeLevel(unit)
+                            if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
+                                local currentLevel = GetCurrentUpgradeLevel(unit)
+                                local maxLevel = GetMaxUpgradeLevel(unit)
                                 
                                 table.insert(economyStatus, string.format("%s [%d/%d]", unit.Name, currentLevel, maxLevel))
                                 
@@ -9142,16 +8752,16 @@ _G.AutoPlaceLoop = function()
                             end
                         end
                         
-                        _G.DebugPrint(string.format("💰 Economy Status: %s", table.concat(economyStatus, ", ")))
-                        _G.DebugPrint(string.format("✅ อัพเกรดตัวเงินเสร็จ → economyNeedsUpgrade=%s", tostring(economyNeedsUpgrade)))
+                        DebugPrint(string.format("💰 Economy Status: %s", table.concat(economyStatus, ", ")))
+                        DebugPrint(string.format("✅ อัพเกรดตัวเงินเสร็จ → economyNeedsUpgrade=%s", tostring(economyNeedsUpgrade)))
                         
                         -- 🔥🔥🔥 FIX: อัพเกรดตัวเงินทันที (ไม่มี wait - ไม่ spam)
                         if economyNeedsUpgrade then
                             for _, unit in pairs(activeUnits) do
-                                if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) and not _G.IsUnitMaxed(unit) then
-                                    local cost = _G.GetUpgradeCost(unit)
-                                    if cost < math.huge and _G.GetYen() >= cost then
-                                        _G.UpgradeUnit(unit)
+                                if unit.Data and IsIncomeUnit(unit.Name, unit.Data) and not IsUnitMaxed(unit) then
+                                    local cost = GetUpgradeCost(unit)
+                                    if cost < math.huge and GetYen() >= cost then
+                                        UpgradeUnit(unit)
                                         -- ⭐ อัพเกรด 1 ตัวต่อ loop cycle (ไม่ spam)
                                         break
                                     end
@@ -9160,8 +8770,8 @@ _G.AutoPlaceLoop = function()
                             -- อัพเดท economyNeedsUpgrade
                             economyNeedsUpgrade = false
                             for _, unit in pairs(activeUnits) do
-                                if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) then
-                                    if _G.GetCurrentUpgradeLevel(unit) < _G.GetMaxUpgradeLevel(unit) then
+                                if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
+                                    if GetCurrentUpgradeLevel(unit) < GetMaxUpgradeLevel(unit) then
                                         economyNeedsUpgrade = true
                                         break
                                     end
@@ -9172,28 +8782,28 @@ _G.AutoPlaceLoop = function()
                     
                     -- ===== STEP 3: วาง Damage เมื่อ (ไม่มีตัวเงินใน Hotbar) หรือ (ตัวเงินอัพ MAX แล้ว) =====
                     -- ⭐⭐⭐ FIX: ถ้าไม่มีตัวเงิน → วาง Damage ทันที
-                    local hasEcoInHotbar = hasAnyIncomeUnit and _G.HasEconomyUnitInHotbar() or false
+                    local hasEcoInHotbar = hasAnyIncomeUnit and HasEconomyUnitInHotbar() or false
                     local shouldPlaceDamage = (not hasEcoInHotbar) or (not economyNeedsUpgrade)
                     
                     -- Debug log
                     if not _G.LastShouldPlaceDamage or _G.LastShouldPlaceDamage ~= shouldPlaceDamage then
-                        _G.DebugPrint(string.format("🔍 shouldPlaceDamage=%s | hasEcoInHotbar=%s | economyNeedsUpgrade=%s", 
+                        DebugPrint(string.format("🔍 shouldPlaceDamage=%s | hasEcoInHotbar=%s | economyNeedsUpgrade=%s", 
                             tostring(shouldPlaceDamage), tostring(hasEcoInHotbar), tostring(economyNeedsUpgrade)))
                         _G.LastShouldPlaceDamage = shouldPlaceDamage
                     end
                     
                     if shouldPlaceDamage then
-                        local dmgSlot, dmgUnit = _G.GetNextDamageSlot()
+                        local dmgSlot, dmgUnit = GetNextDamageSlot()
                         
                         -- ⭐⭐⭐ FIX: เช็คว่า slot ว่างไหม (ป้องกันวางซ้ำ)
                         local hasAvailableSlot = false
                         if dmgSlot and dmgUnit then
-                            local limit, current = _G.GetSlotLimit(dmgSlot)
+                            local limit, current = GetSlotLimit(dmgSlot)
                             if current < limit then
                                 hasAvailableSlot = true
                             else
                                 -- Slot เต็ม → ไม่วาง แต่อัพเกรดแทน
-                                _G.DebugPrint(string.format("⚠️ Damage Slot %d เต็ม (%d/%d) → ข้ามการวาง, อัพเกรดแทน", 
+                                DebugPrint(string.format("⚠️ Damage Slot %d เต็ม (%d/%d) → ข้ามการวาง, อัพเกรดแทน", 
                                     dmgSlot, current, limit))
                             end
                         end
@@ -9202,12 +8812,12 @@ _G.AutoPlaceLoop = function()
                         if not dmgSlot then
                             -- ไม่มี damage slot
                         elseif not dmgUnit then
-                            _G.DebugPrint(string.format("⚠️ GetNextDamageSlot() slot=%d แต่ unit=nil", dmgSlot))
+                            DebugPrint(string.format("⚠️ GetNextDamageSlot() slot=%d แต่ unit=nil", dmgSlot))
                         end
                         
                         -- ⭐⭐⭐ FIX: วางเฉพาะเมื่อ slot ว่าง!
                         if dmgSlot and dmgUnit and hasAvailableSlot then
-                            local unitRange = (_G.GetUnitRange and _G.GetUnitRange(dmgUnit.Data)) or 18
+                            local unitRange = GetUnitRange(dmgUnit.Data) or 18
                             local pos = nil
                             
                             -- ⭐⭐⭐ Lich King (Ruler) และ Caloric Stone Clone → วางหน้าประตูเสมอ (ทุกด่าน)
@@ -9215,31 +8825,23 @@ _G.AutoPlaceLoop = function()
                             local isLichKingRuler = unitName:lower():find("lich") and unitName:lower():find("ruler")
                             local placeAtFront = dmgUnit.PlaceAtFront or isLichKingRuler
                             
-                            if placeAtFront and _G.GetBestFrontPosition then
+                            if placeAtFront then
                                 -- วิเคราะห์ก่อนวาง
                                 print(string.format("[Analysis] 🔍 %s - วางหน้าประตู (Range: %d)", unitName, unitRange))
-                                pos = _G.GetBestFrontPosition(unitRange)
+                                pos = GetBestFrontPosition(unitRange)
                                 if pos then
                                     print(string.format("[Analysis] ✅ พบตำแหน่งหน้าประตู: (%.1f, %.1f, %.1f)", pos.X, pos.Y, pos.Z))
                                 end
                             end
                             
-                            -- ⭐ ใช้ MapZoneSystem หาตำแหน่ง Damage Zone (Red)
-                            if not pos and _G.GetBestDamageZonePosition then
-                                pos = _G.GetBestDamageZonePosition(unitRange, activeUnits)
-                                if pos then
-                                    _G.DebugPrint(string.format("🔴 พบ Red Zone: (%.1f, %.1f, %.1f)", pos.X, pos.Y, pos.Z))
-                                end
-                            end
-                            
-                            -- Fallback: ใช้ตำแหน่งปกติถ้าไม่เจอ zone position
-                            if not pos and _G.GetBestPlacementPosition and _G.GetGamePhase then
-                                pos = _G.GetBestPlacementPosition(unitRange, _G.GetGamePhase(), dmgUnit.Name, dmgUnit.Data)
+                            -- Fallback: ใช้ตำแหน่งปกติถ้าไม่เจอ front position
+                            if not pos then
+                                pos = GetBestPlacementPosition(unitRange, GetGamePhase(), dmgUnit.Name, dmgUnit.Data)
                             end
                             
                             if pos then
-                                _G.DebugPrint(string.format("🔴 วาง Damage: %s (slot %d) - Red Zone", dmgUnit.Name, dmgSlot))
-                                _G.PlaceUnit(dmgSlot, pos)
+                                DebugPrint(string.format("⚔️ วาง Damage: %s (slot %d)", dmgUnit.Name, dmgSlot))
+                                PlaceUnit(dmgSlot, pos)
                             end
                         else
                             -- ===== STEP 3.5: Slot เต็มหรือไม่มี Damage Slot → อัพเกรดแบบ "1 Unit All-in" =====
@@ -9252,33 +8854,33 @@ _G.AutoPlaceLoop = function()
                                 
                                 if isClearEnemyUnit and 
                                    not EmergencyUnits[unit.GUID] and 
-                                   not _G.IsIncomeUnit(unit.Name, unitData) and 
-                                   not _G.IsBuffUnit(unit.Name, unitData) then
+                                   not IsIncomeUnit(unit.Name, unitData) and 
+                                   not IsBuffUnit(unit.Name, unitData) then
                                     table.insert(damageUnits, unit)
                                 end
                             end
                             
                             if #damageUnits > 0 then
                                 -- 🔥 ClearEnemy Mode: อัพเกรดแค่ 1 ขั้นต่อรอบ (ไม่ loop)
-                                local strongest = _G.GetStrongestUnit(damageUnits)
+                                local strongest = GetStrongestUnit(damageUnits)
                                 
-                                if strongest and not _G.IsUnitMaxed(strongest) then
+                                if strongest and not IsUnitMaxed(strongest) then
                                     -- อัพเกรดตัวแรงสุด 1 ขั้น
-                                    local cost = _G.GetUpgradeCost(strongest)
-                                    if cost < math.huge and _G.GetYen() >= cost then
-                                        local currentLevel = _G.GetCurrentUpgradeLevel(strongest)
-                                        local maxLevel = _G.GetMaxUpgradeLevel(strongest)
-                                        _G.DebugPrint(string.format("⬆️ [ClearEnemy] อัพเกรดตัวแรงสุด: %s (%d/%d)", strongest.Name, currentLevel, maxLevel))
-                                        _G.UpgradeUnit(strongest)
+                                    local cost = GetUpgradeCost(strongest)
+                                    if cost < math.huge and GetYen() >= cost then
+                                        local currentLevel = GetCurrentUpgradeLevel(strongest)
+                                        local maxLevel = GetMaxUpgradeLevel(strongest)
+                                        DebugPrint(string.format("⬆️ [ClearEnemy] อัพเกรดตัวแรงสุด: %s (%d/%d)", strongest.Name, currentLevel, maxLevel))
+                                        UpgradeUnit(strongest)
                                     end
-                                elseif strongest and _G.IsUnitMaxed(strongest) then
+                                elseif strongest and IsUnitMaxed(strongest) then
                                     -- ตัวแรงสุด MAX แล้ว → หาตัวถัดไปที่ยังไม่ MAX
                                     local nextUnit = nil
                                     local lowestLevel = math.huge
                                     
                                     for _, unit in ipairs(damageUnits) do
-                                        if unit.GUID ~= strongest.GUID and not _G.IsUnitMaxed(unit) then
-                                            local currentLevel = _G.GetCurrentUpgradeLevel(unit)
+                                        if unit.GUID ~= strongest.GUID and not IsUnitMaxed(unit) then
+                                            local currentLevel = GetCurrentUpgradeLevel(unit)
                                             if currentLevel < lowestLevel then
                                                 lowestLevel = currentLevel
                                                 nextUnit = unit
@@ -9287,12 +8889,12 @@ _G.AutoPlaceLoop = function()
                                     end
                                     
                                     if nextUnit then
-                                        local cost = _G.GetUpgradeCost(nextUnit)
-                                        if cost < math.huge and _G.GetYen() >= cost then
-                                            local currentLevel = _G.GetCurrentUpgradeLevel(nextUnit)
-                                            local maxLevel = _G.GetMaxUpgradeLevel(nextUnit)
-                                            _G.DebugPrint(string.format("⬆️ [ClearEnemy] อัพเกรดตัวถัดไป: %s (%d/%d)", nextUnit.Name, currentLevel, maxLevel))
-                                            _G.UpgradeUnit(nextUnit)
+                                        local cost = GetUpgradeCost(nextUnit)
+                                        if cost < math.huge and GetYen() >= cost then
+                                            local currentLevel = GetCurrentUpgradeLevel(nextUnit)
+                                            local maxLevel = GetMaxUpgradeLevel(nextUnit)
+                                            DebugPrint(string.format("⬆️ [ClearEnemy] อัพเกรดตัวถัดไป: %s (%d/%d)", nextUnit.Name, currentLevel, maxLevel))
+                                            UpgradeUnit(nextUnit)
                                         end
                                     end
                                 end
@@ -9305,9 +8907,9 @@ _G.AutoPlaceLoop = function()
                     -- แยกประเภท Units (ข้าม Emergency Units + ClearEnemy Units)
                     local allEconomyMaxed = true
                     for _, unit in pairs(activeUnits) do
-                        if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) then
+                        if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
                             -- ⭐ ใช้ฟังก์ชันจาก Decom
-                            if not _G.IsUnitMaxed(unit) then
+                            if not IsUnitMaxed(unit) then
                                 allEconomyMaxed = false
                                 break
                             end
@@ -9323,16 +8925,16 @@ _G.AutoPlaceLoop = function()
                         for _, unit in pairs(activeUnits) do
                             local unitData = unit.Data or {}
                             -- ⭐ รวม Emergency Units ที่เป็น Summon (ไม่ขายแล้ว)
-                            local skipEmergency = EmergencyUnits[unit.GUID] and not _G.IsPassiveSummonUnit(unit.Name, unitData)
+                            local skipEmergency = EmergencyUnits[unit.GUID] and not IsPassiveSummonUnit(unit.Name, unitData)
                             -- 🔥 ข้าม ClearEnemy Units (ให้ ClearEnemy Mode จัดการเอง)
                             local isClearEnemyUnit = ClearEnemyUnits[unit.GUID] ~= nil
                             -- ⭐⭐⭐ ข้าม Caloric Clone Units (ห้ามอัพเกรด)
                             local isCaloricClone = CaloricCloneUnits[unit.GUID] ~= nil
                             
-                            if not skipEmergency and not isClearEnemyUnit and not isCaloricClone and not _G.IsIncomeUnit(unit.Name, unitData) then
-                                if _G.IsBuffUnit(unit.Name, unitData) then
+                            if not skipEmergency and not isClearEnemyUnit and not isCaloricClone and not IsIncomeUnit(unit.Name, unitData) then
+                                if IsBuffUnit(unit.Name, unitData) then
                                     table.insert(buffUnits, unit)
-                                elseif _G.IsPassiveSummonUnit(unit.Name, unitData) then
+                                elseif IsPassiveSummonUnit(unit.Name, unitData) then
                                     table.insert(summonUnits, unit)  -- ⭐ แยก Summon Units
                                 else
                                     table.insert(damageUnits, unit)
@@ -9343,13 +8945,13 @@ _G.AutoPlaceLoop = function()
                         -- ⭐⭐⭐ PRIORITY 0: Force Upgrade Lich King (Ruler) ก่อนเสมอ
                         for _, unit in pairs(damageUnits) do
                             local isLichKingRuler = unit.Name:lower():find("lich") and unit.Name:lower():find("ruler")
-                            if isLichKingRuler and not _G.IsUnitMaxed(unit) then
-                                local cost = _G.GetUpgradeCost(unit)
-                                if cost < math.huge and _G.GetYen() >= cost then
-                                    local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-                                    local maxLevel = _G.GetMaxUpgradeLevel(unit)
+                            if isLichKingRuler and not IsUnitMaxed(unit) then
+                                local cost = GetUpgradeCost(unit)
+                                if cost < math.huge and GetYen() >= cost then
+                                    local currentLevel = GetCurrentUpgradeLevel(unit)
+                                    local maxLevel = GetMaxUpgradeLevel(unit)
                                     print(string.format("[ForceUpgrade] 👑 Lich King (Ruler) (%d/%d) [ค่าใช้จ่าย: %d]", currentLevel, maxLevel, cost))
-                                    _G.UpgradeUnit(unit)
+                                    UpgradeUnit(unit)
                                     task.wait(0.1)
                                 end
                             end
@@ -9365,38 +8967,38 @@ _G.AutoPlaceLoop = function()
                                 continueUpgrading = false
                                 
                                 -- ⭐ เช็คเงินก่อนทุกครั้ง
-                                local currentYen = _G.GetYen()
+                                local currentYen = GetYen()
                                 if currentYen < 100 then
-                                    _G.DebugPrint("⏸️ เงินน้อยเกินไป - หยุด Auto Upgrade Damage")
+                                    DebugPrint("⏸️ เงินน้อยเกินไป - หยุด Auto Upgrade Damage")
                                     break
                                 end
                                 
-                                local strongest = _G.GetStrongestUnit(damageUnits)
+                                local strongest = GetStrongestUnit(damageUnits)
                                 
-                                if strongest and not _G.IsUnitMaxed(strongest) then
+                                if strongest and not IsUnitMaxed(strongest) then
                                     -- อัพเกรดตัวแรงสุดให้ MAX ก่อน
-                                    local cost = _G.GetUpgradeCost(strongest)
-                                    if cost < math.huge and _G.GetYen() >= cost then
-                                        local currentLevel = _G.GetCurrentUpgradeLevel(strongest)
-                                        local maxLevel = _G.GetMaxUpgradeLevel(strongest)
-                                        _G.DebugPrint(string.format("⬆️ อัพเกรด Damage: %s (%d/%d) [ค่าใช้จ่าย: %d]", strongest.Name, currentLevel, maxLevel, cost))
-                                        _G.UpgradeUnit(strongest)
+                                    local cost = GetUpgradeCost(strongest)
+                                    if cost < math.huge and GetYen() >= cost then
+                                        local currentLevel = GetCurrentUpgradeLevel(strongest)
+                                        local maxLevel = GetMaxUpgradeLevel(strongest)
+                                        DebugPrint(string.format("⬆️ อัพเกรด Damage: %s (%d/%d) [ค่าใช้จ่าย: %d]", strongest.Name, currentLevel, maxLevel, cost))
+                                        UpgradeUnit(strongest)
                                         upgradeCount = upgradeCount + 1
                                         continueUpgrading = true  -- อัพสำเร็จ ลองต่อ
                                         task.wait(0.1)  -- ⭐ รอให้เงินอัพเดท
                                     else
                                         -- เงินไม่พอ หรือ cost error
-                                        _G.DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", strongest.Name, cost, _G.GetYen()))
+                                        DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", strongest.Name, cost, GetYen()))
                                         break
                                     end
-                                elseif strongest and _G.IsUnitMaxed(strongest) then
+                                elseif strongest and IsUnitMaxed(strongest) then
                                     -- ตัวแรงสุด MAX แล้ว → หาตัวถัดไปที่ยังไม่ MAX
                                     local nextUnit = nil
                                     local lowestLevel = math.huge
                                     
                                     for _, unit in ipairs(damageUnits) do
-                                        if unit.GUID ~= strongest.GUID and not _G.IsUnitMaxed(unit) then
-                                            local currentLevel = _G.GetCurrentUpgradeLevel(unit)
+                                        if unit.GUID ~= strongest.GUID and not IsUnitMaxed(unit) then
+                                            local currentLevel = GetCurrentUpgradeLevel(unit)
                                             if currentLevel < lowestLevel then
                                                 lowestLevel = currentLevel
                                                 nextUnit = unit
@@ -9405,22 +9007,22 @@ _G.AutoPlaceLoop = function()
                                     end
                                     
                                     if nextUnit then
-                                        local cost = _G.GetUpgradeCost(nextUnit)
-                                        if cost < math.huge and _G.GetYen() >= cost then
-                                            local currentLevel = _G.GetCurrentUpgradeLevel(nextUnit)
-                                            local maxLevel = _G.GetMaxUpgradeLevel(nextUnit)
-                                            _G.DebugPrint(string.format("⬆️ อัพเกรด Damage ถัดไป: %s (%d/%d) [ค่าใช้จ่าย: %d]", nextUnit.Name, currentLevel, maxLevel, cost))
-                                            _G.UpgradeUnit(nextUnit)
+                                        local cost = GetUpgradeCost(nextUnit)
+                                        if cost < math.huge and GetYen() >= cost then
+                                            local currentLevel = GetCurrentUpgradeLevel(nextUnit)
+                                            local maxLevel = GetMaxUpgradeLevel(nextUnit)
+                                            DebugPrint(string.format("⬆️ อัพเกรด Damage ถัดไป: %s (%d/%d) [ค่าใช้จ่าย: %d]", nextUnit.Name, currentLevel, maxLevel, cost))
+                                            UpgradeUnit(nextUnit)
                                             upgradeCount = upgradeCount + 1
                                             continueUpgrading = true  -- อัพสำเร็จ ลองต่อ
                                             task.wait(0.1)  -- ⭐ รอให้เงินอัพเดท
                                         else
-                                            _G.DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", nextUnit.Name, cost, _G.GetYen()))
+                                            DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", nextUnit.Name, cost, GetYen()))
                                             break
                                         end
                                     else
                                         -- ไม่มีตัวถัดไปแล้ว (ทุกตัว MAX)
-                                        _G.DebugPrint("✅ Damage Units MAX ทั้งหมดแล้ว")
+                                        DebugPrint("✅ Damage Units MAX ทั้งหมดแล้ว")
                                         break
                                     end
                                 else
@@ -9430,13 +9032,13 @@ _G.AutoPlaceLoop = function()
                             end
                             
                             if upgradeCount >= maxUpgradesPerLoop then
-                                _G.DebugPrint(string.format("⚠️ Damage Upgrade ถึงลิมิต (%d ครั้ง)", maxUpgradesPerLoop))
+                                DebugPrint(string.format("⚠️ Damage Upgrade ถึงลิมิต (%d ครั้ง)", maxUpgradesPerLoop))
                             end
                         end  -- ปิด while + if #damageUnits
                         
                         -- ⭐⭐⭐ Priority 0: Upgrade Summon Units ก่อน (ถ้ามี)
                         if #summonUnits > 0 then
-                            _G.DebugPrint(string.format("🎯 พบ Summon Units: %d ตัว - เริ่มอัพเกรด", #summonUnits))
+                            DebugPrint(string.format("🎯 พบ Summon Units: %d ตัว - เริ่มอัพเกรด", #summonUnits))
                             
                             local summonContinue = true
                             local summonUpgradeCount = 0
@@ -9445,34 +9047,34 @@ _G.AutoPlaceLoop = function()
                                 summonContinue = false
                                 
                                 -- ⭐ เช็คเงินก่อน
-                                if _G.GetYen() < 100 then
-                                    _G.DebugPrint("⏸️ เงินน้อยเกินไป - หยุด Auto Upgrade Summon")
+                                if GetYen() < 100 then
+                                    DebugPrint("⏸️ เงินน้อยเกินไป - หยุด Auto Upgrade Summon")
                                     break
                                 end
                                 
                                 for _, unit in ipairs(summonUnits) do
-                                    if not _G.IsUnitMaxed(unit) then
-                                        local cost = _G.GetUpgradeCost(unit)
-                                        if cost < math.huge and _G.GetYen() >= cost then
-                                            local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-                                            local maxLevel = _G.GetMaxUpgradeLevel(unit)
-                                            _G.DebugPrint(string.format("⬆️ อัพเกรด Summon: %s (%d/%d) [ค่าใช้จ่าย: %d]", unit.Name, currentLevel, maxLevel, cost))
-                                            _G.UpgradeUnit(unit)
+                                    if not IsUnitMaxed(unit) then
+                                        local cost = GetUpgradeCost(unit)
+                                        if cost < math.huge and GetYen() >= cost then
+                                            local currentLevel = GetCurrentUpgradeLevel(unit)
+                                            local maxLevel = GetMaxUpgradeLevel(unit)
+                                            DebugPrint(string.format("⬆️ อัพเกรด Summon: %s (%d/%d) [ค่าใช้จ่าย: %d]", unit.Name, currentLevel, maxLevel, cost))
+                                            UpgradeUnit(unit)
                                             summonUpgradeCount = summonUpgradeCount + 1
                                             summonContinue = true
                                             task.wait(0.1)
                                             break
                                         else
-                                            _G.DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", unit.Name, cost, _G.GetYen()))
+                                            DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", unit.Name, cost, GetYen()))
                                         end
                                     end
                                 end
                             end
                             
                             if summonUpgradeCount >= 50 then
-                                _G.DebugPrint("⚠️ Summon Upgrade ถึงลิมิต (50 ครั้ง)")
+                                DebugPrint("⚠️ Summon Upgrade ถึงลิมิต (50 ครั้ง)")
                             elseif summonUpgradeCount == 0 then
-                                _G.DebugPrint("✅ Summon Units MAX หรือเงินไม่พอ")
+                                DebugPrint("✅ Summon Units MAX หรือเงินไม่พอ")
                             end
                         end
                         
@@ -9483,25 +9085,25 @@ _G.AutoPlaceLoop = function()
                             buffContinue = false
                             
                             -- ⭐ เช็คเงินก่อน
-                            if _G.GetYen() < 100 then
-                                _G.DebugPrint("⏸️ เงินน้อยเกินไป - หยุด Auto Upgrade Buff")
+                            if GetYen() < 100 then
+                                DebugPrint("⏸️ เงินน้อยเกินไป - หยุด Auto Upgrade Buff")
                                 break
                             end
                             
                             for _, unit in pairs(buffUnits) do
-                                if not _G.IsUnitMaxed(unit) then
-                                    local cost = _G.GetUpgradeCost(unit)
-                                    if cost < math.huge and _G.GetYen() >= cost then
-                                        local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-                                        local maxLevel = _G.GetMaxUpgradeLevel(unit)
-                                        _G.DebugPrint(string.format("⬆️ อัพเกรด Buff: %s (%d/%d) [ค่าใช้จ่าย: %d]", unit.Name, currentLevel, maxLevel, cost))
-                                        _G.UpgradeUnit(unit)
+                                if not IsUnitMaxed(unit) then
+                                    local cost = GetUpgradeCost(unit)
+                                    if cost < math.huge and GetYen() >= cost then
+                                        local currentLevel = GetCurrentUpgradeLevel(unit)
+                                        local maxLevel = GetMaxUpgradeLevel(unit)
+                                        DebugPrint(string.format("⬆️ อัพเกรด Buff: %s (%d/%d) [ค่าใช้จ่าย: %d]", unit.Name, currentLevel, maxLevel, cost))
+                                        UpgradeUnit(unit)
                                         buffUpgradeCount = buffUpgradeCount + 1
                                         buffContinue = true
                                         task.wait(0.1)
                                         break  -- อัพแล้วเริ่ม loop ใหม่
                                     else
-                                        _G.DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", unit.Name, cost, _G.GetYen()))
+                                        DebugPrint(string.format("⏸️ เงินไม่พออัพ %s (ต้องการ: %d, มี: %d)", unit.Name, cost, GetYen()))
                                     end
                                 end
                             end
@@ -9518,20 +9120,20 @@ _G.AutoPlaceLoop = function()
         -- ⭐⭐⭐ INDEPENDENT AUTO UPGRADE: ทำงานแยกจาก placement logic
         -- รันทุกรอบ ไม่สนใจ ClearEnemy, Emergency, หรือ Skill usage
         pcall(function()
-            local activeUnits = _G.GetActiveUnits()
+            local activeUnits = GetActiveUnits()
             if not activeUnits then return end
             
             -- 1. Auto Upgrade God (Standless) - ทำงานพร้อม Skill (Independent)
             for _, unit in pairs(activeUnits) do
                 local unitName = unit.Name or ""
                 local isGodStandless = unitName:lower():find("god") and (unitName:lower():find("standless") or unitName:lower():find("above"))
-                if isGodStandless and not _G.IsUnitMaxed(unit) then
-                    local cost = _G.GetUpgradeCost(unit)
-                    if cost < math.huge and _G.GetYen() >= cost then
-                        local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-                        local maxLevel = _G.GetMaxUpgradeLevel(unit)
+                if isGodStandless and not IsUnitMaxed(unit) then
+                    local cost = GetUpgradeCost(unit)
+                    if cost < math.huge and GetYen() >= cost then
+                        local currentLevel = GetCurrentUpgradeLevel(unit)
+                        local maxLevel = GetMaxUpgradeLevel(unit)
                         print(string.format("[IndependentUpgrade] ⚡ God Standless (%d/%d) [%d yen]", currentLevel, maxLevel, cost))
-                        _G.UpgradeUnit(unit)
+                        UpgradeUnit(unit)
                         task.wait(0.1)
                     end
                 end
@@ -9540,7 +9142,7 @@ _G.AutoPlaceLoop = function()
             -- 2. เช็คตัวเงิน MAX ก่อน
             local allEcoMaxed = true
             for _, unit in pairs(activeUnits) do
-                if unit.Data and _G.IsIncomeUnit(unit.Name, unit.Data) and not _G.IsUnitMaxed(unit) then
+                if unit.Data and IsIncomeUnit(unit.Name, unit.Data) and not IsUnitMaxed(unit) then
                     allEcoMaxed = false
                     break
                 end
@@ -9550,13 +9152,13 @@ _G.AutoPlaceLoop = function()
             if allEcoMaxed and (IsEmergency or EmergencyMode.Active) then
                 for _, unit in pairs(activeUnits) do
                     local unitData = unit.Data or {}
-                    if _G.IsPassiveSummonUnit(unit.Name, unitData) and not _G.IsUnitMaxed(unit) then
-                        local cost = _G.GetUpgradeCost(unit)
-                        if cost < math.huge and _G.GetYen() >= cost then
-                            local currentLevel = _G.GetCurrentUpgradeLevel(unit)
-                            local maxLevel = _G.GetMaxUpgradeLevel(unit)
+                    if IsPassiveSummonUnit(unit.Name, unitData) and not IsUnitMaxed(unit) then
+                        local cost = GetUpgradeCost(unit)
+                        if cost < math.huge and GetYen() >= cost then
+                            local currentLevel = GetCurrentUpgradeLevel(unit)
+                            local maxLevel = GetMaxUpgradeLevel(unit)
                             print(string.format("[Emergency] 🎯 Summon Upgrade: %s (%d/%d) [%d yen]", unit.Name, currentLevel, maxLevel, cost))
-                            _G.UpgradeUnit(unit)
+                            UpgradeUnit(unit)
                             task.wait(0.1)
                         end
                     end
@@ -9572,10 +9174,10 @@ _G.AutoPlaceLoop = function()
                 for _, unit in pairs(activeUnits) do
                     local unitData = unit.Data or {}
                     -- ข้ามตัวเงิน, buff, caloric clone
-                    if not _G.IsIncomeUnit(unit.Name, unitData) and 
-                       not _G.IsBuffUnit(unit.Name, unitData) and 
+                    if not IsIncomeUnit(unit.Name, unitData) and 
+                       not IsBuffUnit(unit.Name, unitData) and 
                        not CaloricCloneUnits[unit.GUID] and
-                       not _G.IsUnitMaxed(unit) then
+                       not IsUnitMaxed(unit) then
                         -- หา DMG จาก unit data
                         local dmg = unitData.Damage or unitData.DPS or 0
                         if dmg > highestDmg then
@@ -9587,12 +9189,12 @@ _G.AutoPlaceLoop = function()
                 
                 -- อัพเกรดตัว DMG สูงสุด
                 if highestDmgUnit then
-                    local cost = _G.GetUpgradeCost(highestDmgUnit)
-                    if cost < math.huge and _G.GetYen() >= cost then
-                        local currentLevel = _G.GetCurrentUpgradeLevel(highestDmgUnit)
-                        local maxLevel = _G.GetMaxUpgradeLevel(highestDmgUnit)
+                    local cost = GetUpgradeCost(highestDmgUnit)
+                    if cost < math.huge and GetYen() >= cost then
+                        local currentLevel = GetCurrentUpgradeLevel(highestDmgUnit)
+                        local maxLevel = GetMaxUpgradeLevel(highestDmgUnit)
                         print(string.format("[IndependentUpgrade] 🔥 Highest DMG: %s (%d/%d) [%d yen]", highestDmgUnit.Name, currentLevel, maxLevel, cost))
-                        _G.UpgradeUnit(highestDmgUnit)
+                        UpgradeUnit(highestDmgUnit)
                         task.wait(0.1)
                     end
                 end
@@ -9604,7 +9206,7 @@ _G.AutoPlaceLoop = function()
 end
 
 -- ===== AUTO START & VOTE SKIP SYSTEM =====
-_G.AutoVoteSkip = function()
+local function AutoVoteSkip()
     local currentTime = tick()
     if currentTime - LastVoteSkipTime < 2 then return end  -- 2 วินาที cooldown
     
@@ -9615,7 +9217,7 @@ _G.AutoVoteSkip = function()
             LastVoteSkipTime = currentTime
             -- Log เฉพาะทุก 10 วินาที
             if currentTime - LastVoteSkipLog >= 10 then
-                _G.DebugPrint("⏭️ Vote Skip sent")
+                DebugPrint("⏭️ Vote Skip sent")
                 LastVoteSkipLog = currentTime
             end
         end)
@@ -9653,7 +9255,7 @@ _G.AutoVoteSkip = function()
     end)
 end
 
-_G.TryStartGame = function()
+local function TryStartGame()
     local success = false
     local currentTime = tick()
     
@@ -9663,7 +9265,7 @@ _G.TryStartGame = function()
             SkipWaveEvent:FireServer("Skip")
             -- Log เฉพาะทุก 10 วินาที
             if currentTime - LastStartLog >= 10 then
-                _G.DebugPrint("▶️ Trying to start game via SkipWaveEvent")
+                DebugPrint("▶️ Trying to start game via SkipWaveEvent")
                 LastStartLog = currentTime
             end
             success = true
@@ -9732,13 +9334,13 @@ _G.TryStartGame = function()
 end
 
 -- ===== START =====
-task.spawn(_G.AutoPlaceLoop)
+task.spawn(AutoPlaceLoop)
 
 -- Auto Start Loop (inline - ไม่ใช้ local function เพื่อลด register)
 task.spawn(function()
     while true do
         task.wait(3)
-        if ENABLED then pcall(_G.TryStartGame) end
+        if ENABLED then pcall(TryStartGame) end
     end
 end)
 
@@ -9746,7 +9348,7 @@ end)
 task.spawn(function()
     while true do
         task.wait(1)
-        if ENABLED then pcall(_G.AutoVoteSkip) end
+        if ENABLED then pcall(AutoVoteSkip) end
     end
 end)
 
@@ -9755,7 +9357,7 @@ end)
 local LastReplayVoteTime = 0
 local REPLAY_VOTE_COOLDOWN = 5
 
-_G.AutoVoteReplay = function()
+local function AutoVoteReplay()
     local now = tick()
     if now - LastReplayVoteTime < REPLAY_VOTE_COOLDOWN then return end
     
@@ -9796,55 +9398,11 @@ _G.AutoVoteReplay = function()
         LastReplayVoteTime = now
         print("[AutoReplay] 🔄 Found Retry/Replay button - activating...")
         
-        local activated = false
-        
-        -- ⭐ วิธี 1: ใช้ VoteEvent โดยตรง (ดีที่สุด)
         pcall(function()
-            local voteEvent = game:GetService("ReplicatedStorage")
-                :FindFirstChild("Networking")
-                :FindFirstChild("EndScreen")
-                :FindFirstChild("VoteEvent")
-            if voteEvent then
-                voteEvent:FireServer("Retry")
-                activated = true
-                print("[AutoReplay] ✅ Sent VoteEvent('Retry')")
+            if targetBtn.Activate then
+                targetBtn:Activate()
             end
         end)
-        
-        -- วิธี 2: ใช้ getconnections
-        if not activated then
-            pcall(function()
-                if getconnections then
-                    local conns = getconnections(targetBtn.MouseButton1Click)
-                    if conns and #conns > 0 then
-                        for _, c in pairs(conns) do c:Fire() end
-                        activated = true
-                        print("[AutoReplay] ✅ Activated via getconnections")
-                    end
-                end
-            end)
-        end
-        
-        -- วิธี 3: ใช้ firesignal
-        if not activated then
-            pcall(function()
-                if firesignal then
-                    firesignal(targetBtn.MouseButton1Click)
-                    activated = true
-                    print("[AutoReplay] ✅ Activated via firesignal")
-                end
-            end)
-        end
-        
-        -- วิธี 4: ใช้ Activate
-        if not activated then
-            pcall(function()
-                if targetBtn.Activate then
-                    targetBtn:Activate()
-                    print("[AutoReplay] ✅ Activated via Activate()")
-                end
-            end)
-        end
     end
 end
 
@@ -9852,7 +9410,7 @@ end
 task.spawn(function()
     while true do
         task.wait(2)
-        pcall(_G.AutoVoteReplay)
+        pcall(AutoVoteReplay)
     end
 end)
 
@@ -9929,7 +9487,7 @@ return {
     -- Unit Classification
     IsIncomeUnit = IsIncomeUnit,
     IsBuffUnit = IsBuffUnit,
-    HasEconomyUnitInHotbar = _G.HasEconomyUnitInHotbar,
+    HasEconomyUnitInHotbar = HasEconomyUnitInHotbar,
     AllEconomyUnitsMaxed = AllEconomyUnitsMaxed,
     
     -- Enemy System
