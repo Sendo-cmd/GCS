@@ -10,6 +10,8 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
+local Use_API = true -- เปิด/ปิด API (ถ้าปิดจะใช้ auto config จาก Changes table แทน)
+
 local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
 local IsGame = local_data[1]
 local MainSettings = {
@@ -882,7 +884,87 @@ local Changes = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
         ["StageType"] = "Raid",
-        ["Stage"] = "Ruined City",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["98744617-780b-4c3f-adea-12f450e0b33c"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["415f5afe-810d-4a42-aed9-5c29995f2e31"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["dbda7a23-f9ac-487f-9a8d-beeebfba0475"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["16cb01f5-7b68-47ed-b116-c63d5f453e1a"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
         ["FriendsOnly"] = false
     }
     end,
@@ -1306,7 +1388,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1358,7 +1440,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1410,7 +1492,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1462,7 +1544,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -2585,6 +2667,47 @@ if ID[game.GameId][1] == "AV" then
                             if not Current_Party or #Current_Party <= 0 then
                                 Waiting_Time = os.time() + 150
                                 print("Add Time To Waiting Time")
+                                -- Host Auto Config: ถ้าไม่มี want_carry และไม่มี party member ให้ใช้ auto config ได้
+                                if Use_API then
+                                    local hostData = Fetch_data()
+                                    if hostData and hostData["product_id"] then
+                                        local hasWantCarry = false
+                                        -- ตรวจสอบว่ามีใครกด want_carry หรือไม่
+                                        for _, orderType in pairs(Order_Type) do
+                                            for _, prodId in pairs(orderType) do
+                                                local otherCache = GetCache(prodId .. "_cache_1")
+                                                if otherCache and otherCache["party"] == Username then
+                                                    hasWantCarry = true
+                                                    break
+                                                end
+                                            end
+                                            if hasWantCarry then break end
+                                        end
+                                        
+                                        if not hasWantCarry then
+                                            -- ไม่มี want_carry - ใช้ auto config ตามปกติ
+                                            if Changes[hostData["product_id"]] then
+                                                Changes[hostData["product_id"]]()
+                                                print("[Host Auto Config] Using config for:", hostData["product_id"])
+                                            end
+                                            -- Auto Select Items จาก selected_items (แบบเดียวกับ TF_System.lua)
+                                            if hostData["selected_items"] then
+                                                local Insert = {}
+                                                for _, v in pairs(hostData["selected_items"]) do
+                                                    if v.name then
+                                                        table.insert(Insert, v.name)
+                                                    end
+                                                end
+                                                if #Insert > 0 then
+                                                    Settings["Select Items"] = Insert
+                                                    print("[Host Auto Config] Selected items:", table.concat(Insert, ", "))
+                                                end
+                                            end
+                                        else
+                                            print("[Host] มีคน want_carry - รอรับ member")
+                                        end
+                                    end
+                                end
                             else
                                 print(#Current_Party)
                                 if os.time() > Waiting_Time then

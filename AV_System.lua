@@ -873,7 +873,87 @@ local Changes = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
         ["StageType"] = "Raid",
-        ["Stage"] = "Ruined City",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["98744617-780b-4c3f-adea-12f450e0b33c"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["415f5afe-810d-4a42-aed9-5c29995f2e31"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["dbda7a23-f9ac-487f-9a8d-beeebfba0475"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["16cb01f5-7b68-47ed-b116-c63d5f453e1a"] = function()
+        Settings["Auto Stun"] = true
+        Settings["Select Mode"] = "Raid"
+        Settings["Priority Multi"] = {
+            ["Enabled"] = true,
+            ["1"] = "Bosses",
+            ["2"] = "First",
+            ["3"] = "Bosses",
+            ["4"] = "Closest",
+            ["5"] = "First",
+            ["6"] = "First",
+        }
+        Settings["Raid Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Act1",
+        ["StageType"] = "Raid",
+        ["Stage"] = "HAPPY Factory",
         ["FriendsOnly"] = false
     }
     end,
@@ -1297,7 +1377,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1349,7 +1429,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1401,7 +1481,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1453,7 +1533,7 @@ local Changes = {
         Settings["Select Mode"] = "Dungeon"
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
-        Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Select Modifier"] = {"Tyrant Arrives"}
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -2112,18 +2192,72 @@ local function Auto_Config()
         if Changes[OrderData["product_id"]] then
             Changes[OrderData["product_id"]]()
             print("Changed Configs")
-        end 
+        end
+        -- Auto Select Items จาก selected_items (แบบเดียวกับ TF_System.lua)
+        if OrderData["selected_items"] then
+            local Insert = {}
+            for _, v in pairs(OrderData["selected_items"]) do
+                if v.name then
+                    table.insert(Insert, v.name)
+                end
+            end
+            if #Insert > 0 then
+                Settings["Select Items"] = Insert
+                print("[Auto_Config] Selected items:", table.concat(Insert, ", "))
+            end
+        end
+        -- Background task เพื่ออัพเดท selected_items อย่างต่อเนื่อง
+        task.spawn(function()
+            while true do
+                pcall(function()
+                    local UpdatedOrderData = Fetch_data()
+                    if UpdatedOrderData and UpdatedOrderData["selected_items"] then
+                        local NewInsert = {}
+                        for _, v in pairs(UpdatedOrderData["selected_items"]) do
+                            if v.name then
+                                table.insert(NewInsert, v.name)
+                            end
+                        end
+                        if #NewInsert > 0 then
+                            local hasChanged = false
+                            local currentItems = Settings["Select Items"] or {}
+                            if #NewInsert ~= #currentItems then
+                                hasChanged = true
+                            else
+                                for i, name in ipairs(NewInsert) do
+                                    if currentItems[i] ~= name then
+                                        hasChanged = true
+                                        break
+                                    end
+                                end
+                            end
+                            if hasChanged then
+                                Settings["Select Items"] = NewInsert
+                                print("[Auto_Config] Updated selected_items:", table.concat(NewInsert, ", "))
+                            end
+                        end
+                    end
+                end)
+                task.wait(10)
+            end
+        end)
         if Settings["Select Mode"] == "AFK" then
             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("AFKEvent"):FireServer()
             local Product = OrderData["product"]
             task.spawn(function()
                 while true do
-                    if Product["condition"]["type"] == "hour" then
-                        if tonumber(OrderData["progress_value"]) >= (tonumber(OrderData["target_value"])/60/60) then
-                            Post(PathWay .. "finished", CreateBody())
+                    local freshOrderData = Fetch_data()
+                    if freshOrderData then
+                        if Product["condition"]["type"] == "hour" then
+                            if tonumber(freshOrderData["progress_value"]) >= (tonumber(freshOrderData["target_value"])/60/60) then
+                                if _G.Leave_Party then _G.Leave_Party() end
+                                Post(PathWay .. "finished", CreateBody())
+                                print("[Progress] AFK hour completed!")
+                                break
+                            end
                         end
                     end
-                    task.wait(200)
+                    task.wait(60)
                 end
             end)
             return false
@@ -2227,6 +2361,34 @@ local function Auto_Config()
             --     ["order_id"] = P_Key,
             -- })
         -- finished 
+        -- Background Progress Checker - เช็ค progress อย่างต่อเนื่องเพื่อให้แน่ใจว่าจบงาน
+        task.spawn(function()
+            while true do
+                task.wait(30) -- เช็คทุก 30 วินาที
+                local freshOrderData = Fetch_data()
+                if freshOrderData and freshOrderData["product"] then
+                    local Product = freshOrderData["product"]
+                    local conditionType = Product["condition"]["type"]
+                    local progressValue = tonumber(freshOrderData["progress_value"]) or 0
+                    local targetValue = tonumber(freshOrderData["target_value"]) or 1
+                    
+                    local isCompleted = false
+                    if conditionType == "hour" then
+                        isCompleted = progressValue >= (targetValue/60/60)
+                    else
+                        isCompleted = progressValue >= targetValue
+                    end
+                    
+                    if isCompleted then
+                        print("[Progress Checker] Task completed! Type:", conditionType, "Progress:", progressValue, "/", targetValue)
+                        if _G.Leave_Party then _G.Leave_Party() end
+                        Post(PathWay .. "finished", CreateBody())
+                        break
+                    end
+                end
+            end
+        end)
+        
         if game.PlaceId == 16146832113 then
         else
             ConnectToEnd = Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
@@ -3094,22 +3256,38 @@ end
                             return
                         end
                         
-                        -- กดจนกว่า EndScreen จะหายไป
-                        while Settings["Auto Next"] and isEndScreenVisible() do
-                            pcall(function()
-                                if method == "VoteEvent" then
-                                    Networking.EndScreen.VoteEvent:FireServer("Next")
-                                elseif method == "NetworkingVoteEvent" then
-                                    Networking.VoteEvent:FireServer("Next")
-                                elseif method == "EndScreenEvent" then
-                                    Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
-                                elseif method == "Button" and btn then
-                                    for _, conn in pairs(getconnections(btn.Activated)) do
-                                        conn:Fire()
+                        -- กดจนกว่า EndScreen จะหายไป (Anti-spam: กดแค่ครั้งเดียวแล้วรอ)
+                        local hasVoted = false
+                        local voteAttempts = 0
+                        local maxAttempts = 3 -- กดซ้ำสูงสุด 3 ครั้ง
+                        
+                        while Settings["Auto Next"] and isEndScreenVisible() and voteAttempts < maxAttempts do
+                            if not hasVoted then
+                                local success = pcall(function()
+                                    if method == "VoteEvent" then
+                                        Networking.EndScreen.VoteEvent:FireServer("Next")
+                                    elseif method == "NetworkingVoteEvent" then
+                                        Networking.VoteEvent:FireServer("Next")
+                                    elseif method == "EndScreenEvent" then
+                                        Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
+                                    elseif method == "Button" and btn then
+                                        for _, conn in pairs(getconnections(btn.Activated)) do
+                                            conn:Fire()
+                                        end
                                     end
+                                end)
+                                if success then
+                                    hasVoted = true
+                                    voteAttempts = voteAttempts + 1
+                                    print("[Auto Next] Voted successfully (attempt " .. voteAttempts .. ")")
                                 end
-                            end)
-                            task.wait(1)
+                            end
+                            -- รอนานขึ้นเพื่อไม่ให้ spam (5 วินาที)
+                            task.wait(5)
+                            -- ถ้า EndScreen ยังอยู่หลังจาก 5 วิ ให้ลอง vote อีกครั้ง
+                            if isEndScreenVisible() then
+                                hasVoted = false
+                            end
                         end
                     end)
                 end
