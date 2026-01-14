@@ -2894,7 +2894,8 @@ if ID[game.GameId][1] == "AV" then
                                         continue;
                                     end
                                     local kaiproduct = kai_cache["current_play"]
-                                    if #kaiproduct > 10 then
+                                    -- เช็ค Order Type ถ้า Host มี current_play
+                                    if kaiproduct and #kaiproduct > 10 then
                                         local Product_Type_1,Product_Type_2 = nil,nil
                                         for i,v in pairs(Order_Type) do
                                             if table.find(v,kaiproduct) then
@@ -2908,37 +2909,23 @@ if ID[game.GameId][1] == "AV" then
                                         if Product_Type_1 ~= Product_Type_2 then
                                             continue;
                                         end
-                                        SendCache(
-                                            {
-                                                ["index"] = v["username"] .. "-message"
-                                            },
-                                            {
-                                                ["value"] = {
-                                                    ["order"] = cache_key,
-                                                    ["message-id"] = HttpService:GenerateGUID(false),
-                                                    ["join"] = os.time() + 10,
-                                                },
-                                            }
-                                        )
-                                        AttemptToAlready = 0
-                                    else
-                                        print("Request To Make Party",AttemptToAlready)
-                                        if AttemptToAlready < 5 then continue; end
-                                        print("Create Party",AttemptToAlready)
-                                        SendCache(
-                                            {
-                                                ["index"] = v["username"] .. "-message"
-                                            },
-                                            {
-                                                ["value"] = {
-                                                    ["order"] = cache_key,
-                                                    ["message-id"] = HttpService:GenerateGUID(false),
-                                                    ["join"] = os.time() + 10,
-                                                },
-                                            }
-                                        )
-                                        AttemptToAlready = 0
                                     end
+                                    -- ส่ง request ไป Host ได้เลย (ทั้งใน lobby และในด่าน)
+                                    print("[Member] Sending request to Host:", v["username"])
+                                    SendCache(
+                                        {
+                                            ["index"] = v["username"] .. "-message"
+                                        },
+                                        {
+                                            ["value"] = {
+                                                ["order"] = cache_key,
+                                                ["message-id"] = HttpService:GenerateGUID(false),
+                                                ["join"] = os.time() + 10,
+                                            },
+                                        }
+                                    )
+                                    AttemptToAlready = 0
+                                    break -- ส่งแค่ Host คนเดียวแล้ว break
                                 end
                             end
                             GetKai = Get(Api .. MainSettings["Path_Kai"])
