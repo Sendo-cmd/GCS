@@ -2193,13 +2193,38 @@ local function Auto_Config()
             Changes[OrderData["product_id"]]()
             print("Changed Configs")
         end
-        -- Auto Select Items จาก selected_items (แบบเดียวกับ TF_System.lua)
+        -- Auto Select Items จาก selected_items (รองรับ Act, Stage, และ items)
         if OrderData["selected_items"] then
             local Insert = {}
+            local SelectedAct = nil
+            local SelectedStage = nil
             for _, v in pairs(OrderData["selected_items"]) do
                 if v.name then
-                    table.insert(Insert, v.name)
+                    -- เช็คว่าเป็น Act หรือไม่
+                    if v.name:match("^Act%d+$") or v.name == "Infinite" then
+                        SelectedAct = v.name
+                    -- เช็คว่าเป็น Stage หรือไม่ (ไม่ใช่ Act)
+                    elseif v.type == "stage" or v.type == "Stage" then
+                        SelectedStage = v.name
+                    else
+                        table.insert(Insert, v.name)
+                    end
                 end
+            end
+            -- Apply Act และ Stage ไปยัง Settings ที่เกี่ยวข้อง (ใช้ค่าอื่นจาก Changes[product_id])
+            if SelectedAct then
+                if Settings["Story Settings"] then Settings["Story Settings"]["Act"] = SelectedAct end
+                if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Act"] = SelectedAct end
+                if Settings["Legend Settings"] then Settings["Legend Settings"]["Act"] = SelectedAct end
+                if Settings["Raid Settings"] then Settings["Raid Settings"]["Act"] = SelectedAct end
+                -- print("[Auto_Config] Selected Act:", SelectedAct)
+            end
+            if SelectedStage then
+                if Settings["Story Settings"] then Settings["Story Settings"]["Stage"] = SelectedStage end
+                if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Stage"] = SelectedStage end
+                if Settings["Legend Settings"] then Settings["Legend Settings"]["Stage"] = SelectedStage end
+                if Settings["Raid Settings"] then Settings["Raid Settings"]["Stage"] = SelectedStage end
+                -- print("[Auto_Config] Selected Stage:", SelectedStage)
             end
             if #Insert > 0 then
                 Settings["Select Items"] = Insert

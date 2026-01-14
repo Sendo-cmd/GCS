@@ -2709,13 +2709,38 @@ if ID[game.GameId][1] == "AV" then
                                             print("[Host Auto Config] No member request - starting auto config for:", hostData["product_id"])
                                             -- Set current_play ก่อนเข้าเล่น เพื่อให้ member หาเจอ
                                             UpdateCache(Username, {["current_play"] = hostData["product_id"]})
-                                            -- Auto Select Items จาก selected_items
+                                            -- Auto Select Items จาก selected_items (รองรับ Act, Stage, และ items)
                                             if hostData["selected_items"] then
                                                 local Insert = {}
+                                                local SelectedAct = nil
+                                                local SelectedStage = nil
                                                 for _, v in pairs(hostData["selected_items"]) do
                                                     if v.name then
-                                                        table.insert(Insert, v.name)
+                                                        -- เช็คว่าเป็น Act หรือไม่
+                                                        if v.name:match("^Act%d+$") or v.name == "Infinite" then
+                                                            SelectedAct = v.name
+                                                        -- เช็คว่าเป็น Stage หรือไม่
+                                                        elseif v.type == "stage" or v.type == "Stage" then
+                                                            SelectedStage = v.name
+                                                        else
+                                                            table.insert(Insert, v.name)
+                                                        end
                                                     end
+                                                end
+                                                -- Apply Act และ Stage (ใช้ค่าอื่นจาก Changes[product_id])
+                                                if SelectedAct then
+                                                    if Settings["Story Settings"] then Settings["Story Settings"]["Act"] = SelectedAct end
+                                                    if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Act"] = SelectedAct end
+                                                    if Settings["Legend Settings"] then Settings["Legend Settings"]["Act"] = SelectedAct end
+                                                    if Settings["Raid Settings"] then Settings["Raid Settings"]["Act"] = SelectedAct end
+                                                    -- print("[Host Auto Config] Selected Act:", SelectedAct)
+                                                end
+                                                if SelectedStage then
+                                                    if Settings["Story Settings"] then Settings["Story Settings"]["Stage"] = SelectedStage end
+                                                    if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Stage"] = SelectedStage end
+                                                    if Settings["Legend Settings"] then Settings["Legend Settings"]["Stage"] = SelectedStage end
+                                                    if Settings["Raid Settings"] then Settings["Raid Settings"]["Stage"] = SelectedStage end
+                                                    -- print("[Host Auto Config] Selected Stage:", SelectedStage)
                                                 end
                                                 if #Insert > 0 then
                                                     Settings["Select Items"] = Insert
