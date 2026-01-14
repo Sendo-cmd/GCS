@@ -2920,7 +2920,7 @@ if ID[game.GameId][1] == "AV" then
                                             ["value"] = {
                                                 ["order"] = cache_key,
                                                 ["message-id"] = HttpService:GenerateGUID(false),
-                                                ["join"] = os.time() + 10,
+                                                ["join"] = os.time() + 60, -- เพิ่มเวลาให้ Host มีเวลารับ request
                                             },
                                         }
                                     )
@@ -2939,12 +2939,32 @@ if ID[game.GameId][1] == "AV" then
     else
         print("MEOWWWW")
         if IsKai then
+            -- สร้าง/อัพเดท cache สำหรับ Host ในด่าน (ถ้ายังไม่มี)
             local cache = GetCache(Username)
-            print(cache["product_id"])
-            if Changes[cache["current_play"]] then
-                Changes[cache["current_play"]]()
-                print("Configs has Changed ",cache["current_play"])
-            end 
+            if not cache then
+                print("[Host In Stage] Creating cache...")
+                SendCache(
+                    {
+                        ["index"] = Username
+                    },
+                    {
+                        ["value"] = {
+                            ["last_online"] = os.time() + 400,
+                            ["current_play"] = "",
+                            ["party_member"] = {},
+                        }
+                    }
+                )
+                task.wait(2)
+                cache = GetCache(Username)
+            end
+            if cache then
+                print("[Host In Stage] Cache exists, current_play:", cache["current_play"])
+                if Changes[cache["current_play"]] then
+                    Changes[cache["current_play"]]()
+                    print("Configs has Changed ",cache["current_play"])
+                end
+            end
             local Last_Message_1 = nil
             local Last_Message_2 = nil
             -- Auto Accept Party + เช็ค member request และออกด่านมาสร้างตี้
