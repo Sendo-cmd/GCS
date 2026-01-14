@@ -2947,7 +2947,7 @@ if ID[game.GameId][1] == "AV" then
             end 
             local Last_Message_1 = nil
             local Last_Message_2 = nil
-            -- Auto Accept Party
+            -- Auto Accept Party + เช็ค member request และออกด่านมาสร้างตี้
             task.spawn(function()
                  while true do task.wait(1)
                     local cache = GetCache(Username)
@@ -2955,7 +2955,8 @@ if ID[game.GameId][1] == "AV" then
                     -- Accept 
                         local message = GetCache(Username .. "-message")
                         if message and Last_Message_1 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
-                            print(message)
+                            print("[Host In Stage] Member request received:", message)
+                            -- รับ member เข้า party ก่อน
                             local old_party = table.clone(cache["party_member"])
                             if LenT(old_party) < 3 then
                                 local success = true
@@ -3024,6 +3025,12 @@ if ID[game.GameId][1] == "AV" then
                                     UpdateCache(Username,{["current_play"] = path}) 
                                 elseif not path then
                                     UpdateCache(Username,{["current_play"] = ""}) 
+                                end
+                                -- ออกด่านไปสร้างตี้ให้ member
+                                if success then
+                                    print("[Host In Stage] Member accepted! Leaving stage to create party...")
+                                    task.wait(1)
+                                    game:Shutdown()
                                 end
                             end
                             Last_Message_1 = message["message-id"]
