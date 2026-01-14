@@ -2919,6 +2919,22 @@ if ID[game.GameId][1] == "AV" then
                                 end
                                 task.wait(3)
                             end
+                        elseif cache["pending_host"] and #cache["pending_host"] > 1 then
+                            -- มี pending_host แล้ว - รอ Host คนนั้นตอบกลับ
+                            local pendingHost = cache["pending_host"]
+                            local hostCache = GetCache(pendingHost)
+                            if hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key] then
+                                -- Host รับแล้ว! อัพเดท party
+                                print("[Member] Host accepted! Updating party to:", pendingHost)
+                                UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = ""})
+                            elseif not hostCache or os.time() > hostCache["last_online"] then
+                                -- Host offline - reset และหาใหม่
+                                print("[Member] Pending host offline, finding new host...")
+                                UpdateCache(cache_key, {["pending_host"] = ""})
+                            else
+                                print("[Member] Waiting for host:", pendingHost)
+                            end
+                            task.wait(5)
                         else
                             warn("Find Party")
                             -- รวบรวม Host ที่เหมาะสมก่อน แล้วค่อยสุ่มเลือก 1 คน
@@ -2960,10 +2976,11 @@ if ID[game.GameId][1] == "AV" then
                                         },
                                     }
                                 )
-                                AttemptToAlready = 0
+                                -- อัพเดท pending_host เพื่อรอ Host คนนี้
+                                UpdateCache(cache_key, {["pending_host"] = selectedHost})
+                                print("[Member] Set pending_host:", selectedHost)
                             end
                             GetKai = Get(Api .. MainSettings["Path_Kai"])
-                            AttemptToAlready = AttemptToAlready + 1
                         end
                     end
                     task.wait(5)
@@ -3015,15 +3032,19 @@ if ID[game.GameId][1] == "AV" then
             local Last_Message_2 = nil
             -- Auto Accept Party + เช็ค member request และออกด่านมาสร้างตี้
             task.spawn(function()
+                print("[Host Loop] Started")
                 while true do task.wait(5)
                     local cache = GetCache(Username)
-                    if not cache then continue end
+                    if not cache then print("[Host Loop] No cache") continue end
                     
                     local message = GetCache(Username .. "-message")
+                    print("[Host Loop] Message:", message and message["message-id"] or "nil", "Last:", Last_Message_1)
                     if message and Last_Message_1 ~= message["message-id"] then
+                        print("[Host Loop] New message from:", message["order"])
                         Last_Message_1 = message["message-id"]
                         
                         local memberCache = GetCache(message["order"])
+                        print("[Host Loop] Member cache:", memberCache and "found" or "nil")
                         if memberCache and memberCache["product_id"] then
                             local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
                             if LenT(old_party) < 3 then
@@ -3032,10 +3053,15 @@ if ID[game.GameId][1] == "AV" then
                                     ["product_id"] = memberCache["product_id"],
                                     ["name"] = memberCache["name"],
                                 }
+                                print("[Host] Updating party_member for order:", message["order"])
                                 UpdateCache(Username, {["party_member"] = old_party})
-                                UpdateCache(message["order"], {["party"] = Username})
-                                UpdateCache(Username, {["current_play"] = memberCache["product_id"]})
+                                print("[Host] UpdateCache party_member success")
                                 
+                                print("[Host] Setting member party to:", Username)
+                                UpdateCache(message["order"], {["party"] = Username})
+                                print("[Host] UpdateCache party success")
+                                
+                                UpdateCache(Username, {["current_play"] = memberCache["product_id"]})
                                 print("[Host] Member accepted:", memberCache["name"])
                                 -- รอให้ cache อัพเดทก่อนออกด่าน
                                 task.wait(5)
