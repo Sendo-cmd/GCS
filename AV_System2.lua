@@ -2685,6 +2685,8 @@ if ID[game.GameId][1] == "AV" then
                                         if not hasWantCarry then
                                             -- ไม่มี want_carry - เข้าเล่น auto config เลย (ไม่ต้องรอ member)
                                             print("[Host Auto Config] No member request - starting auto config for:", hostData["product_id"])
+                                            -- Set current_play ก่อนเข้าเล่น เพื่อให้ member หาเจอ
+                                            UpdateCache(Username, {["current_play"] = hostData["product_id"]})
                                             -- Auto Select Items จาก selected_items
                                             if hostData["selected_items"] then
                                                 local Insert = {}
@@ -2855,7 +2857,9 @@ if ID[game.GameId][1] == "AV" then
                                     channel:SendAsync(math.random(1,100)) 
                                     warn("Host is Online!!")
                                 else
-                                    warn("Host is Offline But Not Longer :D")
+                                    -- Host ไม่อยู่ในเกมเดียวกัน - reset party และหา Host ใหม่
+                                    warn("Host is Offline - resetting party to find new host")
+                                    UpdateCache(cache_key, {["party"] = ""})
                                 end
                                 task.wait(3)
                             end
