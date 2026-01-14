@@ -5221,7 +5221,7 @@ local function AutoNumberPad()
     if _G.NumberPad.CodeAccepted then return end
     if not NumberPadEvent then return end
     
-    -- เช็คว่ามี NumberPadInteract หรือไม่ (แทนการเช็คชื่อด่าน)
+    -- เช็คว่ามี NumberPadInteract หรือไม่
     local hasNumberPad = false
     pcall(function()
         local map = workspace:FindFirstChild("Map")
@@ -5232,7 +5232,6 @@ local function AutoNumberPad()
             end
         end
         
-        -- Debug: แสดงสถานะ
         if not _G.NumberPad.MapLogged then
             print(string.format("[NumberPad] 📍 HasNumberPad: %s", tostring(hasNumberPad)))
             _G.NumberPad.MapLogged = true
@@ -5243,36 +5242,44 @@ local function AutoNumberPad()
     
     local now = tick()
     
-    -- เช็ค UI ทุก 0.5 วินาที
-    if now - _G.NumberPad.LastCheck < 0.5 then return end
+    -- เช็ค UI ทุก 0.2 วินาที (เร็วขึ้นเพื่อไม่พลาด)
+    if now - _G.NumberPad.LastCheck < 0.2 then return end
     _G.NumberPad.LastCheck = now
     
-    local waveText = CheckBossWaveFromUI()
-    if not waveText then return end
-    
-    -- Debug: แสดง wave text ทุก 10 วินาที
-    if not _G.NumberPad.LastDebug or now - _G.NumberPad.LastDebug > 10 then
-        print(string.format("[NumberPad] 🔍 WaveText: %s", waveText:sub(1, 100)))
-        _G.NumberPad.LastDebug = now
-    end
-    
-    -- เช็คว่าเป็นสีเขียว (Boss wave) หรือไม่
-    local isBossWave = waveText:find("#83f2ae") ~= nil
-    
-    if isBossWave and waveText ~= _G.NumberPad.LastWaveText then
-        -- Boss wave ใหม่! ดึง wave number
-        local waveNum = ExtractWaveNumber(waveText)
-        if waveNum and not table.find(_G.NumberPad.BossWaves, waveNum) then
-            table.insert(_G.NumberPad.BossWaves, waveNum)
-            table.sort(_G.NumberPad.BossWaves)
-            print(string.format("[NumberPad] 🟢 Boss Wave Detected: %d (รวม %d waves)", waveNum, #_G.NumberPad.BossWaves))
+    -- ⭐ สแกนหา boss waves ทั้งหมดจาก UI (ดึงทุกตัวที่เป็นสีเขียว)
+    pcall(function()
+        local playerGui = game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui")
+        if not playerGui then return end
+        
+        for _, gui in pairs(playerGui:GetDescendants()) do
+            if gui:IsA("TextLabel") and gui.RichText then
+                local text = gui.Text or ""
+                -- เช็คว่าเป็นสีเขียว (Boss wave)
+                if text:find("#83f2ae") then
+                    -- ดึงทุก wave number จาก text
+                    for waveStr in text:gmatch('<font transparency="0">(%d+)</font>') do
+                        local waveNum = tonumber(waveStr)
+                        if waveNum and not table.find(_G.NumberPad.BossWaves, waveNum) then
+                            table.insert(_G.NumberPad.BossWaves, waveNum)
+                            table.sort(_G.NumberPad.BossWaves)
+                            print(string.format("[NumberPad] 🟢 Boss Wave: %d (รวม %d waves)", waveNum, #_G.NumberPad.BossWaves))
+                        end
+                    end
+                end
+            end
         end
-        _G.NumberPad.LastWaveText = waveText
+    end)
+    
+    -- Debug: แสดงสถานะทุก 10 วินาที
+    if not _G.NumberPad.LastDebug or now - _G.NumberPad.LastDebug > 10 then
+        print(string.format("[NumberPad] 📊 Boss Waves: %s (%d/4)", 
+            #_G.NumberPad.BossWaves > 0 and table.concat(_G.NumberPad.BossWaves, ", ") or "ยังไม่มี",
+            #_G.NumberPad.BossWaves))
+        _G.NumberPad.LastDebug = now
     end
     
     -- ถ้าได้ครบ 4 ตัวแล้ว → ส่งรหัส
     if #_G.NumberPad.BossWaves >= 4 then
-        -- สร้างรหัสจาก 4 wave แรก (mod 10 เพื่อให้เป็นเลข 0-9)
         local code = {}
         for i = 1, 4 do
             table.insert(code, _G.NumberPad.BossWaves[i] % 10)
@@ -5285,7 +5292,6 @@ local function AutoNumberPad()
             NumberPadEvent:FireServer("InputCode", code)
         end)
         
-        -- รอผลลัพธ์
         task.wait(1)
     end
 end
@@ -9353,64 +9359,52 @@ task.spawn(function()
 end)
 
 -- ===== AUTO REPLAY SYSTEM =====
--- ⭐ Auto Vote Restart เมื่อเกมจบ
+-- ⭐ ใช้ ShowEndScreenEvent.OnClientEvent (ตามโค้ดของ user)
 local LastReplayVoteTime = 0
-local REPLAY_VOTE_COOLDOWN = 5
+local REPLAY_VOTE_COOLDOWN = 3
+local AUTO_REPLAY_ENABLED = true
+local EndScreenVoteEvent = nil
+
+-- โหลด VoteEvent
+pcall(function()
+    EndScreenVoteEvent = ReplicatedStorage:FindFirstChild("Networking")
+        and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+        and ReplicatedStorage.Networking.EndScreen:FindFirstChild("VoteEvent")
+end)
 
 local function AutoVoteReplay()
+    if not AUTO_REPLAY_ENABLED then return end
+    if not EndScreenVoteEvent then return end
+    
     local now = tick()
     if now - LastReplayVoteTime < REPLAY_VOTE_COOLDOWN then return end
-    
-    -- หา "Retry"/"Replay" button บน EndScreen
-    local targetBtn = nil
-    local found = false
+    LastReplayVoteTime = now
     
     pcall(function()
-        local playerGui = plr:FindFirstChild("PlayerGui")
-        if playerGui then
-            for _, gui in pairs(playerGui:GetChildren()) do
-                if gui:IsA("ScreenGui") and gui.Enabled then
-                    local btn = gui:FindFirstChild("Retry", true) or gui:FindFirstChild("Replay", true)
-                    if btn then
-                        -- เช็คว่าเป็น Button และ Visible
-                        if btn:IsA("GuiButton") or btn:IsA("TextButton") or btn:IsA("ImageButton") then
-                            if btn.Visible then
-                                targetBtn = btn
-                                found = true
-                                break
-                            end
-                        end
-                        -- ถ้าเป็น Frame ที่มี Button ข้างใน
-                        local innerBtn = btn:FindFirstChildOfClass("TextButton") or btn:FindFirstChildOfClass("ImageButton")
-                        if innerBtn and innerBtn.Visible then
-                            targetBtn = innerBtn
-                            found = true
-                            break
-                        end
-                    end
-                end
-            end
-        end
+        EndScreenVoteEvent:FireServer("Retry")
+        print("[AutoReplay] 🔄 Voted Retry via VoteEvent")
     end)
-    
-    -- ทำงานเมื่อเจอปุ่ม Retry/Replay เท่านั้น (ไม่ spam)
-    if found and targetBtn then
-        LastReplayVoteTime = now
-        print("[AutoReplay] 🔄 Found Retry/Replay button - activating...")
-        
-        pcall(function()
-            if targetBtn.Activate then
-                targetBtn:Activate()
-            end
-        end)
-    end
 end
 
--- Auto Replay Loop
-task.spawn(function()
-    while true do
-        task.wait(2)
-        pcall(AutoVoteReplay)
+-- ⭐ ฟัง ShowEndScreenEvent เพื่อ trigger Auto Replay
+pcall(function()
+    local ShowEndScreenEvent = ReplicatedStorage:FindFirstChild("Networking")
+        and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+        and ReplicatedStorage.Networking.EndScreen:FindFirstChild("ShowEndScreenEvent")
+    
+    if ShowEndScreenEvent then
+        ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+            print("[AutoReplay] 📺 EndScreen detected! Status:", Results and Results.Status or "Unknown")
+            -- รอ 2 วินาทีแล้ว Vote Retry
+            task.delay(2, function()
+                AutoVoteReplay()
+            end)
+            -- Vote อีกครั้งหลัง 5 วินาที (กรณี vote แรกไม่ผ่าน)
+            task.delay(5, function()
+                AutoVoteReplay()
+            end)
+        end)
+        print("[AutoReplay] ✅ ShowEndScreenEvent connected!")
     end
 end)
 
@@ -9462,6 +9456,177 @@ task.spawn(function()
                     end
                 end
             end)
+        end
+    end
+end)
+
+-- ===== AUTO ROTUNDA CONTROL SYSTEM =====
+-- สำหรับ Happy Factory ACT 2 - ป้องกัน Innocents ไม่ให้ตาย + Barrels โดน Boss
+_G.Rotunda = {
+    Enabled = true,
+    State = {
+        Rotation = 0,
+        Phase = "Evacuation",
+        InnocentLane = 1,
+        EnemyLane = 2,
+        BarrelLane = 1,
+        CloneLane = 2,
+        RotatorStates = { false, false }
+    },
+    LastRotate = { 0, 0 },
+    RotateCooldown = 0.5,
+    Event = nil,
+    IsHappyFactory = false,
+}
+
+-- Initialize Rotunda Event
+pcall(function()
+    _G.Rotunda.Event = ReplicatedStorage:FindFirstChild("Networking")
+        and ReplicatedStorage.Networking:FindFirstChild("StageMechanics")
+        and ReplicatedStorage.Networking.StageMechanics:FindFirstChild("RotundaTrack")
+end)
+
+-- Listen for Rotunda state updates
+pcall(function()
+    if _G.Rotunda.Event then
+        _G.Rotunda.Event.OnClientEvent:Connect(function(eventType, ...)
+            local args = {...}
+            if eventType == "StateSync" then
+                local state = args[1]
+                if state then
+                    _G.Rotunda.State = state
+                    _G.Rotunda.State.RotatorStates = state.RotatorStates or { false, false }
+                    _G.Rotunda.IsHappyFactory = true
+                    print("[Rotunda] 🎡 StateSync - Phase:", state.Phase, "Rotation:", state.Rotation)
+                end
+            elseif eventType == "WaveStart" then
+                local waveData = args[1]
+                if waveData then
+                    _G.Rotunda.State.Phase = waveData.Phase
+                    _G.Rotunda.State.InnocentLane = waveData.InnocentLane
+                    _G.Rotunda.State.EnemyLane = waveData.EnemyLane
+                    _G.Rotunda.State.BarrelLane = waveData.BarrelLane
+                    _G.Rotunda.State.CloneLane = waveData.CloneLane
+                    print("[Rotunda] 🎡 WaveStart - Phase:", waveData.Phase)
+                end
+            elseif eventType == "Rotated" then
+                local rotatorNum = args[1]
+                local state = args[2]
+                if rotatorNum then
+                    _G.Rotunda.State.RotatorStates[rotatorNum] = state
+                end
+            elseif eventType == "PhaseChanged" then
+                _G.Rotunda.State.Phase = args[1]
+                print("[Rotunda] 🎡 PhaseChanged:", args[1])
+            end
+        end)
+        print("[Rotunda] ✅ Event connected!")
+    end
+end)
+
+-- ฟังก์ชันหมุน Track
+_G.RotateTrack = function(rotatorNum)
+    local now = tick()
+    if now - _G.Rotunda.LastRotate[rotatorNum] < _G.Rotunda.RotateCooldown then return false end
+    
+    pcall(function()
+        if _G.Rotunda.Event then
+            _G.Rotunda.Event:FireServer("Rotate", rotatorNum)
+            _G.Rotunda.LastRotate[rotatorNum] = now
+            print(string.format("[Rotunda] 🔄 Rotated track %d", rotatorNum))
+        end
+    end)
+    return true
+end
+
+-- คำนวณ lane ปัจจุบันจาก rotation (lane 1-4)
+_G.GetActualLane = function(baseLane, rotation)
+    if not baseLane then return 0 end
+    return ((baseLane - 1 + rotation) % 4) + 1
+end
+
+-- Auto Rotunda Loop
+task.spawn(function()
+    while true do
+        task.wait(0.3)
+        
+        if not ENABLED or not _G.Rotunda.Enabled or not _G.Rotunda.IsHappyFactory then
+            task.wait(1)
+            continue
+        end
+        
+        local state = _G.Rotunda.State
+        local rotation = state.Rotation or 0
+        
+        -- ===== EVACUATION PHASE =====
+        -- เป้าหมาย: Innocents (สีเขียว) ต้องไม่เข้า lane 4 (Gate)
+        -- ศัตรู (สีแดง) ควรเข้า Gate เพื่อให้ Unit โจมตี
+        if state.Phase == "Evacuation" then
+            local innocentActualLane = _G.GetActualLane(state.InnocentLane, rotation)
+            local enemyActualLane = _G.GetActualLane(state.EnemyLane, rotation)
+            
+            -- ถ้า Innocents กำลังจะเข้า lane 4 (Gate) ต้องหมุนออก
+            if innocentActualLane == 4 then
+                -- หมุนให้ Innocent ออกจาก lane 4
+                if not state.RotatorStates[1] then
+                    _G.RotateTrack(1)
+                elseif not state.RotatorStates[2] then
+                    _G.RotateTrack(2)
+                end
+            end
+            
+            -- ถ้า Enemy ไม่ได้อยู่ lane 4 และ Innocent ปลอดภัย ให้หมุน Enemy ไป lane 4
+            if innocentActualLane ~= 4 and enemyActualLane ~= 4 then
+                -- หมุนให้ Enemy ไป lane 4
+                if state.RotatorStates[1] then
+                    _G.RotateTrack(1)
+                elseif state.RotatorStates[2] then
+                    _G.RotateTrack(2)
+                end
+            end
+            
+        -- ===== BOMB PHASE =====
+        -- เป้าหมาย: Barrels ต้องไป lane 4 (โดน Boss)
+        -- Innocents ยังต้องป้องกันไม่ให้ตาย
+        elseif state.Phase == "BombPhase" then
+            local barrelActualLane = _G.GetActualLane(state.BarrelLane, rotation)
+            local innocentActualLane = state.InnocentLane and _G.GetActualLane(state.InnocentLane, rotation) or 0
+            
+            -- Priority 1: Innocents ห้ามอยู่ lane 4
+            if innocentActualLane == 4 then
+                if not state.RotatorStates[1] then
+                    _G.RotateTrack(1)
+                elseif not state.RotatorStates[2] then
+                    _G.RotateTrack(2)
+                end
+            -- Priority 2: Barrel ต้องไป lane 4
+            elseif barrelActualLane ~= 4 then
+                -- หมุนให้ Barrel ไป lane 4
+                local neededRotation = (4 - state.BarrelLane) % 4
+                local currentRotation = rotation % 4
+                
+                if neededRotation ~= currentRotation then
+                    if not state.RotatorStates[1] then
+                        _G.RotateTrack(1)
+                    elseif not state.RotatorStates[2] then
+                        _G.RotateTrack(2)
+                    end
+                end
+            end
+            
+        -- ===== BOSS PHASE =====
+        -- เป้าหมาย: Clone (สีชมพู) ต้องไป lane ที่มี Unit โจมตี
+        elseif state.Phase == "BossPhase" then
+            local cloneActualLane = _G.GetActualLane(state.CloneLane, rotation)
+            
+            -- Clone ควรไป lane 4 เพื่อให้ Unit โจมตี
+            if cloneActualLane ~= 4 then
+                if not state.RotatorStates[1] then
+                    _G.RotateTrack(1)
+                elseif not state.RotatorStates[2] then
+                    _G.RotateTrack(2)
+                end
+            end
         end
     end
 end)
