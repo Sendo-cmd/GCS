@@ -2199,11 +2199,17 @@ local function Auto_Config()
             local SelectedAct = nil
             local SelectedStage = nil
             for _, v in pairs(OrderData["selected_items"]) do
+                -- เช็คว่ามี act field หรือไม่ (format: {name="Double Dungeon", act="Act 3"})
+                if v.act then
+                    SelectedAct = v.act
+                end
                 if v.name then
-                    -- เช็คว่าเป็น Act หรือไม่
-                    if v.name:match("^Act%d+$") or v.name == "Infinite" then
+                    -- ถ้ามี act field แยก = name คือ Stage
+                    if v.act then
+                        SelectedStage = v.name
+                    -- ถ้าไม่มี act field = เช็คว่า name เป็น Act หรือไม่
+                    elseif v.name:match("^Act%s*%d+$") or v.name:match("^Act%d+$") or v.name == "Infinite" then
                         SelectedAct = v.name
-                    -- เช็คว่าเป็น Stage หรือไม่ (ไม่ใช่ Act)
                     elseif v.type == "stage" or v.type == "Stage" then
                         SelectedStage = v.name
                     else

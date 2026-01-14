@@ -12,9 +12,11 @@ repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("Pl
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Use_API = true -- เปิด/ปิด API (ถ้าปิดจะใช้ auto config จาก Changes table แทน)
 
--- Fallback สำหรับ request function
-local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
+local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request) or request
 if not request then
+    request = function(options)
+        return {Success = false, Body = "{}"}
+    end
     warn("[AV_System2] No HTTP request function found!")
 end
 
@@ -2715,11 +2717,17 @@ if ID[game.GameId][1] == "AV" then
                                                 local SelectedAct = nil
                                                 local SelectedStage = nil
                                                 for _, v in pairs(hostData["selected_items"]) do
+                                                    -- เช็คว่ามี act field หรือไม่ (format: {name="Double Dungeon", act="Act 3"})
+                                                    if v.act then
+                                                        SelectedAct = v.act
+                                                    end
                                                     if v.name then
-                                                        -- เช็คว่าเป็น Act หรือไม่
-                                                        if v.name:match("^Act%d+$") or v.name == "Infinite" then
+                                                        -- ถ้ามี act field แยก = name คือ Stage
+                                                        if v.act then
+                                                            SelectedStage = v.name
+                                                        -- ถ้าไม่มี act field = เช็คว่า name เป็น Act หรือไม่
+                                                        elseif v.name:match("^Act%s*%d+$") or v.name:match("^Act%d+$") or v.name == "Infinite" then
                                                             SelectedAct = v.name
-                                                        -- เช็คว่าเป็น Stage หรือไม่
                                                         elseif v.type == "stage" or v.type == "Stage" then
                                                             SelectedStage = v.name
                                                         else
@@ -3095,7 +3103,6 @@ if ID[game.GameId][1] == "AV" then
                             end
                             Last_Message_1 = message["message-id"]
                             task.wait(3)
-                        end
                         -- Remove
                         local message = GetCache(Username .. "-message-2")
                         if message and Last_Message_2 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
