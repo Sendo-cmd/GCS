@@ -2978,10 +2978,15 @@ if ID[game.GameId][1] == "AV" then
     else
         print("MEOWWWW")
         if IsKai then
-            -- สร้าง/อัพเดท cache สำหรับ Host ในด่าน (ถ้ายังไม่มี)
+            -- ดึง product_id จาก API เพื่อให้ Member หาเจอ
+            local hostData = Fetch_data()
+            local hostProductId = hostData and hostData["product_id"] or ""
+            print("[Host In Stage] Product ID from API:", hostProductId)
+            
+            -- สร้าง/อัพเดท cache สำหรับ Host ในด่าน
             local cache = GetCache(Username)
             if not cache then
-                print("[Host In Stage] Creating cache...")
+                print("[Host In Stage] Creating cache with current_play:", hostProductId)
                 SendCache(
                     {
                         ["index"] = Username
@@ -2989,19 +2994,26 @@ if ID[game.GameId][1] == "AV" then
                     {
                         ["value"] = {
                             ["last_online"] = os.time() + 400,
-                            ["current_play"] = "",
+                            ["current_play"] = hostProductId, -- set current_play ให้ Member หาเจอ
                             ["party_member"] = {},
                         }
                     }
                 )
                 task.wait(2)
                 cache = GetCache(Username)
+            else
+                -- อัพเดท current_play ถ้ายังไม่ได้ set
+                if cache["current_play"] == "" or cache["current_play"] == nil then
+                    print("[Host In Stage] Updating current_play to:", hostProductId)
+                    UpdateCache(Username, {["current_play"] = hostProductId})
+                end
             end
             if cache then
-                print("[Host In Stage] Cache exists, current_play:", cache["current_play"])
-                if Changes[cache["current_play"]] then
-                    Changes[cache["current_play"]]()
-                    print("Configs has Changed ",cache["current_play"])
+                local currentPlay = cache["current_play"] or hostProductId
+                print("[Host In Stage] Cache exists, current_play:", currentPlay)
+                if Changes[currentPlay] then
+                    Changes[currentPlay]()
+                    print("Configs has Changed ", currentPlay)
                 end
             end
             local Last_Message_1 = nil
