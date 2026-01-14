@@ -2536,6 +2536,22 @@ if ID[game.GameId][1] == "AV" then
                         print("Add Time To ", player.Name)
                     end
                 end
+                -- อัพเดท Counting จาก Players ที่อยู่ในเกมโดยตรง (ไม่ต้องรอ chat)
+                task.spawn(function()
+                    while true do
+                        task.wait(3)
+                        -- เช็ค party members ที่อยู่ในเกม และอัพเดท Counting
+                        if Current_Party and type(Current_Party) == "table" then
+                            for _, memberName in pairs(Current_Party) do
+                                if Players:FindFirstChild(memberName) then
+                                    -- Member อยู่ในเกม - อัพเดท Counting
+                                    Counting[memberName] = os.time() + 30
+                                    print("[Auto Counting] Member in game:", memberName)
+                                end
+                            end
+                        end
+                    end
+                end)
                 while true do task.wait(1)
                     local cache = GetCache(cache_key)
                     if cache then
@@ -2733,14 +2749,15 @@ if ID[game.GameId][1] == "AV" then
                                                 lowest = v["join_time"]
                                             end
                                         end
+                                        print("[Host] All members activated and in game - starting room with product:", Product)
                                         local p,c = pcall(function()
                                             Register_Room(Product,Current_Party)
                                         end)
                                         if not p then
-                                            print(p,c)
+                                            print("[Host] Register_Room Error:", c)
                                         end
                                     else
-                                        print("Not Found Member",All_Players_Activated() , All_Players_Game())
+                                        print("Waiting for members - Activated:", All_Players_Activated(), "InGame:", All_Players_Game())
                                     end
                                 else
                                     print("Waiting...",Waiting_Time - os.time())
