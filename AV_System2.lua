@@ -12,6 +12,12 @@ repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("Pl
 local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
 local Use_API = true -- เปิด/ปิด API (ถ้าปิดจะใช้ auto config จาก Changes table แทน)
 
+-- Fallback สำหรับ request function
+local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
+if not request then
+    warn("[AV_System2] No HTTP request function found!")
+end
+
 local local_data = ID[game.GameId]; if not local_data then game:GetService("Players").LocalPlayer:Kick("Not Support Yet") end
 local IsGame = local_data[1]
 local MainSettings = {
