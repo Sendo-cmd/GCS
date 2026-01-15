@@ -3100,8 +3100,8 @@ if ID[game.GameId][1] == "AV" then
                     
                     -- Accept member request
                     local message = GetCache(Username .. "-message")
-                    if message and Last_Message_1 ~= message["message-id"] then
-                        print("[Host In Stage] New message from:", message["order"])
+                    if message and Last_Message_1 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
+                        print("[Host In Stage] New message from:", message["order"], "valid until:", message["join"], "now:", os.time())
                         Last_Message_1 = message["message-id"]
                         
                         local memberCache = GetCache(message["order"])
@@ -3117,6 +3117,8 @@ if ID[game.GameId][1] == "AV" then
                                 UpdateCache(Username, {["party_member"] = old_party})
                                 UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
                                 UpdateCache(Username, {["current_play"] = memberCache["product_id"]})
+                                -- Clear message cache เพื่อไม่ให้ใช้ซ้ำ
+                                SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                 print("[Host In Stage] Member accepted:", memberCache["name"])
                                 
                                 -- เช็คว่า member อยู่ในเกมเดียวกันหรือไม่
