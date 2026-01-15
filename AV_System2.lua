@@ -2877,9 +2877,12 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end
                 end
+                print("[Member] Loop started, cache_key:", cache_key)
                 while true do task.wait(1)
                     local cache = GetCache(cache_key)
+                    print("[Member] Cache:", cache and "found" or "nil", "party:", cache and cache["party"] or "nil", "pending:", cache and cache["pending_host"] or "nil")
                     if not cache then
+                        print("[Member] Creating cache...")
                         SendCache(
                             {
                                 ["index"] = cache_key
@@ -2924,9 +2927,11 @@ if ID[game.GameId][1] == "AV" then
                             local pendingHost = cache["pending_host"]
                             local hostCache = GetCache(pendingHost)
                             if hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key] then
-                                -- Host รับแล้ว! อัพเดท party
+                                -- Host รับแล้ว! อัพเดท party และหยุดหา Host อื่น
                                 print("[Member] Host accepted! Updating party to:", pendingHost)
                                 UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = ""})
+                                -- รอให้ cache อัพเดทก่อนวนรอบใหม่
+                                task.wait(10)
                             elseif not hostCache or os.time() > hostCache["last_online"] then
                                 -- Host offline - reset และหาใหม่
                                 print("[Member] Pending host offline, finding new host...")
@@ -2937,33 +2942,58 @@ if ID[game.GameId][1] == "AV" then
                             task.wait(5)
                         else
                             warn("Find Party")
-                            -- รวบรวม Host ที่เหมาะสมก่อน แล้วค่อยสุ่มเลือก 1 คน
+                            local kaiData = DecBody(GetKai)
+                            print("[Member] GetKai count:", kaiData and #kaiData or 0)
                             local availableHosts = {}
-                            for i, v in pairs(DecBody(GetKai)) do
+                            for i, v in pairs(kaiData or {}) do
                                 local hostUsername = v["username"]
-                                if hostUsername == Username then continue end
+                                print("[Member] Checking host:", hostUsername)
+                                if hostUsername == Username then 
+                                    print("[Member] Skip - same as self")
+                                    continue 
+                                end
                                 
                                 local kai_cache = GetCache(hostUsername)
-                                if not kai_cache then continue end
-                                if os.time() > kai_cache["last_online"] then continue end
-                                if LenT(kai_cache["party_member"]) >= 3 then continue end
+                                if not kai_cache then 
+                                    print("[Member] Skip - no cache for:", hostUsername)
+                                    continue 
+                                end
+                                print("[Member] Host cache:", hostUsername, "last_online:", kai_cache["last_online"], "now:", os.time())
+                                if os.time() > kai_cache["last_online"] then 
+                                    print("[Member] Skip - offline:", hostUsername)
+                                    continue 
+                                end
+                                if LenT(kai_cache["party_member"]) >= 3 then 
+                                    print("[Member] Skip - party full:", hostUsername)
+                                    continue 
+                                end
                                 
                                 local kaiproduct = kai_cache["current_play"]
+                                print("[Member] Host current_play:", kaiproduct, "my product:", productid)
                                 if kaiproduct and #kaiproduct > 10 then
                                     local Product_Type_1, Product_Type_2 = nil, nil
                                     for _, orderType in pairs(Order_Type) do
                                         if table.find(orderType, kaiproduct) then Product_Type_1 = _ end
                                         if table.find(orderType, productid) then Product_Type_2 = _ end
                                     end
-                                    if Product_Type_1 ~= Product_Type_2 then continue end
+                                    -- ถ้า Product_Type เป็น nil (ไม่อยู่ใน Order_Type) ให้ข้ามการเช็ค
+                                    if Product_Type_1 and Product_Type_2 and Product_Type_1 ~= Product_Type_2 then 
+                                        print("[Member] Skip - product type mismatch:", Product_Type_1, "vs", Product_Type_2)
+                                        continue 
+                                    end
                                 end
                                 
+                                print("[Member] Host OK:", hostUsername)
                                 table.insert(availableHosts, hostUsername)
                             end
                             
+                            print("[Member] Available hosts:", #availableHosts)
                             if #availableHosts > 0 then
                                 local selectedHost = availableHosts[math.random(1, #availableHosts)]
                                 print("[Member] Request to:", selectedHost)
+                                -- อัพเดท pending_host ก่อนส่ง request เพื่อป้องกันการส่งซ้ำ
+                                UpdateCache(cache_key, {["pending_host"] = selectedHost})
+                                print("[Member] Set pending_host:", selectedHost)
                                 SendCache(
                                     {
                                         ["index"] = selectedHost .. "-message"
@@ -2976,9 +3006,9 @@ if ID[game.GameId][1] == "AV" then
                                         },
                                     }
                                 )
-                                -- อัพเดท pending_host เพื่อรอ Host คนนี้
-                                UpdateCache(cache_key, {["pending_host"] = selectedHost})
-                                print("[Member] Set pending_host:", selectedHost)
+                                print("[Member] Request sent, waiting for response...")
+                                -- รอให้ Host ตอบกลับ
+                                task.wait(15)
                             end
                             GetKai = Get(Api .. MainSettings["Path_Kai"])
                         end
