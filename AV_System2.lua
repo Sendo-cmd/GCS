@@ -2822,7 +2822,10 @@ if ID[game.GameId][1] == "AV" then
             end)
         else
             task.spawn(function()
-                task.wait(math.random(5,10))
+                -- รอให้เกมโหลดเสร็จก่อน
+                print("[Member Loading] Waiting for game to load...")
+                task.wait(math.random(10,15))
+                print("[Member Loading] Game loaded, starting...")
                 local data = Fetch_data() 
                 if not data or not data["want_carry"] then print("No Data") return false end
                 local productid = data["product_id"]
@@ -3019,6 +3022,10 @@ if ID[game.GameId][1] == "AV" then
         end
     else
         print("MEOWWWW")
+        -- รอให้เกมโหลดเสร็จก่อน
+        print("[Loading] Waiting for game to load...")
+        task.wait(10)
+        print("[Loading] Game loaded, starting...")
         if IsKai then
             -- ดึง product_id จาก API เพื่อให้ Member หาเจอ
             local hostData = Fetch_data()
@@ -3060,72 +3067,94 @@ if ID[game.GameId][1] == "AV" then
             end
             local Last_Message_1 = nil
             local Last_Message_2 = nil
-            -- Auto Accept Party + เช็ค member request และออกด่านมาสร้างตี้
+            local Current_Party_Stage = {}
+            local Waiting_Time_Stage = os.time() + 60
+            
+            -- ฟังก์ชันเช็คว่า party members อยู่ในเกมหรือไม่
+            local function GetPartyInGame(partyMembers)
+                local inGame = {}
+                for orderKey, memberData in pairs(partyMembers or {}) do
+                    local memberName = memberData["name"]
+                    if memberName and Players:FindFirstChild(memberName) then
+                        table.insert(inGame, memberName)
+                    end
+                end
+                return inGame
+            end
+            
+            -- Auto Accept Party + เช็ค member request (ทำงานทั้งในด่านและ lobby)
             task.spawn(function()
-                print("[Host Loop] Started")
-                while true do task.wait(5)
+                print("[Host In Stage] Loop Started")
+                while true do task.wait(3)
                     local cache = GetCache(Username)
-                    if not cache then print("[Host Loop] No cache") continue end
+                    if not cache then print("[Host In Stage] No cache") continue end
                     
+                    -- อัพเดท Current_Party_Stage
+                    Current_Party_Stage = GetPartyInGame(cache["party_member"])
+                    
+                    -- Accept member request
                     local message = GetCache(Username .. "-message")
-                    print("[Host Loop] Message:", message and message["message-id"] or "nil", "Last:", Last_Message_1)
                     if message and Last_Message_1 ~= message["message-id"] then
-                        print("[Host Loop] New message from:", message["order"])
+                        print("[Host In Stage] New message from:", message["order"])
                         Last_Message_1 = message["message-id"]
                         
                         local memberCache = GetCache(message["order"])
-                        print("[Host Loop] Member cache:", memberCache and "found" or "nil")
                         if memberCache and memberCache["product_id"] then
                             local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
                             if LenT(old_party) < 3 then
+                                -- เพิ่ม member เข้า party
                                 old_party[message["order"]] = {
                                     ["join_time"] = os.time(),
                                     ["product_id"] = memberCache["product_id"],
                                     ["name"] = memberCache["name"],
                                 }
-                                print("[Host] Updating party_member for order:", message["order"])
                                 UpdateCache(Username, {["party_member"] = old_party})
-                                print("[Host] UpdateCache party_member success")
-                                
-                                print("[Host] Setting member party to:", Username)
                                 UpdateCache(message["order"], {["party"] = Username})
-                                print("[Host] UpdateCache party success")
-                                
                                 UpdateCache(Username, {["current_play"] = memberCache["product_id"]})
-                                print("[Host] Member accepted:", memberCache["name"])
-                                -- รอให้ cache อัพเดทก่อนออกด่าน
-                                task.wait(5)
-                                game:Shutdown()
+                                print("[Host In Stage] Member accepted:", memberCache["name"])
+                                
+                                -- เช็คว่า member อยู่ในเกมเดียวกันหรือไม่
+                                local memberName = memberCache["name"]
+                                if memberName and Players:FindFirstChild(memberName) then
+                                    -- Member อยู่ในเกมแล้ว - ไม่ต้อง shutdown
+                                    print("[Host In Stage] Member already in game - continue playing")
+                                    Waiting_Time_Stage = os.time() + 60
+                                else
+                                    -- Member ยังไม่อยู่ในเกม - shutdown เพื่อออกไปรับ
+                                    print("[Host In Stage] Member not in game - shutting down to pick up")
+                                    task.wait(5)
+                                    game:Shutdown()
+                                end
                             end
                         end
                         task.wait(3)
-                        -- Remove
-                        local message = GetCache(Username .. "-message-2")
-                        if message and Last_Message_2 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
-                            local old_party = table.clone(cache["party_member"])
-                            if old_party[message["order"]] then
-                                old_party[message["order"]] = nil
-                                UpdateCache(Username,{["party_member"] = old_party})
-                                UpdateCache(message["order"],{["party"] = ""})
-                                Current_Party = GetParty(cache)
-                                local cache = GetCache(Username)
-                                local path = nil
-                                local lowest = math.huge
-                                for i,v in pairs(cache["party_member"]) do
-                                    if v["join_time"] < lowest then
-                                        path = v["product_id"]
-                                        lowest = v["join_time"]
-                                    end
-                                end
-                                if path then
-                                    UpdateCache(Username,{["current_play"] = path}) 
-                                else
-                                    UpdateCache(Username,{["current_play"] = ""}) 
+                    end
+                    
+                    -- Remove member request
+                    local message2 = GetCache(Username .. "-message-2")
+                    if message2 and Last_Message_2 ~= message2["message-id"] and message2["join"] and message2["join"] >= os.time() then
+                        local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
+                        if old_party[message2["order"]] then
+                            old_party[message2["order"]] = nil
+                            UpdateCache(Username, {["party_member"] = old_party})
+                            UpdateCache(message2["order"], {["party"] = ""})
+                            -- อัพเดท current_play
+                            local path = nil
+                            local lowest = math.huge
+                            for i, v in pairs(old_party) do
+                                if v["join_time"] < lowest then
+                                    path = v["product_id"]
+                                    lowest = v["join_time"]
                                 end
                             end
-                            Last_Message_2 = message["message-id"]
-                            task.wait(3)
+                            if path then
+                                UpdateCache(Username, {["current_play"] = path})
+                            else
+                                UpdateCache(Username, {["current_play"] = ""})
+                            end
                         end
+                        Last_Message_2 = message2["message-id"]
+                        task.wait(3)
                     end
                 end
             end)
