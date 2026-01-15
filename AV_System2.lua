@@ -2919,11 +2919,17 @@ if ID[game.GameId][1] == "AV" then
                                     channel:SendAsync(math.random(1,100)) 
                                     warn("Host is Online!!")
                                 else
-                                    -- Host ไม่อยู่ในเกมเดียวกัน - reset party และหา Host ใหม่
-                                    warn("Host is Offline - resetting party to find new host")
-                                    UpdateCache(cache_key, {["party"] = ""})
+                                    -- Host ไม่อยู่ในเกมเดียวกัน - เช็คว่า Host ยังมีชื่อเราใน party_member หรือไม่
+                                    -- ถ้ามีแสดงว่า Host กำลังออกมารับ ให้รอ
+                                    if party["party_member"] and party["party_member"][cache_key] then
+                                        warn("Host is coming to pick up - waiting...")
+                                    else
+                                        -- Host ไม่มีชื่อเราแล้ว - reset party
+                                        warn("Host removed us from party - finding new host")
+                                        UpdateCache(cache_key, {["party"] = ""})
+                                    end
                                 end
-                                task.wait(3)
+                                task.wait(5)
                             end
                         elseif cache["pending_host"] and #cache["pending_host"] > 1 then
                             -- มี pending_host แล้ว - รอ Host คนนั้นตอบกลับ
