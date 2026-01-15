@@ -3136,6 +3136,19 @@ if ID[game.GameId][1] == "AV" then
                         task.wait(3)
                     end
                     
+                    -- เช็คว่า party members ยังอยู่ในเกมหรือไม่ (ถ้าหลุดไป ให้ shutdown)
+                    local partyMembers = cache["party_member"] or {}
+                    local partyCount = LenT(partyMembers)
+                    if partyCount > 0 then
+                        local inGameCount = #Current_Party_Stage
+                        if inGameCount < partyCount then
+                            -- มี member หลุดไป - shutdown เพื่อออกไปรับ
+                            print("[Host In Stage] Member disconnected! In game:", inGameCount, "Expected:", partyCount)
+                            task.wait(3)
+                            game:Shutdown()
+                        end
+                    end
+                    
                     -- Remove member request
                     local message2 = GetCache(Username .. "-message-2")
                     if message2 and Last_Message_2 ~= message2["message-id"] and message2["join"] and message2["join"] >= os.time() then
