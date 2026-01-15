@@ -2609,7 +2609,7 @@ if ID[game.GameId][1] == "AV" then
                                                     ["name"] = cache["name"],
                                                 } 
                                                 UpdateCache(Username,{["party_member"] = old_party})
-                                                UpdateCache(message["order"],{["party"] = Username})
+                                                UpdateCache(message["order"],{["party"] = Username, ["pending_host"] = ""})
                                             else
                                                  print("Cannot Get Cache 1")
                                             end
@@ -2627,7 +2627,7 @@ if ID[game.GameId][1] == "AV" then
                                                 ["name"] = cache["name"],
                                             } 
                                             UpdateCache(Username,{["party_member"] = old_party})
-                                            UpdateCache(message["order"],{["party"] = Username})
+                                            UpdateCache(message["order"],{["party"] = Username, ["pending_host"] = ""})
                                             cache = GetCache(cache_key)
                                             path = nil
                                             lowest = math.huge
@@ -3115,7 +3115,7 @@ if ID[game.GameId][1] == "AV" then
                                     ["name"] = memberCache["name"],
                                 }
                                 UpdateCache(Username, {["party_member"] = old_party})
-                                UpdateCache(message["order"], {["party"] = Username})
+                                UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
                                 UpdateCache(Username, {["current_play"] = memberCache["product_id"]})
                                 print("[Host In Stage] Member accepted:", memberCache["name"])
                                 
