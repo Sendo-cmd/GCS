@@ -2299,23 +2299,34 @@ local function Register_Room(myproduct,player)
             end)
             task.wait(6)
         end
-        print("ABC")
-        if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
-            local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
-            local GUID = nil
-            for i,v in pairs(Rift.GetRifts()) do
-                if not v["Teleporting"] then
-                    GUID = v["GUID"]
+        if Settings["Auto Join Rift"] then
+            task.spawn(function()
+                while true do
+                    if workspace:GetAttribute("IsRiftOpen") then
+                        local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                        local GUID = nil
+                        
+                        for i,v in pairs(Rift.GetRifts()) do
+                            if v and not v["Teleporting"] then
+                                GUID = v["GUID"]
+                                break
+                            end
+                        end
+                        
+                        if GUID then
+                            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                                "Join",
+                                GUID
+                            )
+                            task.wait(5)
+                        else
+                            task.wait(3)
+                        end
+                    else
+                        task.wait(2)
+                    end
                 end
-            end
-            game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
-                "Join",
-                GUID
-            )
-            task.wait(2)
-            for i,v in pairs(player) do task.wait(1)
-                Invite(v)
-            end
+            end)
         end
         print(Settings["Select Mode"])
         if Settings["Select Mode"] == "Portal" then

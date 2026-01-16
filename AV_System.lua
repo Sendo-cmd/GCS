@@ -2469,8 +2469,6 @@ if Settings["Party Mode"] then
 end
 -- All Modules
 local StagesData = LoadModule(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
-
-
 -- All Functions
 local function DisplayToIndexStory(arg)
     for i,v in pairs(StagesData["Story"]) do
@@ -2570,21 +2568,48 @@ end
                 task.wait(10)
             end
             print("Out",Settings["Auto Join Rift"])
-            if Settings["Auto Join Rift"] and workspace:GetAttribute("IsRiftOpen") then
-                while true do
-                    local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
-                    local GUID = nil
-                    for i,v in pairs(Rift.GetRifts()) do
-                        if Len(v["Players"]) and not v["Teleporting"] then
-                            GUID = v["GUID"]
+            if Settings["Auto Join Rift"] then
+                task.spawn(function()
+                    while true do
+                        if workspace:GetAttribute("IsRiftOpen") then
+                            local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                            local GUID = nil
+                            
+                            if Settings["Party Mode"] and _G.Party_Host then
+                                for i,v in pairs(Rift.GetRifts()) do
+                                    if v and not v["Teleporting"] and v["Players"] then
+                                        for _, playerName in pairs(v["Players"]) do
+                                            if playerName == _G.Party_Host then
+                                                GUID = v["GUID"]
+                                                break
+                                            end
+                                        end
+                                        if GUID then break end
+                                    end
+                                end
+                            else
+                                for i,v in pairs(Rift.GetRifts()) do
+                                    if v and not v["Teleporting"] then
+                                        GUID = v["GUID"]
+                                        break
+                                    end
+                                end
+                            end
+                            
+                            if GUID then
+                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                                    "Join",
+                                    GUID
+                                )
+                                task.wait(5)
+                            else
+                                task.wait(3)
+                            end
+                        else
+                            task.wait(2)
                         end
                     end
-                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
-                        "Join",
-                        GUID
-                    )
-                    task.wait(2)
-                end
+                end)
             end
             local LoadBounty = false
             if game:GetService("Players").LocalPlayer.PlayerGui:FindFirstChild("MiniLobbyInterface") then
