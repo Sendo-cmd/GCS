@@ -127,6 +127,22 @@ local Order_Type = {
         "bc3274e0-17fd-4cc3-b4e2-55323a734993",
         "983626d0-e545-4bb2-9623-fad3c4899f81",
     },
+    ["Rift"] = {
+        "a551241f-b981-4b84-8b61-ce5ac449b9f0",
+        "7d2c7a5f-81c8-4bc2-9ceb-2015ac73f103",
+        "878aba1c-4163-43a6-9f6d-ef8827f6b582",
+        "73bcfb57-5d0f-499b-bd6c-3e601ef9917c",
+    },
+    ["World Destroyer"] = {
+        "36846b45-8b1c-46a8-9edc-7e5ae2a32d05",
+        "8fedc8ce-3263-4821-b3d0-e4162a532588",
+    },
+    ["Pink Villain"] = {
+        "98744617-780b-4c3f-adea-12f450e0b33c",
+        "415f5afe-810d-4a42-aed9-5c29995f2e31",
+        "dbda7a23-f9ac-487f-9a8d-beeebfba0475",
+        "16cb01f5-7b68-47ed-b116-c63d5f453e1a",
+    },
     ["Test"] = {
         "d88ae3d8-3e47-4de0-b18c-ee598fb2bb83",
     },
@@ -733,6 +749,26 @@ local Changes = {
         ["Act"] = "Infinite",
         ["StageType"] = "Story",
         ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Frozen Port",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Frozen Port",
         ["FriendsOnly"] = false
     }
     end,
@@ -1917,6 +1953,15 @@ local Changes = {
     end,
 
     ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
+        Settings["Auto Join Rift"] = true
+    end,
+    ["7d2c7a5f-81c8-4bc2-9ceb-2015ac73f103"] = function()
+        Settings["Auto Join Rift"] = true
+    end,
+    ["878aba1c-4163-43a6-9f6d-ef8827f6b582"] = function()
+        Settings["Auto Join Rift"] = true
+    end,
+    ["73bcfb57-5d0f-499b-bd6c-3e601ef9917c"] = function()
         Settings["Auto Join Rift"] = true
     end,
     ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()

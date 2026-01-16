@@ -717,6 +717,26 @@ local Changes = {
         ["FriendsOnly"] = false
     }
     end,
+    ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Frozen Port",
+        ["FriendsOnly"] = false
+    }
+    end,
+    ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
+        Settings["Select Mode"] = "Story"
+        Settings["Story Settings"] = {
+        ["Difficulty"] = "Normal",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Frozen Port",
+        ["FriendsOnly"] = false
+    }
+    end,
     ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Story Settings"] = {
@@ -1898,6 +1918,15 @@ local Changes = {
     end,
 
     ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
+        Settings["Auto Join Rift"] = true
+    end,
+    ["7d2c7a5f-81c8-4bc2-9ceb-2015ac73f103"] = function()
+        Settings["Auto Join Rift"] = true
+    end,
+    ["878aba1c-4163-43a6-9f6d-ef8827f6b582"] = function()
+        Settings["Auto Join Rift"] = true
+    end,
+    ["73bcfb57-5d0f-499b-bd6c-3e601ef9917c"] = function()
         Settings["Auto Join Rift"] = true
     end,
     ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
