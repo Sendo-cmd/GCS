@@ -277,6 +277,7 @@ local Settings ={
     ["Auto Join Bounty"] = false,
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
+    ["Auto Join World Destroyer"] = false,
 
     ["Auto Stun"] = false,
     ["Auto Priority"] = false,
@@ -753,24 +754,13 @@ local Changes = {
     }
     end,
     ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Frozen Port",
-        ["FriendsOnly"] = false
-    }
+        Settings["Auto Join World Destroyer"] = true
     end,
     ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
-        Settings["Select Mode"] = "Story"
-        Settings["Story Settings"] = {
-        ["Difficulty"] = "Normal",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Frozen Port",
-        ["FriendsOnly"] = false
-    }
+        Settings["Auto Join World Destroyer"] = true
+    end,
+    ["87b27182-43d5-4266-9705-86ffa192adb0"] = function()
+        Settings["Auto Join World Destroyer"] = true
     end,
     ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
         Settings["Select Mode"] = "Story"
