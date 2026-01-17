@@ -584,18 +584,17 @@ local function getnearest(P_Char)
     local p_pos = P_Char["HumanoidRootPart"]["Position"]
     local maxDist = _G_MaxTeleportDistance or 9999 -- จำกัดระยะ
     
-    for _,v in pairs(workspace.Rocks:GetChildren()) do
-        if v:IsA("Folder") then
-            for i1,v1 in pairs(v:GetChildren()) do
-                local Model = v1:FindFirstChildWhichIsA("Model")
-                if Model and Model:GetAttribute("Health") > 0 and table.find(Settings["Select Rocks"],Model.Name) then
-                    local Pos = Model:GetAttribute("OriginalCFrame").Position
-                    local EqPos = (Pos - p_pos).Magnitude
-                    -- เช็คว่าอยู่ในระยะที่อนุญาต
-                    if EqPos <= maxDist and dis > EqPos then
-                        path = Model
-                        dis = EqPos
-                    end
+    -- ใช้ GetDescendants เพื่อหาหินทุก level ของ subfolder
+    for _, v in pairs(workspace.Rocks:GetDescendants()) do
+        -- ใช้ exact match (ชื่อต้องตรงเป๊ะ) เพื่อไม่ให้ตีหินมั่ว
+        if v:IsA("Model") and v:GetAttribute("Health") and v:GetAttribute("Health") > 0 and table.find(Settings["Select Rocks"], v.Name) then
+            local Pos = v:GetAttribute("OriginalCFrame")
+            if Pos then
+                local EqPos = (Pos.Position - p_pos).Magnitude
+                -- เช็คว่าอยู่ในระยะที่อนุญาต
+                if EqPos <= maxDist and dis > EqPos then
+                    path = v
+                    dis = EqPos
                 end
             end
         end
@@ -610,329 +609,495 @@ end
 -- ตำแหน่งหลบ mob (Safe Zone) - ปรับตามแมพ
 local SafeZonePosition = Vector3.new(0, 1000, 0)
 
--- World/Portal System
-local WorldPortals = {
-    -- STONEWAKE'S CROSS (Main World)
-    ["Pebble"] = "Stonewake's Cross",
-    ["Rock"] = "Stonewake's Cross",
-    ["Boulder"] = "Stonewake's Cross",
-    ["Basalt Rock"] = "Stonewake's Cross",
-    ["Basalt Core"] = "Stonewake's Cross",
-    ["Basalt Vein"] = "Stonewake's Cross",
-    ["Volcanic Rock"] = "Stonewake's Cross",
-    ["Stone"] = "Stonewake's Cross",
-    ["Coal"] = "Stonewake's Cross",
-    ["Iron"] = "Stonewake's Cross",
-    ["Gold"] = "Stonewake's Cross",
-    ["Diamond"] = "Stonewake's Cross",
-    ["Platinum"] = "Stonewake's Cross",
-    ["Meteorite"] = "Stonewake's Cross",
-    ["Uranium"] = "Stonewake's Cross",
-    ["Black Diamond"] = "Stonewake's Cross",
-    ["Lucky Block"] = "Stonewake's Cross",
-    
-    -- FROSTSPIRE EXPANSE (Ice Valley)
-    ["Icy Pebble"] = "Frostspire Expanse",
-    ["Icy Rock"] = "Frostspire Expanse",
-    ["Icy Boulder"] = "Frostspire Expanse",
-    ["Small Ice Crystal"] = "Frostspire Expanse",
-    ["Medium Ice Crystal"] = "Frostspire Expanse",
-    ["Large Ice Crystal"] = "Frostspire Expanse",
-    ["Floating Crystal"] = "Frostspire Expanse",
-    ["Frozen Layers"] = "Frostspire Expanse",
-    ["Iceberg"] = "Frostspire Expanse",
-    ["Glacier"] = "Frostspire Expanse",
-    
-    -- FORGOTTEN KINGDOM (The Peak / Red Crystals)
-    ["Small Red Crystal"] = "Forgotten Kingdom",
-    ["Medium Red Crystal"] = "Forgotten Kingdom",
-    ["Large Red Crystal"] = "Forgotten Kingdom",
-    ["Heart Of The Island Crystal"] = "Forgotten Kingdom",
-    
-    -- GOBLIN CAVE (ถ้ามี Rock เพิ่ม)
-    -- ["Goblin Rock"] = "Goblin Cave",
-    
-    -- RAVEN CAVE (ถ้ามี Rock เพิ่ม)
-    -- ["Raven Rock"] = "Raven Cave",
+-- ===== WORLD DATA SYSTEM =====
+-- ใช้ Pattern Matching จากชื่อ Rock/Mob/NPC เพื่อหาโลกที่ถูกต้อง
+-- ข้อมูลจาก forgewiki.org (อัพเดทอัตโนมัติตาม pattern)
+
+-- Pattern สำหรับแต่ละโลก (จาก Wiki)
+local WorldPatterns = {
+    ["Frostspire Expanse"] = {
+        rocks = {"icy", "ice crystal", "floating crystal"},
+        mobs = {"spider", "yeti", "orc", "golem", "bjorn", "santa", "prismarine", "diamond"},
+        npcs = {"bjorn", "santa"}
+    },
+    ["Forgotten Kingdom"] = {
+        rocks = {"red crystal", "heart of the island"},
+        mobs = {"goblin", "wo long", "aida", "zesty"},
+        npcs = {"zesty", "aida", "wo long"}
+    },
+    ["Stonewake's Cross"] = {
+        rocks = {"pebble", "rock", "boulder", "lucky", "basalt", "volcanic", "crystal"},
+        mobs = {"zombie", "skeleton", "bomber", "reaper", "slime", "miner fred"},
+        npcs = {"marbles", "fred", "merchant"}
+    }
 }
 
--- Mob World Mapping (ตาม forgewiki.org/wiki/Enemies)
-local MobWorlds = {
-    -- STONEWAKE'S CROSS (Main World / Iron Valley)
-    ["Zombie"] = "Stonewake's Cross",
-    ["Delver Zombie"] = "Stonewake's Cross",
-    ["Elite Zombie"] = "Stonewake's Cross",
-    ["Brute Zombie"] = "Stonewake's Cross",
-    ["Bomber"] = "Stonewake's Cross",
-    ["Skeleton Rogue"] = "Stonewake's Cross",
-    ["Axe Skeleton"] = "Stonewake's Cross",
-    ["Deathaxe Skeleton"] = "Stonewake's Cross",
-    ["Elite Rogue Skeleton"] = "Stonewake's Cross",
-    ["Elite Deathaxe Skeleton"] = "Stonewake's Cross",
-    ["Blight Pyromancer"] = "Stonewake's Cross",
-    ["Reaper"] = "Stonewake's Cross",
-    ["Slime"] = "Stonewake's Cross",
-    ["Blazing Slime"] = "Stonewake's Cross",
+-- ฟังก์ชันหาโลกจากชื่อ item
+local function GetWorldFromName(itemName, itemType)
+    local lowerName = string.lower(itemName)
     
-    -- FROSTSPIRE EXPANSE (Ice Valley / Portal1)
-    ["Crystal Spider"] = "Frostspire Expanse",
-    ["Diamond Spider"] = "Frostspire Expanse",
-    ["Prismarine Spider"] = "Frostspire Expanse",
-    ["Common Orc"] = "Frostspire Expanse",
-    ["Elite Orc"] = "Frostspire Expanse",
-    ["Yeti"] = "Frostspire Expanse",
-    ["Crystal Golem"] = "Frostspire Expanse",
-    ["Golem"] = "Frostspire Expanse",
-    
-    -- FORGOTTEN KINGDOM (ถ้ามี Mob ให้เพิ่มตรงนี้)
-}
-
-local function GetRockWorld(rockName)
-    -- เช็คจากชื่อหินตรงๆ ก่อน
-    if WorldPortals[rockName] then
-        return WorldPortals[rockName]
+    -- เช็ค Frostspire Expanse ก่อน (เพราะมี pattern เฉพาะเจาะจง)
+    for _, pattern in ipairs(WorldPatterns["Frostspire Expanse"][itemType] or {}) do
+        if lowerName:match(pattern) then
+            return "Frostspire Expanse"
+        end
     end
     
-    -- ถ้าไม่เจอ ลองเช็คบางส่วนของชื่อ
-    local lowerRockName = string.lower(rockName)
-    if string.find(lowerRockName, "icy") or string.find(lowerRockName, "ice") or string.find(lowerRockName, "crystal") then
+    -- เช็ค Forgotten Kingdom
+    for _, pattern in ipairs(WorldPatterns["Forgotten Kingdom"][itemType] or {}) do
+        if lowerName:match(pattern) then
+            return "Forgotten Kingdom"
+        end
+    end
+    
+    -- Default: Stonewake's Cross
+    return "Stonewake's Cross"
+end
+
+-- ดึงข้อมูล Rocks จาก Game โดยตรง (Scan workspace)
+local function FetchRocksFromWiki()
+    local rocksData = {
+        ["Stonewake's Cross"] = {},
+        ["Forgotten Kingdom"] = {},
+        ["Frostspire Expanse"] = {}
+    }
+    
+    -- Scan จาก workspace.Rocks
+    local Rocks = workspace:FindFirstChild("Rocks")
+    if Rocks then
+        for _, rock in pairs(Rocks:GetDescendants()) do
+            if rock:IsA("Model") and rock:GetAttribute("Health") then
+                local world = GetWorldFromName(rock.Name, "rocks")
+                if not table.find(rocksData[world], rock.Name) then
+                    table.insert(rocksData[world], rock.Name)
+                end
+            end
+        end
+    end
+    
+    -- ถ้าไม่มี rock ในแมพ ใช้ default list
+    local totalRocks = #rocksData["Stonewake's Cross"] + #rocksData["Forgotten Kingdom"] + #rocksData["Frostspire Expanse"]
+    if totalRocks == 0 then
+        -- Default rocks จาก Wiki
+        rocksData["Stonewake's Cross"] = {"Pebble", "Rock", "Boulder", "Lucky Block", "Basalt Rock", "Basalt Core", "Basalt Vein", "Volcanic Rock", "Crystals"}
+        rocksData["Forgotten Kingdom"] = {"Small Red Crystal", "Medium Red Crystal", "Large Red Crystal", "Heart Of The Island"}
+        rocksData["Frostspire Expanse"] = {"Icy Pebble", "Icy Rock", "Icy Boulder", "Small Ice Crystal", "Medium Ice Crystal", "Large Ice Crystal", "Floating Crystal"}
+    end
+    
+    print("[World Data] Rocks loaded:", 
+        #rocksData["Stonewake's Cross"], "Stonewake's Cross,",
+        #rocksData["Forgotten Kingdom"], "Forgotten Kingdom,",
+        #rocksData["Frostspire Expanse"], "Frostspire Expanse")
+    
+    return rocksData
+end
+
+-- ดึงข้อมูล Enemies จาก Game โดยตรง (Scan workspace)
+local function FetchMobsFromWiki()
+    local mobsData = {
+        ["Stonewake's Cross"] = {},
+        ["Forgotten Kingdom"] = {},
+        ["Frostspire Expanse"] = {}
+    }
+    
+    -- Scan จาก workspace.Living
+    local Living = workspace:FindFirstChild("Living")
+    if Living then
+        for _, mob in pairs(Living:GetChildren()) do
+            if mob:IsA("Model") then
+                local world = GetWorldFromName(mob.Name, "mobs")
+                if not table.find(mobsData[world], mob.Name) then
+                    table.insert(mobsData[world], mob.Name)
+                end
+            end
+        end
+    end
+    
+    -- ถ้าไม่มี mob ในแมพ ใช้ default list
+    local totalMobs = #mobsData["Stonewake's Cross"] + #mobsData["Forgotten Kingdom"] + #mobsData["Frostspire Expanse"]
+    if totalMobs == 0 then
+        -- Default mobs จาก Wiki
+        mobsData["Stonewake's Cross"] = {"Zombie", "Skeleton", "Bomber", "Reaper", "Slime", "Miner Fred"}
+        mobsData["Forgotten Kingdom"] = {"Goblin", "Wo Long", "Aida", "Zesty"}
+        mobsData["Frostspire Expanse"] = {"Spider", "Yeti", "Orc", "Golem", "Prismarine Spider", "Diamond Spider"}
+    end
+    
+    print("[World Data] Mobs loaded:", 
+        #mobsData["Stonewake's Cross"], "Stonewake's Cross,",
+        #mobsData["Forgotten Kingdom"], "Forgotten Kingdom,",
+        #mobsData["Frostspire Expanse"], "Frostspire Expanse")
+    
+    return mobsData
+end
+
+-- ดึงข้อมูล NPCs จาก Game โดยตรง (Scan workspace)
+local function FetchNPCsFromWiki()
+    local npcsData = {
+        ["Stonewake's Cross"] = {},
+        ["Forgotten Kingdom"] = {},
+        ["Frostspire Expanse"] = {}
+    }
+    
+    -- Scan จาก workspace.NPCs หรือ workspace.Proximity
+    local NPCs = workspace:FindFirstChild("NPCs") or workspace:FindFirstChild("Proximity")
+    if NPCs then
+        for _, npc in pairs(NPCs:GetDescendants()) do
+            if npc:IsA("Model") or (npc:IsA("BasePart") and npc:FindFirstChild("ProximityPrompt")) then
+                local world = GetWorldFromName(npc.Name, "npcs")
+                if not table.find(npcsData[world], npc.Name) then
+                    table.insert(npcsData[world], npc.Name)
+                end
+            end
+        end
+    end
+    
+    -- ถ้าไม่มี NPC ในแมพ ใช้ default list
+    local totalNPCs = #npcsData["Stonewake's Cross"] + #npcsData["Forgotten Kingdom"] + #npcsData["Frostspire Expanse"]
+    if totalNPCs == 0 then
+        -- Default NPCs จาก Wiki
+        npcsData["Stonewake's Cross"] = {"Marbles", "Miner Fred", "Merchant", "Greedy Cey"}
+        npcsData["Forgotten Kingdom"] = {"Zesty", "Aida", "Wo Long"}
+        npcsData["Frostspire Expanse"] = {"Bjorn", "Santa"}
+    end
+    
+    print("[World Data] NPCs loaded:", 
+        #npcsData["Stonewake's Cross"], "Stonewake's Cross,",
+        #npcsData["Forgotten Kingdom"], "Forgotten Kingdom,",
+        #npcsData["Frostspire Expanse"], "Frostspire Expanse")
+    
+    return npcsData
+end
+
+-- Auto Detect โลกจากชื่อ Rock (ใช้ข้อมูลจาก Wiki API)
+local function GetRockWorld(rockName)
+    local rocksData = FetchRocksFromWiki()
+    
+    -- เช็คแต่ละโลก
+    for world, rocks in pairs(rocksData) do
+        for _, rock in ipairs(rocks) do
+            if rock == rockName or string.lower(rock) == string.lower(rockName) then
+                return world
+            end
+        end
+    end
+    
+    -- Fallback: ใช้ pattern matching ถ้าไม่เจอใน API
+    local lowerName = string.lower(rockName)
+    if lowerName:match("icy") or lowerName:match("ice") or lowerName:match("frost") or lowerName:match("floating") then
         return "Frostspire Expanse"
-    elseif string.find(lowerRockName, "red") or string.find(lowerRockName, "heart") then
+    elseif lowerName:match("red crystal") or lowerName:match("heart of the island") then
         return "Forgotten Kingdom"
-    elseif string.find(lowerRockName, "basalt") or string.find(lowerRockName, "volcanic") then
+    elseif lowerName:match("basalt") or lowerName:match("volcanic") or lowerName:match("pebble") or lowerName:match("boulder") or lowerName:match("lucky") then
         return "Stonewake's Cross"
     end
     
-    return "Stonewake's Cross" -- default เป็น Main World
+    return "Stonewake's Cross"
 end
 
+-- Auto Detect โลกจากชื่อ Mob (ใช้ข้อมูลจาก Wiki API)
 local function GetMobWorld(mobName)
-    return MobWorlds[mobName]
+    local mobsData = FetchMobsFromWiki()
+    
+    -- เช็คแต่ละโลก
+    for world, mobs in pairs(mobsData) do
+        for _, mob in ipairs(mobs) do
+            if mob == mobName or string.lower(mob) == string.lower(mobName) then
+                return world
+            end
+        end
+    end
+    
+    -- Fallback: ใช้ pattern matching
+    local lowerName = string.lower(mobName)
+    if lowerName:match("spider") or lowerName:match("yeti") or lowerName:match("orc") or lowerName:match("golem") then
+        return "Frostspire Expanse"
+    elseif lowerName:match("goblin") then
+        return "Forgotten Kingdom"
+    end
+    
+    return "Stonewake's Cross"
 end
+
+-- Auto Detect โลกจากชื่อ NPC (ใช้ข้อมูลจาก Wiki API)
+local function GetNPCWorld(npcName)
+    local npcsData = FetchNPCsFromWiki()
+    
+    -- เช็คแต่ละโลก
+    for world, npcs in pairs(npcsData) do
+        for _, npc in ipairs(npcs) do
+            if npc == npcName or string.lower(npc) == string.lower(npcName) then
+                return world
+            end
+        end
+    end
+    
+    return "Stonewake's Cross"
+end
+
+-- ===== AUTO SCAN ROCKS IN MAP =====
+local function ScanRocksInMap()
+    local rocksByWorld = {}
+    local Rocks = workspace:FindFirstChild("Rocks")
+    if not Rocks then return rocksByWorld end
+    
+    for _, rock in pairs(Rocks:GetDescendants()) do
+        if rock:IsA("Model") and rock:GetAttribute("Health") then
+            local world = GetRockWorld(rock.Name)
+            if not rocksByWorld[world] then
+                rocksByWorld[world] = {}
+            end
+            if not table.find(rocksByWorld[world], rock.Name) then
+                table.insert(rocksByWorld[world], rock.Name)
+            end
+        end
+    end
+    
+    return rocksByWorld
+end
+
+-- ===== AUTO SCAN MOBS IN MAP =====
+local function ScanMobsInMap()
+    local mobsByWorld = {}
+    local Living = workspace:FindFirstChild("Living")
+    if not Living then return mobsByWorld end
+    
+    for _, mob in pairs(Living:GetChildren()) do
+        if mob:IsA("Model") then
+            local world = GetMobWorld(mob.Name)
+            if not mobsByWorld[world] then
+                mobsByWorld[world] = {}
+            end
+            if not table.find(mobsByWorld[world], mob.Name) then
+                table.insert(mobsByWorld[world], mob.Name)
+            end
+        end
+    end
+    
+    return mobsByWorld
+end
+
+-- ===== AUTO DETECT REQUIRED WORLD =====
+local function GetRequiredWorldForRock()
+    if not Settings["Select Rocks"] or #Settings["Select Rocks"] == 0 then
+        return nil
+    end
+    return GetRockWorld(Settings["Select Rocks"][1])
+end
+
+local function GetRequiredWorldForMob()
+    if not Settings["Select Mobs"] or #Settings["Select Mobs"] == 0 then
+        return nil
+    end
+    return GetMobWorld(Settings["Select Mobs"][1])
+end
+
+-- Preload Wiki Data เมื่อ script เริ่มทำงาน
+task.spawn(function()
+    print("[Wiki API] Preloading data from forgewiki.org...")
+    pcall(FetchRocksFromWiki)
+    pcall(FetchMobsFromWiki)
+    pcall(FetchNPCsFromWiki)
+    print("[Wiki API] Preload complete!")
+end)
 
 -- ฟังก์ชันตรวจสอบโลกปัจจุบันจากเกมจริง
 local function GetCurrentWorld()
-    local currentWorld = nil -- ไม่มี default ต้องตรวจสอบจากเกมเท่านั้น
+    -- ใช้ PlayerController.Replica.Data.World โดยตรง (วิธีที่แม่นยำที่สุด)
+    local currentWorld = nil
     
-    -- เช็คจาก workspace หรือ ReplicatedStorage
     pcall(function()
-        -- วิธีที่ 1: เช็คจาก PlayerData
-        local PlayerService = game:GetService("ReplicatedStorage"):FindFirstChild("Shared")
-        if PlayerService then
-            local Packages = PlayerService:FindFirstChild("Packages")
-            if Packages then
-                local Knit = Packages:FindFirstChild("Knit")
-                if Knit then
-                    local Services = Knit:FindFirstChild("Services")
-                    if Services then
-                        local PlayerService = Services:FindFirstChild("PlayerService")
-                        if PlayerService then
-                            local PlayerController = require(game:GetService("ReplicatedStorage").Controllers.PlayerController)
-                            if PlayerController and PlayerController.Replica and PlayerController.Replica.Data then
-                                local worldData = PlayerController.Replica.Data.World
-                                if worldData then
-                                    currentWorld = worldData
-                                    return
-                                end
-                            end
-                        end
-                    end
-                end
-            end
-        end
-        
-        -- วิธีที่ 2: เช็คจากชื่อหินในแมพ
-        local Rocks = workspace:FindFirstChild("Rocks")
-        if Rocks then
-            local hasIcyRock = false
-            local hasRedRock = false
-            local hasNormalRock = false
-            
-            for _, rock in pairs(Rocks:GetChildren()) do
-                local rockName = string.lower(rock.Name)
-                
-                if string.find(rockName, "icy") or string.find(rockName, "ice") or 
-                   (string.find(rockName, "crystal") and not string.find(rockName, "red")) then
-                    hasIcyRock = true
-                    break
-                elseif string.find(rockName, "red") or string.find(rockName, "heart") then
-                    hasRedRock = true
-                    break
-                elseif string.find(rockName, "basalt") or string.find(rockName, "volcanic") or 
-                       string.find(rockName, "pebble") or string.find(rockName, "boulder") then
-                    hasNormalRock = true
-                end
-            end
-            
-            if hasIcyRock then
-                currentWorld = "Frostspire Expanse"
-                return
-            elseif hasRedRock then
-                currentWorld = "Forgotten Kingdom"
-                return
-            elseif hasNormalRock then
-                currentWorld = "Stonewake's Cross"
-                return
-            end
-        end
-        
-        -- วิธีที่ 3: เช็คจาก Mob ที่มีในแมพ
-        local Living = workspace:FindFirstChild("Living")
-        if Living then
-            for _, mob in pairs(Living:GetChildren()) do
-                local mobName = mob.Name
-                
-                -- Frostspire Expanse Mobs
-                if string.find(mobName, "Spider") or string.find(mobName, "Yeti") or 
-                   string.find(mobName, "Orc") or string.find(mobName, "Golem") then
-                    currentWorld = "Frostspire Expanse"
-                    return
-                end
-                
-                -- Stonewake's Cross Mobs
-                if string.find(mobName, "Zombie") or string.find(mobName, "Skeleton") or 
-                   string.find(mobName, "Bomber") or string.find(mobName, "Reaper") or
-                   string.find(mobName, "Slime") then
-                    currentWorld = "Stonewake's Cross"
-                    return
-                end
-            end
+        if PlayerController and PlayerController.Replica and PlayerController.Replica.Data then
+            currentWorld = PlayerController.Replica.Data.World
         end
     end)
     
-    -- ถ้าตรวจสอบไม่ได้เลย ให้ return nil
-    if not currentWorld then
-        print("[World] ⚠️ ไม่สามารถตรวจสอบโลกปัจจุบันได้")
+    if currentWorld then
+        return currentWorld
     end
     
-    return currentWorld
+    -- Fallback: ถ้าไม่มีข้อมูลจาก PlayerController ให้ return nil
+    print("[World] ไม่สามารถตรวจสอบโลกปัจจุบันจาก PlayerController")
+    return nil
 end
 
 local _G_LastWorldTeleport = 0 -- cooldown สำหรับ TeleportToWorld
-local _G_CurrentWorld = "Stonewake's Cross" -- เก็บโลกปัจจุบัน (backup)
+local _G_CurrentWorld = nil -- เก็บโลกปัจจุบัน (ไม่มี default - ให้อยู่โลกปัจจุบันเป็นหลัก)
 local _G_LockedTarget = nil -- เป้าหมายที่ล็อคไว้ (Rock/Mob)
 local _G_LastTargetTime = 0 -- เวลาที่ล็อคเป้าหมายล่าสุด
 local _G_LastWorldCheck = 0 -- เวลาที่เช็คโลกล่าสุด
 
-local function TeleportToWorld(worldName)
-    -- เช็กโลกปัจจุบันจากเกมจริง
-    local actualCurrentWorld = GetCurrentWorld()
+-- Remote สำหรับ Portal
+local PortalService = ReplicatedStorage:WaitForChild("Shared"):WaitForChild("Packages"):WaitForChild("Knit"):WaitForChild("Services"):WaitForChild("PortalService"):WaitForChild("RF"):WaitForChild("TeleportToIsland")
+
+-- สุ่มหาตำแหน่งวาง Portal ที่เหมาะสม (ไม่โดนบล็อก)
+local function FindRandomPlacePosition()
+    local Char = Plr.Character
+    if not Char or not Char:FindFirstChild("HumanoidRootPart") then return nil end
     
-    -- ถ้าตรวจสอบโลกไม่ได้ ให้ลองวาร์ปเลย
-    if not actualCurrentWorld then
-        print("[World] ⚠️ ไม่สามารถตรวจสอบโลกปัจจุบัน ลองวาร์ปเลย...")
-    else
-        -- ถ้าอยู่โลกเดิมแล้ว ไม่ต้องวาร์ป
-        if actualCurrentWorld == worldName then 
-            print("[World] ✅ อยู่ที่", worldName, "อยู่แล้ว")
-            return true 
-        end
-        
-        if worldName == "Stonewake's Cross" or worldName == "Main" then 
-            if actualCurrentWorld == "Stonewake's Cross" then
-                return true
+    local hrp = Char.HumanoidRootPart
+    local basePos = hrp.Position
+    
+    -- สุ่มตำแหน่งรอบๆ ผู้เล่น
+    local angles = {0, 45, 90, 135, 180, 225, 270, 315}
+    local distances = {5, 8, 10, 15}
+    
+    for _, dist in ipairs(distances) do
+        for _, angle in ipairs(angles) do
+            local rad = math.rad(angle)
+            local offsetX = math.cos(rad) * dist
+            local offsetZ = math.sin(rad) * dist
+            local testPos = Vector3.new(basePos.X + offsetX, basePos.Y, basePos.Z + offsetZ)
+            
+            -- ทดสอบว่าตำแหน่งนี้ว่างหรือไม่ (Raycast ลงพื้น)
+            local rayParams = RaycastParams.new()
+            rayParams.FilterType = Enum.RaycastFilterType.Exclude
+            rayParams.FilterDescendantsInstances = {Char}
+            
+            local rayResult = workspace:Raycast(testPos + Vector3.new(0, 5, 0), Vector3.new(0, -10, 0), rayParams)
+            if rayResult then
+                -- มีพื้นรองรับ
+                return CFrame.new(rayResult.Position + Vector3.new(0, 3, 0))
             end
         end
     end
     
-    -- ถ้ายังอยู่ใน cooldown ให้รอ (เพิ่มเป็น 20 วินาที)
+    -- Fallback: ใช้ตำแหน่งผู้เล่นปัจจุบัน
+    return hrp.CFrame
+end
+
+local function TeleportToWorld(worldName)
+    print("[World] TeleportToWorld เริ่มทำงาน - ต้องการไป:", worldName)
+    
+    -- ถ้ายังอยู่ใน cooldown ให้รอ
     local cooldownRemaining = _G_LastWorldTeleport - tick()
     if cooldownRemaining > 0 then 
-        print("[World] ⏳ รอ cooldown อีก", math.ceil(cooldownRemaining), "วินาที")
+        print("[World] รอ cooldown อีก", math.ceil(cooldownRemaining), "วินาที")
         return false 
     end
     
     -- ถ้ายังอยู่ใน respawn cooldown ห้ามวาร์ป
-    if tick() < _G_RespawnCooldown then
-        print("[World] ⏳ ยังอยู่ใน respawn cooldown ห้ามวาร์ป")
+    if _G_RespawnCooldown and tick() < _G_RespawnCooldown then
+        print("[World] ยังอยู่ใน respawn cooldown ห้ามวาร์ป")
         return false
     end
     
-    print("[World] 🌍 เริ่มวาร์ปไป:", worldName, "| จาก:", actualCurrentWorld)
-    
     local Char = Plr.Character
-    if not Char or not Char:FindFirstChild("HumanoidRootPart") then return false end
+    if not Char or not Char:FindFirstChild("HumanoidRootPart") then 
+        print("[World] ไม่พบ Character")
+        return false 
+    end
     
-    -- Bypass AntiExploit ก่อนวาร์ป
+    print("[World] ผ่านการเช็คทั้งหมด - เริ่มวาร์ปไป:", worldName)
+    
+    -- Bypass AntiExploit
     BypassAntiExploit()
-    task.wait(0.5)
     
-    -- หา Portal ใน Hotbar
-    local portalSlot = nil
-    for i = 1, 9 do
-        local slot = Plr.PlayerGui:FindFirstChild("Hotbar")
-        if slot then
-            local item = slot:FindFirstChild("Item" .. i)
-            if item and item.Name and string.find(string.lower(item.Name), "portal") then
-                portalSlot = i
+    -- Step 1: สุ่มหาตำแหน่งวาง Portal
+    local placePos = FindRandomPlacePosition()
+    if placePos then
+        print("[World] Step 1: สุ่มตำแหน่งวาง Portal:", placePos.Position)
+        BypassAntiExploit()
+        Char.HumanoidRootPart.CFrame = placePos
+        task.wait(0.5)
+    end
+    
+    -- Step 2: วาง PortalTool
+    print("[World] Step 2: วาง PortalTool...")
+    local placeSuccess, placeError = pcall(function()
+        ToolActivated:InvokeServer("PortalTool")
+    end)
+    print("[World] PortalTool InvokeServer:", placeSuccess and "สำเร็จ" or ("ล้มเหลว: " .. tostring(placeError)))
+    task.wait(2)
+    
+    -- Step 3: หา Portal ที่วางไว้ใน workspace.Debris
+    local portal = nil
+    local Debris = workspace:FindFirstChild("Debris")
+    if Debris then
+        print("[World] Step 3: หา Portal ใน Debris...")
+        for _, obj in pairs(Debris:GetDescendants()) do
+            local objName = string.lower(obj.Name)
+            if objName:match("portal") or objName:match("theforge") then
+                portal = obj
+                print("[World] พบ Portal:", obj.Name, obj.ClassName)
                 break
             end
         end
     end
     
-    -- ลองใช้ Portal Remote
-    pcall(function()
-        ToolActivated:InvokeServer("Portal")
-    end)
-    task.wait(1.5) -- เพิ่มเวลารอ
-    
-    -- คลิก World ใน UI
-    local PlayerGui = Plr:FindFirstChild("PlayerGui")
-    if PlayerGui then
-        local WorldUI = PlayerGui:FindFirstChild("WorldSelection") or PlayerGui:FindFirstChild("Portal")
-        if WorldUI then
-            print("[World] 🔍 กำลังหาปุ่มโลก:", worldName)
-            
-            -- หาปุ่ม world ที่ต้องการ (ลองหลายวิธี)
-            for _, button in pairs(WorldUI:GetDescendants()) do
-                if button:IsA("TextButton") then
-                    local buttonText = button.Text or ""
-                    
-                    -- Debug: แสดงปุ่มทั้งหมด
-                    if buttonText ~= "" then
-                        print("[World] 🔘 พบปุ่ม:", buttonText)
-                    end
-                    
-                    -- เช็คทั้งชื่อเต็มและบางส่วน (ยืดหยุ่นมากขึ้น)
-                    local match = false
-                    local lowerButtonText = string.lower(buttonText)
-                    local lowerWorldName = string.lower(worldName)
-                    
-                    -- เช็คหลายแบบ
-                    if string.find(lowerButtonText, lowerWorldName) then
-                        match = true
-                    elseif worldName == "Stonewake's Cross" and (string.find(lowerButtonText, "stonewake") or string.find(lowerButtonText, "cross") or string.find(lowerButtonText, "main")) then
-                        match = true
-                    elseif worldName == "Frostspire Expanse" and (string.find(lowerButtonText, "frostspire") or string.find(lowerButtonText, "expanse") or string.find(lowerButtonText, "ice") or string.find(lowerButtonText, "frost")) then
-                        match = true
-                    elseif worldName == "Forgotten Kingdom" and (string.find(lowerButtonText, "forgotten") or string.find(lowerButtonText, "kingdom")) then
-                        match = true
-                    end
-                    
-                    if match then
-                        print("[World] ✅ พบปุ่มโลกที่ต้องการ:", buttonText)
-                        pcall(function()
-                            for _, connection in pairs(getconnections(button.MouseButton1Click)) do
-                                connection:Fire()
-                            end
-                        end)
-                        _G_CurrentWorld = worldName
-                        _G_LastWorldTeleport = tick() + 20 -- cooldown 20 วินาที (เพิ่มจาก 10)
-                        print("[World] ⏳ รอให้วาร์ปเสร็จ 5 วินาที...")
-                        task.wait(5) -- เพิ่มเวลารอจาก 3 เป็น 5
-                        print("[World] 🎯 วาร์ปสำเร็จไป:", worldName)
-                        return true
-                    end
+    if not portal then
+        print("[World] ไม่พบใน Debris - ลองหาใน workspace...")
+        for _, obj in pairs(workspace:GetDescendants()) do
+            if obj.Name == "PortalTheForge" or obj.Name:match("Portal") then
+                if obj:IsA("Model") or obj:IsA("BasePart") then
+                    portal = obj
+                    print("[World] พบ Portal ใน workspace:", obj.Name)
+                    break
                 end
             end
-        else
-            print("[World] ⚠️ ไม่พบ WorldUI")
         end
     end
     
-    print("[World] ⚠️ ไม่พบปุ่มโลก:", worldName)
-    _G_LastWorldTeleport = tick() + 10 -- cooldown 10 วินาทีถ้าวาร์ปไม่สำเร็จ
-    return false
+    -- Step 4: วาร์ปไปที่ Portal และ Interact
+    if portal then
+        local portalPos
+        if portal:IsA("Model") then
+            portalPos = portal:GetPivot().Position
+        elseif portal:IsA("BasePart") then
+            portalPos = portal.Position
+        end
+        
+        if portalPos then
+            print("[World] Step 4: วาร์ปไปที่ Portal ตำแหน่ง:", portalPos)
+            BypassAntiExploit()
+            Char.HumanoidRootPart.CFrame = CFrame.new(portalPos)
+            task.wait(0.5)
+            
+            -- หา ProximityPrompt ใน Portal แล้ว trigger
+            local prompt = portal:FindFirstChildWhichIsA("ProximityPrompt", true)
+            if prompt then
+                print("[World] Step 4b: พบ ProximityPrompt - triggering...")
+                fireproximityprompt(prompt)
+                task.wait(1)
+            else
+                -- ลอง Interact ด้วย ProximityFunctionals
+                print("[World] Step 4b: Interact กับ Portal...")
+                pcall(function()
+                    ProximityFunctionals:InvokeServer(portal)
+                end)
+                task.wait(0.5)
+                
+                -- ลอง Dialogue ด้วย
+                pcall(function()
+                    DialogueRemote:InvokeServer(portal)
+                end)
+                task.wait(0.5)
+            end
+        end
+    else
+        print("[World] ไม่พบ Portal - ข้ามไปใช้ TeleportToIsland โดยตรง")
+    end
+    
+    -- Step 5: ใช้ TeleportToIsland เพื่อวาร์ปไปแมพที่ต้องการ
+    print("[World] Step 5: TeleportToIsland ->", worldName)
+    local success, teleportError = pcall(function()
+        PortalService:InvokeServer(worldName)
+    end)
+    print("[World] TeleportToIsland InvokeServer:", success and "สำเร็จ" or ("ล้มเหลว: " .. tostring(teleportError)))
+    
+    -- รอและเช็คว่าวาร์ปสำเร็จหรือไม่
+    task.wait(3)
+    
+    if success then
+        _G_CurrentWorld = worldName
+        _G_LastWorldTeleport = tick() + 15
+        print("[World] วาร์ปสำเร็จไป:", worldName)
+        task.wait(5) -- รอให้วาร์ปเสร็จ (เพิ่มเวลารอ)
+        return true
+    else
+        print("[World] วาร์ปล้มเหลว:", worldName)
+        _G_LastWorldTeleport = tick() + 10
+        return false
+    end
 end
 
 local function GoToSafeZone()
@@ -3684,15 +3849,11 @@ task.spawn(function()
                 if Settings["Select Rocks"] and #Settings["Select Rocks"] > 0 then
                     local Rocks = workspace:FindFirstChild("Rocks")
                     if Rocks then
-                        for _, rock in pairs(Rocks:GetChildren()) do
-                            if rock:IsA("Model") and rock:GetAttribute("Health") then
-                                for _, targetRockName in pairs(Settings["Select Rocks"]) do
-                                    if string.find(rock.Name, targetRockName) then
-                                        foundRockInMap = true
-                                        break
-                                    end
-                                end
-                                if foundRockInMap then break end
+                        for _, rock in pairs(Rocks:GetDescendants()) do
+                            -- ใช้ exact match (ชื่อต้องตรงเป๊ะ) เพื่อไม่ให้ตีหินมั่ว
+                            if rock:IsA("Model") and rock:GetAttribute("Health") and table.find(Settings["Select Rocks"], rock.Name) then
+                                foundRockInMap = true
+                                break
                             end
                         end
                     end
