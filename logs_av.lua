@@ -537,7 +537,7 @@ if IsMatch then
         end
          warn("SendTo 3")
         -- Create StageInfo
-        if Results["Status"] == "Finished" or Results["Act"] == "Infinite" then
+        if Results["Status"] == "Finished" then
             Times = Results["TimeTaken"]
             StageInfo["win"] = true
         else
