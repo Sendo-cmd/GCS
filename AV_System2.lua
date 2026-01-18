@@ -3060,7 +3060,7 @@ if ID[game.GameId][1] == "AV" then
                                     local myJoinTime = party["party_member"][cache_key]["join_time"] or 0
                                     local waitingTime = os.time() - myJoinTime
                                     
-                                    if waitingTime > 120 then
+                                    if waitingTime > 240 then
                                         -- รอนานเกินไป - รีเซ็ต party หา Host ใหม่
                                         warn("[Member] Timeout waiting for Host (" .. waitingTime .. "s) - finding new Host...")
                                         UpdateCache(cache_key, {["party"] = ""})
