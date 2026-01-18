@@ -3052,12 +3052,15 @@ if ID[game.GameId][1] == "AV" then
                                             local pendingTimestamp = cache["pending_timestamp"] or 0
                                             local hostCache = GetCache(pendingHost)
                                             
-                                            -- เช็ค timeout (20 วินาที)
-                                            if os.time() > pendingTimestamp + 20 then
+                                            -- เช็ค timeout (60 วินาที แต่ถ้า Host รับแล้วไม่มี timeout)
+                                            local isAccepted = hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key]
+                                            local timeoutDuration = isAccepted and math.huge or 60
+                                            
+                                            if os.time() > pendingTimestamp + timeoutDuration then
                                                 print("[Member] Timeout waiting for host:", pendingHost, "- finding new host...")
                                                 UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
                                                 task.wait(2)
-                                            elseif hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key] then
+                                            elseif isAccepted then
                                                 -- Host รับแล้ว! อัพเดท party และหยุดหา Host อื่น
                                                 print("[Member] Host accepted! Updating party to:", pendingHost)
                                                 UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = "", ["pending_timestamp"] = 0})
