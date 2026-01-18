@@ -107,12 +107,12 @@ local Order_Type = {
         "7b29fe07-6313-48cb-a095-3680d4758ab6",
         "1e07ff1f-ab45-466b-8b36-ae0ff8b43198",
     },
-    ["Summer Portal"] = {
+    ["Fall Portal"] = {
         "e206ec24-dfbf-4157-a380-9afabe115c29",
         "c62223a2-17f9-4078-bbc0-bb45c484558f",
         "d92fceaa-8d18-4dc9-980f-452db4573ad9",
     },
-    ["Summer Inf"] = {
+    ["Fall Inf"] = {
         "ffa517b2-7f99-47a8-aadc-d7662b96eb60",
         "c869c464-6864-4eb7-a98f-f78f3448b71c",
         "fc7a340c-7c98-4da6-84aa-a7e3ce4790c1",
@@ -2660,27 +2660,94 @@ if ID[game.GameId][1] == "AV" then
                                                  print("Cannot Get Cache 1")
                                             end
                                         else
-                                            print("Mismatch")
-                                            task.wait(3)
+                                            print("Mismatch - Sending reject message to:", message["order"])
+                                            SendCache(
+                                                {
+                                                    ["index"] = message["order"] .. "-reject"
+                                                },
+                                                {
+                                                    ["value"] = {
+                                                        ["rejected_by"] = Username,
+                                                        ["reason"] = "Different Order_Type",
+                                                        ["message-id"] = HttpService:GenerateGUID(false),
+                                                        ["expire"] = os.time() + 30,
+                                                    },
+                                                }
+                                            )
                                             success = false
                                         end
                                     else
-                                        local cache = GetCache(message["order"])
-                                        if cache then
-                                            old_party[message["order"]] = {
-                                                ["join_time"] = os.time(),
-                                                ["product_id"] = cache["product_id"],
-                                                ["name"] = cache["name"],
-                                            } 
-                                            UpdateCache(Username,{["party_member"] = old_party})
-                                            UpdateCache(message["order"],{["party"] = Username, ["pending_host"] = ""})
-                                            cache = GetCache(cache_key)
-                                            path = nil
-                                            lowest = math.huge
-                                            for i,v in pairs(cache["party_member"]) do
-                                                if v["join_time"] < lowest then
-                                                    path = v["product_id"]
-                                                    lowest = v["join_time"]
+                                        local member_cache = GetCache(message["order"])
+                                        if member_cache then
+                                            local host_product_id = cache["current_play"]
+                                            if not host_product_id or host_product_id == "" then
+                                                local hostData = Fetch_data()
+                                                if hostData and hostData["product_id"] then
+                                                    host_product_id = hostData["product_id"]
+                                                end
+                                            end
+                                            
+                                            if host_product_id and host_product_id ~= "" then
+                                                local Product_Type_1,Product_Type_2 = nil,nil
+                                                for i,v in pairs(Order_Type) do
+                                                    if table.find(v,member_cache["product_id"]) then
+                                                        Product_Type_1 = i
+                                                    end
+                                                    if table.find(v,host_product_id) then
+                                                        Product_Type_2 = i
+                                                    end
+                                                end
+                                                print("Empty Party Check:",Product_Type_1,Product_Type_2,"Host:",host_product_id,"Member:",member_cache["product_id"])
+                                                if Product_Type_1 and Product_Type_2 and Product_Type_1 ~= Product_Type_2 then
+                                                    print("Mismatch - Empty Party - Sending reject message to:", message["order"])
+                                                    SendCache(
+                                                        {
+                                                            ["index"] = message["order"] .. "-reject"
+                                                        },
+                                                        {
+                                                            ["value"] = {
+                                                                ["rejected_by"] = Username,
+                                                                ["reason"] = "Different Order_Type",
+                                                                ["message-id"] = HttpService:GenerateGUID(false),
+                                                                ["expire"] = os.time() + 30,
+                                                            },
+                                                        }
+                                                    )
+                                                    success = false
+                                                else
+                                                    old_party[message["order"]] = {
+                                                        ["join_time"] = os.time(),
+                                                        ["product_id"] = member_cache["product_id"],
+                                                        ["name"] = member_cache["name"],
+                                                    } 
+                                                    UpdateCache(Username,{["party_member"] = old_party})
+                                                    UpdateCache(message["order"],{["party"] = Username, ["pending_host"] = ""})
+                                                    cache = GetCache(cache_key)
+                                                    path = nil
+                                                    lowest = math.huge
+                                                    for i,v in pairs(cache["party_member"]) do
+                                                        if v["join_time"] < lowest then
+                                                            path = v["product_id"]
+                                                            lowest = v["join_time"]
+                                                        end
+                                                    end
+                                                end
+                                            else
+                                                old_party[message["order"]] = {
+                                                    ["join_time"] = os.time(),
+                                                    ["product_id"] = member_cache["product_id"],
+                                                    ["name"] = member_cache["name"],
+                                                } 
+                                                UpdateCache(Username,{["party_member"] = old_party})
+                                                UpdateCache(message["order"],{["party"] = Username, ["pending_host"] = ""})
+                                                cache = GetCache(cache_key)
+                                                path = nil
+                                                lowest = math.huge
+                                                for i,v in pairs(cache["party_member"]) do
+                                                    if v["join_time"] < lowest then
+                                                        path = v["product_id"]
+                                                        lowest = v["join_time"]
+                                                    end
                                                 end
                                             end
                                         else
@@ -2968,104 +3035,111 @@ if ID[game.GameId][1] == "AV" then
                                     -- Host ไม่อยู่ในเกมเดียวกัน - เช็คว่า Host ยังมีชื่อเราใน party_member หรือไม่
                                     -- ถ้ามีแสดงว่า Host กำลังออกมารับ ให้รอ
                                     if party["party_member"] and party["party_member"][cache_key] then
-                                        warn("Host is coming to pick up - waiting...")
+                                        task.wait(5)
                                     else
-                                        -- Host ไม่มีชื่อเราแล้ว - reset party
-                                        warn("Host removed us from party - finding new host")
-                                        UpdateCache(cache_key, {["party"] = ""})
+                                        -- เช็ค reject message ก่อน
+                                        local rejectMsg = GetCache(cache_key .. "-reject")
+                                        if rejectMsg and rejectMsg["expire"] and rejectMsg["expire"] >= os.time() then
+                                            print("[Member] Rejected by:", rejectMsg["rejected_by"], "Reason:", rejectMsg["reason"])
+                                            -- ลบ pending_host และ reject message
+                                            UpdateCache(cache_key, {["pending_host"] = ""})
+                                            DelCache(cache_key .. "-reject")
+                                            print("[Member] Finding new host after rejection...")
+                                            task.wait(2)
+                                        elseif cache["pending_host"] and #cache["pending_host"] > 1 then
+                                            -- มี pending_host แล้ว - รอ Host คนนั้นตอบกลับ
+                                            local pendingHost = cache["pending_host"]
+                                            local hostCache = GetCache(pendingHost)
+                                            if hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key] then
+                                                -- Host รับแล้ว! อัพเดท party และหยุดหา Host อื่น
+                                                print("[Member] Host accepted! Updating party to:", pendingHost)
+                                                UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = ""})
+                                                -- รอให้ cache อัพเดทก่อนวนรอบใหม่
+                                                task.wait(10)
+                                            elseif not hostCache or os.time() > hostCache["last_online"] then
+                                                -- Host offline - reset และหาใหม่
+                                                print("[Member] Pending host offline, finding new host...")
+                                                UpdateCache(cache_key, {["pending_host"] = ""})
+                                            else
+                                                print("[Member] Waiting for host:", pendingHost)
+                                            end
+                                            task.wait(5)
+                                        else
+                                            warn("Find Party")
+                                            local kaiData = DecBody(GetKai)
+                                            print("[Member] GetKai count:", kaiData and #kaiData or 0)
+                                            local availableHosts = {}
+                                            for i, v in pairs(kaiData or {}) do
+                                                local hostUsername = v["username"]
+                                                print("[Member] Checking host:", hostUsername)
+                                                if hostUsername == Username then 
+                                                    print("[Member] Skip - same as self")
+                                                    continue 
+                                                end
+                                                
+                                                local kai_cache = GetCache(hostUsername)
+                                                if not kai_cache then 
+                                                    print("[Member] Skip - no cache for:", hostUsername)
+                                                    continue 
+                                                end
+                                                print("[Member] Host cache:", hostUsername, "last_online:", kai_cache["last_online"], "now:", os.time())
+                                                if os.time() > kai_cache["last_online"] then 
+                                                    print("[Member] Skip - offline:", hostUsername)
+                                                    continue 
+                                                end
+                                                if LenT(kai_cache["party_member"]) >= 3 then 
+                                                    print("[Member] Skip - party full:", hostUsername)
+                                                    continue 
+                                                end
+                                                
+                                                local kaiproduct = kai_cache["current_play"]
+                                                print("[Member] Host current_play:", kaiproduct, "my product:", productid)
+                                                if kaiproduct and #kaiproduct > 10 then
+                                                    local Product_Type_1, Product_Type_2 = nil, nil
+                                                    for _, orderType in pairs(Order_Type) do
+                                                        if table.find(orderType, kaiproduct) then Product_Type_1 = _ end
+                                                        if table.find(orderType, productid) then Product_Type_2 = _ end
+                                                    end
+                                                    -- ถ้า Product_Type เป็น nil (ไม่อยู่ใน Order_Type) ให้ข้ามการเช็ค
+                                                    if Product_Type_1 and Product_Type_2 and Product_Type_1 ~= Product_Type_2 then 
+                                                        print("[Member] Skip - product type mismatch:", Product_Type_1, "vs", Product_Type_2)
+                                                        continue 
+                                                    end
+                                                end
+                                                
+                                                print("[Member] Host OK:", hostUsername)
+                                                table.insert(availableHosts, hostUsername)
+                                            end
+                                            
+                                            print("[Member] Available hosts:", #availableHosts)
+                                            if #availableHosts > 0 then
+                                                local selectedHost = availableHosts[math.random(1, #availableHosts)]
+                                                print("[Member] Request to:", selectedHost)
+                                                -- อัพเดท pending_host ก่อนส่ง request เพื่อป้องกันการส่งซ้ำ
+                                                UpdateCache(cache_key, {["pending_host"] = selectedHost})
+                                                print("[Member] Set pending_host:", selectedHost)
+                                                SendCache(
+                                                    {
+                                                        ["index"] = selectedHost .. "-message"
+                                                    },
+                                                    {
+                                                        ["value"] = {
+                                                            ["order"] = cache_key,
+                                                            ["message-id"] = HttpService:GenerateGUID(false),
+                                                            ["join"] = os.time() + 120,
+                                                        },
+                                                    }
+                                                )
+                                                print("[Member] Request sent, waiting for response...")
+                                                -- รอให้ Host ตอบกลับ
+                                                task.wait(15)
+                                            end
+                                            GetKai = Get(Api .. MainSettings["Path_Kai"])
+                                        end
                                     end
                                 end
-                                task.wait(5)
-                            end
-                        elseif cache["pending_host"] and #cache["pending_host"] > 1 then
-                            -- มี pending_host แล้ว - รอ Host คนนั้นตอบกลับ
-                            local pendingHost = cache["pending_host"]
-                            local hostCache = GetCache(pendingHost)
-                            if hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key] then
-                                -- Host รับแล้ว! อัพเดท party และหยุดหา Host อื่น
-                                print("[Member] Host accepted! Updating party to:", pendingHost)
-                                UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = ""})
-                                -- รอให้ cache อัพเดทก่อนวนรอบใหม่
-                                task.wait(10)
-                            elseif not hostCache or os.time() > hostCache["last_online"] then
-                                -- Host offline - reset และหาใหม่
-                                print("[Member] Pending host offline, finding new host...")
-                                UpdateCache(cache_key, {["pending_host"] = ""})
-                            else
-                                print("[Member] Waiting for host:", pendingHost)
                             end
                             task.wait(5)
-                        else
-                            warn("Find Party")
-                            local kaiData = DecBody(GetKai)
-                            print("[Member] GetKai count:", kaiData and #kaiData or 0)
-                            local availableHosts = {}
-                            for i, v in pairs(kaiData or {}) do
-                                local hostUsername = v["username"]
-                                print("[Member] Checking host:", hostUsername)
-                                if hostUsername == Username then 
-                                    print("[Member] Skip - same as self")
-                                    continue 
-                                end
-                                
-                                local kai_cache = GetCache(hostUsername)
-                                if not kai_cache then 
-                                    print("[Member] Skip - no cache for:", hostUsername)
-                                    continue 
-                                end
-                                print("[Member] Host cache:", hostUsername, "last_online:", kai_cache["last_online"], "now:", os.time())
-                                if os.time() > kai_cache["last_online"] then 
-                                    print("[Member] Skip - offline:", hostUsername)
-                                    continue 
-                                end
-                                if LenT(kai_cache["party_member"]) >= 3 then 
-                                    print("[Member] Skip - party full:", hostUsername)
-                                    continue 
-                                end
-                                
-                                local kaiproduct = kai_cache["current_play"]
-                                print("[Member] Host current_play:", kaiproduct, "my product:", productid)
-                                if kaiproduct and #kaiproduct > 10 then
-                                    local Product_Type_1, Product_Type_2 = nil, nil
-                                    for _, orderType in pairs(Order_Type) do
-                                        if table.find(orderType, kaiproduct) then Product_Type_1 = _ end
-                                        if table.find(orderType, productid) then Product_Type_2 = _ end
-                                    end
-                                    -- ถ้า Product_Type เป็น nil (ไม่อยู่ใน Order_Type) ให้ข้ามการเช็ค
-                                    if Product_Type_1 and Product_Type_2 and Product_Type_1 ~= Product_Type_2 then 
-                                        print("[Member] Skip - product type mismatch:", Product_Type_1, "vs", Product_Type_2)
-                                        continue 
-                                    end
-                                end
-                                
-                                print("[Member] Host OK:", hostUsername)
-                                table.insert(availableHosts, hostUsername)
-                            end
-                            
-                            print("[Member] Available hosts:", #availableHosts)
-                            if #availableHosts > 0 then
-                                local selectedHost = availableHosts[math.random(1, #availableHosts)]
-                                print("[Member] Request to:", selectedHost)
-                                -- อัพเดท pending_host ก่อนส่ง request เพื่อป้องกันการส่งซ้ำ
-                                UpdateCache(cache_key, {["pending_host"] = selectedHost})
-                                print("[Member] Set pending_host:", selectedHost)
-                                SendCache(
-                                    {
-                                        ["index"] = selectedHost .. "-message"
-                                    },
-                                    {
-                                        ["value"] = {
-                                            ["order"] = cache_key,
-                                            ["message-id"] = HttpService:GenerateGUID(false),
-                                            ["join"] = os.time() + 120,
-                                        },
-                                    }
-                                )
-                                print("[Member] Request sent, waiting for response...")
-                                -- รอให้ Host ตอบกลับ
-                                task.wait(15)
-                            end
-                            GetKai = Get(Api .. MainSettings["Path_Kai"])
                         end
                     end
                     task.wait(5)
