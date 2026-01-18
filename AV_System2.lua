@@ -3088,6 +3088,7 @@ if ID[game.GameId][1] == "AV" then
                                             warn("Find Party")
                                             local kaiData = DecBody(GetKai)
                                             print("[Member] GetKai count:", kaiData and #kaiData or 0)
+                                            local currentPendingHost = cache["pending_host"] or ""
                                             local availableHosts = {}
                                             for i, v in pairs(kaiData or {}) do
                                                 local hostUsername = v["username"]
@@ -3095,6 +3096,11 @@ if ID[game.GameId][1] == "AV" then
                                                 if hostUsername == Username then 
                                                     print("[Member] Skip - same as self")
                                                     continue 
+                                                end
+                                                
+                                                if hostUsername == currentPendingHost and #currentPendingHost > 1 then
+                                                    print("[Member] Skip - already pending with:", hostUsername)
+                                                    continue
                                                 end
                                                 
                                                 local kai_cache = GetCache(hostUsername)
@@ -3194,10 +3200,16 @@ if ID[game.GameId][1] == "AV" then
                                 warn("[Member] No party - Finding host...")
                                 local kaiData = DecBody(GetKai)
                                 print("[Member] GetKai count:", kaiData and #kaiData or 0)
+                                local currentPendingHost = cache["pending_host"] or ""
                                 local availableHosts = {}
                                 for i, v in pairs(kaiData or {}) do
                                     local hostUsername = v["username"]
                                     if hostUsername == Username then continue end
+                                    
+                                    if hostUsername == currentPendingHost and #currentPendingHost > 1 then
+                                        print("[Member] Skip - already pending with:", hostUsername)
+                                        continue
+                                    end
                                     
                                     local kai_cache = GetCache(hostUsername)
                                     if not kai_cache then continue end
