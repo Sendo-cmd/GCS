@@ -3445,11 +3445,18 @@ if ID[game.GameId][1] == "AV" then
                     local cache = GetCache(Username)
                     if not cache then print("[Host In Stage] No cache") continue end
                     
+                    -- อัพเดท last_online เพื่อไม่ให้ cache หมดอายุ
+                    UpdateCache(Username, {["last_online"] = os.time() + 200})
+                    
                     -- อัพเดท Current_Party_Stage
                     Current_Party_Stage = GetPartyInGame(cache["party_member"])
                     
                     -- Accept member request
                     local message = GetCache(Username .. "-message")
+                    print("[Host In Stage] Checking message - has message:", message ~= nil, "Last_Message_1:", Last_Message_1)
+                    if message then
+                        print("[Host In Stage] Message details - message-id:", message["message-id"], "join:", message["join"], "now:", os.time())
+                    end
                     if message and Last_Message_1 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
                         print("[Host In Stage] New message from:", message["order"], "valid until:", message["join"], "now:", os.time())
                         Last_Message_1 = message["message-id"]
