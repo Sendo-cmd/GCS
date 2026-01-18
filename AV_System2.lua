@@ -3060,7 +3060,7 @@ if ID[game.GameId][1] == "AV" then
                                     local myJoinTime = party["party_member"][cache_key]["join_time"] or 0
                                     local waitingTime = os.time() - myJoinTime
                                     
-                                    if waitingTime > 40 then
+                                    if waitingTime > 120 then
                                         -- รอนานเกินไป - รีเซ็ต party หา Host ใหม่
                                         warn("[Member] Timeout waiting for Host (" .. waitingTime .. "s) - finding new Host...")
                                         UpdateCache(cache_key, {["party"] = ""})
@@ -3525,7 +3525,9 @@ if ID[game.GameId][1] == "AV" then
                                         Waiting_Time_Stage = os.time() + 60
                                     else
                                         print("[Host In Stage] Member not in game - shutting down to pick up")
-                                        task.wait(5)
+                                        -- อัพเดท last_online ก่อน shutdown เพื่อไม่ให้ cache ถูกลบ
+                                        UpdateCache(Username, {["last_online"] = os.time() + 300})
+                                        task.wait(3)
                                         game:Shutdown()
                                     end
                                 end
@@ -3542,6 +3544,8 @@ if ID[game.GameId][1] == "AV" then
                         if inGameCount < partyCount then
                             -- มี member หลุดไป - shutdown เพื่อออกไปรับ
                             print("[Host In Stage] Member disconnected! In game:", inGameCount, "Expected:", partyCount)
+                            -- อัพเดท last_online ก่อน shutdown เพื่อไม่ให้ cache ถูกลบ
+                            UpdateCache(Username, {["last_online"] = os.time() + 300})
                             task.wait(3)
                             game:Shutdown()
                         end
