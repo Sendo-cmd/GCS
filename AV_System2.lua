@@ -3153,11 +3153,106 @@ if ID[game.GameId][1] == "AV" then
                                                 print("[Member] Request sent, waiting for response...")
                                                 -- รอให้ Host ตอบกลับ
                                                 task.wait(15)
+                                            else
+                                                print("[Member] No available hosts found - waiting before retry...")
+                                                task.wait(5)
                                             end
                                             GetKai = Get(Api .. MainSettings["Path_Kai"])
                                         end
                                     end
                                 end
+                            end
+                            task.wait(5)
+                        else
+                            -- ไม่มี party - หา Host ใหม่
+                            local rejectMsg = GetCache(cache_key .. "-reject")
+                            if rejectMsg and rejectMsg["expire"] and rejectMsg["expire"] >= os.time() then
+                                print("[Member] Rejected by:", rejectMsg["rejected_by"], "Reason:", rejectMsg["reason"])
+                                UpdateCache(cache_key, {["pending_host"] = ""})
+                                DelCache(cache_key .. "-reject")
+                                print("[Member] Finding new host after rejection...")
+                                task.wait(2)
+                            elseif cache["pending_host"] and #cache["pending_host"] > 1 then
+                                -- มี pending_host - รอ Host คนนั้นตอบกลับ
+                                local pendingHost = cache["pending_host"]
+                                local pendingTimestamp = cache["pending_timestamp"] or 0
+                                local hostCache = GetCache(pendingHost)
+                                
+                                local isAccepted = hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key]
+                                local timeoutDuration = isAccepted and math.huge or 60
+                                
+                                if os.time() > pendingTimestamp + timeoutDuration then
+                                    print("[Member] Timeout waiting for host:", pendingHost, "- finding new host...")
+                                    UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
+                                    task.wait(2)
+                                elseif isAccepted then
+                                    print("[Member] Host accepted! Updating party to:", pendingHost)
+                                    UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = "", ["pending_timestamp"] = 0})
+                                    task.wait(10)
+                                elseif not hostCache then
+                                    print("[Member] Pending host cache missing, finding new host...")
+                                    UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
+                                elseif os.time() > hostCache["last_online"] then
+                                    if hostCache["party_member"] and hostCache["party_member"][cache_key] then
+                                        print("[Member] Host offline but accepted (coming to pick up) - waiting...")
+                                    else
+                                        print("[Member] Pending host offline (not accepted), finding new host...")
+                                        UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
+                                    end
+                                else
+                                    print("[Member] Waiting for host:", pendingHost, "elapsed:", os.time() - pendingTimestamp, "s")
+                                end
+                                task.wait(5)
+                            else
+                                -- ไม่มี party และไม่มี pending_host - หา Host ใหม่
+                                warn("[Member] No party - Finding host...")
+                                local kaiData = DecBody(GetKai)
+                                print("[Member] GetKai count:", kaiData and #kaiData or 0)
+                                local availableHosts = {}
+                                for i, v in pairs(kaiData or {}) do
+                                    local hostUsername = v["username"]
+                                    if hostUsername == Username then continue end
+                                    
+                                    local kai_cache = GetCache(hostUsername)
+                                    if not kai_cache then continue end
+                                    if os.time() > kai_cache["last_online"] then continue end
+                                    if LenT(kai_cache["party_member"]) >= 3 then continue end
+                                    
+                                    local kaiproduct = kai_cache["current_play"]
+                                    if kaiproduct and #kaiproduct > 10 then
+                                        local Product_Type_1, Product_Type_2 = nil, nil
+                                        for _, orderType in pairs(Order_Type) do
+                                            if table.find(orderType, kaiproduct) then Product_Type_1 = _ end
+                                            if table.find(orderType, productid) then Product_Type_2 = _ end
+                                        end
+                                        if Product_Type_1 and Product_Type_2 and Product_Type_1 ~= Product_Type_2 then 
+                                            continue 
+                                        end
+                                    end
+                                    
+                                    table.insert(availableHosts, hostUsername)
+                                end
+                                
+                                print("[Member] Available hosts:", #availableHosts)
+                                if #availableHosts > 0 then
+                                    local selectedHost = availableHosts[math.random(1, #availableHosts)]
+                                    print("[Member] Request to:", selectedHost)
+                                    UpdateCache(cache_key, {["pending_host"] = selectedHost, ["pending_timestamp"] = os.time()})
+                                    SendCache(
+                                        {["index"] = selectedHost .. "-message"},
+                                        {["value"] = {
+                                            ["order"] = cache_key,
+                                            ["message-id"] = HttpService:GenerateGUID(false),
+                                            ["join"] = os.time() + 120,
+                                        }}
+                                    )
+                                    print("[Member] Request sent, waiting for response...")
+                                    task.wait(15)
+                                else
+                                    print("[Member] No available hosts found - waiting before retry...")
+                                    task.wait(5)
+                                end
+                                GetKai = Get(Api .. MainSettings["Path_Kai"])
                             end
                             task.wait(5)
                         end
