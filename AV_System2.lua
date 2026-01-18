@@ -3049,19 +3049,36 @@ if ID[game.GameId][1] == "AV" then
                                         elseif cache["pending_host"] and #cache["pending_host"] > 1 then
                                             -- มี pending_host แล้ว - รอ Host คนนั้นตอบกลับ
                                             local pendingHost = cache["pending_host"]
+                                            local pendingTimestamp = cache["pending_timestamp"] or 0
                                             local hostCache = GetCache(pendingHost)
-                                            if hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key] then
+                                            
+                                            -- เช็ค timeout (20 วินาที)
+                                            if os.time() > pendingTimestamp + 20 then
+                                                print("[Member] Timeout waiting for host:", pendingHost, "- finding new host...")
+                                                UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
+                                                task.wait(2)
+                                            elseif hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key] then
                                                 -- Host รับแล้ว! อัพเดท party และหยุดหา Host อื่น
                                                 print("[Member] Host accepted! Updating party to:", pendingHost)
-                                                UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = ""})
+                                                UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = "", ["pending_timestamp"] = 0})
                                                 -- รอให้ cache อัพเดทก่อนวนรอบใหม่
                                                 task.wait(10)
-                                            elseif not hostCache or os.time() > hostCache["last_online"] then
-                                                -- Host offline - reset และหาใหม่
-                                                print("[Member] Pending host offline, finding new host...")
-                                                UpdateCache(cache_key, {["pending_host"] = ""})
+                                            elseif not hostCache then
+                                                -- Host cache หาย - reset และหาใหม่
+                                                print("[Member] Pending host cache missing, finding new host...")
+                                                UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
+                                            elseif os.time() > hostCache["last_online"] then
+                                                -- Host offline - เช็คว่ายังมีชื่อเราใน party_member หรือไม่
+                                                if hostCache["party_member"] and hostCache["party_member"][cache_key] then
+                                                    -- Host รับแล้วแต่ offline (กำลัง shutdown มารับ) - รอต่อ
+                                                    print("[Member] Host offline but accepted (coming to pick up) - waiting...")
+                                                else
+                                                    -- Host offline จริงๆ ไม่มีชื่อเรา - หาใหม่
+                                                    print("[Member] Pending host offline (not accepted), finding new host...")
+                                                    UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
+                                                end
                                             else
-                                                print("[Member] Waiting for host:", pendingHost)
+                                                print("[Member] Waiting for host:", pendingHost, "elapsed:", os.time() - pendingTimestamp, "s")
                                             end
                                             task.wait(5)
                                         else
@@ -3116,8 +3133,8 @@ if ID[game.GameId][1] == "AV" then
                                                 local selectedHost = availableHosts[math.random(1, #availableHosts)]
                                                 print("[Member] Request to:", selectedHost)
                                                 -- อัพเดท pending_host ก่อนส่ง request เพื่อป้องกันการส่งซ้ำ
-                                                UpdateCache(cache_key, {["pending_host"] = selectedHost})
-                                                print("[Member] Set pending_host:", selectedHost)
+                                                UpdateCache(cache_key, {["pending_host"] = selectedHost, ["pending_timestamp"] = os.time()})
+                                                print("[Member] Set pending_host:", selectedHost, "at:", os.time())
                                                 SendCache(
                                                     {
                                                         ["index"] = selectedHost .. "-message"
