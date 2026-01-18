@@ -3526,7 +3526,7 @@ if ID[game.GameId][1] == "AV" then
                                     else
                                         print("[Host In Stage] Member not in game - shutting down to pick up")
                                         -- อัพเดท last_online ก่อน shutdown เพื่อไม่ให้ cache ถูกลบ
-                                        UpdateCache(Username, {["last_online"] = os.time() + 300})
+                                        UpdateCache(Username, {["last_online"] = os.time() + 450})
                                         task.wait(3)
                                         game:Shutdown()
                                     end
@@ -3545,7 +3545,7 @@ if ID[game.GameId][1] == "AV" then
                             -- มี member หลุดไป - shutdown เพื่อออกไปรับ
                             print("[Host In Stage] Member disconnected! In game:", inGameCount, "Expected:", partyCount)
                             -- อัพเดท last_online ก่อน shutdown เพื่อไม่ให้ cache ถูกลบ
-                            UpdateCache(Username, {["last_online"] = os.time() + 300})
+                            UpdateCache(Username, {["last_online"] = os.time() + 450})
                             task.wait(3)
                             game:Shutdown()
                         end
