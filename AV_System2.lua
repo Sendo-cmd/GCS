@@ -3457,56 +3457,53 @@ if ID[game.GameId][1] == "AV" then
                         local memberCache = GetCache(message["order"])
                         if memberCache and memberCache["product_id"] then
                             local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
-                            -- ใช้ current_play (party) หรือ host_id (Host's own product) ในการเช็ค order_type
-                            local currentPlay = cache["current_play"] or ""
-                            local hostId = cache["host_id"] or hostProductId
-                            local checkAgainst = (#currentPlay > 10) and currentPlay or hostId
                             
                             -- เช็คว่า party เต็มหรือไม่
                             if LenT(old_party) >= 3 then
                                 print("[Host In Stage] Party full - rejecting")
                                 SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                             else
-                                -- เช็ค order_type ของ member กับ Host
-                                local Type_NewMember, Type_Host = nil, nil
-                                for orderName, orderIds in pairs(Order_Type) do
-                                    if table.find(orderIds, memberCache["product_id"]) then
-                                        Type_NewMember = orderName
-                                    end
-                                    if table.find(orderIds, checkAgainst) then
-                                        Type_Host = orderName
-                                    end
-                                end
+                                -- เช็ค current_play (party's product) - ไม่ใช่ host_id
+                                local currentPlay = cache["current_play"] or ""
+                                local shouldAccept = true
                                 
-                                print("[Host In Stage] Member type:", Type_NewMember, "Host type:", Type_Host, "(using:", (#currentPlay > 10) and "current_play" or "host_id", ")")
-                                
-                                -- ถ้า product_id ต่างกัน และ order_type ไม่ตรง → reject
-                                local shouldReject = false
-                                if memberCache["product_id"] ~= checkAgainst then
-                                    if not Type_NewMember or not Type_Host then
-                                        print("[Host In Stage] Cannot determine order_type - rejecting")
-                                        shouldReject = true
-                                    elseif Type_NewMember ~= Type_Host then
-                                        print("[Host In Stage] Order type mismatch - rejecting")
-                                        shouldReject = true
+                                if #currentPlay > 10 then
+                                    -- มี current_play แล้ว (party มี member) → เช็ค order_type
+                                    local Type_NewMember, Type_CurrentPlay = nil, nil
+                                    for orderName, orderIds in pairs(Order_Type) do
+                                        if table.find(orderIds, memberCache["product_id"]) then
+                                            Type_NewMember = orderName
+                                        end
+                                        if table.find(orderIds, currentPlay) then
+                                            Type_CurrentPlay = orderName
+                                        end
                                     end
-                                end
-                                
-                                if shouldReject then
-                                    -- Reject และบอกให้ไปหา host ใหม่
-                                    SendCache(
-                                        {["index"] = message["order"] .. "-reject"},
-                                        {["value"] = {
-                                            ["rejected_by"] = Username,
-                                            ["reason"] = "Different Order_Type",
-                                            ["message-id"] = HttpService:GenerateGUID(false),
-                                            ["expire"] = os.time() + 30,
-                                        }}
-                                    )
-                                    SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
+                                    
+                                    print("[Host In Stage] Member type:", Type_NewMember, "Party type:", Type_CurrentPlay, "(current_play)")
+                                    
+                                    if memberCache["product_id"] ~= currentPlay then
+                                        if Type_NewMember and Type_CurrentPlay and Type_NewMember ~= Type_CurrentPlay then
+                                            print("[Host In Stage] Order type mismatch - rejecting")
+                                            shouldAccept = false
+                                            SendCache(
+                                                {["index"] = message["order"] .. "-reject"},
+                                                {["value"] = {
+                                                    ["rejected_by"] = Username,
+                                                    ["reason"] = "Different Order_Type",
+                                                    ["message-id"] = HttpService:GenerateGUID(false),
+                                                    ["expire"] = os.time() + 30,
+                                                }}
+                                            )
+                                            SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
+                                        end
+                                    end
                                 else
-                                    -- Order type ตรงกัน - รับเลย
-                                    print("[Host In Stage] Order type match - accepting:", memberCache["name"])
+                                    -- ยังไม่มี current_play (party ว่าง) → รับได้เลย
+                                    print("[Host In Stage] No current_play - accepting any member")
+                                end
+                                
+                                if shouldAccept then
+                                    print("[Host In Stage] Accepting member:", memberCache["name"], "product_id:", memberCache["product_id"])
                                     old_party[message["order"]] = {
                                         ["join_time"] = os.time(),
                                         ["product_id"] = memberCache["product_id"],
@@ -3514,7 +3511,10 @@ if ID[game.GameId][1] == "AV" then
                                     }
                                     UpdateCache(Username, {["party_member"] = old_party})
                                     UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
-                                    -- ไม่เปลี่ยน current_play เพราะ Host In Stage มี product_id ของตัวเองอยู่แล้ว
+                                    -- Set current_play เป็น product_id ของ member คนแรก (ถ้ายังไม่มี)
+                                    if #currentPlay < 10 then
+                                        UpdateCache(Username, {["current_play"] = memberCache["product_id"]})
+                                    end
                                     SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                     print("[Host In Stage] Member accepted")
                                     
