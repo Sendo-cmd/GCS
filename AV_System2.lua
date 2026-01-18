@@ -2356,13 +2356,6 @@ local function Register_Room(myproduct,player)
                 
                 game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Portals"):WaitForChild("PortalEvent"):FireServer(unpack(args))
                 task.wait(3)
-                for i = 1,2 do 
-                    for i,v in pairs(player) do task.wait(2.5)
-                        print(i,v)
-                        Invite(v)
-                    end 
-                end
-                task.wait(2)
             else
                 print("Dont have portal",Settings_["ID"])
             end
@@ -2654,18 +2647,53 @@ if ID[game.GameId][1] == "AV" then
                                         print("[Host Lobby] Party full - rejecting")
                                         SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                     elseif LenT(old_party) == 0 then
-                                        -- Party ว่าง - รับ member คนแรกได้เลย
-                                        print("[Host Lobby] Party empty - accepting first member:", member_cache["name"])
-                                        old_party[message["order"]] = {
-                                            ["join_time"] = os.time(),
-                                            ["product_id"] = member_cache["product_id"],
-                                            ["name"] = member_cache["name"],
-                                        }
-                                        UpdateCache(Username, {["party_member"] = old_party})
-                                        UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
-                                        UpdateCache(Username, {["current_play"] = member_cache["product_id"]})
-                                        Waiting_Time = os.time() + 180
-                                        print("[Host Lobby] Member accepted - waiting for member to join")
+                                        -- Party ว่าง - เช็ค order_type กับ host_id ก่อน
+                                        local hostId = cache["host_id"] or ""
+                                        local memberProductId = member_cache["product_id"]
+                                        
+                                        -- หา order_type
+                                        local Type_Member, Type_Host = nil, nil
+                                        for orderName, orderIds in pairs(Order_Type) do
+                                            if table.find(orderIds, memberProductId) then
+                                                Type_Member = orderName
+                                            end
+                                            if table.find(orderIds, hostId) then
+                                                Type_Host = orderName
+                                            end
+                                        end
+                                        
+                                        print("[Host Lobby] Party empty - Member type:", Type_Member, "Host type:", Type_Host)
+                                        
+                                        -- ถ้า host_id มี และ order_type ไม่ตรงกัน → reject
+                                        local shouldAccept = true
+                                        if #hostId > 10 and Type_Member and Type_Host and Type_Member ~= Type_Host then
+                                            print("[Host Lobby] Order type mismatch with host_id - rejecting")
+                                            shouldAccept = false
+                                            SendCache(
+                                                {["index"] = message["order"] .. "-reject"},
+                                                {["value"] = {
+                                                    ["rejected_by"] = Username,
+                                                    ["reason"] = "Different Order_Type (host_id)",
+                                                    ["message-id"] = HttpService:GenerateGUID(false),
+                                                    ["expire"] = os.time() + 30,
+                                                }}
+                                            )
+                                            SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
+                                        end
+                                        
+                                        if shouldAccept then
+                                            print("[Host Lobby] Accepting first member:", member_cache["name"])
+                                            old_party[message["order"]] = {
+                                                ["join_time"] = os.time(),
+                                                ["product_id"] = member_cache["product_id"],
+                                                ["name"] = member_cache["name"],
+                                            }
+                                            UpdateCache(Username, {["party_member"] = old_party})
+                                            UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
+                                            UpdateCache(Username, {["current_play"] = member_cache["product_id"]})
+                                            Waiting_Time = os.time() + 180
+                                            print("[Host Lobby] Member accepted - waiting for member to join")
+                                        end
                                     else
                                         -- มี member อยู่แล้ว - เช็ค order_type กับ member คนแรก
                                         print("[Host Lobby] Party has members:", LenT(old_party), "- checking order_type")
@@ -2795,8 +2823,8 @@ if ID[game.GameId][1] == "AV" then
                                         if not hasWantCarry then
                                             -- ไม่มี want_carry - เข้าเล่น auto config เลย (ไม่ต้องรอ member)
                                             print("[Host Auto Config] No member request - starting auto config for:", hostData["product_id"])
-                                            -- Set current_play ก่อนเข้าเล่น เพื่อให้ member หาเจอ
-                                            UpdateCache(Username, {["current_play"] = hostData["product_id"]})
+                                            -- Set host_id (Host's own product) - ไม่ใช่ current_play เพราะนั่นสำหรับ party system
+                                            UpdateCache(Username, {["host_id"] = hostData["product_id"]})
                                             
                                             -- เช็คว่าเป็น Rift หรือไม่
                                             local isRiftProduct = table.find(Order_Type["Rift"] or {}, hostData["product_id"]) ~= nil
@@ -2909,6 +2937,9 @@ if ID[game.GameId][1] == "AV" then
                             end
                         end
                     else
+                        -- ดึง host_id จาก API
+                        local hostData = Fetch_data()
+                        local hostProductId = hostData and hostData["product_id"] or ""
                         SendCache(
                                 {
                                     ["index"] = Username
@@ -2916,7 +2947,8 @@ if ID[game.GameId][1] == "AV" then
                                 {
                                     ["value"] = {
                                         ["last_online"] = os.time() + 400,
-                                        ["current_play"] = "",
+                                        ["host_id"] = hostProductId, -- Host's own product_id (ไม่เกี่ยวกับ party)
+                                        ["current_play"] = "",       -- Party system (Member's product_id)
                                         ["party_member"] = {},
                                 }
                             }
@@ -2950,7 +2982,6 @@ if ID[game.GameId][1] == "AV" then
                     Secret Key Example
                     "orderid_cache_1"
                 ]]
-                local AttemptToAlready = 0 -- counter รอให้ Host มี current_play (ถ้า < 5 จะไม่ส่ง request ไป Host ที่ยังไม่มีงาน)
                 local rejected_hosts = {} -- เก็บ list ของ host ที่ reject แล้ว จะไม่ส่ง request ซ้ำ
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                     print(cache_1["party"],value_["InvitedBy"])
@@ -3148,10 +3179,11 @@ if ID[game.GameId][1] == "AV" then
                                                     continue 
                                                 end
                                                 
-                                                -- เช็ค current_play ของ Host (เหมือนระบบเก่า)
+                                                -- เช็ค current_play ของ Host
                                                 local kaiproduct = kai_cache["current_play"] or ""
+                                                
                                                 if #kaiproduct > 10 then
-                                                    -- Host มี current_play แล้ว → เช็ค order_type
+                                                    -- Host มี current_play แล้ว (party มี member) → เช็ค order_type กับ current_play
                                                     local myOrderType, hostOrderType = nil, nil
                                                     for orderName, orderIds in pairs(Order_Type) do
                                                         if table.find(orderIds, productid) then
@@ -3161,25 +3193,20 @@ if ID[game.GameId][1] == "AV" then
                                                             hostOrderType = orderName
                                                         end
                                                     end
-                                                    print("[Member]", hostUsername, "Product Type:", myOrderType, hostOrderType)
+                                                    print("[Member]", hostUsername, "Check current_play - My:", myOrderType, "Host:", hostOrderType)
                                                     
                                                     if myOrderType and hostOrderType and myOrderType ~= hostOrderType then
-                                                        print("[Member] Skip - order_type mismatch")
+                                                        print("[Member] Skip - order_type mismatch (current_play)")
                                                         continue
                                                     end
                                                     
-                                                    -- order_type ตรงกัน → เพิ่มใน availableHosts พร้อมบอกว่ามี current_play แล้ว
+                                                    -- order_type ตรงกัน → เพิ่มใน availableHosts
                                                     print("[Member] Host OK (has current_play):", hostUsername)
                                                     table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = true})
                                                 else
-                                                    -- Host ยังไม่มี current_play → ต้องรอ AttemptToAlready >= 5 ก่อน
-                                                    print("[Member]", hostUsername, "No current_play - Attempt:", AttemptToAlready)
-                                                    if AttemptToAlready >= 5 then
-                                                        print("[Member] Host OK (no current_play, attempt >= 5):", hostUsername)
-                                                        table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = false})
-                                                    else
-                                                        print("[Member] Skip - waiting for AttemptToAlready")
-                                                    end
+                                                    -- Host ยังไม่มี current_play → request ได้เลย (Host จะเช็ค order_type เอง)
+                                                    print("[Member] Host OK (no current_play):", hostUsername)
+                                                    table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = false})
                                                 end
                                             end
                                             
@@ -3205,7 +3232,6 @@ if ID[game.GameId][1] == "AV" then
                                                     }
                                                 )
                                                 print("[Member] Request sent, waiting for response...")
-                                                AttemptToAlready = 0 -- reset counter หลังส่ง request
                                                 -- รอให้ Host ตอบกลับ
                                                 task.wait(15)
                                             else
@@ -3213,7 +3239,6 @@ if ID[game.GameId][1] == "AV" then
                                                 task.wait(5)
                                             end
                                             GetKai = Get(Api .. MainSettings["Path_Kai"])
-                                            AttemptToAlready = AttemptToAlready + 1 -- เพิ่ม counter ทุกรอบ
                                         end
                                     end
                                 end
@@ -3314,14 +3339,9 @@ if ID[game.GameId][1] == "AV" then
                                         print("[Member] Host OK (has current_play):", hostUsername)
                                         table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = true})
                                     else
-                                        -- Host ยังไม่มี current_play → ต้องรอ AttemptToAlready >= 5 ก่อน
-                                        print("[Member]", hostUsername, "No current_play - Attempt:", AttemptToAlready)
-                                        if AttemptToAlready >= 5 then
-                                            print("[Member] Host OK (no current_play, attempt >= 5):", hostUsername)
-                                            table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = false})
-                                        else
-                                            print("[Member] Skip - waiting for AttemptToAlready")
-                                        end
+                                        -- Host ยังไม่มี current_play → request ได้เลย
+                                        print("[Member] Host OK (no current_play):", hostUsername)
+                                        table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = false})
                                     end
                                 end
                                 
@@ -3341,14 +3361,12 @@ if ID[game.GameId][1] == "AV" then
                                         }}
                                     )
                                     print("[Member] Request sent, waiting for response...")
-                                    AttemptToAlready = 0 -- reset counter หลังส่ง request
                                     task.wait(15)
                                 else
                                     print("[Member] No available hosts found - waiting before retry...")
                                     task.wait(5)
                                 end
                                 GetKai = Get(Api .. MainSettings["Path_Kai"])
-                                AttemptToAlready = AttemptToAlready + 1 -- เพิ่ม counter ทุกรอบ
                             end
                             task.wait(5)
                         end
@@ -3372,7 +3390,7 @@ if ID[game.GameId][1] == "AV" then
             -- สร้าง/อัพเดท cache สำหรับ Host ในด่าน
             local cache = GetCache(Username)
             if not cache then
-                print("[Host In Stage] Creating cache with current_play:", hostProductId)
+                print("[Host In Stage] Creating cache with host_id:", hostProductId)
                 SendCache(
                     {
                         ["index"] = Username
@@ -3380,7 +3398,8 @@ if ID[game.GameId][1] == "AV" then
                     {
                         ["value"] = {
                             ["last_online"] = os.time() + 400,
-                            ["current_play"] = hostProductId, -- product_id ของ Host (ไม่เปลี่ยน)
+                            ["host_id"] = hostProductId,  -- Host's own product_id
+                            ["current_play"] = "",        -- Party system (Member's product_id)
                             ["party_member"] = {},
                         }
                     }
@@ -3388,18 +3407,18 @@ if ID[game.GameId][1] == "AV" then
                 task.wait(2)
                 cache = GetCache(Username)
             else
-                -- อัพเดท current_play ถ้ายังไม่ได้ set
-                if cache["current_play"] == "" or cache["current_play"] == nil then
-                    print("[Host In Stage] Updating current_play to:", hostProductId)
-                    UpdateCache(Username, {["current_play"] = hostProductId})
+                -- อัพเดท host_id ถ้ายังไม่ได้ set
+                if cache["host_id"] == "" or cache["host_id"] == nil then
+                    print("[Host In Stage] Updating host_id to:", hostProductId)
+                    UpdateCache(Username, {["host_id"] = hostProductId})
                 end
             end
             if cache then
-                local currentPlay = cache["current_play"] or hostProductId
-                print("[Host In Stage] Cache exists, current_play:", currentPlay)
-                if Changes[currentPlay] then
-                    Changes[currentPlay]()
-                    print("Configs has Changed ", currentPlay)
+                local hostId = cache["host_id"] or hostProductId
+                print("[Host In Stage] Cache exists, host_id:", hostId)
+                if Changes[hostId] then
+                    Changes[hostId]()
+                    print("Configs has Changed ", hostId)
                 end
             end
             local Last_Message_1 = nil
@@ -3438,34 +3457,36 @@ if ID[game.GameId][1] == "AV" then
                         local memberCache = GetCache(message["order"])
                         if memberCache and memberCache["product_id"] then
                             local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
-                            -- ใช้ current_play ในการเช็ค order_type (Host In Stage ไม่เปลี่ยน current_play)
-                            local myCurrentPlay = cache["current_play"] or hostProductId
+                            -- ใช้ current_play (party) หรือ host_id (Host's own product) ในการเช็ค order_type
+                            local currentPlay = cache["current_play"] or ""
+                            local hostId = cache["host_id"] or hostProductId
+                            local checkAgainst = (#currentPlay > 10) and currentPlay or hostId
                             
                             -- เช็คว่า party เต็มหรือไม่
                             if LenT(old_party) >= 3 then
                                 print("[Host In Stage] Party full - rejecting")
                                 SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                             else
-                                -- เช็ค order_type ของ member กับ Host's current_play ก่อนรับ
-                                local Type_NewMember, Type_CurrentPlay = nil, nil
+                                -- เช็ค order_type ของ member กับ Host
+                                local Type_NewMember, Type_Host = nil, nil
                                 for orderName, orderIds in pairs(Order_Type) do
                                     if table.find(orderIds, memberCache["product_id"]) then
                                         Type_NewMember = orderName
                                     end
-                                    if table.find(orderIds, myCurrentPlay) then
-                                        Type_CurrentPlay = orderName
+                                    if table.find(orderIds, checkAgainst) then
+                                        Type_Host = orderName
                                     end
                                 end
                                 
-                                print("[Host In Stage] Member type:", Type_NewMember, "Host type:", Type_CurrentPlay)
+                                print("[Host In Stage] Member type:", Type_NewMember, "Host type:", Type_Host, "(using:", (#currentPlay > 10) and "current_play" or "host_id", ")")
                                 
                                 -- ถ้า product_id ต่างกัน และ order_type ไม่ตรง → reject
                                 local shouldReject = false
-                                if memberCache["product_id"] ~= myCurrentPlay then
-                                    if not Type_NewMember or not Type_CurrentPlay then
+                                if memberCache["product_id"] ~= checkAgainst then
+                                    if not Type_NewMember or not Type_Host then
                                         print("[Host In Stage] Cannot determine order_type - rejecting")
                                         shouldReject = true
-                                    elseif Type_NewMember ~= Type_CurrentPlay then
+                                    elseif Type_NewMember ~= Type_Host then
                                         print("[Host In Stage] Order type mismatch - rejecting")
                                         shouldReject = true
                                     end
