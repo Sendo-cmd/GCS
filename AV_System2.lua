@@ -2775,72 +2775,86 @@ if ID[game.GameId][1] == "AV" then
                                 print("cannot get cache 3")
                             end
                             if not Current_Party or #Current_Party <= 0 then
-                                -- Host Auto Config: ถ้าไม่มี request จาก member ให้เข้าเล่นทันที
+                                -- Host Auto Config: ถ้าไม่มี want_carry และไม่มี party member ให้เข้าเล่น auto config ได้
                                 if Use_API then
                                     local hostData = Fetch_data()
                                     if hostData and hostData["product_id"] then
-                                        -- เช็คว่ามี request จาก member หรือไม่
-                                        local hasRequest = false
-                                        local message = GetCache(Username .. "-message")
-                                        if message and message["join"] and message["join"] >= os.time() then
-                                            hasRequest = true
-                                        end
-                                        
-                                        if not hasRequest then
-                                            -- ไม่มี request - เข้าเล่นทันที
-                                            print("[Host Auto Config] No member request - starting game for:", hostData["product_id"])
-                                            -- Set current_play ก่อนเข้าเล่น เพื่อให้ member หาเจอ
-                                            UpdateCache(Username, {["current_play"] = hostData["product_id"]})
-                                            -- Auto Select Items จาก selected_items (รองรับ Act, Stage, และ items)
-                                            if hostData["selected_items"] then
-                                                local Insert = {}
-                                                local SelectedAct = nil
-                                                local SelectedStage = nil
-                                                for _, v in pairs(hostData["selected_items"]) do
-                                                    -- เช็คว่ามี act field หรือไม่ (format: {name="Double Dungeon", act="Act 3"})
-                                                    if v.act then
-                                                        SelectedAct = v.act
-                                                    end
-                                                    if v.name then
-                                                        -- ถ้ามี act field แยก = name คือ Stage
-                                                        if v.act then
-                                                            SelectedStage = v.name
-                                                        -- ถ้าไม่มี act field = เช็คว่า name เป็น Act หรือไม่
-                                                        elseif v.name:match("^Act%s*%d+$") or v.name:match("^Act%d+$") or v.name == "Infinite" then
-                                                            SelectedAct = v.name
-                                                        elseif v.type == "stage" or v.type == "Stage" then
-                                                            SelectedStage = v.name
-                                                        else
-                                                            table.insert(Insert, v.name)
-                                                        end
-                                                    end
-                                                end
-                                                -- Apply Act และ Stage (ใช้ค่าอื่นจาก Changes[product_id])
-                                                if SelectedAct then
-                                                    if Settings["Story Settings"] then Settings["Story Settings"]["Act"] = SelectedAct end
-                                                    if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Act"] = SelectedAct end
-                                                    if Settings["Legend Settings"] then Settings["Legend Settings"]["Act"] = SelectedAct end
-                                                    if Settings["Raid Settings"] then Settings["Raid Settings"]["Act"] = SelectedAct end
-                                                    -- print("[Host Auto Config] Selected Act:", SelectedAct)
-                                                end
-                                                if SelectedStage then
-                                                    if Settings["Story Settings"] then Settings["Story Settings"]["Stage"] = SelectedStage end
-                                                    if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Stage"] = SelectedStage end
-                                                    if Settings["Legend Settings"] then Settings["Legend Settings"]["Stage"] = SelectedStage end
-                                                    if Settings["Raid Settings"] then Settings["Raid Settings"]["Stage"] = SelectedStage end
-                                                    -- print("[Host Auto Config] Selected Stage:", SelectedStage)
-                                                end
-                                                if #Insert > 0 then
-                                                    Settings["Select Items"] = Insert
-                                                    print("[Host Auto Config] Selected items:", table.concat(Insert, ", "))
+                                        local hasWantCarry = false
+                                        -- ตรวจสอบว่ามีใครกด want_carry หรือไม่
+                                        for _, orderType in pairs(Order_Type) do
+                                            for _, prodId in pairs(orderType) do
+                                                local otherCache = GetCache(prodId .. "_cache_1")
+                                                if otherCache and otherCache["party"] == Username then
+                                                    hasWantCarry = true
+                                                    break
                                                 end
                                             end
-                                            -- เรียก Register_Room เพื่อเข้าเล่นจริง (ไม่มี party member)
-                                            local p, c = pcall(function()
-                                                Register_Room(hostData["product_id"], {})
-                                            end)
-                                            if not p then
-                                                print("[Host Auto Config] Error:", c)
+                                            if hasWantCarry then break end
+                                        end
+                                        
+                                        if not hasWantCarry then
+                                            -- ไม่มี want_carry - เข้าเล่น auto config เลย (ไม่ต้องรอ member)
+                                            print("[Host Auto Config] No member request - starting auto config for:", hostData["product_id"])
+                                            -- Set current_play ก่อนเข้าเล่น เพื่อให้ member หาเจอ
+                                            UpdateCache(Username, {["current_play"] = hostData["product_id"]})
+                                            
+                                            -- เช็คว่าเป็น Rift หรือไม่
+                                            local isRiftProduct = table.find(Order_Type["Rift"] or {}, hostData["product_id"]) ~= nil
+                                            if isRiftProduct then
+                                                -- Rift: เปิด Auto Join Rift แทน Register_Room
+                                                print("[Host Auto Config] RIFT order - enabling Auto Join Rift")
+                                                Settings["Auto Join Rift"] = true
+                                                -- ไม่ต้อง Register_Room เพราะ Auto Join Rift จะจัดการให้
+                                            else
+                                                -- Auto Select Items จาก selected_items (รองรับ Act, Stage, และ items)
+                                                if hostData["selected_items"] then
+                                                    local Insert = {}
+                                                    local SelectedAct = nil
+                                                    local SelectedStage = nil
+                                                    for _, v in pairs(hostData["selected_items"]) do
+                                                        -- เช็คว่ามี act field หรือไม่ (format: {name="Double Dungeon", act="Act 3"})
+                                                        if v.act then
+                                                            SelectedAct = v.act
+                                                        end
+                                                        if v.name then
+                                                            -- ถ้ามี act field แยก = name คือ Stage
+                                                            if v.act then
+                                                                SelectedStage = v.name
+                                                            -- ถ้าไม่มี act field = เช็คว่า name เป็น Act หรือไม่
+                                                            elseif v.name:match("^Act%s*%d+$") or v.name:match("^Act%d+$") or v.name == "Infinite" then
+                                                                SelectedAct = v.name
+                                                            elseif v.type == "stage" or v.type == "Stage" then
+                                                                SelectedStage = v.name
+                                                            else
+                                                                table.insert(Insert, v.name)
+                                                            end
+                                                        end
+                                                    end
+                                                    -- Apply Act และ Stage (ใช้ค่าอื่นจาก Changes[product_id])
+                                                    if SelectedAct then
+                                                        if Settings["Story Settings"] then Settings["Story Settings"]["Act"] = SelectedAct end
+                                                        if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Act"] = SelectedAct end
+                                                        if Settings["Legend Settings"] then Settings["Legend Settings"]["Act"] = SelectedAct end
+                                                        if Settings["Raid Settings"] then Settings["Raid Settings"]["Act"] = SelectedAct end
+                                                    end
+                                                    if SelectedStage then
+                                                        if Settings["Story Settings"] then Settings["Story Settings"]["Stage"] = SelectedStage end
+                                                        if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Stage"] = SelectedStage end
+                                                        if Settings["Legend Settings"] then Settings["Legend Settings"]["Stage"] = SelectedStage end
+                                                        if Settings["Raid Settings"] then Settings["Raid Settings"]["Stage"] = SelectedStage end
+                                                    end
+                                                    if #Insert > 0 then
+                                                        Settings["Select Items"] = Insert
+                                                        print("[Host Auto Config] Selected items:", table.concat(Insert, ", "))
+                                                    end
+                                                end
+                                                -- เรียก Register_Room เพื่อเข้าเล่นจริง (ไม่มี party member)
+                                                local p, c = pcall(function()
+                                                    Register_Room(hostData["product_id"], {})
+                                                end)
+                                                if not p then
+                                                    print("[Host Auto Config] Error:", c)
+                                                end
                                             end
                                         else
                                             -- มีคนกด want_carry - รอรับ member
@@ -2868,12 +2882,23 @@ if ID[game.GameId][1] == "AV" then
                                                 lowest = v["join_time"]
                                             end
                                         end
-                                        print("[Host] All members activated and in game - starting room with product:", Product)
-                                        local p,c = pcall(function()
-                                            Register_Room(Product,Current_Party)
-                                        end)
-                                        if not p then
-                                            print("[Host] Register_Room Error:", c)
+                                        
+                                        -- เช็คว่าเป็น Rift หรือไม่
+                                        local isRiftProduct = table.find(Order_Type["Rift"] or {}, Product) ~= nil
+                                        if isRiftProduct then
+                                            -- Rift: เปิด Auto Join Rift แทน Register_Room
+                                            -- ทุกคน (Host + Member) จะเข้า Rift พร้อมกันผ่าน Auto Join Rift
+                                            print("[Host] RIFT order - enabling Auto Join Rift for all")
+                                            Settings["Auto Join Rift"] = true
+                                            -- ไม่ต้อง Register_Room เพราะ Auto Join Rift จะจัดการให้
+                                        else
+                                            print("[Host] All members activated and in game - starting room with product:", Product)
+                                            local p,c = pcall(function()
+                                                Register_Room(Product,Current_Party)
+                                            end)
+                                            if not p then
+                                                print("[Host] Register_Room Error:", c)
+                                            end
                                         end
                                     else
                                         print("Waiting for members - Activated:", All_Players_Activated(), "InGame:", All_Players_Game())
