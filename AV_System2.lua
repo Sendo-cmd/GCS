@@ -3112,27 +3112,13 @@ if ID[game.GameId][1] == "AV" then
                                                     continue 
                                                 end
                                                 
-                                                local kaiproduct = kai_cache["current_play"]
-                                                print("[Member] Host current_play:", kaiproduct, "my product:", productid)
-                                                if kaiproduct and #kaiproduct > 10 then
-                                                    local Product_Type_1, Product_Type_2 = nil, nil
-                                                    for _, orderType in pairs(Order_Type) do
-                                                        if table.find(orderType, kaiproduct) then Product_Type_1 = _ end
-                                                        if table.find(orderType, productid) then Product_Type_2 = _ end
-                                                    end
-                                                    -- ถ้า Product_Type เป็น nil (ไม่อยู่ใน Order_Type) ให้ข้ามการเช็ค
-                                                    if Product_Type_1 and Product_Type_2 and Product_Type_1 ~= Product_Type_2 then 
-                                                        print("[Member] Skip - product type mismatch:", Product_Type_1, "vs", Product_Type_2)
-                                                        continue 
-                                                    end
-                                                end
-                                                
                                                 print("[Member] Host OK:", hostUsername)
                                                 table.insert(availableHosts, hostUsername)
                                             end
                                             
                                             print("[Member] Available hosts:", #availableHosts)
                                             if #availableHosts > 0 then
+                                                math.randomseed(os.time() + tick())
                                                 local selectedHost = availableHosts[math.random(1, #availableHosts)]
                                                 print("[Member] Request to:", selectedHost)
                                                 -- อัพเดท pending_host ก่อนส่ง request เพื่อป้องกันการส่งซ้ำ
@@ -3218,23 +3204,12 @@ if ID[game.GameId][1] == "AV" then
                                     if os.time() > kai_cache["last_online"] then continue end
                                     if LenT(kai_cache["party_member"]) >= 3 then continue end
                                     
-                                    local kaiproduct = kai_cache["current_play"]
-                                    if kaiproduct and #kaiproduct > 10 then
-                                        local Product_Type_1, Product_Type_2 = nil, nil
-                                        for _, orderType in pairs(Order_Type) do
-                                            if table.find(orderType, kaiproduct) then Product_Type_1 = _ end
-                                            if table.find(orderType, productid) then Product_Type_2 = _ end
-                                        end
-                                        if Product_Type_1 and Product_Type_2 and Product_Type_1 ~= Product_Type_2 then 
-                                            continue 
-                                        end
-                                    end
-                                    
                                     table.insert(availableHosts, hostUsername)
                                 end
                                 
                                 print("[Member] Available hosts:", #availableHosts)
                                 if #availableHosts > 0 then
+                                    math.randomseed(os.time() + tick())
                                     local selectedHost = availableHosts[math.random(1, #availableHosts)]
                                     print("[Member] Request to:", selectedHost)
                                     UpdateCache(cache_key, {["pending_host"] = selectedHost, ["pending_timestamp"] = os.time()})
