@@ -2329,9 +2329,9 @@ local function Register_Room(myproduct,player)
         end
         
         -- Function รอให้ members เข้าห้องก่อนเริ่ม (เรียกก่อน StartMatch)
-        local function WaitForMembersReady()
-            if player and #player > 0 then
-                print("[WaitForMembersReady] Waiting for", #player, "members to join lobby...")
+        local function WaitForMembersReady(membersList)
+            if membersList and #membersList > 0 then
+                print("[WaitForMembersReady] Waiting for", #membersList, "members to join lobby...")
                 local maxWait = 30 -- รอสูงสุด 30 วินาที
                 local waitStart = os.time()
                 
@@ -2356,7 +2356,7 @@ local function Register_Room(myproduct,player)
                     
                     if success and result and result["Players"] then
                         local membersInLobby = 0
-                        for _, memberName in ipairs(player) do
+                        for _, memberName in ipairs(membersList) do
                             for _, lobbyPlayer in pairs(result["Players"]) do
                                 if lobbyPlayer and lobbyPlayer.Name == memberName then
                                     membersInLobby = membersInLobby + 1
@@ -2365,28 +2365,28 @@ local function Register_Room(myproduct,player)
                             end
                         end
                         
-                        if membersInLobby >= #player then
-                            print("[WaitForMembersReady] All", #player, "members joined! Starting...")
+                        if membersInLobby >= #membersList then
+                            print("[WaitForMembersReady] All", #membersList, "members joined! Starting...")
                             task.wait(1)
                             return true
                         else
-                            print("[WaitForMembersReady] Members in lobby:", membersInLobby, "/", #player)
+                            print("[WaitForMembersReady] Members in lobby:", membersInLobby, "/", #membersList)
                         end
                     else
                         -- ถ้าไม่มี LobbyDataHandler ให้เช็คจาก Players ในเกมแทน
                         local membersInGame = 0
-                        for _, memberName in ipairs(player) do
+                        for _, memberName in ipairs(membersList) do
                             if Players:FindFirstChild(memberName) then
                                 membersInGame = membersInGame + 1
                             end
                         end
                         
-                        if membersInGame >= #player then
-                            print("[WaitForMembersReady] All", #player, "members in game! Starting...")
+                        if membersInGame >= #membersList then
+                            print("[WaitForMembersReady] All", #membersList, "members in game! Starting...")
                             task.wait(1)
                             return true
                         else
-                            print("[WaitForMembersReady] Members in game:", membersInGame, "/", #player)
+                            print("[WaitForMembersReady] Members in game:", membersInGame, "/", #membersList)
                         end
                     end
                     task.wait(2)
@@ -2423,7 +2423,7 @@ local function Register_Room(myproduct,player)
                                     Invite(v)
                                 end 
                             end 
-                            WaitForMembersReady()
+                            WaitForMembersReady(player)
                             local args = {
                                 [1] = "StartMatch"
                             }
@@ -2461,7 +2461,7 @@ local function Register_Room(myproduct,player)
                             end 
                         end 
                         task.wait(2)
-                        WaitForMembersReady()
+                        WaitForMembersReady(player)
                         local args = {
                             [1] = "StartMatch"
                         }
@@ -2631,7 +2631,7 @@ local function Register_Room(myproduct,player)
                 end 
             end
             task.wait(5)
-            WaitForMembersReady()
+            WaitForMembersReady(player)
             local args = {
                 [1] = "StartMatch"
             }
@@ -2646,7 +2646,7 @@ local function Register_Room(myproduct,player)
                     Invite(v)
                 end 
             end 
-            WaitForMembersReady()
+            WaitForMembersReady(player)
             local args = {
                 [1] = "StartMatch"
             }
@@ -2660,7 +2660,7 @@ local function Register_Room(myproduct,player)
                     Invite(v)
                 end 
             end 
-            WaitForMembersReady()
+            WaitForMembersReady(player)
             local args = {
                 [1] = "StartMatch"
             }
@@ -2674,7 +2674,7 @@ local function Register_Room(myproduct,player)
                     Invite(v)
                 end 
             end 
-            WaitForMembersReady()
+            WaitForMembersReady(player)
             local args = {
                 [1] = "StartMatch"
             }
@@ -2689,6 +2689,7 @@ local function Register_Room(myproduct,player)
                         Invite(v)
                     end 
                 end 
+                WaitForMembersReady(player)
                 local args = {
                     [1] = "StartMatch"
                 }
@@ -2701,6 +2702,7 @@ local function Register_Room(myproduct,player)
                         Invite(v)
                     end 
                 end 
+                WaitForMembersReady(player)
                 local args = {
                     [1] = "StartMatch"
                 }
@@ -2724,7 +2726,7 @@ local function Register_Room(myproduct,player)
                 end 
             end 
             task.wait(5)
-            WaitForMembersReady()
+            WaitForMembersReady(player)
             local args = {
                 [1] = "StartMatch"
             }
@@ -2747,7 +2749,7 @@ local function Register_Room(myproduct,player)
                 end 
             end
             task.wait(5)
-            WaitForMembersReady()
+            WaitForMembersReady(player)
             local args = {
                 [1] = "StartMatch"
             }
@@ -2770,7 +2772,7 @@ local function Register_Room(myproduct,player)
                 end 
             end
             task.wait(5)
-            WaitForMembersReady()
+            WaitForMembersReady(player)
             local args = {
                 [1] = "StartMatch"
             }
