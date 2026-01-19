@@ -2332,22 +2332,36 @@ local function Register_Room(myproduct,player)
         local function WaitForMembersReady(membersList)
             if membersList and #membersList > 0 then
                 print("[WaitForMembersReady] Waiting for", #membersList, "members to join lobby...")
-                local maxWait = 60 -- รอสูงสุด 60 วินาที (เพิ่มเวลารอ)
+                local maxWait = 60 -- รอสูงสุด 60 วินาที
                 local waitStart = os.time()
                 
-                while (os.time() - waitStart) < maxWait do
-                    local lobbyData = nil
+                -- Function เช็ค Players จาก MiniLobbyInterface (แม่นยำ 100%)
+                local function GetPlayersInMiniLobby()
                     local success, result = pcall(function()
-                        -- ลองใช้ LobbyDataHandler ถ้ามี
-                        local LobbyModule = game:GetService("StarterPlayer"):FindFirstChild("Modules")
-                        if LobbyModule then
-                            LobbyModule = LobbyModule:FindFirstChild("Gameplay")
-                            if LobbyModule then
-                                LobbyModule = LobbyModule:FindFirstChild("Lobby")
-                                if LobbyModule then
-                                    local handler = LobbyModule:FindFirstChild("LobbyDataHandler")
-                                    if handler then
-                                        return require(handler).GetLobbyData()
+                        local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui", 5)
+                        if not PlayerGui then return nil end
+                        
+                        local MiniLobby = PlayerGui:FindFirstChild("MiniLobbyInterface")
+                        if MiniLobby then
+                            local Holder = MiniLobby:FindFirstChild("Holder")
+                            if Holder then
+                                local PlayersSection = Holder:FindFirstChild("Players")
+                                if PlayersSection then
+                                    local List = PlayersSection:FindFirstChild("List")
+                                    if List then
+                                        local players = {}
+                                        for _, frame in pairs(List:GetChildren()) do
+                                            -- PlayerFrame มี Name = UserId
+                                            if frame:IsA("Frame") and tonumber(frame.Name) then
+                                                -- หา Username จาก UserId
+                                                local userId = tonumber(frame.Name)
+                                                local player = Players:GetPlayerByUserId(userId)
+                                                if player then
+                                                    table.insert(players, player.Name)
+                                                end
+                                            end
+                                        end
+                                        return players
                                     end
                                 end
                             end
@@ -2356,15 +2370,23 @@ local function Register_Room(myproduct,player)
                     end)
                     
                     if success and result then
-                        lobbyData = result
+                        return result
                     end
+                    return nil
+                end
+                
+                while (os.time() - waitStart) < maxWait do
+                    -- วิธีหลัก: เช็คจาก MiniLobbyInterface (แม่นยำ 100%)
+                    local lobbyPlayers = GetPlayersInMiniLobby()
                     
-                    -- ต้องเช็คจาก LobbyData เท่านั้น (ไม่ใช่แค่ Players ในเกม)
-                    if lobbyData and lobbyData["Players"] then
+                    if lobbyPlayers then
+                        print("[WaitForMembersReady] MiniLobbyInterface players:", table.concat(lobbyPlayers, ", "))
+                        
+                        -- นับ members ที่อยู่ใน lobby
                         local membersInLobby = 0
                         for _, memberName in ipairs(membersList) do
-                            for _, lobbyPlayer in pairs(lobbyData["Players"]) do
-                                if lobbyPlayer and lobbyPlayer.Name == memberName then
+                            for _, lobbyPlayer in ipairs(lobbyPlayers) do
+                                if lobbyPlayer == memberName then
                                     membersInLobby = membersInLobby + 1
                                     break
                                 end
@@ -2374,14 +2396,15 @@ local function Register_Room(myproduct,player)
                         print("[WaitForMembersReady] Members in lobby:", membersInLobby, "/", #membersList)
                         
                         if membersInLobby >= #membersList then
-                            print("[WaitForMembersReady] All", #membersList, "members joined lobby! Starting...")
+                            print("[WaitForMembersReady] All", #membersList, "members in MiniLobby! Starting...")
                             task.wait(2) -- รอเพิ่มอีก 2 วินาทีก่อนเริ่ม
                             return true
                         end
                     else
-                        -- ถ้าไม่มี LobbyData → รอต่อ (อย่าเริ่มก่อน!)
-                        print("[WaitForMembersReady] No lobby data yet, waiting...")
+                        -- MiniLobbyInterface ยังไม่เปิด - รอต่อ
+                        print("[WaitForMembersReady] MiniLobbyInterface not found, waiting...")
                     end
+                    
                     task.wait(3)
                 end
                 
@@ -3110,41 +3133,41 @@ if ID[game.GameId][1] == "AV" then
                                                 -- product_id ต่างกัน - ต้องเช็ค order_type
                                                 if not Type_NewMember or not Type_FirstMember then
                                                     -- หา order_type ไม่เจอ - reject เพราะไม่รู้ว่าตรงกันไหม
-                                                print("[Host Lobby] Cannot determine order_type - rejecting")
-                                                shouldReject = true
-                                            elseif Type_NewMember ~= Type_FirstMember then
-                                                -- order_type ไม่ตรงกัน
-                                                print("[Host Lobby] Order type mismatch - rejecting")
-                                                shouldReject = true
+                                                    print("[Host Lobby] Cannot determine order_type - rejecting")
+                                                    shouldReject = true
+                                                elseif Type_NewMember ~= Type_FirstMember then
+                                                    -- order_type ไม่ตรงกัน
+                                                    print("[Host Lobby] Order type mismatch - rejecting")
+                                                    shouldReject = true
+                                                end
                                             end
-                                        end
                                         
-                                        if shouldReject then
-                                            -- Order type ไม่ตรง - reject และบอกให้ไปหา host ใหม่
-                                            print("[Host Lobby] Order type mismatch - rejecting")
-                                            SendCache(
-                                                {["index"] = message["order"] .. "-reject"},
-                                                {["value"] = {
-                                                    ["rejected_by"] = Username,
-                                                    ["reason"] = "Different Order_Type",
-                                                    ["message-id"] = HttpService:GenerateGUID(false),
-                                                    ["expire"] = os.time() + 30,
-                                                }}
-                                            )
-                                            SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
-                                        else
-                                            -- Order type ตรงกัน - รับเลย
-                                            print("[Host Lobby] Order type match - accepting:", member_cache["name"])
-                                            old_party[message["order"]] = {
-                                                ["join_time"] = os.time(),
-                                                ["product_id"] = member_cache["product_id"],
-                                                ["name"] = member_cache["name"],
-                                            }
-                                            UpdateCache(Username, {["party_member"] = old_party})
-                                            UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
-                                            Waiting_Time = os.time() + 125
-                                            print("[Host Lobby] Member accepted")
-                                        end
+                                            if shouldReject then
+                                                -- Order type ไม่ตรง - reject และบอกให้ไปหา host ใหม่
+                                                print("[Host Lobby] Order type mismatch - rejecting")
+                                                SendCache(
+                                                    {["index"] = message["order"] .. "-reject"},
+                                                    {["value"] = {
+                                                        ["rejected_by"] = Username,
+                                                        ["reason"] = "Different Order_Type",
+                                                        ["message-id"] = HttpService:GenerateGUID(false),
+                                                        ["expire"] = os.time() + 30,
+                                                    }}
+                                                )
+                                                SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
+                                            else
+                                                -- Order type ตรงกัน - รับเลย
+                                                print("[Host Lobby] Order type match - accepting:", member_cache["name"])
+                                                old_party[message["order"]] = {
+                                                    ["join_time"] = os.time(),
+                                                    ["product_id"] = member_cache["product_id"],
+                                                    ["name"] = member_cache["name"],
+                                                }
+                                                UpdateCache(Username, {["party_member"] = old_party})
+                                                UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
+                                                Waiting_Time = os.time() + 125
+                                                print("[Host Lobby] Member accepted")
+                                            end
                                         end
                                     end
                                 end
