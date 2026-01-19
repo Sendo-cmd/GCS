@@ -498,7 +498,7 @@ if IsMatch then
         local Times = 0
         local Data = GetData()
         local BattlePassXp = 0
-        local LeavesPoint = nil
+        -- local LeavesPoint = nil
         local BPPlay = BattlepassText.Play
         BattlepassText.Play = function(self, data)
             BattlePassXp += data[1]
@@ -510,22 +510,22 @@ if IsMatch then
         end
         
         -- Check for Leaves in UI (only if not already in Rewards)
-        if not Results["Rewards"]["Leaves"] then
-            pcall(function()
-                if plr.PlayerGui:FindFirstChild("HUD") then
-                    local Map = plr.PlayerGui:FindFirstChild("HUD"):WaitForChild("Map")
-                    local StageRewards = Map:WaitForChild("StageRewards")
-                    local Leaves = StageRewards:WaitForChild("Leaves")
-                    if Leaves.Visible == true then
-                        local amount = tonumber(Leaves.Amount.Text:split("x")[2])
-                        if amount and amount > 0 then
-                            LeavesPoint = amount
-                            -- print("Found Leaves in UI (not in Rewards):", amount)
-                        end
-                    end
-                end
-            end)
-        end
+        -- if not Results["Rewards"]["Leaves"] then
+        --     pcall(function()
+        --         if plr.PlayerGui:FindFirstChild("HUD") then
+        --             local Map = plr.PlayerGui:FindFirstChild("HUD"):WaitForChild("Map")
+        --             local StageRewards = Map:WaitForChild("StageRewards")
+        --             local Leaves = StageRewards:WaitForChild("Leaves")
+        --             if Leaves.Visible == true then
+        --                 local amount = tonumber(Leaves.Amount.Text:split("x")[2])
+        --                 if amount and amount > 0 then
+        --                     LeavesPoint = amount
+        --                     -- print("Found Leaves in UI (not in Rewards):", amount)
+        --                 end
+        --             end
+        --         end
+        --     end)
+        -- end
         
         -- Convert all rewards to field format
         for i,v in pairs(Results["Rewards"]) do
@@ -539,9 +539,9 @@ if IsMatch then
         end
         
         -- Add Leaves from UI if found and not in Rewards
-        if LeavesPoint then
-            ConvertResult[#ConvertResult + 1] = convertToField("Leaves", LeavesPoint)
-        end
+        -- if LeavesPoint then
+        --     ConvertResult[#ConvertResult + 1] = convertToField("Leaves", LeavesPoint)
+        -- end
         
         -- Add Level if changed
         if Level ~= tonumber(plr:GetAttribute("Level")) then
