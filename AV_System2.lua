@@ -2295,6 +2295,45 @@ local function Register_Room(myproduct,player)
         local function IndexToDisplay(arg)
             return StagesData["Story"][arg]["StageData"]["Name"]
         end
+        
+        -- Function รอให้ members เข้าห้องก่อนเริ่ม (เรียกก่อน StartMatch)
+        local function WaitForMembersReady()
+            if player and #player > 0 then
+                print("[WaitForMembersReady] Waiting for", #player, "members to join lobby...")
+                local LobbyDataHandler = require(game:GetService("StarterPlayer").Modules.Gameplay.Lobby.LobbyDataHandler)
+                local maxWait = 30 -- รอสูงสุด 30 วินาที
+                local waitStart = os.time()
+                
+                while (os.time() - waitStart) < maxWait do
+                    local lobbyData = LobbyDataHandler.GetLobbyData()
+                    if lobbyData and lobbyData["Players"] then
+                        local membersInLobby = 0
+                        for _, memberName in ipairs(player) do
+                            for _, lobbyPlayer in pairs(lobbyData["Players"]) do
+                                if lobbyPlayer and lobbyPlayer.Name == memberName then
+                                    membersInLobby = membersInLobby + 1
+                                    break
+                                end
+                            end
+                        end
+                        
+                        if membersInLobby >= #player then
+                            print("[WaitForMembersReady] All", #player, "members joined! Starting...")
+                            task.wait(1) -- รอเพิ่มอีก 1 วิ ให้ทุกคนพร้อม
+                            return true
+                        else
+                            print("[WaitForMembersReady] Members in lobby:", membersInLobby, "/", #player)
+                        end
+                    end
+                    task.wait(2)
+                end
+                
+                print("[WaitForMembersReady] Timeout! Starting anyway...")
+                return false
+            end
+            return true -- ไม่มี member ก็เริ่มเลย
+        end
+        
         local WaitTime = 30
         print("A")
         if Settings["Auto Join Challenge"] then
@@ -2320,6 +2359,7 @@ local function Register_Room(myproduct,player)
                                     Invite(v)
                                 end 
                             end 
+                            WaitForMembersReady()
                             local args = {
                                 [1] = "StartMatch"
                             }
@@ -2357,6 +2397,7 @@ local function Register_Room(myproduct,player)
                             end 
                         end 
                         task.wait(2)
+                        WaitForMembersReady()
                         local args = {
                             [1] = "StartMatch"
                         }
@@ -2526,6 +2567,7 @@ local function Register_Room(myproduct,player)
                 end 
             end
             task.wait(5)
+            WaitForMembersReady()
             local args = {
                 [1] = "StartMatch"
             }
@@ -2540,6 +2582,7 @@ local function Register_Room(myproduct,player)
                     Invite(v)
                 end 
             end 
+            WaitForMembersReady()
             local args = {
                 [1] = "StartMatch"
             }
@@ -2553,6 +2596,7 @@ local function Register_Room(myproduct,player)
                     Invite(v)
                 end 
             end 
+            WaitForMembersReady()
             local args = {
                 [1] = "StartMatch"
             }
@@ -2566,6 +2610,7 @@ local function Register_Room(myproduct,player)
                     Invite(v)
                 end 
             end 
+            WaitForMembersReady()
             local args = {
                 [1] = "StartMatch"
             }
@@ -2615,6 +2660,7 @@ local function Register_Room(myproduct,player)
                 end 
             end 
             task.wait(5)
+            WaitForMembersReady()
             local args = {
                 [1] = "StartMatch"
             }
@@ -2637,6 +2683,7 @@ local function Register_Room(myproduct,player)
                 end 
             end
             task.wait(5)
+            WaitForMembersReady()
             local args = {
                 [1] = "StartMatch"
             }
@@ -2659,6 +2706,7 @@ local function Register_Room(myproduct,player)
                 end 
             end
             task.wait(5)
+            WaitForMembersReady()
             local args = {
                 [1] = "StartMatch"
             }
