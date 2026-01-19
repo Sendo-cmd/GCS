@@ -2143,6 +2143,85 @@ local function GetData()
         ["EquippedUnits"] = EquippedUnits,
     }
 end
+
+-- Helper function สำหรับเช็คไอเทม Temporal Rift (ใช้ได้ทั้ง host และ member)
+local function GetTemporalRiftItem()
+    local items = {}
+    local success, err = pcall(function()
+        -- หา OwnedItemsHandler โดยตรง
+        local OwnedItemsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedItemsHandler", true)
+        if OwnedItemsHandler then
+            local inventoryItems = require(OwnedItemsHandler).GetItems()
+            for i, v in pairs(inventoryItems) do
+                if v["ID"] == 172 then -- 393 = Temporal Rift ID
+                    items[i] = v
+                    print("[GetTemporalRiftItem] Found item:", i, "Amount:", v["Amount"])
+                end
+            end
+        else
+            warn("[GetTemporalRiftItem] OwnedItemsHandler not found")
+        end
+    end)
+    if not success then
+        warn("[GetTemporalRiftItem] Error:", err)
+    end
+    return items
+end
+
+local function HasTemporalRiftItem()
+    local items = GetTemporalRiftItem()
+    for itemGUID, itemData in pairs(items or {}) do
+        if itemData and itemData["Amount"] and itemData["Amount"] > 0 then
+            return true, itemData["Amount"], itemGUID
+        end
+    end
+    return false, 0, nil
+end
+
+-- Function สำหรับใช้ไอเทม Temporal Rift อย่างถูกต้อง
+local function UseTemporalRiftItem(stage)
+    stage = stage or "Warlord"
+    local hasRift, amount, itemGUID = HasTemporalRiftItem()
+    
+    if not hasRift or not itemGUID then
+        warn("[UseTemporalRiftItem] No Temporal Rift item found")
+        return false
+    end
+    
+    print("[UseTemporalRiftItem] Using item GUID:", itemGUID, "for stage:", stage, "Amount:", amount)
+    
+    local Networking = game:GetService("ReplicatedStorage"):WaitForChild("Networking")
+    local success = true
+    
+    -- Step 1: เรียก ItemUseEvent ก่อน (บอก server ว่าจะใช้ไอเทม)
+    pcall(function()
+        local ItemUseEvent = Networking:FindFirstChild("ItemUseEvent")
+        if ItemUseEvent then
+            ItemUseEvent:FireServer("Use", itemGUID)
+            print("[UseTemporalRiftItem] ItemUseEvent fired")
+        end
+    end)
+    
+    task.wait(0.5) -- รอให้ server process
+    
+    -- Step 2: เรียก TemporalRiftEvent เพื่อเปิด Rift
+    pcall(function()
+        local TemporalRiftEvent = Networking:FindFirstChild("TemporalRiftEvent")
+        if TemporalRiftEvent then
+            TemporalRiftEvent:FireServer("Activate", {
+                ["StageType"] = "Rift",
+                ["Stage"] = stage
+            })
+            print("[UseTemporalRiftItem] TemporalRiftEvent fired for", stage)
+        else
+            warn("[UseTemporalRiftItem] TemporalRiftEvent not found")
+            success = false
+        end
+    end)
+    
+    return success
+end
+
 local function Register_Room(myproduct,player)
     if IsGame == "AV" then
         local Networking = ReplicatedStorage:WaitForChild("Networking")
@@ -2291,28 +2370,55 @@ local function Register_Room(myproduct,player)
         end
         if Settings["Auto Join Rift"] then
             task.spawn(function()
+                local hasUsedItem = false
+                local lastItemUseTime = 0
+                
                 while true do
                     if workspace:GetAttribute("IsRiftOpen") then
                         local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
                         local GUID = nil
-                        
                         for i,v in pairs(Rift.GetRifts()) do
                             if v and not v["Teleporting"] then
                                 GUID = v["GUID"]
+                                print("[Host Auto Join Rift] Selected rift:", GUID)
                                 break
                             end
                         end
                         
                         if GUID then
+                            print("[Host Auto Join Rift] Joining rift:", GUID)
                             game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
                                 "Join",
                                 GUID
                             )
+                            hasUsedItem = false -- รีเซ็ตเมื่อเข้า Rift สำเร็จ
                             task.wait(5)
                         else
                             task.wait(3)
                         end
                     else
+                        -- ไม่มี Rift เปิดอยู่ → Host ใช้ไอเทม Temporal Rift
+                        if not hasUsedItem or (os.time() - lastItemUseTime) > 30 then
+                            local hasRift, amount = HasTemporalRiftItem()
+                            
+                            if hasRift then
+                                print("[Host Auto Join Rift] Using Temporal Rift item (", amount, "remaining)")
+                                
+                                local success = UseTemporalRiftItem("Warlord")
+                                if success then
+                                    print("[Host Auto Join Rift] Temporal Rift activated for Warlord")
+                                    hasUsedItem = true
+                                    lastItemUseTime = os.time()
+                                else
+                                    warn("[Host Auto Join Rift] Failed to use Temporal Rift")
+                                end
+                                
+                                task.wait(3) -- รอให้ Rift เปิด
+                            else
+                                warn("[Host Auto Join Rift] No Temporal Rift item found")
+                                task.wait(5) -- รอนานขึ้นถ้าไม่มีไอเทม
+                            end
+                        end
                         task.wait(2)
                     end
                 end
@@ -2622,8 +2728,42 @@ if ID[game.GameId][1] == "AV" then
                     if cache then
                         print(os.time() , cache["last_online"])
                         if os.time() > cache["last_online"] then
-                            DelCache(Username)
-                            print("Delete Cache")
+                            -- เช็คว่ามี party_member อยู่หรือไม่
+                            if cache["party_member"] and LenT(cache["party_member"]) > 0 then
+                                -- เช็คว่า member ที่ค้างอยู่ยังมี cache อยู่หรือไม่
+                                local active_members = {}
+                                local has_active_member = false
+                                
+                                for member_name, _ in pairs(cache["party_member"]) do
+                                    local member_cache = GetCache(member_name)
+                                    if member_cache and member_cache["last_online"] and os.time() <= member_cache["last_online"] then
+                                        -- Member ยังมี cache และยังไม่หมดอายุ
+                                        active_members[member_name] = true
+                                        has_active_member = true
+                                        print("[Host] Member", member_name, "still active")
+                                    else
+                                        -- Member หมดอายุหรือไม่มี cache แล้ว
+                                        print("[Host] Member", member_name, "is offline - removing from party")
+                                    end
+                                end
+                                
+                                if has_active_member then
+                                    -- มี member ที่ยังอยู่จริงๆ → extend last_online และอัพเดท party_member
+                                    UpdateCache(Username, {
+                                        ["last_online"] = os.time() + 200,
+                                        ["party_member"] = active_members
+                                    })
+                                    print("[Host] Has active members - extending last_online")
+                                else
+                                    -- ไม่มี member ที่ active → ลบ cache
+                                    DelCache(Username)
+                                    print("[Host] No active members - Delete Cache")
+                                end
+                            else
+                                -- ไม่มี party_member → ลบ cache
+                                DelCache(Username)
+                                print("[Host] No party members - Delete Cache")
+                            end
                             task.wait(2.5)
                         else
                             Attempt = Attempt + 1
@@ -2829,7 +2969,7 @@ if ID[game.GameId][1] == "AV" then
                                             -- เช็คว่าเป็น Rift หรือไม่
                                             local isRiftProduct = table.find(Order_Type["Rift"] or {}, hostData["product_id"]) ~= nil
                                             if isRiftProduct then
-                                                -- Rift: เปิด Auto Join Rift แทน Register_Room
+                                                -- Rift: ใช้ระบบ Auto Join Rift สำหรับทุก stage
                                                 print("[Host Auto Config] RIFT order - enabling Auto Join Rift")
                                                 Settings["Auto Join Rift"] = true
                                                 -- ไม่ต้อง Register_Room เพราะ Auto Join Rift จะจัดการให้
@@ -2914,11 +3054,14 @@ if ID[game.GameId][1] == "AV" then
                                         -- เช็คว่าเป็น Rift หรือไม่
                                         local isRiftProduct = table.find(Order_Type["Rift"] or {}, Product) ~= nil
                                         if isRiftProduct then
-                                            -- Rift: เปิด Auto Join Rift แทน Register_Room
-                                            -- ทุกคน (Host + Member) จะเข้า Rift พร้อมกันผ่าน Auto Join Rift
-                                            print("[Host] RIFT order - enabling Auto Join Rift for all")
-                                            Settings["Auto Join Rift"] = true
-                                            -- ไม่ต้อง Register_Room เพราะ Auto Join Rift จะจัดการให้
+                                            -- Rift: เรียก Register_Room เพื่อเปิด Auto Join Rift loop
+                                            print("[Host] RIFT order - starting Register_Room for Rift")
+                                            local p,c = pcall(function()
+                                                Register_Room(Product, Current_Party)
+                                            end)
+                                            if not p then
+                                                print("[Host] Register_Room Error:", c)
+                                            end
                                         else
                                             print("[Host] All members activated and in game - starting room with product:", Product)
                                             local p,c = pcall(function()
@@ -2940,6 +3083,8 @@ if ID[game.GameId][1] == "AV" then
                         -- ดึง host_id จาก API
                         local hostData = Fetch_data()
                         local hostProductId = hostData and hostData["product_id"] or ""
+                        -- เช็คว่า host มี Temporal Rift item หรือไม่
+                        local hostHasRiftItem = HasTemporalRiftItem()
                         SendCache(
                                 {
                                     ["index"] = Username
@@ -2950,6 +3095,7 @@ if ID[game.GameId][1] == "AV" then
                                         ["host_id"] = hostProductId, -- Host's own product_id (ไม่เกี่ยวกับ party)
                                         ["current_play"] = "",       -- Party system (Member's product_id)
                                         ["party_member"] = {},
+                                        ["has_rift_item"] = hostHasRiftItem, -- ให้ member รู้ว่า host มีไอเทม Rift หรือไม่
                                 }
                             }
                         )
@@ -2972,8 +3118,155 @@ if ID[game.GameId][1] == "AV" then
                 -- เช็คว่าเป็น Rift order_type หรือไม่ → เปิด Auto Join Rift
                 local isRiftOrder = table.find(Order_Type["Rift"] or {}, productid) ~= nil
                 if isRiftOrder then
-                    Settings["Auto Join Rift"] = true
-                    print("[Member] RIFT order - Auto Join Rift enabled")
+                    -- Rift: เปิด Auto Join Rift สำหรับทุก stage (รวม Warlord)
+                    print("[Member] RIFT order - Will start Auto Join Rift after finding party")
+                    
+                    -- Member ต้องรอจนกว่าจะมี party และ host อยู่ในเกมก่อน
+                    task.spawn(function()
+                        local hasUsedItem = false
+                        local lastItemUseTime = 0
+                        local waitingForHostStartTime = 0
+                        local checkedHostItem = false
+                        local hostHasItem = nil -- nil = ยังไม่เช็ค, true = มี, false = ไม่มี
+                        local riftLoopStarted = false
+                        local WAIT_TIME = 60 -- รอ 60 วินาทีก่อนเข้า Rift พร้อม Host
+                        local waitCompleted = false
+                        
+                        while true do
+                            -- เช็คว่ามี party และ host อยู่ในเกมหรือยัง
+                            local myCache = GetCache(cache_key)
+                            local hasParty = myCache and myCache["party"] and #myCache["party"] > 1
+                            local hostInGame = hasParty and game:GetService("Players"):FindFirstChild(myCache["party"])
+                            
+                            if not hasParty then
+                                -- ยังไม่มี party = รอ (ไม่ทำอะไร)
+                                if riftLoopStarted then
+                                    print("[Member Auto Join Rift] Lost party - pausing...")
+                                    riftLoopStarted = false
+                                    hasUsedItem = false
+                                    checkedHostItem = false
+                                    hostHasItem = nil
+                                    waitingForHostStartTime = 0
+                                    waitCompleted = false
+                                end
+                                task.wait(3)
+                            elseif not hostInGame then
+                                -- มี party แต่ host ยังไม่อยู่ในเกม = รอ host มา
+                                print("[Member Auto Join Rift] Waiting for host to join game...")
+                                checkedHostItem = false
+                                hostHasItem = nil
+                                waitingForHostStartTime = 0
+                                waitCompleted = false
+                                task.wait(3)
+                            else
+                                -- มี party และ host อยู่ในเกมแล้ว
+                                if not riftLoopStarted then
+                                    print("[Member Auto Join Rift] Party found, host in game - Checking host item...")
+                                    riftLoopStarted = true
+                                end
+                                
+                                -- เช็คว่า Host มีไอเทมหรือไม่ (เช็คครั้งเดียว)
+                                if not checkedHostItem then
+                                    local hostCache = GetCache(myCache["party"])
+                                    if hostCache then
+                                        hostHasItem = hostCache["has_rift_item"] ~= false
+                                        checkedHostItem = true
+                                        print("[Member Auto Join Rift] Host has rift item:", hostHasItem)
+                                        
+                                        if hostHasItem then
+                                            -- Host มีไอเทม → เริ่มนับเวลารอ
+                                            waitingForHostStartTime = os.time()
+                                            print("[Member Auto Join Rift] Host has item - Starting wait timer (", WAIT_TIME, "s)")
+                                        else
+                                            -- Host ไม่มีไอเทม → Member ต้องใช้เอง (ไม่ต้องรอ)
+                                            print("[Member Auto Join Rift] Host has NO item - Member will use own item immediately")
+                                            waitCompleted = true -- ข้ามการรอ
+                                        end
+                                    else
+                                        task.wait(2)
+                                    end
+                                end
+                                
+                                -- ถ้ายังไม่ได้เช็ค Host item = รอ
+                                if not checkedHostItem then
+                                    task.wait(2)
+                                else
+                                    -- เช็คว่ารอครบเวลาหรือยัง (ถ้า Host มีไอเทม)
+                                    if hostHasItem and not waitCompleted then
+                                        local waitingTime = os.time() - waitingForHostStartTime
+                                        if waitingTime < WAIT_TIME then
+                                            -- ยังรอไม่ครบ = รอต่อ
+                                            print("[Member Auto Join Rift] Waiting for host... (", waitingTime, "/", WAIT_TIME, "s)")
+                                            task.wait(5)
+                                        else
+                                            -- รอครบแล้ว
+                                            print("[Member Auto Join Rift] Wait completed! Ready to join with host")
+                                            waitCompleted = true
+                                        end
+                                    end
+                                    
+                                    -- ถ้ารอครบแล้ว หรือ Host ไม่มีไอเทม = เริ่มทำงาน
+                                    if waitCompleted then
+                                        if workspace:GetAttribute("IsRiftOpen") then
+                                            local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                                            local GUID = nil
+                                            for i,v in pairs(Rift.GetRifts()) do
+                                                if v and not v["Teleporting"] then
+                                                    GUID = v["GUID"]
+                                                    print("[Member Auto Join Rift] Selected rift:", GUID)
+                                                    break
+                                                end
+                                            end
+                                            
+                                            if GUID then
+                                                print("[Member Auto Join Rift] Joining rift:", GUID)
+                                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                                                    "Join",
+                                                    GUID
+                                                )
+                                                hasUsedItem = false
+                                                checkedHostItem = false
+                                                hostHasItem = nil
+                                                waitCompleted = false
+                                                waitingForHostStartTime = 0
+                                                task.wait(5)
+                                            else
+                                                task.wait(3)
+                                            end
+                                        else
+                                            -- ไม่มี Rift เปิดอยู่
+                                            if not hostHasItem then
+                                                -- Host ไม่มีไอเทม → Member ใช้ไอเทมเปิดเอง
+                                                if not hasUsedItem or (os.time() - lastItemUseTime) > 60 then
+                                                    local hasRift, amount = HasTemporalRiftItem()
+                                                    
+                                                    if hasRift then
+                                                        print("[Member Auto Join Rift] Using Temporal Rift item (", amount, "remaining)")
+                                                        local success = UseTemporalRiftItem("Warlord")
+                                                        if success then
+                                                            print("[Member Auto Join Rift] Temporal Rift activated")
+                                                            hasUsedItem = true
+                                                            lastItemUseTime = os.time()
+                                                        else
+                                                            warn("[Member Auto Join Rift] Failed to use Temporal Rift")
+                                                        end
+                                                        task.wait(3)
+                                                    else
+                                                        warn("[Member Auto Join Rift] No Temporal Rift item found")
+                                                        task.wait(10)
+                                                    end
+                                                end
+                                            else
+                                                -- Host มีไอเทม → รอ Host เปิด
+                                                print("[Member Auto Join Rift] Waiting for host to open Rift...")
+                                            end
+                                            task.wait(3)
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end)
                 end
                 
                 local cache_1 = {}
@@ -3080,6 +3373,9 @@ if ID[game.GameId][1] == "AV" then
                                 if Players:FindFirstChild(cache["party"]) then
                                     channel:SendAsync(math.random(1,100)) 
                                     warn("Host is Online!!")
+                                    -- Set Party_Host สำหรับ Auto Join Rift
+                                    _G.Party_Host = cache["party"]
+                                    print("[Member] Set Party_Host:", _G.Party_Host)
                                     -- Rift: Portal จะถูก Join อัตโนมัติผ่าน PortalReplicationEvent listener ที่มีอยู่แล้ว
                                 else
                                     -- Host ไม่อยู่ในเกมเดียวกัน - เช็คว่า Host ยังมีชื่อเราใน party_member หรือไม่
@@ -3195,13 +3491,17 @@ if ID[game.GameId][1] == "AV" then
                                                     end
                                                     print("[Member]", hostUsername, "Check current_play - My:", myOrderType, "Host:", hostOrderType)
                                                     
-                                                    if myOrderType and hostOrderType and myOrderType ~= hostOrderType then
+                                                    -- ถ้าหา order_type ไม่เจอ หรือ order_type ไม่ตรงกัน → skip
+                                                    if not myOrderType or not hostOrderType then
+                                                        print("[Member] Skip - cannot determine order_type")
+                                                        continue
+                                                    elseif myOrderType ~= hostOrderType then
                                                         print("[Member] Skip - order_type mismatch (current_play)")
                                                         continue
                                                     end
                                                     
                                                     -- order_type ตรงกัน → เพิ่มใน availableHosts
-                                                    print("[Member] Host OK (has current_play):", hostUsername)
+                                                    print("[Member] Host OK (has current_play, same order_type):", hostUsername)
                                                     table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = true})
                                                 else
                                                     -- Host ยังไม่มี current_play → request ได้เลย (Host จะเช็ค order_type เอง)

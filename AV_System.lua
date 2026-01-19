@@ -2053,6 +2053,7 @@ end
 local function DecBody(body)
     return HttpService:JSONDecode(body["Body"])["data"]
 end
+
 local GetKai = Get(Api .. "api/v1/shop/accountskai")
 local IsKai = false
 if GetKai["Success"] then
@@ -2075,6 +2076,76 @@ local UnitsData = require(Modules.Data.Entities.Units)
 local ItemsData = require(Modules.Data.ItemsData)
 local TableUtils = require(Utilities.TableUtils)
 local InventoryEvent = game:GetService("StarterPlayer"):FindFirstChild("OwnedItemsHandler",true) or game:GetService("ReplicatedStorage").Networking:WaitForChild("InventoryEvent",2)
+
+local function GetTemporalRiftItem()
+    local items = {}
+    local success, err = pcall(function()
+        if InventoryEvent and InventoryEvent.Name == "OwnedItemsHandler" then
+            local OwnedItemsHandler = require(InventoryEvent)
+            if OwnedItemsHandler and OwnedItemsHandler.GetOwnedItems then
+                local ownedItems = OwnedItemsHandler.GetOwnedItems()
+                if ownedItems then
+                    for itemGUID, itemData in pairs(ownedItems) do
+                        if itemData and itemData["Name"] == "Temporal Rift" then
+                            table.insert(items, {
+                                GUID = itemGUID,
+                                Name = itemData["Name"],
+                                Amount = itemData["Amount"] or 1
+                            })
+                        end
+                    end
+                end
+            end
+        end
+    end)
+    if not success then
+        warn("[GetTemporalRiftItem] Error:", err)
+    end
+    return items
+end
+
+local function HasTemporalRiftItem()
+    local items = GetTemporalRiftItem()
+    if #items > 0 then
+        local totalAmount = 0
+        for _, item in ipairs(items) do
+            totalAmount = totalAmount + (item.Amount or 1)
+        end
+        return true, totalAmount, items[1].GUID
+    end
+    return false, 0, nil
+end
+
+local function UseTemporalRiftItem(stage)
+    stage = stage or "Warlord"
+    local items = GetTemporalRiftItem()
+    if #items == 0 then
+        warn("[UseTemporalRiftItem] No Temporal Rift item found")
+        return false
+    end
+    
+    local itemGUID = items[1].GUID
+    print("[UseTemporalRiftItem] Using item GUID:", itemGUID, "Stage:", stage)
+    
+    local success, err = pcall(function()
+        local ItemUseEvent = game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Items"):WaitForChild("ItemUseEvent")
+        ItemUseEvent:FireServer(itemGUID)
+        task.wait(0.5)
+        
+        local TemporalRiftEvent = game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("TemporalRiftEvent")
+        TemporalRiftEvent:FireServer("Activate", {
+            StageType = "Rift",
+            Stage = stage
+        })
+    end)
+    
+    if not success then
+        warn("[UseTemporalRiftItem] Error:", err)
+        return false
+    end
+    
+    return true
+end
 
 local function GetData()
     local SkinTable = {}
@@ -2559,6 +2630,9 @@ end
             print("Out",Settings["Auto Join Rift"])
             if Settings["Auto Join Rift"] then
                 task.spawn(function()
+                    local hasUsedItem = false
+                    local lastItemUseTime = 0
+                    
                     while true do
                         if workspace:GetAttribute("IsRiftOpen") then
                             local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
@@ -2590,12 +2664,34 @@ end
                                     "Join",
                                     GUID
                                 )
+                                hasUsedItem = false -- รีเซ็ตเมื่อเข้า Rift สำเร็จ
                                 task.wait(5)
                             else
                                 task.wait(3)
                             end
                         else
-                            task.wait(2)
+                            -- ไม่มี Rift เปิดอยู่ → ใช้ Temporal Rift item เปิดเอง
+                            if not hasUsedItem or (os.time() - lastItemUseTime) > 60 then
+                                local hasRift, amount = HasTemporalRiftItem()
+                                
+                                if hasRift then
+                                    print("[Auto Join Rift] No rift open - Using Temporal Rift item (", amount, "remaining)")
+                                    local success = UseTemporalRiftItem("Warlord")
+                                    if success then
+                                        print("[Auto Join Rift] Temporal Rift activated")
+                                        hasUsedItem = true
+                                        lastItemUseTime = os.time()
+                                    else
+                                        warn("[Auto Join Rift] Failed to use Temporal Rift")
+                                    end
+                                    task.wait(3)
+                                else
+                                    -- ไม่มีไอเทม → รอ Rift จากคนอื่น
+                                    task.wait(5)
+                                end
+                            else
+                                task.wait(3)
+                            end
                         end
                     end
                 end)
