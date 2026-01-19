@@ -527,12 +527,13 @@ if IsMatch then
             local StageRewards = Map:WaitForChild("StageRewards")
             local Leaves = StageRewards:WaitForChild("Leaves")
             print("Leaves",Leaves.Visible)
-            if Leaves.Visible == true then
+            -- Only add Leaves if not already in Results["Rewards"]
+            if Leaves.Visible == true and not Results["Rewards"]["Leaves"] then
                 LeavesPoint = tonumber(Leaves.Amount.Text:split("x")[2])
             end
               print("Leaves",LeavesPoint)
         end
-        if LeavesPoint then
+        if LeavesPoint and not Results["Rewards"]["Leaves"] then
             ConvertResult[#ConvertResult + 1] = convertToField("Leaves",LeavesPoint)
         end
          warn("SendTo 3")
