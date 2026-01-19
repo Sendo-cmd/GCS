@@ -498,6 +498,7 @@ if IsMatch then
         local Times = 0
         local Data = GetData()
         local BattlePassXp = 0
+        local LeavesPoint = nil
         local BPPlay = BattlepassText.Play
         BattlepassText.Play = function(self, data)
             BattlePassXp += data[1]
@@ -508,6 +509,25 @@ if IsMatch then
             Results.Rewards["Pass Xp"] = { ["Amount"] = BattlePassXp }
         end
         
+        -- Check for Leaves in UI (only if not already in Rewards)
+        if not Results["Rewards"]["Leaves"] then
+            pcall(function()
+                if plr.PlayerGui:FindFirstChild("HUD") then
+                    local Map = plr.PlayerGui:FindFirstChild("HUD"):WaitForChild("Map")
+                    local StageRewards = Map:WaitForChild("StageRewards")
+                    local Leaves = StageRewards:WaitForChild("Leaves")
+                    if Leaves.Visible == true then
+                        local amount = tonumber(Leaves.Amount.Text:split("x")[2])
+                        if amount and amount > 0 then
+                            LeavesPoint = amount
+                            -- print("Found Leaves in UI (not in Rewards):", amount)
+                        end
+                    end
+                end
+            end)
+        end
+        
+        -- Convert all rewards to field format
         for i,v in pairs(Results["Rewards"]) do
             if v["Amount"] then
                 ConvertResult[#ConvertResult + 1] = convertToField(i,v["Amount"])
@@ -517,24 +537,16 @@ if IsMatch then
                 ConvertResult[#ConvertResult + 1] = convertToField(i1,v1["Amount"])
             end
         end
+        
+        -- Add Leaves from UI if found and not in Rewards
+        if LeavesPoint then
+            ConvertResult[#ConvertResult + 1] = convertToField("Leaves", LeavesPoint)
+        end
+        
+        -- Add Level if changed
         if Level ~= tonumber(plr:GetAttribute("Level")) then
             ConvertResult[#ConvertResult + 1] = convertToField("Level",1)
             Level = tonumber(plr:GetAttribute("Level"))
-        end
-        if plr.PlayerGui:FindFirstChild("HUD") then
-            print("Meee")
-            local Map = plr.PlayerGui:FindFirstChild("HUD"):WaitForChild("Map")
-            local StageRewards = Map:WaitForChild("StageRewards")
-            local Leaves = StageRewards:WaitForChild("Leaves")
-            print("Leaves",Leaves.Visible)
-            -- Only add Leaves if not already in Results["Rewards"]
-            if Leaves.Visible == true and not Results["Rewards"]["Leaves"] then
-                LeavesPoint = tonumber(Leaves.Amount.Text:split("x")[2])
-            end
-              print("Leaves",LeavesPoint)
-        end
-        if LeavesPoint and not Results["Rewards"]["Leaves"] then
-            ConvertResult[#ConvertResult + 1] = convertToField("Leaves",LeavesPoint)
         end
          warn("SendTo 3")
         -- Create StageInfo
