@@ -2332,10 +2332,11 @@ local function Register_Room(myproduct,player)
         local function WaitForMembersReady(membersList)
             if membersList and #membersList > 0 then
                 print("[WaitForMembersReady] Waiting for", #membersList, "members to join lobby...")
-                local maxWait = 30 -- รอสูงสุด 30 วินาที
+                local maxWait = 60 -- รอสูงสุด 60 วินาที (เพิ่มเวลารอ)
                 local waitStart = os.time()
                 
                 while (os.time() - waitStart) < maxWait do
+                    local lobbyData = nil
                     local success, result = pcall(function()
                         -- ลองใช้ LobbyDataHandler ถ้ามี
                         local LobbyModule = game:GetService("StarterPlayer"):FindFirstChild("Modules")
@@ -2354,10 +2355,15 @@ local function Register_Room(myproduct,player)
                         return nil
                     end)
                     
-                    if success and result and result["Players"] then
+                    if success and result then
+                        lobbyData = result
+                    end
+                    
+                    -- ต้องเช็คจาก LobbyData เท่านั้น (ไม่ใช่แค่ Players ในเกม)
+                    if lobbyData and lobbyData["Players"] then
                         local membersInLobby = 0
                         for _, memberName in ipairs(membersList) do
-                            for _, lobbyPlayer in pairs(result["Players"]) do
+                            for _, lobbyPlayer in pairs(lobbyData["Players"]) do
                                 if lobbyPlayer and lobbyPlayer.Name == memberName then
                                     membersInLobby = membersInLobby + 1
                                     break
@@ -2365,35 +2371,36 @@ local function Register_Room(myproduct,player)
                             end
                         end
                         
+                        print("[WaitForMembersReady] Members in lobby:", membersInLobby, "/", #membersList)
+                        
                         if membersInLobby >= #membersList then
-                            print("[WaitForMembersReady] All", #membersList, "members joined! Starting...")
-                            task.wait(1)
+                            print("[WaitForMembersReady] All", #membersList, "members joined lobby! Starting...")
+                            task.wait(2) -- รอเพิ่มอีก 2 วินาทีก่อนเริ่ม
                             return true
-                        else
-                            print("[WaitForMembersReady] Members in lobby:", membersInLobby, "/", #membersList)
                         end
                     else
-                        -- ถ้าไม่มี LobbyDataHandler ให้เช็คจาก Players ในเกมแทน
-                        local membersInGame = 0
-                        for _, memberName in ipairs(membersList) do
-                            if Players:FindFirstChild(memberName) then
-                                membersInGame = membersInGame + 1
-                            end
-                        end
-                        
-                        if membersInGame >= #membersList then
-                            print("[WaitForMembersReady] All", #membersList, "members in game! Starting...")
-                            task.wait(1)
-                            return true
-                        else
-                            print("[WaitForMembersReady] Members in game:", membersInGame, "/", #membersList)
-                        end
+                        -- ถ้าไม่มี LobbyData → รอต่อ (อย่าเริ่มก่อน!)
+                        print("[WaitForMembersReady] No lobby data yet, waiting...")
                     end
-                    task.wait(2)
+                    task.wait(3)
                 end
                 
-                print("[WaitForMembersReady] Timeout! Starting anyway...")
-                return false
+                -- Timeout - เช็คว่ามี member อยู่ในเกมบ้างไหม
+                local membersInGame = 0
+                for _, memberName in ipairs(membersList) do
+                    if Players:FindFirstChild(memberName) then
+                        membersInGame = membersInGame + 1
+                    end
+                end
+                
+                if membersInGame >= #membersList then
+                    print("[WaitForMembersReady] Timeout but all members in game! Starting...")
+                    task.wait(2)
+                    return true
+                else
+                    print("[WaitForMembersReady] Timeout! Only", membersInGame, "/", #membersList, "members - Starting anyway...")
+                    return false
+                end
             end
             return true -- ไม่มี member ก็เริ่มเลย
         end
