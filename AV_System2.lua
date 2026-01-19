@@ -2388,8 +2388,8 @@ local function Register_Room(myproduct,player)
                         if GUID then
                             -- เช็คว่ามี rift_join_time ที่ตั้งโดย member หรือไม่
                             local joinTime = nil
-                            if myCache and myCache["party_member"] and #myCache["party_member"] > 0 then
-                                for _, memberName in ipairs(myCache["party_member"]) do
+                            if player and #player > 0 then
+                                for _, memberName in ipairs(player) do
                                     local memberCache = GetCache(memberName)
                                     if memberCache and memberCache["rift_join_time"] then
                                         joinTime = memberCache["rift_join_time"]
@@ -2417,8 +2417,8 @@ local function Register_Room(myproduct,player)
                             )
                             
                             -- ลบ rift_join_time ออกจาก cache หลังเข้าแล้ว
-                            if myCache and myCache["party_member"] and #myCache["party_member"] > 0 then
-                                for _, memberName in ipairs(myCache["party_member"]) do
+                            if player and #player > 0 then
+                                for _, memberName in ipairs(player) do
                                     local memberCache = GetCache(memberName)
                                     if memberCache and memberCache["rift_join_time"] then
                                         UpdateCache(memberName, {["rift_join_time"] = nil})
@@ -3267,82 +3267,76 @@ if ID[game.GameId][1] == "AV" then
                                     
                                     -- ถ้ารอครบแล้ว หรือ Host ไม่มีไอเทม = เริ่มทำงาน
                                     if waitCompleted then
-                                        if workspace:GetAttribute("IsRiftOpen") then
-                                            local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
-                                            local GUID = nil
-                                            for i,v in pairs(Rift.GetRifts()) do
-                                                if v and not v["Teleporting"] then
-                                                    GUID = v["GUID"]
-                                                    print("[Member Auto Join Rift] Selected rift:", GUID)
-                                                    break
+                                        -- ไม่มี Rift เปิดอยู่ และ Host ไม่มีไอเทม → Member ใช้ไอเทมเปิดเอง
+                                        if not workspace:GetAttribute("IsRiftOpen") and not hostHasItem then
+                                            if not hasUsedItem or (os.time() - lastItemUseTime) > 60 then
+                                                local hasRift, amount = HasTemporalRiftItem()
+                                                
+                                                if hasRift then
+                                                    print("[Member Auto Join Rift] Using Temporal Rift item (", amount, "remaining)")
+                                                    local success = UseTemporalRiftItem("Warlord")
+                                                    if success then
+                                                        print("[Member Auto Join Rift] Temporal Rift activated - Waiting for Host to return...")
+                                                        hasUsedItem = true
+                                                        lastItemUseTime = os.time()
+                                                        
+                                                        -- ตั้งเวลาเข้า Rift ร่วมกัน (5 วินาทีจากตอนนี้)
+                                                        local joinTime = os.time() + 5
+                                                        UpdateCache(LocalPlayer.Name, {["rift_join_time"] = joinTime})
+                                                        print("[Member Auto Join Rift] Set shared join time:", joinTime)
+                                                    else
+                                                        warn("[Member Auto Join Rift] Failed to use Temporal Rift")
+                                                    end
+                                                    task.wait(3)
+                                                else
+                                                    warn("[Member Auto Join Rift] No Temporal Rift item found")
+                                                    task.wait(10)
                                                 end
                                             end
+                                        -- มี Rift เปิดอยู่แล้ว → เช็คว่า Host กลับมาหรือยัง
+                                        elseif workspace:GetAttribute("IsRiftOpen") then
+                                            local myCache = GetCache(cache_key)
+                                            local hostName = myCache and myCache["party"]
+                                            local hostInGame = hostName and game:GetService("Players"):FindFirstChild(hostName)
                                             
-                                            if GUID then
-                                                print("[Member Auto Join Rift] Joining rift:", GUID)
-                                                game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
-                                                    "Join",
-                                                    GUID
-                                                )
-                                                hasUsedItem = false
-                                                checkedHostItem = false
-                                                hostHasItem = nil
-                                                waitCompleted = false
-                                                waitingForHostStartTime = 0
-                                                task.wait(5)
+                                            if hostInGame then
+                                                -- Host กลับมาในเกมแล้ว → รอสักครู่แล้ว join ด้วยกัน
+                                                print("[Member Auto Join Rift] Host is back! Waiting a moment before joining together...")
+                                                task.wait(3) -- รอ Host เตรียมตัว
+                                                
+                                                local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
+                                                local GUID = nil
+                                                for i,v in pairs(Rift.GetRifts()) do
+                                                    if v and not v["Teleporting"] then
+                                                        GUID = v["GUID"]
+                                                        print("[Member Auto Join Rift] Selected rift:", GUID)
+                                                        break
+                                                    end
+                                                end
+                                                
+                                                if GUID then
+                                                    print("[Member Auto Join Rift] Joining rift with Host:", GUID)
+                                                    game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Rifts"):WaitForChild("RiftsEvent"):FireServer( 
+                                                        "Join",
+                                                        GUID
+                                                    )
+                                                    hasUsedItem = false
+                                                    checkedHostItem = false
+                                                    hostHasItem = nil
+                                                    waitCompleted = false
+                                                    waitingForHostStartTime = 0
+                                                    task.wait(5)
+                                                else
+                                                    task.wait(3)
+                                                end
                                             else
+                                                -- Host ยังไม่กลับมา → รอต่อ
+                                                print("[Member Auto Join Rift] Rift opened - Waiting for Host to return before joining...")
                                                 task.wait(3)
                                             end
                                         else
-                                            // ไม่มี Rift เปิดอยู่
-                                            if not hostHasItem then
-                                                // Host ไม่มีไอเทม → Member ใช้ไอเทมเปิดเอง
-                                                if not hasUsedItem or (os.time() - lastItemUseTime) > 60 then
-                                                    local hasRift, amount = HasTemporalRiftItem()
-                                                    
-                                                    if hasRift then
-                                                        print("[Member Auto Join Rift] Using Temporal Rift item (", amount, "remaining)")
-                                                        local success = UseTemporalRiftItem("Warlord")
-                                                        if success then
-                                                            print("[Member Auto Join Rift] Temporal Rift activated")
-                                                            hasUsedItem = true
-                                                            lastItemUseTime = os.time()
-                                                            
-                                                            // ตั้งเวลาเข้า Rift ร่วมกัน (5 วินาทีจากตอนนี้)
-                                                            local joinTime = os.time() + 5
-                                                            UpdateCache(LocalPlayer.Name, {["rift_join_time"] = joinTime})
-                                                            print("[Member Auto Join Rift] Set shared join time:", joinTime)
-                                                            
-                                                            // รอให้ Rift เปิด
-                                                            local waitCount = 0
-                                                            while not workspace:GetAttribute("IsRiftOpen") and waitCount < 20 do
-                                                                task.wait(0.5)
-                                                                waitCount = waitCount + 1
-                                                            end
-                                                            
-                                                            if workspace:GetAttribute("IsRiftOpen") then
-                                                                print("[Member Auto Join Rift] Rift opened! Waiting for join time...")
-                                                                
-                                                                // รอจนกว่าจะถึงเวลาที่กำหนด
-                                                                while os.time() < joinTime do
-                                                                    local timeLeft = joinTime - os.time()
-                                                                    print("[Member Auto Join Rift] Countdown:", timeLeft, "seconds")
-                                                                    task.wait(1)
-                                                                end
-                                                                
-                                                                print("[Member Auto Join Rift] Time's up! Entering together with Host...")
-                                                            end
-                                                        else
-                                                            warn("[Member Auto Join Rift] Failed to use Temporal Rift")
-                                                        end
-                                                        task.wait(3)
-                                                    else
-                                                        warn("[Member Auto Join Rift] No Temporal Rift item found")
-                                                        task.wait(10)
-                                                    end
-                                                end
-                                            else
-                                                // Host มีไอเทม → รอ Host เปิด
+                                            -- Host มีไอเทม → รอ Host เปิด Rift
+                                            if hostHasItem then
                                                 print("[Member Auto Join Rift] Waiting for host to open Rift...")
                                             end
                                             task.wait(3)
