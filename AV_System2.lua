@@ -2847,25 +2847,42 @@ if ID[game.GameId][1] == "AV" then
                     if type(cache) ~= "table" then
                         return {}
                     end
-                     if type(cache["party_member"]) ~= "table" then
+                    if type(cache["party_member"]) ~= "table" then
                         return {}
                     end
-                    local CParty = table.clone(cache["party_member"])
+                    local CParty = cache["party_member"] and table.clone(cache["party_member"]) or {}
                     local Insert = {}
                     for i,v in pairs(CParty) do
-                        table.insert(Insert,v["name"])
+                        if v and v["name"] then
+                            table.insert(Insert, v["name"])
+                        end
                     end
                     return Insert
                 end
+                
+                -- Cache สำหรับเก็บ MaxPlayers ที่ดึงมาแล้ว (ไม่ต้องดึงซ้ำ)
+                local MaxPlayersCache = {}
+                local StagesDataModule = nil
+                
+                -- โหลด StagesData ครั้งเดียวตอนเริ่ม (ไม่ block main loop)
+                task.spawn(function()
+                    pcall(function()
+                        StagesDataModule = require(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
+                        print("[MaxPlayers] StagesData loaded successfully")
+                    end)
+                end)
                 
                 -- Function ดึง MaxPlayers จาก StagesData โดยอัตโนมัติ
                 function GetMaxPlayersForProduct(product_id)
                     if not product_id then return 3 end -- default
                     
-                    -- หา Order_Type และ Settings จาก product_id
-                    local orderType = nil
-                    local stageSettings = nil
+                    -- เช็ค cache ก่อน
+                    if MaxPlayersCache[product_id] then
+                        return MaxPlayersCache[product_id]
+                    end
                     
+                    -- หา Order_Type จาก product_id
+                    local orderType = nil
                     for orderName, orderIds in pairs(Order_Type) do
                         if table.find(orderIds, product_id) then
                             orderType = orderName
@@ -2873,90 +2890,73 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end
                     
-                    -- ลองดึง MaxPlayers จาก StagesData
-                    local maxPlayers = 4 -- default (รวม host)
+                    -- Default values ตาม mode (fallback)
+                    local defaultMap = {
+                        ["Story"] = 4,
+                        ["Legend Stage"] = 4,
+                        ["Dungeon"] = 4,
+                        ["Raid"] = 4,
+                        ["Rift"] = 6,
+                        ["Portal"] = 4,
+                        ["Odyssey"] = 4,
+                        ["Summer"] = 4,
+                        ["Fall Regular"] = 4,
+                        ["Fall Infinite"] = 4,
+                        ["Challenge"] = 4,
+                        ["Bounty"] = 4,
+                        ["Boss Event"] = 4,
+                        ["World Destroyer"] = 4,
+                    }
                     
-                    local success, result = pcall(function()
-                        local StagesDataModule = require(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
-                        
-                        -- แปลง orderType เป็น StageType ที่ถูกต้อง
-                        local stageTypeMap = {
-                            ["Story"] = "Story",
-                            ["Legend Stage"] = "LegendStage",
-                            ["Dungeon"] = "Dungeon",
-                            ["Raid"] = "Raid",
-                            ["Rift"] = "Rift",
-                            ["Portal"] = "Story", -- Portal ใช้ Story stage
-                            ["Odyssey"] = "Odyssey",
-                            ["Summer"] = "Summer",
-                            ["Fall Regular"] = "Fall",
-                            ["Fall Infinite"] = "Fall",
-                            ["Challenge"] = "Story",
-                            ["Bounty"] = "Story",
-                        }
-                        
-                        local stageType = stageTypeMap[orderType] or "Story"
-                        
-                        -- ลองดึงจาก StagesData โดยตรง
-                        if StagesDataModule[stageType] then
-                            -- หา stage แรกที่มี Acts
-                            for stageName, stageData in pairs(StagesDataModule[stageType]) do
-                                if stageData and stageData.Acts then
-                                    for actName, actData in pairs(stageData.Acts) do
-                                        if actData and actData.MaxPlayers then
-                                            return actData.MaxPlayers
+                    local maxPlayers = defaultMap[orderType] or 4
+                    
+                    -- ลองดึงจาก StagesData ถ้าโหลดเสร็จแล้ว (ไม่ block ถ้ายังไม่เสร็จ)
+                    if StagesDataModule then
+                        local success, result = pcall(function()
+                            -- แปลง orderType เป็น StageType
+                            local stageTypeMap = {
+                                ["Story"] = "Story",
+                                ["Legend Stage"] = "LegendStage", 
+                                ["Dungeon"] = "Dungeon",
+                                ["Raid"] = "Raid",
+                                ["Rift"] = "Rift",
+                                ["Portal"] = "Story",
+                                ["Odyssey"] = "Odyssey",
+                                ["Summer"] = "Summer",
+                                ["Fall Regular"] = "Fall",
+                                ["Fall Infinite"] = "Fall",
+                                ["Challenge"] = "Story",
+                                ["Bounty"] = "Story",
+                            }
+                            
+                            local stageType = stageTypeMap[orderType] or "Story"
+                            
+                            -- ดึงจาก StagesData
+                            if StagesDataModule[stageType] then
+                                for _, stageData in pairs(StagesDataModule[stageType]) do
+                                    if stageData and stageData.Acts then
+                                        for _, actData in pairs(stageData.Acts) do
+                                            if actData and actData.MaxPlayers then
+                                                return actData.MaxPlayers
+                                            end
                                         end
                                     end
                                 end
                             end
-                        end
+                            return nil
+                        end)
                         
-                        -- ลองใช้ GetActData ถ้ามี
-                        if StagesDataModule.GetActData then
-                            -- ลองดึงจาก stage แรกๆ
-                            local testStages = {
-                                {stageType, "Stage1", "Act1"},
-                                {stageType, "Stage1", "Normal"},
-                                {"Story", "Stage1", "Act1"},
-                                {"Raid", "Stage1", "Act1"},
-                            }
-                            
-                            for _, test in ipairs(testStages) do
-                                local ok, actData = pcall(function()
-                                    return StagesDataModule:GetActData(test[1], test[2], test[3])
-                                end)
-                                if ok and actData and actData.MaxPlayers then
-                                    return actData.MaxPlayers
-                                end
-                            end
+                        if success and result then
+                            maxPlayers = result
                         end
-                        
-                        return nil
-                    end)
-                    
-                    if success and result then
-                        maxPlayers = result
-                    else
-                        -- Fallback: ใช้ค่า default ตาม mode
-                        local defaultMap = {
-                            ["Story"] = 4,
-                            ["Legend Stage"] = 4,
-                            ["Dungeon"] = 4,
-                            ["Raid"] = 4,            -- Raid มักรับ 6 คน
-                            ["Rift"] = 6,
-                            ["Portal"] = 4,
-                            ["Odyssey"] = 4,
-                            ["Summer"] = 4,
-                            ["Fall Regular"] = 4,
-                            ["Fall Infinite"] = 4,
-                            ["Challenge"] = 4,
-                            ["Bounty"] = 4,
-                        }
-                        maxPlayers = defaultMap[orderType] or 4
                     end
                     
                     -- MaxPlayers = รวม Host แล้ว ดังนั้น member ที่รับได้ = MaxPlayers - 1
                     local maxMembers = maxPlayers - 1
+                    
+                    -- Cache ผลลัพธ์
+                    MaxPlayersCache[product_id] = maxMembers
+                    
                     print("[GetMaxPlayersForProduct] Product:", product_id, "-> OrderType:", orderType, "-> MaxPlayers:", maxPlayers, "-> MaxMembers:", maxMembers)
                     return maxMembers
                 end
@@ -3042,52 +3042,23 @@ if ID[game.GameId][1] == "AV" then
                                     print("[Host Lobby] Cannot get member cache - rejecting")
                                     SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                 else
-                                    local old_party = table.clone(cache["party_member"])
+                                    local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
                                     
-                                    -- ดึง MaxPlayers ตาม product_id (auto detect จาก mode)
-                                    local maxMembers = GetMaxPlayersForProduct(member_cache["product_id"])
-                                    
-                                    -- เช็คว่า party เต็มหรือไม่
-                                    if LenT(old_party) >= maxMembers then
-                                        print("[Host Lobby] Party full (", LenT(old_party), "/", maxMembers, ") - rejecting")
+                                    -- เช็คว่า member นี้อยู่ใน party แล้วหรือยัง (ป้องกันซ้ำ)
+                                    if old_party[message["order"]] then
+                                        print("[Host Lobby] Member already in party - skipping:", message["order"])
                                         SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
-                                    elseif LenT(old_party) == 0 then
-                                        -- Party ว่าง - เช็ค order_type กับ host_id ก่อน
-                                        local hostId = cache["host_id"] or ""
-                                        local memberProductId = member_cache["product_id"]
+                                    else
+                                        -- ดึง MaxPlayers ตาม product_id (auto detect จาก mode)
+                                        local maxMembers = GetMaxPlayersForProduct(member_cache["product_id"])
                                         
-                                        -- หา order_type
-                                        local Type_Member, Type_Host = nil, nil
-                                        for orderName, orderIds in pairs(Order_Type) do
-                                            if table.find(orderIds, memberProductId) then
-                                                Type_Member = orderName
-                                            end
-                                            if table.find(orderIds, hostId) then
-                                                Type_Host = orderName
-                                            end
-                                        end
-                                        
-                                        print("[Host Lobby] Party empty - Member type:", Type_Member, "Host type:", Type_Host)
-                                        
-                                        -- ถ้า host_id มี และ order_type ไม่ตรงกัน → reject
-                                        local shouldAccept = true
-                                        if #hostId > 10 and Type_Member and Type_Host and Type_Member ~= Type_Host then
-                                            print("[Host Lobby] Order type mismatch with host_id - rejecting")
-                                            shouldAccept = false
-                                            SendCache(
-                                                {["index"] = message["order"] .. "-reject"},
-                                                {["value"] = {
-                                                    ["rejected_by"] = Username,
-                                                    ["reason"] = "Different Order_Type (host_id)",
-                                                    ["message-id"] = HttpService:GenerateGUID(false),
-                                                    ["expire"] = os.time() + 30,
-                                                }}
-                                            )
+                                        -- เช็คว่า party เต็มหรือไม่
+                                        if LenT(old_party) >= maxMembers then
+                                            print("[Host Lobby] Party full (", LenT(old_party), "/", maxMembers, ") - rejecting")
                                             SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
-                                        end
-                                        
-                                        if shouldAccept then
-                                            print("[Host Lobby] Accepting first member:", member_cache["name"])
+                                        elseif LenT(old_party) == 0 then
+                                            -- Party ว่าง - รับ member คนแรกได้เลย (ไม่ต้องเช็ค order_type)
+                                            print("[Host Lobby] Party empty - Accepting first member:", member_cache["name"])
                                             old_party[message["order"]] = {
                                                 ["join_time"] = os.time(),
                                                 ["product_id"] = member_cache["product_id"],
@@ -3097,42 +3068,41 @@ if ID[game.GameId][1] == "AV" then
                                             UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
                                             UpdateCache(Username, {["current_play"] = member_cache["product_id"]})
                                             Waiting_Time = os.time() + 180
-                                            print("[Host Lobby] Member accepted - waiting for member to join")
-                                        end
-                                    else
-                                        -- มี member อยู่แล้ว - เช็ค order_type กับ member คนแรก
-                                        print("[Host Lobby] Party has members:", LenT(old_party), "- checking order_type")
-                                        local first_member_product_id = nil
-                                        local lowest = math.huge
-                                        for i,v in pairs(old_party) do
-                                            if v["join_time"] < lowest then
-                                                first_member_product_id = v["product_id"]
-                                                lowest = v["join_time"]
+                                            print("[Host Lobby] Member accepted - current_play set to:", member_cache["product_id"])
+                                        else
+                                            -- มี member อยู่แล้ว - เช็ค order_type กับ member คนแรก
+                                            print("[Host Lobby] Party has members:", LenT(old_party), "- checking order_type")
+                                            local first_member_product_id = nil
+                                            local lowest = math.huge
+                                            for i,v in pairs(old_party) do
+                                                if v["join_time"] < lowest then
+                                                    first_member_product_id = v["product_id"]
+                                                    lowest = v["join_time"]
+                                                end
                                             end
-                                        end
-                                        
-                                        print("[Host Lobby] First member product_id:", first_member_product_id)
-                                        print("[Host Lobby] New member product_id:", member_cache["product_id"])
-                                        
-                                        -- หา order_type ของ member ใหม่และ member คนแรก
-                                        local Type_NewMember, Type_FirstMember = nil, nil
-                                        for orderName, orderIds in pairs(Order_Type) do
-                                            if table.find(orderIds, member_cache["product_id"]) then
-                                                Type_NewMember = orderName
+                                            
+                                            print("[Host Lobby] First member product_id:", first_member_product_id)
+                                            print("[Host Lobby] New member product_id:", member_cache["product_id"])
+                                            
+                                            -- หา order_type ของ member ใหม่และ member คนแรก
+                                            local Type_NewMember, Type_FirstMember = nil, nil
+                                            for orderName, orderIds in pairs(Order_Type) do
+                                                if table.find(orderIds, member_cache["product_id"]) then
+                                                    Type_NewMember = orderName
+                                                end
+                                                if table.find(orderIds, first_member_product_id) then
+                                                    Type_FirstMember = orderName
+                                                end
                                             end
-                                            if table.find(orderIds, first_member_product_id) then
-                                                Type_FirstMember = orderName
-                                            end
-                                        end
-                                        
-                                        print("[Host Lobby] New member type:", Type_NewMember, "First member type:", Type_FirstMember)
-                                        
-                                        -- ถ้า product_id ต่างกัน และ (หา type ไม่เจอ หรือ type ไม่ตรงกัน) → reject
-                                        local shouldReject = false
-                                        if member_cache["product_id"] ~= first_member_product_id then
-                                            -- product_id ต่างกัน - ต้องเช็ค order_type
-                                            if not Type_NewMember or not Type_FirstMember then
-                                                -- หา order_type ไม่เจอ - reject เพราะไม่รู้ว่าตรงกันไหม
+                                            
+                                            print("[Host Lobby] New member type:", Type_NewMember, "First member type:", Type_FirstMember)
+                                            
+                                            -- ถ้า product_id ต่างกัน และ (หา type ไม่เจอ หรือ type ไม่ตรงกัน) → reject
+                                            local shouldReject = false
+                                            if member_cache["product_id"] ~= first_member_product_id then
+                                                -- product_id ต่างกัน - ต้องเช็ค order_type
+                                                if not Type_NewMember or not Type_FirstMember then
+                                                    -- หา order_type ไม่เจอ - reject เพราะไม่รู้ว่าตรงกันไหม
                                                 print("[Host Lobby] Cannot determine order_type - rejecting")
                                                 shouldReject = true
                                             elseif Type_NewMember ~= Type_FirstMember then
@@ -3168,6 +3138,7 @@ if ID[game.GameId][1] == "AV" then
                                             Waiting_Time = os.time() + 125
                                             print("[Host Lobby] Member accepted")
                                         end
+                                        end
                                     end
                                 end
                                 Last_Message_1 = message["message-id"]
@@ -3176,7 +3147,7 @@ if ID[game.GameId][1] == "AV" then
                             -- Remove
                             local message = GetCache(Username .. "-message-2")
                             if message and Last_Message_2 ~= message["message-id"] and message["join"] and message["join"] >= os.time() then
-                                local old_party = table.clone(cache["party_member"])
+                                local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
                                 if old_party[message["order"]] then
                                     old_party[message["order"]] = nil
                                     UpdateCache(Username,{["party_member"] = old_party})
