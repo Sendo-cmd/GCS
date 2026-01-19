@@ -3918,8 +3918,31 @@ if ID[game.GameId][1] == "AV" then
                                 
                                 print("[Member] Available hosts:", #availableHosts)
                                 if #availableHosts > 0 then
+                                    -- Priority: เลือก Host ที่มี current_play (order_type ตรงกัน) ก่อน
+                                    local hostsWithCurrentPlay = {}
+                                    local hostsWithoutCurrentPlay = {}
+                                    
+                                    for _, host in ipairs(availableHosts) do
+                                        if host.hasCurrentPlay then
+                                            table.insert(hostsWithCurrentPlay, host)
+                                        else
+                                            table.insert(hostsWithoutCurrentPlay, host)
+                                        end
+                                    end
+                                    
+                                    local selected = nil
                                     math.randomseed(os.time() + tick())
-                                    local selected = availableHosts[math.random(1, #availableHosts)]
+                                    
+                                    if #hostsWithCurrentPlay > 0 then
+                                        -- มี Host ที่มี current_play ตรงกัน → เลือกจากกลุ่มนี้ก่อน
+                                        selected = hostsWithCurrentPlay[math.random(1, #hostsWithCurrentPlay)]
+                                        print("[Member] Prioritizing host with matching current_play")
+                                    else
+                                        -- ไม่มี Host ที่มี current_play → เลือกจาก Host ที่ว่าง
+                                        selected = hostsWithoutCurrentPlay[math.random(1, #hostsWithoutCurrentPlay)]
+                                        print("[Member] No host with current_play, selecting from empty hosts")
+                                    end
+                                    
                                     local selectedHost = selected.username
                                     print("[Member] Request to:", selectedHost, "hasCurrentPlay:", selected.hasCurrentPlay)
                                     UpdateCache(cache_key, {["pending_host"] = selectedHost, ["pending_timestamp"] = os.time()})
