@@ -44,6 +44,11 @@ local function AntiAFK()
 end
 
 local function AutoCloseUpdateLog()
+    -- Only run in main lobby, not in stages (to allow replay)
+    if game.PlaceId ~= 16146832113 then
+        return
+    end
+    
     local PlayerGui = game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
     
     local function destroyUpdateLog()
