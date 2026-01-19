@@ -2296,20 +2296,68 @@ local function Register_Room(myproduct,player)
             return StagesData["Story"][arg]["StageData"]["Name"]
         end
         
+        -- Function ดึง MaxPlayers จากด่าน (auto จากเกม)
+        local function GetMaxPlayersFromStage(stageType, stage, act)
+            local maxPlayers = 3 -- default
+            local success, result = pcall(function()
+                local StagesDataModule = require(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
+                if StagesDataModule and StagesDataModule.GetActData then
+                    local actData = StagesDataModule:GetActData(stageType, stage, act)
+                    if actData and actData.MaxPlayers then
+                        return actData.MaxPlayers
+                    end
+                end
+                -- Fallback: ลองดูจาก StagesData table โดยตรง
+                if StagesDataModule and StagesDataModule[stageType] then
+                    local stageData = StagesDataModule[stageType][stage]
+                    if stageData and stageData.Acts and stageData.Acts[act] then
+                        local actInfo = stageData.Acts[act]
+                        if actInfo.MaxPlayers then
+                            return actInfo.MaxPlayers
+                        end
+                    end
+                end
+                return nil
+            end)
+            
+            if success and result then
+                maxPlayers = result
+            end
+            
+            print("[GetMaxPlayersFromStage]", stageType, stage, act, "-> MaxPlayers:", maxPlayers)
+            return maxPlayers
+        end
+        
         -- Function รอให้ members เข้าห้องก่อนเริ่ม (เรียกก่อน StartMatch)
         local function WaitForMembersReady()
             if player and #player > 0 then
                 print("[WaitForMembersReady] Waiting for", #player, "members to join lobby...")
-                local LobbyDataHandler = require(game:GetService("StarterPlayer").Modules.Gameplay.Lobby.LobbyDataHandler)
                 local maxWait = 30 -- รอสูงสุด 30 วินาที
                 local waitStart = os.time()
                 
                 while (os.time() - waitStart) < maxWait do
-                    local lobbyData = LobbyDataHandler.GetLobbyData()
-                    if lobbyData and lobbyData["Players"] then
+                    local success, result = pcall(function()
+                        -- ลองใช้ LobbyDataHandler ถ้ามี
+                        local LobbyModule = game:GetService("StarterPlayer"):FindFirstChild("Modules")
+                        if LobbyModule then
+                            LobbyModule = LobbyModule:FindFirstChild("Gameplay")
+                            if LobbyModule then
+                                LobbyModule = LobbyModule:FindFirstChild("Lobby")
+                                if LobbyModule then
+                                    local handler = LobbyModule:FindFirstChild("LobbyDataHandler")
+                                    if handler then
+                                        return require(handler).GetLobbyData()
+                                    end
+                                end
+                            end
+                        end
+                        return nil
+                    end)
+                    
+                    if success and result and result["Players"] then
                         local membersInLobby = 0
                         for _, memberName in ipairs(player) do
-                            for _, lobbyPlayer in pairs(lobbyData["Players"]) do
+                            for _, lobbyPlayer in pairs(result["Players"]) do
                                 if lobbyPlayer and lobbyPlayer.Name == memberName then
                                     membersInLobby = membersInLobby + 1
                                     break
@@ -2319,10 +2367,26 @@ local function Register_Room(myproduct,player)
                         
                         if membersInLobby >= #player then
                             print("[WaitForMembersReady] All", #player, "members joined! Starting...")
-                            task.wait(1) -- รอเพิ่มอีก 1 วิ ให้ทุกคนพร้อม
+                            task.wait(1)
                             return true
                         else
                             print("[WaitForMembersReady] Members in lobby:", membersInLobby, "/", #player)
+                        end
+                    else
+                        -- ถ้าไม่มี LobbyDataHandler ให้เช็คจาก Players ในเกมแทน
+                        local membersInGame = 0
+                        for _, memberName in ipairs(player) do
+                            if Players:FindFirstChild(memberName) then
+                                membersInGame = membersInGame + 1
+                            end
+                        end
+                        
+                        if membersInGame >= #player then
+                            print("[WaitForMembersReady] All", #player, "members in game! Starting...")
+                            task.wait(1)
+                            return true
+                        else
+                            print("[WaitForMembersReady] Members in game:", membersInGame, "/", #player)
                         end
                     end
                     task.wait(2)
@@ -2791,6 +2855,110 @@ if ID[game.GameId][1] == "AV" then
                     end
                     return Insert
                 end
+                
+                -- Function ดึง MaxPlayers จาก StagesData โดยอัตโนมัติ
+                function GetMaxPlayersForProduct(product_id)
+                    if not product_id then return 3 end -- default
+                    
+                    -- หา Order_Type และ Settings จาก product_id
+                    local orderType = nil
+                    local stageSettings = nil
+                    
+                    for orderName, orderIds in pairs(Order_Type) do
+                        if table.find(orderIds, product_id) then
+                            orderType = orderName
+                            break
+                        end
+                    end
+                    
+                    -- ลองดึง MaxPlayers จาก StagesData
+                    local maxPlayers = 4 -- default (รวม host)
+                    
+                    local success, result = pcall(function()
+                        local StagesDataModule = require(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
+                        
+                        -- แปลง orderType เป็น StageType ที่ถูกต้อง
+                        local stageTypeMap = {
+                            ["Story"] = "Story",
+                            ["Legend Stage"] = "LegendStage",
+                            ["Dungeon"] = "Dungeon",
+                            ["Raid"] = "Raid",
+                            ["Rift"] = "Rift",
+                            ["Portal"] = "Story", -- Portal ใช้ Story stage
+                            ["Odyssey"] = "Odyssey",
+                            ["Summer"] = "Summer",
+                            ["Fall Regular"] = "Fall",
+                            ["Fall Infinite"] = "Fall",
+                            ["Challenge"] = "Story",
+                            ["Bounty"] = "Story",
+                        }
+                        
+                        local stageType = stageTypeMap[orderType] or "Story"
+                        
+                        -- ลองดึงจาก StagesData โดยตรง
+                        if StagesDataModule[stageType] then
+                            -- หา stage แรกที่มี Acts
+                            for stageName, stageData in pairs(StagesDataModule[stageType]) do
+                                if stageData and stageData.Acts then
+                                    for actName, actData in pairs(stageData.Acts) do
+                                        if actData and actData.MaxPlayers then
+                                            return actData.MaxPlayers
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                        
+                        -- ลองใช้ GetActData ถ้ามี
+                        if StagesDataModule.GetActData then
+                            -- ลองดึงจาก stage แรกๆ
+                            local testStages = {
+                                {stageType, "Stage1", "Act1"},
+                                {stageType, "Stage1", "Normal"},
+                                {"Story", "Stage1", "Act1"},
+                                {"Raid", "Stage1", "Act1"},
+                            }
+                            
+                            for _, test in ipairs(testStages) do
+                                local ok, actData = pcall(function()
+                                    return StagesDataModule:GetActData(test[1], test[2], test[3])
+                                end)
+                                if ok and actData and actData.MaxPlayers then
+                                    return actData.MaxPlayers
+                                end
+                            end
+                        end
+                        
+                        return nil
+                    end)
+                    
+                    if success and result then
+                        maxPlayers = result
+                    else
+                        -- Fallback: ใช้ค่า default ตาม mode
+                        local defaultMap = {
+                            ["Story"] = 4,
+                            ["Legend Stage"] = 4,
+                            ["Dungeon"] = 4,
+                            ["Raid"] = 4,            -- Raid มักรับ 6 คน
+                            ["Rift"] = 6,
+                            ["Portal"] = 4,
+                            ["Odyssey"] = 4,
+                            ["Summer"] = 4,
+                            ["Fall Regular"] = 4,
+                            ["Fall Infinite"] = 4,
+                            ["Challenge"] = 4,
+                            ["Bounty"] = 4,
+                        }
+                        maxPlayers = defaultMap[orderType] or 4
+                    end
+                    
+                    -- MaxPlayers = รวม Host แล้ว ดังนั้น member ที่รับได้ = MaxPlayers - 1
+                    local maxMembers = maxPlayers - 1
+                    print("[GetMaxPlayersForProduct] Product:", product_id, "-> OrderType:", orderType, "-> MaxPlayers:", maxPlayers, "-> MaxMembers:", maxMembers)
+                    return maxMembers
+                end
+                
                 TextChatService.OnIncomingMessage = function(message)
                     local sender = message.TextSource
                     local player = (sender and game.Players:GetPlayerByUserId(sender.UserId) or nil)
@@ -2874,9 +3042,12 @@ if ID[game.GameId][1] == "AV" then
                                 else
                                     local old_party = table.clone(cache["party_member"])
                                     
+                                    -- ดึง MaxPlayers ตาม product_id (auto detect จาก mode)
+                                    local maxMembers = GetMaxPlayersForProduct(member_cache["product_id"])
+                                    
                                     -- เช็คว่า party เต็มหรือไม่
-                                    if LenT(old_party) >= 3 then
-                                        print("[Host Lobby] Party full - rejecting")
+                                    if LenT(old_party) >= maxMembers then
+                                        print("[Host Lobby] Party full (", LenT(old_party), "/", maxMembers, ") - rejecting")
                                         SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                     elseif LenT(old_party) == 0 then
                                         -- Party ว่าง - เช็ค order_type กับ host_id ก่อน
