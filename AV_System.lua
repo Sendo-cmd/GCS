@@ -3,12 +3,6 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
-
--- Define request function for HTTP calls (executor compatibility)
-local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
-if not request then
-    request = function() return {StatusCode = 0, Body = "No HTTP support"} end
-end
 task.spawn(function()
 setfpscap(10)
 local function AntiAFK()
@@ -251,10 +245,6 @@ local Settings ={
     ["Auto Next"] = false,
     ["Auto Retry"] = false,
     ["Auto Back Lobby"] = false,
-    ["Auto Restart"] = {
-        ["Enable"] = false,
-        ["Wave"] = 1, 
-    },
     ["Auto Join AFK"] = false,
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
@@ -362,6 +352,87 @@ local Settings ={
     },
 }
 local Changes = {
+    -- ถ้าต้องการสร้าง configs แบบไหนให้ order ก็เปลี่ยนแปลงเหมือนใส่ config ธรรมดาได้เลย สร้างครั้งนึงแล้วเหมือนกันทุก order
+    -- ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
+    -- ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
+    --     Settings["Select Mode"] = "Portal"
+    --     Settings["Portal Settings"] = {
+    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
+    --     ["Tier Cap"] = 10,
+    --     ["Method"] = "Highest", -- Highest , Lowest
+    --     ["Ignore Stage"] = {},
+    --     ["Ignore Modify"] = {},
+    -- }
+    -- end,
     ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {
@@ -651,70 +722,46 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
     end,
     ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
     end,
     ["87b27182-43d5-4266-9705-86ffa192adb0"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
     end,
     ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
         Settings["Select Mode"] = "Story"
@@ -764,31 +811,23 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Shibuya Station",
+        ["FriendsOnly"] = false
+    }
     end,
     ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Shibuya Station",
+        ["FriendsOnly"] = false
+    }
     end,
     ["427f560e-b78e-4ec9-b711-d451b0312306"] = function()
         Settings["Auto Stun"] = true
@@ -2060,9 +2099,9 @@ if _G.User[plr.Name] then
 end
 
 -- Auto Configs
-local Api = "https://api.championshop.date/" -- Api à¹ƒà¸ªà¹ˆ / à¸¥à¸‡à¸—à¹‰à¸²à¸¢à¸”à¹‰à¸§à¸¢ à¹€à¸Šà¹ˆà¸™ www.google.com/
+local Api = "https://api.championshop.date/" -- Api ใส่ / ลงท้ายด้วย เช่น www.google.com/
 local Key = "NO_ORDER" 
-local PathWay = Api .. "api/v1/shop/orders/"  -- à¸—à¸µà¹ˆà¸œà¸¡à¹€à¸‚à¹‰à¸²à¹ƒà¸ˆà¸„à¸·à¸­ orders à¸„à¸·à¸­à¸ˆà¸¸à¸”à¸à¸£à¸°à¸ˆà¸²à¸¢ order à¸•à¸±à¸§à¸­à¸·à¹ˆà¸™à¹† 
+local PathWay = Api .. "api/v1/shop/orders/"  -- ที่ผมเข้าใจคือ orders คือจุดกระจาย order ตัวอื่นๆ 
 local function Get(Api)
     local Data = request({
         ["Url"] = Api,
@@ -2358,21 +2397,21 @@ local function Auto_Config()
             Changes[OrderData["product_id"]]()
             print("Changed Configs")
         end
-        -- Auto Select Items à¸ˆà¸²à¸ selected_items (à¸£à¸­à¸‡à¸£à¸±à¸š Act, Stage, à¹à¸¥à¸° items)
+        -- Auto Select Items จาก selected_items (รองรับ Act, Stage, และ items)
         if OrderData["selected_items"] then
             local Insert = {}
             local SelectedAct = nil
             local SelectedStage = nil
             for _, v in pairs(OrderData["selected_items"]) do
-                -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µ act field à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ (format: {name="Double Dungeon", act="Act 3"})
+                -- เช็คว่ามี act field หรือไม่ (format: {name="Double Dungeon", act="Act 3"})
                 if v.act then
                     SelectedAct = v.act
                 end
                 if v.name then
-                    -- à¸–à¹‰à¸²à¸¡à¸µ act field à¹à¸¢à¸ = name à¸„à¸·à¸­ Stage
+                    -- ถ้ามี act field แยก = name คือ Stage
                     if v.act then
                         SelectedStage = v.name
-                    -- à¸–à¹‰à¸²à¹„à¸¡à¹ˆà¸¡à¸µ act field = à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² name à¹€à¸›à¹‡à¸™ Act à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                    -- ถ้าไม่มี act field = เช็คว่า name เป็น Act หรือไม่
                     elseif v.name:match("^Act%s*%d+$") or v.name:match("^Act%d+$") or v.name == "Infinite" then
                         SelectedAct = v.name
                     elseif v.type == "stage" or v.type == "Stage" then
@@ -2382,7 +2421,7 @@ local function Auto_Config()
                     end
                 end
             end
-            -- Apply Act à¹à¸¥à¸° Stage à¹„à¸›à¸¢à¸±à¸‡ Settings à¸—à¸µà¹ˆà¹€à¸à¸µà¹ˆà¸¢à¸§à¸‚à¹‰à¸­à¸‡ (à¹ƒà¸Šà¹‰à¸„à¹ˆà¸²à¸­à¸·à¹ˆà¸™à¸ˆà¸²à¸ Changes[product_id])
+            -- Apply Act และ Stage ไปยัง Settings ที่เกี่ยวข้อง (ใช้ค่าอื่นจาก Changes[product_id])
             if SelectedAct then
                 if Settings["Story Settings"] then Settings["Story Settings"]["Act"] = SelectedAct end
                 if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Act"] = SelectedAct end
@@ -2402,7 +2441,7 @@ local function Auto_Config()
                 print("[Auto_Config] Selected items:", table.concat(Insert, ", "))
             end
         end
-        -- Background task à¹€à¸žà¸·à¹ˆà¸­à¸­à¸±à¸žà¹€à¸”à¸— selected_items à¸­à¸¢à¹ˆà¸²à¸‡à¸•à¹ˆà¸­à¹€à¸™à¸·à¹ˆà¸­à¸‡
+        -- Background task เพื่ออัพเดท selected_items อย่างต่อเนื่อง
         task.spawn(function()
             while true do
                 pcall(function()
@@ -2463,8 +2502,8 @@ local function Auto_Config()
             Settings["Party Mode"] = true
         end
        
-        -- Post_Data_FirstTime à¸ªà¹ˆà¸§à¸™à¸™à¸µà¹‰à¸ˆà¸°à¸—à¸³à¸à¸²à¸£à¹€à¸à¹‡à¸š data à¸¡à¸² 1 à¸„à¸£à¸±à¹‰à¸‡à¸à¹ˆà¸­à¸™à¹€à¸£à¸´à¹ˆà¸¡ à¸–à¹‰à¸²à¸ªà¸¡à¸¡à¸¸à¸•à¸´à¸ˆà¸šà¸‡à¸²à¸™à¹à¸¥à¹‰à¸§ à¸¢à¸±à¸‡à¹€à¸ˆà¸­à¸­à¸¢à¸¹à¹ˆà¸­à¸²à¸ˆà¸ˆà¸°à¸—à¸³à¹ƒà¸«à¹‰à¸¡à¸µà¸›à¸±à¸à¸«à¸²à¹„à¸”à¹‰
-        -- à¸œà¸¡à¹ƒà¸ªà¹ˆà¹€à¸›à¹‡à¸™ cache à¹€à¸¥à¸¢à¸–à¹‰à¸²à¸¡à¸±à¸™à¹„à¸¡à¹ˆà¹€à¸ˆà¸­à¹ƒà¸«à¹‰à¸ªà¸£à¹‰à¸²à¸‡
+        -- Post_Data_FirstTime ส่วนนี้จะทำการเก็บ data มา 1 ครั้งก่อนเริ่ม ถ้าสมมุติจบงานแล้ว ยังเจออยู่อาจจะทำให้มีปัญหาได้
+        -- ผมใส่เป็น cache เลยถ้ามันไม่เจอให้สร้าง
         if not Order["Success"] then
             Post_(PathWay .. "cache",{
                 ["index"] = Key,
@@ -2557,10 +2596,10 @@ local function Auto_Config()
             --     ["order_id"] = P_Key,
             -- })
         -- finished 
-        -- Background Progress Checker - à¹€à¸Šà¹‡à¸„ progress à¸­à¸¢à¹ˆà¸²à¸‡à¸•à¹ˆà¸­à¹€à¸™à¸·à¹ˆà¸­à¸‡à¹€à¸žà¸·à¹ˆà¸­à¹ƒà¸«à¹‰à¹à¸™à¹ˆà¹ƒà¸ˆà¸§à¹ˆà¸²à¸ˆà¸šà¸‡à¸²à¸™
+        -- Background Progress Checker - เช็ค progress อย่างต่อเนื่องเพื่อให้แน่ใจว่าจบงาน
         task.spawn(function()
             while true do
-                task.wait(30) -- à¹€à¸Šà¹‡à¸„à¸—à¸¸à¸ 30 à¸§à¸´à¸™à¸²à¸—à¸µ
+                task.wait(30) -- เช็คทุก 30 วินาที
                 local freshOrderData = Fetch_data()
                 if freshOrderData and freshOrderData["product"] then
                     local Product = freshOrderData["product"]
@@ -2601,107 +2640,6 @@ end
 Auto_Config()
 if Settings["Party Mode"] then
     print("Member")
-    
-    -- ⭐ AUTO RETRY/NEXT/BACK LOBBY FOR MEMBER
-    if Networking:FindFirstChild("EndScreen") and Networking.EndScreen:FindFirstChild("ShowEndScreenEvent") then
-        Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-            -- print("[EndScreen Member] Detected! Status:", Results and Results.Status or "Unknown")
-            
-            local function isEndScreenVisible()
-                local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                if not EndScreenGui then return false end
-                local Holder = EndScreenGui:FindFirstChild("Holder")
-                if Holder and Holder.Visible then return true end
-                if EndScreenGui.Enabled ~= false then return true end
-                return false
-            end
-            
-            local function getVoteEvent()
-                if Networking.EndScreen:FindFirstChild("VoteEvent") then
-                    return Networking.EndScreen.VoteEvent
-                elseif Networking:FindFirstChild("VoteEvent") then
-                    return Networking.VoteEvent
-                end
-                return nil
-            end
-            
-            -- AUTO RETRY (Member)
-            if Settings["Auto Retry"] == true then
-                task.spawn(function()
-                    local VoteEvent = getVoteEvent()
-                    if VoteEvent then
-                        task.wait(2)
-                        pcall(function()
-                            VoteEvent:FireServer("Retry")
-                            print("[Auto Retry Member] Voted Retry")
-                        end)
-                        task.wait(3)
-                        if isEndScreenVisible() then
-                            pcall(function()
-                                VoteEvent:FireServer("Retry")
-                                print("[Auto Retry Member] Voted Retry (2nd attempt)")
-                            end)
-                        end
-                        task.wait(3)
-                        if isEndScreenVisible() then
-                            pcall(function()
-                                VoteEvent:FireServer("Retry")
-                                print("[Auto Retry Member] Voted Retry (3rd attempt)")
-                            end)
-                        end
-                    end
-                end)
-            end
-            
-            -- AUTO NEXT (Member)
-            if Settings["Auto Next"] == true then
-                task.spawn(function()
-                    local VoteEvent = getVoteEvent()
-                    if VoteEvent then
-                        task.wait(2)
-                        pcall(function()
-                            VoteEvent:FireServer("Next")
-                            print("[Auto Next Member] Voted Next")
-                        end)
-                        task.wait(3)
-                        if isEndScreenVisible() then
-                            pcall(function()
-                                VoteEvent:FireServer("Next")
-                                print("[Auto Next Member] Voted Next (2nd attempt)")
-                            end)
-                        end
-                        task.wait(3)
-                        if isEndScreenVisible() then
-                            pcall(function()
-                                VoteEvent:FireServer("Next")
-                                print("[Auto Next Member] Voted Next (3rd attempt)")
-                            end)
-                        end
-                    end
-                end)
-            end
-            
-            -- AUTO BACK LOBBY (Member)
-            if Settings["Auto Back Lobby"] == true then
-                task.spawn(function()
-                    task.wait(3)
-                    for attempt = 1, 3 do
-                        if isEndScreenVisible() then
-                            pcall(function()
-                                Networking.TeleportEvent:FireServer("Lobby")
-                                print("[Auto Back Lobby Member] Teleported to Lobby (attempt " .. attempt .. ")")
-                            end)
-                            task.wait(3)
-                        else
-                            break
-                        end
-                    end
-                end)
-            end
-        end)
-        print("[EndScreen Member] ShowEndScreenEvent connected!")
-    end
-    
     return false
 end
 -- All Modules
@@ -2841,13 +2779,13 @@ end
                                     "Join",
                                     GUID
                                 )
-                                hasUsedItem = false -- à¸£à¸µà¹€à¸‹à¹‡à¸•à¹€à¸¡à¸·à¹ˆà¸­à¹€à¸‚à¹‰à¸² Rift à¸ªà¸³à¹€à¸£à¹‡à¸ˆ
+                                hasUsedItem = false -- รีเซ็ตเมื่อเข้า Rift สำเร็จ
                                 task.wait(5)
                             else
                                 task.wait(3)
                             end
                         else
-                            -- à¹„à¸¡à¹ˆà¸¡à¸µ Rift à¹€à¸›à¸´à¸”à¸­à¸¢à¸¹à¹ˆ â†’ à¹ƒà¸Šà¹‰ Temporal Rift item à¹€à¸›à¸´à¸”à¹€à¸­à¸‡
+                            -- ไม่มี Rift เปิดอยู่ → ใช้ Temporal Rift item เปิดเอง
                             if not hasUsedItem or (os.time() - lastItemUseTime) > 60 then
                                 local hasRift, amount = HasTemporalRiftItem()
                                 
@@ -2863,7 +2801,7 @@ end
                                     end
                                     task.wait(3)
                                 else
-                                    -- à¹„à¸¡à¹ˆà¸¡à¸µà¹„à¸­à¹€à¸—à¸¡ â†’ à¸£à¸­ Rift à¸ˆà¸²à¸à¸„à¸™à¸­à¸·à¹ˆà¸™
+                                    -- ไม่มีไอเทม → รอ Rift จากคนอื่น
                                     task.wait(5)
                                 end
                             else
@@ -3122,7 +3060,7 @@ end
                 local GuitarMinigame = require(GuitarMinigameModule)
                 local ScoreHandler = require(GuitarMinigameModule:WaitForChild("ScoreHandler"))
                 
-                -- Remote à¸ªà¸³à¸«à¸£à¸±à¸šà¸ªà¹ˆà¸‡ score à¹„à¸› server
+                -- Remote สำหรับส่ง score ไป server
                 local JamSessionEvents = game:GetService("ReplicatedStorage"):WaitForChild("Networking"):WaitForChild("Events"):WaitForChild("JamSession")
                 local UpdateScoreRemote = JamSessionEvents:WaitForChild("UpdateScore")
                 
@@ -3137,7 +3075,7 @@ end
                 local hasEndedCurrentSong = false
                 local hitCount = 0
                 
-                -- à¸Ÿà¸±à¸‡à¸à¹Œà¸Šà¸±à¸™à¸›à¸´à¸” GUI Guitar
+                -- ฟังก์ชันปิด GUI Guitar
                 local function closeGuitarUI()
                     pcall(function()
                         if GuitarMinigame.Close then
@@ -3157,7 +3095,7 @@ end
                     end)
                 end
                 
-                -- à¸Ÿà¸±à¸‡à¸à¹Œà¸Šà¸±à¸™à¹„à¸›à¹€à¸žà¸¥à¸‡à¸–à¸±à¸”à¹„à¸›
+                -- ฟังก์ชันไปเพลงถัดไป
                 local function goToNextSong()
                     gkDiffIndex = gkDiffIndex + 1
                     if gkDiffIndex > #GK_DIFFICULTIES then
@@ -3198,7 +3136,7 @@ end
                     return true
                 end
                 
-                -- à¸Ÿà¸±à¸‡à¸à¹Œà¸Šà¸±à¸™à¹€à¸¥à¹ˆà¸™à¹€à¸žà¸¥à¸‡
+                -- ฟังก์ชันเล่นเพลง
                 local function playNextGuitarSong()
                     hasEndedCurrentSong = false
                     hitCount = 0
@@ -3212,7 +3150,7 @@ end
                     end)
                 end
                 
-                -- à¸Ÿà¸±à¸‡à¸à¹Œà¸Šà¸±à¸™ Force End - à¸ªà¹ˆà¸‡ score à¸à¹ˆà¸­à¸™à¸›à¸´à¸”!
+                -- ฟังก์ชัน Force End - ส่ง score ก่อนปิด!
                 local function tryForceEnd()
                     if hasEndedCurrentSong then return end
                     
@@ -3236,12 +3174,12 @@ end
                         
                         print("[Guitar King] SCORE", score, ">= 100k! Sending...")
                         
-                        -- à¸ªà¹ˆà¸‡ score à¹„à¸› server à¹‚à¸”à¸¢à¸•à¸£à¸‡ à¸à¹ˆà¸­à¸™à¸›à¸´à¸” minigame!
+                        -- ส่ง score ไป server โดยตรง ก่อนปิด minigame!
                         pcall(function()
                             UpdateScoreRemote:FireServer(song, diff, score)
                         end)
                         
-                        -- à¸›à¸´à¸”à¸—à¸±à¸™à¸—à¸µ à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡à¸£à¸­à¸™à¸²à¸™
+                        -- ปิดทันที ไม่ต้องรอนาน
                         task.delay(0.1, function()
                             pcall(function()
                                 if GuitarMinigame.Cleanup then
@@ -3312,18 +3250,18 @@ end
                             end
                             
                             if isActive and originalHitNote then
-                                -- SPAM HIT 50 à¸„à¸£à¸±à¹‰à¸‡à¸•à¹ˆà¸­ loop!
+                                -- SPAM HIT 50 ครั้งต่อ loop!
                                 for i = 1, 50 do
                                     originalHitNote(true)
                                 end
                                 tryForceEnd()
                             end
                         end)
-                        task.wait() -- à¹€à¸£à¹‡à¸§à¸—à¸µà¹ˆà¸ªà¸¸à¸” (1 frame)
+                        task.wait() -- เร็วที่สุด (1 frame)
                     end
                 end)
                 
-                -- MinigameEnded à¸ªà¸³à¸«à¸£à¸±à¸šà¸à¸£à¸“à¸µà¸ˆà¸šà¹€à¸žà¸¥à¸‡à¸›à¸à¸•à¸´
+                -- MinigameEnded สำหรับกรณีจบเพลงปกติ
                 GuitarMinigame.MinigameEnded:Connect(function(score)
                     print("[Guitar King] Song ended! Score:", score or 0)
                     if hasEndedCurrentSong then return end
@@ -3506,8 +3444,6 @@ end
 
                 -- Wave Tracker
                 local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
-                local autoRestartTriggered = false
-                
                 InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
                     if eventType == "Wave" and data and data.Waves then
                         currentWave = data.Waves
@@ -3516,20 +3452,8 @@ end
                         if currentWave == 0 then
                             chosenModifiers = {}
                             lastChoice = nil
-                            autoRestartTriggered = false  -- Reset flag à¹€à¸¡à¸·à¹ˆà¸­à¹€à¸à¸¡à¹ƒà¸«à¸¡à¹ˆ
                         end
                         
-                        -- â­ Auto Restart à¹à¸šà¸š Wave
-                        if Settings["Auto Restart"] and Settings["Auto Restart"]["Enable"] and not autoRestartTriggered then
-                            local restartWave = Settings["Auto Restart"]["Wave"] or 1
-                            if currentWave >= restartWave and currentWave > 0 then
-                                print(string.format("[Auto Restart] Wave %d reached (target: %d) - Voting restart...", currentWave, restartWave))
-                                VoteRestart()
-                                autoRestartTriggered = true
-                            end
-                        end
-                        
-                        -- Restart Modifier (à¹€à¸Šà¹‡à¸„ modifier)
                         if Settings["Restart Modifier"] and currentWave >= 1 then
                             if not HasChosenRequiredModifier() then
                                 -- print("[Auto Modifier] Required modifier not found, voting restart...")
@@ -3565,109 +3489,96 @@ end
                 end)
                 print("[Auto Modifier] Loaded!")
             end
- 
+            
+            -- ⭐⭐⭐ รอจนกว่าจะเจอ EndScreen ก่อน
             if Networking:FindFirstChild("EndScreen") and Networking.EndScreen:FindFirstChild("ShowEndScreenEvent") then
-                
                 Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                    -- print("[EndScreen] Detected! Status:", Results and Results.Status or "Unknown")
-                    
-                    local function isEndScreenVisible()
-                        local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                        if not EndScreenGui then return false end
+                    print("[EndScreen] 📺 Detected! Status:", Results and Results.Status or "Unknown")
+                
+                -- ⭐⭐⭐ SHARED FUNCTIONS
+                local function isEndScreenVisible()
+                    local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                    if EndScreenGui then
                         local Holder = EndScreenGui:FindFirstChild("Holder")
-                        if Holder and Holder.Visible then return true end
-                        if EndScreenGui.Enabled ~= false then return true end
-                        return false
-                    end
-                    
-                    local function getVoteEvent()
-                        if Networking.EndScreen:FindFirstChild("VoteEvent") then
-                            return Networking.EndScreen.VoteEvent
-                        elseif Networking:FindFirstChild("VoteEvent") then
-                            return Networking.VoteEvent
+                        if Holder and Holder.Visible then
+                            return true
                         end
-                        return nil
+                        if EndScreenGui.Enabled ~= false then
+                            return true
+                        end
                     end
-                    
-                    -- AUTO RETRY
-                    if Settings["Auto Retry"] == true then
-                        task.spawn(function()
-                            local VoteEvent = getVoteEvent()
-                            if VoteEvent then
-                                task.wait(2)
+                    return false
+                end
+                
+                local function getVoteEvent()
+                    if Networking.EndScreen:FindFirstChild("VoteEvent") then
+                        return Networking.EndScreen.VoteEvent
+                    elseif Networking:FindFirstChild("VoteEvent") then
+                        return Networking.VoteEvent
+                    end
+                    return nil
+                end
+                
+                -- ⭐⭐⭐ AUTO RETRY (เหมือน AutoPlayBase.lua)
+                if Settings["Auto Retry"] then
+                    task.spawn(function()
+                        local VoteEvent = getVoteEvent()
+                        if VoteEvent then
+                            task.wait(2)
+                            pcall(function()
+                                VoteEvent:FireServer("Retry")
+                                print("[Auto Retry] 🔄 Voted Retry")
+                            end)
+                            task.wait(3)
+                            if isEndScreenVisible() then
                                 pcall(function()
                                     VoteEvent:FireServer("Retry")
-                                    print("[Auto Retry] Voted Retry")
+                                    print("[Auto Retry] 🔄 Voted Retry (2nd attempt)")
                                 end)
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Retry")
-                                        print("[Auto Retry] Voted Retry (2nd attempt)")
-                                    end)
-                                end
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Retry")
-                                        print("[Auto Retry] Voted Retry (3rd attempt)")
-                                    end)
-                                end
-                            else
-                                warn("[Auto Retry] VoteEvent not found")
                             end
-                        end)
-                    end
-                    
-                    -- AUTO NEXT
-                    if Settings["Auto Next"] == true then
-                        task.spawn(function()
-                            local VoteEvent = getVoteEvent()
-                            if VoteEvent then
-                                task.wait(2)
+                        else
+                            warn("[Auto Retry] ⚠️ VoteEvent not found")
+                        end
+                    end)
+                end
+                
+                -- ⭐⭐⭐ AUTO NEXT
+                if Settings["Auto Next"] then
+                    task.spawn(function()
+                        local VoteEvent = getVoteEvent()
+                        if VoteEvent then
+                            task.wait(2)
+                            local voteAttempts = 0
+                            local maxAttempts = 3
+                            
+                            while Settings["Auto Next"] and isEndScreenVisible() and voteAttempts < maxAttempts do
                                 pcall(function()
                                     VoteEvent:FireServer("Next")
-                                    print("[Auto Next] Voted Next")
+                                    print("[Auto Next] ➡️ Voted Next (attempt " .. (voteAttempts + 1) .. ")")
                                 end)
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Next")
-                                        print("[Auto Next] Voted Next (2nd attempt)")
-                                    end)
-                                end
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Next")
-                                        print("[Auto Next] Voted Next (3rd attempt)")
-                                    end)
-                                end
-                            else
-                                warn("[Auto Next] VoteEvent not found")
+                                voteAttempts = voteAttempts + 1
+                                task.wait(5)
                             end
-                        end)
-                    end
-                    
-                    -- AUTO BACK LOBBY
-                    if Settings["Auto Back Lobby"] == true then
-                        task.spawn(function()
-                            task.wait(3)
-                            for attempt = 1, 3 do
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        Networking.TeleportEvent:FireServer("Lobby")
-                                        print("[Auto Back Lobby] Teleported to Lobby (attempt " .. attempt .. ")")
-                                    end)
-                                    task.wait(3)
-                                else
-                                    break
-                                end
-                            end
-                        end)
-                    end
-                    
-                    -- Legacy Challenge/Bounty handling
+                        else
+                            warn("[Auto Next] ⚠️ VoteEvent not found")
+                        end
+                    end)
+                end
+                
+                -- ⭐⭐⭐ AUTO BACK LOBBY
+                if Settings["Auto Back Lobby"] then
+                    task.spawn(function()
+                        task.wait(3)
+                        if isEndScreenVisible() then
+                            pcall(function()
+                                Networking.TeleportEvent:FireServer("Lobby")
+                                print("[Auto Back Lobby] 🏠 Teleporting to Lobby")
+                            end)
+                        end
+                    end)
+                end
+                
+                -- Legacy Challenge/Bounty handling
                 task.wait(2)
                 if Results['StageType'] == "Challenge" then
                     Networking.TeleportEvent:FireServer("Lobby")
@@ -3681,9 +3592,9 @@ end
                     end
                 end
                 end)
-                print("[EndScreen] âœ… ShowEndScreenEvent connected!")
+                print("[EndScreen] ✅ ShowEndScreenEvent connected!")
             else
-                warn("[EndScreen] âš ï¸ EndScreen or ShowEndScreenEvent not found - Auto Retry/Next/BackLobby disabled")
+                warn("[EndScreen] ⚠️ EndScreen or ShowEndScreenEvent not found - Auto Retry/Next/BackLobby disabled")
             end
         end
     end)

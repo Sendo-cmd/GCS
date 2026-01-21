@@ -27,13 +27,6 @@ Games = {
     },
 }
 Accounts = {}
-
--- Define request function for HTTP calls (executor compatibility)
-local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
-if not request then
-    request = function() return {Success = false, Body = "{}"} end
-end
-
 repeat task.wait(1) until game:IsLoaded(2)
 
 local plr = game.Players.LocalPlayer

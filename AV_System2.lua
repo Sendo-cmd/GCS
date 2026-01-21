@@ -9,8 +9,8 @@ repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
 
-local Api = "https://api.championshop.date" -- à¹ƒà¸ªà¹ˆ API à¸•à¸£à¸‡à¸™à¸µà¹‰
-local Use_API = true -- à¹€à¸›à¸´à¸”/à¸›à¸´à¸” API (à¸–à¹‰à¸²à¸›à¸´à¸”à¸ˆà¸°à¹ƒà¸Šà¹‰ auto config à¸ˆà¸²à¸ Changes table à¹à¸—à¸™)
+local Api = "https://api.championshop.date" -- ใส่ API ตรงนี้
+local Use_API = true -- เปิด/ปิด API (ถ้าปิดจะใช้ auto config จาก Changes table แทน)
 
 local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request) or request
 if not request then
@@ -281,10 +281,7 @@ local Settings ={
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
     ["Auto Join World Destroyer"] = false,
-    ["Auto Restart"] = {
-        ["Enable"] = false,
-        ["Wave"] = 1,
-    },
+
     ["Auto Stun"] = false,
     ["Auto Priority"] = false,
     ["Priority"] = "First", 
@@ -387,7 +384,7 @@ local Settings ={
     },
 }
 local Changes = {
-    -- à¸–à¹‰à¸²à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¸ªà¸£à¹‰à¸²à¸‡ configs à¹à¸šà¸šà¹„à¸«à¸™à¹ƒà¸«à¹‰ order à¸à¹‡à¹€à¸›à¸¥à¸µà¹ˆà¸¢à¸™à¹à¸›à¸¥à¸‡à¹€à¸«à¸¡à¸·à¸­à¸™à¹ƒà¸ªà¹ˆ config à¸˜à¸£à¸£à¸¡à¸”à¸²à¹„à¸”à¹‰à¹€à¸¥à¸¢ à¸ªà¸£à¹‰à¸²à¸‡à¸„à¸£à¸±à¹‰à¸‡à¸™à¸¶à¸‡à¹à¸¥à¹‰à¸§à¹€à¸«à¸¡à¸·à¸­à¸™à¸à¸±à¸™à¸—à¸¸à¸ order
+    -- ถ้าต้องการสร้าง configs แบบไหนให้ order ก็เปลี่ยนแปลงเหมือนใส่ config ธรรมดาได้เลย สร้างครั้งนึงแล้วเหมือนกันทุก order
     -- ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
     --     Settings["Select Mode"] = "Portal"
     --     Settings["Portal Settings"] = {
@@ -757,70 +754,46 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20,
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Planet Namak",
+        ["FriendsOnly"] = false
+    }
     end,
     ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
     end,
     ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
     end,
     ["87b27182-43d5-4266-9705-86ffa192adb0"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
     end,
     ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
         Settings["Select Mode"] = "Story"
@@ -870,31 +843,23 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Shibuya Station",
+        ["FriendsOnly"] = false
+    }
     end,
     ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-            ["Difficulty"] = "Nightmare",
-            ["Act"] = "Infinite",
-            ["StageType"] = "Story",
-            ["Stage"] = "Planet Namak",
-            ["FriendsOnly"] = false
-        }
-        Settings["Auto Restart"] = {
-            ["Enable"] = true,
-            ["Wave"] = 20, 
-        }
+        ["Difficulty"] = "Nightmare",
+        ["Act"] = "Infinite",
+        ["StageType"] = "Story",
+        ["Stage"] = "Shibuya Station",
+        ["FriendsOnly"] = false
+    }
     end,
     ["427f560e-b78e-4ec9-b711-d451b0312306"] = function()
         Settings["Auto Stun"] = true
@@ -2290,11 +2255,11 @@ local function GetData()
     }
 end
 
--- Helper function à¸ªà¸³à¸«à¸£à¸±à¸šà¹€à¸Šà¹‡à¸„à¹„à¸­à¹€à¸—à¸¡ Temporal Rift (à¹ƒà¸Šà¹‰à¹„à¸”à¹‰à¸—à¸±à¹‰à¸‡ host à¹à¸¥à¸° member)
+-- Helper function สำหรับเช็คไอเทม Temporal Rift (ใช้ได้ทั้ง host และ member)
 local function GetTemporalRiftItem()
     local items = {}
     local success, err = pcall(function()
-        -- à¸«à¸² OwnedItemsHandler à¹‚à¸”à¸¢à¸•à¸£à¸‡
+        -- หา OwnedItemsHandler โดยตรง
         local OwnedItemsHandler = game:GetService("StarterPlayer"):FindFirstChild("OwnedItemsHandler", true)
         if OwnedItemsHandler then
             local inventoryItems = require(OwnedItemsHandler).GetItems()
@@ -2324,7 +2289,7 @@ local function HasTemporalRiftItem()
     return false, 0, nil
 end
 
--- Function à¸ªà¸³à¸«à¸£à¸±à¸šà¹ƒà¸Šà¹‰à¹„à¸­à¹€à¸—à¸¡ Temporal Rift à¸­à¸¢à¹ˆà¸²à¸‡à¸–à¸¹à¸à¸•à¹‰à¸­à¸‡
+-- Function สำหรับใช้ไอเทม Temporal Rift อย่างถูกต้อง
 local function UseTemporalRiftItem(stage)
     stage = stage or "Warlord"
     local hasRift, amount, itemGUID = HasTemporalRiftItem()
@@ -2339,7 +2304,7 @@ local function UseTemporalRiftItem(stage)
     local Networking = game:GetService("ReplicatedStorage"):WaitForChild("Networking")
     local success = true
     
-    -- Step 1: à¹€à¸£à¸µà¸¢à¸ ItemUseEvent à¸à¹ˆà¸­à¸™ (à¸šà¸­à¸ server à¸§à¹ˆà¸²à¸ˆà¸°à¹ƒà¸Šà¹‰à¹„à¸­à¹€à¸—à¸¡)
+    -- Step 1: เรียก ItemUseEvent ก่อน (บอก server ว่าจะใช้ไอเทม)
     pcall(function()
         local ItemUseEvent = Networking:FindFirstChild("ItemUseEvent")
         if ItemUseEvent then
@@ -2348,9 +2313,9 @@ local function UseTemporalRiftItem(stage)
         end
     end)
     
-    task.wait(0.5) -- à¸£à¸­à¹ƒà¸«à¹‰ server process
+    task.wait(0.5) -- รอให้ server process
     
-    -- Step 2: à¹€à¸£à¸µà¸¢à¸ TemporalRiftEvent à¹€à¸žà¸·à¹ˆà¸­à¹€à¸›à¸´à¸” Rift
+    -- Step 2: เรียก TemporalRiftEvent เพื่อเปิด Rift
     pcall(function()
         local TemporalRiftEvent = Networking:FindFirstChild("TemporalRiftEvent")
         if TemporalRiftEvent then
@@ -2442,7 +2407,7 @@ local function Register_Room(myproduct,player)
             return StagesData["Story"][arg]["StageData"]["Name"]
         end
         
-        -- Function à¸”à¸¶à¸‡ MaxPlayers à¸ˆà¸²à¸à¸”à¹ˆà¸²à¸™ (auto à¸ˆà¸²à¸à¹€à¸à¸¡)
+        -- Function ดึง MaxPlayers จากด่าน (auto จากเกม)
         local function GetMaxPlayersFromStage(stageType, stage, act)
             local maxPlayers = 3 -- default
             local success, result = pcall(function()
@@ -2453,7 +2418,7 @@ local function Register_Room(myproduct,player)
                         return actData.MaxPlayers
                     end
                 end
-                -- Fallback: à¸¥à¸­à¸‡à¸”à¸¹à¸ˆà¸²à¸ StagesData table à¹‚à¸”à¸¢à¸•à¸£à¸‡
+                -- Fallback: ลองดูจาก StagesData table โดยตรง
                 if StagesDataModule and StagesDataModule[stageType] then
                     local stageData = StagesDataModule[stageType][stage]
                     if stageData and stageData.Acts and stageData.Acts[act] then
@@ -2474,14 +2439,14 @@ local function Register_Room(myproduct,player)
             return maxPlayers
         end
         
-        -- Function à¸£à¸­à¹ƒà¸«à¹‰ members à¹€à¸‚à¹‰à¸²à¸«à¹‰à¸­à¸‡à¸à¹ˆà¸­à¸™à¹€à¸£à¸´à¹ˆà¸¡ (à¹€à¸£à¸µà¸¢à¸à¸à¹ˆà¸­à¸™ StartMatch)
+        -- Function รอให้ members เข้าห้องก่อนเริ่ม (เรียกก่อน StartMatch)
         local function WaitForMembersReady(membersList)
             if membersList and #membersList > 0 then
                 print("[WaitForMembersReady] Waiting for", #membersList, "members to join lobby...")
-                local maxWait = 60 -- à¸£à¸­à¸ªà¸¹à¸‡à¸ªà¸¸à¸” 60 à¸§à¸´à¸™à¸²à¸—à¸µ
+                local maxWait = 60 -- รอสูงสุด 60 วินาที
                 local waitStart = os.time()
                 
-                -- Function à¹€à¸Šà¹‡à¸„ Players à¸ˆà¸²à¸ MiniLobbyInterface (à¹à¸¡à¹ˆà¸™à¸¢à¸³ 100%)
+                -- Function เช็ค Players จาก MiniLobbyInterface (แม่นยำ 100%)
                 local function GetPlayersInMiniLobby()
                     local success, result = pcall(function()
                         local PlayerGui = Players.LocalPlayer:WaitForChild("PlayerGui", 5)
@@ -2497,9 +2462,9 @@ local function Register_Room(myproduct,player)
                                     if List then
                                         local players = {}
                                         for _, frame in pairs(List:GetChildren()) do
-                                            -- PlayerFrame à¸¡à¸µ Name = UserId
+                                            -- PlayerFrame มี Name = UserId
                                             if frame:IsA("Frame") and tonumber(frame.Name) then
-                                                -- à¸«à¸² Username à¸ˆà¸²à¸ UserId
+                                                -- หา Username จาก UserId
                                                 local userId = tonumber(frame.Name)
                                                 local player = Players:GetPlayerByUserId(userId)
                                                 if player then
@@ -2522,13 +2487,13 @@ local function Register_Room(myproduct,player)
                 end
                 
                 while (os.time() - waitStart) < maxWait do
-                    -- à¸§à¸´à¸˜à¸µà¸«à¸¥à¸±à¸: à¹€à¸Šà¹‡à¸„à¸ˆà¸²à¸ MiniLobbyInterface (à¹à¸¡à¹ˆà¸™à¸¢à¸³ 100%)
+                    -- วิธีหลัก: เช็คจาก MiniLobbyInterface (แม่นยำ 100%)
                     local lobbyPlayers = GetPlayersInMiniLobby()
                     
                     if lobbyPlayers then
                         print("[WaitForMembersReady] MiniLobbyInterface players:", table.concat(lobbyPlayers, ", "))
                         
-                        -- à¸™à¸±à¸š members à¸—à¸µà¹ˆà¸­à¸¢à¸¹à¹ˆà¹ƒà¸™ lobby
+                        -- นับ members ที่อยู่ใน lobby
                         local membersInLobby = 0
                         for _, memberName in ipairs(membersList) do
                             for _, lobbyPlayer in ipairs(lobbyPlayers) do
@@ -2543,18 +2508,18 @@ local function Register_Room(myproduct,player)
                         
                         if membersInLobby >= #membersList then
                             print("[WaitForMembersReady] All", #membersList, "members in MiniLobby! Starting...")
-                            task.wait(2) -- à¸£à¸­à¹€à¸žà¸´à¹ˆà¸¡à¸­à¸µà¸ 2 à¸§à¸´à¸™à¸²à¸—à¸µà¸à¹ˆà¸­à¸™à¹€à¸£à¸´à¹ˆà¸¡
+                            task.wait(2) -- รอเพิ่มอีก 2 วินาทีก่อนเริ่ม
                             return true
                         end
                     else
-                        -- MiniLobbyInterface à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¹€à¸›à¸´à¸” - à¸£à¸­à¸•à¹ˆà¸­
+                        -- MiniLobbyInterface ยังไม่เปิด - รอต่อ
                         print("[WaitForMembersReady] MiniLobbyInterface not found, waiting...")
                     end
                     
                     task.wait(3)
                 end
                 
-                -- Timeout - à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µ member à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¸šà¹‰à¸²à¸‡à¹„à¸«à¸¡
+                -- Timeout - เช็คว่ามี member อยู่ในเกมบ้างไหม
                 local membersInGame = 0
                 for _, memberName in ipairs(membersList) do
                     if Players:FindFirstChild(memberName) then
@@ -2571,7 +2536,7 @@ local function Register_Room(myproduct,player)
                     return false
                 end
             end
-            return true -- à¹„à¸¡à¹ˆà¸¡à¸µ member à¸à¹‡à¹€à¸£à¸´à¹ˆà¸¡à¹€à¸¥à¸¢
+            return true -- ไม่มี member ก็เริ่มเลย
         end
         
         local WaitTime = 30
@@ -2667,7 +2632,7 @@ local function Register_Room(myproduct,player)
                         end
                         
                         if GUID then
-                            -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µ rift_join_time à¸—à¸µà¹ˆà¸•à¸±à¹‰à¸‡à¹‚à¸”à¸¢ member à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                            -- เช็คว่ามี rift_join_time ที่ตั้งโดย member หรือไม่
                             local joinTime = nil
                             if player and #player > 0 then
                                 for _, memberName in ipairs(player) do
@@ -2680,7 +2645,7 @@ local function Register_Room(myproduct,player)
                                 end
                             end
                             
-                            -- à¸–à¹‰à¸²à¸¡à¸µ join time à¸£à¹ˆà¸§à¸¡à¸à¸±à¸™ à¹ƒà¸«à¹‰à¸£à¸­à¸ˆà¸™à¸à¸§à¹ˆà¸²à¸ˆà¸°à¸–à¸¶à¸‡à¹€à¸§à¸¥à¸²
+                            -- ถ้ามี join time ร่วมกัน ให้รอจนกว่าจะถึงเวลา
                             if joinTime and os.time() < joinTime then
                                 print("[Host Auto Join Rift] Waiting for synchronized entry with member...")
                                 while os.time() < joinTime do
@@ -2697,7 +2662,7 @@ local function Register_Room(myproduct,player)
                                 GUID
                             )
                             
-                            -- à¸¥à¸š rift_join_time à¸­à¸­à¸à¸ˆà¸²à¸ cache à¸«à¸¥à¸±à¸‡à¹€à¸‚à¹‰à¸²à¹à¸¥à¹‰à¸§
+                            -- ลบ rift_join_time ออกจาก cache หลังเข้าแล้ว
                             if player and #player > 0 then
                                 for _, memberName in ipairs(player) do
                                     local memberCache = GetCache(memberName)
@@ -2707,21 +2672,21 @@ local function Register_Room(myproduct,player)
                                 end
                             end
                             
-                            hasUsedItem = false -- à¸£à¸µà¹€à¸‹à¹‡à¸•à¹€à¸¡à¸·à¹ˆà¸­à¹€à¸‚à¹‰à¸² Rift à¸ªà¸³à¹€à¸£à¹‡à¸ˆ
+                            hasUsedItem = false -- รีเซ็ตเมื่อเข้า Rift สำเร็จ
                             task.wait(5)
                         else
                             task.wait(3)
                         end
                     else
-                        -- à¹„à¸¡à¹ˆà¸¡à¸µ Rift à¹€à¸›à¸´à¸”à¸­à¸¢à¸¹à¹ˆ
-                        -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µ member à¹€à¸›à¸´à¸” Rift à¹„à¸§à¹‰à¹à¸¥à¹‰à¸§à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ (à¸£à¸­à¸ªà¸±à¸à¸„à¸£à¸¹à¹ˆà¹à¸¥à¹‰à¸§à¹€à¸Šà¹‡à¸„à¸­à¸µà¸à¸„à¸£à¸±à¹‰à¸‡)
+                        -- ไม่มี Rift เปิดอยู่
+                        -- เช็คว่ามี member เปิด Rift ไว้แล้วหรือไม่ (รอสักครู่แล้วเช็คอีกครั้ง)
                         task.wait(2)
                         
-                        -- à¹€à¸Šà¹‡à¸„à¸­à¸µà¸à¸„à¸£à¸±à¹‰à¸‡à¸«à¸¥à¸±à¸‡à¸£à¸­ - à¸–à¹‰à¸²à¸¡à¸µ Rift à¹€à¸›à¸´à¸”à¹à¸¥à¹‰à¸§ = member à¹€à¸›à¸´à¸”à¹„à¸§à¹‰ à¸‚à¹‰à¸²à¸¡à¸à¸²à¸£à¹ƒà¸Šà¹‰à¹„à¸­à¹€à¸—à¸¡
+                        -- เช็คอีกครั้งหลังรอ - ถ้ามี Rift เปิดแล้ว = member เปิดไว้ ข้ามการใช้ไอเทม
                         if workspace:GetAttribute("IsRiftOpen") then
                             print("[Host Auto Join Rift] Rift already opened (by member) - skipping item use")
                         else
-                            -- à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µ Rift â†’ Host à¹ƒà¸Šà¹‰à¹„à¸­à¹€à¸—à¸¡ Temporal Rift
+                            -- ยังไม่มี Rift → Host ใช้ไอเทม Temporal Rift
                             if not hasUsedItem or (os.time() - lastItemUseTime) > 30 then
                                 local hasRift, amount = HasTemporalRiftItem()
                                 
@@ -2737,10 +2702,10 @@ local function Register_Room(myproduct,player)
                                         warn("[Host Auto Join Rift] Failed to use Temporal Rift")
                                     end
                                     
-                                    task.wait(3) -- à¸£à¸­à¹ƒà¸«à¹‰ Rift à¹€à¸›à¸´à¸”
+                                    task.wait(3) -- รอให้ Rift เปิด
                                 else
                                     warn("[Host Auto Join Rift] No Temporal Rift item found")
-                                    task.wait(5) -- à¸£à¸­à¸™à¸²à¸™à¸‚à¸¶à¹‰à¸™à¸–à¹‰à¸²à¹„à¸¡à¹ˆà¸¡à¸µà¹„à¸­à¹€à¸—à¸¡
+                                    task.wait(5) -- รอนานขึ้นถ้าไม่มีไอเทม
                                 end
                             end
                         end
@@ -3036,11 +3001,11 @@ if ID[game.GameId][1] == "AV" then
                     return Insert
                 end
                 
-                -- Cache à¸ªà¸³à¸«à¸£à¸±à¸šà¹€à¸à¹‡à¸š MaxPlayers à¸—à¸µà¹ˆà¸”à¸¶à¸‡à¸¡à¸²à¹à¸¥à¹‰à¸§ (à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡à¸”à¸¶à¸‡à¸‹à¹‰à¸³)
+                -- Cache สำหรับเก็บ MaxPlayers ที่ดึงมาแล้ว (ไม่ต้องดึงซ้ำ)
                 local MaxPlayersCache = {}
                 local StagesDataModule = nil
                 
-                -- à¹‚à¸«à¸¥à¸” StagesData à¸„à¸£à¸±à¹‰à¸‡à¹€à¸”à¸µà¸¢à¸§à¸•à¸­à¸™à¹€à¸£à¸´à¹ˆà¸¡ (à¹„à¸¡à¹ˆ block main loop)
+                -- โหลด StagesData ครั้งเดียวตอนเริ่ม (ไม่ block main loop)
                 task.spawn(function()
                     pcall(function()
                         StagesDataModule = require(game:GetService("ReplicatedStorage").Modules.Data.StagesData)
@@ -3048,16 +3013,16 @@ if ID[game.GameId][1] == "AV" then
                     end)
                 end)
                 
-                -- Function à¸”à¸¶à¸‡ MaxPlayers à¸ˆà¸²à¸ StagesData à¹‚à¸”à¸¢à¸­à¸±à¸•à¹‚à¸™à¸¡à¸±à¸•à¸´
+                -- Function ดึง MaxPlayers จาก StagesData โดยอัตโนมัติ
                 function GetMaxPlayersForProduct(product_id)
                     if not product_id then return 3 end -- default
                     
-                    -- à¹€à¸Šà¹‡à¸„ cache à¸à¹ˆà¸­à¸™
+                    -- เช็ค cache ก่อน
                     if MaxPlayersCache[product_id] then
                         return MaxPlayersCache[product_id]
                     end
                     
-                    -- à¸«à¸² Order_Type à¸ˆà¸²à¸ product_id
+                    -- หา Order_Type จาก product_id
                     local orderType = nil
                     for orderName, orderIds in pairs(Order_Type) do
                         if table.find(orderIds, product_id) then
@@ -3066,7 +3031,7 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end
                     
-                    -- Default values à¸•à¸²à¸¡ mode (fallback)
+                    -- Default values ตาม mode (fallback)
                     local defaultMap = {
                         ["Story"] = 4,
                         ["Legend Stage"] = 4,
@@ -3086,10 +3051,10 @@ if ID[game.GameId][1] == "AV" then
                     
                     local maxPlayers = defaultMap[orderType] or 4
                     
-                    -- à¸¥à¸­à¸‡à¸”à¸¶à¸‡à¸ˆà¸²à¸ StagesData à¸–à¹‰à¸²à¹‚à¸«à¸¥à¸”à¹€à¸ªà¸£à¹‡à¸ˆà¹à¸¥à¹‰à¸§ (à¹„à¸¡à¹ˆ block à¸–à¹‰à¸²à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¹€à¸ªà¸£à¹‡à¸ˆ)
+                    -- ลองดึงจาก StagesData ถ้าโหลดเสร็จแล้ว (ไม่ block ถ้ายังไม่เสร็จ)
                     if StagesDataModule then
                         local success, result = pcall(function()
-                            -- à¹à¸›à¸¥à¸‡ orderType à¹€à¸›à¹‡à¸™ StageType
+                            -- แปลง orderType เป็น StageType
                             local stageTypeMap = {
                                 ["Story"] = "Story",
                                 ["Legend Stage"] = "LegendStage", 
@@ -3107,7 +3072,7 @@ if ID[game.GameId][1] == "AV" then
                             
                             local stageType = stageTypeMap[orderType] or "Story"
                             
-                            -- à¸”à¸¶à¸‡à¸ˆà¸²à¸ StagesData
+                            -- ดึงจาก StagesData
                             if StagesDataModule[stageType] then
                                 for _, stageData in pairs(StagesDataModule[stageType]) do
                                     if stageData and stageData.Acts then
@@ -3127,10 +3092,10 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end
                     
-                    -- MaxPlayers = à¸£à¸§à¸¡ Host à¹à¸¥à¹‰à¸§ à¸”à¸±à¸‡à¸™à¸±à¹‰à¸™ member à¸—à¸µà¹ˆà¸£à¸±à¸šà¹„à¸”à¹‰ = MaxPlayers - 1
+                    -- MaxPlayers = รวม Host แล้ว ดังนั้น member ที่รับได้ = MaxPlayers - 1
                     local maxMembers = maxPlayers - 1
                     
-                    -- Cache à¸œà¸¥à¸¥à¸±à¸žà¸˜à¹Œ
+                    -- Cache ผลลัพธ์
                     MaxPlayersCache[product_id] = maxMembers
                     
                     print("[GetMaxPlayersForProduct] Product:", product_id, "-> OrderType:", orderType, "-> MaxPlayers:", maxPlayers, "-> MaxMembers:", maxMembers)
@@ -3145,15 +3110,15 @@ if ID[game.GameId][1] == "AV" then
                         print("Add Time To ", player.Name)
                     end
                 end
-                -- à¸­à¸±à¸žà¹€à¸”à¸— Counting à¸ˆà¸²à¸ Players à¸—à¸µà¹ˆà¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¹‚à¸”à¸¢à¸•à¸£à¸‡ (à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡à¸£à¸­ chat)
+                -- อัพเดท Counting จาก Players ที่อยู่ในเกมโดยตรง (ไม่ต้องรอ chat)
                 task.spawn(function()
                     while true do
                         task.wait(3)
-                        -- à¹€à¸Šà¹‡à¸„ party members à¸—à¸µà¹ˆà¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡ à¹à¸¥à¸°à¸­à¸±à¸žà¹€à¸”à¸— Counting
+                        -- เช็ค party members ที่อยู่ในเกม และอัพเดท Counting
                         if Current_Party and type(Current_Party) == "table" then
                             for _, memberName in pairs(Current_Party) do
                                 if Players:FindFirstChild(memberName) then
-                                    -- Member à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡ - à¸­à¸±à¸žà¹€à¸”à¸— Counting
+                                    -- Member อยู่ในเกม - อัพเดท Counting
                                     Counting[memberName] = os.time() + 30
                                     print("[Auto Counting] Member in game:", memberName)
                                 end
@@ -3166,39 +3131,39 @@ if ID[game.GameId][1] == "AV" then
                     if cache then
                         print(os.time() , cache["last_online"])
                         if os.time() > cache["last_online"] then
-                            -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µ party_member à¸­à¸¢à¸¹à¹ˆà¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                            -- เช็คว่ามี party_member อยู่หรือไม่
                             if cache["party_member"] and LenT(cache["party_member"]) > 0 then
-                                -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² member à¸—à¸µà¹ˆà¸„à¹‰à¸²à¸‡à¸­à¸¢à¸¹à¹ˆà¸¢à¸±à¸‡à¸¡à¸µ cache à¸­à¸¢à¸¹à¹ˆà¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                -- เช็คว่า member ที่ค้างอยู่ยังมี cache อยู่หรือไม่
                                 local active_members = {}
                                 local has_active_member = false
                                 
                                 for member_name, _ in pairs(cache["party_member"]) do
                                     local member_cache = GetCache(member_name)
                                     if member_cache and member_cache["last_online"] and os.time() <= member_cache["last_online"] then
-                                        -- Member à¸¢à¸±à¸‡à¸¡à¸µ cache à¹à¸¥à¸°à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸«à¸¡à¸”à¸­à¸²à¸¢à¸¸
+                                        -- Member ยังมี cache และยังไม่หมดอายุ
                                         active_members[member_name] = true
                                         has_active_member = true
                                         print("[Host] Member", member_name, "still active")
                                     else
-                                        -- Member à¸«à¸¡à¸”à¸­à¸²à¸¢à¸¸à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆà¸¡à¸µ cache à¹à¸¥à¹‰à¸§
+                                        -- Member หมดอายุหรือไม่มี cache แล้ว
                                         print("[Host] Member", member_name, "is offline - removing from party")
                                     end
                                 end
                                 
                                 if has_active_member then
-                                    -- à¸¡à¸µ member à¸—à¸µà¹ˆà¸¢à¸±à¸‡à¸­à¸¢à¸¹à¹ˆà¸ˆà¸£à¸´à¸‡à¹† â†’ extend last_online à¹à¸¥à¸°à¸­à¸±à¸žà¹€à¸”à¸— party_member
+                                    -- มี member ที่ยังอยู่จริงๆ → extend last_online และอัพเดท party_member
                                     UpdateCache(Username, {
                                         ["last_online"] = os.time() + 200,
                                         ["party_member"] = active_members
                                     })
                                     print("[Host] Has active members - extending last_online")
                                 else
-                                    -- à¹„à¸¡à¹ˆà¸¡à¸µ member à¸—à¸µà¹ˆ active â†’ à¸¥à¸š cache
+                                    -- ไม่มี member ที่ active → ลบ cache
                                     DelCache(Username)
                                     print("[Host] No active members - Delete Cache")
                                 end
                             else
-                                -- à¹„à¸¡à¹ˆà¸¡à¸µ party_member â†’ à¸¥à¸š cache
+                                -- ไม่มี party_member → ลบ cache
                                 DelCache(Username)
                                 print("[Host] No party members - Delete Cache")
                             end
@@ -3220,20 +3185,20 @@ if ID[game.GameId][1] == "AV" then
                                 else
                                     local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
                                     
-                                    -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² member à¸™à¸µà¹‰à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™ party à¹à¸¥à¹‰à¸§à¸«à¸£à¸·à¸­à¸¢à¸±à¸‡ (à¸›à¹‰à¸­à¸‡à¸à¸±à¸™à¸‹à¹‰à¸³)
+                                    -- เช็คว่า member นี้อยู่ใน party แล้วหรือยัง (ป้องกันซ้ำ)
                                     if old_party[message["order"]] then
                                         print("[Host Lobby] Member already in party - skipping:", message["order"])
                                         SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                     else
-                                        -- à¸”à¸¶à¸‡ MaxPlayers à¸•à¸²à¸¡ product_id (auto detect à¸ˆà¸²à¸ mode)
+                                        -- ดึง MaxPlayers ตาม product_id (auto detect จาก mode)
                                         local maxMembers = GetMaxPlayersForProduct(member_cache["product_id"])
                                         
-                                        -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² party à¹€à¸•à¹‡à¸¡à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                        -- เช็คว่า party เต็มหรือไม่
                                         if LenT(old_party) >= maxMembers then
                                             print("[Host Lobby] Party full (", LenT(old_party), "/", maxMembers, ") - rejecting")
                                             SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                         elseif LenT(old_party) == 0 then
-                                            -- Party à¸§à¹ˆà¸²à¸‡ - à¸£à¸±à¸š member à¸„à¸™à¹à¸£à¸à¹„à¸”à¹‰à¹€à¸¥à¸¢ (à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡à¹€à¸Šà¹‡à¸„ order_type)
+                                            -- Party ว่าง - รับ member คนแรกได้เลย (ไม่ต้องเช็ค order_type)
                                             print("[Host Lobby] Party empty - Accepting first member:", member_cache["name"])
                                             old_party[message["order"]] = {
                                                 ["join_time"] = os.time(),
@@ -3246,7 +3211,7 @@ if ID[game.GameId][1] == "AV" then
                                             Waiting_Time = os.time() + 180
                                             print("[Host Lobby] Member accepted - current_play set to:", member_cache["product_id"])
                                         else
-                                            -- à¸¡à¸µ member à¸­à¸¢à¸¹à¹ˆà¹à¸¥à¹‰à¸§ - à¹€à¸Šà¹‡à¸„ order_type à¸à¸±à¸š member à¸„à¸™à¹à¸£à¸
+                                            -- มี member อยู่แล้ว - เช็ค order_type กับ member คนแรก
                                             print("[Host Lobby] Party has members:", LenT(old_party), "- checking order_type")
                                             local first_member_product_id = nil
                                             local lowest = math.huge
@@ -3260,7 +3225,7 @@ if ID[game.GameId][1] == "AV" then
                                             print("[Host Lobby] First member product_id:", first_member_product_id)
                                             print("[Host Lobby] New member product_id:", member_cache["product_id"])
                                             
-                                            -- à¸«à¸² order_type à¸‚à¸­à¸‡ member à¹ƒà¸«à¸¡à¹ˆà¹à¸¥à¸° member à¸„à¸™à¹à¸£à¸
+                                            -- หา order_type ของ member ใหม่และ member คนแรก
                                             local Type_NewMember, Type_FirstMember = nil, nil
                                             for orderName, orderIds in pairs(Order_Type) do
                                                 if table.find(orderIds, member_cache["product_id"]) then
@@ -3273,23 +3238,23 @@ if ID[game.GameId][1] == "AV" then
                                             
                                             print("[Host Lobby] New member type:", Type_NewMember, "First member type:", Type_FirstMember)
                                             
-                                            -- à¸–à¹‰à¸² product_id à¸•à¹ˆà¸²à¸‡à¸à¸±à¸™ à¹à¸¥à¸° (à¸«à¸² type à¹„à¸¡à¹ˆà¹€à¸ˆà¸­ à¸«à¸£à¸·à¸­ type à¹„à¸¡à¹ˆà¸•à¸£à¸‡à¸à¸±à¸™) â†’ reject
+                                            -- ถ้า product_id ต่างกัน และ (หา type ไม่เจอ หรือ type ไม่ตรงกัน) → reject
                                             local shouldReject = false
                                             if member_cache["product_id"] ~= first_member_product_id then
-                                                -- product_id à¸•à¹ˆà¸²à¸‡à¸à¸±à¸™ - à¸•à¹‰à¸­à¸‡à¹€à¸Šà¹‡à¸„ order_type
+                                                -- product_id ต่างกัน - ต้องเช็ค order_type
                                                 if not Type_NewMember or not Type_FirstMember then
-                                                    -- à¸«à¸² order_type à¹„à¸¡à¹ˆà¹€à¸ˆà¸­ - reject à¹€à¸žà¸£à¸²à¸°à¹„à¸¡à¹ˆà¸£à¸¹à¹‰à¸§à¹ˆà¸²à¸•à¸£à¸‡à¸à¸±à¸™à¹„à¸«à¸¡
+                                                    -- หา order_type ไม่เจอ - reject เพราะไม่รู้ว่าตรงกันไหม
                                                     print("[Host Lobby] Cannot determine order_type - rejecting")
                                                     shouldReject = true
                                                 elseif Type_NewMember ~= Type_FirstMember then
-                                                    -- order_type à¹„à¸¡à¹ˆà¸•à¸£à¸‡à¸à¸±à¸™
+                                                    -- order_type ไม่ตรงกัน
                                                     print("[Host Lobby] Order type mismatch - rejecting")
                                                     shouldReject = true
                                                 end
                                             end
                                         
                                             if shouldReject then
-                                                -- Order type à¹„à¸¡à¹ˆà¸•à¸£à¸‡ - reject à¹à¸¥à¸°à¸šà¸­à¸à¹ƒà¸«à¹‰à¹„à¸›à¸«à¸² host à¹ƒà¸«à¸¡à¹ˆ
+                                                -- Order type ไม่ตรง - reject และบอกให้ไปหา host ใหม่
                                                 print("[Host Lobby] Order type mismatch - rejecting")
                                                 SendCache(
                                                     {["index"] = message["order"] .. "-reject"},
@@ -3302,7 +3267,7 @@ if ID[game.GameId][1] == "AV" then
                                                 )
                                                 SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                             else
-                                                -- Order type à¸•à¸£à¸‡à¸à¸±à¸™ - à¸£à¸±à¸šà¹€à¸¥à¸¢
+                                                -- Order type ตรงกัน - รับเลย
                                                 print("[Host Lobby] Order type match - accepting:", member_cache["name"])
                                                 old_party[message["order"]] = {
                                                     ["join_time"] = os.time(),
@@ -3355,12 +3320,12 @@ if ID[game.GameId][1] == "AV" then
                                 print("cannot get cache 3")
                             end
                             if not Current_Party or #Current_Party <= 0 then
-                                -- Host Auto Config: à¸–à¹‰à¸²à¹„à¸¡à¹ˆà¸¡à¸µ want_carry à¹à¸¥à¸°à¹„à¸¡à¹ˆà¸¡à¸µ party member à¹ƒà¸«à¹‰à¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™ auto config à¹„à¸”à¹‰
+                                -- Host Auto Config: ถ้าไม่มี want_carry และไม่มี party member ให้เข้าเล่น auto config ได้
                                 if Use_API then
                                     local hostData = Fetch_data()
                                     if hostData and hostData["product_id"] then
                                         local hasWantCarry = false
-                                        -- à¸•à¸£à¸§à¸ˆà¸ªà¸­à¸šà¸§à¹ˆà¸²à¸¡à¸µà¹ƒà¸„à¸£à¸à¸” want_carry à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                        -- ตรวจสอบว่ามีใครกด want_carry หรือไม่
                                         for _, orderType in pairs(Order_Type) do
                                             for _, prodId in pairs(orderType) do
                                                 local otherCache = GetCache(prodId .. "_cache_1")
@@ -3373,34 +3338,34 @@ if ID[game.GameId][1] == "AV" then
                                         end
                                         
                                         if not hasWantCarry then
-                                            -- à¹„à¸¡à¹ˆà¸¡à¸µ want_carry - à¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™ auto config à¹€à¸¥à¸¢ (à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡à¸£à¸­ member)
+                                            -- ไม่มี want_carry - เข้าเล่น auto config เลย (ไม่ต้องรอ member)
                                             print("[Host Auto Config] No member request - starting auto config for:", hostData["product_id"])
-                                            -- Set host_id (Host's own product) - à¹„à¸¡à¹ˆà¹ƒà¸Šà¹ˆ current_play à¹€à¸žà¸£à¸²à¸°à¸™à¸±à¹ˆà¸™à¸ªà¸³à¸«à¸£à¸±à¸š party system
+                                            -- Set host_id (Host's own product) - ไม่ใช่ current_play เพราะนั่นสำหรับ party system
                                             UpdateCache(Username, {["host_id"] = hostData["product_id"]})
                                             
-                                            -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¹€à¸›à¹‡à¸™ Rift à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                            -- เช็คว่าเป็น Rift หรือไม่
                                             local isRiftProduct = table.find(Order_Type["Rift"] or {}, hostData["product_id"]) ~= nil
                                             if isRiftProduct then
-                                                -- Rift: à¹ƒà¸Šà¹‰à¸£à¸°à¸šà¸š Auto Join Rift à¸ªà¸³à¸«à¸£à¸±à¸šà¸—à¸¸à¸ stage
+                                                -- Rift: ใช้ระบบ Auto Join Rift สำหรับทุก stage
                                                 print("[Host Auto Config] RIFT order - enabling Auto Join Rift")
                                                 Settings["Auto Join Rift"] = true
-                                                -- à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡ Register_Room à¹€à¸žà¸£à¸²à¸° Auto Join Rift à¸ˆà¸°à¸ˆà¸±à¸”à¸à¸²à¸£à¹ƒà¸«à¹‰
+                                                -- ไม่ต้อง Register_Room เพราะ Auto Join Rift จะจัดการให้
                                             else
-                                                -- Auto Select Items à¸ˆà¸²à¸ selected_items (à¸£à¸­à¸‡à¸£à¸±à¸š Act, Stage, à¹à¸¥à¸° items)
+                                                -- Auto Select Items จาก selected_items (รองรับ Act, Stage, และ items)
                                                 if hostData["selected_items"] then
                                                     local Insert = {}
                                                     local SelectedAct = nil
                                                     local SelectedStage = nil
                                                     for _, v in pairs(hostData["selected_items"]) do
-                                                        -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µ act field à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ (format: {name="Double Dungeon", act="Act 3"})
+                                                        -- เช็คว่ามี act field หรือไม่ (format: {name="Double Dungeon", act="Act 3"})
                                                         if v.act then
                                                             SelectedAct = v.act
                                                         end
                                                         if v.name then
-                                                            -- à¸–à¹‰à¸²à¸¡à¸µ act field à¹à¸¢à¸ = name à¸„à¸·à¸­ Stage
+                                                            -- ถ้ามี act field แยก = name คือ Stage
                                                             if v.act then
                                                                 SelectedStage = v.name
-                                                            -- à¸–à¹‰à¸²à¹„à¸¡à¹ˆà¸¡à¸µ act field = à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² name à¹€à¸›à¹‡à¸™ Act à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                                            -- ถ้าไม่มี act field = เช็คว่า name เป็น Act หรือไม่
                                                             elseif v.name:match("^Act%s*%d+$") or v.name:match("^Act%d+$") or v.name == "Infinite" then
                                                                 SelectedAct = v.name
                                                             elseif v.type == "stage" or v.type == "Stage" then
@@ -3410,7 +3375,7 @@ if ID[game.GameId][1] == "AV" then
                                                             end
                                                         end
                                                     end
-                                                    -- Apply Act à¹à¸¥à¸° Stage (à¹ƒà¸Šà¹‰à¸„à¹ˆà¸²à¸­à¸·à¹ˆà¸™à¸ˆà¸²à¸ Changes[product_id])
+                                                    -- Apply Act และ Stage (ใช้ค่าอื่นจาก Changes[product_id])
                                                     if SelectedAct then
                                                         if Settings["Story Settings"] then Settings["Story Settings"]["Act"] = SelectedAct end
                                                         if Settings["Dungeon Settings"] then Settings["Dungeon Settings"]["Act"] = SelectedAct end
@@ -3428,7 +3393,7 @@ if ID[game.GameId][1] == "AV" then
                                                         print("[Host Auto Config] Selected items:", table.concat(Insert, ", "))
                                                     end
                                                 end
-                                                -- à¹€à¸£à¸µà¸¢à¸ Register_Room à¹€à¸žà¸·à¹ˆà¸­à¹€à¸‚à¹‰à¸²à¹€à¸¥à¹ˆà¸™à¸ˆà¸£à¸´à¸‡ (à¹„à¸¡à¹ˆà¸¡à¸µ party member)
+                                                -- เรียก Register_Room เพื่อเข้าเล่นจริง (ไม่มี party member)
                                                 local p, c = pcall(function()
                                                     Register_Room(hostData["product_id"], {})
                                                 end)
@@ -3437,9 +3402,9 @@ if ID[game.GameId][1] == "AV" then
                                                 end
                                             end
                                         else
-                                            -- à¸¡à¸µà¸„à¸™à¸à¸” want_carry - à¸£à¸­à¸£à¸±à¸š member
+                                            -- มีคนกด want_carry - รอรับ member
                                             Waiting_Time = os.time() + 150
-                                            print("[Host] à¸¡à¸µà¸„à¸™ want_carry - à¸£à¸­à¸£à¸±à¸š member")
+                                            print("[Host] มีคน want_carry - รอรับ member")
                                             print("Add Time To Waiting Time")
                                         end
                                     else
@@ -3453,7 +3418,7 @@ if ID[game.GameId][1] == "AV" then
                             else
                                 print(#Current_Party)
                                 if os.time() > Waiting_Time then
-                                    -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² member à¸—à¸¸à¸à¸„à¸™à¹€à¸‚à¹‰à¸²à¹€à¸à¸¡à¹à¸¥à¸° active à¹à¸¥à¹‰à¸§à¸«à¸£à¸·à¸­à¸¢à¸±à¸‡
+                                    -- เช็คว่า member ทุกคนเข้าเกมและ active แล้วหรือยัง
                                     local allActivated = All_Players_Activated()
                                     local allInGame = All_Players_Game()
                                     
@@ -3467,10 +3432,10 @@ if ID[game.GameId][1] == "AV" then
                                             end
                                         end
                                         
-                                        -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¹€à¸›à¹‡à¸™ Rift à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                        -- เช็คว่าเป็น Rift หรือไม่
                                         local isRiftProduct = table.find(Order_Type["Rift"] or {}, Product) ~= nil
                                         if isRiftProduct then
-                                            -- Rift: à¹€à¸£à¸µà¸¢à¸ Register_Room à¹€à¸žà¸·à¹ˆà¸­à¹€à¸›à¸´à¸” Auto Join Rift loop
+                                            -- Rift: เรียก Register_Room เพื่อเปิด Auto Join Rift loop
                                             print("[Host] RIFT order - starting Register_Room for Rift")
                                             local p,c = pcall(function()
                                                 Register_Room(Product, Current_Party)
@@ -3488,17 +3453,17 @@ if ID[game.GameId][1] == "AV" then
                                             end
                                         end
                                     else
-                                        -- à¸«à¸¡à¸”à¹€à¸§à¸¥à¸²à¹à¸¥à¹‰à¸§ à¹à¸•à¹ˆ member à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸žà¸£à¹‰à¸­à¸¡
+                                        -- หมดเวลาแล้ว แต่ member ยังไม่พร้อม
                                         print("[Host] Timeout but members not ready - Activated:", allActivated, "InGame:", allInGame)
                                         
-                                        -- à¹€à¸Šà¹‡à¸„à¹à¸•à¹ˆà¸¥à¸° member
+                                        -- เช็คแต่ละ member
                                         for i, memberName in pairs(Current_Party) do
                                             local inGame = game:GetService("Players"):FindFirstChild(memberName) ~= nil
                                             local activated = Counting[memberName] and os.time() <= Counting[memberName]
                                             print("[Host] Member", memberName, "- InGame:", inGame, "Activated:", activated)
                                         end
                                         
-                                        -- à¸•à¹ˆà¸­à¹€à¸§à¸¥à¸²à¸­à¸µà¸ 30 à¸§à¸´à¸™à¸²à¸—à¸µ
+                                        -- ต่อเวลาอีก 30 วินาที
                                         Waiting_Time = os.time() + 30
                                         print("[Host] Extended waiting time by 30 seconds")
                                     end
@@ -3508,10 +3473,10 @@ if ID[game.GameId][1] == "AV" then
                             end
                         end
                     else
-                        -- à¸”à¸¶à¸‡ host_id à¸ˆà¸²à¸ API
+                        -- ดึง host_id จาก API
                         local hostData = Fetch_data()
                         local hostProductId = hostData and hostData["product_id"] or ""
-                        -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² host à¸¡à¸µ Temporal Rift item à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                        -- เช็คว่า host มี Temporal Rift item หรือไม่
                         local hostHasRiftItem = HasTemporalRiftItem()
                         SendCache(
                                 {
@@ -3520,10 +3485,10 @@ if ID[game.GameId][1] == "AV" then
                                 {
                                     ["value"] = {
                                         ["last_online"] = os.time() + 400,
-                                        ["host_id"] = hostProductId, -- Host's own product_id (à¹„à¸¡à¹ˆà¹€à¸à¸µà¹ˆà¸¢à¸§à¸à¸±à¸š party)
+                                        ["host_id"] = hostProductId, -- Host's own product_id (ไม่เกี่ยวกับ party)
                                         ["current_play"] = "",       -- Party system (Member's product_id)
                                         ["party_member"] = {},
-                                        ["has_rift_item"] = hostHasRiftItem, -- à¹ƒà¸«à¹‰ member à¸£à¸¹à¹‰à¸§à¹ˆà¸² host à¸¡à¸µà¹„à¸­à¹€à¸—à¸¡ Rift à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                        ["has_rift_item"] = hostHasRiftItem, -- ให้ member รู้ว่า host มีไอเทม Rift หรือไม่
                                 }
                             }
                         )
@@ -3533,7 +3498,7 @@ if ID[game.GameId][1] == "AV" then
             end)
         else
             task.spawn(function()
-                -- à¸£à¸­à¹ƒà¸«à¹‰à¹€à¸à¸¡à¹‚à¸«à¸¥à¸”à¹€à¸ªà¸£à¹‡à¸ˆà¸à¹ˆà¸­à¸™
+                -- รอให้เกมโหลดเสร็จก่อน
                 print("[Member Loading] Waiting for game to load...")
                 task.wait(math.random(10,15))
                 print("[Member Loading] Game loaded, starting...")
@@ -3543,31 +3508,31 @@ if ID[game.GameId][1] == "AV" then
                 local orderid = data["id"]
                 local cache_key = orderid .. "_cache_1"
                 
-                -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¹€à¸›à¹‡à¸™ Rift order_type à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ â†’ à¹€à¸›à¸´à¸” Auto Join Rift
+                -- เช็คว่าเป็น Rift order_type หรือไม่ → เปิด Auto Join Rift
                 local isRiftOrder = table.find(Order_Type["Rift"] or {}, productid) ~= nil
                 if isRiftOrder then
-                    -- Rift: à¹€à¸›à¸´à¸” Auto Join Rift à¸ªà¸³à¸«à¸£à¸±à¸šà¸—à¸¸à¸ stage (à¸£à¸§à¸¡ Warlord)
+                    -- Rift: เปิด Auto Join Rift สำหรับทุก stage (รวม Warlord)
                     print("[Member] RIFT order - Will start Auto Join Rift after finding party")
                     
-                    -- Member à¸•à¹‰à¸­à¸‡à¸£à¸­à¸ˆà¸™à¸à¸§à¹ˆà¸²à¸ˆà¸°à¸¡à¸µ party à¹à¸¥à¸° host à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¸à¹ˆà¸­à¸™
+                    -- Member ต้องรอจนกว่าจะมี party และ host อยู่ในเกมก่อน
                     task.spawn(function()
                         local hasUsedItem = false
                         local lastItemUseTime = 0
                         local waitingForHostStartTime = 0
                         local checkedHostItem = false
-                        local hostHasItem = nil -- nil = à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¹€à¸Šà¹‡à¸„, true = à¸¡à¸µ, false = à¹„à¸¡à¹ˆà¸¡à¸µ
+                        local hostHasItem = nil -- nil = ยังไม่เช็ค, true = มี, false = ไม่มี
                         local riftLoopStarted = false
-                        local WAIT_TIME = 180 -- à¸£à¸­ 60 à¸§à¸´à¸™à¸²à¸—à¸µà¸à¹ˆà¸­à¸™à¹€à¸‚à¹‰à¸² Rift à¸žà¸£à¹‰à¸­à¸¡ Host
+                        local WAIT_TIME = 180 -- รอ 60 วินาทีก่อนเข้า Rift พร้อม Host
                         local waitCompleted = false
                         
                         while true do
-                            -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¡à¸µ party à¹à¸¥à¸° host à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¸«à¸£à¸·à¸­à¸¢à¸±à¸‡
+                            -- เช็คว่ามี party และ host อยู่ในเกมหรือยัง
                             local myCache = GetCache(cache_key)
                             local hasParty = myCache and myCache["party"] and #myCache["party"] > 1
                             local hostInGame = hasParty and game:GetService("Players"):FindFirstChild(myCache["party"])
                             
                             if not hasParty then
-                                -- à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µ party = à¸£à¸­ (à¹„à¸¡à¹ˆà¸—à¸³à¸­à¸°à¹„à¸£)
+                                -- ยังไม่มี party = รอ (ไม่ทำอะไร)
                                 if riftLoopStarted then
                                     print("[Member Auto Join Rift] Lost party - pausing...")
                                     riftLoopStarted = false
@@ -3579,7 +3544,7 @@ if ID[game.GameId][1] == "AV" then
                                 end
                                 task.wait(3)
                             elseif not hostInGame then
-                                -- à¸¡à¸µ party à¹à¸•à¹ˆ host à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡ = à¸£à¸­ host à¸¡à¸²
+                                -- มี party แต่ host ยังไม่อยู่ในเกม = รอ host มา
                                 print("[Member Auto Join Rift] Waiting for host to join game...")
                                 checkedHostItem = false
                                 hostHasItem = nil
@@ -3587,13 +3552,13 @@ if ID[game.GameId][1] == "AV" then
                                 waitCompleted = false
                                 task.wait(3)
                             else
-                                -- à¸¡à¸µ party à¹à¸¥à¸° host à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¹à¸¥à¹‰à¸§
+                                -- มี party และ host อยู่ในเกมแล้ว
                                 if not riftLoopStarted then
                                     print("[Member Auto Join Rift] Party found, host in game - Checking host item...")
                                     riftLoopStarted = true
                                 end
                                 
-                                -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² Host à¸¡à¸µà¹„à¸­à¹€à¸—à¸¡à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ (à¹€à¸Šà¹‡à¸„à¸„à¸£à¸±à¹‰à¸‡à¹€à¸”à¸µà¸¢à¸§)
+                                -- เช็คว่า Host มีไอเทมหรือไม่ (เช็คครั้งเดียว)
                                 if not checkedHostItem then
                                     local hostCache = GetCache(myCache["party"])
                                     if hostCache then
@@ -3602,40 +3567,40 @@ if ID[game.GameId][1] == "AV" then
                                         print("[Member Auto Join Rift] Host has rift item:", hostHasItem)
                                         
                                         if hostHasItem then
-                                            -- Host à¸¡à¸µà¹„à¸­à¹€à¸—à¸¡ â†’ à¹€à¸£à¸´à¹ˆà¸¡à¸™à¸±à¸šà¹€à¸§à¸¥à¸²à¸£à¸­
+                                            -- Host มีไอเทม → เริ่มนับเวลารอ
                                             waitingForHostStartTime = os.time()
                                             print("[Member Auto Join Rift] Host has item - Starting wait timer (", WAIT_TIME, "s)")
                                         else
-                                            -- Host à¹„à¸¡à¹ˆà¸¡à¸µà¹„à¸­à¹€à¸—à¸¡ â†’ Member à¸•à¹‰à¸­à¸‡à¹ƒà¸Šà¹‰à¹€à¸­à¸‡ (à¹„à¸¡à¹ˆà¸•à¹‰à¸­à¸‡à¸£à¸­)
+                                            -- Host ไม่มีไอเทม → Member ต้องใช้เอง (ไม่ต้องรอ)
                                             print("[Member Auto Join Rift] Host has NO item - Member will use own item immediately")
-                                            waitCompleted = true -- à¸‚à¹‰à¸²à¸¡à¸à¸²à¸£à¸£à¸­
+                                            waitCompleted = true -- ข้ามการรอ
                                         end
                                     else
                                         task.wait(2)
                                     end
                                 end
                                 
-                                -- à¸–à¹‰à¸²à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¹„à¸”à¹‰à¹€à¸Šà¹‡à¸„ Host item = à¸£à¸­
+                                -- ถ้ายังไม่ได้เช็ค Host item = รอ
                                 if not checkedHostItem then
                                     task.wait(2)
                                 else
-                                    -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸£à¸­à¸„à¸£à¸šà¹€à¸§à¸¥à¸²à¸«à¸£à¸·à¸­à¸¢à¸±à¸‡ (à¸–à¹‰à¸² Host à¸¡à¸µà¹„à¸­à¹€à¸—à¸¡)
+                                    -- เช็คว่ารอครบเวลาหรือยัง (ถ้า Host มีไอเทม)
                                     if hostHasItem and not waitCompleted then
                                         local waitingTime = os.time() - waitingForHostStartTime
                                         if waitingTime < WAIT_TIME then
-                                            -- à¸¢à¸±à¸‡à¸£à¸­à¹„à¸¡à¹ˆà¸„à¸£à¸š = à¸£à¸­à¸•à¹ˆà¸­
+                                            -- ยังรอไม่ครบ = รอต่อ
                                             print("[Member Auto Join Rift] Waiting for host... (", waitingTime, "/", WAIT_TIME, "s)")
                                             task.wait(5)
                                         else
-                                            -- à¸£à¸­à¸„à¸£à¸šà¹à¸¥à¹‰à¸§
+                                            -- รอครบแล้ว
                                             print("[Member Auto Join Rift] Wait completed! Ready to join with host")
                                             waitCompleted = true
                                         end
                                     end
                                     
-                                    -- à¸–à¹‰à¸²à¸£à¸­à¸„à¸£à¸šà¹à¸¥à¹‰à¸§ à¸«à¸£à¸·à¸­ Host à¹„à¸¡à¹ˆà¸¡à¸µà¹„à¸­à¹€à¸—à¸¡ = à¹€à¸£à¸´à¹ˆà¸¡à¸—à¸³à¸‡à¸²à¸™
+                                    -- ถ้ารอครบแล้ว หรือ Host ไม่มีไอเทม = เริ่มทำงาน
                                     if waitCompleted then
-                                        -- à¹„à¸¡à¹ˆà¸¡à¸µ Rift à¹€à¸›à¸´à¸”à¸­à¸¢à¸¹à¹ˆ à¹à¸¥à¸° Host à¹„à¸¡à¹ˆà¸¡à¸µà¹„à¸­à¹€à¸—à¸¡ â†’ Member à¹ƒà¸Šà¹‰à¹„à¸­à¹€à¸—à¸¡à¹€à¸›à¸´à¸”à¹€à¸­à¸‡
+                                        -- ไม่มี Rift เปิดอยู่ และ Host ไม่มีไอเทม → Member ใช้ไอเทมเปิดเอง
                                         if not workspace:GetAttribute("IsRiftOpen") and not hostHasItem then
                                             if not hasUsedItem or (os.time() - lastItemUseTime) > 60 then
                                                 local hasRift, amount = HasTemporalRiftItem()
@@ -3648,7 +3613,7 @@ if ID[game.GameId][1] == "AV" then
                                                         hasUsedItem = true
                                                         lastItemUseTime = os.time()
                                                         
-                                                        -- à¸•à¸±à¹‰à¸‡à¹€à¸§à¸¥à¸²à¹€à¸‚à¹‰à¸² Rift à¸£à¹ˆà¸§à¸¡à¸à¸±à¸™ (5 à¸§à¸´à¸™à¸²à¸—à¸µà¸ˆà¸²à¸à¸•à¸­à¸™à¸™à¸µà¹‰)
+                                                        -- ตั้งเวลาเข้า Rift ร่วมกัน (5 วินาทีจากตอนนี้)
                                                         local joinTime = os.time() + 5
                                                         UpdateCache(LocalPlayer.Name, {["rift_join_time"] = joinTime})
                                                         print("[Member Auto Join Rift] Set shared join time:", joinTime)
@@ -3661,16 +3626,16 @@ if ID[game.GameId][1] == "AV" then
                                                     task.wait(10)
                                                 end
                                             end
-                                        -- à¸¡à¸µ Rift à¹€à¸›à¸´à¸”à¸­à¸¢à¸¹à¹ˆà¹à¸¥à¹‰à¸§ â†’ à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² Host à¸à¸¥à¸±à¸šà¸¡à¸²à¸«à¸£à¸·à¸­à¸¢à¸±à¸‡
+                                        -- มี Rift เปิดอยู่แล้ว → เช็คว่า Host กลับมาหรือยัง
                                         elseif workspace:GetAttribute("IsRiftOpen") then
                                             local myCache = GetCache(cache_key)
                                             local hostName = myCache and myCache["party"]
                                             local hostInGame = hostName and game:GetService("Players"):FindFirstChild(hostName)
                                             
                                             if hostInGame then
-                                                -- Host à¸à¸¥à¸±à¸šà¸¡à¸²à¹ƒà¸™à¹€à¸à¸¡à¹à¸¥à¹‰à¸§ â†’ à¸£à¸­à¸ªà¸±à¸à¸„à¸£à¸¹à¹ˆà¹à¸¥à¹‰à¸§ join à¸”à¹‰à¸§à¸¢à¸à¸±à¸™
+                                                -- Host กลับมาในเกมแล้ว → รอสักครู่แล้ว join ด้วยกัน
                                                 print("[Member Auto Join Rift] Host is back! Waiting a moment before joining together...")
-                                                task.wait(3) -- à¸£à¸­ Host à¹€à¸•à¸£à¸µà¸¢à¸¡à¸•à¸±à¸§
+                                                task.wait(3) -- รอ Host เตรียมตัว
                                                 
                                                 local Rift = require(game:GetService("StarterPlayer").Modules.Gameplay.Rifts.RiftsDataHandler)
                                                 local GUID = nil
@@ -3698,12 +3663,12 @@ if ID[game.GameId][1] == "AV" then
                                                     task.wait(3)
                                                 end
                                             else
-                                                -- Host à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸à¸¥à¸±à¸šà¸¡à¸² â†’ à¸£à¸­à¸•à¹ˆà¸­
+                                                -- Host ยังไม่กลับมา → รอต่อ
                                                 print("[Member Auto Join Rift] Rift opened - Waiting for Host to return before joining...")
                                                 task.wait(3)
                                             end
                                         else
-                                            -- Host à¸¡à¸µà¹„à¸­à¹€à¸—à¸¡ â†’ à¸£à¸­ Host à¹€à¸›à¸´à¸” Rift
+                                            -- Host มีไอเทม → รอ Host เปิด Rift
                                             if hostHasItem then
                                                 print("[Member Auto Join Rift] Waiting for host to open Rift...")
                                             end
@@ -3722,7 +3687,7 @@ if ID[game.GameId][1] == "AV" then
                     Secret Key Example
                     "orderid_cache_1"
                 ]]
-                local rejected_hosts = {} -- à¹€à¸à¹‡à¸š list à¸‚à¸­à¸‡ host à¸—à¸µà¹ˆ reject à¹à¸¥à¹‰à¸§ à¸ˆà¸°à¹„à¸¡à¹ˆà¸ªà¹ˆà¸‡ request à¸‹à¹‰à¸³
+                local rejected_hosts = {} -- เก็บ list ของ host ที่ reject แล้ว จะไม่ส่ง request ซ้ำ
                 Networking.Invites.InviteBannerEvent.OnClientEvent:Connect(function(type_,value_)
                     print(cache_1["party"],value_["InvitedBy"])
                     if type_ == "Create" and tostring(value_["InvitedBy"]) == cache_1["party"] then
@@ -3794,24 +3759,24 @@ if ID[game.GameId][1] == "AV" then
                                 warn("Not Found My Name In Party")
                                 task.wait(2)
                             elseif os.time() > party["last_online"] then
-                                -- Host offline - à¹à¸•à¹ˆà¸–à¹‰à¸²à¸¡à¸µà¸Šà¸·à¹ˆà¸­à¹€à¸£à¸²à¹ƒà¸™ party_member à¹à¸ªà¸”à¸‡à¸§à¹ˆà¸² Host à¸à¸³à¸¥à¸±à¸‡à¸¡à¸²à¸£à¸±à¸š
+                                -- Host offline - แต่ถ้ามีชื่อเราใน party_member แสดงว่า Host กำลังมารับ
                                 if party["party_member"] and party["party_member"][cache_key] then
-                                    -- à¹€à¸Šà¹‡à¸„ timeout - à¸–à¹‰à¸²à¸£à¸­à¸™à¸²à¸™à¹€à¸à¸´à¸™ 120 à¸§à¸´à¸™à¸²à¸—à¸µ à¹ƒà¸«à¹‰à¸£à¸µà¹€à¸‹à¹‡à¸• party à¸«à¸² Host à¹ƒà¸«à¸¡à¹ˆ
+                                    -- เช็ค timeout - ถ้ารอนานเกิน 120 วินาที ให้รีเซ็ต party หา Host ใหม่
                                     local myJoinTime = party["party_member"][cache_key]["join_time"] or 0
                                     local waitingTime = os.time() - myJoinTime
                                     
                                     if waitingTime > 240 then
-                                        -- à¸£à¸­à¸™à¸²à¸™à¹€à¸à¸´à¸™à¹„à¸› - à¸£à¸µà¹€à¸‹à¹‡à¸• party à¸«à¸² Host à¹ƒà¸«à¸¡à¹ˆ
+                                        -- รอนานเกินไป - รีเซ็ต party หา Host ใหม่
                                         warn("[Member] Timeout waiting for Host (" .. waitingTime .. "s) - finding new Host...")
                                         UpdateCache(cache_key, {["party"] = ""})
                                         task.wait(2)
                                     else
-                                        -- à¸¢à¸±à¸‡à¹„à¸¡à¹ˆ timeout - à¸£à¸­à¸•à¹ˆà¸­
+                                        -- ยังไม่ timeout - รอต่อ
                                         warn("Host offline but accepted - waiting for Host to come... (" .. waitingTime .. "s)")
                                         task.wait(5)
                                     end
                                 else
-                                    -- Host offline à¸ˆà¸£à¸´à¸‡à¹† à¹à¸¥à¸°à¹„à¸¡à¹ˆà¸¡à¸µà¸Šà¸·à¹ˆà¸­à¹€à¸£à¸² - à¸¥à¸š party
+                                    -- Host offline จริงๆ และไม่มีชื่อเรา - ลบ party
                                     UpdateCache(cache_key,{["party"] = ""})
                                     warn("Not Active")
                                     task.wait(2)
@@ -3820,37 +3785,37 @@ if ID[game.GameId][1] == "AV" then
                                 if Players:FindFirstChild(cache["party"]) then
                                     channel:SendAsync(math.random(1,100)) 
                                     warn("Host is Online!!")
-                                    -- Set Party_Host à¸ªà¸³à¸«à¸£à¸±à¸š Auto Join Rift
+                                    -- Set Party_Host สำหรับ Auto Join Rift
                                     _G.Party_Host = cache["party"]
                                     print("[Member] Set Party_Host:", _G.Party_Host)
-                                    -- Rift: Portal à¸ˆà¸°à¸–à¸¹à¸ Join à¸­à¸±à¸•à¹‚à¸™à¸¡à¸±à¸•à¸´à¸œà¹ˆà¸²à¸™ PortalReplicationEvent listener à¸—à¸µà¹ˆà¸¡à¸µà¸­à¸¢à¸¹à¹ˆà¹à¸¥à¹‰à¸§
+                                    -- Rift: Portal จะถูก Join อัตโนมัติผ่าน PortalReplicationEvent listener ที่มีอยู่แล้ว
                                 else
-                                    -- Host à¹„à¸¡à¹ˆà¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¹€à¸”à¸µà¸¢à¸§à¸à¸±à¸™ - à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² Host à¸¢à¸±à¸‡à¸¡à¸µà¸Šà¸·à¹ˆà¸­à¹€à¸£à¸²à¹ƒà¸™ party_member à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
-                                    -- à¸–à¹‰à¸²à¸¡à¸µà¹à¸ªà¸”à¸‡à¸§à¹ˆà¸² Host à¸à¸³à¸¥à¸±à¸‡à¸­à¸­à¸à¸¡à¸²à¸£à¸±à¸š à¹ƒà¸«à¹‰à¸£à¸­
+                                    -- Host ไม่อยู่ในเกมเดียวกัน - เช็คว่า Host ยังมีชื่อเราใน party_member หรือไม่
+                                    -- ถ้ามีแสดงว่า Host กำลังออกมารับ ให้รอ
                                     if party["party_member"] and party["party_member"][cache_key] then
                                         task.wait(5)
                                     else
-                                        -- à¹€à¸Šà¹‡à¸„ reject message à¸à¹ˆà¸­à¸™
+                                        -- เช็ค reject message ก่อน
                                         local rejectMsg = GetCache(cache_key .. "-reject")
                                         if rejectMsg and rejectMsg["expire"] and rejectMsg["expire"] >= os.time() then
                                             print("[Member] Rejected by:", rejectMsg["rejected_by"], "Reason:", rejectMsg["reason"])
-                                            -- à¹€à¸žà¸´à¹ˆà¸¡ host à¸—à¸µà¹ˆ reject à¹€à¸‚à¹‰à¸² list
+                                            -- เพิ่ม host ที่ reject เข้า list
                                             if rejectMsg["rejected_by"] and not table.find(rejected_hosts, rejectMsg["rejected_by"]) then
                                                 table.insert(rejected_hosts, rejectMsg["rejected_by"])
                                                 print("[Member] Added to rejected_hosts:", rejectMsg["rejected_by"])
                                             end
-                                            -- à¸¥à¸š pending_host à¹à¸¥à¸° reject message
+                                            -- ลบ pending_host และ reject message
                                             UpdateCache(cache_key, {["pending_host"] = ""})
                                             DelCache(cache_key .. "-reject")
                                             print("[Member] Finding new host after rejection...")
                                             task.wait(2)
                                         elseif cache["pending_host"] and #cache["pending_host"] > 1 then
-                                            -- à¸¡à¸µ pending_host à¹à¸¥à¹‰à¸§ - à¸£à¸­ Host à¸„à¸™à¸™à¸±à¹‰à¸™à¸•à¸­à¸šà¸à¸¥à¸±à¸š
+                                            -- มี pending_host แล้ว - รอ Host คนนั้นตอบกลับ
                                             local pendingHost = cache["pending_host"]
                                             local pendingTimestamp = cache["pending_timestamp"] or 0
                                             local hostCache = GetCache(pendingHost)
                                             
-                                            -- à¹€à¸Šà¹‡à¸„ timeout (120 à¸§à¸´à¸™à¸²à¸—à¸µ à¹à¸•à¹ˆà¸–à¹‰à¸² Host à¸£à¸±à¸šà¹à¸¥à¹‰à¸§à¹„à¸¡à¹ˆà¸¡à¸µ timeout)
+                                            -- เช็ค timeout (120 วินาที แต่ถ้า Host รับแล้วไม่มี timeout)
                                             local isAccepted = hostCache and hostCache["party_member"] and hostCache["party_member"][cache_key]
                                             local timeoutDuration = isAccepted and math.huge or 240
                                             
@@ -3859,22 +3824,22 @@ if ID[game.GameId][1] == "AV" then
                                                 UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
                                                 task.wait(2)
                                             elseif isAccepted then
-                                                -- Host à¸£à¸±à¸šà¹à¸¥à¹‰à¸§! 
+                                                -- Host รับแล้ว! 
                                                 print("[Member] Host accepted! Updating party to:", pendingHost)
                                                 UpdateCache(cache_key, {["party"] = pendingHost, ["pending_host"] = "", ["pending_timestamp"] = 0})
-                                                -- à¸£à¸­à¹ƒà¸«à¹‰ cache à¸­à¸±à¸žà¹€à¸”à¸—à¸à¹ˆà¸­à¸™à¸§à¸™à¸£à¸­à¸šà¹ƒà¸«à¸¡à¹ˆ
+                                                -- รอให้ cache อัพเดทก่อนวนรอบใหม่
                                                 task.wait(10)
                                             elseif not hostCache then
-                                                -- Host cache à¸«à¸²à¸¢ - reset à¹à¸¥à¸°à¸«à¸²à¹ƒà¸«à¸¡à¹ˆ
+                                                -- Host cache หาย - reset และหาใหม่
                                                 print("[Member] Pending host cache missing, finding new host...")
                                                 UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
                                             elseif os.time() > hostCache["last_online"] then
-                                                -- Host offline - à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸²à¸¢à¸±à¸‡à¸¡à¸µà¸Šà¸·à¹ˆà¸­à¹€à¸£à¸²à¹ƒà¸™ party_member à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                                -- Host offline - เช็คว่ายังมีชื่อเราใน party_member หรือไม่
                                                 if hostCache["party_member"] and hostCache["party_member"][cache_key] then
-                                                    -- Host à¸£à¸±à¸šà¹à¸¥à¹‰à¸§à¹à¸•à¹ˆ offline (à¸à¸³à¸¥à¸±à¸‡ shutdown à¸¡à¸²à¸£à¸±à¸š) - à¸£à¸­à¸•à¹ˆà¸­
+                                                    -- Host รับแล้วแต่ offline (กำลัง shutdown มารับ) - รอต่อ
                                                     print("[Member] Host offline but accepted (coming to pick up) - waiting...")
                                                 else
-                                                    -- Host offline à¸ˆà¸£à¸´à¸‡à¹† à¹„à¸¡à¹ˆà¸¡à¸µà¸Šà¸·à¹ˆà¸­à¹€à¸£à¸² - à¸«à¸²à¹ƒà¸«à¸¡à¹ˆ
+                                                    -- Host offline จริงๆ ไม่มีชื่อเรา - หาใหม่
                                                     print("[Member] Pending host offline (not accepted), finding new host...")
                                                     UpdateCache(cache_key, {["pending_host"] = "", ["pending_timestamp"] = 0})
                                                 end
@@ -3901,7 +3866,7 @@ if ID[game.GameId][1] == "AV" then
                                                     continue
                                                 end
                                                 
-                                                -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² host à¸™à¸µà¹‰à¹€à¸„à¸¢ reject à¹à¸¥à¹‰à¸§à¸«à¸£à¸·à¸­à¸¢à¸±à¸‡
+                                                -- เช็คว่า host นี้เคย reject แล้วหรือยัง
                                                 if table.find(rejected_hosts, hostUsername) then
                                                     print("[Member] Skip - previously rejected by:", hostUsername)
                                                     continue
@@ -3922,11 +3887,11 @@ if ID[game.GameId][1] == "AV" then
                                                     continue 
                                                 end
                                                 
-                                                -- à¹€à¸Šà¹‡à¸„ current_play à¸‚à¸­à¸‡ Host
+                                                -- เช็ค current_play ของ Host
                                                 local kaiproduct = kai_cache["current_play"] or ""
                                                 
                                                 if #kaiproduct > 10 then
-                                                    -- Host à¸¡à¸µ current_play à¹à¸¥à¹‰à¸§ (party à¸¡à¸µ member) â†’ à¹€à¸Šà¹‡à¸„ order_type à¸à¸±à¸š current_play
+                                                    -- Host มี current_play แล้ว (party มี member) → เช็ค order_type กับ current_play
                                                     local myOrderType, hostOrderType = nil, nil
                                                     for orderName, orderIds in pairs(Order_Type) do
                                                         if table.find(orderIds, productid) then
@@ -3938,7 +3903,7 @@ if ID[game.GameId][1] == "AV" then
                                                     end
                                                     print("[Member]", hostUsername, "Check current_play - My:", myOrderType, "Host:", hostOrderType)
                                                     
-                                                    -- à¸–à¹‰à¸²à¸«à¸² order_type à¹„à¸¡à¹ˆà¹€à¸ˆà¸­ à¸«à¸£à¸·à¸­ order_type à¹„à¸¡à¹ˆà¸•à¸£à¸‡à¸à¸±à¸™ â†’ skip
+                                                    -- ถ้าหา order_type ไม่เจอ หรือ order_type ไม่ตรงกัน → skip
                                                     if not myOrderType or not hostOrderType then
                                                         print("[Member] Skip - cannot determine order_type")
                                                         continue
@@ -3947,11 +3912,11 @@ if ID[game.GameId][1] == "AV" then
                                                         continue
                                                     end
                                                     
-                                                    -- order_type à¸•à¸£à¸‡à¸à¸±à¸™ â†’ à¹€à¸žà¸´à¹ˆà¸¡à¹ƒà¸™ availableHosts
+                                                    -- order_type ตรงกัน → เพิ่มใน availableHosts
                                                     print("[Member] Host OK (has current_play, same order_type):", hostUsername)
                                                     table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = true})
                                                 else
-                                                    -- Host à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µ current_play â†’ request à¹„à¸”à¹‰à¹€à¸¥à¸¢ (Host à¸ˆà¸°à¹€à¸Šà¹‡à¸„ order_type à¹€à¸­à¸‡)
+                                                    -- Host ยังไม่มี current_play → request ได้เลย (Host จะเช็ค order_type เอง)
                                                     print("[Member] Host OK (no current_play):", hostUsername)
                                                     table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = false})
                                                 end
@@ -3963,7 +3928,7 @@ if ID[game.GameId][1] == "AV" then
                                                 local selected = availableHosts[math.random(1, #availableHosts)]
                                                 local selectedHost = selected.username
                                                 print("[Member] Request to:", selectedHost, "hasCurrentPlay:", selected.hasCurrentPlay)
-                                                -- à¸­à¸±à¸žà¹€à¸”à¸— pending_host à¸à¹ˆà¸­à¸™à¸ªà¹ˆà¸‡ request à¹€à¸žà¸·à¹ˆà¸­à¸›à¹‰à¸­à¸‡à¸à¸±à¸™à¸à¸²à¸£à¸ªà¹ˆà¸‡à¸‹à¹‰à¸³
+                                                -- อัพเดท pending_host ก่อนส่ง request เพื่อป้องกันการส่งซ้ำ
                                                 UpdateCache(cache_key, {["pending_host"] = selectedHost, ["pending_timestamp"] = os.time()})
                                                 print("[Member] Set pending_host:", selectedHost, "at:", os.time())
                                                 SendCache(
@@ -3979,7 +3944,7 @@ if ID[game.GameId][1] == "AV" then
                                                     }
                                                 )
                                                 print("[Member] Request sent, waiting for response...")
-                                                -- à¸£à¸­à¹ƒà¸«à¹‰ Host à¸•à¸­à¸šà¸à¸¥à¸±à¸š
+                                                -- รอให้ Host ตอบกลับ
                                                 task.wait(15)
                                             else
                                                 print("[Member] No available hosts found - waiting before retry...")
@@ -3992,11 +3957,11 @@ if ID[game.GameId][1] == "AV" then
                             end
                             task.wait(5)
                         else
-                            -- à¹„à¸¡à¹ˆà¸¡à¸µ party - à¸«à¸² Host à¹ƒà¸«à¸¡à¹ˆ
+                            -- ไม่มี party - หา Host ใหม่
                             local rejectMsg = GetCache(cache_key .. "-reject")
                             if rejectMsg and rejectMsg["expire"] and rejectMsg["expire"] >= os.time() then
                                 print("[Member] Rejected by:", rejectMsg["rejected_by"], "Reason:", rejectMsg["reason"])
-                                -- à¹€à¸žà¸´à¹ˆà¸¡ host à¸—à¸µà¹ˆ reject à¹€à¸‚à¹‰à¸² list
+                                -- เพิ่ม host ที่ reject เข้า list
                                 if rejectMsg["rejected_by"] and not table.find(rejected_hosts, rejectMsg["rejected_by"]) then
                                     table.insert(rejected_hosts, rejectMsg["rejected_by"])
                                     print("[Member] Added to rejected_hosts:", rejectMsg["rejected_by"])
@@ -4006,7 +3971,7 @@ if ID[game.GameId][1] == "AV" then
                                 print("[Member] Finding new host after rejection...")
                                 task.wait(2)
                             elseif cache["pending_host"] and #cache["pending_host"] > 1 then
-                                -- à¸¡à¸µ pending_host - à¸£à¸­ Host à¸„à¸™à¸™à¸±à¹‰à¸™à¸•à¸­à¸šà¸à¸¥à¸±à¸š
+                                -- มี pending_host - รอ Host คนนั้นตอบกลับ
                                 local pendingHost = cache["pending_host"]
                                 local pendingTimestamp = cache["pending_timestamp"] or 0
                                 local hostCache = GetCache(pendingHost)
@@ -4037,7 +4002,7 @@ if ID[game.GameId][1] == "AV" then
                                 end
                                 task.wait(5)
                             else
-                                -- à¹„à¸¡à¹ˆà¸¡à¸µ party à¹à¸¥à¸°à¹„à¸¡à¹ˆà¸¡à¸µ pending_host - à¸«à¸² Host à¹ƒà¸«à¸¡à¹ˆ
+                                -- ไม่มี party และไม่มี pending_host - หา Host ใหม่
                                 warn("[Member] No party - Finding host...")
                                 local kaiData = DecBody(GetKai)
                                 print("[Member] GetKai count:", kaiData and #kaiData or 0)
@@ -4052,7 +4017,7 @@ if ID[game.GameId][1] == "AV" then
                                         continue
                                     end
                                     
-                                    -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² host à¸™à¸µà¹‰à¹€à¸„à¸¢ reject à¹à¸¥à¹‰à¸§à¸«à¸£à¸·à¸­à¸¢à¸±à¸‡
+                                    -- เช็คว่า host นี้เคย reject แล้วหรือยัง
                                     if table.find(rejected_hosts, hostUsername) then
                                         print("[Member] Skip - previously rejected by:", hostUsername)
                                         continue
@@ -4063,10 +4028,10 @@ if ID[game.GameId][1] == "AV" then
                                     if os.time() > kai_cache["last_online"] then continue end
                                     if LenT(kai_cache["party_member"]) >= 3 then continue end
                                     
-                                    -- à¹€à¸Šà¹‡à¸„ current_play à¸‚à¸­à¸‡ Host (à¹€à¸«à¸¡à¸·à¸­à¸™à¸£à¸°à¸šà¸šà¹€à¸à¹ˆà¸²)
+                                    -- เช็ค current_play ของ Host (เหมือนระบบเก่า)
                                     local kaiproduct = kai_cache["current_play"] or ""
                                     if #kaiproduct > 10 then
-                                        -- Host à¸¡à¸µ current_play à¹à¸¥à¹‰à¸§ â†’ à¹€à¸Šà¹‡à¸„ order_type
+                                        -- Host มี current_play แล้ว → เช็ค order_type
                                         local myOrderType, hostOrderType = nil, nil
                                         for orderName, orderIds in pairs(Order_Type) do
                                             if table.find(orderIds, productid) then
@@ -4086,7 +4051,7 @@ if ID[game.GameId][1] == "AV" then
                                         print("[Member] Host OK (has current_play):", hostUsername)
                                         table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = true})
                                     else
-                                        -- Host à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µ current_play â†’ request à¹„à¸”à¹‰à¹€à¸¥à¸¢
+                                        -- Host ยังไม่มี current_play → request ได้เลย
                                         print("[Member] Host OK (no current_play):", hostUsername)
                                         table.insert(availableHosts, {username = hostUsername, hasCurrentPlay = false})
                                     end
@@ -4094,7 +4059,7 @@ if ID[game.GameId][1] == "AV" then
                                 
                                 print("[Member] Available hosts:", #availableHosts)
                                 if #availableHosts > 0 then
-                                    -- Priority: à¹€à¸¥à¸·à¸­à¸ Host à¸—à¸µà¹ˆà¸¡à¸µ current_play (order_type à¸•à¸£à¸‡à¸à¸±à¸™) à¸à¹ˆà¸­à¸™
+                                    -- Priority: เลือก Host ที่มี current_play (order_type ตรงกัน) ก่อน
                                     local hostsWithCurrentPlay = {}
                                     local hostsWithoutCurrentPlay = {}
                                     
@@ -4110,11 +4075,11 @@ if ID[game.GameId][1] == "AV" then
                                     math.randomseed(os.time() + tick())
                                     
                                     if #hostsWithCurrentPlay > 0 then
-                                        -- à¸¡à¸µ Host à¸—à¸µà¹ˆà¸¡à¸µ current_play à¸•à¸£à¸‡à¸à¸±à¸™ â†’ à¹€à¸¥à¸·à¸­à¸à¸ˆà¸²à¸à¸à¸¥à¸¸à¹ˆà¸¡à¸™à¸µà¹‰à¸à¹ˆà¸­à¸™
+                                        -- มี Host ที่มี current_play ตรงกัน → เลือกจากกลุ่มนี้ก่อน
                                         selected = hostsWithCurrentPlay[math.random(1, #hostsWithCurrentPlay)]
                                         print("[Member] Prioritizing host with matching current_play")
                                     else
-                                        -- à¹„à¸¡à¹ˆà¸¡à¸µ Host à¸—à¸µà¹ˆà¸¡à¸µ current_play â†’ à¹€à¸¥à¸·à¸­à¸à¸ˆà¸²à¸ Host à¸—à¸µà¹ˆà¸§à¹ˆà¸²à¸‡
+                                        -- ไม่มี Host ที่มี current_play → เลือกจาก Host ที่ว่าง
                                         selected = hostsWithoutCurrentPlay[math.random(1, #hostsWithoutCurrentPlay)]
                                         print("[Member] No host with current_play, selecting from empty hosts")
                                     end
@@ -4147,17 +4112,17 @@ if ID[game.GameId][1] == "AV" then
         end
     else
         print("MEOWWWW")
-        -- à¸£à¸­à¹ƒà¸«à¹‰à¹€à¸à¸¡à¹‚à¸«à¸¥à¸”à¹€à¸ªà¸£à¹‡à¸ˆà¸à¹ˆà¸­à¸™
+        -- รอให้เกมโหลดเสร็จก่อน
         print("[Loading] Waiting for game to load...")
         task.wait(10)
         print("[Loading] Game loaded, starting...")
         if IsKai then
-            -- à¸”à¸¶à¸‡ product_id à¸ˆà¸²à¸ API à¹€à¸žà¸·à¹ˆà¸­à¹ƒà¸«à¹‰ Member à¸«à¸²à¹€à¸ˆà¸­
+            -- ดึง product_id จาก API เพื่อให้ Member หาเจอ
             local hostData = Fetch_data()
             local hostProductId = hostData and hostData["product_id"] or ""
             print("[Host In Stage] Product ID from API:", hostProductId)
             
-            -- à¸ªà¸£à¹‰à¸²à¸‡/à¸­à¸±à¸žà¹€à¸”à¸— cache à¸ªà¸³à¸«à¸£à¸±à¸š Host à¹ƒà¸™à¸”à¹ˆà¸²à¸™
+            -- สร้าง/อัพเดท cache สำหรับ Host ในด่าน
             local cache = GetCache(Username)
             if not cache then
                 print("[Host In Stage] Creating cache with host_id:", hostProductId)
@@ -4177,7 +4142,7 @@ if ID[game.GameId][1] == "AV" then
                 task.wait(2)
                 cache = GetCache(Username)
             else
-                -- à¸­à¸±à¸žà¹€à¸”à¸— host_id à¸–à¹‰à¸²à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¹„à¸”à¹‰ set
+                -- อัพเดท host_id ถ้ายังไม่ได้ set
                 if cache["host_id"] == "" or cache["host_id"] == nil then
                     print("[Host In Stage] Updating host_id to:", hostProductId)
                     UpdateCache(Username, {["host_id"] = hostProductId})
@@ -4196,7 +4161,7 @@ if ID[game.GameId][1] == "AV" then
             local Current_Party_Stage = {}
             local Waiting_Time_Stage = os.time() + 60
             
-            -- à¸Ÿà¸±à¸‡à¸à¹Œà¸Šà¸±à¸™à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² party members à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+            -- ฟังก์ชันเช็คว่า party members อยู่ในเกมหรือไม่
             local function GetPartyInGame(partyMembers)
                 local inGame = {}
                 for orderKey, memberData in pairs(partyMembers or {}) do
@@ -4208,17 +4173,17 @@ if ID[game.GameId][1] == "AV" then
                 return inGame
             end
             
-            -- Auto Accept Party + à¹€à¸Šà¹‡à¸„ member request (à¸—à¸³à¸‡à¸²à¸™à¸—à¸±à¹‰à¸‡à¹ƒà¸™à¸”à¹ˆà¸²à¸™à¹à¸¥à¸° lobby)
+            -- Auto Accept Party + เช็ค member request (ทำงานทั้งในด่านและ lobby)
             task.spawn(function()
                 print("[Host In Stage] Loop Started")
                 while true do task.wait(3)
                     local cache = GetCache(Username)
                     if not cache then print("[Host In Stage] No cache") continue end
                     
-                    -- à¸­à¸±à¸žà¹€à¸”à¸— last_online à¹€à¸žà¸·à¹ˆà¸­à¹„à¸¡à¹ˆà¹ƒà¸«à¹‰ cache à¸«à¸¡à¸”à¸­à¸²à¸¢à¸¸
+                    -- อัพเดท last_online เพื่อไม่ให้ cache หมดอายุ
                     UpdateCache(Username, {["last_online"] = os.time() + 200})
                     
-                    -- à¸­à¸±à¸žà¹€à¸”à¸— Current_Party_Stage
+                    -- อัพเดท Current_Party_Stage
                     Current_Party_Stage = GetPartyInGame(cache["party_member"])
                     
                     -- Accept member request
@@ -4235,17 +4200,17 @@ if ID[game.GameId][1] == "AV" then
                         if memberCache and memberCache["product_id"] then
                             local old_party = cache["party_member"] and table.clone(cache["party_member"]) or {}
                             
-                            -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² party à¹€à¸•à¹‡à¸¡à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                            -- เช็คว่า party เต็มหรือไม่
                             if LenT(old_party) >= 3 then
                                 print("[Host In Stage] Party full - rejecting")
                                 SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                             else
-                                -- à¹€à¸Šà¹‡à¸„ current_play (party's product) - à¹„à¸¡à¹ˆà¹ƒà¸Šà¹ˆ host_id
+                                -- เช็ค current_play (party's product) - ไม่ใช่ host_id
                                 local currentPlay = cache["current_play"] or ""
                                 local shouldAccept = true
                                 
                                 if #currentPlay > 10 then
-                                    -- à¸¡à¸µ current_play à¹à¸¥à¹‰à¸§ (party à¸¡à¸µ member) â†’ à¹€à¸Šà¹‡à¸„ order_type
+                                    -- มี current_play แล้ว (party มี member) → เช็ค order_type
                                     local Type_NewMember, Type_CurrentPlay = nil, nil
                                     for orderName, orderIds in pairs(Order_Type) do
                                         if table.find(orderIds, memberCache["product_id"]) then
@@ -4275,7 +4240,7 @@ if ID[game.GameId][1] == "AV" then
                                         end
                                     end
                                 else
-                                    -- à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µ current_play (party à¸§à¹ˆà¸²à¸‡) â†’ à¸£à¸±à¸šà¹„à¸”à¹‰à¹€à¸¥à¸¢
+                                    -- ยังไม่มี current_play (party ว่าง) → รับได้เลย
                                     print("[Host In Stage] No current_play - accepting any member")
                                 end
                                 
@@ -4288,21 +4253,21 @@ if ID[game.GameId][1] == "AV" then
                                     }
                                     UpdateCache(Username, {["party_member"] = old_party})
                                     UpdateCache(message["order"], {["party"] = Username, ["pending_host"] = ""})
-                                    -- Set current_play à¹€à¸›à¹‡à¸™ product_id à¸‚à¸­à¸‡ member à¸„à¸™à¹à¸£à¸ (à¸–à¹‰à¸²à¸¢à¸±à¸‡à¹„à¸¡à¹ˆà¸¡à¸µ)
+                                    -- Set current_play เป็น product_id ของ member คนแรก (ถ้ายังไม่มี)
                                     if #currentPlay < 10 then
                                         UpdateCache(Username, {["current_play"] = memberCache["product_id"]})
                                     end
                                     SendCache({["index"] = Username .. "-message"}, {["value"] = {["join"] = 0}})
                                     print("[Host In Stage] Member accepted")
                                     
-                                    -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² member à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¹€à¸”à¸µà¸¢à¸§à¸à¸±à¸™à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ
+                                    -- เช็คว่า member อยู่ในเกมเดียวกันหรือไม่
                                     local memberName = memberCache["name"]
                                     if memberName and Players:FindFirstChild(memberName) then
                                         print("[Host In Stage] Member already in game - continue playing")
                                         Waiting_Time_Stage = os.time() + 60
                                     else
                                         print("[Host In Stage] Member not in game - shutting down to pick up")
-                                        -- à¸­à¸±à¸žà¹€à¸”à¸— last_online à¸à¹ˆà¸­à¸™ shutdown à¹€à¸žà¸·à¹ˆà¸­à¹„à¸¡à¹ˆà¹ƒà¸«à¹‰ cache à¸–à¸¹à¸à¸¥à¸š
+                                        -- อัพเดท last_online ก่อน shutdown เพื่อไม่ให้ cache ถูกลบ
                                         UpdateCache(Username, {["last_online"] = os.time() + 450})
                                         task.wait(3)
                                         game:Shutdown()
@@ -4313,15 +4278,15 @@ if ID[game.GameId][1] == "AV" then
                         task.wait(3)
                     end
                     
-                    -- à¹€à¸Šà¹‡à¸„à¸§à¹ˆà¸² party members à¸¢à¸±à¸‡à¸­à¸¢à¸¹à¹ˆà¹ƒà¸™à¹€à¸à¸¡à¸«à¸£à¸·à¸­à¹„à¸¡à¹ˆ (à¸–à¹‰à¸²à¸«à¸¥à¸¸à¸”à¹„à¸› à¹ƒà¸«à¹‰ shutdown)
+                    -- เช็คว่า party members ยังอยู่ในเกมหรือไม่ (ถ้าหลุดไป ให้ shutdown)
                     local partyMembers = cache["party_member"] or {}
                     local partyCount = LenT(partyMembers)
                     if partyCount > 0 then
                         local inGameCount = #Current_Party_Stage
                         if inGameCount < partyCount then
-                            -- à¸¡à¸µ member à¸«à¸¥à¸¸à¸”à¹„à¸› - shutdown à¹€à¸žà¸·à¹ˆà¸­à¸­à¸­à¸à¹„à¸›à¸£à¸±à¸š
+                            -- มี member หลุดไป - shutdown เพื่อออกไปรับ
                             print("[Host In Stage] Member disconnected! In game:", inGameCount, "Expected:", partyCount)
-                            -- à¸­à¸±à¸žà¹€à¸”à¸— last_online à¸à¹ˆà¸­à¸™ shutdown à¹€à¸žà¸·à¹ˆà¸­à¹„à¸¡à¹ˆà¹ƒà¸«à¹‰ cache à¸–à¸¹à¸à¸¥à¸š
+                            -- อัพเดท last_online ก่อน shutdown เพื่อไม่ให้ cache ถูกลบ
                             UpdateCache(Username, {["last_online"] = os.time() + 450})
                             task.wait(3)
                             game:Shutdown()
@@ -4336,7 +4301,7 @@ if ID[game.GameId][1] == "AV" then
                             old_party[message2["order"]] = nil
                             UpdateCache(Username, {["party_member"] = old_party})
                             UpdateCache(message2["order"], {["party"] = ""})
-                            -- à¸­à¸±à¸žà¹€à¸”à¸— current_play
+                            -- อัพเดท current_play
                             local path = nil
                             local lowest = math.huge
                             for i, v in pairs(old_party) do
@@ -4365,124 +4330,87 @@ if ID[game.GameId][1] == "AV" then
             -- Check If End Game And Not Found A Player
             if Networking:FindFirstChild("EndScreen") and Networking.EndScreen:FindFirstChild("ShowEndScreenEvent") then
                 Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                    -- print("[EndScreen] ðŸ“º Detected! Status:", Results and Results.Status or "Unknown")
+                    print("[EndScreen] 📺 Detected! Status:", Results and Results.Status or "Unknown")
                     
-                    if Settings["Auto Retry"] == true then
+                    -- ⭐⭐⭐ SHARED FUNCTIONS
+                    local function isEndScreenVisible()
+                        local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                        if EndScreenGui then
+                            local Holder = EndScreenGui:FindFirstChild("Holder")
+                            if Holder and Holder.Visible then
+                                return true
+                            end
+                            if EndScreenGui.Enabled ~= false then
+                                return true
+                            end
+                        end
+                        return false
+                    end
+                    
+                    local function getVoteEvent()
+                        if Networking.EndScreen:FindFirstChild("VoteEvent") then
+                            return Networking.EndScreen.VoteEvent
+                        elseif Networking:FindFirstChild("VoteEvent") then
+                            return Networking.VoteEvent
+                        end
+                        return nil
+                    end
+                    
+                    -- ⭐⭐⭐ AUTO RETRY
+                    if Settings["Auto Retry"] then
                         task.spawn(function()
-                            local function getVoteEventLocal()
-                                if Networking.EndScreen:FindFirstChild("VoteEvent") then
-                                    return Networking.EndScreen.VoteEvent
-                                elseif Networking:FindFirstChild("VoteEvent") then
-                                    return Networking.VoteEvent
-                                end
-                                return nil
-                            end
-                            
-                            local function isEndScreenVisibleLocal()
-                                local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                                if not EndScreenGui then return false end
-                                local Holder = EndScreenGui:FindFirstChild("Holder")
-                                if Holder and Holder.Visible then return true end
-                                if EndScreenGui.Enabled ~= false then return true end
-                                return false
-                            end
-                            
-                            local VoteEvent = getVoteEventLocal()
+                            local VoteEvent = getVoteEvent()
                             if VoteEvent then
                                 task.wait(2)
                                 pcall(function()
                                     VoteEvent:FireServer("Retry")
-                                    print("[Auto Retry] Voted Retry")
+                                    print("[Auto Retry] 🔄 Voted Retry")
                                 end)
                                 task.wait(3)
-                                if isEndScreenVisibleLocal() then
+                                if isEndScreenVisible() then
                                     pcall(function()
                                         VoteEvent:FireServer("Retry")
-                                        print("[Auto Retry] Voted Retry (2nd attempt)")
-                                    end)
-                                end
-                                task.wait(3)
-                                if isEndScreenVisibleLocal() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Retry")
-                                        print("[Auto Retry] Voted Retry (3rd attempt)")
+                                        print("[Auto Retry] 🔄 Voted Retry (2nd attempt)")
                                     end)
                                 end
                             else
-                                warn("[Auto Retry] VoteEvent not found")
+                                warn("[Auto Retry] ⚠️ VoteEvent not found")
                             end
                         end)
                     end
                     
-                    if Settings["Auto Next"] == true then
+                    -- ⭐⭐⭐ AUTO NEXT
+                    if Settings["Auto Next"] then
                         task.spawn(function()
-                            local function getVoteEventLocal2()
-                                if Networking.EndScreen:FindFirstChild("VoteEvent") then
-                                    return Networking.EndScreen.VoteEvent
-                                elseif Networking:FindFirstChild("VoteEvent") then
-                                    return Networking.VoteEvent
-                                end
-                                return nil
-                            end
-                            
-                            local function isEndScreenVisibleLocal2()
-                                local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                                if not EndScreenGui then return false end
-                                local Holder = EndScreenGui:FindFirstChild("Holder")
-                                if Holder and Holder.Visible then return true end
-                                if EndScreenGui.Enabled ~= false then return true end
-                                return false
-                            end
-                            
-                            local VoteEvent = getVoteEventLocal2()
+                            local VoteEvent = getVoteEvent()
                             if VoteEvent then
                                 task.wait(2)
-                                pcall(function()
-                                    VoteEvent:FireServer("Next")
-                                    print("[Auto Next] Voted Next")
-                                end)
-                                task.wait(3)
-                                if isEndScreenVisibleLocal2() then
+                                local voteAttempts = 0
+                                local maxAttempts = 3
+                                
+                                while Settings["Auto Next"] and isEndScreenVisible() and voteAttempts < maxAttempts do
                                     pcall(function()
                                         VoteEvent:FireServer("Next")
-                                        print("[Auto Next] Voted Next (2nd attempt)")
+                                        print("[Auto Next] ➡️ Voted Next (attempt " .. (voteAttempts + 1) .. ")")
                                     end)
-                                end
-                                task.wait(3)
-                                if isEndScreenVisibleLocal2() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Next")
-                                        print("[Auto Next] Voted Next (3rd attempt)")
-                                    end)
+                                    voteAttempts = voteAttempts + 1
+                                    task.wait(5)
                                 end
                             else
-                                warn("[Auto Next] VoteEvent not found")
+                                warn("[Auto Next] ⚠️ VoteEvent not found")
                             end
                         end)
                     end
                     
-                    if Settings["Auto Back Lobby"] == true then
+                    -- ⭐⭐⭐ AUTO BACK LOBBY
+                    if Settings["Auto Back Lobby"] then
                         task.spawn(function()
-                            local function isEndScreenVisibleLocal3()
-                                local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                                if not EndScreenGui then return false end
-                                local Holder = EndScreenGui:FindFirstChild("Holder")
-                                if Holder and Holder.Visible then return true end
-                                if EndScreenGui.Enabled ~= false then return true end
-                                return false
-                            end
-                            
                             task.wait(3)
-                            for attempt = 1, 3 do
-                                if isEndScreenVisibleLocal3() then
-                                    pcall(function()
-                                        Networking.TeleportEvent:FireServer("Lobby")
-                                        print("[Auto Back Lobby] Teleported to Lobby (attempt " .. attempt .. ")")
-                                    end)
-                                    task.wait(3)
-                                else
-                                    break
-                                end
+                            if isEndScreenVisible() then
+                                pcall(function()
+                                    Networking.TeleportEvent:FireServer("Lobby")
+                                    print("[Auto Back Lobby] 🏠 Teleporting to Lobby")
+                                end)
                             end
                         end)
                     end
@@ -4512,9 +4440,9 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end
                 end)
-                -- print("[EndScreen] âœ… ShowEndScreenEvent connected!")
+                print("[EndScreen] ✅ ShowEndScreenEvent connected!")
             else
-                -- warn("[EndScreen] âš ï¸ EndScreen or ShowEndScreenEvent not found - Auto Retry/Next/BackLobby disabled")
+                warn("[EndScreen] ⚠️ EndScreen or ShowEndScreenEvent not found - Auto Retry/Next/BackLobby disabled")
             end
             -- Check If No Player In Lobby 
             task.wait(30)
@@ -4583,7 +4511,7 @@ if ID[game.GameId][1] == "AV" then
 
                 local function ConnectToPrompt(c)
                     if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
-                        -- à¹€à¸Šà¹‡à¸„ Prompt à¸—à¸µà¹ˆà¸¡à¸µà¸­à¸¢à¸¹à¹ˆà¹à¸¥à¹‰à¸§à¸—à¸±à¸™à¸—à¸µ
+                        -- เช็ค Prompt ที่มีอยู่แล้วทันที
                         local existingPrompt = c:FindFirstChild("CidStunPrompt")
                         if existingPrompt then
                             task.spawn(function()
@@ -4595,7 +4523,7 @@ if ID[game.GameId][1] == "AV" then
                                 end
                             end)
                         end
-                        -- à¸£à¸­ Prompt à¹ƒà¸«à¸¡à¹ˆ
+                        -- รอ Prompt ใหม่
                         c.ChildAdded:Connect(function(v)
                             if v.Name == "CidStunPrompt" then
                                 task.spawn(function()
@@ -4689,38 +4617,25 @@ if ID[game.GameId][1] == "AV" then
                 end
 
                 -- Wave Tracker
-                local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
-                local autoRestartTriggered = false
-                
-                InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
-                    if eventType == "Wave" and data and data.Waves then
-                        currentWave = data.Waves
-                        -- print("[Auto Modifier] Wave:", currentWave)
-                        
-                        if currentWave == 0 then
-                            chosenModifiers = {}
-                            lastChoice = nil
-                            autoRestartTriggered = false  -- Reset flag à¹€à¸¡à¸·à¹ˆà¸­à¹€à¸à¸¡à¹ƒà¸«à¸¡à¹ˆ
-                        end
-                        
-                        -- â­ Auto Restart à¹à¸šà¸š Wave
-                        if Settings["Auto Restart"] and Settings["Auto Restart"]["Enable"] and not autoRestartTriggered then
-                            local restartWave = Settings["Auto Restart"]["Wave"] or 1
-                            if currentWave >= restartWave and currentWave > 0 then
-                                print(string.format("[Auto Restart] Wave %d reached (target: %d) - Voting restart...", currentWave, restartWave))
-                                VoteRestart()
-                                autoRestartTriggered = true
+                pcall(function()
+                    local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                    InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
+                        if eventType == "Wave" and data and data.Waves then
+                            currentWave = data.Waves
+                            
+                            if currentWave == 0 then
+                                chosenModifiers = {}
+                                lastChoice = nil
+                            end
+                            
+                            if Settings["Restart Modifier"] and currentWave >= 1 then
+                                if not HasChosenRequiredModifier() then
+                                    print("[Auto Modifier Host] Required modifier not found, voting restart...")
+                                    VoteRestart()
+                                end
                             end
                         end
-                        
-                        -- Restart Modifier (à¹€à¸Šà¹‡à¸„ modifier)
-                        if Settings["Restart Modifier"] and currentWave >= 1 then
-                            if not HasChosenRequiredModifier() then
-                                -- print("[Auto Modifier] Required modifier not found, voting restart...")
-                                VoteRestart()
-                            end
-                        end
-                    end
+                    end)
                 end)
 
                 -- Main Loop
@@ -4825,7 +4740,7 @@ if ID[game.GameId][1] == "AV" then
 
                 local function ConnectToPrompt(c)
                     if not c:GetAttribute("connect_1") and c.Name ~= plr.Name then
-                        -- à¹€à¸Šà¹‡à¸„ Prompt à¸—à¸µà¹ˆà¸¡à¸µà¸­à¸¢à¸¹à¹ˆà¹à¸¥à¹‰à¸§à¸—à¸±à¸™à¸—à¸µ
+                        -- เช็ค Prompt ที่มีอยู่แล้วทันที
                         local existingPrompt = c:FindFirstChild("CidStunPrompt")
                         if existingPrompt then
                             task.spawn(function()
@@ -4837,7 +4752,7 @@ if ID[game.GameId][1] == "AV" then
                                 end
                             end)
                         end
-                        -- à¸£à¸­ Prompt à¹ƒà¸«à¸¡à¹ˆ
+                        -- รอ Prompt ใหม่
                         c.ChildAdded:Connect(function(v)
                             if v.Name == "CidStunPrompt" then
                                 task.spawn(function()
@@ -4862,107 +4777,6 @@ if ID[game.GameId][1] == "AV" then
                 end)
                 print("[Auto Stun] Executed (Member)")
             end
-            
-            -- ⭐ AUTO RETRY/NEXT/BACK LOBBY FOR MEMBER
-            if Networking:FindFirstChild("EndScreen") and Networking.EndScreen:FindFirstChild("ShowEndScreenEvent") then
-                Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                    -- print("[EndScreen Member] Detected! Status:", Results and Results.Status or "Unknown")
-                    
-                    local function isEndScreenVisible()
-                        local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                        if not EndScreenGui then return false end
-                        local Holder = EndScreenGui:FindFirstChild("Holder")
-                        if Holder and Holder.Visible then return true end
-                        if EndScreenGui.Enabled ~= false then return true end
-                        return false
-                    end
-                    
-                    local function getVoteEvent()
-                        if Networking.EndScreen:FindFirstChild("VoteEvent") then
-                            return Networking.EndScreen.VoteEvent
-                        elseif Networking:FindFirstChild("VoteEvent") then
-                            return Networking.VoteEvent
-                        end
-                        return nil
-                    end
-                    
-                    -- AUTO RETRY (Member)
-                    if Settings["Auto Retry"] == true then
-                        task.spawn(function()
-                            local VoteEvent = getVoteEvent()
-                            if VoteEvent then
-                                task.wait(2)
-                                pcall(function()
-                                    VoteEvent:FireServer("Retry")
-                                    print("[Auto Retry Member] Voted Retry")
-                                end)
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Retry")
-                                        print("[Auto Retry Member] Voted Retry (2nd attempt)")
-                                    end)
-                                end
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Retry")
-                                        print("[Auto Retry Member] Voted Retry (3rd attempt)")
-                                    end)
-                                end
-                            end
-                        end)
-                    end
-                    
-                    -- AUTO NEXT (Member)
-                    if Settings["Auto Next"] == true then
-                        task.spawn(function()
-                            local VoteEvent = getVoteEvent()
-                            if VoteEvent then
-                                task.wait(2)
-                                pcall(function()
-                                    VoteEvent:FireServer("Next")
-                                    print("[Auto Next Member] Voted Next")
-                                end)
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Next")
-                                        print("[Auto Next Member] Voted Next (2nd attempt)")
-                                    end)
-                                end
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Next")
-                                        print("[Auto Next Member] Voted Next (3rd attempt)")
-                                    end)
-                                end
-                            end
-                        end)
-                    end
-                    
-                    -- AUTO BACK LOBBY (Member)
-                    if Settings["Auto Back Lobby"] == true then
-                        task.spawn(function()
-                            task.wait(3)
-                            for attempt = 1, 3 do
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        Networking.TeleportEvent:FireServer("Lobby")
-                                        print("[Auto Back Lobby Member] Teleported to Lobby (attempt " .. attempt .. ")")
-                                    end)
-                                    task.wait(3)
-                                else
-                                    break
-                                end
-                            end
-                        end)
-                    end
-                end)
-                print("[EndScreen Member] ShowEndScreenEvent connected!")
-            end
-            
             -- Auto Modifier System (New - Based on AV_AutoModifier)
             if Settings["Auto Modifier"] then
                 local plr = game:GetService("Players").LocalPlayer
