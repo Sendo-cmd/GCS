@@ -138,6 +138,75 @@ end
 
 LoadModules()
 
+-- ===== 🏠 REMOVE MAP MODELS (ลบบ้าน/สิ่งปลูกสร้าง - เก็บพื้นไว้!) =====
+local function RemoveMapModels()
+    pcall(function()
+        local Map = workspace:FindFirstChild("Map")
+        if not Map then return end
+        
+        local Models = Map:FindFirstChild("Models")
+        if Models then
+            local count = 0
+            local kept = 0
+            
+            for _, child in ipairs(Models:GetChildren()) do
+                local shouldKeep = false
+                
+                -- ⭐⭐⭐ เช็คว่าเป็นพื้นหรือไม่
+                local nameLower = child.Name:lower()
+                
+                -- 1. เช็คชื่อที่น่าจะเป็นพื้น
+                if nameLower:find("floor") or 
+                   nameLower:find("ground") or 
+                   nameLower:find("placement") or
+                   nameLower:find("spawn") or
+                   nameLower == "default" then
+                    shouldKeep = true
+                end
+                
+                -- 2. ถ้าเป็น BasePart ตรงๆ → เช็คขนาด
+                if child:IsA("BasePart") then
+                    local size = child.Size
+                    -- พื้นมักจะ: บาง (Y < 10) และกว้าง/ยาว (X หรือ Z > 50)
+                    if size.Y < 10 and (size.X > 50 or size.Z > 50) then
+                        shouldKeep = true
+                    end
+                end
+                
+                -- 3. ถ้าเป็น Model → เช็ค PrimaryPart หรือ part แรก
+                if child:IsA("Model") then
+                    local checkPart = child.PrimaryPart or child:FindFirstChildWhichIsA("BasePart")
+                    if checkPart then
+                        local size = checkPart.Size
+                        -- พื้นใหญ่มาก
+                        if size.Y < 10 and (size.X > 50 or size.Z > 50) then
+                            shouldKeep = true
+                        end
+                    end
+                end
+                
+                -- ลบหรือเก็บ
+                if shouldKeep then
+                    kept = kept + 1
+                else
+                    child:Destroy()
+                    count = count + 1
+                end
+            end
+            
+            print(string.format("[AutoPlay] 🏠 ลบ Models: %d objects | เก็บพื้น: %d objects", count, kept))
+        else
+            print("[AutoPlay] ⚠️ ไม่พบ workspace.Map.Models")
+        end
+    end)
+end
+
+-- เรียกใช้ลบ Models ทันที
+task.spawn(function()
+    task.wait(2)  -- รอให้แผนที่โหลดก่อน
+    RemoveMapModels()
+end)
+
 -- ===== NETWORKING =====
 local Networking = ReplicatedStorage:WaitForChild("Networking")
 local UnitEvent = Networking:WaitForChild("UnitEvent")
@@ -1971,6 +2040,12 @@ end
 -- ===== RESET SYSTEM (รีเซ็ตหลังจบด่าน/เริ่มใหม่) =====
 local function ResetGameState()
     DebugPrint("🔄 ResetGameState() called - Clearing all tracking data")
+    
+    -- 🏠 ลบ Map Models (บ้าน/สิ่งปลูกสร้าง) เมื่อเริ่มเกมใหม่
+    task.spawn(function()
+        task.wait(1)
+        RemoveMapModels()
+    end)
     
     -- Reset Emergency Mode
     IsEmergency = false
@@ -6152,8 +6227,8 @@ local function CalculateLichKingPurpleZone()
     end
     
     -- ⭐⭐⭐ IMPRISONED ISLAND RIFT: ใช้พิกัดที่กำหนดไว้ (ตรงร่มชมพู/พื้นสีน้ำเงิน)
-    -- พิกัด: X=114.67, Y=248.68, Z=366.06 (Lich King Rift Position)
-    local fixedCenter = Vector3.new(114.66655731201172, 248.6777801513672, 366.060791015625)
+    -- พิกัด: X=108.51, Y=248.62, Z=367.74 (Lich King Rift Position)
+    local fixedCenter = Vector3.new(108.50717163085938, 248.61618041992188, 367.74420166015625)
     
     -- สร้างตำแหน่งรอบๆ จุดนี้ (ใกล้มาก 3-15 studs)
     local spacing = 5
@@ -6194,7 +6269,7 @@ local function GetLichKingPurpleZonePosition(unitRange)
     local activeUnits = GetActiveUnits()
     
     -- ⭐⭐⭐ จุดศูนย์กลางสำหรับ Lich King (Imprisoned Island Rift)
-    local fixedCenter = Vector3.new(114.66655731201172, 248.6777801513672, 366.060791015625)
+    local fixedCenter = Vector3.new(108.50717163085938, 248.61618041992188, 367.74420166015625)
     
     -- ⭐ เช็คว่ามี unit อยู่ที่ตำแหน่งนี้หรือไม่
     local function isOccupied(pos)
@@ -7048,15 +7123,30 @@ local function AutoPlaceLoop()
                                 local yen = GetYen()
                                 local price = unit.Price or 0
                                 if yen >= price then
-                                    ecoSlot = slotNum
-                                    ecoUnit = unit
-                                    break
+                                    -- ⭐⭐⭐ FIX: เช็ค Slot Limit ก่อนเลือก unit!
+                                    local limit, current = GetSlotLimit(slotNum)
+                                    if current < limit then
+                                        -- ⭐⭐⭐ FIX: เช็ค Trait Limit ด้วย!
+                                        local canPlaceMore = CanPlaceMoreUnits(unit.Name, unit.UnitObject)
+                                        if canPlaceMore then
+                                            ecoSlot = slotNum
+                                            ecoUnit = unit
+                                            break
+                                        else
+                                            -- Trait limit เต็ม → ข้าม slot นี้
+                                            DebugPrint(string.format("⚠️ [LegendStage] %s Trait limit เต็ม - ข้าม", unit.Name))
+                                        end
+                                    else
+                                        -- Slot เต็ม → ข้าม slot นี้
+                                        DebugPrint(string.format("⚠️ [LegendStage] Slot %d เต็ม (%d/%d) - ข้าม", slotNum, current, limit))
+                                    end
                                 end
                             end
                         end
                     end
                 end
                 
+                -- ⭐⭐⭐ FIX: ถ้าไม่มี slot ว่าง → ไม่พยายามวาง (ป้องกัน spam)
                 if ecoSlot and ecoUnit then
                     local placed = false
                     
@@ -7136,12 +7226,21 @@ local function AutoPlaceLoop()
                                 return a.DistToPath > b.DistToPath
                             end)
                             
+                            -- ⭐⭐⭐ FIX: เช็คว่ามีตำแหน่งที่วางได้หรือไม่
+                            if #spawnWithDistance == 0 then
+                                DebugPrint(string.format("⚠️ [LegendStage] ไม่พบ SpawnLocation ที่ว่าง สำหรับ %s", legendStageName))
+                            else
+                                DebugPrint(string.format("🎯 [LegendStage] %s - พบ %d ตำแหน่งที่วางได้", legendStageName, #spawnWithDistance))
+                            end
+                            
                             -- วางที่ตำแหน่งที่ดีที่สุด (ไกล path + ใกล้ unit อื่น)
                             for _, data in ipairs(spawnWithDistance) do
                                 local testPos = data.Position + Vector3.new(0, 2, 0)
                                 
+                                -- ⭐⭐⭐ FIX: เพิ่ม cooldown เป็น 2 วินาที (ป้องกัน spam)
                                 local timeSinceLastPlace = tick() - LastPlaceTime
-                                if timeSinceLastPlace < 1.0 then
+                                if timeSinceLastPlace < 2.0 then
+                                    DebugPrint(string.format("⏳ [LegendStage] รอ cooldown (%.1f/2.0 วินาที)", timeSinceLastPlace))
                                     break
                                 end
                                 
@@ -7150,6 +7249,9 @@ local function AutoPlaceLoop()
                                 if type(unitID) == "string" and tonumber(unitID) then
                                     numericID = tonumber(unitID)
                                 end
+                                
+                                DebugPrint(string.format("🏭 [LegendStage] วาง %s ที่ (%.1f, %.1f, %.1f)", 
+                                    ecoUnit.Name, testPos.X, testPos.Y, testPos.Z))
                                 
                                 local fireSuccess = pcall(function()
                                     UnitEvent:FireServer("Render", {
@@ -7165,11 +7267,18 @@ local function AutoPlaceLoop()
                                 if fireSuccess then
                                     LastPlaceTime = tick()
                                     placed = true
+                                    DebugPrint(string.format("✅ [LegendStage] วางสำเร็จ: %s", ecoUnit.Name))
                                     break
                                 end
                             end
                         end
                     end)
+                else
+                    -- ⭐⭐⭐ FIX: Log เมื่อไม่มี slot ว่าง (ป้องกันความสับสน)
+                    if not _G.LastLegendStageSlotFullLog or tick() - _G.LastLegendStageSlotFullLog >= 5 then
+                        _G.LastLegendStageSlotFullLog = tick()
+                        DebugPrint(string.format("⏹️ [LegendStage] %s - Economy Slot เต็มหมดแล้ว (ไม่วาง)", legendStageName))
+                    end
                 end
             end
             

@@ -245,6 +245,10 @@ local Settings ={
     ["Auto Next"] = false,
     ["Auto Retry"] = false,
     ["Auto Back Lobby"] = false,
+    ["Auto Restart"] = {
+        ["Enable"] = false,
+        ["Wave"] = 1, 
+    },
     ["Auto Join AFK"] = false,
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
@@ -722,46 +726,70 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["87b27182-43d5-4266-9705-86ffa192adb0"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
         Settings["Select Mode"] = "Story"
@@ -811,23 +839,31 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Shibuya Station",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Shibuya Station",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["427f560e-b78e-4ec9-b711-d451b0312306"] = function()
         Settings["Auto Stun"] = true
@@ -3444,6 +3480,8 @@ end
 
                 -- Wave Tracker
                 local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                local autoRestartTriggered = false
+                
                 InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
                     if eventType == "Wave" and data and data.Waves then
                         currentWave = data.Waves
@@ -3452,8 +3490,20 @@ end
                         if currentWave == 0 then
                             chosenModifiers = {}
                             lastChoice = nil
+                            autoRestartTriggered = false  -- Reset flag เมื่อเกมใหม่
                         end
                         
+                        -- ⭐ Auto Restart แบบ Wave
+                        if Settings["Auto Restart"] and Settings["Auto Restart"]["Enable"] and not autoRestartTriggered then
+                            local restartWave = Settings["Auto Restart"]["Wave"] or 1
+                            if currentWave >= restartWave and currentWave > 0 then
+                                print(string.format("[Auto Restart] Wave %d reached (target: %d) - Voting restart...", currentWave, restartWave))
+                                VoteRestart()
+                                autoRestartTriggered = true
+                            end
+                        end
+                        
+                        -- Restart Modifier (เช็ค modifier)
                         if Settings["Restart Modifier"] and currentWave >= 1 then
                             if not HasChosenRequiredModifier() then
                                 -- print("[Auto Modifier] Required modifier not found, voting restart...")
@@ -3489,13 +3539,58 @@ end
                 end)
                 print("[Auto Modifier] Loaded!")
             end
+ 
+            if Settings["Auto Retry"] then
+                task.spawn(function()
+                    local AutoReplayState = {
+                        LastVoteTime = 0,
+                        VoteCooldown = 3,
+                        Enabled = true,
+                        VoteEvent = nil
+                    }
+                    
+                    pcall(function()
+                        AutoReplayState.VoteEvent = ReplicatedStorage:FindFirstChild("Networking")
+                            and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+                            and ReplicatedStorage.Networking.EndScreen:FindFirstChild("VoteEvent")
+                    end)
+                    
+                    local function AutoVoteReplay()
+                        if not AutoReplayState.Enabled then return end
+                        if not AutoReplayState.VoteEvent then return end
+                        
+                        local now = tick()
+                        if now - AutoReplayState.LastVoteTime < AutoReplayState.VoteCooldown then return end
+                        AutoReplayState.LastVoteTime = now
+                        
+                        pcall(function()
+                            AutoReplayState.VoteEvent:FireServer("Retry")
+                            print("[AutoReplay] 🔄 Voted Retry via VoteEvent")
+                        end)
+                    end
+                    
+                    pcall(function()
+                        local ShowEndScreenEvent = ReplicatedStorage:FindFirstChild("Networking")
+                            and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+                            and ReplicatedStorage.Networking.EndScreen:FindFirstChild("ShowEndScreenEvent")
+                        
+                        if ShowEndScreenEvent then
+                            ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+                                -- print("[AutoReplay] 📺 EndScreen detected! Status:", Results and Results.Status or "Unknown")
+                                task.delay(2, AutoVoteReplay)
+                                task.delay(5, AutoVoteReplay)
+                            end)
+                            -- print("[AutoReplay] ✅ ShowEndScreenEvent connected!")
+                        end
+                    end)
+                end)
+            end
             
-            -- ⭐⭐⭐ รอจนกว่าจะเจอ EndScreen ก่อน
             if Networking:FindFirstChild("EndScreen") and Networking.EndScreen:FindFirstChild("ShowEndScreenEvent") then
-                Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                    print("[EndScreen] 📺 Detected! Status:", Results and Results.Status or "Unknown")
                 
-                -- ⭐⭐⭐ SHARED FUNCTIONS
+                Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+                    -- print("[EndScreen] 📺 Detected! Status:", Results and Results.Status or "Unknown")
+
                 local function isEndScreenVisible()
                     local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
                     if EndScreenGui then
@@ -3519,61 +3614,59 @@ end
                     return nil
                 end
                 
-                -- ⭐⭐⭐ AUTO RETRY (เหมือน AutoPlayBase.lua)
-                if Settings["Auto Retry"] then
-                    task.spawn(function()
-                        local VoteEvent = getVoteEvent()
-                        if VoteEvent then
-                            task.wait(2)
-                            pcall(function()
-                                VoteEvent:FireServer("Retry")
-                                print("[Auto Retry] 🔄 Voted Retry")
-                            end)
-                            task.wait(3)
-                            if isEndScreenVisible() then
-                                pcall(function()
-                                    VoteEvent:FireServer("Retry")
-                                    print("[Auto Retry] 🔄 Voted Retry (2nd attempt)")
-                                end)
-                            end
-                        else
-                            warn("[Auto Retry] ⚠️ VoteEvent not found")
-                        end
-                    end)
-                end
-                
-                -- ⭐⭐⭐ AUTO NEXT
                 if Settings["Auto Next"] then
                     task.spawn(function()
-                        local VoteEvent = getVoteEvent()
-                        if VoteEvent then
-                            task.wait(2)
-                            local voteAttempts = 0
-                            local maxAttempts = 3
+                        local AutoNextState = {
+                            LastVoteTime = 0,
+                            VoteCooldown = 3,
+                            VoteEvent = nil
+                        }
+                        
+                        pcall(function()
+                            AutoNextState.VoteEvent = ReplicatedStorage:FindFirstChild("Networking")
+                                and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+                                and ReplicatedStorage.Networking.EndScreen:FindFirstChild("VoteEvent")
+                        end)
+                        
+                        local function AutoVoteNext()
+                            if not AutoNextState.VoteEvent then return end
                             
-                            while Settings["Auto Next"] and isEndScreenVisible() and voteAttempts < maxAttempts do
-                                pcall(function()
-                                    VoteEvent:FireServer("Next")
-                                    print("[Auto Next] ➡️ Voted Next (attempt " .. (voteAttempts + 1) .. ")")
-                                end)
-                                voteAttempts = voteAttempts + 1
-                                task.wait(5)
-                            end
-                        else
-                            warn("[Auto Next] ⚠️ VoteEvent not found")
+                            local now = tick()
+                            if now - AutoNextState.LastVoteTime < AutoNextState.VoteCooldown then return end
+                            AutoNextState.LastVoteTime = now
+                            
+                            pcall(function()
+                                AutoNextState.VoteEvent:FireServer("Next")
+                                print("[Auto Next] ➡️ Voted Next")
+                            end)
                         end
+                        
+                        -- Auto vote ตอนเจอ EndScreen
+                        task.delay(2, AutoVoteNext)
+                        task.delay(5, AutoVoteNext)
+                        task.delay(8, AutoVoteNext)
                     end)
                 end
                 
-                -- ⭐⭐⭐ AUTO BACK LOBBY
                 if Settings["Auto Back Lobby"] then
                     task.spawn(function()
                         task.wait(3)
                         if isEndScreenVisible() then
-                            pcall(function()
-                                Networking.TeleportEvent:FireServer("Lobby")
-                                print("[Auto Back Lobby] 🏠 Teleporting to Lobby")
-                            end)
+                            for i = 1, 3 do
+                                local success = pcall(function()
+                                    Networking.TeleportEvent:FireServer("Lobby")
+                                    print("[Auto Back Lobby] 🏠 Teleporting to Lobby (attempt " .. i .. ")")
+                                end)
+                                
+                                if success then
+                                    task.wait(2)
+                                    if not isEndScreenVisible() then
+                                        break  -- สำเร็จแล้ว
+                                    end
+                                end
+                                
+                                task.wait(3)
+                            end
                         end
                     end)
                 end

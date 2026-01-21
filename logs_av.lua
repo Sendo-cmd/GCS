@@ -549,8 +549,10 @@ if IsMatch then
             Level = tonumber(plr:GetAttribute("Level"))
         end
          warn("SendTo 3")
-        -- Create StageInfo
-        if Results["Status"] == "Finished" then
+         if Results["Status"] == "Restart" then
+            Times = Results["TimeTaken"]
+            StageInfo["restart"] = true
+        elseif Results["Status"] == "Finished" then
             Times = Results["TimeTaken"]
             StageInfo["win"] = true
         else
@@ -596,6 +598,118 @@ if IsMatch then
         SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
     end)
+    
+    -- MatchRestarted Event (เกมรีเซ็ต/restart)
+    if GameHandler.MatchRestarted then
+        GameHandler.MatchRestarted:Connect(function()
+            warn("Match Restarted - Sending restart log")
+            
+            -- รอให้ UI อัปเดต
+            task.wait(0.5)
+            
+            local Data = GetData()
+            local GameData = GameHandler.GameData
+            
+            -- ดึง wave ปัจจุบันจาก UI (หลัง restart)
+            local currentWave = 0
+            pcall(function()
+                local HUD = plr.PlayerGui:FindFirstChild("HUD")
+                if HUD then
+                    local Map = HUD:FindFirstChild("Map")
+                    if Map then
+                        local WavesAmount = Map:FindFirstChild("WavesAmount")
+                        if WavesAmount and WavesAmount:IsA("TextLabel") then
+                            local waveText = WavesAmount.Text
+                            -- ดึงตัวเลขหน้า "/" เช่น "5/99" -> 5
+                            local waveNum = waveText:match("(%d+)/")
+                            if waveNum then
+                                currentWave = tonumber(waveNum) or 0
+                            end
+                        end
+                    end
+                end
+            end)
+            
+            -- ถ้าดึงจาก UI ไม่ได้ ลองดึงจาก GameData
+            if currentWave == 0 then
+                pcall(function()
+                    if GameData.Wave then
+                        currentWave = GameData.Wave
+                    end
+                end)
+            end
+            
+            local StageInfo = {
+                ["restart"] = true,
+                ["map"] = {
+                    ["name"] = GameData.StageName or "Unknown",
+                    ["chapter"] = GameData.Act or "Unknown",
+                    ["wave"] = currentWave,
+                    ["mode"] = GameData.StageType or "Unknown",
+                    ["difficulty"] = GameData.Difficulty or "Unknown",
+                }
+            }
+            
+            pcall(function()
+                local Guides = plr.PlayerGui:FindFirstChild("Guides")
+                if Guides and Guides:FindFirstChild("List") then
+                    local StageInfo_UI = Guides.List:FindFirstChild("StageInfo")
+                    if StageInfo_UI and StageInfo_UI:FindFirstChild("StageFrame") then
+                        local StageAct = StageInfo_UI.StageFrame:FindFirstChild("StageAct")
+                        if StageAct and StageAct:IsA("TextLabel") then
+                            local text = StageAct.Text
+                            if text and string.find(text:lower(), "floor") then
+                                StageInfo["map"]["chapter"] = text
+                                StageInfo["map"]["name"] = "Worldlines"
+                            end
+                        end
+                    end
+                end
+            end)
+            
+            pcall(function()
+                StageInfo["map"]["name"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
+            end)
+            
+            -- หลัง restart ให้พยายามดึงค่า rewards จาก UI (เช่น Leaves) แบบอัตโนมัติ
+            local ConvertResult = {}
+            pcall(function()
+                if plr.PlayerGui:FindFirstChild("HUD") then
+                    local Map = plr.PlayerGui:FindFirstChild("HUD"):FindFirstChild("Map")
+                    if Map then
+                        local StageRewards = Map:FindFirstChild("StageRewards")
+                        if StageRewards then
+                            for _, child in pairs(StageRewards:GetChildren()) do
+                                -- ค้นหา Label ที่เก็บจำนวน (ชื่อโดยทั่วไปคือ Amount)
+                                local amt = child:FindFirstChild("Amount")
+                                if amt and amt:IsA("TextLabel") and child.Visible then
+                                    local text = amt.Text or ""
+                                    -- พยายามดึงตัวเลขหลัง x (รูปแบบ "x123") หรือหาตัวเลขตัวแรก
+                                    local n = tonumber(text:match("x%s*(%d+)") or text:match("(%d+)") )
+                                    if n then
+                                        ConvertResult[#ConvertResult + 1] = convertToField(child.Name, n)
+                                    end
+                                end
+                            end
+                        end
+                    end
+                end
+            end)
+
+            -- ถ้าไม่มีผลลัพธ์จาก UI ให้เป็น fallback โดยส่ง currency ที่เรารู้จาก attributes
+            if #ConvertResult == 0 then
+                local someCurrency = GetSomeCurrency()
+                for k,v in pairs(someCurrency) do
+                    ConvertResult[#ConvertResult + 1] = convertToField(k, v)
+                end
+            end
+
+            -- ส่ง log พร้อม StageInfo และข้อมูล rewards ที่ดึงมา
+            SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
+            SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
+        end)
+    end
+    
     warn("IN Match 1")
      local Data = GetData()
     SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
