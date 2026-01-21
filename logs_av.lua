@@ -34,7 +34,7 @@ local Modules = ReplicatedStorage:WaitForChild("Modules")
 task.wait(1.5)
 local IsTimeChamber = game.PlaceId == 18219125606
 
-local url = "https://api.championshop.date/logs"
+-- local url = "https://api.championshop.date/logs"
 print(game.PlaceId)
 
 local function convertToField(index,value)
