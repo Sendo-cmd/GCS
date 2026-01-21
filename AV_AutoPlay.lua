@@ -13,190 +13,30 @@ repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 
 -- ══════════════════════════════════════════════════════════════════════════════
--- AUTO REDEEM / CLAIM SYSTEM (loaded first to avoid local register limit)
+-- ABILITY SYSTEM LOADER
 -- ══════════════════════════════════════════════════════════════════════════════
+-- ⭐ แก้ URL นี้ให้เป็น GitHub Raw URL ของคุณ
+local ABILITY_SYSTEM_URL = "https://raw.githubusercontent.com/YOUR_USERNAME/YOUR_REPO/main/AbilitySystem.lua"
+
+-- โหลด AbilitySystem (สั้นๆ ง่ายๆ)
 task.spawn(function()
-    task.wait(3)
-    _G.AutoSystems = {Enabled = true, LastCodeRedeemTime = 0, LastAutoClaimRun = 0, RedeemedCodes = {}, FETCHED_CODES = {}, LastCodeFetchTime = 0}
+    task.wait(1)
+    if _G.AbilitySystem then return end -- มีอยู่แล้ว
     
-    local Net = game:GetService("ReplicatedStorage"):WaitForChild("Networking", 10)
-    if Net then
-        pcall(function() _G.AutoSystems.CodesEvent = Net:FindFirstChild("CodesEvent") end)
-        pcall(function() _G.AutoSystems.BattlepassEvent = Net:FindFirstChild("BattlepassEvent") end)
-        pcall(function() _G.AutoSystems.DailyRewardEvent = Net:FindFirstChild("DailyRewardEvent") end)
-        pcall(function() _G.AutoSystems.QuestEvent = Net:FindFirstChild("QuestEvent") or Net:FindFirstChild("Quests") end)
-        pcall(function() _G.AutoSystems.NewPlayerRewardEvent = Net:FindFirstChild("NewPlayerRewardEvent") end)
-        pcall(function() _G.AutoSystems.ReturningPlayerRewardEvent = Net:FindFirstChild("ReturningPlayerRewardEvent") end)
-        pcall(function() _G.AutoSystems.APiratesWelcomeEvent = Net:FindFirstChild("APiratesWelcomeEvent") end)
+    print("[AutoPlay] 📦 Loading AbilitySystem...")
+    
+    -- ลอง GitHub
+    pcall(function()
+        local code = game:HttpGet(ABILITY_SYSTEM_URL)
+        if code then loadstring(code)() end
+    end)
+    
+    -- ลอง Local File (ถ้า GitHub ไม่ได้)
+    if not _G.AbilitySystem then
+        pcall(function() loadfile("AbilitySystem.lua")() end)
     end
     
-    _G.AutoSystems.IsInLobby = function()
-        return (workspace:FindFirstChild("MainLobby") ~= nil) or (workspace:FindFirstChild("Map") == nil)
-    end
-    
-    _G.AutoSystems.HttpGet = function(url)
-        local ok, res = pcall(function()
-            if syn and syn.request then return syn.request({Url=url,Method="GET"}).Body
-            elseif request then return request({Url=url,Method="GET"}).Body
-            elseif http_request then return http_request({Url=url,Method="GET"}).Body
-            elseif game.HttpGet then return game:HttpGet(url) end
-        end)
-        return ok and res or nil
-    end
-    
-    _G.AutoSystems.FetchCodes = function()
-        if tick() - _G.AutoSystems.LastCodeFetchTime < 300 and #_G.AutoSystems.FETCHED_CODES > 0 then return _G.AutoSystems.FETCHED_CODES end
-        pcall(function()
-            local html = _G.AutoSystems.HttpGet("https://animevanguards.fandom.com/wiki/Codes")
-            if html and #html > 100 then
-                local codes = {}
-                for code in html:gmatch('<code[^>]*>([^<]+)</code>') do
-                    if code and #code > 2 and #code < 50 then table.insert(codes, code) end
-                end
-                if #codes > 0 then _G.AutoSystems.FETCHED_CODES = codes; _G.AutoSystems.LastCodeFetchTime = tick(); print("[AutoRedeem] Fetched "..#codes.." codes") end
-            end
-        end)
-        return _G.AutoSystems.FETCHED_CODES
-    end
-    
-    _G.AutoRedeem = function()
-        if not _G.AutoSystems.Enabled or not _G.AutoSystems.IsInLobby() or not _G.AutoSystems.CodesEvent then return end
-        if tick() - _G.AutoSystems.LastCodeRedeemTime < 60 then return end
-        _G.AutoSystems.LastCodeRedeemTime = tick()
-        for _, code in ipairs(_G.AutoSystems.FetchCodes()) do
-            if not _G.AutoSystems.RedeemedCodes[code] then
-                pcall(function() _G.AutoSystems.CodesEvent:FireServer(code) end)
-                _G.AutoSystems.RedeemedCodes[code] = true
-                print("[AutoRedeem] "..code)
-                task.wait(0.5)
-            end
-        end
-    end
-    
-    _G.AutoBattlepass = function()
-        if not _G.AutoSystems.Enabled or not _G.AutoSystems.IsInLobby() or not _G.AutoSystems.BattlepassEvent then return end
-        pcall(function() _G.AutoSystems.BattlepassEvent:FireServer("ClaimAll") end)
-        for t = 1, 50 do
-            pcall(function() _G.AutoSystems.BattlepassEvent:FireServer("Claim", {tostring(t), "Normal"}) end)
-            pcall(function() _G.AutoSystems.BattlepassEvent:FireServer("Claim", {tostring(t), "Premium"}) end)
-        end
-        print("[AutoBattlepass] Done")
-    end
-    
-    _G.AutoDaily = function()
-        if not _G.AutoSystems.Enabled or not _G.AutoSystems.IsInLobby() or not _G.AutoSystems.DailyRewardEvent then return end
-        pcall(function() _G.AutoSystems.DailyRewardEvent:FireServer("Request") end)
-        task.wait(0.3)
-        for _, rt in ipairs({"Special", "Fall"}) do
-            for d = 1, 28 do pcall(function() _G.AutoSystems.DailyRewardEvent:FireServer("Claim", {rt, d}) end) end
-        end
-        print("[AutoDaily] Done")
-    end
-    
-    _G.AutoSpecial = function()
-        if not _G.AutoSystems.Enabled or not _G.AutoSystems.IsInLobby() then return end
-        if _G.AutoSystems.NewPlayerRewardEvent then for d = 1, 7 do pcall(function() _G.AutoSystems.NewPlayerRewardEvent:FireServer("Claim", d) end) end end
-        if _G.AutoSystems.ReturningPlayerRewardEvent then for d = 1, 7 do pcall(function() _G.AutoSystems.ReturningPlayerRewardEvent:FireServer("Claim", d) end) end end
-        if _G.AutoSystems.APiratesWelcomeEvent then for d = 1, 7 do pcall(function() _G.AutoSystems.APiratesWelcomeEvent:FireServer("Claim", d) end) end end
-    end
-    
-    _G.AutoQuest = function()
-        if not _G.AutoSystems.Enabled or not _G.AutoSystems.IsInLobby() then return end
-        local Net = game:GetService("ReplicatedStorage"):FindFirstChild("Networking")
-        if not Net then return end
-        
-        -- Try multiple quest events
-        local questEvents = {"QuestEvent", "Quests", "QuestsEvent", "Quest"}
-        for _, evName in ipairs(questEvents) do
-            local ev = Net:FindFirstChild(evName)
-            if ev then
-                -- Try different claim methods
-                pcall(function() ev:FireServer("ClaimAll") end)
-                pcall(function() ev:FireServer("Claim", "All") end)
-                pcall(function() ev:FireServer("ClaimAllRewards") end)
-                
-                -- Try claim by type
-                for _, qt in ipairs({"Daily", "Weekly", "Infinite", "Event", "Special"}) do
-                    pcall(function() ev:FireServer("Claim", qt) end)
-                    pcall(function() ev:FireServer("ClaimReward", qt) end)
-                    pcall(function() ev:FireServer(qt, "Claim") end)
-                end
-                
-                -- Try claim by index (1-10 quests per type)
-                for _, qt in ipairs({"Daily", "Weekly", "Infinite"}) do
-                    for i = 1, 10 do
-                        pcall(function() ev:FireServer("Claim", qt, i) end)
-                        pcall(function() ev:FireServer("Claim", {qt, i}) end)
-                        pcall(function() ev:FireServer("ClaimQuest", qt, i) end)
-                    end
-                end
-            end
-        end
-        print("[AutoQuest] Done - tried all methods")
-    end
-    
-    _G.RefreshCodes = function() _G.AutoSystems.LastCodeFetchTime = 0; _G.AutoSystems.FETCHED_CODES = {}; return _G.AutoSystems.FetchCodes() end
-    
-    -- Individual cooldowns (seconds)
-    _G.AutoSystems.Cooldowns = {
-        Redeem = 300,      -- 5 min
-        Battlepass = 600,  -- 10 min  
-        Daily = 600,       -- 10 min
-        Special = 600,     -- 10 min
-        Quest = 300,       -- 5 min
-    }
-    _G.AutoSystems.LastRun = {Redeem = 0, Battlepass = 0, Daily = 0, Special = 0, Quest = 0}
-    
-    _G.AutoClaim = function()
-        if not _G.AutoSystems.Enabled or not _G.AutoSystems.IsInLobby() then return end
-        local now = tick()
-        local ran = {}
-        
-        if now - _G.AutoSystems.LastRun.Redeem >= _G.AutoSystems.Cooldowns.Redeem then
-            _G.AutoSystems.LastRun.Redeem = now; pcall(_G.AutoRedeem); table.insert(ran, "Redeem")
-        end
-        if now - _G.AutoSystems.LastRun.Battlepass >= _G.AutoSystems.Cooldowns.Battlepass then
-            _G.AutoSystems.LastRun.Battlepass = now; pcall(_G.AutoBattlepass); table.insert(ran, "Battlepass")
-        end
-        if now - _G.AutoSystems.LastRun.Daily >= _G.AutoSystems.Cooldowns.Daily then
-            _G.AutoSystems.LastRun.Daily = now; pcall(_G.AutoDaily); table.insert(ran, "Daily")
-        end
-        if now - _G.AutoSystems.LastRun.Special >= _G.AutoSystems.Cooldowns.Special then
-            _G.AutoSystems.LastRun.Special = now; pcall(_G.AutoSpecial); table.insert(ran, "Special")
-        end
-        if now - _G.AutoSystems.LastRun.Quest >= _G.AutoSystems.Cooldowns.Quest then
-            _G.AutoSystems.LastRun.Quest = now; pcall(_G.AutoQuest); table.insert(ran, "Quest")
-        end
-        
-        if #ran > 0 then print("[AutoSystems] Ran: " .. table.concat(ran, ", ")) end
-    end
-    
-    -- Force run all (bypass cooldowns)
-    _G.AutoClaimAll = function()
-        if not _G.AutoSystems.IsInLobby() then print("[AutoSystems] Not in lobby"); return end
-        print("[AutoSystems] Force running all...")
-        _G.AutoSystems.LastRun = {Redeem = 0, Battlepass = 0, Daily = 0, Special = 0, Quest = 0}
-        pcall(_G.AutoRedeem); pcall(_G.AutoBattlepass); pcall(_G.AutoDaily); pcall(_G.AutoSpecial); pcall(_G.AutoQuest)
-        print("[AutoSystems] Complete")
-    end
-    
-    print("[AutoSystems] ✅ Loaded! IsInLobby=" .. tostring(_G.AutoSystems.IsInLobby()))
-    print("[AutoSystems] Commands: _G.AutoClaim(), _G.AutoClaimAll(), _G.AutoRedeem(), _G.RefreshCodes()")
-    
-    -- Initial run if in lobby
-    if _G.AutoSystems.IsInLobby() then
-        task.wait(2)
-        print("[AutoSystems] 🚀 Starting auto systems in lobby...")
-        pcall(_G.AutoClaimAll)
-    end
-    
-    -- Smart loop - checks every 30 seconds, runs only what's ready
-    while true do
-        task.wait(30)
-        if _G.AutoSystems.Enabled and _G.AutoSystems.IsInLobby() then
-            pcall(_G.AutoClaim)
-        end
-    end
+    print("[AutoPlay] " .. (_G.AbilitySystem and "✅ Ready!" or "⚠️ Failed - Abilities disabled"))
 end)
 
 -- ===== SERVICES =====
@@ -208,6 +48,10 @@ local CollectionService = game:GetService("CollectionService")
 
 local plr = Players.LocalPlayer
 local PlayerGui = plr:WaitForChild("PlayerGui")
+
+-- ===== MODULES =====
+local Modules = ReplicatedStorage:WaitForChild("Modules")
+local StagesData = require(Modules.Data.StagesData)
 
 -- ===== CONFIGURATION (ไม่ใช้ Settings แล้ว - หาข้อมูลจาก UnitsData) =====
 local ENABLED = true
@@ -228,7 +72,7 @@ local GlobalMatchSettings, UnitsData, UnitsModule, MohatoHealthEvent, EntityIDHa
 
 -- ⭐⭐⭐ FORWARD DECLARATIONS (รวมเป็น 1 บรรทัดเพื่อลด register) ⭐⭐⭐
 local GetEnemies, GetActiveUnits, GetFrontmostEnemy, IsBossEnemy, IsIncomeUnit
-local IsBuffUnit, GetMapPath, GetTotalPathDistance, GetCurrentWaveForSkill
+local IsBuffUnit, GetMapPath, GetTotalPathDistance
 
 local function LoadModules()
     local success, err
@@ -366,6 +210,31 @@ local function ShouldActivateEmergencyMode()
     
     EmergencyMode.LastCheck = now
     
+    -- ⭐⭐⭐ FIX: เช็คว่าเกมเริ่มแล้วหรือยัง (inline เพื่อไม่ต้องเรียก GetWaveFromUI)
+    pcall(function()
+        local HUD = PlayerGui:FindFirstChild("HUD")
+        if HUD then
+            local Map = HUD:FindFirstChild("Map")
+            if Map then
+                local WavesAmount = Map:FindFirstChild("WavesAmount")
+                if WavesAmount and WavesAmount:IsA("TextLabel") then
+                    local text = WavesAmount.Text or ""
+                    local cleanText = text:gsub("<[^>]+>", "")
+                    local cur, total = cleanText:match("(%d+)%s*/%s*(%d+)")
+                    if cur and total then
+                        CurrentWave = tonumber(cur) or 0
+                        MaxWave = tonumber(total) or 0
+                    end
+                end
+            end
+        end
+    end)
+    
+    if not CurrentWave or CurrentWave == 0 then
+        EmergencyMode.Active = false
+        return false
+    end
+    
     -- เช็ค enemy ใกล้เป้าหมาย
     if not GetEnemies then return false end  -- ⭐ FIX: เช็คว่าฟังก์ชันถูก define แล้ว
     local enemies = GetEnemies()
@@ -403,6 +272,8 @@ local function ShouldActivateEmergencyMode()
     -- ⭐ Log เมื่อสถานะเปลี่ยน
     if shouldActivate and not EmergencyMode.Active then
         DebugPrint(string.format("🚨 EMERGENCY MODE ACTIVATED: %d enemies near goal!", criticalEnemies))
+        -- ⭐⭐⭐ Reset upgrade count เมื่อเริ่ม Emergency ใหม่
+        EmergencyUpgradeCount = {}
     elseif not shouldActivate and EmergencyMode.Active then
         DebugPrint("✅ Emergency Mode DEACTIVATED - situation improved")
     end
@@ -568,17 +439,28 @@ local GetHotbarUnits, GetYen, GetUpgradeCost, UpgradeUnit, PlaceUnit, SellUnit
 local GetActiveUnits, IsIncomeUnit, IsBuffUnit, GetCheapestDamageSlot
 local GetSlotLimit, CanPlaceAtPosition, GetCheapestDamageSlotNoLimit
 local SetPriority, GetBestPlacementPosition, GetCurrentUpgradeLevel, GetMaxUpgradeLevel
+local GetWaveFromUI, GetGamePhase  -- ⭐ เพิ่ม forward declaration
 
 -- Emergency Upgrade State
 local LastEmergencyUpgradeTime = 0
 local EMERGENCY_UPGRADE_COOLDOWN = 2
 
+-- ⭐⭐⭐ Track Emergency Upgrade Count (ห้ามอัพเกิน 2 ขั้นถ้าไม่ขาย)
+local EmergencyUpgradeCount = {}  -- EmergencyUpgradeCount[GUID] = จำนวนขั้นที่อัพใน Emergency
+local MAX_EMERGENCY_UPGRADES = 2  -- อัพได้สูงสุด 2 ขั้นต่อ unit ใน Emergency
+
 local function UpgradeUnitsEmergency()
     -- ใช้ทั้ง 2 ระบบ Emergency: EmergencyMode.Active หรือ IsEmergency
     if not EmergencyMode.Active and not IsEmergency then return false end
     
+    -- ⭐⭐⭐ FROZEN PORT: ใช้ระบบ upgrade เฉพาะ (ไม่ใช้ function นี้)
+    if _G.APState and _G.APState.IsFrozenPort then
+        return false  -- ข้าม - Frozen Port มี logic อัพเกรดเฉพาะอยู่แล้ว
+    end
+    
     local now = tick()
-    if now - LastEmergencyUpgradeTime < EMERGENCY_UPGRADE_COOLDOWN then
+    -- ⭐⭐⭐ ลด cooldown เป็น 0.3 วินาที เพื่อให้อัพได้เร็วขึ้นใน Emergency
+    if now - LastEmergencyUpgradeTime < 0.3 then
         return false
     end
     
@@ -598,14 +480,19 @@ local function UpgradeUnitsEmergency()
                 local maxLevel = GetMaxUpgradeLevel and GetMaxUpgradeLevel(unit) or 10
                 local cost = GetUpgradeCost and GetUpgradeCost(unit) or math.huge
                 
-                if currentLevel < maxLevel and cost < math.huge then
+                -- ⭐⭐⭐ เช็คว่าอัพใน Emergency ไปกี่ขั้นแล้ว
+                local emergencyUpgrades = EmergencyUpgradeCount[guid] or 0
+                local canUpgradeMore = emergencyUpgrades < MAX_EMERGENCY_UPGRADES
+                
+                if currentLevel < maxLevel and cost < math.huge and canUpgradeMore then
                     table.insert(damageUnits, {
                         Unit = unit,
                         GUID = guid,
                         Name = unit.Name,
                         Level = currentLevel,
                         MaxLevel = maxLevel,
-                        Cost = cost
+                        Cost = cost,
+                        EmergencyUpgrades = emergencyUpgrades
                     })
                 end
             end
@@ -621,18 +508,40 @@ local function UpgradeUnitsEmergency()
         return a.Level < b.Level
     end)
     
-    -- อัพเกรด 1 ตัวที่ afford ได้
+    -- ⭐⭐⭐ Emergency: อัพหลายตัวต่อรอบ (ถ้ามีเงินพอ) แต่ไม่เกิน 2 ขั้นต่อ unit
     local yen = GetYen and GetYen() or 0
+    local upgradedCount = 0
+    local MAX_UPGRADES_PER_TICK = 3  -- อัพได้สูงสุด 3 ตัวต่อรอบ
+    
     for _, unitData in ipairs(damageUnits) do
+        if upgradedCount >= MAX_UPGRADES_PER_TICK then break end
+        
+        -- ⭐⭐⭐ เช็คว่ายังอัพได้อีกไหม (ไม่เกิน 2 ขั้น)
+        local emergencyUpgrades = EmergencyUpgradeCount[unitData.GUID] or 0
+        if emergencyUpgrades >= MAX_EMERGENCY_UPGRADES then
+            -- ข้าม unit นี้ - อัพครบ 2 ขั้นแล้ว
+            continue
+        end
+        
         if yen >= unitData.Cost then
             local success = UpgradeUnit and UpgradeUnit(unitData.Unit)
             if success then
-                LastEmergencyUpgradeTime = now
-                print(string.format("[Emergency] ⬆️ %s (%d→%d)", 
-                    unitData.Name, unitData.Level, unitData.Level + 1))
-                return true
+                yen = yen - unitData.Cost  -- ลดเงินที่ใช้ไป
+                upgradedCount = upgradedCount + 1
+                
+                -- ⭐⭐⭐ Track การอัพใน Emergency
+                EmergencyUpgradeCount[unitData.GUID] = (EmergencyUpgradeCount[unitData.GUID] or 0) + 1
+                
+                print(string.format("[Emergency] ⬆️ %s (%d→%d) [EmergencyUpgrade: %d/%d]", 
+                    unitData.Name, unitData.Level, unitData.Level + 1,
+                    EmergencyUpgradeCount[unitData.GUID], MAX_EMERGENCY_UPGRADES))
             end
         end
+    end
+    
+    if upgradedCount > 0 then
+        LastEmergencyUpgradeTime = now
+        return true
     end
     
     return false
@@ -1375,9 +1284,314 @@ local function GetSummonUnitPlacementPosition(unitRange, unitName, unitData)
     return nil
 end
 
+-- ===== 🔴 FROZEN PORT PLACEMENT SYSTEM (ไม่ hardcode) =====
+local FrozenPortUsedPositions = {}
+local FrozenPortAutoPlaceUsedPositions = {}
+
+-- ===== ⛔ FROZEN PORT EXCLUDED ZONES (ห้ามวางเด็ดขาด!) =====
+-- พิกัดจากภาพ: เส้นสีดำคือบริเวณที่ห้ามวาง
+-- รูปแบบ: {Center = Vector3, Radius = number} หรือ {Min = Vector3, Max = Vector3}
+local FrozenPortExcludedZones = {
+    -- ⛔ Zone 1: มุมบนซ้าย (ใกล้ตึกสีฟ้า)
+    {Center = Vector3.new(-120, 0, -80), Radius = 25},
+    
+    -- ⛔ Zone 2: พื้นที่ด้านซ้ายบน (เส้นทแยงมุม)
+    {Center = Vector3.new(-90, 0, -50), Radius = 20},
+    {Center = Vector3.new(-60, 0, -30), Radius = 18},
+    
+    -- ⛔ Zone 3: พื้นที่กลาง-ซ้าย (ใกล้เรือ)
+    {Center = Vector3.new(-70, 0, 20), Radius = 22},
+    {Center = Vector3.new(-100, 0, 50), Radius = 20},
+    
+    -- ⛔ Zone 4: มุมล่างซ้าย (ใกล้เรือดำ)
+    {Center = Vector3.new(-110, 0, 90), Radius = 25},
+    {Center = Vector3.new(-80, 0, 110), Radius = 20},
+    
+    -- ⛔ Zone 5: พื้นที่กลาง-ล่าง
+    {Center = Vector3.new(-30, 0, 80), Radius = 18},
+    {Center = Vector3.new(0, 0, 100), Radius = 20},
+    
+    -- ⛔ Zone 6: พื้นที่กลาง (ใกล้ path หลัก)
+    {Center = Vector3.new(-20, 0, 30), Radius = 15},
+    {Center = Vector3.new(10, 0, 50), Radius = 15},
+    
+    -- ⛔ Zone 7: พื้นที่ด้านขวา-บน
+    {Center = Vector3.new(80, 0, -60), Radius = 22},
+    {Center = Vector3.new(110, 0, -30), Radius = 20},
+    
+    -- ⛔ Zone 8: พื้นที่ขวา-กลาง (ใกล้เรือส้ม)
+    {Center = Vector3.new(100, 0, 20), Radius = 25},
+    {Center = Vector3.new(120, 0, 60), Radius = 22},
+    
+    -- ⛔ Zone 9: มุมขวาล่าง
+    {Center = Vector3.new(130, 0, 100), Radius = 25},
+    {Center = Vector3.new(100, 0, 120), Radius = 20},
+    
+    -- ⛔ Zone 10: เส้นทแยงขวาบน-ล่าง
+    {Center = Vector3.new(60, 0, -40), Radius = 18},
+    {Center = Vector3.new(40, 0, -20), Radius = 15},
+    
+    -- ⛔ Zone 11: พื้นที่รอบ Base (มุมขวาสุด)
+    {Center = Vector3.new(140, 0, 80), Radius = 20},
+}
+
+-- ⛔ ฟังก์ชันเช็คว่าตำแหน่งอยู่ใน Excluded Zone หรือไม่
+local function IsInFrozenPortExcludedZone(pos)
+    if not _G.APState or not _G.APState.IsFrozenPort then
+        return false  -- ไม่ใช่ Frozen Port → ไม่เช็ค
+    end
+    
+    for _, zone in ipairs(FrozenPortExcludedZones) do
+        if zone.Center and zone.Radius then
+            -- วงกลม
+            local dist2D = math.sqrt((pos.X - zone.Center.X)^2 + (pos.Z - zone.Center.Z)^2)
+            if dist2D <= zone.Radius then
+                return true
+            end
+        elseif zone.Min and zone.Max then
+            -- สี่เหลี่ยม
+            if pos.X >= zone.Min.X and pos.X <= zone.Max.X and
+               pos.Z >= zone.Min.Z and pos.Z <= zone.Max.Z then
+                return true
+            end
+        end
+    end
+    
+    return false
+end
+
+-- ฟังก์ชันเช็คว่าตำแหน่งอยู่บนเส้นทางศัตรูหรือไม่ (ห้ามวาง)
+-- ⛔ รวมการเช็ค Excluded Zone ด้วย!
+local function IsOnEnemyPath(pos, path, minDistance)
+    -- ⛔ เช็ค Excluded Zone ก่อน!
+    if IsInFrozenPortExcludedZone(pos) then
+        return true  -- ห้ามวาง!
+    end
+    
+    minDistance = minDistance or 8  -- ห่างจากเส้นทางอย่างน้อย 8 studs
+    
+    for i = 1, #path - 1 do
+        local p1 = path[i]
+        local p2 = path[i + 1]
+        
+        -- คำนวณระยะจากจุดไปยังเส้นตรง
+        local lineVec = p2 - p1
+        local lineLen = lineVec.Magnitude
+        if lineLen > 0 then
+            local lineDir = lineVec / lineLen
+            local toPos = pos - p1
+            local projection = toPos:Dot(lineDir)
+            projection = math.max(0, math.min(lineLen, projection))
+            local closestPoint = p1 + lineDir * projection
+            local dist = (pos - closestPoint).Magnitude
+            
+            if dist < minDistance then
+                return true
+            end
+        end
+    end
+    
+    return false
+end
+
+-- หา U-Turn corners จาก path (มุม >= 60 องศา)
+local function FindUTurnCorners(path, minAngle)
+    minAngle = minAngle or 60
+    local corners = {}
+    
+    for i = 2, #path - 1 do
+        local prev = path[i - 1]
+        local curr = path[i]
+        local next = path[i + 1]
+        
+        local dir1 = (curr - prev).Unit
+        local dir2 = (next - curr).Unit
+        
+        local dot = dir1:Dot(dir2)
+        dot = math.max(-1, math.min(1, dot))
+        local angle = math.deg(math.acos(dot))
+        
+        if angle >= minAngle then
+            -- หาทิศทางออกจากโค้ง (perpendicular)
+            local avgDir = (dir1 + dir2).Unit
+            local outwardDir = Vector3.new(-avgDir.Z, 0, avgDir.X)  -- perpendicular
+            
+            table.insert(corners, {
+                Position = curr,
+                Index = i,
+                Angle = angle,
+                OutwardDir = outwardDir,
+                InwardDir = -outwardDir
+            })
+        end
+    end
+    
+    return corners
+end
+
+-- คำนวณ coverage score (กี่จุดของ path อยู่ใน range)
+local function CalculateCoverageScore(pos, path, unitRange)
+    local score = 0
+    local coveredSegments = 0
+    
+    for i = 1, #path - 1 do
+        local p1 = path[i]
+        local p2 = path[i + 1]
+        local midPoint = (p1 + p2) / 2
+        
+        local dist = (pos - midPoint).Magnitude
+        if dist <= unitRange then
+            -- ยิ่งใกล้ยิ่งได้คะแนนมาก
+            score = score + (unitRange - dist) / unitRange
+            coveredSegments = coveredSegments + 1
+        end
+    end
+    
+    return score, coveredSegments
+end
+
+-- หาตำแหน่ง Emergency ที่ดีที่สุด (สีส้ม - U-turn centers)
+local function GetFrozenPortEmergencyPosition(unitRange)
+    local path = GetMapPath()
+    if not path or #path < 5 then return nil end
+    
+    local corners = FindUTurnCorners(path, 50)
+    if #corners == 0 then return nil end
+    
+    local candidates = {}
+    
+    for _, corner in ipairs(corners) do
+        -- ลองหลายตำแหน่งรอบ corner
+        for dist = 10, unitRange * 0.8, 5 do
+            for _, dir in ipairs({corner.OutwardDir, corner.InwardDir}) do
+                local testPos = corner.Position + dir * dist
+                
+                -- เช็คว่าไม่อยู่บนเส้นทาง
+                if not IsOnEnemyPath(testPos, path, 10) then
+                    local score, covered = CalculateCoverageScore(testPos, path, unitRange)
+                    
+                    -- เช็คว่ายังไม่ได้ใช้
+                    local isUsed = false
+                    for _, usedPos in ipairs(FrozenPortUsedPositions) do
+                        if (testPos - usedPos).Magnitude < 15 then
+                            isUsed = true
+                            break
+                        end
+                    end
+                    
+                    if not isUsed and covered >= 2 then
+                        table.insert(candidates, {
+                            pos = testPos,
+                            score = score,
+                            covered = covered,
+                            cornerAngle = corner.Angle
+                        })
+                    end
+                end
+            end
+        end
+    end
+    
+    -- เรียงตาม score สูงสุด
+    table.sort(candidates, function(a, b) return a.score > b.score end)
+    
+    if #candidates > 0 then
+        local best = candidates[1]
+        table.insert(FrozenPortUsedPositions, best.pos)
+        return best.pos
+    end
+    
+    return nil
+end
+
+-- หาตำแหน่ง Auto Place ที่ดีที่สุด (สีแดง - high coverage areas)
+local function GetFrozenPortAutoPlacePosition(unitRange, phase)
+    local path = GetMapPath()
+    if not path or #path < 5 then return nil end
+    
+    -- กำหนดส่วนของ path ตาม phase
+    local startIdx, endIdx
+    if phase == "early" then
+        startIdx = 1
+        endIdx = math.floor(#path * 0.4)
+    elseif phase == "mid" then
+        startIdx = math.floor(#path * 0.3)
+        endIdx = math.floor(#path * 0.7)
+    else -- late
+        startIdx = math.floor(#path * 0.5)
+        endIdx = #path
+    end
+    
+    local candidates = {}
+    
+    -- สร้าง grid รอบ path segment
+    for i = startIdx, endIdx - 1 do
+        local p1 = path[i]
+        local p2 = path[i + 1]
+        local midPoint = (p1 + p2) / 2
+        local segmentDir = (p2 - p1).Unit
+        local perpDir = Vector3.new(-segmentDir.Z, 0, segmentDir.X)
+        
+        -- ลองหลายตำแหน่ง perpendicular กับ path
+        for dist = 12, unitRange * 0.7, 6 do
+            for _, sign in ipairs({1, -1}) do
+                local testPos = midPoint + perpDir * dist * sign
+                
+                if not IsOnEnemyPath(testPos, path, 10) then
+                    local score, covered = CalculateCoverageScore(testPos, path, unitRange)
+                    
+                    -- เช็คว่ายังไม่ได้ใช้
+                    local isUsed = false
+                    for _, usedPos in ipairs(FrozenPortAutoPlaceUsedPositions) do
+                        if (testPos - usedPos).Magnitude < 12 then
+                            isUsed = true
+                            break
+                        end
+                    end
+                    
+                    if not isUsed and covered >= 1 then
+                        table.insert(candidates, {
+                            pos = testPos,
+                            score = score,
+                            covered = covered,
+                            pathIndex = i
+                        })
+                    end
+                end
+            end
+        end
+    end
+    
+    -- เรียงตาม score สูงสุด
+    table.sort(candidates, function(a, b) return a.score > b.score end)
+    
+    if #candidates > 0 then
+        local best = candidates[1]
+        table.insert(FrozenPortAutoPlaceUsedPositions, best.pos)
+        return best.pos
+    end
+    
+    return nil
+end
+
+-- รีเซ็ต Frozen Port positions
+local function ResetFrozenPortPositions()
+    FrozenPortUsedPositions = {}
+    FrozenPortAutoPlaceUsedPositions = {}
+end
+
+-- Wrapper สำหรับ Emergency Mode (backward compatible)
+local function GetFrozenPortUCenterPosition(unitRange)
+    return GetFrozenPortEmergencyPosition(unitRange)
+end
+
 -- ===== หาตำแหน่งวางดักหน้าศัตรู (INTERCEPT) =====
 -- ⭐⭐⭐ FIX: วางดักหน้าศัตรู (ตามทิศทางที่เดิน) ไม่ใช่วางรอบๆ
+-- 🔥 Frozen Port: วางที่ U-Center เท่านั้น (จุดสีแดง) → แยกไปเช็คใน AutoPlaceLoop แล้ว
 local function GetEmergencyPlacementPosition(unitRange, unitName, unitData)
+    -- ⭐ ฟังก์ชันนี้ใช้สำหรับด่านอื่นๆ (ไม่ใช่ Frozen Port)
+    -- Frozen Port จะใช้ GetBestPlacementPosition โดยตรง
+    
     local frontEnemy, frontDist = GetFrontmostEnemy()
     
     if not frontEnemy or not frontEnemy.Position then
@@ -1449,148 +1663,306 @@ local function GetEmergencyPlacementPosition(unitRange, unitName, unitData)
 end
 
 _G.APState.LastEmergencyCheckLog = 0
-local LastEmergencyCheckLog = _G.APState.LastEmergencyCheckLog
+_G.APState.LastStageKey = ""
+_G.APState.LastEmergencyState = false
+_G.APState.IsFrozenPort = false
+-- ⭐ ใช้ _G.APState โดยตรง (ไม่ใช้ local copy)
 
 local function CheckEmergency()
     local progress = GetEnemyProgress()
-    
-    -- Debug: แสดง progress ทุก 10 วินาที (แม้ progress = 0)
     local now = tick()
-    if now - LastEmergencyCheckLog >= 10 then
-        -- ⭐⭐⭐ CRITICAL: นับ enemies ที่กรอง Summon ออกแล้ว (จาก GetEnemies)
-        -- GetEnemies() = Real Enemies เท่านั้น (ไม่รวม Summon)
-        local filteredEnemies = GetEnemies()  -- ⭐⭐⭐ ไม่รวม Summon
-        local enemyCount = #filteredEnemies
-        local emergencyCount = 0
-        local clearEnemyCount = 0
-        
-        -- นับ Total Enemies ใน _ActiveEnemies (รวมทั้ง Real Enemies + Summons)
-        local totalActiveEnemies = 0
-        if ClientEnemyHandler and ClientEnemyHandler._ActiveEnemies then
-            for _ in pairs(ClientEnemyHandler._ActiveEnemies) do
-                totalActiveEnemies = totalActiveEnemies + 1
-            end
-        end
-        
-        -- ✅ นับทั้ง Emergency และ ClearEnemy Units
-        for _ in pairs(EmergencyUnits) do
-            emergencyCount = emergencyCount + 1
-        end
-        for _ in pairs(ClearEnemyUnits) do
-            clearEnemyCount = clearEnemyCount + 1
-        end
-        
-        -- ⭐⭐⭐ คำนวณ Summon Count = Total - Real Enemies
-        local summonCount = totalActiveEnemies - enemyCount
-        
-        -- ⭐⭐⭐ Log พร้อมข้อมูลชัดเจน
-        DebugPrint(string.format("📊 [CHECK] Progress: %.1f%% | Real Enemies: %d | Summons: %d (กรองออก) | Emergency: %d | ClearEnemy: %d | Threshold: 60%%", 
-            progress, enemyCount, summonCount, emergencyCount, clearEnemyCount))
-        
-        -- ⭐⭐⭐ ยืนยันว่า Progress คำนวณจาก Real Enemies เท่านั้น
-        if summonCount > 0 then
-            DebugPrint(string.format("✅ [SUMMON FILTER] ระบบกรอง Summon %d ตัวออกจากการคำนวณ Progress (Total: %d - Real: %d = Summons: %d)", 
-                summonCount, totalActiveEnemies, enemyCount, summonCount))
-            
-            -- ⭐⭐⭐ ดึงรายละเอียด Summons ที่ถูกกรอง (จาก _G.FilteredSummonsThisCycle)
-            if _G.FilteredSummonsThisCycle and #_G.FilteredSummonsThisCycle > 0 then
-                local summary = {}
-                for _, filtered in ipairs(_G.FilteredSummonsThisCycle) do
-                    local key = filtered.name or "Unknown"
-                    if not summary[key] then
-                        summary[key] = {count = 0, reason = filtered.reason}
-                    end
-                    summary[key].count = summary[key].count + 1
-                end
-                
-                if next(summary) then
-                    DebugPrint("   📝 รายละเอียด Summons ที่กรอง:")
-                    for name, data in pairs(summary) do
-                        DebugPrint(string.format("      - %s: %d ตัว (%s)", name, data.count, data.reason))
-                    end
-                end
-            end
-        end
-        
-        LastEmergencyCheckLog = now
-    end
     
     local wasEmergency = IsEmergency
     
-    -- ⭐⭐⭐ FIX: ถ้าวาง Emergency units ครบแล้ว (EmergencyActivated = true) → ไม่เข้า Emergency Mode อีก
-    -- จนกว่า progress จะลงต่ำกว่า 30% แล้วขาย units ไป
-    if not EmergencyActivated then
-        IsEmergency = progress >= 60  -- 60% threshold
-    end
+    -- ⭐⭐⭐ FIX: ใช้ workspace:GetAttribute("AliveEnemies") แทนการอ่าน UI
+    local workspaceEnemies = workspace:GetAttribute("AliveEnemies") or 0
+    local waveReadSuccess = false
+    local waveReadError = nil
     
-    -- ถ้าเพิ่งเข้า Emergency Mode ครั้งแรก
-    if IsEmergency and not wasEmergency then
-        EmergencyStartTime = tick()
-        EmergencyActivated = false
-        DebugPrint(string.format("🚨 EMERGENCY MODE ACTIVATED! Progress: %.1f%%", progress))
-    end
-    
-    -- ✅ FIX: ขาย Emergency Units เฉพาะเมื่อ progress < 30% (ปลอดภัยแล้ว)
-    if next(EmergencyUnits) and progress < 30 then
-        DebugPrint(string.format("💸💸💸 [EMERGENCY SELL] Progress ต่ำ (%.1f%% < 30%%) → กำลังขาย Emergency Units", progress))
-        local soldCount = 0
-        local failedCount = 0
-        
-        -- สร้าง list ของ GUIDs เพื่อไม่ให้ปัญหาขณะ iterate
-        local guidsToSell = {}
-        for guid, _ in pairs(EmergencyUnits) do
-            table.insert(guidsToSell, guid)
+    -- อ่าน Wave จาก UI (สำหรับ log เท่านั้น)
+    pcall(function()
+        local HUD = PlayerGui:FindFirstChild("HUD")
+        if not HUD then
+            return
         end
         
-        for _, guid in ipairs(guidsToSell) do
-            -- ค้นหา unit จาก ActiveUnits
-            if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
-                local emergencyUnit = ClientUnitHandler._ActiveUnits[guid]
-                if emergencyUnit then
-                    local unitWrapper = {
-                        GUID = guid,
-                        Name = emergencyUnit.Name,
-                        CanSell = true
-                    }
-                    
-                    DebugPrint(string.format("💸 พยายามขาย Emergency Unit: %s (GUID: %s)", emergencyUnit.Name, tostring(guid)))
-                    
-                    -- ลองขาย
-                    local sellSuccess = SellUnit(unitWrapper)
-                    if sellSuccess then
-                        soldCount = soldCount + 1
-                        EmergencyUnits[guid] = nil  -- ลบทันทีเมื่อขายสำเร็จ
-                        DebugPrint(string.format("✅✅✅ ขาย Emergency Unit สำเร็จ: %s", emergencyUnit.Name))
-                    else
-                        failedCount = failedCount + 1
-                        DebugPrint(string.format("❌ ขาย Emergency Unit ล้มเหลว: %s", emergencyUnit.Name))
-                    end
-                else
-                    -- Unit ไม่อยู่ใน ActiveUnits แล้ว (ถูกขายไปแล้ว?)
-                    EmergencyUnits[guid] = nil
-                    DebugPrint(string.format("⚠️ Emergency Unit ไม่พบใน ActiveUnits (GUID: %s) - ลบออกจาก table", tostring(guid)))
+        local Map = HUD:FindFirstChild("Map")
+        if not Map then
+            return
+        end
+        
+        local WavesAmount = Map:FindFirstChild("WavesAmount")
+        if not WavesAmount or not WavesAmount:IsA("TextLabel") then
+            return
+        end
+        
+        local text = WavesAmount.Text or ""
+        local cleanText = text:gsub("<[^>]+>", "")
+        
+        -- ⭐⭐⭐ FIX: รองรับทั้ง "1/10" และ "1/∞" (Infinity mode)
+        -- Pattern 1: ตัวเลข/ตัวเลข (เช่น 5/10)
+        local cur, total = cleanText:match("(%d+)%s*/%s*(%d+)")
+        
+        if cur and total then
+            CurrentWave = tonumber(cur) or 0
+            MaxWave = tonumber(total) or 0
+            waveReadSuccess = true
+        else
+            -- Pattern 2: ตัวเลข/∞ หรือ ตัวเลข/infinity (Infinity mode)
+            cur = cleanText:match("(%d+)%s*/%s*[∞∾]")  -- ∞ หรือ ∾
+            if not cur then
+                cur = cleanText:match("(%d+)%s*/%s*inf")  -- infinity
+            end
+            if not cur then
+                -- Pattern 3: แค่ตัวเลขตัวแรก
+                cur = cleanText:match("(%d+)")
+            end
+            
+            if cur then
+                CurrentWave = tonumber(cur) or 0
+                MaxWave = 999  -- Infinity mode = ไม่มี max
+                waveReadSuccess = true
+            end
+        end
+    end)
+    
+    -- ⭐⭐⭐ เช็คว่าเกมเริ่มแล้ว = มี AliveEnemies > 0 จาก workspace attribute
+    local gameStarted = workspaceEnemies > 0
+    
+    -- ⭐⭐⭐ FIX: เช็คว่ามี enemy จริงๆ ก่อน (ใช้ workspace attribute)
+    local filteredEnemies = GetEnemies()
+    local hasRealEnemies = workspaceEnemies > 0  -- ใช้ attribute จาก workspace
+    
+    -- ⭐⭐⭐ เช็คว่าเป็น Frozen Port หรือไม่
+    local isFrozenPort = false
+    -- ⭐⭐⭐ NEW: เช็คว่าเป็น Imprisoned Island Act3 Rift หรือไม่
+    local isImprisonedIslandRift = false
+    local stageName = "Unknown"
+    local stageType = "Unknown"
+    local stage = "Unknown"
+    local act = "Unknown"
+    
+    pcall(function()
+        if not GameHandler or not GameHandler.GameData then return end
+        
+        local GameData = GameHandler.GameData
+        
+        -- ดึงข้อมูลจาก GameData โดยตรง
+        stageType = GameData.StageType or "Unknown"
+        
+        -- ⭐ ใช้ StagesData เพื่อดึง Stage และ Act ที่ถูกต้อง (รองรับ WorldDestroyer)
+        if StagesData then
+            local currentStage = StagesData:GetCurrentStage(GameData)
+            local currentAct = StagesData:GetCurrentAct(GameData)
+            
+            -- GetCurrentStage อาจคืน table หรือ string
+            if type(currentStage) == "table" then
+                stage = currentStage.Stage or currentStage.Name or GameData.Stage or "Unknown"
+            elseif type(currentStage) == "string" then
+                stage = currentStage
+            else
+                stage = GameData.Stage or "Unknown"
+            end
+            
+            -- GetCurrentAct อาจคืน table หรือ string
+            if type(currentAct) == "table" then
+                act = currentAct.Act or currentAct.Name or GameData.Act or "Unknown"
+            elseif type(currentAct) == "string" then
+                act = currentAct
+            else
+                act = GameData.Act or "Unknown"
+            end
+        else
+            stage = GameData.Stage or "Unknown"
+            act = GameData.Act or "Unknown"
+        end
+        
+        -- ⭐ เช็ค Frozen Port ตามเงื่อนไข:
+        
+        -- 1. WorldDestroyer Mode: ทุกครั้ง (ใช้ Frozen Port map = Story Stage11 Infinite)
+        if stageType == "WorldDestroyer" then
+            isFrozenPort = true
+            stageName = "Frozen Port (WorldDestroyer)"
+        end
+        
+        -- 2. Story Mode: Stage11 Act6 หรือ Infinite (Frozen Port)
+        if stageType == "Story" and stage == "Stage11" and (act == "Infinite") then
+            isFrozenPort = true
+            stageName = "Frozen Port (Story)"
+        end
+        
+        -- 3. LTM Mode: Fall Infinite (ใช้ Frozen Port map)
+        if stageType == "LTM" and stage == "Fall" and act == "Infinite" then
+            isFrozenPort = true
+            stageName = "Frozen Port (LTM Fall)"
+        end
+        
+        -- ⭐⭐⭐ NEW: 4. Imprisoned Island Rift/Legend Mode
+        -- Stage3 = Imprisoned Island, Act3 = Act3, Rift mode
+        local stageStr = tostring(stage):lower()
+        local actStr = tostring(act):lower()
+        
+        -- 🔍 DEBUG: แสดงค่าที่ได้รับ
+        -- print(string.format("[StageDetect] 🔍 stageType=%s | stage=%s | stageStr=%s | act=%s | actStr=%s", 
+        --     tostring(stageType), tostring(stage), stageStr, tostring(act), actStr))
+        
+        -- Rift Mode
+        if stageType == "Rift" and (stageStr:find("stage11") or stageStr:find("imprisoned")) and (actStr:find("3") or actStr:find("act3")) then
+            isImprisonedIslandRift = true
+            stageName = "Imprisoned Island Act3 (Rift)"
+            -- print("[StageDetect] ✅ Matched: Rift Mode Act3")
+        end
+        
+        -- Alternative check: Stage3 หรือ Imprisoned Island โดยตรง (Rift)
+        if stageType == "Rift" and (stageStr:find("imprisoned") or stageStr == "stage11") then
+            isImprisonedIslandRift = true
+            stageName = "Imprisoned Island (Rift)"
+            -- print("[StageDetect] ✅ Matched: Rift Mode")
+        end
+
+        -- ⭐⭐⭐ Legend Stage Mode (รองรับทุก act)
+        if stageType == "LegendStage" and (stageStr:find("imprisoned") or stageStr:find("stage11") or stageStr == "11") then
+            isImprisonedIslandRift = true
+            stageName = "Imprisoned Island (Legend Stage)"
+            -- print("[StageDetect] ✅ Matched: Legend Stage - Imprisoned Island!")
+        end
+        
+        -- ⭐ เช็คจากชื่อ stage โดยตรง (fallback)
+        if not isImprisonedIslandRift then
+            local checkStage = tostring(stage):lower()
+            local checkType = tostring(stageType):lower()
+            if checkStage:find("imprisoned") or checkStage:find("island") then
+                if checkType:find("legend") or checkType:find("rift") then
+                    isImprisonedIslandRift = true
+                    stageName = "Imprisoned Island (Auto-Detect)"
+                    print("[StageDetect] ✅ Matched: Auto-Detect Imprisoned Island!")
                 end
             end
         end
-        
-        -- สรุปผล + ✅ รีเซ็ต Emergency Mode ให้วางตัวปกติได้
-        if soldCount > 0 then
-            DebugPrint(string.format("🎯🎯🎯 ขาย Emergency Units สำเร็จ %d ตัว (ล้มเหลว %d ตัว) - Progress: %.1f%%", soldCount, failedCount, progress))
-            
-            -- ✅ รีเซ็ตเพื่อให้วางตัวปกติได้
-            EmergencyActivated = false
-            IsEmergency = false
-            EmergencyStartTime = 0
+    end)
+    
+    -- DEBUG: แสดงข้อมูลด่านเฉพาะเมื่อเปลี่ยนแปลง (ไม่ spam)
+    local stageKey = string.format("%s_%s_%s_%s_%s", tostring(stageType), tostring(stage), tostring(act), tostring(isFrozenPort), tostring(isImprisonedIslandRift))
+    if _G.APState.LastStageKey ~= stageKey then
+        _G.APState.LastStageKey = stageKey
+        DebugPrint("====== STAGE INFO ======")
+        DebugPrint(string.format("MODE: %s | STAGE: %s | ACT: %s", tostring(stageType), tostring(stage), tostring(act)))
+        DebugPrint(string.format("MAP: %s | FROZEN PORT: %s | IMPRISONED RIFT: %s", tostring(stageName), tostring(isFrozenPort), tostring(isImprisonedIslandRift)))
+        if isFrozenPort then
+            if stageType == "WorldDestroyer" then
+                DebugPrint(">>> WorldDestroyer Mode - Emergency ENABLED!")
+            elseif stageType == "Story" then
+                DebugPrint(">>> Story Stage11 Frozen Port - Emergency ENABLED!")
+            elseif stageType == "LTM" then
+                DebugPrint(">>> LTM Fall Frozen Port - Emergency ENABLED!")
+            end
+        elseif isImprisonedIslandRift then
+            DebugPrint(">>> Imprisoned Island Act3 Rift - Lich King only on WHITE ZONE!")
         else
-            DebugPrint(string.format("❌❌❌ ไม่สามารถขาย Emergency Units ได้เลย! (มี %d ตัว ใน table)", failedCount))
+            DebugPrint(">>> Normal Mode - Emergency ENABLED for all maps!")
+        end
+        DebugPrint("========================")
+    end
+    
+    -- ⭐ เซ็ต global state สำหรับ Auto Place ใช้
+    _G.APState.IsFrozenPort = isFrozenPort
+    _G.APState.IsImprisonedIslandRift = isImprisonedIslandRift
+    
+    -- ⭐⭐⭐ FIX: Emergency Mode ทำงานทุก mode (ไม่ใช่เฉพาะ Frozen Port)
+    if gameStarted and hasRealEnemies then
+        -- ⭐ Emergency threshold แตกต่างตาม map type:
+        -- - Imprisoned Island Rift: progress >= 45% (เริ่มเร็วกว่า)
+        -- - อื่นๆ: progress >= 60%
+        local emergencyThreshold = 60
+        if isImprisonedIslandRift then
+            emergencyThreshold = 45
+        end
+        
+        IsEmergency = progress >= emergencyThreshold
+        
+        -- Debug log เมื่อเปลี่ยนสถานะ (เฉพาะครั้งแรก)
+        if IsEmergency and not wasEmergency then
+            local mapType = isFrozenPort and "Frozen Port" or (isImprisonedIslandRift and "Imprisoned Rift" or "Normal")
+            DebugPrint(string.format("🔥 [EMERGENCY] ACTIVATED! (%s | Enemies: %d | Progress: %.1f%% >= %d%%)", mapType, workspaceEnemies, progress, emergencyThreshold))
+        end
+    else
+        IsEmergency = false  -- เกมยังไม่เริ่ม หรือไม่มี enemy = ไม่ emergency
+    end
+    
+    -- Log เฉพาะเมื่อ Emergency state เปลี่ยน
+    if IsEmergency and not wasEmergency then
+        EmergencyStartTime = tick()
+        local emergencyThreshold = isImprisonedIslandRift and 45 or 60
+        DebugPrint(string.format("[EMERGENCY] ACTIVATED! Progress: %.1f%% >= %d%%", progress, emergencyThreshold))
+    end
+    
+    if not IsEmergency and wasEmergency then
+        DebugPrint(string.format("[EMERGENCY] DEACTIVATED! Progress: %.1f%%", progress))
+    end
+    
+    -- ⭐⭐⭐ IMPRISONED ISLAND RIFT: ขาย Lich King (Ruler) เมื่อ progress < 15% เพื่อย้ายตำแหน่ง
+    -- ⚠️ FIX: progress < 15 (ไม่ใช่ < 20) เพราะ progress เป็น 0-100
+    if isImprisonedIslandRift and progress < 15 then
+        local activeUnits = GetActiveUnits()
+        if activeUnits then
+            for _, unit in pairs(activeUnits) do
+                local unitNameLower = (unit.Name or ""):lower()
+                local isLichKingRuler = unitNameLower:find("lich") and unitNameLower:find("ruler")
+                local isSummonUnit = IsPassiveSummonUnit and IsPassiveSummonUnit(unit.Name, unit.Data or {})
+                
+                -- ⭐ ขายเฉพาะ Lich King (Ruler) ที่ไม่ใช่ Summon unit
+                if isLichKingRuler and not isSummonUnit then
+                    print(string.format("[ImprisonedRift] 🔄 Progress < 15%% → ขาย %s เพื่อย้ายตำแหน่ง", unit.Name))
+                    SellUnit(unit)
+                    -- ลบออกจาก tracking tables ถ้ามี
+                    if unit.GUID then
+                        EmergencyUnits[unit.GUID] = nil
+                        ClearEnemyUnits[unit.GUID] = nil
+                    end
+                end
+            end
         end
     end
     
-    -- ถ้าออกจาก Emergency Mode → Reset flag เพื่อให้วางใหม่ได้
-    if not IsEmergency and wasEmergency then
-        EmergencyStartTime = 0
-        EmergencyActivated = false
-        -- ⚠️ ไม่ลบ EmergencyUnits ที่นี่ เพราะยังต้องรอให้ progress < 30% ถึงขาย
+    -- ขาย Emergency Units เมื่อ progress < 30% หรือไม่มี enemy
+    if next(EmergencyUnits) then
+        local shouldSell = (not hasRealEnemies) or (progress < 30)
+        
+        if shouldSell then
+            local soldCount = 0
+            
+            local guidsToSell = {}
+            for guid, _ in pairs(EmergencyUnits) do
+                table.insert(guidsToSell, guid)
+            end
+            
+            for _, guid in ipairs(guidsToSell) do
+                if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
+                    local emergencyUnit = ClientUnitHandler._ActiveUnits[guid]
+                    if emergencyUnit then
+                        local unitWrapper = {
+                            GUID = guid,
+                            Name = emergencyUnit.Name,
+                            CanSell = true
+                        }
+                        if SellUnit(unitWrapper) then
+                            soldCount = soldCount + 1
+                            EmergencyUnits[guid] = nil
+                        end
+                    else
+                        EmergencyUnits[guid] = nil
+                    end
+                end
+            end
+            
+            if soldCount > 0 then
+                local sellReason = not hasRealEnemies and "No Enemy" or string.format("Progress %.1f%%", progress)
+                DebugPrint(string.format("[EMERGENCY] Sold %d units (%s)", soldCount, sellReason))
+                ResetFrozenPortPositions()
+                EmergencyActivated = false
+            end
+        end
+        -- ถ้า progress >= 30% และมี enemy → ไม่ขาย (รอจนกว่าจะปลอดภัย)
     end
     
     return IsEmergency
@@ -1618,19 +1990,10 @@ local function ResetGameState()
     MohatoHealthData = {}  -- ⭐⭐⭐ รีเซ็ต Mohato Health Data จาก Event
     ProcessedStaticEnemies = {}
     
-    -- 🎯 Reset Auto Skill V3
-    AutoSkillEnabled = {}       -- รีเซ็ต Auto Skill tracking
-    AbilityLastUsed = {}        -- รีเซ็ต Ability cooldown tracking
-    AbilityUsedOnce = {}        -- รีเซ็ต One-time ability tracking
-    AbilityAnalysisCache = {}   -- รีเซ็ต Ability analysis cache
-    _G.APSkill.WorldItemUsedThisMatch = false  -- ⭐⭐⭐ รีเซ็ต World Item usage (1 per match)
-    LastAutoSkillCheck = 0      -- ⏱️ รีเซ็ต throttle timer
-    KoguroAutoEnabled = {}      -- 🔄 รีเซ็ต Koguro Auto Status
-    
-    -- 🎯 Reload special ability events (กรณี reconnect)
-    task.delay(1, function()
-        LoadSpecialAbilityEvents()
-    end)
+    -- 🎯 Reset Ability System (ถ้ามี AbilitySystem.lua โหลดอยู่)
+    if _G.AbilitySystem and _G.AbilitySystem.ResetState then
+        pcall(function() _G.AbilitySystem.ResetState() end)
+    end
     
     -- Reset Global Position Tracking
     if _G.StaticEnemyLastPosition then _G.StaticEnemyLastPosition = {} end
@@ -1655,42 +2018,14 @@ local function ResetGameState()
     -- Reset NumberPad (สำหรับ Imprisoned Island)
     if _G.NumberPad then
         _G.NumberPad.BossWaves = {}
+        _G.NumberPad.InputSequence = {}
         _G.NumberPad.CodeAccepted = false
-        _G.NumberPad.LastWaveText = ""
-        _G.NumberPad.MapLogged = false
-        _G.NumberPad.LastDebug = 0
+        _G.NumberPad.LastCheck = 0
+        _G.NumberPad.LastBossKey = ""
     end
     
-    DebugPrint("✅ ResetGameState() complete - All data cleared (including Auto Skill)")
+    DebugPrint("✅ ResetGameState() complete - All data cleared")
 end
-
--- ===== CLEAR ENEMY MODE (IsStatic Only - ใช้ _G เพื่อลด register) =====
-_G.APClear = {
-    ClearEnemyUnits = {},
-    ClearEnemySoldForEnemy = {},
-    ClearEnemyNoMoreSellable = false,
-    ClearEnemySlotFullLogged = {},
-    ClearEnemyFoundDamageLogged = {},
-    ClearEnemyPlacedCount = {},
-    CLEAR_ENEMY_MAX_UNITS = 1,
-    LastClearEnemyLog = 0,
-    StaticEnemySpawnWave = {},
-    StaticEnemySpawnPos = {},
-    MohatoHealthData = {},
-}
-local ClearEnemyUnits = _G.APClear.ClearEnemyUnits
-local ClearEnemySoldForEnemy = _G.APClear.ClearEnemySoldForEnemy
-local ClearEnemyNoMoreSellable = false
-local ClearEnemySlotFullLogged = _G.APClear.ClearEnemySlotFullLogged
-local ClearEnemyFoundDamageLogged = _G.APClear.ClearEnemyFoundDamageLogged
-local ClearEnemyPlacedCount = _G.APClear.ClearEnemyPlacedCount
-local CLEAR_ENEMY_MAX_UNITS = 1
-local StaticEnemySpawnWave = _G.APClear.StaticEnemySpawnWave
-local StaticEnemySpawnPos = _G.APClear.StaticEnemySpawnPos
-local MohatoHealthData = _G.APClear.MohatoHealthData
-
--- 🔥 NEW: เก็บ state เก่าเพื่อเปรียบเทียบการเปลี่ยนแปลง
-local StaticEnemyLastState = {}  -- {EntityId = {WavesElapsed, Position, IsVulnerable}}
 
 -- ⭐⭐⭐ NEW: Setup MohatoHealthEvent Listener (ตาม Decom.lua line 9876-9897)
 local function SetupMohatoHealthListener()
@@ -1881,9 +2216,32 @@ local function GetRealMohatoPosition(enemyName)
     }
 end
 
--- ⭐ Cache สำหรับป้องกัน log spam (ใช้ _G)
-_G.APClear.LastStaticEnemyCount = 0
-_G.APClear.LastStaticEnemyCheck = 0
+-- ⭐ Initialize _G.APClear if not exists
+if not _G.APClear then
+    _G.APClear = {
+        ClearEnemyUnits = {},
+        ClearEnemySoldForEnemy = {},
+        ClearEnemySlotFullLogged = {},
+        ClearEnemyFoundDamageLogged = {},
+        ClearEnemyPlacedCount = {},
+        StaticEnemySpawnWave = {},
+        StaticEnemySpawnPos = {},
+        MohatoHealthData = {},
+        LastStaticEnemyCount = 0,
+        LastStaticEnemyCheck = 0
+    }
+end
+
+-- Local references for performance
+local ClearEnemySoldForEnemy = _G.APClear.ClearEnemySoldForEnemy
+local ClearEnemyNoMoreSellable = false
+local ClearEnemySlotFullLogged = _G.APClear.ClearEnemySlotFullLogged
+local ClearEnemyFoundDamageLogged = _G.APClear.ClearEnemyFoundDamageLogged
+local ClearEnemyPlacedCount = _G.APClear.ClearEnemyPlacedCount
+local StaticEnemySpawnWave = _G.APClear.StaticEnemySpawnWave
+local StaticEnemySpawnPos = _G.APClear.StaticEnemySpawnPos
+local MohatoHealthData = _G.APClear.MohatoHealthData
+local StaticEnemyLastState = {}
 
 local function CheckClearEnemyMode()
     -- ✅ FIX: เช็คจาก ClientEnemyHandler._ActiveEnemies[id].Data.IsStatic = true เท่านั้น
@@ -2724,6 +3082,10 @@ local function CheckClearEnemyMode()
                         if not skipThisEnemy then
                         -- ⭐⭐⭐ FIX: หาตำแหน่งว่างรอบๆ enemy ที่ตีโดน 100%
                         -- ทดสอบหลายตำแหน่งรอบๆ enemy (12 ตำแหน่ง + ระยะต่างๆ)
+                        
+                        -- ⭐⭐⭐ NEW: ใช้ Unit Range จริง เพื่อให้แน่ใจว่าตีถึง
+                        local unitRange = GetUnitRange(cheapestUnit.Data) or 18
+                        
                         local testOffsets = {
                             -- ระยะ 5 studs (ปกติ)
                             {x = 0, z = -5},   -- หน้า
@@ -2755,29 +3117,35 @@ local function CheckClearEnemyMode()
                             local testPos = targetPos + Vector3.new(offset.x, 0, offset.z)
                             local distance = (testPos - targetPos).Magnitude
                             
-                            -- ⭐⭐⭐ เช็คว่าวางได้จริงหรือไม่
+                            -- ⭐⭐⭐ FIX: เช็คว่าวางได้จริง + ตี enemy ได้
                             if CanPlaceAtPosition(cheapestUnit.Name, testPos) then
-                                table.insert(validPositions, {
-                                    position = testPos,
-                                    distance = distance
-                                })
-                                
-                                -- เลือกตำแหน่งที่ใกล้ที่สุด
-                                if distance < bestDistance then
-                                    bestPos = testPos
-                                    bestDistance = distance
+                                -- เช็คว่าตี enemy ได้จริง (distance <= unitRange)
+                                if distance <= unitRange then
+                                    table.insert(validPositions, {
+                                        position = testPos,
+                                        distance = distance
+                                    })
+                                    
+                                    -- เลือกตำแหน่งที่ใกล้ที่สุด (แต่ต้องตีถึง)
+                                    if distance < bestDistance then
+                                        bestPos = testPos
+                                        bestDistance = distance
+                                    end
+                                else
+                                    DebugPrint(string.format("⚠️ ตำแหน่ง (%.1f, %.1f) ไกลเกิน range: %.1f > %d", 
+                                        testPos.X, testPos.Z, distance, unitRange))
                                 end
                             end
                         end
                         
                         -- ⭐ Log เฉพาะเมื่อพบตำแหน่งหรือล้มเหลว (ไม่ spam)
                         if #validPositions > 0 then
-                            DebugPrint(string.format("✅ พบ %d ตำแหน่งว่าง รอบ %s (ID: %d) | ใกล้ที่สุด: %.1f studs → ตำแหน่งวาง: %.1f, %.1f, %.1f", 
-                                #validPositions, staticEnemy.Name, correctEntityIdNumber, bestDistance,
+                            DebugPrint(string.format("✅ พบ %d ตำแหน่งว่าง รอบ %s (ID: %d) | ใกล้ที่สุด: %.1f studs (Range: %d) → ตำแหน่งวาง: %.1f, %.1f, %.1f", 
+                                #validPositions, staticEnemy.Name, correctEntityIdNumber, bestDistance, unitRange,
                                 bestPos.X, bestPos.Y, bestPos.Z))
                         else
-                            DebugPrint(string.format("⚠️ ไม่พบตำแหน่งว่าง → ใช้ตำแหน่ง Enemy โดยตรง: %.1f, %.1f, %.1f", 
-                                targetPos.X, targetPos.Y, targetPos.Z))
+                            DebugPrint(string.format("⚠️ ไม่พบตำแหน่งว่างที่ตีถึง → ใช้ตำแหน่ง Enemy โดยตรง: %.1f, %.1f, %.1f (Range: %d)", 
+                                targetPos.X, targetPos.Y, targetPos.Z, unitRange))
                         end
                         
                         -- ถ้าไม่เจอตำแหน่งเลย → ใช้ตำแหน่ง enemy โดยตรง (fallback)
@@ -3001,36 +3369,6 @@ local function CheckClearEnemyMode()
     end
 end
 
--- ╔═══════════════════════════════════════════════════════════════════════╗
--- ║                 AUTO SKILL SYSTEM V6.0 (INTEGRATED)                    ║
--- ║  ระบบใช้ Ability อัตโนมัติ - 100% Data-Driven (NO HARDCODE!)          ║
--- ║  รวมเข้ากับ AutoPlace_Test_fixed.lua                                   ║
--- ╚═══════════════════════════════════════════════════════════════════════╝
-
--- ===== AUTO SKILL MODULES =====
-local ActiveAbilityData = nil
-local AbilityEvent = nil
-local UnitsData = nil  -- สำหรับดึงข้อมูล DPS จริง
-
-local function LoadAutoSkillModules()
-    -- โหลด ActiveAbilityData (สำหรับวิเคราะห์ ability)
-    pcall(function()
-        ActiveAbilityData = require(ReplicatedStorage.Modules.Data.ActiveAbilityData)
-    end)
-    
-    -- โหลด Units Data (สำหรับดึง DPS/Stats จริง)
-    pcall(function()
-        UnitsData = require(ReplicatedStorage.Modules.Data.Entities.Units)
-    end)
-    
-    -- โหลด AbilityEvent (สำหรับกด ability)
-    print("[FORCED] 🔧 Loading AbilityEvent...")
-    AbilityEvent = Networking:FindFirstChild("AbilityEvent")
-    print(string.format("[FORCED]   → AbilityEvent: %s", AbilityEvent and "✅ Found" or "❌ NIL"))
-end
-
-LoadAutoSkillModules()
-
 -- ===== PLACEMENT ZONE ANALYSIS =====
 local PlacementZoneCache = {}
 local StageAnalysisCache = {}
@@ -3174,2376 +3512,6 @@ local function AnalyzePlacementZones()
     PlacementZoneCache.Analyzed = true
     
     return zones
-end
-
--- ===== AUTO SKILL STATE =====
-local AutoSkillEnabled = {}       -- {GUID = true} - Units ที่เปิด Auto Skill แล้ว
-_G.APSkill = {
-    AbilityLastUsed = {},
-    AbilityUsedOnce = {},
-    AbilityAnalysisCache = {},
-    LastAutoSkillCheck = 0,
-    AUTO_SKILL_CHECK_INTERVAL = 0.1,
-    WorldItemUsedThisMatch = false,
-}
-local AbilityLastUsed = _G.APSkill.AbilityLastUsed
-local AbilityUsedOnce = _G.APSkill.AbilityUsedOnce
-local AbilityAnalysisCache = _G.APSkill.AbilityAnalysisCache
-local LastAutoSkillCheck = 0
-local AUTO_SKILL_CHECK_INTERVAL = 0.1
-
--- ===== WAVE CHECKING (สำหรับ MinWave) =====
-GetCurrentWaveForSkill = function()
-    GetWaveFromUI()
-    return CurrentWave
-end
-
--- ===== ABILITY ANALYSIS (100% DATA-DRIVEN) =====
---[[
-    วิเคราะห์ ability จาก ActiveAbilityData โดยอัตโนมัติ
-    คืนค่า:
-    {
-        Name = string,
-        Cooldown = number,
-        IsOneTime = boolean,      -- ใช้ได้ครั้งเดียวต่อด่าน
-        IsBossOnly = boolean,     -- ใช้กับ Boss เท่านั้น
-        MinWave = number,         -- ต้องถึง wave นี้ถึงใช้ได้
-        NeedsTarget = boolean,    -- ต้อง target หรือไม่
-        Type = string,            -- "Damage", "Buff", "Summon", "Utility", etc.
-    }
-]]
-local function AnalyzeAbility(abilityName)
-    -- เช็ค cache ก่อน
-    if AbilityAnalysisCache[abilityName] then
-        return AbilityAnalysisCache[abilityName]
-    end
-    
-    local abilityInfo = {
-        Name = abilityName,
-        Cooldown = 3,           -- ⏱️ Default 3 วินาที (เพิ่มจาก 1 เป็น 3 เพื่อป้องกัน spam)
-        IsOneTime = false,
-        IsBossOnly = false,
-        MinWave = 0,
-        NeedsTarget = false,
-        Type = "Unknown",
-        -- ⭐ NEW: Placement-related fields (auto-detected)
-        NeedsPlacement = false,     -- ต้องเลือกตำแหน่งวาง (เช่น Instant Teleportation)
-        NeedsUnitSelection = false, -- ต้องเลือก unit เป้าหมาย (เช่น Caloric Stone)
-        PlacementRange = 30,        -- Range สำหรับหาตำแหน่ง
-        SelectionContext = nil,     -- Context สำหรับ selection (SelectUnit, EquipForgeWeapon, etc.)
-    }
-    
-    
-    -- ดึงข้อมูลจาก ActiveAbilityData
-    if ActiveAbilityData and ActiveAbilityData.GetActiveAbilityDataFromName then
-        local success, data = pcall(function()
-            return ActiveAbilityData:GetActiveAbilityDataFromName(abilityName)
-        end)
-        
-        if success and data then
-            -- Cooldown (ใช้อย่างน้อย 2 วินาที เพื่อป้องกัน spam)
-            if data.Cooldown then
-                abilityInfo.Cooldown = math.max(data.Cooldown, 2)
-            end
-            
-            -- IsOneTime (ใช้ได้ครั้งเดียว)
-            if data.OneTime or data.IsOneTime or data.SingleUse then
-                abilityInfo.IsOneTime = true
-            end
-            
-            -- IsBossOnly
-            if data.BossOnly or data.Boss or data.RequiresBoss then
-                abilityInfo.IsBossOnly = true
-            end
-            
-            -- MinWave
-            if data.MinWave or data.WaveRequirement then
-                abilityInfo.MinWave = data.MinWave or data.WaveRequirement
-            end
-            
-            -- NeedsTarget
-            if data.NeedsTarget or data.RequiresTarget or data.TargetRequired then
-                abilityInfo.NeedsTarget = true
-            end
-            
-            -- Type (วิเคราะห์จาก Description หรือ Tags)
-            if data.Type then
-                abilityInfo.Type = data.Type
-            elseif data.Description then
-                local desc = data.Description:lower()
-                if desc:find("damage") or desc:find("attack") or desc:find("deals") then
-                    abilityInfo.Type = "Damage"
-                elseif desc:find("buff") or desc:find("increase") or desc:find("boost") then
-                    abilityInfo.Type = "Buff"
-                elseif desc:find("summon") or desc:find("spawn") or desc:find("arise") then
-                    abilityInfo.Type = "Summon"
-                elseif desc:find("heal") or desc:find("restore") then
-                    abilityInfo.Type = "Heal"
-                elseif desc:find("stun") or desc:find("slow") or desc:find("freeze") then
-                    abilityInfo.Type = "CC"
-                else
-                    abilityInfo.Type = "Utility"
-                end
-            end
-            
-            -- ⭐ NEW: ตรวจสอบ Placement Requirements จาก data
-            if data.NeedsPlacement or data.RequiresPlacement or data.NeedsPosition then
-                abilityInfo.NeedsPlacement = true
-            end
-            if data.NeedsUnitSelection or data.RequiresUnitSelection or data.SelectUnit then
-                abilityInfo.NeedsUnitSelection = true
-            end
-            if data.PlacementRange or data.Range then
-                abilityInfo.PlacementRange = data.PlacementRange or data.Range
-            end
-            if data.SelectionContext then
-                abilityInfo.SelectionContext = data.SelectionContext
-            end
-        end
-    end
-    
-    -- ⭐ AUTO-DETECT: ตรวจสอบจากชื่อ ability เพื่อระบุ placement requirements
-    local abilityLower = abilityName:lower()
-    
-    -- Abilities ที่ต้อง PLACEMENT (วางตำแหน่ง)
-    local placementKeywords = {
-        "teleport", "warp", "blink", "portal",          -- Teleport abilities
-        "spawn", "summon", "arise", "army",             -- Summon abilities
-        "clone", "duplicate", "copy",                   -- Clone abilities
-        "place", "deploy", "position",                  -- Placement abilities
-        "dimension", "zone", "area"                     -- Zone creation
-    }
-    
-    for _, keyword in ipairs(placementKeywords) do
-        if abilityLower:find(keyword) then
-            abilityInfo.NeedsPlacement = true
-            break
-        end
-    end
-    
-    -- Abilities ที่ต้อง UNIT SELECTION (เลือก unit เป้าหมาย)
-    local selectionKeywords = {
-        "buff", "enhance", "empower",                   -- Buff abilities
-        "transfer", "give", "grant",                    -- Transfer abilities
-        "equip", "forge", "masterwork", "craft",        -- Equipment abilities
-        "caloric", "stone"                              -- Caloric Stone specific
-    }
-    
-    for _, keyword in ipairs(selectionKeywords) do
-        if abilityLower:find(keyword) then
-            abilityInfo.NeedsUnitSelection = true
-            break
-        end
-    end
-    
-    -- ⭐⭐⭐ FULLY AUTOMATIC - ไม่ต้อง hardcode ability names
-    -- ใช้ default cooldown = 1.0s สำหรับทุก ability (เร็วขึ้น)
-    -- ระบบจะ detect placement/selection จาก keywords อัตโนมัติ (ด้านบน)
-    if not abilityInfo.Cooldown or abilityInfo.Cooldown > 1.0 then
-        abilityInfo.Cooldown = 1.0  -- Default cooldown for all abilities (เร็วขึ้น)
-    end
-    abilityInfo.IsAutoAbility = true  -- ทุก ability เป็น auto
-    
-    -- Cache ผลลัพธ์
-    AbilityAnalysisCache[abilityName] = abilityInfo
-    
-    
-    -- 📊 Log เฉพาะครั้งแรกที่วิเคราะห์ (cache miss)
-    if DEBUG then
-        DebugPrint(string.format("📊 [Ability] %s: CD=%.1fs, OneTime=%s, MinWave=%d",
-            abilityName,
-            abilityInfo.Cooldown,
-            tostring(abilityInfo.IsOneTime),
-            abilityInfo.MinWave
-        ))
-    end
-    
-    return abilityInfo
-end
-
--- ===== ABILITY USAGE CONDITIONS =====
-local function CanUseAbility(unit, abilityName, abilityInfo)
-    local guid = unit.UniqueIdentifier or unit.GUID
-    local abilityKey = guid .. "_" .. abilityName
-    local unitName = unit.Name or ""
-    
-    
-    -- 0. เช็คเงื่อนไขพิเศษตามชื่อ ability (จาก wiki/decom)
-    
-    -- Koguro Dimensions: Toggle ability
-    if unitName:find("Koguro") and abilityName:find("Dimension") then
-        return true, "OK"
-    end
-    
-    -- Arcane Knowledge (Lich): ไม่มีเงื่อนไข wave หรือ boss
-    if unitName:find("Lich") and abilityName:find("Arcane Knowledge") then
-        return true, "OK"
-    end
-    
-    -- The Goal of All Life is Death (Lich): Starting Uses = 1 (OneTime)
-    -- ไม่ต้องเช็ค wave - ใช้ได้ทันที แต่ต้องมี Boss หรือ Critical Wave
-    if abilityName:find("The Goal of All Life is Death") then
-        -- เช็คว่าใช้ไปแล้วหรือยัง
-        if AbilityUsedOnce[abilityKey] then
-            return false, "Already used (Starting Uses = 1)"
-        end
-        
-        -- OneTime ability ควรใช้กับ Boss หรือ Critical Situation
-        local enemies = GetEnemies and GetEnemies() or {}
-        local hasBoss = false
-        local currentWave = GetCurrentWaveForSkill()
-        local isCriticalWave = (currentWave >= 45)  -- Wave 45+ = Critical
-        
-        -- ⭐ FIX: เช็คว่า IsBossEnemy ถูก define แล้ว
-        if IsBossEnemy then
-            for _, enemy in pairs(enemies) do
-                if IsBossEnemy(enemy) then
-                    hasBoss = true
-                    break
-                end
-            end
-        end
-        
-        if not hasBoss and not isCriticalWave then
-            return false, "Wait for Boss or Critical Wave (45+)"
-        end
-    end
-    
-    -- Reality Rewrite: OneTime ability - ใช้ได้ทันทีเมื่อมี enemy (ไม่ต้องรอ Boss)
-    if abilityName:find("Reality Rewrite") then
-        if AbilityUsedOnce[abilityKey] then
-            return false, "Already used (OneTime)"
-        end
-        
-        -- ⭐ FIX: ใช้ได้ทันทีเมื่อมี enemy (ไม่ต้องรอ Boss หรือ Critical Wave)
-        local enemies = GetEnemies and GetEnemies() or {}
-        if #enemies == 0 then
-            return false, "No enemies found"
-        end
-        
-    end
-    
-    -- World Items: ต้องมี items ในคลัง
-    if abilityName:find("World Item") then
-        -- ไม่สามารถเช็คได้จาก client - ให้เกมเช็คเอง
-        -- แต่ต้องมี cooldown ไม่ให้ spam
-    end
-    
-    -- Horsegirl Racing: ต้องมี Actions เหลืออยู่
-    if unitName:find("Horsegirl") and abilityName:find("Racing") then
-        if unit.HorsegirlActions and unit.HorsegirlActions <= 0 then
-            return false, "No actions left"
-        end
-    end
-    
-    -- Reality Rewrite: OneTime ability
-    if abilityName:find("Reality Rewrite") then
-        if AbilityUsedOnce[abilityKey] then
-            return false, "Already used (OneTime)"
-        end
-    end
-    
-    -- ⭐⭐⭐ God Arrives: ใช้ตอนกลางๆเกม (ไม่ใช่ช่วงแรก)
-    -- ช่วงแรก: Equip ธาตุ (Arcane Knowledge) เท่านั้น
-    -- ช่วงกลาง-ท้าย: ใช้ God Arrives ตาม cooldown
-    if abilityName:find("God Arrives") then
-        local currentWave, maxWave = GetWaveFromUI()
-        local waveProgress = 0
-        if maxWave and maxWave > 0 then
-            waveProgress = (currentWave or 0) / maxWave
-        end
-        
-        -- ⭐ ใช้ได้เมื่อ wave > 20% (กลางๆเกม)
-        if waveProgress < 0.2 then
-            return false, "God Arrives - รอช่วงกลางเกม (wave > 20%)"
-        end
-    end
-    
-    -- 1. เช็ค OneTime (ใช้ไปแล้วหรือยัง)
-    if abilityInfo.IsOneTime and AbilityUsedOnce[abilityKey] then
-        return false, "Already used (OneTime)"
-    end
-    
-    -- ⭐⭐⭐ FIX: OneTime abilities ต้องใช้กับ Boss เท่านั้น
-    -- ยกเว้น Reality Rewrite ที่ใช้ได้ทันที
-    if abilityInfo.IsOneTime and not abilityName:find("Reality Rewrite") then
-        local enemies = GetEnemies and GetEnemies() or {}
-        local hasBoss = false
-        
-        if IsBossEnemy then
-            for _, enemy in pairs(enemies) do
-                if IsBossEnemy(enemy) then
-                    hasBoss = true
-                    break
-                end
-            end
-        end
-        
-        if not hasBoss then
-            return false, "OneTime ability - Wait for Boss"
-        end
-    end
-    
-    -- 2. เช็ค Cooldown (ไม่มี buffer - ใช้ cooldown จริงเท่านั้น)
-    local lastUsed = AbilityLastUsed[abilityKey] or 0
-    local elapsed = tick() - lastUsed
-    local effectiveCooldown = abilityInfo.Cooldown  -- ⭐ ไม่มี buffer
-    if elapsed < effectiveCooldown then
-        return false, string.format("Cooldown (%.1fs left)", effectiveCooldown - elapsed)
-    end
-    
-    -- ⭐⭐⭐ SKIP: ไม่เช็ค MinWave และ BossOnly - ให้ทุก ability ทำงานทันที
-    -- เฉพาะ ability ที่ระบุไว้ชัดเจนเท่านั้นที่จะเช็ค (เช่น God Arrives ด้านบน)
-    
-    -- ✅ ผ่านทุกเงื่อนไข
-    return true, "OK"
-end
-
--- ===== SPECIAL ABILITY HANDLERS (ใช้ _G เพื่อลด register) =====
-_G.APEvents = {
-    KoguroDimensionEvent = nil,
-    HorsegirlRacingEvent = nil,
-    WorldItemEvent = nil,
-    CaloricStoneEvent = nil,
-    NumberPadEvent = nil,
-    LichSpellsEvent = nil,
-    RealityRewriteEvent = nil,
-    LichData = nil,
-    UnitElementsData = nil,
-    RealityRewriteData = nil,
-}
-local KoguroDimensionEvent, HorsegirlRacingEvent, WorldItemEvent, CaloricStoneEvent, NumberPadEvent
-local LichSpellsEvent, RealityRewriteEvent, LichData, UnitElementsData, RealityRewriteData
-
--- Track states (รวมใน _G เพื่อลด register)
-_G.APEvents.KoguroAutoEnabled = {}
-_G.APEvents.LastSelectedSpells = {}
-_G.APEvents.AutoSwapEnabled = {}
-_G.APEvents.AUTO_SWAP_UNITS = {
-    ["Roku (Super 3)"] = {SwapTo = "Vogita (Angel)", AttributeName = "AutoSwap_Roku"},
-    ["Vogita (Angel)"] = {SwapTo = "Roku (Super 3)", AttributeName = "AutoSwap_Roku"},
-    ["Smith John"] = {SwapTo = "Lord of Shadows", AttributeName = "AutoSwap_Cid"},
-    ["Lord of Shadows"] = {SwapTo = "Smith John", AttributeName = "AutoSwap_Cid"},
-}
-local KoguroAutoEnabled = _G.APEvents.KoguroAutoEnabled
-local LastSelectedSpells = _G.APEvents.LastSelectedSpells
-local AUTO_SWAP_UNITS = _G.APEvents.AUTO_SWAP_UNITS
-local AutoSwapEnabled = _G.APEvents.AutoSwapEnabled
-
-local function LoadSpecialAbilityEvents()
-    -- Koguro Dimensions (Koguro_DomainEvent ตาม decom)
-    local koguroSuccess, koguroErr = pcall(function()
-        print("[FORCED] 🔧 Loading Koguro Domain Event...")
-        KoguroDimensionEvent = Networking.Units["Update 6.5"].Koguro_DomainEvent
-        print(string.format("[FORCED]   → KoguroDimensionEvent: %s", KoguroDimensionEvent and "✅ Found" or "❌ NIL"))
-        
-        -- Listen for Auto Status changes (ตาม decom)
-        if KoguroDimensionEvent then
-            KoguroDimensionEvent.OnClientEvent:Connect(function(action, ...)
-                print(string.format("[FORCED] 🔔 Koguro Event: action=%s", tostring(action)))
-                
-                if action == "SetAutoEnabled" then
-                    local args = {...}
-                    local autoEnabled = args[1]  -- autoEnabled is first arg after action
-                    print(string.format("[FORCED]   → Auto Enabled: %s", tostring(autoEnabled)))
-                    -- Note: decom ไม่มี guid parameter - auto applies to current Koguro
-                end
-            end)
-        end
-    end)
-    
-    if not koguroSuccess then
-        print(string.format("[FORCED]   → ❌ Koguro loading failed: %s", tostring(koguroErr)))
-    end
-    
-    -- Horsegirl Racing
-    pcall(function()
-        HorsegirlRacingEvent = Networking.Units["Update 9.5"].AutoUpgradeHorsegirl
-    end)
-    
-    -- ⭐⭐⭐ NEW: Horsegirl Selection Event (สำหรับเลือก Horsegirl ใน GUI)
-    local HorsegirlSelectEvent = nil
-    pcall(function()
-        HorsegirlSelectEvent = Networking.Units["Update 9.5"].SelectHorsegirl or
-                              Networking.Units.SelectHorsegirl or
-                              Networking.ClientListeners.Units.HorsegirlSelect
-    end)
-    
-    -- ⭐⭐⭐ NEW: Auto Swap Events (Roku/Vogita, Smith John/Lord of Shadows)
-    local RequestSwapEvent = nil
-    local ToggleAutoSwapEvent = nil
-    pcall(function()
-        RequestSwapEvent = Networking.Passives.RequestSwap
-        ToggleAutoSwapEvent = Networking.Passives.ToggleAutoSwapEvent
-        print(string.format("[FORCED]   → RequestSwapEvent: %s", RequestSwapEvent and "✅ Found" or "❌ NIL"))
-        print(string.format("[FORCED]   → ToggleAutoSwapEvent: %s", ToggleAutoSwapEvent and "✅ Found" or "❌ NIL"))
-    end)
-    
-    -- ⭐ Store globally for use in other functions
-    _G.HorsegirlSelectEvent = HorsegirlSelectEvent
-    _G.RequestSwapEvent = RequestSwapEvent
-    _G.ToggleAutoSwapEvent = ToggleAutoSwapEvent
-    
-    -- ⭐⭐⭐ NEW: AutoAbility Event (สำหรับ ToggleAuto)
-    local AutoAbilityEvent = nil
-    pcall(function()
-        AutoAbilityEvent = Networking.ClientListeners.Units.AutoAbilityEvent or
-                          Networking.Units.AutoAbilityEvent
-        print(string.format("[FORCED]   → AutoAbilityEvent: %s", AutoAbilityEvent and "✅ Found" or "❌ NIL"))
-    end)
-    _G.AutoAbilityEvent = AutoAbilityEvent
-    
-    -- World Items
-    pcall(function()
-        WorldItemEvent = Networking.Units["Update 9.5"].UseWorldItem
-    end)
-    
-    -- Caloric Stone (แยกจาก World Items)
-    pcall(function()
-        CaloricStoneEvent = Networking.Units["Update 9.5"].CaloricStone or
-                           Networking.Units.CaloricStone
-    end)
-    
-    -- ⭐⭐⭐ NumberPad Event (สำหรับ Imprisoned Island)
-    pcall(function()
-        NumberPadEvent = Networking.StageMechanics.NumberPad
-        print(string.format("[FORCED]   → NumberPadEvent: %s", NumberPadEvent and "✅ Found" or "❌ NIL"))
-    end)
-    
-    -- ⭐⭐⭐ Auto Replay/Next Event (EndScreen.VoteEvent)
-    pcall(function()
-        _G.VoteEvent = Networking.EndScreen.VoteEvent
-        print(string.format("[FORCED]   → VoteEvent: %s", _G.VoteEvent and "✅ Found" or "❌ NIL"))
-    end)
-    
-    -- ⭐⭐⭐ Portal Play Event (สำหรับ Auto Portal)
-    pcall(function()
-        _G.PortalPlayEvent = Networking.PortalPlayEvent
-        print(string.format("[FORCED]   → PortalPlayEvent: %s", _G.PortalPlayEvent and "✅ Found" or "❌ NIL"))
-    end)
-    
-    -- ⭐⭐⭐ Teleport Event (สำหรับ Leave/Lobby)
-    pcall(function()
-        _G.TeleportEvent = Networking.TeleportEvent
-        print(string.format("[FORCED]   → TeleportEvent: %s", _G.TeleportEvent and "✅ Found" or "❌ NIL"))
-    end)
-    
-    -- Lich Spells (Arcane Knowledge) - Element Selection
-    local lichSuccess, lichErr = pcall(function()
-        print("[FORCED] 🔧 Loading Lich Spells...")
-        LichSpellsEvent = Networking.Units["Update 9.5"].ConfirmLichSpells
-        print(string.format("[FORCED]   → LichSpellsEvent: %s", LichSpellsEvent and "✅ Found" or "❌ NIL"))
-        
-        LichData = require(ReplicatedStorage.Modules.Data.Units.LichData)
-        print(string.format("[FORCED]   → LichData: %s", LichData and "✅ Loaded" or "❌ NIL"))
-        
-        UnitElementsData = require(ReplicatedStorage.Modules.Data.Entities.UnitElementsData)
-        print(string.format("[FORCED]   → UnitElementsData: %s", UnitElementsData and "✅ Loaded" or "❌ NIL"))
-    end)
-    
-    if not lichSuccess then
-        print(string.format("[FORCED]   → ❌ Lich loading failed: %s", tostring(lichErr)))
-    end
-    
-    -- Reality Rewrite (ตาม decom)
-    local rewriteSuccess, rewriteErr = pcall(function()
-        print("[FORCED] 🔧 Loading Reality Rewrite...")
-        RealityRewriteEvent = Networking.Units["Update 9.0"].RealityRewrite
-        print(string.format("[FORCED]   → RealityRewriteEvent: %s", RealityRewriteEvent and "✅ Found" or "❌ NIL"))
-        
-        RealityRewriteData = require(ReplicatedStorage.Modules.Data.Units.RealityRewriteData)
-        print(string.format("[FORCED]   → RealityRewriteData: %s", RealityRewriteData and "✅ Loaded" or "❌ NIL"))
-        
-        -- Log available statuses
-        if RealityRewriteData and RealityRewriteData.Statuses then
-            local statusList = {}
-            for statusName, _ in pairs(RealityRewriteData.Statuses) do
-                table.insert(statusList, statusName)
-            end
-            print(string.format("[FORCED]   → Available Statuses: %s", table.concat(statusList, ", ")))
-        end
-    end)
-    
-    if not rewriteSuccess then
-        print(string.format("[FORCED]   → ❌ Reality Rewrite loading failed: %s", tostring(rewriteErr)))
-    end
-    
-    -- 🔍 FORCED LOG: แสดงว่าโหลด events สำเร็จหรือไม่
-    print("[FORCED] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    print("[FORCED] 🔧 Special Ability Events Status:")
-    print(string.format("[FORCED]   AbilityEvent (Main): %s", AbilityEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   Koguro: %s", KoguroDimensionEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   Horsegirl: %s", HorsegirlRacingEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   World Items: %s", WorldItemEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   Caloric Stone: %s", CaloricStoneEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   Lich Spells: %s", LichSpellsEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   LichData: %s", LichData and "✅" or "❌"))
-    print(string.format("[FORCED]   UnitElementsData: %s", UnitElementsData and "✅" or "❌"))
-    print(string.format("[FORCED]   Reality Rewrite: %s", RealityRewriteEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   RealityRewriteData: %s", RealityRewriteData and "✅" or "❌"))
-    print(string.format("[FORCED]   VoteEvent (Replay): %s", _G.VoteEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   PortalPlayEvent: %s", _G.PortalPlayEvent and "✅" or "❌"))
-    print(string.format("[FORCED]   TeleportEvent: %s", _G.TeleportEvent and "✅" or "❌"))
-    print("[FORCED] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-end
-
-LoadSpecialAbilityEvents()
-
--- ===== ENEMY ANALYSIS FOR REALITY REWRITE =====
--- Fallback status list (ถ้า RealityRewriteData ไม่โหลด)
-local REALITY_REWRITE_STATUSES = {
-    "Burn",      -- DoT (30% for 8s)
-    "Bleed",     -- DoT (30% for 8s)
-    "Scorched",  -- 10 seconds
-    "Freeze",    -- 2 seconds
-    "Slow",      -- 50% for 10 seconds
-    "Stun",      -- 2 seconds
-    "Rupture",   -- Permanent
-    "Wounded",   -- 10 seconds
-    "Bubbled"    -- Permanent
-}
-
-local function AnalyzeEnemiesForStatus()
-    -- วิเคราะห์ enemies ทั้งหมดเพื่อเลือก status ที่เหมาะสม
-    -- รวมถึง passives, abilities, และ immunities ของ enemy
-    local enemies = GetEnemies and GetEnemies() or {}
-    if not enemies or #enemies == 0 then
-        DebugPrint("🌈 [Reality Rewrite] No enemies found, using default: Burn")
-        return "Burn"  -- Default
-    end
-    
-    local analysis = {
-        totalEnemies = 0,
-        fastEnemies = 0,      -- Speed > 16
-        tankEnemies = 0,       -- Health > 10000
-        flyingEnemies = 0,     -- IsFlying
-        slowEnemies = 0,       -- Speed < 10
-        totalHealth = 0,
-        avgSpeed = 0,
-        avgHealth = 0,
-        hasBoss = false,
-        enemyCount = {
-            fast = 0,
-            tank = 0,
-            flying = 0,
-            slow = 0
-        },
-        -- ⭐ NEW: วิเคราะห์ passives/abilities/immunities ของ enemy
-        immunities = {},       -- สิ่งที่ enemy immune
-        weaknesses = {},       -- สิ่งที่ enemy อ่อนแอ
-        currentStatuses = {},  -- status ที่ enemy มีอยู่แล้ว
-        hasSlowImmunity = false,
-        hasStunImmunity = false,
-        hasBurnImmunity = false,
-        hasFreezeImmunity = false,
-        hasBleedImmunity = false,
-        hasRegen = false,      -- enemy มี regeneration
-        hasShield = false,     -- enemy มี shield/barrier
-        hasHighArmor = false   -- enemy มี armor สูง
-    }
-    
-    -- วิเคราะห์แต่ละ enemy (รวม passives/abilities/immunities)
-    for _, enemy in pairs(enemies) do
-        if enemy and enemy ~= "None" then
-            analysis.totalEnemies = analysis.totalEnemies + 1
-            
-            -- Health Analysis
-            local health = 0
-            if enemy.Health then
-                health = enemy.Health
-            elseif enemy.MaxHealth then
-                health = enemy.MaxHealth
-            elseif enemy.Humanoid and enemy.Humanoid.Health then
-                health = enemy.Humanoid.Health
-            end
-            
-            analysis.totalHealth = analysis.totalHealth + health
-            if health > 10000 then
-                analysis.tankEnemies = analysis.tankEnemies + 1
-            end
-            
-            -- Speed Analysis
-            local speed = 0
-            if enemy.Speed then
-                speed = enemy.Speed
-            elseif enemy.Humanoid and enemy.Humanoid.WalkSpeed then
-                speed = enemy.Humanoid.WalkSpeed
-            elseif enemy.Model and enemy.Model:FindFirstChild("Humanoid") then
-                speed = enemy.Model.Humanoid.WalkSpeed or 0
-            end
-            
-            analysis.avgSpeed = analysis.avgSpeed + speed
-            
-            if speed > 16 then
-                analysis.fastEnemies = analysis.fastEnemies + 1
-            elseif speed < 10 and speed > 0 then
-                analysis.slowEnemies = analysis.slowEnemies + 1
-            end
-            
-            -- Flying/Airborne
-            if enemy.IsFlying then
-                analysis.flyingEnemies = analysis.flyingEnemies + 1
-            elseif enemy.Model then
-                if enemy.Model:FindFirstChild("Flying") or enemy.Model:FindFirstChild("Airborne") then
-                    analysis.flyingEnemies = analysis.flyingEnemies + 1
-                end
-            end
-            
-            -- Boss Check
-            if IsBossEnemy and IsBossEnemy(enemy) then
-                analysis.hasBoss = true
-            end
-            
-            -- ⭐⭐⭐ NEW: วิเคราะห์ Passives/Abilities/Immunities ของ enemy ⭐⭐⭐
-            local enemyData = enemy.Data or enemy
-            local enemyName = enemy.Name or enemyData.Name or ""
-            
-            -- 1. ตรวจสอบ Mutators (passives พิเศษของ enemy)
-            if enemyData.Mutators then
-                for _, mutator in pairs(enemyData.Mutators) do
-                    local mutatorName = type(mutator) == "string" and mutator or (mutator.Name or "")
-                    local mutatorLower = string.lower(mutatorName)
-                    
-                    -- ตรวจหา immunities
-                    if mutatorLower:find("slow") and mutatorLower:find("immun") then
-                        analysis.hasSlowImmunity = true
-                        analysis.immunities["Slow"] = true
-                    end
-                    if mutatorLower:find("stun") and mutatorLower:find("immun") then
-                        analysis.hasStunImmunity = true
-                        analysis.immunities["Stun"] = true
-                    end
-                    if mutatorLower:find("burn") and mutatorLower:find("immun") then
-                        analysis.hasBurnImmunity = true
-                        analysis.immunities["Burn"] = true
-                    end
-                    if mutatorLower:find("freeze") and mutatorLower:find("immun") then
-                        analysis.hasFreezeImmunity = true
-                        analysis.immunities["Freeze"] = true
-                    end
-                    if mutatorLower:find("bleed") and mutatorLower:find("immun") then
-                        analysis.hasBleedImmunity = true
-                        analysis.immunities["Bleed"] = true
-                    end
-                    
-                    -- ตรวจหา regen/heal
-                    if mutatorLower:find("regen") or mutatorLower:find("heal") then
-                        analysis.hasRegen = true
-                    end
-                    
-                    -- ตรวจหา shield/barrier
-                    if mutatorLower:find("shield") or mutatorLower:find("barrier") or mutatorLower:find("protect") then
-                        analysis.hasShield = true
-                    end
-                    
-                    -- ตรวจหา armor
-                    if mutatorLower:find("armor") or mutatorLower:find("defence") or mutatorLower:find("defense") then
-                        analysis.hasHighArmor = true
-                    end
-                end
-            end
-            
-            -- 2. ตรวจสอบ Modifiers (bonuses ของ enemy)
-            if enemyData.Modifiers then
-                for _, modifier in pairs(enemyData.Modifiers) do
-                    local modName = type(modifier) == "string" and modifier or (modifier.Name or "")
-                    local modLower = string.lower(modName)
-                    
-                    if modLower:find("immun") then
-                        -- ดึงชื่อ status ที่ immune
-                        if modLower:find("slow") then analysis.hasSlowImmunity = true end
-                        if modLower:find("stun") then analysis.hasStunImmunity = true end
-                        if modLower:find("burn") or modLower:find("fire") then analysis.hasBurnImmunity = true end
-                        if modLower:find("freeze") or modLower:find("ice") then analysis.hasFreezeImmunity = true end
-                        if modLower:find("bleed") then analysis.hasBleedImmunity = true end
-                    end
-                end
-            end
-            
-            -- 3. ตรวจสอบ Attributes ของ enemy model
-            if enemy.Model then
-                local model = enemy.Model
-                
-                -- Check attributes
-                if model:GetAttribute("SlowImmune") then analysis.hasSlowImmunity = true end
-                if model:GetAttribute("StunImmune") then analysis.hasStunImmunity = true end
-                if model:GetAttribute("BurnImmune") then analysis.hasBurnImmunity = true end
-                if model:GetAttribute("FreezeImmune") then analysis.hasFreezeImmunity = true end
-                if model:GetAttribute("BleedImmune") then analysis.hasBleedImmunity = true end
-                if model:GetAttribute("HasRegen") then analysis.hasRegen = true end
-                if model:GetAttribute("HasShield") then analysis.hasShield = true end
-            end
-            
-            -- 4. ตรวจสอบ CurrentStatuses ที่ enemy มีอยู่แล้ว
-            if enemyData.Statuses then
-                for statusName, _ in pairs(enemyData.Statuses) do
-                    analysis.currentStatuses[statusName] = (analysis.currentStatuses[statusName] or 0) + 1
-                end
-            end
-            if enemy.StatusEffects then
-                for _, status in pairs(enemy.StatusEffects) do
-                    local statusName = type(status) == "string" and status or (status.Name or "")
-                    analysis.currentStatuses[statusName] = (analysis.currentStatuses[statusName] or 0) + 1
-                end
-            end
-            
-            -- 5. ตรวจจากชื่อ enemy (บาง enemy มี immunity ตามชื่อ)
-            local nameLower = string.lower(enemyName)
-            if nameLower:find("fire") or nameLower:find("flame") or nameLower:find("inferno") then
-                analysis.hasBurnImmunity = true  -- Fire enemies are usually burn immune
-            end
-            if nameLower:find("ice") or nameLower:find("frost") or nameLower:find("frozen") then
-                analysis.hasFreezeImmunity = true  -- Ice enemies are usually freeze immune
-            end
-            if nameLower:find("speed") or nameLower:find("swift") then
-                analysis.hasSlowImmunity = true  -- Speed enemies might resist slow
-            end
-        end
-    end
-    
-    -- คำนวณค่าเฉลี่ย
-    if analysis.totalEnemies > 0 then
-        analysis.avgSpeed = analysis.avgSpeed / analysis.totalEnemies
-        analysis.avgHealth = analysis.totalHealth / analysis.totalEnemies
-    end
-    
-    -- เลือก status ตามลำดับความสำคัญ (พิจารณา immunities ด้วย!)
-    local selectedStatus = "Burn"  -- Default
-    local reason = "Default"
-    local priority = 0
-    
-    -- Helper function: ตรวจสอบว่า status นี้ไม่ถูก immune
-    local function isStatusEffective(statusName)
-        if statusName == "Slow" and analysis.hasSlowImmunity then return false end
-        if statusName == "Stun" and analysis.hasStunImmunity then return false end
-        if statusName == "Burn" and analysis.hasBurnImmunity then return false end
-        if statusName == "Freeze" and analysis.hasFreezeImmunity then return false end
-        if statusName == "Bleed" and analysis.hasBleedImmunity then return false end
-        return true
-    end
-    
-    -- Helper function: เลือก status alternative ถ้าตัวแรกถูก immune
-    local function getEffectiveStatus(preferredStatus, alternativeList)
-        if isStatusEffective(preferredStatus) then
-            return preferredStatus
-        end
-        for _, alt in ipairs(alternativeList) do
-            if isStatusEffective(alt) then
-                return alt
-            end
-        end
-        return preferredStatus  -- ใช้ตัวเดิมถ้าไม่มีตัวเลือก
-    end
-    
-    -- แสดงข้อมูล enemies
-    DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    DebugPrint(string.format("🌈 [Analysis] Total: %d enemies | Fast: %d | Tank: %d | Flying: %d | Boss: %s", 
-        analysis.totalEnemies,
-        analysis.fastEnemies,
-        analysis.tankEnemies,
-        analysis.flyingEnemies,
-        tostring(analysis.hasBoss)
-    ))
-    DebugPrint(string.format("🌈 [Analysis] Avg Speed: %.1f | Avg HP: %.0f", 
-        analysis.avgSpeed, analysis.avgHealth))
-    
-    -- แสดง immunities ที่ตรวจพบ
-    local immuneList = {}
-    if analysis.hasSlowImmunity then table.insert(immuneList, "Slow") end
-    if analysis.hasStunImmunity then table.insert(immuneList, "Stun") end
-    if analysis.hasBurnImmunity then table.insert(immuneList, "Burn") end
-    if analysis.hasFreezeImmunity then table.insert(immuneList, "Freeze") end
-    if analysis.hasBleedImmunity then table.insert(immuneList, "Bleed") end
-    
-    if #immuneList > 0 then
-        DebugPrint(string.format("🌈 [Immunities] ⚠️ Enemy immune to: %s", table.concat(immuneList, ", ")))
-    end
-    
-    if analysis.hasRegen then
-        DebugPrint("🌈 [Passive] ⚠️ Enemy has Regeneration - prioritize DoT")
-    end
-    if analysis.hasShield then
-        DebugPrint("🌈 [Passive] ⚠️ Enemy has Shield/Barrier")
-    end
-    
-    -- ⭐ NEW Priority: Enemy has Regeneration → ใช้ Burn/Bleed (DoT) เพื่อ counter heal
-    if analysis.hasRegen and priority < 11 then
-        if isStatusEffective("Burn") then
-            selectedStatus = "Burn"
-            reason = "Counter enemy Regeneration with DoT"
-            priority = 11
-        elseif isStatusEffective("Bleed") then
-            selectedStatus = "Bleed"
-            reason = "Counter enemy Regeneration with DoT"
-            priority = 11
-        end
-    end
-    
-    -- Priority 10: Boss → Rupture (Permanent debuff) หรือ alternative
-    if analysis.hasBoss and priority < 10 then
-        selectedStatus = getEffectiveStatus("Rupture", {"Burn", "Bleed", "Freeze"})
-        reason = "Boss detected - " .. (selectedStatus == "Rupture" and "Permanent damage" or "Alternative (Rupture immune)")
-        priority = 10
-    end
-    
-    -- Priority 9: Fast enemies (>60%) → Slow/Freeze (ถ้าไม่ immune)
-    if priority < 9 and analysis.fastEnemies > (analysis.totalEnemies * 0.6) then
-        local preferredCC = analysis.avgSpeed > 20 and "Freeze" or "Slow"
-        selectedStatus = getEffectiveStatus(preferredCC, {"Freeze", "Slow", "Stun"})
-        reason = string.format("Fast enemies: %d/%d (%.1f speed) - %s%s", 
-            analysis.fastEnemies, analysis.totalEnemies, analysis.avgSpeed,
-            selectedStatus,
-            not isStatusEffective(preferredCC) and " (alternative)" or "")
-        priority = 9
-    end
-    
-    -- Priority 8: Tank enemies (>50%) → Burn/Bleed (DoT)
-    if priority < 8 and analysis.tankEnemies > (analysis.totalEnemies * 0.5) then
-        selectedStatus = getEffectiveStatus("Burn", {"Bleed", "Rupture"})
-        reason = string.format("Tank enemies: %d/%d (%.0f avg HP) - DoT%s", 
-            analysis.tankEnemies, analysis.totalEnemies, analysis.avgHealth,
-            not isStatusEffective("Burn") and " (alternative)" or "")
-        priority = 8
-    end
-    
-    -- Priority 7: Flying enemies (>40%) → Stun หรือ alternative
-    if priority < 7 and analysis.flyingEnemies > (analysis.totalEnemies * 0.4) then
-        selectedStatus = getEffectiveStatus("Stun", {"Freeze", "Slow"})
-        reason = string.format("Flying enemies: %d/%d - %s%s", 
-            analysis.flyingEnemies, analysis.totalEnemies,
-            selectedStatus,
-            not isStatusEffective("Stun") and " (alternative)" or "")
-        priority = 7
-    end
-    
-    -- Priority 6: Very high average speed → Freeze/Slow
-    if priority < 6 and analysis.avgSpeed > 18 then
-        selectedStatus = getEffectiveStatus("Freeze", {"Slow", "Stun"})
-        reason = string.format("High avg speed: %.1f - %s", analysis.avgSpeed, selectedStatus)
-        priority = 6
-    end
-    
-    -- Priority 5: High health enemies → Burn/Bleed
-    if priority < 5 and analysis.avgHealth > 8000 then
-        selectedStatus = getEffectiveStatus("Burn", {"Bleed", "Rupture"})
-        reason = string.format("High HP enemies: %.0f avg - DoT", analysis.avgHealth)
-        priority = 5
-    end
-    
-    -- Priority 0: Default → หา status ที่ไม่ถูก immune
-    if priority == 0 then
-        -- ลำดับ default: Burn > Bleed > Freeze > Slow > Stun > Rupture
-        local defaultOrder = {"Burn", "Bleed", "Freeze", "Slow", "Stun", "Rupture"}
-        for _, status in ipairs(defaultOrder) do
-            if isStatusEffective(status) then
-                selectedStatus = status
-                break
-            end
-        end
-        reason = "General purpose (considering immunities)"
-    end
-    
-    -- แสดงผลการเลือก
-    DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    DebugPrint(string.format("🌈 ✅ เลือก: %s (Priority: %d)", selectedStatus, priority))
-    DebugPrint(string.format("🌈 📝 เหตุผล: %s", reason))
-    DebugPrint("━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    
-    return selectedStatus
-end
-
--- ===== USE ABILITY (Smart Detection) =====
-local function UseAbilityV3(unit, abilityName, abilityInfo)
-    local guid = unit.UniqueIdentifier or unit.GUID
-    local abilityKey = guid .. "_" .. abilityName
-    local unitName = unit.Name or ""
-    local success = false
-    local err = nil
-    
-    -- 🎯 Smart Detection
-    
-    -- 1. Reality Rewrite
-    if abilityName:find("Reality Rewrite") then
-        if not RealityRewriteEvent then return false end
-        
-        local selectedStatus = "Burn"
-        local analyzeSuccess, analyzeResult = pcall(function()
-            return AnalyzeEnemiesForStatus()
-        end)
-        
-        if analyzeSuccess and analyzeResult then
-            selectedStatus = analyzeResult
-        end
-        
-        -- ตรวจสอบว่า status นี้มีใน RealityRewriteData หรือไม่
-        local validStatus = selectedStatus
-        if RealityRewriteData and RealityRewriteData.Statuses then
-            if not RealityRewriteData.Statuses[selectedStatus] then
-                -- Status ไม่มี → หา status ที่มีแทน
-                local fallbackPriority = {"Burn", "Slow", "Freeze", "Stun", "Rupture"}
-                for _, fallback in ipairs(fallbackPriority) do
-                    if RealityRewriteData.Statuses[fallback] then
-                        validStatus = fallback
-                        break
-                    end
-                end
-            end
-        else
-            -- ไม่มี RealityRewriteData → ใช้ fallback list
-            if not table.find(REALITY_REWRITE_STATUSES, selectedStatus) then
-                validStatus = "Burn"  -- Default fallback
-            end
-        end
-        
-        -- Fire event (ตาม decom: FireServer(guid, statusName))
-        success, err = pcall(function()
-            RealityRewriteEvent:FireServer(guid, validStatus)
-        end)
-        
-        if success then
-            AbilityUsedOnce[abilityKey] = true  -- OneTime ability
-        end
-    
-    -- 2. The Goal of All Life is Death (Lich) - Starting Uses = 1
-    elseif abilityName:find("The Goal of All Life is Death") then
-        -- ใช้ AbilityEvent ปกติ
-        if AbilityEvent then
-            success, err = pcall(function()
-                AbilityEvent:FireServer("Activate", guid, abilityName)
-            end)
-            
-            if success then
-                AbilityUsedOnce[abilityKey] = true  -- Starting Uses = 1
-                DebugPrint("💀 The Goal of All Life is Death activated")
-            end
-        end
-    
-    -- 3. God Arrives - ใช้ตาม cooldown (10 วินาที) ไม่มีเงื่อนไข
-    elseif abilityName:find("God Arrives") then
-        if not AbilityEvent then return false end
-        
-        success, err = pcall(function()
-            AbilityEvent:FireServer("Activate", guid, abilityName)
-        end)
-        
-        if success then
-            AbilityLastUsed[abilityKey] = tick()
-            print(string.format("[Ability] ⚡ God Arrives activated! (cooldown: 10s)"))
-        end
-    
-    -- 4. Koguro Dimensions (ToggleAuto)
-    elseif unitName:find("Koguro") and abilityName:find("Dimension") then
-        if not KoguroDimensionEvent then return false end
-        
-        success, err = pcall(function()
-            KoguroDimensionEvent:FireServer("ToggleAuto", guid)
-        end)
-    
-    -- 5. Arcane Knowledge (Lich) - Element Selection
-    elseif unitName:find("Lich") and abilityName:find("Arcane Knowledge") then
-        if not LichSpellsEvent then return false end
-        
-        -- 🔮 วิเคราะห์ธาตุที่ unlock แล้ว (ตาม decom)
-        local function GetUnlockedElements()
-            local elementCounts = {}
-            
-            -- นับธาตุจาก Units._Cache (ตาม decom)
-            if UnitsModule and UnitsModule._Cache then
-                DebugPrint(string.format("🔮 [Cache Check] Found %d units in cache", 
-                    (function()
-                        local count = 0
-                        for _ in pairs(UnitsModule._Cache) do count = count + 1 end
-                        return count
-                    end)()
-                ))
-                
-                for _, cacheData in pairs(UnitsModule._Cache) do
-                    if cacheData ~= "None" then
-                        -- ดึง UnitData จาก Identifier
-                        local unitData = nil
-                        if UnitsData and cacheData.Identifier then
-                            local success, result = pcall(function()
-                                return UnitsData:GetUnitDataFromID(cacheData.Identifier)
-                            end)
-                            if success then
-                                unitData = result
-                            end
-                        end
-                        
-                        -- นับธาตุจาก unit
-                        if unitData and unitData.Elements then
-                            for _, element in ipairs(unitData.Elements) do
-                                elementCounts[element] = (elementCounts[element] or 0) + 1
-                            end
-                        end
-                    end
-                end
-            else
-                DebugPrint("🔮 [Cache Check] UnitsModule._Cache not found!")
-            end
-            
-            -- เพิ่ม Unknown ให้ทุกธาตุ (ตาม decom)
-            if elementCounts.Unknown then
-                DebugPrint("🔮 [Unknown Boost] Adding +1 to all elements")
-                for elem in pairs(elementCounts) do
-                    elementCounts[elem] = elementCounts[elem] + 1
-                end
-            end
-            
-            -- แสดงรายการธาตุ
-            local elementList = {}
-            for elem, count in pairs(elementCounts) do
-                table.insert(elementList, string.format("%s(%d)", elem, count))
-            end
-            table.sort(elementList)
-            
-            DebugPrint(string.format("🔮 [Elements] Unlocked: %s", 
-                #elementList > 0 and table.concat(elementList, ", ") or "None"
-            ))
-            
-            return elementCounts
-        end
-        
-        -- เลือกธาตุที่ดีที่สุดตามสถานการณ์
-        local unlockedElements = GetUnlockedElements()
-        local selectedElement = "Elementless"  -- Default
-        
-        -- เลือกธาตุตามเงื่อนไข (ธาตุที่มีมากที่สุด)
-        local maxCount = 0
-        local bestElement = "Elementless"
-        
-        for element, count in pairs(unlockedElements) do
-            if element ~= "Unknown" and count > maxCount then
-                maxCount = count
-                bestElement = element
-            end
-        end
-        
-        -- ถ้าหาธาตุได้ ให้ใช้
-        if maxCount > 0 then
-            selectedElement = bestElement
-        end
-        
-        DebugPrint(string.format("🔮 [Element Selection] Selected: %s (Count: %d)", 
-            selectedElement,
-            maxCount
-        ))
-        
-        -- ดึง spell ที่เหมาะสมกับธาตุที่เลือก (ต้อง unlock แล้ว!)
-        local selectedSpells = {}
-        
-        if LichData and LichData.Spells then
-            local spellCount = 0
-            for _ in pairs(LichData.Spells) do
-                spellCount = spellCount + 1
-            end
-            DebugPrint(string.format("🔮 [LichData] Found %d spells", spellCount))
-            DebugPrint(string.format("🔮 [Spell Check] Checking spells for element: %s", selectedElement))
-            
-            -- หา spells ที่ตรงกับธาตุ (เช็คทุก spell)
-            for spellId, spellData in pairs(LichData.Spells) do
-                local spellName = spellData.Name or spellId
-                local requirements = spellData.Requirements or {}
-                
-                -- นับจำนวน requirements
-                local reqCount = 0
-                for elem, count in pairs(requirements) do
-                    reqCount = reqCount + 1
-                    DebugPrint(string.format("🔮     [%s] Requires: %d %s", spellName, count, elem))
-                end
-                
-                -- เช็คว่า spell นี้ใช้ได้กับธาตุที่เลือกหรือไม่
-                local canUse = false
-                
-                if selectedElement == "Elementless" and reqCount == 0 then
-                    -- Elementless spells (no requirements)
-                    canUse = true
-                    DebugPrint(string.format("🔮   ✅ %s (Elementless - No requirements)", spellName))
-                elseif requirements[selectedElement] then
-                    -- ต้องเช็คว่าปลดล็อคแล้ว (มีธาตุพอ)
-                    local requiredCount = requirements[selectedElement]
-                    local actualCount = unlockedElements[selectedElement] or 0
-                    
-                    if actualCount >= requiredCount then
-                        canUse = true
-                        DebugPrint(string.format("🔮   ✅ %s (Req: %d %s, Has: %d)", 
-                            spellName, 
-                            requiredCount, 
-                            selectedElement,
-                            actualCount
-                        ))
-                    else
-                        DebugPrint(string.format("🔮   ❌ %s (Req: %d %s, Has: %d - LOCKED)", 
-                            spellName, 
-                            requiredCount, 
-                            selectedElement,
-                            actualCount
-                        ))
-                    end
-                else
-                    -- Spell ต้องการธาตุอื่น
-                    DebugPrint(string.format("🔮   ⏭️ %s (Wrong element)", spellName))
-                end
-                
-                if canUse then
-                    -- ❗ ต้องส่ง spell ID (number) ไม่ใช่ name! (ตาม decom)
-                    table.insert(selectedSpells, {
-                        id = spellId,
-                        name = spellName
-                    })
-                end
-            end
-        else
-            DebugPrint("🔮 [ERROR] LichData or LichData.Spells not found!")
-            if not LichData then
-                DebugPrint("🔮   → LichData is nil")
-            elseif not LichData.Spells then
-                DebugPrint("🔮   → LichData.Spells is nil")
-            end
-        end
-        
-        -- ถ้าไม่มี spell ให้หา Elementless spells
-        if #selectedSpells == 0 then
-            DebugPrint("🔮 [Fallback] No spells for selected element, trying Elementless...")
-            
-            -- หา Elementless spells (requirements = empty)
-            if LichData and LichData.Spells then
-                for spellId, spellData in pairs(LichData.Spells) do
-                    local requirements = spellData.Requirements or {}
-                    local reqCount = 0
-                    for _ in pairs(requirements) do
-                        reqCount = reqCount + 1
-                    end
-                    
-                    if reqCount == 0 then
-                        table.insert(selectedSpells, {
-                            id = spellId,
-                            name = spellData.Name or spellId
-                        })
-                        DebugPrint(string.format("🔮   → Found Elementless: %s", spellData.Name))
-                    end
-                end
-            end
-            
-            selectedElement = "Elementless"
-        end
-        
-        -- ⭐⭐⭐ CRITICAL FIX: เลือก spell ตามจำนวน slot ที่ปลดล็อคได้
-        -- ตาม decom_Ability.lua: ถ้า spell locked (ธาตุไม่พอ) → ใส่แค่ 1 slot เดิม
-        -- ถ้า 3 slot เป็นธาตุเดียวกัน = ปลดล็อคครบ
-        local maxSpells = (LichData and LichData.MAX_SPELL_COUNT) or 4  -- Default 4 (ตาม decom)
-        local finalSpells = {}
-        local finalSpellNames = {}
-        local usedSpellIds = {}  -- ⭐ ป้องกันใส่ spell ซ้ำ
-        
-        -- ⭐⭐⭐ CRITICAL: นับจำนวน slot ที่ปลดล็อคได้ตามธาตุ
-        local unlockedSlots = 0
-        local elementCount = unlockedElements[selectedElement] or 0
-        
-        if selectedElement == "Elementless" then
-            -- Elementless = ปลดล็อคทุก slot
-            unlockedSlots = maxSpells
-            DebugPrint("🔮 [Slots] Elementless → All slots unlocked")
-        else
-            -- ธาตุอื่น = จำนวน slot ตามจำนวนธาตุที่มี (max = maxSpells)
-            unlockedSlots = math.min(elementCount, maxSpells)
-            DebugPrint(string.format("🔮 [Slots] %s: %d units → %d slots unlocked", 
-                selectedElement, elementCount, unlockedSlots))
-        end
-        
-        -- ⭐ ถ้าไม่มี slot ปลดล็อค → ใช้แค่ 1 slot (Undead Control)
-        if unlockedSlots <= 0 then
-            unlockedSlots = 1
-            DebugPrint("🔮 [Slots] No unlocked slots → Use 1 slot only (Elementless)")
-        end
-        
-        -- ⭐ SLOT 1: เลือก spell แรกที่ใช้ได้
-        local firstSpell = nil
-        if #selectedSpells > 0 then
-            firstSpell = selectedSpells[1]
-            DebugPrint(string.format("🔮 [Slot 1] เลือก: %s (ID: %d)", firstSpell.name, firstSpell.id))
-        else
-            firstSpell = {id = 1, name = "Undead Control"}
-            DebugPrint("🔮 [Slot 1] ไม่มี spell ปลดล็อค → ใช้ Undead Control (default)")
-        end
-        
-        table.insert(finalSpells, firstSpell.id)
-        table.insert(finalSpellNames, firstSpell.name)
-        usedSpellIds[firstSpell.id] = true
-        
-        -- ⭐ SLOT 2-N: เลือก spells ที่เหลือ (ไม่ซ้ำกัน!)
-        local spellIndex = 2
-        for i = 2, unlockedSlots do
-            local addedSpell = false
-            
-            -- หา spell ที่ยังไม่ได้ใช้
-            while spellIndex <= #selectedSpells do
-                local spell = selectedSpells[spellIndex]
-                spellIndex = spellIndex + 1
-                
-                if not usedSpellIds[spell.id] then
-                    table.insert(finalSpells, spell.id)
-                    table.insert(finalSpellNames, spell.name)
-                    usedSpellIds[spell.id] = true
-                    addedSpell = true
-                    break
-                end
-            end
-            
-            -- ถ้าไม่มี spell ใหม่ → หยุด (ไม่เติม filler ซ้ำ)
-            if not addedSpell then
-                DebugPrint(string.format("🔮 [Slot %d] No more unique spells → Stop filling", i))
-                break
-            end
-        end
-        
-        DebugPrint(string.format("🔮 [Final] %d spells selected (max unlocked: %d)", #finalSpells, unlockedSlots))
-        
-        DebugPrint(string.format("🔮 [Final Selection] %d/%d spells selected:", #finalSpells, maxSpells))
-        for i, spellName in ipairs(finalSpellNames) do
-            DebugPrint(string.format("   Slot %d: %s (ID: %d)", i, spellName, finalSpells[i]))
-        end
-        
-        -- เช็คว่า spell ที่จะเลือกเหมือนกับที่เลือกไว้แล้วหรือไม่
-        local lastSpells = LastSelectedSpells[guid] or {}
-        local isSameSpells = #lastSpells == #finalSpells
-        
-        if isSameSpells then
-            -- เช็คแต่ละ spell ว่าเหมือนกันหรือไม่
-            for i = 1, #finalSpells do
-                if finalSpells[i] ~= lastSpells[i] then
-                    isSameSpells = false
-                    break
-                end
-            end
-        end
-        
-        if isSameSpells then
-            return false  -- ไม่ส่ง event ซ้ำ
-        end
-        
-        -- Fire event
-        
-        success, err = pcall(function()
-            LichSpellsEvent:FireServer(finalSpells)  -- ❗ ส่ง array เดียว ไม่มี guid! (ตาม decom)
-        end)
-        
-        if success then
-            LastSelectedSpells[guid] = finalSpells
-            AbilityLastUsed[abilityKey] = tick()
-            -- Log เฉพาะเมื่อเปลี่ยน spell สำเร็จ
-            print(string.format("[Skill] 🔮 Lich Spells: %s", table.concat(finalSpellNames, ", ")))
-        end
-    
-    -- 6. Horsegirl Racing (AutoUpgradeHorsegirl) - Auto select horse + close GUI
-    elseif unitName:find("Horsegirl") and (abilityName:find("Racing") or abilityName:find("Auto Upgrade")) and HorsegirlRacingEvent then
-        success, err = pcall(function()
-            HorsegirlRacingEvent:FireServer(guid)
-        end)
-        
-        if success then
-            
-            -- ⭐ Auto-select Horsegirl จาก GUI (รอ GUI เปิด)
-            task.spawn(function()
-                task.wait(0.3)  -- รอ GUI เปิด
-                
-                local playerGui = plr:FindFirstChild("PlayerGui")
-                if playerGui then
-                    -- หา Horsegirl Racing GUI
-                    local racingGui = playerGui:FindFirstChild("HorsegirlRacing") or
-                                     playerGui:FindFirstChild("Horsegirl Racing") or
-                                     playerGui:FindFirstChild("HorsegirlSelect")
-                    
-                    if not racingGui then
-                        -- ค้นหาใน descendants
-                        for _, gui in pairs(playerGui:GetDescendants()) do
-                            if gui:IsA("ScreenGui") and gui.Name:find("Horsegirl") then
-                                racingGui = gui
-                                break
-                            end
-                        end
-                    end
-                    
-                    if racingGui and racingGui.Enabled then
-                        
-                        -- ⭐ เลือก Horsegirl ตัวแรก (CONCERT = Speed, AU BOAT = Damage, SCIENTIST = Crit, JOY = Cost)
-                        -- เลือก Damage (AU BOAT) หรือ Crit (SCIENTIST) เป็น default
-                        local preferredOrder = {"AU BOAT", "SCIENTIST", "CONCERT", "JOY", "Damage", "Crit", "Speed", "Cost"}
-                        local selectedButton = nil
-                        
-                        for _, horseName in ipairs(preferredOrder) do
-                            for _, btn in pairs(racingGui:GetDescendants()) do
-                                if btn:IsA("TextButton") or btn:IsA("ImageButton") then
-                                    local btnText = btn.Text or btn.Name or ""
-                                    local parentText = btn.Parent and (btn.Parent.Name or "") or ""
-                                    
-                                    if btnText:find(horseName) or parentText:find(horseName) or 
-                                       btn.Name:find(horseName) or btn.Name == "Choose" then
-                                        selectedButton = btn
-                                        print(string.format("[FORCED]   → Found button: %s", btn.Name))
-                                        break
-                                    end
-                                end
-                            end
-                            if selectedButton then break end
-                        end
-                        
-                        -- ถ้าไม่เจอตาม preferredOrder → เลือกปุ่ม Choose แรกที่เจอ
-                        if not selectedButton then
-                            for _, btn in pairs(racingGui:GetDescendants()) do
-                                if (btn:IsA("TextButton") or btn:IsA("ImageButton")) and 
-                                   (btn.Name == "Choose" or btn.Text == "Choose") then
-                                    selectedButton = btn
-                                    break
-                                end
-                            end
-                        end
-                        
-                        if selectedButton then
-                            print(string.format("[FORCED]   → Auto-selecting: %s", selectedButton.Name))
-                            
-                            -- กดปุ่ม
-                            pcall(function()
-                                -- ลอง fire Activated event
-                                if selectedButton.Activated then
-                                    selectedButton.Activated:Fire()
-                                end
-                            end)
-                            
-                            pcall(function()
-                                -- ลอง MouseButton1Click
-                                if selectedButton.MouseButton1Click then
-                                    selectedButton.MouseButton1Click:Fire()
-                                end
-                            end)
-                            
-                            task.wait(0.2)
-                            
-                            -- ปิด GUI
-                            pcall(function()
-                                racingGui.Enabled = false
-                            end)
-                        end
-                    end
-                end
-            end)
-        end
-    
-    -- 7. GENERIC PLACEMENT ABILITY HANDLER
-    elseif abilityInfo and abilityInfo.NeedsPlacement then
-        
-        -- หาตำแหน่งดีที่สุดสำหรับวาง
-        local unitRange = abilityInfo.PlacementRange or 30
-        local targetPos = nil
-        
-        -- หาตำแหน่งจาก unit.Model ก่อน
-        if unit and unit.Model then
-            local hrp = unit.Model:FindFirstChild("HumanoidRootPart")
-            if hrp then
-                local offset = 15
-                local angle = math.random() * math.pi * 2
-                targetPos = hrp.Position + Vector3.new(math.cos(angle) * offset, 0, math.sin(angle) * offset)
-                print(string.format("[FORCED]   → Using HumanoidRootPart + offset: (%.1f, %.1f, %.1f)", targetPos.X, targetPos.Y, targetPos.Z))
-            end
-        end
-        
-        -- Fallback: GetBestPlacementPosition
-        if not targetPos then
-            targetPos = GetBestPlacementPosition(unitRange, GetGamePhase(), unitName, unit and unit.Data)
-        end
-        
-        -- Fallback: frontmost enemy
-        if not targetPos then
-            local frontEnemy = GetFrontmostEnemy()
-            if frontEnemy and frontEnemy.Position then
-                local offset = 12
-                local angle = math.random() * math.pi * 2
-                targetPos = frontEnemy.Position + Vector3.new(math.cos(angle) * offset, 0, math.sin(angle) * offset)
-            end
-        end
-        
-        -- Last fallback
-        if not targetPos then
-            targetPos = Vector3.new(0, 10, 0)
-        end
-        
-        print(string.format("[FORCED]   → Final position: (%.1f, %.1f, %.1f)", targetPos.X, targetPos.Y, targetPos.Z))
-        
-        -- ⭐⭐⭐ ตาม Decom: แยกประเภท ability
-        local abilityLower = abilityName:lower()
-        
-        -- 🔴 TYPE 1: TELEPORT abilities (Rogita, etc.) - ใช้ RequestMiscPlacement
-        if abilityLower:find("teleport") or abilityLower:find("instant") then
-            print("[FORCED]   → TYPE: TELEPORT ability - using RequestMiscPlacement")
-            
-            -- ⭐⭐⭐ FIX: หาตำแหน่งไกลจากตำแหน่งปัจจุบัน (ไม่ใช่ตำแหน่งเดิม!)
-            local teleportPos = nil
-            local currentPos = nil
-            
-            -- หาตำแหน่งปัจจุบันของ unit
-            if unit and unit.Model then
-                local hrp = unit.Model:FindFirstChild("HumanoidRootPart")
-                if hrp then
-                    currentPos = hrp.Position
-                end
-            end
-            
-            -- ⭐ หาตำแหน่งไกลจากตำแหน่งปัจจุบัน (50 studs ขึ้นไป)
-            if currentPos then
-                -- หาตำแหน่งใกล้ศัตรูหน้าสุด
-                local frontEnemy = GetFrontmostEnemy and GetFrontmostEnemy()
-                if frontEnemy and frontEnemy.Position then
-                    -- เทเลพอร์ตไปใกล้ศัตรู (offset 10 studs)
-                    local dirToEnemy = (frontEnemy.Position - currentPos).Unit
-                    teleportPos = frontEnemy.Position - dirToEnemy * 10
-                    teleportPos = Vector3.new(teleportPos.X, currentPos.Y, teleportPos.Z)
-                    print(string.format("[FORCED]   → Teleport target: near front enemy at (%.1f, %.1f, %.1f)", 
-                        teleportPos.X, teleportPos.Y, teleportPos.Z))
-                else
-                    -- Fallback: เทเลพอร์ตไป 50 studs ในทิศทางสุ่ม
-                    local angle = math.random() * math.pi * 2
-                    teleportPos = currentPos + Vector3.new(math.cos(angle) * 50, 0, math.sin(angle) * 50)
-                    print(string.format("[FORCED]   → Teleport target: 50 studs away at (%.1f, %.1f, %.1f)", 
-                        teleportPos.X, teleportPos.Y, teleportPos.Z))
-                end
-            else
-                teleportPos = targetPos  -- Fallback ใช้ targetPos เดิม
-            end
-            
-            print(string.format("[FORCED]   → Current pos: %s, Teleport to: (%.1f, %.1f, %.1f)", 
-                currentPos and string.format("(%.1f, %.1f, %.1f)", currentPos.X, currentPos.Y, currentPos.Z) or "unknown",
-                teleportPos.X, teleportPos.Y, teleportPos.Z))
-            
-            local RequestMiscPlacement = nil
-            pcall(function()
-                RequestMiscPlacement = game:GetService("ReplicatedStorage").Networking.RequestMiscPlacement
-            end)
-            
-            if RequestMiscPlacement then
-                success, err = pcall(function()
-                    RequestMiscPlacement:FireServer(guid, teleportPos)
-                end)
-                if success then
-                    AbilityLastUsed[abilityKey] = tick()
-                    print(string.format("[FORCED]   → ✅ Teleported to (%.1f, %.1f, %.1f)!", teleportPos.X, teleportPos.Y, teleportPos.Z))
-                else
-                    print(string.format("[FORCED]   → ❌ RequestMiscPlacement failed: %s", tostring(err)))
-                end
-            else
-                print("[FORCED]   → ❌ RequestMiscPlacement not found!")
-            end
-            
-        -- 🟢 TYPE 2: SPAWN ALIEN abilities (Emperor's Army) - spawn Alien Cadet ONLY
-        elseif abilityLower:find("emperor") or abilityLower:find("army") then
-            print("[FORCED]   → TYPE: SPAWN ALIEN ability - spawning Alien Cadet ONLY")
-            
-            -- ⭐⭐⭐ FIX: วาง Alien Cadet เท่านั้น (ตามรูป 3 ที่ user ให้มา)
-            local alienCadetID = nil
-            
-            -- หา ID จาก EntityIDHandler
-            if EntityIDHandler and EntityIDHandler.GetIDFromName then
-                local getSuccess, getResult = pcall(function()
-                    return EntityIDHandler:GetIDFromName("Unit", "Alien Cadet")
-                end)
-                if getSuccess and getResult then
-                    alienCadetID = getResult
-                    print(string.format("[FORCED]   → Found Alien Cadet ID: %s", tostring(alienCadetID)))
-                else
-                    print(string.format("[FORCED]   → Failed to get Alien Cadet ID: %s", tostring(getResult)))
-                end
-            end
-            
-            -- ⭐⭐⭐ FIX: เช็ค Max Limit ก่อนวาง
-            local alienLimit = 3  -- Alien Cadet limit = 3 (ตามรูป: "If 3 are placed")
-            local currentAlienCount = 0
-            
-            -- นับจำนวน Alien Cadet ที่วางแล้ว
-            if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
-                for _, unitData in pairs(ClientUnitHandler._ActiveUnits) do
-                    if unitData.Name and unitData.Name:find("Alien Cadet") then
-                        currentAlienCount = currentAlienCount + 1
-                    end
-                end
-            end
-            
-            print(string.format("[FORCED]   → Alien Cadet count: %d/%d", currentAlienCount, alienLimit))
-            
-            if currentAlienCount >= alienLimit then
-                print("[FORCED]   → ⚠️ Alien Cadet limit reached! Skipping spawn.")
-            elseif UnitEvent and alienCadetID then
-                success, err = pcall(function()
-                    UnitEvent:FireServer("Render", 
-                        {"Alien Cadet", alienCadetID, targetPos, 0, nil},
-                        {FromUnitGUID = guid}
-                    )
-                end)
-                if success then
-                    AbilityLastUsed[abilityKey] = tick()
-                    print(string.format("[FORCED]   → ✅ Alien Cadet spawned at (%.1f, %.1f, %.1f)!", targetPos.X, targetPos.Y, targetPos.Z))
-                else
-                    print(string.format("[FORCED]   → ❌ Alien spawn failed: %s", tostring(err)))
-                end
-            elseif not alienCadetID then
-                -- ⭐⭐⭐ FALLBACK: ใช้ AbilityEvent
-                print("[FORCED]   → No Alien Cadet ID, using AbilityEvent fallback...")
-                if AbilityEvent then
-                    success, err = pcall(function()
-                        AbilityEvent:FireServer("Activate", guid, abilityName, targetPos)
-                    end)
-                    if success then
-                        AbilityLastUsed[abilityKey] = tick()
-                        print("[FORCED]   → ✅ AbilityEvent fallback successful!")
-                    end
-                end
-            else
-                print("[FORCED]   → ❌ UnitEvent not available!")
-            end
-            
-        -- 🔵 TYPE 3: CLONE abilities (Monkey King's Fur, Valentine) - ใช้ GetBestPlacementPosition เหมือน Normal mode
-        elseif abilityLower:find("fur") or abilityLower:find("clone") or abilityLower:find("another me") then
-            print("[FORCED]   → TYPE: CLONE ability - using GetBestPlacementPosition (Normal mode style)")
-            
-            -- ⭐⭐⭐ FIX: ใช้ GetBestPlacementPosition เหมือน Normal mode
-            local clonePos = nil
-            
-            -- Priority 1: GetBestPlacementPosition (U-center system เหมือน Normal mode)
-            pcall(function()
-                clonePos = GetBestPlacementPosition(unitRange, GetGamePhase(), unitName, unit and unit.Data)
-            end)
-            
-            -- Priority 2: ใกล้ศัตรูหน้าสุด
-            if not clonePos then
-                local frontEnemy = GetFrontmostEnemy and GetFrontmostEnemy()
-                if frontEnemy and frontEnemy.Position then
-                    local offset = 12
-                    local angle = math.random() * math.pi * 2
-                    clonePos = frontEnemy.Position + Vector3.new(math.cos(angle) * offset, 0, math.sin(angle) * offset)
-                end
-            end
-            
-            -- Priority 3: ใกล้ unit เจ้าของ
-            if not clonePos and unit and unit.Model then
-                local hrp = unit.Model:FindFirstChild("HumanoidRootPart")
-                if hrp then
-                    local offset = 10
-                    local angle = math.random() * math.pi * 2
-                    clonePos = hrp.Position + Vector3.new(math.cos(angle) * offset, 0, math.sin(angle) * offset)
-                end
-            end
-            
-            -- Fallback
-            if not clonePos then
-                clonePos = targetPos
-            end
-            
-            if AbilityEvent then
-                print(string.format("[FORCED]   → Clone position: (%.1f, %.1f, %.1f)", clonePos.X, clonePos.Y, clonePos.Z))
-                
-                success, err = pcall(function()
-                    AbilityEvent:FireServer("Activate", guid, abilityName, clonePos)
-                end)
-                
-                if success then
-                    AbilityLastUsed[abilityKey] = tick()
-                    print(string.format("[FORCED]   → ✅ %s clone placed!", abilityName))
-                else
-                    print(string.format("[FORCED]   → ❌ AbilityEvent failed: %s", tostring(err)))
-                end
-            else
-                print("[FORCED]   → ❌ AbilityEvent not available!")
-            end
-            
-        -- 🟡 TYPE 4: DEFAULT - ใช้ AbilityEvent
-        else
-            print("[FORCED]   → TYPE: DEFAULT - using AbilityEvent")
-            if AbilityEvent then
-                success, err = pcall(function()
-                    AbilityEvent:FireServer("Activate", guid, abilityName, targetPos)
-                end)
-                if success then
-                    AbilityLastUsed[abilityKey] = tick()
-                    print(string.format("[FORCED]   → ✅ %s activated!", abilityName))
-                else
-                    print(string.format("[FORCED]   → ❌ AbilityEvent failed: %s", tostring(err)))
-                end
-            else
-                print("[FORCED]   → ❌ AbilityEvent not available!")
-            end
-        end
-    
-    -- 8. World Items (Caloric Stone, Ouroboros)
-    elseif abilityName:find("World Item") or abilityName:find("Caloric") or abilityName:find("Ouroboros") then
-        -- World Item ใช้ได้ 1 ครั้งต่อ match
-        if _G.APSkill.WorldItemUsedThisMatch then
-            print("[Skill] ⚠️ World Item ใช้ไปแล้วใน match นี้")
-            return false
-        end
-        
-        local itemToUse = nil
-        local stageInfo = AnalyzeStageType()
-        GetWaveFromUI()
-        local isMaxWave = (CurrentWave >= MaxWave - 1)
-        
-        print(string.format("[Skill] 🔍 World Item Check: CaloricStoneEvent=%s, Wave=%d/%d", 
-            tostring(CaloricStoneEvent ~= nil), CurrentWave, MaxWave))
-        
-        -- ⭐⭐⭐ CRITICAL: ถ้า Emergency mode กำลังวางตัวอยู่ → รอให้วางครบก่อนค่อยใช้ Caloric Stone
-        -- ⭐ FIX: เช็คแค่ IsEmergency และ EmergencyActivated - ไม่ต้องเช็ค EmergencyUnits เพราะมันเก็บไว้ track
-        if IsEmergency and not EmergencyActivated then
-            print("[Skill] ⏸️ World Item - รอ Emergency mode เสร็จก่อน...")
-            return false
-        end
-        
-        -- Caloric Stone - ใช้หลัง Wave 1 เพื่อให้วางได้ทุกตัว
-        -- ⭐⭐⭐ FIX: รอ Wave > 1 ก่อนใช้ Caloric Stone (Lich King Ruler)
-        if CurrentWave < 2 then
-            print("[Skill] ⏸️ World Item - รอ Wave 2+ ก่อน...")
-            return false
-        end
-        
-        if CaloricStoneEvent then
-            
-            local damageUnits = {}
-            
-            -- ⭐⭐⭐ FIX: เช็คแค่ใน HOTBAR (กระเป๋า) เท่านั้น - ไม่ใช้ placed units
-            if OwnedUnitsHandler and OwnedUnitsHandler.GetOwnedUnits then
-                local ownedUnits = nil
-                pcall(function()
-                    ownedUnits = OwnedUnitsHandler:GetOwnedUnits()
-                end)
-                
-                if ownedUnits then
-                    for unitGUID, unitEntry in pairs(ownedUnits) do
-                        local identifier = unitEntry.Identifier
-                        local uniqueId = unitEntry.UniqueIdentifier or unitGUID
-                        local unitData = unitEntry.UnitData or unitEntry
-                        local unitName = unitData and unitData.Name or ""
-                        
-                        if unitName ~= "" then
-                            local isLich = unitName:lower():find("lich") or unitName:lower():find("ruler")
-                            local isIncome = IsIncomeUnit and IsIncomeUnit(unitName, unitData or {})
-                            local isBuff = IsBuffUnit and IsBuffUnit(unitName, unitData or {})
-                            local isDamage = not isLich and not isIncome and not isBuff
-                            
-                            if isDamage then
-                                local realDPS = 0
-                                local lookupData = unitData
-                                
-                                if lookupData and lookupData.Upgrades then
-                                    local upgradeLevel = lookupData.CurrentUpgrade or 1
-                                    local upgradeData = lookupData.Upgrades[upgradeLevel]
-                                    if upgradeData then
-                                        local baseDamage = upgradeData.Damage or upgradeData.ATK or 0
-                                        local cooldown = upgradeData.Cooldown or upgradeData.SPA or 1
-                                        if baseDamage > 0 and cooldown > 0 then
-                                            realDPS = baseDamage / cooldown
-                                        end
-                                    end
-                                end
-                                
-                                if realDPS == 0 then
-                                    realDPS = lookupData.Priority or lookupData.Price or 0
-                                end
-                                
-                                table.insert(damageUnits, {
-                                    Slot = unitGUID,
-                                    Name = unitName,
-                                    DPS = realDPS,
-                                    Data = unitData,
-                                    Identifier = identifier,
-                                    UniqueIdentifier = uniqueId,
-                                    GUID = unitGUID,
-                                    Source = "Bag"
-                                })
-                            end
-                        end
-                    end
-                end
-            end
-            
-            
-            -- เรียงจาก DPS สูงไปต่ำ
-            table.sort(damageUnits, function(a, b)
-                return a.DPS > b.DPS
-            end)
-            
-            if #damageUnits > 0 then
-                local bestUnit = damageUnits[1]
-                
-                -- ⭐⭐⭐ FIX: เช็คเงินก่อนเลือก Unit
-                local unitPrice = 0
-                pcall(function()
-                    if bestUnit.Data and bestUnit.Data.Price then
-                        unitPrice = bestUnit.Data.Price
-                    elseif bestUnit.Data and bestUnit.Data.Upgrades and bestUnit.Data.Upgrades[1] then
-                        unitPrice = bestUnit.Data.Upgrades[1].Cost or 0
-                    end
-                end)
-                
-                local currentYen = GetYen()
-                if unitPrice > 0 and currentYen < unitPrice then
-                    print(string.format("[Skill] ⏸️ Caloric Stone - เงินไม่พอ (มี %d, ต้องการ %d) - รอเงิน...", currentYen, unitPrice))
-                    return false
-                end
-                
-                local targetIdentifier = bestUnit.UniqueIdentifier or bestUnit.Identifier or bestUnit.ID
-                
-                success, err = pcall(function()
-                    CaloricStoneEvent:FireServer(targetIdentifier, guid)
-                end)
-                
-                if success then
-                    print(string.format("[Skill] 💊 Caloric Stone → %s (กำลังวาง clone...)", bestUnit.Name))
-                    
-                    -- ⭐⭐⭐ Auto Placement: ใช้ format เหมือน PlaceUnit ปกติ
-                    -- แต่ใช้ FromUnitGUID แทน SlotIndex
-                    task.spawn(function()
-                        task.wait(0.3)
-                        
-                        -- หา numeric ID ของ unit (เหมือน PlaceUnit ปกติ)
-                        local unitName = bestUnit.Name
-                        local numericID = bestUnit.Identifier or bestUnit.ID
-                        
-                        -- แปลง ID เป็นตัวเลขถ้าจำเป็น
-                        if type(numericID) == "string" and UnitsData then
-                            pcall(function()
-                                local unitInfo = UnitsData:GetUnitDataFromID(numericID)
-                                if unitInfo and unitInfo.Directory then
-                                    numericID = unitInfo.Directory
-                                end
-                            end)
-                        end
-                        if type(numericID) == "string" and tonumber(numericID) then
-                            numericID = tonumber(numericID)
-                        end
-                        
-                        -- ⭐⭐⭐ FIX: ใช้ระบบวางปกติ (U-center) แทนการ offset จาก unit
-                        local targetPos = nil
-                        local unitRange = 25  -- Default range
-                        
-                        -- ดึง Range จาก unit data ถ้ามี
-                        pcall(function()
-                            if bestUnit.Data and bestUnit.Data.Range then
-                                unitRange = bestUnit.Data.Range
-                            end
-                        end)
-                        
-                        -- ⭐⭐⭐ PRIORITY: Caloric Stone Clone → วางหน้าประตูเสมอ (ทุกด่าน)
-                        print(string.format("[Analysis] 🔍 Caloric Clone: %s - วางหน้าประตู (Range: %d)", unitName, unitRange))
-                        pcall(function()
-                            targetPos = GetBestFrontPosition(unitRange)
-                            if targetPos then
-                                print(string.format("[Analysis] ✅ Caloric Clone พบตำแหน่งหน้าประตู: (%.1f, %.1f, %.1f)", 
-                                    targetPos.X, targetPos.Y, targetPos.Z))
-                            end
-                        end)
-                        
-                        -- ⭐ Fallback วิธี 1: ใช้ GetBestPlacementPosition (U-center system)
-                        if not targetPos then
-                            pcall(function()
-                                targetPos = GetBestPlacementPosition(unitRange, GetGamePhase(), unitName, bestUnit.Data)
-                            end)
-                        end
-                        
-                        -- ⭐ วิธี 2: Fallback หา U-center โดยตรง
-                        if not targetPos then
-                            pcall(function()
-                                local uCenters = CachedUCenters
-                                if uCenters and #uCenters > 0 then
-                                    for _, center in ipairs(uCenters) do
-                                        if not UsedUCenters[tostring(center)] then
-                                            targetPos = center
-                                            break
-                                        end
-                                    end
-                                end
-                            end)
-                        end
-                        
-                        -- ⭐ วิธี 3: Fallback ใช้ตำแหน่งใกล้ unit ที่มีอยู่
-                        if not targetPos then
-                            pcall(function()
-                                if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
-                                    for unitGuid, unit in pairs(ClientUnitHandler._ActiveUnits) do
-                                        if unit.Position then
-                                            local isEmergencyUnit = EmergencyUnits and EmergencyUnits[unitGuid]
-                                            if not isEmergencyUnit then
-                                                targetPos = unit.Position + Vector3.new(4, 0, 0)
-                                                break
-                                            end
-                                        end
-                                    end
-                                end
-                            end)
-                        end
-                        
-                        if not targetPos then
-                            print("[Skill] ⚠️ Caloric Clone - ไม่พบตำแหน่งวาง")
-                            return
-                        end
-                        
-                        -- ⭐ Fire Render event ตาม format ของ PlaceUnit ปกติ
-                        -- แต่ใช้ FromUnitGUID แทน SlotIndex
-                        local renderSuccess = false
-                        pcall(function()
-                            if UnitEvent then
-                                UnitEvent:FireServer("Render", {
-                                    unitName,      -- [1] Name
-                                    numericID,     -- [2] ID (numeric)
-                                    targetPos,     -- [3] Position
-                                    0              -- [4] Rotation
-                                }, {
-                                    FromUnitGUID = guid  -- ⭐ ใช้ FromUnitGUID แทน SlotIndex
-                                })
-                                renderSuccess = true
-                            end
-                        end)
-                        
-                        if renderSuccess then
-                            print(string.format("[Skill] ✅ Caloric Clone วางที่ (%.1f, %.1f, %.1f)", 
-                                targetPos.X, targetPos.Y, targetPos.Z))
-                            
-                            -- ⭐⭐⭐ FIX: Verify placement - รอจนกว่า unit จะปรากฏในแมพ
-                            local cloneFound = false
-                            local maxRetries = 10
-                            local retryDelay = 0.5
-                            
-                            for retry = 1, maxRetries do
-                                task.wait(retryDelay)
-                                
-                                pcall(function()
-                                    if ClientUnitHandler and ClientUnitHandler._ActiveUnits then
-                                        for unitGuid, unit in pairs(ClientUnitHandler._ActiveUnits) do
-                                            if unit.Name == unitName and unit.Position then
-                                                local dist = (unit.Position - targetPos).Magnitude
-                                                if dist < 10 then
-                                                    CaloricCloneUnits[unitGuid] = true
-                                                    cloneFound = true
-                                                    print(string.format("[Skill] 📌 Caloric Clone ปรากฏแล้ว: %s (retry #%d)", unitName, retry))
-                                                end
-                                            end
-                                        end
-                                    end
-                                end)
-                                
-                                if cloneFound then break end
-                                
-                                -- ⭐ Retry placement ถ้ายังไม่เจอ
-                                if retry < maxRetries and not cloneFound then
-                                    print(string.format("[Skill] ⏳ Caloric Clone ยังไม่เจอ - retry #%d...", retry))
-                                    pcall(function()
-                                        if UnitEvent then
-                                            UnitEvent:FireServer("Render", {
-                                                unitName, numericID, targetPos, 0
-                                            }, { FromUnitGUID = guid })
-                                        end
-                                    end)
-                                end
-                            end
-                            
-                            -- ⭐ Set flag เฉพาะเมื่อเจอ clone จริง
-                            if cloneFound then
-                                _G.APSkill.WorldItemUsedThisMatch = true
-                                print("[Skill] ✅ Caloric Clone placement verified!")
-                            else
-                                print("[Skill] ⚠️ Caloric Clone - ไม่พบ unit หลังจาก retry ครบ")
-                            end
-                        else
-                            print("[Skill] ⚠️ Caloric Clone - Render failed")
-                        end
-                    end)
-                end
-            end
-            
-            itemToUse = "Caloric Stone"
-        
-        -- Ouroboros: ใช้เฉพาะด่านที่มี >= 50 waves + ถึง max wave
-        elseif isMaxWave and stageInfo.MaxWave >= 50 and WorldItemEvent then
-            itemToUse = "Ouroboros"
-            
-            success, err = pcall(function()
-                WorldItemEvent:FireServer(guid, itemToUse)
-            end)
-            
-            if success then
-                print(string.format("[Skill] 🔴 Ouroboros (%d/%d)", CurrentWave, MaxWave))
-            end
-        else
-            return false
-        end
-    
-    -- 9. Default: ใช้ AbilityEvent (Activate)
-    elseif AbilityEvent then
-        success, err = pcall(function()
-            AbilityEvent:FireServer("Activate", guid, abilityName)
-        end)
-    else
-        return false
-    end
-    
-    if success then
-        -- อัพเดท tracking
-        AbilityLastUsed[abilityKey] = tick()
-        if abilityInfo.IsOneTime then
-            AbilityUsedOnce[abilityKey] = true
-        end
-        
-        -- ✅ Log สั้นๆ (แสดงเสมอ)
-        print(string.format("[Skill] ✅ %s → %s", unitName, abilityName))
-        return true
-    else
-        return false
-    end
-end
-
--- ===== AUTO USE ABILITIES (MAIN LOOP) =====
-local MAX_ABILITIES_PER_CHECK = 5  -- ⏱️ ใช้ได้สูงสุด 5 abilities ต่อรอบเช็ค
-
-local function AutoUseAbilitiesV3()
-    -- ⏱️ Throttle
-    local now = tick()
-    if now - LastAutoSkillCheck < AUTO_SKILL_CHECK_INTERVAL then
-        return 0
-    end
-    LastAutoSkillCheck = now
-    
-    if not ClientUnitHandler or not ClientUnitHandler._ActiveUnits then
-        return 0
-    end
-    
-    local totalUnits = 0
-    for _ in pairs(ClientUnitHandler._ActiveUnits) do
-        totalUnits = totalUnits + 1
-    end
-    
-    if totalUnits == 0 then
-        return 0
-    end
-    
-    local abilitiesUsed = 0
-    local abilitiesChecked = 0
-    
-    -- วนลูปทุก units
-    for guid, unit in pairs(ClientUnitHandler._ActiveUnits) do
-        if abilitiesUsed >= MAX_ABILITIES_PER_CHECK then break end
-        if not unit then continue end
-        
-        -- ⭐⭐⭐ FIX: เช็ค Ownership สำหรับ Multiplayer - ใช้เฉพาะ unit ของตัวเอง
-        local isMyUnit = true
-        pcall(function()
-            local ownerUserId = unit.OwnerUserId or unit.OwnerId or unit.UserId
-            if ownerUserId and ownerUserId ~= plr.UserId then
-                isMyUnit = false
-            end
-            -- เช็คจาก PlayerName หรือ Owner
-            local ownerName = unit.OwnerName or unit.PlayerName or unit.Owner
-            if ownerName and ownerName ~= plr.Name then
-                isMyUnit = false
-            end
-        end)
-        
-        if not isMyUnit then continue end  -- ข้าม unit ของคนอื่น
-        
-        local unitName = unit.Name or "Unknown"
-        local abilities = unit.ActiveAbilities or unit.Abilities or {}
-        
-        if #abilities == 0 then continue end
-        
-        -- วนลูปทุก abilities
-        for abilityIndex, abilityData in ipairs(abilities) do
-            if abilitiesUsed >= MAX_ABILITIES_PER_CHECK then break end
-            
-            -- ดึงชื่อ ability
-            local abilityName = nil
-            if type(abilityData) == "string" then
-                abilityName = abilityData
-            elseif type(abilityData) == "table" then
-                abilityName = abilityData.Name or abilityData.AbilityName or abilityData.name or abilityData.DisplayName
-            end
-            
-            if not abilityName or abilityName == "" then continue end
-            if abilityName:find("Passive") or abilityName:find("PASSIVE") then continue end
-            
-            abilitiesChecked = abilitiesChecked + 1
-            
-            local abilityInfo = AnalyzeAbility(abilityName)
-            local canUse, reason = CanUseAbility(unit, abilityName, abilityInfo)
-            
-            if canUse then
-                local success = UseAbilityV3(unit, abilityName, abilityInfo)
-                
-                if success then
-                    abilitiesUsed = abilitiesUsed + 1
-                    task.wait(0.1)
-                end
-            end
-        end
-    end
-    
-    return abilitiesUsed
-end
-
--- ===== AUTO NUMBER PAD (สำหรับ Imprisoned Island) =====
--- กรองจากเกมเท่านั้น - เก็บ wave ที่ boss spawn (สีเขียว #83f2ae)
-_G.NumberPad = {
-    BossWaves = {},
-    LastCheck = 0,
-    CodeAccepted = false,
-    LastWaveText = "",
-    MapLogged = false,
-    LastDebug = 0,
-}
-
--- ฟังก์ชันเช็คสีเขียวจาก WavesAmount UI
-local function CheckBossWaveFromUI()
-    local success, result = pcall(function()
-        local wavesAmount = plr.PlayerGui.HUD.Map.WavesAmount
-        if wavesAmount and wavesAmount.Text then
-            return wavesAmount.Text
-        end
-        return nil
-    end)
-    return success and result or nil
-end
-
--- ฟังก์ชันดึง wave number จาก text (เช่น "<stroke...>7</font>..." → 7)
-local function ExtractWaveNumber(text)
-    if not text then return nil end
-    -- หา pattern: <font transparency="0">NUMBER</font>
-    local wave = text:match('<font transparency="0">(%d+)</font>')
-    if wave then
-        return tonumber(wave)
-    end
-    return nil
-end
-
-local function AutoNumberPad()
-    if _G.NumberPad.CodeAccepted then return end
-    if not NumberPadEvent then return end
-    
-    -- เช็คว่ามี NumberPadInteract หรือไม่
-    local hasNumberPad = false
-    pcall(function()
-        local map = workspace:FindFirstChild("Map")
-        if map then
-            local models = map:FindFirstChild("Models")
-            if models then
-                hasNumberPad = models:FindFirstChild("NumberPadInteract") ~= nil
-            end
-        end
-        
-        if not _G.NumberPad.MapLogged then
-            print(string.format("[NumberPad] 📍 HasNumberPad: %s", tostring(hasNumberPad)))
-            _G.NumberPad.MapLogged = true
-        end
-    end)
-    
-    if not hasNumberPad then return end
-    
-    local now = tick()
-    
-    -- เช็ค UI ทุก 0.2 วินาที (เร็วขึ้นเพื่อไม่พลาด)
-    if now - _G.NumberPad.LastCheck < 0.2 then return end
-    _G.NumberPad.LastCheck = now
-    
-    -- ⭐ สแกนหา boss waves ทั้งหมดจาก UI (ดึงทุกตัวที่เป็นสีเขียว)
-    pcall(function()
-        local playerGui = game:GetService("Players").LocalPlayer:FindFirstChild("PlayerGui")
-        if not playerGui then return end
-        
-        for _, gui in pairs(playerGui:GetDescendants()) do
-            if gui:IsA("TextLabel") and gui.RichText then
-                local text = gui.Text or ""
-                -- เช็คว่าเป็นสีเขียว (Boss wave)
-                if text:find("#83f2ae") then
-                    -- ดึงทุก wave number จาก text
-                    for waveStr in text:gmatch('<font transparency="0">(%d+)</font>') do
-                        local waveNum = tonumber(waveStr)
-                        if waveNum and not table.find(_G.NumberPad.BossWaves, waveNum) then
-                            table.insert(_G.NumberPad.BossWaves, waveNum)
-                            table.sort(_G.NumberPad.BossWaves)
-                            print(string.format("[NumberPad] 🟢 Boss Wave: %d (รวม %d waves)", waveNum, #_G.NumberPad.BossWaves))
-                        end
-                    end
-                end
-            end
-        end
-    end)
-    
-    -- Debug: แสดงสถานะทุก 10 วินาที
-    if not _G.NumberPad.LastDebug or now - _G.NumberPad.LastDebug > 10 then
-        print(string.format("[NumberPad] 📊 Boss Waves: %s (%d/4)", 
-            #_G.NumberPad.BossWaves > 0 and table.concat(_G.NumberPad.BossWaves, ", ") or "ยังไม่มี",
-            #_G.NumberPad.BossWaves))
-        _G.NumberPad.LastDebug = now
-    end
-    
-    -- ถ้าได้ครบ 4 ตัวแล้ว → ส่งรหัส
-    if #_G.NumberPad.BossWaves >= 4 then
-        local code = {}
-        for i = 1, 4 do
-            table.insert(code, _G.NumberPad.BossWaves[i] % 10)
-        end
-        
-        local codeStr = table.concat(code, "")
-        print(string.format("[NumberPad] 🔢 ส่งรหัส: %s (จาก Boss Waves: %s)", codeStr, table.concat(_G.NumberPad.BossWaves, ", ")))
-        
-        pcall(function()
-            NumberPadEvent:FireServer("InputCode", code)
-        end)
-        
-        task.wait(1)
-    end
-end
-
--- Listen for NumberPad response
-pcall(function()
-    if NumberPadEvent then
-        NumberPadEvent.OnClientEvent:Connect(function(action, ...)
-            if action == "CodeAccepted" then
-                _G.NumberPad.CodeAccepted = true
-                print("[NumberPad] ✅ รหัสถูกต้อง!")
-            elseif action == "CodeRejected" then
-                print(string.format("[NumberPad] ❌ รหัสผิด - Boss Waves: %s", table.concat(_G.NumberPad.BossWaves, ", ")))
-            end
-        end)
-    end
-end)
-
--- ===== AUTO REPLAY SYSTEM =====
-_G.AutoReplay = {
-    LastVote = 0,
-    VoteCooldown = 1,
-}
-
-local function AutoVoteReplay_Legacy()
-    if not _G.VoteEvent then return end
-    local now = tick()
-    if now - _G.AutoReplay.LastVote < _G.AutoReplay.VoteCooldown then return end
-    _G.AutoReplay.LastVote = now
-    pcall(function()
-        _G.VoteEvent:FireServer("Retry")
-        print("[AutoReplay] 🔄 Voted for Replay/Retry")
-    end)
-end
-
--- ===== AUTO PORTAL SYSTEM =====
-_G.AutoPortal = {
-    LastAction = 0,
-    ActionCooldown = 2,
-}
-
--- ฟังก์ชันเลือก Portal อัตโนมัติ (เลือกตัวที่ดีที่สุด)
-local function AutoSelectPortal()
-    if not _G.PortalPlayEvent then return end
-    
-    local now = tick()
-    if now - _G.AutoPortal.LastAction < _G.AutoPortal.ActionCooldown then return end
-    
-    -- เช็คว่ามี Portal Data หรือไม่
-    local hasPortalData = false
-    local portalGUID = nil
-    
-    pcall(function()
-        local GameHandler = require(ReplicatedStorage.Modules.Gameplay.GameHandler)
-        if GameHandler and GameHandler.GameData and GameHandler.GameData.PortalData then
-            hasPortalData = true
-            
-            -- หา Portal ที่ดีที่สุดจาก PortalStorageHandler
-            local PortalStorage = require(ReplicatedStorage.Modules.Gameplay.Portals.PortalStorageHandler)
-            if PortalStorage and PortalStorage.GetPortals then
-                local portals = PortalStorage.GetPortals()
-                if portals then
-                    -- เลือก Portal แรกที่เจอ (หรือสามารถปรับให้เลือกตาม Rarity)
-                    for guid, portal in pairs(portals) do
-                        portalGUID = guid
-                        break
-                    end
-                end
-            end
-        end
-    end)
-    
-    if hasPortalData and portalGUID then
-        _G.AutoPortal.LastAction = now
-        pcall(function()
-            _G.PortalPlayEvent:FireServer("Select", portalGUID)
-            print(string.format("[AutoPortal] 🌀 Selected Portal: %s", tostring(portalGUID)))
-        end)
-    end
-end
-
--- ===== LEGACY FUNCTIONS (เก็บไว้เพื่อ compatibility) =====
-local function EnableAutoSkill()
-    -- ไม่ต้องทำอะไร - ใช้ AutoUseAbilitiesV3() แทน
-end
-
--- ===== AUTO SKILL V2 (OLD - เก็บไว้เพื่อ fallback) =====
-local function GetAbilityType(abilityData)
-    if not abilityData then return "Unknown", 0, false end
-    
-    -- 🔍 อ่านข้อมูลจาก ability data จริง
-    local abilityName = abilityData.Name or ""
-    local abilityType = abilityData.Type or ""  -- ประเภท ability
-    local requiresTarget = abilityData.RequiresTarget or abilityData.NeedsTarget or false
-    local cooldown = abilityData.Cooldown or abilityData.CooldownTime or 5
-    local maxUses = abilityData.MaxUses or abilityData.Uses or math.huge
-    local instant = abilityData.Instant or abilityData.AutoCast or false
-    
-    -- 🎯 วิเคราะห์ประเภทจาก data
-    -- Priority 1: เช็คจาก Type property
-    if abilityType == "Ultimate" or abilityType == "Special" then
-        return "OneTime", cooldown, requiresTarget
-    elseif abilityType == "Targeted" or abilityType == "Placement" then
-        return "Target", cooldown, true
-    elseif abilityType == "Instant" or abilityType == "Buff" or abilityType == "AutoCast" then
-        return "AutoCast", cooldown, false
-    end
-    
-    -- Priority 2: เช็คจาก MaxUses
-    if maxUses == 1 then
-        return "OneTime", cooldown, requiresTarget
-    end
-    
-    -- Priority 3: เช็คจาก RequiresTarget
-    if requiresTarget then
-        return "Target", cooldown, true
-    end
-    
-    -- Priority 4: เช็คจาก Instant flag
-    if instant then
-        return "AutoCast", cooldown, false
-    end
-    
-    -- Default: ถือว่าเป็น AutoCast (ใช้ได้ทันที)
-    return "AutoCast", cooldown, false
-end
-
-IsBossEnemy = function(enemy)
-    if not enemy then return false end
-    
-    -- เช็คจาก Data.IsBoss
-    if enemy.Data and enemy.Data.IsBoss == true then return true end
-    
-    -- เช็คจากชื่อ
-    local enemyName = enemy.Name or ""
-    if enemyName:find("Boss") or enemyName:find("boss") or enemyName:find("BOSS") then 
-        return true 
-    end
-    
-    -- เช็คจาก HP (Boss มี HP > 10000)
-    local maxHP = enemy.MaxHealth or enemy.Health or 0
-    if maxHP > 10000 then return true end
-    
-    return false
-end
-
-local function UseAbilityV2(unit, abilityData, targetPosition)
-    if not unit or not abilityData then return false end
-    
-    local networking = ReplicatedStorage:FindFirstChild("Networking")
-    if not networking then return false end
-    
-    local unitEvent = networking:FindFirstChild("UnitEvent")
-    if not unitEvent then return false end
-    
-    -- Fire ability ไป server
-    local success = pcall(function()
-        if targetPosition then
-            unitEvent:FireServer("UseAbility", unit.UniqueIdentifier, abilityData, targetPosition)
-        else
-            unitEvent:FireServer("UseAbility", unit.UniqueIdentifier, abilityData)
-        end
-    end)
-    
-    return success
-end
-
-local function AutoUseAbilities()
-    if not ClientUnitHandler or not ClientUnitHandler._ActiveUnits then return end
-    
-    local currentTime = tick()
-    local skillsUsed = 0
-    
-    for guid, unit in pairs(ClientUnitHandler._ActiveUnits) do
-        if unit.ActiveAbilities and #unit.ActiveAbilities > 0 then
-            for _, abilityData in ipairs(unit.ActiveAbilities) do
-                -- อ่านข้อมูลจาก ability data
-                local abilityName = abilityData.Name or tostring(abilityData)
-                local abilityKey = guid .. "_" .. abilityName
-                
-                -- เช็คว่าเคยใช้ไปแล้วหรือยัง (one-time)
-                local shouldSkip = AbilityUsedOnce[abilityKey] == true
-                
-                if not shouldSkip then
-                    -- เช็ค cooldown
-                    local lastUsedTime = AbilityLastUsed[abilityKey] or 0
-                    local abilityType, cooldown, requiresTarget = GetAbilityType(abilityData)
-                    
-                    if currentTime - lastUsedTime >= cooldown then
-                        -- ใช้ ability ตามประเภท
-                        if abilityType == "OneTime" then
-                            -- ใช้เฉพาะกับ Boss
-                            local enemies = GetEnemies()
-                            for _, enemy in ipairs(enemies) do
-                                if IsBossEnemy(enemy) then
-                                    local targetPos = enemy.Position or (enemy.Model and enemy.Model:GetPivot().Position)
-                                    if targetPos then
-                                        local success = UseAbilityV2(unit, abilityData, requiresTarget and targetPos or nil)
-                                        if success then
-                                            AbilityUsedOnce[abilityKey] = true
-                                            AbilityLastUsed[abilityKey] = currentTime
-                                            skillsUsed = skillsUsed + 1
-                                            DebugPrint(string.format("💥 [Boss Skill] %s → %s (Type: %s)", 
-                                                abilityName, enemy.Name, abilityData.Type or "Unknown"))
-                                        end
-                                        break
-                                    end
-                                end
-                            end
-                            
-                        elseif abilityType == "Target" then
-                            -- ใช้กับ enemy ที่แข็งแรงที่สุด
-                            local enemies = GetEnemies()
-                            if #enemies > 0 then
-                                local strongestEnemy = nil
-                                local maxHealth = 0
-                                for _, enemy in ipairs(enemies) do
-                                    local hp = enemy.Health or enemy.MaxHealth or 0
-                                    if hp > maxHealth then
-                                        maxHealth = hp
-                                        strongestEnemy = enemy
-                                    end
-                                end
-                                if strongestEnemy then
-                                    local targetPos = strongestEnemy.Position or (strongestEnemy.Model and strongestEnemy.Model:GetPivot().Position)
-                                    if targetPos then
-                                        local success = UseAbilityV2(unit, abilityData, targetPos)
-                                        if success then
-                                            AbilityLastUsed[abilityKey] = currentTime
-                                            skillsUsed = skillsUsed + 1
-                                            DebugPrint(string.format("🎯 [Target Skill] %s → %s (Type: %s, CD: %.1fs)", 
-                                                abilityName, strongestEnemy.Name, abilityData.Type or "Unknown", cooldown))
-                                        end
-                                    end
-                                end
-                            end
-                            
-                        elseif abilityType == "AutoCast" then
-                            -- ใช้ได้ทันที (ไม่ต้องระบุ target)
-                            local success = UseAbilityV2(unit, abilityData, nil)
-                            if success then
-                                AbilityLastUsed[abilityKey] = currentTime
-                                skillsUsed = skillsUsed + 1
-                                DebugPrint(string.format("⚡ [Auto Skill] %s (Unit: %s, Type: %s, CD: %.1fs)", 
-                                    abilityName, unit.Name, abilityData.Type or "Unknown", cooldown))
-                            end
-                        end
-                    end
-                end
-            end
-        end
-    end
 end
 
 -- ===== HOTBAR SYSTEM =====
@@ -6042,46 +4010,50 @@ local function CalculateOptimalZones(path, unitRange)
                         for offset = 10, 25, 5 do
                             local testPos = midPoint + testDir * offset
                             
-                            -- เช็คว่าห่างจาก Path node อื่นๆ
-                            local minDistToPath = math.huge
-                            local nodesInRange = 0
+                            -- ⛔ เช็ค Excluded Zone ก่อน!
+                            if not IsInFrozenPortExcludedZone(testPos) then
                             
-                            for j, node in ipairs(path) do
-                                local dist = (testPos - node).Magnitude
-                                minDistToPath = math.min(minDistToPath, dist)
+                                -- เช็คว่าห่างจาก Path node อื่นๆ
+                                local minDistToPath = math.huge
+                                local nodesInRange = 0
                                 
-                                if dist <= unitRange then
-                                    nodesInRange = nodesInRange + 1
+                                for j, node in ipairs(path) do
+                                    local dist = (testPos - node).Magnitude
+                                    minDistToPath = math.min(minDistToPath, dist)
+                                    
+                                    if dist <= unitRange then
+                                        nodesInRange = nodesInRange + 1
+                                    end
                                 end
-                            end
-                            
-                            -- ⭐ Optimal Zone ต้อง:
-                            -- 1. ห่างจาก Path 8-30 studs (ไม่ใกล้เกินไป ไม่ไกลเกินไป)
-                            -- 2. ยิงถึง Path อย่างน้อย 2-3 nodes
-                            -- 3. ไม่ใกล้ Spawn/Base มากเกินไป
-                            local distToSpawn = (testPos - spawnPoint).Magnitude
-                            local distToBase = (testPos - basePoint).Magnitude
-                            
-                            if minDistToPath >= 8 and minDistToPath <= 30 and 
-                               nodesInRange >= 2 and
-                               distToSpawn > 15 and distToBase > 15 then
                                 
-                                -- คำนวณ score
-                                local score = 0
-                                score = score + nodesInRange * 100  -- ยิงได้เยอะ = ดี
-                                score = score - minDistToPath * 2   -- ไม่ไกลเกินไป
-                                score = score + (angle / 90) * 50   -- มุมโค้งมาก = ดี
+                                -- ⭐ Optimal Zone ต้อง:
+                                -- 1. ห่างจาก Path 8-30 studs (ไม่ใกล้เกินไป ไม่ไกลเกินไป)
+                                -- 2. ยิงถึง Path อย่างน้อย 2-3 nodes
+                                -- 3. ไม่ใกล้ Spawn/Base มากเกินไป
+                                local distToSpawn = (testPos - spawnPoint).Magnitude
+                                local distToBase = (testPos - basePoint).Magnitude
                                 
-                                table.insert(optimalZones, {
-                                    Position = testPos,
-                                    PathIndex = i,
-                                    NodesInRange = nodesInRange,
-                                    DistToPath = minDistToPath,
-                                    Angle = angle,
-                                    Score = score,
-                                    Used = false
-                                })
-                            end
+                                if minDistToPath >= 8 and minDistToPath <= 30 and 
+                                   nodesInRange >= 2 and
+                                   distToSpawn > 15 and distToBase > 15 then
+                                    
+                                    -- คำนวณ score
+                                    local score = 0
+                                    score = score + nodesInRange * 100  -- ยิงได้เยอะ = ดี
+                                    score = score - minDistToPath * 2   -- ไม่ไกลเกินไป
+                                    score = score + (angle / 90) * 50   -- มุมโค้งมาก = ดี
+                                    
+                                    table.insert(optimalZones, {
+                                        Position = testPos,
+                                        PathIndex = i,
+                                        NodesInRange = nodesInRange,
+                                        DistToPath = minDistToPath,
+                                        Angle = angle,
+                                        Score = score,
+                                        Used = false
+                                    })
+                                end
+                            end -- ⛔ end Excluded Zone check
                         end
                     end
                 end
@@ -6628,6 +4600,15 @@ GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
         return nil
     end
     
+    -- ⭐ Frozen Port: ใช้ระบบเฉพาะ
+    if _G.APState and _G.APState.IsFrozenPort then
+        local frozenPos = GetFrozenPortAutoPlacePosition(unitRange, gamePhase)
+        if frozenPos then
+            return frozenPos
+        end
+        -- ถ้าไม่เจอตำแหน่ง Frozen Port → ใช้ระบบปกติ
+    end
+    
     local path = GetMapPath()
     local positions = GetPlaceablePositions()
     gamePhase = gamePhase or "early"
@@ -6946,20 +4927,26 @@ GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
         -- ===== คำนวณความคุ้มค่าก่อน =====
         local nodesInRange, directionsHit = CalculatePositionValue(pos, unitRange)
         
-        -- ===== BONUS สำหรับความคุ้มค่า =====
-        -- ยิ่งยิงได้หลาย nodes ยิ่งคุ้ม
-        score = score + nodesInRange * 60
-        
-        -- ยิ่งยิงได้หลายทิศทางยิ่งคุ้ม
-        if directionsHit >= 4 then
-            score = score + 400
-        elseif directionsHit >= 3 then
-            score = score + 250
-        elseif directionsHit >= 2 then
-            score = score + 120
+        -- ⭐⭐⭐ STRICT FILTER: ถ้าตีไม่ได้ node ใดเลย → ข้ามตำแหน่งนี้!
+        if nodesInRange < 1 then
+            -- ตำแหน่งนี้อยู่นอก range ของ path ทั้งหมด → ไม่พิจารณา
+            score = -99999  -- ให้คะแนนต่ำสุดเพื่อไม่เลือก
+        else
+            -- ===== BONUS สำหรับความคุ้มค่า =====
+            -- ยิ่งยิงได้หลาย nodes ยิ่งคุ้ม
+            score = score + nodesInRange * 60
+            
+            -- ยิ่งยิงได้หลายทิศทางยิ่งคุ้ม
+            if directionsHit >= 4 then
+                score = score + 400
+            elseif directionsHit >= 3 then
+                score = score + 250
+            elseif directionsHit >= 2 then
+                score = score + 120
+            end
         end
         
-        -- ===== � BONUS ใกล้ Base/จุดจบ (สำคัญมาก!) =====
+        -- ===== 🎯 BONUS ใกล้ Base/จุดจบ (สำคัญมาก!) =====
         local distToBase = (pos - basePoint).Magnitude
         
         -- ยิ่งใกล้ Base ยิ่งดี - ให้คะแนนสูงมาก!
@@ -7365,8 +5352,117 @@ GetBestPlacementPosition = function(unitRange, gamePhase, unitName, unitData)
     return bestPos
 end
 
+-- ===== RANGE VERIFICATION FUNCTION =====
+-- ⭐⭐⭐ NEW: ตรวจสอบว่าตำแหน่งนี้สามารถตี path ได้จริงหรือไม่
+local function VerifyPositionInRange(position, unitRange, minPathNodesRequired)
+    if not position or not unitRange then
+        return false, 0
+    end
+    
+    minPathNodesRequired = minPathNodesRequired or 1  -- ต้องตีได้อย่างน้อย 1 node
+    
+    local path = GetMapPath()
+    if not path or #path == 0 then
+        return true, 0  -- ไม่มี path = อนุญาต (fallback)
+    end
+    
+    local nodesInRange = 0
+    local closestDist = math.huge
+    
+    for _, node in ipairs(path) do
+        local dist = (position - node).Magnitude
+        if dist < closestDist then
+            closestDist = dist
+        end
+        if dist <= unitRange then
+            nodesInRange = nodesInRange + 1
+        end
+    end
+    
+    local isValid = nodesInRange >= minPathNodesRequired
+    
+    if not isValid then
+        DebugPrint(string.format("❌ Position (%.1f, %.1f) OUT OF RANGE! nodesInRange=%d (need %d), closestDist=%.1f, range=%.1f", 
+            position.X, position.Z, nodesInRange, minPathNodesRequired, closestDist, unitRange))
+    end
+    
+    return isValid, nodesInRange
+end
+
+-- ⭐⭐⭐ NEW: หาตำแหน่งที่ดีที่สุดโดยบังคับให้ตีถึง path แน่นอน
+local function GetVerifiedPlacementPosition(unitRange, gamePhase, unitName, unitData, minNodesRequired)
+    minNodesRequired = minNodesRequired or 3  -- ต้องตีได้อย่างน้อย 3 nodes
+    
+    -- เรียก GetBestPlacementPosition ปกติก่อน
+    local bestPos = GetBestPlacementPosition(unitRange, gamePhase, unitName, unitData)
+    
+    if bestPos then
+        local isValid, nodesInRange = VerifyPositionInRange(bestPos, unitRange, minNodesRequired)
+        if isValid then
+            return bestPos, nodesInRange
+        end
+        
+        -- ถ้าตำแหน่งไม่ valid → ลองหาตำแหน่งใกล้ๆ ที่ valid
+        DebugPrint(string.format("⚠️ BestPos ตีไม่ถึง! กำลังหาตำแหน่งใกล้ๆ ที่ valid..."))
+        
+        local path = GetMapPath()
+        if path and #path > 0 then
+            -- หาตำแหน่งใกล้ path nodes โดยตรง
+            local safeDistance = unitRange * 0.7  -- วางห่างจาก path 70% ของ range
+            local candidates = {}
+            
+            for i, node in ipairs(path) do
+                -- ทดสอบหลายมุมรอบๆ node
+                for angle = 0, math.pi * 2, math.pi / 6 do  -- 12 ทิศทาง
+                    local offsetX = math.cos(angle) * safeDistance
+                    local offsetZ = math.sin(angle) * safeDistance
+                    local testPos = node + Vector3.new(offsetX, 0, offsetZ)
+                    
+                    if CanPlaceAtPosition(unitName, testPos) then
+                        local valid, nodes = VerifyPositionInRange(testPos, unitRange, minNodesRequired)
+                        if valid then
+                            table.insert(candidates, {
+                                Position = testPos,
+                                NodesInRange = nodes,
+                                PathIndex = i
+                            })
+                        end
+                    end
+                end
+            end
+            
+            if #candidates > 0 then
+                -- เลือกตำแหน่งที่ครอบคลุม path มากที่สุด และใกล้ base (path index สูง)
+                table.sort(candidates, function(a, b)
+                    -- Priority: NodesInRange สูง + PathIndex สูง (ใกล้ base)
+                    local scoreA = a.NodesInRange * 10 + a.PathIndex
+                    local scoreB = b.NodesInRange * 10 + b.PathIndex
+                    return scoreA > scoreB
+                end)
+                
+                local finalPos = candidates[1].Position
+                DebugPrint(string.format("✅ พบตำแหน่ง Verified! (%.1f, %.1f) nodes=%d", 
+                    finalPos.X, finalPos.Z, candidates[1].NodesInRange))
+                return finalPos, candidates[1].NodesInRange
+            end
+        end
+    end
+    
+    -- Fallback: คืน bestPos ถึงแม้จะไม่ valid (ดีกว่าไม่วาง)
+    if bestPos then
+        DebugPrint(string.format("⚠️ Fallback: ใช้ตำแหน่งเดิม (%.1f, %.1f) แม้ไม่ verified", bestPos.X, bestPos.Z))
+    end
+    return bestPos, 0
+end
+
 -- ===== PLACEMENT VALIDATION =====
 CanPlaceAtPosition = function(unitName, position)
+    -- ⛔ เช็ค Excluded Zone ก่อน! (Frozen Port)
+    if IsInFrozenPortExcludedZone(position) then
+        DebugPrint(string.format("⛔ ห้ามวาง! ตำแหน่ง (%.1f, %.1f) อยู่ใน Excluded Zone", position.X, position.Z))
+        return false
+    end
+    
     if PlacementValidationHandler and PlacementValidationHandler.CanFitUnit then
         local canPlace = false
         pcall(function()
@@ -7410,7 +5506,13 @@ PlaceUnit = function(slot, position)
     
     -- เช็คเงิน
     local yen = GetYen()
-    if unit.Price > 0 and yen < unit.Price then
+    
+    -- ⭐⭐⭐ EXCEPTION: Iscanur ที่ Wave 1 ข้ามการเช็คเงิน (Auto Burn ทำให้เงินเป็น 0)
+    local isIscanur = unit.Name and unit.Name:lower():find("iscanur")
+    local isWave1 = CurrentWave == 1
+    local skipMoneyCheck = isIscanur and isWave1
+    
+    if not skipMoneyCheck and unit.Price > 0 and yen < unit.Price then
         return false
     end
     
@@ -7771,6 +5873,9 @@ SellUnit = function(unit)
         
         -- ลบออกจาก Emergency tracking
         EmergencyUnits[unit.GUID] = nil
+        
+        -- ⭐⭐⭐ Reset Emergency upgrade count เมื่อขาย unit
+        EmergencyUpgradeCount[unit.GUID] = nil
     end
     
     return success
@@ -7902,28 +6007,93 @@ end
 -- ===== GET STAGE/MAP NAME =====
 local function GetCurrentStageName()
     local stageName = "Unknown"
+    
     pcall(function()
-        -- วิธี 1: จาก workspace.Map.Name
-        if workspace:FindFirstChild("Map") then
-            stageName = workspace.Map.Name
-        end
-        -- วิธี 2: จาก Attribute
-        if stageName == "Unknown" or stageName == "Map" then
-            local attr = workspace:GetAttribute("StageName") or workspace:GetAttribute("MapName")
-            if attr then stageName = attr end
-        end
-        -- วิธี 3: จาก ReplicatedStorage.GameData
-        if stageName == "Unknown" or stageName == "Map" then
-            local gameData = game:GetService("ReplicatedStorage"):FindFirstChild("GameData")
-            if gameData then
-                local stageVal = gameData:FindFirstChild("StageName") or gameData:FindFirstChild("Stage")
-                if stageVal and stageVal:IsA("StringValue") then
-                    stageName = stageVal.Value
-                end
+        if not GameHandler or not GameHandler.GameData then return end
+        
+        local GameData = GameHandler.GameData
+        
+        -- ใช้ StagesData:GetCurrentStage() เหมือน decompiled code
+        local success, stageData = pcall(function()
+            return StagesData:GetCurrentStage(GameData)
+        end)
+        
+        if success and stageData then
+            -- GetCurrentStage() คืน table ที่มี .Name property
+            if stageData.Name then
+                stageName = stageData.Name
+            elseif stageData.StageName then
+                stageName = stageData.StageName
             end
         end
     end)
+    
     return stageName
+end
+
+-- ===== GET STAGE INFO (แบบเต็ม - เหมือน logs_av.lua ทุกอย่าง) =====
+local function GetCurrentStageInfo()
+    local stageInfo = {
+        ["name"] = "Unknown",
+        ["chapter"] = "Unknown",
+        ["wave"] = "0",
+        ["mode"] = "Unknown",
+        ["difficulty"] = "Unknown"
+    }
+    
+    pcall(function()
+        if not GameHandler or not GameHandler.GameData then return end
+        
+        local GameData = GameHandler.GameData
+        
+        -- 1. ดึงข้อมูลพื้นฐานจาก GameData
+        stageInfo["mode"] = GameData.StageType or "Unknown"
+        stageInfo["difficulty"] = GameData.Difficulty or "Unknown"
+        
+        -- 2. Chapter: ใช้ StagesData:GetCurrentAct() เหมือน decompiled code
+        local actSuccess, actData = pcall(function()
+            return StagesData:GetCurrentAct(GameData)
+        end)
+        
+        if actSuccess and actData then
+            -- GetCurrentAct() คืน object ที่มี .StageType, .Stage, .Act
+            if GameData.StageType == "Worldline" and GameData.WorldlineRoom then
+                stageInfo["chapter"] = "Floor " .. tostring(GameData.WorldlineRoom)
+            elseif GameData.PortalData and GameData.PortalData.Tier then
+                stageInfo["chapter"] = "Tier " .. tostring(GameData.PortalData.Tier)
+            elseif actData.Act then
+                stageInfo["chapter"] = tostring(actData.Act)
+            end
+        end
+        
+        -- 3. Wave: อ่านจาก UI (HUD.Map.WavesAmount)
+        pcall(function()
+            if not PlayerGui then return end
+            local HUD = PlayerGui:FindFirstChild("HUD")
+            if HUD then
+                local Map = HUD:FindFirstChild("Map")
+                if Map then
+                    local WavesAmount = Map:FindFirstChild("WavesAmount")
+                    if WavesAmount and WavesAmount:IsA("TextLabel") then
+                        local text = WavesAmount.Text or ""
+                        -- ลบ HTML tags และ whitespace
+                        local cleanText = text:gsub("<[^>]+>", ""):gsub("%s+", "")
+                        if cleanText ~= "" then
+                            stageInfo["wave"] = cleanText
+                        end
+                    end
+                end
+            end
+        end)
+        
+        -- 4. Name: ใช้ GetCurrentStageName() (ใช้ GetCurrentStage() ภายใน)
+        local stageName = GetCurrentStageName()
+        if stageName and stageName ~= "Unknown" and stageName ~= "" then
+            stageInfo["name"] = stageName
+        end
+    end)
+    
+    return stageInfo
 end
 
 -- ===== GET GATE/ENTRANCE POSITION (จุดเริ่มต้น path - หน้าประตู) =====
@@ -7962,6 +6132,121 @@ local function GetImprisonedIslandPosition()
     return targetPos
 end
 
+-- ===== 👑 LICH KING WHITE ZONE (Imprisoned Island Act3 Rift) =====
+-- จากรูป: พื้นที่สีม่วง/ชมพู = พื้นที่ตรงกลางแผนที่ (Purple Zone)
+-- Lich King (Ruler) จะวางได้เฉพาะในโซนนี้เท่านั้น (เฉพาะ Rift Mode)
+local LichKingPurpleZone = {
+    Center = nil,  -- จุดศูนย์กลางของ Purple Zone
+    Positions = {},  -- ตำแหน่งที่ valid สำหรับ Lich King
+    Calculated = false,  -- เคยคำนวณแล้วหรือยัง
+}
+
+-- ⭐⭐⭐ คำนวณ Purple Zone (พื้นที่สีน้ำเงินลายตาราง) สำหรับ Rift Mode
+-- ⚠️ เฉพาะ Lich King เท่านั้น! Unit อื่นใช้ระบบปกติ
+local function CalculateLichKingPurpleZone()
+    local positions = {}
+    
+    local Map = workspace:FindFirstChild("Map")
+    if not Map then 
+        return positions 
+    end
+    
+    -- ⭐⭐⭐ IMPRISONED ISLAND RIFT: ใช้พิกัดที่กำหนดไว้ (ตรงร่มชมพู/พื้นสีน้ำเงิน)
+    -- พิกัด: X=114.67, Y=248.68, Z=366.06 (Lich King Rift Position)
+    local fixedCenter = Vector3.new(114.66655731201172, 248.6777801513672, 366.060791015625)
+    
+    -- สร้างตำแหน่งรอบๆ จุดนี้ (ใกล้มาก 3-15 studs)
+    local spacing = 5
+    local minRadius = 3
+    local maxRadius = 15
+    
+    for x = -maxRadius, maxRadius, spacing do
+        for z = -maxRadius, maxRadius, spacing do
+            local dist = (x*x + z*z)^0.5
+            if dist >= minRadius and dist <= maxRadius then
+                local gridPos = Vector3.new(fixedCenter.X + x, fixedCenter.Y, fixedCenter.Z + z)
+                table.insert(positions, gridPos)
+            end
+        end
+    end
+    
+    -- เพิ่มจุดกลางด้วย (ตรงร่มพอดี)
+    table.insert(positions, 1, fixedCenter)
+    
+    if #positions > 0 then
+        LichKingPurpleZone.Center = fixedCenter
+        LichKingPurpleZone.Positions = positions
+        LichKingPurpleZone.Calculated = true
+        
+        if not _G.LichKingZoneLogged then
+            _G.LichKingZoneLogged = true
+            print(string.format("[LichKing] 👑 Purple Zone: Fixed position (%.0f, %.0f, %.0f) - %d positions", 
+                fixedCenter.X, fixedCenter.Y, fixedCenter.Z, #positions))
+        end
+    end
+    
+    return positions
+end
+
+-- หาตำแหน่งสำหรับ Lich King (Ruler) ใน Purple Zone
+-- ⭐⭐⭐ SIMPLE: ใช้จุดที่กำหนดเป็นศูนย์กลาง ถ้าวางไม่ได้ค่อยขยับ
+local function GetLichKingPurpleZonePosition(unitRange)
+    local activeUnits = GetActiveUnits()
+    
+    -- ⭐⭐⭐ จุดศูนย์กลางสำหรับ Lich King (Imprisoned Island Rift)
+    local fixedCenter = Vector3.new(114.66655731201172, 248.6777801513672, 366.060791015625)
+    
+    -- ⭐ เช็คว่ามี unit อยู่ที่ตำแหน่งนี้หรือไม่
+    local function isOccupied(pos)
+        for _, unit in pairs(activeUnits) do
+            if unit.Position and (unit.Position - pos).Magnitude < 5 then
+                return true
+            end
+        end
+        return false
+    end
+    
+    -- ⭐ ลองจุดศูนย์กลางก่อน
+    if not isOccupied(fixedCenter) then
+        print(string.format("[LichKing] 👑 วางตรงจุดศูนย์กลาง: (%.1f, %.1f, %.1f)", fixedCenter.X, fixedCenter.Y, fixedCenter.Z))
+        return fixedCenter
+    end
+    
+    -- ⭐ ถ้าจุดกลางเต็ม → ขยับรอบๆ (ระยะ 1-15 studs)
+    local offsets = {}
+    for radius = 1, 15 do
+        table.insert(offsets, {radius, 0})
+        table.insert(offsets, {-radius, 0})
+        table.insert(offsets, {0, radius})
+        table.insert(offsets, {0, -radius})
+        table.insert(offsets, {radius, radius})
+        table.insert(offsets, {-radius, radius})
+        table.insert(offsets, {radius, -radius})
+        table.insert(offsets, {-radius, -radius})
+    end
+    
+    for _, offset in ipairs(offsets) do
+        local pos = Vector3.new(fixedCenter.X + offset[1], fixedCenter.Y, fixedCenter.Z + offset[2])
+        
+        if not isOccupied(pos) then
+            print(string.format("[LichKing] 👑 ขยับ +(%d, %d): (%.1f, %.1f, %.1f)", 
+                offset[1], offset[2], pos.X, pos.Y, pos.Z))
+            return pos
+        end
+    end
+    
+    -- Fallback: คืนจุดศูนย์กลาง
+    print("[LichKing] ⚠️ ทุกตำแหน่งเต็ม → ใช้จุดศูนย์กลาง")
+    return fixedCenter
+end
+
+-- เช็คว่าเป็น Lich King (Ruler) หรือไม่
+local function IsLichKingRuler(unitName)
+    if not unitName then return false end
+    local nameLower = unitName:lower()
+    return nameLower:find("lich") and nameLower:find("ruler")
+end
+
 -- ===== GET BEST FRONT POSITION (ใกล้ประตูที่สุด) =====
 local function GetBestFrontPosition(unitRange, forceImprisonedIsland)
     -- ⭐⭐⭐ Imprisoned Island: ใช้ตำแหน่งเฉพาะ
@@ -7998,20 +6283,25 @@ local function GetBestFrontPosition(unitRange, forceImprisonedIsland)
             )
             local testPos = gatePos + offset
             
-            -- เช็คว่าอยู่ใน path ไหม (ใกล้ path)
-            local nearPath = false
-            for _, pathPoint in ipairs(path) do
-                if (testPos - pathPoint).Magnitude < 15 then
-                    nearPath = true
-                    break
+            -- ⛔ เช็ค Excluded Zone ก่อน!
+            if IsInFrozenPortExcludedZone(testPos) then
+                -- ข้าม ตำแหน่งนี้ห้ามวาง
+            else
+                -- เช็คว่าอยู่ใน path ไหม (ใกล้ path)
+                local nearPath = false
+                for _, pathPoint in ipairs(path) do
+                    if (testPos - pathPoint).Magnitude < 15 then
+                        nearPath = true
+                        break
+                    end
                 end
-            end
-            
-            if nearPath then
-                local distFromGate = (testPos - gatePos).Magnitude
-                if distFromGate < bestDist and distFromGate >= minDistFromGate then
-                    bestPos = testPos
-                    bestDist = distFromGate
+                
+                if nearPath then
+                    local distFromGate = (testPos - gatePos).Magnitude
+                    if distFromGate < bestDist and distFromGate >= minDistFromGate then
+                        bestPos = testPos
+                        bestDist = distFromGate
+                    end
                 end
             end
         end
@@ -8051,11 +6341,26 @@ local function GetNextDamageSlot()
                 local canPlace = current < limit
                 local yen = GetYen()
                 
-                local status = string.format("Slot%d:%s(%d/%d,Y%d/%d,%s)", 
-                    slotNum, unit.Name, current, limit, yen, unit.Price, canPlace and "✓" or "✗")
+                -- ⭐⭐⭐ EXCEPTION: Iscanur ที่ Wave 1 ข้ามการเช็คเงิน (Auto Burn ทำให้เงินเป็น 0)
+                local isIscanur = unit.Name and unit.Name:lower():find("iscanur")
+                local isWave1 = CurrentWave == 1
+                local skipMoneyCheck = isIscanur and isWave1
+                
+                local status = string.format("Slot%d:%s(%d/%d,Y%d/%d,%s%s)", 
+                    slotNum, unit.Name, current, limit, yen, unit.Price, 
+                    canPlace and "✓" or "✗",
+                    skipMoneyCheck and "(W1)" or "")
                 table.insert(logData, status)
                 
-                if canPlace and yen >= unit.Price then
+                -- ⭐ ถ้าเป็น Iscanur + Wave 1 → ข้ามการเช็คเงิน
+                if canPlace and (skipMoneyCheck or yen >= unit.Price) then
+                    if skipMoneyCheck then
+                        -- ⭐ หาราคาจริงจาก UnitObject (หลัง Auto Burn)
+                        local realPrice = unit.Price
+                        if unit.UnitObject and unit.UnitObject.Cost then
+                            realPrice = unit.UnitObject.Cost
+                        end
+                    end
                     return slotNum, unit
                 end
             elseif isPassiveSummon then
@@ -8321,7 +6626,7 @@ local function AutoPlaceLoop()
     UsedUCenters = {}
     
     print("[FORCED] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
-    print("[FORCED] 🎮 AUTO SKILL SYSTEM V6.2 STARTED!")
+    print("[FORCED] 🎮 AUTO PLAY SYSTEM STARTED!")
     print("[FORCED] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━")
     
     -- ⭐⭐⭐ GLOBAL FLAG: เช็คว่ามีตัวเงินหรือไม่ (เช็คครั้งเดียวตอนเริ่ม)
@@ -8353,78 +6658,37 @@ local function AutoPlaceLoop()
             end
             
             -- ตรวจสอบ Emergency Mode เดิม (compatibility)
+            local oldIsEmergency = IsEmergency
             CheckEmergency()
+            
+            -- 🔍 DEBUG: แสดงสถานะ Emergency Mode ทุกครั้ง (ทุก 2 วินาที)
+            if not _G.LastEmergencyDebugLog then _G.LastEmergencyDebugLog = 0 end
+            if tick() - _G.LastEmergencyDebugLog >= 2 then
+                _G.LastEmergencyDebugLog = tick()
+                print(string.format("[DEBUG] 🔥 IsEmergency: %s | CurrentWave: %d | MaxWave: %d", 
+                    tostring(IsEmergency), CurrentWave or 0, MaxWave or 0))
+            end
             
             -- ⬆️ อัพเกรด 1 ขั้นเมื่อ Emergency (ทั้ง 2 ระบบ)
             if IsEmergency or EmergencyMode.Active then
                 UpgradeUnitsEmergency()
             end
             
-            -- 🎯 AUTO SKILL V3: ใช้ Ability อัตโนมัติ
-            AutoUseAbilitiesV3()
+            -- 🎯 AUTO ABILITY: ใช้ระบบจาก AbilitySystem.lua
+            if _G.AbilitySystem and _G.AbilitySystem.AutoUseAbilitiesV3 then
+                pcall(function()
+                    _G.AbilitySystem.AutoUseAbilitiesV3()
+                end)
+            end
             
-            -- 🔢 AUTO NUMBER PAD: ลองรหัสอัตโนมัติ (Imprisoned Island)
-            pcall(AutoNumberPad)
+            -- 🔢 AUTO NUMBER PAD: รหัสอัตโนมัติ (Happy Factory)
+            pcall(RunAutoNumberPad)
             
             -- 🔄 AUTO REPLAY: Vote Replay อัตโนมัติ
             pcall(AutoVoteReplay)
             
             -- 🌀 AUTO PORTAL: เลือก Portal อัตโนมัติ
             pcall(AutoSelectPortal)
-            
-            -- ⭐⭐⭐ NEW: Auto Swap Check (Roku/Vogita, Smith John/Lord of Shadows)
-            pcall(function()
-                if _G.ToggleAutoSwapEvent and ClientUnitHandler and ClientUnitHandler._ActiveUnits then
-                    for unitGuid, unitData in pairs(ClientUnitHandler._ActiveUnits) do
-                        if unitData and unitData.Name then
-                            local swapConfig = AUTO_SWAP_UNITS[unitData.Name]
-                            if swapConfig and not AutoSwapEnabled[unitGuid] then
-                                -- เปิด Auto Swap สำหรับ unit นี้
-                                local attrName = swapConfig.AttributeName
-                                local currentState = plr:GetAttribute(attrName)
-                                
-                                if not currentState then
-                                    -- เปิด Auto Swap
-                                    pcall(function()
-                                        _G.ToggleAutoSwapEvent:FireServer(unitGuid, true)
-                                    end)
-                                    AutoSwapEnabled[unitGuid] = true
-                                    print(string.format("[Swap] ✅ %s Auto Swap", unitData.Name))
-                                else
-                                    AutoSwapEnabled[unitGuid] = true  -- Already enabled
-                                end
-                            end
-                        end
-                    end
-                end
-            end)
-            
-            -- ⭐⭐⭐ NEW: Auto Enable ToggleAuto for all units with AUTO ability
-            pcall(function()
-                if UnitEvent and ClientUnitHandler and ClientUnitHandler._ActiveUnits then
-                    for unitGuid, unitData in pairs(ClientUnitHandler._ActiveUnits) do
-                        if unitData and unitData.Data then
-                            -- เช็คว่า unit มี HasAutoAbility หรือไม่
-                            local hasAutoAbility = unitData.Data.HasAutoAbility or 
-                                                  unitData.Data.AutoAbility or
-                                                  unitData.Data.CanToggleAuto
-                            
-                            -- เช็คว่าเปิด Auto อยู่หรือยัง
-                            local autoEnabled = unitData.Data.AutoEnabled or 
-                                               unitData.Data.IsAutoEnabled or
-                                               unitData.AutoEnabled
-                            
-                            if hasAutoAbility and not autoEnabled then
-                                -- เปิด Auto สำหรับ unit นี้
-                                pcall(function()
-                                    UnitEvent:FireServer("ToggleAuto", unitGuid)
-                                end)
-                                print(string.format("[Auto] ✅ %s ToggleAuto เปิด", unitData.Name))
-                            end
-                        end
-                    end
-                end
-            end)
             
             -- 🔍 ClearEnemy Mode (นอก path เท่านั้น)
             CheckClearEnemyMode()
@@ -8510,108 +6774,402 @@ local function AutoPlaceLoop()
                 end
             end
             
-            -- ===== EMERGENCY MODE: วางแค่ 2 ตัว (LIMIT) =====
-            if IsEmergency and not EmergencyActivated then
-                -- ✅ FIX: นับจำนวน Emergency Units จาก table โดยตรง (ไม่เช็ค GUID กับ ClientUnitHandler)
+            -- ===== EMERGENCY MODE: วางตัว + อัพเกรด (แยกระบบตาม Map Type) =====
+            if IsEmergency then
+                -- ✅ นับจำนวน Emergency Units จาก table โดยตรง
                 local emergencyCount = 0
                 for _ in pairs(EmergencyUnits) do
                     emergencyCount = emergencyCount + 1
                 end
                 
-                -- ⭐ เช็คว่ามี Summon Unit ใน Hotbar หรือไม่
-                local hasSummon, summonSlotNum, summonUnitData = HasSummonUnitInHotbar()
+                -- ⭐⭐⭐ แยกระบบตาม Map Type
+                local isFrozenPortMap = _G.APState and _G.APState.IsFrozenPort
+                local isImprisonedRiftMap = _G.APState and _G.APState.IsImprisonedIslandRift
                 
-                if hasSummon then
-                    DebugPrint(string.format("🎯 Emergency Mode (Summon Strategy): วางแล้ว %d/1 ตัว", emergencyCount))
-                else
-                    DebugPrint(string.format("🚨 Emergency Mode (Normal): วางแล้ว %d/2 ตัว", emergencyCount))
+                -- ⭐⭐⭐ LIMIT: จำนวน Emergency Units ต่างกันตาม map
+                local maxEmergencyUnits = 2
+                
+                -- ⭐ Log แสดง Map Type ที่ถูกต้อง
+                local mapTypeName = "Normal"
+                if isImprisonedRiftMap then
+                    mapTypeName = "Imprisoned Island (Purple Zone)"
+                elseif isFrozenPortMap then
+                    mapTypeName = "Frozen Port (U-Center)"
                 end
                 
-                -- ⭐ LIMIT: ถ้า hasSummon → วางแค่ 1 ตัว, ไม่มี Summon → วาง 2 ตัว
-                local maxEmergencyUnits = hasSummon and 1 or 2
+                DebugPrint(string.format("🚨 Emergency Mode: มี %d/%d ตัว (%s)", 
+                    emergencyCount, maxEmergencyUnits, mapTypeName))
                 
+                -- ✅ ถ้าวางครบ 2 ตัวแล้ว → ตรวจสอบว่าจะอัพเกรดหรือไม่
                 if emergencyCount >= maxEmergencyUnits then
-                    DebugPrint(string.format("✅ Emergency Units ครบ %d ตัวแล้ว - หยุดวาง", maxEmergencyUnits))
-                    EmergencyActivated = true
-                    IsEmergency = false  -- ⭐ Reset เพื่อให้ World Item ทำงานได้
-                else
-                    local timeSinceEmergency = tick() - EmergencyStartTime
-                    if timeSinceEmergency >= 2 then  -- รอ 2 วินาที
-                        local slot, unit, pos
+                    DebugPrint("✅ Emergency Units ครบ 2 ตัวแล้ว")
+                    
+                    -- ⭐⭐⭐ แยกระบบ Upgrade ตาม Map Type:
+                    -- FROZEN PORT: อัพเกรด 2 ขั้น (เหมือนเดิม)
+                    -- RIFT + NORMAL: ไม่อัพเกรด → ใช้ระบบปกติ
+                    if isFrozenPortMap then
+                        -- ❄️ FROZEN PORT: อัพเกรด Emergency Units คนละ 2 ขั้น
+                        DebugPrint("❄️ Frozen Port: อัพเกรด Emergency Units 2 ขั้น")
+                        local upgradeCount = 0
+                        local activeUnits = GetActiveUnits()
                         
-                        -- ⭐⭐⭐ ถ้ามี Summon Unit → วาง Summon ใกล้ Spawn
-                        if hasSummon then
-                            slot, unit = GetSummonUnitSlot()
-                            
-                            if slot and unit then
-                                local unitRange = GetUnitRange(unit.Data) or 25
-                                pos = GetSummonUnitPlacementPosition(unitRange, unit.Name, unit.Data)
-                                
-                                -- Fallback
-                                if not pos then
-                                    pos = GetBestPlacementPosition(unitRange, "early", unit.Name, unit.Data)
-                                end
-                            end
-                        else
-                            -- ⭐ ไม่มี Summon → วางตัวดาเมจปกติใกล้ศัตรู
-                            slot, unit = GetCheapestDamageSlotNoLimit()
-                            
-                            if slot and unit and yen >= unit.Price then
-                                local unitRange = GetUnitRange(unit.Data)
-                                local unitName = unit.Name or ""
-                                
-                                -- ⭐⭐⭐ Lich King (Ruler) → วางหน้าประตูเสมอ (ทุก mode)
-                                local isLichKingRuler = unitName:lower():find("lich") and unitName:lower():find("ruler")
-                                
-                                if unitRange then
-                                    if isLichKingRuler then
-                                        -- Lich King → หน้าประตู
-                                        pos = GetBestFrontPosition(unitRange)
-                                        print(string.format("[Emergency] 👑 Lich King (Ruler) → วางหน้าประตู"))
-                                    else
-                                        pos = GetEmergencyPlacementPosition(unitRange, unit.Name, unit.Data)
+                        for guid, _ in pairs(EmergencyUnits) do
+                            for _, unit in pairs(activeUnits) do
+                                if unit.GUID == guid then
+                                    -- ⭐⭐⭐ ใช้ EmergencyUpgradeCount tracking เหมือนกันทุก map
+                                    local currentUpgrades = EmergencyUpgradeCount[guid] or 0
+                                    if currentUpgrades >= MAX_EMERGENCY_UPGRADES then
+                                        -- ⭐⭐⭐ อัพครบ 2 ขั้นแล้ว → ข้าม
+                                        DebugPrint(string.format("⏹️ %s อัพครบ %d ขั้นแล้ว (ห้ามอัพเพิ่ม)", unit.Name, MAX_EMERGENCY_UPGRADES))
+                                        break
                                     end
                                     
-                                    -- Fallback
+                                    local currentLevel = GetCurrentUpgradeLevel(unit) or 0
+                                    local maxLevel = GetMaxUpgradeLevel(unit) or 10
+                                    local remainingUpgrades = MAX_EMERGENCY_UPGRADES - currentUpgrades
+                                    local targetLevel = math.min(currentLevel + remainingUpgrades, maxLevel)
+                                    
+                                    -- อัพเกรดทีละขั้นจน ถึง targetLevel
+                                    while (GetCurrentUpgradeLevel(unit) or 0) < targetLevel do
+                                        local cost = GetUpgradeCost(unit)
+                                        if yen >= cost then
+                                            if UpgradeUnit(unit) then
+                                                upgradeCount = upgradeCount + 1
+                                                yen = yen - cost
+                                                
+                                                -- ⭐⭐⭐ Track Emergency Upgrade
+                                                EmergencyUpgradeCount[guid] = (EmergencyUpgradeCount[guid] or 0) + 1
+                                                
+                                                DebugPrint(string.format("⬆️ อัพเกรด Emergency: %s (Lv %d → %d) [%d/%d]", 
+                                                    unit.Name, GetCurrentUpgradeLevel(unit) - 1, GetCurrentUpgradeLevel(unit),
+                                                    EmergencyUpgradeCount[guid], MAX_EMERGENCY_UPGRADES))
+                                                task.wait(0.1)
+                                            else
+                                                break
+                                            end
+                                        else
+                                            DebugPrint(string.format("💸 เงินไม่พอ อัพเกรด %s (ต้องการ %d)", unit.Name, cost))
+                                            break
+                                        end
+                                    end
+                                    break
+                                end
+                            end
+                        end
+                        
+                        if upgradeCount > 0 then
+                            DebugPrint(string.format("Upgraded Emergency Units: %d times", upgradeCount))
+                        end
+                    else
+                        -- 🏝️ RIFT / 🗺️ NORMAL: อัพเกรด Emergency Units คนละ 2 ขั้น (เหมือน Frozen Port)
+                        local mapName = isImprisonedRiftMap and "Imprisoned Rift" or "Normal Map"
+                        DebugPrint(string.format("🔧 %s: อัพเกรด Emergency Units 2 ขั้น", mapName))
+                        
+                        local upgradeCount = 0
+                        local activeUnits = GetActiveUnits()
+                        
+                        for guid, _ in pairs(EmergencyUnits) do
+                            for _, unit in pairs(activeUnits) do
+                                if unit.GUID == guid then
+                                    -- ⭐⭐⭐ ใช้ EmergencyUpgradeCount tracking
+                                    local currentUpgrades = EmergencyUpgradeCount[guid] or 0
+                                    if currentUpgrades >= MAX_EMERGENCY_UPGRADES then
+                                        DebugPrint(string.format("⏹️ %s อัพครบ %d ขั้นแล้ว", unit.Name, MAX_EMERGENCY_UPGRADES))
+                                        break
+                                    end
+                                    
+                                    local currentLevel = GetCurrentUpgradeLevel(unit) or 0
+                                    local maxLevel = GetMaxUpgradeLevel(unit) or 10
+                                    local remainingUpgrades = MAX_EMERGENCY_UPGRADES - currentUpgrades
+                                    local targetLevel = math.min(currentLevel + remainingUpgrades, maxLevel)
+                                    
+                                    while (GetCurrentUpgradeLevel(unit) or 0) < targetLevel do
+                                        local cost = GetUpgradeCost(unit)
+                                        if yen >= cost then
+                                            if UpgradeUnit(unit) then
+                                                upgradeCount = upgradeCount + 1
+                                                yen = yen - cost
+                                                EmergencyUpgradeCount[guid] = (EmergencyUpgradeCount[guid] or 0) + 1
+                                                DebugPrint(string.format("⬆️ Emergency Upgrade: %s (Lv %d → %d) [%d/%d]", 
+                                                    unit.Name, GetCurrentUpgradeLevel(unit) - 1, GetCurrentUpgradeLevel(unit),
+                                                    EmergencyUpgradeCount[guid], MAX_EMERGENCY_UPGRADES))
+                                                task.wait(0.1)
+                                            else
+                                                break
+                                            end
+                                        else
+                                            DebugPrint(string.format("💸 เงินไม่พอ อัพเกรด %s (ต้องการ %d)", unit.Name, cost))
+                                            break
+                                        end
+                                    end
+                                    break
+                                end
+                            end
+                        end
+                        
+                        if upgradeCount > 0 then
+                            DebugPrint(string.format("Upgraded Emergency Units: %d times", upgradeCount))
+                        end
+                    end
+                    
+                    -- ⭐⭐⭐ วางครบแล้ว → ปิด Emergency Mode เพื่อให้ระบบปกติทำงาน (อัพเกรดตัวเงิน)
+                    EmergencyActivated = true
+                    IsEmergency = false  -- ⭐⭐⭐ FIX: ปิด Emergency ทันทีเมื่อวางครบ!
+                    
+                else
+                    -- ยังวางไม่ครบ 2 ตัว → วางเพิ่ม
+                    local timeSinceEmergency = tick() - EmergencyStartTime
+                    
+                    if timeSinceEmergency >= 2 then  -- รอ 2 วินาที
+                        local slot, unit = GetCheapestDamageSlotNoLimit()
+                        
+                        if slot and unit and yen >= unit.Price then
+                            local unitRange = GetUnitRange(unit.Data)
+                            local pos = nil
+                            
+                            -- ⭐⭐⭐ EMERGENCY PLACEMENT: แยกระบบตาม Map Type
+                            local unitName = unit.Name or ""
+                            local isLichKingRuler = unitName:lower():find("lich") and unitName:lower():find("ruler")
+                            
+                            -- ⭐⭐⭐ IMPRISONED ISLAND RIFT
+                            if isImprisonedRiftMap then
+                                if isLichKingRuler then
+                                    -- ⭐ Lich King เท่านั้น → ใช้ Purple Zone (พิกัดที่กำหนด)
+                                    print(string.format("[EMERGENCY] 🏝️ Imprisoned Island - วาง %s ที่ Purple Zone", unitName))
+                                    pos = GetLichKingPurpleZonePosition(unitRange)
+                                    if not pos then
+                                        pos = GetBestPlacementPosition(unitRange, "late", unit.Name, unit.Data)
+                                    end
+                                else
+                                    -- ⭐ Unit อื่น → ใช้ Emergency Position (ดักทาง) เหมือน Normal Mode
+                                    print(string.format("[EMERGENCY] 🏝️ Imprisoned Island - วาง %s ดักทาง", unitName))
+                                    pos = GetEmergencyPlacementPosition(unitRange, unit.Name, unit.Data)
                                     if not pos then
                                         pos = GetBestPlacementPosition(unitRange, "late", unit.Name, unit.Data)
                                     end
                                 end
-                            end
-                        end
-                        
-                        -- วาง Unit
-                        if slot and unit and pos then
-                            local success, newGUID = PlaceUnit(slot, pos)
-                            if success and newGUID then
-                                EmergencyUnits[newGUID] = true
-                                LastEmergencyTime = tick()
-                                emergencyCount = emergencyCount + 1
-                                
-                                if hasSummon then
-                                    DebugPrint(string.format("🎯 วาง Summon Unit: %s (ใกล้ Spawn)", unit.Name))
-                                else
-                                    DebugPrint(string.format("🚨 วาง Emergency Unit #%d: %s", emergencyCount, unit.Name))
+                            elseif isFrozenPortMap then
+                                -- Frozen Port → วางที่ U-Center
+                                pos = GetEmergencyPlacementPosition(unitRange, unit.Name, unit.Data)
+                                if not pos then
+                                    pos = GetBestPlacementPosition(unitRange, "late", unit.Name, unit.Data)
                                 end
+                            else
+                                -- Normal Map → ใช้ Emergency Position
+                                pos = GetEmergencyPlacementPosition(unitRange, unit.Name, unit.Data)
+                                if not pos then
+                                    pos = GetBestPlacementPosition(unitRange, "late", unit.Name, unit.Data)
+                                end
+                            end
                             
-                                if emergencyCount >= maxEmergencyUnits then
-                                    DebugPrint(string.format("✅ Emergency Units ครบ %d ตัวแล้ว!", maxEmergencyUnits))
-                                    EmergencyActivated = true
-                                    IsEmergency = false  -- ⭐ Reset เพื่อให้ World Item ทำงานได้
+                            -- วาง Unit
+                            if pos then
+                                local success, newGUID = PlaceUnit(slot, pos)
+                                if success and newGUID then
+                                    EmergencyUnits[newGUID] = true
+                                    LastEmergencyTime = tick()
+                                    DebugPrint(string.format("[EMERGENCY] Placed: %s (#%d) at %s", unit.Name, emergencyCount + 1, mapTypeName))
                                 end
                             else
-                                DebugPrint("⚠️ วาง Emergency Unit ไม่สำเร็จ")
-                            end
-                        else
-                            if not slot then
-                                DebugPrint("⚠️ Emergency: ไม่มี Damage Unit ให้วาง")
-                                EmergencyActivated = true
-                            else
-                                -- ⭐ มี Unit แต่เงินไม่พอ → รอจนกว่าจะมีเงินพอ (ไม่ข้าม!)
-                                DebugPrint(string.format("⏳ Emergency: เงินไม่พอ (มี %d, ต้องการ %d) - รอเงิน...", yen, unit.Price))
+                                print(string.format("[EMERGENCY] ⚠️ ไม่พบตำแหน่งวาง %s", unitName))
                             end
                         end
                     end
+                end
+            end
+            
+            -- ===== ⭐⭐⭐ LEGENDS STAGE SPECIAL: Burning Spirit Tree / Golden Castle =====
+            -- ด่านเหล่านี้ตัวเงินวางไม่ได้ → บังคับหาตำแหน่งพิเศษ!
+            local isLegendStageIncomeIssue = false
+            local legendStageName = ""
+            local currentStageName = ""
+            local currentStageMode = ""
+            local currentStageAct = ""
+            
+            pcall(function()
+                currentStageName = GetCurrentStageName() or ""
+                local stageNameLower = currentStageName:lower()
+                
+                -- ดึง Mode และ Act จาก GameHandler
+                if GameHandler and GameHandler.GameData then
+                    currentStageMode = GameHandler.GameData.StageType or GameHandler.GameData.Mode or "Unknown"
+                    currentStageAct = tostring(GameHandler.GameData.Act or GameHandler.GameData.Chapter or "Unknown")
+                end
+                
+                -- ⭐⭐⭐ DETECTION 1: ชื่อด่าน
+                if stageNameLower:find("burning") or stageNameLower:find("spirit") or stageNameLower:find("tree") then
+                    isLegendStageIncomeIssue = true
+                    legendStageName = "Burning Spirit Tree"
+                elseif stageNameLower:find("golden") or stageNameLower:find("castle") then
+                    isLegendStageIncomeIssue = true
+                    legendStageName = "Golden Castle"
+                -- ⭐⭐⭐ DETECTION 2: Anniversary Dungeon + Act 7 = Golden Castle
+                elseif stageNameLower:find("anniversary") and currentStageAct == "Act2" then
+                    isLegendStageIncomeIssue = true
+                    legendStageName = "Golden Castle (Anniversary Act2)"
+                -- ⭐⭐⭐ DETECTION 3: Anniversary Dungeon + Act 2 = Burning Spirit Tree
+                elseif stageNameLower:find("anniversary") and currentStageAct == "Act7" then
+                    isLegendStageIncomeIssue = true
+                    legendStageName = "Burning Spirit Tree (Anniversary Act7)"
+                -- ⭐⭐⭐ DETECTION 4: Dungeon Mode + Act7/Act2
+                elseif currentStageMode == "Dungeon" then
+                    if currentStageAct == "Act7" or currentStageAct == "7" then
+                        isLegendStageIncomeIssue = true
+                        legendStageName = "Golden Castle (Dungeon Act7)"
+                    elseif currentStageAct == "Act2" or currentStageAct == "2" then
+                        isLegendStageIncomeIssue = true
+                        legendStageName = "Burning Spirit Tree (Dungeon Act7)"
+                    end
+                end
+            end)
+            
+            -- ⭐⭐⭐ DEBUG: แสดงข้อมูลด่านทุก 5 วินาที
+            if not _G.LastStageDebugLog then _G.LastStageDebugLog = 0 end
+            if tick() - _G.LastStageDebugLog >= 5 then
+                _G.LastStageDebugLog = tick()
+                print(string.format("[STAGE DEBUG] 📍 Name: '%s' | Mode: '%s' | Act: '%s' | isLegendStageIncomeIssue: %s | hasAnyIncomeUnit: %s", 
+                    currentStageName, currentStageMode, currentStageAct, 
+                    tostring(isLegendStageIncomeIssue), tostring(hasAnyIncomeUnit)))
+            end
+            
+            -- ⭐⭐⭐ SPECIAL INCOME PLACEMENT สำหรับ Burning Spirit Tree / Golden Castle
+            if isLegendStageIncomeIssue and hasAnyIncomeUnit and not MaxWaveSellTriggered then
+                -- ⭐⭐⭐ หา Economy Unit โดยตรงจาก Hotbar (ไม่ใช้ GetNextEconomySlot)
+                local ecoSlot = nil
+                local ecoUnit = nil
+                local hotbar = GetHotbarUnits()
+                
+                if hotbar then
+                    for slotNum = 1, 6 do
+                        local unit = hotbar[slotNum]
+                        if unit then
+                            local isEconomy = unit.IsIncome or (unit.Data and IsIncomeUnit(unit.Name, unit.Data))
+                            if isEconomy then
+                                local yen = GetYen()
+                                local price = unit.Price or 0
+                                if yen >= price then
+                                    ecoSlot = slotNum
+                                    ecoUnit = unit
+                                    break
+                                end
+                            end
+                        end
+                    end
+                end
+                
+                if ecoSlot and ecoUnit then
+                    local placed = false
+                    
+                    -- ⭐⭐⭐ รวบรวม SpawnLocation ทั้งหมด และเลือกที่ไกล path + ไม่ทับ unit อื่น
+                    pcall(function()
+                        local Map = workspace:FindFirstChild("Map")
+                        if Map then
+                            local path = GetMapPath()
+                            local activeUnits = GetActiveUnits()
+                            local allSpawnLocations = {}
+                            
+                            -- รวบรวม SpawnLocation ทั้งหมด
+                            for _, child in ipairs(Map:GetChildren()) do
+                                if child:IsA("SpawnLocation") then
+                                    table.insert(allSpawnLocations, child)
+                                end
+                            end
+                            
+                            -- หาใน descendants ด้วย
+                            for _, spawn in ipairs(Map:GetDescendants()) do
+                                if spawn:IsA("SpawnLocation") then
+                                    local found = false
+                                    for _, existing in ipairs(allSpawnLocations) do
+                                        if existing == spawn then found = true break end
+                                    end
+                                    if not found then
+                                        table.insert(allSpawnLocations, spawn)
+                                    end
+                                end
+                            end
+                            
+                            -- ⭐⭐⭐ คำนวณระยะห่างจาก path และ unit อื่น
+                            local spawnWithDistance = {}
+                            for _, spawn in ipairs(allSpawnLocations) do
+                                local spawnPos = spawn.Position
+                                local minDistToPath = math.huge
+                                local minDistToUnit = math.huge
+                                
+                                -- หาระยะที่ใกล้ path ที่สุด
+                                if path and #path > 0 then
+                                    for _, node in ipairs(path) do
+                                        local dist = (Vector3.new(spawnPos.X, 0, spawnPos.Z) - Vector3.new(node.X, 0, node.Z)).Magnitude
+                                        if dist < minDistToPath then
+                                            minDistToPath = dist
+                                        end
+                                    end
+                                else
+                                    minDistToPath = 100
+                                end
+                                
+                                -- ⭐⭐⭐ หาระยะที่ใกล้ unit อื่นที่สุด (ต้องไม่ทับ!)
+                                for _, unit in pairs(activeUnits) do
+                                    if unit.Position then
+                                        local dist = (Vector3.new(spawnPos.X, 0, spawnPos.Z) - Vector3.new(unit.Position.X, 0, unit.Position.Z)).Magnitude
+                                        if dist < minDistToUnit then
+                                            minDistToUnit = dist
+                                        end
+                                    end
+                                end
+                                
+                                -- ⭐⭐⭐ ต้องไม่ทับ unit อื่น (> 3 studs - ใกล้กันมาก!)
+                                if minDistToUnit > 3 then
+                                    table.insert(spawnWithDistance, {
+                                        Spawn = spawn,
+                                        Position = spawnPos,
+                                        DistToPath = minDistToPath,
+                                        DistToUnit = minDistToUnit
+                                    })
+                                end
+                            end
+                            
+                            -- ⭐⭐⭐ เรียงตาม: ไกล path + ใกล้ unit อื่นมากที่สุด (วางเกาะกัน!)
+                            table.sort(spawnWithDistance, function(a, b)
+                                if a.DistToPath > 10 and b.DistToPath > 10 then
+                                    return a.DistToUnit < b.DistToUnit
+                                end
+                                return a.DistToPath > b.DistToPath
+                            end)
+                            
+                            -- วางที่ตำแหน่งที่ดีที่สุด (ไกล path + ใกล้ unit อื่น)
+                            for _, data in ipairs(spawnWithDistance) do
+                                local testPos = data.Position + Vector3.new(0, 2, 0)
+                                
+                                local timeSinceLastPlace = tick() - LastPlaceTime
+                                if timeSinceLastPlace < 1.0 then
+                                    break
+                                end
+                                
+                                local unitID = ecoUnit.ID or (ecoUnit.Data and ecoUnit.Data.ID) or ecoSlot
+                                local numericID = unitID
+                                if type(unitID) == "string" and tonumber(unitID) then
+                                    numericID = tonumber(unitID)
+                                end
+                                
+                                local fireSuccess = pcall(function()
+                                    UnitEvent:FireServer("Render", {
+                                        ecoUnit.Name,
+                                        numericID,
+                                        testPos,
+                                        0
+                                    }, {
+                                        SlotIndex = ecoSlot
+                                    })
+                                end)
+                                
+                                if fireSuccess then
+                                    LastPlaceTime = tick()
+                                    placed = true
+                                    break
+                                end
+                            end
+                        end
+                    end)
                 end
             end
             
@@ -8632,10 +7190,9 @@ local function AutoPlaceLoop()
                 -- ⭐⭐⭐ FIX: ให้ ClearEnemy Mode ทำงานควบคู่กับ Auto Place ปกติ
                 -- canPlaceNormal = true เมื่อ:
                 -- 1. ไม่อยู่ใน Emergency Mode (IsEmergency = false) หรือ
-                -- 2. อยู่ใน Emergency Mode แต่วางครบแล้ว (EmergencyActivated = true)
                 -- 🔥 ClearEnemy Mode ไม่บล็อก Auto Place! (ทำงานพร้อมกัน)
                 -- ⭐ FIX: ไม่ต้องเช็ค EmergencyUnits เพราะมันเก็บ track units ไว้ขายทีหลัง
-                local canPlaceNormal = (not IsEmergency or EmergencyActivated)
+                local canPlaceNormal = not IsEmergency  -- ⭐ เช็คแค่ IsEmergency (ไม่เช็ค EmergencyActivated)
                 
                 -- ⭐⭐⭐ FIX: MaxWaveSellTriggered ห้ามวาง Economy เท่านั้น ไม่ห้ามวาง Damage!
                 -- ย้ายการเช็ค MaxWaveSellTriggered ไปไว้เฉพาะส่วนวาง Economy
@@ -8649,6 +7206,7 @@ local function AutoPlaceLoop()
                 
                     -- ===== STEP 1: วางตัวเงินก่อน (⭐ เฉพาะเมื่อมีตัวเงิน + ไม่ใช่ MaxWave) =====
                     -- ⭐⭐⭐ FIX: ข้ามทั้งหมดถ้าไม่มีตัวเงิน
+                    -- ⭐⭐⭐ EXCEPTION: Iscanur วางได้ทันทีตั้งแต่ Wave 1
                     if hasAnyIncomeUnit and not MaxWaveSellTriggered then
                         local ecoSlot, ecoUnit = GetNextEconomySlot()
                         if ecoSlot and ecoUnit then
@@ -8788,8 +7346,26 @@ local function AutoPlaceLoop()
                     
                     -- ===== STEP 3: วาง Damage เมื่อ (ไม่มีตัวเงินใน Hotbar) หรือ (ตัวเงินอัพ MAX แล้ว) =====
                     -- ⭐⭐⭐ FIX: ถ้าไม่มีตัวเงิน → วาง Damage ทันที
+                    -- ⭐⭐⭐ EXCEPTION: Iscanur วางได้ทันทีตั้งแต่ Wave 1
                     local hasEcoInHotbar = hasAnyIncomeUnit and HasEconomyUnitInHotbar() or false
                     local shouldPlaceDamage = (not hasEcoInHotbar) or (not economyNeedsUpgrade)
+                    
+                    -- ⭐ เช็คว่ามี Iscanur ใน Hotbar หรือไม่
+                    local hasIscanurInHotbar = false
+                    local hotbar = GetHotbarUnits()
+                    if hotbar then
+                        for _, unit in pairs(hotbar) do
+                            if unit and unit.Name and unit.Name:lower():find("iscanur") then
+                                hasIscanurInHotbar = true
+                                break
+                            end
+                        end
+                    end
+                    
+                    -- ⭐ ถ้ามี Iscanur + Wave 1 → อนุญาตให้วาง Damage ทันที (ข้าม slot limit)
+                    if hasIscanurInHotbar and CurrentWave == 1 then
+                        shouldPlaceDamage = true
+                    end
                     
                     -- Debug log
                     if not _G.LastShouldPlaceDamage or _G.LastShouldPlaceDamage ~= shouldPlaceDamage then
@@ -8831,8 +7407,22 @@ local function AutoPlaceLoop()
                             local isLichKingRuler = unitName:lower():find("lich") and unitName:lower():find("ruler")
                             local placeAtFront = dmgUnit.PlaceAtFront or isLichKingRuler
                             
-                            if placeAtFront then
-                                -- วิเคราะห์ก่อนวาง
+                            -- ⭐⭐⭐ LICH KING PURPLE ZONE: ถ้าเป็น Imprisoned Island Rift → ใช้ Purple Zone เท่านั้น!
+                            -- เช็คทั้ง stage name และ APState
+                            local stageName = GetCurrentStageName() or ""
+                            local isImprisonedRift = (stageName:lower():find("imprisoned") and stageName:lower():find("island")) or
+                                                     (_G.APState and _G.APState.IsImprisonedIslandRift)
+                            
+                            if isLichKingRuler and isImprisonedRift then
+                                print(string.format("[LichKing] 👑 Imprisoned Island Rift - ใช้ Purple Zone สำหรับ %s", unitName))
+                                pos = GetLichKingPurpleZonePosition(unitRange)
+                                if pos then
+                                    print(string.format("[LichKing] ✅ Purple Zone position: (%.1f, %.1f, %.1f)", pos.X, pos.Y, pos.Z))
+                                else
+                                    print("[LichKing] ⚠️ ไม่พบตำแหน่งว่างใน Purple Zone!")
+                                end
+                            elseif placeAtFront then
+                                -- วิเคราะห์ก่อนวาง (สำหรับด่านอื่นๆ)
                                 print(string.format("[Analysis] 🔍 %s - วางหน้าประตู (Range: %d)", unitName, unitRange))
                                 pos = GetBestFrontPosition(unitRange)
                                 if pos then
@@ -8841,88 +7431,48 @@ local function AutoPlaceLoop()
                             end
                             
                             -- Fallback: ใช้ตำแหน่งปกติถ้าไม่เจอ front position
-                            if not pos then
-                                pos = GetBestPlacementPosition(unitRange, GetGamePhase(), dmgUnit.Name, dmgUnit.Data)
+                            -- ⚠️ สำหรับ Lich King ใน Imprisoned Island Rift: ไม่ใช้ fallback (ต้อง White Zone เท่านั้น!)
+                            if not pos and not (isLichKingRuler and _G.APState and _G.APState.IsImprisonedIslandRift) then
+                                -- ⭐⭐⭐ FIX: ใช้ GetVerifiedPlacementPosition เพื่อให้แน่ใจว่าตีถึง path
+                                pos = GetVerifiedPlacementPosition(unitRange, GetGamePhase(), dmgUnit.Name, dmgUnit.Data, 3)
                             end
                             
+                            -- ⭐⭐⭐ FINAL CHECK: ตรวจสอบว่า position ที่ได้ตี path ได้จริง
                             if pos then
-                                DebugPrint(string.format("⚔️ วาง Damage: %s (slot %d)", dmgUnit.Name, dmgSlot))
-                                PlaceUnit(dmgSlot, pos)
-                            end
-                        else
-                            -- ===== STEP 3.5: Slot เต็มหรือไม่มี Damage Slot → อัพเกรดแบบ "1 Unit All-in" =====
-                            -- 🔥 อัพเกรดเฉพาะ ClearEnemy Units เท่านั้น!
-                            local damageUnits = {}
-                            for _, unit in pairs(activeUnits) do
-                                local unitData = unit.Data or {}
-                                -- เลือกเฉพาะ ClearEnemy Units ที่เป็นตัวดาเมจ (ไม่ใช่ตัวเงิน, ไม่ใช่ buff, ไม่ใช่ Emergency)
-                                local isClearEnemyUnit = ClearEnemyUnits[unit.GUID] ~= nil
-                                
-                                if isClearEnemyUnit and 
-                                   not EmergencyUnits[unit.GUID] and 
-                                   not IsIncomeUnit(unit.Name, unitData) and 
-                                   not IsBuffUnit(unit.Name, unitData) then
-                                    table.insert(damageUnits, unit)
-                                end
-                            end
-                            
-                            if #damageUnits > 0 then
-                                -- 🔥 ClearEnemy Mode: อัพเกรดแค่ 1 ขั้นต่อรอบ (ไม่ loop)
-                                local strongest = GetStrongestUnit(damageUnits)
-                                
-                                if strongest and not IsUnitMaxed(strongest) then
-                                    -- อัพเกรดตัวแรงสุด 1 ขั้น
-                                    local cost = GetUpgradeCost(strongest)
-                                    if cost < math.huge and GetYen() >= cost then
-                                        local currentLevel = GetCurrentUpgradeLevel(strongest)
-                                        local maxLevel = GetMaxUpgradeLevel(strongest)
-                                        DebugPrint(string.format("⬆️ [ClearEnemy] อัพเกรดตัวแรงสุด: %s (%d/%d)", strongest.Name, currentLevel, maxLevel))
-                                        UpgradeUnit(strongest)
-                                    end
-                                elseif strongest and IsUnitMaxed(strongest) then
-                                    -- ตัวแรงสุด MAX แล้ว → หาตัวถัดไปที่ยังไม่ MAX
-                                    local nextUnit = nil
-                                    local lowestLevel = math.huge
-                                    
-                                    for _, unit in ipairs(damageUnits) do
-                                        if unit.GUID ~= strongest.GUID and not IsUnitMaxed(unit) then
-                                            local currentLevel = GetCurrentUpgradeLevel(unit)
-                                            if currentLevel < lowestLevel then
-                                                lowestLevel = currentLevel
-                                                nextUnit = unit
-                                            end
-                                        end
-                                    end
-                                    
-                                    if nextUnit then
-                                        local cost = GetUpgradeCost(nextUnit)
-                                        if cost < math.huge and GetYen() >= cost then
-                                            local currentLevel = GetCurrentUpgradeLevel(nextUnit)
-                                            local maxLevel = GetMaxUpgradeLevel(nextUnit)
-                                            DebugPrint(string.format("⬆️ [ClearEnemy] อัพเกรดตัวถัดไป: %s (%d/%d)", nextUnit.Name, currentLevel, maxLevel))
-                                            UpgradeUnit(nextUnit)
-                                        end
-                                    end
+                                local isValid, nodesInRange = VerifyPositionInRange(pos, unitRange, 1)
+                                if isValid then
+                                    DebugPrint(string.format("⚔️ วาง Damage: %s (slot %d) | Range=%d | NodesHit=%d", 
+                                        dmgUnit.Name, dmgSlot, unitRange, nodesInRange))
+                                    PlaceUnit(dmgSlot, pos)
+                                else
+                                    DebugPrint(string.format("❌ ยกเลิกวาง %s - ตำแหน่งไม่ถึง path (range=%d)", dmgUnit.Name, unitRange))
                                 end
                             end
                         end
                     end
                 
-                    -- ===== Auto Upgrade Damage/Buff (หลังจากตัวเงินอัพ MAX แล้ว) =====
-                    -- ⚠️ NOTE: Lich King จะอัพเกรดหลังตัวเงิน MAX เท่านั้น (อยู่ใน allEconomyMaxed)
-                    -- แยกประเภท Units (ข้าม Emergency Units + ClearEnemy Units)
-                    local allEconomyMaxed = true
-                    for _, unit in pairs(activeUnits) do
-                        if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
-                            -- ⭐ ใช้ฟังก์ชันจาก Decom
-                            if not IsUnitMaxed(unit) then
-                                allEconomyMaxed = false
-                                break
-                            end
+                -- ===== Auto Upgrade Damage/Buff (หลังจากตัวเงินอัพ MAX แล้ว) =====
+                -- ⚠️ NOTE: Lich King จะอัพเกรดหลังตัวเงิน MAX เท่านั้น (อยู่ใน allEconomyMaxed)
+                -- แยกประเภท Units (ข้าม Emergency Units + ClearEnemy Units)
+                local allEconomyMaxed = true
+                local hasAnyEconomyUnit = false  -- ⭐ เพิ่มเช็คว่ามี economy unit หรือไม่
+                for _, unit in pairs(activeUnits) do
+                    if unit.Data and IsIncomeUnit(unit.Name, unit.Data) then
+                        hasAnyEconomyUnit = true
+                        -- ⭐ ใช้ฟังก์ชันจาก Decom
+                        if not IsUnitMaxed(unit) then
+                            allEconomyMaxed = false
+                            break
                         end
                     end
+                end
                 
-                    -- อัพเกรด Damage/Buff เฉพาะเมื่อตัวเงินอัพ MAX แล้ว
+                    -- ⭐⭐⭐ FIX: ถ้าไม่มี economy unit เลย → ถือว่า allEconomyMaxed = true
+                    if not hasAnyEconomyUnit then
+                        allEconomyMaxed = true
+                    end
+                
+                    -- อัพเกรด Damage/Buff เฉพาะเมื่อตัวเงินอัพ MAX แล้ว (หรือไม่มี economy unit)
                     if allEconomyMaxed then
                         local damageUnits = {}
                         local buffUnits = {}
@@ -8930,8 +7480,13 @@ local function AutoPlaceLoop()
                         
                         for _, unit in pairs(activeUnits) do
                             local unitData = unit.Data or {}
-                            -- ⭐ รวม Emergency Units ที่เป็น Summon (ไม่ขายแล้ว)
-                            local skipEmergency = EmergencyUnits[unit.GUID] and not IsPassiveSummonUnit(unit.Name, unitData)
+                            -- ⭐⭐⭐ FIX: ไม่ข้าม Emergency Units แล้ว! ให้อัพเกรดได้ปกติ
+                            -- เพราะ Emergency Mode เปลี่ยนบ่อย และไม่ควร block upgrade
+                            local skipEmergency = false
+                            -- ⭐⭐⭐ REMOVED: ไม่ skip emergency units อีกแล้ว
+                            -- if IsEmergency and EmergencyUnits[unit.GUID] and not IsPassiveSummonUnit(unit.Name, unitData) then
+                            --     skipEmergency = true
+                            -- end
                             -- 🔥 ข้าม ClearEnemy Units (ให้ ClearEnemy Mode จัดการเอง)
                             local isClearEnemyUnit = ClearEnemyUnits[unit.GUID] ~= nil
                             -- ⭐⭐⭐ ข้าม Caloric Clone Units (ห้ามอัพเกรด)
@@ -8948,23 +7503,50 @@ local function AutoPlaceLoop()
                             end
                         end
                         
-                        -- ⭐⭐⭐ PRIORITY 0: Force Upgrade Lich King (Ruler) ก่อนเสมอ
+                        -- ⭐⭐⭐ PRIORITY 0: Force Upgrade Lich King (Ruler) ก่อนเสมอ จนกว่าจะ MAX!
+                        -- Income MAX แล้ว → Lich King จะถูก upgrade ก่อน Damage ตัวอื่น
+                        -- ⚠️ ใช้ SOLO UPGRADE สำหรับ Lich King (ไม่ใช่ multi-upgrade)
+                        -- ⚠️ ถ้าไม่มี Lich King ในทีม → ข้ามไปใช้ Multi-Upgrade ปกติเลย
+                        local lichKingMaxed = true
+                        local lichKingUnit = nil
+                        local hasLichKing = false  -- ⭐ เพิ่มตัวแปรเช็คว่ามี Lich King หรือไม่
+                        
                         for _, unit in pairs(damageUnits) do
-                            local isLichKingRuler = unit.Name:lower():find("lich") and unit.Name:lower():find("ruler")
-                            if isLichKingRuler and not IsUnitMaxed(unit) then
-                                local cost = GetUpgradeCost(unit)
-                                if cost < math.huge and GetYen() >= cost then
-                                    local currentLevel = GetCurrentUpgradeLevel(unit)
-                                    local maxLevel = GetMaxUpgradeLevel(unit)
-                                    print(string.format("[ForceUpgrade] 👑 Lich King (Ruler) (%d/%d) [ค่าใช้จ่าย: %d]", currentLevel, maxLevel, cost))
-                                    UpgradeUnit(unit)
-                                    task.wait(0.1)
+                            local unitNameLower = (unit.Name or ""):lower()
+                            local isLichKingRuler = unitNameLower:find("lich") and unitNameLower:find("ruler")
+                            if isLichKingRuler then
+                                hasLichKing = true  -- ⭐ พบ Lich King ในทีม
+                                lichKingUnit = unit
+                                if not IsUnitMaxed(unit) then
+                                    lichKingMaxed = false
+                                    -- ⭐ SOLO UPGRADE: อัพแค่ 1 ครั้งต่อ loop (ไม่ multi-upgrade)
+                                    local cost = GetUpgradeCost(unit)
+                                    if cost < math.huge and GetYen() >= cost then
+                                        local currentLevel = GetCurrentUpgradeLevel(unit)
+                                        local maxLevel = GetMaxUpgradeLevel(unit)
+                                        print(string.format("[SoloUpgrade] 👑 Lich King (Ruler) (%d/%d) [ค่าใช้จ่าย: %d]", currentLevel, maxLevel, cost))
+                                        UpgradeUnit(unit)
+                                        -- ⚠️ ไม่ต้อง task.wait เพราะ solo upgrade
+                                    end
+                                else
+                                    print("[SoloUpgrade] ✅ Lich King (Ruler) MAX แล้ว!")
                                 end
+                                break  -- หา Lich King ตัวแรกเจอก็พอ
                             end
                         end
                         
-                        -- 🔥 Priority 1: Upgrade Damage units แบบ "1 Unit All-in" จนกว่าเงินจะหมด
-                        if #damageUnits > 0 then
+                        -- ⭐⭐⭐ ถ้าไม่มี Lich King → ข้ามไป Multi-Upgrade ปกติเลย
+                        -- ⭐ ถ้ามี Lich King แต่ยังไม่ MAX → ไม่อัพ Damage ตัวอื่น (รอ Lich King MAX ก่อน)
+                        -- ⭐ ถ้า Lich King MAX แล้ว → กลับไปใช้ Multi-upgrade ตามปกติ
+                        
+                        -- ⭐⭐⭐ DEBUG: แสดงจำนวน units ที่พบ
+                        if #damageUnits > 0 or hasLichKing then
+                            -- DebugPrint(string.format("[Upgrade] DamageUnits: %d, HasLichKing: %s, LichKingMaxed: %s", 
+                            --     #damageUnits, tostring(hasLichKing), tostring(lichKingMaxed)))
+                        end
+                        
+                        if (not hasLichKing or lichKingMaxed) and #damageUnits > 0 then
+                            -- 🔥 Multi-upgrade Damage units แบบปกติ
                             local continueUpgrading = true
                             local upgradeCount = 0
                             local maxUpgradesPerLoop = 50  -- ป้องกัน infinite loop
@@ -9040,7 +7622,7 @@ local function AutoPlaceLoop()
                             if upgradeCount >= maxUpgradesPerLoop then
                                 DebugPrint(string.format("⚠️ Damage Upgrade ถึงลิมิต (%d ครั้ง)", maxUpgradesPerLoop))
                             end
-                        end  -- ปิด while + if #damageUnits
+                        end  -- ปิด if lichKingMaxed
                         
                         -- ⭐⭐⭐ Priority 0: Upgrade Summon Units ก่อน (ถ้ามี)
                         if #summonUnits > 0 then
@@ -9358,55 +7940,60 @@ task.spawn(function()
     end
 end)
 
--- ===== AUTO REPLAY SYSTEM =====
--- ⭐ ใช้ ShowEndScreenEvent.OnClientEvent (ตามโค้ดของ user)
-local LastReplayVoteTime = 0
-local REPLAY_VOTE_COOLDOWN = 3
-local AUTO_REPLAY_ENABLED = true
-local EndScreenVoteEvent = nil
+-- ===== AUTO REPLAY SYSTEM (ISOLATED SCOPE) =====
+-- _G.AutoReplay_ExecuteVote = nil
 
--- โหลด VoteEvent
-pcall(function()
-    EndScreenVoteEvent = ReplicatedStorage:FindFirstChild("Networking")
-        and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
-        and ReplicatedStorage.Networking.EndScreen:FindFirstChild("VoteEvent")
-end)
+-- task.spawn(function()
+--     local AutoReplayState = {
+--         LastVoteTime = 0,
+--         VoteCooldown = 3,
+--         Enabled = true,
+--         VoteEvent = nil
+--     }
+    
+--     pcall(function()
+--         AutoReplayState.VoteEvent = ReplicatedStorage:FindFirstChild("Networking")
+--             and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+--             and ReplicatedStorage.Networking.EndScreen:FindFirstChild("VoteEvent")
+--     end)
+    
+--     local function AutoVoteReplay()
+--         if not AutoReplayState.Enabled then return end
+--         if not AutoReplayState.VoteEvent then return end
+        
+--         local now = tick()
+--         if now - AutoReplayState.LastVoteTime < AutoReplayState.VoteCooldown then return end
+--         AutoReplayState.LastVoteTime = now
+        
+--         pcall(function()
+--             AutoReplayState.VoteEvent:FireServer("Retry")
+--             print("[AutoReplay] 🔄 Voted Retry via VoteEvent")
+--         end)
+--     end
+    
+--     _G.AutoReplay_ExecuteVote = AutoVoteReplay
+    
+--     pcall(function()
+--         local ShowEndScreenEvent = ReplicatedStorage:FindFirstChild("Networking")
+--             and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+--             and ReplicatedStorage.Networking.EndScreen:FindFirstChild("ShowEndScreenEvent")
+        
+--         if ShowEndScreenEvent then
+--             ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+--                 print("[AutoReplay] 📺 EndScreen detected! Status:", Results and Results.Status or "Unknown")
+--                 task.delay(2, AutoVoteReplay)
+--                 task.delay(5, AutoVoteReplay)
+--             end)
+--             print("[AutoReplay] ✅ ShowEndScreenEvent connected!")
+--         end
+--     end)
+-- end)
 
-local function AutoVoteReplay()
-    if not AUTO_REPLAY_ENABLED then return end
-    if not EndScreenVoteEvent then return end
-    
-    local now = tick()
-    if now - LastReplayVoteTime < REPLAY_VOTE_COOLDOWN then return end
-    LastReplayVoteTime = now
-    
-    pcall(function()
-        EndScreenVoteEvent:FireServer("Retry")
-        print("[AutoReplay] 🔄 Voted Retry via VoteEvent")
-    end)
-end
-
--- ⭐ ฟัง ShowEndScreenEvent เพื่อ trigger Auto Replay
-pcall(function()
-    local ShowEndScreenEvent = ReplicatedStorage:FindFirstChild("Networking")
-        and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
-        and ReplicatedStorage.Networking.EndScreen:FindFirstChild("ShowEndScreenEvent")
-    
-    if ShowEndScreenEvent then
-        ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-            print("[AutoReplay] 📺 EndScreen detected! Status:", Results and Results.Status or "Unknown")
-            -- รอ 2 วินาทีแล้ว Vote Retry
-            task.delay(2, function()
-                AutoVoteReplay()
-            end)
-            -- Vote อีกครั้งหลัง 5 วินาที (กรณี vote แรกไม่ผ่าน)
-            task.delay(5, function()
-                AutoVoteReplay()
-            end)
-        end)
-        print("[AutoReplay] ✅ ShowEndScreenEvent connected!")
-    end
-end)
+-- local function AutoVoteReplay()
+--     if _G.AutoReplay_ExecuteVote then
+--         _G.AutoReplay_ExecuteVote()
+--     end
+-- end
 
 -- ===== AUTO ANT SWARM SYSTEM =====
 -- ตาม Decom: Auto close tunnel เมื่อเข้าใกล้ Swarm
@@ -9539,6 +8126,17 @@ _G.RotateTrack = function(rotatorNum)
     return true
 end
 
+-- ⭐⭐⭐ GLOBAL EXPORTS สำหรับ AbilitySystem.lua (Caloric Stone Sync)
+_G.GetBestPlacementPosition = GetBestPlacementPosition
+_G.GetVerifiedPlacementPosition = GetVerifiedPlacementPosition
+_G.VerifyPositionInRange = VerifyPositionInRange
+_G.GetUnitRange = GetUnitRange
+_G.GetMapPath = GetMapPath
+_G.GetActiveUnits = GetActiveUnits
+_G.CanPlaceAtPosition = CanPlaceAtPosition
+_G.GetGamePhase = GetGamePhase
+_G.GetYen = GetYen
+
 -- คำนวณ lane ปัจจุบันจาก rotation (lane 1-4)
 _G.GetActualLane = function(baseLane, rotation)
     if not baseLane then return 0 end
@@ -9645,6 +8243,8 @@ return {
     GetActiveUnits = GetActiveUnits,
     GetPlaceablePositions = GetPlaceablePositions,
     GetBestPlacementPosition = GetBestPlacementPosition,
+    GetVerifiedPlacementPosition = GetVerifiedPlacementPosition,  -- ⭐ NEW: ตำแหน่งที่ verified แล้ว
+    VerifyPositionInRange = VerifyPositionInRange,                 -- ⭐ NEW: เช็คว่าตีถึง path
     GetUnitRange = GetUnitRange,
     CalculateUShapeCenters = CalculateUShapeCenters,
     CalculateCircularCenters = CalculateCircularCenters,

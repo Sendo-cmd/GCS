@@ -243,6 +243,8 @@ local Inventory = {}
 local Settings ={
     ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey , Fall Regular , Fall Infinite , Guitar King
     ["Auto Next"] = false,
+    ["Auto Retry"] = false,
+    ["Auto Back Lobby"] = false,
     ["Auto Join AFK"] = false,
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
@@ -482,18 +484,23 @@ local Changes = {
     -- end,
     ["fc7a340c-7c98-4da6-84aa-a7e3ce4790c1"] = function()
         Settings["Select Mode"] = "Fall Infinite"
+        Settings["Auto Retry"] = true
     end,
     ["d551991a-b8ec-4fe5-96f5-2fe6418a3e9a"] = function()
         Settings["Select Mode"] = "Fall Infinite"
+        Settings["Auto Retry"] = true
     end,
     ["ffa517b2-7f99-47a8-aadc-d7662b96eb60"] = function()
         Settings["Select Mode"] = "Fall Infinite"
+        Settings["Auto Retry"] = true
     end,
     ["c869c464-6864-4eb7-a98f-f78f3448b71c"] = function()
         Settings["Select Mode"] = "Fall Infinite"
+        Settings["Auto Retry"] = true
     end,
     ["d88ae3d8-3e47-4de0-b18c-ee598fb2bb83"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
             ["Difficulty"] = "Nightmare",
             ["Act"] = "Act5",
@@ -504,6 +511,7 @@ local Changes = {
     end,
     ["c3795c09-07c3-4b30-ba13-067deb00b9dc"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -514,6 +522,7 @@ local Changes = {
     end,
     ["659d38ba-bfed-4d48-93b0-b015e19fad58"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -524,6 +533,7 @@ local Changes = {
     end,
     ["e99f1149-1c90-4997-a99c-87e9dd812fe9"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -534,6 +544,7 @@ local Changes = {
     end,
     ["ce0355ef-7f25-42b7-8f4a-14a47c257ff8"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -544,6 +555,7 @@ local Changes = {
     end,
     ["42b71690-3363-46bd-b933-046241c9a2cc"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -554,6 +566,7 @@ local Changes = {
     end,
     ["bc3274e0-17fd-4cc3-b4e2-55323a734993"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -564,6 +577,7 @@ local Changes = {
     end,
     ["983626d0-e545-4bb2-9623-fad3c4899f81"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -574,6 +588,7 @@ local Changes = {
     end,
     ["a0805ded-393d-46c5-9d9f-aa532e6f726b"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act9",
@@ -584,6 +599,7 @@ local Changes = {
     end,
     ["636ecf68-cfb2-400b-93c0-3e217d011e8a"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act9",
@@ -594,6 +610,7 @@ local Changes = {
     end,
     ["b74918bc-c060-4b9f-8caa-1323bbccdf4b"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act9",
@@ -604,6 +621,7 @@ local Changes = {
     end,
     ["b6e76418-6470-434e-badc-cb5ce7b18edb"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act9",
@@ -614,6 +632,7 @@ local Changes = {
     end,
     ["45e506d7-344e-4166-8d3f-4520ecee34be"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -624,6 +643,7 @@ local Changes = {
     end,
     ["f7dd88f0-da60-451b-b428-2f195157ba8a"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -634,6 +654,7 @@ local Changes = {
     end,
     ["10805d4e-6a8c-47d7-aa8a-3a58e4ffbc31"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -644,6 +665,7 @@ local Changes = {
     end,
     ["3d06a519-5378-4045-8a51-bd814c9efd7a"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -654,6 +676,7 @@ local Changes = {
     end,
     ["a0c76c61-a989-4853-bf2f-c690ca0a24c3"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -664,6 +687,7 @@ local Changes = {
     end,
     ["ab455b4f-e2a7-4b18-bb7c-447ea0211401"] = function()
         Settings["Select Mode"] = "Dungeon"
+        Settings["Auto Retry"] = true
         Settings["Dungeon Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act7",
@@ -674,6 +698,7 @@ local Changes = {
     end,
     ["c11bff94-13e6-45ec-a0ca-d1b19b2964ee"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -684,6 +709,7 @@ local Changes = {
     end,
     ["3c18df46-db36-4cd4-93b2-9f03926fdadb"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -694,6 +720,7 @@ local Changes = {
     end,
     ["8d9c0691-0f1d-4a88-b361-d2140e622e82"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Infinite",
@@ -704,6 +731,7 @@ local Changes = {
     end,
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Infinite",
@@ -714,6 +742,7 @@ local Changes = {
     end,
     ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Infinite",
@@ -724,15 +753,19 @@ local Changes = {
     end,
     ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
         Settings["Auto Join World Destroyer"] = true
+        Settings["Auto Retry"] = true
     end,
     ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
         Settings["Auto Join World Destroyer"] = true
+        Settings["Auto Retry"] = true
     end,
     ["87b27182-43d5-4266-9705-86ffa192adb0"] = function()
         Settings["Auto Join World Destroyer"] = true
+        Settings["Auto Retry"] = true
     end,
     ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -743,6 +776,7 @@ local Changes = {
     end,
     ["785409b0-02f9-4bb8-8ad8-b383b59f6f54"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -753,6 +787,7 @@ local Changes = {
     end,
     ["bc1be299-c561-4a41-964a-a055f8a8e436"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -763,6 +798,7 @@ local Changes = {
     end,
     ["1c58db6a-b5d1-4d8d-8195-75aad0403c90"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -773,6 +809,7 @@ local Changes = {
     end,
     ["5e334be7-56c9-4bfa-96e1-4856755b3f23"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Infinite",
@@ -783,6 +820,7 @@ local Changes = {
     end,
     ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Infinite",
@@ -794,6 +832,7 @@ local Changes = {
     ["427f560e-b78e-4ec9-b711-d451b0312306"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -814,6 +853,7 @@ local Changes = {
     ["d8b5cc8c-effd-4521-9db9-04fb460cd225"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -834,6 +874,7 @@ local Changes = {
     ["30a613fb-29c9-4b88-b18b-1b4231a5468d"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -854,6 +895,7 @@ local Changes = {
     ["a88f58e7-c086-4f90-95a2-898b2d2e813a"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -874,6 +916,7 @@ local Changes = {
     ["dfa9b68a-95d7-4227-b118-702cf45061c7"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -894,6 +937,7 @@ local Changes = {
     ["98744617-780b-4c3f-adea-12f450e0b33c"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -914,6 +958,7 @@ local Changes = {
     ["415f5afe-810d-4a42-aed9-5c29995f2e31"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -934,6 +979,7 @@ local Changes = {
     ["dbda7a23-f9ac-487f-9a8d-beeebfba0475"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -954,6 +1000,7 @@ local Changes = {
     ["16cb01f5-7b68-47ed-b116-c63d5f453e1a"] = function()
         Settings["Auto Stun"] = true
         Settings["Select Mode"] = "Raid"
+        Settings["Auto Retry"] = true
         Settings["Priority Multi"] = {
             ["Enabled"] = true,
             ["1"] = "Bosses",
@@ -976,6 +1023,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1028,6 +1076,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1080,6 +1129,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1132,6 +1182,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Money Surge"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1184,6 +1235,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1236,6 +1288,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1288,6 +1341,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1340,6 +1394,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Sphere Finder"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1392,6 +1447,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Tyrant Arrives"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1444,6 +1500,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Tyrant Arrives"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1496,6 +1553,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Tyrant Arrives"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1548,6 +1606,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Tyrant Arrives"}
+        Settings["Auto Retry"] = true
         Settings["Modifier Priority"] = {
             ["Money Surge"] = 100,
             ["Harvest"] = 99,
@@ -1600,6 +1659,7 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -1612,6 +1672,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act1",
@@ -1634,6 +1695,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1646,6 +1708,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1658,6 +1721,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1680,6 +1744,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1692,6 +1757,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1704,6 +1770,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1726,6 +1793,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1738,6 +1806,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1750,6 +1819,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1762,6 +1832,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1774,6 +1845,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1786,6 +1858,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1798,6 +1871,7 @@ local Changes = {
         Settings["Select Mode"] = "Legend Stage"
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
         Settings["Legend Settings"] = {
         ["Difficulty"] = "Nightmare",
         ["Act"] = "Act3",
@@ -1811,24 +1885,32 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["bc0fca7b-dde2-47a6-a50b-793d8782999b"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["edbd1859-f374-4735-87c7-2b0487808665"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["c480797f-3035-4b1f-99a3-d77181f338bf"] = function()
         Settings["Auto Join Challenge"] = true
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["39ce32e2-c34c-4479-8a52-5715e8645944"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1836,6 +1918,8 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["63c63616-134c-4450-a5d6-a73c7d44d537"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1843,6 +1927,8 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["5852f3ef-a949-4df5-931b-66ac0ac84625"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1850,6 +1936,8 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["d85e3e85-0893-4972-a145-d6ba42bac512"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1857,6 +1945,8 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["03237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1864,6 +1954,8 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["503237ef-99e7-4a53-b61a-1ac9ca8dee60"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1871,6 +1963,8 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["2a77cde0-0bab-4880-a01e-8bbe4b76956e"] = function()
         Settings["Auto Join Challenge"] = true
@@ -1878,6 +1972,8 @@ local Changes = {
         Settings["Auto Modifier"] = true
         Settings["Restart Modifier"] = true
         Settings["Select Modifier"] = {"Exploding"}
+        Settings["Auto Retry"] = true
+        Settings["Auto Next"] = true
     end,
     ["df999032-bd9e-4933-bba1-a037997ce505"] = function()
        Settings["Auto Join Challenge"] = true
@@ -1885,27 +1981,33 @@ local Changes = {
        Settings["Auto Modifier"] = true
        Settings["Restart Modifier"] = true
        Settings["Select Modifier"] = {"Exploding"}
+       Settings["Auto Retry"] = true
+       Settings["Auto Next"] = true
     end,
     ["143f6820-6e5e-4f6e-b3f9-3de3e9586271"] = function()
        Settings["Select Mode"] = "Boss Event"
+       Settings["Auto Retry"] = true
        Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
     }
     end,
     ["abb151e9-5e2a-40d3-91fe-7da3ee03f1aa"] = function()
        Settings["Select Mode"] = "Boss Event"
+       Settings["Auto Retry"] = true
        Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
     }
     end,
     ["5a815e6f-7024-4e6e-9d30-50cda9a765bd"] = function()
        Settings["Select Mode"] = "Boss Event"
+       Settings["Auto Retry"] = true
        Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
     }
     end,
     ["66ace527-415a-4b1f-a512-9f3429f67067"] = function()
         Settings["Select Mode"] = "Boss Event"
+        Settings["Auto Retry"] = true
         Settings["Boss Event Settings"] = {
         ["Difficulty"] = "Normal",
     }
@@ -1913,15 +2015,19 @@ local Changes = {
 
     ["a551241f-b981-4b84-8b61-ce5ac449b9f0"] = function()
         Settings["Auto Join Rift"] = true
+        Settings["Auto Back Lobby"] = true
     end,
     ["7d2c7a5f-81c8-4bc2-9ceb-2015ac73f103"] = function()
         Settings["Auto Join Rift"] = true
+        Settings["Auto Back Lobby"] = true
     end,
     ["878aba1c-4163-43a6-9f6d-ef8827f6b582"] = function()
         Settings["Auto Join Rift"] = true
+        Settings["Auto Back Lobby"] = true
     end,
     ["73bcfb57-5d0f-499b-bd6c-3e601ef9917c"] = function()
         Settings["Auto Join Rift"] = true
+        Settings["Auto Back Lobby"] = true
     end,
     ["2b9574ad-1cbe-48dd-bf50-1ee864adf464"] = function()
         Settings["Select Mode"] = "AFK"
@@ -1935,10 +2041,12 @@ local Changes = {
     ["1c335fe4-5fb6-4894-9c3e-83216bc419a9"] = function()
         Settings["Select Mode"] = "World Line"
         Settings["Auto Next"] = true
+        Settings["Auto Retry"] = true
     end,
     ["562e53d5-22c8-4337-a5bc-c36df924524b"] = function()
         Settings["Select Mode"] = "World Line"
         Settings["Auto Next"] = true
+        Settings["Auto Retry"] = true
     end,
     -- [""] = function()
     --     Settings["Select Mode"] = "Odyssey"
@@ -1960,6 +2068,7 @@ local Changes = {
     -- end,
     ["0a0f6982-c75c-4a9b-bbae-1da2a3f99666"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -1970,6 +2079,7 @@ local Changes = {
     end,
     ["e7afcb6e-2418-4dfe-8eda-8339bd920012"] = function()
         Settings["Select Mode"] = "Story"
+        Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
         ["Difficulty"] = "Normal",
         ["Act"] = "Act1",
@@ -3379,103 +3489,96 @@ end
                 end)
                 print("[Auto Modifier] Loaded!")
             end
-            Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                if Settings["Auto Next"] then
+            
+            -- ⭐⭐⭐ รอจนกว่าจะเจอ EndScreen ก่อน
+            if Networking:FindFirstChild("EndScreen") and Networking.EndScreen:FindFirstChild("ShowEndScreenEvent") then
+                Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+                    print("[EndScreen] 📺 Detected! Status:", Results and Results.Status or "Unknown")
+                
+                -- ⭐⭐⭐ SHARED FUNCTIONS
+                local function isEndScreenVisible()
+                    local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                    if EndScreenGui then
+                        local Holder = EndScreenGui:FindFirstChild("Holder")
+                        if Holder and Holder.Visible then
+                            return true
+                        end
+                        if EndScreenGui.Enabled ~= false then
+                            return true
+                        end
+                    end
+                    return false
+                end
+                
+                local function getVoteEvent()
+                    if Networking.EndScreen:FindFirstChild("VoteEvent") then
+                        return Networking.EndScreen.VoteEvent
+                    elseif Networking:FindFirstChild("VoteEvent") then
+                        return Networking.VoteEvent
+                    end
+                    return nil
+                end
+                
+                -- ⭐⭐⭐ AUTO RETRY (เหมือน AutoPlayBase.lua)
+                if Settings["Auto Retry"] then
                     task.spawn(function()
-                        -- ตรวจสอบว่า EndScreen ยังแสดงอยู่หรือไม่
-                        local function isEndScreenVisible()
-                            local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                            if EndScreenGui then
-                                local Holder = EndScreenGui:FindFirstChild("Holder")
-                                if Holder and Holder.Visible then
-                                    return true
-                                end
-                                -- ตรวจสอบ visibility ของ EndScreen เอง
-                                if EndScreenGui.Enabled ~= false then
-                                    return true
-                                end
-                            end
-                            return false
-                        end
-                        
-                        -- ตรวจสอบว่ามี remote หรือปุ่มที่ใช้ได้
-                        local function getAvailableMethod()
-                            -- ลอง VoteEvent
-                            if Networking.EndScreen:FindFirstChild("VoteEvent") then
-                                return "VoteEvent"
-                            end
-                            -- ลอง VoteEvent ตรง
-                            if Networking:FindFirstChild("VoteEvent") then
-                                return "NetworkingVoteEvent"
-                            end
-                            -- ลอง EndScreenEvent
-                            if Networking.EndScreen:FindFirstChild("EndScreenEvent") then
-                                return "EndScreenEvent"
-                            end
-                            -- ลองหาปุ่ม
-                            local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                            if EndScreenGui then
-                                local NextBtn = EndScreenGui:FindFirstChild("Next", true) or 
-                                               EndScreenGui:FindFirstChild("NextButton", true)
-                                if NextBtn then
-                                    return "Button", NextBtn
-                                end
-                            end
-                            return nil
-                        end
-                        
-                        -- รอจนกว่าจะเจอ method ที่ใช้ได้
-                        local method, btn = nil, nil
-                        local waitCount = 0
-                        while not method and waitCount < 10 do
-                            method, btn = getAvailableMethod()
-                            if not method then
-                                task.wait(0.5)
-                                waitCount = waitCount + 1
-                            end
-                        end
-                        
-                        if not method then
-                            warn("[Auto Next] ไม่เจอ remote หรือปุ่ม")
-                            return
-                        end
-                        
-                        -- กดจนกว่า EndScreen จะหายไป (Anti-spam: กดแค่ครั้งเดียวแล้วรอ)
-                        local hasVoted = false
-                        local voteAttempts = 0
-                        local maxAttempts = 3 -- กดซ้ำสูงสุด 3 ครั้ง
-                        
-                        while Settings["Auto Next"] and isEndScreenVisible() and voteAttempts < maxAttempts do
-                            if not hasVoted then
-                                local success = pcall(function()
-                                    if method == "VoteEvent" then
-                                        Networking.EndScreen.VoteEvent:FireServer("Next")
-                                    elseif method == "NetworkingVoteEvent" then
-                                        Networking.VoteEvent:FireServer("Next")
-                                    elseif method == "EndScreenEvent" then
-                                        Networking.EndScreen.EndScreenEvent:FireServer("Vote", "Next")
-                                    elseif method == "Button" and btn then
-                                        for _, conn in pairs(getconnections(btn.Activated)) do
-                                            conn:Fire()
-                                        end
-                                    end
-                                end)
-                                if success then
-                                    hasVoted = true
-                                    voteAttempts = voteAttempts + 1
-                                    print("[Auto Next] Voted successfully (attempt " .. voteAttempts .. ")")
-                                end
-                            end
-                            -- รอนานขึ้นเพื่อไม่ให้ spam (5 วินาที)
-                            task.wait(5)
-                            -- ถ้า EndScreen ยังอยู่หลังจาก 5 วิ ให้ลอง vote อีกครั้ง
+                        local VoteEvent = getVoteEvent()
+                        if VoteEvent then
+                            task.wait(2)
+                            pcall(function()
+                                VoteEvent:FireServer("Retry")
+                                print("[Auto Retry] 🔄 Voted Retry")
+                            end)
+                            task.wait(3)
                             if isEndScreenVisible() then
-                                hasVoted = false
+                                pcall(function()
+                                    VoteEvent:FireServer("Retry")
+                                    print("[Auto Retry] 🔄 Voted Retry (2nd attempt)")
+                                end)
                             end
+                        else
+                            warn("[Auto Retry] ⚠️ VoteEvent not found")
                         end
                     end)
                 end
                 
+                -- ⭐⭐⭐ AUTO NEXT
+                if Settings["Auto Next"] then
+                    task.spawn(function()
+                        local VoteEvent = getVoteEvent()
+                        if VoteEvent then
+                            task.wait(2)
+                            local voteAttempts = 0
+                            local maxAttempts = 3
+                            
+                            while Settings["Auto Next"] and isEndScreenVisible() and voteAttempts < maxAttempts do
+                                pcall(function()
+                                    VoteEvent:FireServer("Next")
+                                    print("[Auto Next] ➡️ Voted Next (attempt " .. (voteAttempts + 1) .. ")")
+                                end)
+                                voteAttempts = voteAttempts + 1
+                                task.wait(5)
+                            end
+                        else
+                            warn("[Auto Next] ⚠️ VoteEvent not found")
+                        end
+                    end)
+                end
+                
+                -- ⭐⭐⭐ AUTO BACK LOBBY
+                if Settings["Auto Back Lobby"] then
+                    task.spawn(function()
+                        task.wait(3)
+                        if isEndScreenVisible() then
+                            pcall(function()
+                                Networking.TeleportEvent:FireServer("Lobby")
+                                print("[Auto Back Lobby] 🏠 Teleporting to Lobby")
+                            end)
+                        end
+                    end)
+                end
+                
+                -- Legacy Challenge/Bounty handling
                 task.wait(2)
                 if Results['StageType'] == "Challenge" then
                     Networking.TeleportEvent:FireServer("Lobby")
@@ -3488,7 +3591,11 @@ end
                         Networking.TeleportEvent:FireServer("Lobby")
                     end
                 end
-            end)
+                end)
+                print("[EndScreen] ✅ ShowEndScreenEvent connected!")
+            else
+                warn("[EndScreen] ⚠️ EndScreen or ShowEndScreenEvent not found - Auto Retry/Next/BackLobby disabled")
+            end
         end
     end)
 end)
