@@ -281,6 +281,10 @@ local Settings ={
     ["Auto Join Boss Event"] = false,
     ["Auto Join Challenge"] = false,
     ["Auto Join World Destroyer"] = false,
+    ["Auto Restart"] = {
+        ["Enable"] = false,
+        ["Wave"] = 1,
+    },
 
     ["Auto Stun"] = false,
     ["Auto Priority"] = false,
@@ -762,7 +766,7 @@ local Changes = {
         }
         Settings["Auto Restart"] = {
             ["Enable"] = true,
-            ["Wave"] = 20, 
+            ["Wave"] = 20,
         }
     end,
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
