@@ -3,6 +3,12 @@ repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
 game:GetService("Players").LocalPlayer:WaitForChild("PlayerGui")
+
+-- Define request function for HTTP calls (executor compatibility)
+local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
+if not request then
+    request = function() return {StatusCode = 0, Body = "No HTTP support"} end
+end
 task.spawn(function()
 setfpscap(10)
 local function AntiAFK()
@@ -356,87 +362,6 @@ local Settings ={
     },
 }
 local Changes = {
-    -- à¸–à¹‰à¸²à¸•à¹‰à¸­à¸‡à¸à¸²à¸£à¸ªà¸£à¹‰à¸²à¸‡ configs à¹à¸šà¸šà¹„à¸«à¸™à¹ƒà¸«à¹‰ order à¸à¹‡à¹€à¸›à¸¥à¸µà¹ˆà¸¢à¸™à¹à¸›à¸¥à¸‡à¹€à¸«à¸¡à¸·à¸­à¸™à¹ƒà¸ªà¹ˆ config à¸˜à¸£à¸£à¸¡à¸”à¸²à¹„à¸”à¹‰à¹€à¸¥à¸¢ à¸ªà¸£à¹‰à¸²à¸‡à¸„à¸£à¸±à¹‰à¸‡à¸™à¸¶à¸‡à¹à¸¥à¹‰à¸§à¹€à¸«à¸¡à¸·à¸­à¸™à¸à¸±à¸™à¸—à¸¸à¸ order
-    -- ["2e2a5d02-4d63-43a5-8b9a-6e7902581cfd"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["960de970-ba26-4184-8d97-561ae8511e4b"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["24cbfd35-8df6-4fc7-8c0f-5e9c4b921013"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["0495121f-a579-4068-9494-4a1ac477613b"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["6ace8ed9-915e-474a-af43-39328ea80a4f"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["1e3dd6cd-e3d2-4dae-810f-911df0ab4806"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["abc198e7-cdfc-497d-83d6-a5c9f88f3c22"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
-    -- ["69d6b35d-0dc0-46d5-96c6-be037b876cdd"] = function()
-    --     Settings["Select Mode"] = "Portal"
-    --     Settings["Portal Settings"] = {
-    --     ["ID"] = 190, -- 113 Love , 87 Winter , 190 Spring
-    --     ["Tier Cap"] = 10,
-    --     ["Method"] = "Highest", -- Highest , Lowest
-    --     ["Ignore Stage"] = {},
-    --     ["Ignore Modify"] = {},
-    -- }
-    -- end,
     ["e206ec24-dfbf-4157-a380-9afabe115c29"] = function()
         Settings["Select Mode"] = "Portal"
         Settings["Portal Settings"] = {

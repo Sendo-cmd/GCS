@@ -285,7 +285,6 @@ local Settings ={
         ["Enable"] = false,
         ["Wave"] = 1,
     },
-
     ["Auto Stun"] = false,
     ["Auto Priority"] = false,
     ["Priority"] = "First", 
