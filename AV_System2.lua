@@ -271,11 +271,14 @@ local function UpdateCache(OrderId,...)
     })
 end
 local Settings ={
-
     ["Select Mode"] = "Portal", -- Portal , Dungeon , Story , Legend Stage , Raid , Challenge , Boss Event , World Line , Bounty , AFK , Summer , Odyssey
     ["Auto Next"] = false,
     ["Auto Retry"] = false,
     ["Auto Back Lobby"] = false,
+    ["Auto Restart"] = {
+        ["Enable"] = false,
+        ["Wave"] = 1, 
+    },
     ["Auto Join Rift"] = false,
     ["Auto Join Bounty"] = false,
     ["Auto Join Boss Event"] = false,
@@ -287,7 +290,6 @@ local Settings ={
     ["Priority"] = "First", 
     ["Party Mode"] = false,
 
-    -- Auto Modifier Settings
     ["Auto Modifier"] = false,
     ["Restart Modifier"] = false,
     ["Select Modifier"] = {"Sphere Finder", "Champions", "Money Surge"},
@@ -754,46 +756,70 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["29fe5885-c673-46cf-9ba4-a7f42c2ba0b0"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["efdc7d4b-1346-49d3-8823-4865ac02b6ae"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Planet Namak",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["36846b45-8b1c-46a8-9edc-7e5ae2a32d05"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["8fedc8ce-3263-4821-b3d0-e4162a532588"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["87b27182-43d5-4266-9705-86ffa192adb0"] = function()
         Settings["Auto Join World Destroyer"] = true
         Settings["Auto Retry"] = true
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["fed48f27-35a3-47a7-b937-5a4dc59c6d28"] = function()
         Settings["Select Mode"] = "Story"
@@ -843,23 +869,31 @@ local Changes = {
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Shibuya Station",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["68cd687d-0760-4550-a7d6-482f3c2ca9df"] = function()
         Settings["Select Mode"] = "Story"
         Settings["Auto Retry"] = true
         Settings["Story Settings"] = {
-        ["Difficulty"] = "Nightmare",
-        ["Act"] = "Infinite",
-        ["StageType"] = "Story",
-        ["Stage"] = "Shibuya Station",
-        ["FriendsOnly"] = false
-    }
+            ["Difficulty"] = "Nightmare",
+            ["Act"] = "Infinite",
+            ["StageType"] = "Story",
+            ["Stage"] = "Planet Namak",
+            ["FriendsOnly"] = false
+        }
+        Settings["Auto Restart"] = {
+            ["Enable"] = true,
+            ["Wave"] = 20, 
+        }
     end,
     ["427f560e-b78e-4ec9-b711-d451b0312306"] = function()
         Settings["Auto Stun"] = true
@@ -4330,88 +4364,116 @@ if ID[game.GameId][1] == "AV" then
             -- Check If End Game And Not Found A Player
             if Networking:FindFirstChild("EndScreen") and Networking.EndScreen:FindFirstChild("ShowEndScreenEvent") then
                 Networking.EndScreen.ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
-                    print("[EndScreen] 📺 Detected! Status:", Results and Results.Status or "Unknown")
+                    -- print("[EndScreen] 📺 Detected! Status:", Results and Results.Status or "Unknown")
                     
-                    -- ⭐⭐⭐ SHARED FUNCTIONS
-                    local function isEndScreenVisible()
-                        local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
-                        if EndScreenGui then
-                            local Holder = EndScreenGui:FindFirstChild("Holder")
-                            if Holder and Holder.Visible then
-                                return true
-                            end
-                            if EndScreenGui.Enabled ~= false then
-                                return true
-                            end
-                        end
-                        return false
-                    end
-                    
-                    local function getVoteEvent()
-                        if Networking.EndScreen:FindFirstChild("VoteEvent") then
-                            return Networking.EndScreen.VoteEvent
-                        elseif Networking:FindFirstChild("VoteEvent") then
-                            return Networking.VoteEvent
-                        end
-                        return nil
-                    end
-                    
-                    -- ⭐⭐⭐ AUTO RETRY
                     if Settings["Auto Retry"] then
                         task.spawn(function()
-                            local VoteEvent = getVoteEvent()
-                            if VoteEvent then
-                                task.wait(2)
+                            local AutoReplayState = {
+                                LastVoteTime = 0,
+                                VoteCooldown = 3,
+                                Enabled = true,
+                                VoteEvent = nil
+                            }
+                            
+                            pcall(function()
+                                AutoReplayState.VoteEvent = ReplicatedStorage:FindFirstChild("Networking")
+                                    and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+                                    and ReplicatedStorage.Networking.EndScreen:FindFirstChild("VoteEvent")
+                            end)
+                            
+                            local function AutoVoteReplay()
+                                if not AutoReplayState.Enabled then return end
+                                if not AutoReplayState.VoteEvent then return end
+                                
+                                local now = tick()
+                                if now - AutoReplayState.LastVoteTime < AutoReplayState.VoteCooldown then return end
+                                AutoReplayState.LastVoteTime = now
+                                
                                 pcall(function()
-                                    VoteEvent:FireServer("Retry")
-                                    print("[Auto Retry] 🔄 Voted Retry")
+                                    AutoReplayState.VoteEvent:FireServer("Retry")
+                                    print("[AutoReplay] 🔄 Voted Retry via VoteEvent")
                                 end)
-                                task.wait(3)
-                                if isEndScreenVisible() then
-                                    pcall(function()
-                                        VoteEvent:FireServer("Retry")
-                                        print("[Auto Retry] 🔄 Voted Retry (2nd attempt)")
-                                    end)
-                                end
-                            else
-                                warn("[Auto Retry] ⚠️ VoteEvent not found")
                             end
+                            
+                            _G.AutoReplay_ExecuteVote = AutoVoteReplay
+                            
+                            pcall(function()
+                                local ShowEndScreenEvent = ReplicatedStorage:FindFirstChild("Networking")
+                                    and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+                                    and ReplicatedStorage.Networking.EndScreen:FindFirstChild("ShowEndScreenEvent")
+                                
+                                if ShowEndScreenEvent then
+                                    ShowEndScreenEvent.OnClientEvent:Connect(function(Results)
+                                        -- print("[AutoReplay] � EndScreen detected! Status:", Results and Results.Status or "Unknown")
+                                        task.delay(2, AutoVoteReplay)
+                                        task.delay(5, AutoVoteReplay)
+                                    end)
+                                    print("[AutoReplay] ✅ ShowEndScreenEvent connected!")
+                                else
+                                    warn("[AutoReplay] ⚠️ ShowEndScreenEvent not found")
+                                end
+                            end)
                         end)
                     end
                     
-                    -- ⭐⭐⭐ AUTO NEXT
                     if Settings["Auto Next"] then
                         task.spawn(function()
-                            local VoteEvent = getVoteEvent()
-                            if VoteEvent then
-                                task.wait(2)
-                                local voteAttempts = 0
-                                local maxAttempts = 3
+                            local AutoNextState = {
+                                LastVoteTime = 0,
+                                VoteCooldown = 3,
+                                VoteEvent = nil
+                            }
+                            
+                            pcall(function()
+                                AutoNextState.VoteEvent = ReplicatedStorage:FindFirstChild("Networking")
+                                    and ReplicatedStorage.Networking:FindFirstChild("EndScreen")
+                                    and ReplicatedStorage.Networking.EndScreen:FindFirstChild("VoteEvent")
+                            end)
+                            
+                            local function AutoVoteNext()
+                                if not AutoNextState.VoteEvent then return end
                                 
-                                while Settings["Auto Next"] and isEndScreenVisible() and voteAttempts < maxAttempts do
-                                    pcall(function()
-                                        VoteEvent:FireServer("Next")
-                                        print("[Auto Next] ➡️ Voted Next (attempt " .. (voteAttempts + 1) .. ")")
-                                    end)
-                                    voteAttempts = voteAttempts + 1
-                                    task.wait(5)
-                                end
-                            else
-                                warn("[Auto Next] ⚠️ VoteEvent not found")
+                                local now = tick()
+                                if now - AutoNextState.LastVoteTime < AutoNextState.VoteCooldown then return end
+                                AutoNextState.LastVoteTime = now
+                                
+                                pcall(function()
+                                    AutoNextState.VoteEvent:FireServer("Next")
+                                    print("[Auto Next] ➡️ Voted Next")
+                                end)
                             end
+                            
+                            -- Auto vote ตอนเจอ EndScreen
+                            task.delay(2, AutoVoteNext)
+                            task.delay(5, AutoVoteNext)
+                            task.delay(8, AutoVoteNext)
                         end)
                     end
                     
-                    -- ⭐⭐⭐ AUTO BACK LOBBY
                     if Settings["Auto Back Lobby"] then
                         task.spawn(function()
-                            task.wait(3)
-                            if isEndScreenVisible() then
-                                pcall(function()
-                                    Networking.TeleportEvent:FireServer("Lobby")
-                                    print("[Auto Back Lobby] 🏠 Teleporting to Lobby")
-                                end)
+                            local function isEndScreenVisible()
+                                local EndScreenGui = plr.PlayerGui:FindFirstChild("EndScreen")
+                                if not EndScreenGui then return false end
+                                
+                                local Holder = EndScreenGui:FindFirstChild("Holder")
+                                if Holder and Holder.Visible then return true end
+                                if EndScreenGui.Enabled ~= false then return true end
+                                
+                                return false
                             end
+                            
+                            task.delay(2, function()
+                                for attempt = 1, 3 do
+                                    task.wait(2)
+                                    if isEndScreenVisible() then
+                                        pcall(function()
+                                            Networking.TeleportEvent:FireServer("Lobby")
+                                            print("[Auto Back Lobby] 🏠 Teleported to Lobby (attempt " .. attempt .. ")")
+                                        end)
+                                    end
+                                end
+                            end)
                         end)
                     end
                     
@@ -4440,9 +4502,9 @@ if ID[game.GameId][1] == "AV" then
                         end
                     end
                 end)
-                print("[EndScreen] ✅ ShowEndScreenEvent connected!")
+                -- print("[EndScreen] ✅ ShowEndScreenEvent connected!")
             else
-                warn("[EndScreen] ⚠️ EndScreen or ShowEndScreenEvent not found - Auto Retry/Next/BackLobby disabled")
+                -- warn("[EndScreen] ⚠️ EndScreen or ShowEndScreenEvent not found - Auto Retry/Next/BackLobby disabled")
             end
             -- Check If No Player In Lobby 
             task.wait(30)
@@ -4617,25 +4679,38 @@ if ID[game.GameId][1] == "AV" then
                 end
 
                 -- Wave Tracker
-                pcall(function()
-                    local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
-                    InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
-                        if eventType == "Wave" and data and data.Waves then
-                            currentWave = data.Waves
-                            
-                            if currentWave == 0 then
-                                chosenModifiers = {}
-                                lastChoice = nil
-                            end
-                            
-                            if Settings["Restart Modifier"] and currentWave >= 1 then
-                                if not HasChosenRequiredModifier() then
-                                    print("[Auto Modifier Host] Required modifier not found, voting restart...")
-                                    VoteRestart()
-                                end
+                local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                local autoRestartTriggered = false
+                
+                InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
+                    if eventType == "Wave" and data and data.Waves then
+                        currentWave = data.Waves
+                        -- print("[Auto Modifier] Wave:", currentWave)
+                        
+                        if currentWave == 0 then
+                            chosenModifiers = {}
+                            lastChoice = nil
+                            autoRestartTriggered = false  -- Reset flag เมื่อเกมใหม่
+                        end
+                        
+                        -- ⭐ Auto Restart แบบ Wave
+                        if Settings["Auto Restart"] and Settings["Auto Restart"]["Enable"] and not autoRestartTriggered then
+                            local restartWave = Settings["Auto Restart"]["Wave"] or 1
+                            if currentWave >= restartWave and currentWave > 0 then
+                                print(string.format("[Auto Restart] Wave %d reached (target: %d) - Voting restart...", currentWave, restartWave))
+                                VoteRestart()
+                                autoRestartTriggered = true
                             end
                         end
-                    end)
+                        
+                        -- Restart Modifier (เช็ค modifier)
+                        if Settings["Restart Modifier"] and currentWave >= 1 then
+                            if not HasChosenRequiredModifier() then
+                                -- print("[Auto Modifier] Required modifier not found, voting restart...")
+                                VoteRestart()
+                            end
+                        end
+                    end
                 end)
 
                 -- Main Loop
@@ -4778,6 +4853,36 @@ if ID[game.GameId][1] == "AV" then
                 print("[Auto Stun] Executed (Member)")
             end
             -- Auto Modifier System (New - Based on AV_AutoModifier)
+            -- ⭐⭐⭐ RESTART PROTECTION SYSTEM ⭐⭐⭐
+            -- ใช้ _G.RestartInProgress เพื่อป้องกันการทับซ้อนระหว่าง:
+            -- 1. Auto Restart (wave-based)
+            -- 2. Restart Modifier (modifier not found)
+            -- 3. AutoPlay (ถ้ามีระบบ restart)
+            -- Flag จะถูกรีเซ็ตเมื่อ:
+            -- - Wave = 0 (เกมเริ่มใหม่)
+            -- - MatchRestarted event (logs_av.lua)
+            -- - Timeout 5 วินาที (กรณี vote ไม่สำเร็จ)
+            
+            -- ⭐ Global VoteRestart function (ใช้ร่วมกันระหว่าง Auto Modifier และ Restart Modifier)
+            local function VoteRestart()
+                -- ป้องกันการทับซ้อนกับระบบอื่น
+                if _G.RestartInProgress then
+                    print("[Restart] Skipped - Another system is handling restart")
+                    return
+                end
+                
+                _G.RestartInProgress = true
+                pcall(function()
+                    Networking.MatchRestartSettingEvent:FireServer("Vote")
+                    print("[Restart] Vote sent")
+                end)
+                
+                -- รีเซ็ต flag หลัง 5 วินาที (กรณีที่ restart ไม่สำเร็จ)
+                task.delay(5, function()
+                    _G.RestartInProgress = false
+                end)
+            end
+            
             if Settings["Auto Modifier"] then
                 local plr = game:GetService("Players").LocalPlayer
                 local lastChoice = nil
@@ -4788,12 +4893,6 @@ if ID[game.GameId][1] == "AV" then
                 local function ChooseModifier(modifierName)
                     pcall(function()
                         Networking.ModifierEvent:FireServer("Choose", modifierName)
-                    end)
-                end
-
-                local function VoteRestart()
-                    pcall(function()
-                        Networking.MatchRestartSettingEvent:FireServer("Vote")
                     end)
                 end
 
@@ -4848,6 +4947,8 @@ if ID[game.GameId][1] == "AV" then
 
                 -- Wave Tracker
                 local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                local autoRestartTriggered = false
+                
                 InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
                     if eventType == "Wave" and data and data.Waves then
                         currentWave = data.Waves
@@ -4856,12 +4957,35 @@ if ID[game.GameId][1] == "AV" then
                         if currentWave == 0 then
                             chosenModifiers = {}
                             lastChoice = nil
+                            autoRestartTriggered = false  -- Reset flag เมื่อเกมใหม่
+                            _G.RestartInProgress = false  -- ⭐ รีเซ็ต flag ป้องกันการทับซ้อน
                         end
                         
+                        -- ⭐ Auto Restart แบบ Wave
+                        if Settings["Auto Restart"] and Settings["Auto Restart"]["Enable"] and not autoRestartTriggered then
+                            local restartWave = Settings["Auto Restart"]["Wave"] or 1
+                            if currentWave >= restartWave and currentWave > 0 then
+                                -- ⭐ เช็ค flag ก่อน vote
+                                if not _G.RestartInProgress then
+                                    print(string.format("[Auto Restart] Wave %d reached (target: %d) - Voting restart...", currentWave, restartWave))
+                                    VoteRestart()
+                                    autoRestartTriggered = true
+                                else
+                                    print("[Auto Restart] Skipped - Another system already restarting")
+                                end
+                            end
+                        end
+                        
+                        -- Restart Modifier (เช็ค modifier) - ทำงานภายใน Auto Modifier เท่านั้น
                         if Settings["Restart Modifier"] and currentWave >= 1 then
                             if not HasChosenRequiredModifier() then
-                                -- print("[Auto Modifier] Required modifier not found, voting restart...")
-                                VoteRestart()
+                                -- ⭐ เช็ค flag ก่อน vote
+                                if not _G.RestartInProgress then
+                                    print("[Restart Modifier] Required modifier not found, voting restart...")
+                                    VoteRestart()
+                                else
+                                    print("[Restart Modifier] Skipped - Another system already restarting")
+                                end
                             end
                         end
                     end
@@ -4892,6 +5016,80 @@ if ID[game.GameId][1] == "AV" then
                     end
                 end)
                 print("[Auto Modifier] Loaded!")
+            end
+            
+            -- ⭐⭐⭐ RESTART MODIFIER (แยกอิสระ - ไม่ต้องพึ่ง Auto Modifier) ⭐⭐⭐
+            -- รีเมื่อไม่มี modifier ที่ต้องการใน Select Modifier
+            if Settings["Restart Modifier"] and not Settings["Auto Modifier"] then
+                local plr = game:GetService("Players").LocalPlayer
+                local chosenModifiers = {}
+                local currentWave = 0
+                local restartModifierTriggered = false
+                
+                local function HasChosenRequiredModifier()
+                    for _, required in ipairs(Settings["Select Modifier"]) do
+                        for _, chosen in ipairs(chosenModifiers) do
+                            if string.lower(chosen) == string.lower(required) then
+                                return true
+                            end
+                        end
+                    end
+                    return false
+                end
+                
+                local function GetChosenModifiers()
+                    local chosen = {}
+                    pcall(function()
+                        local ModifiersGui = plr.PlayerGui:FindFirstChild("Modifiers")
+                        if ModifiersGui then
+                            local ModifiersFrame = ModifiersGui:FindFirstChild("Modifiers")
+                            if ModifiersFrame then
+                                local Chosen = ModifiersFrame:FindFirstChild("Chosen")
+                                if Chosen then
+                                    for _, child in pairs(Chosen:GetChildren()) do
+                                        if child:IsA("Frame") or child:IsA("TextButton") or child:IsA("ImageButton") then
+                                            table.insert(chosen, child.Name)
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end)
+                    return chosen
+                end
+                
+                -- Wave Tracker สำหรับ Restart Modifier
+                local InterfaceEvent = Networking:WaitForChild("InterfaceEvent")
+                
+                InterfaceEvent.OnClientEvent:Connect(function(eventType, data)
+                    if eventType == "Wave" and data and data.Waves then
+                        currentWave = data.Waves
+                        
+                        if currentWave == 0 then
+                            chosenModifiers = {}
+                            restartModifierTriggered = false
+                            _G.RestartInProgress = false
+                        end
+                        
+                        -- อัปเดต chosen modifiers
+                        chosenModifiers = GetChosenModifiers()
+                        
+                        -- เช็คว่ามี required modifier หรือไม่
+                        if currentWave >= 1 and not restartModifierTriggered then
+                            if not HasChosenRequiredModifier() then
+                                if not _G.RestartInProgress then
+                                    print("[Restart Modifier] Required modifier not found, voting restart...")
+                                    VoteRestart()
+                                    restartModifierTriggered = true
+                                else
+                                    print("[Restart Modifier] Skipped - Another system already restarting")
+                                end
+                            end
+                        end
+                    end
+                end)
+                
+                print("[Restart Modifier] Loaded! (Standalone mode)")
             end
         end
     end

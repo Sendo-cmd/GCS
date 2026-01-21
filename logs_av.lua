@@ -3,13 +3,6 @@ repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
 
-local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
-if not request then
-    request = function(options)
-        return {Success = false, Body = "{}"}
-    end
-end
-
 local Url = "https://api.championshop.date"
 local List = {
     "Level",
@@ -83,7 +76,12 @@ local function CreateBody(...)
     return body
 end
 local function SendTo(Url,...)
-    warn("Hi")
+    warn("Sending to: ", Url)
+    -- Build the request body once, encode and print it for debugging so we can compare EndScreen vs Restart payloads
+    local bodyTable = CreateBody(...)
+    local bodyJson = HttpService:JSONEncode(bodyTable)
+    print("[logs_av] SendTo JSON Body:", bodyJson)
+
     local response = request({
         ["Url"] = Url,
         ["Method"] = "POST",
@@ -91,11 +89,11 @@ local function SendTo(Url,...)
             ["content-type"] = "application/json",
             ["x-api-key"] = "953a582c-fca0-47bb-8a4c-a9d28d0871d4"
         },
-        ["Body"] = HttpService:JSONEncode(CreateBody(...))
+        ["Body"] = bodyJson
     })
     for i,v in pairs(response) do
         -- warn(i,v)
-    end 
+    end
     return response
 end
 if IsTimeChamber then
@@ -601,9 +599,10 @@ if IsMatch then
                 StageInfo["map"]["name"] = StagesData:GetStageData(GameData.StageType, GameData.Stage).Name
             end)
         end
-        print("SendTo 5")
+    print("SendTo 5")
+    print("[logs_av] DEBUG: EndScreen -> calling SendTo for logs")
         
-        SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
+    SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = Times},{["currency"] = convertToField_(GetSomeCurrency())})
         SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
     end)
     
@@ -611,6 +610,9 @@ if IsMatch then
     if GameHandler.MatchRestarted then
         GameHandler.MatchRestarted:Connect(function()
             warn("Match Restarted - Sending restart log")
+            
+            -- ⭐ รีเซ็ต flag เพื่อให้ระบบอื่นสามารถ restart ใหม่ได้
+            _G.RestartInProgress = false
             
             -- รอให้ UI อัปเดต
             task.wait(0.5)
@@ -713,6 +715,7 @@ if IsMatch then
             end
 
             -- ส่ง log พร้อม StageInfo และข้อมูล rewards ที่ดึงมา
+            print("[logs_av] DEBUG: Restart -> calling SendTo for logs")
             SendTo(Url .. "/api/v1/shop/orders/logs",{["logs"] = ConvertResult},{["state"] = StageInfo},{["time"] = 0},{["currency"] = convertToField_(GetSomeCurrency())})
             SendTo(Url .. "/api/v1/shop/orders/backpack",{["data"] = {["Familiar"] = Data["Familiars"],["Skin"] = Data["Skins"],["Inventory"] = Data["Inventory"],["EquippedUnits"] = Data["EquippedUnits"],["Units"] = Data["Units"]}})
         end)
