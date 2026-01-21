@@ -2,6 +2,14 @@
 repeat task.wait() until game:IsLoaded()
 repeat task.wait() until game:GetService("Players").LocalPlayer
 repeat task.wait() until game:GetService("Players").LocalPlayer.PlayerGui
+
+local request = request or http_request or (syn and syn.request) or (http and http.request) or (fluxus and fluxus.request)
+if not request then
+    request = function(options)
+        return {Success = false, Body = "{}"}
+    end
+end
+
 local Url = "https://api.championshop.date"
 local List = {
     "Level",
